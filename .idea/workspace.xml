@@ -1,0 +1,947 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="608579fc-1a5c-4857-ac7c-0ae1e4283e61" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/css/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/partials/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/logs/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/private/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/dell-streak-7.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/dell-streak-7.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/dell-streak-7.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/dell-streak-7.3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/dell-streak-7.4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/dell-venue.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/dell-venue.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/dell-venue.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/dell-venue.3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/dell-venue.4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/dell-venue.5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/droid-2-global-by-motorola.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/droid-2-global-by-motorola.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/droid-2-global-by-motorola.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/droid-pro-by-motorola.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/droid-pro-by-motorola.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/glyphicons-halflings-white.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/glyphicons-halflings.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/lg-axis.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/lg-axis.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/lg-axis.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-atrix-4g.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-atrix-4g.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-atrix-4g.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-atrix-4g.3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-bravo-with-motoblur.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-bravo-with-motoblur.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-bravo-with-motoblur.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-charm-with-motoblur.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-charm-with-motoblur.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-charm-with-motoblur.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-defy-with-motoblur.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-defy-with-motoblur.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-defy-with-motoblur.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-xoom-with-wi-fi.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-xoom-with-wi-fi.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-xoom-with-wi-fi.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-xoom-with-wi-fi.3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-xoom-with-wi-fi.4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-xoom-with-wi-fi.5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-xoom.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-xoom.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/motorola-xoom.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/nexus-s.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/nexus-s.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/nexus-s.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/nexus-s.3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-galaxy-tab.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-galaxy-tab.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-galaxy-tab.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-galaxy-tab.3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-galaxy-tab.4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-galaxy-tab.5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-galaxy-tab.6.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-gem.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-gem.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-gem.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-mesmerize-a-galaxy-s-phone.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-mesmerize-a-galaxy-s-phone.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-mesmerize-a-galaxy-s-phone.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-mesmerize-a-galaxy-s-phone.3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-showcase-a-galaxy-s-phone.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-showcase-a-galaxy-s-phone.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-showcase-a-galaxy-s-phone.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-transform.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-transform.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-transform.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-transform.3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/samsung-transform.4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/sanyo-zio.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/sanyo-zio.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/sanyo-zio.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/t-mobile-g2.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/t-mobile-g2.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/t-mobile-g2.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/t-mobile-mytouch-4g.0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/t-mobile-mytouch-4g.1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/t-mobile-mytouch-4g.2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/t-mobile-mytouch-4g.3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/t-mobile-mytouch-4g.4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/phones/t-mobile-mytouch-4g.5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/watchr.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/private/ScrapeData.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-animate.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-animate.min.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-animate.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-cookies.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-cookies.min.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-cookies.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-csp.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-loader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-loader.min.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-loader.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_af-na.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_af-za.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_af.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_am-et.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_am.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-001.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-ae.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-bh.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-dz.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-eg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-iq.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-jo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-kw.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-lb.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-ly.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-ma.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-om.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-qa.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-sa.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-sd.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-sy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-tn.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar-ye.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_bg-bg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_bg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_bn-bd.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_bn-in.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_bn.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ca-ad.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ca-es.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ca.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_cs-cz.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_cs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_da-dk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_da.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_de-at.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_de-be.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_de-ch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_de-de.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_de-li.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_de-lu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_de.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_el-cy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_el-gr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_el.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-as.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-au.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-bb.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-be.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-bm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-bw.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-bz.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-ca.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-dsrt-us.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-dsrt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-fm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-gb.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-gu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-gy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-hk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-ie.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-in.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-iso.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-jm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-mh.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-mp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-mt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-mu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-na.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-nz.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-ph.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-pk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-pr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-pw.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-sg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-tc.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-tt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-um.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-us.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-vg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-vi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-za.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en-zw.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_en.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-419.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-ar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-bo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-cl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-co.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-cr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-do.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-ea.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-ec.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-es.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-gq.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-gt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-hn.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-ic.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-mx.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-ni.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-pa.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-pe.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-pr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-py.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-sv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-us.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-uy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es-ve.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_es.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_et-ee.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_et.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_eu-es.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_eu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fa-af.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fa-ir.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fa.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fi-fi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fil-ph.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fil.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-be.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-bf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-bi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-bj.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-bl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-ca.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-cd.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-cf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-cg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-ch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-ci.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-cm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-dj.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-fr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-ga.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-gf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-gn.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-gp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-gq.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-km.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-lu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-mc.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-mf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-mg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-ml.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-mq.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-ne.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-re.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr-yt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_fr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_gl-es.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_gl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_gsw-ch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_gsw.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_gu-in.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_gu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_he-il.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_he.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_hi-in.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_hi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_hr-hr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_hr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_hu-hu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_hu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_id-id.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_id.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_in.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_is-is.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_is.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_it-it.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_it-sm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_it.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_iw.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ja-jp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ja.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_kn-in.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_kn.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ko-kr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ko.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ln-cd.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ln.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_lt-lt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_lt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_lv-lv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_lv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ml-in.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ml.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_mr-in.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_mr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ms-my.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ms.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_mt-mt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_mt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_nl-cw.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_nl-nl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_nl-sx.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_nl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_no.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_or-in.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_or.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_pl-pl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_pl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_pt-br.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_pt-pt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_pt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ro-ro.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ro.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ru-ru.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ru.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_sk-sk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_sk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_sl-si.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_sl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_sq-al.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_sq.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_sr-cyrl-rs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_sr-latn-rs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_sr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_sv-se.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_sv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_sw-tz.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_sw.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ta-in.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ta.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_te-in.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_te.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_th-th.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_th.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_tl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_tr-tr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_tr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_uk-ua.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_uk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ur-pk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_ur.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_vi-vn.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_vi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_zh-cn.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_zh-hans-cn.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_zh-hk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_zh-tw.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_zh.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_zu-za.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/i18n/angular-locale_zu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-mocks.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-resource.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-resource.min.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-resource.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-route.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-route.min.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-route.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-sanitize.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-sanitize.min.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-sanitize.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-scenario.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-touch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-touch.min.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular-touch.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular.min.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/angular.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/css/app.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/js/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/css/bootstrap-responsive.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/css/bootstrap-responsive.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/css/bootstrap.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/css/bootstrap.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/js/controllers.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/dell-streak-7.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/dell-venue.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/js/directives.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/private/download-angular.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/droid-2-global-by-motorola.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/droid-pro-by-motorola.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/e2e-test.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/e2e-test.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/errors.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/js/filters.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/private/format-json.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/private/goto_step.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/private/goto_step.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/index-async.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/jquery/jquery-1.10.2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/jquery/jquery-1.10.2.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/jquery/jquery-1.10.2.min.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/karma-e2e.conf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/karma.conf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/lg-axis.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/partials/monster-detail.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/partials/monster-list.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/motorola-atrix-4g.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/motorola-bravo-with-motoblur.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/motorola-charm-with-motoblur.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/motorola-defy-with-motoblur.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/motorola-xoom-with-wi-fi.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/motorola-xoom.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/nexus-s.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/phones.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/private/push-to-github.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/private/retag.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/samsung-galaxy-tab.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/samsung-gem.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/samsung-mesmerize-a-galaxy-s-phone.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/samsung-showcase-a-galaxy-s-phone.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/samsung-transform.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/sanyo-zio.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/js/services.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/private/snapshot-web.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/private/snapshot.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/t-mobile-g2.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phones/t-mobile-mytouch-4g.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/private/test-all.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/test.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/test.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/private/update-angular.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/update-repo.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/version.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/version.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/web-server.js" />
+    </list>
+    <ignored path="EncounterBuilder.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="EncounterBuilder" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="34" selection-start="460" selection-end="460" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="monster-list.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/partials/monster-list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="40" selection-start="443" selection-end="443" vertical-scroll-proportion="0.51792115" vertical-offset="0" max-vertical-offset="561">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controllers.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="17" selection-start="235" selection-end="241" vertical-scroll-proportion="-2.72" vertical-offset="0" max-vertical-offset="476">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/services.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="39" selection-start="157" selection-end="162" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/css/app.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1530">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/index-async.html" />
+        <option value="$PROJECT_DIR$/app/partials/phone-list.html" />
+        <option value="$PROJECT_DIR$/app/js/app.js" />
+        <option value="$PROJECT_DIR$/app/js/controllers.js" />
+        <option value="$PROJECT_DIR$/app/js/services.js" />
+        <option value="$PROJECT_DIR$/app/partials/monster-list.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>ActionScript specificJavaScript</id>
+          </State>
+          <State>
+            <id>Assignment issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Bitwise operation issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Code quality toolsJavaScript</id>
+          </State>
+          <State>
+            <id>Code style issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Control flow issuesJavaScript</id>
+          </State>
+          <State>
+            <id>DOM issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Data flow issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Error handlingJavaScript</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript function metricsJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript validity issuesJavaScript</id>
+          </State>
+          <State>
+            <id>JsTestDriverJavaScript</id>
+          </State>
+          <State>
+            <id>Naming conventionsJavaScript</id>
+          </State>
+          <State>
+            <id>Node.jsJavaScript</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsJavaScript</id>
+          </State>
+          <State>
+            <id>Probable bugsJavaScript</id>
+          </State>
+          <State>
+            <id>Unit testingJavaScript</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>JavaScript</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EncounterBuilder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EncounterBuilder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EncounterBuilder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EncounterBuilder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EncounterBuilder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EncounterBuilder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EncounterBuilder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EncounterBuilder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EncounterBuilder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EncounterBuilder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EncounterBuilder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="options.lastSelected" value="Errors" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="name" value="Dart" />
+      <option name="saveOutputToFile" value="false" />
+      <option name="showConsoleOnStdErr" value="false" />
+      <option name="showConsoleOnStdOut" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
+      <setting name="configLocationType" value="CONFIG_FILE" />
+      <setting name="settingsFile" value="" />
+      <setting name="serverType" value="INTERNAL" />
+      <setting name="preferredDebugBrowser" value="CHROME" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <browser start="false" url="" with-js-debugger="false" />
+      <method />
+    </configuration>
+    <list size="0" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="608579fc-1a5c-4857-ac7c-0ae1e4283e61" name="Default" comment="" />
+      <created>1387277326823</created>
+      <updated>1387277326823</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34040996" sideWeight="0.6704918" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31639344" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+    <MESSAGE value="initial import" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial import" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/index-async.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="23" selection-start="3718" selection-end="3718" vertical-scroll-proportion="0.25137615" vertical-offset="577" max-vertical-offset="1122">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/img/glyphicons-halflings.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/img/glyphicons-halflings-white.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="14" selection-start="103" selection-end="108" vertical-scroll-proportion="0.13385826" vertical-offset="0" max-vertical-offset="508">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/web-server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="37" max-vertical-offset="4250">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/directives.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/partials/monster-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2023">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/filters.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="34" selection-start="460" selection-end="460" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="17" selection-start="235" selection-end="241" vertical-scroll-proportion="-2.72" vertical-offset="0" max-vertical-offset="476">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="39" selection-start="157" selection-end="162" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/partials/monster-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="40" selection-start="443" selection-end="443" vertical-scroll-proportion="0.51792115" vertical-offset="0" max-vertical-offset="561">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <last-edited>Unnamed</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
+
