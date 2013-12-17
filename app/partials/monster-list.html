@@ -16,9 +16,8 @@
 
       <ul class="monsters">
         <li ng-repeat="monster in monsters | filter:query | orderBy:orderProp" class="thumbnail">
-          <a href="#/monsters/{{monster.id}}" class="thumb"><img ng-src="{{monster.imageUrl}}"></a>
           <a href="#/monsters/{{monster.id}}">{{monster.name}}</a>
-          <p>{{monster.snippet}}</p>
+          <p>CR : {{monster.cr}}</p>
         </li>
       </ul>
 
