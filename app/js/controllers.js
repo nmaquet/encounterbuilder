@@ -6,7 +6,7 @@ var encounterBuilderControllers = angular.module('encounterBuilderControllers', 
 
 encounterBuilderControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
   function($scope, Phone) {
-    $scope.phones = Phone.query();
+    $scope.monsters = Phone.query();
     $scope.orderProp = 'age';
   }]);
 
