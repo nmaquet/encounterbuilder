@@ -4,15 +4,15 @@
 
 var encounterBuilderControllers = angular.module('encounterBuilderControllers', []);
 
-encounterBuilderControllers.controller('MonsterListController', ['$scope', 'Phone',
-  function($scope, Phone) {
-    $scope.monsters = Phone.query();
+encounterBuilderControllers.controller('MonsterListController', ['$scope', 'Monster',
+  function($scope, Monster) {
+    $scope.monsters = Monster.query();
     $scope.orderProp = 'age';
   }]);
 
-encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$routeParams', 'Phone',
-  function($scope, $routeParams, Phone) {
-    $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
+encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$routeParams', 'Monster',
+  function($scope, $routeParams, Monster) {
+    $scope.phone = Monster.get({phoneId: $routeParams.phoneId}, function(phone) {
       $scope.mainImageUrl = phone.images[0];
     });
 
