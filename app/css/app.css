@@ -1,5 +1,9 @@
 /* app css stylesheet */
 
+.FullText {
+    width: 800px;
+}
+
 body {
   padding-top: 20px;
 }
