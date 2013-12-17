@@ -14,11 +14,11 @@ encounterBuilderApp.config(['$routeProvider',
     $routeProvider.
       when('/monsters', {
         templateUrl: 'partials/monster-list.html',
-        controller: 'PhoneListCtrl'
+        controller: 'MonsterListController'
       }).
       when('/monsters/:phoneId', {
         templateUrl: 'partials/monster-detail.html',
-        controller: 'PhoneDetailCtrl'
+        controller: 'MonsterDetailController'
       }).
       otherwise({
         redirectTo: '/monsters'
