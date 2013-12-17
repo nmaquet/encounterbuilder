@@ -7,7 +7,7 @@ var encounterBuilderControllers = angular.module('encounterBuilderControllers', 
 encounterBuilderControllers.controller('MonsterListController', ['$scope', 'Monster',
   function($scope, Monster) {
     $scope.monsters = Monster.query();
-    $scope.orderProp = 'age';
+    $scope.orderProp = 'cr';
   }]);
 
 encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$routeParams', 'Monster',
