@@ -4,7 +4,7 @@ import json
 
 def getPaths():
     if len(sys.argv) != 3:
-        print "usage : shorten_monsters.py <inPath> <outPath>"
+        print "usage : split_monsters.py <inPath> <outPath>"
         sys.exit(-1)
     inPath = sys.argv[1]
     outPath = sys.argv[2]
@@ -17,15 +17,15 @@ def getPaths():
     return inPath, outPath
 
 def process(inPath, outPath):
+    os.mkdir(outPath)
     with open(inPath) as f:
         contents = f.read()
     monsters = json.loads(contents)
-    short_monsters = []
     for monster in monsters:
-        short_monsters.append({ "name" : monster.get("Name"), "id" : monster.get("id"), "cr" : monster.get("CR")})
-    with open(outPath, "w") as f:
-        f.write(json.dumps(short_monsters))
-
+        monsterPath = os.path.join(outPath, str(monster["id"]) + ".json")
+        with open(monsterPath, "w") as f:
+            f.write(json.dumps(monster))
+        
 if __name__ == "__main__":
     inPath, outPath = getPaths()
     process(inPath, outPath)
