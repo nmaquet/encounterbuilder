@@ -12,7 +12,7 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'Mons
 
 encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$routeParams', 'Monster',
   function($scope, $routeParams, Monster) {
-    $scope.phone = Monster.get({phoneId: $routeParams.phoneId}, function(phone) {
+    $scope.phone = Monster.get({monsterId: $routeParams.monsterId}, function(phone) {
       $scope.mainImageUrl = phone.images[0];
     });
 

@@ -16,7 +16,7 @@ encounterBuilderApp.config(['$routeProvider',
         templateUrl: 'partials/monster-list.html',
         controller: 'MonsterListController'
       }).
-      when('/monsters/:phoneId', {
+      when('/monsters/:monsterId', {
         templateUrl: 'partials/monster-detail.html',
         controller: 'MonsterDetailController'
       }).

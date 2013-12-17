@@ -6,7 +6,7 @@ var encounterBuilderServices = angular.module('encounterBuilderServices', ['ngRe
 
 encounterBuilderServices.factory('Monster', ['$resource',
   function($resource){
-    return $resource('monsters/:phoneId.json', {}, {
-      query: {method:'GET', params:{phoneId:'phones'}, isArray:true}
+    return $resource('monsters/:monsterId.json', {}, {
+      query: {method:'GET', params:{monsterId:'phones'}, isArray:true}
     });
   }]);
