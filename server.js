@@ -59,6 +59,16 @@ app.get('/api/monsters-reset', function (request, response) {
     });
 });
 
+app.get('/api/monsters/:criteria', function (request, response) {
+    console.log(request.params)
+    Monster.find({name: new RegExp(request.params.criteria, "i")}).limit(50).execFind( function (error, monster) {
+        if (error)
+            response.send(error);
+
+        response.json(monster);
+    });
+});
+
 app.get('/api/monster/:monster_id', function (request, response) {
     Monster.findById(request.params.monster_id, function (error, monster) {
         if (error)
