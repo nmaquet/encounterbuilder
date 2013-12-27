@@ -15,7 +15,7 @@ app.configure(function () {
 
 var Monster = mongoose.model('Monster', {
     Name: String,
-    CR: Number
+    CR: String
 });
 
 app.get('/api/monsters', function (request, response) {
@@ -37,7 +37,7 @@ app.get('/api/monsters-reset', function (request, response) {
             response.send(error);
 
 
-        var file = __dirname + 'app/monsters/monsters_full.json';
+        var file = __dirname + '/app/monsters/monsters_full.json';
 
         fs.readFile(file, 'utf8', function (error, monsters) {
             if (error) {
@@ -46,21 +46,17 @@ app.get('/api/monsters-reset', function (request, response) {
             }
 
             monsters = JSON.parse(monsters);
-            for (monster in monsters){
-                Monster.create(monster,function(error){
-                   if (error)
-                       console.log('Error: ' + error);
+            for (monster in monsters) {
+                console.log(monsters[monster].Name);
+                Monster.create(monsters[monster], function (error) {
+                    if (error)
+                        console.log('Error: ' + error);
 
                 });
             }
             response.send('monsters regenerated');
         });
     });
-
-
-    response.json(monsters);
-
-
 });
 
 app.get('/api/monster/:monster_id', function (request, response) {
