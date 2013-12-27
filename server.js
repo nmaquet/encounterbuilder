@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
+var fs = require('fs');
+
 
 mongoose.connect('mongodb://localhost:27017');
 
@@ -12,8 +14,8 @@ app.configure(function () {
 });
 
 var Monster = mongoose.model('Monster', {
-    name: String,
-    cr: Number
+    Name: String,
+    CR: Number
 });
 
 app.get('/api/monsters', function (request, response) {
@@ -24,6 +26,40 @@ app.get('/api/monsters', function (request, response) {
 
         response.json(monsters);
     });
+
+});
+
+app.get('/api/monsters-reset', function (request, response) {
+
+    Monster.remove({}, function (error) {
+        console.log('collection removed');
+        if (error)
+            response.send(error);
+
+
+        var file = __dirname + 'app/monsters/monsters_full.json';
+
+        fs.readFile(file, 'utf8', function (error, monsters) {
+            if (error) {
+                console.log('Error: ' + error);
+                return;
+            }
+
+            monsters = JSON.parse(monsters);
+            for (monster in monsters){
+                Monster.create(monster,function(error){
+                   if (error)
+                       console.log('Error: ' + error);
+
+                });
+            }
+            response.send('monsters regenerated');
+        });
+    });
+
+
+    response.json(monsters);
+
 
 });
 
