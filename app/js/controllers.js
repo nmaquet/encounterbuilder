@@ -17,7 +17,7 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', '$htt
                 console.log('Error in your face: ' + error);
             });
 
-        $scope.$watch("orderProp", function () {
+        $scope.$watchCollection("[query, orderProp]", function () {
             $scope.refreshMonsters();
         });
 

@@ -9,14 +9,6 @@ var encounterBuilderApp = angular.module('encounterBuilderApp', [
   'encounterBuilderServices'
 ]);
 
-encounterBuilderApp.directive('ebOnKeyup', function() {
-    return function(scope, elm, attrs) {
-        elm.bind("keyup", function() {
-            scope.$apply(attrs.ebOnKeyup);
-        });
-    };
-});
-
 encounterBuilderApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
