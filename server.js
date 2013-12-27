@@ -5,7 +5,7 @@ var fs = require('fs');
 
 const FIND_LIMIT = 50;
 
-mongoose.connect('mongodb://nmaquet@gmail.com:M9+G*4ds@dharma.mongohq.com:10070/app20737156');
+mongoose.connect('mongodb://heroku:fR98x8wJk2RN@mongo.onmodulus.net:27017/gu9gOmot');
 
 app.configure(function () {
     app.use(express.static(__dirname + '/app'));
