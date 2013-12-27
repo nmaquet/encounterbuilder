@@ -15,6 +15,16 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', '$htt
             .error(function (error) {
                 console.log('Error in your face: ' + error);
             });
+
+        $scope.refreshMonsters = function () {
+            $http.get('/api/monsters/' + $scope.query) /* FIXME: maybe not the best way ?! */
+                .success(function (data) {
+                    $scope.monsters = data
+                })
+                .error(function (error) {
+                    console.log('Error in your face: ' + error);
+                });
+        };
     }]);
 
 encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$routeParams', '$sce', 'Monster',

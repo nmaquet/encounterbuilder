@@ -3,7 +3,7 @@
     <div class="span2">
       <!--Sidebar content-->
 
-      Search: <input ng-model="query">
+      Search: <input ng-model="query" eb-on-keyup="refreshMonsters()">
       Sort by:
       <select ng-model="orderProp">
         <option value="name">Alphabetical</option>
@@ -15,7 +15,7 @@
       <!--Body content-->
 
       <ul class="monsters">
-        <li ng-repeat="monster in monsters | filter:query | orderBy:orderProp" class="thumbnail">
+        <li ng-repeat="monster in monsters | orderBy:orderProp" class="thumbnail">
           <a href="#/monsters/{{monster.id}}">{{monster.name}}</a>
           <p>CR : {{monster.cr}}</p>
         </li>
