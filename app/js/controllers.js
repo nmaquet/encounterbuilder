@@ -6,6 +6,7 @@ var encounterBuilderControllers = angular.module('encounterBuilderControllers', 
 
 encounterBuilderControllers.controller('MonsterListController', ['$scope', '$http',
     function ($scope, $http) {
+        $scope.query = '';
         $scope.orderProp = 'cr';
 
         $http.get('/api/monsters')
@@ -16,8 +17,12 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', '$htt
                 console.log('Error in your face: ' + error);
             });
 
+        $scope.$watch("orderProp", function () {
+            $scope.refreshMonsters();
+        });
+
         $scope.refreshMonsters = function () {
-            $http.get('/api/monsters/' + $scope.query) /* FIXME: maybe not the best way ?! */
+            $http.get('/api/search-monsters/', {params: {nameSubstring: $scope.query, order: $scope.orderProp}})
                 .success(function (data) {
                     $scope.monsters = data
                 })

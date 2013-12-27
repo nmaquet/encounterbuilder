@@ -15,7 +15,7 @@
       <!--Body content-->
 
       <ul class="monsters">
-        <li ng-repeat="monster in monsters | orderBy:orderProp" class="thumbnail">
+        <li ng-repeat="monster in monsters" class="thumbnail">
           <a href="#/monsters/{{monster.id}}">{{monster.name}}</a>
           <p>CR : {{monster.cr}}</p>
         </li>

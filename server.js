@@ -3,6 +3,7 @@ var app = express();
 var mongoose = require('mongoose');
 var fs = require('fs');
 
+const FIND_LIMIT = 50;
 
 mongoose.connect('mongodb://localhost:27017');
 
@@ -20,7 +21,7 @@ var Monster = mongoose.model('Monster', {
 
 app.get('/api/monsters', function (request, response) {
 
-    Monster.find({}).limit(50).execFind(function (error, monsters) {
+    Monster.find({}).limit(FIND_LIMIT).execFind(function (error, monsters) {
         if (error)
             response.send(error);
 
@@ -59,9 +60,15 @@ app.get('/api/monsters-reset', function (request, response) {
     });
 });
 
-app.get('/api/monsters/:criteria', function (request, response) {
-    console.log(request.params)
-    Monster.find({name: new RegExp(request.params.criteria, "i")}).limit(50).execFind( function (error, monster) {
+app.get('/api/search-monsters', function (request, response) {
+    console.log(request.query);
+    var regex = new RegExp(request.query.nameSubstring, "i");
+    if (request.query.order === "cr") {
+        var sortOption = { cr : 1};
+    } else {
+        var sortOption = { name : 1};
+    }
+    Monster.find({name: regex}).limit(FIND_LIMIT).sort(sortOption).execFind( function (error, monster) {
         if (error)
             response.send(error);
 
