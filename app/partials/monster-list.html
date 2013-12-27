@@ -16,7 +16,7 @@
 
       <ul class="monsters">
         <li ng-repeat="monster in monsters" class="thumbnail">
-          <a href="#/monsters/{{monster.id}}">{{monster.name}}</a>
+          <a href="/api/monster/{{monster._id}}">{{monster.name}}</a>
           <p>CR : {{monster.cr}}</p>
         </li>
       </ul>
