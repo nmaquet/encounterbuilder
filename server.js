@@ -89,6 +89,8 @@ app.get('*', function (req, res) {
     res.sendfile('./app/index.html');
 });
 
-app.listen(80);
+var port = process.env.PORT || 3000;
 
-console.log("App listening on port 80 !");
+app.listen(port);
+
+console.log("Encounter Builder Server listening on port " + port);
