@@ -5,7 +5,9 @@ var fs = require('fs');
 
 const FIND_LIMIT = 50;
 
-mongoose.connect('mongodb://heroku:fR98x8wJk2RN@mongo.onmodulus.net:27017/gu9gOmot');
+//mongoose.connect('mongodb://heroku:fR98x8wJk2RN@mongo.onmodulus.net:27017/gu9gOmot');
+
+mongoose.connect('mongodb://localhost:27017');
 
 app.configure(function () {
     app.use(express.static(__dirname + '/app'));
@@ -16,7 +18,7 @@ app.configure(function () {
 
 var Monster = mongoose.model('Monster', {
     name: String,
-    cr: String
+    cr: Number
 });
 
 app.get('/api/monsters', function (request, response) {
@@ -49,7 +51,7 @@ app.get('/api/monsters-reset', function (request, response) {
             monsters = JSON.parse(monsters);
             for (monster in monsters) {
                 console.log(monsters[monster].Name);
-                Monster.create({name: monsters[monster].Name, cr: monsters[monster].CR}, function (error) {
+                Monster.create({name: monsters[monster].Name, cr: Number(eval(monsters[monster].CR))}, function (error) {
                     if (error)
                         console.log('Error: ' + error);
 
