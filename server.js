@@ -64,11 +64,11 @@ app.get('/api/search-monsters', function (request, response) {
     console.log(request.query);
     var regex = new RegExp(request.query.nameSubstring, "i");
     if (request.query.order === "cr") {
-        var sortOption = { cr : 1};
+        var sortOption = 'cr name';
     } else {
-        var sortOption = { name : 1};
+        var sortOption = 'name cr';
     }
-    Monster.find({name: regex}).limit(FIND_LIMIT).sort(sortOption).execFind( function (error, monster) {
+    Monster.find({name: regex}).limit(FIND_LIMIT).sort(sortOption).execFind(function (error, monster) {
         if (error)
             response.send(error);
 
