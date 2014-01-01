@@ -19,17 +19,6 @@ var Monster = mongoose.model('Monster', {
     cr: Number
 });
 
-app.get('/api/monsters', function (request, response) {
-
-    Monster.find({}).limit(FIND_LIMIT).execFind(function (error, monsters) {
-        if (error)
-            response.send(error);
-
-        response.json(monsters);
-    });
-
-});
-
 app.get('/api/monsters-reset', function (request, response) {
 
     Monster.remove({}, function (error) {

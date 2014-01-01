@@ -9,14 +9,6 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', '$htt
         $scope.query = '';
         $scope.orderProp = 'cr';
 
-        $http.get('/api/monsters')
-            .success(function (data) {
-                $scope.monsters = data
-            })
-            .error(function (error) {
-                console.log('Error in your face: ' + error);
-            });
-
         $scope.$watchCollection("[query, orderProp]", function () {
             $scope.refreshMonsters();
         });
@@ -30,6 +22,8 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', '$htt
                     console.log('Error in your face: ' + error);
                 });
         };
+
+        $scope.refreshMonsters();
     }]);
 
 encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$routeParams', '$sce', 'Monster',
