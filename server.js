@@ -25,7 +25,7 @@ app.get('/api/monsters-reset', function (request, response) {
     var ids = [];
 
     function generateId(name) {
-        var prefix = name.toLowerCase().replace(" ", "-");
+        var prefix = name.toLowerCase().replace(/\s/g, "-");
 
         if (ids.indexOf(prefix) === -1) {
             ids.push(prefix);
