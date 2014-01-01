@@ -16,13 +16,36 @@ app.configure(function () {
 
 var Monster = mongoose.model('Monster', {
     name: String,
+    id: String,
     cr: Number
 });
 
 app.get('/api/monsters-reset', function (request, response) {
 
+    var ids = [];
+
+    function generateId(name) {
+        var prefix = name.toLowerCase().replace(" ", "-");
+
+        if (ids.indexOf(prefix) === -1) {
+            ids.push(prefix);
+            return prefix;
+        }
+
+        var suffix = 0;
+        while (ids.indexOf(prefix + "-" + suffix) !== -1) {
+            ++suffix;
+        }
+
+        var id = prefix + "-" + suffix;
+        ids.push(id);
+        console.log(id);
+        return id;
+    }
+
     Monster.remove({}, function (error) {
         console.log('collection removed');
+
         if (error)
             response.send(error);
 
@@ -37,8 +60,12 @@ app.get('/api/monsters-reset', function (request, response) {
 
             monsters = JSON.parse(monsters);
             for (monster in monsters) {
-                console.log(monsters[monster].Name);
-                Monster.create({name: monsters[monster].Name, cr: Number(eval(monsters[monster].CR))}, function (error) {
+                var monster = {
+                    name: monsters[monster].Name,
+                    id : generateId(monsters[monster].Name),
+                    cr: Number(eval(monsters[monster].CR))
+                };
+                Monster.create(monster, function (error) {
                     if (error)
                         console.log('Error: ' + error);
 
@@ -50,14 +77,13 @@ app.get('/api/monsters-reset', function (request, response) {
 });
 
 app.get('/api/search-monsters', function (request, response) {
-    console.log(request.query);
-    var regex = new RegExp(request.query.nameSubstring, "i");
     if (request.query.order === "cr") {
         var sortOption = 'cr name';
     } else {
         var sortOption = 'name cr';
     }
-    Monster.find({name: regex}).limit(FIND_LIMIT).sort(sortOption).execFind(function (error, monster) {
+    var findCriteria = {name: new RegExp(request.query.nameSubstring, "i")};
+    Monster.find(findCriteria).limit(FIND_LIMIT).sort(sortOption).execFind(function (error, monster) {
         if (error)
             response.send(error);
 
@@ -65,8 +91,8 @@ app.get('/api/search-monsters', function (request, response) {
     });
 });
 
-app.get('/api/monster/:monster_id', function (request, response) {
-    Monster.findById(request.params.monster_id, function (error, monster) {
+app.get('/api/monster/:id', function (request, response) {
+    Monster.find({id: request.params.id}, function (error, monster) {
         if (error)
             response.send(error);
 
