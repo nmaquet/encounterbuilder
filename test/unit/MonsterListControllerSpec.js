@@ -1,23 +1,25 @@
 "use strict";
 
-function newController($rootScope, $controller) {
-    var scope = $rootScope.$new();
-    return $controller('MonsterListController', {$scope: scope}), scope;
-}
+var scope, controller;
 
-describe("MonsterListController", function() {
+describe("MonsterListController", function () {
 
     beforeEach(module("encounterBuilderApp"));
 
-    it("should initialize the name substring to the empty string", inject(function($rootScope, $controller) {
-        var _, scope = newController($rootScope, $controller);
+    beforeEach(inject(function ($rootScope, $controller) {
+        scope = $rootScope.$new();
+        controller = $controller('MonsterListController', {$scope: scope});
+    }));
+
+    it("should initialize the name substring to the empty string", function () {
         expect(scope.query).toBe("");
-    }));
+    });
 
-    it("should initialize the sort order to *challenge rating*", inject(function($rootScope, $controller) {
-        var _, scope = newController($rootScope, $controller);
+    it("should initialize the sort order to *challenge rating*", function () {
         expect(scope.orderProp).toBe("cr");
-    }));
+    });
 
-
+    it("should put a refreshMonsters() function in the scope", function () {
+        expect(typeof scope.refreshMonsters).toBe("function");
+    });
 });
