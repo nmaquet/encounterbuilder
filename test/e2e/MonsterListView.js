@@ -6,12 +6,16 @@ describe('Monster List View', function () {
         browser().navigateTo('/monsters');
     });
 
-    it('should filter the monster list as user types into the search box', function () {
+    it('should initially display 50 monsters', function () {
         expect(repeater('.monsters li').count()).toBe(50);
+    });
 
+    it('should display 3 monsters when searching for "wyvern"', function () {
         input('query').enter('wyvern');
         expect(repeater('.monsters li').count()).toBe(3);
+    });
 
+    it('should display one monster when searching for "cube"', function () {
         input('query').enter('cube');
         expect(repeater('.monsters li').count()).toBe(1);
     });
