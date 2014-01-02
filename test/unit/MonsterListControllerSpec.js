@@ -1,25 +1,61 @@
 "use strict";
 
-var scope, controller;
+var $scope, $httpBackend, $controller;
 
 describe("MonsterListController", function () {
 
     beforeEach(module("encounterBuilderApp"));
 
-    beforeEach(inject(function ($rootScope, $controller) {
-        scope = $rootScope.$new();
-        controller = $controller('MonsterListController', {$scope: scope});
+    beforeEach(inject(function ($rootScope, _$httpBackend_, _$controller_) {
+        $scope = $rootScope.$new();
+        $httpBackend = _$httpBackend_;
+        $controller = _$controller_;
     }));
 
+    function instantiateController() {
+        $controller('MonsterListController', {$scope: $scope, $httpBackend : $httpBackend});
+    }
+
     it("should initialize the name substring to the empty string", function () {
-        expect(scope.query).toBe("");
+        instantiateController();
+        expect($scope.query).toBe("");
     });
 
     it("should initialize the sort order to *challenge rating*", function () {
-        expect(scope.orderProp).toBe("cr");
+        instantiateController();
+        expect($scope.orderProp).toBe("cr");
     });
 
     it("should put a refreshMonsters() function in the scope", function () {
-        expect(typeof scope.refreshMonsters).toBe("function");
+        instantiateController();
+        expect(typeof $scope.refreshMonsters).toBe("function");
+    });
+
+    it("should refresh the list of monsters", function () {
+        $httpBackend.expectGET("/api/search-monsters/?nameSubstring=&order=cr").respond([]);
+        instantiateController();
+        $httpBackend.verifyNoOutstandingExpectation();
+    });
+
+    it("it should watch the scope's query property and refresh the list of monsters automatically", function () {
+        var monsters = ["a", "b", "c"];
+        instantiateController();
+        $httpBackend.expectGET("/api/search-monsters/?nameSubstring=dragon&order=cr").respond(200, monsters);
+        $scope.query = "dragon";
+        $scope.$apply();
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.flush();
+        expect($scope.monsters).toBe(monsters);
+    });
+
+    it("it should watch the scope's orderProp property and refresh the list of monsters automatically", function () {
+        var monsters = ["a", "b", "c"];
+        instantiateController();
+        $httpBackend.expectGET("/api/search-monsters/?nameSubstring=&order=name").respond(200, monsters);
+        $scope.orderProp = "name";
+        $scope.$apply();
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.flush();
+        expect($scope.monsters).toBe(monsters);
     });
 });

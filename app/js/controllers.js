@@ -22,8 +22,6 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', '$htt
                     console.log('Error in your face: ' + error);
                 });
         };
-
-        $scope.refreshMonsters();
     }]);
 
 encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$routeParams', '$sce', 'Monster',
