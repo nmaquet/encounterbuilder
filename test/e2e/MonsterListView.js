@@ -53,4 +53,15 @@ describe('Monster List View', function () {
         expect(element('.monsters li:nth-child(2) a').attr("href")).toBe("/api/monster/aashaq's-wyvern");
         expect(element('.monsters li:nth-child(3) a').attr("href")).toBe("/api/monster/mythic-wyvern");
     });
+
+    it('should display the challenge rating of each monster', function() {
+        input('query').enter('goblin');
+        select('orderProp').option('cr');
+        expect(repeater('.monsters li').count()).toBe(5);
+        expect(element('.monsters li:nth-child(1) p').text()).toBe("CR : 1/3");
+        expect(element('.monsters li:nth-child(2) p').text()).toBe("CR : 1/2");
+        expect(element('.monsters li:nth-child(3) p').text()).toBe("CR : 1/2");
+        expect(element('.monsters li:nth-child(4) p').text()).toBe("CR : 1");
+        expect(element('.monsters li:nth-child(5) p').text()).toBe("CR : 1");
+    });
 });
