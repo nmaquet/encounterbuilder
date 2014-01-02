@@ -13,13 +13,22 @@ module.exports = function (config) {
             'app/lib/angular/*.min.js',
             'app/lib/angular/angular-scenario.js'
         ],
-        reporters: ['progress'],
+        preprocessors: {
+            'app/js/*.js': ['coverage']
+        },
+        autoWatch: false,
+        browsers: ['Chrome'], // Firefox, ChromeCanary, Opera, IE
+        reporters: ['progress', 'coverage'],
+        singleRun: false,
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
-        autoWatch: false,
-        browsers: ['Chrome'], // Firefox, ChromeCanary, Opera, IE
         captureTimeout: 60000,
-        singleRun: false
+        plugins: [
+            'karma-chrome-launcher',
+            'karma-jasmine',
+            'karma-coverage'
+        ],
+        urlRoot: "/karma"
     });
 };
