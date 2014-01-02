@@ -37,6 +37,7 @@ describe("MonsterListController", function () {
         $httpBackend.verifyNoOutstandingExpectation();
     });
 
+    // FIXME: this unit test is a bit too long
     it("it should watch the scope's query property and refresh the list of monsters automatically", function () {
         var monsters = ["a", "b", "c"];
         instantiateController();
@@ -48,6 +49,7 @@ describe("MonsterListController", function () {
         expect($scope.monsters).toBe(monsters);
     });
 
+    // FIXME: this unit test is a bit too long
     it("it should watch the scope's orderProp property and refresh the list of monsters automatically", function () {
         var monsters = ["a", "b", "c"];
         instantiateController();
