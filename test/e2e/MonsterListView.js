@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Monster List View', function () {
 
     beforeEach(function () {
@@ -45,4 +47,10 @@ describe('Monster List View', function () {
         expect(element('.monsters li:nth-child(5) a').text()).toBe("Monkey Goblin");
     });
 
+    it('should make a list of anchors to the Monster description page', function() {
+        input('query').enter('wyvern');
+        expect(element('.monsters li:nth-child(1) a').attr("href")).toBe("/api/monster/wyvern");
+        expect(element('.monsters li:nth-child(2) a').attr("href")).toBe("/api/monster/aashaq's-wyvern");
+        expect(element('.monsters li:nth-child(3) a').attr("href")).toBe("/api/monster/mythic-wyvern");
+    });
 });
