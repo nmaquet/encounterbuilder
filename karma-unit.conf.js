@@ -6,7 +6,7 @@ module.exports = function (config) {
             'app/lib/angular/angular.js',
             'app/lib/angular/angular-*.js',
             'app/js/*.js',
-            'test/**/*.js'
+            'test/unit/*.js'
         ],
         exclude: [
             'app/lib/angular/angular-loader.js',
