@@ -1,0 +1,28 @@
+Encounter Builder
+Copyright 2014, Nicolas Maquet, Christophe Muylaert
+
+INSTALLING DEPENDENCIES
+
+    $ npm install
+
+EXECUTING
+
+    $ nodemon server.js
+
+RUNNING UNIT TESTS
+
+    WebStorm > right-click on "karma-unit.conf.js" > Run
+
+RUNNING E2E TESTS
+
+    WebStorm > right-click on "karma-e2e.conf.js" > Run
+
+USEFUL DOCS
+
+    http://pivotal.github.io/jasmine/
+    http://karma-runner.github.io/
+    http://docs.angularjs.org/guide/dev_guide.unit-testing
+    http://docs.angularjs.org/guide/dev_guide.e2e-testing
+
+
+
