@@ -1,6 +1,4 @@
 
-var fs = require('fs');
-
 var ids = [];
 
 function generateId(name) {
@@ -21,7 +19,7 @@ function generateId(name) {
     return id;
 }
 
-module.exports = function (Monster) {
+module.exports = function (Monster, fs) {
     return function (request, response) {
         Monster.remove({}, function (error) {
 

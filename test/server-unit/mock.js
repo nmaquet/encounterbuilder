@@ -24,6 +24,15 @@ module.exports = function () {
                 this.remove.params = params;
                 this.remove.callback = callback;
                 return this;
+            },
+            create: function(object, callback) {
+                if (this.create.calls === undefined)
+                    this.create.calls = [];
+                this.create.calls.push({
+                    object : object,
+                    callback : callback
+                });
+                return this;
             }
         },
 
@@ -49,6 +58,14 @@ module.exports = function () {
 
         },
 
-        FIND_LIMIT : 666
+        FIND_LIMIT : 666,
+
+        fs : {
+            readFile : function(path, encoding, callback) {
+                this.readFile.path = path;
+                this.readFile.encoding = encoding;
+                this.readFile.callback = callback;
+            }
+        }
     };
 };
