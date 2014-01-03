@@ -1,12 +1,15 @@
 'use strict';
 
-angular.module('encounterBuilderFilters', []).filter('challengeRating', function() {
-    return function(cr) {
-        if (cr < 1) {
-            return "1/" + String(1/cr);
+angular.module('encounterBuilderFilters', []).filter('numberToFractionString', function() {
+    return function(value) {
+        if (value === 0) {
+            return '0';
+        }
+        if (value < 1) {
+            return "1/" + String(1/value);
         }
         else {
-            return String(cr);
+            return String(value);
         }
     };
 });

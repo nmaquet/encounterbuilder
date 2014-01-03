@@ -17,7 +17,7 @@
       <ul class="monsters">
         <li ng-repeat="monster in monsters" class="thumbnail">
           <a href="/api/monster/{{monster.id}}">{{monster.name}}</a>
-          <p>CR : {{monster.cr | challengeRating}}</p>
+          <p>CR : {{monster.cr | numberToFractionString}}</p>
         </li>
       </ul>
 
