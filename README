@@ -9,11 +9,15 @@ EXECUTING
 
     $ nodemon server.js
 
-RUNNING UNIT TESTS
+RUNNING CLIENT UNIT TESTS
 
     WebStorm > right-click on "karma-unit.conf.js" > Run
         or
     WebStorm > right-click on "karma-unit.conf.js" > Run with Coverage
+
+RUNNING SERVER UNIT TESTS
+
+    Create a new run configuration of type "Mocha" using test/server-unit as test directory.
 
 RUNNING E2E TESTS
 
