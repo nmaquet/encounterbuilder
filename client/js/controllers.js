@@ -4,8 +4,8 @@
 
 var encounterBuilderControllers = angular.module('encounterBuilderControllers', []);
 
-encounterBuilderControllers.controller('MonsterListController', ['$scope', '$http',
-    function ($scope, $http) {
+encounterBuilderControllers.controller('MonsterListController', ['$scope', 'monsterService',
+    function ($scope, monsterService) {
         $scope.query = '';
         $scope.orderProp = 'cr';
 
@@ -14,15 +14,17 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', '$htt
         });
 
         $scope.refreshMonsters = function () {
-            $http.get('/api/search-monsters/', {params: {nameSubstring: $scope.query, order: $scope.orderProp}})
-                .success(function (data) {
-                    $scope.monsters = data
-                })
-                .error(function (error) {
+            monsterService.search($scope.query, $scope.orderProp, function (error, data) {
+                if (error) {
                     console.log('Error in your face: ' + error);
-                });
-        };
-    }]);
+                } else {
+                    $scope.monsters = data
+                }
+            });
+        }
+    }
+]);
+
 
 encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$routeParams', '$sce', 'Monster',
     function ($scope, $routeParams, $sce, Monster) {

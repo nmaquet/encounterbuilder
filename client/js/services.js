@@ -4,9 +4,16 @@
 
 var encounterBuilderServices = angular.module('encounterBuilderServices', ['ngResource']);
 
-encounterBuilderServices.factory('Monster', ['$resource',
-    function ($resource) {
-        return $resource('monsters/:monsterId.json', {}, {
-            query: {method: 'GET', params: {monsterId: 'monsters'}, isArray: true}
-        });
-    }]);
+encounterBuilderServices.factory('monsterService', ['$http', function ($http) {
+    return {
+        search: function (nameSubstring, order, callback) {
+            $http.get('/api/search-monsters/', {params: {nameSubstring: nameSubstring, order: order}})
+                .success(function (data) {
+                    callback(null, data);
+                })
+                .error(function (error) {
+                    callback(error, null);
+                });
+        }
+    };
+}]);
