@@ -3,15 +3,15 @@ module.exports = function (config) {
         basePath: '',
         frameworks: ['ng-scenario'],
         files: [
-            'app/lib/angular/angular.js',
-            'app/lib/angular/angular-*.js',
-            'app/js/*.js',
+            'client/lib/angular/angular.js',
+            'client/lib/angular/angular-*.js',
+            'client/js/*.js',
             'test/e2e/*.js'
         ],
         exclude: [
-            'app/lib/angular/angular-loader.js',
-            'app/lib/angular/*.min.js',
-            'app/lib/angular/angular-scenario.js'
+            'client/lib/angular/angular-loader.js',
+            'client/lib/angular/*.min.js',
+            'client/lib/angular/angular-scenario.js'
         ],
         preprocessors: {
             'app/js/*.js': ['coverage']
