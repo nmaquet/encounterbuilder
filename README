@@ -24,6 +24,8 @@ RUNNING E2E TESTS
 USEFUL DOCS
 
     http://pivotal.github.io/jasmine/
+    http://visionmedia.github.io/mocha/
+    http://chaijs.com/
     http://karma-runner.github.io/
     http://docs.angularjs.org/guide/dev_guide.unit-testing
     http://docs.angularjs.org/guide/dev_guide.e2e-testing

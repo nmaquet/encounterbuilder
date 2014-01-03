@@ -1,5 +1,7 @@
 "use strict";
 
+var expect = chai.expect;
+
 var $scope, $httpBackend, $controller;
 
 describe("MonsterListController", function () {
@@ -18,17 +20,17 @@ describe("MonsterListController", function () {
 
     it("should initialize the name substring to the empty string", function () {
         instantiateController();
-        assert.equal($scope.query, "");
+        expect($scope.query).to.equal("");
     });
 
     it("should initialize the sort order to *challenge rating*", function () {
         instantiateController();
-        assert.equal($scope.orderProp, "cr");
+        expect($scope.orderProp).to.equal("cr");
     });
 
     it("should put a refreshMonsters() function in the scope", function () {
         instantiateController();
-        assert.equal(typeof $scope.refreshMonsters, "function");
+        expect(typeof $scope.refreshMonsters).to.equal("function");
     });
 
     it("should refresh the list of monsters", function () {
@@ -46,7 +48,7 @@ describe("MonsterListController", function () {
         $scope.$apply();
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.flush();
-        assert.equal($scope.monsters, monsters);
+        expect($scope.monsters).to.equal(monsters);
     });
 
     // FIXME: this unit test is a bit too long
@@ -58,6 +60,6 @@ describe("MonsterListController", function () {
         $scope.$apply();
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.flush();
-        assert.equal($scope.monsters, monsters);
+        expect($scope.monsters).to.equal(monsters);
     });
 });
