@@ -31,11 +31,7 @@ describe("monsterRoute", function () {
         };
 
         monster = {
-            "name": "Goblin",
-            "id": "goblin",
-            "cr": 0.3333333333333333,
-            "_id": "52c6a90594025d28080000bd",
-            "__v": 0
+
         };
 
         monsterRoute = require('../../server/monsterRoute')(Monster);
@@ -59,5 +55,5 @@ describe("monsterRoute", function () {
         Monster.find.callback(error, monster);
         expect(response.send.data).to.equal(error);
     });
-    
+
 });
