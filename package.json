@@ -3,7 +3,9 @@
     "version"      : "0.0.1",
     "description"  : "Most Amazing Useful App",
     "main"         : "server/server.js",
-    "start"        : "node server/server.js",
+    "scripts": {
+        "start"    : "node server/server.js"
+    },
     "author"       : "Nic & Chris",
     "dependencies" : {
         "express"     : "~3.4.4",
@@ -14,6 +16,6 @@
         "karma-mocha" : "~0.1",
         "karma-chai"  : "0.0.2",
         "karma-ng-scenario" : "~0.1",
-        "karma-coverage" : "0.1.2" 
+        "karma-coverage" : "0.1.2"
     }
 }
