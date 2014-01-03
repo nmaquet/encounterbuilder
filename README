@@ -31,6 +31,7 @@ USEFUL DOCS
     http://pivotal.github.io/jasmine/
     http://visionmedia.github.io/mocha/
     http://chaijs.com/
+    http://chaijs.com/plugins/chai-spies
     http://karma-runner.github.io/
     http://docs.angularjs.org/guide/dev_guide.unit-testing
     http://docs.angularjs.org/guide/dev_guide.e2e-testing
