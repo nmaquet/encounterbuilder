@@ -22,6 +22,7 @@ var Monster = mongoose.model('Monster', {
 
 var defaultRoute = require('./defaultRoute')();
 var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
+var monsterRoute = require('./monsterRoute')(Monster);
 
 app.get('/api/monsters-reset', function (request, response) {
 
@@ -80,16 +81,7 @@ app.get('/api/monsters-reset', function (request, response) {
 });
 
 app.get('/api/search-monsters', searchMonstersRoute);
-
-app.get('/api/monster/:id', function (request, response) {
-    Monster.find({id: request.params.id}, function (error, monster) {
-        if (error)
-            response.send(error);
-
-        response.json(monster);
-    });
-});
-
+app.get('/api/monster/:id', monsterRoute);
 app.get('*', defaultRoute);
 
 var port = process.env.PORT || 3000;
