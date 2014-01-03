@@ -2,7 +2,6 @@
     "name"         : "encounter-builder",
     "version"      : "0.0.1",
     "description"  : "Most Amazing Useful App",
-    "main"         : "server/server.js",
     "scripts": {
         "start"    : "node server/server.js"
     },
