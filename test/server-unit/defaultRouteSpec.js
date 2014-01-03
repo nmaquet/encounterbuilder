@@ -2,14 +2,16 @@
 
 var expect = require('chai').expect;
 
-var server = require('../../server/server');
+var defaultRoute = require('../../server/defaultRoute')();
 
-describe("Encounter Builder Server", function() {
+describe("defaultRoute", function () {
 
-    it("should be rewritten to be testable", function() {
-        /* server.js is completely untestable at this point */
-        var current_state = "not testable";
-        expect(current_state).to.equal("testable");
-    })
+    it("should send the index.html file", function () {
+        var request = {};
+        var response = { sendfile: function (url) {
+            expect(url).to.equal("client/index.html");
+        }};
+        defaultRoute(request, response);
+    });
 
 });
