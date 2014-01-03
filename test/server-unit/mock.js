@@ -19,6 +19,11 @@ module.exports = function () {
             execFind: function (callback) {
                 this.execFind.callback = callback;
                 return this;
+            },
+            remove: function(params, callback) {
+                this.remove.params = params;
+                this.remove.callback = callback;
+                return this;
             }
         },
 
