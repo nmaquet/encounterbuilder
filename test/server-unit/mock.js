@@ -6,11 +6,27 @@ module.exports = function () {
             find: function (params, callback) {
                 this.find.params = params;
                 this.find.callback = callback;
+                return this;
+            },
+            limit: function (value) {
+                this.limit.value = value;
+                return this;
+            },
+            sort: function (options) {
+                this.sort.options = options;
+                return this;
+            },
+            execFind: function (callback) {
+                this.execFind.callback = callback;
+                return this;
             }
         },
 
         request: {
             params: {
+
+            },
+            query : {
 
             }
         },
@@ -26,6 +42,8 @@ module.exports = function () {
 
         monster: {
 
-        }
+        },
+
+        FIND_LIMIT : 666
     };
 };
