@@ -18,17 +18,17 @@ describe("MonsterListController", function () {
 
     it("should initialize the name substring to the empty string", function () {
         instantiateController();
-        expect($scope.query).toBe("");
+        assert.equal($scope.query, "");
     });
 
     it("should initialize the sort order to *challenge rating*", function () {
         instantiateController();
-        expect($scope.orderProp).toBe("cr");
+        assert.equal($scope.orderProp, "cr");
     });
 
     it("should put a refreshMonsters() function in the scope", function () {
         instantiateController();
-        expect(typeof $scope.refreshMonsters).toBe("function");
+        assert.equal(typeof $scope.refreshMonsters, "function");
     });
 
     it("should refresh the list of monsters", function () {
@@ -46,7 +46,7 @@ describe("MonsterListController", function () {
         $scope.$apply();
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.flush();
-        expect($scope.monsters).toBe(monsters);
+        assert.equal($scope.monsters, monsters);
     });
 
     // FIXME: this unit test is a bit too long
@@ -58,6 +58,6 @@ describe("MonsterListController", function () {
         $scope.$apply();
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.flush();
-        expect($scope.monsters).toBe(monsters);
+        assert.equal($scope.monsters, monsters);
     });
 });

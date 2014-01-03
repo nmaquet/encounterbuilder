@@ -1,7 +1,7 @@
 module.exports = function (config) {
     config.set({
         basePath: '',
-        frameworks: ['jasmine'],
+        frameworks: ['mocha', 'chai'],
         files: [
             'app/lib/angular/angular.js',
             'app/lib/angular/angular-*.js',
@@ -26,7 +26,8 @@ module.exports = function (config) {
         captureTimeout: 60000,
         plugins: [
             'karma-chrome-launcher',
-            'karma-jasmine',
+            'karma-mocha',
+            'karma-chai',
             'karma-coverage'
         ],
         urlRoot: "/karma"

@@ -5,10 +5,13 @@
     "main"         : "server.js",
     "author"       : "Nic & Chris",
     "dependencies" : {
-        "express"    : "~3.4.4",
-        "mongoose"   : "~3.6.2",
-        "karma"      : "~0.10",
-        "karma-jasmine" : "~0.1",
+        "express"     : "~3.4.4",
+        "mongoose"    : "~3.6.2",
+        "chai"        : "1.8.1",
+        "mocha"       : "~1.16",
+        "karma"       : "~0.10",
+        "karma-mocha" : "~0.1",
+        "karma-chai"  : "0.0.2",
         "karma-ng-scenario" : "~0.1",
         "karma-coverage" : "0.1.2" 
     }
