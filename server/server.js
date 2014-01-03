@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
-var fs = require('fs');
 
 const FIND_LIMIT = 50;
 
@@ -20,68 +19,14 @@ var Monster = mongoose.model('Monster', {
     cr: Number
 });
 
-var defaultRoute = require('./defaultRoute')();
 var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
 var monsterRoute = require('./monsterRoute')(Monster);
-
-app.get('/api/monsters-reset', function (request, response) {
-
-    var ids = [];
-
-    function generateId(name) {
-        var prefix = name.toLowerCase().replace(/\s/g, "-");
-
-        if (ids.indexOf(prefix) === -1) {
-            ids.push(prefix);
-            return prefix;
-        }
-
-        var suffix = 0;
-        while (ids.indexOf(prefix + "-" + suffix) !== -1) {
-            ++suffix;
-        }
-
-        var id = prefix + "-" + suffix;
-        ids.push(id);
-        console.log(id);
-        return id;
-    }
-
-    Monster.remove({}, function (error) {
-        console.log('collection removed');
-
-        if (error)
-            response.send(error);
-
-
-        var file = __dirname + '/../monsters/monsters_full.json';
-
-        fs.readFile(file, 'utf8', function (error, monsters) {
-            if (error) {
-                console.log('Error: ' + error);
-                return;
-            }
-
-            monsters = JSON.parse(monsters);
-            for (monster in monsters) {
-                var monster = {
-                    name: monsters[monster].Name,
-                    id : generateId(monsters[monster].Name),
-                    cr: Number(eval(monsters[monster].CR))
-                };
-                Monster.create(monster, function (error) {
-                    if (error)
-                        console.log('Error: ' + error);
-
-                });
-            }
-            response.send('monsters regenerated');
-        });
-    });
-});
+var monstersResetRoute = require('./monstersResetRoute')(Monster);
+var defaultRoute = require('./defaultRoute')();
 
 app.get('/api/search-monsters', searchMonstersRoute);
 app.get('/api/monster/:id', monsterRoute);
+app.get('/api/monsters-reset', monstersResetRoute);
 app.get('*', defaultRoute);
 
 var port = process.env.PORT || 3000;
