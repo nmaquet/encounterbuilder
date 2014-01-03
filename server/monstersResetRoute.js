@@ -28,7 +28,7 @@ module.exports = function (Monster) {
             if (error)
                 response.send(error);
 
-            var file = __dirname + '/../monsters/monsters_full.json';
+            var file = __dirname + '/../data/monsters/monsters_full.json';
 
             fs.readFile(file, 'utf8', function (error, monsters) {
                 if (error) {
