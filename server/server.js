@@ -1,8 +1,11 @@
+"use strict";
+
+var fs = require('fs');
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 
-const FIND_LIMIT = 50;
+var FIND_LIMIT = 50;
 
 mongoose.connect('mongodb://heroku:fR98x8wJk2RN@mongo.onmodulus.net:27017/gu9gOmot');
 
@@ -21,7 +24,7 @@ var Monster = mongoose.model('Monster', {
 
 var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
 var monsterRoute = require('./monsterRoute')(Monster);
-var monstersResetRoute = require('./monstersResetRoute')(Monster);
+var monstersResetRoute = require('./monstersResetRoute')(Monster, fs);
 var defaultRoute = require('./defaultRoute')();
 
 app.get('/api/search-monsters', searchMonstersRoute);
