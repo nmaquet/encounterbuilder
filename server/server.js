@@ -7,8 +7,10 @@ const FIND_LIMIT = 50;
 
 mongoose.connect('mongodb://heroku:fR98x8wJk2RN@mongo.onmodulus.net:27017/gu9gOmot');
 
+var defaultRoute = require('./defaultRoute')();
+
 app.configure(function () {
-    app.use(express.static(__dirname + '/app'));
+    app.use(express.static(__dirname + '/../app'));
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
@@ -50,7 +52,7 @@ app.get('/api/monsters-reset', function (request, response) {
             response.send(error);
 
 
-        var file = __dirname + '/monsters/monsters_full.json';
+        var file = __dirname + '/../monsters/monsters_full.json';
 
         fs.readFile(file, 'utf8', function (error, monsters) {
             if (error) {
@@ -100,9 +102,7 @@ app.get('/api/monster/:id', function (request, response) {
     });
 });
 
-app.get('*', function (req, res) {
-    res.sendfile('./app/index.html');
-});
+app.get('*', defaultRoute);
 
 var port = process.env.PORT || 3000;
 

@@ -7,7 +7,7 @@ INSTALLING DEPENDENCIES
 
 EXECUTING
 
-    $ nodemon server.js
+    $ nodemon server/server.js
 
 RUNNING CLIENT UNIT TESTS
 
@@ -27,6 +27,7 @@ RUNNING E2E TESTS
 
 USEFUL DOCS
 
+    http://expressjs.com/api.html
     http://pivotal.github.io/jasmine/
     http://visionmedia.github.io/mocha/
     http://chaijs.com/
