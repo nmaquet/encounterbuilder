@@ -3,7 +3,7 @@
 describe('Monster List View', function () {
 
     beforeEach(function () {
-        browser().navigateTo('/monsters');
+        browser().navigateTo('/');
     });
 
     it('should initially display 50 monsters', function () {

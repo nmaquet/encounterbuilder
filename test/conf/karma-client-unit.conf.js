@@ -1,6 +1,6 @@
 module.exports = function (config) {
     config.set({
-        basePath: '',
+        basePath: '../../',
         frameworks: ['mocha', 'chai'],
         files: [
             'client/lib/angular/angular.js',

@@ -11,9 +11,9 @@ EXECUTING
 
 RUNNING CLIENT UNIT TESTS
 
-    WebStorm > right-click on "karma-unit.conf.js" > Run
+    WebStorm > right-click on "test/conf/karma-unit.conf.js" > Run
         or
-    WebStorm > right-click on "karma-unit.conf.js" > Run with Coverage
+    WebStorm > right-click on "test/conf/karma-unit.conf.js" > Run with Coverage
 
 RUNNING SERVER UNIT TESTS
 
@@ -21,9 +21,9 @@ RUNNING SERVER UNIT TESTS
 
 RUNNING E2E TESTS
 
-    WebStorm > right-click on "karma-e2e.conf.js" > Run
+    WebStorm > right-click on "test/conf/karma-e2e.conf.js" > Run
         or
-    WebStorm > right-click on "karma-e2e.conf.js" > Run with Coverage (doesn't work yet)
+    WebStorm > right-click on "test/conf/karma-e2e.conf.js" > Run with Coverage (doesn't work yet)
 
 USEFUL DOCS
 
