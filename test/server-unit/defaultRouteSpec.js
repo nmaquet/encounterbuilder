@@ -2,16 +2,18 @@
 
 var expect = require('chai').expect;
 
-var defaultRoute = require('../../server/defaultRoute')();
+var mock, defaultRoute;
 
 describe("defaultRoute", function () {
 
+    beforeEach(function() {
+        mock = require('./mock')();
+        defaultRoute = require('../../server/defaultRoute')();
+    });
+
     it("should send the index.html file", function () {
-        var request = {};
-        var response = { sendfile: function (url) {
-            expect(url).to.equal("client/index.html");
-        }};
-        defaultRoute(request, response);
+        defaultRoute(mock.request, mock.response);
+        expect(mock.response.sendfile.path).to.equal('client/index.html');
     });
 
 });

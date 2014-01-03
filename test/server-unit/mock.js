@@ -51,6 +51,9 @@ module.exports = function () {
             },
             send: function (data) {
                 this.send.data = data;
+            },
+            sendfile: function(path) {
+                this.sendfile.path = path;
             }
         },
 
