@@ -7,8 +7,6 @@ const FIND_LIMIT = 50;
 
 mongoose.connect('mongodb://heroku:fR98x8wJk2RN@mongo.onmodulus.net:27017/gu9gOmot');
 
-var defaultRoute = require('./defaultRoute')();
-
 app.configure(function () {
     app.use(express.static(__dirname + '/../app'));
     app.use(express.logger('dev'));
@@ -21,6 +19,9 @@ var Monster = mongoose.model('Monster', {
     id: String,
     cr: Number
 });
+
+var defaultRoute = require('./defaultRoute')();
+var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
 
 app.get('/api/monsters-reset', function (request, response) {
 
@@ -78,20 +79,7 @@ app.get('/api/monsters-reset', function (request, response) {
     });
 });
 
-app.get('/api/search-monsters', function (request, response) {
-    if (request.query.order === "cr") {
-        var sortOption = 'cr name';
-    } else {
-        var sortOption = 'name cr';
-    }
-    var findCriteria = {name: new RegExp(request.query.nameSubstring, "i")};
-    Monster.find(findCriteria).limit(FIND_LIMIT).sort(sortOption).execFind(function (error, monster) {
-        if (error)
-            response.send(error);
-
-        response.json(monster);
-    });
-});
+app.get('/api/search-monsters', searchMonstersRoute);
 
 app.get('/api/monster/:id', function (request, response) {
     Monster.find({id: request.params.id}, function (error, monster) {
