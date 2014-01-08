@@ -3,7 +3,6 @@ var EOL = '\n';
 
 var fs = require('fs');
 var uglify_js = require("uglify-js");
-var temp = require('temp');
 
 var cssFiles = [
     // Dependencies
@@ -45,12 +44,12 @@ function uglify(srcPath, distPath) {
     console.log(' ' + distPath + ' built.');
 }
 
-var concatenatedFile = temp.path({suffix: '.js'});
+var tempfile = "scripts/temp.js";
 
-concat(jsFiles, concatenatedFile);
-uglify(concatenatedFile, 'client/public/js/encounterbuilder.min.js');
+concat(jsFiles, tempfile);
+uglify(tempfile, 'client/public/js/encounterbuilder.min.js');
 concat(cssFiles, 'client/public/css/encounterbuilder.min.css');
 
-fs.unlinkSync(concatenatedFile);
+fs.unlinkSync(tempfile);
 
 console.log("done");

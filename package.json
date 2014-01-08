@@ -16,7 +16,6 @@
         "karma-chai"  : "0.0.2",
         "karma-ng-scenario" : "~0.1",
         "karma-coverage" : "0.1.2",
-        "uglify-js"   : "~2.4",
-        "temp"   : "~0.6"
+        "uglify-js"   : "~2.4"
     }
 }
