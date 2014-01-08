@@ -25,7 +25,6 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
     }
 ]);
 
-
 encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$routeParams', '$sce', 'Monster',
     function ($scope, $routeParams, $sce, Monster) {
         $scope.monster = Monster.get({monsterId: $routeParams.monsterId}, function (monster) {
