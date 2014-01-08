@@ -1,0 +1,17 @@
+{
+    "name": "encounter-builder",
+    "version": "0.0.1",
+    "ignore": [],
+    "private": true,
+    "dependencies": {
+        "angular": "~1.2",
+        "angular-resource": "~1.2",
+        "angular-route": "~1.2",
+        "jquery": "~1.10",
+        "bootstrap.css": "~2.3"
+    },
+    "devDependencies": {},
+    "resolutions": {
+        "angular": "~1.2"
+    }
+}
