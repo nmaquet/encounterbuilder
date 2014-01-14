@@ -10,7 +10,9 @@
         "jquery": "~1.10",
         "bootstrap.css": "~2.3"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "angular-mocks": "~1.2"
+    },
     "resolutions": {
         "angular": "~1.2"
     }

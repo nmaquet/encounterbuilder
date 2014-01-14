@@ -3,15 +3,14 @@ module.exports = function (config) {
         basePath: '../../',
         frameworks: ['mocha', 'chai'],
         files: [
-            'client/lib/angular/angular.js',
-            'client/lib/angular/angular-*.js',
-            'client/js/*.js',
+            'client/private/bower_components/angular/angular.js',
+            'client/private/bower_components/angular-resource/angular-resource.js',
+            'client/private/bower_components/angular-route/angular-route.js',
+            'client/private/bower_components/angular-mocks/angular-mocks.js',
+            'client/private/js/*.js',
             'test/client-unit/*.js'
         ],
         exclude: [
-            'client/lib/angular/angular-loader.js',
-            'client/lib/angular/*.min.js',
-            'client/lib/angular/angular-scenario.js'
         ],
         preprocessors: {
             'app/js/*.js': ['coverage']

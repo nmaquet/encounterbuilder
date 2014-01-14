@@ -48,7 +48,7 @@ describe("MonsterListController", function () {
         $scope.$apply();
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.flush();
-        expect($scope.monsters).to.equal(monsters);
+        expect($scope.monsters).to.deep.equal(monsters);
     });
 
     // FIXME: this unit test is a bit too long
@@ -60,6 +60,6 @@ describe("MonsterListController", function () {
         $scope.$apply();
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.flush();
-        expect($scope.monsters).to.equal(monsters);
+        expect($scope.monsters).to.deep.equal(monsters);
     });
 });
