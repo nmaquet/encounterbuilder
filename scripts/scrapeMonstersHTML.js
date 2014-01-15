@@ -76,8 +76,56 @@ var MONSTER_ATTRIBUTES = [
     "XP",
     "Race",
     "Class",
-    "Description",
-    "Description_Visual"
+    "MonsterSource",
+    "Alignment",
+    "Size",
+    "Type",
+    "SubType",
+    "AC",
+    "HP",
+    "HD",
+    "Saves",
+    "Fort",
+    "Ref",
+    "Will",
+    "Speed",
+    "Melee",
+    "Ranged",
+    "Space",
+    "Reach",
+    "AbilityScores",
+    "Feats",
+    "Skills",
+    "RacialMods",
+    "Languages",
+    "SQ",
+    "Environment",
+    "Organization",
+    "Treasure",
+    "Group",
+    "Source",
+    "IsTemplate",
+    "FullText",
+    "Gear",
+    "OtherGear",
+    "CharacterFlag",
+    "CompanionFlag",
+    "Fly",
+    "Climb",
+    "Burrow",
+    "Swim",
+    "Land",
+    "TemplatesApplied",
+    "AgeCategory",
+    "DontUseRacialHD",
+    "VariantParent",
+    "ClassArchetypes",
+    "CompanionFamiliarLink",
+    "AlternateNameForm",
+    "UniqueMonster",
+    "MR",
+    "Mythic",
+    "MT"
 ]
 
 var ATTRIBUTE_FILTERS = {
@@ -123,7 +171,7 @@ function cleanupSRDMonster(srdMonster) {
 var monsters = [];
 
 for (var i in srd_monsters) {
-    console.log("WTF ? monster " + i + " / " + srd_monsters.length)
+    console.log("monster " + i + " / " + srd_monsters.length)
     var kyleMonster = getKyleMonsterByID(srd_monsters[i].id)
     if (kyleMonster == undefined) {
         continue;
@@ -136,11 +184,8 @@ for (var i in srd_monsters) {
      continue;
      } */
     monsters.push(cleanupSRDMonster(srd_monsters[i]));
-    if (i > 100) {
-        break;
-    }
 }
 
-fs.writeFileSync('../data/monsters/monsters_new.json', JSON.stringify(monsters));
+fs.writeFileSync('../data/monsters/monsters.json', JSON.stringify(monsters));
 
 console.log("done");
