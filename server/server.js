@@ -19,7 +19,9 @@ app.configure(function () {
 var Monster = mongoose.model('Monster', {
     name: String,
     id: String,
-    cr: Number
+    cr: Number,
+    description: String,
+    visual: String
 });
 
 var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);

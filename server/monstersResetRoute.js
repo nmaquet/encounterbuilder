@@ -26,7 +26,7 @@ module.exports = function (Monster, fs) {
             if (error)
                 response.send(error);
 
-            var file = __dirname + '/../data/monsters/monsters_full.json';
+            var file = __dirname + '/../data/monsters/monsters.json';
 
             fs.readFile(file, 'utf8', function (error, monsters) {
                 if (error) {
@@ -39,7 +39,9 @@ module.exports = function (Monster, fs) {
                     var monster = {
                         name: monsters[monster].Name,
                         id: generateId(monsters[monster].Name),
-                        cr: Number(eval(monsters[monster].CR))
+                        cr: Number(eval(monsters[monster].CR)),
+                        description: monsters[monster].Description,
+                        visual: monsters[monster].Description_Visual
                     };
                     Monster.create(monster, function (error) {
                         if (error)

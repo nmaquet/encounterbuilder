@@ -44,9 +44,10 @@ function getSRDMonsterDescription(monster) {
         console.log("[WARNING] no Kyle Monster '" + monster.Name + "' => guessing description at div 14 !");
         return getSRDMonsterDescriptionInDivX(monster, 14);
     }
-    var div = [12, 14];
+    var div = [14, 12, 16];
     var minDistance = Number.MAX_VALUE;
     var bestDescription = null;
+    var ACCEPTABLE_DISTANCE = 0.20;
     for (var i in div) {
         var description = getSRDMonsterDescriptionInDivX(monster, div[i]);
         var distance = getDistance(description, kyleDescription);
@@ -54,11 +55,12 @@ function getSRDMonsterDescription(monster) {
             minDistance = distance;
             bestDescription = description;
         }
+        if (minDistance <= ACCEPTABLE_DISTANCE) {
+            break;
+        }
     }
     return bestDescription;
 }
-
-var PROBLEMATIC_DESCRIPTIONS = 0;
 
 function compareMonsters(srdMonster, kyleMonster) {
     var WORST_DISTANCE_ALLOWED = 0.35;
@@ -68,7 +70,6 @@ function compareMonsters(srdMonster, kyleMonster) {
     expect(kyleMonster.Description_Visual.length).to.equal(1);
     var distance = getDistance(srdMonster.Description, kyleMonster.Description);
     if (distance > WORST_DISTANCE_ALLOWED) {
-        PROBLEMATIC_DESCRIPTIONS++;
         console.log("[ERROR] : " + srdMonster.Name + " / " + kyleMonster.Name + " has a distance : " + distance);
         fs.writeFileSync("../data/monsters/descriptionerrors/" + srdMonster.Name.replace(" ", "") + "_srd_fulltext.html", srdMonster.FullText);
         fs.writeFileSync("../data/monsters/descriptionerrors/" + kyleMonster.Name[0].replace(" ", "") + "_kyle_description.txt", kyleMonster.Description[0]);
@@ -80,11 +81,12 @@ function cleanupSRDMonster(srdMonster) {
         Name: srdMonster.Name.trim(),
         Description: getSRDMonsterDescription(srdMonster),
         Description_Visual: getSRDMonsterVisualDescription(srdMonster),
-        FullText: srdMonster.FullText
+        FullText: srdMonster.FullText,
+        CR: srdMonster.CR
     };
 }
 
-var OK_COUNT = 0;
+var monsters = [];
 
 for (i in srd_monsters) {
     console.log("monster " + i + " / " + srd_monsters.length)
@@ -92,14 +94,16 @@ for (i in srd_monsters) {
     if (kyleMonster == undefined) {
         continue;
     }
+    /*
     try {
         compareMonsters(cleanupSRDMonster(srd_monsters[i]), kyleMonster);
     } catch (e) {
         console.log(e.stack);
         continue;
-    }
-    OK_COUNT++;
+    } */
+    monsters.push(cleanupSRDMonster(srd_monsters[i]));
 }
 
-console.log(OK_COUNT + " monsters are OK !");
-console.log(PROBLEMATIC_DESCRIPTIONS + " descriptions are not OK!");
+fs.writeFileSync('../data/monsters/monsters.json', JSON.stringify(monsters));
+
+console.log("done");
