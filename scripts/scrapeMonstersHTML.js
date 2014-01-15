@@ -4,6 +4,7 @@ var srd_monsters = require("../data/monsters/monsters_partial.json");
 var kyle_monsters = require("../data/monsters/monsters_kyle.json");
 var expect = require('chai').expect;
 var levenshtein = require("fast-levenshtein");
+var fs = require("fs");
 
 function getKyleMonsterByID(id) {
     var array = kyle_monsters.ArrayOfMonster.Monster;
@@ -33,23 +34,32 @@ function getSRDMonsterVisualDescription(monster) {
 function getSRDMonsterDescriptionInDivX(monster, div) {
     var $ = cheerio.load(monster.FullText);
     var element = $("div").eq(div).children().first();
-    var paragraphs = [];
-    element.children().each(function (index, elem) {
-        paragraphs.push($(this).text().trim());
-    });
-    return paragraphs;
+    return element.html();
 }
 
 function getSRDMonsterDescription(monster) {
     var div_i = 0;
-    var div_range = [10,11,12,13,15,16,17,18];
+    var div_range = [12, 10,11,13,15,16,17,18,1,2,3,4,5,6,7,8,9,19,20,21,22,23];
     var description = getSRDMonsterDescriptionInDivX(monster, 14);
     try {
         var kyleDescription = getKyleMonsterByID(monster.id).Description;
-        while (levenshtein.get(""+description, ""+kyleDescription) > 50) {
-            description = getSRDMonsterDescriptionInDivX(monster, div_range[div_i]);
+        var minDistance = levenshtein.get(""+description, ""+kyleDescription);
+        while (minDistance>50 && div_i < div_range.length) {
+            console.log("trying spurious div " + div_range[div_i] + "...");
+            var testDescription = getSRDMonsterDescriptionInDivX(monster, div_range[div_i]);
             kyleDescription = getKyleMonsterByID(monster.id).Description;
+            var distance = levenshtein.get(""+testDescription, ""+kyleDescription)
+
+            if (distance<minDistance){
+                minDistance = distance;
+                description = testDescription;
+
+            }
             div_i++;
+
+        }
+        if (div_i >= div_range.length){
+            console.log(monster.Name + ' description not found');
         }
     } catch(e) {
         console.log(e.stack);
@@ -70,23 +80,25 @@ function compareMonsters(srdMonster, kyleMonster) {
     var distance = levenshtein.get(srdDescription, kyleDescription);
     if (distance > 50) {
         PROBLEMATIC_DESCRIPTIONS++;
-        /*
-        console.log(srdMonster.Name + " / " + kyleMonster.Name);
-        console.log("SRD DESC>>>>");
+        console.log(srdMonster.Name + " / " + kyleMonster.Name + "distance : "+distance );
+       /* console.log("SRD DESC>>>>");
         console.log(srdDescription);
         console.log();
         console.log("KYL DESC>>>>");
-        console.log(kyleDescription);
-        */
+        console.log(kyleDescription);*/
+        fs.writeFileSync("../data/monsters/descriptionerrors/"+srdMonster.Name.replace(" ","") + "_srd_fulltext.html",srdMonster.FullText);
+        fs.writeFileSync("../data/monsters/descriptionerrors/"+kyleMonster.Name[0].replace(" ","") + "_kyle_description.txt",kyleMonster.Description[0]);
+
     }
-    console.log(distance)
+    //console.log(distance)
 }
 
 function cleanupSRDMonster(srdMonster) {
     return {
         Name: srdMonster.Name.trim(),
         Description: getSRDMonsterDescription(srdMonster),
-        Description_Visual: getSRDMonsterVisualDescription(srdMonster)
+        Description_Visual: getSRDMonsterVisualDescription(srdMonster),
+        FullText:srdMonster.FullText
     };
 }
 
@@ -94,6 +106,7 @@ function cleanupSRDMonster(srdMonster) {
 var OK_COUNT = 0;
 
 for (i in srd_monsters) {
+    console.log("monster " + i + " / " + srd_monsters.length)
     try {
         var kyleMonster = getKyleMonsterByID(srd_monsters[i].id)
     } catch (e) {
