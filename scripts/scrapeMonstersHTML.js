@@ -1,7 +1,9 @@
+"use strict";
+
 var window = null;
 var cheerio = require("cheerio");
-var srd_monsters = require("../data/monsters/monsters_partial.json");
-var kyle_monsters = require("../data/monsters/monsters_kyle.json");
+var srd_monsters = require("../data/contrib/monsters_partial.json");
+var kyle_monsters = require("../data/contrib/monsters_kyle.json");
 var expect = require('chai').expect;
 var levenshtein = require("fast-levenshtein");
 var fs = require("fs");
@@ -38,6 +40,12 @@ function getDistance(object1, object2) {
     return levenshtein.get(string1, string2) / max_length;
 }
 
+function getLengthRatio(object1, object2) {
+    var string1 = "" + object1;
+    var string2 = "" + object2;
+    return string1.length / string2.length;
+}
+
 function getSRDMonsterDescription(monster) {
     var kyleDescription = getKyleMonsterByID(monster.id).Description;
     if (kyleDescription == undefined) {
@@ -62,48 +70,75 @@ function getSRDMonsterDescription(monster) {
     return bestDescription;
 }
 
+var MONSTER_ATTRIBUTES = [
+    "Name",
+    "XP",
+    "Description",
+    "Description_Visual",
+    "CR"
+]
+
+var ATTRIBUTE_FILTERS = {
+    Description: function (srdMonster) {
+        return getSRDMonsterDescription(srdMonster);
+    },
+    Description_Visual: function (srdMonster) {
+        return getSRDMonsterVisualDescription(srdMonster);
+    }
+}
+
 function compareMonsters(srdMonster, kyleMonster) {
     var WORST_DISTANCE_ALLOWED = 0.35;
-    expect(srdMonster.Name).to.equal(kyleMonster.Name[0]);
-    expect(kyleMonster.Name.length).to.equal(1);
-    expect(srdMonster.Description_Visual).to.equal(kyleMonster.Description_Visual[0]);
-    expect(kyleMonster.Description_Visual.length).to.equal(1);
-    var distance = getDistance(srdMonster.Description, kyleMonster.Description);
-    if (distance > WORST_DISTANCE_ALLOWED) {
-        console.log("[ERROR] : " + srdMonster.Name + " / " + kyleMonster.Name + " has a distance : " + distance);
-        fs.writeFileSync("../data/monsters/descriptionerrors/" + srdMonster.Name.replace(" ", "") + "_srd_fulltext.html", srdMonster.FullText);
-        fs.writeFileSync("../data/monsters/descriptionerrors/" + kyleMonster.Name[0].replace(" ", "") + "_kyle_description.txt", kyleMonster.Description[0]);
+    var MIN_LENGTH_RATIO_ALLOWED = 0.5;
+    var MAX_LENGTH_RATIO_ALLOWED = 2.0;
+    for (var i in MONSTER_ATTRIBUTES) {
+        var attribute = MONSTER_ATTRIBUTES[i];
+        var distance = getDistance(srdMonster[attribute], kyleMonster[attribute]);
+        var lengthRatio = getLengthRatio(srdMonster[attribute], kyleMonster[attribute]);
+        if (distance > WORST_DISTANCE_ALLOWED) {
+            console.log("[ERROR] : " + srdMonster.Name + " / " + kyleMonster.Name + " has a distance : " + distance);
+        }
+        if (lengthRatio < MIN_LENGTH_RATIO_ALLOWED || lengthRatio > MAX_LENGTH_RATIO_ALLOWED) {
+            console.log("[ERROR] : " + srdMonster.Name + " / " + kyleMonster.Name + " has a length ratio : " + lengthRatio);
+        }
     }
 }
 
 function cleanupSRDMonster(srdMonster) {
-    return {
-        Name: srdMonster.Name.trim(),
-        Description: getSRDMonsterDescription(srdMonster),
-        Description_Visual: getSRDMonsterVisualDescription(srdMonster),
-        FullText: srdMonster.FullText,
-        CR: srdMonster.CR
-    };
+    var monster = {};
+    for (var i in MONSTER_ATTRIBUTES) {
+        var attribute = MONSTER_ATTRIBUTES[i];
+        var attributeFilter = ATTRIBUTE_FILTERS[attribute];
+        if (attributeFilter) {
+            monster[attribute] = attributeFilter(srdMonster);
+        } else {
+            monster[attribute] = srdMonster[attribute].trim();
+        }
+    }
+    return monster;
 }
 
 var monsters = [];
 
-for (i in srd_monsters) {
-    console.log("monster " + i + " / " + srd_monsters.length)
+for (var i in srd_monsters) {
+    console.log("WTF ? monster " + i + " / " + srd_monsters.length)
     var kyleMonster = getKyleMonsterByID(srd_monsters[i].id)
     if (kyleMonster == undefined) {
         continue;
     }
     /*
-    try {
-        compareMonsters(cleanupSRDMonster(srd_monsters[i]), kyleMonster);
-    } catch (e) {
-        console.log(e.stack);
-        continue;
-    } */
+     try {
+     compareMonsters(cleanupSRDMonster(srd_monsters[i]), kyleMonster);
+     } catch (e) {
+     console.log(e.stack);
+     continue;
+     } */
     monsters.push(cleanupSRDMonster(srd_monsters[i]));
+    if (i > 100) {
+        break;
+    }
 }
 
-fs.writeFileSync('../data/monsters/monsters.json', JSON.stringify(monsters));
+fs.writeFileSync('../data/monsters/monsters_new.json', JSON.stringify(monsters));
 
 console.log("done");
