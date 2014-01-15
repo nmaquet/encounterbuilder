@@ -32,7 +32,7 @@ encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$r
                 console.log('Error in your face: ' + error);
             } else {
                 $scope.monster = data;
-                $scope.monster.descriptionSafe = $sce.trustAsHtml($scope.monster.description);
+                $scope.monster.DescriptionSafe = $sce.trustAsHtml($scope.monster.Description);
             }
         });
     }]);

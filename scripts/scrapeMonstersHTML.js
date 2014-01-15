@@ -125,7 +125,9 @@ var MONSTER_ATTRIBUTES = [
     "UniqueMonster",
     "MR",
     "Mythic",
-    "MT"
+    "MT",
+    "Description",
+    "Description_Visual",
 ]
 
 var ATTRIBUTE_FILTERS = {

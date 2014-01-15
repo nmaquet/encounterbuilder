@@ -1,4 +1,3 @@
-
 var ids = [];
 
 function generateId(name) {
@@ -33,17 +32,11 @@ module.exports = function (Monster, fs) {
                     console.log('Error: ' + error);
                     return;
                 }
-
                 monsters = JSON.parse(monsters);
-                for (monster in monsters) {
-                    var monster = {
-                        name: monsters[monster].Name,
-                        id: generateId(monsters[monster].Name),
-                        cr: Number(eval(monsters[monster].CR)),
-                        description: monsters[monster].Description,
-                        visual: monsters[monster].Description_Visual
-                    };
-                    Monster.create(monster, function (error) {
+                for (var monster in monsters) {
+                    monsters[monster].CR = Number(eval(monsters[monster].CR));
+                    monsters[monster].id = generateId(monsters[monster].Name);
+                    Monster.create(monsters[monster], function (error) {
                         if (error)
                             console.log('Error: ' + error);
 

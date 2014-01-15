@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="css/PF.css">
-<div><h2>{{monster.name}}</h2>
+<div><h2>{{monster.Name}}</h2>
 
-    <h3><i>{{monster.visual}}</i></h3><br/></div>
-<div class="heading"><p class="alignleft">{{monster.name}}</p>
+    <h3><i>{{monster.Description_Visual}}</i></h3><br/></div>
+<div class="heading"><p class="alignleft">{{monster.Name}}</p>
 
-    <p class="alignright">CR {{monster.cr | numberToFractionString}}</p>
+    <p class="alignright">CR {{monster.CR | numberToFractionString}}</p>
 
     <div style="clear: both;"></div>
 </div>
@@ -37,6 +37,6 @@
 <div><h5>{{"TODO"}}</h5></div><br></br>
 <div>
     <h4>
-        <div ng-bind-html="monster.descriptionSafe"></div>
+        <div ng-bind-html="monster.DescriptionSafe"></div>
     </h4>
 </div>
