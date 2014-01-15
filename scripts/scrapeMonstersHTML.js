@@ -6,23 +6,17 @@ var expect = require('chai').expect;
 var levenshtein = require("fast-levenshtein");
 var fs = require("fs");
 
-function getKyleMonsterByID(id) {
+var KYLE_MONSTER_BY_ID = {};
+
+(function () {
     var array = kyle_monsters.ArrayOfMonster.Monster;
     for (var i in array) {
-        if (array[i].id == id) {
-            return array[i];
-        }
+        KYLE_MONSTER_BY_ID[array[i].id] = array[i];
     }
-    throw "not found";
-}
+})();
 
-function getSRDMonsterByName(name) {
-    for (var i in srd_monsters) {
-        if (srd_monsters[i].Name == name) {
-            return srd_monsters[i];
-        }
-    }
-    throw "not found";
+function getKyleMonsterByID(id) {
+    return KYLE_MONSTER_BY_ID[id];
 }
 
 function getSRDMonsterVisualDescription(monster) {
@@ -37,60 +31,48 @@ function getSRDMonsterDescriptionInDivX(monster, div) {
     return element.html();
 }
 
+function getDistance(object1, object2) {
+    var string1 = "" + object1;
+    var string2 = "" + object2;
+    var max_length = Math.max(string1.length, string2.length);
+    return levenshtein.get(string1, string2) / max_length;
+}
+
 function getSRDMonsterDescription(monster) {
-    var div_i = 0;
-    var div_range = [12, 10,11,13,15,16,17,18,1,2,3,4,5,6,7,8,9,19,20,21,22,23];
-    var description = getSRDMonsterDescriptionInDivX(monster, 14);
-    try {
-        var kyleDescription = getKyleMonsterByID(monster.id).Description;
-        var minDistance = levenshtein.get(""+description, ""+kyleDescription);
-        while (minDistance>50 && div_i < div_range.length) {
-            console.log("trying spurious div " + div_range[div_i] + "...");
-            var testDescription = getSRDMonsterDescriptionInDivX(monster, div_range[div_i]);
-            kyleDescription = getKyleMonsterByID(monster.id).Description;
-            var distance = levenshtein.get(""+testDescription, ""+kyleDescription)
-
-            if (distance<minDistance){
-                minDistance = distance;
-                description = testDescription;
-
-            }
-            div_i++;
-
-        }
-        if (div_i >= div_range.length){
-            console.log(monster.Name + ' description not found');
-        }
-    } catch(e) {
-        console.log(e.stack);
+    var kyleDescription = getKyleMonsterByID(monster.id).Description;
+    if (kyleDescription == undefined) {
+        console.log("[WARNING] no Kyle Monster '" + monster.Name + "' => guessing description at div 14 !");
+        return getSRDMonsterDescriptionInDivX(monster, 14);
     }
-    return description;
+    var div = [12, 14];
+    var minDistance = Number.MAX_VALUE;
+    var bestDescription = null;
+    for (var i in div) {
+        var description = getSRDMonsterDescriptionInDivX(monster, div[i]);
+        var distance = getDistance(description, kyleDescription);
+        if (distance < minDistance) {
+            minDistance = distance;
+            bestDescription = description;
+        }
+    }
+    return bestDescription;
 }
 
 var PROBLEMATIC_DESCRIPTIONS = 0;
 
 function compareMonsters(srdMonster, kyleMonster) {
+    var WORST_DISTANCE_ALLOWED = 0.35;
     expect(srdMonster.Name).to.equal(kyleMonster.Name[0]);
     expect(kyleMonster.Name.length).to.equal(1);
     expect(srdMonster.Description_Visual).to.equal(kyleMonster.Description_Visual[0]);
     expect(kyleMonster.Description_Visual.length).to.equal(1);
-
-    var srdDescription = "" + srdMonster.Description;
-    var kyleDescription = "" + kyleMonster.Description;
-    var distance = levenshtein.get(srdDescription, kyleDescription);
-    if (distance > 50) {
+    var distance = getDistance(srdMonster.Description, kyleMonster.Description);
+    if (distance > WORST_DISTANCE_ALLOWED) {
         PROBLEMATIC_DESCRIPTIONS++;
-        console.log(srdMonster.Name + " / " + kyleMonster.Name + "distance : "+distance );
-       /* console.log("SRD DESC>>>>");
-        console.log(srdDescription);
-        console.log();
-        console.log("KYL DESC>>>>");
-        console.log(kyleDescription);*/
-        fs.writeFileSync("../data/monsters/descriptionerrors/"+srdMonster.Name.replace(" ","") + "_srd_fulltext.html",srdMonster.FullText);
-        fs.writeFileSync("../data/monsters/descriptionerrors/"+kyleMonster.Name[0].replace(" ","") + "_kyle_description.txt",kyleMonster.Description[0]);
-
+        console.log("[ERROR] : " + srdMonster.Name + " / " + kyleMonster.Name + " has a distance : " + distance);
+        fs.writeFileSync("../data/monsters/descriptionerrors/" + srdMonster.Name.replace(" ", "") + "_srd_fulltext.html", srdMonster.FullText);
+        fs.writeFileSync("../data/monsters/descriptionerrors/" + kyleMonster.Name[0].replace(" ", "") + "_kyle_description.txt", kyleMonster.Description[0]);
     }
-    //console.log(distance)
 }
 
 function cleanupSRDMonster(srdMonster) {
@@ -98,24 +80,22 @@ function cleanupSRDMonster(srdMonster) {
         Name: srdMonster.Name.trim(),
         Description: getSRDMonsterDescription(srdMonster),
         Description_Visual: getSRDMonsterVisualDescription(srdMonster),
-        FullText:srdMonster.FullText
+        FullText: srdMonster.FullText
     };
 }
-
 
 var OK_COUNT = 0;
 
 for (i in srd_monsters) {
     console.log("monster " + i + " / " + srd_monsters.length)
-    try {
-        var kyleMonster = getKyleMonsterByID(srd_monsters[i].id)
-    } catch (e) {
+    var kyleMonster = getKyleMonsterByID(srd_monsters[i].id)
+    if (kyleMonster == undefined) {
         continue;
     }
     try {
         compareMonsters(cleanupSRDMonster(srd_monsters[i]), kyleMonster);
     } catch (e) {
-        console.log(e);
+        console.log(e.stack);
         continue;
     }
     OK_COUNT++;
