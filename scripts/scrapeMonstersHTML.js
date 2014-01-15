@@ -72,10 +72,12 @@ function getSRDMonsterDescription(monster) {
 
 var MONSTER_ATTRIBUTES = [
     "Name",
+    "CR",
     "XP",
+    "Race",
+    "Class",
     "Description",
-    "Description_Visual",
-    "CR"
+    "Description_Visual"
 ]
 
 var ATTRIBUTE_FILTERS = {
