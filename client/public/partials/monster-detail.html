@@ -8,33 +8,39 @@
 
     <div style="clear: both;"></div>
 </div>
-<div><h5><b>XP </b>{{"TODO"}}</h5><h5>{{"TODO"}})</h5><h5><b>Init </b>{{"TODO"}}<b>Senses </b>{{"TODO"}}</h5></div>
+<div><h5><b>XP </b>{{monster.XP}}</h5><h5>{{monster.Alignment}} {{monster.Size}} {{monster.Type}}
+    {{monster.SubType}}</h5><h5><b>Init </b>{{"[TODO : Init]"}} <b>Senses </b>{{"[TODO : senses]"}}</h5></div>
 <hr/>
 <div><h5><b>DEFENSE</b></h5></div>
 <hr/>
-<div><h5><b>AC </b>{{"TODO"}}</h5><h5><b>hp </b>{{"TODO"}}</h5><h5><b>Fort </b>{{"TODO"}},
-    <b>Ref </b>{{"TODO"}}, <b>Will </b>{{"TODO"}}</h5><h5><b>DR </b>{{"TODO"}}<b>SR </b>{{"TODO"}}</h5></div>
+<div><h5><b>AC </b>{{monster.AC}}</h5><h5><b>hp </b>{{monster.HP}}</h5><h5><b>Fort </b>{{monster.Fort}},
+    <b>Ref </b>{{monster.Ref}}, <b>Will </b>{{monster.Will}}</h5><h5><b>DR </b>{{"[TODO : DR]"}} <b>SR </b>{{"[TODO :
+    SR]"}}</h5></div>
 <hr/>
 <div><h5><b>OFFENSE</b></h5></div>
 <hr/>
-<div><h5><b>Spd </b>{{"TODO"}}</h5><h5><b>Melee </b>{{"TODO"}}</h5><h5><b>Space </b>{{"TODO"}}<b>Reach </b>{{"TODO"}}
-</h5><h5><b>Special Attacks </b>{{"TODO"}}</h5><h5><b>Spell-Like Abilities</b> {{"TODO"}}</h5></div>
+<div><h5><b>Spd </b>{{monster.Speed}}</h5><h5><b>Melee </b>{{monster.Melee}} </h5><h5><b>Space </b>{{monster.Space}} <b>Reach </b>{{monster.Reach}}
+</h5><h5><b>Special Attacks </b>{{"[TODO : special attacks]"}} </h5><h5><b>Spell-Like Abilities</b> {{"[TODO :
+    spell-like abilities]"}} </h5></div>
 <hr/>
 <div><h5><b>STATISTICS</b></h5></div>
 <hr/>
-<div><h5><b>Str</b> {{"TODO"}}, <b>Dex</b> {{"TODO"}}, <b>Con</b> {{"TODO"}}, <b>Int</b> {{"TODO"}}, <b>Wis</b>
-    {{"TODO"}}, <b>Cha</b> {{"TODO"}}</h5><h5><b>Base Atk </b>{{"TODO"}};
-    <b>CMB </b>{{"TODO"}}; <b>CMD </b>{{"TODO"}}</h5><h5><b>Feats </b>{{"TODO"}}</h5><h5><b>Skills </b>{{"TODO"}} <b>Racial
-    Modifiers </b>{{"TODO"}}</h5><h5><b>Languages </b>{{"TODO"}}</h5><h5><b>SQ </b>{{"TODO"}}</h5></div>
+<div><h5><b>Str</b> {{"[TODO : Str]"}}, <b>Dex</b> {{"[TODO : Dex]"}}, <b>Con</b> {{"[TODO : Con]"}}, <b>Int</b>
+    {{"[TODO : Int]"}}, <b>Wis</b>
+    {{"[TODO : Wis]"}}, <b>Cha</b> {{"[TODO : Cha]"}}</h5><h5><b>Base Atk </b>{{"[TODO : Base Atk]"}};
+    <b>CMB </b>{{"[TODO : CMB]"}}; <b>CMD </b>{{"[TODO : CMD]"}}</h5><h5><b>Feats </b>{{monster.Feats}}</h5><h5><b>Skills </b>{{monster.Skills}}
+    <b>Racial
+        Modifiers </b>{{monster.RacialMods}}</h5><h5><b>Languages </b>{{monster.Languages}}</h5><h5><b>SQ </b>{{monster.SQ}}
+</h5></div>
 <hr/>
 <div><h5><b>ECOLOGY</b></h5></div>
 <hr/>
-<div><h5><b>Environment </b>{{"TODO"}}</h5><h5><b>Organization </b>{{"TODO"}}
-</h5><h5><b>Treasure </b>{{"TODO"}}</h5></div>
+<div><h5><b>Environment </b>{{monster.Environment}}</h5><h5><b>Organization </b>{{monster.Organization}}
+</h5><h5><b>Treasure </b>{{monster.Treasure}}</h5></div>
 <hr/>
 <div><h5><b>SPECIAL ABILITIES</b></h5></div>
 <hr/>
-<div><h5>{{"TODO"}}</h5></div><br></br>
+<div><h5>{{"[TODO : special abilities]"}}</h5></div><br/>
 <div>
     <h4>
         <div ng-bind-html="monster.DescriptionSafe"></div>
