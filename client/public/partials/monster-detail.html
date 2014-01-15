@@ -1,1 +1,42 @@
-<div class="FullText" ng-bind-html="monster.FullTextSafe"></div>
+<link rel="stylesheet" href="css/PF.css">
+<div><h2>{{monster.name}}</h2>
+
+    <h3><i>{{monster.visual}}</i></h3><br/></div>
+<div class="heading"><p class="alignleft">{{monster.name}}</p>
+
+    <p class="alignright">CR {{monster.cr | numberToFractionString}}</p>
+
+    <div style="clear: both;"></div>
+</div>
+<div><h5><b>XP </b>{{"TODO"}}</h5><h5>{{"TODO"}})</h5><h5><b>Init </b>{{"TODO"}}<b>Senses </b>{{"TODO"}}</h5></div>
+<hr/>
+<div><h5><b>DEFENSE</b></h5></div>
+<hr/>
+<div><h5><b>AC </b>{{"TODO"}}</h5><h5><b>hp </b>{{"TODO"}}</h5><h5><b>Fort </b>{{"TODO"}},
+    <b>Ref </b>{{"TODO"}}, <b>Will </b>{{"TODO"}}</h5><h5><b>DR </b>{{"TODO"}}<b>SR </b>{{"TODO"}}</h5></div>
+<hr/>
+<div><h5><b>OFFENSE</b></h5></div>
+<hr/>
+<div><h5><b>Spd </b>{{"TODO"}}</h5><h5><b>Melee </b>{{"TODO"}}</h5><h5><b>Space </b>{{"TODO"}}<b>Reach </b>{{"TODO"}}
+</h5><h5><b>Special Attacks </b>{{"TODO"}}</h5><h5><b>Spell-Like Abilities</b> {{"TODO"}}</h5></div>
+<hr/>
+<div><h5><b>STATISTICS</b></h5></div>
+<hr/>
+<div><h5><b>Str</b> {{"TODO"}}, <b>Dex</b> {{"TODO"}}, <b>Con</b> {{"TODO"}}, <b>Int</b> {{"TODO"}}, <b>Wis</b>
+    {{"TODO"}}, <b>Cha</b> {{"TODO"}}</h5><h5><b>Base Atk </b>{{"TODO"}};
+    <b>CMB </b>{{"TODO"}}; <b>CMD </b>{{"TODO"}}</h5><h5><b>Feats </b>{{"TODO"}}</h5><h5><b>Skills </b>{{"TODO"}} <b>Racial
+    Modifiers </b>{{"TODO"}}</h5><h5><b>Languages </b>{{"TODO"}}</h5><h5><b>SQ </b>{{"TODO"}}</h5></div>
+<hr/>
+<div><h5><b>ECOLOGY</b></h5></div>
+<hr/>
+<div><h5><b>Environment </b>{{"TODO"}}</h5><h5><b>Organization </b>{{"TODO"}}
+</h5><h5><b>Treasure </b>{{"TODO"}}</h5></div>
+<hr/>
+<div><h5><b>SPECIAL ABILITIES</b></h5></div>
+<hr/>
+<div><h5>{{"TODO"}}</h5></div><br></br>
+<div>
+    <h4>
+        <div ng-bind-html="monster.descriptionSafe"></div>
+    </h4>
+</div>

@@ -25,9 +25,14 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
     }
 ]);
 
-encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$routeParams', '$sce', 'Monster',
-    function ($scope, $routeParams, $sce, Monster) {
-        $scope.monster = Monster.get({monsterId: $routeParams.monsterId}, function (monster) {
-            $scope.monster.FullTextSafe = $sce.trustAsHtml($scope.monster.FullText);
+encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$routeParams', '$sce', 'monsterService',
+    function ($scope, $routeParams, $sce, monsterService) {
+        $scope.monster = monsterService.get($routeParams.monsterId, function (error, data) {
+            if (error) {
+                console.log('Error in your face: ' + error);
+            } else {
+                $scope.monster = data;
+                $scope.monster.descriptionSafe = $sce.trustAsHtml($scope.monster.description);
+            }
         });
     }]);

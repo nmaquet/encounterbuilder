@@ -14,6 +14,15 @@ encounterBuilderServices.factory('monsterService', ['$http', function ($http) {
                 .error(function (error) {
                     callback(error, null);
                 });
+        },
+        get: function (id, callback) {
+            $http.get('/api/monster/' + id)
+                .success(function (data) {
+                    callback(null, data[0]);
+                })
+                .error(function (error) {
+                    callback(error, null);
+                });
         }
     };
 }]);
