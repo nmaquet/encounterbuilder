@@ -2,6 +2,6 @@
 
 module.exports = function () {
     return function (request, response) {
-        response.sendfile('client/index.html');
+        response.sendfile('client/public/index.html');
     }
 }
