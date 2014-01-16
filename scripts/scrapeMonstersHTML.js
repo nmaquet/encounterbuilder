@@ -171,6 +171,9 @@ function compareMonsters(srdMonster, kyleMonster) {
     var MAX_LENGTH_RATIO_ALLOWED = 3.0;
     for (var i in MONSTER_ATTRIBUTES) {
         var attribute = MONSTER_ATTRIBUTES[i];
+        if (attribute == "Init" &&  kyleMonster[attribute][0] != '-') {
+            kyleMonster[attribute] = "+" + kyleMonster[attribute];
+        }
         if (kyleMonster[attribute] != undefined) {
             var distance = getDistance(srdMonster[attribute], kyleMonster[attribute]);
             var lengthRatio = getLengthRatio(srdMonster[attribute], kyleMonster[attribute]);
