@@ -17,7 +17,11 @@ module.exports = function (config) {
         },
         autoWatch: false,
         browsers: ['PhantomJS'], // Firefox, ChromeCanary, Opera, IE
-        reporters: ['progress', 'coverage'],
+        reporters: ['junit'],
+        junitReporter: {
+            outputFile: 'client-unit-test-results.xml',
+            suite: ''
+        },
         singleRun: false,
         port: 9876,
         colors: true,
@@ -28,7 +32,8 @@ module.exports = function (config) {
             'karma-phantomjs-launcher',
             'karma-mocha',
             'karma-chai',
-            'karma-coverage'
+            'karma-coverage',
+            'karma-junit-reporter'
         ],
         urlRoot: "/karma"
     });

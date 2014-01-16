@@ -23,6 +23,7 @@
         "karma-ng-scenario" : "~0.1",
         "karma-coverage" : "0.1.2",
         "karma-phantomjs-launcher" : "*",
+        "karma-junit-reporter" : "*",
         "xml2js"   : "*",
         "csvtojson"   : "*"
     }
