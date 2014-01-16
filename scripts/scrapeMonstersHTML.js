@@ -1,12 +1,14 @@
 "use strict";
 
-var window = null;
+var fs = require("fs");
 var cheerio = require("cheerio");
+var levenshtein = require("fast-levenshtein");
+
+var fakeMongoose = {model: function () {
+}};
 var srd_monsters = require("../data/contrib/monsters_partial.json");
 var kyle_monsters = require("../data/contrib/monsters_kyle.json");
-var expect = require('chai').expect;
-var levenshtein = require("fast-levenshtein");
-var fs = require("fs");
+var MONSTER_ATTRIBUTES = require('../server/monsterModel')(fakeMongoose).MONSTER_ATTRIBUTES;
 
 var KYLE_MONSTER_BY_ID = {};
 
@@ -20,7 +22,6 @@ var KYLE_MONSTER_BY_ID = {};
 function getKyleMonsterByID(id) {
     return KYLE_MONSTER_BY_ID[id];
 }
-
 
 function getDistance(object1, object2) {
     var string1 = "" + object1;
@@ -37,71 +38,6 @@ function getLengthRatio(object1, object2) {
     }
     return string1.length / string2.length;
 }
-
-
-var MONSTER_ATTRIBUTES = [
-    /* SRD Primary Attributes */
-    "Name",
-    "CR",
-    "XP",
-    "Race",
-    "Class",
-    "MonsterSource",
-    "Alignment",
-    "Size",
-    "Type",
-    "SubType",
-    "AC",
-    "HP",
-    "HD",
-    "Saves",
-    "Fort",
-    "Ref",
-    "Will",
-    "Speed",
-    "Melee",
-    "Ranged",
-    "Space",
-    "Reach",
-    "AbilityScores",
-    "Feats",
-    "Skills",
-    "RacialMods",
-    "Languages",
-    "SQ",
-    "Environment",
-    "Organization",
-    "Treasure",
-    "Group",
-    "Source",
-    "IsTemplate",
-    "FullText",
-    "Gear",
-    "OtherGear",
-    "CharacterFlag",
-    "CompanionFlag",
-    "Fly",
-    "Climb",
-    "Burrow",
-    "Swim",
-    "Land",
-    "TemplatesApplied",
-    "AgeCategory",
-    "DontUseRacialHD",
-    "VariantParent",
-    "ClassArchetypes",
-    "CompanionFamiliarLink",
-    "AlternateNameForm",
-    "UniqueMonster",
-    "MR",
-    "Mythic",
-    "MT",
-    /* Extra Computed Attributes */
-    "Description",
-    "Description_Visual",
-    "Init",
-    "Senses"
-]
 
 var ATTRIBUTE_FILTERS = {
     Description: function (srdMonster, $) {
