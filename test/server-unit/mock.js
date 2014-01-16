@@ -61,6 +61,8 @@ module.exports = function () {
 
         },
 
+        monsterArray : new Array(3),
+
         FIND_LIMIT : 666,
 
         fs : {

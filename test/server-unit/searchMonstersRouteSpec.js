@@ -43,14 +43,14 @@ describe("searchMonstersRoute", function () {
     it("should respond with the monster JSON on success", function () {
         var error = null;
         searchMonstersRoute(mock.request, mock.response);
-        mock.Monster.execFind.callback(error, mock.monster);
-        expect(mock.response.json.object).to.equal(mock.monster);
+        mock.Monster.execFind.callback(error, mock.monsterArray);
+        expect(mock.response.json.object).to.deep.equal(mock.monsterArray);
     });
 
     it("should send the error on error", function () {
         var error = "ALL YOUR BASE";
         searchMonstersRoute(mock.request, mock.response);
-        mock.Monster.execFind.callback(error, mock.monster);
+        mock.Monster.execFind.callback(error, mock.monsterArray);
         expect(mock.response.send.data).to.equal(error);
     });
 });
