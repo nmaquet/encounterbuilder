@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var FIND_LIMIT = 50;
 
 var MONSTER_ATTRIBUTES = [
+    /* SRD Primary Attributes */
     "Name",
     "CR",
     "XP",
@@ -63,8 +64,11 @@ var MONSTER_ATTRIBUTES = [
     "MR",
     "Mythic",
     "MT",
+    /* Extra Computed Attributes */
     "Description",
-    "Description_Visual"
+    "Description_Visual",
+    "Init",
+    "Senses"
 ]
 
 mongoose.connect('mongodb://heroku:fR98x8wJk2RN@mongo.onmodulus.net:27017/gu9gOmot');
