@@ -106,15 +106,21 @@ var ATTRIBUTE_FILTERS = {
         return getSRDMonsterVisualDescription(srdMonster, $);
     },
     Init: function (srdMonster, $) {
-        return "TODO init";
+        return getInitFromSrdMonster(srdMonster, $);
     },
     Senses: function (srdMonster, $) {
-        return "TODO Senses";
+       return getSensesFromSrdMonster(srdMonster,$);
     }
 }
-
-function getInitFromSrdMonster(srdMonster) {
-
+function getSensesFromSrdMonster(srdMonster,$){
+    var element = $("b:contains(Senses)");
+    var regex = /.*;\s*Senses\s*(.*)/;
+    return regex.exec(element.parent().text())[1];
+}
+function getInitFromSrdMonster(srdMonster,$) {
+    var element = $("b:contains(Init)");
+    var regex = /Init\s*([-,\+]\d*);/;
+    return regex.exec(element.parent().text())[1];
 }
 
 function getSRDMonsterVisualDescription(monster, $) {
@@ -190,14 +196,14 @@ for (var i in srd_monsters) {
     if (kyleMonster == undefined) {
         continue;
     }
-    /*
-     try {
-     compareMonsters(cleanupSRDMonster(srd_monsters[i]), kyleMonster);
-     } catch (e) {
-     console.log(e.stack);
-     continue;
-     } */
     var $ = cheerio.load(srd_monsters[i].FullText);
+
+//    try {
+//     compareMonsters(cleanupSRDMonster(srd_monsters[i]), kyleMonster);
+//     } catch (e) {
+//     console.log(e.stack);
+//     continue;
+//     }
     monsters.push(cleanupSRDMonster(srd_monsters[i], $));
     if (i>100)break;
 }
