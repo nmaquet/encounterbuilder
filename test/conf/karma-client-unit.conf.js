@@ -16,7 +16,7 @@ module.exports = function (config) {
             'app/js/*.js': ['coverage']
         },
         autoWatch: false,
-        browsers: ['Chrome'], // Firefox, ChromeCanary, Opera, IE
+        browsers: ['PhantomJS'], // Firefox, ChromeCanary, Opera, IE
         reporters: ['progress', 'coverage'],
         singleRun: false,
         port: 9876,
@@ -25,6 +25,7 @@ module.exports = function (config) {
         captureTimeout: 60000,
         plugins: [
             'karma-chrome-launcher',
+            'karma-phantomjs-launcher',
             'karma-mocha',
             'karma-chai',
             'karma-coverage'

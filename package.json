@@ -3,7 +3,10 @@
     "version"      : "0.0.1",
     "description"  : "Most Amazing Useful App",
     "scripts": {
-        "start"    : "node scripts/concat_and_uglify.js && node server/server.js"
+        "start"       : "node scripts/concat_and_uglify.js && node server/server.js",
+        "test-client" : "karma start test/conf/karma-client-unit.conf --single-run",
+        "test-e2e"    : "karma start test/conf/karma-e2e.conf --single-run",
+        "test-server" : "mocha --recursive test/server"
     },
     "author"       : "Nic & Chris",
     "dependencies" : {
@@ -19,6 +22,7 @@
         "karma-chai"  : "0.0.2",
         "karma-ng-scenario" : "~0.1",
         "karma-coverage" : "0.1.2",
+        "karma-phantomjs-launcher" : "*",
         "xml2js"   : "*",
         "csvtojson"   : "*"
     }
