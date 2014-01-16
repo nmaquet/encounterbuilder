@@ -57,6 +57,14 @@ var ATTRIBUTE_FILTERS = {
     },
     DR : function (srdMonster, $) {
         return parseAttributeFromSrdMonster($("b:contains(DR)"), /.*DR\s*([^;]*)/);
+    },
+    Immune : function (srdMonster, $) {
+        var immune = parseAttributeFromSrdMonster($("b:contains(Immune)"), /.*Immune\s*([^;]*)/);
+        var weakness = immune.indexOf("Weaknesses");
+        if (weakness) {
+            immune = immune.slice(0, weakness).trim();
+        }
+        return immune;
     }
 }
 function parseAttributeFromSrdMonster(element,regex)
