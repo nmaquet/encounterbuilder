@@ -21,17 +21,6 @@ function getKyleMonsterByID(id) {
     return KYLE_MONSTER_BY_ID[id];
 }
 
-function getSRDMonsterVisualDescription(monster) {
-    var $ = cheerio.load(monster.FullText);
-    var element = $("div > h3 > i");
-    return element.text();
-}
-
-function getSRDMonsterDescriptionInDivX(monster, div) {
-    var $ = cheerio.load(monster.FullText);
-    var element = $("div").eq(div).children().first();
-    return element.html();
-}
 
 function getDistance(object1, object2) {
     var string1 = "" + object1;
@@ -46,29 +35,6 @@ function getLengthRatio(object1, object2) {
     return string1.length / string2.length;
 }
 
-function getSRDMonsterDescription(monster) {
-    var kyleDescription = getKyleMonsterByID(monster.id).Description;
-    if (kyleDescription == undefined) {
-        console.log("[WARNING] no Kyle Monster '" + monster.Name + "' => guessing description at div 14 !");
-        return getSRDMonsterDescriptionInDivX(monster, 14);
-    }
-    var div = [14, 12, 16];
-    var minDistance = Number.MAX_VALUE;
-    var bestDescription = null;
-    var ACCEPTABLE_DISTANCE = 0.20;
-    for (var i in div) {
-        var description = getSRDMonsterDescriptionInDivX(monster, div[i]);
-        var distance = getDistance(description, kyleDescription);
-        if (distance < minDistance) {
-            minDistance = distance;
-            bestDescription = description;
-        }
-        if (minDistance <= ACCEPTABLE_DISTANCE) {
-            break;
-        }
-    }
-    return bestDescription;
-}
 
 var MONSTER_ATTRIBUTES = [
     "Name",
@@ -128,17 +94,63 @@ var MONSTER_ATTRIBUTES = [
     "MT",
     "Description",
     "Description_Visual",
+    "Init",
+    "Senses"
 ]
 
 var ATTRIBUTE_FILTERS = {
-    Description: function (srdMonster) {
-        return getSRDMonsterDescription(srdMonster);
+    Description: function (srdMonster, $) {
+        return getSRDMonsterDescription(srdMonster, $);
     },
-    Description_Visual: function (srdMonster) {
-        return getSRDMonsterVisualDescription(srdMonster);
+    Description_Visual: function (srdMonster, $) {
+        return getSRDMonsterVisualDescription(srdMonster, $);
+    },
+    Init: function (srdMonster, $) {
+        return "TODO init";
+    },
+    Senses: function (srdMonster, $) {
+        return "TODO Senses";
     }
 }
 
+function getInitFromSrdMonster(srdMonster) {
+
+}
+
+function getSRDMonsterVisualDescription(monster, $) {
+
+    var element = $("div > h3 > i");
+    return element.text();
+}
+
+function getSRDMonsterDescription(monster, $) {
+    function get(div) {
+        var element = $("div").eq(div).children().first();
+        return element.html();
+    }
+
+    var kyleDescription = getKyleMonsterByID(monster.id).Description;
+    if (kyleDescription == undefined) {
+        console.log("[WARNING] no Kyle Monster '" + monster.Name + "' => guessing description at div 14 !");
+        return get(14);
+    }
+    var div = [14, 12, 16];
+    var minDistance = Number.MAX_VALUE;
+    var bestDescription = null;
+    var ACCEPTABLE_DISTANCE = 0.20;
+    for (var i in div) {
+        var description = get(div[i]);
+        var distance = getDistance(description, kyleDescription);
+        if (distance < minDistance) {
+            minDistance = distance;
+            bestDescription = description;
+        }
+        if (minDistance <= ACCEPTABLE_DISTANCE) {
+            break;
+        }
+    }
+    return bestDescription;
+}
 function compareMonsters(srdMonster, kyleMonster) {
     var WORST_DISTANCE_ALLOWED = 0.35;
     var MIN_LENGTH_RATIO_ALLOWED = 0.5;
@@ -156,13 +168,13 @@ function compareMonsters(srdMonster, kyleMonster) {
     }
 }
 
-function cleanupSRDMonster(srdMonster) {
+function cleanupSRDMonster(srdMonster, $) {
     var monster = {};
     for (var i in MONSTER_ATTRIBUTES) {
         var attribute = MONSTER_ATTRIBUTES[i];
         var attributeFilter = ATTRIBUTE_FILTERS[attribute];
         if (attributeFilter) {
-            monster[attribute] = attributeFilter(srdMonster);
+            monster[attribute] = attributeFilter(srdMonster, $);
         } else {
             monster[attribute] = srdMonster[attribute].trim();
         }
@@ -185,7 +197,9 @@ for (var i in srd_monsters) {
      console.log(e.stack);
      continue;
      } */
-    monsters.push(cleanupSRDMonster(srd_monsters[i]));
+    var $ = cheerio.load(srd_monsters[i].FullText);
+    monsters.push(cleanupSRDMonster(srd_monsters[i], $));
+    if (i>100)break;
 }
 
 fs.writeFileSync('../data/monsters/monsters.json', JSON.stringify(monsters));
