@@ -47,25 +47,27 @@ var ATTRIBUTE_FILTERS = {
         return getSRDMonsterVisualDescription(srdMonster, $);
     },
     Init: function (srdMonster, $) {
-        return getInitFromSrdMonster(srdMonster, $);
+        return parseAttributeFromSrdMonster($("b:contains(Init)"),/Init\s*([-,\+]\d*);/);
     },
     Senses: function (srdMonster, $) {
-        return getSensesFromSrdMonster(srdMonster, $);
+        return parseAttributeFromSrdMonster($("b:contains(Senses)"), /.*;\s*Senses\s*(.*)/);
+    },
+    SR : function (srdMonster, $) {
+        return parseAttributeFromSrdMonster($("b:contains(SR)"),/.*SR\s*(.*)/);
+    },
+    DR : function (srdMonster, $) {
+        return parseAttributeFromSrdMonster($("b:contains(DR)"), /.*DR\s*([^;]*)/);
     }
 }
+function parseAttributeFromSrdMonster(element,regex)
+{
+    if (element.text()) {
+        return regex.exec(element.parent().text())[1];
+    } else {
+        return "";
+    }
 
-function getSensesFromSrdMonster(srdMonster, $) {
-    var element = $("b:contains(Senses)");
-    var regex = /.*;\s*Senses\s*(.*)/;
-    return regex.exec(element.parent().text())[1];
 }
-
-function getInitFromSrdMonster(srdMonster, $) {
-    var element = $("b:contains(Init)");
-    var regex = /Init\s*([-,\+]\d*);/;
-    return regex.exec(element.parent().text())[1];
-}
-
 function getSRDMonsterVisualDescription(monster, $) {
 
     var element = $("div > h3 > i");
