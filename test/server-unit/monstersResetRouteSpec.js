@@ -27,7 +27,7 @@ describe("monstersResetRoute", function () {
         var removeError = null;
         monstersResetRoute(mock.request, mock.response);
         mock.Monster.remove.callback(removeError);
-        expect(mock.fs.readFile.path).to.contain("/../data/monsters/monsters_full.json");
+        expect(mock.fs.readFile.path).to.contain("/../data/monsters/monsters.json");
     });
 
     it("should parse the file's JSON content and create a monster per element", function() {
@@ -37,8 +37,12 @@ describe("monstersResetRoute", function () {
         monstersResetRoute(mock.request, mock.response);
         mock.Monster.remove.callback(removeError);
         mock.fs.readFile.callback(readFileError, fileContents);
-        expect(mock.Monster.create.calls[0].object).to.deep.equal({name : "Dragon", id : "dragon", cr: 20});
-        expect(mock.Monster.create.calls[1].object).to.deep.equal({name : "Goblin", id : "goblin", cr: 1/3});
+        expect(mock.Monster.create.calls[0].object.Name).to.equal("Dragon");
+        expect(mock.Monster.create.calls[1].object.Name).to.equal("Goblin");
+        expect(mock.Monster.create.calls[0].object.id).to.equal("dragon");
+        expect(mock.Monster.create.calls[1].object.id).to.equal("goblin");
+        expect(mock.Monster.create.calls[0].object.CR).to.equal(20);
+        expect(mock.Monster.create.calls[1].object.CR).to.equal(1/3);
         expect(mock.Monster.create.calls.length).to.equal(2);
     });
 

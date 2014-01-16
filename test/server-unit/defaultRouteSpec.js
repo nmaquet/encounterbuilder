@@ -13,7 +13,7 @@ describe("defaultRoute", function () {
 
     it("should send the index.html file", function () {
         defaultRoute(mock.request, mock.response);
-        expect(mock.response.sendfile.path).to.equal('client/index.html');
+        expect(mock.response.sendfile.path).to.equal('client/public/index.html');
     });
 
 });

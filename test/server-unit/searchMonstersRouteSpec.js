@@ -14,7 +14,7 @@ describe("searchMonstersRoute", function () {
     it("should find the monster using the nameSubstring", function () {
         mock.request.query.nameSubstring = "cube"
         searchMonstersRoute(mock.request, mock.response);
-        expect(mock.Monster.find.params).to.deep.equal({name: /cube/i});
+        expect(mock.Monster.find.params).to.deep.equal({Name: /cube/i});
     });
 
     it("should limit the find to FIND_LIMIT elements", function () {
@@ -25,19 +25,19 @@ describe("searchMonstersRoute", function () {
     it("should sort by name then challenge rating by default", function () {
         mock.request.query.order = undefined;
         searchMonstersRoute(mock.request, mock.response);
-        expect(mock.Monster.sort.options).to.equal("name cr");
+        expect(mock.Monster.sort.options).to.equal("Name CR");
     });
 
     it("should sort by name then challenge rating when asked", function () {
         mock.request.query.order = "name";
         searchMonstersRoute(mock.request, mock.response);
-        expect(mock.Monster.sort.options).to.equal("name cr");
+        expect(mock.Monster.sort.options).to.equal("Name CR");
     });
 
     it("should sort by challenge rating then name when asked", function () {
         mock.request.query.order = "cr";
         searchMonstersRoute(mock.request, mock.response);
-        expect(mock.Monster.sort.options).to.equal("cr name");
+        expect(mock.Monster.sort.options).to.equal("CR Name");
     });
 
     it("should respond with the monster JSON on success", function () {
