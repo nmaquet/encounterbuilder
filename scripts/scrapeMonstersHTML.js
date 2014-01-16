@@ -61,7 +61,7 @@ var ATTRIBUTE_FILTERS = {
     Immune: function (srdMonster, $) {
         var immune = parseAttributeFromSrdMonster($("b:contains(Immune)"), /.*Immune\s*([^;]*)/);
         var weakness = immune.indexOf("Weaknesses");
-        if (weakness) {
+        if (weakness != -1) {
             immune = immune.slice(0, weakness).trim();
         }
         return immune;

@@ -13,9 +13,25 @@
 <hr/>
 <div><h5><b>DEFENSE</b></h5></div>
 <hr/>
-<div><h5><b>AC </b>{{monster.AC}}</h5><h5><b>hp </b>{{monster.HP}}</h5><h5><b>Fort </b>{{monster.Fort}},
-    <b>Ref </b>{{monster.Ref}}, <b>Will </b>{{monster.Will}}</h5><h5><b>DR </b>{{"[TODO : DR]"}} <b>SR </b>{{"[TODO :
-    SR]"}}</h5></div>
+<div>
+    <h5>
+        <b>AC </b>{{monster.AC}}
+    </h5>
+    <h5>
+        <b>hp </b>{{monster.HP}}
+    </h5>
+    <h5>
+        <b>Fort </b>{{monster.Fort}},
+        <b>Ref </b>{{monster.Ref}},
+        <b>Will </b>{{monster.Will}}
+    </h5>
+    <h5>
+        <span ng-if="monster.DR"><b>DR </b>{{monster.DR}}; </span>
+        <span ng-if="monster.Immune"><b>Immune </b>{{monster.Immune}}; </span>
+        <span ng-if="monster.Weaknesses"><b>Weaknesses </b>{{monster.Weaknesses}}; </span>
+        <span ng-if="monster.SR"><b>SR </b>{{monster.SR}}</span>
+    </h5>
+</div>
 <hr/>
 <div><h5><b>OFFENSE</b></h5></div>
 <hr/>
