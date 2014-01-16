@@ -64,7 +64,8 @@ var MONSTER_ATTRIBUTES = [
     "Senses",
     "SR",
     "DR",
-    "Immune"
+    "Immune",
+    "Weaknesses"
 ]
 
 function generateMonsterModelObject() {

@@ -47,35 +47,42 @@ var ATTRIBUTE_FILTERS = {
         return getSRDMonsterVisualDescription(srdMonster, $);
     },
     Init: function (srdMonster, $) {
-        return parseAttributeFromSrdMonster($("b:contains(Init)"),/Init\s*([-,\+]\d*);/);
+        return parseAttributeFromSrdMonster($("b:contains(Init)"), /Init\s*([-,\+]\d*);/);
     },
     Senses: function (srdMonster, $) {
         return parseAttributeFromSrdMonster($("b:contains(Senses)"), /.*;\s*Senses\s*(.*)/);
     },
-    SR : function (srdMonster, $) {
-        return parseAttributeFromSrdMonster($("b:contains(SR)"),/.*SR\s*(.*)/);
+    SR: function (srdMonster, $) {
+        return parseAttributeFromSrdMonster($("b:contains(SR)"), /.*SR\s*(.*)/);
     },
-    DR : function (srdMonster, $) {
+    DR: function (srdMonster, $) {
         return parseAttributeFromSrdMonster($("b:contains(DR)"), /.*DR\s*([^;]*)/);
     },
-    Immune : function (srdMonster, $) {
+    Immune: function (srdMonster, $) {
         var immune = parseAttributeFromSrdMonster($("b:contains(Immune)"), /.*Immune\s*([^;]*)/);
         var weakness = immune.indexOf("Weaknesses");
         if (weakness) {
             immune = immune.slice(0, weakness).trim();
         }
         return immune;
+    },
+    Weaknesses: function (srdMonster, $) {
+        var weakness = parseAttributeFromSrdMonster($("b:contains(Weaknesses)"), /.*Weaknesses\s*([^;]*)/);
+        if (weakness) return weakness;
+        return parseAttributeFromSrdMonster($("b:contains(Immune)"), /.*Weaknesses\s*([^;]*)/);
     }
 }
-function parseAttributeFromSrdMonster(element,regex)
-{
-    if (element.text()) {
-        return regex.exec(element.parent().text())[1];
-    } else {
+function parseAttributeFromSrdMonster(element, regex) {
+    if (!element.text()) {
         return "";
     }
-
+    var match = regex.exec(element.parent().text());
+    if (!match) {
+        return "";
+    }
+    return match[1];
 }
+
 function getSRDMonsterVisualDescription(monster, $) {
 
     var element = $("div > h3 > i");
@@ -117,7 +124,7 @@ function compareMonsters(srdMonster, kyleMonster) {
     var MAX_LENGTH_RATIO_ALLOWED = 3.0;
     for (var i in MONSTER_ATTRIBUTES) {
         var attribute = MONSTER_ATTRIBUTES[i];
-        if (attribute == "Init" &&  kyleMonster[attribute][0] != '-') {
+        if (attribute == "Init" && kyleMonster[attribute][0] != '-') {
             kyleMonster[attribute] = "+" + kyleMonster[attribute];
         }
         if (kyleMonster[attribute] != undefined) {
