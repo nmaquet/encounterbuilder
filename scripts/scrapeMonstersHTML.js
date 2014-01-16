@@ -32,11 +32,15 @@ function getDistance(object1, object2) {
 function getLengthRatio(object1, object2) {
     var string1 = "" + object1;
     var string2 = "" + object2;
+    if (string1.length == 0 && string2.length == 0) {
+        return 1;
+    }
     return string1.length / string2.length;
 }
 
 
 var MONSTER_ATTRIBUTES = [
+    /* SRD Primary Attributes */
     "Name",
     "CR",
     "XP",
@@ -92,6 +96,7 @@ var MONSTER_ATTRIBUTES = [
     "MR",
     "Mythic",
     "MT",
+    /* Extra Computed Attributes */
     "Description",
     "Description_Visual",
     "Init",
@@ -109,15 +114,17 @@ var ATTRIBUTE_FILTERS = {
         return getInitFromSrdMonster(srdMonster, $);
     },
     Senses: function (srdMonster, $) {
-       return getSensesFromSrdMonster(srdMonster,$);
+        return getSensesFromSrdMonster(srdMonster, $);
     }
 }
-function getSensesFromSrdMonster(srdMonster,$){
+
+function getSensesFromSrdMonster(srdMonster, $) {
     var element = $("b:contains(Senses)");
     var regex = /.*;\s*Senses\s*(.*)/;
     return regex.exec(element.parent().text())[1];
 }
-function getInitFromSrdMonster(srdMonster,$) {
+
+function getInitFromSrdMonster(srdMonster, $) {
     var element = $("b:contains(Init)");
     var regex = /Init\s*([-,\+]\d*);/;
     return regex.exec(element.parent().text())[1];
@@ -157,19 +164,26 @@ function getSRDMonsterDescription(monster, $) {
     }
     return bestDescription;
 }
+
 function compareMonsters(srdMonster, kyleMonster) {
     var WORST_DISTANCE_ALLOWED = 0.35;
-    var MIN_LENGTH_RATIO_ALLOWED = 0.5;
-    var MAX_LENGTH_RATIO_ALLOWED = 2.0;
+    var MIN_LENGTH_RATIO_ALLOWED = 0.3;
+    var MAX_LENGTH_RATIO_ALLOWED = 3.0;
     for (var i in MONSTER_ATTRIBUTES) {
         var attribute = MONSTER_ATTRIBUTES[i];
-        var distance = getDistance(srdMonster[attribute], kyleMonster[attribute]);
-        var lengthRatio = getLengthRatio(srdMonster[attribute], kyleMonster[attribute]);
-        if (distance > WORST_DISTANCE_ALLOWED) {
-            console.log("[ERROR] : " + srdMonster.Name + " / " + kyleMonster.Name + " has a distance : " + distance);
-        }
-        if (lengthRatio < MIN_LENGTH_RATIO_ALLOWED || lengthRatio > MAX_LENGTH_RATIO_ALLOWED) {
-            console.log("[ERROR] : " + srdMonster.Name + " / " + kyleMonster.Name + " has a length ratio : " + lengthRatio);
+        if (kyleMonster[attribute] != undefined) {
+            var distance = getDistance(srdMonster[attribute], kyleMonster[attribute]);
+            var lengthRatio = getLengthRatio(srdMonster[attribute], kyleMonster[attribute]);
+            if (distance > WORST_DISTANCE_ALLOWED) {
+                console.log("[ERROR] : " + srdMonster.Name + " : " + attribute + " has a distance : " + distance);
+                console.log("SRD : '" + srdMonster[attribute] + "'");
+                console.log("KYL : '" + kyleMonster[attribute] + "'");
+            }
+            if (lengthRatio < MIN_LENGTH_RATIO_ALLOWED || lengthRatio > MAX_LENGTH_RATIO_ALLOWED) {
+                console.log("[ERROR] : " + srdMonster.Name + " : " + attribute + " has a length ratio : " + lengthRatio);
+                console.log("SRD : '" + srdMonster[attribute] + "'");
+                console.log("KYL : '" + kyleMonster[attribute] + "'");
+            }
         }
     }
 }
@@ -198,14 +212,15 @@ for (var i in srd_monsters) {
     }
     var $ = cheerio.load(srd_monsters[i].FullText);
 
-//    try {
-//     compareMonsters(cleanupSRDMonster(srd_monsters[i]), kyleMonster);
-//     } catch (e) {
-//     console.log(e.stack);
-//     continue;
-//     }
+    try {
+        compareMonsters(cleanupSRDMonster(srd_monsters[i], $), kyleMonster);
+    } catch (e) {
+        console.log(e.stack);
+        continue;
+    }
+
     monsters.push(cleanupSRDMonster(srd_monsters[i], $));
-    if (i>100)break;
+    if (i > 100)break;
 }
 
 fs.writeFileSync('../data/monsters/monsters.json', JSON.stringify(monsters));
