@@ -36,8 +36,14 @@
 <div><h5><b>OFFENSE</b></h5></div>
 <hr/>
 <div><h5><b>Spd </b>{{monster.Speed}}</h5><h5><b>Melee </b>{{monster.Melee}} </h5><h5><b>Space </b>{{monster.Space}} <b>Reach </b>{{monster.Reach}}
-</h5><h5><b>Special Attacks </b>{{"[TODO : special attacks]"}} </h5><h5><b>Spell-Like Abilities</b> {{"[TODO :
-    spell-like abilities]"}} </h5></div>
+</h5>
+    <h5>
+        <span ng-if="monster.SpecialAttacks"> <b>Special Attacks </b>{{monster.SpecialAttacks}}; </span>
+    </h5>
+    <h5>
+        <span   ng-bind-html="monster.SLASafe"/>
+    </h5>
+</div>
 <hr/>
 <div><h5><b>STATISTICS</b></h5></div>
 <hr/>
