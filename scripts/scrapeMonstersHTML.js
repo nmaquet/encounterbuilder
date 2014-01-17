@@ -100,6 +100,15 @@ var ATTRIBUTE_FILTERS = {
     },
     Cha: function(srdMonster, $) {
         return  /Cha\s*(\d*)/.exec(srdMonster.AbilityScores)[1];
+    },
+    BaseAtk: function(srdMonster, $) {
+        return parseAttributeFromSrdMonster($("b:contains(Base Atk)"), /.*Base Atk\s*([^;]*)/);
+    },
+    CMB: function(srdMonster, $) {
+        return parseAttributeFromSrdMonster($("b:contains(CMB)"), /.*CMB\s*([^;]*)/);
+    },
+    CMD: function(srdMonster, $) {
+        return parseAttributeFromSrdMonster($("b:contains(CMD)"), /.*CMD\s*(.*)/);
     }
 }
 
@@ -156,7 +165,7 @@ function compareMonsters(srdMonster, kyleMonster) {
     for (var i in MONSTER_ATTRIBUTES) {
         var max_distance = DEFAULT_MAX_DISTANCE;
         var attribute = MONSTER_ATTRIBUTES[i];
-        if (attribute == "Init" && kyleMonster[attribute][0] != '-') {
+        if (attribute == "Init" || attribute == "BaseAtk" || attribute == "CMB" && kyleMonster[attribute][0] != '-') {
             kyleMonster[attribute] = "+" + kyleMonster[attribute];
         }
         if (attribute == "SpellLikeAbilities") {
