@@ -25,6 +25,8 @@
         "karma-phantomjs-launcher" : "*",
         "karma-junit-reporter" : "*",
         "xml2js"   : "*",
-        "csvtojson"   : "*"
-    }
+        "csvtojson"   : "*",
+        "cheerio" :"*",
+        "fast-levenshtein" : "*"
+      }
 }

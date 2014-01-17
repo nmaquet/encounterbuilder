@@ -36,15 +36,21 @@
 <div><h5><b>OFFENSE</b></h5></div>
 <hr/>
 <div><h5><b>Spd </b>{{monster.Speed}}</h5><h5><b>Melee </b>{{monster.Melee}} </h5><h5><b>Space </b>{{monster.Space}} <b>Reach </b>{{monster.Reach}}
-</h5><h5><b>Special Attacks </b>{{"[TODO : special attacks]"}} </h5><h5><b>Spell-Like Abilities</b> {{"[TODO :
-    spell-like abilities]"}} </h5></div>
+</h5>
+    <h5>
+        <span ng-if="monster.SpecialAttacks"> <b>Special Attacks </b>{{monster.SpecialAttacks}}; </span>
+    </h5>
+    <h5>
+        <span ng-bind-html="monster.SLASafe"></span>
+    </h5>
+</div>
 <hr/>
 <div><h5><b>STATISTICS</b></h5></div>
 <hr/>
-<div><h5><b>Str</b> {{"[TODO : Str]"}}, <b>Dex</b> {{"[TODO : Dex]"}}, <b>Con</b> {{"[TODO : Con]"}}, <b>Int</b>
-    {{"[TODO : Int]"}}, <b>Wis</b>
-    {{"[TODO : Wis]"}}, <b>Cha</b> {{"[TODO : Cha]"}}</h5><h5><b>Base Atk </b>{{"[TODO : Base Atk]"}};
-    <b>CMB </b>{{"[TODO : CMB]"}}; <b>CMD </b>{{"[TODO : CMD]"}}</h5><h5><b>Feats </b>{{monster.Feats}}</h5><h5><b>Skills </b>{{monster.Skills}}
+<div><h5><b>Str</b> {{monster.Str}}, <b>Dex</b> {{monster.Dex}}, <b>Con</b> {{monster.Con}}, <b>Int</b>
+    {{monster.Int}}, <b>Wis</b>
+    {{monster.Wis}}, <b>Cha</b> {{monster.Cha}}</h5><h5><b>Base Atk </b>{{monster.BaseAtk}};
+    <b>CMB </b>{{monster.CMB}}; <b>CMD </b>{{monster.CMD}}</h5><h5><b>Feats </b>{{monster.Feats}}</h5><h5><b>Skills </b>{{monster.Skills}}
     <b>Racial
         Modifiers </b>{{monster.RacialMods}}</h5><h5><b>Languages </b>{{monster.Languages}}</h5><h5><b>SQ </b>{{monster.SQ}}
 </h5></div>
@@ -54,9 +60,12 @@
 <div><h5><b>Environment </b>{{monster.Environment}}</h5><h5><b>Organization </b>{{monster.Organization}}
 </h5><h5><b>Treasure </b>{{monster.Treasure}}</h5></div>
 <hr/>
+<span ng-if="monster.SpecialAbilitiesSafe">
 <div><h5><b>SPECIAL ABILITIES</b></h5></div>
 <hr/>
-<div><h5>{{"[TODO : special abilities]"}}</h5></div><br/>
+<div  ng-bind-html="monster.SpecialAbilitiesSafe"></div>
+ <br/>
+</span>
 <div>
     <h4>
         <div ng-bind-html="monster.DescriptionSafe"></div>

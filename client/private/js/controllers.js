@@ -33,6 +33,9 @@ encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$r
             } else {
                 $scope.monster = data;
                 $scope.monster.DescriptionSafe = $sce.trustAsHtml($scope.monster.Description);
+                $scope.monster.SLASafe = $sce.trustAsHtml($scope.monster.SpellLikeAbilities);
+                $scope.monster.SpecialAbilitiesSafe = $sce.trustAsHtml($scope.monster.SpecialAbilities);
+
             }
         });
     }]);
