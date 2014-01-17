@@ -6,6 +6,7 @@ var levenshtein = require("fast-levenshtein");
 
 var fakeMongoose = {model: function () {
 }};
+
 var srd_monsters = require("../data/contrib/monsters_partial.json");
 var kyle_monsters = require("../data/contrib/monsters_kyle.json");
 var MONSTER_ATTRIBUTES = require('../server/monsterModel')(fakeMongoose).MONSTER_ATTRIBUTES;
@@ -71,16 +72,34 @@ var ATTRIBUTE_FILTERS = {
         if (weakness) return weakness;
         return parseAttributeFromSrdMonster($("b:contains(Immune)"), /.*Weaknesses\s*([^;]*)/);
     },
-    SpecialAttacks:function(srdMonster,$){
+    SpecialAttacks: function (srdMonster, $) {
         return parseAttributeFromSrdMonster($("b:contains(Special Attacks)"), /.*Special Attacks\s*(.*)/);
     },
-    SpellLikeAbilities:function(srdMonster,$){
+    SpellLikeAbilities: function (srdMonster, $) {
         var element = $("b:contains(Spell-Like Abilities)");
-        if (!element.text()){
+        if (!element.text()) {
             //stupid typo in source
             element = $("b:contains(Spell- Like Abilities)");
         }
-       return element.parent().html();
+        return element.parent().html();
+    },
+    Str: function(srdMonster, $) {
+        return  /Str\s*(\d*)/.exec(srdMonster.AbilityScores)[1];
+    },
+    Dex: function(srdMonster, $) {
+        return  /Dex\s*(\d*)/.exec(srdMonster.AbilityScores)[1];
+    },
+    Con: function(srdMonster, $) {
+        return  /Con\s*(\d*)/.exec(srdMonster.AbilityScores)[1];
+    },
+    Int: function(srdMonster, $) {
+        return  /Int\s*(\d*)/.exec(srdMonster.AbilityScores)[1];
+    },
+    Wis: function(srdMonster, $) {
+        return  /Wis\s*(\d*)/.exec(srdMonster.AbilityScores)[1];
+    },
+    Cha: function(srdMonster, $) {
+        return  /Cha\s*(\d*)/.exec(srdMonster.AbilityScores)[1];
     }
 }
 
@@ -140,7 +159,7 @@ function compareMonsters(srdMonster, kyleMonster) {
         if (attribute == "Init" && kyleMonster[attribute][0] != '-') {
             kyleMonster[attribute] = "+" + kyleMonster[attribute];
         }
-        if (attribute == "SpellLikeAbilities"){
+        if (attribute == "SpellLikeAbilities") {
             max_distance = 0.5;
         }
         if (kyleMonster[attribute] != undefined) {
@@ -177,7 +196,6 @@ function cleanupSRDMonster(srdMonster, $) {
 var monsters = [];
 
 for (var i in srd_monsters) {
-    console.log("monster " + i + " / " + srd_monsters.length)
     var kyleMonster = getKyleMonsterByID(srd_monsters[i].id)
     if (kyleMonster == undefined) {
         continue;
