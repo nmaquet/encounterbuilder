@@ -70,8 +70,20 @@ var ATTRIBUTE_FILTERS = {
         var weakness = parseAttributeFromSrdMonster($("b:contains(Weaknesses)"), /.*Weaknesses\s*([^;]*)/);
         if (weakness) return weakness;
         return parseAttributeFromSrdMonster($("b:contains(Immune)"), /.*Weaknesses\s*([^;]*)/);
+    },
+    SpecialAttacks:function(srdMonster,$){
+        return parseAttributeFromSrdMonster($("b:contains(Special Attacks)"), /.*Special Attacks\s*(.*)/);
+    },
+    SpellLikeAbilities:function(srdMonster,$){
+        var element = $("b:contains(Spell-Like Abilities)");
+        if (!element.text()){
+            //stupid typo in source
+            element = $("b:contains(Spell- Like Abilities)");
+        }
+       return element.parent().html();
     }
 }
+
 function parseAttributeFromSrdMonster(element, regex) {
     if (!element.text()) {
         return "";
@@ -119,23 +131,27 @@ function getSRDMonsterDescription(monster, $) {
 }
 
 function compareMonsters(srdMonster, kyleMonster) {
-    var WORST_DISTANCE_ALLOWED = 0.35;
-    var MIN_LENGTH_RATIO_ALLOWED = 0.3;
-    var MAX_LENGTH_RATIO_ALLOWED = 3.0;
+    var DEFAULT_MAX_DISTANCE = 0.35;
+    var MIN_LENGTH_RATIO = 0.3;
+    var MAX_LENGTH_RATIO = 3.0;
     for (var i in MONSTER_ATTRIBUTES) {
+        var max_distance = DEFAULT_MAX_DISTANCE;
         var attribute = MONSTER_ATTRIBUTES[i];
         if (attribute == "Init" && kyleMonster[attribute][0] != '-') {
             kyleMonster[attribute] = "+" + kyleMonster[attribute];
         }
+        if (attribute == "SpellLikeAbilities"){
+            max_distance = 0.5;
+        }
         if (kyleMonster[attribute] != undefined) {
             var distance = getDistance(srdMonster[attribute], kyleMonster[attribute]);
             var lengthRatio = getLengthRatio(srdMonster[attribute], kyleMonster[attribute]);
-            if (distance > WORST_DISTANCE_ALLOWED) {
+            if (distance > max_distance) {
                 console.log("[ERROR] : " + srdMonster.Name + " : " + attribute + " has a distance : " + distance);
                 console.log("SRD : '" + srdMonster[attribute] + "'");
                 console.log("KYL : '" + kyleMonster[attribute] + "'");
             }
-            if (lengthRatio < MIN_LENGTH_RATIO_ALLOWED || lengthRatio > MAX_LENGTH_RATIO_ALLOWED) {
+            if (lengthRatio < MIN_LENGTH_RATIO || lengthRatio > MAX_LENGTH_RATIO) {
                 console.log("[ERROR] : " + srdMonster.Name + " : " + attribute + " has a length ratio : " + lengthRatio);
                 console.log("SRD : '" + srdMonster[attribute] + "'");
                 console.log("KYL : '" + kyleMonster[attribute] + "'");

@@ -65,7 +65,9 @@ var MONSTER_ATTRIBUTES = [
     "SR",
     "DR",
     "Immune",
-    "Weaknesses"
+    "Weaknesses",
+    "SpecialAttacks",
+    "SpellLikeAbilities"
 ]
 
 function generateMonsterModelObject() {
