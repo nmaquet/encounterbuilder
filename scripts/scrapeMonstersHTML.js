@@ -212,6 +212,9 @@ function cleanupSRDMonster(srdMonster, $) {
 var monsters = [];
 
 for (var i in srd_monsters) {
+
+    console.log(i + " / " + srd_monsters.length);
+
     var kyleMonster = getKyleMonsterByID(srd_monsters[i].id)
     if (kyleMonster == undefined) {
         continue;
@@ -226,7 +229,6 @@ for (var i in srd_monsters) {
     }
 
     monsters.push(cleanupSRDMonster(srd_monsters[i], $));
-    if (i > 100)break;
 }
 
 fs.writeFileSync('../data/monsters/monsters.json', JSON.stringify(monsters));
