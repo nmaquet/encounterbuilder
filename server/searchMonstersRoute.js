@@ -9,17 +9,11 @@ module.exports = function (Monster, FIND_LIMIT) {
             sortOption = 'Name CR';
         }
         var findParams = {Name: new RegExp(request.query.nameSubstring, "i")};
-        Monster.find(findParams).limit(FIND_LIMIT).sort(sortOption).execFind(function (error, monsters) {
+        var projection = {Name: true, CR: true, id: true};
+        Monster.find(findParams, projection).limit(FIND_LIMIT).sort(sortOption).execFind(function (error, monsters) {
             if (error)
                 response.send(error);
-
-            response.json(monsters.map(function (monster) {
-                return {
-                    Name: monster.Name,
-                    CR: monster.CR,
-                    id: monster.id
-                }
-            }));
+            response.json(monsters);
         });
     }
 }
