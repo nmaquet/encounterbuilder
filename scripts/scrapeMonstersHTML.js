@@ -109,6 +109,9 @@ var ATTRIBUTE_FILTERS = {
     },
     CMD: function(srdMonster, $) {
         return parseAttributeFromSrdMonster($("b:contains(CMD)"), /.*CMD\s*(.*)/);
+    },
+    SpecialAbilities: function(srdMonster, $) {
+        return getSRDMonsterSpecialAbilities(srdMonster, $);
     }
 }
 
@@ -124,9 +127,13 @@ function parseAttributeFromSrdMonster(element, regex) {
 }
 
 function getSRDMonsterVisualDescription(monster, $) {
-
     var element = $("div > h3 > i");
     return element.text();
+}
+
+function getSRDMonsterSpecialAbilities(monster, $) {
+    var element = $("div:contains(SPECIAL ABILITIES)");
+    return element.next().next().html();
 }
 
 function getSRDMonsterDescription(monster, $) {

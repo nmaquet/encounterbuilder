@@ -76,7 +76,8 @@ var MONSTER_ATTRIBUTES = [
     "Cha",
     "BaseAtk",
     "CMB",
-    "CMD"
+    "CMD",
+    "SpecialAbilities"
 ]
 
 function generateMonsterModelObject() {
