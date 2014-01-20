@@ -1,5 +1,16 @@
 "use strict";
 
+function getFindParams(request) {
+    var findParams = {};
+    if (request.query.nameSubstring) {
+        findParams.Name = new RegExp(request.query.nameSubstring, "i");
+    }
+    if (request.query.type) {
+        findParams.Type = request.query.type;
+    }
+    return findParams;
+}
+
 module.exports = function (Monster, FIND_LIMIT) {
     return function (request, response) {
         var sortOption;
@@ -8,7 +19,7 @@ module.exports = function (Monster, FIND_LIMIT) {
         } else {
             sortOption = 'Name CR';
         }
-        var findParams = {Name: new RegExp(request.query.nameSubstring, "i")};
+        var findParams = getFindParams(request);
         var projection = {Name: true, CR: true, id: true};
         Monster.find(findParams, projection).limit(FIND_LIMIT).sort(sortOption).execFind(function (error, monsters) {
             if (error)

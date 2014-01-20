@@ -53,4 +53,17 @@ describe("searchMonstersRoute", function () {
         mock.Monster.execFind.callback(error, mock.monsterArray);
         expect(mock.response.send.data).to.equal(error);
     });
+
+    it("should filter by monster type when asked", function() {
+        mock.request.query.type = "humanoid";
+        searchMonstersRoute(mock.request, mock.response);
+        expect(mock.Monster.find.params).to.deep.equal({Type: "humanoid"});
+    });
+
+    it("should be able to filter both by name and type", function() {
+        mock.request.query.nameSubstring = "gob";
+        mock.request.query.type = "humanoid";
+        searchMonstersRoute(mock.request, mock.response);
+        expect(mock.Monster.find.params).to.deep.equal({Name: /gob/i, Type: "humanoid"});
+    });
 });
