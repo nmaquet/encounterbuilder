@@ -31,7 +31,7 @@ describe("MonsterListController", function () {
 
     it("should initialize the name substring to the empty string", function () {
         instantiateController();
-        expect($scope.query).to.equal("");
+        expect($scope.nameSubstring).to.equal("");
     });
 
     it("should initialize the sort order to *challenge rating*", function () {
