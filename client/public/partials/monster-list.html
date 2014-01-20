@@ -1,26 +1,43 @@
 <div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span2">
-      <!--Sidebar content-->
+    <div class="row-fluid">
+        <div class="span2">
+            <!--Sidebar content-->
 
-      Search: <input ng-model="nameSubstring">
-      Sort by:
-      <select ng-model="orderProp">
-        <option value="name">Alphabetical</option>
-        <option value="cr">Challenge Rating</option>
-      </select>
+            Search: <input ng-model="nameSubstring">
+            Sort by:
+            <select ng-model="orderProp">
+                <option value="name">Alphabetical</option>
+                <option value="cr">Challenge Rating</option>
+            </select>
+            Type:
+            <select ng-model="type">
+                <option value="any"></option>
+                <option value="aberration">Aberration</option>
+                <option value="animal">Animal</option>
+                <option value="construct">Construct</option>
+                <option value="dragon">Dragon</option>
+                <option value="fey">Fey</option>
+                <option value="humanoid">Humanoid</option>
+                <option value="magical beast">Magical Beast</option>
+                <option value="monstrous humanoid">Monstrous Humanoid</option>
+                <option value="ooze">Ooze</option>
+                <option value="outsider">Outsider</option>
+                <option value="plant">Plant</option>
+                <option value="undead">Undead</option>
+                <option value="vermin">Vermin</option>
+            </select>
+        </div>
+        <div class="span10">
+            <!--Body content-->
 
+            <ul class="monsters">
+                <li ng-repeat="monster in monsters" class="thumbnail">
+                    <a href="#/monsters/{{monster.id}}">{{monster.Name}}</a>
+
+                    <p>CR : {{monster.CR | numberToFractionString}}</p>
+                </li>
+            </ul>
+
+        </div>
     </div>
-    <div class="span10">
-      <!--Body content-->
-
-      <ul class="monsters">
-        <li ng-repeat="monster in monsters" class="thumbnail">
-          <a href="#/monsters/{{monster.id}}">{{monster.Name}}</a>
-          <p>CR : {{monster.CR | numberToFractionString}}</p>
-        </li>
-      </ul>
-
-    </div>
-  </div>
 </div>

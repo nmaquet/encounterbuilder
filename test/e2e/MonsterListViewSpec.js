@@ -68,4 +68,15 @@ describe('Monster List View', function () {
         expect(element('.monsters li:nth-child(4) p').text()).toBe("CR : 1");
         expect(element('.monsters li:nth-child(4) p').text()).toBe("CR : 1");
     });
+
+    it('should  display 17 monsters when searching for "small"', function () {
+        input('nameSubstring').enter('small');
+        expect(repeater('.monsters li').count()).toBe(17);
+    });
+    
+    it('should  display 2 monsters when searching for "small" with type "animal"', function () {
+        input('nameSubstring').enter('small');
+        select('type').option('animal');
+        expect(repeater('.monsters li').count()).toBe(2);
+    });
 });
