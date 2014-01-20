@@ -17,7 +17,7 @@ module.exports = function (config) {
         },
         autoWatch: false,
         browsers: ['PhantomJS'], // Firefox, ChromeCanary, Opera, IE
-        reporters: ['junit'],
+        reporters: ['junit', 'progress'],
         junitReporter: {
             outputFile: 'client-unit-test-results.xml',
             suite: ''
