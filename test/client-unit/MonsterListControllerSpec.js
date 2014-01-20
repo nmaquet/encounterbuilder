@@ -2,20 +2,32 @@
 
 var expect = chai.expect;
 
-var $scope, $httpBackend, $controller;
+var $scope, $controller, monsterService;
 
 describe("MonsterListController", function () {
 
     beforeEach(module("encounterBuilderApp"));
 
-    beforeEach(inject(function ($rootScope, _$httpBackend_, _$controller_) {
+    beforeEach(inject(function ($rootScope, _$controller_) {
         $scope = $rootScope.$new();
-        $httpBackend = _$httpBackend_;
         $controller = _$controller_;
+        monsterService = {
+            search: function (nameSubstring, order, callback) {
+                this.search.nameSubstring = nameSubstring;
+                this.search.order = order;
+                this.search.callback = callback;
+                return this;
+            },
+            get: function (id, callback) {
+                this.get.id = id;
+                this.get.callback = callback;
+                return this;
+            }
+        };
     }));
 
     function instantiateController() {
-        $controller('MonsterListController', {$scope: $scope, $httpBackend : $httpBackend});
+        $controller('MonsterListController', {$scope: $scope, monsterService: monsterService});
     }
 
     it("should initialize the name substring to the empty string", function () {
@@ -33,33 +45,14 @@ describe("MonsterListController", function () {
         expect(typeof $scope.refreshMonsters).to.equal("function");
     });
 
-    it("should refresh the list of monsters", function () {
-        $httpBackend.expectGET("/api/search-monsters/?nameSubstring=&order=cr").respond([]);
-        instantiateController();
-        $httpBackend.verifyNoOutstandingExpectation();
-    });
 
-    // FIXME: this unit test is a bit too long
-    it("it should watch the scope's query property and refresh the list of monsters automatically", function () {
-        var monsters = ["a", "b", "c"];
+    it("should initially refresh the list of monsters a first time", function () {
+        var monsters = ["1", "2", "3"];
         instantiateController();
-        $httpBackend.expectGET("/api/search-monsters/?nameSubstring=dragon&order=cr").respond(200, monsters);
-        $scope.query = "dragon";
-        $scope.$apply();
-        $httpBackend.verifyNoOutstandingExpectation();
-        $httpBackend.flush();
-        expect($scope.monsters).to.deep.equal(monsters);
-    });
-
-    // FIXME: this unit test is a bit too long
-    it("it should watch the scope's orderProp property and refresh the list of monsters automatically", function () {
-        var monsters = ["a", "b", "c"];
-        instantiateController();
-        $httpBackend.expectGET("/api/search-monsters/?nameSubstring=&order=name").respond(200, monsters);
-        $scope.orderProp = "name";
-        $scope.$apply();
-        $httpBackend.verifyNoOutstandingExpectation();
-        $httpBackend.flush();
-        expect($scope.monsters).to.deep.equal(monsters);
+        $scope.$apply(); /* force angular to resolve the $watchCollection */
+        expect(monsterService.search.nameSubstring).to.equal("");
+        expect(monsterService.search.order).to.equal("cr");
+        monsterService.search.callback(null, monsters);
+        expect($scope.monsters).to.equal(monsters);
     });
 });
