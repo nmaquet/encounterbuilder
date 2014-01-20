@@ -6,15 +6,16 @@ var encounterBuilderControllers = angular.module('encounterBuilderControllers', 
 
 encounterBuilderControllers.controller('MonsterListController', ['$scope', 'monsterService',
     function ($scope, monsterService) {
-        $scope.query = '';
-        $scope.orderProp = 'cr';
+        $scope.query = ''; /* FIXME: rename this */
+        $scope.orderProp = 'cr'; /* FIXME: rename this */
+        $scope.type = 'any';
 
-        $scope.$watchCollection("[query, orderProp]", function () {
+        $scope.$watchCollection("[query, orderProp, type]", function () {
             $scope.refreshMonsters();
         });
 
         $scope.refreshMonsters = function () {
-            var params = {nameSubstring: $scope.query, order: $scope.orderProp};
+            var params = {nameSubstring: $scope.query, order: $scope.orderProp, type: $scope.type};
             monsterService.search(params, function (error, data) {
                 if (error) {
                     console.log('Error in your face: ' + error);
