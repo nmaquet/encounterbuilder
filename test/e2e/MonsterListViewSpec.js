@@ -30,6 +30,7 @@ describe('Monster List View', function () {
     });
 
     it('should sort by challenge rating when order is challenge rating', function () {
+        input('nameSubstring').enter('goblin');
         select('orderProp').option('cr');
         expect(repeater('.monsters li').count()).toBe(5);
         expect(element('.monsters li:nth-child(1) a').text()).toBe("Goblin");
