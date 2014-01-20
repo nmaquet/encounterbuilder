@@ -5,7 +5,7 @@ function getFindParams(request) {
     if (request.query.nameSubstring) {
         findParams.Name = new RegExp(request.query.nameSubstring, "i");
     }
-    if (request.query.type) {
+    if (request.query.type && request.query.type != 'any') {
         findParams.Type = request.query.type;
     }
     return findParams;

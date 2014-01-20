@@ -66,4 +66,11 @@ describe("searchMonstersRoute", function () {
         searchMonstersRoute(mock.request, mock.response);
         expect(mock.Monster.find.params).to.deep.equal({Name: /gob/i, Type: "humanoid"});
     });
+
+    it("should understand type='any' to be any type", function() {
+        mock.request.query.nameSubstring = "gob";
+        mock.request.query.type = "any";
+        searchMonstersRoute(mock.request, mock.response);
+        expect(mock.Monster.find.params).to.deep.equal({Name: /gob/i});
+    });
 });
