@@ -14,7 +14,8 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
         });
 
         $scope.refreshMonsters = function () {
-            monsterService.search($scope.query, $scope.orderProp, function (error, data) {
+            var params = {nameSubstring: $scope.query, order: $scope.orderProp};
+            monsterService.search(params, function (error, data) {
                 if (error) {
                     console.log('Error in your face: ' + error);
                 } else {

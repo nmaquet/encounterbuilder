@@ -24,7 +24,7 @@ describe("MonsterService", function () {
         it("should call the user callback with result data if successful", function () {
             var monsters = ["a", "b", "c"];
             var response;
-            monsterService.search("hobgob", "name", function (error, data) {
+            monsterService.search({nameSubstring: "hobgob", order: "name"}, function (error, data) {
                 response = data;
             });
             $httpBackend.expectGET("/api/search-monsters/?nameSubstring=hobgob&order=name").respond(200, monsters);
@@ -35,7 +35,7 @@ describe("MonsterService", function () {
         it("should call the user callback with an an error on error", function () {
             var monsters = ["a", "b", "c"];
             var response;
-            monsterService.search("hobgob", "name", function (error, data) {
+            monsterService.search({nameSubstring: "hobgob", order: "name"}, function (error, data) {
                 response = error;
             });
             $httpBackend.expectGET("/api/search-monsters/?nameSubstring=hobgob&order=name").respond(404, "ALL YOUR BASE");

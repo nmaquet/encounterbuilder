@@ -6,8 +6,8 @@ var encounterBuilderServices = angular.module('encounterBuilderServices', ['ngRe
 
 encounterBuilderServices.factory('monsterService', ['$http', function ($http) {
     return {
-        search: function (nameSubstring, order, callback) {
-            $http.get('/api/search-monsters/', {params: {nameSubstring: nameSubstring, order: order}})
+        search: function (params, callback) {
+            $http.get('/api/search-monsters/', {params : params})
                 .success(function (data) {
                     callback(null, data);
                 })

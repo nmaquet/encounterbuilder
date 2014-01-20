@@ -12,9 +12,8 @@ describe("MonsterListController", function () {
         $scope = $rootScope.$new();
         $controller = _$controller_;
         monsterService = {
-            search: function (nameSubstring, order, callback) {
-                this.search.nameSubstring = nameSubstring;
-                this.search.order = order;
+            search: function (params, callback) {
+                this.search.params = params;
                 this.search.callback = callback;
                 return this;
             },
@@ -45,13 +44,12 @@ describe("MonsterListController", function () {
         expect(typeof $scope.refreshMonsters).to.equal("function");
     });
 
-
     it("should initially refresh the list of monsters a first time", function () {
         var monsters = ["1", "2", "3"];
         instantiateController();
-        $scope.$apply(); /* force angular to resolve the $watchCollection */
-        expect(monsterService.search.nameSubstring).to.equal("");
-        expect(monsterService.search.order).to.equal("cr");
+        $scope.$apply();
+        /* force angular to resolve the $watchCollection */
+        expect(monsterService.search.params).to.deep.equal({nameSubstring: "", order: "cr"});
         monsterService.search.callback(null, monsters);
         expect($scope.monsters).to.equal(monsters);
     });
