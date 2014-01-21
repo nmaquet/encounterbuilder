@@ -80,6 +80,23 @@ var MONSTER_ATTRIBUTES = [
     "SpecialAbilities"
 ]
 
+var SEARCHABLE_ATTRIBUTES = [
+    "Name",
+    "Description",
+    "Description_Visual",
+    "SubType",
+    "Race",
+    "SpecialAttacks",
+    "SpellLikeAbilities",
+    "SpecialAbilities",
+    "Immune",
+    "Weaknesses",
+    "Melee",
+    "Ranged",
+    "Feats",
+    "Senses"
+]
+
 function generateMonsterModelObject() {
     var model = {};
     for (var i in MONSTER_ATTRIBUTES) {
@@ -94,6 +111,7 @@ function generateMonsterModelObject() {
 module.exports = function (mongoose) {
     return {
         MONSTER_ATTRIBUTES : MONSTER_ATTRIBUTES,
+        SEARCHABLE_ATTRIBUTES:SEARCHABLE_ATTRIBUTES,
         Monster :  mongoose.model('Monster', generateMonsterModelObject())
     }
 };

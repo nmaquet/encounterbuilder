@@ -16,8 +16,10 @@ app.configure(function () {
     app.use(express.methodOverride());
 });
 
-var Monster =  require('./monsterModel')(mongoose).Monster;
-var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
+var monsterModel = require('./monsterModel')(mongoose);
+var Monster =  monsterModel.Monster;
+var SEARCHABLE_MONSTER_ATTRIBUTES = monsterModel.SEARCHABLE_ATTRIBUTES;
+var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT,SEARCHABLE_MONSTER_ATTRIBUTES);
 var monsterRoute = require('./monsterRoute')(Monster);
 var monstersResetRoute = require('./monstersResetRoute')(Monster, fs);
 var defaultRoute = require('./defaultRoute')();

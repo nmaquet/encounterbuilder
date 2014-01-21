@@ -73,4 +73,6 @@ describe("searchMonstersRoute", function () {
         searchMonstersRoute(mock.request, mock.response);
         expect(mock.Monster.find.params).to.deep.equal({Name: /gob/i});
     });
+
+    it ("should search in ")
 });
