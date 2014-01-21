@@ -8,11 +8,23 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
     function ($scope, monsterService) {
         $scope.nameSubstring = '';
         $scope.orderProp = 'cr';
-        /* FIXME: rename this */
+        /* FIXME: rename this */f
         $scope.type = 'any';
 
-        $scope.$watchCollection("[nameSubstring, orderProp, type, currentPage]", function () {
+        $scope.$watchCollection("[orderProp, type, currentPage]", function () {
             $scope.refreshMonsters();
+        });
+
+        $scope.$watch('nameSubstring', function (search_string)
+        {
+            setTimeout(function() {
+                if (search_string === $scope.nameSubstring)
+                {
+                    //we only refresh monsters when nameSubstring hasn't changed for 100 ms
+                    //to avoid unnecessary queries
+                    $scope.refreshMonsters();
+                }
+            }, 100);
         });
 
         $scope.refreshMonsters = function () {
