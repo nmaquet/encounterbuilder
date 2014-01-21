@@ -49,8 +49,9 @@ describe("MonsterListController", function () {
         instantiateController();
         $scope.$apply();
         /* force angular to resolve the $watchCollection */
-        expect(monsterService.search.params).to.deep.equal({nameSubstring: "", order: "cr", type : "any"});
-        monsterService.search.callback(null, monsters);
+        var params = {nameSubstring: "", order: "cr", type: "any", skip:0, findLimit:50};
+        expect(monsterService.search.params).to.deep.equal(params);
+        monsterService.search.callback(null, {monsters: monsters, timestamp: 1000, count:42});
         expect($scope.monsters).to.equal(monsters);
     });
 });
