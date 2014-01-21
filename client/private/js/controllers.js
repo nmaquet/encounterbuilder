@@ -2,11 +2,11 @@
 
 /* Controllers */
 
-var encounterBuilderControllers = angular.module('encounterBuilderControllers', []);
+var encounterBuilderControllers = angular.module('encounterBuilderControllers', ['ui.bootstrap']);
 
 encounterBuilderControllers.controller('MonsterListController', ['$scope', 'monsterService',
     function ($scope, monsterService) {
-        $scope.nameSubstring = ''; /* FIXME: rename this */
+        $scope.nameSubstring = '';
         $scope.orderProp = 'cr'; /* FIXME: rename this */
         $scope.type = 'any';
 
@@ -24,6 +24,11 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
                 }
             });
         }
+
+        $scope.totalItems = 1000;
+        $scope.currentPage = 1;
+        $scope.itemsPerPage = 50; /* FIXME: how to get this from the server if possible */
+        $scope.maxSize = 10;
     }
 ]);
 

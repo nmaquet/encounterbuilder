@@ -7,7 +7,7 @@
         "angular": "~1.2",
         "angular-resource": "~1.2",
         "angular-route": "~1.2",
-        "angular-ui-bootstrap-bower": "~0.10",
+        "angular-ui-bootstrap-bower": "~0.8",
         "jquery": "~1.10",
         "bootstrap.css": "~2.3"
     },

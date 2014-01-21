@@ -16,6 +16,7 @@ var jsFiles = [
     "client/private/bower_components/angular/angular.js",
     "client/private/bower_components/angular-route/angular-route.js",
     "client/private/bower_components/angular-resource/angular-resource.js",
+    "client/private/bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js",
     // App files
     "client/private/js/app.js",
     "client/private/js/controllers.js",

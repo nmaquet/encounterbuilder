@@ -28,9 +28,10 @@
             </select>
         </div>
         <div class="span10">
-            <!--Body content-->
-
-            <ul class="monsters">
+            <pagination boundary-links="true" total-items="totalItems" page="currentPage" items-per-page="itemsPerPage"
+                        max-size="maxSize" class="pagination-sm"
+                        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+            </pagination>
                 <li ng-repeat="monster in monsters" class="thumbnail">
                     <a href="#/monsters/{{monster.id}}">{{monster.Name}}</a>
 
