@@ -29,14 +29,16 @@
         </div>
         <div class="span10">
             <pagination boundary-links="true" total-items="totalItems" page="currentPage" items-per-page="itemsPerPage"
-                        max-size="maxSize" class="pagination-sm"
+                        max-size="maxSize" class="page pagination-sm"
                         previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
             </pagination>
-            <li ng-repeat="monster in monsters" class="thumbnail">
-                <a href="#/monsters/{{monster.id}}">{{monster.Name}}</a>
+            <ul class="monsters">
+                <li ng-repeat="monster in monsters" class="thumbnail">
+                    <a href="#/monsters/{{monster.id}}">{{monster.Name}}</a>
 
-                <p>CR : {{monster.CR | numberToFractionString}}</p>
-            </li>
+                    <p>CR : {{monster.CR | numberToFractionString}}</p>
+                </li>
+            </ul>
             <pagination boundary-links="true" total-items="totalItems" page="currentPage" items-per-page="itemsPerPage"
                         max-size="maxSize" class="pagination-sm"
                         previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">

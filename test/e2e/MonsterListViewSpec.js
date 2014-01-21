@@ -79,4 +79,37 @@ describe('Monster List View', function () {
         select('type').option('animal');
         expect(repeater('.monsters li').count()).toBe(2);
     });
+
+    it('should display 4 pages and 4 arrows when searching for "dragon"', function () {
+        input('nameSubstring').enter('dragon');
+        expect(repeater('.page li').count()).toBe(8);
+    });
+
+    it('should display 2 pages and 4 arrows when searching for "elemental"', function () {
+        input('nameSubstring').enter('elemental');
+        expect(repeater('.page li').count()).toBe(6);
+    });
+
+    it('should display the correct dragon as first dragon of each page', function () {
+        input('nameSubstring').enter('dragon');
+        expect(element('.monsters li:nth-child(1) a').text()).toBe("Dragonfish");
+        element("a:contains(2)").click();
+        expect(element('.monsters li:nth-child(1) a').text()).toBe("Juvenile Green Dragon");
+        element("a:contains(3)").click();
+        expect(element('.monsters li:nth-child(1) a').text()).toBe("Adult Forest Dragon");
+        element("a:contains(4)").click();
+        expect(element('.monsters li:nth-child(1) a').text()).toBe("Elemental Air Dragon");
+    });
+
+    it('should have working pagination arrows', function () {
+        input('nameSubstring').enter('dragon');
+        element("a:contains(›)").click();
+        expect(element('.monsters li:nth-child(1) a').text()).toBe("Juvenile Green Dragon");
+        element("a:contains(»)").click();
+        expect(element('.monsters li:nth-child(1) a').text()).toBe("Elemental Air Dragon");
+        element("a:contains(‹)").click();
+        expect(element('.monsters li:nth-child(1) a').text()).toBe("Adult Forest Dragon");
+        element("a:contains(«)").click();
+        expect(element('.monsters li:nth-child(1) a').text()).toBe("Dragonfish");
+    });
 });
