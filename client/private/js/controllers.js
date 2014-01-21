@@ -27,8 +27,11 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
                 if (error) {
                     console.log('Error in your face: ' + error);
                 } else {
-                    $scope.monsters = data.monsters;
-                    $scope.totalItems = data.count;
+                    if (data.timestamp >= $scope.listTimestamp) {
+                        $scope.monsters = data.monsters;
+                        $scope.totalItems = data.count;
+                        $scope.listTimestamp = data.timestamp;
+                    }
                 }
             });
         }
@@ -37,6 +40,7 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
         $scope.currentPage = 1;
         $scope.itemsPerPage = 50;
         $scope.maxSize = 10;
+        $scope.listTimestamp = 0;
     }
 ]);
 
