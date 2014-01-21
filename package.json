@@ -6,7 +6,7 @@
         "start"       : "node scripts/concat_and_uglify.js && node server/server.js",
         "test-client" : "karma start test/conf/karma-client-unit.conf --single-run",
         "test-e2e"    : "karma start test/conf/karma-e2e.conf --single-run",
-        "test-server" : "mocha --recursive test/server-unit",
+        "test-server" : "mocha --reporter xunit --recursive test/server-unit",
         "test-all" : "npm run-script test-client && npm run-script test-server && npm run-script test-e2e"
     },
     "author"       : "Nic & Chris",
