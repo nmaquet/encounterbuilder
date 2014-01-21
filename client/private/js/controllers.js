@@ -51,7 +51,7 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
         $scope.totalItems = 0;
         $scope.currentPage = 1;
         $scope.itemsPerPage = 50;
-        $scope.maxSize = 10;
+        $scope.maxSize = 5;
         $scope.listTimestamp = 0;
     }
 ]);

@@ -1,6 +1,6 @@
 /* app css stylesheet */
 
-.FullText {
+/*.FullText {
     width: 800px;
 }
 
@@ -24,10 +24,10 @@ body {
   clear: both;
   height: 50px;
   padding-top: 15px;
-}
+}*/
 
 /** Detail View **/
-img.phone {
+/*img.phone {
   float: left;
   border: 1px solid black;
   margin-right: 3em;
@@ -85,4 +85,4 @@ ul.specs dt {
 
 h1 {
   border-bottom: 1px solid gray;
-}
+}*/

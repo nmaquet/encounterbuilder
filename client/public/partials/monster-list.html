@@ -1,48 +1,266 @@
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span2">
-            <!--Sidebar content-->
-
-            Search: <input ng-model="nameSubstring">
-            Sort by:
-            <select ng-model="orderProp">
-                <option value="name">Alphabetical</option>
-                <option value="cr">Challenge Rating</option>
-            </select>
-            Type:
-            <select ng-model="type">
-                <option value="any"></option>
-                <option value="aberration">Aberration</option>
-                <option value="animal">Animal</option>
-                <option value="construct">Construct</option>
-                <option value="dragon">Dragon</option>
-                <option value="fey">Fey</option>
-                <option value="humanoid">Humanoid</option>
-                <option value="magical beast">Magical Beast</option>
-                <option value="monstrous humanoid">Monstrous Humanoid</option>
-                <option value="ooze">Ooze</option>
-                <option value="outsider">Outsider</option>
-                <option value="plant">Plant</option>
-                <option value="undead">Undead</option>
-                <option value="vermin">Vermin</option>
-            </select>
-        </div>
-        <div class="span10">
-            <pagination boundary-links="true" total-items="totalItems" page="currentPage" items-per-page="itemsPerPage"
-                        max-size="maxSize" class="page pagination-sm"
-                        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
-            </pagination>
-            <ul class="monsters">
-                <li ng-repeat="monster in monsters" class="thumbnail">
-                    <a href="#/monsters/{{monster.id}}">{{monster.Name}}</a>
-
-                    <p>CR : {{monster.CR | numberToFractionString}}</p>
-                </li>
-            </ul>
-            <pagination boundary-links="true" total-items="totalItems" page="currentPage" items-per-page="itemsPerPage"
-                        max-size="maxSize" class="pagination-sm"
-                        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
-            </pagination>
+<!--.navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#" title="">Encounter Builder</a>
+            <form class="navbar-form pull-left">
+                <select ng-model="type">
+                    <option value="any"></option>
+                    <option value="aberration">Aberration</option>
+                    <option value="animal">Animal</option>
+                    <option value="construct">Construct</option>
+                    <option value="dragon">Dragon</option>
+                    <option value="fey">Fey</option>
+                    <option value="humanoid">Humanoid</option>
+                    <option value="magical beast">Magical Beast</option>
+                    <option value="monstrous humanoid">Monstrous Humanoid</option>
+                    <option value="ooze">Ooze</option>
+                    <option value="outsider">Outsider</option>
+                    <option value="plant">Plant</option>
+                    <option value="undead">Undead</option>
+                    <option value="vermin">Vermin</option>
+                </select>
+            </form>
+            <div class="nav-collapse collapse">
+                <ul class="nav nav-social">
+                    <li class="active"><a href="#todo"><i class="icon-eye-open icon-white"></i>&nbsp;Views</a></li>
+                    <li><a href="#todo"><i class="icon-heart icon-white"></i>&nbsp;Likes</a></li>
+                    <li><a href="#todo"><i class="icon-bullhorn icon-white"></i>&nbsp;Comments</a></li>
+                    <li><a href="#todo"><i class="icon-user icon-white"></i>&nbsp;Spawns</a></li>
+                </ul>
+                <ul class="nav nav-settings">
+                    <li class="active"><a href="#todo"><i class="icon-cog icon-white"></i></a></li>
+                    <li><a href="#todo"><i class="icon-folder-close icon-white"></i></a></li>
+                </ul>
+                <p class="navbar-text pull-right">
+                    <a href="#todo" class="navbar-link btn"><i class="icon-user"></i>&nbsp;Username&nbsp;<b class="caret"></b></a>
+                </p>
+            </div>
         </div>
     </div>
 </div>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <div class="row-fluid">
+                    <legend>Monsters</legend>
+                    <ul class="unstyled">
+                        <li><span class="badge badge-info">8</span>&nbsp;Orc <strong>CR 1</strong></li>
+                        <li><span class="badge badge-info">5</span>&nbsp;Elf <strong>CR 5</strong></li>
+                        <li><span class="badge badge-info">3</span>&nbsp;Wood Elf <strong>CR 2</strong></li>
+                        <li><span class="badge badge-info">1</span>&nbsp;Bidule <strong>CR 48</strong></li>
+                    </ul>
+                </div>
+                <div class="row-fluid">
+                    <legend>Treasure</legend>
+                    <ul class="unstyled">
+                        <li><span class="badge badge-info">8</span>&nbsp;Orc <strong>CR 1</strong></li>
+                        <li><span class="badge badge-info">5</span>&nbsp;Elf <strong>CR 5</strong></li>
+                    </ul>
+                </div>
+            </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <!--<legend>Search</legend>-->
+                <div class="row-fluid">
+                    <label for="search">Search</label>
+                    <input type="text" name="search" id="search" placeholder="Type something…" ng-model="nameSubstring">
+                </div>
+                <div class="row-fluid">
+                    <label for="sort">Sort by:</label>
+                    <select ng-model="orderProp" id="sort">
+                        <option value="name">Alphabetical</option>
+                        <option value="cr">Challenge Rating</option>
+                    </select>
+                </div>
+                <div class="row-fluid">
+                    <label for="type">Type:</label>
+                    <select ng-model="type" id="type">
+                        <option value="any">Any</option>
+                        <option value="aberration">Aberration</option>
+                        <option value="animal">Animal</option>
+                        <option value="construct">Construct</option>
+                        <option value="dragon">Dragon</option>
+                        <option value="fey">Fey</option>
+                        <option value="humanoid">Humanoid</option>
+                        <option value="magical beast">Magical Beast</option>
+                        <option value="monstrous humanoid">Monstrous Humanoid</option>
+                        <option value="ooze">Ooze</option>
+                        <option value="outsider">Outsider</option>
+                        <option value="plant">Plant</option>
+                        <option value="undead">Undead</option>
+                        <option value="vermin">Vermin</option>
+                    </select>
+                </div>
+            </div><!--/.well -->
+            <div class="result-list">
+                <pagination boundary-links="true" total-items="totalItems" page="currentPage" items-per-page="itemsPerPage"
+                            max-size="maxSize" class="page pagination-sm"
+                            previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                </pagination>
+                <table class="monsters table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>CR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="monster in monsters">
+                            <td>
+                                <a href="#/monsters/{{monster.id}}">{{monster.Name}}</a>
+                            </td>
+                            <td>
+                                <p>CR : {{monster.CR | numberToFractionString}}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination boundary-links="true" total-items="totalItems" page="currentPage" items-per-page="itemsPerPage"
+                            max-size="maxSize" class="pagination-sm"
+                            previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                </pagination>
+            </div>
+        </div><!--/span-->
+        <div class="span6">
+            <div class="row-fluid">
+                <div class="span8">
+                    <h2>{{monster.Name}}</h2>
+                    <p>{{monster.Description_Visual}}</p>
+                </div>
+                <div class="span4">
+                    <div class="thumbnail">
+                        <ul class="unstyled">
+                            <li><strong>CR</strong>&nbsp;{{monster.CR | numberToFractionString}}</li>
+                            <li><strong>XP</strong>&nbsp;{{monster.XP}}</li>
+                            <li><strong>{{monster.Alignment}}</strong> {{monster.Size}} {{monster.Type}} {{monster.SubType}}</li>
+                            <li><strong>Init </strong>&nbsp;{{monster.Init}}</li>
+                            <li><strong>Senses </strong>&nbsp;{{monster.Senses}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span8">
+                    <legend>Offense</legend>
+                    <ul class="unstyled">
+                        <li><strong>SPD</strong>&nbsp;{{monster.Speed}}</li>
+                        <li><strong>Melee</strong>&nbsp;{{monster.Melee}}</li>
+                        <li><strong>Space</strong>&nbsp;{{monster.Space}}&nbsp;|&nbsp;<strong>Reach</strong>&nbsp;{{monster.Reach}}</li>
+                        <li ng-if="monster.SpecialAttacks"><strong>Special Attacks</strong>&nbsp;{{monster.SpecialAttacks}};</li>
+                        <li ng-bind-html="monster.SLASafe"></li>
+                    </ul>
+
+                    <!--<dl class="dl-horizontal">
+                        <dt><strong>SPD</strong></dt>
+                        <dd>&nbsp;{{monster.Speed}}</dd>
+                        <dt><strong>Melee | Reach</strong></dt>
+                        <dd>&nbsp;{{monster.Space}} | {{monster.Reach}}</dd>
+                        <dt><strong>Space</strong></dt>
+                        <dd>&nbsp;{{monster.Speed}}</dd>
+                        <dt ng-if="monster.SpecialAttacks"><strong>Special Attacks</strong></dt>
+                        <dd ng-if="monster.SpecialAttacks">&nbsp;{{monster.SpecialAttacks}};</dd>
+
+                        <dt ng-bind-html="monster.SLASafe"><strong>Fix Me</strong></dt>
+                        <dd ng-bind-html="monster.SLASafe"></dd>
+                    </dl>-->
+                    <!--FIXME delete title from SLASafe content.
+                    -->
+                </div>
+                <div class="span4">
+                    <legend>Defense</legend>
+                    <ul class="unstyled">
+                        <li><strong><abbr title="Armor Class">AC</abbr></strong>&nbsp;{{monster.AC}}</li>
+                        <li><strong>HP</strong>&nbsp;{{monster.HP}}</li>
+                        <li>
+                            <strong>Fort </strong>{{monster.Fort}},
+                            <strong>Ref </strong>{{monster.Ref}},
+                            <strong>Will </strong>{{monster.Will}}
+                        </li>
+                        <li ng-if="monster.DR"><strong>DR</strong>&nbsp;{{monster.DR}};</li>
+                        <li ng-if="monster.Immune"><strong>Immune</strong>&nbsp;{{monster.Immune}};</li>
+                        <li ng-if="monster.Weaknesses"><strong>Weaknesses</strong>&nbsp;{{monster.Weaknesses}};</li>
+                        <li ng-if="monster.SR"><strong>SR</strong>&nbsp;{{monster.SR}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span8">
+                    <legend>Statistics</legend>
+                    <ul class="unstyled">
+                        <li>
+                            <strong>Str</strong>&nbsp;{{monster.Str}},
+                            <strong>Dex</strong>&nbsp;{{monster.Dex}},
+                            <strong>Con</strong>&nbsp;{{monster.Con}},
+                            <strong>Int</strong>&nbsp;{{monster.Int}},
+                            <strong>Wis</strong>&nbsp;{{monster.Wis}},
+                            <strong>Cha</strong>&nbsp;{{monster.Cha}}
+                        </li>
+                        <li>
+                            <strong>Base Atk</strong>&nbsp;{{monster.BaseAtk}};
+                            <strong>CMB</strong>&nbsp;{{monster.CMB}};
+                            <strong>CMD</strong>&nbsp;{{monster.CMD}}
+                        </li>
+                        <li><strong>Feats </strong>&nbsp;{{monster.Feats}}</li>
+                        <li>
+                            <strong>Skills</strong>&nbsp;{{monster.Skills}}
+                            <strong>Racial Modifiers</strong>&nbsp;{{monster.RacialMods}}
+                        </li>
+                        <li><strong>Languages</strong>&nbsp;{{monster.Languages}}</li>
+                        <li><strong>SQ</strong>&nbsp;{{monster.SQ}}</li>
+                    </ul>
+                </div>
+                <div class="span4">
+                    <div><legend>Ecology</legend></div>
+                    <div>
+                        <ul class="unstyled">
+                            <li>
+                                <strong>Environment</strong>&nbsp;{{monster.Environment}}
+                            </li>
+                            <li>
+                                <strong>Organization</strong>&nbsp;{{monster.Organization}}
+                            </li>
+                            <li>
+                                <strong>Treasure</strong>&nbsp;{{monster.Treasure}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <span ng-if="monster.SpecialAbilitiesSafe">
+                        <legend>Special Abilities</legend>
+                        <!-- FIXME Use jQuery to change the <h5> tags into <p> or <div> -->
+                        <div ng-bind-html="monster.SpecialAbilitiesSafe"></div>
+                    </span>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <legend>Description</legend>
+                    <div ng-bind-html="monster.DescriptionSafe"></div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<footer>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+            <p>© DemonSquid 2014</p>
+        </div>
+    </div>
+</div>
+</footer>
