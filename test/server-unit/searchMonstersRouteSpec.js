@@ -40,11 +40,40 @@ describe("searchMonstersRoute", function () {
         expect(mock.Monster.sort.options).to.equal("CR Name");
     });
 
-    it("should respond with the monster JSON on success", function () {
+    it("should respond with the JSON object with count + monsters on success (first execFind then count)", function () {
         var error = null;
+        var count = 50;
         searchMonstersRoute(mock.request, mock.response);
         mock.Monster.execFind.callback(error, mock.monsterArray);
-        expect(mock.response.json.object).to.deep.equal(mock.monsterArray);
+        mock.Monster.count.callback(error, count);
+        expect(mock.response.json.object.monsters).to.deep.equal(mock.monsterArray);
+        expect(mock.response.json.object.count).to.equal(count);
+    });
+
+    it("should respond with the JSON object with count + monsters on success (first count then execFind)", function () {
+        var error = null;
+        var count = 50;
+        searchMonstersRoute(mock.request, mock.response);
+        mock.Monster.count.callback(error, count);
+        mock.Monster.execFind.callback(error, mock.monsterArray);
+        expect(mock.response.json.object.monsters).to.deep.equal(mock.monsterArray);
+        expect(mock.response.json.object.count).to.equal(count);
+    });
+
+    it("should NOT respond with the JSON object with count + monsters when only .execFind() has finished", function () {
+        var error = null;
+        var count = 50;
+        searchMonstersRoute(mock.request, mock.response);
+        mock.Monster.execFind.callback(error, mock.monsterArray);
+        expect(mock.response.json.object).to.be.undefined;
+    });
+
+    it("should NOT respond with the JSON object with count + monsters when only .count() has finished", function () {
+        var error = null;
+        var count = 50;
+        searchMonstersRoute(mock.request, mock.response);
+        mock.Monster.count.callback(error, count);
+        expect(mock.response.json.object).to.be.undefined;
     });
 
     it("should send the error on error", function () {

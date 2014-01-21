@@ -16,6 +16,14 @@ module.exports = function () {
                 this.sort.options = options;
                 return this;
             },
+            skip: function (value) {
+                this.skip.value = value;
+                return this;
+            },
+            count: function (callback) {
+                this.count.callback = callback;
+                return this;
+            },
             execFind: function (callback) {
                 this.execFind.callback = callback;
                 return this;
