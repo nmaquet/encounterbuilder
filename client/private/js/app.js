@@ -6,19 +6,14 @@ var encounterBuilderApp = angular.module('encounterBuilderApp', [
   'ngRoute',
   'encounterBuilderControllers',
   'encounterBuilderFilters',
-  'encounterBuilderServices',
+  'encounterBuilderServices'
 ]);
 
 encounterBuilderApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/monsters', {
-        templateUrl: 'partials/monster-list.html',
-        controller: 'MonsterListController'
-      }).
-      when('/monsters/:monsterId', {
-        templateUrl: 'partials/monster-list.html',
-        controller: 'MonsterDetailController'
+        templateUrl: 'partials/monster-list.html'
       }).
       otherwise({
         redirectTo: '/monsters'

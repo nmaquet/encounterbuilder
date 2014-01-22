@@ -8,7 +8,7 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
     function ($scope, monsterService) {
         $scope.nameSubstring = '';
         $scope.orderProp = 'cr';
-        /* FIXME: rename this */f
+        /* FIXME: rename this */
         $scope.type = 'any';
 
         $scope.$watchCollection("[orderProp, type, currentPage]", function () {
@@ -24,7 +24,7 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
                     //to avoid unnecessary queries
                     $scope.refreshMonsters();
                 }
-            }, 100);
+            }, 300);
         });
 
         $scope.refreshMonsters = function () {
@@ -43,9 +43,17 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
                         $scope.monsters = data.monsters;
                         $scope.totalItems = data.count;
                         $scope.listTimestamp = data.timestamp;
+
+                        if (!$scope.selectedMonsterId && $scope.monsters){
+                            $scope.selectedMonsterId = $scope.monsters[0].id;
+                        }
                     }
                 }
             });
+        }
+
+        $scope.selectMonster = function (id) {
+            $scope.selectedMonsterId = id;
         }
 
         $scope.totalItems = 0;
@@ -56,17 +64,19 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
     }
 ]);
 
-encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$routeParams', '$sce', 'monsterService',
-    function ($scope, $routeParams, $sce, monsterService) {
-        $scope.monster = monsterService.get($routeParams.monsterId, function (error, data) {
-            if (error) {
-                console.log('Error in your face: ' + error);
-            } else {
-                $scope.monster = data;
-                $scope.monster.DescriptionSafe = $sce.trustAsHtml($scope.monster.Description);
-                $scope.monster.SLASafe = $sce.trustAsHtml($scope.monster.SpellLikeAbilities);
-                $scope.monster.SpecialAbilitiesSafe = $sce.trustAsHtml($scope.monster.SpecialAbilities);
-
-            }
+encounterBuilderControllers.controller('MonsterDetailController', ['$scope',  '$sce', 'monsterService',
+    function ($scope, $sce, monsterService) {
+        $scope.$watch('selectedMonsterId',function(selectedMonsterId){
+            $scope.monster = monsterService.get(selectedMonsterId, function (error, data) {
+                if (error) {
+                    console.log('Error in your face: ' + error);
+                } else {
+                    $scope.monster = data;
+                    $scope.monster.DescriptionSafe = $sce.trustAsHtml($scope.monster.Description);
+                    $scope.monster.SLASafe = $sce.trustAsHtml($scope.monster.SpellLikeAbilities);
+                    $scope.monster.SpecialAbilitiesSafe = $sce.trustAsHtml($scope.monster.SpecialAbilities);
+                }
+            });
         });
+
     }]);
