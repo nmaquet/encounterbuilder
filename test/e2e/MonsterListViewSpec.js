@@ -110,4 +110,16 @@ describe('Monster List View', function () {
         element("a:contains(«)").click();
         expect(element('.monsters tr:nth-child(1) td:nth-child(1) p').text()).toBe("Dragonfish");
     });
+
+    it('should update the right-side pane when you click on a monster in the search results', function() {
+        inputNameSubstring('dragon');
+        element('.monsters tr:nth-child(1)').click();
+        expect(element('h2').text()).toBe("Dragonfish");
+        element('.monsters tr:nth-child(2)').click();
+        expect(element('h2').text()).toBe("Pseudodragon");
+    });
+
+    it('should initially fill the monster detail pane with the first monster', function() {
+        expect(element('h2').text()).toBe("Bat");
+    });
 });
