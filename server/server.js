@@ -34,3 +34,10 @@ var port = process.env.PORT || 3000;
 app.listen(port);
 
 console.log("Encounter Builder Server listening on port " + port);
+
+fs.writeFileSync("server.pid", process.pid);
+
+process.on('SIGINT', function() {
+    console.log('Exiting...');
+    process.exit(0);
+});

@@ -22,14 +22,16 @@ describe("MonsterService", function () {
     describe("MonsterService.search", function () {
 
         it("should call the user callback with result data if successful", function () {
-            var monsters = ["a", "b", "c"];
-            var response;
+            var serverResponse = {monsters : ["a", "b", "c"], count:42};
+            var serviceResponse;
             monsterService.search({nameSubstring: "hobgob", order: "name"}, function (error, data) {
-                response = data;
+                serviceResponse = data;
             });
-            $httpBackend.expectGET("/api/search-monsters/?nameSubstring=hobgob&order=name").respond(200, monsters);
+            $httpBackend.expectGET("/api/search-monsters/?nameSubstring=hobgob&order=name").respond(200, serverResponse);
             $httpBackend.flush();
-            expect(response).to.deep.equal(monsters);
+            expect(serviceResponse.monsters).to.deep.equal(serverResponse.monsters);
+            expect(serviceResponse.count).to.equal(serverResponse.count);
+            expect(serviceResponse.timestamp).to.not.be.undefined;
         });
 
         it("should call the user callback with an an error on error", function () {

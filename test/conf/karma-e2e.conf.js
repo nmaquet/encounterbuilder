@@ -7,6 +7,7 @@ module.exports = function (config) {
             'client/private/bower_components/angular-resource/angular-resource.js',
             'client/private/bower_components/angular-route/angular-route.js',
             'client/private/bower_components/angular-mocks/angular-mocks.js',
+            "client/private/bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js",
             'client/private/js/*.js',
             'test/e2e/*.js'
         ],
@@ -17,7 +18,11 @@ module.exports = function (config) {
         },
         autoWatch: false,
         browsers: ['PhantomJS'], // Firefox, ChromeCanary, Opera, IE
-        reporters: ['progress', 'coverage'],
+        reporters: ['junit', 'progress'],
+        junitReporter: {
+            outputFile: 'e2e-test-results.xml',
+            suite: ''
+        },
         singleRun: false,
         port: 9877,
         colors: true,
@@ -27,7 +32,8 @@ module.exports = function (config) {
             'karma-chrome-launcher',
             'karma-phantomjs-launcher',
             'karma-ng-scenario',
-            'karma-coverage'
+            'karma-coverage',
+            'karma-junit-reporter'
         ],
         urlRoot: "/karma",
         proxies: {

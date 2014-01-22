@@ -4,3 +4,4 @@ data/db
 coverage
 data/contrib/*
 *-results.xml
+server.pid
