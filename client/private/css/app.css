@@ -1,3 +1,20 @@
 .pointer {
     cursor: pointer;
 }
+
+.table-striped tbody > tr:nth-child(odd) > td.selected {
+    background-color: #bce8f1;
+}
+
+.table-striped tbody > tr:nth-child(even) > td.selected {
+    background-color: #bce8f1;
+}
+
+.table-striped tbody > tr.monster-row:nth-child(odd):hover > td {
+    background-color: aliceblue;
+}
+
+.table-striped tbody > tr.monster-row:nth-child(even):hover > td {
+    background-color: #d9edf7;
+}
+

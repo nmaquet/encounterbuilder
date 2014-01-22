@@ -68,11 +68,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="monster in monsters">
-                        <td>
-                            <a ng-click="selectMonster(monster.id)" class="pointer">{{monster.Name}}</a>
+                    <tr ng-repeat="monster in monsters" ng-click="selectMonster(monster.id)" class="pointer monster-row">
+                        <td ng-class="{selected: selectedMonsterId == monster.id}">
+                            <p >{{monster.Name}}</p>
                         </td>
-                        <td>
+                        <td ng-class="{selected: selectedMonsterId == monster.id}">
                             <p>CR : {{monster.CR | numberToFractionString}}</p>
                         </td>
                     </tr>
