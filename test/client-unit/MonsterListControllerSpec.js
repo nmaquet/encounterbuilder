@@ -36,7 +36,7 @@ describe("MonsterListController", function () {
 
     it("should initialize the sort order to *challenge rating*", function () {
         instantiateController();
-        expect($scope.orderProp).to.equal("cr(INTENTIONAL BUG TO MAKE TEST FAIL)");
+        expect($scope.orderProp).to.equal("cr");
     });
 
     it("should put a refreshMonsters() function in the scope", function () {
