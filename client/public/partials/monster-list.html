@@ -57,16 +57,23 @@
                     </select>
                 </div>
 
-                <p>
-                    <label for="cr-range">CR range:</label>
-                    <input type="text" id="cr-range" ng-model="crRange" readonly>
-                </p>
-
-                <div id="slider-range"></div>
+                <div class="row-fluid">
+                    <div class="row-fluid">
+                        <div class="span3" style="max-width: 70px;">
+                            <label for="cr-range" style="margin-top: 4px;">CR range:</label>
+                        </div>
+                        <div class="span3">
+                            <input type="text" id="cr-range" ng-model="crRange" readonly style="width: 45px; display: inline-block; float: left">
+                        </div>
+                    </div>
+                    <div class="row-fluid" style="max-width: 226px">
+                            <div id="slider-range"></div>
+                    </div>
+                </div>
             </div><!--/.well -->
             <div class="result-list">
                 <pagination boundary-links="true" total-items="totalItems" page="currentPage" items-per-page="itemsPerPage"
-                            max-size="maxSize" class="page pagination-sm"
+                            max-size="maxSize" class="page pagination-centered pagination-small"
                             previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
                 </pagination>
                 <table class="monsters table table-striped">
@@ -92,7 +99,7 @@
                     </tbody>
                 </table>
                 <pagination boundary-links="true" total-items="totalItems" page="currentPage" items-per-page="itemsPerPage"
-                            max-size="maxSize" class="pagination-sm"
+                            max-size="maxSize" class="pagination-centered pagination-small"
                             previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
                 </pagination>
             </div>
