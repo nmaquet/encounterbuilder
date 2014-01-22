@@ -7,6 +7,7 @@ var uglify_js = require("uglify-js");
 var cssFiles = [
     // Dependencies
     "client/private/bower_components/bootstrap.css/css/bootstrap.css",
+    "client/private/bower_components/jquery-ui/themes/base/jquery-ui.css",
     // App files
     "client/private/css/app.css"
 ];
@@ -17,6 +18,8 @@ var jsFiles = [
     "client/private/bower_components/angular-route/angular-route.js",
     "client/private/bower_components/angular-resource/angular-resource.js",
     "client/private/bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js",
+    "client/private/bower_components/jquery/jquery.js",
+    "client/private/bower_components/jquery-ui/ui/jquery-ui.js",
     // App files
     "client/private/js/app.js",
     "client/private/js/controllers.js",
@@ -34,7 +37,8 @@ function concat(fileList, distPath) {
 }
 
 function uglify(srcPath, distPath) {
-    var ast = uglify_js.parse(fs.readFileSync(srcPath, FILE_ENCODING));
+    var contents = fs.readFileSync(srcPath, FILE_ENCODING);
+    var ast = uglify_js.parse(contents);
     var compressor = uglify_js.Compressor();
     ast.figure_out_scope();
     ast = ast.transform(compressor);

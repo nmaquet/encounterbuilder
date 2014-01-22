@@ -8,6 +8,8 @@ module.exports = function (config) {
             'client/private/bower_components/angular-route/angular-route.js',
             'client/private/bower_components/angular-mocks/angular-mocks.js',
             "client/private/bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js",
+            "client/private/bower_components/jquery/jquery.js",
+            "client/private/bower_components/jquery-ui/ui/jquery-ui.js",
             'client/private/js/*.js',
             'test/client-unit/*.js'
         ],

@@ -1,3 +1,5 @@
+
+
 <!--.navbar -->
 <div class="container-fluid" ng-controller="MonsterListController" >
     <div class="row-fluid">
@@ -54,6 +56,13 @@
                         <option value="vermin">Vermin</option>
                     </select>
                 </div>
+
+                <p>
+                    <label for="cr-range">CR range:</label>
+                    <input type="text" id="cr-range" ng-model="crRange" readonly>
+                </p>
+
+                <div id="slider-range"></div>
             </div><!--/.well -->
             <div class="result-list">
                 <pagination boundary-links="true" total-items="totalItems" page="currentPage" items-per-page="itemsPerPage"
