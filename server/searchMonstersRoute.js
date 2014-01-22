@@ -22,7 +22,7 @@ module.exports = function (Monster, defaultFindLimit) {
         var skip = request.query.skip || 0;
         var findLimit = request.query.findLimit || defaultFindLimit;
         var findParams = getFindParams(request);
-        var projection = {Name: true, CR: true, id: true};
+        var projection = {Name: true, CR: true, id: true, Source: true};
         var monsters;
         var count;
         Monster.find(findParams, projection).limit(findLimit).sort(sortOption).skip(skip)

@@ -6,7 +6,7 @@ var encounterBuilderApp = angular.module('encounterBuilderApp', [
   'ngRoute',
   'encounterBuilderControllers',
   'encounterBuilderFilters',
-  'encounterBuilderServices'
+  'encounterBuilderServices',
 ]);
 
 encounterBuilderApp.config(['$routeProvider',

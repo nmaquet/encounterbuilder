@@ -65,6 +65,7 @@
                     <tr>
                         <th>Name</th>
                         <th>CR</th>
+                        <th>Source</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -73,7 +74,10 @@
                             <p >{{monster.Name}}</p>
                         </td>
                         <td ng-class="{selected: selectedMonsterId == monster.id}">
-                            <p>CR : {{monster.CR | numberToFractionString}}</p>
+                            <p>{{monster.CR | numberToFractionString}}</p>
+                        </td>
+                        <td ng-class="{selected: selectedMonsterId == monster.id}">
+                            <abbr title="{{monster.Source}}"><small>{{monster.Source | abbreviateMonsterSource}}</p></abbr>
                         </td>
                     </tr>
                     </tbody>

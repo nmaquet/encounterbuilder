@@ -60,11 +60,11 @@ describe('Monster List View', function () {
         inputNameSubstring('goblin');
         select('orderProp').option('cr');
         expect(repeater('.monsters tr').count()).toBe(5+1);
-        expect(element('.monsters tr:nth-child(1) td:nth-child(2) p').text()).toBe("CR : 1/3");
-        expect(element('.monsters tr:nth-child(2) td:nth-child(2) p').text()).toBe("CR : 1/2");
-        expect(element('.monsters tr:nth-child(3) td:nth-child(2) p').text()).toBe("CR : 1/2");
-        expect(element('.monsters tr:nth-child(4) td:nth-child(2) p').text()).toBe("CR : 1");
-        expect(element('.monsters tr:nth-child(5) td:nth-child(2) p').text()).toBe("CR : 1");
+        expect(element('.monsters tr:nth-child(1) td:nth-child(2) p').text()).toBe("1/3");
+        expect(element('.monsters tr:nth-child(2) td:nth-child(2) p').text()).toBe("1/2");
+        expect(element('.monsters tr:nth-child(3) td:nth-child(2) p').text()).toBe("1/2");
+        expect(element('.monsters tr:nth-child(4) td:nth-child(2) p').text()).toBe("1");
+        expect(element('.monsters tr:nth-child(5) td:nth-child(2) p').text()).toBe("1");
     });
 
     it('should  display 17 monsters when searching for "small"', function () {

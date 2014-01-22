@@ -210,6 +210,7 @@ function cleanupSRDMonster(srdMonster, $) {
 }
 
 var monsters = [];
+var monsterNameCount = {};
 
 for (var i in srd_monsters) {
 
@@ -221,14 +222,31 @@ for (var i in srd_monsters) {
     }
     var $ = cheerio.load(srd_monsters[i].FullText);
 
+    var cleanedUpMonster = cleanupSRDMonster(srd_monsters[i], $);
+/*
     try {
-        compareMonsters(cleanupSRDMonster(srd_monsters[i], $), kyleMonster);
+        compareMonsters(cleanedUpMonster, kyleMonster);
     } catch (e) {
         console.log(e.stack);
         continue;
     }
+*/
+    monsters.push(cleanedUpMonster);
+    if (monsterNameCount[cleanedUpMonster.Name.toLowerCase()] !== undefined) {
+        monsterNameCount[cleanedUpMonster.Name.toLowerCase()]++;
+        console.log("[WARNING] : " + cleanedUpMonster.Name.toLowerCase() + " occurs at least " + monsterNameCount[cleanedUpMonster.Name.toLowerCase()] + " times");
+    } else {
+        monsterNameCount[cleanedUpMonster.Name.toLowerCase()] = 1;
+    }
 
-    monsters.push(cleanupSRDMonster(srd_monsters[i], $));
+}
+
+console.log();
+
+for (var name in monsterNameCount) {
+    if (monsterNameCount[name] > 1) {
+        console.log("[WARNING] : " + name + " occurs " + monsterNameCount[name] + " times");
+    }
 }
 
 fs.writeFileSync('../data/monsters/monsters.json', JSON.stringify(monsters));
