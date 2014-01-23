@@ -4,8 +4,8 @@
 
 var encounterBuilderControllers = angular.module('encounterBuilderControllers', ['ui.bootstrap']);
 
-encounterBuilderControllers.controller('MonsterListController', ['$scope', 'monsterService',
-    function ($scope, monsterService) {
+encounterBuilderControllers.controller('MonsterListController', ['$scope','$cookies', 'monsterService',
+    function ($scope,$cookies ,monsterService) {
         $scope.nameSubstring = '';
         $scope.orderProp = 'cr';
         /* FIXME: rename this */
@@ -94,7 +94,10 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
         };
         $("#feedback").popover(popoverOptions);
         setTimeout(function () {
+            console.log($cookies.feedbackPopupAppeared);
             $('#feedback').popover('toggle')
+            $cookies.feedbackPopupAppeared = new Date().getTime();
+            console.log($cookies.feedbackPopupAppeared);
         }, 1000);
     }])
 ;
