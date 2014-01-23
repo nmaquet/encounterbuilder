@@ -103,7 +103,7 @@ describe("searchMonstersRoute", function () {
         expect(mock.Monster.find.params).to.deep.equal({Name: /gob/i});
     });
 
-    it("should be able to filter by minCR && maxCR", function () {
+    it("should be able to filter by minCR and maxCR", function () {
         mock.request.query.minCR = 12;
         mock.request.query.maxCR = 256;
         searchMonstersRoute(mock.request, mock.response);
