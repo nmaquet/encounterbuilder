@@ -121,7 +121,7 @@ describe("searchMonstersRoute", function () {
         searchMonstersRoute(mock.request, mock.response);
         expect(mock.Monster.find.params).to.deep.equal({CR: {$gte: 0, $lte: 256 }});
     });
-    
+
     it("should not filter by CR when default values are used", function () {
         mock.request.query.nameSubstring = "gob";
         mock.request.query.type = "humanoid";

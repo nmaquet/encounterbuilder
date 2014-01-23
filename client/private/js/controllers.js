@@ -83,7 +83,6 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
                 $scope.$apply();
             }
         });
-
     }])
 ;
 
