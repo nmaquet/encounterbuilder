@@ -4,8 +4,8 @@
 
 var encounterBuilderControllers = angular.module('encounterBuilderControllers', ['ui.bootstrap']);
 
-encounterBuilderControllers.controller('MonsterListController', ['$scope','$timeout', 'monsterService',
-    function ($scope, $timeout ,monsterService) {
+encounterBuilderControllers.controller('MonsterListController', ['$scope', '$timeout', 'monsterService',
+    function ($scope, $timeout, monsterService) {
 
         $scope.nameSubstring = '';
         $scope.orderProp = 'cr';
@@ -86,12 +86,8 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope','$time
             }
         });
 
-        var now =  new Date().getTime();
-
-
-
         if ($.cookie('feedbackPopupAppeared') == undefined
-            && $.cookie('neverShowFeedbackPopover') == undefined){
+            && $.cookie('neverShowFeedbackPopover') == undefined) {
             initFeedbackPopover();
         }
 
@@ -99,7 +95,7 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope','$time
 
             var threeYears = 1095;
             var feedbackPopover = "<script> var closeFeedback = function(){$('#feedback').popover('hide');" +
-                "$.cookie('neverShowFeedbackPopover', true,{ expires:"+threeYears+"});}</script>" +
+                "$.cookie('neverShowFeedbackPopover', true,{ expires:" + threeYears + "});}</script>" +
                 "" +
                 "<p style='font-size: 20px'>I've been made <strong>bold</strong>!<br/><button type='button' class='btn' onclick=\"closeFeedback()\">Don't show this again</button></p>";
 
@@ -114,7 +110,7 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope','$time
             $("#feedback").popover(popoverOptions);
             $timeout(function () {
                 $('#feedback').popover('toggle')
-                $.cookie('feedbackPopupAppeared', now,{expires: threeDays});
+                $.cookie('feedbackPopupAppeared', true, {expires: threeDays});
             }, 1000);
         }
     }])
