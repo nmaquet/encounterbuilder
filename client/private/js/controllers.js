@@ -37,7 +37,9 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
                 order: $scope.orderProp,
                 type: $scope.type,
                 skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
-                findLimit: $scope.itemsPerPage
+                findLimit: $scope.itemsPerPage,
+                minCR: $scope.minCR,
+                maxCR: $scope.maxCR
             };
             monsterService.search(params, function (error, data) {
                 if (error) {

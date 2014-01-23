@@ -8,6 +8,11 @@ function getFindParams(request) {
     if (request.query.type && request.query.type != 'any') {
         findParams.Type = request.query.type;
     }
+    var minCR = request.query.minCR || 0;
+    var maxCR = request.query.maxCR || 40;
+    if (minCR != 0 || maxCR != 40) {
+        findParams.CR = { $gte: minCR, $lte: maxCR};
+    }
     return findParams;
 }
 
