@@ -71,6 +71,7 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
         $scope.maxCR = 40;
         $scope.crRange = $scope.minCR + " - " + $scope.maxCR;
 
+
         $("#slider-range").slider({
             range: true,
             min: 0,
@@ -83,6 +84,18 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
                 $scope.$apply();
             }
         });
+        var feedbackPopover = "<p style='font-size: 20px'>I've been made <b>bold</b>!<br/><button type='button' class='btn' onclick=\"$('#feedback').popover('hide');\">OK</button></p>";
+        var popoverOptions = {
+            html: true,
+            title: "Help us improve Encounter Builder",
+            content: feedbackPopover,
+            trigger: 'manual',
+            placement: 'bottom'
+        };
+        $("#feedback").popover(popoverOptions);
+        setTimeout(function () {
+            $('#feedback').popover('toggle')
+        }, 1000);
     }])
 ;
 
