@@ -4,11 +4,8 @@
 
 var encounterBuilderControllers = angular.module('encounterBuilderControllers', ['ui.bootstrap']);
 
-encounterBuilderControllers.controller('MonsterListController', ['$scope','$cookieStore','$timeout', 'monsterService',
-    function ($scope, $cookieStore, $timeout ,monsterService) {
-
-        var DAY_IN_MILLISECONDS = 86400000;
-
+encounterBuilderControllers.controller('MonsterListController', ['$scope','$timeout', 'monsterService',
+    function ($scope, $timeout ,monsterService) {
 
         $scope.nameSubstring = '';
         $scope.orderProp = 'cr';
@@ -90,9 +87,22 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope','$cook
         });
 
         var now =  new Date().getTime();
-        if (($cookieStore.get('feedbackPopupAppeared') === undefined || $cookieStore.get('feedbackPopupAppeared') - now > 3 * DAY_IN_MILLISECONDS )
-            && !$cookieStore.get('neverShowFeedbackPopover') ){
-            var feedbackPopover = "<p style='font-size: 20px'>I've been made <strong>bold</strong>!<br/><button type='button' class='btn' onclick=\"$('#feedback').popover('hide');\">OK</button></p>";
+
+
+
+        if ($.cookie('feedbackPopupAppeared') == undefined
+            && $.cookie('neverShowFeedbackPopover') == undefined){
+            initFeedbackPopover();
+        }
+
+        function initFeedbackPopover() {
+
+            var threeYears = 1095;
+            var feedbackPopover = "<script> var closeFeedback = function(){$('#feedback').popover('hide');" +
+                "$.cookie('neverShowFeedbackPopover', true,{ expires:"+threeYears+"});}</script>" +
+                "" +
+                "<p style='font-size: 20px'>I've been made <strong>bold</strong>!<br/><button type='button' class='btn' onclick=\"closeFeedback()\">Don't show this again</button></p>";
+
             var popoverOptions = {
                 html: true,
                 title: "Help us improve Encounter Builder",
@@ -100,14 +110,13 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope','$cook
                 trigger: 'manual',
                 placement: 'bottom'
             };
+            var threeDays = 3;
             $("#feedback").popover(popoverOptions);
             $timeout(function () {
                 $('#feedback').popover('toggle')
-                $cookieStore.put('feedbackPopupAppeared',now);
-                console.log($cookieStore.get('feedbackPopupAppeared'));
+                $.cookie('feedbackPopupAppeared', now,{expires: threeDays});
             }, 1000);
         }
-
     }])
 ;
 
