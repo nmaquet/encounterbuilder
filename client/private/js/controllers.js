@@ -4,8 +4,8 @@
 
 var encounterBuilderControllers = angular.module('encounterBuilderControllers', ['ui.bootstrap']);
 
-encounterBuilderControllers.controller('MonsterListController', ['$scope', 'monsterService',
-    function ($scope, monsterService) {
+encounterBuilderControllers.controller('MonsterListController', ['$scope','$cookies', 'monsterService',
+    function ($scope,$cookies ,monsterService) {
         $scope.nameSubstring = '';
         $scope.orderProp = 'cr';
         /* FIXME: rename this */
@@ -37,7 +37,9 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
                 order: $scope.orderProp,
                 type: $scope.type,
                 skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
-                findLimit: $scope.itemsPerPage
+                findLimit: $scope.itemsPerPage,
+                minCR: $scope.minCR,
+                maxCR: $scope.maxCR
             };
             monsterService.search(params, function (error, data) {
                 if (error) {
@@ -69,6 +71,7 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
         $scope.maxCR = 40;
         $scope.crRange = $scope.minCR + " - " + $scope.maxCR;
 
+
         $("#slider-range").slider({
             range: true,
             min: 0,
@@ -81,7 +84,21 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', 'mons
                 $scope.$apply();
             }
         });
-
+        var feedbackPopover = "<p style='font-size: 20px'>I've been made <b>bold</b>!<br/><button type='button' class='btn' onclick=\"$('#feedback').popover('hide');\">OK</button></p>";
+        var popoverOptions = {
+            html: true,
+            title: "Help us improve Encounter Builder",
+            content: feedbackPopover,
+            trigger: 'manual',
+            placement: 'bottom'
+        };
+        $("#feedback").popover(popoverOptions);
+        setTimeout(function () {
+            console.log($cookies.feedbackPopupAppeared);
+            $('#feedback').popover('toggle')
+            $cookies.feedbackPopupAppeared = new Date().getTime();
+            console.log($cookies.feedbackPopupAppeared);
+        }, 1000);
     }])
 ;
 

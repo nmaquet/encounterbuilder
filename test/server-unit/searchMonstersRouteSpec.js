@@ -83,23 +83,51 @@ describe("searchMonstersRoute", function () {
         expect(mock.response.send.data).to.equal(error);
     });
 
-    it("should filter by monster type when asked", function() {
+    it("should filter by monster type when asked", function () {
         mock.request.query.type = "humanoid";
         searchMonstersRoute(mock.request, mock.response);
         expect(mock.Monster.find.params).to.deep.equal({Type: "humanoid"});
     });
 
-    it("should be able to filter both by name and type", function() {
+    it("should be able to filter both by name and type", function () {
         mock.request.query.nameSubstring = "gob";
         mock.request.query.type = "humanoid";
         searchMonstersRoute(mock.request, mock.response);
         expect(mock.Monster.find.params).to.deep.equal({Name: /gob/i, Type: "humanoid"});
     });
 
-    it("should understand type='any' to be any type", function() {
+    it("should understand type='any' to be any type", function () {
         mock.request.query.nameSubstring = "gob";
         mock.request.query.type = "any";
         searchMonstersRoute(mock.request, mock.response);
         expect(mock.Monster.find.params).to.deep.equal({Name: /gob/i});
+    });
+
+    it("should be able to filter by minCR and maxCR", function () {
+        mock.request.query.minCR = 12;
+        mock.request.query.maxCR = 256;
+        searchMonstersRoute(mock.request, mock.response);
+        expect(mock.Monster.find.params).to.deep.equal({CR: {$gte: 12, $lte: 256 }});
+    });
+
+    it("should be able to filter by minCR only", function () {
+        mock.request.query.minCR = 12;
+        searchMonstersRoute(mock.request, mock.response);
+        expect(mock.Monster.find.params).to.deep.equal({CR: {$gte: 12, $lte: 40 }});
+    });
+
+    it("should be able to filter by maxCR only", function () {
+        mock.request.query.maxCR = 256;
+        searchMonstersRoute(mock.request, mock.response);
+        expect(mock.Monster.find.params).to.deep.equal({CR: {$gte: 0, $lte: 256 }});
+    });
+
+    it("should not filter by CR when default values are used", function () {
+        mock.request.query.nameSubstring = "gob";
+        mock.request.query.type = "humanoid";
+        mock.request.query.minCR = 0;
+        mock.request.query.maxCR = 40;
+        searchMonstersRoute(mock.request, mock.response);
+        expect(mock.Monster.find.params).to.deep.equal({Name: /gob/i, Type: "humanoid"});
     });
 });
