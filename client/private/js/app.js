@@ -1,6 +1,6 @@
 'use strict';
 
-/* App Module */
+var DEMONSQUID = {};
 
 var encounterBuilderApp = angular.module('encounterBuilderApp', [
   'ngRoute',

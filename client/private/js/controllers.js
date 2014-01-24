@@ -109,6 +109,9 @@ encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$s
 
 encounterBuilderControllers.controller('FeedbackPopoverController', ['$http', '$timeout',
     function ($http, $timeout) {
+
+        startUserVoice();
+
         if (!$.cookie('feedbackPopupAppeared') && !$.cookie('neverShowFeedbackPopover')) {
             $http.get('/partials/feedback-popover.html').success(function (html) {
                 var popoverOptions = {
@@ -126,6 +129,26 @@ encounterBuilderControllers.controller('FeedbackPopoverController', ['$http', '$
                     $.cookie('feedbackPopupAppeared', true, {expires: threeDays});
                 }, twoMinutes);
             });
+        }
+
+        function startUserVoice() {
+            var UserVoice = window.UserVoice || [];
+            (function () {
+                var uv = document.createElement('script');
+                uv.type = 'text/javascript';
+                uv.async = true;
+                uv.src = '//widget.uservoice.com/ZWyHUaD1fQxrHq9orNnIvg.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(uv, s)
+            })();
+            UserVoice.push(['set', {
+                accent_color: '#448dd6',
+                trigger_color: 'white',
+                trigger_background_color: '#e2753a'
+            }]);
+            UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'bottom-right' }]);
+            UserVoice.push(['autoprompt', {}]);
+            window.UserVoice = UserVoice;
         }
     }
 ]);
