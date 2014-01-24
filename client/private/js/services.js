@@ -2,9 +2,9 @@
 
 /* Services */
 
-var encounterBuilderServices = angular.module('encounterBuilderServices', ['ngResource']);
+DEMONSQUID.encounterBuilderServices = angular.module('encounterBuilderServices', ['ngResource']);
 
-encounterBuilderServices.factory('monsterService', ['$http', function ($http) {
+DEMONSQUID.encounterBuilderServices.factory('monsterService', ['$http', function ($http) {
     return {
         search: function (params, callback) {
             var now = new Date().getTime();

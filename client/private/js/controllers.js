@@ -2,9 +2,9 @@
 
 /* Controllers */
 
-var encounterBuilderControllers = angular.module('encounterBuilderControllers', ['ui.bootstrap']);
+DEMONSQUID.encounterBuilderControllers = angular.module('encounterBuilderControllers', ['ui.bootstrap']);
 
-encounterBuilderControllers.controller('MonsterListController', ['$scope', '$timeout', 'monsterService',
+DEMONSQUID.encounterBuilderControllers.controller('MonsterListController', ['$scope', '$timeout', 'monsterService',
     function ($scope, $timeout, monsterService) {
 
         $scope.nameSubstring = '';
@@ -90,7 +90,7 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', '$tim
     }
 ]);
 
-encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$sce', 'monsterService',
+DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$sce', 'monsterService',
     function ($scope, $sce, monsterService) {
         $scope.$watch('selectedMonsterId', function (selectedMonsterId) {
             $scope.monster = monsterService.get(selectedMonsterId, function (error, data) {
@@ -107,7 +107,7 @@ encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$s
     }
 ]);
 
-encounterBuilderControllers.controller('FeedbackPopoverController', ['$http', '$timeout',
+DEMONSQUID.encounterBuilderControllers.controller('FeedbackPopoverController', ['$http', '$timeout',
     function ($http, $timeout) {
 
         startUserVoice();

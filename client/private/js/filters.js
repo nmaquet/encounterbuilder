@@ -1,6 +1,6 @@
 'use strict';
 
-var MONSTER_SOURCE_ABBREVIATIONS =
+DEMONSQUID.MONSTER_SOURCE_ABBREVIATIONS =
 {
     "PFRPG Bestiary 2": "PB2",
     "PFRPG Bestiary 3": "PB3",
@@ -62,7 +62,7 @@ angular.module('encounterBuilderFilters', [])
             if (source.length <= 5) {
                 return source;
             }
-            return  MONSTER_SOURCE_ABBREVIATIONS[source] || "?";
+            return DEMONSQUID.MONSTER_SOURCE_ABBREVIATIONS[source] || "?";
         };
     })
     .filter('numberToFractionString', function () {

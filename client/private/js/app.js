@@ -2,14 +2,14 @@
 
 var DEMONSQUID = {};
 
-var encounterBuilderApp = angular.module('encounterBuilderApp', [
+DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
   'ngRoute',
   'encounterBuilderControllers',
   'encounterBuilderFilters',
   'encounterBuilderServices'
 ]);
 
-encounterBuilderApp.config(['$routeProvider',
+DEMONSQUID.encounterBuilderApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/monsters', {

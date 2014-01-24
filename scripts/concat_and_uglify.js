@@ -24,7 +24,7 @@ var jsFiles = [
     "client/private/bower_components/jquery-cookie/jquery.cookie.js",
     "client/private/bower_components/bootstrap.css/js/bootstrap.js",
     // App files
-    "client/private/js/app.js",
+    "client/private/js/app.js",                          /* app.js MUST be the first app file ! */
     "client/private/js/controllers.js",
     "client/private/js/directives.js",
     "client/private/js/filters.js",
