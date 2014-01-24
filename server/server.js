@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 
 var FIND_LIMIT = 50;
 
-mongoose.connect('mongodb://heroku:fR98x8wJk2RN@mongo.onmodulus.net:27017/gu9gOmot');
+mongoose.connect(process.env['MONGODB_URL']);
 
 app.configure(function () {
     //app.use(express.compress());
