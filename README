@@ -7,33 +7,20 @@ INSTALLING DEPENDENCIES
 
 EXECUTING
 
-    $ nodemon server/server.js
+    (you'll need to setup the MONGODB_URL environment variable)
 
-RUNNING CLIENT UNIT TESTS
+    $ npm start
 
-    WebStorm > right-click on "test/conf/karma-unit.conf.js" > Run
-        or
-    WebStorm > right-click on "test/conf/karma-unit.conf.js" > Run with Coverage
+RUNNING UNIT TESTS
 
-RUNNING SERVER UNIT TESTS
-
-    Create a new run configuration of type "Mocha" using test/server-unit as test directory.
+    $ npm run-script test-client
+    $ npm run-script test-server
 
 RUNNING E2E TESTS
 
-    WebStorm > right-click on "test/conf/karma-e2e.conf.js" > Run
-        or
-    WebStorm > right-click on "test/conf/karma-e2e.conf.js" > Run with Coverage (doesn't work yet)
+    (you'll need to setup the MONGODB_URL environment variable and make sure that a server is running locally)
 
-USEFUL DOCS
-
-    http://expressjs.com/api.html
-    http://pivotal.github.io/jasmine/
-    http://visionmedia.github.io/mocha/
-    http://chaijs.com/
-    http://karma-runner.github.io/
-    http://docs.angularjs.org/guide/dev_guide.unit-testing
-    http://docs.angularjs.org/guide/dev_guide.e2e-testing
+    $ npm run-script test-e2e
 
 
 
