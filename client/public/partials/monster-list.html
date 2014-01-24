@@ -1,5 +1,5 @@
 <!--.navbar -->
-<div id="monster-list-view"class="container-fluid" ng-controller="MonsterListController">
+<div id="monster-list-view" class="container-fluid" ng-controller="MonsterListController">
     <div class="row-fluid">
         <div class="span3">
             <div class="well sidebar-nav">
@@ -132,8 +132,10 @@
                     <ul class="nav nav-settings">
                         <li class="active"><a href="#todo"><i class="icon-cog icon-white"></i></a></li>
                         <li><a href="#todo"><i class="icon-folder-close icon-white"></i></a></li>
-                        <li><a id="feedback" class="pointer" data-uv-trigger style="background-color: #E2753A; color: white"
-                               data-toggle="popover" ng-controller="FeedbackPopoverController">Send us Feedback !!!</a></li>
+                        <li><a id="feedback" class="pointer" data-uv-trigger
+                               style="background-color: #E2753A; color: white"
+                               data-toggle="popover" ng-controller="FeedbackPopoverController">Send us Feedback !!!</a>
+                        </li>
                     </ul>
                     <p class="navbar-text pull-right">
                         <a href="#todo" class="navbar-link btn"><i class="icon-user"></i>&nbsp;Username&nbsp;<b
@@ -149,8 +151,24 @@
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="span12">
-                <p>© DemonSquid 2014</p>
+                <span>© DemonSquid 2014</span>
+                &nbsp;
+                &nbsp;
+                <a data-target="#myModal" role="button" class="btn" data-toggle="modal">Open Game Licence</a>
+                <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalLabel">Open Content</h3>
+                    </div>
+                    <div class="modal-body" ng-include src="'partials/OGLv1.0a.xhtml'">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
     </div>
 </footer>
