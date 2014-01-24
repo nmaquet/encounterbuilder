@@ -4,8 +4,9 @@
 
 var encounterBuilderControllers = angular.module('encounterBuilderControllers', ['ui.bootstrap']);
 
-encounterBuilderControllers.controller('MonsterListController', ['$scope','$cookies', 'monsterService',
-    function ($scope,$cookies ,monsterService) {
+encounterBuilderControllers.controller('MonsterListController', ['$scope', '$timeout', 'monsterService',
+    function ($scope, $timeout, monsterService) {
+
         $scope.nameSubstring = '';
         $scope.orderProp = 'cr';
         /* FIXME: rename this */
@@ -16,7 +17,7 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope','$cook
         });
 
         $scope.$watch('nameSubstring', function (search_string) {
-            setTimeout(function () {
+            $timeout(function () {
                 if (search_string === $scope.nameSubstring) {
                     $scope.refreshMonsters();
                 }
@@ -24,7 +25,7 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope','$cook
         });
 
         $scope.$watch('crRange', function (crRange) {
-            setTimeout(function () {
+            $timeout(function () {
                 if (crRange === $scope.crRange) {
                     $scope.refreshMonsters();
                 }
@@ -84,21 +85,34 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope','$cook
                 $scope.$apply();
             }
         });
-        var feedbackPopover = "<p style='font-size: 20px'>I've been made <b>bold</b>!<br/><button type='button' class='btn' onclick=\"$('#feedback').popover('hide');\">OK</button></p>";
-        var popoverOptions = {
-            html: true,
-            title: "Help us improve Encounter Builder",
-            content: feedbackPopover,
-            trigger: 'manual',
-            placement: 'bottom'
-        };
-        $("#feedback").popover(popoverOptions);
-        setTimeout(function () {
-            console.log($cookies.feedbackPopupAppeared);
-            $('#feedback').popover('toggle')
-            $cookies.feedbackPopupAppeared = new Date().getTime();
-            console.log($cookies.feedbackPopupAppeared);
-        }, 1000);
+
+        if ($.cookie('feedbackPopupAppeared') == undefined
+            && $.cookie('neverShowFeedbackPopover') == undefined) {
+            initFeedbackPopover();
+        }
+
+        function initFeedbackPopover() {
+
+            var threeYears = 1095;
+            var feedbackPopover = "<script> var closeFeedback = function(){$('#feedback').popover('hide');" +
+                "$.cookie('neverShowFeedbackPopover', true,{ expires:" + threeYears + "});}</script>" +
+                "" +
+                "<p style='font-size: 20px'>I've been made <strong>bold</strong>!<br/><button type='button' class='btn' onclick=\"closeFeedback()\">Don't show this again</button></p>";
+
+            var popoverOptions = {
+                html: true,
+                title: "Help us improve Encounter Builder",
+                content: feedbackPopover,
+                trigger: 'manual',
+                placement: 'bottom'
+            };
+            var threeDays = 3;
+            $("#feedback").popover(popoverOptions);
+            $timeout(function () {
+                $('#feedback').popover('toggle')
+                $.cookie('feedbackPopupAppeared', true, {expires: threeDays});
+            }, 1000);
+        }
     }])
 ;
 

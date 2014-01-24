@@ -4,7 +4,6 @@
 
 var encounterBuilderApp = angular.module('encounterBuilderApp', [
   'ngRoute',
-  'ngCookies',
   'encounterBuilderControllers',
   'encounterBuilderFilters',
   'encounterBuilderServices',
