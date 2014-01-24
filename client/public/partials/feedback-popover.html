@@ -1,0 +1,16 @@
+<script>
+    DEMONSQUID.closeFeedbackForever = function () {
+        var threeYears = 3 * 365;
+        $('#feedback').popover('hide');
+        $.cookie('neverShowFeedbackPopover', true, { expires: threeYears });
+    }
+</script>
+
+<p style='font-size: 20px'>
+    I've been made <strong>bold</strong>!
+</p>
+<br/>
+<button type='button' class='btn' onclick='$("#feedback").popover("hide");'>Ok</button>
+<a onclick="DEMONSQUID.closeFeedbackForever()" class="pointer">
+    <small>Don't show this again</small>
+</a>

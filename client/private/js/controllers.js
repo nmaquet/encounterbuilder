@@ -86,35 +86,9 @@ encounterBuilderControllers.controller('MonsterListController', ['$scope', '$tim
             }
         });
 
-        if ($.cookie('feedbackPopupAppeared') == undefined
-            && $.cookie('neverShowFeedbackPopover') == undefined) {
-            initFeedbackPopover();
-        }
 
-        function initFeedbackPopover() {
-
-            var threeYears = 1095;
-            var feedbackPopover = "<script> var closeFeedback = function(){$('#feedback').popover('hide');" +
-                "$.cookie('neverShowFeedbackPopover', true,{ expires:" + threeYears + "});}</script>" +
-                "" +
-                "<p style='font-size: 20px'>I've been made <strong>bold</strong>!<br/><button type='button' class='btn' onclick=\"closeFeedback()\">Don't show this again</button></p>";
-
-            var popoverOptions = {
-                html: true,
-                title: "Help us improve Encounter Builder",
-                content: feedbackPopover,
-                trigger: 'manual',
-                placement: 'bottom'
-            };
-            var threeDays = 3;
-            $("#feedback").popover(popoverOptions);
-            $timeout(function () {
-                $('#feedback').popover('toggle')
-                $.cookie('feedbackPopupAppeared', true, {expires: threeDays});
-            }, 1000);
-        }
-    }])
-;
+    }
+]);
 
 encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$sce', 'monsterService',
     function ($scope, $sce, monsterService) {
@@ -130,5 +104,28 @@ encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$s
                 }
             });
         });
+    }
+]);
 
-    }]);
+encounterBuilderControllers.controller('FeedbackPopoverController', ['$http', '$timeout',
+    function ($http, $timeout) {
+        if (!$.cookie('feedbackPopupAppeared') && !$.cookie('neverShowFeedbackPopover')) {
+            $http.get('/partials/feedback-popover.html').success(function (html) {
+                var popoverOptions = {
+                    html: true,
+                    title: "Help us improve Encounter Builder",
+                    content: html,
+                    trigger: 'manual',
+                    placement: 'bottom'
+                };
+                var threeDays = 3;
+                var twoMinutes = 1000 * 60 * 2;
+                $("#feedback").popover(popoverOptions);
+                $timeout(function () {
+                    $('#feedback').popover('toggle')
+                    $.cookie('feedbackPopupAppeared', true, {expires: threeDays});
+                }, twoMinutes);
+            });
+        }
+    }
+]);

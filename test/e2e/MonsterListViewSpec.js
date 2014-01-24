@@ -154,6 +154,7 @@ describe('Monster List View', function () {
     });
 
     it('should display 5 dragons when filtering by CR 22 to 25', function () {
+        //FIXME this test takes 20 seconds
         inputNameSubstring('dragon');
         var LEFT = 37, RIGHT = 39;
         element('#slider-range > a:nth-child(2)').click();
