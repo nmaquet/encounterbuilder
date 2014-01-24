@@ -6,11 +6,18 @@
     }
 </script>
 
-<p style='font-size: 20px'>
-    I've been made <strong>bold</strong>!
+<p>
+    We are currently in early Beta and we'd love to know what you think.<br/>
+    Get involved and share your ideas!<br/>
+    Thanks!
 </p>
-<br/>
-<button type='button' class='btn' onclick='$("#feedback").popover("hide");'>Ok</button>
-<a onclick="DEMONSQUID.closeFeedbackForever()" class="pointer">
-    <small>Don't show this again</small>
-</a>
+<p>
+    <a onclick="$('#feedback').popover('hide')" class="pointer">
+        <strong></strong><small>Remind me later</small></strong>
+    </a>
+    &nbsp;
+    &nbsp;
+    <a onclick="DEMONSQUID.closeFeedbackForever()" class="pointer">
+        <small>Don't show this again</small>
+    </a>
+</p>
