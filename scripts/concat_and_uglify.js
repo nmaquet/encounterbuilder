@@ -52,7 +52,7 @@ function uglify(srcPath, distPath) {
     console.log(' ' + distPath + ' built.');
 }
 
-var tempfile = "scripts/temp.js";
+var tempfile = "scripts/temp";
 
 concat(jsFiles, tempfile);
 uglify(tempfile, 'client/public/js/encounterbuilder.min.js');

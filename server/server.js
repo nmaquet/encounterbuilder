@@ -1,5 +1,7 @@
 "use strict";
 
+require('../scripts/concat_and_uglify');
+
 var fs = require('fs');
 var express = require('express');
 var app = express();
@@ -16,7 +18,6 @@ app.configure(function () {
     app.use(express.bodyParser());
     app.use(express.methodOverride());
 });
-
 
 var Monster =  require('./monsterModel')(mongoose).Monster;
 var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
