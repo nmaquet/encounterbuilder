@@ -5,11 +5,17 @@ INSTALLING DEPENDENCIES
 
     $ npm install
 
-EXECUTING
+EXECUTING NORMALLY
 
     (you'll need to setup the MONGODB_URL environment variable)
 
     $ npm start
+
+EXECUTING WITHIN NODEMON
+
+    (you'll need to setup the MONGODB_URL environment variable)
+
+    $ npm run-script dev
 
 RUNNING UNIT TESTS
 
