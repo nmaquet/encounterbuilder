@@ -17,18 +17,142 @@ app.configure(function () {
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
+    app.use(express.cookieParser());
+    app.use(express.session({secret: "THECATZHAZITZ"}));
 });
 
-var Monster =  require('./monsterModel')(mongoose).Monster;
+/* --- AUTHENTICATION STUFF --- */
+
+var crypto = require('crypto');
+var SALT_LENGTH = 128;
+var PBKDF2_ITERATIONS = 12000;
+
+function hash(pwd, salt, fn) {
+    if (3 == arguments.length) {
+        crypto.pbkdf2(pwd, salt, PBKDF2_ITERATIONS, SALT_LENGTH, fn);
+    } else {
+        fn = salt;
+        crypto.randomBytes(SALT_LENGTH, function (err, salt) {
+            if (err) return fn(err);
+            salt = salt.toString('base64');
+            crypto.pbkdf2(pwd, salt, PBKDF2_ITERATIONS, SALT_LENGTH, function (err, hash) {
+                if (err) return fn(err);
+                fn(null, salt, hash);
+            });
+        });
+    }
+}
+
+var UserSchema = new mongoose.Schema({
+    username: String,
+    salt: String,
+    hash: String
+});
+
+var User = mongoose.model('users', UserSchema);
+
+var USERNAME = "chris";
+var PASSWORD = "audrey4ever";
+
+hash(PASSWORD, function (error, salt, hash) {
+    if (error) {
+        throw error;
+    }
+    User.create({ username: USERNAME, salt: salt, hash: hash }, function (error) {
+        if (error) {
+            console.log(error);
+        }
+    });
+});
+
+function authenticate(username, password, callback) {
+    User.findOne({ username: username }, function (error, user) {
+        if (error || !user) {
+            if (error) {
+                console.log(error);
+            }
+            callback(new Error('authentication failure'), null);
+        } else {
+            hash(password, user.salt, function (error, hash) {
+                if (error || hash != user.hash) {
+                    if (error) {
+                        console.log(error);
+                    }
+                    callback(new Error('authentication failure'), null);
+                } else {
+                    callback(null, user);
+                }
+            });
+        }
+    });
+}
+
+function authenticationCheck(request, response, next) {
+    console.log("checking authentication");
+    if (request.session) {
+        console.log("session user '" + request.session.user + "'");
+    } else {
+        console.log("no session");
+    }
+    if (request.session && request.session.user) {
+        console.log("has user");
+        next();
+    } else {
+        console.log("has no user");
+        if (request.session) {
+            request.session.error = 'Access denied!';
+        }
+        response.redirect('/login');
+    }
+}
+
+function userNonExistenceCheck(request, response, next) {
+    User.count({ username: request.body.username }, function (error, count) {
+        if (count === 0) {
+            next();
+        } else {
+            request.session.error = "user already exists"
+            response.redirect("/signup");
+        }
+    });
+}
+
+/* --- AUTHENTICATION STUFF --- */
+
+var Monster = require('./monsterModel')(mongoose).Monster;
 var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
 var monsterRoute = require('./monsterRoute')(Monster);
 var monstersResetRoute = require('./monstersResetRoute')(Monster, fs);
-var defaultRoute = require('./defaultRoute')();
 
-app.get('/api/search-monsters', searchMonstersRoute);
-app.get('/api/monster/:id', monsterRoute);
-app.get('/api/monsters-reset', monstersResetRoute);
-app.get('*', defaultRoute);
+app.get('/api/search-monsters', authenticationCheck, searchMonstersRoute);
+app.get('/api/monster/:id', authenticationCheck, monsterRoute);
+app.get('/api/monsters-reset', authenticationCheck, monstersResetRoute);
+
+/* --- AUTHENTICATION STUFF --- */
+
+app.get('/login', function (request, response) {
+    response.sendfile('client/public/login.html');
+});
+
+app.get('/login-failed', function (request, response) {
+    response.sendfile('client/public/login-failed.html');
+});
+
+app.post("/login", function (request, response) {
+    authenticate(request.body.username, request.body.password, function (error, user) {
+        if (user) {
+            request.session.regenerate(function () {
+                request.session.user = user;
+                response.redirect('/');
+            });
+        } else {
+            response.redirect('/login-failed');
+        }
+    });
+});
+
+
+/* --- AUTHENTICATION STUFF --- */
 
 var port = process.env.PORT || 3000;
 
@@ -38,7 +162,7 @@ console.log("Encounter Builder Server listening on port " + port);
 
 fs.writeFileSync("server.pid", process.pid);
 
-process.on('SIGINT', function() {
+process.on('SIGINT', function () {
     console.log('Exiting...');
     process.exit(0);
 });

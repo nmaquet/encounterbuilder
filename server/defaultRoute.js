@@ -2,6 +2,11 @@
 
 module.exports = function () {
     return function (request, response) {
-        response.sendfile('client/public/index.html');
+        if (request.session.user) {
+            response.sendfile('client/public/index.html');
+        } else {
+            console.log("default Route: redirecting to /login")
+            response.redirect('/login');
+        }
     }
 }
