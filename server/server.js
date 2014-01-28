@@ -88,33 +88,11 @@ function authenticate(username, password, callback) {
 }
 
 function authenticationCheck(request, response, next) {
-    console.log("checking authentication");
-    if (request.session) {
-        console.log("session user '" + request.session.user + "'");
-    } else {
-        console.log("no session");
-    }
     if (request.session && request.session.user) {
-        console.log("has user");
         next();
     } else {
-        console.log("has no user");
-        if (request.session) {
-            request.session.error = 'Access denied!';
-        }
-        response.redirect('/login');
+        response.send(401,'access denied');
     }
-}
-
-function userNonExistenceCheck(request, response, next) {
-    User.count({ username: request.body.username }, function (error, count) {
-        if (count === 0) {
-            next();
-        } else {
-            request.session.error = "user already exists"
-            response.redirect("/signup");
-        }
-    });
 }
 
 /* --- AUTHENTICATION STUFF --- */
@@ -127,26 +105,29 @@ var monstersResetRoute = require('./monstersResetRoute')(Monster, fs);
 app.get('/api/search-monsters', authenticationCheck, searchMonstersRoute);
 app.get('/api/monster/:id', authenticationCheck, monsterRoute);
 app.get('/api/monsters-reset', authenticationCheck, monstersResetRoute);
+app.get('/login',function (request,response){
+   response.sendfile('client/public/login.html');
+});
+app.get('/api/connected-user',function (request,response){
+    if (request.session && request.session.user) {
+        response.json({username:request.session.user.username});
+    }
+    else{
+        response.json({});
+    }
+});
 
 /* --- AUTHENTICATION STUFF --- */
-
-app.get('/login', function (request, response) {
-    response.sendfile('client/public/login.html');
-});
-
-app.get('/login-failed', function (request, response) {
-    response.sendfile('client/public/login-failed.html');
-});
 
 app.post("/login", function (request, response) {
     authenticate(request.body.username, request.body.password, function (error, user) {
         if (user) {
             request.session.regenerate(function () {
                 request.session.user = user;
-                response.redirect('/');
+                response.json({username:user.username});
             });
         } else {
-            response.redirect('/login-failed');
+            response.json({error:'login failed'});
         }
     });
 });

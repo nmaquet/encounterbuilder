@@ -4,6 +4,14 @@
 
 DEMONSQUID.encounterBuilderControllers = angular.module('encounterBuilderControllers', ['ui.bootstrap']);
 
+DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '$http',
+    function ($scope, $http) {
+        $http.get('/api/connected-user').success(function (response) {
+            $scope.username = response.username;
+        });
+    }
+]);
+
 DEMONSQUID.encounterBuilderControllers.controller('MonsterListController', ['$scope', '$timeout', 'monsterService',
     function ($scope, $timeout, monsterService) {
 
