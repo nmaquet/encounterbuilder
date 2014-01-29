@@ -46,13 +46,13 @@ Monster.remove({}, function (error) {
                 if (error) {
                     throw error;
                 }
+                count++;
+                if (count == monsters.length) {
+                    console.log("inserted " + count + " monsters");
+                    db.disconnect();
+                    console.log("done");
+                }
             });
-            count++;
-            if (count == monsters.length) {
-                console.log("inserted " + count + " monsters");
-                db.disconnect();
-                console.log("done");
-            }
         }
     });
 });
