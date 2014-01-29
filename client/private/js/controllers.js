@@ -4,11 +4,26 @@
 
 DEMONSQUID.encounterBuilderControllers = angular.module('encounterBuilderControllers', ['ui.bootstrap']);
 
-DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '$http', '$timeout',
-    function ($scope, $http, $timeout) {
-        $http.get('/api/connected-user').success(function (response) {
-            $scope.username = response.username;
-        });
+DEMONSQUID.encounterBuilderControllers.controller('LoginController', ['$scope', '$rootScope', '$http', '$location',
+    function ($scope, $rootScope, $http, $location) {
+        $scope.loginFailed = false;
+        $scope.submit = function () {
+            var data = {
+                username: $scope.username,
+                password: $scope.password
+            }
+            $http.post("/login", data).success(function (response) {
+                if (response.username) {
+                    $rootScope.username = response.username;
+                    delete $scope.username;
+                    delete $scope.password;
+                    $scope.loginFailed = false;
+                    $location.path('/monsters');
+                } else {
+                    $scope.loginFailed = true;
+                }
+            });
+        };
     }
 ]);
 
@@ -106,9 +121,11 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController', ['$
                     console.log('Error in your face: ' + error);
                 } else {
                     $scope.monster = data;
-                    $scope.monster.DescriptionSafe = $sce.trustAsHtml($scope.monster.Description);
-                    $scope.monster.SLASafe = $sce.trustAsHtml($scope.monster.SpellLikeAbilities);
-                    $scope.monster.SpecialAbilitiesSafe = $sce.trustAsHtml($scope.monster.SpecialAbilities);
+                    if ($scope.monster) {
+                        $scope.monster.DescriptionSafe = $sce.trustAsHtml($scope.monster.Description);
+                        $scope.monster.SLASafe = $sce.trustAsHtml($scope.monster.SpellLikeAbilities);
+                        $scope.monster.SpecialAbilitiesSafe = $sce.trustAsHtml($scope.monster.SpecialAbilities);
+                    }
                 }
             });
         });

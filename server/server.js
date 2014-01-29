@@ -39,12 +39,10 @@ var defaultRoute = require('./defaultRoute')();
 app.get('/api/search-monsters', authentication.check, searchMonstersRoute);
 app.get('/api/monster/:id', authentication.check, monsterRoute);
 app.get('/api/monsters-reset', authentication.check, monstersResetRoute);
-app.get('/login', loginRoute.get);
-app.get('/login-failed', loginRoute.get);
 app.get('/api/connected-user', connectedUserRoute);
 app.get('*', defaultRoute);
 
-app.post("/login", loginRoute.post);
+app.post("/login", loginRoute);
 
 var port = process.env.PORT || 3000;
 

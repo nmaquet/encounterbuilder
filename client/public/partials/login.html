@@ -1,0 +1,17 @@
+<div ng-controller="LoginController">
+
+    <div class="alert alert-error" ng-if="loginFailed">
+        <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+        <strong>Log in failed</strong>.
+    </div>
+    <div class="container-fluid">
+        <form id="login" ng-submit="submit()">
+            <label for='username'> User Name</label>
+            <input id='username' type='text' name='username' ng-model="username"/>
+            <label for='password'> Password</label>
+            <input id='password' type='password' name='password' ng-model="password"/>
+            <br/>
+            <input type='submit' value="Log In"/>
+        </form>
+    </div>
+</div>
