@@ -7,7 +7,7 @@ var USERS = [
 ]
 
 var mongoose = require('mongoose');
-
+²
 var db = mongoose.connect(process.env['MONGODB_URL']);
 
 var User = require("../server/userModel")(mongoose).User;
