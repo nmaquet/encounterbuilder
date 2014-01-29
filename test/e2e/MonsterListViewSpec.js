@@ -34,6 +34,15 @@ describe('Monster List View', function () {
         /* wait for setTimeout to trigger */
     }
 
+    /* FIXME: this test fails if we are logged in */
+    it('should allow login', function () {
+        expect(browser().location().path()).toBe('/login');
+        input("username").enter("nic");
+        input("password").enter("nic");
+        element("#login-button").click();
+        expect(browser().location().path()).toBe('/monsters');
+    });
+
     it('should initially display 50 monsters + 1 header row', function () {
         expect(repeater('.monsters tr').count()).toBe(50 + 1);
     });
