@@ -138,29 +138,34 @@
                                data-toggle="popover" ng-controller="FeedbackPopoverController">Send us Feedback !!!</a>
                         </li>
                     </ul>
-                    <p class="navbar-text pull-right">
-                        <a role="button" class="navbar-link btn" ng-controller="LogoutController" ng-click="logout()"><i
-                                class="icon-user"></i>&nbsp;{{username}}&nbsp;<b
-                                class="caret"></b></a>
-                    </p>
+                    <div class="dropdown navbar-text pull-right" ng-controller="LogoutController">
+                        <a class="dropdown-toggle btn navbar-link" role="button" data-toggle="dropdown">
+                            <i class="icon-user"></i>&nbsp;{{username}}&nbsp;<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                            <li><a tabindex="-1">Profile</a></li>
+                            <li><a tabindex="-1">Settings</a></li>
+                            <li class="divider"></li>
+                            <li><a tabindex="-1" ng-click="logout()">Log out</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<hr>
-<footer>
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12">
-                <span>© DemonSquid 2014</span>
-                &nbsp;
-                &nbsp;
-                <a data-target="#ogl-modal" role="button" class="btn" data-toggle="modal">Open Game License</a>
+    <hr>
+    <footer>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <span>© DemonSquid 2014</span>
+                    &nbsp;
+                    &nbsp;
+                    <a data-target="#ogl-modal" role="button" class="btn" data-toggle="modal">Open Game License</a>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
+</div>
 </footer>
 
 <div id="ogl-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ogl-modal-label"
