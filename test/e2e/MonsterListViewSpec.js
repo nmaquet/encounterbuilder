@@ -34,7 +34,7 @@ describe('Monster List View', function () {
         /* wait for setTimeout to trigger */
     }
 
-    it('should allow login', function () {
+    iit('should allow login', function () {
         expect(browser().location().path()).toBe('/login');
         input("username").enter("nic");
         input("password").enter("nic");
@@ -98,11 +98,11 @@ describe('Monster List View', function () {
         expect(element('.monsters tr:nth-child(5) td:nth-child(2) p').text()).toBe("1");
     });
 
-    it('should display the source of each monster', function () {
+    iit('should display the source of each monster', function () {
         inputNameSubstring('skull spider');
         expect(repeater('.monsters tr').count()).toBe(2 + 1);
-        expect(element('.monsters tr:nth-child(1) td:nth-child(3) small').text()).toBe("THR");
-        expect(element('.monsters tr:nth-child(2) td:nth-child(3) small').text()).toBe("THC");
+        expect(element('.monsters tr:nth-child(1) td:nth-child(3) small').text()).toBe("THC");
+        expect(element('.monsters tr:nth-child(2) td:nth-child(3) small').text()).toBe("THR");
     });
 
     it('should  display 17 monsters when searching for "small"', function () {
@@ -177,7 +177,7 @@ describe('Monster List View', function () {
         expect(repeater('.monsters tr').count()).toBe(5 + 1);
     });
 
-    it('should allow logout', function () {
+    iit('should allow logout', function () {
         expect(browser().location().path()).toBe('/monsters');
         element("#user-dropdown").click();
         element("#user-dropdown-logout").click();
