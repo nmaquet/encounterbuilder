@@ -62,6 +62,9 @@ module.exports = function () {
             },
             sendfile: function(path) {
                 this.sendfile.path = path;
+            },
+            redirect: function(url) {
+                this.redirect.url = url;
             }
         },
 
