@@ -18,7 +18,7 @@ app.configure(function () {
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser());
-    app.use(express.session({secret: "THECATZHAZITZ"}));
+    app.use(express.session({secret: "THECATZHAZITZ" /* FIXME: use process.env */}));
 });
 
 /* --- AUTHENTICATION STUFF --- */
@@ -50,20 +50,6 @@ var UserSchema = new mongoose.Schema({
 });
 
 var User = mongoose.model('users', UserSchema);
-
-var USERNAME = "chris";
-var PASSWORD = "audrey4ever";
-
-hash(PASSWORD, function (error, salt, hash) {
-    if (error) {
-        throw error;
-    }
-    User.create({ username: USERNAME, salt: salt, hash: hash }, function (error) {
-        if (error) {
-            console.log(error);
-        }
-    });
-});
 
 function authenticate(username, password, callback) {
     User.findOne({ username: username }, function (error, user) {

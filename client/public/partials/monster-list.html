@@ -103,7 +103,8 @@
                 </pagination>
             </div>
         </div>
-        <div ng-include src="'partials/monster-detail.html'" class="span6 well" ng-controller="MonsterDetailController"/>
+        <div ng-include src="'partials/monster-detail.html'" class="span6 well"
+             ng-controller="MonsterDetailController"/>
     </div>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -138,7 +139,8 @@
                         </li>
                     </ul>
                     <p class="navbar-text pull-right">
-                        <a href="#todo" class="navbar-link btn"><i class="icon-user"></i>&nbsp;{{username}}&nbsp;<b
+                        <a role="button" class="navbar-link btn" data-toggle="modal"><i
+                                class="icon-user"></i>&nbsp;{{username}}&nbsp;<b
                                 class="caret"></b></a>
                     </p>
                 </div>
@@ -154,21 +156,46 @@
                 <span>© DemonSquid 2014</span>
                 &nbsp;
                 &nbsp;
-                <a data-target="#myModal" role="button" class="btn" data-toggle="modal">Open Game License</a>
-                <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3 id="myModalLabel">Open Game Content</h3>
-                    </div>
-                    <div class="modal-body" ng-include src="'partials/OGLv1.0a.xhtml'">
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                    </div>
-                </div>
+                <a data-target="#ogl-modal" role="button" class="btn" data-toggle="modal">Open Game License</a>
             </div>
         </div>
     </div>
     </div>
 </footer>
+
+<div id="ogl-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ogl-modal-label"
+     aria-hidden="true">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <div class="modal-header">
+        <h3 id="ogl-modal-label">Open Game Content</h3>
+    </div>
+    <div class="modal-body" ng-include src="'partials/OGLv1.0a.xhtml'">
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+</div>
+
+<div id="login-modal" class="modal hide fade" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="login-modal-label"
+     aria-hidden="true">
+    <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> -->
+        <h3 id="login-modal-label">Log In</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-error" ng-if="loginFailed">
+            <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+            <strong>Log in failed</strong>.
+        </div>
+        <div class="container-fluid">
+            <form id="login" ng-submit="submit()">
+                <label for='username'> User Name</label>
+                <input id='username' type='text' name='username' ng-model="loginForm.username"/>
+                <label for='password'> Password</label>
+                <input id='password' type='password' name='password' ng-model="loginForm.password"/>
+                <br/>
+                <input type='submit' value="Log In"/>
+            </form>
+        </div>
+    </div>
+</div>

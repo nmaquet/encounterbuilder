@@ -24,7 +24,7 @@ var jsFiles = [
     "client/private/bower_components/jquery-cookie/jquery.cookie.js",
     "client/private/bower_components/bootstrap.css/js/bootstrap.js",
     // App files
-    "client/private/js/app.js",                          /* app.js MUST be the first app file ! */
+    "client/private/js/app.js", /* app.js MUST be the first app file ! */
     "client/private/js/controllers.js",
     "client/private/js/directives.js",
     "client/private/js/filters.js",
@@ -41,14 +41,18 @@ function concat(fileList, distPath) {
 
 function uglify(srcPath, distPath) {
     var contents = fs.readFileSync(srcPath, FILE_ENCODING);
-    var ast = uglify_js.parse(contents);
-    var compressor = uglify_js.Compressor();
-    ast.figure_out_scope();
-    ast = ast.transform(compressor);
-    ast.figure_out_scope();
-    ast.compute_char_frequency();
-    ast.mangle_names();
-    fs.writeFileSync(distPath, /*ast.print_to_string()*/contents, FILE_ENCODING);
+    if (!process.env['DO_NOT_UGLIFY']) {
+        var ast = uglify_js.parse(contents);
+        var compressor = uglify_js.Compressor();
+        ast.figure_out_scope();
+        ast = ast.transform(compressor);
+        ast.figure_out_scope();
+        ast.compute_char_frequency();
+        ast.mangle_names();
+        fs.writeFileSync(distPath, ast.print_to_string(), FILE_ENCODING);
+    } else {
+        fs.writeFileSync(distPath, contents, FILE_ENCODING);
+    }
     console.log(' ' + distPath + ' built.');
 }
 
