@@ -21,105 +21,24 @@ app.configure(function () {
     app.use(express.session({secret: "THECATZHAZITZ" /* FIXME: use process.env */}));
 });
 
-/* --- AUTHENTICATION STUFF --- */
-
-var crypto = require('crypto');
-var SALT_LENGTH = 128;
-var PBKDF2_ITERATIONS = 12000;
-
-function hash(pwd, salt, fn) {
-    if (3 == arguments.length) {
-        crypto.pbkdf2(pwd, salt, PBKDF2_ITERATIONS, SALT_LENGTH, fn);
-    } else {
-        fn = salt;
-        crypto.randomBytes(SALT_LENGTH, function (err, salt) {
-            if (err) return fn(err);
-            salt = salt.toString('base64');
-            crypto.pbkdf2(pwd, salt, PBKDF2_ITERATIONS, SALT_LENGTH, function (err, hash) {
-                if (err) return fn(err);
-                fn(null, salt, hash);
-            });
-        });
-    }
-}
-
-var UserSchema = new mongoose.Schema({
-    username: String,
-    salt: String,
-    hash: String
-});
-
-var User = mongoose.model('users', UserSchema);
-
-function authenticate(username, password, callback) {
-    User.findOne({ username: username }, function (error, user) {
-        if (error || !user) {
-            if (error) {
-                console.log(error);
-            }
-            callback(new Error('authentication failure'), null);
-        } else {
-            hash(password, user.salt, function (error, hash) {
-                if (error || hash != user.hash) {
-                    if (error) {
-                        console.log(error);
-                    }
-                    callback(new Error('authentication failure'), null);
-                } else {
-                    callback(null, user);
-                }
-            });
-        }
-    });
-}
-
-function authenticationCheck(request, response, next) {
-    if (request.session && request.session.user) {
-        next();
-    } else {
-        response.send(401,'access denied');
-    }
-}
-
-/* --- AUTHENTICATION STUFF --- */
-
 var Monster = require('./monsterModel')(mongoose).Monster;
+var User = require('./userModel')(mongoose).User;
+
+var authentication = require('./authentication')();
+
 var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
 var monsterRoute = require('./monsterRoute')(Monster);
 var monstersResetRoute = require('./monstersResetRoute')(Monster, fs);
+var loginRoute = require('./loginRoute')(User, authentication.authenticate);
+var connectedUserRoute = require('./connectedUserRoute')();
 
-app.get('/api/search-monsters', authenticationCheck, searchMonstersRoute);
-app.get('/api/monster/:id', authenticationCheck, monsterRoute);
-app.get('/api/monsters-reset', authenticationCheck, monstersResetRoute);
-app.get('/login',function (request,response){
-   response.sendfile('client/public/login.html');
-});
-app.get('/api/connected-user',function (request,response){
-    if (request.session && request.session.user) {
-        response.json({username:request.session.user.username});
-    }
-    else{
-        response.json({});
-    }
-});
+app.get('/api/search-monsters', authentication.check, searchMonstersRoute);
+app.get('/api/monster/:id', authentication.check, monsterRoute);
+app.get('/api/monsters-reset', authentication.check, monstersResetRoute);
+app.get('/login', loginRoute.get);
+app.get('/api/connected-user', connectedUserRoute);
 
-/* --- AUTHENTICATION STUFF --- */
-
-app.post("/login", function (request, response) {
-    authenticate(request.body.username, request.body.password, function (error, user) {
-        if (user) {
-            request.session.regenerate(function () {
-                request.session.user = user;
-                response.json({username:user.username});
-            });
-        } else {
-            response.json({error:'login failed'});
-        }
-    });
-});
-
-
-/* --- AUTHENTICATION STUFF --- */
+app.post("/login", loginRoute.post);
 
 var port = process.env.PORT || 3000;
 
