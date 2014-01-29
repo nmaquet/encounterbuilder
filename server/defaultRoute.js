@@ -5,8 +5,7 @@ module.exports = function () {
         if (request.session.user) {
             response.sendfile('client/public/index.html');
         } else {
-            console.log("default Route: redirecting to /login")
             response.redirect('/login');
         }
     }
-}
+};

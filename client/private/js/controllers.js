@@ -6,33 +6,9 @@ DEMONSQUID.encounterBuilderControllers = angular.module('encounterBuilderControl
 
 DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '$http', '$timeout',
     function ($scope, $http, $timeout) {
-        $scope.loginForm = {};
-        $scope.loginFailed = false;
         $http.get('/api/connected-user').success(function (response) {
             $scope.username = response.username;
-            if (!$scope.username) {
-                $timeout(function () {
-                    $("#login-modal").modal('show');
-                }, 100);
-            }
         });
-        $scope.submit = function() {
-            var data = {
-                username: $scope.loginForm.username,
-                password: $scope.loginForm.password
-            }
-            $http.post("/login", data).success(function (response) {
-                if (response.username) {
-                    $scope.username = response.username;
-                    $("#login-modal").modal('hide');
-                    $scope.loginForm = {};
-                    $scope.loginFailed = false;
-                } else {
-                    $scope.loginFailed = true;
-                    console.log("login failed");
-                }
-            });
-        };
     }
 ]);
 

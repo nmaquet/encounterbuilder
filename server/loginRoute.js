@@ -10,10 +10,10 @@ module.exports = function (User, authenticate) {
                 if (user) {
                     request.session.regenerate(function () {
                         request.session.user = user;
-                        response.json({username: user.username});
+                        response.redirect("/");
                     });
                 } else {
-                    response.json({error: 'login failed'});
+                    response.redirect("/login-failed");
                 }
             });
         }

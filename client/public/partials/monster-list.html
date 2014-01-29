@@ -139,7 +139,7 @@
                         </li>
                     </ul>
                     <p class="navbar-text pull-right">
-                        <a role="button" class="navbar-link btn" data-toggle="modal"><i
+                        <a role="button" class="navbar-link btn"><i
                                 class="icon-user"></i>&nbsp;{{username}}&nbsp;<b
                                 class="caret"></b></a>
                     </p>
@@ -173,29 +173,5 @@
     </div>
     <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    </div>
-</div>
-
-<div id="login-modal" class="modal hide fade" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="login-modal-label"
-     aria-hidden="true">
-    <div class="modal-header">
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> -->
-        <h3 id="login-modal-label">Log In</h3>
-    </div>
-    <div class="modal-body">
-        <div class="alert alert-error" ng-if="loginFailed">
-            <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
-            <strong>Log in failed</strong>.
-        </div>
-        <div class="container-fluid">
-            <form id="login" ng-submit="submit()">
-                <label for='username'> User Name</label>
-                <input id='username' type='text' name='username' ng-model="loginForm.username"/>
-                <label for='password'> Password</label>
-                <input id='password' type='password' name='password' ng-model="loginForm.password"/>
-                <br/>
-                <input type='submit' value="Log In"/>
-            </form>
-        </div>
     </div>
 </div>

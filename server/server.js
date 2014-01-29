@@ -13,7 +13,10 @@ mongoose.connect(process.env['MONGODB_URL']);
 
 app.configure(function () {
     //app.use(express.compress());
-    app.use("/", express.static(__dirname + '/../client/public/'));
+    app.use("/css", express.static(__dirname + '/../client/public/css'));
+    app.use("/img", express.static(__dirname + '/../client/public/img'));
+    app.use("/js", express.static(__dirname + '/../client/public/js'));
+    app.use("/partials", express.static(__dirname + '/../client/public/partials'));
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
@@ -31,12 +34,15 @@ var monsterRoute = require('./monsterRoute')(Monster);
 var monstersResetRoute = require('./monstersResetRoute')(Monster, fs);
 var loginRoute = require('./loginRoute')(User, authentication.authenticate);
 var connectedUserRoute = require('./connectedUserRoute')();
+var defaultRoute = require('./defaultRoute')();
 
 app.get('/api/search-monsters', authentication.check, searchMonstersRoute);
 app.get('/api/monster/:id', authentication.check, monsterRoute);
 app.get('/api/monsters-reset', authentication.check, monstersResetRoute);
 app.get('/login', loginRoute.get);
+app.get('/login-failed', loginRoute.get);
 app.get('/api/connected-user', connectedUserRoute);
+app.get('*', defaultRoute);
 
 app.post("/login", loginRoute.post);
 
