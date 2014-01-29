@@ -31,7 +31,6 @@ var authentication = require('./authentication')();
 
 var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
 var monsterRoute = require('./monsterRoute')(Monster);
-var monstersResetRoute = require('./monstersResetRoute')(Monster, fs);
 var loginRoute = require('./loginRoute')(User, authentication.authenticate);
 var logoutRoute = require('./logoutRoute')();
 var connectedUserRoute = require('./connectedUserRoute')();
@@ -39,7 +38,6 @@ var defaultRoute = require('./defaultRoute')();
 
 app.get('/api/search-monsters', authentication.check, searchMonstersRoute);
 app.get('/api/monster/:id', authentication.check, monsterRoute);
-app.get('/api/monsters-reset', authentication.check, monstersResetRoute);
 app.get('/api/connected-user', connectedUserRoute);
 app.get('/logout', logoutRoute);
 app.get('*', defaultRoute);
