@@ -53,6 +53,7 @@ function authenticationCheck(request, response, next) {
 module.exports = function () {
     return {
         authenticate: authenticate,
-        check: authenticationCheck
+        check: authenticationCheck,
+        hash: hash
     }
 };
