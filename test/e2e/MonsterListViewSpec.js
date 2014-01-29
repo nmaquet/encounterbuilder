@@ -34,7 +34,6 @@ describe('Monster List View', function () {
         /* wait for setTimeout to trigger */
     }
 
-    /* FIXME: this test fails if we are logged in */
     it('should allow login', function () {
         expect(browser().location().path()).toBe('/login');
         input("username").enter("nic");
@@ -176,5 +175,12 @@ describe('Monster List View', function () {
         }
         sleep(0.3);
         expect(repeater('.monsters tr').count()).toBe(5 + 1);
+    });
+
+    it('should allow logout', function () {
+        expect(browser().location().path()).toBe('/monsters');
+        element("#user-dropdown").click();
+        element("#user-dropdown-logout").click();
+        expect(browser().location().path()).toBe('/login');
     });
 });
