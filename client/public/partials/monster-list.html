@@ -5,7 +5,7 @@
             <div class="well sidebar-nav">
                 <div class="row-fluid">
                     <legend>Monsters</legend>
-                    <ul class="unstyled">
+                    <ul class="unstyled" id="encounter-monsters">
                         <li ng-repeat="monster in encounter.monsters"><span class="badge badge-info">{{monster.amount}}</span>&nbsp;{{monster.Name}} <strong>CR {{monster.CR | numberToFractionString}}</strong></li>
                     </ul>
                 </div>
