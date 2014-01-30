@@ -6,7 +6,11 @@
                 <div class="row-fluid">
                     <legend>Monsters</legend>
                     <ul class="unstyled" id="encounter-monsters">
-                        <li ng-repeat="monster in encounter.monsters"><span class="badge badge-info">{{monster.amount}}</span>&nbsp;{{monster.Name}} <strong>CR {{monster.CR | numberToFractionString}}</strong></li>
+                        <li ng-repeat="monster in encounter.monsters" class="monster-row"><span
+                                class="badge badge-info monster-amount">{{monster.amount}}</span>&nbsp;<span
+                                class="monster-name">{{monster.Name}}</span>
+                            <span class="monster-cr"><strong>CR {{monster.CR | numberToFractionString}}</strong></span>
+                        </li>
                     </ul>
                 </div>
                 <div class="row-fluid">
@@ -93,7 +97,8 @@
                         <td ng-class="{selected: selectedMonsterId == monster.id}">
                             <input type="text" placeholder="1" ng-model="monster.amountToAdd" style="width:25px">
 
-                            <button class="btn btn-mini" ng-click="addMonster(monster)"><i class="icon-plus"></i></button>
+                            <button class="btn btn-mini" ng-click="addMonster(monster)"><i class="icon-plus"></i>
+                            </button>
                         </td>
                     </tr>
                     </tbody>
@@ -141,14 +146,16 @@
                         </li>
                     </ul>
                     <div class="dropdown navbar-text pull-right" ng-controller="LogoutController">
-                        <a id="user-dropdown" class="dropdown-toggle btn navbar-link" role="button" data-toggle="dropdown">
+                        <a id="user-dropdown" class="dropdown-toggle btn navbar-link" role="button"
+                           data-toggle="dropdown">
                             <i class="icon-user"></i>&nbsp;{{username}}&nbsp;<b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                             <li><a tabindex="-1" class="pointer">Profile</a></li>
                             <li><a tabindex="-1" class="pointer">Settings</a></li>
                             <li class="divider pointer"></li>
-                            <li><a id="user-dropdown-logout" tabindex="-1" ng-click="logout()" class="pointer">Log out</a></li>
+                            <li><a id="user-dropdown-logout" tabindex="-1" ng-click="logout()" class="pointer">Log
+                                out</a></li>
                         </ul>
                     </div>
                 </div>

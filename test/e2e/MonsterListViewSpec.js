@@ -177,6 +177,41 @@ describe('Monster List View', function () {
         expect(repeater('tr.monster-row').count()).toBe(5);
     });
 
+    it('should add two Bats to encounter when user clicks on the "plus" button twice in the search results list', function () {
+        expect(repeater('li.monster-row').count()).toBe(0);
+        element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
+        element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
+        expect(repeater('li.monster-row').count()).toBe(1);
+        expect(element('li.monster-row:nth-child(1) span.monster-amount').text()).toBe("2");
+        expect(element('li.monster-row:nth-child(1) span.monster-name').text()).toBe("Bat");
+        expect(element('li.monster-row:nth-child(1) span.monster-cr').text()).toBe("CR 1/8");
+    });
+
+    it('should add two Bats to encounter when user clicks enters "2" and on the "plus in the search results list', function () {
+        expect(repeater('li.monster-row').count()).toBe(0);
+        using('tr.monster-row:nth-child(1) td:nth-child(4)').input("monster.amountToAdd").enter("2");
+        element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
+        expect(repeater('li.monster-row').count()).toBe(1);
+        expect(element('li.monster-row:nth-child(1) span.monster-amount').text()).toBe("2");
+        expect(element('li.monster-row:nth-child(1) span.monster-name').text()).toBe("Bat");
+        expect(element('li.monster-row:nth-child(1) span.monster-cr').text()).toBe("CR 1/8");
+    });
+
+    it('should add a goblin and two hobgoblins to the encounter when asked', function () {
+        inputNameSubstring('goblin');
+        expect(repeater('li.monster-row').count()).toBe(0);
+        element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
+        element('tr.monster-row:nth-child(2) td:nth-child(4) button').click();
+        element('tr.monster-row:nth-child(2) td:nth-child(4) button').click();
+        expect(repeater('li.monster-row').count()).toBe(2);
+        expect(element('li.monster-row:nth-child(1) span.monster-amount').text()).toBe("1");
+        expect(element('li.monster-row:nth-child(1) span.monster-name').text()).toBe("Goblin");
+        expect(element('li.monster-row:nth-child(1) span.monster-cr').text()).toBe("CR 1/3");
+        expect(element('li.monster-row:nth-child(2) span.monster-amount').text()).toBe("2");
+        expect(element('li.monster-row:nth-child(2) span.monster-name').text()).toBe("Hobgoblin");
+        expect(element('li.monster-row:nth-child(2) span.monster-cr').text()).toBe("CR 1/2");
+    });
+
     it('should allow logout', function () {
         expect(browser().location().path()).toBe('/monsters');
         element("#user-dropdown").click();
