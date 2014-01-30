@@ -97,6 +97,22 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterListController', ['$sc
             $scope.selectedMonsterId = id;
         }
 
+        $scope.encounter = {};
+        $scope.encounter.monsters = {};
+        $scope.addMonster = function (monster) {
+            if (!/^(\d+)$/.exec(monster.amountToAdd)){
+                monster.amountToAdd = 1;
+            }
+            var simpleMonster = {Name: monster.Name, CR: monster.CR, amount: Number(monster.amountToAdd)};
+            if (!$scope.encounter.monsters[monster.id]) {
+                $scope.encounter.monsters[monster.id] = simpleMonster;
+            }
+            else {
+                $scope.encounter.monsters[monster.id].amount += Number(monster.amountToAdd) || 1;
+            }
+            delete monster.amountToAdd;
+        }
+
         $scope.totalItems = 0;
         $scope.currentPage = 1;
         $scope.itemsPerPage = 50;

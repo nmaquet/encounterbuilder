@@ -6,10 +6,7 @@
                 <div class="row-fluid">
                     <legend>Monsters</legend>
                     <ul class="unstyled">
-                        <li><span class="badge badge-info">8</span>&nbsp;Orc <strong>CR 1</strong></li>
-                        <li><span class="badge badge-info">5</span>&nbsp;Elf <strong>CR 5</strong></li>
-                        <li><span class="badge badge-info">3</span>&nbsp;Wood Elf <strong>CR 2</strong></li>
-                        <li><span class="badge badge-info">1</span>&nbsp;Bidule <strong>CR 48</strong></li>
+                        <li ng-repeat="monster in encounter.monsters"><span class="badge badge-info">{{monster.amount}}</span>&nbsp;{{monster.Name}} <strong>CR {{monster.CR | numberToFractionString}}</strong></li>
                     </ul>
                 </div>
                 <div class="row-fluid">
@@ -92,6 +89,11 @@
                             <abbr title="{{monster.Source}}">
                                 <small>{{monster.Source | abbreviateMonsterSource}}</small>
                             </abbr>
+                        </td>
+                        <td ng-class="{selected: selectedMonsterId == monster.id}">
+                            <input type="text" placeholder="1" ng-model="monster.amountToAdd" style="width:25px">
+
+                            <button class="btn btn-mini" ng-click="addMonster(monster)"><i class="icon-plus"></i></button>
                         </td>
                     </tr>
                     </tbody>
