@@ -8,8 +8,8 @@
                     <ul class="unstyled" id="encounter-monsters">
                         <li ng-repeat="(id,monster) in encounter.monsters" class="encounter-monster-row">
                             <span
-                                    class="badge badge-info monster-amount">{{monster.amount}}</span>&nbsp;<span
-                                class="monster-name">{{monster.Name}}</span>
+                                    class="badge badge-info monster-amount">{{monster.amount}}</span>&nbsp;
+                            <span class="monster-name"><a ng-click="selectMonster(id)" class="pointer">{{monster.Name}}</a></span>
                             <span class="monster-cr"><strong>CR {{monster.CR | numberToFractionString}}</strong></span>
                             <span class="encounter-monsters-buttons">
                                 &nbsp;&nbsp;
