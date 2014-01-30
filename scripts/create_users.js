@@ -3,7 +3,8 @@
 var USERS = [
     { username: "nic", password: "nic" },
     { username: "chris", password: "chris" },
-    { username: "david", password: "david" }
+    { username: "david", password: "david" },
+    { username: "test", password: "test" }
 ]
 
 var mongoose = require('mongoose');
