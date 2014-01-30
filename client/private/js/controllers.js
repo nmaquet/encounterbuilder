@@ -100,7 +100,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterListController', ['$sc
         $scope.encounter = {};
         $scope.encounter.monsters = {};
         $scope.addMonster = function (monster) {
-            if (!/^(\d+)$/.exec(monster.amountToAdd)){
+            if (!/^(\d+)$/.exec(monster.amountToAdd)) {
                 monster.amountToAdd = 1;
             }
             var simpleMonster = {Name: monster.Name, CR: monster.CR, amount: Number(monster.amountToAdd)};
@@ -113,6 +113,17 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterListController', ['$sc
             delete monster.amountToAdd;
         }
 
+        $scope.incrementMonster = function (monster) {
+            monster.amount++;
+        }
+        $scope.decrementMonster = function (monster) {
+            if (monster.amount > 1) {
+                monster.amount--;
+            }
+        }
+        $scope.removeMonster = function(id){
+           delete $scope.encounter.monsters[id];
+        }
         $scope.totalItems = 0;
         $scope.currentPage = 1;
         $scope.itemsPerPage = 50;

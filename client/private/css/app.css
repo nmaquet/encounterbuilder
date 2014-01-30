@@ -21,3 +21,17 @@
 .popover {
     min-width: 270px;
 }
+.encounter-monsters-buttons {
+    display: none;
+}
+.encounter-monster-row:hover .encounter-monsters-buttons {
+    display: inline;
+}
+.btn-xmini {
+    padding: 0px 3px;
+    font-size: 2px;
+    line-height: normal;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+}

@@ -6,10 +6,20 @@
                 <div class="row-fluid">
                     <legend>Monsters</legend>
                     <ul class="unstyled" id="encounter-monsters">
-                        <li ng-repeat="monster in encounter.monsters" class="monster-row"><span
-                                class="badge badge-info monster-amount">{{monster.amount}}</span>&nbsp;<span
+                        <li ng-repeat="(id,monster) in encounter.monsters" class="encounter-monster-row">
+                            <span
+                                    class="badge badge-info monster-amount">{{monster.amount}}</span>&nbsp;<span
                                 class="monster-name">{{monster.Name}}</span>
                             <span class="monster-cr"><strong>CR {{monster.CR | numberToFractionString}}</strong></span>
+                            <span class="encounter-monsters-buttons">
+                                &nbsp;&nbsp;
+                                    <button class="btn btn-xmini" ng-class="{disabled: monster.amount<=1}" ng-disabled="monster.amount<=1" ng-click="decrementMonster(monster)"><i
+                                            class="icon-minus"></i></button>
+                                    <button class="btn btn-xmini" ng-click="incrementMonster(monster)"><i
+                                            class="icon-plus"></i></button>
+                                    <button class="btn btn-danger btn-xmini" ng-click="removeMonster(id)"><i
+                                            class="icon-remove"></i></button>
+                                </span>
                         </li>
                     </ul>
                 </div>
