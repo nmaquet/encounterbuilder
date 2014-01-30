@@ -13,11 +13,11 @@
                             <span class="monster-cr"><strong>CR {{monster.CR | numberToFractionString}}</strong></span>
                             <span class="encounter-monsters-buttons">
                                 &nbsp;&nbsp;
-                                    <button class="btn btn-xmini" ng-class="{disabled: monster.amount<=1}" ng-disabled="monster.amount<=1" ng-click="decrementMonster(monster)"><i
+                                    <button class="btn btn-xmini decrement-monster-btn" ng-class="{disabled: monster.amount<=1}" ng-disabled="monster.amount<=1" ng-click="decrementMonster(monster)"><i
                                             class="icon-minus"></i></button>
-                                    <button class="btn btn-xmini" ng-click="incrementMonster(monster)"><i
+                                    <button class="btn btn-xmini increment-monster-btn" ng-click="incrementMonster(monster)"><i
                                             class="icon-plus"></i></button>
-                                    <button class="btn btn-danger btn-xmini" ng-click="removeMonster(id)"><i
+                                    <button class="btn btn-danger btn-xmini remove-monster-btn" ng-click="removeMonster(id)"><i
                                             class="icon-remove"></i></button>
                                 </span>
                         </li>
