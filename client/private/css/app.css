@@ -21,12 +21,15 @@
 .popover {
     min-width: 270px;
 }
+
 .encounter-monsters-buttons {
     display: none;
 }
+
 .encounter-monster-row:hover .encounter-monsters-buttons {
     display: inline;
 }
+
 .btn-xmini {
     padding: 0px 3px;
     font-size: 2px;

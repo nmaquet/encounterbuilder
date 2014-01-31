@@ -3,45 +3,50 @@
 /* Directives */
 
 angular.module('encounterBuilderDirectives', []).directive('clickToEdit', function ($compile) {
-        var editorTemplate = '<div class="click-to-edit">' +
-            '<div ng-hide="view.editorEnabled">' +
-            '{{value}} ' +
-            '<a ng-click="enableEditor()">Edit</a>' +
-            '</div>' +
-            '<div ng-show="view.editorEnabled">' +
-            '<input ng-model="view.editableValue">' +
-            '<a href="#" ng-click="save()">Save</a>' +
-            ' or ' +
-            '<a ng-click="disableEditor()">cancel</a>.' +
-            '</div>' +
-            '</div>';
+    var editorTemplate =
+            '<span class="click-to-edit" ng-click="edit()" style="display:inline;">' +
+            '   <span ng-hide="isEditing">' +
+            '       {{value}} ' +
+            '   </span>' +
+            '   <span ng-show="isEditing">' +
+            '       <input ng-model="value" type="text">' +
+            '   </span>' +
+            '</span>';
 
-        return {
-            restrict: "A",
-            replace: true,
-            template: editorTemplate,
-            scope: {
-                value: "=clickToEdit"
-            },
-            controller: function($scope) {
-                $scope.view = {
-                    editableValue: $scope.value,
-                    editorEnabled: false
-                };
+    return {
+        restrict: "A",
+        replace: true,
+        template: editorTemplate,
+        scope: {
+            value: "=clickToEdit"
+        },
+        controller: function ($scope, $element) {
 
-                $scope.enableEditor = function() {
-                    $scope.view.editorEnabled = true;
-                    $scope.view.editableValue = $scope.value;
-                };
+            var input = $($element.find("input"));
 
-                $scope.disableEditor = function() {
-                    $scope.view.editorEnabled = false;
-                };
+            input.blur(function () {
+                $scope.save();
+            });
 
-                $scope.save = function() {
-                    $scope.value = $scope.view.editableValue;
-                    $scope.disableEditor();
-                };
-            }
-        };
-    });
+            input.keyup(function (e) {
+                if (e.keyCode == 13 /* ENTER */) {
+                    $scope.save();
+                }
+            });
+
+            $scope.isEditing = false;
+
+            $scope.edit = function () {
+                $scope.isEditing = true;
+                setTimeout(function () {
+                    input.select();
+                })
+            };
+
+            $scope.save = function () {
+                $scope.isEditing = false;
+                $scope.$apply();
+            };
+        }
+    };
+})
