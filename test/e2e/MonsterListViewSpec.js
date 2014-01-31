@@ -42,7 +42,7 @@ describe('Monster List View', function () {
         expect(browser().location().path()).toBe('/monsters');
     });
 
-    it('should initially display 50 monsters + 1 header row', function () {
+    it('should initially display 50 monsters', function () {
         expect(repeater('tr.monster-row').count()).toBe(50);
     });
 

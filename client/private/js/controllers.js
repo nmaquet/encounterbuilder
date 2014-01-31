@@ -123,7 +123,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterListController', ['$sc
 
         $scope.totalItems = 0;
         $scope.currentPage = 1;
-        $scope.itemsPerPage = 8;
+        $scope.itemsPerPage = 50;
         $scope.maxSize = 5;
         $scope.listTimestamp = 0;
         $scope.minCR = 0;
