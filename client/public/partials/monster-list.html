@@ -3,11 +3,14 @@
     <div class="row-fluid">
         <div class="span3">
             <div class="well sidebar-nav">
-                <legend><strong click-to-edit="selectedEncounter.Name"></strong><strong>(CR {{selectedEncounter.CR | numberToFractionString}})</strong></legend>
+                <h3>
+                    <span class="encounter-name" click-to-edit="selectedEncounter.Name"></span>
+                    <span>(CR {{selectedEncounter.CR | numberToFractionString}})</span>
+                </h3>
                 <div class="row-fluid">
                     <legend>Monsters</legend>
                     <ul class="unstyled" id="encounter-monsters">
-                        <li ng-repeat="(id,monster) in encounter.monsters" class="encounter-monster-row">
+                        <li ng-repeat="(id,monster) in selectedEncounter.Monsters" class="encounter-monster-row">
                             <span
                                     class="badge badge-info monster-amount">{{monster.amount}}</span>&nbsp;
                             <span class="monster-name"><a ng-click="selectMonster(id)"
@@ -97,15 +100,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="monster in monsters" ng-click="selectMonster(monster.id)"
+                    <tr ng-repeat="monster in monsters"
                         class="pointer monster-row">
-                        <td ng-class="{selected: selectedMonsterId == monster.id}">
+                        <td ng-class="{selected: selectedMonsterId == monster.id}" ng-click="selectMonster(monster.id)">
                             <p>{{monster.Name}}</p>
                         </td>
-                        <td ng-class="{selected: selectedMonsterId == monster.id}">
+                        <td ng-class="{selected: selectedMonsterId == monster.id}" ng-click="selectMonster(monster.id)">
                             <p>{{monster.CR | numberToFractionString}}</p>
                         </td>
-                        <td ng-class="{selected: selectedMonsterId == monster.id}">
+                        <td ng-class="{selected: selectedMonsterId == monster.id}" ng-click="selectMonster(monster.id)">
                             <abbr title="{{monster.Source}}">
                                 <small>{{monster.Source | abbreviateMonsterSource}}</small>
                             </abbr>

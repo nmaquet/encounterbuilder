@@ -34,8 +34,8 @@ DEMONSQUID.encounterBuilderControllers.controller('LogoutController', ['$scope',
     }
 ]);
 
-DEMONSQUID.encounterBuilderControllers.controller('MonsterListController', ['$scope', '$timeout', 'monsterService',
-    function ($scope, $timeout, monsterService) {
+DEMONSQUID.encounterBuilderControllers.controller('MonsterListController', ['$scope', '$rootScope', '$timeout', 'monsterService',
+    function ($scope, $rootScope, $timeout, monsterService) {
 
         $scope.nameSubstring = '';
         $scope.orderProp = 'cr';
@@ -93,18 +93,16 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterListController', ['$sc
             $scope.selectedMonsterId = id;
         }
 
-        $scope.encounter = {};
-        $scope.encounter.monsters = {};
         $scope.addMonster = function (monster) {
             if (!/^(\d+)$/.exec(monster.amountToAdd)) {
                 monster.amountToAdd = 1;
             }
             var simpleMonster = {Name: monster.Name, CR: monster.CR, amount: Number(monster.amountToAdd)};
-            if (!$scope.encounter.monsters[monster.id]) {
-                $scope.encounter.monsters[monster.id] = simpleMonster;
+            if (!$rootScope.selectedEncounter.Monsters[monster.id]) {
+                $rootScope.selectedEncounter.Monsters[monster.id] = simpleMonster;
             }
             else {
-                $scope.encounter.monsters[monster.id].amount += Number(monster.amountToAdd) || 1;
+                $rootScope.selectedEncounter.Monsters[monster.id].amount += Number(monster.amountToAdd) || 1;
             }
             delete monster.amountToAdd;
         }
@@ -120,7 +118,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterListController', ['$sc
         }
 
         $scope.removeMonster = function (id) {
-            delete $scope.encounter.monsters[id];
+            delete $rootScope.selectedEncounter.Monsters.monsters[id];
         }
 
         $scope.totalItems = 0;
@@ -151,7 +149,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterListController', ['$sc
 DEMONSQUID.encounterBuilderControllers.controller('EncounterListController', ['$scope', '$rootScope',
     function ($scope, $rootScope) {
         function newEncounter() {
-            return { Name : "Untitled", CR : "0"};
+            return { Name : "Untitled", CR : "0", Monsters: {}};
         }
         $rootScope.encounters = $rootScope.encounters || [ newEncounter() ];
         $rootScope.selectedEncounter = $rootScope.encounters[0];
