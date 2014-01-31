@@ -27,10 +27,10 @@ DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location',
     function ($rootScope, $http, $location) {
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
             if (!$rootScope.username) {
-                $http.get('/api/connected-user')
-                    .success(function (response) {
-                        $rootScope.username = response.username;
-                        if (!$rootScope.username) {
+                $http.get('/api/user-data')
+                    .success(function (userData) {
+                        $rootScope.user = userData.user;
+                        if (!$rootScope.user) {
                             $location.path('/login');
                         }
                     })

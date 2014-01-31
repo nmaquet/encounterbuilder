@@ -33,12 +33,12 @@ var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
 var monsterRoute = require('./monsterRoute')(Monster);
 var loginRoute = require('./loginRoute')(User, authentication.authenticate);
 var logoutRoute = require('./logoutRoute')();
-var connectedUserRoute = require('./connectedUserRoute')();
+var userDataRoute = require('./userDataRoute')();
 var defaultRoute = require('./defaultRoute')();
 
 app.get('/api/search-monsters', authentication.check, searchMonstersRoute);
 app.get('/api/monster/:id', authentication.check, monsterRoute);
-app.get('/api/connected-user', connectedUserRoute);
+app.get('/api/user-data', userDataRoute);
 app.get('/logout', logoutRoute);
 app.get('*', defaultRoute);
 

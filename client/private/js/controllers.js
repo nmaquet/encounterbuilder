@@ -13,14 +13,10 @@ DEMONSQUID.encounterBuilderControllers.controller('LoginController', ['$scope', 
                 password: $scope.password
             }
             $http.post("/login", data).success(function (response) {
-                if (response.username) {
-                    $rootScope.username = response.username;
-                    delete $scope.username;
-                    delete $scope.password;
-                    $scope.loginFailed = false;
-                    $location.path('/monsters');
-                } else {
+                if (response.error) {
                     $scope.loginFailed = true;
+                } else {
+                    $location.path('/monsters');
                 }
             });
         };
