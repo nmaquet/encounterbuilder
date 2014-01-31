@@ -151,9 +151,9 @@ describe('Monster List View', function () {
 
     it('should update the right-side pane when you click on a monster in the search results', function () {
         inputNameSubstring('dragon');
-        element('tr.monster-row:nth-child(1)').click();
+        element('tr.monster-row:nth-child(1) td').click();
         expect(element('h2').text()).toBe("Dragonfish");
-        element('tr.monster-row:nth-child(2)').click();
+        element('tr.monster-row:nth-child(2) td').click();
         expect(element('h2').text()).toBe("Pseudodragon");
     });
 
@@ -247,7 +247,7 @@ describe('Monster List View', function () {
     it('should update the right-side pane when you click on a monster in the encounter panel', function () {
         element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
         element('tr.monster-row:nth-child(2) td:nth-child(4) button').click();
-        element('tr.monster-row:nth-child(2)').click();
+        element('tr.monster-row:nth-child(2) td').click();
         expect(element('h2').text()).toBe("Giant Isopod");
         element('li.encounter-monster-row:nth-child(1) span.monster-name a').click();
         expect(element('h2').text()).toBe("Bat");

@@ -118,7 +118,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterListController', ['$sc
         }
 
         $scope.removeMonster = function (id) {
-            delete $rootScope.selectedEncounter.Monsters.monsters[id];
+            delete $rootScope.selectedEncounter.Monsters[id];
         }
 
         $scope.totalItems = 0;
