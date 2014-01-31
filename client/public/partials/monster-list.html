@@ -2,7 +2,7 @@
 <div id="monster-list-view" class="container-fluid" ng-controller="MonsterListController">
     <div class="row-fluid">
         <div class="span3">
-            <div class="well sidebar-nav">
+            <div class="well sidebar-nav" style="position:fixed; width:400px;">
                 <h3>
                     <span class="encounter-name" click-to-edit="selectedEncounter.Name"></span>
                     <span>(CR {{selectedEncounter.CR | numberToFractionString}})</span>
@@ -86,11 +86,6 @@
             </div>
             <!--/.well -->
             <div class="result-list">
-                <pagination boundary-links="true" total-items="totalItems" page="currentPage"
-                            items-per-page="itemsPerPage"
-                            max-size="maxSize" class="page pagination-sm"
-                            previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
-                </pagination>
                 <table class="monsters table table-striped well">
                     <thead>
                     <tr>
