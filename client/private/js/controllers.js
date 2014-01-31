@@ -112,14 +112,17 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterListController', ['$sc
         $scope.incrementMonster = function (monster) {
             monster.amount++;
         }
+
         $scope.decrementMonster = function (monster) {
             if (monster.amount > 1) {
                 monster.amount--;
             }
         }
+
         $scope.removeMonster = function(id){
            delete $scope.encounter.monsters[id];
         }
+        
         $scope.totalItems = 0;
         $scope.currentPage = 1;
         $scope.itemsPerPage = 50;
