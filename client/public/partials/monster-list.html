@@ -9,15 +9,20 @@
                         <li ng-repeat="(id,monster) in encounter.monsters" class="encounter-monster-row">
                             <span
                                     class="badge badge-info monster-amount">{{monster.amount}}</span>&nbsp;
-                            <span class="monster-name"><a ng-click="selectMonster(id)" class="pointer">{{monster.Name}}</a></span>
+                            <span class="monster-name"><a ng-click="selectMonster(id)"
+                                                          class="pointer">{{monster.Name}}</a></span>
                             <span class="monster-cr"><strong>CR {{monster.CR | numberToFractionString}}</strong></span>
                             <span class="encounter-monsters-buttons">
                                 &nbsp;&nbsp;
-                                    <button class="btn btn-xmini decrement-monster-btn" ng-class="{disabled: monster.amount<=1}" ng-disabled="monster.amount<=1" ng-click="decrementMonster(monster)"><i
+                                    <button class="btn btn-xmini decrement-monster-btn"
+                                            ng-class="{disabled: monster.amount<=1}" ng-disabled="monster.amount<=1"
+                                            ng-click="decrementMonster(monster)"><i
                                             class="icon-minus"></i></button>
-                                    <button class="btn btn-xmini increment-monster-btn" ng-click="incrementMonster(monster)"><i
+                                    <button class="btn btn-xmini increment-monster-btn"
+                                            ng-click="incrementMonster(monster)"><i
                                             class="icon-plus"></i></button>
-                                    <button class="btn btn-danger btn-xmini remove-monster-btn" ng-click="removeMonster(id)"><i
+                                    <button class="btn btn-danger btn-xmini remove-monster-btn"
+                                            ng-click="removeMonster(id)"><i
                                             class="icon-remove"></i></button>
                                 </span>
                         </li>
@@ -134,12 +139,19 @@
                 </button>
                 <a class="brand" href="#" title="">Encounter Builder</a>
 
-                <form class="navbar-form pull-left">
-                    <select>
-                        <option value="goblin-rage">Gobling Rage CR3</option>
-                        <option value="trouble-in-ustalav">Trouble in Ustalav CR12</option>
-                    </select>
-                </form>
+                <div class="dropdown navbar-text pull-left" ng-controller="LogoutController">
+                    <a id="encounter-dropdown" class="dropdown-toggle btn navbar-link" role="button"
+                       data-toggle="dropdown">
+                        Goblin Rage (CR 3)
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                        <li><a tabindex="-1" class="pointer"><i class="icon-plus"></i>&nbsp;<strong>Create new encounter</strong></a></li>
+                        <li class="divider pointer"></li>
+                        <li><a tabindex="-1" class="pointer"><i class="icon-chevron-right"></i>&nbsp;Goblin Rage (CR 3)</a></li>
+                        <li><a tabindex="-1" class="pointer"><i class="icon-chevron-right"></i>&nbsp;Skeletons in the Closet (CR 6)</a></li>
+                    </ul>
+                </div>
                 <div class="nav-collapse collapse">
                     <ul class="nav nav-social">
                         <li class="active"><a href="#todo"><i class="icon-eye-open icon-white"></i>&nbsp;Views</a></li>
