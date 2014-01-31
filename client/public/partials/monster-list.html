@@ -3,6 +3,7 @@
     <div class="row-fluid">
         <div class="span3">
             <div class="well sidebar-nav">
+                <legend><strong click-to-edit="selectedEncounter.Name"></strong><strong>(CR {{selectedEncounter.CR | numberToFractionString}})</strong></legend>
                 <div class="row-fluid">
                     <legend>Monsters</legend>
                     <ul class="unstyled" id="encounter-monsters">
@@ -138,18 +139,18 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="brand" href="#" title="">Encounter Builder</a>
-
-                <div class="dropdown navbar-text pull-left" ng-controller="LogoutController">
+                <div class="dropdown navbar-text pull-left" ng-controller="EncounterListController">
                     <a id="encounter-dropdown" class="dropdown-toggle btn navbar-link" role="button"
                        data-toggle="dropdown">
-                        Goblin Rage (CR 3)
+                        {{selectedEncounter.Name}} (CR {{selectedEncounter.CR | numberToFractionString}})
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                        <li><a tabindex="-1" class="pointer"><i class="icon-plus"></i>&nbsp;<strong>Create new encounter</strong></a></li>
+                        <li><a tabindex="-1" class="pointer" ng-click="createEncounter()"><i class="icon-plus"></i>&nbsp;<strong>Create new encounter</strong></a></li>
                         <li class="divider pointer"></li>
-                        <li><a tabindex="-1" class="pointer"><i class="icon-chevron-right"></i>&nbsp;Goblin Rage (CR 3)</a></li>
-                        <li><a tabindex="-1" class="pointer"><i class="icon-chevron-right"></i>&nbsp;Skeletons in the Closet (CR 6)</a></li>
+                        <li ng-repeat="encounter in encounters">
+                            <a tabindex="-1" class="pointer" ng-click="selectEncounter(encounter)"><i class="icon-chevron-right"></i>&nbsp;{{encounter.Name}} (CR {{encounter.CR | numberToFractionString}})</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="nav-collapse collapse">

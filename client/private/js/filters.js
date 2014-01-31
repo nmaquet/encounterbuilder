@@ -67,7 +67,7 @@ angular.module('encounterBuilderFilters', [])
     })
     .filter('numberToFractionString', function () {
         return function (value) {
-            if (value === 0) {
+            if (value == 0) {
                 return '0';
             }
             if (value < 1) {

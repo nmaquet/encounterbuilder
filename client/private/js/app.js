@@ -6,7 +6,8 @@ DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
     'ngRoute',
     'encounterBuilderControllers',
     'encounterBuilderFilters',
-    'encounterBuilderServices'
+    'encounterBuilderServices',
+    'encounterBuilderDirectives'
 ]);
 
 DEMONSQUID.encounterBuilderApp.config(['$routeProvider',
