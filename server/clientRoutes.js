@@ -15,7 +15,7 @@ module.exports = function () {
             response.sendfile('client/public/partials/monster-detail.html');
         },
         feedbackPopover: function (request, response) {
-            response.sendfile('client/public/partials/feedback-popover.html');
+            response.render('../client/private/jade/feedback-popover.jade');
         },
         ogl: function (request, response) {
             response.sendfile('client/public/partials/OGLv1.0a.xhtml.html');

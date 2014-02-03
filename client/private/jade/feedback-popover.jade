@@ -1,0 +1,19 @@
+script.
+    DEMONSQUID.closeFeedbackForever = function () {
+        var threeYears = 3 * 365;
+        $('#feedback').popover('hide');
+        $.cookie('neverShowFeedbackPopover', true, { expires: threeYears });
+    }
+p.
+    We are currently in early Beta and we'd love to know what you think. <br/>
+    Get involved and share your ideas! <br/>
+    Thanks! <br/>
+p
+    a.pointer(onclick='$(\'#feedback\').popover(\'hide\')')
+        small Remind me later
+
+    | &nbsp;
+    | &nbsp;
+
+    a.pointer(onclick='DEMONSQUID.closeFeedbackForever()')
+        small Don't show this again

@@ -207,7 +207,7 @@ DEMONSQUID.encounterBuilderControllers.controller('FeedbackPopoverController', [
                 $timeout(function () {
                     $('#feedback').popover('toggle')
                     $.cookie('feedbackPopupAppeared', true, {expires: threeDays});
-                }, delay);
+                }, delay * 0);
             });
         }
 
