@@ -37,35 +37,7 @@
                             strong CR 5
         .span3
             .well.sidebar-nav
-                .row-fluid
-                    label(for='search') Search
-                    input#search(type='text', name='search', placeholder='Type something…', ng-model='nameSubstring')
-                .row-fluid
-                    label(for='sort') Sort by:
-                    select#sort(ng-model='orderProp')
-                        option(value='name') Alphabetical
-                        option(value='cr') Challenge Rating
-                .row-fluid
-                    label(for='type') Type:
-                    select#type(ng-model='type')
-                        option(value='any') Any
-                        option(value='aberration') Aberration
-                        option(value='animal') Animal
-                        option(value='construct') Construct
-                        option(value='dragon') Dragon
-                        option(value='fey') Fey
-                        option(value='humanoid') Humanoid
-                        option(value='magical beast') Magical Beast
-                        option(value='monstrous humanoid') Monstrous Humanoid
-                        option(value='ooze') Ooze
-                        option(value='outsider') Outsider
-                        option(value='plant') Plant
-                        option(value='undead') Undead
-                        option(value='vermin') Vermin
-                p
-                    label(for='cr-range') CR range:
-                    input#cr-range(type='text', ng-model='crRange', readonly='readonly')
-                #slider-range
+                include monster-filters
             .result-list
                 include monster-list
         .span6.well(ng-controller='MonsterDetailController')
