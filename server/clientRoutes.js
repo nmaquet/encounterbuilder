@@ -3,10 +3,10 @@
 module.exports = function () {
     return {
         default: function (request, response) {
-            response.sendfile('client/public/index.html');
+            response.render('../client/private/jade/index.jade');
         },
         login: function (request, response) {
-            response.sendfile('client/public/partials/login.html');
+            response.render('../client/private/jade/login.jade');
         },
         monsterList: function (request, response) {
             response.sendfile('client/public/partials/monster-list.html');
