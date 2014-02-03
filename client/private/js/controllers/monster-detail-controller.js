@@ -1,9 +1,9 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$sce', 'monsterService',
-    function ($scope, $sce, monsterService) {
-        $scope.$watch('selectedMonsterId', function (selectedMonsterId) {
-            $scope.monster = monsterService.get(selectedMonsterId, function (error, data) {
+DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$sce', 'monsterService', 'selectedMonsterService',
+    function ($scope, $sce, monsterService, selectedMonsterService) {
+        selectedMonsterService.register(function () {
+            $scope.monster = monsterService.get(selectedMonsterService.selectedMonsterId, function (error, data) {
                 if (error) {
                     console.log('Error in your face: ' + error);
                 } else {

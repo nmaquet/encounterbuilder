@@ -36,7 +36,8 @@ var jsFiles = [
     "client/private/js/directives/click-to-edit.js",
     "client/private/js/filters/abbreviate-monster-source.js",
     "client/private/js/filters/number-to-fraction-string.js",
-    "client/private/js/services/monster-service.js"
+    "client/private/js/services/monster-service.js",
+    "client/private/js/services/selected-monster-service.js"
 ];
 
 function concat(fileList, distPath) {
