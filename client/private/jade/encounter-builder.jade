@@ -1,7 +1,7 @@
-.container-fluid(ng-controller='MonsterListController')
+.container-fluid(ng-controller='GlobalController')
     .row-fluid
         .span3
-            .well.sidebar-nav
+            .well.sidebar-nav(ng-controller='EncounterController')
                include encounter
         .span3
             .well.sidebar-nav

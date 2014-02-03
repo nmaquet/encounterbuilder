@@ -34,7 +34,7 @@ DEMONSQUID.encounterBuilderControllers.controller('LogoutController', ['$scope',
     }
 ]);
 
-DEMONSQUID.encounterBuilderControllers.controller('MonsterListController', ['$scope', '$rootScope', '$timeout', 'monsterService',
+DEMONSQUID.encounterBuilderControllers.controller('GlobalController', ['$scope', '$rootScope', '$timeout', 'monsterService',
     function ($scope, $rootScope, $timeout, monsterService) {
 
         $scope.nameSubstring = '';
