@@ -12,7 +12,7 @@ module.exports = function () {
             response.sendfile('client/public/partials/monster-list.html');
         },
         monsterDetails: function (request, response) {
-            response.sendfile('client/public/partials/monster-detail.html');
+            response.render('../client/private/jade/monster-detail.jade');
         },
         feedbackPopover: function (request, response) {
             response.render('../client/private/jade/feedback-popover.jade');
