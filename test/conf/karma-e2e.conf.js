@@ -10,7 +10,8 @@ module.exports = function (config) {
             "client/private/bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js",
             "client/private/bower_components/jquery/jquery.js",
             "client/private/bower_components/jquery-ui/ui/jquery-ui.js",
-            'client/private/js/*.js',
+            'client/private/js/**/*.js',
+            'client/private/js/app.js',
             'test/e2e/*.js'
         ],
         exclude: [

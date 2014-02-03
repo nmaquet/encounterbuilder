@@ -26,7 +26,7 @@ describe("MonsterListController", function () {
     }));
 
     function instantiateController() {
-        $controller('MonsterListController', {$scope: $scope, monsterService: monsterService});
+        $controller('GlobalController', {$scope: $scope, monsterService: monsterService});
     }
 
     it("should initialize the name substring to the empty string", function () {
