@@ -11,14 +11,8 @@ module.exports = function () {
         monsterList: function (request, response) {
             response.render('../client/private/jade/monster-list.jade');
         },
-        monsterDetails: function (request, response) {
-            response.render('../client/private/jade/monster-detail.jade');
-        },
         feedbackPopover: function (request, response) {
             response.render('../client/private/jade/feedback-popover.jade');
-        },
-        ogl: function (request, response) {
-            response.render('../client/private/jade/ogl.jade');
         }
     }
 };

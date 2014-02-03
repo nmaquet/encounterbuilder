@@ -204,14 +204,14 @@ DEMONSQUID.encounterBuilderControllers.controller('FeedbackPopoverController', [
                 if ($location.port() == 9877) {
                     delay = 0;
                 }
-                $timeout(function () {
-                    $('#feedback').popover('toggle')
-                    $.cookie('feedbackPopupAppeared', true, {expires: threeDays});
-                }, delay * 0);
-            });
-        }
+     $timeout(function () {
+            $('#feedback').popover('toggle')
+            $.cookie('feedbackPopupAppeared', true, {expires: threeDays});
+        }, delay * 0);
+    });
+}
 
-        function startUserVoice() {
+function startUserVoice() {
             var UserVoice = window.UserVoice || [];
             (function () {
                 var uv = document.createElement('script');

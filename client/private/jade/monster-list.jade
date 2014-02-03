@@ -88,7 +88,8 @@
                                 button.btn.btn-mini(ng-click='addMonster(monster)')
                                     i.icon-plus
                 pagination.pagination-sm(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
-        .span6.well(ng-include="", src="'partials/monster-detail.html'", ng-controller='MonsterDetailController')
+        .span6.well(ng-controller='MonsterDetailController')
+            include monster-detail
 .navbar.navbar-inverse.navbar-fixed-top
     .navbar-inner
         .container-fluid
@@ -165,6 +166,7 @@ footer
     button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
     .modal-header
         h3#ogl-modal-label Open Game Content
-    .modal-body(ng-include="", src='\'partials/ogl.html\'')
+    .modal-body
+        include ogl
     .modal-footer
         button.btn(data-dismiss='modal', aria-hidden='true') Close
