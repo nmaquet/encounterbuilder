@@ -45,7 +45,7 @@ app.get('/partials/feedback-popover.html', clientRoutes.feedbackPopover);
 app.get('/partials/login.html', clientRoutes.login);
 app.get('/partials/monster-detail.html', clientRoutes.monsterDetails);
 app.get('/partials/monster-list.html', clientRoutes.monsterList);
-app.get('/partials/OGLv1.0a.xhtml', clientRoutes.ogl);
+app.get('/partials/ogl.html', clientRoutes.ogl);
 app.get('*', clientRoutes.default);
 
 var port = process.env.PORT || 3000;

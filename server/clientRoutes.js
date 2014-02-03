@@ -18,7 +18,7 @@ module.exports = function () {
             response.render('../client/private/jade/feedback-popover.jade');
         },
         ogl: function (request, response) {
-            response.sendfile('client/public/partials/OGLv1.0a.xhtml.html');
+            response.render('../client/private/jade/ogl.jade');
         }
     }
 };
