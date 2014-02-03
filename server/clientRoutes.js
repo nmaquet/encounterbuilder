@@ -8,8 +8,8 @@ module.exports = function () {
         login: function (request, response) {
             response.render('../client/private/jade/login.jade');
         },
-        monsterList: function (request, response) {
-            response.render('../client/private/jade/monster-list.jade');
+        encounterBuilder: function (request, response) {
+            response.render('../client/private/jade/encounter-builder.jade');
         },
         feedbackPopover: function (request, response) {
             response.render('../client/private/jade/feedback-popover.jade');

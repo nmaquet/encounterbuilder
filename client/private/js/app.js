@@ -13,14 +13,14 @@ DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
 DEMONSQUID.encounterBuilderApp.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider
-            .when('/monsters', {
-                templateUrl: 'partials/monster-list.html'
+            .when('/', {
+                templateUrl: 'encounter-builder.html'
             })
             .when('/login', {
-                templateUrl: 'partials/login.html'
+                templateUrl: 'login.html'
             })
             .otherwise({
-                redirectTo: '/monsters'
+                redirectTo: '/'
             });
     }]);
 

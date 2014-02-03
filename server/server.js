@@ -41,9 +41,9 @@ app.get('/api/user-data', userDataRoute);
 app.get('/logout', logoutRoute);
 app.post("/login", loginRoute);
 
-app.get('/partials/feedback-popover.html', clientRoutes.feedbackPopover);
-app.get('/partials/login.html', clientRoutes.login);
-app.get('/partials/monster-list.html', clientRoutes.monsterList);
+app.get('/feedback-popover.html', clientRoutes.feedbackPopover);
+app.get('/login.html', clientRoutes.login);
+app.get('/encounter-builder.html', clientRoutes.encounterBuilder);
 app.get('*', clientRoutes.default);
 
 var port = process.env.PORT || 3000;
