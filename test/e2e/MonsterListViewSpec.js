@@ -39,7 +39,7 @@ describe('Monster List View', function () {
         input("username").enter("nic");
         input("password").enter("nic");
         element("#login-button").click();
-        expect(browser().location().path()).toBe('/monsters');
+        expect(browser().location().path()).toBe('/');
     });
 
     it('should initially display 50 monsters', function () {
@@ -254,7 +254,7 @@ describe('Monster List View', function () {
     });
 
     it('should allow logout', function () {
-        expect(browser().location().path()).toBe('/monsters');
+        expect(browser().location().path()).toBe('/');
         element("#user-dropdown").click();
         element("#user-dropdown-logout").click();
         expect(browser().location().path()).toBe('/login');
