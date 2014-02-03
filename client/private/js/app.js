@@ -44,3 +44,6 @@ DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location',
     }]);
 
 DEMONSQUID.encounterBuilderControllers = angular.module('encounterBuilderControllers', ['ui.bootstrap']);
+DEMONSQUID.encounterBuilderServices = angular.module('encounterBuilderServices', ['ngResource']);
+DEMONSQUID.encounterBuilderFilters = angular.module('encounterBuilderFilters', []);
+DEMONSQUID.encounterBuilderDirectives = angular.module('encounterBuilderDirectives', []);

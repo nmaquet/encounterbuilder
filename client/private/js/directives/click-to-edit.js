@@ -1,8 +1,6 @@
 'use strict';
 
-/* Directives */
-
-angular.module('encounterBuilderDirectives', []).directive('clickToEdit', [ '$compile',
+DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
     function ($compile) {
         var editorTemplate =
             '<span class="click-to-edit" ng-click="edit()" style="display:inline;">' +

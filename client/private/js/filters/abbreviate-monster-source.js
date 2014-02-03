@@ -56,26 +56,12 @@ DEMONSQUID.MONSTER_SOURCE_ABBREVIATIONS =
     "Masks Of The Living God": "MLG"
 };
 
-angular.module('encounterBuilderFilters', [])
-    .filter('abbreviateMonsterSource', function () {
-        return function (source) {
-            if (source.length <= 5) {
-                return source;
-            }
-            return DEMONSQUID.MONSTER_SOURCE_ABBREVIATIONS[source] || "?";
-        };
-    })
-    .filter('numberToFractionString', function () {
-        return function (value) {
-            if (value == 0) {
-                return '0';
-            }
-            if (value < 1) {
-                return "1/" + String(1 / value);
-            }
-            else {
-                return String(value);
-            }
-        };
-    });
+DEMONSQUID.encounterBuilderFilters.filter('abbreviateMonsterSource', function () {
+    return function (source) {
+        if (source.length <= 5) {
+            return source;
+        }
+        return DEMONSQUID.MONSTER_SOURCE_ABBREVIATIONS[source] || "?";
+    };
+});
 

@@ -1,9 +1,5 @@
 'use strict';
 
-/* Services */
-
-DEMONSQUID.encounterBuilderServices = angular.module('encounterBuilderServices', ['ngResource']);
-
 DEMONSQUID.encounterBuilderServices.factory('monsterService', ['$http', function ($http) {
     return {
         search: function (params, callback) {
