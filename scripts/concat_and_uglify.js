@@ -25,13 +25,16 @@ var jsFiles = [
     "client/private/bower_components/bootstrap.css/js/bootstrap.js",
     // App files
     "client/private/js/app.js", /* app.js MUST be the first app file ! */
-    "client/private/js/controllers.js",
     "client/private/js/directives.js",
     "client/private/js/filters.js",
     "client/private/js/services.js",
     "client/private/js/controllers/encounter-controller.js",
     "client/private/js/controllers/search-monster-controller.js",
     "client/private/js/controllers/global-controller.js",
+    "client/private/js/controllers/encounter-list-controller.js",
+    "client/private/js/controllers/login-controller.js",
+    "client/private/js/controllers/logout-controller.js",
+    "client/private/js/controllers/monster-detail-controller.js",
     "client/private/js/controllers/feedback-controller.js"
 ];
 
