@@ -31,7 +31,8 @@ var jsFiles = [
     "client/private/js/services.js",
     "client/private/js/controllers/encounter-controller.js",
     "client/private/js/controllers/search-monster-controller.js",
-    "client/private/js/controllers/global-controller.js"
+    "client/private/js/controllers/global-controller.js",
+    "client/private/js/controllers/feedback-controller.js"
 ];
 
 function concat(fileList, distPath) {
