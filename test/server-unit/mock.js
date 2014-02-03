@@ -65,6 +65,9 @@ module.exports = function () {
             },
             redirect: function(url) {
                 this.redirect.url = url;
+            },
+            render: function(path) {
+                this.render.path = path;
             }
         },
 

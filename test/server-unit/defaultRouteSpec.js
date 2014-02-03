@@ -8,12 +8,12 @@ describe("defaultRoute", function () {
 
     beforeEach(function() {
         mock = require('./mock')();
-        defaultRoute = require('../../server/defaultRoute')();
+        defaultRoute = require('../../server/clientRoutes')().default;
     });
 
-    it("should send the index.html file", function () {
+    it("should render the index.jade file", function () {
         defaultRoute(mock.request, mock.response);
-        expect(mock.response.sendfile.path).to.equal('client/public/index.html');
+        expect(mock.response.render.path).to.equal('../client/private/jade/index.jade');
     });
 
 });
