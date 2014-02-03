@@ -1,7 +1,7 @@
 #monster-list-view.container-fluid(ng-controller='MonsterListController')
     .row-fluid
         .span3
-            .well.sidebar-nav(style='position: fixed; width: 400px;')
+            .well.sidebar-nav
                include encounter
         .span3
             .well.sidebar-nav
@@ -14,17 +14,4 @@
     include navbar
 hr
 footer
-.container-fluid
-    .row-fluid
-        .span12
-            span © DemonSquid 2014
-            | &nbsp; &nbsp;
-            a.btn(data-target='#ogl-modal', role='button', data-toggle='modal') Open Game License
-#ogl-modal.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='ogl-modal-label', aria-hidden='true')
-    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-    .modal-header
-        h3#ogl-modal-label Open Game Content
-    .modal-body
-        include ogl
-    .modal-footer
-        button.btn(data-dismiss='modal', aria-hidden='true') Close
+    include footer
