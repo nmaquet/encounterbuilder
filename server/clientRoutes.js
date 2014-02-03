@@ -9,7 +9,7 @@ module.exports = function () {
             response.render('../client/private/jade/login.jade');
         },
         monsterList: function (request, response) {
-            response.sendfile('client/public/partials/monster-list.html');
+            response.render('../client/private/jade/monster-list.jade');
         },
         monsterDetails: function (request, response) {
             response.render('../client/private/jade/monster-detail.jade');

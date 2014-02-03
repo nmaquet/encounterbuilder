@@ -1,0 +1,170 @@
+#monster-list-view.container-fluid(ng-controller='MonsterListController')
+    .row-fluid
+        .span3
+            .well.sidebar-nav(style='position: fixed; width: 400px;')
+                h3
+                    span.encounter-name(click-to-edit='selectedEncounter.Name')
+                    span (CR {{selectedEncounter.CR | numberToFractionString}})
+                .row-fluid
+                    legend Monsters
+                    ul#encounter-monsters.unstyled
+                        li.encounter-monster-row(ng-repeat='(id,monster) in selectedEncounter.Monsters')
+                            span.badge.badge-info.monster-amount {{monster.amount}}
+                            | &nbsp;
+                            span.monster-name
+                                a.pointer(ng-click='selectMonster(id)') {{monster.Name}}
+                            | &nbsp;
+                            span.monster-cr
+                                strong CR {{monster.CR | numberToFractionString}}
+                            | &nbsp;
+                            span.encounter-monsters-buttons.pointer
+                                button.btn.btn-xmini.decrement-monster-btn(ng-class="{disabled: monster.amount<=1}", ng-disabled="monster.amount<=1", ng-click='decrementMonster(monster)')
+                                    i.icon-minus
+                                button.btn.btn-xmini.increment-monster-btn(ng-click='incrementMonster(monster)')
+                                    i.icon-plus
+                                button.btn.btn-danger.btn-xmini.remove-monster-btn(ng-click='removeMonster(id)')
+                                    i.icon-remove
+                .row-fluid
+                    legend Treasure
+                    ul.unstyled
+                        li
+                            span.badge.badge-info 8
+                            | Orc
+                            strong CR 1
+                        li
+                            span.badge.badge-info 5
+                            | Elf
+                            strong CR 5
+        .span3
+            .well.sidebar-nav
+                .row-fluid
+                    label(for='search') Search
+                    input#search(type='text', name='search', placeholder='Type something…', ng-model='nameSubstring')
+                .row-fluid
+                    label(for='sort') Sort by:
+                    select#sort(ng-model='orderProp')
+                        option(value='name') Alphabetical
+                        option(value='cr') Challenge Rating
+                .row-fluid
+                    label(for='type') Type:
+                    select#type(ng-model='type')
+                        option(value='any') Any
+                        option(value='aberration') Aberration
+                        option(value='animal') Animal
+                        option(value='construct') Construct
+                        option(value='dragon') Dragon
+                        option(value='fey') Fey
+                        option(value='humanoid') Humanoid
+                        option(value='magical beast') Magical Beast
+                        option(value='monstrous humanoid') Monstrous Humanoid
+                        option(value='ooze') Ooze
+                        option(value='outsider') Outsider
+                        option(value='plant') Plant
+                        option(value='undead') Undead
+                        option(value='vermin') Vermin
+                p
+                    label(for='cr-range') CR range:
+                    input#cr-range(type='text', ng-model='crRange', readonly='readonly')
+                #slider-range
+            .result-list
+                pagination.pagination-sm.page(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
+                table.monsters.table.table-striped.well
+                    thead
+                        tr
+                            th Name
+                            th CR
+                            th Source
+                    tbody
+                        tr.pointer.monster-row(ng-repeat='monster in monsters')
+                            td(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
+                                p {{monster.Name}}
+                            td(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
+                                p {{monster.CR | numberToFractionString}}
+                            td(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
+                                abbr(title='{{monster.Source}}')
+                                    small {{monster.Source | abbreviateMonsterSource}}
+                            td(ng-class='{selected: selectedMonsterId == monster.id}')
+                                input(type='text', placeholder='1', ng-model='monster.amountToAdd', style='width: 25px;')
+                                button.btn.btn-mini(ng-click='addMonster(monster)')
+                                    i.icon-plus
+                pagination.pagination-sm(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
+        .span6.well(ng-include="", src="'partials/monster-detail.html'", ng-controller='MonsterDetailController')
+.navbar.navbar-inverse.navbar-fixed-top
+    .navbar-inner
+        .container-fluid
+            button.btn.btn-navbar(type='button', data-toggle='collapse', data-target='.nav-collapse')
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            a.brand(href='#', title='') Encounter Builder
+            .dropdown.navbar-text.pull-left(ng-controller='EncounterListController')
+                a#encounter-dropdown.dropdown-toggle.btn.navbar-link(role='button', data-toggle='dropdown')
+                    | {{selectedEncounter.Name}} (CR {{selectedEncounter.CR | numberToFractionString}})
+                    b.caret
+                ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
+                    li
+                        a.pointer(tabindex='-1', ng-click='createEncounter()')
+                            i.icon-plus
+                            strong Create new encounter
+                    li.divider.pointer
+                    li(ng-repeat='encounter in encounters')
+                        a.pointer(tabindex='-1', ng-click='selectEncounter(encounter)')
+                            i.icon-chevron-right
+                            | {{encounter.Name}} (CR {{encounter.CR | numberToFractionString}})
+            .nav-collapse.collapse
+                ul.nav.nav-social
+                    li.active
+                        a(href='#todo')
+                            i.icon-eye-open.icon-white
+                            | Views
+                    li
+                        a(href='#todo')
+                            i.icon-heart.icon-white
+                            | Likes
+                    li
+                        a(href='#todo')
+                            i.icon-bullhorn.icon-white
+                            | Comments
+                    li
+                        a(href='#todo')
+                            i.icon-user.icon-white
+                            | Spawns
+                ul.nav.nav-settings
+                    li.active
+                        a(href='#todo')
+                            i.icon-cog.icon-white
+                    li
+                        a(href='#todo')
+                            i.icon-folder-close.icon-white
+                    li
+                        a#feedback.pointer(data-uv-trigger='data-uv-trigger', style='background-color: #E2753A; color: white; position: fixed;', data-toggle='popover', ng-controller='FeedbackPopoverController') Send us Feedback !!!
+                .dropdown.navbar-text.pull-right(ng-controller='LogoutController')
+                    a#user-dropdown.dropdown-toggle.btn.navbar-link(role='button', data-toggle='dropdown')
+                        i.icon-user
+                        | {{user.username}}
+                        b.caret
+                    ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
+                        li
+                            a.pointer(tabindex='-1') Profile
+                        li
+                            a.pointer(tabindex='-1') Settings
+                        li.divider.pointer
+                        li
+                            a#user-dropdown-logout.pointer(tabindex='-1', ng-click='logout()')
+                                | Log
+                                | out
+hr
+footer
+.container-fluid
+    .row-fluid
+        .span12
+            span © DemonSquid 2014
+            | &nbsp; &nbsp;
+            a.btn(data-target='#ogl-modal', role='button', data-toggle='modal') Open Game License
+#ogl-modal.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='ogl-modal-label', aria-hidden='true')
+    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+    .modal-header
+        h3#ogl-modal-label Open Game Content
+    .modal-body(ng-include='ng-include', src='\'partials/OGLv1.0a.xhtml\'')
+    .modal-footer
+        button.btn(data-dismiss='modal', aria-hidden='true') Close
