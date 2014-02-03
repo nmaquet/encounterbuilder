@@ -4,7 +4,7 @@ var expect = chai.expect;
 
 var $scope, $controller, monsterService;
 
-describe("MonsterListController", function () {
+describe("SearchMonsterController", function () {
 
     beforeEach(module("encounterBuilderApp"));
 
@@ -26,7 +26,7 @@ describe("MonsterListController", function () {
     }));
 
     function instantiateController() {
-        $controller('GlobalController', {$scope: $scope, monsterService: monsterService});
+        $controller('SearchMonsterController', {$scope: $scope, monsterService: monsterService});
     }
 
     it("should initialize the name substring to the empty string", function () {
