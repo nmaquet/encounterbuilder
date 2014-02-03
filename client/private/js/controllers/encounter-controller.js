@@ -1,7 +1,9 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('EncounterController', ['$scope', '$rootScope', 'selectedMonsterService',
-    function ($scope, $rootScope, selectedMonsterService) {
+DEMONSQUID.encounterBuilderControllers.controller('EncounterController', ['$scope', 'encounterService', 'selectedMonsterService',
+    function ($scope, encounterService, selectedMonsterService) {
+
+        $scope.encounter = {};
 
         $scope.selectMonster = function (id) {
             selectedMonsterService.selectMonster(id);
@@ -18,7 +20,11 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController', ['$scop
         }
 
         $scope.removeMonster = function (id) {
-            delete $rootScope.selectedEncounter.Monsters[id];
+            delete encounterService.selectedEncounter.Monsters[id];
         }
+
+        encounterService.watchSelectedEncounter(function() {
+            $scope.encounter = encounterService.selectedEncounter;
+        });
     }
 ]);

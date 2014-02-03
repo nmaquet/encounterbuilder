@@ -1,7 +1,8 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController', ['$scope', '$rootScope', '$timeout', 'monsterService','selectedMonsterService',
-    function ($scope, $rootScope, $timeout, monsterService, selectedMonsterService) {
+DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
+    ['$scope', '$timeout', 'monsterService','selectedMonsterService', 'encounterService',
+    function ($scope, $timeout, monsterService, selectedMonsterService, encounterService) {
 
         $scope.nameSubstring = '';
         $scope.orderProp = 'cr';
@@ -63,11 +64,11 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController', ['$
                 monster.amountToAdd = 1;
             }
             var simpleMonster = {Name: monster.Name, CR: monster.CR, amount: Number(monster.amountToAdd)};
-            if (!$rootScope.selectedEncounter.Monsters[monster.id]) {
-                $rootScope.selectedEncounter.Monsters[monster.id] = simpleMonster;
+            if (!encounterService.selectedEncounter.Monsters[monster.id]) {
+                encounterService.selectedEncounter.Monsters[monster.id] = simpleMonster;
             }
             else {
-                $rootScope.selectedEncounter.Monsters[monster.id].amount += Number(monster.amountToAdd) || 1;
+                encounterService.selectedEncounter.Monsters[monster.id].amount += Number(monster.amountToAdd) || 1;
             }
             delete monster.amountToAdd;
         }

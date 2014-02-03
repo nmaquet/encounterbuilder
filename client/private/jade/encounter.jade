@@ -1,10 +1,10 @@
 h3
-    span.encounter-name(click-to-edit='selectedEncounter.Name')
-    span (CR {{selectedEncounter.CR | numberToFractionString}})
+    span.encounter-name(click-to-edit='encounter.Name')
+    span (CR {{encounter.CR | numberToFractionString}})
 .row-fluid
     legend Monsters
     ul#encounter-monsters.unstyled
-        li.encounter-monster-row(ng-repeat='(id,monster) in selectedEncounter.Monsters')
+        li.encounter-monster-row(ng-repeat='(id,monster) in encounter.Monsters')
             span.badge.badge-info.monster-amount {{monster.amount}}
             | &nbsp;
             span.monster-name
