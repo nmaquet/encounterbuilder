@@ -6,7 +6,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController', ['$scop
         $scope.encounter = {};
 
         $scope.selectMonster = function (id) {
-            selectedMonsterService.selectMonster(id);
+            selectedMonsterService.selectedMonsterId(id);
         }
 
         $scope.incrementMonster = function (monster) {

@@ -56,7 +56,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
         }
 
         $scope.selectMonster = function (id) {
-            selectedMonsterService.selectMonster(id);
+            selectedMonsterService.selectedMonsterId(id);
         }
 
         $scope.addMonster = function (monster) {
@@ -82,7 +82,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
         $scope.maxCR = 40;
         $scope.crRange = $scope.minCR + " - " + $scope.maxCR;
 
-        selectedMonsterService.selectMonster('bat');
+        selectedMonsterService.selectedMonsterId('bat');
 
         $("#slider-range").slider({
             range: true,

@@ -3,10 +3,15 @@
 DEMONSQUID.encounterBuilderServices.factory('selectedMonsterService', ['$rootScope', '$timeout',
     function ($rootScope, $timeout) {
         var service = {};
+        var selectedMonsterId;
 
-        service.selectMonster = function (monsterId) {
-            this.selectedMonsterId = monsterId;
-            $rootScope.$emit('selectedMonsterChanged');
+        service.selectedMonsterId = function(monsterId) {
+            if (monsterId) {
+                selectedMonsterId = monsterId;
+                $rootScope.$emit('selectedMonsterChanged');
+            } else {
+                return selectedMonsterId;
+            }
         };
 
         service.register = function(callback) {
@@ -14,7 +19,7 @@ DEMONSQUID.encounterBuilderServices.factory('selectedMonsterService', ['$rootSco
         }
 
         $timeout(function () {
-            service.selectMonster('bat')
+            service.selectedMonsterId('bat')
         });
 
         return service;
