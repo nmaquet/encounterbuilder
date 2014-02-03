@@ -4,27 +4,37 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
     function ($rootScope, $timeout) {
 
         var SELECTED_ENCOUNTER_CHANGED = 'selectedEncounterChanged';
-
         var service = {};
+        var selectedEncounter;
+        var encounters;
 
-        service.selectEncounter = function (encounter) {
-            this.selectedEncounter = encounter;
-            $rootScope.$emit(SELECTED_ENCOUNTER_CHANGED);
+        service.selectedEncounter = function (encounter) {
+            if (encounter) {
+                selectedEncounter = encounter;
+                $rootScope.$emit(SELECTED_ENCOUNTER_CHANGED);
+            }
+            else{
+                return selectedEncounter;
+            }
         };
 
-        service.watchSelectedEncounter = function(callback) {
+        service.encounters = function () {
+                return encounters;
+        };
+
+        service.addEncounter = function (encounter) {
+            encounters.push(encounter);
+        };
+
+        service.watchSelectedEncounter = function (callback) {
             $rootScope.$on(SELECTED_ENCOUNTER_CHANGED, callback);
         }
 
-        service.newEncounter = function() {
-            return { Name : "Untitled", CR : "0", Monsters: {}};
+        service.newEncounter = function () {
+            return { Name: "Untitled", CR: "0", Monsters: {}};
         }
 
-        $timeout(function () {
-            service.selectEncounter(service.encounters[0]);
-        });
-
-        service.encounters = [ service.newEncounter() ];
-
+        encounters = [ service.newEncounter() ];
+        selectedEncounter = encounters[0];
         return service;
     }]);

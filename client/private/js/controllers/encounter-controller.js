@@ -3,7 +3,7 @@
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController', ['$scope', 'encounterService', 'selectedMonsterService',
     function ($scope, encounterService, selectedMonsterService) {
 
-        $scope.encounter = {};
+        $scope.encounter = encounterService.selectedEncounter();
 
         $scope.selectMonster = function (id) {
             selectedMonsterService.selectedMonsterId(id);
@@ -20,11 +20,11 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController', ['$scop
         }
 
         $scope.removeMonster = function (id) {
-            delete encounterService.selectedEncounter.Monsters[id];
+            delete encounterService.selectedEncounter().Monsters[id];
         }
 
         encounterService.watchSelectedEncounter(function() {
-            $scope.encounter = encounterService.selectedEncounter;
+            $scope.encounter = encounterService.selectedEncounter();
         });
     }
 ]);
