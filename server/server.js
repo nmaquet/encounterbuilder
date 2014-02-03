@@ -16,7 +16,6 @@ app.configure(function () {
     app.use("/css", express.static(__dirname + '/../client/public/css'));
     app.use("/img", express.static(__dirname + '/../client/public/img'));
     app.use("/js", express.static(__dirname + '/../client/public/js'));
-    app.use("/partials", express.static(__dirname + '/../client/public/partials'));
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
@@ -34,15 +33,20 @@ var monsterRoute = require('./monsterRoute')(Monster);
 var loginRoute = require('./loginRoute')(User, authentication.authenticate);
 var logoutRoute = require('./logoutRoute')();
 var userDataRoute = require('./userDataRoute')();
-var defaultRoute = require('./defaultRoute')();
+var clientRoutes = require('./clientRoutes')();
 
 app.get('/api/search-monsters', authentication.check, searchMonstersRoute);
 app.get('/api/monster/:id', authentication.check, monsterRoute);
 app.get('/api/user-data', userDataRoute);
 app.get('/logout', logoutRoute);
-app.get('*', defaultRoute);
-
 app.post("/login", loginRoute);
+
+app.get('/partials/feedback-popover.html', clientRoutes.feedbackPopover);
+app.get('/partials/login.html', clientRoutes.login);
+app.get('/partials/monster-detail.html', clientRoutes.monsterDetails);
+app.get('/partials/monster-list.html', clientRoutes.monsterList);
+app.get('/partials/OGLv1.0a.xhtml', clientRoutes.ogl);
+app.get('*', clientRoutes.default);
 
 var port = process.env.PORT || 3000;
 

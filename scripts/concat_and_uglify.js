@@ -41,7 +41,7 @@ function concat(fileList, distPath) {
 
 function uglify(srcPath, distPath) {
     var contents = fs.readFileSync(srcPath, FILE_ENCODING);
-    if (!process.env['DO_NOT_UGLIFY'] || true) {
+    if (!process.env['DO_NOT_UGLIFY']) {
         var ast = uglify_js.parse(contents);
         var compressor = uglify_js.Compressor();
         ast.figure_out_scope();
