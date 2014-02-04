@@ -58,6 +58,20 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
             }
         }
 
+        service.incrementMonster = function(monster) {
+            monster.amount++;
+        }
+
+        service.decrementMonster = function(monster) {
+            if (monster.amount > 1) {
+                monster.amount--;
+            }
+        }
+
+        service.removeMonster = function (monsterId) {
+            delete service.selectedEncounter().Monsters[monsterId];
+        }
+
         encounters = [ service.newEncounter() ];
         selectedEncounter = encounters[0];
         return service;

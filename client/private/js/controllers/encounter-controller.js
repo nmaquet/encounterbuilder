@@ -9,19 +9,9 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController', ['$scop
             selectedMonsterService.selectedMonsterId(id);
         }
 
-        $scope.incrementMonster = function (monster) {
-            monster.amount++;
-        }
-
-        $scope.decrementMonster = function (monster) {
-            if (monster.amount > 1) {
-                monster.amount--;
-            }
-        }
-
-        $scope.removeMonster = function (id) {
-            delete encounterService.selectedEncounter().Monsters[id];
-        }
+        $scope.incrementMonster = encounterService.incrementMonster;
+        $scope.decrementMonster = encounterService.decrementMonster;
+        $scope.removeMonster = encounterService.removeMonster;
 
         encounterService.watchSelectedEncounter(function() {
             $scope.encounter = encounterService.selectedEncounter();
