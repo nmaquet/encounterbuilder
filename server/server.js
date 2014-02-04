@@ -35,7 +35,7 @@ var loginRoute = require('./loginRoute')(User, authentication.authenticate);
 var logoutRoute = require('./logoutRoute')();
 var userDataRoute = require('./userDataRoute')(Encounter);
 var clientRoutes = require('./clientRoutes')();
-var encounterRoute = require('./encounterRoute')(Encounter);
+var encounterRoute = require('./encounterRoutes')(Encounter);
 
 app.get('/api/search-monsters', authentication.check, searchMonstersRoute);
 app.get('/api/monster/:id', authentication.check, monsterRoute);
