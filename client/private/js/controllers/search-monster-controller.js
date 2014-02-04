@@ -74,6 +74,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     encounter.Monsters[monster.id].amount += Number(monster.amountToAdd) || 1;
                 }
                 delete monster.amountToAdd;
+                encounterService.upsert(encounter);
             }
 
             $scope.totalItems = 0;
