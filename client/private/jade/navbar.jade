@@ -5,9 +5,13 @@
             span.icon-bar
             span.icon-bar
         a.brand(href='#', title='') Encounter Builder
-        .dropdown.navbar-text.pull-left(ng-controller='EncounterListController')
-            a#encounter-dropdown.dropdown-toggle.btn.navbar-link(role='button', data-toggle='dropdown')
+        .dropdown.navbar-text.pull-left(ng-controller="EncounterListController")
+            a#encounter-dropdown.dropdown-toggle.btn.navbar-link(role='button', data-toggle='dropdown', ng-show="selectedEncounter")
                 | {{selectedEncounter.Name}} (CR {{selectedEncounter.CR | numberToFractionString}})
+                | &nbsp;
+                b.caret
+            a#encounter-dropdown.dropdown-toggle.btn.navbar-link(role='button', data-toggle='dropdown', ng-hide="selectedEncounter")
+                | (no encounters)
                 | &nbsp;
                 b.caret
             ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')

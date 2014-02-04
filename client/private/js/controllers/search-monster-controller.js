@@ -99,5 +99,9 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     $scope.$apply();
                 }
             });
+
+            selectedEncounterService.register(function() {
+                $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
+            })
         }
     ]);

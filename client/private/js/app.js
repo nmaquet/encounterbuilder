@@ -24,8 +24,8 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider',
             });
     }]);
 
-DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', 'encounterService',
-    function ($rootScope, $http, $location, encounterService) {
+DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', 'encounterService', 'selectedEncounterService',
+    function ($rootScope, $http, $location, encounterService, selectedEncounterService) {
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
             function loadEncounters(serverEncounters) {
                 var encounters = encounterService.encounters;
@@ -35,6 +35,7 @@ DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', 'encount
                 while (serverEncounters.length) {
                     encounters.push(serverEncounters.pop())
                 }
+                selectedEncounterService.selectedEncounter(encounters[0], true /* allow undefined */);
             }
             if (!$rootScope.username) {
                 $http.get('/api/user-data')

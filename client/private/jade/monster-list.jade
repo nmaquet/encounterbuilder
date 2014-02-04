@@ -15,6 +15,6 @@ table.monsters.table.table-striped.well
                     small {{monster.Source | abbreviateMonsterSource}}
             td(ng-class='{selected: selectedMonsterId == monster.id}')
                 input(type='text', placeholder='1', ng-model='monster.amountToAdd', style='width: 25px;')
-                button.btn.btn-mini(ng-click='addMonster(monster)')
+                button.btn.btn-mini(ng-class="{disabled: !selectedEncounter}", ng-disabled="!selectedEncounter", ng-click='addMonster(monster)')
                     i.icon-plus
 pagination.pagination-sm.page(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
