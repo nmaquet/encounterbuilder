@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function (Encounter) {
+module.exports = function (Encounter, db) {
     return {
         upsert: function (request, response) {
             var username = request.session.user.username;
@@ -34,23 +34,21 @@ module.exports = function (Encounter) {
                 });
             }
         },
-        delete: function (Encounter) {
-            return function (request, response) {
-                var username = request.session.user.username;
-                var encounter = request.body.encounter;
-                if (encounter._id && username) {
-                    Encounter.remove({_id: encounter._id, Username: username}, function (error) {
-                        if (error) {
-                            response.json({error: "could not delete encounter"});
-                        }
-                        else {
-                            response.json({});
-                        }
-                    });
-                }
-                else{
-                    response.json({error:"no encounter id"});
-                }
+        delete: function (request, response) {
+            var username = request.session.user.username;
+            var encounter = request.body.encounter;
+            if (encounter._id && username) {
+                Encounter.remove({_id: encounter._id, Username: username}, function (error) {
+                    if (error) {
+                        response.json({error: "could not delete encounter"});
+                    }
+                    else {
+                        response.json({});
+                    }
+                });
+            }
+            else {
+                response.json({error: "no encounter id"});
             }
         }
     }
