@@ -20,6 +20,8 @@
                     a.pointer(tabindex='-1', ng-click='selectEncounter(encounter)')
                         i.icon-chevron-right
                         | &nbsp;{{encounter.Name}} (CR {{encounter.CR | numberToFractionString}})
+                    a.pointer(tabindex='-1', ng-click='removeEncounter(encounter)')
+                        i.icon-trash
         .nav-collapse.collapse
             ul.nav.nav-social
                 li.active

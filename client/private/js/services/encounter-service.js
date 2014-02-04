@@ -30,6 +30,24 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
             postEncounter(encounter);
         };
 
+        service.removeEncounter = function (encounter) {
+
+            var i = encounters.indexOf(encounter);
+            if(i != -1) {
+                encounters.splice(i, 1);
+            }
+            $rootScope.$emit(ENCOUNTERS_CHANGED);
+            $http.post('/api/delete-encounter', { encounter: encounter })
+                .success(function (response) {
+                    if (response.error) {
+                        console.log(error);
+                    }
+                })
+                .error(function (response) {
+                    console.log("delete of encounter failed !");
+                });
+        }
+
         service.watchSelectedEncounter = function (callback) {
             $rootScope.$on(SELECTED_ENCOUNTER_CHANGED, callback);
         }
@@ -53,7 +71,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
 
         service.addMonsterToSelectedEncounter = function (monster, amount) {
             var encounter = service.selectedEncounter();
-            if (!encounter.Monsters){
+            if (!encounter.Monsters) {
                 encounter.Monsters = {};
             }
             if (!encounter.Monsters[monster.id]) {
@@ -90,7 +108,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
             if (!initialized) {
                 return;
             }
-            $http.post('/api/encounter', { encounter: encounter })
+            $http.post('/api/upsert-encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response._id) {
                         encounter._id = response._id;
