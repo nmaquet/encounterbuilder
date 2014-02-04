@@ -34,27 +34,5 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 });
         }
 
-        /*
-         service.addMonsterToSelectedEncounter = function (monster, amount) {
-         var encounter = service.selectedEncounter();
-         if (!encounter.Monsters) {
-         encounter.Monsters = {};
-         }
-         if (!encounter.Monsters[monster.id]) {
-         encounter.Monsters[monster.id] = {Name: monster.Name, CR: monster.CR, amount: Number(amount)};
-         }
-         else {
-         encounter.Monsters[monster.id].amount += Number(amount) || 1;
-         }
-         service.notifyChange();
-         }
-         */
-        /*
-         service.removeMonster = function (monsterId) {
-         delete service.selectedEncounter().Monsters[monsterId];
-         service.notifyChange();
-         }
-         */
-
         return service;
     }]);

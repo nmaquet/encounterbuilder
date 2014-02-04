@@ -25,8 +25,8 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
 
             }
 
-            $scope.removeMonster = function () {
-
+            $scope.removeMonsterById = function (monsterId) {
+                delete $scope.encounter.Monsters[monsterId];
             }
 
             selectedEncounterService.register(function () {
