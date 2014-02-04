@@ -11,6 +11,15 @@ module.exports = function (Encounter) {
                 if (error)
                     response.send(error);
 
+                console.log(Encounters);
+
+                if (Encounters.length === 0) {
+                    console.log("pushing");
+                    Encounters.push({ Name: "Untitled", CR: "0", Monsters: {}});
+                } else{
+                    console.log("not pushing");
+                }
+
                 var userData = {
                     user: {
                         username: username
@@ -19,8 +28,6 @@ module.exports = function (Encounter) {
                 };
                 response.json(userData);
             })
-
-
         }
         else {
             response.json({});
