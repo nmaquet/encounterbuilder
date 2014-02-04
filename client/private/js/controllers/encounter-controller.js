@@ -13,6 +13,8 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController', ['$scop
             selectedMonsterService.selectedMonsterId(id);
         }
 
+        $scope.removeEncounter = encounterService.removeEncounter;
+
         $scope.incrementMonster = encounterService.incrementMonster;
         $scope.decrementMonster = encounterService.decrementMonster;
         $scope.removeMonster = encounterService.removeMonster;

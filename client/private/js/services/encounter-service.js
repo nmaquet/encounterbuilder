@@ -31,7 +31,6 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
         };
 
         service.removeEncounter = function (encounter) {
-
             var i = encounters.indexOf(encounter);
             if(i != -1) {
                 encounters.splice(i, 1);
@@ -46,6 +45,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
                 .error(function (response) {
                     console.log("delete of encounter failed !");
                 });
+            service.selectedEncounter(service.encounters()[0]);
         }
 
         service.watchSelectedEncounter = function (callback) {

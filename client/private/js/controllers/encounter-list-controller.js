@@ -14,8 +14,6 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterListController', ['$
             encounterService.selectedEncounter(encounter);
         }
 
-        $scope.removeEncounter = encounterService.removeEncounter;
-
         function refreshSelectedEncounter() {
             $scope.selectedEncounter = encounterService.selectedEncounter();
         };

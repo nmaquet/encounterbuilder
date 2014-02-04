@@ -1,6 +1,9 @@
 h3
     span.encounter-name(click-to-edit='encounter.Name')
-    span (CR {{encounter.CR | numberToFractionString}})
+    span
+        | (CR {{encounter.CR | numberToFractionString}})
+        a.pointer(ng-click="removeEncounter(encounter)")
+            i.icon-trash
 .row-fluid
     legend Monsters
     ul#encounter-monsters.unstyled
