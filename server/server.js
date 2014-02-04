@@ -43,7 +43,7 @@ app.get('/api/user-data', userDataRoute);
 app.get('/logout', logoutRoute);
 app.post("/login", loginRoute);
 app.post("/api/upsert-encounter", authentication.check, encounterRoute.upsert);
-app.post("/api/delete-encounter", authentication.check, encounterRoute.delete);
+app.post("/api/remove-encounter", authentication.check, encounterRoute.delete);
 
 app.get('/feedback-popover.html', clientRoutes.feedbackPopover);
 app.get('/login.html', clientRoutes.login);

@@ -1,4 +1,4 @@
-div(ng-hide="encounter === undefined")
+div(ng-show="encounter")
     h3
         span.encounter-name(click-to-edit='encounter.Name')
         span
@@ -35,5 +35,5 @@ div(ng-hide="encounter === undefined")
                 span.badge.badge-info 5
                 | Elf
                 strong CR 5
-div(ng-show="encounter === undefined")
+div(ng-hide="encounter")
     | There is no encounter. Please create one.

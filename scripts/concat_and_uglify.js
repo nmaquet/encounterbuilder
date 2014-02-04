@@ -36,6 +36,7 @@ var jsFiles = [
     "client/private/js/filters/abbreviate-monster-source.js",
     "client/private/js/filters/number-to-fraction-string.js",
     "client/private/js/services/monster-service.js",
+    "client/private/js/services/selected-encounter-service.js",
     "client/private/js/services/selected-monster-service.js",
     "client/private/js/services/encounter-service.js"
 ];

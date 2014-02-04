@@ -1,31 +1,20 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('EncounterListController', ['$scope', 'encounterService',
-    function ($scope, encounterService) {
+DEMONSQUID.encounterBuilderControllers.controller('EncounterListController',
+    ['$scope', 'encounterService', 'selectedEncounterService',
+        function ($scope, encounterService, selectedEncounterService) {
 
-        $scope.createEncounter = function () {
-            var encounter = encounterService.newEncounter();
-            encounterService.addEncounter(encounter);
-            encounterService.selectedEncounter(encounter);
+            $scope.encounters = encounterService.encounters;
+
+            $scope.createEncounter = function () {
+                var encounter = { Name: "Untitled", CR: "0", Monsters: {}};
+                selectedEncounterService.selectedEncounter(encounter);
+                encounterService.encounters.push(encounter);
+                encounterService.upsert(encounter);
+            }
+
+            $scope.selectEncounter = function (encounter) {
+                selectedEncounterService.selectedEncounter(encounter);
+            }
         }
-
-        $scope.selectEncounter = function (encounter) {
-            $scope.selectedEncounter = encounter;
-            encounterService.selectedEncounter(encounter);
-        }
-
-        function refreshSelectedEncounter() {
-            $scope.selectedEncounter = encounterService.selectedEncounter();
-        };
-
-        function refreshEncounters () {
-            $scope.encounters = encounterService.encounters();
-        };
-
-        encounterService.watchSelectedEncounter(refreshSelectedEncounter);
-        encounterService.watchEncounters(refreshEncounters);
-
-        refreshSelectedEncounter();
-        refreshEncounters();
-    }
-]);
+    ]);

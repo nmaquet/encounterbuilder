@@ -1,26 +1,36 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('EncounterController', ['$scope', 'encounterService', 'selectedMonsterService',
-    function ($scope, encounterService, selectedMonsterService) {
+DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
+    ['$scope', 'encounterService', 'selectedMonsterService', 'selectedEncounterService',
+        function ($scope, encounterService, selectedMonsterService, selectedEncounterService) {
+            $scope.encounter = undefined;
 
-        $scope.encounter = undefined;
-        encounterService.selectedEncounter();
+            $scope.$watch('encounter.Name', function () {
+                encounterService.upsert($scope.encounter);
+            });
 
-        $scope.$watch('encounter.Name', function () {
-            encounterService.notifyChange();
-        });
+            $scope.selectMonster = function (id) {
+                selectedMonsterService.selectedMonsterId(id);
+            }
 
-        $scope.selectMonster = function (id) {
-            selectedMonsterService.selectedMonsterId(id);
+            $scope.removeEncounter = function () {
+
+            }
+
+            $scope.incrementMonster = function () {
+
+            }
+
+            $scope.decrementMonster = function () {
+
+            }
+
+            $scope.removeMonster = function () {
+
+            }
+
+            selectedEncounterService.register(function () {
+                $scope.encounter = selectedEncounterService.selectedEncounter();
+            });
         }
-
-        $scope.removeEncounter = encounterService.removeEncounter;
-        $scope.incrementMonster = encounterService.incrementMonster;
-        $scope.decrementMonster = encounterService.decrementMonster;
-        $scope.removeMonster = encounterService.removeMonster;
-
-        encounterService.watchSelectedEncounter(function () {
-            $scope.encounter = encounterService.selectedEncounter();
-        });
-    }
-]);
+    ]);
