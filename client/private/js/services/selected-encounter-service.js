@@ -7,8 +7,9 @@ DEMONSQUID.encounterBuilderServices.factory('selectedEncounterService', ['$rootS
         var service = {};
         var selectedEncounter;
 
-        service.selectedEncounter = function (encounter) {
-            if (encounter) {
+        service.selectedEncounter = function (encounter, setUndefined) {
+            setUndefined = setUndefined || false;
+            if (encounter || setUndefined) {
                 selectedEncounter = encounter;
                 $rootScope.$emit(SELECTED_ENCOUNTER_CHANGED);
             } else {

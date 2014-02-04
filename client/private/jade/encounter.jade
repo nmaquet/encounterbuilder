@@ -12,7 +12,7 @@ div(ng-show="encounter")
                 span.badge.badge-info.monster-amount {{monster.amount}}
                 | &nbsp;
                 span.monster-name
-                    a.pointer(ng-click='selectMonster(id)') {{monster.Name}}
+                    a.pointer(ng-click='selectMonsterById(id)') {{monster.Name}}
                 | &nbsp;
                 span.monster-cr
                     strong CR {{monster.CR | numberToFractionString}}
