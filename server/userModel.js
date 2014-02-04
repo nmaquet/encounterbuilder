@@ -10,6 +10,6 @@ function generateUserSchema(mongoose) {
 
 module.exports = function (mongoose) {
     return {
-        User: mongoose.model('users', generateUserSchema(mongoose))
+        User: mongoose.model('User', generateUserSchema(mongoose))
     };
 };

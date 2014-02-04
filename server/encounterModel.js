@@ -1,15 +1,16 @@
 "use strict";
 
-function generateUserSchema(mongoose) {
+function generateEncounterSchema(mongoose) {
     return new mongoose.Schema({
-        username: String,
-        salt: String,
-        hash: String
+        Username: String,
+        Name: String,
+        CR: Number,
+        Monsters: [mongoose.Schema.Types.Mixed]
     });
 }
 
 module.exports = function (mongoose) {
     return {
-        User: mongoose.model('users', generateUserSchema(mongoose))
+        Encounter: mongoose.model('Encounter', generateEncounterSchema(mongoose))
     };
 };

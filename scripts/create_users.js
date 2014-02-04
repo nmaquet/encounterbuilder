@@ -12,27 +12,73 @@ var mongoose = require('mongoose');
 var db = mongoose.connect(process.env['MONGODB_URL']);
 
 var User = require("../server/userModel")(mongoose).User;
-var authentication =  require("../server/authentication")();
+var Encounter = require("../server/encounterModel")(mongoose).Encounter;
+var authentication = require("../server/authentication")();
 
 User.remove({}, function (error) {
     if (error) {
         throw error;
     }
-    var done = 0;
+    var userDone = 0;
+    var encounterDone = 0;
     for (var user in USERS) {
         (function (userCopy) {
+
+            var encounters = [
+                {
+                    Username: USERS[userCopy].username,
+                    Name: 'Goblin Rage',
+                    CR: 4,
+                    Monsters: [
+                        {
+                            Name: 'Goblin',
+                            CR: 1 / 3,
+                            amount: 9
+                        }
+                    ]
+                },
+                {
+                    Username: USERS[userCopy].username,
+                    Name: 'What the Shade',
+                    CR: 5,
+                    Monsters: [
+                        {
+                            Name: 'Shadow',
+                            CR: 3,
+                            amount: 2
+                        }
+                    ]
+                }
+            ];
+
             authentication.hash(USERS[userCopy].password, function (error, salt, hash) {
                 if (error) {
                     throw error;
                 }
-                User.create({ username: USERS[userCopy].username, salt: salt, hash: hash }, function (error) {
+                var user = {
+                    username: USERS[userCopy].username,
+                    salt: salt,
+                    hash: hash
+                }
+                User.create(user, function (error) {
                     if (error) {
                         console.log(error);
                     }
                     console.log("created user " + USERS[userCopy].username);
-                    done++;
-                    if (done == USERS.length) {
-                        console.log("done");
+                    userDone++;
+                    if (userDone == USERS.length && encounterDone == USERS.length) {
+                        console.log("Done");
+                        db.disconnect();
+                    }
+                });
+
+                Encounter.create(encounters, function (error) {
+                    if (error) {
+                        console.log(error);
+                    }
+                    encounterDone++;
+                    if (userDone == USERS.length && encounterDone == USERS.length) {
+                        console.log("Done");
                         db.disconnect();
                     }
                 });
