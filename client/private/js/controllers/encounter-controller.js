@@ -5,14 +5,16 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
         function ($scope, encounterService, selectedMonsterService, selectedEncounterService) {
 
             function upsert() {
-                encounterService.upsert($scope.encounter);
+                if ($scope.encounter) {
+                    encounterService.upsert($scope.encounter);
+                }
             }
 
             $scope.encounter = undefined;
 
-            $scope.$watch('encounter.Name', function () {
-                encounterService.upsert($scope.encounter);
-            });
+            $scope.encounterNameChanged = function() {
+                upsert();
+            }
 
             $scope.selectMonsterById = function (id) {
                 selectedMonsterService.selectedMonsterId(id);

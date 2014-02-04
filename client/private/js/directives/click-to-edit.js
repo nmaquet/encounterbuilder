@@ -17,7 +17,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
             replace: true,
             template: editorTemplate,
             scope: {
-                value: "=clickToEdit"
+                value: "=clickToEdit",
+                onSave: "&onSave"
             },
             controller: [ '$scope', '$element', function ($scope, $element) {
 
@@ -46,7 +47,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
                 $scope.save = function () {
                     $scope.value = $scope.editedValue;
                     $scope.isEditing = false;
-                    $scope.$apply();
+                    console.log("evaluating " + $scope.onSave);
+                    $scope.$apply($scope.onSave);
                 };
             }]
         };

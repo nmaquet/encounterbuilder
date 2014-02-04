@@ -1,6 +1,6 @@
 div(ng-show="encounter")
     h3
-        span.encounter-name(click-to-edit='encounter.Name')
+        span.encounter-name(click-to-edit='encounter.Name', on-save="encounterNameChanged()")
         span
             | (CR {{encounter.CR | numberToFractionString}})
             a.pointer(ng-click="removeEncounter(encounter)")
