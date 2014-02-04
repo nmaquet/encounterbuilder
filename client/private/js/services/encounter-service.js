@@ -39,13 +39,19 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
             $http.post('/api/delete-encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response.error) {
-                        console.log(error);
+                        console.log(response.error);
                     }
                 })
                 .error(function (response) {
                     console.log("delete of encounter failed !");
                 });
-            service.selectedEncounter(service.encounters()[0]);
+            if (encounters.length > 0) {
+                service.selectedEncounter(service.encounters()[0]);
+            } else {
+                selectedEncounter = undefined;
+                $rootScope.$emit(SELECTED_ENCOUNTER_CHANGED);
+            }
+
         }
 
         service.watchSelectedEncounter = function (callback) {

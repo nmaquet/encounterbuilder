@@ -3,9 +3,10 @@
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController', ['$scope', 'encounterService', 'selectedMonsterService',
     function ($scope, encounterService, selectedMonsterService) {
 
-        $scope.encounter = encounterService.selectedEncounter();
+        $scope.encounter = undefined;
+        encounterService.selectedEncounter();
 
-        $scope.$watch('encounter.Name', function() {
+        $scope.$watch('encounter.Name', function () {
             encounterService.notifyChange();
         });
 
@@ -18,7 +19,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController', ['$scop
         $scope.decrementMonster = encounterService.decrementMonster;
         $scope.removeMonster = encounterService.removeMonster;
 
-        encounterService.watchSelectedEncounter(function() {
+        encounterService.watchSelectedEncounter(function () {
             $scope.encounter = encounterService.selectedEncounter();
         });
     }

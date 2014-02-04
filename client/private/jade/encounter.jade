@@ -1,36 +1,39 @@
-h3
-    span.encounter-name(click-to-edit='encounter.Name')
-    span
-        | (CR {{encounter.CR | numberToFractionString}})
-        a.pointer(ng-click="removeEncounter(encounter)")
-            i.icon-trash
-.row-fluid
-    legend Monsters
-    ul#encounter-monsters.unstyled
-        li.encounter-monster-row(ng-repeat='(id,monster) in encounter.Monsters')
-            span.badge.badge-info.monster-amount {{monster.amount}}
-            | &nbsp;
-            span.monster-name
-                a.pointer(ng-click='selectMonster(id)') {{monster.Name}}
-            | &nbsp;
-            span.monster-cr
-                strong CR {{monster.CR | numberToFractionString}}
-            | &nbsp;
-            span.encounter-monsters-buttons.pointer
-                button.btn.btn-xmini.decrement-monster-btn(ng-class="{disabled: monster.amount<=1}", ng-disabled="monster.amount<=1", ng-click='decrementMonster(monster)')
-                    i.icon-minus
-                button.btn.btn-xmini.increment-monster-btn(ng-click='incrementMonster(monster)')
-                    i.icon-plus
-                button.btn.btn-danger.btn-xmini.remove-monster-btn(ng-click='removeMonster(id)')
-                    i.icon-remove
-.row-fluid
-    legend Treasure
-    ul.unstyled
-        li
-            span.badge.badge-info 8
-            | Orc
-            strong CR 1
-        li
-            span.badge.badge-info 5
-            | Elf
-            strong CR 5
+div(ng-hide="encounter === undefined")
+    h3
+        span.encounter-name(click-to-edit='encounter.Name')
+        span
+            | (CR {{encounter.CR | numberToFractionString}})
+            a.pointer(ng-click="removeEncounter(encounter)")
+                i.icon-trash
+    .row-fluid
+        legend Monsters
+        ul#encounter-monsters.unstyled
+            li.encounter-monster-row(ng-repeat='(id,monster) in encounter.Monsters')
+                span.badge.badge-info.monster-amount {{monster.amount}}
+                | &nbsp;
+                span.monster-name
+                    a.pointer(ng-click='selectMonster(id)') {{monster.Name}}
+                | &nbsp;
+                span.monster-cr
+                    strong CR {{monster.CR | numberToFractionString}}
+                | &nbsp;
+                span.encounter-monsters-buttons.pointer
+                    button.btn.btn-xmini.decrement-monster-btn(ng-class="{disabled: monster.amount<=1}", ng-disabled="monster.amount<=1", ng-click='decrementMonster(monster)')
+                        i.icon-minus
+                    button.btn.btn-xmini.increment-monster-btn(ng-click='incrementMonster(monster)')
+                        i.icon-plus
+                    button.btn.btn-danger.btn-xmini.remove-monster-btn(ng-click='removeMonster(id)')
+                        i.icon-remove
+    .row-fluid
+        legend Treasure
+        ul.unstyled
+            li
+                span.badge.badge-info 8
+                | Orc
+                strong CR 1
+            li
+                span.badge.badge-info 5
+                | Elf
+                strong CR 5
+div(ng-show="encounter === undefined")
+    | There is no encounter. Please create one.
