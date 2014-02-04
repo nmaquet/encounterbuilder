@@ -5,6 +5,10 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController', ['$scop
 
         $scope.encounter = encounterService.selectedEncounter();
 
+        $scope.$watch('encounter.Name', function() {
+            encounterService.notifyChange();
+        });
+
         $scope.selectMonster = function (id) {
             selectedMonsterService.selectedMonsterId(id);
         }

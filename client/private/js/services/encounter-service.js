@@ -7,7 +7,8 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
         var ENCOUNTERS_CHANGED = 'encountersChanged';
         var service = {};
         var selectedEncounter;
-        var encounters;
+        var encounters = [];
+        var initialized = false;
 
         service.selectedEncounter = function (encounter) {
             if (encounter) {
@@ -46,6 +47,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
                 encounters = Encounters;
                 service.selectedEncounter(encounters[0]);
                 $rootScope.$emit(ENCOUNTERS_CHANGED);
+                initialized = true;
             }
         }
 
@@ -57,27 +59,34 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
             else {
                 encounter.Monsters[monster.id].amount += Number(amount) || 1;
             }
-            postEncounter(service.selectedEncounter());
+            service.notifyChange();
         }
 
         service.incrementMonster = function (monster) {
             monster.amount++;
-            postEncounter(service.selectedEncounter());
+            service.notifyChange();
         }
 
         service.decrementMonster = function (monster) {
             if (monster.amount > 1) {
                 monster.amount--;
             }
-            postEncounter(service.selectedEncounter());
+            service.notifyChange();
         }
 
         service.removeMonster = function (monsterId) {
             delete service.selectedEncounter().Monsters[monsterId];
+            service.notifyChange();
+        }
+
+        service.notifyChange = function () {
             postEncounter(service.selectedEncounter());
         }
 
         function postEncounter(encounter) {
+            if (!initialized) {
+                return;
+            }
             $http.post('/api/encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response._id) {
@@ -92,7 +101,5 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
                 });
         }
 
-        encounters = [ service.newEncounter() ];
-        selectedEncounter = encounters[0];
         return service;
     }]);
