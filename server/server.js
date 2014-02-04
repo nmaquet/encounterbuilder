@@ -9,7 +9,11 @@ var mongoose = require('mongoose');
 
 var FIND_LIMIT = 50;
 
-mongoose.connect(process.env['MONGODB_URL']);
+if (process.env.USE_TEST_DB) {
+    mongoose.connect(process.env['MONGODB_TEST_URL']);
+} else {
+    mongoose.connect(process.env['MONGODB_URL']);
+}
 
 app.configure(function () {
     //app.use(express.compress());

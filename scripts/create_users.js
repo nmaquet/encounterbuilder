@@ -1,53 +1,28 @@
 "use strict";
 
-var USERS = [
-    { username: "nic", password: "nic" },
-    { username: "chris", password: "chris" },
-    { username: "david", password: "david" },
-    { username: "test", password: "test" }
-]
-
 var mongoose = require('mongoose');
-
-var db = mongoose.connect(process.env['MONGODB_URL']);
-
 var User = require("../server/userModel")(mongoose).User;
 var Encounter = require("../server/encounterModel")(mongoose).Encounter;
 var authentication = require("../server/authentication")();
 
+if (process.env.USE_TEST_DB) {
+    var USERS = [
+        { username: "test", password: "test" }
+    ];
+    var db = mongoose.connect(process.env['MONGODB_TEST_URL']);
+} else {
+    var USERS = [
+        { username: "nic", password: "nic" },
+        { username: "chris", password: "chris" },
+        { username: "david", password: "david" }
+    ]
+    var db = mongoose.connect(process.env['MONGODB_URL']);
+}
+
 function main() {
     var userDone = 0;
-    var encounterDone = 0;
     for (var user in USERS) {
         (function (userCopy) {
-
-            var encounters = [
-                {
-                    Username: USERS[userCopy].username,
-                    Name: USERS[userCopy].username+ ' Goblin Rage',
-                    CR: 4,
-                    Monsters: {
-                        'goblin': {
-                            Name: 'Goblin',
-                            CR: 1 / 3,
-                            amount: 9
-                        }
-                    }
-                },
-                {
-                    Username: USERS[userCopy].username,
-                    Name:  USERS[userCopy].username+ ' What the Shade',
-                    CR: 5,
-                    Monsters: {
-                        'shadow': {
-                            Name: 'Shadow',
-                            CR: 3,
-                            amount: 2
-                        }
-                    }
-                }
-            ];
-
             authentication.hash(USERS[userCopy].password, function (error, salt, hash) {
                 if (error) {
                     throw error;
@@ -63,23 +38,11 @@ function main() {
                     }
                     console.log("created user " + USERS[userCopy].username);
                     userDone++;
-                    if (userDone == USERS.length /* && encounterDone == USERS.length */) {
-                        console.log("Done");
+                    if (userDone == USERS.length) {
+                        console.log("done");
                         db.disconnect();
                     }
                 });
-/*
-                Encounter.create(encounters, function (error) {
-                    if (error) {
-                        console.log(error);
-                    }
-                    encounterDone++;
-                    if (userDone == USERS.length && encounterDone == USERS.length) {
-                        console.log("Done");
-                        db.disconnect();
-                    }
-                });
-*/
             });
         }(user));
     }

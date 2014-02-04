@@ -2,7 +2,11 @@ var fs = require("fs");
 var mongoose = require('mongoose');
 var Monster = require('../server/monsterModel')(mongoose).Monster;
 
-var db = mongoose.connect(process.env['MONGODB_URL']);
+if (process.env.USE_TEST_DB) {
+    var db = mongoose.connect(process.env['MONGODB_TEST_URL']);
+} else {
+    var db = mongoose.connect(process.env['MONGODB_URL']);
+}
 
 var ids = [];
 
@@ -39,6 +43,9 @@ Monster.remove({}, function (error) {
             throw error;
         }
         monsters = JSON.parse(monsters);
+        if (process.env.USE_TEST_DB) {
+            monsters = monsters.splice(0, 100);
+        }
         for (var monster in monsters) {
             monsters[monster].CR = Number(eval(monsters[monster].CR));
             monsters[monster].id = generateId(monsters[monster].Name);
@@ -46,6 +53,7 @@ Monster.remove({}, function (error) {
                 if (error) {
                     throw error;
                 }
+                console.log(count + " / " + monsters.length);
                 count++;
                 if (count == monsters.length) {
                     console.log("inserted " + count + " monsters");
