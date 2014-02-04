@@ -80,7 +80,12 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
         function postEncounter(encounter) {
             $http.post('/api/encounter', { encounter: encounter })
                 .success(function (response) {
-                    console.log("post of encounter successful");
+                    if (response._id) {
+                        encounter._id = response._id;
+                    }
+                    if (response.error) {
+                        console.log(error);
+                    }
                 })
                 .error(function (response) {
                     console.log("post of encounter failed !");
