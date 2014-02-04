@@ -36,8 +36,8 @@ describe('Monster List View', function () {
 
     it('should allow login', function () {
         expect(browser().location().path()).toBe('/login');
-        input("username").enter("nic");
-        input("password").enter("nic");
+        input("username").enter("test");
+        input("password").enter("test");
         element("#login-button").click();
         expect(browser().location().path()).toBe('/');
     });

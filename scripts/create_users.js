@@ -63,12 +63,12 @@ function main() {
                     }
                     console.log("created user " + USERS[userCopy].username);
                     userDone++;
-                    if (userDone == USERS.length && encounterDone == USERS.length) {
+                    if (userDone == USERS.length /* && encounterDone == USERS.length */) {
                         console.log("Done");
                         db.disconnect();
                     }
                 });
-
+/*
                 Encounter.create(encounters, function (error) {
                     if (error) {
                         console.log(error);
@@ -79,6 +79,7 @@ function main() {
                         db.disconnect();
                     }
                 });
+*/
             });
         }(user));
     }
