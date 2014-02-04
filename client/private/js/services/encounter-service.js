@@ -1,7 +1,7 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '$timeout',
-    function ($rootScope, $timeout) {
+DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '$timeout', '$http',
+    function ($rootScope, $timeout, $http) {
 
         var SELECTED_ENCOUNTER_CHANGED = 'selectedEncounterChanged';
         var ENCOUNTERS_CHANGED = 'encountersChanged';
@@ -26,6 +26,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
         service.addEncounter = function (encounter) {
             encounters.push(encounter);
             $rootScope.$emit(ENCOUNTERS_CHANGED);
+            postEncounter(encounter);
         };
 
         service.watchSelectedEncounter = function (callback) {
@@ -48,7 +49,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
             }
         }
 
-        service.addMonsterToSelectedEncounter = function(monster, amount) {
+        service.addMonsterToSelectedEncounter = function (monster, amount) {
             var encounter = service.selectedEncounter();
             if (!encounter.Monsters[monster.id]) {
                 encounter.Monsters[monster.id] = {Name: monster.Name, CR: monster.CR, amount: Number(amount)};
@@ -56,20 +57,34 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
             else {
                 encounter.Monsters[monster.id].amount += Number(amount) || 1;
             }
+            postEncounter(service.selectedEncounter());
         }
 
-        service.incrementMonster = function(monster) {
+        service.incrementMonster = function (monster) {
             monster.amount++;
+            postEncounter(service.selectedEncounter());
         }
 
-        service.decrementMonster = function(monster) {
+        service.decrementMonster = function (monster) {
             if (monster.amount > 1) {
                 monster.amount--;
             }
+            postEncounter(service.selectedEncounter());
         }
 
         service.removeMonster = function (monsterId) {
             delete service.selectedEncounter().Monsters[monsterId];
+            postEncounter(service.selectedEncounter());
+        }
+
+        function postEncounter(encounter) {
+            $http.post('/api/encounter', { encounter: encounter })
+                .success(function (response) {
+                    console.log("post of encounter successful");
+                })
+                .error(function (response) {
+                    console.log("post of encounter failed !");
+                });
         }
 
         encounters = [ service.newEncounter() ];
