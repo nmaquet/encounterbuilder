@@ -5,7 +5,7 @@ function generateEncounterSchema(mongoose) {
         Username: String,
         Name: String,
         CR: Number,
-        Monsters: [mongoose.Schema.Types.Mixed]
+        Monsters: mongoose.Schema.Types.Mixed
     });
 }
 

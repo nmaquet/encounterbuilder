@@ -15,10 +15,7 @@ var User = require("../server/userModel")(mongoose).User;
 var Encounter = require("../server/encounterModel")(mongoose).Encounter;
 var authentication = require("../server/authentication")();
 
-User.remove({}, function (error) {
-    if (error) {
-        throw error;
-    }
+function main() {
     var userDone = 0;
     var encounterDone = 0;
     for (var user in USERS) {
@@ -29,25 +26,25 @@ User.remove({}, function (error) {
                     Username: USERS[userCopy].username,
                     Name: 'Goblin Rage',
                     CR: 4,
-                    Monsters: [
-                        {
+                    Monsters: {
+                        'goblin': {
                             Name: 'Goblin',
                             CR: 1 / 3,
                             amount: 9
                         }
-                    ]
+                    }
                 },
                 {
                     Username: USERS[userCopy].username,
                     Name: 'What the Shade',
                     CR: 5,
-                    Monsters: [
-                        {
+                    Monsters: {
+                        'shadow': {
                             Name: 'Shadow',
                             CR: 3,
                             amount: 2
                         }
-                    ]
+                    }
                 }
             ];
 
@@ -66,13 +63,13 @@ User.remove({}, function (error) {
                     }
                     console.log("created user " + USERS[userCopy].username);
                     userDone++;
-                    if (userDone == USERS.length && encounterDone == USERS.length) {
+                    if (userDone == USERS.length/* && encounterDone == USERS.length*/) {
                         console.log("Done");
                         db.disconnect();
                     }
                 });
 
-                Encounter.create(encounters, function (error) {
+          /*      Encounter.create(encounters, function (error) {
                     if (error) {
                         console.log(error);
                     }
@@ -81,8 +78,17 @@ User.remove({}, function (error) {
                         console.log("Done");
                         db.disconnect();
                     }
-                });
+                });*/
             });
         }(user));
     }
+}
+
+User.remove({}, function (error) {
+    if (error) {
+        throw error;
+    }
+    Encounter.remove({}, function (error) {
+        main();
+    });
 });

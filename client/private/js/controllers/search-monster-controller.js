@@ -63,13 +63,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             if (!/^(\d+)$/.exec(monster.amountToAdd)) {
                 monster.amountToAdd = 1;
             }
-            var simpleMonster = {Name: monster.Name, CR: monster.CR, amount: Number(monster.amountToAdd)};
-            if (!encounterService.selectedEncounter().Monsters[monster.id]) {
-                encounterService.selectedEncounter().Monsters[monster.id] = simpleMonster;
-            }
-            else {
-                encounterService.selectedEncounter().Monsters[monster.id].amount += Number(monster.amountToAdd) || 1;
-            }
+            encounterService.addMonsterToSelectedEncounter(monster, monster.amountToAdd);
             delete monster.amountToAdd;
         }
 

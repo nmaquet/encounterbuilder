@@ -48,6 +48,16 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
             }
         }
 
+        service.addMonsterToSelectedEncounter = function(monster, amount) {
+            var encounter = service.selectedEncounter();
+            if (!encounter.Monsters[monster.id]) {
+                encounter.Monsters[monster.id] = {Name: monster.Name, CR: monster.CR, amount: Number(amount)};
+            }
+            else {
+                encounter.Monsters[monster.id].amount += Number(amount) || 1;
+            }
+        }
+
         encounters = [ service.newEncounter() ];
         selectedEncounter = encounters[0];
         return service;
