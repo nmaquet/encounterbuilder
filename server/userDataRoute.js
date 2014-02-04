@@ -13,9 +13,9 @@ module.exports = function (Encounter) {
 
                 var userData = {
                     user: {
-                        username: username,
-                        Encounters: Encounters
-                    }
+                        username: username
+                    },
+                    Encounters: Encounters
                 };
                 response.json(userData);
             })

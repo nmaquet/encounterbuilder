@@ -24,13 +24,14 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider',
             });
     }]);
 
-DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location',
-    function ($rootScope, $http, $location) {
+DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location','encounterService',
+    function ($rootScope, $http, $location,encounterService) {
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
             if (!$rootScope.username) {
                 $http.get('/api/user-data')
                     .success(function (userData) {
                         $rootScope.user = userData.user;
+                        encounterService.init(userData.Encounters);
                         if (!$rootScope.user) {
                             $location.path('/login');
                         }
