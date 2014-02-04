@@ -8,7 +8,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
                 '       {{value}} ' +
                 '   </span>' +
                 '   <span ng-show="isEditing">' +
-                '       <input ng-model="value" type="text">' +
+                '       <input ng-model="editedValue" type="text">' +
                 '   </span>' +
                 '</span>';
 
@@ -36,6 +36,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
                 $scope.isEditing = false;
 
                 $scope.edit = function () {
+                    $scope.editedValue = $scope.value;
                     $scope.isEditing = true;
                     setTimeout(function () {
                         input.select();
@@ -43,6 +44,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
                 };
 
                 $scope.save = function () {
+                    $scope.value = $scope.editedValue;
                     $scope.isEditing = false;
                     $scope.$apply();
                 };
