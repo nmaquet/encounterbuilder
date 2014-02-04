@@ -14,12 +14,12 @@
                 li
                     a.pointer(tabindex='-1', ng-click='createEncounter()')
                         i.icon-plus
-                        strong Create new encounter
+                        strong &nbsp;Create new encounter
                 li.divider.pointer
                 li(ng-repeat='encounter in encounters')
                     a.pointer(tabindex='-1', ng-click='selectEncounter(encounter)')
                         i.icon-chevron-right
-                        | {{encounter.Name}} (CR {{encounter.CR | numberToFractionString}})
+                        | &nbsp;{{encounter.Name}} (CR {{encounter.CR | numberToFractionString}})
         .nav-collapse.collapse
             ul.nav.nav-social
                 li.active
@@ -50,8 +50,7 @@
             .dropdown.navbar-text.pull-right(ng-controller='LogoutController')
                 a#user-dropdown.dropdown-toggle.btn.navbar-link(role='button', data-toggle='dropdown')
                     i.icon-user
-                    | {{user.username}}
-                    | &nbsp;
+                    | &nbsp;{{user.username}}&nbsp;
                     b.caret
                 ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
                     li
