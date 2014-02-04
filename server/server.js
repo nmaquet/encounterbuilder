@@ -25,6 +25,7 @@ app.configure(function () {
 
 var Monster = require('./monsterModel')(mongoose).Monster;
 var User = require('./userModel')(mongoose).User;
+var Encounter = require('./encounterModel')(mongoose).Encounter;
 
 var authentication = require('./authentication')();
 
@@ -32,7 +33,7 @@ var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
 var monsterRoute = require('./monsterRoute')(Monster);
 var loginRoute = require('./loginRoute')(User, authentication.authenticate);
 var logoutRoute = require('./logoutRoute')();
-var userDataRoute = require('./userDataRoute')();
+var userDataRoute = require('./userDataRoute')(Encounter);
 var clientRoutes = require('./clientRoutes')();
 
 app.get('/api/search-monsters', authentication.check, searchMonstersRoute);

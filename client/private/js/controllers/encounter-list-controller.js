@@ -16,5 +16,9 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterListController', ['$
             $scope.selectedEncounter = encounter;
             encounterService.selectedEncounter(encounter);
         }
+
+        encounterService.watchEncounters(function(){
+            $scope.encounters = encounterService.encounters();
+        });
     }
 ]);
