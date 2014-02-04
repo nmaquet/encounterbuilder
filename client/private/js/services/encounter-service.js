@@ -41,7 +41,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$rootScope', '
         }
 
         service.init = function (Encounters) {
-            if (Encounters) {
+            if (Encounters && Encounters.length > 0) {
                 encounters = Encounters;
                 service.selectedEncounter(encounters[0]);
                 $rootScope.$emit(ENCOUNTERS_CHANGED);
