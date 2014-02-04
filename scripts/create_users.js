@@ -24,7 +24,7 @@ function main() {
             var encounters = [
                 {
                     Username: USERS[userCopy].username,
-                    Name: 'Goblin Rage',
+                    Name: USERS[userCopy].username+ ' Goblin Rage',
                     CR: 4,
                     Monsters: {
                         'goblin': {
@@ -36,7 +36,7 @@ function main() {
                 },
                 {
                     Username: USERS[userCopy].username,
-                    Name: 'What the Shade',
+                    Name:  USERS[userCopy].username+ ' What the Shade',
                     CR: 5,
                     Monsters: {
                         'shadow': {
@@ -63,13 +63,13 @@ function main() {
                     }
                     console.log("created user " + USERS[userCopy].username);
                     userDone++;
-                    if (userDone == USERS.length/* && encounterDone == USERS.length*/) {
+                    if (userDone == USERS.length && encounterDone == USERS.length) {
                         console.log("Done");
                         db.disconnect();
                     }
                 });
 
-          /*      Encounter.create(encounters, function (error) {
+                Encounter.create(encounters, function (error) {
                     if (error) {
                         console.log(error);
                     }
@@ -78,7 +78,7 @@ function main() {
                         console.log("Done");
                         db.disconnect();
                     }
-                });*/
+                });
             });
         }(user));
     }

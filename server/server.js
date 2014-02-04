@@ -42,7 +42,7 @@ app.get('/api/monster/:id', authentication.check, monsterRoute);
 app.get('/api/user-data', userDataRoute);
 app.get('/logout', logoutRoute);
 app.post("/login", loginRoute);
-app.post("/api/encounter", encounterRoute);
+app.post("/api/encounter", authentication.check, encounterRoute);
 
 app.get('/feedback-popover.html', clientRoutes.feedbackPopover);
 app.get('/login.html', clientRoutes.login);
