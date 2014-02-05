@@ -28,12 +28,14 @@ app.configure(function () {
 });
 
 var Monster = require('./monsterModel')(mongoose).Monster;
+var MagicItem = require('./magicItemModel')(mongoose).MagicItem;
 var User = require('./userModel')(mongoose).User;
 var Encounter = require('./encounterModel')(mongoose).Encounter;
 
 var authentication = require('./authentication')();
 
 var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
+var searchMagicItemsRoute = require('./searchMagicItemsRoute')(MagicItem, FIND_LIMIT);
 var monsterRoute = require('./monsterRoute')(Monster);
 var loginRoute = require('./loginRoute')(User, authentication.authenticate);
 var logoutRoute = require('./logoutRoute')();
@@ -42,6 +44,7 @@ var clientRoutes = require('./clientRoutes')();
 var encounterRoute = require('./encounterRoutes')(Encounter);
 
 app.get('/api/search-monsters', authentication.check, searchMonstersRoute);
+app.get('/api/search-magic-items', authentication.check, searchMagicItemsRoute);
 app.get('/api/monster/:id', authentication.check, monsterRoute);
 app.get('/api/user-data', userDataRoute);
 app.get('/logout', logoutRoute);
