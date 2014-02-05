@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Monster List View', function () {
+describe('Monster View', function () {
 
     angular.scenario.dsl('keyboard', function () {
         var chain = {};
@@ -253,14 +253,32 @@ describe('Monster List View', function () {
         expect(element('h2').text()).toBe("Bat");
     });
 
-    it('should remove the encounter', function () {
+    it ('should create a second encounter',function(){
+        element('a.encounter-dropdown').click();
+        element('a.encounter-dropdown-create').click();
+        expect(element('a.encounter-dropdown').text()).toBe("Untitled #1 (CR 0)\n ");
+        expect(repeater('li.encounter-monster-row').count()).toBe(0);
+    });
+
+    it ('should reselect the first encounter',function(){
+        expect(element('a.encounter-dropdown').text()).toBe("Untitled #1 (CR 0)\n ");
+        element('a.encounter-dropdown').click();
+        element('a.encounter-dropdown-select').click();
+        expect(element('a.encounter-dropdown').text()).toBe("Untitled #0 (CR 0)\n ");
+    });
+
+    it('should remove both encounters', function () {
         expect(element('.encounter').css("display")).not().toBe("none");
         expect(element('.encounter-no-encounter').css("display")).toBe("none");
+        element('a.remove-encounter').click();
+        sleep(0.5); /* wait for jquery animations to terminate */
         element('a.remove-encounter').click();
         sleep(0.5); /* wait for jquery animations to terminate */
         expect(element('.encounter').css("display")).toBe("none");
         expect(element('.encounter-no-encounter').css("display")).not().toBe("none");
     });
+
+
 
     it('should allow logout', function () {
         expect(browser().location().path()).toBe('/');

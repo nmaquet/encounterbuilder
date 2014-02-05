@@ -36,4 +36,8 @@ div.encounter(ng-show="encounter")
                 | Elf
                 strong CR 5
 div.encounter-no-encounter(ng-hide="encounter")
-    | There is no encounter. Please create one.
+    | There is no encounter. Please
+    | &nbsp;
+    a.pointer(ng-click="createFirstEncounter()")
+        | create one
+    | .

@@ -50,5 +50,12 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             selectedEncounterService.register(function () {
                 $scope.encounter = selectedEncounterService.selectedEncounter();
             });
+
+            $scope.createFirstEncounter = function () {
+                var encounter = { Name: "Untitled #0", CR: "0", Monsters: {}};
+                selectedEncounterService.selectedEncounter(encounter);
+                encounterService.encounters.push(encounter);
+                encounterService.upsert(encounter);
+            }
         }
     ]);

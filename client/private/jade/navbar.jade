@@ -21,7 +21,7 @@
                         strong &nbsp;Create new encounter
                 li.divider.pointer
                 li(ng-repeat='encounter in encounters')
-                    a.pointer(tabindex='-1', ng-click='selectEncounter(encounter)')
+                    a.pointer.encounter-dropdown-select(tabindex='-1', ng-click='selectEncounter(encounter)')
                         i.icon-chevron-right
                         | &nbsp;{{encounter.Name}} (CR {{encounter.CR | numberToFractionString}})
         .nav-collapse.collapse
