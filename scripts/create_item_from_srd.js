@@ -1,49 +1,9 @@
 "use strict";
 
 var fs = require("fs");
-
-var MAGIC_ITEMS_ATTRIBUTES = [
-    "Name",
-    "Aura",
-    "CL",
-    "Slot",
-    "Price",
-    "Weight",
-    "Description",
-    "Requirements",
-    "Cost",
-    "Group",
-    "Source",
-    "AL",
-    "Int",
-    "Wis",
-    "Cha",
-    "Ego",
-    "Communication",
-    "Senses",
-    "Powers",
-    "MagicItems",
-    "Destruction",
-    "MinorArtifactFlag",
-    "MajorArtifactFlag",
-    "Abjuration",
-    "Conjuration",
-    "Divination",
-    "Enchantment",
-    "Evocation",
-    "Necromancy",
-    "Transmutation",
-    "AuraStrength",
-    "WeightValue",
-    "PriceValue",
-    "CostValue",
-    "Languages",
-    "BaseItem",
-    "Mythic",
-    "LegendaryWeapon",
-    "Illusion",
-    "Universal"
-];
+var fakeMongoose = {model: function () {
+}};
+var MAGIC_ITEMS_ATTRIBUTES = require('../server/magicItemModel')(fakeMongoose).MAGIC_ITEMS_ATTRIBUTES;
 
 var srd_items = require("../data/contrib/magic_items_full.json");
 var kyle_items = require("../data/contrib/magic_items_kyle.json");
