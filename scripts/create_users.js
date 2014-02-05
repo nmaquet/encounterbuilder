@@ -14,7 +14,8 @@ if (process.env.USE_TEST_DB) {
     var USERS = [
         { username: "nic", password: "nic" },
         { username: "chris", password: "chris" },
-        { username: "david", password: "david" }
+        { username: "david", password: "david" },
+        { username: "test", password: "test" }
     ]
     var db = mongoose.connect(process.env['MONGODB_URL']);
 }
