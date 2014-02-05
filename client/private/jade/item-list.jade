@@ -17,4 +17,4 @@ table.items.table.table-striped.well
                 input(type='text', placeholder='1', ng-model='item.amountToAdd', style='width: 25px;')
                 button.btn.btn-mini(ng-class="{disabled: !selectedEncounter}", ng-disabled="!selectedEncounter", ng-click='addItem(item)')
                     i.icon-plus
-pagination.pagination-sm.page(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
+pagination.pagination-sm.page.pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
