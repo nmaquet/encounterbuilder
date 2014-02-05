@@ -5,12 +5,14 @@
                 include encounter
         .span9(ng-controller='TabController')
             .row-fluid
-                .span4
-                    button.btn(ng-click="showTab('monsters')")
-                        | Monsters
-                    | &nbsp;
-                    button.btn(ng-click="showTab('items')")
-                        | Items
+                .span12
+                    ul.nav.nav-tabs
+                        li
+                            a#monstersTab.pointer(ng-click="showTab('monsters')", data-toggle="tab")
+                                | Monsters
+                        li
+                            a#itemsTab.pointer(ng-click="showTab('items')", data-toggle="tab")
+                                | Items
             .row-fluid(ng-show="selectedTab === 'monsters'")
                 .span4(ng-controller='SearchMonsterController')
                     .well.sidebar-nav
