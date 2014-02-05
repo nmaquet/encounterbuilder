@@ -1,0 +1,29 @@
+.heading
+    h2 {{item.Name}}
+    small Source: {{item.Source}}
+    div
+        div
+            b Aura
+            | {{item.Aura}};
+            b CL
+            | {{item.CL}}
+        div
+            b Slot
+            | {{item.Slot}};
+            b Price
+            | {{item.Price}};
+            b Weight
+            | {{item.Weight}}.
+    legend Description
+    div
+        h4
+            p {{item.Description}}
+    legend Construction
+    div
+        h5
+            div
+                b Requirements
+                | {{item.Requirements}};
+            div
+                b Cost
+                | {{item.Cost}}.

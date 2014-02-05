@@ -20,7 +20,7 @@
                     .result-list
                         include monster-list
                 .span8.well(ng-controller='MonsterDetailController')
-                    include monster-detail
+                    include monster-details
             .row-fluid(ng-show="selectedTab === 'items'")
                 .span4(ng-controller='SearchItemController')
                     .well.sidebar-nav
@@ -28,7 +28,7 @@
                     .result-list
                         include item-list
                 .span8.well
-                    |TODO
+                    include item-details
 .navbar.navbar-inverse.navbar-fixed-top
     include navbar
 hr
