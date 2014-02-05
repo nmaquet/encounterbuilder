@@ -34,12 +34,14 @@ var jsFiles = [
     "client/private/js/controllers/feedback-controller.js",
     "client/private/js/controllers/tab-controller.js",
     "client/private/js/controllers/search-item-controller.js",
+    "client/private/js/controllers/item-details-controller.js",
     "client/private/js/directives/click-to-edit.js",
     "client/private/js/filters/abbreviate-monster-source.js",
     "client/private/js/filters/number-to-fraction-string.js",
     "client/private/js/services/monster-service.js",
     "client/private/js/services/selected-encounter-service.js",
     "client/private/js/services/selected-monster-service.js",
+    "client/private/js/services/selected-item-service.js",
     "client/private/js/services/encounter-service.js"
 ];
 

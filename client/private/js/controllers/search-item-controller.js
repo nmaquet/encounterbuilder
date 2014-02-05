@@ -1,7 +1,7 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('SearchItemController', ['$scope', '$http',
-    function ($scope, $http) {
+DEMONSQUID.encounterBuilderControllers.controller('SearchItemController', ['$scope', '$http', 'selectedItemService',
+    function ($scope, $http, selectedItemService) {
 
         $scope.totalItems = 0;
         $scope.currentPage = 1;
@@ -37,5 +37,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController', ['$sco
                     callback(error, null);
                 });
         }
+
+        $scope.selectItemById = function (id) {
+            selectedItemService.selectedItemId(id);
+        }
+
     }
 ]);
