@@ -6,17 +6,17 @@
             span.icon-bar
         a.brand(href='#', title='') Encounter Builder
         .dropdown.navbar-text.pull-left(ng-controller="EncounterListController")
-            a#encounter-dropdown.dropdown-toggle.btn.navbar-link(role='button', data-toggle='dropdown', ng-show="selectedEncounter")
+            a.encounter-dropdown.dropdown-toggle.btn.navbar-link(role='button', data-toggle='dropdown', ng-show="selectedEncounter")
                 | {{selectedEncounter.Name}} (CR {{selectedEncounter.CR | numberToFractionString}})
                 | &nbsp;
                 b.caret
-            a#encounter-dropdown.dropdown-toggle.btn.navbar-link(role='button', data-toggle='dropdown', ng-hide="selectedEncounter")
+            a.encounter-dropdown-no-encounter.dropdown-toggle.btn.navbar-link(role='button', data-toggle='dropdown', ng-hide="selectedEncounter")
                 | (no encounters)
                 | &nbsp;
                 b.caret
             ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
                 li
-                    a.pointer(tabindex='-1', ng-click='createEncounter()')
+                    a.encounter-dropdown-create.pointer(tabindex='-1', ng-click='createEncounter()')
                         i.icon-plus
                         strong &nbsp;Create new encounter
                 li.divider.pointer

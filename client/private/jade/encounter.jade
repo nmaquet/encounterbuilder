@@ -1,9 +1,9 @@
-div(ng-show="encounter")
+div.encounter(ng-show="encounter")
     h3
         span.encounter-name(click-to-edit='encounter.Name', on-save="encounterNameChanged()")
         span
             | (CR {{encounter.CR | numberToFractionString}})
-            a.pointer(ng-click="removeEncounter(encounter)")
+            a.pointer.remove-encounter(ng-click="removeEncounter(encounter)")
                 i.icon-trash
     .row-fluid
         legend Monsters
@@ -35,5 +35,5 @@ div(ng-show="encounter")
                 span.badge.badge-info 5
                 | Elf
                 strong CR 5
-div(ng-hide="encounter")
+div.encounter-no-encounter(ng-hide="encounter")
     | There is no encounter. Please create one.

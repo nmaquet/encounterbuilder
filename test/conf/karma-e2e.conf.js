@@ -20,7 +20,7 @@ module.exports = function (config) {
             'app/js/*.js': ['coverage']
         },
         autoWatch: false,
-        browsers: ['Chrome'], // Firefox, ChromeCanary, Opera, IE
+        browsers: ['PhantomJS'], // Firefox, ChromeCanary, Opera, IE
         reporters: ['junit', 'progress'],
         junitReporter: {
             outputFile: 'e2e-test-results.xml',

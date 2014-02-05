@@ -44,7 +44,7 @@ Monster.remove({}, function (error) {
         }
         monsters = JSON.parse(monsters);
         if (process.env.USE_TEST_DB) {
-            monsters = monsters.splice(0, 100);
+            monsters = monsters.splice(0, 300);
         }
         for (var monster in monsters) {
             monsters[monster].CR = Number(eval(monsters[monster].CR));
