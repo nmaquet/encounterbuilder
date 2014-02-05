@@ -257,6 +257,7 @@ describe('Monster List View', function () {
         expect(element('.encounter').css("display")).not().toBe("none");
         expect(element('.encounter-no-encounter').css("display")).toBe("none");
         element('a.remove-encounter').click();
+        sleep(0.5); /* wait for jquery animations to terminate */
         expect(element('.encounter').css("display")).toBe("none");
         expect(element('.encounter-no-encounter').css("display")).not().toBe("none");
     });
