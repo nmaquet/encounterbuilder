@@ -123,12 +123,12 @@ describe('Monster View', function () {
 
     it('should display 3 pages and 4 arrows when searching for "t"', function () {
         inputNameSubstring('t');
-        expect(repeater('.page li').count()).toBe(3 + 4);
+        expect(repeater('.page:visible li').count()).toBe(3 + 4);
     });
 
     it('should display 1 page and 4 arrows when searching for "ant"', function () {
         inputNameSubstring('ant');
-        expect(repeater('.page li').count()).toBe(1 + 4);
+        expect(repeater('.page:visible li').count()).toBe(1 + 4);
     });
 
     it('should display the correct first monster of each page', function () {
@@ -160,13 +160,13 @@ describe('Monster View', function () {
     it('should update the right-side pane when you click on a monster in the search results', function () {
         inputNameSubstring('dragon');
         element('tr.monster-row:nth-child(1) td').click();
-        expect(element('h2').text()).toBe("Pseudodragon");
+        expect(element('h2:visible').text()).toBe("Pseudodragon");
         element('tr.monster-row:nth-child(2) td').click();
-        expect(element('h2').text()).toBe("Young White Dragon");
+        expect(element('h2:visible').text()).toBe("Young White Dragon");
     });
 
     it('should initially fill the monster detail pane with the first monster', function () {
-        expect(element('h2').text()).toBe("Bat");
+        expect(element('h2:visible').text()).toBe("Bat");
     });
 
     it('should have a working slider', function () {
@@ -248,9 +248,9 @@ describe('Monster View', function () {
 
     it('should update the right-side pane when you click on a monster in the encounter panel', function () {
         element('tr.monster-row:nth-child(2) td').click();
-        expect(element('h2').text()).toBe("Toad");
+        expect(element('h2:visible').text()).toBe("Toad");
         element('li.encounter-monster-row:nth-child(1) span.monster-name a').click();
-        expect(element('h2').text()).toBe("Bat");
+        expect(element('h2:visible').text()).toBe("Bat");
     });
 
     it ('should create a second encounter',function(){
