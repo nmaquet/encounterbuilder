@@ -33,23 +33,31 @@ function compareWithKyleItems(eb_item, id) {
                     console.log('--------------------------------------');
                 }
             }
-            eb_item[MAGIC_ITEMS_ATTRIBUTES[j]] = srd_items[i][MAGIC_ITEMS_ATTRIBUTES[j]];
         }
     }
 }
 
+function trim(value) {
+    if (typeof value == "string") {
+        if (value.trim() != value) {
+            console.log("trimming '" + value + "'");
+        }
+        return value.trim();
+    } else {
+        return value;
+    }
+}
 
 var eb_items = [];
 
 for (var i in srd_items) {
     var eb_item = {};
     for (var j in MAGIC_ITEMS_ATTRIBUTES) {
-        eb_item[MAGIC_ITEMS_ATTRIBUTES[j]] = srd_items[i][MAGIC_ITEMS_ATTRIBUTES[j]];
+        eb_item[MAGIC_ITEMS_ATTRIBUTES[j]] = trim(srd_items[i][MAGIC_ITEMS_ATTRIBUTES[j]]);
     }
     eb_items.push(eb_item);
     compareWithKyleItems(eb_item, srd_items[i].id);
 }
-
 
 fs.writeFileSync('../data/items/magic-items.json', JSON.stringify(eb_items));
 

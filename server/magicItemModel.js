@@ -1,6 +1,7 @@
 "use strict";
 
 var MAGIC_ITEMS_ATTRIBUTES = [
+    /* SRD attributes */
     "Name",
     "Aura",
     "CL",
@@ -40,7 +41,9 @@ var MAGIC_ITEMS_ATTRIBUTES = [
     "Mythic",
     "LegendaryWeapon",
     "Illusion",
-    "Universal"
+    "Universal",
+    /* computed attributes */,
+    "id"
 ];
 
 function generateMagicItemModelObject() {

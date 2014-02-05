@@ -4,7 +4,7 @@ module.exports = function (MagicItem, defaultFindLimit) {
     return function (request, response) {
         var skip = request.query.skip || 0;
         var findLimit = request.query.findLimit || defaultFindLimit;
-        var projection = {Name: true, Price: true, Source: true};
+        var projection = {Name: true, Price: true, Source: true, id: true};
         var magicItems;
         var count;
         MagicItem.find({}, projection).limit(findLimit).skip(skip)

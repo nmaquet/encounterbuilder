@@ -9,9 +9,10 @@ if (process.env.USE_TEST_DB) {
     var db = mongoose.connect(process.env['MONGODB_URL']);
 }
 
-var ids = [];
+var monster_ids = [];
+var magic_item_ids = [];
 
-function generateId(name) {
+function generateId(name, ids) {
     var prefix = name.toLowerCase().replace(/\s/g, "-");
 
     if (ids.indexOf(prefix) === -1) {
@@ -52,7 +53,7 @@ Monster.remove({}, function (error) {
         }
         for (var monster in monsters) {
             monsters[monster].CR = Number(eval(monsters[monster].CR));
-            monsters[monster].id = generateId(monsters[monster].Name);
+            monsters[monster].id = generateId(monsters[monster].Name, monster_ids);
             Monster.create(monsters[monster], function (error) {
                 if (error) {
                     throw error;
@@ -88,6 +89,7 @@ MagicItem.remove({}, function (error) {
             items = items.splice(0, 300);
         }
         for (var item in items) {
+            items[item].id = generateId(items[item].Name, magic_item_ids);
             MagicItem.create(items[item], function (error) {
                 if (error) {
                     throw error;
