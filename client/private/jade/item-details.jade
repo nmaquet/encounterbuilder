@@ -3,27 +3,23 @@
     small Source: {{item.Source}}
     div
         div
-            b Aura
+            b Aura&nbsp;
             | {{item.Aura}};
-            b CL
+            b CL&nbsp;
             | {{item.CL}}
         div
-            b Slot
+            b Slot&nbsp;
             | {{item.Slot}};
-            b Price
+            b Price&nbsp;
             | {{item.Price}};
-            b Weight
+            b Weight&nbsp;
             | {{item.Weight}}.
     legend Description
-    div
-        h4
-            p {{item.Description}}
+    p {{item.Description}}
     legend Construction
     div
-        h5
-            div
-                b Requirements
-                | {{item.Requirements}};
-            div
-                b Cost
-                | {{item.Cost}}.
+        b Requirements&nbsp;
+        | {{item.Requirements}};
+    div
+        b Cost&nbsp;
+        | {{item.Cost}}.
