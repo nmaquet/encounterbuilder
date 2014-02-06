@@ -4,22 +4,22 @@
     div
         div
             b Aura&nbsp;
-            | {{item.Aura}};&nbsp
+            | {{item.Aura}};&nbsp;
             b CL&nbsp;
             | {{item.CL}}
         div
             b Slot&nbsp;
-            | {{item.Slot}};&nbsp
+            | {{item.Slot}};&nbsp;
             b Price&nbsp;
-            | {{item.Price}};&nbsp
+            | {{item.Price}}&nbsp;{{item.PriceUnit}};&nbsp;
             b Weight&nbsp;
             | {{item.Weight}}.
     legend Description
     p {{item.Description}}
     legend Construction
     div
-        b Requirements&nbsp;&nbsp
+        b Requirements&nbsp;
         | {{item.Requirements}};
     div
         b Cost&nbsp;
-        | {{item.Cost}}
+        | {{item.Cost}}&nbsp;{{item.CostUnit}}

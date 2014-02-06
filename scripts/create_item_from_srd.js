@@ -54,14 +54,16 @@ for (var i in srd_items) {
     var eb_item = {};
     for (var j in MAGIC_ITEMS_ATTRIBUTES) {
         var attribute = MAGIC_ITEMS_ATTRIBUTES[j];
+        if (attribute == "PriceUnit" || attribute == "CostUnit") {
+            continue;
+        }
         var srd_value = srd_items[i][attribute];
         if (attribute === "CL") {
             eb_item[attribute] = Number(srd_value) || 0;
         } else if (attribute === "Price" || attribute === "Cost") {
             var match = /(\d+)(.*)/.exec(srd_value.replace(",", ""));
             if (srd_value.trim() === "") {
-                eb_item[attribute] = 0;
-                eb_item[attribute + "Unit"] = "";
+                /* do nothing */
             } else if (match) {
                 eb_item[attribute] = Number(match[1]) || 0;
                 eb_item[attribute + "Unit"] = match[2].trim();
@@ -80,7 +82,7 @@ for (var i in srd_items) {
         }
     }
     eb_items.push(eb_item);
-    compareWithKyleItems(eb_item, srd_items[i].id);
+    // compareWithKyleItems(eb_item, srd_items[i].id);
 }
 
 fs.writeFileSync('../data/items/magic-items.json', JSON.stringify(eb_items));
