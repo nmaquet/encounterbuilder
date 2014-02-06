@@ -24,17 +24,16 @@ describe('Monster View', function () {
         };
     });
 
-    beforeEach(function () {
+    function inputNameSubstring(text) {
+        input('nameSubstring').enter(text);
+    }
+
+    beforeEach(function(){
         browser().navigateTo('/');
     });
 
-    function inputNameSubstring(text) {
-        input('nameSubstring').enter(text);
-        sleep(0.5);
-        /* wait for setTimeout to trigger */
-    }
-
     it('should allow login', function () {
+
         expect(browser().location().path()).toBe('/login');
         input("username").enter("test");
         input("password").enter("test");
@@ -277,8 +276,6 @@ describe('Monster View', function () {
         expect(element('.encounter').css("display")).toBe("none");
         expect(element('.encounter-no-encounter').css("display")).not().toBe("none");
     });
-
-
 
     it('should allow logout', function () {
         expect(browser().location().path()).toBe('/');
