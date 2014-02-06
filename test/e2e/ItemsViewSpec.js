@@ -22,7 +22,7 @@ describe('Items View', function () {
         expect(element('ul.nav-tabs li.active').text()).toBe('Monsters');
         element('#itemsTab').click();
         expect(element('ul.nav-tabs li.active').text()).toBe('Items');
-        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Mithral Heavy Shield");
+        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Adamantine Breastplate");
     });
 
     it('should display 5 pages and 4 arrows when opening items tab', function () {
@@ -30,9 +30,9 @@ describe('Items View', function () {
     });
 
     it('the pagination should work', function () {
-        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Mithral Heavy Shield");
+        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Adamantine Breastplate");
         element("a:contains(2)").click();
-        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Necklace of Strangulation");
+        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Discriminationg Cube");
     });
 
     it('should allow logout', function () {
