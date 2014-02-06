@@ -39,14 +39,13 @@ module.exports = function (MagicItem, defaultFindLimit) {
         var projection = {Name: true, Price: true, PriceUnit : true, Source: true, id: true};
         var magicItems;
         var count;
-        console.log(findParams);
         MagicItem.find(findParams, projection).limit(findLimit).sort(sortOption).skip(skip)
             .execFind(function (error, data) {
                 magicItems = data;
                 if (error) {
                     response.send(error);
                 }
-                if (count) {
+                if (count !== undefined) {
                     response.json({count: count, magicItems: magicItems});
                 }
             }).count(function (error, value) {
@@ -54,7 +53,7 @@ module.exports = function (MagicItem, defaultFindLimit) {
                 if (error) {
                     response.send(error);
                 }
-                if (magicItems) {
+                if (magicItems !== undefined) {
                     response.json({count: count, magicItems: magicItems});
                 }
             });

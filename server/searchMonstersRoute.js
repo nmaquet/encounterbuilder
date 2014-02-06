@@ -36,7 +36,7 @@ module.exports = function (Monster, defaultFindLimit) {
                 if (error) {
                     response.send(error);
                 }
-                if (count) {
+                if (count !== undefined) {
                     response.json({count: count, monsters: monsters});
                 }
             }).count(function (error, value) {
@@ -44,7 +44,7 @@ module.exports = function (Monster, defaultFindLimit) {
                 if (error) {
                     response.send(error);
                 }
-                if (monsters) {
+                if (monsters !== undefined) {
                     response.json({count: count, monsters: monsters});
                 }
             });
