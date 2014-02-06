@@ -1,6 +1,6 @@
 "use strict";
 
-var MAGIC_ITEMS_ATTRIBUTES = [
+var ATTRIBUTES = [
     /* SRD attributes */
     "Name",
     "Aura",
@@ -43,21 +43,34 @@ var MAGIC_ITEMS_ATTRIBUTES = [
     "Illusion",
     "Universal",
     /* computed attributes */,
-    "id"
+    "id",
+    "PriceUnit",
+    "CostUnit"
 ];
+
+var NUMERIC_ATTRIBUTES = [
+    "CL",
+    "Price",
+    "Cost"
+]
 
 function generateMagicItemModelObject() {
     var model = {};
-    for (var i in MAGIC_ITEMS_ATTRIBUTES) {
-        var attribute = MAGIC_ITEMS_ATTRIBUTES [i];
+    for (var i in ATTRIBUTES) {
+        var attribute = ATTRIBUTES [i];
         model[attribute] = String;
+    }
+    for (var i in NUMERIC_ATTRIBUTES) {
+        var attribute = NUMERIC_ATTRIBUTES [i];
+        model[attribute] = Number;
     }
     return model;
 }
 
 module.exports = function (mongoose) {
     return {
-        MAGIC_ITEMS_ATTRIBUTES : MAGIC_ITEMS_ATTRIBUTES,
+        MAGIC_ITEMS_ATTRIBUTES : ATTRIBUTES,
+        MAGIC_ITEMS_NUMERIC_ATTRIBUTES : NUMERIC_ATTRIBUTES,
         MagicItem :  mongoose.model('MagicItem', generateMagicItemModelObject())
     }
 };

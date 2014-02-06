@@ -53,7 +53,31 @@ var eb_items = [];
 for (var i in srd_items) {
     var eb_item = {};
     for (var j in MAGIC_ITEMS_ATTRIBUTES) {
-        eb_item[MAGIC_ITEMS_ATTRIBUTES[j]] = trim(srd_items[i][MAGIC_ITEMS_ATTRIBUTES[j]]);
+        var attribute = MAGIC_ITEMS_ATTRIBUTES[j];
+        var srd_value = srd_items[i][attribute];
+        if (attribute === "CL") {
+            eb_item[attribute] = Number(srd_value) || 0;
+        } else if (attribute === "Price" || attribute === "Cost") {
+            var match = /(\d+)(.*)/.exec(srd_value.replace(",", ""));
+            if (srd_value.trim() === "") {
+                eb_item[attribute] = 0;
+                eb_item[attribute + "Unit"] = "";
+            } else if (match) {
+                eb_item[attribute] = Number(match[1]) || 0;
+                eb_item[attribute + "Unit"] = match[2].trim();
+            } else if (attribute === "Price" && srd_value.trim() === "artifact") {
+                eb_item["PriceUnit"] = "artifact"
+            } else if (attribute === "Price" && srd_value.trim() === "varies") {
+                eb_item["PriceUnit"] = "varies"
+            } else if (attribute === "Cost" && srd_value.trim() === "varies." || srd_value.trim() === "varies") {
+                eb_item["CostUnit"] = "varies"
+            }  else {
+                console.log("ERROR could not understand value '" + srd_value + "' (attribute was " + attribute + ")");
+                process.exit(-1);
+            }
+        } else {
+            eb_item[attribute] = trim(srd_value);
+        }
     }
     eb_items.push(eb_item);
     compareWithKyleItems(eb_item, srd_items[i].id);
