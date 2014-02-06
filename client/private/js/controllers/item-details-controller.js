@@ -1,16 +1,16 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('ItemDetailsController', ['$scope', '$http', 'selectedItemService',
-    function ($scope, $http, selectedItemService) {
-        selectedItemService.register(function () {
-            $scope.item = $http.get('/api/magic-item/' + selectedItemService.selectedItemId())
-                .success(function (data) {
-                    $scope.item = data.magicItem;
-                })
-                .error(function(error) {
-                    console.log(error);
+DEMONSQUID.encounterBuilderControllers.controller('ItemDetailsController',
+    ['$scope', '$http', 'selectedItemService', 'itemService',
+        function ($scope, $http, selectedItemService, itemService) {
+            selectedItemService.register(function () {
+                itemService.get(selectedItemService.selectedItemId(), function (error, item) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        $scope.item = item;
+                    }
                 });
-        });
-    }
-])
-;
+            });
+        }
+    ]);

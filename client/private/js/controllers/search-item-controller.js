@@ -1,8 +1,8 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('SearchItemController', ['$scope', '$http', 'selectedItemService',
-    function ($scope, $http, selectedItemService) {
-
+DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
+    ['$scope', '$http', 'selectedItemService', 'itemService',
+    function ($scope, $http, selectedItemService, itemService) {
 
         $scope.nameSubstring = '';
         $scope.sortOrder = 'name';
@@ -21,7 +21,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController', ['$sco
                 skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
                 findLimit: $scope.itemsPerPage
             };
-            refreshItems(params, function (error, data) {
+            itemService.search(params, function (error, data) {
                 if (error) {
                     console.log(error);
                 }
@@ -31,18 +31,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController', ['$sco
                 }
             });
         })
-
-        function refreshItems(params, callback) {
-            var now = new Date().getTime();
-            $http.get('/api/search-magic-items/', {params: params})
-                .success(function (data) {
-                    data["timestamp"] = now;
-                    callback(null, data);
-                })
-                .error(function (error) {
-                    callback(error, null);
-                });
-        }
 
         $scope.selectItemById = function (id) {
             selectedItemService.selectedItemId(id);
