@@ -61,6 +61,9 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
         $scope.selectItemById = function (id) {
             selectedItemService.selectedItemId(id);
         }
+        selectedItemService.register(function(){
+           $scope.selectedItemId = selectedItemService.selectedItemId();
+        });
 
         $scope.minCL = 0;
         $scope.maxCL = 20;

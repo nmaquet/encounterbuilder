@@ -10,7 +10,6 @@ DEMONSQUID.encounterBuilderServices.factory('selectedMonsterService', ['$rootSco
         service.selectedMonsterId = function (monsterId) {
             if (monsterId) {
                 selectedMonsterId = monsterId;
-
                 $rootScope.$emit(SELECTED_MONSTER_CHANGED);
             } else {
                 return selectedMonsterId;
