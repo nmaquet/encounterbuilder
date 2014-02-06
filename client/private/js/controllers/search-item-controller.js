@@ -52,7 +52,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
 
         $scope.$watch('clRange', function (clRange) {
             $timeout(function () {
-                if (clRange === $scope.crRange) {
+                if (clRange === $scope.clRange) {
                     refreshItems();
                 }
             }, 300);

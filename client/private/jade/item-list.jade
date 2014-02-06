@@ -9,7 +9,7 @@ table.items.table.table-striped.well
             td(ng-class='{selected: selectedItemId == item.id}', ng-click='selectItemById(item.id)')
                 p {{item.Name}}
             td(ng-class='{selected: selectedItemId == item.id}', ng-click='selectItemById(item.id)')
-                p {{item.Price}}
+                p {{item.Price}}&nbsp;{{item.PriceUnit}}
             td(ng-class='{selected: selectedItemId == item.id}', ng-click='selectItemById(item.id)')
                 abbr(title='{{item.Source}}')
                     small {{item.Source | abbreviateMonsterSource}}

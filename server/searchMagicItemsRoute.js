@@ -36,7 +36,7 @@ module.exports = function (MagicItem, defaultFindLimit) {
         var skip = request.query.skip || 0;
         var findLimit = request.query.findLimit || defaultFindLimit;
         var findParams = getFindParams(request);
-        var projection = {Name: true, Price: true, Source: true, id: true};
+        var projection = {Name: true, Price: true, PriceUnit : true, Source: true, id: true};
         var magicItems;
         var count;
         console.log(findParams);
