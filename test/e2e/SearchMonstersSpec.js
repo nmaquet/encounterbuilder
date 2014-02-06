@@ -169,14 +169,14 @@ describe('Search Monsters', function () {
 
     it('should have a working slider', function () {
         var LEFT = 37, RIGHT = 39;
-        element('#slider-range > a:nth-child(2)').click();
+        element('#slider-cr-range > a:nth-child(2)').click();
         expect(element('#cr-range').val()).toBe("0 - 40");
-        keyboard().keydown('#slider-range > a:nth-child(2)', 'keydown', RIGHT, false, false);
-        keyboard().keydown('#slider-range > a:nth-child(2)', 'keydown', RIGHT, false, false);
+        keyboard().keydown('#slider-cr-range > a:nth-child(2)', 'keydown', RIGHT, false, false);
+        keyboard().keydown('#slider-cr-range > a:nth-child(2)', 'keydown', RIGHT, false, false);
         expect(element('#cr-range').val()).toBe("2 - 40");
-        element('#slider-range > a:nth-child(3)').click();
-        keyboard().keydown('#slider-range > a:nth-child(3)', 'keydown', LEFT, false, false);
-        keyboard().keydown('#slider-range > a:nth-child(3)', 'keydown', LEFT, false, false);
+        element('#slider-cr-range > a:nth-child(3)').click();
+        keyboard().keydown('#slider-cr-range > a:nth-child(3)', 'keydown', LEFT, false, false);
+        keyboard().keydown('#slider-cr-range > a:nth-child(3)', 'keydown', LEFT, false, false);
         expect(element('#cr-range').val()).toBe("2 - 38");
     });
 
