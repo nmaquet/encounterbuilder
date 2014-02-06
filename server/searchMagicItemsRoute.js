@@ -12,9 +12,9 @@ function getFindParams(request) {
         findParams.Slot = request.query.slot;
     }
     var minCL = request.query.minCL || 0;
-    var minCL = request.query.maxCL || 20;
+    var maxCL = request.query.maxCL || 20;
     if (minCL != 0 || minCL != 20) {
-        findParams.CL = { $gte: minCL, $lte: minCL};
+        findParams.CL = { $gte: minCL, $lte: maxCL};
     }
     return findParams;
 }
@@ -39,6 +39,7 @@ module.exports = function (MagicItem, defaultFindLimit) {
         var projection = {Name: true, Price: true, Source: true, id: true};
         var magicItems;
         var count;
+        console.log(findParams);
         MagicItem.find(findParams, projection).limit(findLimit).sort(sortOption).skip(skip)
             .execFind(function (error, data) {
                 magicItems = data;
