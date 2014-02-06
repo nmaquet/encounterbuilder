@@ -20,9 +20,9 @@ function getFindParams(request) {
 }
 
 function getSortOption(request) {
-    if (request.query.order === "cl") {
+    if (request.query.sortOrder === "cl") {
         return 'CL Price Name';
-    } else if (request.query.order === "price") {
+    } else if (request.query.sortOrder === "price") {
         return 'Price CL Name';
     }
     else {

@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
-    ['$scope', '$http', 'selectedItemService', 'itemService',
-    function ($scope, $http, selectedItemService, itemService) {
+    ['$scope', '$http', '$timeout', 'selectedItemService', 'itemService',
+    function ($scope, $http, $timeout, selectedItemService, itemService) {
 
         $scope.nameSubstring = '';
         $scope.sortOrder = 'name';
@@ -16,10 +16,16 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
 
         $scope.items = [];
 
-        $scope.$watch('currentPage', function () {
+        function refreshItems() {
             var params = {
+                nameSubstring: $scope.nameSubstring,
+                sortOrder: $scope.sortOrder,
+                group: $scope.group,
+                slot: $scope.slot,
                 skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
-                findLimit: $scope.itemsPerPage
+                findLimit: $scope.itemsPerPage,
+                minCL: $scope.minCL,
+                maxCL: $scope.maxCL
             };
             itemService.search(params, function (error, data) {
                 if (error) {
@@ -30,7 +36,27 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
                     $scope.totalItems = data.count;
                 }
             });
-        })
+        }
+
+        $scope.$watchCollection("[sortOrder, group, slot, currentPage]", function () {
+            refreshItems();
+        });
+
+        $scope.$watch('nameSubstring', function (nameSubstring) {
+            $timeout(function () {
+                if (nameSubstring === $scope.nameSubstring) {
+                    refreshItems();
+                }
+            }, 300);
+        });
+
+        $scope.$watch('clRange', function (clRange) {
+            $timeout(function () {
+                if (clRange === $scope.crRange) {
+                    refreshItems();
+                }
+            }, 300);
+        });
 
         $scope.selectItemById = function (id) {
             selectedItemService.selectedItemId(id);
