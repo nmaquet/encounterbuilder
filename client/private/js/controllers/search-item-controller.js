@@ -4,7 +4,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
     ['$scope', '$http', '$timeout', 'selectedItemService', 'itemService',
     function ($scope, $http, $timeout, selectedItemService, itemService) {
 
-        $scope.nameSubstring = '';
+        $scope.itemNameSubstring = '';
         $scope.sortOrder = 'name';
         $scope.group = 'any';
         $scope.slot = 'any';
@@ -18,7 +18,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
 
         function refreshItems() {
             var params = {
-                nameSubstring: $scope.nameSubstring,
+                nameSubstring: $scope.itemNameSubstring,
                 sortOrder: $scope.sortOrder,
                 group: $scope.group,
                 slot: $scope.slot,
@@ -42,9 +42,9 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
             refreshItems();
         });
 
-        $scope.$watch('nameSubstring', function (nameSubstring) {
+        $scope.$watch('itemNameSubstring', function (itemNameSubstring) {
             $timeout(function () {
-                if (nameSubstring === $scope.nameSubstring) {
+                if (itemNameSubstring === $scope.itemNameSubstring) {
                     refreshItems();
                 }
             }, 300);
@@ -61,6 +61,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
         $scope.selectItemById = function (id) {
             selectedItemService.selectedItemId(id);
         }
+
         selectedItemService.register(function(){
            $scope.selectedItemId = selectedItemService.selectedItemId();
         });
