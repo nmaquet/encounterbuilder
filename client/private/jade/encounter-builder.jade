@@ -24,7 +24,7 @@
             .row-fluid(ng-show="selectedTab === 'items'")
                 .span4(ng-controller='SearchItemController')
                     .well.sidebar-nav
-                        |TODO
+                        include item-filters
                     .result-list
                         include item-list
                 .span8.well(ng-controller='ItemDetailsController')

@@ -3,6 +3,12 @@
 DEMONSQUID.encounterBuilderControllers.controller('SearchItemController', ['$scope', '$http', 'selectedItemService',
     function ($scope, $http, selectedItemService) {
 
+
+        $scope.nameSubstring = '';
+        $scope.sortOrder = 'name';
+        $scope.group = 'any';
+        $scope.slot = 'any';
+
         $scope.totalItems = 0;
         $scope.currentPage = 1;
         $scope.itemsPerPage = 50;
@@ -41,6 +47,23 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController', ['$sco
         $scope.selectItemById = function (id) {
             selectedItemService.selectedItemId(id);
         }
+
+        $scope.minCL = 0;
+        $scope.maxCL = 20;
+        $scope.clRange = $scope.minCL + " - " + $scope.maxCL;
+
+        $("#slider-cl-range").slider({
+            range: true,
+            min: 0,
+            max: 20,
+            values: [ 0, 20 ],
+            slide: function (event, ui) {
+                $scope.minCL = ui.values[0];
+                $scope.maxCL = ui.values[1];
+                $scope.clRange = $scope.minCL + " - " + $scope.maxCL;
+                $scope.$apply();
+            }
+        });
 
     }
 ]);

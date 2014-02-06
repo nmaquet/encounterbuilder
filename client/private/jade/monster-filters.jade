@@ -1,10 +1,10 @@
 .row-fluid
     label(for='search') Search
-    input#search(type='text', name='search', placeholder='Type something…', ng-model='nameSubstring')
+    input#monster-search(type='text', name='search', placeholder='Type something…', ng-model='nameSubstring')
     .row-fluid
         label(for='sort') Sort by:
-        select#sort(ng-model='orderProp')
-            option(value='name') Alphabetical
+        select#monster-sort(ng-model='orderProp')
+            option(value='name') Name
             option(value='cr') Challenge Rating
     .row-fluid
         label(for='type') Type:
@@ -26,5 +26,5 @@
     p
         label(for='cr-range') CR range:
         input#cr-range(type='text', ng-model='crRange', readonly='readonly')
-    #slider-range
+    #slider-cr-range
 

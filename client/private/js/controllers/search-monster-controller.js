@@ -88,7 +88,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
 
             selectedMonsterService.selectedMonsterId('bat');
 
-            $("#slider-range").slider({
+            $("#slider-cr-range").slider({
                 range: true,
                 min: 0,
                 max: 40,
