@@ -15,8 +15,7 @@ module.exports = function (config) {
             'test/e2e/*.js' /*CHANGE THIS TO EXECUTE ONLY ONE TEST*/
         ],
         exclude: [
-            "test/e2e/ItemViewSpec.js",
-            "test/e2e/SearchMonsterSpec.js"
+            "test/e2e/Encounter.js"
         ],
         preprocessors: {
             'app/js/*.js': ['coverage']
