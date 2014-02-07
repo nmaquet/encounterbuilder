@@ -23,7 +23,7 @@
         "chai"        : "1.8.1",
         "mocha"       : "~1.16",
         "mocha-jenkins-reporter" : "*",
-        "phantomjs"   : "*",
+        "phantomjs"   : "1.9.7-1",
         "karma"       : "~0.10",
         "karma-mocha" : "~0.1",
         "karma-chai"  : "0.0.2",
