@@ -57,7 +57,7 @@ function main(db) {
     var logoutRoute = require('./logoutRoute')();
     var userDataRoute = require('./userDataRoute')(Encounter);
     var clientRoutes = require('./clientRoutes')();
-    var encounterRoute = require('./encounterRoutes')(Encounter, db, ObjectID);
+    var encounterRoute = require('./encounterRoutes')(db, ObjectID);
 
     app.get('/api/search-monsters', authentication.check, searchMonstersRoute);
     app.get('/api/search-magic-items', authentication.check, searchMagicItemsRoute);

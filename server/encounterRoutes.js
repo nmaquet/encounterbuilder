@@ -1,35 +1,33 @@
 "use strict";
 
-module.exports = function (Encounter, db, ObjectID) {
+module.exports = function (db, ObjectID) {
     return {
         upsert: function (request, response) {
             var username = request.session.user.username;
             var encounter = request.body.encounter;
             encounter.Username = username;
+
             if (encounter._id) {
-                /* FIXME: this is SNAFU ! */
-                var toSave = {
-                    Username: encounter.Username,
-                    Name: encounter.Name,
-                    CR: encounter.CR,
-                    Monsters: encounter.Monsters
-                };
-                new Encounter(encounter).update(toSave, function (error) {
+                var selector = {_id: ObjectID(encounter._id), Username: username};
+                delete encounter._id;
+                db.collection('encounters').update(selector, encounter, {}, function (error,result) {
                     if (error) {
-                        response.json({error: "could not save encounter"});
+                        console.log(error);
+                        response.json({error: "could not update encounter"});
                     }
                     else {
-                        response.json({_id: encounter._id});
+                        response.json({_id: selector._id});
                     }
                 });
             }
             else {
-                Encounter.create(encounter, function (error, newEncounter) {
+                db.collection('encounters').insert(encounter, function (error, newEncounter) {
                     if (error) {
-                        response.json({error: "could not create encounter"});
+                        console.log(error);
+                        response.json({error: "could not insert encounter"});
                     }
                     else {
-                        response.json({_id: newEncounter._id});
+                        response.json({_id: newEncounter[0]._id});
                     }
                 });
             }
