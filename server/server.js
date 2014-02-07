@@ -28,8 +28,6 @@ MongoClient.connect(MONGODB_URL, function (error, db) {
 
 function main(db) {
 
-    mongoose.connect(MONGODB_URL);
-
     app.configure(function () {
         //app.use(express.compress());
         app.use("/css", express.static(__dirname + '/../client/public/css'));
@@ -42,15 +40,13 @@ function main(db) {
         app.use(express.session({secret: "THECATZHAZITZ" /* FIXME: use process.env */}));
     });
 
-    var User = require('./userModel')(mongoose).User;
-
     var authentication = require('./authentication')();
 
     var searchMonstersRoute = require('./searchMonstersRoute')(db, FIND_LIMIT);
     var searchMagicItemsRoute = require('./searchMagicItemsRoute')(db, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(db);
     var magicItemRoute = require('./magicItemRoute')(db);
-    var loginRoute = require('./loginRoute')(User, authentication.authenticate);
+    var loginRoute = require('./loginRoute')(db, authentication.authenticate);
     var logoutRoute = require('./logoutRoute')();
     var userDataRoute = require('./userDataRoute')(db);
     var clientRoutes = require('./clientRoutes')();

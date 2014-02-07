@@ -1,8 +1,8 @@
 "use strict";
 
-module.exports = function (User, authenticate) {
+module.exports = function (db, authenticate) {
     return function (request, response) {
-        authenticate(User, request.body.username, request.body.password, function (error, user) {
+        authenticate(db, request.body.username, request.body.password, function (error, user) {
             if (user) {
                 request.session.regenerate(function () {
                     request.session.user = user;
