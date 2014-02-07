@@ -1,13 +1,11 @@
 "use strict";
 
 
-module.exports = function (Encounter) {
+module.exports = function (db) {
     return function (request, response) {
         if (request.session && request.session.user) {
-
             var username = request.session.user.username;
-
-            Encounter.find({Username: username}, function (error, Encounters) {
+            db.collection('encounters').find({Username: username}).toArray(function (error, Encounters) {
                 if (error)
                     response.send(error);
                 var userData = {

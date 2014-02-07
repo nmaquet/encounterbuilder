@@ -45,7 +45,6 @@ function main(db) {
     var Monster = require('./monsterModel')(mongoose).Monster;
     var MagicItem = require('./magicItemModel')(mongoose).MagicItem;
     var User = require('./userModel')(mongoose).User;
-    var Encounter = require('./encounterModel')(mongoose).Encounter;
 
     var authentication = require('./authentication')();
 
@@ -55,7 +54,7 @@ function main(db) {
     var magicItemRoute = require('./magicItemRoute')(MagicItem);
     var loginRoute = require('./loginRoute')(User, authentication.authenticate);
     var logoutRoute = require('./logoutRoute')();
-    var userDataRoute = require('./userDataRoute')(Encounter);
+    var userDataRoute = require('./userDataRoute')( db);
     var clientRoutes = require('./clientRoutes')();
     var encounterRoute = require('./encounterRoutes')(db, ObjectID);
 
