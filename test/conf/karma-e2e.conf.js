@@ -15,7 +15,6 @@ module.exports = function (config) {
             'test/e2e/*.js' /*CHANGE THIS TO EXECUTE ONLY ONE TEST*/
         ],
         exclude: [
-            "test/e2e/Encounter.js"
         ],
         preprocessors: {
             'app/js/*.js': ['coverage']
