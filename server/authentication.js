@@ -20,8 +20,8 @@ function hash(pwd, salt, fn) {
     }
 }
 
-function authenticate(db, username, password, callback) {
-    db.collection('users').findOne({ username: username }, function (error, user) {
+function authenticate(userCollection, username, password, callback) {
+    userCollection.findOne({ username: username }, function (error, user) {
         if (error || !user) {
             if (error) {
                 console.log(error);

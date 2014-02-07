@@ -3,7 +3,7 @@
 var fs = require("fs");
 var fakeMongoose = {model: function () {
 }};
-var MAGIC_ITEMS_ATTRIBUTES = require('../server/magicItemModel')(fakeMongoose).MAGIC_ITEMS_ATTRIBUTES;
+var MAGIC_ITEMS_ATTRIBUTES = require('./magicItemModel')(fakeMongoose).MAGIC_ITEMS_ATTRIBUTES;
 
 var srd_items = require("../data/contrib/magic_items_full.json");
 var kyle_items = require("../data/contrib/magic_items_kyle.json");

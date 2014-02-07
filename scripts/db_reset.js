@@ -1,7 +1,7 @@
 var fs = require("fs");
 var mongoose = require('mongoose');
-var Monster = require('../server/monsterModel')(mongoose).Monster;
-var MagicItem = require('../server/magicItemModel')(mongoose).MagicItem;
+var Monster = require('./monsterModel')(mongoose).Monster;
+var MagicItem = require('./magicItemModel')(mongoose).MagicItem;
 
 if (process.env.USE_TEST_DB) {
     var db = mongoose.connect(process.env['MONGODB_TEST_URL']);

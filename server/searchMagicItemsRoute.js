@@ -30,7 +30,7 @@ function getSortOption(request) {
     }
 }
 
-module.exports = function (db, defaultFindLimit) {
+module.exports = function (magicitemCollection, defaultFindLimit) {
     return function (request, response) {
         var magicItems;
         var count;
@@ -41,7 +41,7 @@ module.exports = function (db, defaultFindLimit) {
             sort: getSortOption(request)
         }
         var query = getQuery(request);
-        db.collection('magicitems').find(query, options).toArray(function (error, data) {
+        magicitemCollection.find(query, options).toArray(function (error, data) {
                 magicItems = data;
                 if (error) {
                     response.json({error:error});
@@ -51,7 +51,7 @@ module.exports = function (db, defaultFindLimit) {
                 }
             });
 
-        db.collection('magicitems').count(query, function (error, value) {
+        magicitemCollection.count(query, function (error, value) {
             count = value;
             if (error) {
                 response.json({error:error});

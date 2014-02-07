@@ -1,8 +1,8 @@
 "use strict";
 
-module.exports = function (db) {
+module.exports = function (magicitemCollection) {
     return function (request, response) {
-        db.collection('magicitems').findOne({id: request.params.id}, function (error, magicItem) {
+        magicitemCollection.findOne({id: request.params.id}, function (error, magicItem) {
             if (error) {
                 response.json({error: error});
             }

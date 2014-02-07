@@ -1,8 +1,8 @@
 "use strict";
 
 var mongoose = require('mongoose');
-var User = require("../server/userModel")(mongoose).User;
-var Encounter = require("../server/encounterModel")(mongoose).Encounter;
+var User = require("./userModel")(mongoose).User;
+var Encounter = require("./encounterModel")(mongoose).Encounter;
 var authentication = require("../server/authentication")();
 
 var USERS = [

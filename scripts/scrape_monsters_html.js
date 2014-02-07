@@ -9,7 +9,7 @@ var fakeMongoose = {model: function () {
 
 var srd_monsters = require("../data/contrib/monsters_partial.json");
 var kyle_monsters = require("../data/contrib/monsters_kyle.json");
-var MONSTER_ATTRIBUTES = require('../server/monsterModel')(fakeMongoose).MONSTER_ATTRIBUTES;
+var MONSTER_ATTRIBUTES = require('./monsterModel')(fakeMongoose).MONSTER_ATTRIBUTES;
 
 var KYLE_MONSTER_BY_ID = {};
 

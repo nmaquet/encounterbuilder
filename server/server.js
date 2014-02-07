@@ -7,9 +7,9 @@ var FIND_LIMIT = 50;
 var fs = require('fs');
 var express = require('express');
 var app = express();
-var mongoose = require('mongoose');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
+
 
 if (process.env.USE_TEST_DB) {
     var MONGODB_URL = process.env['MONGODB_TEST_URL'];
@@ -27,7 +27,7 @@ MongoClient.connect(MONGODB_URL, function (error, db) {
 });
 
 function main(db) {
-
+    var collections = require('./collections')(db);
     app.configure(function () {
         //app.use(express.compress());
         app.use("/css", express.static(__dirname + '/../client/public/css'));
@@ -42,15 +42,15 @@ function main(db) {
 
     var authentication = require('./authentication')();
 
-    var searchMonstersRoute = require('./searchMonstersRoute')(db, FIND_LIMIT);
-    var searchMagicItemsRoute = require('./searchMagicItemsRoute')(db, FIND_LIMIT);
-    var monsterRoute = require('./monsterRoute')(db);
-    var magicItemRoute = require('./magicItemRoute')(db);
-    var loginRoute = require('./loginRoute')(db, authentication.authenticate);
+    var searchMonstersRoute = require('./searchMonstersRoute')(collections.monsters, FIND_LIMIT);
+    var searchMagicItemsRoute = require('./searchMagicItemsRoute')(collections.magicitems, FIND_LIMIT);
+    var monsterRoute = require('./monsterRoute')(collections.monsters);
+    var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
+    var loginRoute = require('./loginRoute')(collections.users, authentication.authenticate);
     var logoutRoute = require('./logoutRoute')();
-    var userDataRoute = require('./userDataRoute')(db);
+    var userDataRoute = require('./userDataRoute')(collections.encounters);
     var clientRoutes = require('./clientRoutes')();
-    var encounterRoute = require('./encounterRoutes')(db, ObjectID);
+    var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID);
 
     app.get('/api/search-monsters', authentication.check, searchMonstersRoute);
     app.get('/api/search-magic-items', authentication.check, searchMagicItemsRoute);

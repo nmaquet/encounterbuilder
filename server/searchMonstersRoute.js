@@ -24,7 +24,7 @@ function getSortOption(request) {
     }
 }
 
-module.exports = function (db, defaultFindLimit) {
+module.exports = function (monsterCollection, defaultFindLimit) {
     return function (request, response) {
         var query = getQuery(request);
         var monsters;
@@ -37,7 +37,7 @@ module.exports = function (db, defaultFindLimit) {
             sort: getSortOption(request)
         }
 
-        db.collection('monsters').find(query, options).toArray(function (error, data) {
+        monsterCollection.find(query, options).toArray(function (error, data) {
                 monsters = data;
                 if (error) {
                     response.json({error:error});
@@ -47,7 +47,7 @@ module.exports = function (db, defaultFindLimit) {
                 }
             });
 
-        db.collection('monsters').count(query,function (error, value) {
+        monsterCollection.count(query,function (error, value) {
                 count = value;
                 if (error) {
                     response.json({error:error});

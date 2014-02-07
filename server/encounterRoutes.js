@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function (db, ObjectID) {
+module.exports = function (encounterCollection, ObjectID) {
     return {
         upsert: function (request, response) {
             var username = request.session.user.username;
@@ -10,7 +10,7 @@ module.exports = function (db, ObjectID) {
             if (encounter._id) {
                 var selector = {_id: ObjectID(encounter._id), Username: username};
                 delete encounter._id;
-                db.collection('encounters').update(selector, encounter, {}, function (error,result) {
+                encounterCollection.update(selector, encounter, {}, function (error,result) {
                     if (error) {
                         console.log(error);
                         response.json({error: "could not update encounter"});
@@ -21,7 +21,7 @@ module.exports = function (db, ObjectID) {
                 });
             }
             else {
-                db.collection('encounters').insert(encounter, function (error, newEncounter) {
+                encounterCollection.insert(encounter, function (error, newEncounter) {
                     if (error) {
                         console.log(error);
                         response.json({error: "could not insert encounter"});
@@ -36,7 +36,7 @@ module.exports = function (db, ObjectID) {
             var username = request.session.user.username;
             var encounter = request.body.encounter;
             if (encounter._id && username) {
-                db.collection("encounters").remove({_id: ObjectID(encounter._id), Username: username}, function (error) {
+                encounterCollection.remove({_id: ObjectID(encounter._id), Username: username}, function (error) {
                     if (error) {
                         response.json({error: "could not delete encounter"});
                     }
