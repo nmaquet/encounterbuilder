@@ -218,7 +218,7 @@ for (var i in srd_monsters) {
 
     var kyleMonster = getKyleMonsterByID(srd_monsters[i].id)
     if (kyleMonster == undefined) {
-        continue;
+        continue; //FIXME remove this
     }
     var $ = cheerio.load(srd_monsters[i].FullText);
 

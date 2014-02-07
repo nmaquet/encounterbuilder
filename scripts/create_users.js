@@ -5,18 +5,16 @@ var User = require("../server/userModel")(mongoose).User;
 var Encounter = require("../server/encounterModel")(mongoose).Encounter;
 var authentication = require("../server/authentication")();
 
+var USERS = [
+    { username: "nic", password: "nic" },
+    { username: "chris", password: "chris" },
+    { username: "david", password: "david" },
+    { username: "test", password: "test" }
+];
+
 if (process.env.USE_TEST_DB) {
-    var USERS = [
-        { username: "test", password: "test" }
-    ];
     var db = mongoose.connect(process.env['MONGODB_TEST_URL']);
 } else {
-    var USERS = [
-        { username: "nic", password: "nic" },
-        { username: "chris", password: "chris" },
-        { username: "david", password: "david" },
-        { username: "test", password: "test" }
-    ]
     var db = mongoose.connect(process.env['MONGODB_URL']);
 }
 
