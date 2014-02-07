@@ -1,12 +1,16 @@
 "use strict";
 
-module.exports = function (Monster) {
+module.exports = function (db) {
     return function (request, response) {
-        Monster.find({id: request.params.id}, function (error, monster) {
-            if (error)
-                response.send(error);
-            response.json(monster);
+        db.collection('monsters').findOne({id: request.params.id}, function (error, monster) {
+            if (error) {
+                response.json({error: error});
+            }
+            else {
+                response.json({monster: monster});
+            }
         });
     }
-};
+}
+;
 

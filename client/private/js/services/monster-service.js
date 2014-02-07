@@ -16,7 +16,7 @@ DEMONSQUID.encounterBuilderServices.factory('monsterService', ['$http', function
         get: function (id, callback) {
             $http.get('/api/monster/' + id)
                 .success(function (data) {
-                    callback(null, data[0]);
+                    callback(data.error, data.monster);
                 })
                 .error(function (error) {
                     callback(error, null);

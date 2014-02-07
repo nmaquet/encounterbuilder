@@ -49,7 +49,7 @@ function main(db) {
 
     var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
     var searchMagicItemsRoute = require('./searchMagicItemsRoute')(db, FIND_LIMIT);
-    var monsterRoute = require('./monsterRoute')(Monster);
+    var monsterRoute = require('./monsterRoute')(db);
     var magicItemRoute = require('./magicItemRoute')(db);
     var loginRoute = require('./loginRoute')(User, authentication.authenticate);
     var logoutRoute = require('./logoutRoute')();
