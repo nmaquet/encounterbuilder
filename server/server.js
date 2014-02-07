@@ -43,13 +43,12 @@ function main(db) {
     });
 
     var Monster = require('./monsterModel')(mongoose).Monster;
-    var MagicItem = require('./magicItemModel')(mongoose).MagicItem;
     var User = require('./userModel')(mongoose).User;
 
     var authentication = require('./authentication')();
 
     var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
-    var searchMagicItemsRoute = require('./searchMagicItemsRoute')(MagicItem, FIND_LIMIT);
+    var searchMagicItemsRoute = require('./searchMagicItemsRoute')(db, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(Monster);
     var magicItemRoute = require('./magicItemRoute')(db);
     var loginRoute = require('./loginRoute')(User, authentication.authenticate);

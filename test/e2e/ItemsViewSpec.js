@@ -55,7 +55,7 @@ describe('Items View', function () {
         element('#itemsTab').click();
         expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Adamantine Breastplate");
         element("a:contains(2)").click();
-        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Discriminationg Cube");
+        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Death's Head Talisman 24HD");
     });
 
     it('should find three items and sort by name when searching for "plate""', function () {
@@ -86,10 +86,10 @@ describe('Items View', function () {
         expect(element('tr.item-row:nth-child(2) td:nth-child(1) p').text()).toBe("Amulet of Inescapable Location");
     });
 
-    it('should show 16 items when filtering for group:"Artifact"', function () {
+    it('should show 17 items when filtering for group:"Artifact"', function () {
         element('#itemsTab').click();
         select('group').option('Artifact');
-        expect(repeater('tr.item-row').count()).toBe(16);
+        expect(repeater('tr.item-row').count()).toBe(17);
     });
 
     it('should show 1 items when filtering for slot:"eyes"', function () {
