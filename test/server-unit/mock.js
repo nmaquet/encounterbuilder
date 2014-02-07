@@ -3,9 +3,9 @@
 module.exports = function () {
     return {
         monsterCollection: {
-            find: function (params, callback) {
-                this.find.params = params;
-                this.find.callback = callback;
+            find: function (query, options) {
+                this.find.query = query;
+                this.find.options = options;
                 return this;
             },
             findOne: function (query, callback) {
@@ -13,13 +13,18 @@ module.exports = function () {
                 this.findOne.callback = callback;
                 return this;
             },
-            count: function (callback) {
+            count: function (query, callback) {
+                this.count.query = query;
                 this.count.callback = callback;
                 return this;
             },
             remove: function(params, callback) {
                 this.remove.params = params;
                 this.remove.callback = callback;
+                return this;
+            },
+            toArray: function(callback) {
+                this.toArray.callback = callback;
                 return this;
             },
             create: function(object, callback) {
