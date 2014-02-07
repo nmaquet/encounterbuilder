@@ -11,7 +11,14 @@ var mongoose = require('mongoose');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 
-MongoClient.connect(process.env['MONGODB_URL'], function (error, db) {
+if (process.env.USE_TEST_DB) {
+    var MONGODB_URL = process.env['MONGODB_TEST_URL'];
+}
+else {
+    var MONGODB_URL = process.env['MONGODB_URL'];
+}
+
+MongoClient.connect(MONGODB_URL, function (error, db) {
     if (error) {
         console.log(error);
     } else {
@@ -21,11 +28,7 @@ MongoClient.connect(process.env['MONGODB_URL'], function (error, db) {
 
 function main(db) {
 
-    if (process.env.USE_TEST_DB) {
-        mongoose.connect(process.env['MONGODB_TEST_URL']);
-    } else {
-        mongoose.connect(process.env['MONGODB_URL']);
-    }
+    mongoose.connect(MONGODB_URL);
 
     app.configure(function () {
         //app.use(express.compress());
@@ -54,7 +57,7 @@ function main(db) {
     var logoutRoute = require('./logoutRoute')();
     var userDataRoute = require('./userDataRoute')(Encounter);
     var clientRoutes = require('./clientRoutes')();
-    var encounterRoute = require('./encounterRoutes')(Encounter, db);
+    var encounterRoute = require('./encounterRoutes')(Encounter, db, ObjectID);
 
     app.get('/api/search-monsters', authentication.check, searchMonstersRoute);
     app.get('/api/search-magic-items', authentication.check, searchMagicItemsRoute);

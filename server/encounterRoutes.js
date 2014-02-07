@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function (Encounter, db) {
+module.exports = function (Encounter, db, ObjectID) {
     return {
         upsert: function (request, response) {
             var username = request.session.user.username;
@@ -38,7 +38,7 @@ module.exports = function (Encounter, db) {
             var username = request.session.user.username;
             var encounter = request.body.encounter;
             if (encounter._id && username) {
-                Encounter.remove({_id: encounter._id, Username: username}, function (error) {
+                db.collection("encounters").remove({_id: ObjectID(encounter._id), Username: username}, function (error) {
                     if (error) {
                         response.json({error: "could not delete encounter"});
                     }
