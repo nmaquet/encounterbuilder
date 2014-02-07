@@ -6,29 +6,29 @@ var mock, monsterRoute;
 
 describe("monsterRoute", function () {
 
-    beforeEach(function() {
+    beforeEach(function () {
         mock = require("./mock")();
-        monsterRoute = require('../../server/monsterRoute')(mock.Monster);
+        monsterRoute = require('../../server/monsterRoute')(mock.monsterCollection);
     });
 
     it("should find the monster using the supplied id", function () {
-        mock.request.params = {id : "goblin"};
+        mock.request.params = {id: "goblin"};
         monsterRoute(mock.request, mock.response);
-        expect(mock.Monster.find.params).to.deep.equal({id: "goblin"});
+        expect(mock.monsterCollection.findOne.query).to.deep.equal({id: "goblin"});
     });
 
     it("should send the JSON of the found monster", function () {
         var error = null;
         monsterRoute(mock.request, mock.response);
-        mock.Monster.find.callback(error, mock.monster);
-        expect(mock.response.json.object).to.equal(mock.monster);
+        mock.monsterCollection.findOne.callback(error, mock.monster);
+        expect(mock.response.json.object).to.deep.equal({monster: mock.monster});
     });
 
     it("should send the error in case of an error", function () {
         var error = "EXTERMINATE!";
         monsterRoute(mock.request, mock.response);
-        mock.Monster.find.callback(error, mock.monster);
-        expect(mock.response.send.data).to.equal(error);
+        mock.monsterCollection.findOne.callback(error, mock.monster);
+        expect(mock.response.json.object).to.deep.equal({error: error});
     });
 
 });
