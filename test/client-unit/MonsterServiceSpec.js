@@ -50,14 +50,13 @@ describe("MonsterService", function () {
     describe("MonsterService.get", function () {
 
         it("should call the user callback with result data if successful", function () {
-            var monster = ["HOBGOBLIN"];
-            var response;
-            monsterService.get("hobgoblin", function (error, data) {
-                response = data;
+            var monster;
+            monsterService.get("hobgoblin", function (err, data) {
+                monster = data;
             });
-            $httpBackend.expectGET("/api/monster/hobgoblin").respond(200, monster);
+            $httpBackend.expectGET("/api/monster/hobgoblin").respond(200, {error : null, monster : "HOBGOBLIN"});
             $httpBackend.flush();
-            expect(response).to.equal("HOBGOBLIN");
+            expect(monster).to.equal("HOBGOBLIN");
         });
 
         it("should call the user callback with an an error on error", function () {
