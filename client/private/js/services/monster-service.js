@@ -7,7 +7,7 @@ DEMONSQUID.encounterBuilderServices.factory('monsterService', ['$http', function
             $http.get('/api/search-monsters/', {params : params})
                 .success(function (data) {
                     data["timestamp"] = now;
-                    callback(null, data);
+                    callback(data.error, data);
                 })
                 .error(function (error) {
                     callback(error, null);

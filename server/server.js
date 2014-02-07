@@ -42,12 +42,11 @@ function main(db) {
         app.use(express.session({secret: "THECATZHAZITZ" /* FIXME: use process.env */}));
     });
 
-    var Monster = require('./monsterModel')(mongoose).Monster;
     var User = require('./userModel')(mongoose).User;
 
     var authentication = require('./authentication')();
 
-    var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
+    var searchMonstersRoute = require('./searchMonstersRoute')(db, FIND_LIMIT);
     var searchMagicItemsRoute = require('./searchMagicItemsRoute')(db, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(db);
     var magicItemRoute = require('./magicItemRoute')(db);

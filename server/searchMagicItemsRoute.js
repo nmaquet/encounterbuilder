@@ -1,22 +1,22 @@
 "use strict";
 
 function getQuery(request) {
-    var findParams = {};
+    var query = {};
     if (request.query.nameSubstring) {
-        findParams.Name = new RegExp(request.query.nameSubstring, "i");
+        query.Name = new RegExp(request.query.nameSubstring, "i");
     }
     if (request.query.group && request.query.group != 'any') {
-        findParams.Group = request.query.group;
+        query.Group = request.query.group;
     }
     if (request.query.slot && request.query.slot != 'any') {
-        findParams.Slot = request.query.slot;
+        query.Slot = request.query.slot;
     }
     var minCL = Number(request.query.minCL || 0);
     var maxCL = Number(request.query.maxCL || 20);
     if (minCL != 0 || maxCL != 20) {
-        findParams.CL = { $gte: minCL, $lte: maxCL};
+        query.CL = { $gte: minCL, $lte: maxCL};
     }
-    return findParams;
+    return query;
 }
 
 function getSortOption(request) {
@@ -41,11 +41,10 @@ module.exports = function (db, defaultFindLimit) {
             sort: getSortOption(request)
         }
         var query = getQuery(request);
-        db.collection('magicitems').find(query, options)
-            .toArray(function (error, data) {
+        db.collection('magicitems').find(query, options).toArray(function (error, data) {
                 magicItems = data;
                 if (error) {
-                    response.send(error);
+                    response.json({error:error});
                 }
                 if (count !== undefined) {
                     response.json({count: count, magicItems: magicItems});
@@ -55,7 +54,7 @@ module.exports = function (db, defaultFindLimit) {
         db.collection('magicitems').count(query, function (error, value) {
             count = value;
             if (error) {
-                response.send(error);
+                response.json({error:error});
             }
             if (magicItems !== undefined) {
                 response.json({count: count, magicItems: magicItems});

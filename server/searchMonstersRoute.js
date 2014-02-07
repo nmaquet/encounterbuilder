@@ -1,48 +1,56 @@
 "use strict";
 
-function getFindParams(request) {
-    var findParams = {};
+function getQuery(request) {
+    var query = {};
     if (request.query.nameSubstring) {
-        findParams.Name = new RegExp(request.query.nameSubstring, "i");
+        query.Name = new RegExp(request.query.nameSubstring, "i");
     }
     if (request.query.type && request.query.type != 'any') {
-        findParams.Type = request.query.type;
+        query.Type = request.query.type;
     }
-    var minCR = request.query.minCR || 0;
-    var maxCR = request.query.maxCR || 40;
+    var minCR = Number(request.query.minCR || 0);
+    var maxCR = Number(request.query.maxCR || 40);
     if (minCR != 0 || maxCR != 40) {
-        findParams.CR = { $gte: minCR, $lte: maxCR};
+        query.CR = { $gte: minCR, $lte: maxCR};
     }
-    return findParams;
+    return query;
 }
 
-module.exports = function (Monster, defaultFindLimit) {
+function getSortOption(request) {
+    if (request.query.order === "cr") {
+        return ['CR', 'Name'];
+    } else {
+        return ['Name', 'CR'];
+    }
+}
+
+module.exports = function (db, defaultFindLimit) {
     return function (request, response) {
-        var sortOption;
-        if (request.query.order === "cr") {
-            sortOption = 'CR Name';
-        } else {
-            sortOption = 'Name CR';
-        }
-        var skip = request.query.skip || 0;
-        var findLimit = request.query.findLimit || defaultFindLimit;
-        var findParams = getFindParams(request);
-        var projection = {Name: true, CR: true, id: true, Source: true};
+        var query = getQuery(request);
         var monsters;
         var count;
-        Monster.find(findParams, projection).limit(findLimit).sort(sortOption).skip(skip)
-            .execFind(function (error, data) {
+
+        var options = {
+            fields: {Name: 1, CR: 1, id: 1, Source: 1},
+            limit: Number(request.query.findLimit || defaultFindLimit),
+            skip: Number(request.query.skip || 0),
+            sort: getSortOption(request)
+        }
+
+        db.collection('monsters').find(query, options).toArray(function (error, data) {
                 monsters = data;
                 if (error) {
-                    response.send(error);
+                    response.json({error:error});
                 }
                 if (count !== undefined) {
                     response.json({count: count, monsters: monsters});
                 }
-            }).count(function (error, value) {
+            });
+
+        db.collection('monsters').count(query,function (error, value) {
                 count = value;
                 if (error) {
-                    response.send(error);
+                    response.json({error:error});
                 }
                 if (monsters !== undefined) {
                     response.json({count: count, monsters: monsters});
