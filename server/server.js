@@ -51,10 +51,10 @@ function main(db) {
     var searchMonstersRoute = require('./searchMonstersRoute')(Monster, FIND_LIMIT);
     var searchMagicItemsRoute = require('./searchMagicItemsRoute')(MagicItem, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(Monster);
-    var magicItemRoute = require('./magicItemRoute')(MagicItem);
+    var magicItemRoute = require('./magicItemRoute')(db);
     var loginRoute = require('./loginRoute')(User, authentication.authenticate);
     var logoutRoute = require('./logoutRoute')();
-    var userDataRoute = require('./userDataRoute')( db);
+    var userDataRoute = require('./userDataRoute')(db);
     var clientRoutes = require('./clientRoutes')();
     var encounterRoute = require('./encounterRoutes')(db, ObjectID);
 

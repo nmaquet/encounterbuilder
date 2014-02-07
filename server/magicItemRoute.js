@@ -1,13 +1,13 @@
 "use strict";
 
-module.exports = function (MagicItem) {
+module.exports = function (db) {
     return function (request, response) {
-        MagicItem.find({id: request.params.id}, function (error, data) {
+        db.collection('magicitems').findOne({id: request.params.id}, function (error, data) {
             if (error) {
                 response.json({error: error});
             }
             else {
-                response.json({magicItem: data[0]});
+                response.json({magicItem: data});
             }
         });
     }
