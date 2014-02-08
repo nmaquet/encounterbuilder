@@ -7,6 +7,8 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
 
         service.encounters = [];
 
+        /* FIXME: don't we need a user callback ? */
+        /* FIXME: The client of this function has no way to know whether this succeeds or not. */
         service.remove = function (encounter) {
             $http.post('/api/remove-encounter', { encounter: encounter })
                 .success(function (response) {
@@ -19,6 +21,8 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 });
         }
 
+        /* FIXME: don't we need a user callback ? */
+        /* FIXME: The client of this function has no way to know whether this succeeds or not. */
         service.upsert = function (encounter) {
             $http.post('/api/upsert-encounter', { encounter: encounter })
                 .success(function (response) {

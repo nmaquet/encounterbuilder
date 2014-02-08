@@ -20,12 +20,34 @@ describe("EncounterService", function () {
 
     describe("encounterService.remove", function () {
 
-        it("should POST the given encounter", function () {
+        it("should POST to the remove-encounter API", function () {
             var encounter = {};
             var response = {};
             encounterService.remove(encounter);
             $httpBackend.expectPOST("/api/remove-encounter", {encounter : encounter}).respond(200, response);
             $httpBackend.flush();
         });
+
+    });
+
+    describe("encounterService.upsert", function () {
+
+        it("should POST the upsert-encounter API", function () {
+            var encounter = {};
+            var response = {};
+            encounterService.upsert(encounter);
+            $httpBackend.expectPOST("/api/upsert-encounter", {encounter : encounter}).respond(200, response);
+            $httpBackend.flush();
+        });
+
+        it("should assign the _id in response to the encounter", function () {
+            var encounter = {};
+            var response = { _id : "012345"};
+            encounterService.upsert(encounter);
+            $httpBackend.expectPOST("/api/upsert-encounter", {encounter : encounter}).respond(200, response);
+            $httpBackend.flush();
+            expect(encounter._id).to.equal(response._id);
+        });
+
     });
 });
