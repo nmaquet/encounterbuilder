@@ -20,11 +20,11 @@ module.exports = function (config) {
         exclude: [
         ],
         preprocessors: {
-            'app/js/*.js': ['coverage']
+            'client/private/js/**/*.js': ['coverage']
         },
         autoWatch: false,
         browsers: ['PhantomJS'], // Firefox, ChromeCanary, Opera, IE
-        reporters: ['junit', 'progress'],
+        reporters: ['junit', 'progress', 'coverage'],
         junitReporter: {
             outputFile: 'client-unit-test-results.xml',
             suite: ''
