@@ -15,7 +15,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                     }
                 })
                 .error(function (response) {
-                    console.log("delete of encounter failed !");
+                    console.log("remove of encounter failed !");
                 });
         }
 
