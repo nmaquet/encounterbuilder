@@ -2,11 +2,10 @@
 
 DEMONSQUID.encounterBuilderServices.factory('itemService', ['$http', function ($http) {
     return {
+        /* FIXME: we should implement some throttling at some point */
         search: function (params, callback) {
-            var now = new Date().getTime();
             $http.get('/api/search-magic-items/', {params : params})
                 .success(function (data) {
-                    data["timestamp"] = now;
                     callback(null, data);
                 })
                 .error(function (error) {

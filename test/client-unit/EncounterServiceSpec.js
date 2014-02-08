@@ -2,15 +2,15 @@
 
 var expect = chai.expect;
 
-var $httpBackend, encounterService;
+var $httpBackend, itemService;
 
-describe("EncounterService", function () {
+describe("ItemService", function () {
 
     beforeEach(module("encounterBuilderApp"));
 
-    beforeEach(inject(function (_$httpBackend_, _encounterService_) {
+    beforeEach(inject(function (_$httpBackend_, _itemService_) {
         $httpBackend = _$httpBackend_;
-        encounterService = _encounterService_;
+        itemService = _itemService_;
     }));
 
     afterEach(function () {
@@ -18,36 +18,76 @@ describe("EncounterService", function () {
         $httpBackend.verifyNoOutstandingRequest();
     });
 
-    describe("encounterService.remove", function () {
+    describe("itemService.search", function () {
 
-        it("should POST to the remove-encounter API", function () {
-            var encounter = {};
+        it("should GET the search-magic-items API with the given params", function () {
+            var params = { "nameSubstring": "veil", "Group" : "head"};
             var response = {};
-            encounterService.remove(encounter);
-            $httpBackend.expectPOST("/api/remove-encounter", {encounter : encounter}).respond(200, response);
+            itemService.search(params, function() {});
+            $httpBackend.expectGET("/api/search-magic-items/?Group=head&nameSubstring=veil").respond(200, response);
             $httpBackend.flush();
+        });
+
+        it("should call the user callback with the server response on success", function () {
+            var response = ["item1", "item2", "item3"];
+            var callbackData;
+            itemService.search({}, function(error, serverData) {
+                callbackData = serverData;
+            });
+            $httpBackend.expectGET("/api/search-magic-items/?").respond(200, response);
+            $httpBackend.flush();
+            expect(callbackData).to.deep.equal(response);
+        });
+
+        it("should call the user callback with the server error on error", function () {
+            var error = "OH NOES !";
+            var callbacError;
+            itemService.search({}, function(error, serverData) {
+                callbacError = error;
+            });
+            $httpBackend.expectGET("/api/search-magic-items/?").respond(500, error);
+            $httpBackend.flush();
+            expect(callbacError).to.equal(error);
         });
 
     });
 
-    describe("encounterService.upsert", function () {
+    describe("itemService.get", function () {
 
-        it("should POST the upsert-encounter API", function () {
-            var encounter = {};
+        it("should GET the magic-item API with the given id", function () {
+            var id = "veil-of-broken-death";
             var response = {};
-            encounterService.upsert(encounter);
-            $httpBackend.expectPOST("/api/upsert-encounter", {encounter : encounter}).respond(200, response);
+            itemService.get(id, function() {});
+            $httpBackend.expectGET("/api/magic-item/veil-of-broken-death").respond(200, response);
             $httpBackend.flush();
         });
 
-        it("should assign the _id in response to the encounter", function () {
-            var encounter = {};
-            var response = { _id : "012345"};
-            encounterService.upsert(encounter);
-            $httpBackend.expectPOST("/api/upsert-encounter", {encounter : encounter}).respond(200, response);
+        it("should call the user callback with the server response on success", function () {
+            var response = {magicItem : { Name : "Veil of Broken Death"}};
+            var callbackItem;
+            var callbackError;
+            itemService.get("veil-of-broken-death", function(error, serverItem) {
+                callbackError = error;
+                callbackItem = serverItem;
+            });
+            $httpBackend.expectGET("/api/magic-item/veil-of-broken-death").respond(200, response);
             $httpBackend.flush();
-            expect(encounter._id).to.equal(response._id);
+            expect(callbackError).to.equal(null);
+            expect(callbackItem).to.deep.equal(response.magicItem);
         });
 
+        it("should call the user callback with the server error on error", function () {
+            var response = {error : "SERVER IS SLEEPY"};
+            var callbackItem;
+            var callbackError;
+            itemService.get("veil-of-broken-death", function(error, serverItem) {
+                callbackError = error;
+                callbackItem = serverItem;
+            });
+            $httpBackend.expectGET("/api/magic-item/veil-of-broken-death").respond(500, response);
+            $httpBackend.flush();
+            expect(callbackError).to.equal("SERVER IS SLEEPY");
+            expect(callbackItem).to.equal(null);
+        });
     });
 });
