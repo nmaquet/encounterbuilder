@@ -3,7 +3,7 @@
 DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$sce', 'monsterService', 'selectedMonsterService',
     function ($scope, $sce, monsterService, selectedMonsterService) {
         selectedMonsterService.register(function () {
-            $scope.monster = monsterService.get(selectedMonsterService.selectedMonsterId(), function (error, monster) {
+            monsterService.get(selectedMonsterService.selectedMonsterId(), function (error, monster) {
                 if (error) {
                     console.log('Error in your face: ' + error);
                 } else {

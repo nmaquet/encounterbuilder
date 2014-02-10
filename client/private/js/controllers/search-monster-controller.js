@@ -101,9 +101,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
 
             selectedMonsterService.register(function() {
                 $scope.selectedMonsterId = selectedMonsterService.selectedMonsterId();
-            })
+            });
+
             selectedEncounterService.register(function() {
                 $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
-            })
+            });
         }
     ]);

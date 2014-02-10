@@ -5,7 +5,7 @@ DEMONSQUID.encounterBuilderServices.factory('selectedMonsterService', ['$rootSco
 
         var SELECTED_MONSTER_CHANGED = 'selectedMonsterChanged';
         var service = {};
-        var selectedMonsterId;
+        var selectedMonsterId = "bat";
 
         service.selectedMonsterId = function (monsterId) {
             if (monsterId && monsterId !== selectedMonsterId) {
@@ -18,11 +18,10 @@ DEMONSQUID.encounterBuilderServices.factory('selectedMonsterService', ['$rootSco
 
         service.register = function (callback) {
             $rootScope.$on(SELECTED_MONSTER_CHANGED, callback);
+            $timeout(function () {
+                callback();
+            });
         }
-
-        $timeout(function () {
-            service.selectedMonsterId('bat')
-        });
 
         return service;
     }]);
