@@ -120,6 +120,11 @@ describe('Encounter', function () {
         expect(element('h2:visible').text()).toBe("Bat");
     });
 
+    it('should update the right-side pane when you click on an item in the encounter panel', function () {
+        element('li.encounter-item-row:nth-child(1) span.item-name a').click();
+        expect(element('h2:visible').text()).toBe("Adamantine Breastplate");
+    });
+
     it ('should create a second encounter',function(){
         element('a.encounter-dropdown').click();
         element('a.encounter-dropdown-create').click();

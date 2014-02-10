@@ -8,7 +8,7 @@ DEMONSQUID.encounterBuilderServices.factory('selectedMonsterService', ['$rootSco
         var selectedMonsterId;
 
         service.selectedMonsterId = function (monsterId) {
-            if (monsterId) {
+            if (monsterId && monsterId !== selectedMonsterId) {
                 selectedMonsterId = monsterId;
                 $rootScope.$emit(SELECTED_MONSTER_CHANGED);
             } else {

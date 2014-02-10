@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
-    ['$scope', 'encounterService', 'selectedMonsterService', 'selectedEncounterService',
-        function ($scope, encounterService, selectedMonsterService, selectedEncounterService) {
+    ['$scope', 'encounterService', 'selectedMonsterService', 'selectedEncounterService', 'selectedItemService',
+        function ($scope, encounterService, selectedMonsterService, selectedEncounterService, selectedItemService) {
 
             function upsert() {
                 if ($scope.encounter) {
@@ -18,6 +18,12 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
 
             $scope.selectMonsterById = function (id) {
                 selectedMonsterService.selectedMonsterId(id);
+                $('#monstersTab').click();
+            }
+
+            $scope.selectItemById = function(id) {
+                selectedItemService.selectedItemId(id);
+                $('#itemsTab').click();
             }
 
             $scope.removeEncounter = function () {
