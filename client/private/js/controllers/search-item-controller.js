@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
-    ['$scope', '$http', '$timeout', 'selectedItemService', 'itemService',
-    function ($scope, $http, $timeout, selectedItemService, itemService) {
+    ['$scope', '$http', '$timeout', 'selectedItemService', 'itemService','selectedEncounterService','encounterService',
+    function ($scope, $http, $timeout, selectedItemService, itemService,selectedEncounterService,encounterService) {
 
         $scope.itemNameSubstring = '';
         $scope.sortOrder = 'name';
@@ -65,6 +65,30 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
         selectedItemService.register(function(){
            $scope.selectedItemId = selectedItemService.selectedItemId();
         });
+
+
+
+        $scope.addItem = function (item) {
+            if (!/^(\d+)$/.exec(item.amountToAdd)) {
+                item.amountToAdd = 1;
+            }
+            var encounter = selectedEncounterService.selectedEncounter();
+            if (!encounter.items) {
+                encounter.items = {};
+            }
+            if (!encounter.items[item.id]) {
+                encounter.items[item.id] = {Name: item.Name, Price: item.Price,PriceUnit: item.PriceUnit, amount: Number(item.amountToAdd)};
+            }
+            else {
+                encounter.items[item.id].amount += Number(item.amountToAdd) || 1;
+            }
+            delete item.amountToAdd;
+            encounterService.upsert(encounter);
+        }
+
+        selectedEncounterService.register(function() {
+            $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
+        })
 
         $scope.minCL = 0;
         $scope.maxCL = 20;

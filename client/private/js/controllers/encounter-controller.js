@@ -46,7 +46,24 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                 delete $scope.encounter.Monsters[monsterId];
                 upsert();
             }
+            
+            $scope.incrementItem = function (item) {
+                item.amount++;
+                upsert();
+            }
 
+            $scope.decrementItem = function (item) {
+                if (item.amount > 1) {
+                    item.amount--;
+                    upsert();
+                }
+            }
+
+            $scope.removeItemById = function (itemId) {
+                delete $scope.encounter.items[itemId];
+                upsert();
+            }
+            
             selectedEncounterService.register(function () {
                 $scope.encounter = selectedEncounterService.selectedEncounter();
             });
