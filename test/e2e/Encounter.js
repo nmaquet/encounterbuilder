@@ -38,6 +38,15 @@ describe('Encounter', function () {
         expect(element('li.encounter-monster-row:nth-child(1) span.monster-cr').text()).toBe("CR 1/8");
     });
 
+    it('should add two Adamantine Breastplate to encounter when user clicks on the "plus" button twice in the search results list', function () {
+        expect(repeater('li.encounter-item-row').count()).toBe(0);
+        element('tr.item-row:nth-child(1) td:nth-child(4) button').click();
+        element('tr.item-row:nth-child(1) td:nth-child(4) button').click();
+        expect(repeater('li.encounter-item-row').count()).toBe(1);
+        expect(element('li.encounter-item-row:nth-child(1) span.item-amount').text()).toBe("2");
+        expect(element('li.encounter-item-row:nth-child(1) span.item-name').text()).toBe("Adamantine Breastplate");
+    });
+
     it('should add two Bats to encounter when user clicks enters "2" and on the "plus in the search results list', function () {
         expect(repeater('li.encounter-monster-row').count()).toBe(1);
         using('tr.monster-row:nth-child(1) td:nth-child(4)').input("monster.amountToAdd").enter("2");
@@ -54,20 +63,42 @@ describe('Encounter', function () {
         expect(repeater('li.encounter-monster-row').count()).toBe(0);
     });
 
+    it('should remove all Adamantine Breastplates from encounter when user clicks on the remove button', function () {
+        expect(repeater('li.encounter-item-row').count()).toBe(1);
+        element('li.encounter-item-row:nth-child(1) button.remove-item-btn').click();
+        expect(repeater('li.encounter-item-row').count()).toBe(0);
+    });
+
     it('should remove one Bat from encounter when user clicks on the minus button', function () {
         element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
-        element('tr.monster-row:nth-child(1) td:nth-child(4) button').click()
         element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
-        element('tr.monster-row:nth-child(1) td:nth-child(4) button').click()
+        element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
+        element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
         expect(element('li.encounter-monster-row:nth-child(1) span.monster-amount').text()).toBe("4");
         element('li.encounter-monster-row:nth-child(1) button.decrement-monster-btn').click();
         expect(element('li.encounter-monster-row:nth-child(1) span.monster-amount').text()).toBe("3");
     });
 
+    it('should remove one Adamantine Breastplate from encounter when user clicks on the minus button', function () {
+        element('tr.item-row:nth-child(1) td:nth-child(4) button').click();
+        element('tr.item-row:nth-child(1) td:nth-child(4) button').click();
+        element('tr.item-row:nth-child(1) td:nth-child(4) button').click();
+        element('tr.item-row:nth-child(1) td:nth-child(4) button').click();
+        expect(element('li.encounter-item-row:nth-child(1) span.item-amount').text()).toBe("4");
+        element('li.encounter-item-row:nth-child(1) button.decrement-item-btn').click();
+        expect(element('li.encounter-item-row:nth-child(1) span.item-amount').text()).toBe("3");
+    });
+    
     it('should add one Bat from encounter when user clicks on the plus button', function () {
         expect(element('li.encounter-monster-row:nth-child(1) span.monster-amount').text()).toBe("3");
         element('li.encounter-monster-row:nth-child(1) button.increment-monster-btn').click();
         expect(element('li.encounter-monster-row:nth-child(1) span.monster-amount').text()).toBe("4");
+    });
+
+    it('should add one Adamantine Breastplate from encounter when user clicks on the plus button', function () {
+        expect(element('li.encounter-item-row:nth-child(1) span.item-amount').text()).toBe("3");
+        element('li.encounter-item-row:nth-child(1) button.increment-item-btn').click();
+        expect(element('li.encounter-item-row:nth-child(1) span.item-amount').text()).toBe("4");
     });
 
     it('should not remove the last Bat from encounter when user clicks on the minus button', function () {
