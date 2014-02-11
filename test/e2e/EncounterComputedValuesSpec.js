@@ -1,9 +1,13 @@
 'use strict';
 
-describe('Encounter', function () {
+describe('EncounterComputedValues', function () {
 
-    function inputNameSubstring(text) {
+    function inputMonsterNameSubstring(text) {
         input('nameSubstring').enter(text);
+    }
+
+    function inputItemNameSubstring(text) {
+        input('itemNameSubstring').enter(text);
     }
 
     beforeEach(function(){
@@ -19,23 +23,35 @@ describe('Encounter', function () {
     });
 
 
-    it('should create an encounter with two bats and compute xp', function () {
+    it('should create an encounter with two bats and compute xp & loot value', function () {
         element('a.encounter-dropdown-no-encounter').click();
         element('a.encounter-dropdown-create').click();
         element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
         element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
         expect(element('#encounter-xp').text()).toBe("100");
+        expect(element('#encounter-loot-value').text()).toBe("0");
     });
 
     it('should add a lot of xp when adding an Ancient Gold Dragon', function () {
-        inputNameSubstring('Ancient Gold Dragon');
+        inputMonsterNameSubstring('Ancient Gold Dragon');
         element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
-        expect(element('#encounter-xp').text()).toBe("307300");
+        expect(element('#encounter-xp').text()).toBe("307,300");
     });
 
     it('should add a lot of xp when adding another Ancient Gold Dragon from the encounter panel', function () {
         element('li.encounter-monster-row:nth-child(1) button.increment-monster-btn').click();
-        expect(element('#encounter-xp').text()).toBe("614500");
+        expect(element('#encounter-xp').text()).toBe("614,500");
+    });
+
+    it('should add a lot of loot value when adding a Nightskin', function () {
+        inputItemNameSubstring('Nightskin');
+        element('tr.item-row:nth-child(1) td:nth-child(4) button').click();
+        expect(element('#encounter-loot-value').text()).toBe("53,100");
+    });
+
+    it('should add a lot of loot value when adding another Nightskinfrom the encounter panel', function () {
+        element('li.encounter-item-row:nth-child(1) button.increment-item-btn').click();
+        expect(element('#encounter-loot-value').text()).toBe("106,200");
     });
 
     it('should remove the encounter', function () {

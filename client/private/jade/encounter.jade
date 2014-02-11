@@ -48,7 +48,8 @@ div.encounter(ng-show="encounter")
                         i.icon-remove
         p
             b Value&nbsp;
-            span#encounter-loot-value {{encounter.lootValue / 100 | number}}&nbsp;gp
+            span#encounter-loot-value {{encounter.lootValue / 100 | number}}
+            | &nbsp;gp
 div.encounter-no-encounter(ng-hide="encounter")
     | There is no encounter. Please
     | &nbsp;
