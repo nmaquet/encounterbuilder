@@ -136,7 +136,7 @@ describe('Encounter', function () {
         expect(element('a.encounter-dropdown').text()).toBe("Untitled #1 (CR 0)\n ");
         element('a.encounter-dropdown').click();
         element('a.encounter-dropdown-select').click();
-        expect(element('a.encounter-dropdown').text()).toBe("Untitled #0 (CR 0)\n ");
+        expect(element('a.encounter-dropdown').text()).toBe("Untitled #0 (CR 1/8)\n ");
     });
 
     it('should remove both encounters', function () {
