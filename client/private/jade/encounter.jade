@@ -1,6 +1,6 @@
 div.encounter(ng-show="encounter")
     h3
-        span.encounter-name(click-to-edit='encounter.Name', on-save="encounterNameChanged()")
+        span.encounter-name.pointer(click-to-edit='encounter.Name', on-save="encounterNameChanged()")
         span#encounter-cr
             | (CR {{encounter.CR | numberToFractionString}})
             a.pointer.remove-encounter(ng-click="removeEncounter(encounter)")
