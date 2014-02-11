@@ -66,13 +66,13 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     encounter.Monsters = {};
                 }
                 if (!encounter.Monsters[monster.id]) {
-                    encounter.Monsters[monster.id] = {Name: monster.Name, CR: monster.CR, amount: Number(monster.amountToAdd)};
+                    encounter.Monsters[monster.id] = {Name: monster.Name, xp: monster.XP, CR: monster.CR, amount: Number(monster.amountToAdd)};
                 }
                 else {
                     encounter.Monsters[monster.id].amount += Number(monster.amountToAdd) || 1;
                 }
                 delete monster.amountToAdd;
-                encounterService.upsert(encounter);
+                encounterService.encounterChanged(encounter);
             }
 
             $scope.totalItems = 0;
@@ -99,11 +99,11 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                 }
             });
 
-            selectedMonsterService.register(function() {
+            selectedMonsterService.register(function () {
                 $scope.selectedMonsterId = selectedMonsterService.selectedMonsterId();
             });
 
-            selectedEncounterService.register(function() {
+            selectedEncounterService.register(function () {
                 $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
             });
         }

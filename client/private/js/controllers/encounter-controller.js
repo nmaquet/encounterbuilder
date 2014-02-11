@@ -4,16 +4,16 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
     ['$scope', 'encounterService', 'selectedMonsterService', 'selectedEncounterService', 'selectedItemService',
         function ($scope, encounterService, selectedMonsterService, selectedEncounterService, selectedItemService) {
 
-            function upsert() {
+            function encounterChanged() {
                 if ($scope.encounter) {
-                    encounterService.upsert($scope.encounter);
+                    encounterService.encounterChanged($scope.encounter);
                 }
             }
 
             $scope.encounter = undefined;
 
-            $scope.encounterNameChanged = function() {
-                upsert();
+            $scope.encounterNameChanged = function () {
+                encounterChanged();
             }
 
             $scope.selectMonsterById = function (id) {
@@ -21,7 +21,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                 $('#monstersTab').click();
             }
 
-            $scope.selectItemById = function(id) {
+            $scope.selectItemById = function (id) {
                 selectedItemService.selectedItemId(id);
                 $('#itemsTab').click();
             }
@@ -38,38 +38,38 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
 
             $scope.incrementMonster = function (monster) {
                 monster.amount++;
-                upsert();
+                encounterChanged();
             }
 
             $scope.decrementMonster = function (monster) {
                 if (monster.amount > 1) {
                     monster.amount--;
-                    upsert();
+                    encounterChanged();
                 }
             }
 
             $scope.removeMonsterById = function (monsterId) {
                 delete $scope.encounter.Monsters[monsterId];
-                upsert();
+                encounterChanged();
             }
-            
+
             $scope.incrementItem = function (item) {
                 item.amount++;
-                upsert();
+                encounterChanged();
             }
 
             $scope.decrementItem = function (item) {
                 if (item.amount > 1) {
                     item.amount--;
-                    upsert();
+                    encounterChanged();
                 }
             }
 
             $scope.removeItemById = function (itemId) {
                 delete $scope.encounter.items[itemId];
-                upsert();
+                encounterChanged();
             }
-            
+
             selectedEncounterService.register(function () {
                 $scope.encounter = selectedEncounterService.selectedEncounter();
             });

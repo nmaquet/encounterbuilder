@@ -24,6 +24,9 @@ div.encounter(ng-show="encounter")
                         i.icon-plus
                     button.btn.btn-danger.btn-xmini.remove-monster-btn(ng-click='removeMonsterById(id)')
                         i.icon-remove
+        p
+            b XP&nbsp;
+            span#encounter-xp {{encounter.xp}}
     .row-fluid
         legend Treasure
         ul#encounter-items.unstyled

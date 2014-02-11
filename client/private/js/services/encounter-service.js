@@ -3,6 +3,14 @@
 DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http',
     function ($timeout, $http) {
 
+        function calculateXp(encounter){
+            var xp = 0;
+            for (var i in encounter.Monsters){
+                xp += Number(encounter.Monsters[i].xp) * encounter.Monsters[i].amount;
+            }
+            return xp;
+        }
+
         var service = {};
 
         service.encounters = [];
@@ -23,7 +31,8 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
 
         /* FIXME: don't we need a user callback ? */
         /* FIXME: The client of this function has no way to know whether this succeeds or not. */
-        service.upsert = function (encounter) {
+        service.encounterChanged = function (encounter) {
+            encounter.xp = calculateXp(encounter);
             $http.post('/api/upsert-encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response._id) {
