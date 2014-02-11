@@ -34,36 +34,36 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
 
             $scope.incrementMonster = function (monster) {
                 monster.amount++;
-                encounterChanged();
+                $scope.encounterChanged();
             }
 
             $scope.decrementMonster = function (monster) {
                 if (monster.amount > 1) {
                     monster.amount--;
-                    encounterChanged();
+                    $scope.encounterChanged();
                 }
             }
 
             $scope.removeMonsterById = function (monsterId) {
                 delete $scope.encounter.Monsters[monsterId];
-                encounterChanged();
+                $scope.encounterChanged();
             }
 
             $scope.incrementItem = function (item) {
                 item.amount++;
-                encounterChanged();
+                $scope.encounterChanged();
             }
 
             $scope.decrementItem = function (item) {
                 if (item.amount > 1) {
                     item.amount--;
-                    encounterChanged();
+                    $scope.encounterChanged();
                 }
             }
 
             $scope.removeItemById = function (itemId) {
                 delete $scope.encounter.items[itemId];
-                encounterChanged();
+                $scope.encounterChanged();
             }
 
             selectedEncounterService.register(function () {
@@ -71,7 +71,8 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             });
 
             $scope.createFirstEncounter = function () {
-                var encounter = { Name: "Untitled #0", CR: "0", Monsters: {}};
+                /* FIXME: this is duplicated with encounter-list-controller */
+                var encounter = { Name: "Untitled #0", CR: "0", Monsters: {}, coins: 0};
                 selectedEncounterService.selectedEncounter(encounter);
                 encounterService.encounters.push(encounter);
                 encounterService.encounterChanged(encounter);

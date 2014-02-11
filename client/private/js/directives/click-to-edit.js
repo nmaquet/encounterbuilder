@@ -47,9 +47,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
                 };
 
                 $scope.save = function () {
-                    if ($scope.numeric) {
-                        $scope.value = Number($scope.editedValue) || $scope.value;
-                    } else {
+                    if ($scope.numeric && Number($scope.editedValue) >= 0) {
+                        $scope.value = Number($scope.editedValue);
+                    } else if (!$scope.numeric) {
                         $scope.value = $scope.editedValue;
                     }
                     $scope.isEditing = false;

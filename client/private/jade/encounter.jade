@@ -46,10 +46,8 @@ div.encounter(ng-show="encounter")
                         i.icon-plus
                     button.btn.btn-danger.btn-xmini.remove-item-btn(ng-click='removeItemById(id)')
                         i.icon-remove
-            li
-              b Coins&nbsp;
-              span.encounter-coins.pointer(click-to-edit='encounter.coins', display="{{encounter.coins | number}}", on-save="encounterChanged()", numeric="true")
-              | &nbsp;gp
+        b Coins
+        span.encounter-coins.pointer(click-to-edit='encounter.coins', display="{{encounter.coins | number}} gp", on-save="encounterChanged()", numeric="true")
         p
             b Value&nbsp;
             span#encounter-loot-value {{encounter.lootValue / 100 | number}}
