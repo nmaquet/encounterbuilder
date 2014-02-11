@@ -20,7 +20,10 @@ DEMONSQUID.encounterBuilderServices.factory('crService', [
         var service = {};
 
         service.calculateCR = function (encounter) {
-            var totalXP = encounter.xp;
+            var totalXP = Number(encounter.xp);
+            if (totalXP === 0){
+                return 0;
+            }
             var cr = null;
             if (xpToCr[totalXP]) {
                 var cr = xpToCr[totalXP];
