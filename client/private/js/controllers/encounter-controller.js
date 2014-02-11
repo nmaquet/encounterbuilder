@@ -4,17 +4,13 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
     ['$scope', 'encounterService', 'selectedMonsterService', 'selectedEncounterService', 'selectedItemService',
         function ($scope, encounterService, selectedMonsterService, selectedEncounterService, selectedItemService) {
 
-            function encounterChanged() {
+            $scope.encounterChanged = function() {
                 if ($scope.encounter) {
                     encounterService.encounterChanged($scope.encounter);
                 }
             }
 
             $scope.encounter = undefined;
-
-            $scope.encounterNameChanged = function () {
-                encounterChanged();
-            }
 
             $scope.selectMonsterById = function (id) {
                 selectedMonsterService.selectedMonsterId(id);

@@ -18,9 +18,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
             template: editorTemplate,
             scope: {
                 value: "=clickToEdit",
-                onSave: "&onSave"
+                onSave: "&onSave",
+                numeric: "=numeric"
             },
-            controller: [ '$scope', '$element', function ($scope, $element) {
+            controller: [ '$scope', '$element', '$filter', function ($scope, $element, $filter) {
 
                 var input = $($element.find("input"));
 
@@ -37,7 +38,11 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
                 $scope.isEditing = false;
 
                 $scope.edit = function () {
-                    $scope.editedValue = $scope.value;
+                    if ($scope.numeric) {
+                        $scope.editedValue = String($scope.value).replace(/,/g, "");
+                    } else {
+                        $scope.editedValue = $scope.value;
+                    }
                     $scope.isEditing = true;
                     setTimeout(function () {
                         input.select();
@@ -45,7 +50,11 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
                 };
 
                 $scope.save = function () {
-                    $scope.value = $scope.editedValue;
+                    if ($scope.numeric) {
+                        $scope.value = $filter("number")(Number($scope.editedValue) || $scope.value);
+                    } else {
+                        $scope.value = $scope.editedValue;
+                    }
                     $scope.isEditing = false;
                     $scope.$apply($scope.onSave);
                 };

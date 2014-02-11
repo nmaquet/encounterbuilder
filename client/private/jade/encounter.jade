@@ -1,6 +1,6 @@
 div.encounter(ng-show="encounter")
     h3
-        span.encounter-name.pointer(click-to-edit='encounter.Name', on-save="encounterNameChanged()")
+        span.encounter-name.pointer(click-to-edit='encounter.Name', on-save="encounterChanged()")
         span#encounter-cr
             | (CR {{encounter.CR | numberToFractionString}})
             a.pointer.remove-encounter(ng-click="removeEncounter(encounter)")
@@ -46,6 +46,10 @@ div.encounter(ng-show="encounter")
                         i.icon-plus
                     button.btn.btn-danger.btn-xmini.remove-item-btn(ng-click='removeItemById(id)')
                         i.icon-remove
+            li
+              b Coins&nbsp;
+              span.encounter-coins.pointer(click-to-edit='encounter.coins', on-save="encounterChanged()", numeric="true")
+              | &nbsp;gp
         p
             b Value&nbsp;
             span#encounter-loot-value {{encounter.lootValue / 100 | number}}

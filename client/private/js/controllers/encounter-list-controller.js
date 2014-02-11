@@ -17,7 +17,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterListController',
                 }
                 var i = 0, encounter;
                 do {
-                    encounter = { Name: "Untitled #" + i, CR: "0", Monsters: {}};
+                    encounter = { Name: "Untitled #" + i, CR: "0", Monsters: {}, coins: 0};
                     ++i;
                 } while(exists(encounter.Name));
                 selectedEncounterService.selectedEncounter(encounter);
