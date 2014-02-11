@@ -78,7 +78,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                 var encounter = { Name: "Untitled #0", CR: "0", Monsters: {}};
                 selectedEncounterService.selectedEncounter(encounter);
                 encounterService.encounters.push(encounter);
-                encounterService.upsert(encounter);
+                encounterService.encounterChanged(encounter);
             }
         }
     ]);

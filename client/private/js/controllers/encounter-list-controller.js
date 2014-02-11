@@ -22,7 +22,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterListController',
                 } while(exists(encounter.Name));
                 selectedEncounterService.selectedEncounter(encounter);
                 encounterService.encounters.push(encounter);
-                encounterService.upsert(encounter);
+                encounterService.encounterChanged(encounter);
             }
 
             $scope.selectEncounter = function (encounter) {
