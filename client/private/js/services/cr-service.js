@@ -35,8 +35,16 @@ DEMONSQUID.encounterBuilderServices.factory('crService', [
                 var closestXP = null;
                 var xpKeys = Object.keys(xpToCr);
                 for (var key in xpKeys) {
+                    key = Number(key);
                     if (xpKeys[key] >= totalXP) {
-                        closestXP = xpKeys[key];
+                        var distance1 = Math.abs(xpKeys[key] - totalXP);
+                        var distance2 = Math.abs(xpKeys[key - 1] - totalXP);
+                        if (distance1 <= distance2) {
+                            closestXP = xpKeys[key];
+                        }
+                        else {
+                            closestXP = xpKeys[key - 1];
+                        }
                         break;
                     }
                 }

@@ -37,13 +37,13 @@ describe('EncounterComputedValues', function () {
         inputMonsterNameSubstring('Ancient Gold Dragon');
         element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
         expect(element('#encounter-xp').text()).toBe("307,300");
-        expect(element('#encounter-cr').text()).toBe("(CR 21)");
+        expect(element('#encounter-cr').text()).toBe("(CR 20)");
     });
 
     it('should add a lot of xp and compute cr when adding another Ancient Gold Dragon from the encounter panel', function () {
         element('li.encounter-monster-row:nth-child(1) button.increment-monster-btn').click();
         expect(element('#encounter-xp').text()).toBe("614,500");
-        expect(element('#encounter-cr').text()).toBe("(CR 23)");
+        expect(element('#encounter-cr').text()).toBe("(CR 22)");
     });
 
     it('should add a lot of loot value when adding a Nightskin', function () {

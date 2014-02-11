@@ -17,6 +17,11 @@ describe("crService", function () {
         expect(service.calculateCR(encounter)).to.equal(0);
     });
 
+    it("should return 1/8 when totalXP is 50", function () {
+        var encounter = {xp:50};
+        expect(service.calculateCR(encounter)).to.equal(1/8);
+    });
+
     it("should return 0.5 when totalXP is 200", function () {
         var encounter = {xp:200};
         expect(service.calculateCR(encounter)).to.equal(0.5);
@@ -35,6 +40,11 @@ describe("crService", function () {
     it("should return 2 when totalXP is 600", function () {
         var encounter = {xp:600};
         expect(service.calculateCR(encounter)).to.equal(2);
+    });
+
+    it("should return 9 when totalXP is 7,200", function () {
+        var encounter = {xp:7200};
+        expect(service.calculateCR(encounter)).to.equal(9);
     });
 
     it("should return 25 when totalXP is 1,638,400", function () {
