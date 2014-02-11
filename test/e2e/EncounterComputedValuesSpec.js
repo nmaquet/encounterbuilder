@@ -23,24 +23,27 @@ describe('EncounterComputedValues', function () {
     });
 
 
-    it('should create an encounter with two bats and compute xp & loot value', function () {
+    it('should create an encounter with two bats and compute xp, cr & loot value', function () {
         element('a.encounter-dropdown-no-encounter').click();
         element('a.encounter-dropdown-create').click();
         element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
         element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
         expect(element('#encounter-xp').text()).toBe("100");
+        expect(element('#encounter-cr').text()).toBe("(CR 1/4)");
         expect(element('#encounter-loot-value').text()).toBe("0");
     });
 
-    it('should add a lot of xp when adding an Ancient Gold Dragon', function () {
+    it('should add a lot of xp and compute cr when adding an Ancient Gold Dragon', function () {
         inputMonsterNameSubstring('Ancient Gold Dragon');
         element('tr.monster-row:nth-child(1) td:nth-child(4) button').click();
         expect(element('#encounter-xp').text()).toBe("307,300");
+        expect(element('#encounter-cr').text()).toBe("(CR 21)");
     });
 
-    it('should add a lot of xp when adding another Ancient Gold Dragon from the encounter panel', function () {
+    it('should add a lot of xp and compute cr when adding another Ancient Gold Dragon from the encounter panel', function () {
         element('li.encounter-monster-row:nth-child(1) button.increment-monster-btn').click();
         expect(element('#encounter-xp').text()).toBe("614,500");
+        expect(element('#encounter-cr').text()).toBe("(CR 23)");
     });
 
     it('should add a lot of loot value when adding a Nightskin', function () {

@@ -12,7 +12,7 @@ module.exports = function (config) {
             "client/private/bower_components/jquery-ui/ui/jquery-ui.js",
             'client/private/js/**/*.js',
             'client/private/js/app.js',
-            'test/e2e/EncounterSpec.js' /*CHANGE THIS TO EXECUTE ONLY ONE TEST*/
+            'test/e2e/*.js' /*CHANGE THIS TO EXECUTE ONLY ONE TEST*/
         ],
         exclude: [
         ],
