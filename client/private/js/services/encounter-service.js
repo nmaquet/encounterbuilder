@@ -11,6 +11,23 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
             return xp;
         }
 
+        function calculateLootValue(encounter) {
+            var multipliers = {
+                "cp" : 1,
+                "sp" : 10,
+                "gp" : 100,
+                "pp" : 1000
+            };
+            var lootValue = 0;
+            for (var i in encounter.items) {
+                var multiplier = multipliers[encounter.items[i].PriceUnit] || 100;
+                var price = Number(encounter.items[i].Price) || 0;
+                lootValue += price * multiplier * encounter.items[i].amount;
+                console.log("lootValue : " + lootValue);
+            }
+            return lootValue;
+        }
+
         var service = {};
 
         service.encounters = [];
@@ -33,6 +50,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
         /* FIXME: The client of this function has no way to know whether this succeeds or not. */
         service.encounterChanged = function (encounter) {
             encounter.xp = calculateXp(encounter);
+            encounter.lootValue = calculateLootValue(encounter);
             $http.post('/api/upsert-encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response._id) {

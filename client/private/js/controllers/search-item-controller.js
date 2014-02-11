@@ -83,7 +83,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
                 encounter.items[item.id].amount += Number(item.amountToAdd) || 1;
             }
             delete item.amountToAdd;
-            encounterService.upsert(encounter);
+            encounterService.encounterChanged(encounter);
         }
 
         selectedEncounterService.register(function() {

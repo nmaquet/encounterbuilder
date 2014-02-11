@@ -26,7 +26,7 @@ div.encounter(ng-show="encounter")
                         i.icon-remove
         p
             b XP&nbsp;
-            span#encounter-xp {{encounter.xp}}
+            span#encounter-xp {{encounter.xp | number}}
     .row-fluid
         legend Treasure
         ul#encounter-items.unstyled
@@ -46,6 +46,9 @@ div.encounter(ng-show="encounter")
                         i.icon-plus
                     button.btn.btn-danger.btn-xmini.remove-item-btn(ng-click='removeItemById(id)')
                         i.icon-remove
+        p
+            b Value&nbsp;
+            span#encounter-loot-value {{encounter.lootValue / 100 | number}}&nbsp;gp
 div.encounter-no-encounter(ng-hide="encounter")
     | There is no encounter. Please
     | &nbsp;
