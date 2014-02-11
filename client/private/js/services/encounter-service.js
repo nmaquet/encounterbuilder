@@ -1,7 +1,7 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http',
-    function ($timeout, $http) {
+DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http','crService',
+    function ($timeout, $http,crService) {
 
         function calculateXp(encounter){
             var xp = 0;
@@ -51,6 +51,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
         service.encounterChanged = function (encounter) {
             encounter.xp = calculateXp(encounter);
             encounter.lootValue = calculateLootValue(encounter);
+            encounter.CR = crService.calculateCR(encounter);
             $http.post('/api/upsert-encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response._id) {
