@@ -5,7 +5,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
         var editorTemplate =
             '<span class="click-to-edit" ng-click="edit()" style="display:inline;">' +
                 '   <span ng-hide="isEditing">' +
-                '       {{value}} ' +
+                '       {{display || value}} ' +
                 '   </span>' +
                 '   <span ng-show="isEditing">' +
                 '       <input ng-model="editedValue" type="text">' +
@@ -19,9 +19,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
             scope: {
                 value: "=clickToEdit",
                 onSave: "&onSave",
+                display: "@display",
                 numeric: "=numeric"
             },
-            controller: [ '$scope', '$element', '$filter', function ($scope, $element, $filter) {
+            controller: [ '$scope', '$element', function ($scope, $element) {
 
                 var input = $($element.find("input"));
 
@@ -38,11 +39,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
                 $scope.isEditing = false;
 
                 $scope.edit = function () {
-                    if ($scope.numeric) {
-                        $scope.editedValue = String($scope.value).replace(/,/g, "");
-                    } else {
-                        $scope.editedValue = $scope.value;
-                    }
+                    $scope.editedValue = $scope.value;
                     $scope.isEditing = true;
                     setTimeout(function () {
                         input.select();
@@ -51,7 +48,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
 
                 $scope.save = function () {
                     if ($scope.numeric) {
-                        $scope.value = $filter("number")(Number($scope.editedValue) || $scope.value);
+                        $scope.value = Number($scope.editedValue) || $scope.value;
                     } else {
                         $scope.value = $scope.editedValue;
                     }

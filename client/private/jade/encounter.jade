@@ -48,7 +48,7 @@ div.encounter(ng-show="encounter")
                         i.icon-remove
             li
               b Coins&nbsp;
-              span.encounter-coins.pointer(click-to-edit='encounter.coins', on-save="encounterChanged()", numeric="true")
+              span.encounter-coins.pointer(click-to-edit='encounter.coins', display="{{encounter.coins | number}}", on-save="encounterChanged()", numeric="true")
               | &nbsp;gp
         p
             b Value&nbsp;
