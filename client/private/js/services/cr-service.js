@@ -26,7 +26,7 @@ DEMONSQUID.encounterBuilderServices.factory('crService', [
             }
             var cr = null;
             if (xpToCr[totalXP]) {
-                var cr = xpToCr[totalXP];
+                return xpToCr[totalXP];
             }
             else {
                 var closestXP = null;
@@ -37,9 +37,8 @@ DEMONSQUID.encounterBuilderServices.factory('crService', [
                         break;
                     }
                 }
-                var cr = xpToCr[closestXP];
+                return xpToCr[closestXP];
             }
-            return cr;
         }
 
         return service;
