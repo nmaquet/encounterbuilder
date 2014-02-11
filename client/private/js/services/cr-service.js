@@ -24,7 +24,6 @@ DEMONSQUID.encounterBuilderServices.factory('crService', [
             if (totalXP === 0){
                 return 0;
             }
-            var cr = null;
             if (xpToCr[totalXP]) {
                 return xpToCr[totalXP];
             }
