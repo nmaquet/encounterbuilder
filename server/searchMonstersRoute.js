@@ -31,31 +31,31 @@ module.exports = function (monsterCollection, defaultFindLimit) {
         var count;
 
         var options = {
-            fields: {Name: 1, CR: 1,XP:1, id: 1, Source: 1},
+            fields: {Name: 1, CR: 1, XP: 1, id: 1, Source: 1, TreasureBudget: 1, Type: 1},
             limit: Number(request.query.findLimit || defaultFindLimit),
             skip: Number(request.query.skip || 0),
             sort: getSortOption(request)
         }
 
         monsterCollection.find(query, options).toArray(function (error, data) {
-                monsters = data;
-                if (error) {
-                    response.json({error:error});
-                }
-                if (count !== undefined) {
-                    response.json({count: count, monsters: monsters});
-                }
-            });
+            monsters = data;
+            if (error) {
+                response.json({error: error});
+            }
+            if (count !== undefined) {
+                response.json({count: count, monsters: monsters});
+            }
+        });
 
-        monsterCollection.count(query,function (error, value) {
-                count = value;
-                if (error) {
-                    response.json({error:error});
-                }
-                if (monsters !== undefined) {
-                    response.json({count: count, monsters: monsters});
-                }
-            });
+        monsterCollection.count(query, function (error, value) {
+            count = value;
+            if (error) {
+                response.json({error: error});
+            }
+            if (monsters !== undefined) {
+                response.json({count: count, monsters: monsters});
+            }
+        });
     }
 }
 
