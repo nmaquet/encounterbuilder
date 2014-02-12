@@ -12,7 +12,7 @@ DEMONSQUID.encounterBuilderServices.factory('diceService', [
             for (var i = 0; i < n; ++i) {
                 sum += uniform(1, d);
             }
-
+            return sum;
         }
 
         return {
@@ -32,6 +32,7 @@ DEMONSQUID.encounterBuilderServices.factory('diceService', [
                 return roll(10, n);
             },
             rollD12: function (n) {
+                console.log("rolling a D12");
                 return roll(12, n);
             },
             rollD20: function (n) {
