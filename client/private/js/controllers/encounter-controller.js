@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
-    ['$scope', 'encounterService', 'selectedMonsterService', 'selectedEncounterService', 'selectedItemService',
-        function ($scope, encounterService, selectedMonsterService, selectedEncounterService, selectedItemService) {
+    ['$scope', 'encounterService', 'selectedMonsterService', 'selectedEncounterService', 'selectedItemService', 'lootService',
+        function ($scope, encounterService, selectedMonsterService, selectedEncounterService, selectedItemService, lootService) {
 
             $scope.encounterChanged = function() {
                 if ($scope.encounter) {
@@ -76,6 +76,10 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                 selectedEncounterService.selectedEncounter(encounter);
                 encounterService.encounters.push(encounter);
                 encounterService.encounterChanged(encounter);
+            }
+
+            $scope.randomizeLoot = function(encounter) {
+                lootService.randomizeLoot(encounter);
             }
         }
     ]);

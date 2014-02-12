@@ -29,6 +29,8 @@ div.encounter(ng-show="encounter")
             span#encounter-xp {{encounter.xp | number}}
     .row-fluid
         legend Treasure
+            a.pointer.randomize-loot(ng-click="randomizeLoot(encounter)")
+                i.icon-refresh
         ul#encounter-items.unstyled
             li.encounter-item-row(ng-repeat='(id,item) in encounter.items')
                 span.badge.badge-info.item-amount {{item.amount}}
