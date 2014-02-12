@@ -6,7 +6,6 @@ var MONSTER_ATTRIBUTES = [
     "CR",
     "XP",
     "Race",
-    "Class",
     "MonsterSource",
     "Alignment",
     "Size",
@@ -36,8 +35,6 @@ var MONSTER_ATTRIBUTES = [
     "Group",
     "Source",
     "IsTemplate",
-    "Gear",
-    "OtherGear",
     "CharacterFlag",
     "CompanionFlag",
     "Fly",
@@ -49,7 +46,6 @@ var MONSTER_ATTRIBUTES = [
     "AgeCategory",
     "DontUseRacialHD",
     "VariantParent",
-    "ClassArchetypes",
     "CompanionFamiliarLink",
     "AlternateNameForm",
     "UniqueMonster",
@@ -77,7 +73,10 @@ var MONSTER_ATTRIBUTES = [
     "CMB",
     "CMD",
     "SpecialAbilities",
-    "TreasureBudget"
+    "TreasureBudget",
+    "Heroic",
+    "Level",
+    "Classes"
 ]
 
 function generateMonsterModelObject() {

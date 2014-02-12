@@ -114,74 +114,129 @@ var ATTRIBUTE_FILTERS = {
         return getSRDMonsterSpecialAbilities(srdMonster, $);
     },
     TreasureBudget: function (srdMonster) {
-        var budget;
-        var parenthesis = srdMonster.Treasure.indexOf('(');
-        if (parenthesis !== -1) {
-            budget = srdMonster.Treasure.slice(0, parenthesis).trim().toLowerCase();
-        } else {
-            budget = srdMonster.Treasure.trim().toLowerCase();
+        return getBudget(srdMonster)
+    },
+    Heroic: function (srdMonster) {
+        return parseClass(srdMonster.Class).Heroic;
+    },
+    Classes: function (srdMonster) {
+        return parseClass(srdMonster.Class).Classes;
+    },
+    Level: function (srdMonster) {
+        return parseClass(srdMonster.Class).Level;
+    }
+}
+
+function getBudget(srdMonster) {
+    var budget;
+    var parenthesis = srdMonster.Treasure.indexOf('(');
+    if (parenthesis !== -1) {
+        budget = srdMonster.Treasure.slice(0, parenthesis).trim().toLowerCase();
+    } else {
+        budget = srdMonster.Treasure.trim().toLowerCase();
+    }
+    var table = {
+        "": "none",
+        "?": "none",
+        "greataxe": "none",
+        "+1 longsword": "none",
+        "value 800 gp": "none",
+        "shell worth 800gp": "none",
+        "shell worth 800 gp": "none",
+        "two gemstone eyes": "none",
+        "value": "none",
+        "value none": "none",
+        "1/10 standard": "none",
+        "50% coins, 1/10th goods, 1/10th items": "none",
+        "none or incidental": "incidental",
+        "none": "none",
+        "50% standard": "incidental",
+        "no coins, double goods": "standard",
+        "double coins; 50% goods; 50% items": "incidental",
+        "no coins; 50% goods; 50% items": "incidental",
+        "no coins, 50% goods, 50% items": "incidental",
+        "1/10 coins; 50% goods; 50% items": "incidental",
+        "25% coins; 25% goods; no items": "incidental",
+        "25% coins, 25% goods, no items": "incidental",
+        "double coins, standard goods, standard items": "standard",
+        "10% coins; 50% goods": "none",
+        "50% coins; double goods": "standard",
+        "50% coins; double goods; standard items": "standard",
+        "standard coins": "standard",
+        "incidental": "incidental",
+        "half standard": "incidental",
+        "standard coins; 50% goods; 50% items": "incidental",
+        "value incidental": "incidental",
+        "standard, plus 1d3 gems": "standard",
+        "standard": "standard",
+        "standard coins or goods; no items": "standard",
+        "standard plus 2 gems": "standard",
+        "standard coins; double goods; standard items": "standard",
+        "standard coins, double goods": "standard",
+        "standard or otherwise": "standard",
+        "standard plus double gems": "standard",
+        "value double standard": "standard",
+        "value standard": "standard",
+        'no coins; standard goods': "standard",
+        "double": "double",
+        "double standard": "double",
+        "double standard plus 8 gems": "double",
+        "triple": "triple",
+        "triple standard": "triple",
+        "triple standard plus crystal ball": "triple",
+        "triple sq sound imitation": "triple",
+        "triple sq water breathing": "triple",
+        "triple sq icewalking": "triple",
+        "npc gear": "npc gear",
+        "double standard sheol: baal's unique weapon is a large +4 unholy morningstar. as a free action, the handle of baal's morningstar can extend 10 feet, thus increasing his reach with this weapon. it can likewise retract to its normal length as a free action.": "double",
+        "standard special abilities pass without trace": "standard"
+    }
+    budget = table[budget];
+    if (budget === undefined) {
+        console.log("[WARNING] unknown treasure budget '" + srdMonster.Treasure + "' for monster " + srdMonster.Name)
+    }
+    return budget;
+}
+
+function parseClass(Class) {
+    var basicClasses = ['commoner', 'aristocrat', 'expert', 'warrior', 'adept'];
+
+    function parseSingleClass(singleClass) {
+        var words = singleClass.split(" ");
+        var readClass = '';
+        var classLevel = 0;
+        for (var i in words) {
+            if (isNaN(Number(words[i]))) {
+                if (i > 0) {
+                    readClass += " ";
+                }
+                readClass += words[i]
+            }
+            else {
+                classLevel = Number(words[i]);
+            }
         }
-        var table = {
-            "": "none",
-            "?": "none",
-            "greataxe": "none",
-            "+1 longsword": "none",
-            "value 800 gp": "none",
-            "shell worth 800gp": "none",
-            "shell worth 800 gp": "none",
-            "two gemstone eyes": "none",
-            "value": "none",
-            "value none": "none",
-            "1/10 standard": "none",
-            "50% coins, 1/10th goods, 1/10th items": "none",
-            "none or incidental": "incidental",
-            "none": "none",
-            "50% standard": "incidental",
-            "no coins, double goods": "standard",
-            "double coins; 50% goods; 50% items": "incidental",
-            "no coins; 50% goods; 50% items": "incidental",
-            "no coins, 50% goods, 50% items": "incidental",
-            "1/10 coins; 50% goods; 50% items": "incidental",
-            "25% coins; 25% goods; no items": "incidental",
-            "25% coins, 25% goods, no items": "incidental",
-            "double coins, standard goods, standard items": "standard",
-            "10% coins; 50% goods": "none",
-            "50% coins; double goods": "standard",
-            "50% coins; double goods; standard items": "standard",
-            "standard coins": "standard",
-            "incidental": "incidental",
-            "half standard": "incidental",
-            "standard coins; 50% goods; 50% items": "incidental",
-            "value incidental": "incidental",
-            "standard, plus 1d3 gems": "standard",
-            "standard": "standard",
-            "standard coins or goods; no items": "standard",
-            "standard plus 2 gems": "standard",
-            "standard coins; double goods; standard items": "standard",
-            "standard coins, double goods": "standard",
-            "standard or otherwise": "standard",
-            "standard plus double gems": "standard",
-            "value double standard": "standard",
-            "value standard": "standard",
-            'no coins; standard goods' : "standard",
-            "double": "double",
-            "double standard": "double",
-            "double standard plus 8 gems": "double",
-            "triple": "triple",
-            "triple standard": "triple",
-            "triple standard plus crystal ball": "triple",
-            "triple sq sound imitation": "triple",
-            "triple sq water breathing": "triple",
-            "triple sq icewalking": "triple",
-            "npc gear": "npc gear",
-            "double standard sheol: baal's unique weapon is a large +4 unholy morningstar. as a free action, the handle of baal's morningstar can extend 10 feet, thus increasing his reach with this weapon. it can likewise retract to its normal length as a free action.": "double",
-            "standard special abilities pass without trace": "standard"
+        return {Class: readClass, Level: classLevel};
+    }
+
+    if (Class.indexOf('/') === -1) {
+        var singleClass = parseSingleClass(Class);
+        var heroic = basicClasses.indexOf(singleClass.class) === -1;
+        return {'heroic': heroic, 'level': singleClass.classLevel, 'classes': [singleClass]};
+    }
+    else {
+        var classes = Class.split('/');
+        var multipleClasses = [];
+        var heroic = false;
+        var level = 0;
+        for (var j in classes) {
+            multipleClasses[j] = parseSingleClass(classes[j]);
+            level += multipleClasses[j].classLevel;
+            if (!heroic) {
+                heroic = basicClasses.indexOf(multipleClasses[j].class) === -1;
+            }
         }
-        budget = table[budget];
-        if (budget === undefined) {
-            console.log("[WARNING] unknown treasure budget '" + srdMonster.Treasure + "' for monster " + srdMonster.Name)
-        }
-        return budget;
+        return {'Heroic': heroic, 'Level': level, 'Classes': multipleClasses};
     }
 }
 
@@ -274,6 +329,9 @@ function cleanupSRDMonster(srdMonster, $) {
             monster[attribute] = attributeFilter(srdMonster, $);
         } else {
             monster[attribute] = srdMonster[attribute].trim();
+        }
+        if (monster[attribute] === '') {
+            delete monster[attribute];
         }
     }
     return monster;
