@@ -6,14 +6,11 @@ DEMONSQUID.encounterBuilderServices.factory('knapsackService', [
         var service = {};
 
         service.knapsack = function (values, target) {
-            var tooSmall = function (value) {
-                return target < value;
+            var smallEnough = function (value) {
+                return value <= target;
             };
-
-            if (values.every(tooSmall) || target <= 0) {
-                return [];
-            }
-            else {
+            var result = [];
+            while (values.some(smallEnough) && target > 0) {
                 var bestfit;
                 for (var i = values.length - 1; i >= 0; i--) {
                     if (values[i] <= target) {
@@ -21,11 +18,12 @@ DEMONSQUID.encounterBuilderServices.factory('knapsackService', [
                         break;
                     }
                 }
-                var result = service.knapsack(values, target - bestfit);
                 result.push(bestfit);
-                return result;
+                target -= bestfit;
             }
-        }
+            return result;
+        };
+
         return service;
     }
 ]);

@@ -36,7 +36,7 @@ describe("knapsackService", function () {
 
     it("should return multiples of single value when needed", function () {
         var result = service.knapsack([1,5], 7);
-        expect(result).to.deep.equal([1,1,5]);
+        expect(result).to.deep.equal([5,1,1]);
     });
     it("should return multiples of single value when needed", function () {
         var result = service.knapsack([1,5], 15);
@@ -45,7 +45,7 @@ describe("knapsackService", function () {
 
     it("should work", function () {
         var result = service.knapsack([1,2,5], 17);
-        expect(result).to.deep.equal([2,5,5,5]);
+        expect(result).to.deep.equal([5,5,5,2]);
     });
     it("should work", function () {
         var result = service.knapsack([1,2,5], 1);
@@ -66,9 +66,9 @@ describe("knapsackService", function () {
         var result = service.knapsack([1,5,10,25,50,100],10);
         expect(result).to.deep.equal([10]);
     });
-    
+
     it("should work", function () {
         var result = service.knapsack([1,5,10,25,50,100],360);
-        expect(result).to.deep.equal([10,50,100,100,100]);
+        expect(result).to.deep.equal([100,100,100, 50, 10]);
     });
 });
