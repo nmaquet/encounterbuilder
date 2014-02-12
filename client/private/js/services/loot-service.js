@@ -1,7 +1,7 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('lootService', [
-    function () {
+DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService",
+    function (diceService) {
 
         var monsterTypeToLootTypeTable = {
             "humanoid": {'A': true, 'B': true, 'D': true, 'E': true, 'F': true, 'G': true},
