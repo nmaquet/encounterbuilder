@@ -71,25 +71,14 @@ describe("lootService", function () {
 
         it("should generate no loot for humanoids with budget 'none' ", function () {
             var loot = service.generateMonsterLoot({Type: "humanoid", TreasureBudget: "none"});
-            expect(loot).to.deep.equal({coins: 0, items: []});
+            expect(loot).to.deep.equal({coins: {}, items: []});
         });
 
         it("should generate no loot for vermins with budget 'none' ", function () {
             var loot = service.generateMonsterLoot({Type: "vermin", TreasureBudget: "none"});
-            expect(loot).to.deep.equal({coins: 0, items: []});
+            expect(loot).to.deep.equal({coins: {}, items: []});
         });
 
-        it("should generate some coins for humanoids with budget 'standard' ", function () {
-            var loot = service.generateMonsterLoot({Type: "humanoid", TreasureBudget: "standard"});
-            expect(loot.coins).to.be.at.least(1);
-        });
-
-        it("should not generate coins for types that do not have loot type 'A'", function () {
-            var loot = service.generateMonsterLoot({Type: "humanoid", TreasureBudget: "standard"});
-            expect(loot.coins).to.be.at.least(1);
-            var loot = service.generateMonsterLoot({Type: "construct", TreasureBudget: "standard"});
-            expect(loot.coins).to.equal(0);
-        });
     });
 
     describe("service.calculateMonsterLootValue", function () {
