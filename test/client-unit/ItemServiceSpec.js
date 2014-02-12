@@ -36,7 +36,7 @@ describe("EncounterService", function () {
             var encounter = {};
             var response = {};
             encounterService.encounterChanged(encounter);
-            $httpBackend.expectPOST("/api/upsert-encounter", {encounter : encounter}).respond(200, response);
+            $httpBackend.expectPOST("/api/upsert-encounter").respond(200, response);
             $httpBackend.flush();
         });
 
@@ -44,7 +44,7 @@ describe("EncounterService", function () {
             var encounter = {};
             var response = { _id : "012345"};
             encounterService.encounterChanged(encounter);
-            $httpBackend.expectPOST("/api/upsert-encounter", {encounter : encounter}).respond(200, response);
+            $httpBackend.expectPOST("/api/upsert-encounter").respond(200, response);
             $httpBackend.flush();
             expect(encounter._id).to.equal(response._id);
         });
