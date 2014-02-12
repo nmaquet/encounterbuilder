@@ -83,35 +83,105 @@ var ATTRIBUTE_FILTERS = {
         }
         return element.parent().html();
     },
-    Str: function(srdMonster, $) {
+    Str: function (srdMonster, $) {
         return  /Str\s*(\d*)/.exec(srdMonster.AbilityScores)[1];
     },
-    Dex: function(srdMonster, $) {
+    Dex: function (srdMonster, $) {
         return  /Dex\s*(\d*)/.exec(srdMonster.AbilityScores)[1];
     },
-    Con: function(srdMonster, $) {
+    Con: function (srdMonster, $) {
         return  /Con\s*(\d*)/.exec(srdMonster.AbilityScores)[1];
     },
-    Int: function(srdMonster, $) {
+    Int: function (srdMonster, $) {
         return  /Int\s*(\d*)/.exec(srdMonster.AbilityScores)[1];
     },
-    Wis: function(srdMonster, $) {
+    Wis: function (srdMonster, $) {
         return  /Wis\s*(\d*)/.exec(srdMonster.AbilityScores)[1];
     },
-    Cha: function(srdMonster, $) {
+    Cha: function (srdMonster, $) {
         return  /Cha\s*(\d*)/.exec(srdMonster.AbilityScores)[1];
     },
-    BaseAtk: function(srdMonster, $) {
+    BaseAtk: function (srdMonster, $) {
         return parseAttributeFromSrdMonster($("b:contains(Base Atk)"), /.*Base Atk\s*([^;]*)/);
     },
-    CMB: function(srdMonster, $) {
+    CMB: function (srdMonster, $) {
         return parseAttributeFromSrdMonster($("b:contains(CMB)"), /.*CMB\s*([^;]*)/);
     },
-    CMD: function(srdMonster, $) {
+    CMD: function (srdMonster, $) {
         return parseAttributeFromSrdMonster($("b:contains(CMD)"), /.*CMD\s*(.*)/);
     },
-    SpecialAbilities: function(srdMonster, $) {
+    SpecialAbilities: function (srdMonster, $) {
         return getSRDMonsterSpecialAbilities(srdMonster, $);
+    },
+    TreasureBudget: function (srdMonster) {
+        var budget;
+        var parenthesis = srdMonster.Treasure.indexOf('(');
+        if (parenthesis !== -1) {
+            budget = srdMonster.Treasure.slice(0, parenthesis).trim().toLowerCase();
+        } else {
+            budget = srdMonster.Treasure.trim().toLowerCase();
+        }
+        var table = {
+            "": "none",
+            "?": "none",
+            "greataxe": "none",
+            "+1 longsword": "none",
+            "value 800 gp": "none",
+            "shell worth 800gp": "none",
+            "shell worth 800 gp": "none",
+            "two gemstone eyes": "none",
+            "value": "none",
+            "value none": "none",
+            "1/10 standard": "none",
+            "50% coins, 1/10th goods, 1/10th items": "none",
+            "none or incidental": "incidental",
+            "none": "none",
+            "50% standard": "incidental",
+            "no coins, double goods": "standard",
+            "double coins; 50% goods; 50% items": "incidental",
+            "no coins; 50% goods; 50% items": "incidental",
+            "no coins, 50% goods, 50% items": "incidental",
+            "1/10 coins; 50% goods; 50% items": "incidental",
+            "25% coins; 25% goods; no items": "incidental",
+            "25% coins, 25% goods, no items": "incidental",
+            "double coins, standard goods, standard items": "standard",
+            "10% coins; 50% goods": "none",
+            "50% coins; double goods": "standard",
+            "50% coins; double goods; standard items": "standard",
+            "standard coins": "standard",
+            "incidental": "incidental",
+            "half standard": "incidental",
+            "standard coins; 50% goods; 50% items": "incidental",
+            "value incidental": "incidental",
+            "standard, plus 1d3 gems": "standard",
+            "standard": "standard",
+            "standard coins or goods; no items": "standard",
+            "standard plus 2 gems": "standard",
+            "standard coins; double goods; standard items": "standard",
+            "standard coins, double goods": "standard",
+            "standard or otherwise": "standard",
+            "standard plus double gems": "standard",
+            "value double standard": "standard",
+            "value standard": "standard",
+            'no coins; standard goods' : "standard",
+            "double": "double",
+            "double standard": "double",
+            "double standard plus 8 gems": "double",
+            "triple": "triple",
+            "triple standard": "triple",
+            "triple standard plus crystal ball": "triple",
+            "triple sq sound imitation": "triple",
+            "triple sq water breathing": "triple",
+            "triple sq icewalking": "triple",
+            "npc gear": "npc gear",
+            "double standard sheol: baal's unique weapon is a large +4 unholy morningstar. as a free action, the handle of baal's morningstar can extend 10 feet, thus increasing his reach with this weapon. it can likewise retract to its normal length as a free action.": "double",
+            "standard special abilities pass without trace": "standard"
+        }
+        budget = table[budget];
+        if (budget === undefined) {
+            console.log("[WARNING] unknown treasure budget '" + srdMonster.Treasure + "' for monster " + srdMonster.Name)
+        }
+        return budget;
     }
 }
 
@@ -223,14 +293,14 @@ for (var i in srd_monsters) {
     var $ = cheerio.load(srd_monsters[i].FullText);
 
     var cleanedUpMonster = cleanupSRDMonster(srd_monsters[i], $);
-/*
-    try {
-        compareMonsters(cleanedUpMonster, kyleMonster);
-    } catch (e) {
-        console.log(e.stack);
-        continue;
-    }
-*/
+    /*
+     try {
+     compareMonsters(cleanedUpMonster, kyleMonster);
+     } catch (e) {
+     console.log(e.stack);
+     continue;
+     }
+     */
     monsters.push(cleanedUpMonster);
     if (monsterNameCount[cleanedUpMonster.Name.toLowerCase()] !== undefined) {
         monsterNameCount[cleanedUpMonster.Name.toLowerCase()]++;

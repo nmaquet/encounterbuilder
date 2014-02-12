@@ -36,7 +36,6 @@ var MONSTER_ATTRIBUTES = [
     "Group",
     "Source",
     "IsTemplate",
-    "FullText",
     "Gear",
     "OtherGear",
     "CharacterFlag",
@@ -77,7 +76,8 @@ var MONSTER_ATTRIBUTES = [
     "BaseAtk",
     "CMB",
     "CMD",
-    "SpecialAbilities"
+    "SpecialAbilities",
+    "TreasureBudget"
 ]
 
 function generateMonsterModelObject() {
