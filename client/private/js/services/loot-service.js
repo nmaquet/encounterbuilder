@@ -186,7 +186,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return Math.max(0, baseBudget - npcBudget);
         };
 
-        service.generateLoot = function (budget, lootType) {
+        service.generateEncounterNonNPCLoot = function (budget, lootType) {
             if (lootType !== 'A') {
                 throw Error("not implemented");
             }
@@ -210,7 +210,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             var budget = service.calculateNPCBudget(monsterBrief, speed);
             var loot = {coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: []};
             for (var i = 0; i < (monsterBrief.amount || 1); i++) {
-                accumulateLoot(loot, service.generateLoot(budget, 'A'));
+                accumulateLoot(loot, service.generateEncounterNonNPCLoot(budget, 'A'));
             }
             return loot;
         };
@@ -226,14 +226,15 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 }
             }
             return loot
-        }
+        };
 
         service.generateEncounterLoot = function (encounter, speed) {
-            var nonNPCBudget = service.calculateNonNPCLootValue(encounter,speed);
-            var loot = service.generateLoot(nonNPCBudget,'A');
-            var npcLoot = service.generateEncounterNPCLoot(encounter,speed);
-            accumulateLoot(loot,npcLoot);
+            var nonNPCBudget = service.calculateNonNPCLootValue(encounter, speed);
+            var loot = service.generateEncounterNonNPCLoot(nonNPCBudget, 'A');
+            var npcLoot = service.generateEncounterNPCLoot(encounter, speed);
+            accumulateLoot(loot, npcLoot);
             return loot;
-        }
+        };
+        
         return service;
     }]);
