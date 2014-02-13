@@ -137,4 +137,40 @@ describe("lootService", function () {
         });
 
     });
+
+    describe("service.calculateNonNPCLootValue", function () {
+
+        it("should work when there are only NPC's", function () {
+            var encounter = { CR: 7, Monsters: {
+                a: { TreasureBudget: "npc gear", Level: 6},
+                b: { TreasureBudget: "npc gear", Level: 3}
+            }};
+            expect(service.calculateNonNPCLootValue(encounter, "medium")).to.equal(0);
+        });
+
+        it("should work when there are only monsters", function () {
+            var encounter = { CR: 7, Monsters: {
+                a: { TreasureBudget: "incidental" },
+                b: { TreasureBudget: "standard" }
+            }};
+            expect(service.calculateNonNPCLootValue(encounter, "medium")).to.equal(2600);
+        });
+
+        it("should work when there are both NPC's and monsters", function () {
+            var encounter = { CR: 7, Monsters: {
+                a: { TreasureBudget: "npc gear", Level: 6},
+                b: { TreasureBudget: "triple" }
+            }};
+            expect(service.calculateNonNPCLootValue(encounter, "medium")).to.equal(7800 - 3450);
+        });
+
+        it("should work when the NPC budget exceeds the non NPC budget", function () {
+            var encounter = { CR: 7, Monsters: {
+                a: { TreasureBudget: "npc gear", Level: 6, amount: 10},
+                b: { TreasureBudget: "triple" }
+            }};
+            expect(service.calculateNonNPCLootValue(encounter, "medium")).to.equal(0);
+        });
+
+    });
 });
