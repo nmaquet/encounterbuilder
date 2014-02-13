@@ -97,6 +97,28 @@ describe("lootService", function () {
         });
     });
 
+    describe("service.generateEncounterLoot", function () {
+
+        it("should sum coins for type A treasure", function () {
+
+            /* first monster */
+            diceService.prepareDice({die: 4, value: 1, n: 16});
+
+            /* second monster */
+            diceService.prepareDice({die: 6, value: 6, n: 12});
+            diceService.prepareDice({die: 10, value: 10, n: 48});
+
+            var encounter = {
+                "Bilbo" : {Type: "humanoid", TreasureBudget: "standard", CR: 1},
+                "Smaug" : {Type: "humanoid", TreasureBudget: "triple", CR: 20}
+            };
+
+            var loot = service.generateEncounterLoot(encounter, 'fast');
+
+            expect(loot).to.deep.equal({coins: {pp: 48004, gp: 72080, sp: 400, cp: 0}, items: []});
+        });
+    });
+
     describe("service.calculateMonsterLootValue", function () {
 
         it("should compute value according budget 'standard' and cr", function () {
