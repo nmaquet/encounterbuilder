@@ -179,7 +179,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return Math.max(0, baseBudget - npcBudget);
         };
 
-        service.generateNonNPCLoot = function (budget, lootType) {
+        service.generateLoot = function (budget, lootType) {
             if (lootType !== 'A') {
                 throw Error("not implemented");
             }
@@ -200,6 +200,8 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
         };
 
         service.generateNPCLoot = function (monsterBrief, speed) {
+            var budget = service.calculateNPCBudget(monsterBrief,speed);
+
 
         };
 
