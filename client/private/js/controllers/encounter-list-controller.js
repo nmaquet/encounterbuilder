@@ -17,7 +17,8 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterListController',
                 }
                 var i = 0, encounter;
                 do {
-                    encounter = { Name: "Untitled #" + i, CR: "0", Monsters: {}, coins: 0};
+                    //FIXME this is duplicated in encounter-controller
+                    encounter = { Name: "Untitled #" + i, CR: "0", Monsters: {}, coins: {pp:0,gp:0,sp:0,cp:0}};
                     ++i;
                 } while(exists(encounter.Name));
                 selectedEncounterService.selectedEncounter(encounter);

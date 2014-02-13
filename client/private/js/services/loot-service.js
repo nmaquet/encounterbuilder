@@ -235,6 +235,6 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             accumulateLoot(loot, npcLoot);
             return loot;
         };
-        
+
         return service;
     }]);

@@ -55,7 +55,7 @@ div.encounter(ng-show="encounter")
         span.encounter-coins.pointer(click-to-edit='encounter.coins.cp', display="{{encounter.coins.cp | number}} cp", on-save="encounterChanged()", numeric="true")
         p
             b Value&nbsp;
-            span#encounter-loot-value {{encounter.lootValue / 100 | number}}
+            span#encounter-loot-value {{encounter.lootValue | number}}
             | &nbsp;gp
 div.encounter-no-encounter(ng-hide="encounter")
     | There is no encounter. Please

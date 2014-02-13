@@ -28,7 +28,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 var price = Number(encounter.items[i].Price) || 0;
                 lootValue += price * multiplier * encounter.items[i].amount;
             }
-            return lootValue;
+            return Math.round(lootValue/100);
         }
 
         var service = {};
