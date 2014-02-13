@@ -36,7 +36,7 @@ describe('Items View', function () {
         input("username").enter("test");
         input("password").enter("test");
         element("#login-button").click();
-        expect(browser().location().path()).toBe('/');
+        expect(browser().location().path()).toBe('/app');
     });
 
     it('should display items and not monsters when clicking on the items tab', function () {
@@ -114,7 +114,7 @@ describe('Items View', function () {
     });
 
     it('should allow logout', function () {
-        expect(browser().location().path()).toBe('/');
+        expect(browser().location().path()).toBe('/app');
         element("#user-dropdown").click();
         element("#user-dropdown-logout").click();
         sleep(0.5);

@@ -3,7 +3,7 @@
 DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
     function ($compile) {
         var editorTemplate =
-            '<span class="click-to-edit" ng-click="edit()" style="display:inline;">' +
+            '<span class="click-to-edit" ng-click="edit();" style="display:inline;">' +
             '   <span ng-hide="isEditing">' +
             '       {{display || value}} ' +
             '   </span>' +

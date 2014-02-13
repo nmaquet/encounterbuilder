@@ -37,7 +37,7 @@ describe('Search Monsters', function () {
         input("username").enter("test");
         input("password").enter("test");
         element("#login-button").click();
-        expect(browser().location().path()).toBe('/');
+        expect(browser().location().path()).toBe('/app');
     });
 
     it('should initially display 50 monsters', function () {
@@ -181,7 +181,7 @@ describe('Search Monsters', function () {
     });
 
     it('should allow logout', function () {
-        expect(browser().location().path()).toBe('/');
+        expect(browser().location().path()).toBe('/app');
         element("#user-dropdown").click();
         element("#user-dropdown-logout").click();
         sleep(0.1); /* necessary to wait for page reload... ugly, I know */

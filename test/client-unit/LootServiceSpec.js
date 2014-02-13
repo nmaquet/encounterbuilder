@@ -12,15 +12,6 @@ function createDiceServiceMock() {
 
     var nextDice = {3: [], 4: [], 6: [], 8: [], 10: [], 12: [], 20: [], 100: []};
 
-    function roll(d, n) {
-        var sum = 0;
-        for (var i = 0; i < n; ++i) {
-            sum += nextDice[d][i];
-        }
-        nextDice[d] = nextDice[d].splice(n);
-        return sum;
-    }
-
     return {
         prepareDice: function (die, value) {
             value = typeof value == "number" ? [value] : value;
@@ -28,29 +19,13 @@ function createDiceServiceMock() {
                 nextDice[die].push(value[i]);
             }
         },
-        rollD3: function (n) {
-            return roll(3, n);
-        },
-        rollD4: function (n) {
-            return roll(4, n);
-        },
-        rollD6: function (n) {
-            return roll(6, n);
-        },
-        rollD8: function (n) {
-            return roll(8, n);
-        },
-        rollD10: function (n) {
-            return roll(10, n);
-        },
-        rollD12: function (n) {
-            return roll(12, n);
-        },
-        rollD20: function (n) {
-            return roll(20, n);
-        },
-        rollD100: function (n) {
-            return roll(100, n);
+        roll:function (die,n){
+            var sum = 0;
+            for (var i = 0; i < n; ++i) {
+                sum += nextDice[die][i];
+            }
+            nextDice[die] = nextDice[die].splice(n);
+            return sum;
         }
     }
 };
