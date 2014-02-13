@@ -1,7 +1,7 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService",
-    function (diceService) {
+DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "knapsackService",
+    function (diceService, knapsackService) {
 
         var monsterTypeToLootTypeTable = {
             "humanoid": {'A': true, 'B': true, 'D': true, 'E': true, 'F': true, 'G': true},
@@ -145,14 +145,19 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService",
             }
         };
 
-        service.generateMonsterLoot = function (monsterBrief) {
+        service.generateMonsterLoot = function (monsterBrief, speed) {
             var loot = {
-                coins: {},
+                coins: {pp:0,gp:0,sp:0,cp:0},
                 items: []
             };
-            if (monsterBrief.TreasureBudget !== "none") {
-                if (monsterTypeToLootTypeTable[monsterBrief.Type].A) {
-                    loot.coins = 1;
+            var value = service.calculateMonsterLootValue(monsterBrief, speed);
+            if (monsterTypeToLootTypeTable[monsterBrief.Type].A) {
+                var gpValues = knapsackService.knapsack(Object.keys(typeALoot),value);
+                for (var i in gpValues){
+                    for (var j in typeALoot[gpValues[i]]) {
+                        var coinRoll =typeALoot[gpValues[i]][j];
+                        loot.coins[coinRoll.unit] += diceService.roll(coinRoll.die,coinRoll.n) * coinRoll.amount;
+                    }
                 }
             }
             return loot;
