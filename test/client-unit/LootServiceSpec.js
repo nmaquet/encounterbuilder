@@ -102,14 +102,14 @@ describe("lootService", function () {
 
     });
 
-    describe("service.calculateNPCBudget", function () {
+    describe("service.calculateEncounterNPCBudget", function () {
 
         it("should work for basic NPCs", function () {
             var encounter = { Monsters: {
                 a: { TreasureBudget: "npc gear", Level: 6},
                 b: {TreasureBudget: "npc gear", Level: 3}}
             };
-            expect(service.calculateNPCBudget(encounter, "medium")).to.equal(3450 + 780);
+            expect(service.calculateEncounterNPCBudget(encounter, "medium")).to.equal(3450 + 780);
         });
 
         it("should work for heroic NPCs", function () {
@@ -117,7 +117,7 @@ describe("lootService", function () {
                 a: { TreasureBudget: "npc gear", Level: 6, Heroic: true},
                 b: {TreasureBudget: "npc gear", Level: 3, Heroic: true}}
             };
-            expect(service.calculateNPCBudget(encounter, "medium")).to.equal(4650 + 1650);
+            expect(service.calculateEncounterNPCBudget(encounter, "medium")).to.equal(4650 + 1650);
         });
 
         it("should work for fast speed", function () {
@@ -125,7 +125,7 @@ describe("lootService", function () {
                 a: { TreasureBudget: "npc gear", Level: 6},
                 b: {TreasureBudget: "npc gear", Level: 3}}
             };
-            expect(service.calculateNPCBudget(encounter, "fast")).to.equal(4650 + 1650);
+            expect(service.calculateEncounterNPCBudget(encounter, "fast")).to.equal(4650 + 1650);
         });
 
         it("should work for slow speed", function () {
@@ -133,7 +133,7 @@ describe("lootService", function () {
                 a: { TreasureBudget: "npc gear", Level: 6},
                 b: {TreasureBudget: "npc gear", Level: 3}}
             };
-            expect(service.calculateNPCBudget(encounter, "slow")).to.equal(3450 + 780);
+            expect(service.calculateEncounterNPCBudget(encounter, "slow")).to.equal(3450 + 780);
         });
 
     });

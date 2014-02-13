@@ -150,7 +150,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return  Math.max(1, Math.min(20, monsterBrief.Level || Math.max(1, monsterBrief.CR - 1)));
         };
 
-        service.calculateNPCBudget = function (encounter, speed) {
+        service.calculateEncounterNPCBudget = function (encounter, speed) {
             var budget = 0;
             for (var property in encounter.Monsters) {
                 if (encounter.Monsters.hasOwnProperty(property)) {
@@ -172,7 +172,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             var multiplier = service.mostGenerousBudgetMultiplierAmongNonNPC(encounter);
             var cr = Math.max(1, Math.min(20, encounter.CR));
             var baseBudget = crToLootValue[cr][speed] * multiplier;
-            var npcBudget = service.calculateNPCBudget(encounter, speed);
+            var npcBudget = service.calculateEncounterNPCBudget(encounter, speed);
             return Math.max(0, baseBudget - npcBudget);
         };
 
@@ -196,5 +196,9 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             }
         };
 
+        service.generateNPCLoot = function (monsterBrief, speed) {
+            
+        };
+        
         return service;
     }]);
