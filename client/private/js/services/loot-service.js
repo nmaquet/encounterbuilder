@@ -131,69 +131,46 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
 
         var service = {};
 
-        function calculateNPCLootValue(monsterBrief, speed) {
-            var level =  (monsterBrief.Level !== undefined) ? monsterBrief.Level:monsterBrief.CR;
-            level = Math.max(1, Math.min(20,level));
-            if (speed === "fast" && level < 20) {
-                level += 1;
-            }
-            return npcLevelToLootValue[level][(monsterBrief.Heroic ? "heroic" : "basic")];
-        };
-
-        function calculateNonNPCLootValue(monsterBrief, speed) {
-            var cr = Math.max(1, Math.min(20, monsterBrief.CR));
-            var value = crToLootValue[cr][speed] * budgetMultipliers[monsterBrief.TreasureBudget];
-            if (monsterBrief.CR < 1) {
-                value = value * monsterBrief.CR;
-            }
-            return value;
-        }
-
-        service.calculateMonsterLootValue = function (monsterBrief, speed) {
-            if (monsterBrief.TreasureBudget === "npc gear") {
-                return calculateNPCLootValue(monsterBrief, speed);
-            } else {
-                return calculateNonNPCLootValue(monsterBrief, speed);
-            }
-        };
-
-        service.generateMonsterLoot = function (monsterBrief, speed) {
-            var loot = {
-                coins: {pp: 0, gp: 0, sp: 0, cp: 0},
-                items: []
-            };
-            var value = service.calculateMonsterLootValue(monsterBrief, speed);
-            if (monsterTypeToLootTypeTable[monsterBrief.Type].A) {
-                var gpValues = knapsackService.knapsack(Object.keys(typeALoot), value);
-                for (var i in gpValues) {
-                    for (var j in typeALoot[gpValues[i]]) {
-                        var coinRoll = typeALoot[gpValues[i]][j];
-                        loot.coins[coinRoll.unit] += diceService.roll(coinRoll.die, coinRoll.n) * coinRoll.amount;
+        service.mostGenerousBudgetMultiplierAmongNonNPC = function (encounter) {
+            var multiplier = 0;
+            for (var property in encounter.Monsters) {
+                if (encounter.Monsters.hasOwnProperty(property)) {
+                    var monster = encounter.Monsters[property];
+                    if (budgetMultipliers[monster.TreasureBudget] > multiplier) {
+                        multiplier = budgetMultipliers[monster.TreasureBudget];
                     }
                 }
             }
-            return loot;
+            return multiplier;
         };
 
-        service.generateEncounterLoot = function (encounter, speed) {
-            var loot = {
-                coins: {pp: 0, gp: 0, sp: 0, cp: 0},
-                items: []
-            };
-            for (var monsterId in encounter.Monsters) {
-                if (encounter.Monsters.hasOwnProperty(monsterId)) {
-                    var monster = encounter.Monsters[monsterId];
-                    for (var i = 0; i < monster.amount; ++i) {
-                        var monsterLoot = service.generateMonsterLoot(monster, speed);
-                        loot.coins.pp += monsterLoot.coins.pp;
-                        loot.coins.gp += monsterLoot.coins.gp;
-                        loot.coins.sp += monsterLoot.coins.sp;
-                        loot.coins.cp += monsterLoot.coins.cp;
-                        loot.items = loot.items.concat(monsterLoot.items);
+        service.calculateNPCLevel = function (monsterBrief) {
+            return  Math.max(1, Math.min(20, monsterBrief.Level || Math.max(1, monsterBrief.CR - 1)));
+        };
+
+        service.calculateNPCBudget = function (encounter, speed) {
+            var budget = 0;
+            for (var property in encounter.Monsters) {
+                if (encounter.Monsters.hasOwnProperty(property)) {
+                    var monster = encounter.Monsters[property];
+                    if (monster.TreasureBudget === "npc gear") {
+                        var level = service.calculateNPCLevel(monster);
+                        if (speed === 'fast') {
+                            level += 1;
+                        }
+                        budget += npcLevelToLootValue[level][monster.Heroic ? 'heroic' : 'basic'];
                     }
                 }
             }
-            return loot;
+            return budget;
+        };
+
+        service.calculateEncounterLootValue = function (encounter, speed) {
+            var multiplier = service.mostGenerousBudgetMultiplierAmongNonNPC(encounter);
+            var cr = Math.max(1, Math.min(20, encounter.CR));
+            var baseBudget = crToLootValue[cr][speed];
+            var npcBudget = service.calculateNPCBudget(encounter, speed);
+
         };
 
         return service;

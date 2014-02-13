@@ -63,138 +63,60 @@ describe("lootService", function () {
         diceService.verifyNoRemainingDice();
     });
 
-    describe("service.generateMonsterLoot", function () {
+    describe("service.mostGenerousBudgetMultiplierAmongNonNPC", function () {
 
-        it("should generate no loot for humanoids with budget 'none' ", function () {
-            var loot = service.generateMonsterLoot({Type: "humanoid", TreasureBudget: "none", CR: 20}, 'medium');
-            expect(loot).to.deep.equal({coins: {pp: 0, gp: 0, sp: 0, cp: 0}, items: []});
+        it("should work", function () {
+            var encounter = {Monsters: { a: { TreasureBudget: "standard"}, b: {TreasureBudget: "triple"}}};
+            expect(service.mostGenerousBudgetMultiplierAmongNonNPC(encounter)).to.equal(3);
         });
 
-        it("should generate no loot for construct with budget 'none' ", function () {
-            var loot = service.generateMonsterLoot({Type: "construct", TreasureBudget: "none", CR: 20}, 'medium');
-            expect(loot).to.deep.equal({coins: {pp: 0, gp: 0, sp: 0, cp: 0}, items: []});
+        it("should work", function () {
+            var encounter = {Monsters: { a: { TreasureBudget: "none"}, b: {TreasureBudget: "none"}}};
+            expect(service.mostGenerousBudgetMultiplierAmongNonNPC(encounter)).to.equal(0);
         });
 
-        it("should generate appropriate coins for humanoid standard cr 1 fast", function () {
-            diceService.prepareDice({die: 4, value: 1, n: 16});
-            var loot = service.generateMonsterLoot({Type: "humanoid", TreasureBudget: "standard", CR: 1}, 'fast');
-            expect(loot).to.deep.equal({coins: {pp: 4, gp: 80, sp: 400, cp: 0}, items: []});
+        it("should work", function () {
+            var encounter = {Monsters: { a: { TreasureBudget: "none"}, b: {TreasureBudget: "incidental"}}};
+            expect(service.mostGenerousBudgetMultiplierAmongNonNPC(encounter)).to.equal(0.5);
         });
 
-        it("should generate appropriate coins for humanoid double cr 7 slow", function () {
-            diceService.prepareDice({die: 4, value: 4, n: 6});
-            diceService.prepareDice({die: 6, value: 6, n: 14});
-            diceService.prepareDice({die: 10, value: 10, n: 30});
-            var loot = service.generateMonsterLoot({Type: "humanoid", TreasureBudget: "double", CR: 7}, 'slow');
-            expect(loot).to.deep.equal({coins: {pp: 348, gp: 2760, sp: 0, cp: 0}, items: []});
-        });
-
-        it("should generate appropriate coins for humanoid triple cr 20 fast", function () {
-            diceService.prepareDice({die: 6, value: 6, n: 12});
-            diceService.prepareDice({die: 10, value: 10, n: 48});
-            var loot = service.generateMonsterLoot({Type: "humanoid", TreasureBudget: "triple", CR: 20}, 'fast');
-            expect(loot).to.deep.equal({coins: {pp: 48000, gp: 72000, sp: 0, cp: 0}, items: []});
-        });
     });
 
-    describe("service.generateEncounterLoot", function () {
+    describe("service.calculateNPCLevel", function () {
 
-        it("should sum coins for type A treasure", function () {
-
-            /* first monster */
-            diceService.prepareDice({die: 4, value: 1, n: 160});
-
-            /* second monster */
-            diceService.prepareDice({die: 6, value: 6, n: 12});
-            diceService.prepareDice({die: 10, value: 10, n: 48});
-
-            var encounter = {
-                Monsters: {
-                    "Bilbo": {Type: "humanoid", TreasureBudget: "standard", CR: 1, amount: 10},
-                    "Smaug": {Type: "humanoid", TreasureBudget: "triple", CR: 20, amount: 1}
-                }
-            };
-
-            var loot = service.generateEncounterLoot(encounter, 'fast');
-            expect(loot).to.deep.equal({coins: {pp: 48040, gp: 72800, sp: 4000, cp: 0}, items: []});
+        it("should return CR-1 if no level", function () {
+            expect(service.calculateNPCLevel({CR: 5})).to.equal(4);
         });
+
+        it("should return level if good level", function () {
+            expect(service.calculateNPCLevel({Level: 6})).to.equal(6);
+        });
+
+        it("should return 1 if level too small", function () {
+            expect(service.calculateNPCLevel({Level: 1 / 8})).to.equal(1);
+        });
+
+        it("should return 1 if level negative", function () {
+            expect(service.calculateNPCLevel({Level: -10})).to.equal(1);
+        });
+
+        it("should return 1 if no level and CR is too small", function () {
+            expect(service.calculateNPCLevel({CR: 1 / 8})).to.equal(1);
+        });
+
     });
 
-    describe("service.calculateMonsterLootValue", function () {
+    describe("service.calculateNPCBudget", function () {
 
-        it("should compute value according budget 'standard' and cr", function () {
-            var value = service.calculateMonsterLootValue({'TreasureBudget': "standard", 'CR': 1}, M);
-            expect(value).to.equal(260);
+        it("should work for basic NPCs", function () {
+            var encounter = {Monsters: { a: { TreasureBudget: "npc gear", Level: 6}, b: {TreasureBudget: "npc gear", Level: 3}}};
+            expect(service.calculateNPCBudget(encounter)).to.equal(3450 + 780);
         });
 
-        it("should compute value for CR < 1", function () {
-            var value = service.calculateMonsterLootValue({'TreasureBudget': "standard", 'CR': 1 / 8}, M);
-            expect(value).to.equal(260 / 8);
+        it("should work for heroic NPCs", function () {
+            var encounter = {Monsters: { a: { TreasureBudget: "npc gear", Level: 6, Heroic : true}, b: {TreasureBudget: "npc gear", Level: 3, Heroic : true}}};
+            expect(service.calculateNPCBudget(encounter)).to.equal(4650 + 1650);
         });
 
-        it("should compute value for CR < 1 (slow)", function () {
-            var value = service.calculateMonsterLootValue({'TreasureBudget': "standard", 'CR': 1 / 8}, S);
-            expect(value).to.equal(170 / 8);
-        });
-
-        it("should compute value as if cr was 20 when it's higher", function () {
-            var value = service.calculateMonsterLootValue({'TreasureBudget': "standard", 'CR': 21}, M);
-            expect(value).to.equal(67000);
-        });
-
-        it("should compute double value when budget is double", function () {
-            var value = service.calculateMonsterLootValue({'TreasureBudget': "double", 'CR': 1}, M);
-            expect(value).to.equal(2 * 260);
-        });
-
-        it("should compute double value when budget is double (fast)", function () {
-            var value = service.calculateMonsterLootValue({'TreasureBudget': "double", 'CR': 1}, F);
-            expect(value).to.equal(2 * 400);
-        });
-
-        it("should compute triple value when budget is triple", function () {
-            var value = service.calculateMonsterLootValue({'TreasureBudget': "triple", 'CR': 1}, M);
-            expect(value).to.equal(3 * 260);
-        });
-
-        it("should compute half value when budget is incidental", function () {
-            var value = service.calculateMonsterLootValue({'TreasureBudget': "incidental", 'CR': 1}, M);
-            expect(value).to.equal(0.5 * 260);
-        });
-
-        it("should compute 0 value when budget is none", function () {
-            var value = service.calculateMonsterLootValue({'TreasureBudget': "none", 'CR': 1}, M);
-            expect(value).to.equal(0);
-        });
-
-        it("should compute loot value using npc gear basic table (level 2)", function () {
-            var value = service.calculateMonsterLootValue({TreasureBudget: "npc gear", Level: 2, Heroic: false}, M);
-            expect(value).to.equal(390);
-        });
-
-        it("should compute loot value using npc gear basic table (level 5)", function () {
-            var value = service.calculateMonsterLootValue({TreasureBudget: "npc gear", Level: 5, Heroic: false}, M);
-            expect(value).to.equal(2400);
-        });
-
-        it("should compute loot value using npc gear heroic table (level 2)", function () {
-            var value = service.calculateMonsterLootValue({TreasureBudget: "npc gear", Level: 2, Heroic: true}, M);
-            expect(value).to.equal(780);
-        });
-
-        it("should compute loot value using npc gear heroic table (level 5)", function () {
-            var value = service.calculateMonsterLootValue({TreasureBudget: "npc gear", Level: 5, Heroic: true}, M);
-            expect(value).to.equal(3450);
-        });
-
-        it("should compute loot value using npc gear heroic table (level 5) (slow)", function () {
-            var value = service.calculateMonsterLootValue({TreasureBudget: "npc gear", Level: 5, Heroic: true}, S);
-            expect(value).to.equal(3450);
-        });
-
-        it("should compute loot value using npc gear heroic table (level 5) (fast)", function () {
-            var value = service.calculateMonsterLootValue({TreasureBudget: "npc gear", Level: 5, Heroic: true}, F);
-            expect(value).to.equal(4650);
-        });
     });
 });
