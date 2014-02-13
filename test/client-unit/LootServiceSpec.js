@@ -102,7 +102,7 @@ describe("lootService", function () {
         it("should sum coins for type A treasure", function () {
 
             /* first monster */
-            diceService.prepareDice({die: 4, value: 1, n: 16});
+            diceService.prepareDice({die: 4, value: 1, n: 160});
 
             /* second monster */
             diceService.prepareDice({die: 6, value: 6, n: 12});
@@ -110,13 +110,13 @@ describe("lootService", function () {
 
             var encounter = {
                 Monsters: {
-                    "Bilbo": {Type: "humanoid", TreasureBudget: "standard", CR: 1, amount: 1},
+                    "Bilbo": {Type: "humanoid", TreasureBudget: "standard", CR: 1, amount: 10},
                     "Smaug": {Type: "humanoid", TreasureBudget: "triple", CR: 20, amount: 1}
                 }
             };
 
             var loot = service.generateEncounterLoot(encounter, 'fast');
-            expect(loot).to.deep.equal({coins: {pp: 48004, gp: 72080, sp: 400, cp: 0}, items: []});
+            expect(loot).to.deep.equal({coins: {pp: 48040, gp: 72800, sp: 4000, cp: 0}, items: []});
         });
     });
 
