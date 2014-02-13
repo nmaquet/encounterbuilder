@@ -203,4 +203,53 @@ describe("lootService", function () {
         });
 
     });
+
+    describe("service.generateNPCLoot", function () {
+
+        it("should work for npc gear level 8", function () {
+            diceService.prepareDice({die: 10, value: 10, n: 16});
+            diceService.prepareDice({die: 8, value: 8, n: 4});
+            diceService.prepareDice({die: 4, value: 4, n: 2});
+            var loot = service.generateNPCLoot({ TreasureBudget: "npc gear", Level: 8, amount: 1}, 'medium');
+            expect(loot).to.deep.equal({coins: {pp: 700, gp: 4000, sp: 0, cp: 0}, items: []});
+        });
+
+        it("should work for two npc gear level 8", function () {
+            diceService.prepareDice({die: 10, value: 10, n: 32});
+            diceService.prepareDice({die: 8, value: 8, n: 8});
+            diceService.prepareDice({die: 4, value: 4, n: 4});
+            var loot = service.generateNPCLoot({ TreasureBudget: "npc gear", Level: 8, amount: 2}, 'medium');
+            expect(loot).to.deep.equal({coins: {pp: 1400, gp: 8000, sp: 0, cp: 0}, items: []});
+        });
+    });
+
+    describe("service.generateEncounterNPCLoot", function () {
+
+        it("should work for npc gear level 8", function () {
+            diceService.prepareDice({die: 10, value: 10, n: 16});
+            diceService.prepareDice({die: 8, value: 8, n: 4});
+            diceService.prepareDice({die: 4, value: 4, n: 2});
+
+            var encounter = { CR: 7, Monsters: {
+                a: { TreasureBudget: "npc gear", Level: 8}
+            }};
+
+            var loot = service.generateEncounterNPCLoot(encounter, 'medium');
+            expect(loot).to.deep.equal({coins: {pp: 700, gp: 4000, sp: 0, cp: 0}, items: []});
+        });
+
+        it("should work for two different monsters with npc gear level 8", function () {
+            diceService.prepareDice({die: 10, value: 10, n: 32});
+            diceService.prepareDice({die: 8, value: 8, n: 8});
+            diceService.prepareDice({die: 4, value: 4, n: 4});
+
+            var encounter = { CR: 7, Monsters: {
+                a: { TreasureBudget: "npc gear", Level: 8},
+                b: { TreasureBudget: "npc gear", Level: 8}
+            }};
+
+            var loot = service.generateEncounterNPCLoot(encounter, 'medium');
+            expect(loot).to.deep.equal({coins: {pp: 1400, gp: 8000, sp: 0, cp: 0}, items: []});
+        });
+    });
 });

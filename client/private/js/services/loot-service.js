@@ -129,6 +129,13 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             'triple': 3
         };
 
+        function accumulateLoot(loot1, loot2) {
+            loot1.coins.pp += loot2.coins.pp;
+            loot1.coins.gp += loot2.coins.gp;
+            loot1.coins.sp += loot2.coins.sp;
+            loot1.coins.cp += loot2.coins.cp;
+        }
+
         var service = {};
 
         service.mostGenerousBudgetMultiplierAmongNonNPC = function (encounter) {
@@ -155,7 +162,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             if (speed === 'fast') {
                 level += 1;
             }
-            return npcLevelToLootValue[level][monster.Heroic ? 'heroic' : 'basic'] * (monster.amount || 1);
+            return npcLevelToLootValue[level][monster.Heroic ? 'heroic' : 'basic'];
         };
 
         service.calculateEncounterNPCBudget = function (encounter, speed) {
@@ -164,7 +171,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 if (encounter.Monsters.hasOwnProperty(property)) {
                     var monster = encounter.Monsters[property];
                     if (monster.TreasureBudget === "npc gear") {
-                        budget += service.calculateNPCBudget(monster, speed);
+                        budget += service.calculateNPCBudget(monster, speed) * (monster.amount || 1);
                     }
                 }
             }
@@ -200,10 +207,26 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
         };
 
         service.generateNPCLoot = function (monsterBrief, speed) {
-            var budget = service.calculateNPCBudget(monsterBrief,speed);
-
-
+            var budget = service.calculateNPCBudget(monsterBrief, speed);
+            var loot = {coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: []};
+            for (var i = 0; i < (monsterBrief.amount || 1); i++) {
+                accumulateLoot(loot, service.generateLoot(budget, 'A'));
+            }
+            return loot;
         };
+
+        service.generateEncounterNPCLoot = function (encounter, speed) {
+            var loot = {coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: []};
+            for (var property in encounter.Monsters) {
+                if (encounter.Monsters.hasOwnProperty(property)) {
+                    var monster = encounter.Monsters[property];
+                    if (monster.TreasureBudget === "npc gear") {
+                        accumulateLoot(loot, service.generateNPCLoot(monster, speed));
+                    }
+                }
+            }
+            return loot
+        }
 
         return service;
     }]);
