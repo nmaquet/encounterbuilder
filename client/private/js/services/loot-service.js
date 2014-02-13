@@ -150,18 +150,21 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return  Math.max(1, Math.min(20, monsterBrief.Level || Math.max(1, monsterBrief.CR - 1)));
         };
 
+        service.calculateNPCBudget = function (monster, speed) {
+            var level = service.calculateNPCLevel(monster);
+            if (speed === 'fast') {
+                level += 1;
+            }
+            return npcLevelToLootValue[level][monster.Heroic ? 'heroic' : 'basic'] * (monster.amount || 1);
+        };
+
         service.calculateEncounterNPCBudget = function (encounter, speed) {
             var budget = 0;
             for (var property in encounter.Monsters) {
                 if (encounter.Monsters.hasOwnProperty(property)) {
                     var monster = encounter.Monsters[property];
                     if (monster.TreasureBudget === "npc gear") {
-                        var level = service.calculateNPCLevel(monster);
-                        if (speed === 'fast') {
-                            level += 1;
-                        }
-                        var npcBudget = npcLevelToLootValue[level][monster.Heroic ? 'heroic' : 'basic'];
-                        budget += npcBudget * (monster.amount || 1);
+                        budget += service.calculateNPCBudget(monster, speed);
                     }
                 }
             }
@@ -191,14 +194,14 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 }
             }
             return {
-                coins : coins,
-                items : []
+                coins: coins,
+                items: []
             }
         };
 
         service.generateNPCLoot = function (monsterBrief, speed) {
-            
+
         };
-        
+
         return service;
     }]);
