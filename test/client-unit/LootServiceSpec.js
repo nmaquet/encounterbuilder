@@ -14,15 +14,14 @@ function createDiceServiceMock() {
     var nextDice = {3: [], 4: [], 6: [], 8: [], 10: [], 12: [], 20: [], 100: []};
 
     return {
-        prepareDice: function (die, value, amount) {
-            amount = amount === undefined ? 1 : amount;
-            if (typeof value === "number") {
-                for (var i = 0; i < amount; ++i) {
-                    nextDice[die].push(value);
+        prepareDice: function (dice) {
+            if (dice.value) {
+                for (var i = 0; i < dice.n; ++i) {
+                    nextDice[dice.die].push(dice.value);
                 }
             } else {
-                for (var i in value) {
-                    nextDice[die].push(value[i]);
+                for (var i in dice.values) {
+                    nextDice[dice.die].push(dice.values[i]);
                 }
             }
         },
@@ -77,11 +76,25 @@ describe("lootService", function () {
         });
 
         it("should generate appropriate coins for humanoid standard cr 1 fast", function () {
-            diceService.prepareDice(4, 1, 16);
+            diceService.prepareDice({die: 4, value: 1, n: 16});
             var loot = service.generateMonsterLoot({Type: "humanoid", TreasureBudget: "standard", CR: 1}, 'fast');
             expect(loot).to.deep.equal({coins: {pp: 4, gp: 80, sp: 400, cp: 0}, items: []});
         });
 
+        it("should generate appropriate coins for humanoid double cr 7 slow", function () {
+            diceService.prepareDice({die: 4, value: 4, n: 6});
+            diceService.prepareDice({die: 6, value: 6, n: 14});
+            diceService.prepareDice({die: 10, value: 10, n: 30});
+            var loot = service.generateMonsterLoot({Type: "humanoid", TreasureBudget: "double", CR: 7}, 'slow');
+            expect(loot).to.deep.equal({coins: {pp: 348, gp: 2760, sp: 0, cp: 0}, items: []});
+        });
+
+        it("should generate appropriate coins for humanoid triple cr 20 fast", function () {
+            diceService.prepareDice({die: 6, value: 6, n: 12});
+            diceService.prepareDice({die: 10, value: 10, n: 48});
+            var loot = service.generateMonsterLoot({Type: "humanoid", TreasureBudget: "triple", CR: 20}, 'fast');
+            expect(loot).to.deep.equal({coins: {pp: 48000, gp: 72000, sp: 0, cp: 0}, items: []});
+        });
     });
 
     describe("service.calculateMonsterLootValue", function () {
