@@ -14,22 +14,28 @@ function createDiceServiceMock() {
     var nextDice = {3: [], 4: [], 6: [], 8: [], 10: [], 12: [], 20: [], 100: []};
 
     return {
-        prepareDice: function (die, value) {
-            value = typeof value == "number" ? [value] : value;
-            for (var i in value) {
-                nextDice[die].push(value[i]);
-            }
-        },
-        verifyNoRemainingDice: function () {
-            for (var i in Object.keys(nextDice)){
-                if (nextDice[Object.keys(nextDice)[i]].length > 0){
-                    throw Error(nextDice[Object.keys(nextDice)[i]].length+ " remaining dice for D"+Object.keys(nextDice)[i]);
+        prepareDice: function (die, value, amount) {
+            amount = amount === undefined ? 1 : amount;
+            if (typeof value === "number") {
+                for (var i = 0; i < amount; ++i) {
+                    nextDice[die].push(value);
+                }
+            } else {
+                for (var i in value) {
+                    nextDice[die].push(value[i]);
                 }
             }
         },
-        roll:function (die,n){
-            if (nextDice[die].length<n){
-                throw Error("not enough dice prepared for D"+die+ " (prepared "+nextDice[die].length+" needed "+n+")");
+        verifyNoRemainingDice: function () {
+            for (var i in Object.keys(nextDice)) {
+                if (nextDice[Object.keys(nextDice)[i]].length > 0) {
+                    throw Error(nextDice[Object.keys(nextDice)[i]].length + " remaining dice for D" + Object.keys(nextDice)[i]);
+                }
+            }
+        },
+        roll: function (die, n) {
+            if (nextDice[die].length < n) {
+                throw Error("not enough dice prepared for D" + die + " (prepared " + nextDice[die].length + " needed " + n + ")");
             }
             var sum = 0;
             for (var i = 0; i < n; ++i) {
@@ -45,35 +51,35 @@ describe("lootService", function () {
 
     beforeEach(module("encounterBuilderApp"));
 
-    beforeEach(module(function($provide) {
+    beforeEach(module(function ($provide) {
         $provide.factory('diceService', createDiceServiceMock);
     }));
 
-    beforeEach(inject(function (_lootService_,_diceService_) {
+    beforeEach(inject(function (_lootService_, _diceService_) {
         service = _lootService_;
         diceService = _diceService_;
     }));
 
-    afterEach(function(){
+    afterEach(function () {
         diceService.verifyNoRemainingDice();
     });
 
     describe("service.generateMonsterLoot", function () {
 
         it("should generate no loot for humanoids with budget 'none' ", function () {
-            var loot = service.generateMonsterLoot({Type: "humanoid", TreasureBudget: "none", CR:20},'medium');
-            expect(loot).to.deep.equal({coins: {pp:0,gp:0,sp:0,cp:0}, items: []});
+            var loot = service.generateMonsterLoot({Type: "humanoid", TreasureBudget: "none", CR: 20}, 'medium');
+            expect(loot).to.deep.equal({coins: {pp: 0, gp: 0, sp: 0, cp: 0}, items: []});
         });
 
         it("should generate no loot for construct with budget 'none' ", function () {
-            var loot = service.generateMonsterLoot({Type: "construct", TreasureBudget: "none", CR:20},'medium');
-            expect(loot).to.deep.equal({coins: {pp:0,gp:0,sp:0,cp:0}, items: []});
+            var loot = service.generateMonsterLoot({Type: "construct", TreasureBudget: "none", CR: 20}, 'medium');
+            expect(loot).to.deep.equal({coins: {pp: 0, gp: 0, sp: 0, cp: 0}, items: []});
         });
 
-        it ("should generate appropriate coins for humanoid standard cr 1 fast",function(){
-            diceService.prepareDice(4,[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]);
-            var loot = service.generateMonsterLoot({Type: "humanoid", TreasureBudget: "standard", CR:1},'fast');
-            expect(loot).to.deep.equal({coins: {pp:4,gp:80,sp:400,cp:0}, items: []});
+        it("should generate appropriate coins for humanoid standard cr 1 fast", function () {
+            diceService.prepareDice(4, 1, 16);
+            var loot = service.generateMonsterLoot({Type: "humanoid", TreasureBudget: "standard", CR: 1}, 'fast');
+            expect(loot).to.deep.equal({coins: {pp: 4, gp: 80, sp: 400, cp: 0}, items: []});
         });
 
     });
