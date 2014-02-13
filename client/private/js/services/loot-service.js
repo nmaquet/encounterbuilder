@@ -147,24 +147,41 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
 
         service.generateMonsterLoot = function (monsterBrief, speed) {
             var loot = {
-                coins: {pp:0,gp:0,sp:0,cp:0},
+                coins: {pp: 0, gp: 0, sp: 0, cp: 0},
                 items: []
             };
             var value = service.calculateMonsterLootValue(monsterBrief, speed);
             if (monsterTypeToLootTypeTable[monsterBrief.Type].A) {
-                var gpValues = knapsackService.knapsack(Object.keys(typeALoot),value);
-                for (var i in gpValues){
+                var gpValues = knapsackService.knapsack(Object.keys(typeALoot), value);
+                for (var i in gpValues) {
                     for (var j in typeALoot[gpValues[i]]) {
-                        var coinRoll =typeALoot[gpValues[i]][j];
-                        loot.coins[coinRoll.unit] += diceService.roll(coinRoll.die,coinRoll.n) * coinRoll.amount;
+                        var coinRoll = typeALoot[gpValues[i]][j];
+                        loot.coins[coinRoll.unit] += diceService.roll(coinRoll.die, coinRoll.n) * coinRoll.amount;
                     }
                 }
             }
             return loot;
         };
 
-        service.generateEncounterLoot = function (encounter) {
-
+        service.generateEncounterLoot = function (encounter, speed) {
+            var loot = {
+                coins: {pp: 0, gp: 0, sp: 0, cp: 0},
+                items: []
+            };
+            for (var monsterId in encounter.Monsters) {
+                if (encounter.Monsters.hasOwnProperty(monsterId)) {
+                    var monster = encounter.Monsters[monsterId];
+                    for (var i = 0; i < monster.amount; ++i) {
+                        var monsterLoot = service.generateMonsterLoot(monster, speed);
+                        loot.coins.pp += monsterLoot.coins.pp;
+                        loot.coins.gp += monsterLoot.coins.gp;
+                        loot.coins.sp += monsterLoot.coins.sp;
+                        loot.coins.cp += monsterLoot.coins.cp;
+                        loot.items = loot.items.concat(monsterLoot.items);
+                    }
+                }
+            }
+            return loot;
         };
 
         return service;

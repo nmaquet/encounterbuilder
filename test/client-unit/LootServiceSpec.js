@@ -109,12 +109,13 @@ describe("lootService", function () {
             diceService.prepareDice({die: 10, value: 10, n: 48});
 
             var encounter = {
-                "Bilbo" : {Type: "humanoid", TreasureBudget: "standard", CR: 1},
-                "Smaug" : {Type: "humanoid", TreasureBudget: "triple", CR: 20}
+                Monsters: {
+                    "Bilbo": {Type: "humanoid", TreasureBudget: "standard", CR: 1, amount: 1},
+                    "Smaug": {Type: "humanoid", TreasureBudget: "triple", CR: 20, amount: 1}
+                }
             };
 
             var loot = service.generateEncounterLoot(encounter, 'fast');
-
             expect(loot).to.deep.equal({coins: {pp: 48004, gp: 72080, sp: 400, cp: 0}, items: []});
         });
     });

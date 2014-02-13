@@ -66,7 +66,16 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     encounter.Monsters = {};
                 }
                 if (!encounter.Monsters[monster.id]) {
-                    encounter.Monsters[monster.id] = {Name: monster.Name, xp: monster.XP, CR: monster.CR, amount: Number(monster.amountToAdd)};
+                    encounter.Monsters[monster.id] = {
+                        amount: Number(monster.amountToAdd),
+                        Name: monster.Name,
+                        xp: monster.XP,
+                        CR: monster.CR,
+                        Type : monster.Type,
+                        TreasureBudget : monster.TreasureBudget,
+                        Heroic : monster.Heroic,
+                        Level : monster.Level
+                    };
                 }
                 else {
                     encounter.Monsters[monster.id].amount += Number(monster.amountToAdd) || 1;
