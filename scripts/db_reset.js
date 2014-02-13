@@ -1,4 +1,6 @@
 var fs = require("fs");
+
+//FIXME remove mongoose
 var mongoose = require('mongoose');
 var Monster = require('./monsterModel')(mongoose).Monster;
 var MagicItem = require('./magicItemModel')(mongoose).MagicItem;

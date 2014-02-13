@@ -31,6 +31,7 @@ function main(db) {
 
 function parseClass(Class) {
     var basicClasses = ['commoner', 'aristocrat', 'expert', 'warrior', 'adept'];
+
     function parseSingleClass(singleClass) {
         var words = singleClass.split(" ");
         var readClass = '';

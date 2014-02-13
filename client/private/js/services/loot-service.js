@@ -4,8 +4,19 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
     function (diceService, knapsackService) {
 
         var monsterTypeToLootTypeTable = {
-            "humanoid": {'A': true, 'B': true, 'D': true, 'E': true, 'F': true, 'G': true},
-            "construct": {'E': true, 'F': true}
+            aberration: {A: true, B: true, D: true, E: true},
+            animal: {A: true, B: true, D: true, E: true},
+            construct: {E: true, F: true},
+            dragon: {A: true, B: true, C: true, H: true, I: true},
+            fey: {B: true, C: true, D: true, G: true},
+            humanoid: {A: true, B: true, D: true, E: true, F: true, G: true},
+            'magical beast': {A: true, B: true, D: true, E: true},
+            'monstrous humanoid': {A: true, B: true, C: true, D: true, E: true, H: true},
+            ooze: {A: true, B: true, D: true},
+            outsider: {A: true, B: true, C: true, D: true, E: true, F: true, G: true, H: true, I: true},
+            plant: {A: true, B: true, D: true, E: true},
+            undead: {A: true, B: true, D: true, E: true},
+            vermin: {A: true, B: true, D: true}
         };
 
         var crToLootValue = {
@@ -121,7 +132,8 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
         var service = {};
 
         function calculateNPCLootValue(monsterBrief, speed) {
-            var level = Math.max(1, Math.min(20, monsterBrief.Level));
+            var level =  (monsterBrief.Level !== undefined) ? monsterBrief.Level:monsterBrief.CR;
+            level = Math.max(1, Math.min(20,level));
             if (speed === "fast" && level < 20) {
                 level += 1;
             }

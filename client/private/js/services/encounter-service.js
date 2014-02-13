@@ -18,7 +18,11 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 "gp" : 100,
                 "pp" : 1000
             };
-            var lootValue = Number(encounter.coins) * 100;
+            var lootValue = 0;
+            lootValue += Number(encounter.coins.cp);
+            lootValue += Number(encounter.coins.sp) * 10;
+            lootValue += Number(encounter.coins.gp) * 100;
+            lootValue += Number(encounter.coins.pp) * 1000;
             for (var i in encounter.items) {
                 var multiplier = multipliers[encounter.items[i].PriceUnit] || 100;
                 var price = Number(encounter.items[i].Price) || 0;

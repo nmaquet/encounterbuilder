@@ -4,7 +4,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
     ['$scope', 'encounterService', 'selectedMonsterService', 'selectedEncounterService', 'selectedItemService', 'lootService',
         function ($scope, encounterService, selectedMonsterService, selectedEncounterService, selectedItemService, lootService) {
 
-            $scope.encounterChanged = function() {
+            $scope.encounterChanged = function () {
                 if ($scope.encounter) {
                     encounterService.encounterChanged($scope.encounter);
                 }
@@ -78,8 +78,10 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                 encounterService.encounterChanged(encounter);
             }
 
-            $scope.randomizeLoot = function(encounter) {
-                lootService.randomizeLoot(encounter);
+            $scope.randomizeLoot = function (encounter) {
+                var loot = lootService.generateEncounterLoot(encounter, 'medium');
+                encounter.coins = loot.coins;
+                encounterService.encounterChanged(encounter);
             }
         }
     ]);

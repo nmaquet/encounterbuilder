@@ -117,13 +117,22 @@ var ATTRIBUTE_FILTERS = {
         return getBudget(srdMonster)
     },
     Heroic: function (srdMonster) {
-        return parseClass(srdMonster.Class).Heroic;
+        if (srdMonster.Class) {
+            return parseClass(srdMonster.Class).Heroic;
+        }
+        else {
+            return false;
+        }
     },
     Classes: function (srdMonster) {
-        return parseClass(srdMonster.Class).Classes;
+        if (srdMonster.Class) {
+            return parseClass(srdMonster.Class).Classes;
+        }
     },
     Level: function (srdMonster) {
-        return parseClass(srdMonster.Class).Level;
+        if (srdMonster.Class) {
+            return parseClass(srdMonster.Class).Level;
+        }
     }
 }
 
@@ -222,7 +231,7 @@ function parseClass(Class) {
     if (Class.indexOf('/') === -1) {
         var singleClass = parseSingleClass(Class);
         var heroic = basicClasses.indexOf(singleClass.class) === -1;
-        return {'heroic': heroic, 'level': singleClass.classLevel, 'classes': [singleClass]};
+        return {'Heroic': heroic, 'Level': singleClass.Level, 'Classes': [singleClass]};
     }
     else {
         var classes = Class.split('/');
@@ -341,7 +350,7 @@ var monsters = [];
 var monsterNameCount = {};
 
 for (var i in srd_monsters) {
-
+    if (i > 300)break;
     console.log(i + " / " + srd_monsters.length);
 
     var kyleMonster = getKyleMonsterByID(srd_monsters[i].id)
