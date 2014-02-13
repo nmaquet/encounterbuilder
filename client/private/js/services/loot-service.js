@@ -228,5 +228,12 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return loot
         }
 
+        service.generateEncounterLoot = function (encounter, speed) {
+            var nonNPCBudget = service.calculateNonNPCLootValue(encounter,speed);
+            var loot = service.generateLoot(nonNPCBudget,'A');
+            var npcLoot = service.generateEncounterNPCLoot(encounter,speed);
+            accumulateLoot(loot,npcLoot);
+            return loot;
+        }
         return service;
     }]);
