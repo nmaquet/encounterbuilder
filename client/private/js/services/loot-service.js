@@ -176,5 +176,25 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return Math.max(0, baseBudget - npcBudget);
         };
 
+        service.generateNonNPCLoot = function (budget, lootType) {
+            if (lootType !== 'A') {
+                throw Error("not implemented");
+            }
+            var coins = { pp: 0, gp: 0, sp: 0, cp: 0 };
+            var gpValues = knapsackService.knapsack(Object.keys(typeALoot), budget);
+            for (var i in gpValues) {
+                var gpValue = gpValues[i];
+                var coinRolls = typeALoot[gpValue];
+                for (var j in coinRolls) {
+                    var coinRoll = coinRolls[j];
+                    coins[coinRoll.unit] += diceService.roll(coinRoll.die, coinRoll.n) * coinRoll.amount;
+                }
+            }
+            return {
+                coins : coins,
+                items : []
+            }
+        };
+
         return service;
     }]);

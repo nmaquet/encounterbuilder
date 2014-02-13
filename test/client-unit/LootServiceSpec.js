@@ -173,4 +173,34 @@ describe("lootService", function () {
         });
 
     });
+
+    describe("service.generateNonNPCLoot", function () {
+
+        it("should work for budget 0 & type A", function () {
+            var loot = service.generateNonNPCLoot(0, 'A');
+            expect(loot).to.deep.equal({coins: {pp: 0, gp: 0, sp: 0, cp: 0}, items: []});
+        });
+
+        it("should work for budget 400 & type A", function () {
+            diceService.prepareDice({die: 4, value: 1, n: 16});
+            var loot = service.generateNonNPCLoot(400, 'A');
+            expect(loot).to.deep.equal({coins: {pp: 4, gp: 80, sp: 400, cp: 0}, items: []});
+        });
+
+        it("should work for budget 3500 & type A", function () {
+            diceService.prepareDice({die: 4, value: 4, n: 6});
+            diceService.prepareDice({die: 6, value: 6, n: 14});
+            diceService.prepareDice({die: 10, value: 10, n: 30});
+            var loot = service.generateNonNPCLoot(3500, 'A');
+            expect(loot).to.deep.equal({coins: {pp: 348, gp: 2760, sp: 0, cp: 0}, items: []});
+        });
+
+        it("should work for budget 300,000 & type A", function () {
+            diceService.prepareDice({die: 6, value: 6, n: 12});
+            diceService.prepareDice({die: 10, value: 10, n: 48});
+            var loot = service.generateNonNPCLoot(300000, 'A');
+            expect(loot).to.deep.equal({coins: {pp: 48000, gp: 72000, sp: 0, cp: 0}, items: []});
+        });
+
+    });
 });
