@@ -350,7 +350,6 @@ var monsters = [];
 var monsterNameCount = {};
 
 for (var i in srd_monsters) {
-    if (i > 300)break;
     console.log(i + " / " + srd_monsters.length);
 
     var kyleMonster = getKyleMonsterByID(srd_monsters[i].id)
