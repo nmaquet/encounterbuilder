@@ -1,9 +1,5 @@
 "use strict";
 
-var S = "slow";
-var M = "medium";
-var F = "fast";
-
 var expect = chai.expect;
 
 var service;
@@ -109,13 +105,35 @@ describe("lootService", function () {
     describe("service.calculateNPCBudget", function () {
 
         it("should work for basic NPCs", function () {
-            var encounter = {Monsters: { a: { TreasureBudget: "npc gear", Level: 6}, b: {TreasureBudget: "npc gear", Level: 3}}};
-            expect(service.calculateNPCBudget(encounter)).to.equal(3450 + 780);
+            var encounter = { Monsters: {
+                a: { TreasureBudget: "npc gear", Level: 6},
+                b: {TreasureBudget: "npc gear", Level: 3}}
+            };
+            expect(service.calculateNPCBudget(encounter, "medium")).to.equal(3450 + 780);
         });
 
         it("should work for heroic NPCs", function () {
-            var encounter = {Monsters: { a: { TreasureBudget: "npc gear", Level: 6, Heroic : true}, b: {TreasureBudget: "npc gear", Level: 3, Heroic : true}}};
-            expect(service.calculateNPCBudget(encounter)).to.equal(4650 + 1650);
+            var encounter = { Monsters: {
+                a: { TreasureBudget: "npc gear", Level: 6, Heroic: true},
+                b: {TreasureBudget: "npc gear", Level: 3, Heroic: true}}
+            };
+            expect(service.calculateNPCBudget(encounter, "medium")).to.equal(4650 + 1650);
+        });
+
+        it("should work for fast speed", function () {
+            var encounter = { Monsters: {
+                a: { TreasureBudget: "npc gear", Level: 6},
+                b: {TreasureBudget: "npc gear", Level: 3}}
+            };
+            expect(service.calculateNPCBudget(encounter, "fast")).to.equal(4650 + 1650);
+        });
+
+        it("should work for slow speed", function () {
+            var encounter = { Monsters: {
+                a: { TreasureBudget: "npc gear", Level: 6},
+                b: {TreasureBudget: "npc gear", Level: 3}}
+            };
+            expect(service.calculateNPCBudget(encounter, "slow")).to.equal(3450 + 780);
         });
 
     });
