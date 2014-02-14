@@ -13313,9 +13313,9 @@
         "Price": 6125.0, 
         "PriceUnit": "gp", 
         "Rarity": "uncommon", 
-        "SpellId": "hallow-th-level-spell-included", 
+        "SpellId": "hallow", 
         "SpellLevel": 5, 
-        "SpellName": "Hallow (4th-level spell included)", 
+        "SpellName": "Hallow", 
         "Type": "scroll", 
         "id": "scroll-of-hallow-th-level-spell-included"
     }, 
@@ -13328,9 +13328,9 @@
         "Price": 6125.0, 
         "PriceUnit": "gp", 
         "Rarity": "uncommon", 
-        "SpellId": "unhallow-th-level-spell-included", 
+        "SpellId": "unhallow", 
         "SpellLevel": 5, 
-        "SpellName": "Unhallow (4th-level spell included)", 
+        "SpellName": "Unhallow", 
         "Type": "scroll", 
         "id": "scroll-of-unhallow-th-level-spell-included"
     }, 

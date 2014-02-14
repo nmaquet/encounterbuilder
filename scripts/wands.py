@@ -6,198 +6,470 @@ import json
 common = {};
 uncommon = {};
 
-common[0] = """01-14	Arcane mark	25 gp
-15-28	Guidance	25 gp
-29-44	Light	25 gp
-45-58	Purify food and drink	25 gp
-59-72	Resistance	25 gp
-73-86	Stabilize	25 gp
-87-100	Virtue	25 gp"""
-
-common[1] = """01-04	Bless weapon	50 gp
-05-14	Cure light wounds	50 gp
-15-19	Endure elements	50 gp
-20-27	Enlarge person	50 gp
-28-33	Jump	50 gp
-34-41	Mage armor	50 gp
-42-47	Magic fang	50 gp
-48-55	Magic weapon	50 gp
-56-60	Pass without trace	50 gp
-61-64	Protection from chaos	50 gp
-65-68	Protection from evil	50 gp
-69-72	Protection from good	50 gp
-73-76	Protection from law	50 gp
-77-81	Reduce person	50 gp
-82-87	Remove fear	50 gp
-88-92	Sanctuary	50 gp
-93-100	Shield of faith	50 gp"""
-
-uncommon[1] = """01-04	Animate rope	50 gp
-05-11	Ant haul	50 gp
-12-16	Cloak of the shade	50 gp
-17-20	Erase	50 gp
-21-26	Feather step	50 gp
-27-30	Goodberry	50 gp
-31-34	Grease	50 gp
-35-41	Hide from animals	50 gp
-42-49	Hide from undead	50 gp
-50-53	Hold portal	50 gp
-54-58	Invigorate	50 gp
-59-64	Keen senses	50 gp
-65-68	Magic stone	50 gp
-69-75	Remove sickness	50 gp
-76-80	Sanctify corpse	50 gp
-81-84	Shillelagh	50 gp
-85-92	Touch of the sea	50 gp
-93-100	Vanish	50 gp"""
-
-common[2] = """01-04	Aid	300 gp
-05-07	Align weapon	300 gp
-08-11	Barkskin	300 gp
-12-16	Bear's endurance	300 gp
-17-20	Blur	300 gp
-21-25	Bull's strength	300 gp
-26-30	Cat's grace	300 gp
-31-37	Cure moderate wounds	300 gp
-38-41	Darkvision	300 gp
-42-44	Delay poison	300 gp
-45-49	Eagle's splendor	300 gp
-50-54	Fox's cunning	300 gp
-55-61	Invisibility	300 gp
-62-66	Levitate	300 gp
-67-71	Owl's wisdom	300 gp
-72-73	Protection from arrows	300 gp
-74-76	Remove paralysis	300 gp
-77-80	Resist energy, acid	300 gp
-81-84	Resist energy, cold	300 gp
-85-88	Resist energy, electricity	300 gp
-89-92	Resist energy, fire	300 gp
-93-94	Resist energy, sonic	300 gp
-95-98	Spider climb	300 gp
-99-100	Undetectable alignment	300 gp"""
-
-uncommon[2] = """01-06	Ablative barrier	300 gp
-07-14	Acute senses	300 gp
-15-19	Arcane lock	300 gp
-20-24	Bullet shield	300 gp
-25-30	Certain grip	300 gp
-31-35	Continual flame	350 gp
-36-40	Corruption resistance	300 gp
-41-48	Disguise other	300 gp
-49-56	Gentle repose	300 gp
-57-61	Make whole	300 gp
-62-67	Obscure object	300 gp
-68-72	Reduce animal	300 gp
-73-76	Rope trick	300 gp
-77-82	Slipstream	300 gp
-83-90	Status	300 gp
-91-95	Warp wood	300 gp
-96-100	Wood shape	300 gp"""
-
-common[3] = """01-06	Cure serious wounds	750 gp
-07-10	Dispel magic	750 gp
-11-14	Displacement	750 gp
-15-20	Fly	750 gp
-21-25	Gaseous form	750 gp
-26-29	Good hope	750 gp
-30-35	Haste	750 gp
-36-40	Heroism	750 gp
-41-44	Keen edge	750 gp
-45-48	Magic fang, greater	750 gp
-49-52	Magic vestment	750 gp
-53-57	Neutralize poison	750 gp
-58-60	Protection from energy, acid	750 gp
-61-63	Protection from energy, cold	750 gp
-64-66	Protection from energy, electricity	750 gp
-67-69	Protection from energy, fire	750 gp
-70-71	Protection from energy, sonic	750 gp
-72-74	Rage	750 gp
-75-77	Remove blindness/deafness	750 gp
-78-81	Remove curse	750 gp
-82-86	Remove disease	750 gp
-87-91	Tongues	750 gp
-92-96	Water breathing	750 gp
-97-100	Water walk	750 gp"""
-
-uncommon[3] = """01-12	Burrow	750 gp
-11-22	Countless eyes	750 gp
-23-34	Daylight	750 gp
-35-49	Draconic reservoir	750 gp
-50-58	Flame arrow	750 gp
-59-67	Shrink item	750 gp
-68-77	Stone shape	750 gp
-78-87	Fire trap	775 gp
-88-100	Nondetection	800 gp"""
+common[0] = """01-07 	Acid splash	375 gp
+08-14	Create water	375 gp
+15-20	Daze	375 gp
+21-28	Detect magic	375 gp
+29-34	Ghost sound	375 gp
+35-42	Light	375 gp
+43-49	Mage hand	375 gp
+50-55	Mending	375 gp
+56-60	Message	375 gp
+61-66	Prestidigitation	375 gp
+67-73	Purify food and drink	375 gp
+74-81	Ray of frost	375 gp
+82-88	Read magic	375 gp
+89-95	Stabilize	375 gp
+96-100	Touch of fatigue	375 gp"""
+uncommon[0] = """01-06	Arcane mark	375 gp
+07-15	Bleed	375 gp
+16-22	Dancing lights	375 gp
+23-31	Detect poison	375 gp
+32-40	Disrupt undead	375 gp
+41-48	Flare	375 gp
+49-56	Guidance	375 gp
+57-65	Know direction	375 gp
+66-73	Lullaby	375 gp
+74-79	Open/close	375 gp
+80-86	Resistance	375 gp
+87-94	Spark	375 gp
+95-100	Virtue	375 gp"""
+common[1] = """01-02	Alarm	750 gp
+03-03	Animate rope	750 gp
+04-05	Bane	750 gp
+06-11	Bless	750 gp
+12-14	Burning hands	750 gp
+15-17	Cause fear	750 gp
+18-19	Charm person	750 gp
+20-21	Color spray	750 gp
+22-23	Command	750 gp
+24-24	Comprehend languages	750 gp
+25-31	Cure light wounds	750 gp
+32-33	Disguise self	750 gp
+34-37	Divine favor	750 gp
+38-38	Endure elements	750 gp
+39-41	Enlarge person	750 gp
+42-43	Entangle	750 gp
+44-45	Expeditious retreat	750 gp
+46-46	Feather fall	750 gp
+47-48	Grease	750 gp
+49-50	Identify	750 gp
+51-52	Inflict light wounds	750 gp
+53-58	Mage armor	750 gp
+59-60	Magic fang	750 gp
+61-67	Magic missile	750 gp
+68-68	Magic stone	750 gp
+69-70	Magic weapon	750 gp
+71-71	Obscuring mist	750 gp
+72-73	Produce flame	750 gp
+74-74	Protection from chaos	750 gp
+75-75	Protection from evil	750 gp
+76-76	Protection from good	750 gp
+77-77	Protection from law	750 gp
+78-79	Ray of enfeeblement	750 gp
+80-81	Remove fear	750 gp
+82-84	Shield	750 gp
+85-86	Shield of faith	750 gp
+87-87	Shillelagh	750 gp
+88-89	Shocking grasp	750 gp
+90-90	Silent image	750 gp
+91-94	Sleep	750 gp
+95-95	Summon monster I	750 gp
+96-96	Summon nature's ally I	750 gp
+97-99	True strike	750 gp
+100-100	Unseen servant	750 gp"""
+uncommon[1] = """01-02	Ant haul	750 gp
+03-05	Aspect of the falcon	750 gp
+06-07	Bless weapon	750 gp
+08-08	Calm animals	750 gp
+09-10	Charm animal	750 gp
+11-12	Chill touch	750 gp
+13-14	Compel hostility	750 gp
+15-17	Confusion, lesser	750 gp
+18-19	Corrosive touch	750 gp
+20-21	Deathwatch	750 gp
+22-22	Detect animals or plants	750 gp
+23-23	Detect chaos	750 gp
+24-24	Detect evil	750 gp
+25-25	Detect good	750 gp
+26-26	Detect law	750 gp
+27-28	Detect secret doors	750 gp
+29-29	Detect snares and pits	750 gp
+30-31	Detect undead	750 gp
+32-35	Doom	750 gp
+36-37	Entropic shield	750 gp
+38-38	Erase	750 gp
+39-39	Faerie fire	750 gp
+40-41	Feather step	750 gp
+42-44	Floating disk	750 gp
+45-47	Goodberry	750 gp
+48-49	Hide from animals	750 gp
+50-51	Hide from undead	750 gp
+52-52	Hideous laughter	750 gp
+53-54	Hold portal	750 gp
+55-56	Hypnotism	750 gp
+57-58	Icicle dagger	750 gp
+59-60	Ill omen	750 gp
+61-63	Jump	750 gp
+64-65	Longstrider	750 gp
+66-66	Magic aura	750 gp
+67-68	Mount	750 gp
+69-69	Obscure object	750 gp
+70-71	Pass without trace	750 gp
+72-72	Ray of sickening	750 gp
+73-75	Reduce person	750 gp
+76-78	Sanctuary	750 gp
+79-80	Shock shield	750 gp
+81-83	Speak with animals	750 gp
+84-85	Stone fist	750 gp
+86-87	Stone shield	750 gp
+88-88	Summon minor monster	750 gp
+89-89	Undetectable alignment	750 gp
+90-92	Urban grace	750 gp
+93-96	Vanish	750 gp
+97-97	Ventriloquism	750 gp
+98-98	Magic mouth	1,250 gp
+99-99	Bless water	2,000 gp
+100-100	Curse water	2,000 gp"""
+common[2] = """01-02	Acid arrow	4,500 gp
+03-03	Aid	4,500 gp
+04-05	Alter self	4,500 gp
+06-07	Barkskin	4,500 gp
+08-10	Bear's endurance	4,500 gp
+11-11	Blur	4,500 gp
+12-14	Bull's strength	4,500 gp
+15-16	Cat's grace	4,500 gp
+17-22	Cure moderate wounds	4,500 gp
+23-25	Darkness	4,500 gp
+26-26	Darkvision	4,500 gp
+27-27   Delay poison	4,500 gp
+28-29	Eagle's splendor	4,500 gp
+30-30	False life	4,500 gp
+31-31	Find traps	4,500 gp
+32-32	Flame blade	4,500 gp
+33-33	Flaming sphere	4,500 gp
+34-35	Fog cloud	4,500 gp
+36-37	Fox's cunning	4,500 gp
+38-38	Glitterdust	4,500 gp
+39-40	Heat metal	4,500 gp
+41-43	Hold person	4,500 gp
+44-46	Inflict moderate wounds	4,500 gp
+47-51	Invisibility	4,500 gp
+52-52	Knock	4,500 gp
+53-54	Levitate	4,500 gp
+55-55	Minor image	4,500 gp
+56-57	Mirror image	4,500 gp
+58-59	Owl's wisdom	4,500 gp
+60-60	Pyrotechnics	4,500 gp
+61-61	Remove paralysis	4,500 gp
+62-64	Resist energy	4,500 gp
+65-66	Restoration, lesser	4,500 gp
+67-71	Scorching ray	4,500 gp
+72-73	See invisibility	4,500 gp
+74-74	Shatter	4,500 gp
+75-76	Shield other	4,500 gp
+77-78	Silence	4,500 gp
+79-81	Sound burst	4,500 gp
+82-83	Spider climb	4,500 gp
+84-86	Spiritual weapon	4,500 gp
+87-88	Summon monster II	4,500 gp
+89-90	Summon nature's ally II	4,500 gp
+91-92	Summon swarm	4,500 gp
+93-96	Web	4,500 gp
+97-97	Whispering wind	4,500 gp
+98-99	Augury	5,750 gp
+100-100	Fire trap	5,750 gp"""
+uncommon[2] = """01-02	Align weapon	4,500 gp
+03-05	Animal aspect	4,500 gp
+06-06	Animal messenger	4,500 gp
+07-07	Animal trance	4,500 gp
+08-10	Aspect of the bear	4,500 gp
+11-13	Bestow weapon proficiency	4,500 gp
+14-15	Blindness/deafness	4,500 gp
+16-18	Burning gaze	4,500 gp
+19-21	Calm emotions	4,500 gp
+22-24	Chill metal	4,500 gp
+25-25	Command undead	4,500 gp
+26-27	Daze monster	4,500 gp
+28-29	Death knell	4,500 gp
+30-32	Defensive shock	4,500 gp
+33-33	Delay pain	4,500 gp
+34-35	Detect thoughts	4,500 gp
+36-39	Disguise other	4,500 gp
+40-42	Effortless armor	4,500 gp
+43-46	Elemental touch	4,500 gp
+47-48	Enthrall	4,500 gp
+49-50	Gentle repose	4,500 gp
+51-51	Ghoul touch	4,500 gp
+52-53	Glide	4,500 gp
+54-55	Groundswell	4,500 gp
+56-56	Gust of wind	4,500 gp
+57-57	Hold animal	4,500 gp
+58-59	Hypnotic pattern	4,500 gp
+60-60	Locate object	4,500 gp
+61-61	Make whole	4,500 gp
+62-63	Misdirection	4,500 gp
+64-65	Oppressive boredom	4,500 gp
+66-66	Protection from arrows	4,500 gp
+67-67	Reduce animal	4,500 gp
+68-69	Rope trick	4,500 gp
+70-72	Scare	4,500 gp
+73-74	Share language	4,500 gp
+75-76	Soften earth and stone	4,500 gp
+77-78	Spectral hand	4,500 gp
+79-80	Status	4,500 gp
+81-82	Tongues	4,500 gp
+83-84	Touch of idiocy	4,500 gp
+85-86	Tree shape	4,500 gp
+87-88	Warp wood	4,500 gp
+89-91	Weapon of awe	4,500 gp
+92-93	Wood shape	4,500 gp
+94-95	Zone of truth	4,500 gp
+96-96	Arcane lock	5,750 gp
+97-97	Consecrate	5,750 gp
+98-98	Desecrate	5,750 gp
+99-99	Continual flame	7,000 gp
+100-100	Phantom trap	7,000 gp"""
+common[3] = """01-02	Beast shape I	11,250 gp
+03-04	Blink	11,250 gp
+05-07	Call lightning	11,250 gp
+08-08	Create food and water	11,250 gp
+09-14	Cure serious wounds	11,250 gp
+15-16	Daylight	11,250 gp
+17-18	Deep slumber	11,250 gp
+19-20	Deeper darkness	11,250 gp
+21-25	Dispel magic	11,250 gp
+26-28	Displacement	11,250 gp
+29-34	Fireball	11,250 gp
+35-35	Flame arrow	11,250 gp
+36-37	Fly	11,250 gp
+38-38	Gaseous form	11,250 gp
+39-40	Haste	11,250 gp
+41-42	Heroism	11,250 gp
+43-45	Inflict serious wounds	11,250 gp
+46-47	Invisibility purge	11,250 gp
+48-48	Invisibility sphere	11,250 gp
+49-50	Keen edge	11,250 gp
+51-55	Lightning bolt	11,250 gp
+56-56	Magic circle against chaos	11,250 gp
+57-57	Magic circle against evil	11,250 gp
+58-58	Magic circle against good	11,250 gp
+59-59	Magic circle against law	11,250 gp
+60-60	Magic fang, greater	11,250 gp
+61-62	Magic vestment	11,250 gp
+63-64	Magic weapon, greater	11,250 gp
+65-66	Major image	11,250 gp
+67-70	Prayer	11,250 gp
+71-74	Protection from energy	11,250 gp
+75-75	Remove blindness/deafness	11,250 gp
+76-77	Remove curse	11,250 gp
+78-79	Remove disease	11,250 gp
+80-82	Searing light	11,250 gp
+83-83	Sleet storm	11,250 gp
+84-85	Slow	11,250 gp
+86-87	Speak with dead	11,250 gp
+88-89	Stinking cloud	11,250 gp
+90-90	Stone shape	11,250 gp
+91-92	Suggestion	11,250 gp
+93-93	Summon monster III	11,250 gp
+94-94	Summon nature's ally III	11,250 gp
+95-97	Vampiric touch	11,250 gp
+98-99	Water breathing	11,250 gp
+100-100	Animate dead	23,750 gp"""
+uncommon[3] = """01-04	Animal aspect, greater	11,250 gp
+05-06	Aqueous orb	11,250 gp
+07-08	Arcane sight	11,250 gp
+09-11	Archon's aura	11,250 gp
+12-14	Ash storm	11,250 gp
+15-17	Bestow curse	11,250 gp
+18-20	Clairaudience/clairvoyance	11,250 gp
+21-22	Contagion	11,250 gp
+23-23	Diminish plants	11,250 gp
+24-25	Dominate animal	11,250 gp
+26-29	Elemental aura	11,250 gp
+30-30	Explosive runes	11,250 gp
+31-34	Force punch	11,250 gp
+35-35	Halt undead	11,250 gp
+36-37	Helping hand	11,250 gp
+38-40	Hostile levitation	11,250 gp
+41-43	Howling agony	11,250 gp
+44-45	Hydraulic torrent	11,250 gp
+46-46	Mad monkeys	11,250 gp
+47-49	Meld into stone	11,250 gp
+50-52	Neutralize poison	11,250 gp
+53-54	Pain strike	11,250 gp
+55-55	Phantom steed	11,250 gp
+56-57	Plant growth	11,250 gp
+58-60	Poison	11,250 gp
+61-61	Quench	11,250 gp
+62-65	Rage	11,250 gp
+66-67	Ray of exhaustion	11,250 gp
+68-69	Resinous skin	11,250 gp
+70-70	Secret page	11,250 gp
+71-71	Shrink item	11,250 gp
+72-73	Snare	11,250 gp
+74-74	Speak with plants	11,250 gp
+75-76	Spike growth	11,250 gp
+77-77	Tiny hut	11,250 gp
+78-81	Water walk	11,250 gp
+82-84	Wind wall	11,250 gp
+85-86	Wrathful mantle	11,250 gp
+87-87	Illusory script	13,750 gp
+88-89	Nondetection	13,750 gp
+90-91	Glibness	15,750 gp
+92-95	Good hope	15,750 gp
+96-97	Heal mount	15,750 gp
+98-98	Sculpt sound	15,750 gp
+99-99	Glyph of warding	21,250 gp
+100-100	Sepia snake sigil	36,250 gp"""
+common[4] = """01-02 	Air walk	21,000 gp
+03-04	Beast shape II	21,000 gp
+05-07	Black tentacles	21,000 gp
+08-08	Chaos hammer	21,000 gp
+09-11	Charm monster	21,000 gp
+12-14	Confusion	21,000 gp
+15-16	Crushing despair	21,000 gp
+17-22	Cure critical wounds	21,000 gp
+23-24	Death ward	21,000 gp
+25-28	Dimension door	21,000 gp
+29-29	Dimensional anchor	21,000 gp
+30-30	Dismissal	21,000 gp
+31-33	Divine power	21,000 gp
+34-35	Elemental body I	21,000 gp
+36-37	Enervation	21,000 gp
+38-39	Enlarge person, mass	21,000 gp
+40-42	Fear	21,000 gp
+43-44	Fire shield	21,000 gp
+45-48	Flame strike	21,000 gp
+49-51	Freedom of movement	21,000 gp
+52-53	Globe of invulnerability, lesser	21,000 gp
+54-54	Holy smite	21,000 gp
+55-56	Ice storm	21,000 gp
+57-58	Imbue with spell ability	21,000 gp
+59-61	Inflict critical wounds	21,000 gp
+62-65	Invisibility, greater	21,000 gp
+66-66	Order's wrath	21,000 gp
+67-69	Phantasmal killer	21,000 gp
+70-70	Resilient sphere	21,000 gp
+71-72	Scrying	21,000 gp
+73-73	Sending	21,000 gp
+74-74	Shout	21,000 gp
+75-76	Solid fog	21,000 gp
+77-79	Spell immunity	21,000 gp
+80-80	Summon monster IV	21,000 gp
+81-81	Summon nature's ally IV	21,000 gp
+82-82	Unholy blight	21,000 gp
+83-87	Wall of fire	21,000 gp
+88-91	Wall of ice	21,000 gp
+92-93	Divination	22,250 gp
+94-95	Restoration	26,000 gp
+96-96	Break enchantment	30,000 gp
+97-98	Stoneskin	33,500 gp
+99-99	Planar ally, lesser	46,000 gp
+100-100 Restoration (Can dispel permanent negative levels)	71,000 gp"""
+uncommon[4] = """01-01	Antiplant shell	21,000 gp
+02-04	Arcane eye	21,000 gp
+05-07	Aspect of the stag	21,000 gp
+08-11	Ball lightning	21,000 gp
+12-12	Blight	21,000 gp
+13-13	Command plants	21,000 gp
+14-15	Control water	21,000 gp
+16-18	Darkvision, greater	21,000 gp
+19-19	Detect scrying	21,000 gp
+20-20	Discern lies	21,000 gp
+21-24	Dragon's breath	21,000 gp
+25-28	False life, greater	21,000 gp
+29-30	Geas, lesser	21,000 gp
+31-34	Ghost wolf	21,000 gp
+35-36	Giant vermin	21,000 gp
+37-37	Hallucinatory terrain	21,000 gp
+38-38	Illusory wall	21,000 gp
+39-40	Locate creature	21,000 gp
+41-42	Minor creation	21,000 gp
+43-43	Mnemonic enhancer	21,000 gp
+44-46	Obsidian flow	21,000 gp
+47-48	Rainbow pattern	21,000 gp
+49-50	Reduce person, mass	21,000 gp
+51-53	Reincarnate	21,000 gp
+54-54	Repel vermin	21,000 gp
+55-56	Ride the waves	21,000 gp
+57-59	Rusting grasp	21,000 gp
+60-60	Secure shelter	21,000 gp
+61-63	Shadow conjuration	21,000 gp
+64-67	Shadow step	21,000 gp
+68-70	Shocking image	21,000 gp
+71-74	Spike stones	21,000 gp
+75-76	Volcanic storm	21,000 gp
+77-79	Wandering star motes	21,000 gp
+80-80	Animal growth	30,000 gp
+81-82	Commune with nature	30,000 gp
+83-83	Dispel chaos	30,000 gp
+84-84	Dispel evil	30,000 gp
+85-87	Dominate person	30,000 gp
+88-91	Hold monster	30,000 gp
+92-94	Holy sword	30,000 gp
+95-95	Mark of justice	30,000 gp
+96-97	Modify memory	30,000 gp
+98-98	Tree stride	30,000 gp
+99-99	Zone of silence	30,000 gp
+100-100	Legend lore	33,500 gp"""
 
 def slugify(string):
-	res = []
-	for c in string:
-		if c.isalpha(): 
-			res.append(c.lower())
-		elif res and res[-1] != '-':
-			res.append('-')
-	if res[-1] == "-":
-		res.pop()
-	return "".join(res)
-	
-def potion(lo_chance, hi_chance, name, gp, spell_level, caster_level, rarity):
-	result = {
-		"LowChance" : lo_chance,
-		"HighChance" : hi_chance,
-		"Name": "Potion of " + name,
-		"id": "potion-of-" + slugify(name),
-		"Type": "potion",
-		"SpellName": name,
-		"SpellId" : slugify(name),
-		"Price": gp,
-		"PriceUnit": "gp",
-		"SpellLevel" : spell_level,
-		"CL" : caster_level,
-		"Rarity" : rarity
-	}
-	return result
-	
-def oil(lo_chance, hi_chance, name, gp, spell_level, caster_level, rarity):
-	result = {
-		"LowChance" : lo_chance,
-		"HighChance" : hi_chance,
-		"Name": "Oil of " + name,
-		"id": "oil-of-" + slugify(name),
-		"Type": "oil",
-		"SpellName": name,
-		"SpellId": slugify(name),
-		"Price": float(gp),
-		"PriceUnit": "gp",
-		"SpellLevel" : spell_level,
-		"CL" : caster_level,
-		"Rarity" : rarity
-	}
-	return result
-	
+    res = []
+    for c in string:
+        if c.isalpha():
+            res.append(c.lower())
+        elif res and res[-1] != '-':
+            res.append('-')
+    if res[-1] == "-":
+        res.pop()
+    return "".join(res)
+
+def wand(lo_chance, hi_chance, name, gp, spell_level, caster_level, rarity):
+    result = {
+        "LowChance" : lo_chance,
+        "HighChance" : hi_chance,
+        "Name": "Wand of " + name,
+        "id": "wand-of-" + slugify(name),
+        "Type": "wand",
+        "SpellName": name,
+        "SpellId" : slugify(name),
+        "Price": float(gp.replace(',','')),
+        "PriceUnit": "gp",
+        "SpellLevel" : spell_level,
+        "CL" : caster_level,
+        "Rarity" : rarity
+    }
+    if result["SpellName"].startswith("Restoration"):
+        result["SpellName"] = "Restoration"
+        result["SpellId"] = "restoration"
+    return result
+
+
 def parseTable(text, spell_level, caster_level, rarity):
-	table = []
-	for line in text.splitlines():
-		splitted = line.split()
-		chance = splitted[0]
-		lo_chance, hi_chance = map(int, chance.split("-"))
-		gp = splitted[-2]			
-		name = " ".join(splitted[1:-2])			
-		table.append(potion(lo_chance, hi_chance, name, gp, spell_level, caster_level, rarity))
-		table.append(oil(lo_chance, hi_chance, name, gp, spell_level, caster_level, rarity))
-	return table
+    table = []
+    for line in text.splitlines():
+        splitted = line.split()
+        chance = splitted[0]
+        lo_chance, hi_chance = map(int, chance.split("-"))
+        gp = splitted[-2]
+        name = " ".join(splitted[1:-2])
+        table.append(wand(lo_chance, hi_chance, name, gp, spell_level, caster_level, rarity))
+    return table
 
 if __name__ == "__main__":
-	table = []
-	table += parseTable(common[0], 0, 1, "common")
-	table += parseTable(common[1], 1, 1, "common")
-	table += parseTable(uncommon[1], 1, 1, "uncommon")
-	table += parseTable(common[2], 2, 3, "common")
-	table += parseTable(uncommon[2], 2, 3, "uncommon")
-	table += parseTable(common[3], 3, 5, "common")
-	table += parseTable(uncommon[3], 3, 5, "uncommon")
-	string = json.dumps(table, indent=4, sort_keys=True)
-	with open("../data/items/potions_and_oils.json", "w") as f:
-		f.write(string)
-	
-				
-			
+    table = []
+    table += parseTable(common[0], 0, 1, "common")
+    table += parseTable(common[1], 1, 1, "common")
+    table += parseTable(uncommon[1], 1, 1, "uncommon")
+    table += parseTable(common[2], 2, 3, "common")
+    table += parseTable(uncommon[2], 2, 3, "uncommon")
+    table += parseTable(common[3], 3, 5, "common")
+    table += parseTable(uncommon[3], 3, 5, "uncommon")
+    table += parseTable(common[4], 4, 7, "common")
+    table += parseTable(uncommon[4], 4, 7, "uncommon")
+    string = json.dumps(table, indent=4, sort_keys=True)
+    with open("../data/items/wands.json", "w") as f:
+        f.write(string)
+
+

@@ -1001,22 +1001,28 @@ def slugify(string):
 	return "".join(res)
 
 def scroll(lo_chance, hi_chance, name, gp, spell_level, caster_level, rarity, magic_type):
-	result = {
-		"LowChance" : lo_chance,
-		"HighChance" : hi_chance,
-		"Name": "Scroll of " + name,
-		"id": "scroll-of-" + slugify(name),
-		"Type": "scroll",
-		"MagicType": magic_type,
-		"SpellName": name,
-		"SpellId": slugify(name),
-		"Price": float(gp.replace(",","")),
-		"PriceUnit": "gp",
-		"SpellLevel" : spell_level,
-		"CL" : caster_level,
-		"Rarity" : rarity
-	}
-	return result
+    result = {
+        "LowChance" : lo_chance,
+        "HighChance" : hi_chance,
+        "Name": "Scroll of " + name,
+        "id": "scroll-of-" + slugify(name),
+        "Type": "scroll",
+        "MagicType": magic_type,
+        "SpellName": name,
+        "SpellId": slugify(name),
+        "Price": float(gp.replace(",","")),
+        "PriceUnit": "gp",
+        "SpellLevel" : spell_level,
+        "CL" : caster_level,
+        "Rarity" : rarity
+    }
+    if result["SpellName"].startswith("Hallow"):
+        result["SpellName"] = "Hallow"
+        result["SpellId"] = "hallow"
+    if result["SpellName"].startswith("Unhallow"):
+        result["SpellName"] = "Unhallow"
+        result["SpellId"] = "unhallow"
+    return result
 	
 def parseTable(text, spell_level, caster_level, rarity, magic_type):
 	table = []
