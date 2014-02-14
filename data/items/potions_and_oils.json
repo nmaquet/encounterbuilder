@@ -1,6 +1,7 @@
 [
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 14, 
         "LowChance": 1, 
         "Name": "Potion of Arcane mark", 
@@ -10,11 +11,11 @@
         "SpellId": "arcane-mark", 
         "SpellLevel": 0, 
         "SpellName": "Arcane mark", 
-        "Type": "potion", 
         "id": "potion-of-arcane-mark"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 14, 
         "LowChance": 1, 
         "Name": "Oil of Arcane mark", 
@@ -24,11 +25,11 @@
         "SpellId": "arcane-mark", 
         "SpellLevel": 0, 
         "SpellName": "Arcane mark", 
-        "Type": "oil", 
         "id": "oil-of-arcane-mark"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 28, 
         "LowChance": 15, 
         "Name": "Potion of Guidance", 
@@ -38,11 +39,11 @@
         "SpellId": "guidance", 
         "SpellLevel": 0, 
         "SpellName": "Guidance", 
-        "Type": "potion", 
         "id": "potion-of-guidance"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 28, 
         "LowChance": 15, 
         "Name": "Oil of Guidance", 
@@ -52,11 +53,11 @@
         "SpellId": "guidance", 
         "SpellLevel": 0, 
         "SpellName": "Guidance", 
-        "Type": "oil", 
         "id": "oil-of-guidance"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 44, 
         "LowChance": 29, 
         "Name": "Potion of Light", 
@@ -66,11 +67,11 @@
         "SpellId": "light", 
         "SpellLevel": 0, 
         "SpellName": "Light", 
-        "Type": "potion", 
         "id": "potion-of-light"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 44, 
         "LowChance": 29, 
         "Name": "Oil of Light", 
@@ -80,11 +81,11 @@
         "SpellId": "light", 
         "SpellLevel": 0, 
         "SpellName": "Light", 
-        "Type": "oil", 
         "id": "oil-of-light"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 58, 
         "LowChance": 45, 
         "Name": "Potion of Purify food and drink", 
@@ -94,11 +95,11 @@
         "SpellId": "purify-food-and-drink", 
         "SpellLevel": 0, 
         "SpellName": "Purify food and drink", 
-        "Type": "potion", 
         "id": "potion-of-purify-food-and-drink"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 58, 
         "LowChance": 45, 
         "Name": "Oil of Purify food and drink", 
@@ -108,11 +109,11 @@
         "SpellId": "purify-food-and-drink", 
         "SpellLevel": 0, 
         "SpellName": "Purify food and drink", 
-        "Type": "oil", 
         "id": "oil-of-purify-food-and-drink"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 72, 
         "LowChance": 59, 
         "Name": "Potion of Resistance", 
@@ -122,11 +123,11 @@
         "SpellId": "resistance", 
         "SpellLevel": 0, 
         "SpellName": "Resistance", 
-        "Type": "potion", 
         "id": "potion-of-resistance"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 72, 
         "LowChance": 59, 
         "Name": "Oil of Resistance", 
@@ -136,11 +137,11 @@
         "SpellId": "resistance", 
         "SpellLevel": 0, 
         "SpellName": "Resistance", 
-        "Type": "oil", 
         "id": "oil-of-resistance"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 86, 
         "LowChance": 73, 
         "Name": "Potion of Stabilize", 
@@ -150,11 +151,11 @@
         "SpellId": "stabilize", 
         "SpellLevel": 0, 
         "SpellName": "Stabilize", 
-        "Type": "potion", 
         "id": "potion-of-stabilize"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 86, 
         "LowChance": 73, 
         "Name": "Oil of Stabilize", 
@@ -164,11 +165,11 @@
         "SpellId": "stabilize", 
         "SpellLevel": 0, 
         "SpellName": "Stabilize", 
-        "Type": "oil", 
         "id": "oil-of-stabilize"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 100, 
         "LowChance": 87, 
         "Name": "Potion of Virtue", 
@@ -178,11 +179,11 @@
         "SpellId": "virtue", 
         "SpellLevel": 0, 
         "SpellName": "Virtue", 
-        "Type": "potion", 
         "id": "potion-of-virtue"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 100, 
         "LowChance": 87, 
         "Name": "Oil of Virtue", 
@@ -192,11 +193,11 @@
         "SpellId": "virtue", 
         "SpellLevel": 0, 
         "SpellName": "Virtue", 
-        "Type": "oil", 
         "id": "oil-of-virtue"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 4, 
         "LowChance": 1, 
         "Name": "Potion of Bless weapon", 
@@ -206,11 +207,11 @@
         "SpellId": "bless-weapon", 
         "SpellLevel": 1, 
         "SpellName": "Bless weapon", 
-        "Type": "potion", 
         "id": "potion-of-bless-weapon"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 4, 
         "LowChance": 1, 
         "Name": "Oil of Bless weapon", 
@@ -220,11 +221,11 @@
         "SpellId": "bless-weapon", 
         "SpellLevel": 1, 
         "SpellName": "Bless weapon", 
-        "Type": "oil", 
         "id": "oil-of-bless-weapon"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 14, 
         "LowChance": 5, 
         "Name": "Potion of Cure light wounds", 
@@ -234,11 +235,11 @@
         "SpellId": "cure-light-wounds", 
         "SpellLevel": 1, 
         "SpellName": "Cure light wounds", 
-        "Type": "potion", 
         "id": "potion-of-cure-light-wounds"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 14, 
         "LowChance": 5, 
         "Name": "Oil of Cure light wounds", 
@@ -248,11 +249,11 @@
         "SpellId": "cure-light-wounds", 
         "SpellLevel": 1, 
         "SpellName": "Cure light wounds", 
-        "Type": "oil", 
         "id": "oil-of-cure-light-wounds"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 19, 
         "LowChance": 15, 
         "Name": "Potion of Endure elements", 
@@ -262,11 +263,11 @@
         "SpellId": "endure-elements", 
         "SpellLevel": 1, 
         "SpellName": "Endure elements", 
-        "Type": "potion", 
         "id": "potion-of-endure-elements"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 19, 
         "LowChance": 15, 
         "Name": "Oil of Endure elements", 
@@ -276,11 +277,11 @@
         "SpellId": "endure-elements", 
         "SpellLevel": 1, 
         "SpellName": "Endure elements", 
-        "Type": "oil", 
         "id": "oil-of-endure-elements"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 27, 
         "LowChance": 20, 
         "Name": "Potion of Enlarge person", 
@@ -290,11 +291,11 @@
         "SpellId": "enlarge-person", 
         "SpellLevel": 1, 
         "SpellName": "Enlarge person", 
-        "Type": "potion", 
         "id": "potion-of-enlarge-person"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 27, 
         "LowChance": 20, 
         "Name": "Oil of Enlarge person", 
@@ -304,11 +305,11 @@
         "SpellId": "enlarge-person", 
         "SpellLevel": 1, 
         "SpellName": "Enlarge person", 
-        "Type": "oil", 
         "id": "oil-of-enlarge-person"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 33, 
         "LowChance": 28, 
         "Name": "Potion of Jump", 
@@ -318,11 +319,11 @@
         "SpellId": "jump", 
         "SpellLevel": 1, 
         "SpellName": "Jump", 
-        "Type": "potion", 
         "id": "potion-of-jump"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 33, 
         "LowChance": 28, 
         "Name": "Oil of Jump", 
@@ -332,11 +333,11 @@
         "SpellId": "jump", 
         "SpellLevel": 1, 
         "SpellName": "Jump", 
-        "Type": "oil", 
         "id": "oil-of-jump"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 41, 
         "LowChance": 34, 
         "Name": "Potion of Mage armor", 
@@ -346,11 +347,11 @@
         "SpellId": "mage-armor", 
         "SpellLevel": 1, 
         "SpellName": "Mage armor", 
-        "Type": "potion", 
         "id": "potion-of-mage-armor"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 41, 
         "LowChance": 34, 
         "Name": "Oil of Mage armor", 
@@ -360,11 +361,11 @@
         "SpellId": "mage-armor", 
         "SpellLevel": 1, 
         "SpellName": "Mage armor", 
-        "Type": "oil", 
         "id": "oil-of-mage-armor"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 47, 
         "LowChance": 42, 
         "Name": "Potion of Magic fang", 
@@ -374,11 +375,11 @@
         "SpellId": "magic-fang", 
         "SpellLevel": 1, 
         "SpellName": "Magic fang", 
-        "Type": "potion", 
         "id": "potion-of-magic-fang"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 47, 
         "LowChance": 42, 
         "Name": "Oil of Magic fang", 
@@ -388,11 +389,11 @@
         "SpellId": "magic-fang", 
         "SpellLevel": 1, 
         "SpellName": "Magic fang", 
-        "Type": "oil", 
         "id": "oil-of-magic-fang"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 55, 
         "LowChance": 48, 
         "Name": "Potion of Magic weapon", 
@@ -402,11 +403,11 @@
         "SpellId": "magic-weapon", 
         "SpellLevel": 1, 
         "SpellName": "Magic weapon", 
-        "Type": "potion", 
         "id": "potion-of-magic-weapon"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 55, 
         "LowChance": 48, 
         "Name": "Oil of Magic weapon", 
@@ -416,11 +417,11 @@
         "SpellId": "magic-weapon", 
         "SpellLevel": 1, 
         "SpellName": "Magic weapon", 
-        "Type": "oil", 
         "id": "oil-of-magic-weapon"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 60, 
         "LowChance": 56, 
         "Name": "Potion of Pass without trace", 
@@ -430,11 +431,11 @@
         "SpellId": "pass-without-trace", 
         "SpellLevel": 1, 
         "SpellName": "Pass without trace", 
-        "Type": "potion", 
         "id": "potion-of-pass-without-trace"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 60, 
         "LowChance": 56, 
         "Name": "Oil of Pass without trace", 
@@ -444,11 +445,11 @@
         "SpellId": "pass-without-trace", 
         "SpellLevel": 1, 
         "SpellName": "Pass without trace", 
-        "Type": "oil", 
         "id": "oil-of-pass-without-trace"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 64, 
         "LowChance": 61, 
         "Name": "Potion of Protection from chaos", 
@@ -458,11 +459,11 @@
         "SpellId": "protection-from-chaos", 
         "SpellLevel": 1, 
         "SpellName": "Protection from chaos", 
-        "Type": "potion", 
         "id": "potion-of-protection-from-chaos"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 64, 
         "LowChance": 61, 
         "Name": "Oil of Protection from chaos", 
@@ -472,11 +473,11 @@
         "SpellId": "protection-from-chaos", 
         "SpellLevel": 1, 
         "SpellName": "Protection from chaos", 
-        "Type": "oil", 
         "id": "oil-of-protection-from-chaos"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 68, 
         "LowChance": 65, 
         "Name": "Potion of Protection from evil", 
@@ -486,11 +487,11 @@
         "SpellId": "protection-from-evil", 
         "SpellLevel": 1, 
         "SpellName": "Protection from evil", 
-        "Type": "potion", 
         "id": "potion-of-protection-from-evil"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 68, 
         "LowChance": 65, 
         "Name": "Oil of Protection from evil", 
@@ -500,11 +501,11 @@
         "SpellId": "protection-from-evil", 
         "SpellLevel": 1, 
         "SpellName": "Protection from evil", 
-        "Type": "oil", 
         "id": "oil-of-protection-from-evil"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 72, 
         "LowChance": 69, 
         "Name": "Potion of Protection from good", 
@@ -514,11 +515,11 @@
         "SpellId": "protection-from-good", 
         "SpellLevel": 1, 
         "SpellName": "Protection from good", 
-        "Type": "potion", 
         "id": "potion-of-protection-from-good"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 72, 
         "LowChance": 69, 
         "Name": "Oil of Protection from good", 
@@ -528,11 +529,11 @@
         "SpellId": "protection-from-good", 
         "SpellLevel": 1, 
         "SpellName": "Protection from good", 
-        "Type": "oil", 
         "id": "oil-of-protection-from-good"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 76, 
         "LowChance": 73, 
         "Name": "Potion of Protection from law", 
@@ -542,11 +543,11 @@
         "SpellId": "protection-from-law", 
         "SpellLevel": 1, 
         "SpellName": "Protection from law", 
-        "Type": "potion", 
         "id": "potion-of-protection-from-law"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 76, 
         "LowChance": 73, 
         "Name": "Oil of Protection from law", 
@@ -556,11 +557,11 @@
         "SpellId": "protection-from-law", 
         "SpellLevel": 1, 
         "SpellName": "Protection from law", 
-        "Type": "oil", 
         "id": "oil-of-protection-from-law"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 81, 
         "LowChance": 77, 
         "Name": "Potion of Reduce person", 
@@ -570,11 +571,11 @@
         "SpellId": "reduce-person", 
         "SpellLevel": 1, 
         "SpellName": "Reduce person", 
-        "Type": "potion", 
         "id": "potion-of-reduce-person"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 81, 
         "LowChance": 77, 
         "Name": "Oil of Reduce person", 
@@ -584,11 +585,11 @@
         "SpellId": "reduce-person", 
         "SpellLevel": 1, 
         "SpellName": "Reduce person", 
-        "Type": "oil", 
         "id": "oil-of-reduce-person"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 87, 
         "LowChance": 82, 
         "Name": "Potion of Remove fear", 
@@ -598,11 +599,11 @@
         "SpellId": "remove-fear", 
         "SpellLevel": 1, 
         "SpellName": "Remove fear", 
-        "Type": "potion", 
         "id": "potion-of-remove-fear"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 87, 
         "LowChance": 82, 
         "Name": "Oil of Remove fear", 
@@ -612,11 +613,11 @@
         "SpellId": "remove-fear", 
         "SpellLevel": 1, 
         "SpellName": "Remove fear", 
-        "Type": "oil", 
         "id": "oil-of-remove-fear"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 92, 
         "LowChance": 88, 
         "Name": "Potion of Sanctuary", 
@@ -626,11 +627,11 @@
         "SpellId": "sanctuary", 
         "SpellLevel": 1, 
         "SpellName": "Sanctuary", 
-        "Type": "potion", 
         "id": "potion-of-sanctuary"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 92, 
         "LowChance": 88, 
         "Name": "Oil of Sanctuary", 
@@ -640,11 +641,11 @@
         "SpellId": "sanctuary", 
         "SpellLevel": 1, 
         "SpellName": "Sanctuary", 
-        "Type": "oil", 
         "id": "oil-of-sanctuary"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 100, 
         "LowChance": 93, 
         "Name": "Potion of Shield of faith", 
@@ -654,11 +655,11 @@
         "SpellId": "shield-of-faith", 
         "SpellLevel": 1, 
         "SpellName": "Shield of faith", 
-        "Type": "potion", 
         "id": "potion-of-shield-of-faith"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 100, 
         "LowChance": 93, 
         "Name": "Oil of Shield of faith", 
@@ -668,11 +669,11 @@
         "SpellId": "shield-of-faith", 
         "SpellLevel": 1, 
         "SpellName": "Shield of faith", 
-        "Type": "oil", 
         "id": "oil-of-shield-of-faith"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 4, 
         "LowChance": 1, 
         "Name": "Potion of Animate rope", 
@@ -682,11 +683,11 @@
         "SpellId": "animate-rope", 
         "SpellLevel": 1, 
         "SpellName": "Animate rope", 
-        "Type": "potion", 
         "id": "potion-of-animate-rope"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 4, 
         "LowChance": 1, 
         "Name": "Oil of Animate rope", 
@@ -696,11 +697,11 @@
         "SpellId": "animate-rope", 
         "SpellLevel": 1, 
         "SpellName": "Animate rope", 
-        "Type": "oil", 
         "id": "oil-of-animate-rope"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 11, 
         "LowChance": 5, 
         "Name": "Potion of Ant haul", 
@@ -710,11 +711,11 @@
         "SpellId": "ant-haul", 
         "SpellLevel": 1, 
         "SpellName": "Ant haul", 
-        "Type": "potion", 
         "id": "potion-of-ant-haul"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 11, 
         "LowChance": 5, 
         "Name": "Oil of Ant haul", 
@@ -724,11 +725,11 @@
         "SpellId": "ant-haul", 
         "SpellLevel": 1, 
         "SpellName": "Ant haul", 
-        "Type": "oil", 
         "id": "oil-of-ant-haul"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 16, 
         "LowChance": 12, 
         "Name": "Potion of Cloak of the shade", 
@@ -738,11 +739,11 @@
         "SpellId": "cloak-of-the-shade", 
         "SpellLevel": 1, 
         "SpellName": "Cloak of the shade", 
-        "Type": "potion", 
         "id": "potion-of-cloak-of-the-shade"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 16, 
         "LowChance": 12, 
         "Name": "Oil of Cloak of the shade", 
@@ -752,11 +753,11 @@
         "SpellId": "cloak-of-the-shade", 
         "SpellLevel": 1, 
         "SpellName": "Cloak of the shade", 
-        "Type": "oil", 
         "id": "oil-of-cloak-of-the-shade"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 20, 
         "LowChance": 17, 
         "Name": "Potion of Erase", 
@@ -766,11 +767,11 @@
         "SpellId": "erase", 
         "SpellLevel": 1, 
         "SpellName": "Erase", 
-        "Type": "potion", 
         "id": "potion-of-erase"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 20, 
         "LowChance": 17, 
         "Name": "Oil of Erase", 
@@ -780,11 +781,11 @@
         "SpellId": "erase", 
         "SpellLevel": 1, 
         "SpellName": "Erase", 
-        "Type": "oil", 
         "id": "oil-of-erase"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 26, 
         "LowChance": 21, 
         "Name": "Potion of Feather step", 
@@ -794,11 +795,11 @@
         "SpellId": "feather-step", 
         "SpellLevel": 1, 
         "SpellName": "Feather step", 
-        "Type": "potion", 
         "id": "potion-of-feather-step"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 26, 
         "LowChance": 21, 
         "Name": "Oil of Feather step", 
@@ -808,11 +809,11 @@
         "SpellId": "feather-step", 
         "SpellLevel": 1, 
         "SpellName": "Feather step", 
-        "Type": "oil", 
         "id": "oil-of-feather-step"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 30, 
         "LowChance": 27, 
         "Name": "Potion of Goodberry", 
@@ -822,11 +823,11 @@
         "SpellId": "goodberry", 
         "SpellLevel": 1, 
         "SpellName": "Goodberry", 
-        "Type": "potion", 
         "id": "potion-of-goodberry"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 30, 
         "LowChance": 27, 
         "Name": "Oil of Goodberry", 
@@ -836,11 +837,11 @@
         "SpellId": "goodberry", 
         "SpellLevel": 1, 
         "SpellName": "Goodberry", 
-        "Type": "oil", 
         "id": "oil-of-goodberry"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 34, 
         "LowChance": 31, 
         "Name": "Potion of Grease", 
@@ -850,11 +851,11 @@
         "SpellId": "grease", 
         "SpellLevel": 1, 
         "SpellName": "Grease", 
-        "Type": "potion", 
         "id": "potion-of-grease"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 34, 
         "LowChance": 31, 
         "Name": "Oil of Grease", 
@@ -864,11 +865,11 @@
         "SpellId": "grease", 
         "SpellLevel": 1, 
         "SpellName": "Grease", 
-        "Type": "oil", 
         "id": "oil-of-grease"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 41, 
         "LowChance": 35, 
         "Name": "Potion of Hide from animals", 
@@ -878,11 +879,11 @@
         "SpellId": "hide-from-animals", 
         "SpellLevel": 1, 
         "SpellName": "Hide from animals", 
-        "Type": "potion", 
         "id": "potion-of-hide-from-animals"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 41, 
         "LowChance": 35, 
         "Name": "Oil of Hide from animals", 
@@ -892,11 +893,11 @@
         "SpellId": "hide-from-animals", 
         "SpellLevel": 1, 
         "SpellName": "Hide from animals", 
-        "Type": "oil", 
         "id": "oil-of-hide-from-animals"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 49, 
         "LowChance": 42, 
         "Name": "Potion of Hide from undead", 
@@ -906,11 +907,11 @@
         "SpellId": "hide-from-undead", 
         "SpellLevel": 1, 
         "SpellName": "Hide from undead", 
-        "Type": "potion", 
         "id": "potion-of-hide-from-undead"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 49, 
         "LowChance": 42, 
         "Name": "Oil of Hide from undead", 
@@ -920,11 +921,11 @@
         "SpellId": "hide-from-undead", 
         "SpellLevel": 1, 
         "SpellName": "Hide from undead", 
-        "Type": "oil", 
         "id": "oil-of-hide-from-undead"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 53, 
         "LowChance": 50, 
         "Name": "Potion of Hold portal", 
@@ -934,11 +935,11 @@
         "SpellId": "hold-portal", 
         "SpellLevel": 1, 
         "SpellName": "Hold portal", 
-        "Type": "potion", 
         "id": "potion-of-hold-portal"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 53, 
         "LowChance": 50, 
         "Name": "Oil of Hold portal", 
@@ -948,11 +949,11 @@
         "SpellId": "hold-portal", 
         "SpellLevel": 1, 
         "SpellName": "Hold portal", 
-        "Type": "oil", 
         "id": "oil-of-hold-portal"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 58, 
         "LowChance": 54, 
         "Name": "Potion of Invigorate", 
@@ -962,11 +963,11 @@
         "SpellId": "invigorate", 
         "SpellLevel": 1, 
         "SpellName": "Invigorate", 
-        "Type": "potion", 
         "id": "potion-of-invigorate"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 58, 
         "LowChance": 54, 
         "Name": "Oil of Invigorate", 
@@ -976,11 +977,11 @@
         "SpellId": "invigorate", 
         "SpellLevel": 1, 
         "SpellName": "Invigorate", 
-        "Type": "oil", 
         "id": "oil-of-invigorate"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 64, 
         "LowChance": 59, 
         "Name": "Potion of Keen senses", 
@@ -990,11 +991,11 @@
         "SpellId": "keen-senses", 
         "SpellLevel": 1, 
         "SpellName": "Keen senses", 
-        "Type": "potion", 
         "id": "potion-of-keen-senses"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 64, 
         "LowChance": 59, 
         "Name": "Oil of Keen senses", 
@@ -1004,11 +1005,11 @@
         "SpellId": "keen-senses", 
         "SpellLevel": 1, 
         "SpellName": "Keen senses", 
-        "Type": "oil", 
         "id": "oil-of-keen-senses"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 68, 
         "LowChance": 65, 
         "Name": "Potion of Magic stone", 
@@ -1018,11 +1019,11 @@
         "SpellId": "magic-stone", 
         "SpellLevel": 1, 
         "SpellName": "Magic stone", 
-        "Type": "potion", 
         "id": "potion-of-magic-stone"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 68, 
         "LowChance": 65, 
         "Name": "Oil of Magic stone", 
@@ -1032,11 +1033,11 @@
         "SpellId": "magic-stone", 
         "SpellLevel": 1, 
         "SpellName": "Magic stone", 
-        "Type": "oil", 
         "id": "oil-of-magic-stone"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 75, 
         "LowChance": 69, 
         "Name": "Potion of Remove sickness", 
@@ -1046,11 +1047,11 @@
         "SpellId": "remove-sickness", 
         "SpellLevel": 1, 
         "SpellName": "Remove sickness", 
-        "Type": "potion", 
         "id": "potion-of-remove-sickness"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 75, 
         "LowChance": 69, 
         "Name": "Oil of Remove sickness", 
@@ -1060,11 +1061,11 @@
         "SpellId": "remove-sickness", 
         "SpellLevel": 1, 
         "SpellName": "Remove sickness", 
-        "Type": "oil", 
         "id": "oil-of-remove-sickness"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 80, 
         "LowChance": 76, 
         "Name": "Potion of Sanctify corpse", 
@@ -1074,11 +1075,11 @@
         "SpellId": "sanctify-corpse", 
         "SpellLevel": 1, 
         "SpellName": "Sanctify corpse", 
-        "Type": "potion", 
         "id": "potion-of-sanctify-corpse"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 80, 
         "LowChance": 76, 
         "Name": "Oil of Sanctify corpse", 
@@ -1088,11 +1089,11 @@
         "SpellId": "sanctify-corpse", 
         "SpellLevel": 1, 
         "SpellName": "Sanctify corpse", 
-        "Type": "oil", 
         "id": "oil-of-sanctify-corpse"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 84, 
         "LowChance": 81, 
         "Name": "Potion of Shillelagh", 
@@ -1102,11 +1103,11 @@
         "SpellId": "shillelagh", 
         "SpellLevel": 1, 
         "SpellName": "Shillelagh", 
-        "Type": "potion", 
         "id": "potion-of-shillelagh"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 84, 
         "LowChance": 81, 
         "Name": "Oil of Shillelagh", 
@@ -1116,11 +1117,11 @@
         "SpellId": "shillelagh", 
         "SpellLevel": 1, 
         "SpellName": "Shillelagh", 
-        "Type": "oil", 
         "id": "oil-of-shillelagh"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 92, 
         "LowChance": 85, 
         "Name": "Potion of Touch of the sea", 
@@ -1130,11 +1131,11 @@
         "SpellId": "touch-of-the-sea", 
         "SpellLevel": 1, 
         "SpellName": "Touch of the sea", 
-        "Type": "potion", 
         "id": "potion-of-touch-of-the-sea"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 92, 
         "LowChance": 85, 
         "Name": "Oil of Touch of the sea", 
@@ -1144,11 +1145,11 @@
         "SpellId": "touch-of-the-sea", 
         "SpellLevel": 1, 
         "SpellName": "Touch of the sea", 
-        "Type": "oil", 
         "id": "oil-of-touch-of-the-sea"
     }, 
     {
         "CL": 1, 
+        "Group": "Potion", 
         "HighChance": 100, 
         "LowChance": 93, 
         "Name": "Potion of Vanish", 
@@ -1158,11 +1159,11 @@
         "SpellId": "vanish", 
         "SpellLevel": 1, 
         "SpellName": "Vanish", 
-        "Type": "potion", 
         "id": "potion-of-vanish"
     }, 
     {
         "CL": 1, 
+        "Group": "Oil", 
         "HighChance": 100, 
         "LowChance": 93, 
         "Name": "Oil of Vanish", 
@@ -1172,11 +1173,11 @@
         "SpellId": "vanish", 
         "SpellLevel": 1, 
         "SpellName": "Vanish", 
-        "Type": "oil", 
         "id": "oil-of-vanish"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 4, 
         "LowChance": 1, 
         "Name": "Potion of Aid", 
@@ -1186,11 +1187,11 @@
         "SpellId": "aid", 
         "SpellLevel": 2, 
         "SpellName": "Aid", 
-        "Type": "potion", 
         "id": "potion-of-aid"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 4, 
         "LowChance": 1, 
         "Name": "Oil of Aid", 
@@ -1200,11 +1201,11 @@
         "SpellId": "aid", 
         "SpellLevel": 2, 
         "SpellName": "Aid", 
-        "Type": "oil", 
         "id": "oil-of-aid"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 7, 
         "LowChance": 5, 
         "Name": "Potion of Align weapon", 
@@ -1214,11 +1215,11 @@
         "SpellId": "align-weapon", 
         "SpellLevel": 2, 
         "SpellName": "Align weapon", 
-        "Type": "potion", 
         "id": "potion-of-align-weapon"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 7, 
         "LowChance": 5, 
         "Name": "Oil of Align weapon", 
@@ -1228,11 +1229,11 @@
         "SpellId": "align-weapon", 
         "SpellLevel": 2, 
         "SpellName": "Align weapon", 
-        "Type": "oil", 
         "id": "oil-of-align-weapon"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 11, 
         "LowChance": 8, 
         "Name": "Potion of Barkskin", 
@@ -1242,11 +1243,11 @@
         "SpellId": "barkskin", 
         "SpellLevel": 2, 
         "SpellName": "Barkskin", 
-        "Type": "potion", 
         "id": "potion-of-barkskin"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 11, 
         "LowChance": 8, 
         "Name": "Oil of Barkskin", 
@@ -1256,11 +1257,11 @@
         "SpellId": "barkskin", 
         "SpellLevel": 2, 
         "SpellName": "Barkskin", 
-        "Type": "oil", 
         "id": "oil-of-barkskin"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 16, 
         "LowChance": 12, 
         "Name": "Potion of Bear's endurance", 
@@ -1270,11 +1271,11 @@
         "SpellId": "bear-s-endurance", 
         "SpellLevel": 2, 
         "SpellName": "Bear's endurance", 
-        "Type": "potion", 
         "id": "potion-of-bear-s-endurance"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 16, 
         "LowChance": 12, 
         "Name": "Oil of Bear's endurance", 
@@ -1284,11 +1285,11 @@
         "SpellId": "bear-s-endurance", 
         "SpellLevel": 2, 
         "SpellName": "Bear's endurance", 
-        "Type": "oil", 
         "id": "oil-of-bear-s-endurance"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 20, 
         "LowChance": 17, 
         "Name": "Potion of Blur", 
@@ -1298,11 +1299,11 @@
         "SpellId": "blur", 
         "SpellLevel": 2, 
         "SpellName": "Blur", 
-        "Type": "potion", 
         "id": "potion-of-blur"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 20, 
         "LowChance": 17, 
         "Name": "Oil of Blur", 
@@ -1312,11 +1313,11 @@
         "SpellId": "blur", 
         "SpellLevel": 2, 
         "SpellName": "Blur", 
-        "Type": "oil", 
         "id": "oil-of-blur"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 25, 
         "LowChance": 21, 
         "Name": "Potion of Bull's strength", 
@@ -1326,11 +1327,11 @@
         "SpellId": "bull-s-strength", 
         "SpellLevel": 2, 
         "SpellName": "Bull's strength", 
-        "Type": "potion", 
         "id": "potion-of-bull-s-strength"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 25, 
         "LowChance": 21, 
         "Name": "Oil of Bull's strength", 
@@ -1340,11 +1341,11 @@
         "SpellId": "bull-s-strength", 
         "SpellLevel": 2, 
         "SpellName": "Bull's strength", 
-        "Type": "oil", 
         "id": "oil-of-bull-s-strength"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 30, 
         "LowChance": 26, 
         "Name": "Potion of Cat's grace", 
@@ -1354,11 +1355,11 @@
         "SpellId": "cat-s-grace", 
         "SpellLevel": 2, 
         "SpellName": "Cat's grace", 
-        "Type": "potion", 
         "id": "potion-of-cat-s-grace"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 30, 
         "LowChance": 26, 
         "Name": "Oil of Cat's grace", 
@@ -1368,11 +1369,11 @@
         "SpellId": "cat-s-grace", 
         "SpellLevel": 2, 
         "SpellName": "Cat's grace", 
-        "Type": "oil", 
         "id": "oil-of-cat-s-grace"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 37, 
         "LowChance": 31, 
         "Name": "Potion of Cure moderate wounds", 
@@ -1382,11 +1383,11 @@
         "SpellId": "cure-moderate-wounds", 
         "SpellLevel": 2, 
         "SpellName": "Cure moderate wounds", 
-        "Type": "potion", 
         "id": "potion-of-cure-moderate-wounds"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 37, 
         "LowChance": 31, 
         "Name": "Oil of Cure moderate wounds", 
@@ -1396,11 +1397,11 @@
         "SpellId": "cure-moderate-wounds", 
         "SpellLevel": 2, 
         "SpellName": "Cure moderate wounds", 
-        "Type": "oil", 
         "id": "oil-of-cure-moderate-wounds"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 41, 
         "LowChance": 38, 
         "Name": "Potion of Darkvision", 
@@ -1410,11 +1411,11 @@
         "SpellId": "darkvision", 
         "SpellLevel": 2, 
         "SpellName": "Darkvision", 
-        "Type": "potion", 
         "id": "potion-of-darkvision"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 41, 
         "LowChance": 38, 
         "Name": "Oil of Darkvision", 
@@ -1424,11 +1425,11 @@
         "SpellId": "darkvision", 
         "SpellLevel": 2, 
         "SpellName": "Darkvision", 
-        "Type": "oil", 
         "id": "oil-of-darkvision"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 44, 
         "LowChance": 42, 
         "Name": "Potion of Delay poison", 
@@ -1438,11 +1439,11 @@
         "SpellId": "delay-poison", 
         "SpellLevel": 2, 
         "SpellName": "Delay poison", 
-        "Type": "potion", 
         "id": "potion-of-delay-poison"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 44, 
         "LowChance": 42, 
         "Name": "Oil of Delay poison", 
@@ -1452,11 +1453,11 @@
         "SpellId": "delay-poison", 
         "SpellLevel": 2, 
         "SpellName": "Delay poison", 
-        "Type": "oil", 
         "id": "oil-of-delay-poison"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 49, 
         "LowChance": 45, 
         "Name": "Potion of Eagle's splendor", 
@@ -1466,11 +1467,11 @@
         "SpellId": "eagle-s-splendor", 
         "SpellLevel": 2, 
         "SpellName": "Eagle's splendor", 
-        "Type": "potion", 
         "id": "potion-of-eagle-s-splendor"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 49, 
         "LowChance": 45, 
         "Name": "Oil of Eagle's splendor", 
@@ -1480,11 +1481,11 @@
         "SpellId": "eagle-s-splendor", 
         "SpellLevel": 2, 
         "SpellName": "Eagle's splendor", 
-        "Type": "oil", 
         "id": "oil-of-eagle-s-splendor"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 54, 
         "LowChance": 50, 
         "Name": "Potion of Fox's cunning", 
@@ -1494,11 +1495,11 @@
         "SpellId": "fox-s-cunning", 
         "SpellLevel": 2, 
         "SpellName": "Fox's cunning", 
-        "Type": "potion", 
         "id": "potion-of-fox-s-cunning"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 54, 
         "LowChance": 50, 
         "Name": "Oil of Fox's cunning", 
@@ -1508,11 +1509,11 @@
         "SpellId": "fox-s-cunning", 
         "SpellLevel": 2, 
         "SpellName": "Fox's cunning", 
-        "Type": "oil", 
         "id": "oil-of-fox-s-cunning"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 61, 
         "LowChance": 55, 
         "Name": "Potion of Invisibility", 
@@ -1522,11 +1523,11 @@
         "SpellId": "invisibility", 
         "SpellLevel": 2, 
         "SpellName": "Invisibility", 
-        "Type": "potion", 
         "id": "potion-of-invisibility"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 61, 
         "LowChance": 55, 
         "Name": "Oil of Invisibility", 
@@ -1536,11 +1537,11 @@
         "SpellId": "invisibility", 
         "SpellLevel": 2, 
         "SpellName": "Invisibility", 
-        "Type": "oil", 
         "id": "oil-of-invisibility"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 66, 
         "LowChance": 62, 
         "Name": "Potion of Levitate", 
@@ -1550,11 +1551,11 @@
         "SpellId": "levitate", 
         "SpellLevel": 2, 
         "SpellName": "Levitate", 
-        "Type": "potion", 
         "id": "potion-of-levitate"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 66, 
         "LowChance": 62, 
         "Name": "Oil of Levitate", 
@@ -1564,11 +1565,11 @@
         "SpellId": "levitate", 
         "SpellLevel": 2, 
         "SpellName": "Levitate", 
-        "Type": "oil", 
         "id": "oil-of-levitate"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 71, 
         "LowChance": 67, 
         "Name": "Potion of Owl's wisdom", 
@@ -1578,11 +1579,11 @@
         "SpellId": "owl-s-wisdom", 
         "SpellLevel": 2, 
         "SpellName": "Owl's wisdom", 
-        "Type": "potion", 
         "id": "potion-of-owl-s-wisdom"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 71, 
         "LowChance": 67, 
         "Name": "Oil of Owl's wisdom", 
@@ -1592,11 +1593,11 @@
         "SpellId": "owl-s-wisdom", 
         "SpellLevel": 2, 
         "SpellName": "Owl's wisdom", 
-        "Type": "oil", 
         "id": "oil-of-owl-s-wisdom"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 73, 
         "LowChance": 72, 
         "Name": "Potion of Protection from arrows", 
@@ -1606,11 +1607,11 @@
         "SpellId": "protection-from-arrows", 
         "SpellLevel": 2, 
         "SpellName": "Protection from arrows", 
-        "Type": "potion", 
         "id": "potion-of-protection-from-arrows"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 73, 
         "LowChance": 72, 
         "Name": "Oil of Protection from arrows", 
@@ -1620,11 +1621,11 @@
         "SpellId": "protection-from-arrows", 
         "SpellLevel": 2, 
         "SpellName": "Protection from arrows", 
-        "Type": "oil", 
         "id": "oil-of-protection-from-arrows"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 76, 
         "LowChance": 74, 
         "Name": "Potion of Remove paralysis", 
@@ -1634,11 +1635,11 @@
         "SpellId": "remove-paralysis", 
         "SpellLevel": 2, 
         "SpellName": "Remove paralysis", 
-        "Type": "potion", 
         "id": "potion-of-remove-paralysis"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 76, 
         "LowChance": 74, 
         "Name": "Oil of Remove paralysis", 
@@ -1648,11 +1649,11 @@
         "SpellId": "remove-paralysis", 
         "SpellLevel": 2, 
         "SpellName": "Remove paralysis", 
-        "Type": "oil", 
         "id": "oil-of-remove-paralysis"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 80, 
         "LowChance": 77, 
         "Name": "Potion of Resist energy, acid", 
@@ -1662,11 +1663,11 @@
         "SpellId": "resist-energy-acid", 
         "SpellLevel": 2, 
         "SpellName": "Resist energy, acid", 
-        "Type": "potion", 
         "id": "potion-of-resist-energy-acid"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 80, 
         "LowChance": 77, 
         "Name": "Oil of Resist energy, acid", 
@@ -1676,11 +1677,11 @@
         "SpellId": "resist-energy-acid", 
         "SpellLevel": 2, 
         "SpellName": "Resist energy, acid", 
-        "Type": "oil", 
         "id": "oil-of-resist-energy-acid"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 84, 
         "LowChance": 81, 
         "Name": "Potion of Resist energy, cold", 
@@ -1690,11 +1691,11 @@
         "SpellId": "resist-energy-cold", 
         "SpellLevel": 2, 
         "SpellName": "Resist energy, cold", 
-        "Type": "potion", 
         "id": "potion-of-resist-energy-cold"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 84, 
         "LowChance": 81, 
         "Name": "Oil of Resist energy, cold", 
@@ -1704,11 +1705,11 @@
         "SpellId": "resist-energy-cold", 
         "SpellLevel": 2, 
         "SpellName": "Resist energy, cold", 
-        "Type": "oil", 
         "id": "oil-of-resist-energy-cold"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 88, 
         "LowChance": 85, 
         "Name": "Potion of Resist energy, electricity", 
@@ -1718,11 +1719,11 @@
         "SpellId": "resist-energy-electricity", 
         "SpellLevel": 2, 
         "SpellName": "Resist energy, electricity", 
-        "Type": "potion", 
         "id": "potion-of-resist-energy-electricity"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 88, 
         "LowChance": 85, 
         "Name": "Oil of Resist energy, electricity", 
@@ -1732,11 +1733,11 @@
         "SpellId": "resist-energy-electricity", 
         "SpellLevel": 2, 
         "SpellName": "Resist energy, electricity", 
-        "Type": "oil", 
         "id": "oil-of-resist-energy-electricity"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 92, 
         "LowChance": 89, 
         "Name": "Potion of Resist energy, fire", 
@@ -1746,11 +1747,11 @@
         "SpellId": "resist-energy-fire", 
         "SpellLevel": 2, 
         "SpellName": "Resist energy, fire", 
-        "Type": "potion", 
         "id": "potion-of-resist-energy-fire"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 92, 
         "LowChance": 89, 
         "Name": "Oil of Resist energy, fire", 
@@ -1760,11 +1761,11 @@
         "SpellId": "resist-energy-fire", 
         "SpellLevel": 2, 
         "SpellName": "Resist energy, fire", 
-        "Type": "oil", 
         "id": "oil-of-resist-energy-fire"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 94, 
         "LowChance": 93, 
         "Name": "Potion of Resist energy, sonic", 
@@ -1774,11 +1775,11 @@
         "SpellId": "resist-energy-sonic", 
         "SpellLevel": 2, 
         "SpellName": "Resist energy, sonic", 
-        "Type": "potion", 
         "id": "potion-of-resist-energy-sonic"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 94, 
         "LowChance": 93, 
         "Name": "Oil of Resist energy, sonic", 
@@ -1788,11 +1789,11 @@
         "SpellId": "resist-energy-sonic", 
         "SpellLevel": 2, 
         "SpellName": "Resist energy, sonic", 
-        "Type": "oil", 
         "id": "oil-of-resist-energy-sonic"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 98, 
         "LowChance": 95, 
         "Name": "Potion of Spider climb", 
@@ -1802,11 +1803,11 @@
         "SpellId": "spider-climb", 
         "SpellLevel": 2, 
         "SpellName": "Spider climb", 
-        "Type": "potion", 
         "id": "potion-of-spider-climb"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 98, 
         "LowChance": 95, 
         "Name": "Oil of Spider climb", 
@@ -1816,11 +1817,11 @@
         "SpellId": "spider-climb", 
         "SpellLevel": 2, 
         "SpellName": "Spider climb", 
-        "Type": "oil", 
         "id": "oil-of-spider-climb"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 100, 
         "LowChance": 99, 
         "Name": "Potion of Undetectable alignment", 
@@ -1830,11 +1831,11 @@
         "SpellId": "undetectable-alignment", 
         "SpellLevel": 2, 
         "SpellName": "Undetectable alignment", 
-        "Type": "potion", 
         "id": "potion-of-undetectable-alignment"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 100, 
         "LowChance": 99, 
         "Name": "Oil of Undetectable alignment", 
@@ -1844,11 +1845,11 @@
         "SpellId": "undetectable-alignment", 
         "SpellLevel": 2, 
         "SpellName": "Undetectable alignment", 
-        "Type": "oil", 
         "id": "oil-of-undetectable-alignment"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 6, 
         "LowChance": 1, 
         "Name": "Potion of Ablative barrier", 
@@ -1858,11 +1859,11 @@
         "SpellId": "ablative-barrier", 
         "SpellLevel": 2, 
         "SpellName": "Ablative barrier", 
-        "Type": "potion", 
         "id": "potion-of-ablative-barrier"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 6, 
         "LowChance": 1, 
         "Name": "Oil of Ablative barrier", 
@@ -1872,11 +1873,11 @@
         "SpellId": "ablative-barrier", 
         "SpellLevel": 2, 
         "SpellName": "Ablative barrier", 
-        "Type": "oil", 
         "id": "oil-of-ablative-barrier"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 14, 
         "LowChance": 7, 
         "Name": "Potion of Acute senses", 
@@ -1886,11 +1887,11 @@
         "SpellId": "acute-senses", 
         "SpellLevel": 2, 
         "SpellName": "Acute senses", 
-        "Type": "potion", 
         "id": "potion-of-acute-senses"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 14, 
         "LowChance": 7, 
         "Name": "Oil of Acute senses", 
@@ -1900,11 +1901,11 @@
         "SpellId": "acute-senses", 
         "SpellLevel": 2, 
         "SpellName": "Acute senses", 
-        "Type": "oil", 
         "id": "oil-of-acute-senses"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 19, 
         "LowChance": 15, 
         "Name": "Potion of Arcane lock", 
@@ -1914,11 +1915,11 @@
         "SpellId": "arcane-lock", 
         "SpellLevel": 2, 
         "SpellName": "Arcane lock", 
-        "Type": "potion", 
         "id": "potion-of-arcane-lock"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 19, 
         "LowChance": 15, 
         "Name": "Oil of Arcane lock", 
@@ -1928,11 +1929,11 @@
         "SpellId": "arcane-lock", 
         "SpellLevel": 2, 
         "SpellName": "Arcane lock", 
-        "Type": "oil", 
         "id": "oil-of-arcane-lock"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 24, 
         "LowChance": 20, 
         "Name": "Potion of Bullet shield", 
@@ -1942,11 +1943,11 @@
         "SpellId": "bullet-shield", 
         "SpellLevel": 2, 
         "SpellName": "Bullet shield", 
-        "Type": "potion", 
         "id": "potion-of-bullet-shield"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 24, 
         "LowChance": 20, 
         "Name": "Oil of Bullet shield", 
@@ -1956,11 +1957,11 @@
         "SpellId": "bullet-shield", 
         "SpellLevel": 2, 
         "SpellName": "Bullet shield", 
-        "Type": "oil", 
         "id": "oil-of-bullet-shield"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 30, 
         "LowChance": 25, 
         "Name": "Potion of Certain grip", 
@@ -1970,11 +1971,11 @@
         "SpellId": "certain-grip", 
         "SpellLevel": 2, 
         "SpellName": "Certain grip", 
-        "Type": "potion", 
         "id": "potion-of-certain-grip"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 30, 
         "LowChance": 25, 
         "Name": "Oil of Certain grip", 
@@ -1984,11 +1985,11 @@
         "SpellId": "certain-grip", 
         "SpellLevel": 2, 
         "SpellName": "Certain grip", 
-        "Type": "oil", 
         "id": "oil-of-certain-grip"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 35, 
         "LowChance": 31, 
         "Name": "Potion of Continual flame", 
@@ -1998,11 +1999,11 @@
         "SpellId": "continual-flame", 
         "SpellLevel": 2, 
         "SpellName": "Continual flame", 
-        "Type": "potion", 
         "id": "potion-of-continual-flame"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 35, 
         "LowChance": 31, 
         "Name": "Oil of Continual flame", 
@@ -2012,11 +2013,11 @@
         "SpellId": "continual-flame", 
         "SpellLevel": 2, 
         "SpellName": "Continual flame", 
-        "Type": "oil", 
         "id": "oil-of-continual-flame"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 40, 
         "LowChance": 36, 
         "Name": "Potion of Corruption resistance", 
@@ -2026,11 +2027,11 @@
         "SpellId": "corruption-resistance", 
         "SpellLevel": 2, 
         "SpellName": "Corruption resistance", 
-        "Type": "potion", 
         "id": "potion-of-corruption-resistance"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 40, 
         "LowChance": 36, 
         "Name": "Oil of Corruption resistance", 
@@ -2040,11 +2041,11 @@
         "SpellId": "corruption-resistance", 
         "SpellLevel": 2, 
         "SpellName": "Corruption resistance", 
-        "Type": "oil", 
         "id": "oil-of-corruption-resistance"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 48, 
         "LowChance": 41, 
         "Name": "Potion of Disguise other", 
@@ -2054,11 +2055,11 @@
         "SpellId": "disguise-other", 
         "SpellLevel": 2, 
         "SpellName": "Disguise other", 
-        "Type": "potion", 
         "id": "potion-of-disguise-other"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 48, 
         "LowChance": 41, 
         "Name": "Oil of Disguise other", 
@@ -2068,11 +2069,11 @@
         "SpellId": "disguise-other", 
         "SpellLevel": 2, 
         "SpellName": "Disguise other", 
-        "Type": "oil", 
         "id": "oil-of-disguise-other"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 56, 
         "LowChance": 49, 
         "Name": "Potion of Gentle repose", 
@@ -2082,11 +2083,11 @@
         "SpellId": "gentle-repose", 
         "SpellLevel": 2, 
         "SpellName": "Gentle repose", 
-        "Type": "potion", 
         "id": "potion-of-gentle-repose"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 56, 
         "LowChance": 49, 
         "Name": "Oil of Gentle repose", 
@@ -2096,11 +2097,11 @@
         "SpellId": "gentle-repose", 
         "SpellLevel": 2, 
         "SpellName": "Gentle repose", 
-        "Type": "oil", 
         "id": "oil-of-gentle-repose"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 61, 
         "LowChance": 57, 
         "Name": "Potion of Make whole", 
@@ -2110,11 +2111,11 @@
         "SpellId": "make-whole", 
         "SpellLevel": 2, 
         "SpellName": "Make whole", 
-        "Type": "potion", 
         "id": "potion-of-make-whole"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 61, 
         "LowChance": 57, 
         "Name": "Oil of Make whole", 
@@ -2124,11 +2125,11 @@
         "SpellId": "make-whole", 
         "SpellLevel": 2, 
         "SpellName": "Make whole", 
-        "Type": "oil", 
         "id": "oil-of-make-whole"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 67, 
         "LowChance": 62, 
         "Name": "Potion of Obscure object", 
@@ -2138,11 +2139,11 @@
         "SpellId": "obscure-object", 
         "SpellLevel": 2, 
         "SpellName": "Obscure object", 
-        "Type": "potion", 
         "id": "potion-of-obscure-object"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 67, 
         "LowChance": 62, 
         "Name": "Oil of Obscure object", 
@@ -2152,11 +2153,11 @@
         "SpellId": "obscure-object", 
         "SpellLevel": 2, 
         "SpellName": "Obscure object", 
-        "Type": "oil", 
         "id": "oil-of-obscure-object"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 72, 
         "LowChance": 68, 
         "Name": "Potion of Reduce animal", 
@@ -2166,11 +2167,11 @@
         "SpellId": "reduce-animal", 
         "SpellLevel": 2, 
         "SpellName": "Reduce animal", 
-        "Type": "potion", 
         "id": "potion-of-reduce-animal"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 72, 
         "LowChance": 68, 
         "Name": "Oil of Reduce animal", 
@@ -2180,11 +2181,11 @@
         "SpellId": "reduce-animal", 
         "SpellLevel": 2, 
         "SpellName": "Reduce animal", 
-        "Type": "oil", 
         "id": "oil-of-reduce-animal"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 76, 
         "LowChance": 73, 
         "Name": "Potion of Rope trick", 
@@ -2194,11 +2195,11 @@
         "SpellId": "rope-trick", 
         "SpellLevel": 2, 
         "SpellName": "Rope trick", 
-        "Type": "potion", 
         "id": "potion-of-rope-trick"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 76, 
         "LowChance": 73, 
         "Name": "Oil of Rope trick", 
@@ -2208,11 +2209,11 @@
         "SpellId": "rope-trick", 
         "SpellLevel": 2, 
         "SpellName": "Rope trick", 
-        "Type": "oil", 
         "id": "oil-of-rope-trick"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 82, 
         "LowChance": 77, 
         "Name": "Potion of Slipstream", 
@@ -2222,11 +2223,11 @@
         "SpellId": "slipstream", 
         "SpellLevel": 2, 
         "SpellName": "Slipstream", 
-        "Type": "potion", 
         "id": "potion-of-slipstream"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 82, 
         "LowChance": 77, 
         "Name": "Oil of Slipstream", 
@@ -2236,11 +2237,11 @@
         "SpellId": "slipstream", 
         "SpellLevel": 2, 
         "SpellName": "Slipstream", 
-        "Type": "oil", 
         "id": "oil-of-slipstream"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 90, 
         "LowChance": 83, 
         "Name": "Potion of Status", 
@@ -2250,11 +2251,11 @@
         "SpellId": "status", 
         "SpellLevel": 2, 
         "SpellName": "Status", 
-        "Type": "potion", 
         "id": "potion-of-status"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 90, 
         "LowChance": 83, 
         "Name": "Oil of Status", 
@@ -2264,11 +2265,11 @@
         "SpellId": "status", 
         "SpellLevel": 2, 
         "SpellName": "Status", 
-        "Type": "oil", 
         "id": "oil-of-status"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 95, 
         "LowChance": 91, 
         "Name": "Potion of Warp wood", 
@@ -2278,11 +2279,11 @@
         "SpellId": "warp-wood", 
         "SpellLevel": 2, 
         "SpellName": "Warp wood", 
-        "Type": "potion", 
         "id": "potion-of-warp-wood"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 95, 
         "LowChance": 91, 
         "Name": "Oil of Warp wood", 
@@ -2292,11 +2293,11 @@
         "SpellId": "warp-wood", 
         "SpellLevel": 2, 
         "SpellName": "Warp wood", 
-        "Type": "oil", 
         "id": "oil-of-warp-wood"
     }, 
     {
         "CL": 3, 
+        "Group": "Potion", 
         "HighChance": 100, 
         "LowChance": 96, 
         "Name": "Potion of Wood shape", 
@@ -2306,11 +2307,11 @@
         "SpellId": "wood-shape", 
         "SpellLevel": 2, 
         "SpellName": "Wood shape", 
-        "Type": "potion", 
         "id": "potion-of-wood-shape"
     }, 
     {
         "CL": 3, 
+        "Group": "Oil", 
         "HighChance": 100, 
         "LowChance": 96, 
         "Name": "Oil of Wood shape", 
@@ -2320,11 +2321,11 @@
         "SpellId": "wood-shape", 
         "SpellLevel": 2, 
         "SpellName": "Wood shape", 
-        "Type": "oil", 
         "id": "oil-of-wood-shape"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 6, 
         "LowChance": 1, 
         "Name": "Potion of Cure serious wounds", 
@@ -2334,11 +2335,11 @@
         "SpellId": "cure-serious-wounds", 
         "SpellLevel": 3, 
         "SpellName": "Cure serious wounds", 
-        "Type": "potion", 
         "id": "potion-of-cure-serious-wounds"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 6, 
         "LowChance": 1, 
         "Name": "Oil of Cure serious wounds", 
@@ -2348,11 +2349,11 @@
         "SpellId": "cure-serious-wounds", 
         "SpellLevel": 3, 
         "SpellName": "Cure serious wounds", 
-        "Type": "oil", 
         "id": "oil-of-cure-serious-wounds"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 10, 
         "LowChance": 7, 
         "Name": "Potion of Dispel magic", 
@@ -2362,11 +2363,11 @@
         "SpellId": "dispel-magic", 
         "SpellLevel": 3, 
         "SpellName": "Dispel magic", 
-        "Type": "potion", 
         "id": "potion-of-dispel-magic"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 10, 
         "LowChance": 7, 
         "Name": "Oil of Dispel magic", 
@@ -2376,11 +2377,11 @@
         "SpellId": "dispel-magic", 
         "SpellLevel": 3, 
         "SpellName": "Dispel magic", 
-        "Type": "oil", 
         "id": "oil-of-dispel-magic"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 14, 
         "LowChance": 11, 
         "Name": "Potion of Displacement", 
@@ -2390,11 +2391,11 @@
         "SpellId": "displacement", 
         "SpellLevel": 3, 
         "SpellName": "Displacement", 
-        "Type": "potion", 
         "id": "potion-of-displacement"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 14, 
         "LowChance": 11, 
         "Name": "Oil of Displacement", 
@@ -2404,11 +2405,11 @@
         "SpellId": "displacement", 
         "SpellLevel": 3, 
         "SpellName": "Displacement", 
-        "Type": "oil", 
         "id": "oil-of-displacement"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 20, 
         "LowChance": 15, 
         "Name": "Potion of Fly", 
@@ -2418,11 +2419,11 @@
         "SpellId": "fly", 
         "SpellLevel": 3, 
         "SpellName": "Fly", 
-        "Type": "potion", 
         "id": "potion-of-fly"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 20, 
         "LowChance": 15, 
         "Name": "Oil of Fly", 
@@ -2432,11 +2433,11 @@
         "SpellId": "fly", 
         "SpellLevel": 3, 
         "SpellName": "Fly", 
-        "Type": "oil", 
         "id": "oil-of-fly"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 25, 
         "LowChance": 21, 
         "Name": "Potion of Gaseous form", 
@@ -2446,11 +2447,11 @@
         "SpellId": "gaseous-form", 
         "SpellLevel": 3, 
         "SpellName": "Gaseous form", 
-        "Type": "potion", 
         "id": "potion-of-gaseous-form"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 25, 
         "LowChance": 21, 
         "Name": "Oil of Gaseous form", 
@@ -2460,11 +2461,11 @@
         "SpellId": "gaseous-form", 
         "SpellLevel": 3, 
         "SpellName": "Gaseous form", 
-        "Type": "oil", 
         "id": "oil-of-gaseous-form"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 29, 
         "LowChance": 26, 
         "Name": "Potion of Good hope", 
@@ -2474,11 +2475,11 @@
         "SpellId": "good-hope", 
         "SpellLevel": 3, 
         "SpellName": "Good hope", 
-        "Type": "potion", 
         "id": "potion-of-good-hope"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 29, 
         "LowChance": 26, 
         "Name": "Oil of Good hope", 
@@ -2488,11 +2489,11 @@
         "SpellId": "good-hope", 
         "SpellLevel": 3, 
         "SpellName": "Good hope", 
-        "Type": "oil", 
         "id": "oil-of-good-hope"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 35, 
         "LowChance": 30, 
         "Name": "Potion of Haste", 
@@ -2502,11 +2503,11 @@
         "SpellId": "haste", 
         "SpellLevel": 3, 
         "SpellName": "Haste", 
-        "Type": "potion", 
         "id": "potion-of-haste"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 35, 
         "LowChance": 30, 
         "Name": "Oil of Haste", 
@@ -2516,11 +2517,11 @@
         "SpellId": "haste", 
         "SpellLevel": 3, 
         "SpellName": "Haste", 
-        "Type": "oil", 
         "id": "oil-of-haste"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 40, 
         "LowChance": 36, 
         "Name": "Potion of Heroism", 
@@ -2530,11 +2531,11 @@
         "SpellId": "heroism", 
         "SpellLevel": 3, 
         "SpellName": "Heroism", 
-        "Type": "potion", 
         "id": "potion-of-heroism"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 40, 
         "LowChance": 36, 
         "Name": "Oil of Heroism", 
@@ -2544,11 +2545,11 @@
         "SpellId": "heroism", 
         "SpellLevel": 3, 
         "SpellName": "Heroism", 
-        "Type": "oil", 
         "id": "oil-of-heroism"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 44, 
         "LowChance": 41, 
         "Name": "Potion of Keen edge", 
@@ -2558,11 +2559,11 @@
         "SpellId": "keen-edge", 
         "SpellLevel": 3, 
         "SpellName": "Keen edge", 
-        "Type": "potion", 
         "id": "potion-of-keen-edge"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 44, 
         "LowChance": 41, 
         "Name": "Oil of Keen edge", 
@@ -2572,11 +2573,11 @@
         "SpellId": "keen-edge", 
         "SpellLevel": 3, 
         "SpellName": "Keen edge", 
-        "Type": "oil", 
         "id": "oil-of-keen-edge"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 48, 
         "LowChance": 45, 
         "Name": "Potion of Magic fang, greater", 
@@ -2586,11 +2587,11 @@
         "SpellId": "magic-fang-greater", 
         "SpellLevel": 3, 
         "SpellName": "Magic fang, greater", 
-        "Type": "potion", 
         "id": "potion-of-magic-fang-greater"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 48, 
         "LowChance": 45, 
         "Name": "Oil of Magic fang, greater", 
@@ -2600,11 +2601,11 @@
         "SpellId": "magic-fang-greater", 
         "SpellLevel": 3, 
         "SpellName": "Magic fang, greater", 
-        "Type": "oil", 
         "id": "oil-of-magic-fang-greater"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 52, 
         "LowChance": 49, 
         "Name": "Potion of Magic vestment", 
@@ -2614,11 +2615,11 @@
         "SpellId": "magic-vestment", 
         "SpellLevel": 3, 
         "SpellName": "Magic vestment", 
-        "Type": "potion", 
         "id": "potion-of-magic-vestment"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 52, 
         "LowChance": 49, 
         "Name": "Oil of Magic vestment", 
@@ -2628,11 +2629,11 @@
         "SpellId": "magic-vestment", 
         "SpellLevel": 3, 
         "SpellName": "Magic vestment", 
-        "Type": "oil", 
         "id": "oil-of-magic-vestment"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 57, 
         "LowChance": 53, 
         "Name": "Potion of Neutralize poison", 
@@ -2642,11 +2643,11 @@
         "SpellId": "neutralize-poison", 
         "SpellLevel": 3, 
         "SpellName": "Neutralize poison", 
-        "Type": "potion", 
         "id": "potion-of-neutralize-poison"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 57, 
         "LowChance": 53, 
         "Name": "Oil of Neutralize poison", 
@@ -2656,11 +2657,11 @@
         "SpellId": "neutralize-poison", 
         "SpellLevel": 3, 
         "SpellName": "Neutralize poison", 
-        "Type": "oil", 
         "id": "oil-of-neutralize-poison"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 60, 
         "LowChance": 58, 
         "Name": "Potion of Protection from energy, acid", 
@@ -2670,11 +2671,11 @@
         "SpellId": "protection-from-energy-acid", 
         "SpellLevel": 3, 
         "SpellName": "Protection from energy, acid", 
-        "Type": "potion", 
         "id": "potion-of-protection-from-energy-acid"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 60, 
         "LowChance": 58, 
         "Name": "Oil of Protection from energy, acid", 
@@ -2684,11 +2685,11 @@
         "SpellId": "protection-from-energy-acid", 
         "SpellLevel": 3, 
         "SpellName": "Protection from energy, acid", 
-        "Type": "oil", 
         "id": "oil-of-protection-from-energy-acid"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 63, 
         "LowChance": 61, 
         "Name": "Potion of Protection from energy, cold", 
@@ -2698,11 +2699,11 @@
         "SpellId": "protection-from-energy-cold", 
         "SpellLevel": 3, 
         "SpellName": "Protection from energy, cold", 
-        "Type": "potion", 
         "id": "potion-of-protection-from-energy-cold"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 63, 
         "LowChance": 61, 
         "Name": "Oil of Protection from energy, cold", 
@@ -2712,11 +2713,11 @@
         "SpellId": "protection-from-energy-cold", 
         "SpellLevel": 3, 
         "SpellName": "Protection from energy, cold", 
-        "Type": "oil", 
         "id": "oil-of-protection-from-energy-cold"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 66, 
         "LowChance": 64, 
         "Name": "Potion of Protection from energy, electricity", 
@@ -2726,11 +2727,11 @@
         "SpellId": "protection-from-energy-electricity", 
         "SpellLevel": 3, 
         "SpellName": "Protection from energy, electricity", 
-        "Type": "potion", 
         "id": "potion-of-protection-from-energy-electricity"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 66, 
         "LowChance": 64, 
         "Name": "Oil of Protection from energy, electricity", 
@@ -2740,11 +2741,11 @@
         "SpellId": "protection-from-energy-electricity", 
         "SpellLevel": 3, 
         "SpellName": "Protection from energy, electricity", 
-        "Type": "oil", 
         "id": "oil-of-protection-from-energy-electricity"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 69, 
         "LowChance": 67, 
         "Name": "Potion of Protection from energy, fire", 
@@ -2754,11 +2755,11 @@
         "SpellId": "protection-from-energy-fire", 
         "SpellLevel": 3, 
         "SpellName": "Protection from energy, fire", 
-        "Type": "potion", 
         "id": "potion-of-protection-from-energy-fire"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 69, 
         "LowChance": 67, 
         "Name": "Oil of Protection from energy, fire", 
@@ -2768,11 +2769,11 @@
         "SpellId": "protection-from-energy-fire", 
         "SpellLevel": 3, 
         "SpellName": "Protection from energy, fire", 
-        "Type": "oil", 
         "id": "oil-of-protection-from-energy-fire"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 71, 
         "LowChance": 70, 
         "Name": "Potion of Protection from energy, sonic", 
@@ -2782,11 +2783,11 @@
         "SpellId": "protection-from-energy-sonic", 
         "SpellLevel": 3, 
         "SpellName": "Protection from energy, sonic", 
-        "Type": "potion", 
         "id": "potion-of-protection-from-energy-sonic"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 71, 
         "LowChance": 70, 
         "Name": "Oil of Protection from energy, sonic", 
@@ -2796,11 +2797,11 @@
         "SpellId": "protection-from-energy-sonic", 
         "SpellLevel": 3, 
         "SpellName": "Protection from energy, sonic", 
-        "Type": "oil", 
         "id": "oil-of-protection-from-energy-sonic"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 74, 
         "LowChance": 72, 
         "Name": "Potion of Rage", 
@@ -2810,11 +2811,11 @@
         "SpellId": "rage", 
         "SpellLevel": 3, 
         "SpellName": "Rage", 
-        "Type": "potion", 
         "id": "potion-of-rage"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 74, 
         "LowChance": 72, 
         "Name": "Oil of Rage", 
@@ -2824,11 +2825,11 @@
         "SpellId": "rage", 
         "SpellLevel": 3, 
         "SpellName": "Rage", 
-        "Type": "oil", 
         "id": "oil-of-rage"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 77, 
         "LowChance": 75, 
         "Name": "Potion of Remove blindness/deafness", 
@@ -2838,11 +2839,11 @@
         "SpellId": "remove-blindness-deafness", 
         "SpellLevel": 3, 
         "SpellName": "Remove blindness/deafness", 
-        "Type": "potion", 
         "id": "potion-of-remove-blindness-deafness"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 77, 
         "LowChance": 75, 
         "Name": "Oil of Remove blindness/deafness", 
@@ -2852,11 +2853,11 @@
         "SpellId": "remove-blindness-deafness", 
         "SpellLevel": 3, 
         "SpellName": "Remove blindness/deafness", 
-        "Type": "oil", 
         "id": "oil-of-remove-blindness-deafness"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 81, 
         "LowChance": 78, 
         "Name": "Potion of Remove curse", 
@@ -2866,11 +2867,11 @@
         "SpellId": "remove-curse", 
         "SpellLevel": 3, 
         "SpellName": "Remove curse", 
-        "Type": "potion", 
         "id": "potion-of-remove-curse"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 81, 
         "LowChance": 78, 
         "Name": "Oil of Remove curse", 
@@ -2880,11 +2881,11 @@
         "SpellId": "remove-curse", 
         "SpellLevel": 3, 
         "SpellName": "Remove curse", 
-        "Type": "oil", 
         "id": "oil-of-remove-curse"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 86, 
         "LowChance": 82, 
         "Name": "Potion of Remove disease", 
@@ -2894,11 +2895,11 @@
         "SpellId": "remove-disease", 
         "SpellLevel": 3, 
         "SpellName": "Remove disease", 
-        "Type": "potion", 
         "id": "potion-of-remove-disease"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 86, 
         "LowChance": 82, 
         "Name": "Oil of Remove disease", 
@@ -2908,11 +2909,11 @@
         "SpellId": "remove-disease", 
         "SpellLevel": 3, 
         "SpellName": "Remove disease", 
-        "Type": "oil", 
         "id": "oil-of-remove-disease"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 91, 
         "LowChance": 87, 
         "Name": "Potion of Tongues", 
@@ -2922,11 +2923,11 @@
         "SpellId": "tongues", 
         "SpellLevel": 3, 
         "SpellName": "Tongues", 
-        "Type": "potion", 
         "id": "potion-of-tongues"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 91, 
         "LowChance": 87, 
         "Name": "Oil of Tongues", 
@@ -2936,11 +2937,11 @@
         "SpellId": "tongues", 
         "SpellLevel": 3, 
         "SpellName": "Tongues", 
-        "Type": "oil", 
         "id": "oil-of-tongues"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 96, 
         "LowChance": 92, 
         "Name": "Potion of Water breathing", 
@@ -2950,11 +2951,11 @@
         "SpellId": "water-breathing", 
         "SpellLevel": 3, 
         "SpellName": "Water breathing", 
-        "Type": "potion", 
         "id": "potion-of-water-breathing"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 96, 
         "LowChance": 92, 
         "Name": "Oil of Water breathing", 
@@ -2964,11 +2965,11 @@
         "SpellId": "water-breathing", 
         "SpellLevel": 3, 
         "SpellName": "Water breathing", 
-        "Type": "oil", 
         "id": "oil-of-water-breathing"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 100, 
         "LowChance": 97, 
         "Name": "Potion of Water walk", 
@@ -2978,11 +2979,11 @@
         "SpellId": "water-walk", 
         "SpellLevel": 3, 
         "SpellName": "Water walk", 
-        "Type": "potion", 
         "id": "potion-of-water-walk"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 100, 
         "LowChance": 97, 
         "Name": "Oil of Water walk", 
@@ -2992,11 +2993,11 @@
         "SpellId": "water-walk", 
         "SpellLevel": 3, 
         "SpellName": "Water walk", 
-        "Type": "oil", 
         "id": "oil-of-water-walk"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 12, 
         "LowChance": 1, 
         "Name": "Potion of Burrow", 
@@ -3006,11 +3007,11 @@
         "SpellId": "burrow", 
         "SpellLevel": 3, 
         "SpellName": "Burrow", 
-        "Type": "potion", 
         "id": "potion-of-burrow"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 12, 
         "LowChance": 1, 
         "Name": "Oil of Burrow", 
@@ -3020,11 +3021,11 @@
         "SpellId": "burrow", 
         "SpellLevel": 3, 
         "SpellName": "Burrow", 
-        "Type": "oil", 
         "id": "oil-of-burrow"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 22, 
         "LowChance": 11, 
         "Name": "Potion of Countless eyes", 
@@ -3034,11 +3035,11 @@
         "SpellId": "countless-eyes", 
         "SpellLevel": 3, 
         "SpellName": "Countless eyes", 
-        "Type": "potion", 
         "id": "potion-of-countless-eyes"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 22, 
         "LowChance": 11, 
         "Name": "Oil of Countless eyes", 
@@ -3048,11 +3049,11 @@
         "SpellId": "countless-eyes", 
         "SpellLevel": 3, 
         "SpellName": "Countless eyes", 
-        "Type": "oil", 
         "id": "oil-of-countless-eyes"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 34, 
         "LowChance": 23, 
         "Name": "Potion of Daylight", 
@@ -3062,11 +3063,11 @@
         "SpellId": "daylight", 
         "SpellLevel": 3, 
         "SpellName": "Daylight", 
-        "Type": "potion", 
         "id": "potion-of-daylight"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 34, 
         "LowChance": 23, 
         "Name": "Oil of Daylight", 
@@ -3076,11 +3077,11 @@
         "SpellId": "daylight", 
         "SpellLevel": 3, 
         "SpellName": "Daylight", 
-        "Type": "oil", 
         "id": "oil-of-daylight"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 49, 
         "LowChance": 35, 
         "Name": "Potion of Draconic reservoir", 
@@ -3090,11 +3091,11 @@
         "SpellId": "draconic-reservoir", 
         "SpellLevel": 3, 
         "SpellName": "Draconic reservoir", 
-        "Type": "potion", 
         "id": "potion-of-draconic-reservoir"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 49, 
         "LowChance": 35, 
         "Name": "Oil of Draconic reservoir", 
@@ -3104,11 +3105,11 @@
         "SpellId": "draconic-reservoir", 
         "SpellLevel": 3, 
         "SpellName": "Draconic reservoir", 
-        "Type": "oil", 
         "id": "oil-of-draconic-reservoir"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 58, 
         "LowChance": 50, 
         "Name": "Potion of Flame arrow", 
@@ -3118,11 +3119,11 @@
         "SpellId": "flame-arrow", 
         "SpellLevel": 3, 
         "SpellName": "Flame arrow", 
-        "Type": "potion", 
         "id": "potion-of-flame-arrow"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 58, 
         "LowChance": 50, 
         "Name": "Oil of Flame arrow", 
@@ -3132,11 +3133,11 @@
         "SpellId": "flame-arrow", 
         "SpellLevel": 3, 
         "SpellName": "Flame arrow", 
-        "Type": "oil", 
         "id": "oil-of-flame-arrow"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 67, 
         "LowChance": 59, 
         "Name": "Potion of Shrink item", 
@@ -3146,11 +3147,11 @@
         "SpellId": "shrink-item", 
         "SpellLevel": 3, 
         "SpellName": "Shrink item", 
-        "Type": "potion", 
         "id": "potion-of-shrink-item"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 67, 
         "LowChance": 59, 
         "Name": "Oil of Shrink item", 
@@ -3160,11 +3161,11 @@
         "SpellId": "shrink-item", 
         "SpellLevel": 3, 
         "SpellName": "Shrink item", 
-        "Type": "oil", 
         "id": "oil-of-shrink-item"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 77, 
         "LowChance": 68, 
         "Name": "Potion of Stone shape", 
@@ -3174,11 +3175,11 @@
         "SpellId": "stone-shape", 
         "SpellLevel": 3, 
         "SpellName": "Stone shape", 
-        "Type": "potion", 
         "id": "potion-of-stone-shape"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 77, 
         "LowChance": 68, 
         "Name": "Oil of Stone shape", 
@@ -3188,11 +3189,11 @@
         "SpellId": "stone-shape", 
         "SpellLevel": 3, 
         "SpellName": "Stone shape", 
-        "Type": "oil", 
         "id": "oil-of-stone-shape"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 87, 
         "LowChance": 78, 
         "Name": "Potion of Fire trap", 
@@ -3202,11 +3203,11 @@
         "SpellId": "fire-trap", 
         "SpellLevel": 3, 
         "SpellName": "Fire trap", 
-        "Type": "potion", 
         "id": "potion-of-fire-trap"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 87, 
         "LowChance": 78, 
         "Name": "Oil of Fire trap", 
@@ -3216,11 +3217,11 @@
         "SpellId": "fire-trap", 
         "SpellLevel": 3, 
         "SpellName": "Fire trap", 
-        "Type": "oil", 
         "id": "oil-of-fire-trap"
     }, 
     {
         "CL": 5, 
+        "Group": "Potion", 
         "HighChance": 100, 
         "LowChance": 88, 
         "Name": "Potion of Nondetection", 
@@ -3230,11 +3231,11 @@
         "SpellId": "nondetection", 
         "SpellLevel": 3, 
         "SpellName": "Nondetection", 
-        "Type": "potion", 
         "id": "potion-of-nondetection"
     }, 
     {
         "CL": 5, 
+        "Group": "Oil", 
         "HighChance": 100, 
         "LowChance": 88, 
         "Name": "Oil of Nondetection", 
@@ -3244,7 +3245,6 @@
         "SpellId": "nondetection", 
         "SpellLevel": 3, 
         "SpellName": "Nondetection", 
-        "Type": "oil", 
         "id": "oil-of-nondetection"
     }
 ]

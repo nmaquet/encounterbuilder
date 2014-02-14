@@ -1,6 +1,7 @@
 [
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 7, 
         "LowChance": 1, 
         "Name": "Wand of Acid splash", 
@@ -10,11 +11,11 @@
         "SpellId": "acid-splash", 
         "SpellLevel": 0, 
         "SpellName": "Acid splash", 
-        "Type": "wand", 
         "id": "wand-of-acid-splash"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 14, 
         "LowChance": 8, 
         "Name": "Wand of Create water", 
@@ -24,11 +25,11 @@
         "SpellId": "create-water", 
         "SpellLevel": 0, 
         "SpellName": "Create water", 
-        "Type": "wand", 
         "id": "wand-of-create-water"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 20, 
         "LowChance": 15, 
         "Name": "Wand of Daze", 
@@ -38,11 +39,11 @@
         "SpellId": "daze", 
         "SpellLevel": 0, 
         "SpellName": "Daze", 
-        "Type": "wand", 
         "id": "wand-of-daze"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 28, 
         "LowChance": 21, 
         "Name": "Wand of Detect magic", 
@@ -52,11 +53,11 @@
         "SpellId": "detect-magic", 
         "SpellLevel": 0, 
         "SpellName": "Detect magic", 
-        "Type": "wand", 
         "id": "wand-of-detect-magic"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 34, 
         "LowChance": 29, 
         "Name": "Wand of Ghost sound", 
@@ -66,11 +67,11 @@
         "SpellId": "ghost-sound", 
         "SpellLevel": 0, 
         "SpellName": "Ghost sound", 
-        "Type": "wand", 
         "id": "wand-of-ghost-sound"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 42, 
         "LowChance": 35, 
         "Name": "Wand of Light", 
@@ -80,11 +81,11 @@
         "SpellId": "light", 
         "SpellLevel": 0, 
         "SpellName": "Light", 
-        "Type": "wand", 
         "id": "wand-of-light"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 49, 
         "LowChance": 43, 
         "Name": "Wand of Mage hand", 
@@ -94,11 +95,11 @@
         "SpellId": "mage-hand", 
         "SpellLevel": 0, 
         "SpellName": "Mage hand", 
-        "Type": "wand", 
         "id": "wand-of-mage-hand"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 55, 
         "LowChance": 50, 
         "Name": "Wand of Mending", 
@@ -108,11 +109,11 @@
         "SpellId": "mending", 
         "SpellLevel": 0, 
         "SpellName": "Mending", 
-        "Type": "wand", 
         "id": "wand-of-mending"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 60, 
         "LowChance": 56, 
         "Name": "Wand of Message", 
@@ -122,11 +123,11 @@
         "SpellId": "message", 
         "SpellLevel": 0, 
         "SpellName": "Message", 
-        "Type": "wand", 
         "id": "wand-of-message"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 66, 
         "LowChance": 61, 
         "Name": "Wand of Prestidigitation", 
@@ -136,11 +137,11 @@
         "SpellId": "prestidigitation", 
         "SpellLevel": 0, 
         "SpellName": "Prestidigitation", 
-        "Type": "wand", 
         "id": "wand-of-prestidigitation"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 73, 
         "LowChance": 67, 
         "Name": "Wand of Purify food and drink", 
@@ -150,11 +151,11 @@
         "SpellId": "purify-food-and-drink", 
         "SpellLevel": 0, 
         "SpellName": "Purify food and drink", 
-        "Type": "wand", 
         "id": "wand-of-purify-food-and-drink"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 81, 
         "LowChance": 74, 
         "Name": "Wand of Ray of frost", 
@@ -164,11 +165,11 @@
         "SpellId": "ray-of-frost", 
         "SpellLevel": 0, 
         "SpellName": "Ray of frost", 
-        "Type": "wand", 
         "id": "wand-of-ray-of-frost"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 88, 
         "LowChance": 82, 
         "Name": "Wand of Read magic", 
@@ -178,11 +179,11 @@
         "SpellId": "read-magic", 
         "SpellLevel": 0, 
         "SpellName": "Read magic", 
-        "Type": "wand", 
         "id": "wand-of-read-magic"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 95, 
         "LowChance": 89, 
         "Name": "Wand of Stabilize", 
@@ -192,11 +193,11 @@
         "SpellId": "stabilize", 
         "SpellLevel": 0, 
         "SpellName": "Stabilize", 
-        "Type": "wand", 
         "id": "wand-of-stabilize"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 100, 
         "LowChance": 96, 
         "Name": "Wand of Touch of fatigue", 
@@ -206,11 +207,11 @@
         "SpellId": "touch-of-fatigue", 
         "SpellLevel": 0, 
         "SpellName": "Touch of fatigue", 
-        "Type": "wand", 
         "id": "wand-of-touch-of-fatigue"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 2, 
         "LowChance": 1, 
         "Name": "Wand of Alarm", 
@@ -220,11 +221,11 @@
         "SpellId": "alarm", 
         "SpellLevel": 1, 
         "SpellName": "Alarm", 
-        "Type": "wand", 
         "id": "wand-of-alarm"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 3, 
         "LowChance": 3, 
         "Name": "Wand of Animate rope", 
@@ -234,11 +235,11 @@
         "SpellId": "animate-rope", 
         "SpellLevel": 1, 
         "SpellName": "Animate rope", 
-        "Type": "wand", 
         "id": "wand-of-animate-rope"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 5, 
         "LowChance": 4, 
         "Name": "Wand of Bane", 
@@ -248,11 +249,11 @@
         "SpellId": "bane", 
         "SpellLevel": 1, 
         "SpellName": "Bane", 
-        "Type": "wand", 
         "id": "wand-of-bane"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 11, 
         "LowChance": 6, 
         "Name": "Wand of Bless", 
@@ -262,11 +263,11 @@
         "SpellId": "bless", 
         "SpellLevel": 1, 
         "SpellName": "Bless", 
-        "Type": "wand", 
         "id": "wand-of-bless"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 14, 
         "LowChance": 12, 
         "Name": "Wand of Burning hands", 
@@ -276,11 +277,11 @@
         "SpellId": "burning-hands", 
         "SpellLevel": 1, 
         "SpellName": "Burning hands", 
-        "Type": "wand", 
         "id": "wand-of-burning-hands"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 17, 
         "LowChance": 15, 
         "Name": "Wand of Cause fear", 
@@ -290,11 +291,11 @@
         "SpellId": "cause-fear", 
         "SpellLevel": 1, 
         "SpellName": "Cause fear", 
-        "Type": "wand", 
         "id": "wand-of-cause-fear"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 19, 
         "LowChance": 18, 
         "Name": "Wand of Charm person", 
@@ -304,11 +305,11 @@
         "SpellId": "charm-person", 
         "SpellLevel": 1, 
         "SpellName": "Charm person", 
-        "Type": "wand", 
         "id": "wand-of-charm-person"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 21, 
         "LowChance": 20, 
         "Name": "Wand of Color spray", 
@@ -318,11 +319,11 @@
         "SpellId": "color-spray", 
         "SpellLevel": 1, 
         "SpellName": "Color spray", 
-        "Type": "wand", 
         "id": "wand-of-color-spray"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 23, 
         "LowChance": 22, 
         "Name": "Wand of Command", 
@@ -332,11 +333,11 @@
         "SpellId": "command", 
         "SpellLevel": 1, 
         "SpellName": "Command", 
-        "Type": "wand", 
         "id": "wand-of-command"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 24, 
         "LowChance": 24, 
         "Name": "Wand of Comprehend languages", 
@@ -346,11 +347,11 @@
         "SpellId": "comprehend-languages", 
         "SpellLevel": 1, 
         "SpellName": "Comprehend languages", 
-        "Type": "wand", 
         "id": "wand-of-comprehend-languages"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 31, 
         "LowChance": 25, 
         "Name": "Wand of Cure light wounds", 
@@ -360,11 +361,11 @@
         "SpellId": "cure-light-wounds", 
         "SpellLevel": 1, 
         "SpellName": "Cure light wounds", 
-        "Type": "wand", 
         "id": "wand-of-cure-light-wounds"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 33, 
         "LowChance": 32, 
         "Name": "Wand of Disguise self", 
@@ -374,11 +375,11 @@
         "SpellId": "disguise-self", 
         "SpellLevel": 1, 
         "SpellName": "Disguise self", 
-        "Type": "wand", 
         "id": "wand-of-disguise-self"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 37, 
         "LowChance": 34, 
         "Name": "Wand of Divine favor", 
@@ -388,11 +389,11 @@
         "SpellId": "divine-favor", 
         "SpellLevel": 1, 
         "SpellName": "Divine favor", 
-        "Type": "wand", 
         "id": "wand-of-divine-favor"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 38, 
         "LowChance": 38, 
         "Name": "Wand of Endure elements", 
@@ -402,11 +403,11 @@
         "SpellId": "endure-elements", 
         "SpellLevel": 1, 
         "SpellName": "Endure elements", 
-        "Type": "wand", 
         "id": "wand-of-endure-elements"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 41, 
         "LowChance": 39, 
         "Name": "Wand of Enlarge person", 
@@ -416,11 +417,11 @@
         "SpellId": "enlarge-person", 
         "SpellLevel": 1, 
         "SpellName": "Enlarge person", 
-        "Type": "wand", 
         "id": "wand-of-enlarge-person"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 43, 
         "LowChance": 42, 
         "Name": "Wand of Entangle", 
@@ -430,11 +431,11 @@
         "SpellId": "entangle", 
         "SpellLevel": 1, 
         "SpellName": "Entangle", 
-        "Type": "wand", 
         "id": "wand-of-entangle"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 45, 
         "LowChance": 44, 
         "Name": "Wand of Expeditious retreat", 
@@ -444,11 +445,11 @@
         "SpellId": "expeditious-retreat", 
         "SpellLevel": 1, 
         "SpellName": "Expeditious retreat", 
-        "Type": "wand", 
         "id": "wand-of-expeditious-retreat"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 46, 
         "LowChance": 46, 
         "Name": "Wand of Feather fall", 
@@ -458,11 +459,11 @@
         "SpellId": "feather-fall", 
         "SpellLevel": 1, 
         "SpellName": "Feather fall", 
-        "Type": "wand", 
         "id": "wand-of-feather-fall"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 48, 
         "LowChance": 47, 
         "Name": "Wand of Grease", 
@@ -472,11 +473,11 @@
         "SpellId": "grease", 
         "SpellLevel": 1, 
         "SpellName": "Grease", 
-        "Type": "wand", 
         "id": "wand-of-grease"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 50, 
         "LowChance": 49, 
         "Name": "Wand of Identify", 
@@ -486,11 +487,11 @@
         "SpellId": "identify", 
         "SpellLevel": 1, 
         "SpellName": "Identify", 
-        "Type": "wand", 
         "id": "wand-of-identify"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 52, 
         "LowChance": 51, 
         "Name": "Wand of Inflict light wounds", 
@@ -500,11 +501,11 @@
         "SpellId": "inflict-light-wounds", 
         "SpellLevel": 1, 
         "SpellName": "Inflict light wounds", 
-        "Type": "wand", 
         "id": "wand-of-inflict-light-wounds"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 58, 
         "LowChance": 53, 
         "Name": "Wand of Mage armor", 
@@ -514,11 +515,11 @@
         "SpellId": "mage-armor", 
         "SpellLevel": 1, 
         "SpellName": "Mage armor", 
-        "Type": "wand", 
         "id": "wand-of-mage-armor"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 60, 
         "LowChance": 59, 
         "Name": "Wand of Magic fang", 
@@ -528,11 +529,11 @@
         "SpellId": "magic-fang", 
         "SpellLevel": 1, 
         "SpellName": "Magic fang", 
-        "Type": "wand", 
         "id": "wand-of-magic-fang"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 67, 
         "LowChance": 61, 
         "Name": "Wand of Magic missile", 
@@ -542,11 +543,11 @@
         "SpellId": "magic-missile", 
         "SpellLevel": 1, 
         "SpellName": "Magic missile", 
-        "Type": "wand", 
         "id": "wand-of-magic-missile"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 68, 
         "LowChance": 68, 
         "Name": "Wand of Magic stone", 
@@ -556,11 +557,11 @@
         "SpellId": "magic-stone", 
         "SpellLevel": 1, 
         "SpellName": "Magic stone", 
-        "Type": "wand", 
         "id": "wand-of-magic-stone"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 70, 
         "LowChance": 69, 
         "Name": "Wand of Magic weapon", 
@@ -570,11 +571,11 @@
         "SpellId": "magic-weapon", 
         "SpellLevel": 1, 
         "SpellName": "Magic weapon", 
-        "Type": "wand", 
         "id": "wand-of-magic-weapon"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 71, 
         "LowChance": 71, 
         "Name": "Wand of Obscuring mist", 
@@ -584,11 +585,11 @@
         "SpellId": "obscuring-mist", 
         "SpellLevel": 1, 
         "SpellName": "Obscuring mist", 
-        "Type": "wand", 
         "id": "wand-of-obscuring-mist"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 73, 
         "LowChance": 72, 
         "Name": "Wand of Produce flame", 
@@ -598,11 +599,11 @@
         "SpellId": "produce-flame", 
         "SpellLevel": 1, 
         "SpellName": "Produce flame", 
-        "Type": "wand", 
         "id": "wand-of-produce-flame"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 74, 
         "LowChance": 74, 
         "Name": "Wand of Protection from chaos", 
@@ -612,11 +613,11 @@
         "SpellId": "protection-from-chaos", 
         "SpellLevel": 1, 
         "SpellName": "Protection from chaos", 
-        "Type": "wand", 
         "id": "wand-of-protection-from-chaos"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 75, 
         "LowChance": 75, 
         "Name": "Wand of Protection from evil", 
@@ -626,11 +627,11 @@
         "SpellId": "protection-from-evil", 
         "SpellLevel": 1, 
         "SpellName": "Protection from evil", 
-        "Type": "wand", 
         "id": "wand-of-protection-from-evil"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 76, 
         "LowChance": 76, 
         "Name": "Wand of Protection from good", 
@@ -640,11 +641,11 @@
         "SpellId": "protection-from-good", 
         "SpellLevel": 1, 
         "SpellName": "Protection from good", 
-        "Type": "wand", 
         "id": "wand-of-protection-from-good"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 77, 
         "LowChance": 77, 
         "Name": "Wand of Protection from law", 
@@ -654,11 +655,11 @@
         "SpellId": "protection-from-law", 
         "SpellLevel": 1, 
         "SpellName": "Protection from law", 
-        "Type": "wand", 
         "id": "wand-of-protection-from-law"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 79, 
         "LowChance": 78, 
         "Name": "Wand of Ray of enfeeblement", 
@@ -668,11 +669,11 @@
         "SpellId": "ray-of-enfeeblement", 
         "SpellLevel": 1, 
         "SpellName": "Ray of enfeeblement", 
-        "Type": "wand", 
         "id": "wand-of-ray-of-enfeeblement"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 81, 
         "LowChance": 80, 
         "Name": "Wand of Remove fear", 
@@ -682,11 +683,11 @@
         "SpellId": "remove-fear", 
         "SpellLevel": 1, 
         "SpellName": "Remove fear", 
-        "Type": "wand", 
         "id": "wand-of-remove-fear"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 84, 
         "LowChance": 82, 
         "Name": "Wand of Shield", 
@@ -696,11 +697,11 @@
         "SpellId": "shield", 
         "SpellLevel": 1, 
         "SpellName": "Shield", 
-        "Type": "wand", 
         "id": "wand-of-shield"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 86, 
         "LowChance": 85, 
         "Name": "Wand of Shield of faith", 
@@ -710,11 +711,11 @@
         "SpellId": "shield-of-faith", 
         "SpellLevel": 1, 
         "SpellName": "Shield of faith", 
-        "Type": "wand", 
         "id": "wand-of-shield-of-faith"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 87, 
         "LowChance": 87, 
         "Name": "Wand of Shillelagh", 
@@ -724,11 +725,11 @@
         "SpellId": "shillelagh", 
         "SpellLevel": 1, 
         "SpellName": "Shillelagh", 
-        "Type": "wand", 
         "id": "wand-of-shillelagh"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 89, 
         "LowChance": 88, 
         "Name": "Wand of Shocking grasp", 
@@ -738,11 +739,11 @@
         "SpellId": "shocking-grasp", 
         "SpellLevel": 1, 
         "SpellName": "Shocking grasp", 
-        "Type": "wand", 
         "id": "wand-of-shocking-grasp"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 90, 
         "LowChance": 90, 
         "Name": "Wand of Silent image", 
@@ -752,11 +753,11 @@
         "SpellId": "silent-image", 
         "SpellLevel": 1, 
         "SpellName": "Silent image", 
-        "Type": "wand", 
         "id": "wand-of-silent-image"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 94, 
         "LowChance": 91, 
         "Name": "Wand of Sleep", 
@@ -766,11 +767,11 @@
         "SpellId": "sleep", 
         "SpellLevel": 1, 
         "SpellName": "Sleep", 
-        "Type": "wand", 
         "id": "wand-of-sleep"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 95, 
         "LowChance": 95, 
         "Name": "Wand of Summon monster I", 
@@ -780,11 +781,11 @@
         "SpellId": "summon-monster-i", 
         "SpellLevel": 1, 
         "SpellName": "Summon monster I", 
-        "Type": "wand", 
         "id": "wand-of-summon-monster-i"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 96, 
         "LowChance": 96, 
         "Name": "Wand of Summon nature's ally I", 
@@ -794,11 +795,11 @@
         "SpellId": "summon-nature-s-ally-i", 
         "SpellLevel": 1, 
         "SpellName": "Summon nature's ally I", 
-        "Type": "wand", 
         "id": "wand-of-summon-nature-s-ally-i"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 99, 
         "LowChance": 97, 
         "Name": "Wand of True strike", 
@@ -808,11 +809,11 @@
         "SpellId": "true-strike", 
         "SpellLevel": 1, 
         "SpellName": "True strike", 
-        "Type": "wand", 
         "id": "wand-of-true-strike"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 100, 
         "LowChance": 100, 
         "Name": "Wand of Unseen servant", 
@@ -822,11 +823,11 @@
         "SpellId": "unseen-servant", 
         "SpellLevel": 1, 
         "SpellName": "Unseen servant", 
-        "Type": "wand", 
         "id": "wand-of-unseen-servant"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 2, 
         "LowChance": 1, 
         "Name": "Wand of Ant haul", 
@@ -836,11 +837,11 @@
         "SpellId": "ant-haul", 
         "SpellLevel": 1, 
         "SpellName": "Ant haul", 
-        "Type": "wand", 
         "id": "wand-of-ant-haul"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 5, 
         "LowChance": 3, 
         "Name": "Wand of Aspect of the falcon", 
@@ -850,11 +851,11 @@
         "SpellId": "aspect-of-the-falcon", 
         "SpellLevel": 1, 
         "SpellName": "Aspect of the falcon", 
-        "Type": "wand", 
         "id": "wand-of-aspect-of-the-falcon"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 7, 
         "LowChance": 6, 
         "Name": "Wand of Bless weapon", 
@@ -864,11 +865,11 @@
         "SpellId": "bless-weapon", 
         "SpellLevel": 1, 
         "SpellName": "Bless weapon", 
-        "Type": "wand", 
         "id": "wand-of-bless-weapon"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 8, 
         "LowChance": 8, 
         "Name": "Wand of Calm animals", 
@@ -878,11 +879,11 @@
         "SpellId": "calm-animals", 
         "SpellLevel": 1, 
         "SpellName": "Calm animals", 
-        "Type": "wand", 
         "id": "wand-of-calm-animals"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 10, 
         "LowChance": 9, 
         "Name": "Wand of Charm animal", 
@@ -892,11 +893,11 @@
         "SpellId": "charm-animal", 
         "SpellLevel": 1, 
         "SpellName": "Charm animal", 
-        "Type": "wand", 
         "id": "wand-of-charm-animal"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 12, 
         "LowChance": 11, 
         "Name": "Wand of Chill touch", 
@@ -906,11 +907,11 @@
         "SpellId": "chill-touch", 
         "SpellLevel": 1, 
         "SpellName": "Chill touch", 
-        "Type": "wand", 
         "id": "wand-of-chill-touch"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 14, 
         "LowChance": 13, 
         "Name": "Wand of Compel hostility", 
@@ -920,11 +921,11 @@
         "SpellId": "compel-hostility", 
         "SpellLevel": 1, 
         "SpellName": "Compel hostility", 
-        "Type": "wand", 
         "id": "wand-of-compel-hostility"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 17, 
         "LowChance": 15, 
         "Name": "Wand of Confusion, lesser", 
@@ -934,11 +935,11 @@
         "SpellId": "confusion-lesser", 
         "SpellLevel": 1, 
         "SpellName": "Confusion, lesser", 
-        "Type": "wand", 
         "id": "wand-of-confusion-lesser"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 19, 
         "LowChance": 18, 
         "Name": "Wand of Corrosive touch", 
@@ -948,11 +949,11 @@
         "SpellId": "corrosive-touch", 
         "SpellLevel": 1, 
         "SpellName": "Corrosive touch", 
-        "Type": "wand", 
         "id": "wand-of-corrosive-touch"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 21, 
         "LowChance": 20, 
         "Name": "Wand of Deathwatch", 
@@ -962,11 +963,11 @@
         "SpellId": "deathwatch", 
         "SpellLevel": 1, 
         "SpellName": "Deathwatch", 
-        "Type": "wand", 
         "id": "wand-of-deathwatch"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 22, 
         "LowChance": 22, 
         "Name": "Wand of Detect animals or plants", 
@@ -976,11 +977,11 @@
         "SpellId": "detect-animals-or-plants", 
         "SpellLevel": 1, 
         "SpellName": "Detect animals or plants", 
-        "Type": "wand", 
         "id": "wand-of-detect-animals-or-plants"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 23, 
         "LowChance": 23, 
         "Name": "Wand of Detect chaos", 
@@ -990,11 +991,11 @@
         "SpellId": "detect-chaos", 
         "SpellLevel": 1, 
         "SpellName": "Detect chaos", 
-        "Type": "wand", 
         "id": "wand-of-detect-chaos"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 24, 
         "LowChance": 24, 
         "Name": "Wand of Detect evil", 
@@ -1004,11 +1005,11 @@
         "SpellId": "detect-evil", 
         "SpellLevel": 1, 
         "SpellName": "Detect evil", 
-        "Type": "wand", 
         "id": "wand-of-detect-evil"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 25, 
         "LowChance": 25, 
         "Name": "Wand of Detect good", 
@@ -1018,11 +1019,11 @@
         "SpellId": "detect-good", 
         "SpellLevel": 1, 
         "SpellName": "Detect good", 
-        "Type": "wand", 
         "id": "wand-of-detect-good"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 26, 
         "LowChance": 26, 
         "Name": "Wand of Detect law", 
@@ -1032,11 +1033,11 @@
         "SpellId": "detect-law", 
         "SpellLevel": 1, 
         "SpellName": "Detect law", 
-        "Type": "wand", 
         "id": "wand-of-detect-law"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 28, 
         "LowChance": 27, 
         "Name": "Wand of Detect secret doors", 
@@ -1046,11 +1047,11 @@
         "SpellId": "detect-secret-doors", 
         "SpellLevel": 1, 
         "SpellName": "Detect secret doors", 
-        "Type": "wand", 
         "id": "wand-of-detect-secret-doors"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 29, 
         "LowChance": 29, 
         "Name": "Wand of Detect snares and pits", 
@@ -1060,11 +1061,11 @@
         "SpellId": "detect-snares-and-pits", 
         "SpellLevel": 1, 
         "SpellName": "Detect snares and pits", 
-        "Type": "wand", 
         "id": "wand-of-detect-snares-and-pits"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 31, 
         "LowChance": 30, 
         "Name": "Wand of Detect undead", 
@@ -1074,11 +1075,11 @@
         "SpellId": "detect-undead", 
         "SpellLevel": 1, 
         "SpellName": "Detect undead", 
-        "Type": "wand", 
         "id": "wand-of-detect-undead"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 35, 
         "LowChance": 32, 
         "Name": "Wand of Doom", 
@@ -1088,11 +1089,11 @@
         "SpellId": "doom", 
         "SpellLevel": 1, 
         "SpellName": "Doom", 
-        "Type": "wand", 
         "id": "wand-of-doom"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 37, 
         "LowChance": 36, 
         "Name": "Wand of Entropic shield", 
@@ -1102,11 +1103,11 @@
         "SpellId": "entropic-shield", 
         "SpellLevel": 1, 
         "SpellName": "Entropic shield", 
-        "Type": "wand", 
         "id": "wand-of-entropic-shield"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 38, 
         "LowChance": 38, 
         "Name": "Wand of Erase", 
@@ -1116,11 +1117,11 @@
         "SpellId": "erase", 
         "SpellLevel": 1, 
         "SpellName": "Erase", 
-        "Type": "wand", 
         "id": "wand-of-erase"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 39, 
         "LowChance": 39, 
         "Name": "Wand of Faerie fire", 
@@ -1130,11 +1131,11 @@
         "SpellId": "faerie-fire", 
         "SpellLevel": 1, 
         "SpellName": "Faerie fire", 
-        "Type": "wand", 
         "id": "wand-of-faerie-fire"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 41, 
         "LowChance": 40, 
         "Name": "Wand of Feather step", 
@@ -1144,11 +1145,11 @@
         "SpellId": "feather-step", 
         "SpellLevel": 1, 
         "SpellName": "Feather step", 
-        "Type": "wand", 
         "id": "wand-of-feather-step"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 44, 
         "LowChance": 42, 
         "Name": "Wand of Floating disk", 
@@ -1158,11 +1159,11 @@
         "SpellId": "floating-disk", 
         "SpellLevel": 1, 
         "SpellName": "Floating disk", 
-        "Type": "wand", 
         "id": "wand-of-floating-disk"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 47, 
         "LowChance": 45, 
         "Name": "Wand of Goodberry", 
@@ -1172,11 +1173,11 @@
         "SpellId": "goodberry", 
         "SpellLevel": 1, 
         "SpellName": "Goodberry", 
-        "Type": "wand", 
         "id": "wand-of-goodberry"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 49, 
         "LowChance": 48, 
         "Name": "Wand of Hide from animals", 
@@ -1186,11 +1187,11 @@
         "SpellId": "hide-from-animals", 
         "SpellLevel": 1, 
         "SpellName": "Hide from animals", 
-        "Type": "wand", 
         "id": "wand-of-hide-from-animals"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 51, 
         "LowChance": 50, 
         "Name": "Wand of Hide from undead", 
@@ -1200,11 +1201,11 @@
         "SpellId": "hide-from-undead", 
         "SpellLevel": 1, 
         "SpellName": "Hide from undead", 
-        "Type": "wand", 
         "id": "wand-of-hide-from-undead"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 52, 
         "LowChance": 52, 
         "Name": "Wand of Hideous laughter", 
@@ -1214,11 +1215,11 @@
         "SpellId": "hideous-laughter", 
         "SpellLevel": 1, 
         "SpellName": "Hideous laughter", 
-        "Type": "wand", 
         "id": "wand-of-hideous-laughter"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 54, 
         "LowChance": 53, 
         "Name": "Wand of Hold portal", 
@@ -1228,11 +1229,11 @@
         "SpellId": "hold-portal", 
         "SpellLevel": 1, 
         "SpellName": "Hold portal", 
-        "Type": "wand", 
         "id": "wand-of-hold-portal"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 56, 
         "LowChance": 55, 
         "Name": "Wand of Hypnotism", 
@@ -1242,11 +1243,11 @@
         "SpellId": "hypnotism", 
         "SpellLevel": 1, 
         "SpellName": "Hypnotism", 
-        "Type": "wand", 
         "id": "wand-of-hypnotism"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 58, 
         "LowChance": 57, 
         "Name": "Wand of Icicle dagger", 
@@ -1256,11 +1257,11 @@
         "SpellId": "icicle-dagger", 
         "SpellLevel": 1, 
         "SpellName": "Icicle dagger", 
-        "Type": "wand", 
         "id": "wand-of-icicle-dagger"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 60, 
         "LowChance": 59, 
         "Name": "Wand of Ill omen", 
@@ -1270,11 +1271,11 @@
         "SpellId": "ill-omen", 
         "SpellLevel": 1, 
         "SpellName": "Ill omen", 
-        "Type": "wand", 
         "id": "wand-of-ill-omen"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 63, 
         "LowChance": 61, 
         "Name": "Wand of Jump", 
@@ -1284,11 +1285,11 @@
         "SpellId": "jump", 
         "SpellLevel": 1, 
         "SpellName": "Jump", 
-        "Type": "wand", 
         "id": "wand-of-jump"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 65, 
         "LowChance": 64, 
         "Name": "Wand of Longstrider", 
@@ -1298,11 +1299,11 @@
         "SpellId": "longstrider", 
         "SpellLevel": 1, 
         "SpellName": "Longstrider", 
-        "Type": "wand", 
         "id": "wand-of-longstrider"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 66, 
         "LowChance": 66, 
         "Name": "Wand of Magic aura", 
@@ -1312,11 +1313,11 @@
         "SpellId": "magic-aura", 
         "SpellLevel": 1, 
         "SpellName": "Magic aura", 
-        "Type": "wand", 
         "id": "wand-of-magic-aura"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 68, 
         "LowChance": 67, 
         "Name": "Wand of Mount", 
@@ -1326,11 +1327,11 @@
         "SpellId": "mount", 
         "SpellLevel": 1, 
         "SpellName": "Mount", 
-        "Type": "wand", 
         "id": "wand-of-mount"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 69, 
         "LowChance": 69, 
         "Name": "Wand of Obscure object", 
@@ -1340,11 +1341,11 @@
         "SpellId": "obscure-object", 
         "SpellLevel": 1, 
         "SpellName": "Obscure object", 
-        "Type": "wand", 
         "id": "wand-of-obscure-object"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 71, 
         "LowChance": 70, 
         "Name": "Wand of Pass without trace", 
@@ -1354,11 +1355,11 @@
         "SpellId": "pass-without-trace", 
         "SpellLevel": 1, 
         "SpellName": "Pass without trace", 
-        "Type": "wand", 
         "id": "wand-of-pass-without-trace"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 72, 
         "LowChance": 72, 
         "Name": "Wand of Ray of sickening", 
@@ -1368,11 +1369,11 @@
         "SpellId": "ray-of-sickening", 
         "SpellLevel": 1, 
         "SpellName": "Ray of sickening", 
-        "Type": "wand", 
         "id": "wand-of-ray-of-sickening"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 75, 
         "LowChance": 73, 
         "Name": "Wand of Reduce person", 
@@ -1382,11 +1383,11 @@
         "SpellId": "reduce-person", 
         "SpellLevel": 1, 
         "SpellName": "Reduce person", 
-        "Type": "wand", 
         "id": "wand-of-reduce-person"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 78, 
         "LowChance": 76, 
         "Name": "Wand of Sanctuary", 
@@ -1396,11 +1397,11 @@
         "SpellId": "sanctuary", 
         "SpellLevel": 1, 
         "SpellName": "Sanctuary", 
-        "Type": "wand", 
         "id": "wand-of-sanctuary"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 80, 
         "LowChance": 79, 
         "Name": "Wand of Shock shield", 
@@ -1410,11 +1411,11 @@
         "SpellId": "shock-shield", 
         "SpellLevel": 1, 
         "SpellName": "Shock shield", 
-        "Type": "wand", 
         "id": "wand-of-shock-shield"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 83, 
         "LowChance": 81, 
         "Name": "Wand of Speak with animals", 
@@ -1424,11 +1425,11 @@
         "SpellId": "speak-with-animals", 
         "SpellLevel": 1, 
         "SpellName": "Speak with animals", 
-        "Type": "wand", 
         "id": "wand-of-speak-with-animals"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 85, 
         "LowChance": 84, 
         "Name": "Wand of Stone fist", 
@@ -1438,11 +1439,11 @@
         "SpellId": "stone-fist", 
         "SpellLevel": 1, 
         "SpellName": "Stone fist", 
-        "Type": "wand", 
         "id": "wand-of-stone-fist"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 87, 
         "LowChance": 86, 
         "Name": "Wand of Stone shield", 
@@ -1452,11 +1453,11 @@
         "SpellId": "stone-shield", 
         "SpellLevel": 1, 
         "SpellName": "Stone shield", 
-        "Type": "wand", 
         "id": "wand-of-stone-shield"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 88, 
         "LowChance": 88, 
         "Name": "Wand of Summon minor monster", 
@@ -1466,11 +1467,11 @@
         "SpellId": "summon-minor-monster", 
         "SpellLevel": 1, 
         "SpellName": "Summon minor monster", 
-        "Type": "wand", 
         "id": "wand-of-summon-minor-monster"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 89, 
         "LowChance": 89, 
         "Name": "Wand of Undetectable alignment", 
@@ -1480,11 +1481,11 @@
         "SpellId": "undetectable-alignment", 
         "SpellLevel": 1, 
         "SpellName": "Undetectable alignment", 
-        "Type": "wand", 
         "id": "wand-of-undetectable-alignment"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 92, 
         "LowChance": 90, 
         "Name": "Wand of Urban grace", 
@@ -1494,11 +1495,11 @@
         "SpellId": "urban-grace", 
         "SpellLevel": 1, 
         "SpellName": "Urban grace", 
-        "Type": "wand", 
         "id": "wand-of-urban-grace"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 96, 
         "LowChance": 93, 
         "Name": "Wand of Vanish", 
@@ -1508,11 +1509,11 @@
         "SpellId": "vanish", 
         "SpellLevel": 1, 
         "SpellName": "Vanish", 
-        "Type": "wand", 
         "id": "wand-of-vanish"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 97, 
         "LowChance": 97, 
         "Name": "Wand of Ventriloquism", 
@@ -1522,11 +1523,11 @@
         "SpellId": "ventriloquism", 
         "SpellLevel": 1, 
         "SpellName": "Ventriloquism", 
-        "Type": "wand", 
         "id": "wand-of-ventriloquism"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 98, 
         "LowChance": 98, 
         "Name": "Wand of Magic mouth", 
@@ -1536,11 +1537,11 @@
         "SpellId": "magic-mouth", 
         "SpellLevel": 1, 
         "SpellName": "Magic mouth", 
-        "Type": "wand", 
         "id": "wand-of-magic-mouth"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 99, 
         "LowChance": 99, 
         "Name": "Wand of Bless water", 
@@ -1550,11 +1551,11 @@
         "SpellId": "bless-water", 
         "SpellLevel": 1, 
         "SpellName": "Bless water", 
-        "Type": "wand", 
         "id": "wand-of-bless-water"
     }, 
     {
         "CL": 1, 
+        "Group": "Wand", 
         "HighChance": 100, 
         "LowChance": 100, 
         "Name": "Wand of Curse water", 
@@ -1564,11 +1565,11 @@
         "SpellId": "curse-water", 
         "SpellLevel": 1, 
         "SpellName": "Curse water", 
-        "Type": "wand", 
         "id": "wand-of-curse-water"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 2, 
         "LowChance": 1, 
         "Name": "Wand of Acid arrow", 
@@ -1578,11 +1579,11 @@
         "SpellId": "acid-arrow", 
         "SpellLevel": 2, 
         "SpellName": "Acid arrow", 
-        "Type": "wand", 
         "id": "wand-of-acid-arrow"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 3, 
         "LowChance": 3, 
         "Name": "Wand of Aid", 
@@ -1592,11 +1593,11 @@
         "SpellId": "aid", 
         "SpellLevel": 2, 
         "SpellName": "Aid", 
-        "Type": "wand", 
         "id": "wand-of-aid"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 5, 
         "LowChance": 4, 
         "Name": "Wand of Alter self", 
@@ -1606,11 +1607,11 @@
         "SpellId": "alter-self", 
         "SpellLevel": 2, 
         "SpellName": "Alter self", 
-        "Type": "wand", 
         "id": "wand-of-alter-self"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 7, 
         "LowChance": 6, 
         "Name": "Wand of Barkskin", 
@@ -1620,11 +1621,11 @@
         "SpellId": "barkskin", 
         "SpellLevel": 2, 
         "SpellName": "Barkskin", 
-        "Type": "wand", 
         "id": "wand-of-barkskin"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 10, 
         "LowChance": 8, 
         "Name": "Wand of Bear's endurance", 
@@ -1634,11 +1635,11 @@
         "SpellId": "bear-s-endurance", 
         "SpellLevel": 2, 
         "SpellName": "Bear's endurance", 
-        "Type": "wand", 
         "id": "wand-of-bear-s-endurance"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 11, 
         "LowChance": 11, 
         "Name": "Wand of Blur", 
@@ -1648,11 +1649,11 @@
         "SpellId": "blur", 
         "SpellLevel": 2, 
         "SpellName": "Blur", 
-        "Type": "wand", 
         "id": "wand-of-blur"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 14, 
         "LowChance": 12, 
         "Name": "Wand of Bull's strength", 
@@ -1662,11 +1663,11 @@
         "SpellId": "bull-s-strength", 
         "SpellLevel": 2, 
         "SpellName": "Bull's strength", 
-        "Type": "wand", 
         "id": "wand-of-bull-s-strength"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 16, 
         "LowChance": 15, 
         "Name": "Wand of Cat's grace", 
@@ -1676,11 +1677,11 @@
         "SpellId": "cat-s-grace", 
         "SpellLevel": 2, 
         "SpellName": "Cat's grace", 
-        "Type": "wand", 
         "id": "wand-of-cat-s-grace"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 22, 
         "LowChance": 17, 
         "Name": "Wand of Cure moderate wounds", 
@@ -1690,11 +1691,11 @@
         "SpellId": "cure-moderate-wounds", 
         "SpellLevel": 2, 
         "SpellName": "Cure moderate wounds", 
-        "Type": "wand", 
         "id": "wand-of-cure-moderate-wounds"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 25, 
         "LowChance": 23, 
         "Name": "Wand of Darkness", 
@@ -1704,11 +1705,11 @@
         "SpellId": "darkness", 
         "SpellLevel": 2, 
         "SpellName": "Darkness", 
-        "Type": "wand", 
         "id": "wand-of-darkness"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 26, 
         "LowChance": 26, 
         "Name": "Wand of Darkvision", 
@@ -1718,11 +1719,11 @@
         "SpellId": "darkvision", 
         "SpellLevel": 2, 
         "SpellName": "Darkvision", 
-        "Type": "wand", 
         "id": "wand-of-darkvision"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 27, 
         "LowChance": 27, 
         "Name": "Wand of Delay poison", 
@@ -1732,11 +1733,11 @@
         "SpellId": "delay-poison", 
         "SpellLevel": 2, 
         "SpellName": "Delay poison", 
-        "Type": "wand", 
         "id": "wand-of-delay-poison"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 29, 
         "LowChance": 28, 
         "Name": "Wand of Eagle's splendor", 
@@ -1746,11 +1747,11 @@
         "SpellId": "eagle-s-splendor", 
         "SpellLevel": 2, 
         "SpellName": "Eagle's splendor", 
-        "Type": "wand", 
         "id": "wand-of-eagle-s-splendor"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 30, 
         "LowChance": 30, 
         "Name": "Wand of False life", 
@@ -1760,11 +1761,11 @@
         "SpellId": "false-life", 
         "SpellLevel": 2, 
         "SpellName": "False life", 
-        "Type": "wand", 
         "id": "wand-of-false-life"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 31, 
         "LowChance": 31, 
         "Name": "Wand of Find traps", 
@@ -1774,11 +1775,11 @@
         "SpellId": "find-traps", 
         "SpellLevel": 2, 
         "SpellName": "Find traps", 
-        "Type": "wand", 
         "id": "wand-of-find-traps"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 32, 
         "LowChance": 32, 
         "Name": "Wand of Flame blade", 
@@ -1788,11 +1789,11 @@
         "SpellId": "flame-blade", 
         "SpellLevel": 2, 
         "SpellName": "Flame blade", 
-        "Type": "wand", 
         "id": "wand-of-flame-blade"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 33, 
         "LowChance": 33, 
         "Name": "Wand of Flaming sphere", 
@@ -1802,11 +1803,11 @@
         "SpellId": "flaming-sphere", 
         "SpellLevel": 2, 
         "SpellName": "Flaming sphere", 
-        "Type": "wand", 
         "id": "wand-of-flaming-sphere"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 35, 
         "LowChance": 34, 
         "Name": "Wand of Fog cloud", 
@@ -1816,11 +1817,11 @@
         "SpellId": "fog-cloud", 
         "SpellLevel": 2, 
         "SpellName": "Fog cloud", 
-        "Type": "wand", 
         "id": "wand-of-fog-cloud"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 37, 
         "LowChance": 36, 
         "Name": "Wand of Fox's cunning", 
@@ -1830,11 +1831,11 @@
         "SpellId": "fox-s-cunning", 
         "SpellLevel": 2, 
         "SpellName": "Fox's cunning", 
-        "Type": "wand", 
         "id": "wand-of-fox-s-cunning"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 38, 
         "LowChance": 38, 
         "Name": "Wand of Glitterdust", 
@@ -1844,11 +1845,11 @@
         "SpellId": "glitterdust", 
         "SpellLevel": 2, 
         "SpellName": "Glitterdust", 
-        "Type": "wand", 
         "id": "wand-of-glitterdust"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 40, 
         "LowChance": 39, 
         "Name": "Wand of Heat metal", 
@@ -1858,11 +1859,11 @@
         "SpellId": "heat-metal", 
         "SpellLevel": 2, 
         "SpellName": "Heat metal", 
-        "Type": "wand", 
         "id": "wand-of-heat-metal"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 43, 
         "LowChance": 41, 
         "Name": "Wand of Hold person", 
@@ -1872,11 +1873,11 @@
         "SpellId": "hold-person", 
         "SpellLevel": 2, 
         "SpellName": "Hold person", 
-        "Type": "wand", 
         "id": "wand-of-hold-person"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 46, 
         "LowChance": 44, 
         "Name": "Wand of Inflict moderate wounds", 
@@ -1886,11 +1887,11 @@
         "SpellId": "inflict-moderate-wounds", 
         "SpellLevel": 2, 
         "SpellName": "Inflict moderate wounds", 
-        "Type": "wand", 
         "id": "wand-of-inflict-moderate-wounds"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 51, 
         "LowChance": 47, 
         "Name": "Wand of Invisibility", 
@@ -1900,11 +1901,11 @@
         "SpellId": "invisibility", 
         "SpellLevel": 2, 
         "SpellName": "Invisibility", 
-        "Type": "wand", 
         "id": "wand-of-invisibility"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 52, 
         "LowChance": 52, 
         "Name": "Wand of Knock", 
@@ -1914,11 +1915,11 @@
         "SpellId": "knock", 
         "SpellLevel": 2, 
         "SpellName": "Knock", 
-        "Type": "wand", 
         "id": "wand-of-knock"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 54, 
         "LowChance": 53, 
         "Name": "Wand of Levitate", 
@@ -1928,11 +1929,11 @@
         "SpellId": "levitate", 
         "SpellLevel": 2, 
         "SpellName": "Levitate", 
-        "Type": "wand", 
         "id": "wand-of-levitate"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 55, 
         "LowChance": 55, 
         "Name": "Wand of Minor image", 
@@ -1942,11 +1943,11 @@
         "SpellId": "minor-image", 
         "SpellLevel": 2, 
         "SpellName": "Minor image", 
-        "Type": "wand", 
         "id": "wand-of-minor-image"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 57, 
         "LowChance": 56, 
         "Name": "Wand of Mirror image", 
@@ -1956,11 +1957,11 @@
         "SpellId": "mirror-image", 
         "SpellLevel": 2, 
         "SpellName": "Mirror image", 
-        "Type": "wand", 
         "id": "wand-of-mirror-image"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 59, 
         "LowChance": 58, 
         "Name": "Wand of Owl's wisdom", 
@@ -1970,11 +1971,11 @@
         "SpellId": "owl-s-wisdom", 
         "SpellLevel": 2, 
         "SpellName": "Owl's wisdom", 
-        "Type": "wand", 
         "id": "wand-of-owl-s-wisdom"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 60, 
         "LowChance": 60, 
         "Name": "Wand of Pyrotechnics", 
@@ -1984,11 +1985,11 @@
         "SpellId": "pyrotechnics", 
         "SpellLevel": 2, 
         "SpellName": "Pyrotechnics", 
-        "Type": "wand", 
         "id": "wand-of-pyrotechnics"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 61, 
         "LowChance": 61, 
         "Name": "Wand of Remove paralysis", 
@@ -1998,11 +1999,11 @@
         "SpellId": "remove-paralysis", 
         "SpellLevel": 2, 
         "SpellName": "Remove paralysis", 
-        "Type": "wand", 
         "id": "wand-of-remove-paralysis"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 64, 
         "LowChance": 62, 
         "Name": "Wand of Resist energy", 
@@ -2012,11 +2013,11 @@
         "SpellId": "resist-energy", 
         "SpellLevel": 2, 
         "SpellName": "Resist energy", 
-        "Type": "wand", 
         "id": "wand-of-resist-energy"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 66, 
         "LowChance": 65, 
         "Name": "Wand of Restoration, lesser", 
@@ -2026,11 +2027,11 @@
         "SpellId": "restoration", 
         "SpellLevel": 2, 
         "SpellName": "Restoration", 
-        "Type": "wand", 
         "id": "wand-of-restoration-lesser"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 71, 
         "LowChance": 67, 
         "Name": "Wand of Scorching ray", 
@@ -2040,11 +2041,11 @@
         "SpellId": "scorching-ray", 
         "SpellLevel": 2, 
         "SpellName": "Scorching ray", 
-        "Type": "wand", 
         "id": "wand-of-scorching-ray"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 73, 
         "LowChance": 72, 
         "Name": "Wand of See invisibility", 
@@ -2054,11 +2055,11 @@
         "SpellId": "see-invisibility", 
         "SpellLevel": 2, 
         "SpellName": "See invisibility", 
-        "Type": "wand", 
         "id": "wand-of-see-invisibility"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 74, 
         "LowChance": 74, 
         "Name": "Wand of Shatter", 
@@ -2068,11 +2069,11 @@
         "SpellId": "shatter", 
         "SpellLevel": 2, 
         "SpellName": "Shatter", 
-        "Type": "wand", 
         "id": "wand-of-shatter"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 76, 
         "LowChance": 75, 
         "Name": "Wand of Shield other", 
@@ -2082,11 +2083,11 @@
         "SpellId": "shield-other", 
         "SpellLevel": 2, 
         "SpellName": "Shield other", 
-        "Type": "wand", 
         "id": "wand-of-shield-other"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 78, 
         "LowChance": 77, 
         "Name": "Wand of Silence", 
@@ -2096,11 +2097,11 @@
         "SpellId": "silence", 
         "SpellLevel": 2, 
         "SpellName": "Silence", 
-        "Type": "wand", 
         "id": "wand-of-silence"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 81, 
         "LowChance": 79, 
         "Name": "Wand of Sound burst", 
@@ -2110,11 +2111,11 @@
         "SpellId": "sound-burst", 
         "SpellLevel": 2, 
         "SpellName": "Sound burst", 
-        "Type": "wand", 
         "id": "wand-of-sound-burst"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 83, 
         "LowChance": 82, 
         "Name": "Wand of Spider climb", 
@@ -2124,11 +2125,11 @@
         "SpellId": "spider-climb", 
         "SpellLevel": 2, 
         "SpellName": "Spider climb", 
-        "Type": "wand", 
         "id": "wand-of-spider-climb"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 86, 
         "LowChance": 84, 
         "Name": "Wand of Spiritual weapon", 
@@ -2138,11 +2139,11 @@
         "SpellId": "spiritual-weapon", 
         "SpellLevel": 2, 
         "SpellName": "Spiritual weapon", 
-        "Type": "wand", 
         "id": "wand-of-spiritual-weapon"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 88, 
         "LowChance": 87, 
         "Name": "Wand of Summon monster II", 
@@ -2152,11 +2153,11 @@
         "SpellId": "summon-monster-ii", 
         "SpellLevel": 2, 
         "SpellName": "Summon monster II", 
-        "Type": "wand", 
         "id": "wand-of-summon-monster-ii"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 90, 
         "LowChance": 89, 
         "Name": "Wand of Summon nature's ally II", 
@@ -2166,11 +2167,11 @@
         "SpellId": "summon-nature-s-ally-ii", 
         "SpellLevel": 2, 
         "SpellName": "Summon nature's ally II", 
-        "Type": "wand", 
         "id": "wand-of-summon-nature-s-ally-ii"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 92, 
         "LowChance": 91, 
         "Name": "Wand of Summon swarm", 
@@ -2180,11 +2181,11 @@
         "SpellId": "summon-swarm", 
         "SpellLevel": 2, 
         "SpellName": "Summon swarm", 
-        "Type": "wand", 
         "id": "wand-of-summon-swarm"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 96, 
         "LowChance": 93, 
         "Name": "Wand of Web", 
@@ -2194,11 +2195,11 @@
         "SpellId": "web", 
         "SpellLevel": 2, 
         "SpellName": "Web", 
-        "Type": "wand", 
         "id": "wand-of-web"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 97, 
         "LowChance": 97, 
         "Name": "Wand of Whispering wind", 
@@ -2208,11 +2209,11 @@
         "SpellId": "whispering-wind", 
         "SpellLevel": 2, 
         "SpellName": "Whispering wind", 
-        "Type": "wand", 
         "id": "wand-of-whispering-wind"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 99, 
         "LowChance": 98, 
         "Name": "Wand of Augury", 
@@ -2222,11 +2223,11 @@
         "SpellId": "augury", 
         "SpellLevel": 2, 
         "SpellName": "Augury", 
-        "Type": "wand", 
         "id": "wand-of-augury"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 100, 
         "LowChance": 100, 
         "Name": "Wand of Fire trap", 
@@ -2236,11 +2237,11 @@
         "SpellId": "fire-trap", 
         "SpellLevel": 2, 
         "SpellName": "Fire trap", 
-        "Type": "wand", 
         "id": "wand-of-fire-trap"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 2, 
         "LowChance": 1, 
         "Name": "Wand of Align weapon", 
@@ -2250,11 +2251,11 @@
         "SpellId": "align-weapon", 
         "SpellLevel": 2, 
         "SpellName": "Align weapon", 
-        "Type": "wand", 
         "id": "wand-of-align-weapon"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 5, 
         "LowChance": 3, 
         "Name": "Wand of Animal aspect", 
@@ -2264,11 +2265,11 @@
         "SpellId": "animal-aspect", 
         "SpellLevel": 2, 
         "SpellName": "Animal aspect", 
-        "Type": "wand", 
         "id": "wand-of-animal-aspect"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 6, 
         "LowChance": 6, 
         "Name": "Wand of Animal messenger", 
@@ -2278,11 +2279,11 @@
         "SpellId": "animal-messenger", 
         "SpellLevel": 2, 
         "SpellName": "Animal messenger", 
-        "Type": "wand", 
         "id": "wand-of-animal-messenger"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 7, 
         "LowChance": 7, 
         "Name": "Wand of Animal trance", 
@@ -2292,11 +2293,11 @@
         "SpellId": "animal-trance", 
         "SpellLevel": 2, 
         "SpellName": "Animal trance", 
-        "Type": "wand", 
         "id": "wand-of-animal-trance"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 10, 
         "LowChance": 8, 
         "Name": "Wand of Aspect of the bear", 
@@ -2306,11 +2307,11 @@
         "SpellId": "aspect-of-the-bear", 
         "SpellLevel": 2, 
         "SpellName": "Aspect of the bear", 
-        "Type": "wand", 
         "id": "wand-of-aspect-of-the-bear"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 13, 
         "LowChance": 11, 
         "Name": "Wand of Bestow weapon proficiency", 
@@ -2320,11 +2321,11 @@
         "SpellId": "bestow-weapon-proficiency", 
         "SpellLevel": 2, 
         "SpellName": "Bestow weapon proficiency", 
-        "Type": "wand", 
         "id": "wand-of-bestow-weapon-proficiency"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 15, 
         "LowChance": 14, 
         "Name": "Wand of Blindness/deafness", 
@@ -2334,11 +2335,11 @@
         "SpellId": "blindness-deafness", 
         "SpellLevel": 2, 
         "SpellName": "Blindness/deafness", 
-        "Type": "wand", 
         "id": "wand-of-blindness-deafness"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 18, 
         "LowChance": 16, 
         "Name": "Wand of Burning gaze", 
@@ -2348,11 +2349,11 @@
         "SpellId": "burning-gaze", 
         "SpellLevel": 2, 
         "SpellName": "Burning gaze", 
-        "Type": "wand", 
         "id": "wand-of-burning-gaze"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 21, 
         "LowChance": 19, 
         "Name": "Wand of Calm emotions", 
@@ -2362,11 +2363,11 @@
         "SpellId": "calm-emotions", 
         "SpellLevel": 2, 
         "SpellName": "Calm emotions", 
-        "Type": "wand", 
         "id": "wand-of-calm-emotions"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 24, 
         "LowChance": 22, 
         "Name": "Wand of Chill metal", 
@@ -2376,11 +2377,11 @@
         "SpellId": "chill-metal", 
         "SpellLevel": 2, 
         "SpellName": "Chill metal", 
-        "Type": "wand", 
         "id": "wand-of-chill-metal"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 25, 
         "LowChance": 25, 
         "Name": "Wand of Command undead", 
@@ -2390,11 +2391,11 @@
         "SpellId": "command-undead", 
         "SpellLevel": 2, 
         "SpellName": "Command undead", 
-        "Type": "wand", 
         "id": "wand-of-command-undead"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 27, 
         "LowChance": 26, 
         "Name": "Wand of Daze monster", 
@@ -2404,11 +2405,11 @@
         "SpellId": "daze-monster", 
         "SpellLevel": 2, 
         "SpellName": "Daze monster", 
-        "Type": "wand", 
         "id": "wand-of-daze-monster"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 29, 
         "LowChance": 28, 
         "Name": "Wand of Death knell", 
@@ -2418,11 +2419,11 @@
         "SpellId": "death-knell", 
         "SpellLevel": 2, 
         "SpellName": "Death knell", 
-        "Type": "wand", 
         "id": "wand-of-death-knell"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 32, 
         "LowChance": 30, 
         "Name": "Wand of Defensive shock", 
@@ -2432,11 +2433,11 @@
         "SpellId": "defensive-shock", 
         "SpellLevel": 2, 
         "SpellName": "Defensive shock", 
-        "Type": "wand", 
         "id": "wand-of-defensive-shock"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 33, 
         "LowChance": 33, 
         "Name": "Wand of Delay pain", 
@@ -2446,11 +2447,11 @@
         "SpellId": "delay-pain", 
         "SpellLevel": 2, 
         "SpellName": "Delay pain", 
-        "Type": "wand", 
         "id": "wand-of-delay-pain"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 35, 
         "LowChance": 34, 
         "Name": "Wand of Detect thoughts", 
@@ -2460,11 +2461,11 @@
         "SpellId": "detect-thoughts", 
         "SpellLevel": 2, 
         "SpellName": "Detect thoughts", 
-        "Type": "wand", 
         "id": "wand-of-detect-thoughts"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 39, 
         "LowChance": 36, 
         "Name": "Wand of Disguise other", 
@@ -2474,11 +2475,11 @@
         "SpellId": "disguise-other", 
         "SpellLevel": 2, 
         "SpellName": "Disguise other", 
-        "Type": "wand", 
         "id": "wand-of-disguise-other"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 42, 
         "LowChance": 40, 
         "Name": "Wand of Effortless armor", 
@@ -2488,11 +2489,11 @@
         "SpellId": "effortless-armor", 
         "SpellLevel": 2, 
         "SpellName": "Effortless armor", 
-        "Type": "wand", 
         "id": "wand-of-effortless-armor"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 46, 
         "LowChance": 43, 
         "Name": "Wand of Elemental touch", 
@@ -2502,11 +2503,11 @@
         "SpellId": "elemental-touch", 
         "SpellLevel": 2, 
         "SpellName": "Elemental touch", 
-        "Type": "wand", 
         "id": "wand-of-elemental-touch"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 48, 
         "LowChance": 47, 
         "Name": "Wand of Enthrall", 
@@ -2516,11 +2517,11 @@
         "SpellId": "enthrall", 
         "SpellLevel": 2, 
         "SpellName": "Enthrall", 
-        "Type": "wand", 
         "id": "wand-of-enthrall"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 50, 
         "LowChance": 49, 
         "Name": "Wand of Gentle repose", 
@@ -2530,11 +2531,11 @@
         "SpellId": "gentle-repose", 
         "SpellLevel": 2, 
         "SpellName": "Gentle repose", 
-        "Type": "wand", 
         "id": "wand-of-gentle-repose"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 51, 
         "LowChance": 51, 
         "Name": "Wand of Ghoul touch", 
@@ -2544,11 +2545,11 @@
         "SpellId": "ghoul-touch", 
         "SpellLevel": 2, 
         "SpellName": "Ghoul touch", 
-        "Type": "wand", 
         "id": "wand-of-ghoul-touch"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 53, 
         "LowChance": 52, 
         "Name": "Wand of Glide", 
@@ -2558,11 +2559,11 @@
         "SpellId": "glide", 
         "SpellLevel": 2, 
         "SpellName": "Glide", 
-        "Type": "wand", 
         "id": "wand-of-glide"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 55, 
         "LowChance": 54, 
         "Name": "Wand of Groundswell", 
@@ -2572,11 +2573,11 @@
         "SpellId": "groundswell", 
         "SpellLevel": 2, 
         "SpellName": "Groundswell", 
-        "Type": "wand", 
         "id": "wand-of-groundswell"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 56, 
         "LowChance": 56, 
         "Name": "Wand of Gust of wind", 
@@ -2586,11 +2587,11 @@
         "SpellId": "gust-of-wind", 
         "SpellLevel": 2, 
         "SpellName": "Gust of wind", 
-        "Type": "wand", 
         "id": "wand-of-gust-of-wind"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 57, 
         "LowChance": 57, 
         "Name": "Wand of Hold animal", 
@@ -2600,11 +2601,11 @@
         "SpellId": "hold-animal", 
         "SpellLevel": 2, 
         "SpellName": "Hold animal", 
-        "Type": "wand", 
         "id": "wand-of-hold-animal"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 59, 
         "LowChance": 58, 
         "Name": "Wand of Hypnotic pattern", 
@@ -2614,11 +2615,11 @@
         "SpellId": "hypnotic-pattern", 
         "SpellLevel": 2, 
         "SpellName": "Hypnotic pattern", 
-        "Type": "wand", 
         "id": "wand-of-hypnotic-pattern"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 60, 
         "LowChance": 60, 
         "Name": "Wand of Locate object", 
@@ -2628,11 +2629,11 @@
         "SpellId": "locate-object", 
         "SpellLevel": 2, 
         "SpellName": "Locate object", 
-        "Type": "wand", 
         "id": "wand-of-locate-object"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 61, 
         "LowChance": 61, 
         "Name": "Wand of Make whole", 
@@ -2642,11 +2643,11 @@
         "SpellId": "make-whole", 
         "SpellLevel": 2, 
         "SpellName": "Make whole", 
-        "Type": "wand", 
         "id": "wand-of-make-whole"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 63, 
         "LowChance": 62, 
         "Name": "Wand of Misdirection", 
@@ -2656,11 +2657,11 @@
         "SpellId": "misdirection", 
         "SpellLevel": 2, 
         "SpellName": "Misdirection", 
-        "Type": "wand", 
         "id": "wand-of-misdirection"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 65, 
         "LowChance": 64, 
         "Name": "Wand of Oppressive boredom", 
@@ -2670,11 +2671,11 @@
         "SpellId": "oppressive-boredom", 
         "SpellLevel": 2, 
         "SpellName": "Oppressive boredom", 
-        "Type": "wand", 
         "id": "wand-of-oppressive-boredom"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 66, 
         "LowChance": 66, 
         "Name": "Wand of Protection from arrows", 
@@ -2684,11 +2685,11 @@
         "SpellId": "protection-from-arrows", 
         "SpellLevel": 2, 
         "SpellName": "Protection from arrows", 
-        "Type": "wand", 
         "id": "wand-of-protection-from-arrows"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 67, 
         "LowChance": 67, 
         "Name": "Wand of Reduce animal", 
@@ -2698,11 +2699,11 @@
         "SpellId": "reduce-animal", 
         "SpellLevel": 2, 
         "SpellName": "Reduce animal", 
-        "Type": "wand", 
         "id": "wand-of-reduce-animal"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 69, 
         "LowChance": 68, 
         "Name": "Wand of Rope trick", 
@@ -2712,11 +2713,11 @@
         "SpellId": "rope-trick", 
         "SpellLevel": 2, 
         "SpellName": "Rope trick", 
-        "Type": "wand", 
         "id": "wand-of-rope-trick"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 72, 
         "LowChance": 70, 
         "Name": "Wand of Scare", 
@@ -2726,11 +2727,11 @@
         "SpellId": "scare", 
         "SpellLevel": 2, 
         "SpellName": "Scare", 
-        "Type": "wand", 
         "id": "wand-of-scare"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 74, 
         "LowChance": 73, 
         "Name": "Wand of Share language", 
@@ -2740,11 +2741,11 @@
         "SpellId": "share-language", 
         "SpellLevel": 2, 
         "SpellName": "Share language", 
-        "Type": "wand", 
         "id": "wand-of-share-language"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 76, 
         "LowChance": 75, 
         "Name": "Wand of Soften earth and stone", 
@@ -2754,11 +2755,11 @@
         "SpellId": "soften-earth-and-stone", 
         "SpellLevel": 2, 
         "SpellName": "Soften earth and stone", 
-        "Type": "wand", 
         "id": "wand-of-soften-earth-and-stone"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 78, 
         "LowChance": 77, 
         "Name": "Wand of Spectral hand", 
@@ -2768,11 +2769,11 @@
         "SpellId": "spectral-hand", 
         "SpellLevel": 2, 
         "SpellName": "Spectral hand", 
-        "Type": "wand", 
         "id": "wand-of-spectral-hand"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 80, 
         "LowChance": 79, 
         "Name": "Wand of Status", 
@@ -2782,11 +2783,11 @@
         "SpellId": "status", 
         "SpellLevel": 2, 
         "SpellName": "Status", 
-        "Type": "wand", 
         "id": "wand-of-status"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 82, 
         "LowChance": 81, 
         "Name": "Wand of Tongues", 
@@ -2796,11 +2797,11 @@
         "SpellId": "tongues", 
         "SpellLevel": 2, 
         "SpellName": "Tongues", 
-        "Type": "wand", 
         "id": "wand-of-tongues"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 84, 
         "LowChance": 83, 
         "Name": "Wand of Touch of idiocy", 
@@ -2810,11 +2811,11 @@
         "SpellId": "touch-of-idiocy", 
         "SpellLevel": 2, 
         "SpellName": "Touch of idiocy", 
-        "Type": "wand", 
         "id": "wand-of-touch-of-idiocy"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 86, 
         "LowChance": 85, 
         "Name": "Wand of Tree shape", 
@@ -2824,11 +2825,11 @@
         "SpellId": "tree-shape", 
         "SpellLevel": 2, 
         "SpellName": "Tree shape", 
-        "Type": "wand", 
         "id": "wand-of-tree-shape"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 88, 
         "LowChance": 87, 
         "Name": "Wand of Warp wood", 
@@ -2838,11 +2839,11 @@
         "SpellId": "warp-wood", 
         "SpellLevel": 2, 
         "SpellName": "Warp wood", 
-        "Type": "wand", 
         "id": "wand-of-warp-wood"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 91, 
         "LowChance": 89, 
         "Name": "Wand of Weapon of awe", 
@@ -2852,11 +2853,11 @@
         "SpellId": "weapon-of-awe", 
         "SpellLevel": 2, 
         "SpellName": "Weapon of awe", 
-        "Type": "wand", 
         "id": "wand-of-weapon-of-awe"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 93, 
         "LowChance": 92, 
         "Name": "Wand of Wood shape", 
@@ -2866,11 +2867,11 @@
         "SpellId": "wood-shape", 
         "SpellLevel": 2, 
         "SpellName": "Wood shape", 
-        "Type": "wand", 
         "id": "wand-of-wood-shape"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 95, 
         "LowChance": 94, 
         "Name": "Wand of Zone of truth", 
@@ -2880,11 +2881,11 @@
         "SpellId": "zone-of-truth", 
         "SpellLevel": 2, 
         "SpellName": "Zone of truth", 
-        "Type": "wand", 
         "id": "wand-of-zone-of-truth"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 96, 
         "LowChance": 96, 
         "Name": "Wand of Arcane lock", 
@@ -2894,11 +2895,11 @@
         "SpellId": "arcane-lock", 
         "SpellLevel": 2, 
         "SpellName": "Arcane lock", 
-        "Type": "wand", 
         "id": "wand-of-arcane-lock"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 97, 
         "LowChance": 97, 
         "Name": "Wand of Consecrate", 
@@ -2908,11 +2909,11 @@
         "SpellId": "consecrate", 
         "SpellLevel": 2, 
         "SpellName": "Consecrate", 
-        "Type": "wand", 
         "id": "wand-of-consecrate"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 98, 
         "LowChance": 98, 
         "Name": "Wand of Desecrate", 
@@ -2922,11 +2923,11 @@
         "SpellId": "desecrate", 
         "SpellLevel": 2, 
         "SpellName": "Desecrate", 
-        "Type": "wand", 
         "id": "wand-of-desecrate"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 99, 
         "LowChance": 99, 
         "Name": "Wand of Continual flame", 
@@ -2936,11 +2937,11 @@
         "SpellId": "continual-flame", 
         "SpellLevel": 2, 
         "SpellName": "Continual flame", 
-        "Type": "wand", 
         "id": "wand-of-continual-flame"
     }, 
     {
         "CL": 3, 
+        "Group": "Wand", 
         "HighChance": 100, 
         "LowChance": 100, 
         "Name": "Wand of Phantom trap", 
@@ -2950,11 +2951,11 @@
         "SpellId": "phantom-trap", 
         "SpellLevel": 2, 
         "SpellName": "Phantom trap", 
-        "Type": "wand", 
         "id": "wand-of-phantom-trap"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 2, 
         "LowChance": 1, 
         "Name": "Wand of Beast shape I", 
@@ -2964,11 +2965,11 @@
         "SpellId": "beast-shape-i", 
         "SpellLevel": 3, 
         "SpellName": "Beast shape I", 
-        "Type": "wand", 
         "id": "wand-of-beast-shape-i"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 4, 
         "LowChance": 3, 
         "Name": "Wand of Blink", 
@@ -2978,11 +2979,11 @@
         "SpellId": "blink", 
         "SpellLevel": 3, 
         "SpellName": "Blink", 
-        "Type": "wand", 
         "id": "wand-of-blink"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 7, 
         "LowChance": 5, 
         "Name": "Wand of Call lightning", 
@@ -2992,11 +2993,11 @@
         "SpellId": "call-lightning", 
         "SpellLevel": 3, 
         "SpellName": "Call lightning", 
-        "Type": "wand", 
         "id": "wand-of-call-lightning"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 8, 
         "LowChance": 8, 
         "Name": "Wand of Create food and water", 
@@ -3006,11 +3007,11 @@
         "SpellId": "create-food-and-water", 
         "SpellLevel": 3, 
         "SpellName": "Create food and water", 
-        "Type": "wand", 
         "id": "wand-of-create-food-and-water"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 14, 
         "LowChance": 9, 
         "Name": "Wand of Cure serious wounds", 
@@ -3020,11 +3021,11 @@
         "SpellId": "cure-serious-wounds", 
         "SpellLevel": 3, 
         "SpellName": "Cure serious wounds", 
-        "Type": "wand", 
         "id": "wand-of-cure-serious-wounds"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 16, 
         "LowChance": 15, 
         "Name": "Wand of Daylight", 
@@ -3034,11 +3035,11 @@
         "SpellId": "daylight", 
         "SpellLevel": 3, 
         "SpellName": "Daylight", 
-        "Type": "wand", 
         "id": "wand-of-daylight"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 18, 
         "LowChance": 17, 
         "Name": "Wand of Deep slumber", 
@@ -3048,11 +3049,11 @@
         "SpellId": "deep-slumber", 
         "SpellLevel": 3, 
         "SpellName": "Deep slumber", 
-        "Type": "wand", 
         "id": "wand-of-deep-slumber"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 20, 
         "LowChance": 19, 
         "Name": "Wand of Deeper darkness", 
@@ -3062,11 +3063,11 @@
         "SpellId": "deeper-darkness", 
         "SpellLevel": 3, 
         "SpellName": "Deeper darkness", 
-        "Type": "wand", 
         "id": "wand-of-deeper-darkness"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 25, 
         "LowChance": 21, 
         "Name": "Wand of Dispel magic", 
@@ -3076,11 +3077,11 @@
         "SpellId": "dispel-magic", 
         "SpellLevel": 3, 
         "SpellName": "Dispel magic", 
-        "Type": "wand", 
         "id": "wand-of-dispel-magic"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 28, 
         "LowChance": 26, 
         "Name": "Wand of Displacement", 
@@ -3090,11 +3091,11 @@
         "SpellId": "displacement", 
         "SpellLevel": 3, 
         "SpellName": "Displacement", 
-        "Type": "wand", 
         "id": "wand-of-displacement"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 34, 
         "LowChance": 29, 
         "Name": "Wand of Fireball", 
@@ -3104,11 +3105,11 @@
         "SpellId": "fireball", 
         "SpellLevel": 3, 
         "SpellName": "Fireball", 
-        "Type": "wand", 
         "id": "wand-of-fireball"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 35, 
         "LowChance": 35, 
         "Name": "Wand of Flame arrow", 
@@ -3118,11 +3119,11 @@
         "SpellId": "flame-arrow", 
         "SpellLevel": 3, 
         "SpellName": "Flame arrow", 
-        "Type": "wand", 
         "id": "wand-of-flame-arrow"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 37, 
         "LowChance": 36, 
         "Name": "Wand of Fly", 
@@ -3132,11 +3133,11 @@
         "SpellId": "fly", 
         "SpellLevel": 3, 
         "SpellName": "Fly", 
-        "Type": "wand", 
         "id": "wand-of-fly"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 38, 
         "LowChance": 38, 
         "Name": "Wand of Gaseous form", 
@@ -3146,11 +3147,11 @@
         "SpellId": "gaseous-form", 
         "SpellLevel": 3, 
         "SpellName": "Gaseous form", 
-        "Type": "wand", 
         "id": "wand-of-gaseous-form"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 40, 
         "LowChance": 39, 
         "Name": "Wand of Haste", 
@@ -3160,11 +3161,11 @@
         "SpellId": "haste", 
         "SpellLevel": 3, 
         "SpellName": "Haste", 
-        "Type": "wand", 
         "id": "wand-of-haste"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 42, 
         "LowChance": 41, 
         "Name": "Wand of Heroism", 
@@ -3174,11 +3175,11 @@
         "SpellId": "heroism", 
         "SpellLevel": 3, 
         "SpellName": "Heroism", 
-        "Type": "wand", 
         "id": "wand-of-heroism"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 45, 
         "LowChance": 43, 
         "Name": "Wand of Inflict serious wounds", 
@@ -3188,11 +3189,11 @@
         "SpellId": "inflict-serious-wounds", 
         "SpellLevel": 3, 
         "SpellName": "Inflict serious wounds", 
-        "Type": "wand", 
         "id": "wand-of-inflict-serious-wounds"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 47, 
         "LowChance": 46, 
         "Name": "Wand of Invisibility purge", 
@@ -3202,11 +3203,11 @@
         "SpellId": "invisibility-purge", 
         "SpellLevel": 3, 
         "SpellName": "Invisibility purge", 
-        "Type": "wand", 
         "id": "wand-of-invisibility-purge"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 48, 
         "LowChance": 48, 
         "Name": "Wand of Invisibility sphere", 
@@ -3216,11 +3217,11 @@
         "SpellId": "invisibility-sphere", 
         "SpellLevel": 3, 
         "SpellName": "Invisibility sphere", 
-        "Type": "wand", 
         "id": "wand-of-invisibility-sphere"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 50, 
         "LowChance": 49, 
         "Name": "Wand of Keen edge", 
@@ -3230,11 +3231,11 @@
         "SpellId": "keen-edge", 
         "SpellLevel": 3, 
         "SpellName": "Keen edge", 
-        "Type": "wand", 
         "id": "wand-of-keen-edge"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 55, 
         "LowChance": 51, 
         "Name": "Wand of Lightning bolt", 
@@ -3244,11 +3245,11 @@
         "SpellId": "lightning-bolt", 
         "SpellLevel": 3, 
         "SpellName": "Lightning bolt", 
-        "Type": "wand", 
         "id": "wand-of-lightning-bolt"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 56, 
         "LowChance": 56, 
         "Name": "Wand of Magic circle against chaos", 
@@ -3258,11 +3259,11 @@
         "SpellId": "magic-circle-against-chaos", 
         "SpellLevel": 3, 
         "SpellName": "Magic circle against chaos", 
-        "Type": "wand", 
         "id": "wand-of-magic-circle-against-chaos"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 57, 
         "LowChance": 57, 
         "Name": "Wand of Magic circle against evil", 
@@ -3272,11 +3273,11 @@
         "SpellId": "magic-circle-against-evil", 
         "SpellLevel": 3, 
         "SpellName": "Magic circle against evil", 
-        "Type": "wand", 
         "id": "wand-of-magic-circle-against-evil"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 58, 
         "LowChance": 58, 
         "Name": "Wand of Magic circle against good", 
@@ -3286,11 +3287,11 @@
         "SpellId": "magic-circle-against-good", 
         "SpellLevel": 3, 
         "SpellName": "Magic circle against good", 
-        "Type": "wand", 
         "id": "wand-of-magic-circle-against-good"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 59, 
         "LowChance": 59, 
         "Name": "Wand of Magic circle against law", 
@@ -3300,11 +3301,11 @@
         "SpellId": "magic-circle-against-law", 
         "SpellLevel": 3, 
         "SpellName": "Magic circle against law", 
-        "Type": "wand", 
         "id": "wand-of-magic-circle-against-law"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 60, 
         "LowChance": 60, 
         "Name": "Wand of Magic fang, greater", 
@@ -3314,11 +3315,11 @@
         "SpellId": "magic-fang-greater", 
         "SpellLevel": 3, 
         "SpellName": "Magic fang, greater", 
-        "Type": "wand", 
         "id": "wand-of-magic-fang-greater"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 62, 
         "LowChance": 61, 
         "Name": "Wand of Magic vestment", 
@@ -3328,11 +3329,11 @@
         "SpellId": "magic-vestment", 
         "SpellLevel": 3, 
         "SpellName": "Magic vestment", 
-        "Type": "wand", 
         "id": "wand-of-magic-vestment"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 64, 
         "LowChance": 63, 
         "Name": "Wand of Magic weapon, greater", 
@@ -3342,11 +3343,11 @@
         "SpellId": "magic-weapon-greater", 
         "SpellLevel": 3, 
         "SpellName": "Magic weapon, greater", 
-        "Type": "wand", 
         "id": "wand-of-magic-weapon-greater"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 66, 
         "LowChance": 65, 
         "Name": "Wand of Major image", 
@@ -3356,11 +3357,11 @@
         "SpellId": "major-image", 
         "SpellLevel": 3, 
         "SpellName": "Major image", 
-        "Type": "wand", 
         "id": "wand-of-major-image"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 70, 
         "LowChance": 67, 
         "Name": "Wand of Prayer", 
@@ -3370,11 +3371,11 @@
         "SpellId": "prayer", 
         "SpellLevel": 3, 
         "SpellName": "Prayer", 
-        "Type": "wand", 
         "id": "wand-of-prayer"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 74, 
         "LowChance": 71, 
         "Name": "Wand of Protection from energy", 
@@ -3384,11 +3385,11 @@
         "SpellId": "protection-from-energy", 
         "SpellLevel": 3, 
         "SpellName": "Protection from energy", 
-        "Type": "wand", 
         "id": "wand-of-protection-from-energy"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 75, 
         "LowChance": 75, 
         "Name": "Wand of Remove blindness/deafness", 
@@ -3398,11 +3399,11 @@
         "SpellId": "remove-blindness-deafness", 
         "SpellLevel": 3, 
         "SpellName": "Remove blindness/deafness", 
-        "Type": "wand", 
         "id": "wand-of-remove-blindness-deafness"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 77, 
         "LowChance": 76, 
         "Name": "Wand of Remove curse", 
@@ -3412,11 +3413,11 @@
         "SpellId": "remove-curse", 
         "SpellLevel": 3, 
         "SpellName": "Remove curse", 
-        "Type": "wand", 
         "id": "wand-of-remove-curse"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 79, 
         "LowChance": 78, 
         "Name": "Wand of Remove disease", 
@@ -3426,11 +3427,11 @@
         "SpellId": "remove-disease", 
         "SpellLevel": 3, 
         "SpellName": "Remove disease", 
-        "Type": "wand", 
         "id": "wand-of-remove-disease"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 82, 
         "LowChance": 80, 
         "Name": "Wand of Searing light", 
@@ -3440,11 +3441,11 @@
         "SpellId": "searing-light", 
         "SpellLevel": 3, 
         "SpellName": "Searing light", 
-        "Type": "wand", 
         "id": "wand-of-searing-light"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 83, 
         "LowChance": 83, 
         "Name": "Wand of Sleet storm", 
@@ -3454,11 +3455,11 @@
         "SpellId": "sleet-storm", 
         "SpellLevel": 3, 
         "SpellName": "Sleet storm", 
-        "Type": "wand", 
         "id": "wand-of-sleet-storm"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 85, 
         "LowChance": 84, 
         "Name": "Wand of Slow", 
@@ -3468,11 +3469,11 @@
         "SpellId": "slow", 
         "SpellLevel": 3, 
         "SpellName": "Slow", 
-        "Type": "wand", 
         "id": "wand-of-slow"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 87, 
         "LowChance": 86, 
         "Name": "Wand of Speak with dead", 
@@ -3482,11 +3483,11 @@
         "SpellId": "speak-with-dead", 
         "SpellLevel": 3, 
         "SpellName": "Speak with dead", 
-        "Type": "wand", 
         "id": "wand-of-speak-with-dead"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 89, 
         "LowChance": 88, 
         "Name": "Wand of Stinking cloud", 
@@ -3496,11 +3497,11 @@
         "SpellId": "stinking-cloud", 
         "SpellLevel": 3, 
         "SpellName": "Stinking cloud", 
-        "Type": "wand", 
         "id": "wand-of-stinking-cloud"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 90, 
         "LowChance": 90, 
         "Name": "Wand of Stone shape", 
@@ -3510,11 +3511,11 @@
         "SpellId": "stone-shape", 
         "SpellLevel": 3, 
         "SpellName": "Stone shape", 
-        "Type": "wand", 
         "id": "wand-of-stone-shape"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 92, 
         "LowChance": 91, 
         "Name": "Wand of Suggestion", 
@@ -3524,11 +3525,11 @@
         "SpellId": "suggestion", 
         "SpellLevel": 3, 
         "SpellName": "Suggestion", 
-        "Type": "wand", 
         "id": "wand-of-suggestion"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 93, 
         "LowChance": 93, 
         "Name": "Wand of Summon monster III", 
@@ -3538,11 +3539,11 @@
         "SpellId": "summon-monster-iii", 
         "SpellLevel": 3, 
         "SpellName": "Summon monster III", 
-        "Type": "wand", 
         "id": "wand-of-summon-monster-iii"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 94, 
         "LowChance": 94, 
         "Name": "Wand of Summon nature's ally III", 
@@ -3552,11 +3553,11 @@
         "SpellId": "summon-nature-s-ally-iii", 
         "SpellLevel": 3, 
         "SpellName": "Summon nature's ally III", 
-        "Type": "wand", 
         "id": "wand-of-summon-nature-s-ally-iii"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 97, 
         "LowChance": 95, 
         "Name": "Wand of Vampiric touch", 
@@ -3566,11 +3567,11 @@
         "SpellId": "vampiric-touch", 
         "SpellLevel": 3, 
         "SpellName": "Vampiric touch", 
-        "Type": "wand", 
         "id": "wand-of-vampiric-touch"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 99, 
         "LowChance": 98, 
         "Name": "Wand of Water breathing", 
@@ -3580,11 +3581,11 @@
         "SpellId": "water-breathing", 
         "SpellLevel": 3, 
         "SpellName": "Water breathing", 
-        "Type": "wand", 
         "id": "wand-of-water-breathing"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 100, 
         "LowChance": 100, 
         "Name": "Wand of Animate dead", 
@@ -3594,11 +3595,11 @@
         "SpellId": "animate-dead", 
         "SpellLevel": 3, 
         "SpellName": "Animate dead", 
-        "Type": "wand", 
         "id": "wand-of-animate-dead"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 4, 
         "LowChance": 1, 
         "Name": "Wand of Animal aspect, greater", 
@@ -3608,11 +3609,11 @@
         "SpellId": "animal-aspect-greater", 
         "SpellLevel": 3, 
         "SpellName": "Animal aspect, greater", 
-        "Type": "wand", 
         "id": "wand-of-animal-aspect-greater"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 6, 
         "LowChance": 5, 
         "Name": "Wand of Aqueous orb", 
@@ -3622,11 +3623,11 @@
         "SpellId": "aqueous-orb", 
         "SpellLevel": 3, 
         "SpellName": "Aqueous orb", 
-        "Type": "wand", 
         "id": "wand-of-aqueous-orb"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 8, 
         "LowChance": 7, 
         "Name": "Wand of Arcane sight", 
@@ -3636,11 +3637,11 @@
         "SpellId": "arcane-sight", 
         "SpellLevel": 3, 
         "SpellName": "Arcane sight", 
-        "Type": "wand", 
         "id": "wand-of-arcane-sight"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 11, 
         "LowChance": 9, 
         "Name": "Wand of Archon's aura", 
@@ -3650,11 +3651,11 @@
         "SpellId": "archon-s-aura", 
         "SpellLevel": 3, 
         "SpellName": "Archon's aura", 
-        "Type": "wand", 
         "id": "wand-of-archon-s-aura"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 14, 
         "LowChance": 12, 
         "Name": "Wand of Ash storm", 
@@ -3664,11 +3665,11 @@
         "SpellId": "ash-storm", 
         "SpellLevel": 3, 
         "SpellName": "Ash storm", 
-        "Type": "wand", 
         "id": "wand-of-ash-storm"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 17, 
         "LowChance": 15, 
         "Name": "Wand of Bestow curse", 
@@ -3678,11 +3679,11 @@
         "SpellId": "bestow-curse", 
         "SpellLevel": 3, 
         "SpellName": "Bestow curse", 
-        "Type": "wand", 
         "id": "wand-of-bestow-curse"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 20, 
         "LowChance": 18, 
         "Name": "Wand of Clairaudience/clairvoyance", 
@@ -3692,11 +3693,11 @@
         "SpellId": "clairaudience-clairvoyance", 
         "SpellLevel": 3, 
         "SpellName": "Clairaudience/clairvoyance", 
-        "Type": "wand", 
         "id": "wand-of-clairaudience-clairvoyance"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 22, 
         "LowChance": 21, 
         "Name": "Wand of Contagion", 
@@ -3706,11 +3707,11 @@
         "SpellId": "contagion", 
         "SpellLevel": 3, 
         "SpellName": "Contagion", 
-        "Type": "wand", 
         "id": "wand-of-contagion"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 23, 
         "LowChance": 23, 
         "Name": "Wand of Diminish plants", 
@@ -3720,11 +3721,11 @@
         "SpellId": "diminish-plants", 
         "SpellLevel": 3, 
         "SpellName": "Diminish plants", 
-        "Type": "wand", 
         "id": "wand-of-diminish-plants"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 25, 
         "LowChance": 24, 
         "Name": "Wand of Dominate animal", 
@@ -3734,11 +3735,11 @@
         "SpellId": "dominate-animal", 
         "SpellLevel": 3, 
         "SpellName": "Dominate animal", 
-        "Type": "wand", 
         "id": "wand-of-dominate-animal"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 29, 
         "LowChance": 26, 
         "Name": "Wand of Elemental aura", 
@@ -3748,11 +3749,11 @@
         "SpellId": "elemental-aura", 
         "SpellLevel": 3, 
         "SpellName": "Elemental aura", 
-        "Type": "wand", 
         "id": "wand-of-elemental-aura"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 30, 
         "LowChance": 30, 
         "Name": "Wand of Explosive runes", 
@@ -3762,11 +3763,11 @@
         "SpellId": "explosive-runes", 
         "SpellLevel": 3, 
         "SpellName": "Explosive runes", 
-        "Type": "wand", 
         "id": "wand-of-explosive-runes"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 34, 
         "LowChance": 31, 
         "Name": "Wand of Force punch", 
@@ -3776,11 +3777,11 @@
         "SpellId": "force-punch", 
         "SpellLevel": 3, 
         "SpellName": "Force punch", 
-        "Type": "wand", 
         "id": "wand-of-force-punch"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 35, 
         "LowChance": 35, 
         "Name": "Wand of Halt undead", 
@@ -3790,11 +3791,11 @@
         "SpellId": "halt-undead", 
         "SpellLevel": 3, 
         "SpellName": "Halt undead", 
-        "Type": "wand", 
         "id": "wand-of-halt-undead"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 37, 
         "LowChance": 36, 
         "Name": "Wand of Helping hand", 
@@ -3804,11 +3805,11 @@
         "SpellId": "helping-hand", 
         "SpellLevel": 3, 
         "SpellName": "Helping hand", 
-        "Type": "wand", 
         "id": "wand-of-helping-hand"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 40, 
         "LowChance": 38, 
         "Name": "Wand of Hostile levitation", 
@@ -3818,11 +3819,11 @@
         "SpellId": "hostile-levitation", 
         "SpellLevel": 3, 
         "SpellName": "Hostile levitation", 
-        "Type": "wand", 
         "id": "wand-of-hostile-levitation"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 43, 
         "LowChance": 41, 
         "Name": "Wand of Howling agony", 
@@ -3832,11 +3833,11 @@
         "SpellId": "howling-agony", 
         "SpellLevel": 3, 
         "SpellName": "Howling agony", 
-        "Type": "wand", 
         "id": "wand-of-howling-agony"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 45, 
         "LowChance": 44, 
         "Name": "Wand of Hydraulic torrent", 
@@ -3846,11 +3847,11 @@
         "SpellId": "hydraulic-torrent", 
         "SpellLevel": 3, 
         "SpellName": "Hydraulic torrent", 
-        "Type": "wand", 
         "id": "wand-of-hydraulic-torrent"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 46, 
         "LowChance": 46, 
         "Name": "Wand of Mad monkeys", 
@@ -3860,11 +3861,11 @@
         "SpellId": "mad-monkeys", 
         "SpellLevel": 3, 
         "SpellName": "Mad monkeys", 
-        "Type": "wand", 
         "id": "wand-of-mad-monkeys"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 49, 
         "LowChance": 47, 
         "Name": "Wand of Meld into stone", 
@@ -3874,11 +3875,11 @@
         "SpellId": "meld-into-stone", 
         "SpellLevel": 3, 
         "SpellName": "Meld into stone", 
-        "Type": "wand", 
         "id": "wand-of-meld-into-stone"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 52, 
         "LowChance": 50, 
         "Name": "Wand of Neutralize poison", 
@@ -3888,11 +3889,11 @@
         "SpellId": "neutralize-poison", 
         "SpellLevel": 3, 
         "SpellName": "Neutralize poison", 
-        "Type": "wand", 
         "id": "wand-of-neutralize-poison"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 54, 
         "LowChance": 53, 
         "Name": "Wand of Pain strike", 
@@ -3902,11 +3903,11 @@
         "SpellId": "pain-strike", 
         "SpellLevel": 3, 
         "SpellName": "Pain strike", 
-        "Type": "wand", 
         "id": "wand-of-pain-strike"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 55, 
         "LowChance": 55, 
         "Name": "Wand of Phantom steed", 
@@ -3916,11 +3917,11 @@
         "SpellId": "phantom-steed", 
         "SpellLevel": 3, 
         "SpellName": "Phantom steed", 
-        "Type": "wand", 
         "id": "wand-of-phantom-steed"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 57, 
         "LowChance": 56, 
         "Name": "Wand of Plant growth", 
@@ -3930,11 +3931,11 @@
         "SpellId": "plant-growth", 
         "SpellLevel": 3, 
         "SpellName": "Plant growth", 
-        "Type": "wand", 
         "id": "wand-of-plant-growth"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 60, 
         "LowChance": 58, 
         "Name": "Wand of Poison", 
@@ -3944,11 +3945,11 @@
         "SpellId": "poison", 
         "SpellLevel": 3, 
         "SpellName": "Poison", 
-        "Type": "wand", 
         "id": "wand-of-poison"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 61, 
         "LowChance": 61, 
         "Name": "Wand of Quench", 
@@ -3958,11 +3959,11 @@
         "SpellId": "quench", 
         "SpellLevel": 3, 
         "SpellName": "Quench", 
-        "Type": "wand", 
         "id": "wand-of-quench"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 65, 
         "LowChance": 62, 
         "Name": "Wand of Rage", 
@@ -3972,11 +3973,11 @@
         "SpellId": "rage", 
         "SpellLevel": 3, 
         "SpellName": "Rage", 
-        "Type": "wand", 
         "id": "wand-of-rage"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 67, 
         "LowChance": 66, 
         "Name": "Wand of Ray of exhaustion", 
@@ -3986,11 +3987,11 @@
         "SpellId": "ray-of-exhaustion", 
         "SpellLevel": 3, 
         "SpellName": "Ray of exhaustion", 
-        "Type": "wand", 
         "id": "wand-of-ray-of-exhaustion"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 69, 
         "LowChance": 68, 
         "Name": "Wand of Resinous skin", 
@@ -4000,11 +4001,11 @@
         "SpellId": "resinous-skin", 
         "SpellLevel": 3, 
         "SpellName": "Resinous skin", 
-        "Type": "wand", 
         "id": "wand-of-resinous-skin"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 70, 
         "LowChance": 70, 
         "Name": "Wand of Secret page", 
@@ -4014,11 +4015,11 @@
         "SpellId": "secret-page", 
         "SpellLevel": 3, 
         "SpellName": "Secret page", 
-        "Type": "wand", 
         "id": "wand-of-secret-page"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 71, 
         "LowChance": 71, 
         "Name": "Wand of Shrink item", 
@@ -4028,11 +4029,11 @@
         "SpellId": "shrink-item", 
         "SpellLevel": 3, 
         "SpellName": "Shrink item", 
-        "Type": "wand", 
         "id": "wand-of-shrink-item"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 73, 
         "LowChance": 72, 
         "Name": "Wand of Snare", 
@@ -4042,11 +4043,11 @@
         "SpellId": "snare", 
         "SpellLevel": 3, 
         "SpellName": "Snare", 
-        "Type": "wand", 
         "id": "wand-of-snare"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 74, 
         "LowChance": 74, 
         "Name": "Wand of Speak with plants", 
@@ -4056,11 +4057,11 @@
         "SpellId": "speak-with-plants", 
         "SpellLevel": 3, 
         "SpellName": "Speak with plants", 
-        "Type": "wand", 
         "id": "wand-of-speak-with-plants"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 76, 
         "LowChance": 75, 
         "Name": "Wand of Spike growth", 
@@ -4070,11 +4071,11 @@
         "SpellId": "spike-growth", 
         "SpellLevel": 3, 
         "SpellName": "Spike growth", 
-        "Type": "wand", 
         "id": "wand-of-spike-growth"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 77, 
         "LowChance": 77, 
         "Name": "Wand of Tiny hut", 
@@ -4084,11 +4085,11 @@
         "SpellId": "tiny-hut", 
         "SpellLevel": 3, 
         "SpellName": "Tiny hut", 
-        "Type": "wand", 
         "id": "wand-of-tiny-hut"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 81, 
         "LowChance": 78, 
         "Name": "Wand of Water walk", 
@@ -4098,11 +4099,11 @@
         "SpellId": "water-walk", 
         "SpellLevel": 3, 
         "SpellName": "Water walk", 
-        "Type": "wand", 
         "id": "wand-of-water-walk"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 84, 
         "LowChance": 82, 
         "Name": "Wand of Wind wall", 
@@ -4112,11 +4113,11 @@
         "SpellId": "wind-wall", 
         "SpellLevel": 3, 
         "SpellName": "Wind wall", 
-        "Type": "wand", 
         "id": "wand-of-wind-wall"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 86, 
         "LowChance": 85, 
         "Name": "Wand of Wrathful mantle", 
@@ -4126,11 +4127,11 @@
         "SpellId": "wrathful-mantle", 
         "SpellLevel": 3, 
         "SpellName": "Wrathful mantle", 
-        "Type": "wand", 
         "id": "wand-of-wrathful-mantle"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 87, 
         "LowChance": 87, 
         "Name": "Wand of Illusory script", 
@@ -4140,11 +4141,11 @@
         "SpellId": "illusory-script", 
         "SpellLevel": 3, 
         "SpellName": "Illusory script", 
-        "Type": "wand", 
         "id": "wand-of-illusory-script"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 89, 
         "LowChance": 88, 
         "Name": "Wand of Nondetection", 
@@ -4154,11 +4155,11 @@
         "SpellId": "nondetection", 
         "SpellLevel": 3, 
         "SpellName": "Nondetection", 
-        "Type": "wand", 
         "id": "wand-of-nondetection"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 91, 
         "LowChance": 90, 
         "Name": "Wand of Glibness", 
@@ -4168,11 +4169,11 @@
         "SpellId": "glibness", 
         "SpellLevel": 3, 
         "SpellName": "Glibness", 
-        "Type": "wand", 
         "id": "wand-of-glibness"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 95, 
         "LowChance": 92, 
         "Name": "Wand of Good hope", 
@@ -4182,11 +4183,11 @@
         "SpellId": "good-hope", 
         "SpellLevel": 3, 
         "SpellName": "Good hope", 
-        "Type": "wand", 
         "id": "wand-of-good-hope"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 97, 
         "LowChance": 96, 
         "Name": "Wand of Heal mount", 
@@ -4196,11 +4197,11 @@
         "SpellId": "heal-mount", 
         "SpellLevel": 3, 
         "SpellName": "Heal mount", 
-        "Type": "wand", 
         "id": "wand-of-heal-mount"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 98, 
         "LowChance": 98, 
         "Name": "Wand of Sculpt sound", 
@@ -4210,11 +4211,11 @@
         "SpellId": "sculpt-sound", 
         "SpellLevel": 3, 
         "SpellName": "Sculpt sound", 
-        "Type": "wand", 
         "id": "wand-of-sculpt-sound"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 99, 
         "LowChance": 99, 
         "Name": "Wand of Glyph of warding", 
@@ -4224,11 +4225,11 @@
         "SpellId": "glyph-of-warding", 
         "SpellLevel": 3, 
         "SpellName": "Glyph of warding", 
-        "Type": "wand", 
         "id": "wand-of-glyph-of-warding"
     }, 
     {
         "CL": 5, 
+        "Group": "Wand", 
         "HighChance": 100, 
         "LowChance": 100, 
         "Name": "Wand of Sepia snake sigil", 
@@ -4238,11 +4239,11 @@
         "SpellId": "sepia-snake-sigil", 
         "SpellLevel": 3, 
         "SpellName": "Sepia snake sigil", 
-        "Type": "wand", 
         "id": "wand-of-sepia-snake-sigil"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 2, 
         "LowChance": 1, 
         "Name": "Wand of Air walk", 
@@ -4252,11 +4253,11 @@
         "SpellId": "air-walk", 
         "SpellLevel": 4, 
         "SpellName": "Air walk", 
-        "Type": "wand", 
         "id": "wand-of-air-walk"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 4, 
         "LowChance": 3, 
         "Name": "Wand of Beast shape II", 
@@ -4266,11 +4267,11 @@
         "SpellId": "beast-shape-ii", 
         "SpellLevel": 4, 
         "SpellName": "Beast shape II", 
-        "Type": "wand", 
         "id": "wand-of-beast-shape-ii"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 7, 
         "LowChance": 5, 
         "Name": "Wand of Black tentacles", 
@@ -4280,11 +4281,11 @@
         "SpellId": "black-tentacles", 
         "SpellLevel": 4, 
         "SpellName": "Black tentacles", 
-        "Type": "wand", 
         "id": "wand-of-black-tentacles"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 8, 
         "LowChance": 8, 
         "Name": "Wand of Chaos hammer", 
@@ -4294,11 +4295,11 @@
         "SpellId": "chaos-hammer", 
         "SpellLevel": 4, 
         "SpellName": "Chaos hammer", 
-        "Type": "wand", 
         "id": "wand-of-chaos-hammer"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 11, 
         "LowChance": 9, 
         "Name": "Wand of Charm monster", 
@@ -4308,11 +4309,11 @@
         "SpellId": "charm-monster", 
         "SpellLevel": 4, 
         "SpellName": "Charm monster", 
-        "Type": "wand", 
         "id": "wand-of-charm-monster"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 14, 
         "LowChance": 12, 
         "Name": "Wand of Confusion", 
@@ -4322,11 +4323,11 @@
         "SpellId": "confusion", 
         "SpellLevel": 4, 
         "SpellName": "Confusion", 
-        "Type": "wand", 
         "id": "wand-of-confusion"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 16, 
         "LowChance": 15, 
         "Name": "Wand of Crushing despair", 
@@ -4336,11 +4337,11 @@
         "SpellId": "crushing-despair", 
         "SpellLevel": 4, 
         "SpellName": "Crushing despair", 
-        "Type": "wand", 
         "id": "wand-of-crushing-despair"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 22, 
         "LowChance": 17, 
         "Name": "Wand of Cure critical wounds", 
@@ -4350,11 +4351,11 @@
         "SpellId": "cure-critical-wounds", 
         "SpellLevel": 4, 
         "SpellName": "Cure critical wounds", 
-        "Type": "wand", 
         "id": "wand-of-cure-critical-wounds"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 24, 
         "LowChance": 23, 
         "Name": "Wand of Death ward", 
@@ -4364,11 +4365,11 @@
         "SpellId": "death-ward", 
         "SpellLevel": 4, 
         "SpellName": "Death ward", 
-        "Type": "wand", 
         "id": "wand-of-death-ward"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 28, 
         "LowChance": 25, 
         "Name": "Wand of Dimension door", 
@@ -4378,11 +4379,11 @@
         "SpellId": "dimension-door", 
         "SpellLevel": 4, 
         "SpellName": "Dimension door", 
-        "Type": "wand", 
         "id": "wand-of-dimension-door"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 29, 
         "LowChance": 29, 
         "Name": "Wand of Dimensional anchor", 
@@ -4392,11 +4393,11 @@
         "SpellId": "dimensional-anchor", 
         "SpellLevel": 4, 
         "SpellName": "Dimensional anchor", 
-        "Type": "wand", 
         "id": "wand-of-dimensional-anchor"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 30, 
         "LowChance": 30, 
         "Name": "Wand of Dismissal", 
@@ -4406,11 +4407,11 @@
         "SpellId": "dismissal", 
         "SpellLevel": 4, 
         "SpellName": "Dismissal", 
-        "Type": "wand", 
         "id": "wand-of-dismissal"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 33, 
         "LowChance": 31, 
         "Name": "Wand of Divine power", 
@@ -4420,11 +4421,11 @@
         "SpellId": "divine-power", 
         "SpellLevel": 4, 
         "SpellName": "Divine power", 
-        "Type": "wand", 
         "id": "wand-of-divine-power"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 35, 
         "LowChance": 34, 
         "Name": "Wand of Elemental body I", 
@@ -4434,11 +4435,11 @@
         "SpellId": "elemental-body-i", 
         "SpellLevel": 4, 
         "SpellName": "Elemental body I", 
-        "Type": "wand", 
         "id": "wand-of-elemental-body-i"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 37, 
         "LowChance": 36, 
         "Name": "Wand of Enervation", 
@@ -4448,11 +4449,11 @@
         "SpellId": "enervation", 
         "SpellLevel": 4, 
         "SpellName": "Enervation", 
-        "Type": "wand", 
         "id": "wand-of-enervation"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 39, 
         "LowChance": 38, 
         "Name": "Wand of Enlarge person, mass", 
@@ -4462,11 +4463,11 @@
         "SpellId": "enlarge-person-mass", 
         "SpellLevel": 4, 
         "SpellName": "Enlarge person, mass", 
-        "Type": "wand", 
         "id": "wand-of-enlarge-person-mass"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 42, 
         "LowChance": 40, 
         "Name": "Wand of Fear", 
@@ -4476,11 +4477,11 @@
         "SpellId": "fear", 
         "SpellLevel": 4, 
         "SpellName": "Fear", 
-        "Type": "wand", 
         "id": "wand-of-fear"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 44, 
         "LowChance": 43, 
         "Name": "Wand of Fire shield", 
@@ -4490,11 +4491,11 @@
         "SpellId": "fire-shield", 
         "SpellLevel": 4, 
         "SpellName": "Fire shield", 
-        "Type": "wand", 
         "id": "wand-of-fire-shield"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 48, 
         "LowChance": 45, 
         "Name": "Wand of Flame strike", 
@@ -4504,11 +4505,11 @@
         "SpellId": "flame-strike", 
         "SpellLevel": 4, 
         "SpellName": "Flame strike", 
-        "Type": "wand", 
         "id": "wand-of-flame-strike"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 51, 
         "LowChance": 49, 
         "Name": "Wand of Freedom of movement", 
@@ -4518,11 +4519,11 @@
         "SpellId": "freedom-of-movement", 
         "SpellLevel": 4, 
         "SpellName": "Freedom of movement", 
-        "Type": "wand", 
         "id": "wand-of-freedom-of-movement"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 53, 
         "LowChance": 52, 
         "Name": "Wand of Globe of invulnerability, lesser", 
@@ -4532,11 +4533,11 @@
         "SpellId": "globe-of-invulnerability-lesser", 
         "SpellLevel": 4, 
         "SpellName": "Globe of invulnerability, lesser", 
-        "Type": "wand", 
         "id": "wand-of-globe-of-invulnerability-lesser"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 54, 
         "LowChance": 54, 
         "Name": "Wand of Holy smite", 
@@ -4546,11 +4547,11 @@
         "SpellId": "holy-smite", 
         "SpellLevel": 4, 
         "SpellName": "Holy smite", 
-        "Type": "wand", 
         "id": "wand-of-holy-smite"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 56, 
         "LowChance": 55, 
         "Name": "Wand of Ice storm", 
@@ -4560,11 +4561,11 @@
         "SpellId": "ice-storm", 
         "SpellLevel": 4, 
         "SpellName": "Ice storm", 
-        "Type": "wand", 
         "id": "wand-of-ice-storm"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 58, 
         "LowChance": 57, 
         "Name": "Wand of Imbue with spell ability", 
@@ -4574,11 +4575,11 @@
         "SpellId": "imbue-with-spell-ability", 
         "SpellLevel": 4, 
         "SpellName": "Imbue with spell ability", 
-        "Type": "wand", 
         "id": "wand-of-imbue-with-spell-ability"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 61, 
         "LowChance": 59, 
         "Name": "Wand of Inflict critical wounds", 
@@ -4588,11 +4589,11 @@
         "SpellId": "inflict-critical-wounds", 
         "SpellLevel": 4, 
         "SpellName": "Inflict critical wounds", 
-        "Type": "wand", 
         "id": "wand-of-inflict-critical-wounds"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 65, 
         "LowChance": 62, 
         "Name": "Wand of Invisibility, greater", 
@@ -4602,11 +4603,11 @@
         "SpellId": "invisibility-greater", 
         "SpellLevel": 4, 
         "SpellName": "Invisibility, greater", 
-        "Type": "wand", 
         "id": "wand-of-invisibility-greater"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 66, 
         "LowChance": 66, 
         "Name": "Wand of Order's wrath", 
@@ -4616,11 +4617,11 @@
         "SpellId": "order-s-wrath", 
         "SpellLevel": 4, 
         "SpellName": "Order's wrath", 
-        "Type": "wand", 
         "id": "wand-of-order-s-wrath"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 69, 
         "LowChance": 67, 
         "Name": "Wand of Phantasmal killer", 
@@ -4630,11 +4631,11 @@
         "SpellId": "phantasmal-killer", 
         "SpellLevel": 4, 
         "SpellName": "Phantasmal killer", 
-        "Type": "wand", 
         "id": "wand-of-phantasmal-killer"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 70, 
         "LowChance": 70, 
         "Name": "Wand of Resilient sphere", 
@@ -4644,11 +4645,11 @@
         "SpellId": "resilient-sphere", 
         "SpellLevel": 4, 
         "SpellName": "Resilient sphere", 
-        "Type": "wand", 
         "id": "wand-of-resilient-sphere"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 72, 
         "LowChance": 71, 
         "Name": "Wand of Scrying", 
@@ -4658,11 +4659,11 @@
         "SpellId": "scrying", 
         "SpellLevel": 4, 
         "SpellName": "Scrying", 
-        "Type": "wand", 
         "id": "wand-of-scrying"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 73, 
         "LowChance": 73, 
         "Name": "Wand of Sending", 
@@ -4672,11 +4673,11 @@
         "SpellId": "sending", 
         "SpellLevel": 4, 
         "SpellName": "Sending", 
-        "Type": "wand", 
         "id": "wand-of-sending"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 74, 
         "LowChance": 74, 
         "Name": "Wand of Shout", 
@@ -4686,11 +4687,11 @@
         "SpellId": "shout", 
         "SpellLevel": 4, 
         "SpellName": "Shout", 
-        "Type": "wand", 
         "id": "wand-of-shout"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 76, 
         "LowChance": 75, 
         "Name": "Wand of Solid fog", 
@@ -4700,11 +4701,11 @@
         "SpellId": "solid-fog", 
         "SpellLevel": 4, 
         "SpellName": "Solid fog", 
-        "Type": "wand", 
         "id": "wand-of-solid-fog"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 79, 
         "LowChance": 77, 
         "Name": "Wand of Spell immunity", 
@@ -4714,11 +4715,11 @@
         "SpellId": "spell-immunity", 
         "SpellLevel": 4, 
         "SpellName": "Spell immunity", 
-        "Type": "wand", 
         "id": "wand-of-spell-immunity"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 80, 
         "LowChance": 80, 
         "Name": "Wand of Summon monster IV", 
@@ -4728,11 +4729,11 @@
         "SpellId": "summon-monster-iv", 
         "SpellLevel": 4, 
         "SpellName": "Summon monster IV", 
-        "Type": "wand", 
         "id": "wand-of-summon-monster-iv"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 81, 
         "LowChance": 81, 
         "Name": "Wand of Summon nature's ally IV", 
@@ -4742,11 +4743,11 @@
         "SpellId": "summon-nature-s-ally-iv", 
         "SpellLevel": 4, 
         "SpellName": "Summon nature's ally IV", 
-        "Type": "wand", 
         "id": "wand-of-summon-nature-s-ally-iv"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 82, 
         "LowChance": 82, 
         "Name": "Wand of Unholy blight", 
@@ -4756,11 +4757,11 @@
         "SpellId": "unholy-blight", 
         "SpellLevel": 4, 
         "SpellName": "Unholy blight", 
-        "Type": "wand", 
         "id": "wand-of-unholy-blight"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 87, 
         "LowChance": 83, 
         "Name": "Wand of Wall of fire", 
@@ -4770,11 +4771,11 @@
         "SpellId": "wall-of-fire", 
         "SpellLevel": 4, 
         "SpellName": "Wall of fire", 
-        "Type": "wand", 
         "id": "wand-of-wall-of-fire"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 91, 
         "LowChance": 88, 
         "Name": "Wand of Wall of ice", 
@@ -4784,11 +4785,11 @@
         "SpellId": "wall-of-ice", 
         "SpellLevel": 4, 
         "SpellName": "Wall of ice", 
-        "Type": "wand", 
         "id": "wand-of-wall-of-ice"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 93, 
         "LowChance": 92, 
         "Name": "Wand of Divination", 
@@ -4798,11 +4799,11 @@
         "SpellId": "divination", 
         "SpellLevel": 4, 
         "SpellName": "Divination", 
-        "Type": "wand", 
         "id": "wand-of-divination"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 95, 
         "LowChance": 94, 
         "Name": "Wand of Restoration", 
@@ -4812,11 +4813,11 @@
         "SpellId": "restoration", 
         "SpellLevel": 4, 
         "SpellName": "Restoration", 
-        "Type": "wand", 
         "id": "wand-of-restoration"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 96, 
         "LowChance": 96, 
         "Name": "Wand of Break enchantment", 
@@ -4826,11 +4827,11 @@
         "SpellId": "break-enchantment", 
         "SpellLevel": 4, 
         "SpellName": "Break enchantment", 
-        "Type": "wand", 
         "id": "wand-of-break-enchantment"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 98, 
         "LowChance": 97, 
         "Name": "Wand of Stoneskin", 
@@ -4840,11 +4841,11 @@
         "SpellId": "stoneskin", 
         "SpellLevel": 4, 
         "SpellName": "Stoneskin", 
-        "Type": "wand", 
         "id": "wand-of-stoneskin"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 99, 
         "LowChance": 99, 
         "Name": "Wand of Planar ally, lesser", 
@@ -4854,11 +4855,11 @@
         "SpellId": "planar-ally-lesser", 
         "SpellLevel": 4, 
         "SpellName": "Planar ally, lesser", 
-        "Type": "wand", 
         "id": "wand-of-planar-ally-lesser"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 100, 
         "LowChance": 100, 
         "Name": "Wand of Restoration (Can dispel permanent negative levels)", 
@@ -4868,11 +4869,11 @@
         "SpellId": "restoration", 
         "SpellLevel": 4, 
         "SpellName": "Restoration", 
-        "Type": "wand", 
         "id": "wand-of-restoration-can-dispel-permanent-negative-levels"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 1, 
         "LowChance": 1, 
         "Name": "Wand of Antiplant shell", 
@@ -4882,11 +4883,11 @@
         "SpellId": "antiplant-shell", 
         "SpellLevel": 4, 
         "SpellName": "Antiplant shell", 
-        "Type": "wand", 
         "id": "wand-of-antiplant-shell"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 4, 
         "LowChance": 2, 
         "Name": "Wand of Arcane eye", 
@@ -4896,11 +4897,11 @@
         "SpellId": "arcane-eye", 
         "SpellLevel": 4, 
         "SpellName": "Arcane eye", 
-        "Type": "wand", 
         "id": "wand-of-arcane-eye"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 7, 
         "LowChance": 5, 
         "Name": "Wand of Aspect of the stag", 
@@ -4910,11 +4911,11 @@
         "SpellId": "aspect-of-the-stag", 
         "SpellLevel": 4, 
         "SpellName": "Aspect of the stag", 
-        "Type": "wand", 
         "id": "wand-of-aspect-of-the-stag"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 11, 
         "LowChance": 8, 
         "Name": "Wand of Ball lightning", 
@@ -4924,11 +4925,11 @@
         "SpellId": "ball-lightning", 
         "SpellLevel": 4, 
         "SpellName": "Ball lightning", 
-        "Type": "wand", 
         "id": "wand-of-ball-lightning"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 12, 
         "LowChance": 12, 
         "Name": "Wand of Blight", 
@@ -4938,11 +4939,11 @@
         "SpellId": "blight", 
         "SpellLevel": 4, 
         "SpellName": "Blight", 
-        "Type": "wand", 
         "id": "wand-of-blight"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 13, 
         "LowChance": 13, 
         "Name": "Wand of Command plants", 
@@ -4952,11 +4953,11 @@
         "SpellId": "command-plants", 
         "SpellLevel": 4, 
         "SpellName": "Command plants", 
-        "Type": "wand", 
         "id": "wand-of-command-plants"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 15, 
         "LowChance": 14, 
         "Name": "Wand of Control water", 
@@ -4966,11 +4967,11 @@
         "SpellId": "control-water", 
         "SpellLevel": 4, 
         "SpellName": "Control water", 
-        "Type": "wand", 
         "id": "wand-of-control-water"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 18, 
         "LowChance": 16, 
         "Name": "Wand of Darkvision, greater", 
@@ -4980,11 +4981,11 @@
         "SpellId": "darkvision-greater", 
         "SpellLevel": 4, 
         "SpellName": "Darkvision, greater", 
-        "Type": "wand", 
         "id": "wand-of-darkvision-greater"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 19, 
         "LowChance": 19, 
         "Name": "Wand of Detect scrying", 
@@ -4994,11 +4995,11 @@
         "SpellId": "detect-scrying", 
         "SpellLevel": 4, 
         "SpellName": "Detect scrying", 
-        "Type": "wand", 
         "id": "wand-of-detect-scrying"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 20, 
         "LowChance": 20, 
         "Name": "Wand of Discern lies", 
@@ -5008,11 +5009,11 @@
         "SpellId": "discern-lies", 
         "SpellLevel": 4, 
         "SpellName": "Discern lies", 
-        "Type": "wand", 
         "id": "wand-of-discern-lies"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 24, 
         "LowChance": 21, 
         "Name": "Wand of Dragon's breath", 
@@ -5022,11 +5023,11 @@
         "SpellId": "dragon-s-breath", 
         "SpellLevel": 4, 
         "SpellName": "Dragon's breath", 
-        "Type": "wand", 
         "id": "wand-of-dragon-s-breath"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 28, 
         "LowChance": 25, 
         "Name": "Wand of False life, greater", 
@@ -5036,11 +5037,11 @@
         "SpellId": "false-life-greater", 
         "SpellLevel": 4, 
         "SpellName": "False life, greater", 
-        "Type": "wand", 
         "id": "wand-of-false-life-greater"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 30, 
         "LowChance": 29, 
         "Name": "Wand of Geas, lesser", 
@@ -5050,11 +5051,11 @@
         "SpellId": "geas-lesser", 
         "SpellLevel": 4, 
         "SpellName": "Geas, lesser", 
-        "Type": "wand", 
         "id": "wand-of-geas-lesser"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 34, 
         "LowChance": 31, 
         "Name": "Wand of Ghost wolf", 
@@ -5064,11 +5065,11 @@
         "SpellId": "ghost-wolf", 
         "SpellLevel": 4, 
         "SpellName": "Ghost wolf", 
-        "Type": "wand", 
         "id": "wand-of-ghost-wolf"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 36, 
         "LowChance": 35, 
         "Name": "Wand of Giant vermin", 
@@ -5078,11 +5079,11 @@
         "SpellId": "giant-vermin", 
         "SpellLevel": 4, 
         "SpellName": "Giant vermin", 
-        "Type": "wand", 
         "id": "wand-of-giant-vermin"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 37, 
         "LowChance": 37, 
         "Name": "Wand of Hallucinatory terrain", 
@@ -5092,11 +5093,11 @@
         "SpellId": "hallucinatory-terrain", 
         "SpellLevel": 4, 
         "SpellName": "Hallucinatory terrain", 
-        "Type": "wand", 
         "id": "wand-of-hallucinatory-terrain"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 38, 
         "LowChance": 38, 
         "Name": "Wand of Illusory wall", 
@@ -5106,11 +5107,11 @@
         "SpellId": "illusory-wall", 
         "SpellLevel": 4, 
         "SpellName": "Illusory wall", 
-        "Type": "wand", 
         "id": "wand-of-illusory-wall"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 40, 
         "LowChance": 39, 
         "Name": "Wand of Locate creature", 
@@ -5120,11 +5121,11 @@
         "SpellId": "locate-creature", 
         "SpellLevel": 4, 
         "SpellName": "Locate creature", 
-        "Type": "wand", 
         "id": "wand-of-locate-creature"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 42, 
         "LowChance": 41, 
         "Name": "Wand of Minor creation", 
@@ -5134,11 +5135,11 @@
         "SpellId": "minor-creation", 
         "SpellLevel": 4, 
         "SpellName": "Minor creation", 
-        "Type": "wand", 
         "id": "wand-of-minor-creation"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 43, 
         "LowChance": 43, 
         "Name": "Wand of Mnemonic enhancer", 
@@ -5148,11 +5149,11 @@
         "SpellId": "mnemonic-enhancer", 
         "SpellLevel": 4, 
         "SpellName": "Mnemonic enhancer", 
-        "Type": "wand", 
         "id": "wand-of-mnemonic-enhancer"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 46, 
         "LowChance": 44, 
         "Name": "Wand of Obsidian flow", 
@@ -5162,11 +5163,11 @@
         "SpellId": "obsidian-flow", 
         "SpellLevel": 4, 
         "SpellName": "Obsidian flow", 
-        "Type": "wand", 
         "id": "wand-of-obsidian-flow"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 48, 
         "LowChance": 47, 
         "Name": "Wand of Rainbow pattern", 
@@ -5176,11 +5177,11 @@
         "SpellId": "rainbow-pattern", 
         "SpellLevel": 4, 
         "SpellName": "Rainbow pattern", 
-        "Type": "wand", 
         "id": "wand-of-rainbow-pattern"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 50, 
         "LowChance": 49, 
         "Name": "Wand of Reduce person, mass", 
@@ -5190,11 +5191,11 @@
         "SpellId": "reduce-person-mass", 
         "SpellLevel": 4, 
         "SpellName": "Reduce person, mass", 
-        "Type": "wand", 
         "id": "wand-of-reduce-person-mass"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 53, 
         "LowChance": 51, 
         "Name": "Wand of Reincarnate", 
@@ -5204,11 +5205,11 @@
         "SpellId": "reincarnate", 
         "SpellLevel": 4, 
         "SpellName": "Reincarnate", 
-        "Type": "wand", 
         "id": "wand-of-reincarnate"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 54, 
         "LowChance": 54, 
         "Name": "Wand of Repel vermin", 
@@ -5218,11 +5219,11 @@
         "SpellId": "repel-vermin", 
         "SpellLevel": 4, 
         "SpellName": "Repel vermin", 
-        "Type": "wand", 
         "id": "wand-of-repel-vermin"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 56, 
         "LowChance": 55, 
         "Name": "Wand of Ride the waves", 
@@ -5232,11 +5233,11 @@
         "SpellId": "ride-the-waves", 
         "SpellLevel": 4, 
         "SpellName": "Ride the waves", 
-        "Type": "wand", 
         "id": "wand-of-ride-the-waves"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 59, 
         "LowChance": 57, 
         "Name": "Wand of Rusting grasp", 
@@ -5246,11 +5247,11 @@
         "SpellId": "rusting-grasp", 
         "SpellLevel": 4, 
         "SpellName": "Rusting grasp", 
-        "Type": "wand", 
         "id": "wand-of-rusting-grasp"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 60, 
         "LowChance": 60, 
         "Name": "Wand of Secure shelter", 
@@ -5260,11 +5261,11 @@
         "SpellId": "secure-shelter", 
         "SpellLevel": 4, 
         "SpellName": "Secure shelter", 
-        "Type": "wand", 
         "id": "wand-of-secure-shelter"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 63, 
         "LowChance": 61, 
         "Name": "Wand of Shadow conjuration", 
@@ -5274,11 +5275,11 @@
         "SpellId": "shadow-conjuration", 
         "SpellLevel": 4, 
         "SpellName": "Shadow conjuration", 
-        "Type": "wand", 
         "id": "wand-of-shadow-conjuration"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 67, 
         "LowChance": 64, 
         "Name": "Wand of Shadow step", 
@@ -5288,11 +5289,11 @@
         "SpellId": "shadow-step", 
         "SpellLevel": 4, 
         "SpellName": "Shadow step", 
-        "Type": "wand", 
         "id": "wand-of-shadow-step"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 70, 
         "LowChance": 68, 
         "Name": "Wand of Shocking image", 
@@ -5302,11 +5303,11 @@
         "SpellId": "shocking-image", 
         "SpellLevel": 4, 
         "SpellName": "Shocking image", 
-        "Type": "wand", 
         "id": "wand-of-shocking-image"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 74, 
         "LowChance": 71, 
         "Name": "Wand of Spike stones", 
@@ -5316,11 +5317,11 @@
         "SpellId": "spike-stones", 
         "SpellLevel": 4, 
         "SpellName": "Spike stones", 
-        "Type": "wand", 
         "id": "wand-of-spike-stones"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 76, 
         "LowChance": 75, 
         "Name": "Wand of Volcanic storm", 
@@ -5330,11 +5331,11 @@
         "SpellId": "volcanic-storm", 
         "SpellLevel": 4, 
         "SpellName": "Volcanic storm", 
-        "Type": "wand", 
         "id": "wand-of-volcanic-storm"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 79, 
         "LowChance": 77, 
         "Name": "Wand of Wandering star motes", 
@@ -5344,11 +5345,11 @@
         "SpellId": "wandering-star-motes", 
         "SpellLevel": 4, 
         "SpellName": "Wandering star motes", 
-        "Type": "wand", 
         "id": "wand-of-wandering-star-motes"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 80, 
         "LowChance": 80, 
         "Name": "Wand of Animal growth", 
@@ -5358,11 +5359,11 @@
         "SpellId": "animal-growth", 
         "SpellLevel": 4, 
         "SpellName": "Animal growth", 
-        "Type": "wand", 
         "id": "wand-of-animal-growth"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 82, 
         "LowChance": 81, 
         "Name": "Wand of Commune with nature", 
@@ -5372,11 +5373,11 @@
         "SpellId": "commune-with-nature", 
         "SpellLevel": 4, 
         "SpellName": "Commune with nature", 
-        "Type": "wand", 
         "id": "wand-of-commune-with-nature"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 83, 
         "LowChance": 83, 
         "Name": "Wand of Dispel chaos", 
@@ -5386,11 +5387,11 @@
         "SpellId": "dispel-chaos", 
         "SpellLevel": 4, 
         "SpellName": "Dispel chaos", 
-        "Type": "wand", 
         "id": "wand-of-dispel-chaos"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 84, 
         "LowChance": 84, 
         "Name": "Wand of Dispel evil", 
@@ -5400,11 +5401,11 @@
         "SpellId": "dispel-evil", 
         "SpellLevel": 4, 
         "SpellName": "Dispel evil", 
-        "Type": "wand", 
         "id": "wand-of-dispel-evil"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 87, 
         "LowChance": 85, 
         "Name": "Wand of Dominate person", 
@@ -5414,11 +5415,11 @@
         "SpellId": "dominate-person", 
         "SpellLevel": 4, 
         "SpellName": "Dominate person", 
-        "Type": "wand", 
         "id": "wand-of-dominate-person"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 91, 
         "LowChance": 88, 
         "Name": "Wand of Hold monster", 
@@ -5428,11 +5429,11 @@
         "SpellId": "hold-monster", 
         "SpellLevel": 4, 
         "SpellName": "Hold monster", 
-        "Type": "wand", 
         "id": "wand-of-hold-monster"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 94, 
         "LowChance": 92, 
         "Name": "Wand of Holy sword", 
@@ -5442,11 +5443,11 @@
         "SpellId": "holy-sword", 
         "SpellLevel": 4, 
         "SpellName": "Holy sword", 
-        "Type": "wand", 
         "id": "wand-of-holy-sword"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 95, 
         "LowChance": 95, 
         "Name": "Wand of Mark of justice", 
@@ -5456,11 +5457,11 @@
         "SpellId": "mark-of-justice", 
         "SpellLevel": 4, 
         "SpellName": "Mark of justice", 
-        "Type": "wand", 
         "id": "wand-of-mark-of-justice"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 97, 
         "LowChance": 96, 
         "Name": "Wand of Modify memory", 
@@ -5470,11 +5471,11 @@
         "SpellId": "modify-memory", 
         "SpellLevel": 4, 
         "SpellName": "Modify memory", 
-        "Type": "wand", 
         "id": "wand-of-modify-memory"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 98, 
         "LowChance": 98, 
         "Name": "Wand of Tree stride", 
@@ -5484,11 +5485,11 @@
         "SpellId": "tree-stride", 
         "SpellLevel": 4, 
         "SpellName": "Tree stride", 
-        "Type": "wand", 
         "id": "wand-of-tree-stride"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 99, 
         "LowChance": 99, 
         "Name": "Wand of Zone of silence", 
@@ -5498,11 +5499,11 @@
         "SpellId": "zone-of-silence", 
         "SpellLevel": 4, 
         "SpellName": "Zone of silence", 
-        "Type": "wand", 
         "id": "wand-of-zone-of-silence"
     }, 
     {
         "CL": 7, 
+        "Group": "Wand", 
         "HighChance": 100, 
         "LowChance": 100, 
         "Name": "Wand of Legend lore", 
@@ -5512,7 +5513,6 @@
         "SpellId": "legend-lore", 
         "SpellLevel": 4, 
         "SpellName": "Legend lore", 
-        "Type": "wand", 
         "id": "wand-of-legend-lore"
     }
 ]

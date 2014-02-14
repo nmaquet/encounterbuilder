@@ -1006,7 +1006,7 @@ def scroll(lo_chance, hi_chance, name, gp, spell_level, caster_level, rarity, ma
         "HighChance" : hi_chance,
         "Name": "Scroll of " + name,
         "id": "scroll-of-" + slugify(name),
-        "Type": "scroll",
+        "Group": "Scroll",
         "MagicType": magic_type,
         "SpellName": name,
         "SpellId": slugify(name),

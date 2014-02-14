@@ -431,7 +431,7 @@ def wand(lo_chance, hi_chance, name, gp, spell_level, caster_level, rarity):
         "HighChance" : hi_chance,
         "Name": "Wand of " + name,
         "id": "wand-of-" + slugify(name),
-        "Type": "wand",
+        "Group": "Wand",
         "SpellName": name,
         "SpellId" : slugify(name),
         "Price": float(gp.replace(',','')),

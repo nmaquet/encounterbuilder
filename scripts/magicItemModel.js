@@ -54,8 +54,7 @@ var ATTRIBUTES = {
     "Rarity": String,
     "SpellId": String,
     "SpellLevel": Number,
-    "SpellName": String,
-    "Type": String
+    "SpellName": String
 };
 
 module.exports = function (mongoose) {
