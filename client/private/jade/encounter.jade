@@ -49,10 +49,10 @@ div.encounter(ng-show="encounter")
                     button.btn.btn-danger.btn-xmini.remove-item-btn(ng-click='removeItemById(id)')
                         i.icon-remove
         b Coins
-        span.encounter-coins.pointer(click-to-edit='encounter.coins.pp', display="{{encounter.coins.pp | number}} pp", on-save="encounterChanged()", numeric="true")
-        span.encounter-coins.pointer(click-to-edit='encounter.coins.gp', display="{{encounter.coins.gp | number}} gp", on-save="encounterChanged()", numeric="true")
-        span.encounter-coins.pointer(click-to-edit='encounter.coins.sp', display="{{encounter.coins.sp | number}} sp", on-save="encounterChanged()", numeric="true")
-        span.encounter-coins.pointer(click-to-edit='encounter.coins.cp', display="{{encounter.coins.cp | number}} cp", on-save="encounterChanged()", numeric="true")
+        span.encounter-coins-pp.pointer(click-to-edit='encounter.coins.pp', display="{{encounter.coins.pp | number}} pp", on-save="encounterChanged()", numeric="true")
+        span.encounter-coins-gp.pointer(click-to-edit='encounter.coins.gp', display="{{encounter.coins.gp | number}} gp", on-save="encounterChanged()", numeric="true")
+        span.encounter-coins-sp.pointer(click-to-edit='encounter.coins.sp', display="{{encounter.coins.sp | number}} sp", on-save="encounterChanged()", numeric="true")
+        span.encounter-coins-cp.pointer(click-to-edit='encounter.coins.cp', display="{{encounter.coins.cp | number}} cp", on-save="encounterChanged()", numeric="true")
         p
             b Value&nbsp;
             span#encounter-loot-value {{encounter.lootValue | number}}

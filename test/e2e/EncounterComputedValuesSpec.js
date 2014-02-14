@@ -57,6 +57,23 @@ describe('EncounterComputedValues', function () {
         expect(element('#encounter-loot-value').text()).toBe("106,200");
     });
 
+    it('should display 0 coins before clicking the randomize loot button ', function () {
+        //FIXME whitespace! easier said than done because element('').text() doesn't return a string but a promise
+        expect(element('span.encounter-coins-pp').text()).toBe("          0 pp                 ");
+        expect(element('span.encounter-coins-gp').text()).toBe("          0 gp                 ");
+        expect(element('span.encounter-coins-sp').text()).toBe("          0 sp                 ");
+        expect(element('span.encounter-coins-cp').text()).toBe("          0 cp                 ");
+    });
+
+    it('should display a lot of  coins after clicking the randomize loot button ', function () {
+        element('a.randomize-loot').click();
+        //FIXME whitespace! easier said than done because element('').text() doesn't return a string but a promise
+        expect(element('span.encounter-coins-pp').text()).not().toBe("          0 pp                 ");
+        expect(element('span.encounter-coins-gp').text()).not().toBe("          0 gp                 ");
+        expect(element('span.encounter-coins-sp').text()).toBe("          0 sp                 ");
+        expect(element('span.encounter-coins-cp').text()).toBe("          0 cp                 ");
+    });
+
     it('should remove the encounter', function () {
         element('a.remove-encounter').click();
         sleep(0.5); /* wait for jquery animations to terminate */
