@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+import sys
 
 common_arcane = {};
 uncommon_arcane = {};
@@ -286,7 +287,7 @@ uncommon_arcane[4] = """01-02	Acid pit	700 gp
 90-94	Volcanic storm	700 gp
 95-97	Wandering star motes	700 gp
 98-99	Fire trap	725 gp
-100	Mnemonic enhancer	750 gp"""
+100-100	Mnemonic enhancer	750 gp"""
 
 common_arcane[5] = """01-03	Baleful polymorph	1,125 gp
 04-07	Beast shape III	1,125 gp
@@ -540,21 +541,29 @@ uncommon_arcane[9] = """01-06	Create demiplane, greater	3,825 gp
 80-88	Wail of the banshee	3,825 gp
 89-95	Winds of vengeance	3,825 gp
 96-100	Refuge	4,325 gp"""
-
-def idify(string):
-	return string.lower().replace(" ", "-").replace(",","").replace("/","-").replace("'", "-")
+	
+def slugify(string):
+	res = []
+	for c in string:
+		if c.isalpha(): 
+			res.append(c.lower())
+		elif res and res[-1] != '-':
+			res.append('-')
+	if res[-1] == "-":
+		res.pop()
+	return "".join(res)
 
 def scroll(lo_chance, hi_chance, name, gp, spell_level, caster_level, rarity, magic_type):
 	result = {
 		"LowChance" : lo_chance,
 		"HighChance" : hi_chance,
 		"Name": "Scroll of " + name,
-		"id": "scroll-of-" + idify(name),
+		"id": "scroll-of-" + slugify(name),
 		"Type": "scroll",
 		"MagicType": magic_type,
 		"SpellName": name,
-		"SpellId": idify(name),
-		"Price": float(gp),
+		"SpellId": slugify(name),
+		"Price": float(gp.replace(",","")),
 		"PriceUnit": "gp",
 		"SpellLevel" : spell_level,
 		"CL" : caster_level,
@@ -567,7 +576,11 @@ def parseTable(text, spell_level, caster_level, rarity, magic_type):
 	for line in text.splitlines():
 		splitted = line.split()
 		chance = splitted[0]
-		lo_chance, hi_chance = map(int, chance.split("-"))
+		try:
+			lo_chance, hi_chance = map(int, chance.split("-"))
+		except ValueError:
+			print "BAD CHANCE '" + line + "'"
+			sys.exit(-1)
 		gp = splitted[-2]			
 		name = " ".join(splitted[1:-2])			
 		table.append(scroll(lo_chance, hi_chance, name, gp, spell_level, caster_level, rarity, magic_type))		
@@ -576,6 +589,25 @@ def parseTable(text, spell_level, caster_level, rarity, magic_type):
 if __name__ == "__main__":
 	table = []
 	table += parseTable(common_arcane[0], 0, 1, "common", "arcane")	
+	table += parseTable(common_arcane[1], 1, 1, "common", "arcane")	
+	table += parseTable(common_arcane[2], 2, 3, "common", "arcane")	
+	table += parseTable(common_arcane[3], 3, 5, "common", "arcane")	
+	table += parseTable(common_arcane[4], 4, 7, "common", "arcane")	
+	table += parseTable(common_arcane[5], 5, 9, "common", "arcane")	
+	table += parseTable(common_arcane[6], 6, 11, "common", "arcane")	
+	table += parseTable(common_arcane[7], 7, 13, "common", "arcane")	
+	table += parseTable(common_arcane[8], 8, 15, "common", "arcane")	
+	table += parseTable(common_arcane[9], 9, 17, "common", "arcane")	
+	table += parseTable(uncommon_arcane[0], 0, 1, "uncommon", "arcane")	
+	table += parseTable(uncommon_arcane[1], 1, 1, "uncommon", "arcane")	
+	table += parseTable(uncommon_arcane[2], 2, 3, "uncommon", "arcane")	
+	table += parseTable(uncommon_arcane[3], 3, 5, "uncommon", "arcane")	
+	table += parseTable(uncommon_arcane[4], 4, 7, "uncommon", "arcane")	
+	table += parseTable(uncommon_arcane[5], 5, 9, "uncommon", "arcane")	
+	table += parseTable(uncommon_arcane[6], 6, 11, "uncommon", "arcane")	
+	table += parseTable(uncommon_arcane[7], 7, 13, "uncommon", "arcane")	
+	table += parseTable(uncommon_arcane[8], 8, 15, "uncommon", "arcane")	
+	table += parseTable(uncommon_arcane[9], 9, 17, "uncommon", "arcane")
 	string = json.dumps(table, indent=4, sort_keys=True)
 	with open("../data/items/scrolls.json", "w") as f:
 		f.write(string)

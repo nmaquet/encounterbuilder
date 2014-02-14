@@ -129,18 +129,26 @@ uncommon[3] = """01-12	Burrow	750 gp
 78-87	Fire trap	775 gp
 88-100	Nondetection	800 gp"""
 
-def idify(string):
-	return string.lower().replace(" ", "-").replace(",","").replace("/","-").replace("'", "-")
-
+def slugify(string):
+	res = []
+	for c in string:
+		if c.isalpha(): 
+			res.append(c.lower())
+		elif res and res[-1] != '-':
+			res.append('-')
+	if res[-1] == "-":
+		res.pop()
+	return "".join(res)
+	
 def potion(lo_chance, hi_chance, name, gp, spell_level, caster_level, rarity):
 	result = {
 		"LowChance" : lo_chance,
 		"HighChance" : hi_chance,
 		"Name": "Potion of " + name,
-		"id": "potion-of-" + idify(name),
+		"id": "potion-of-" + slugify(name),
 		"Type": "potion",
 		"SpellName": name,
-		"SpellId" : idify(name),
+		"SpellId" : slugify(name),
 		"Price": gp,
 		"PriceUnit": "gp",
 		"SpellLevel" : spell_level,
@@ -154,10 +162,10 @@ def oil(lo_chance, hi_chance, name, gp, spell_level, caster_level, rarity):
 		"LowChance" : lo_chance,
 		"HighChance" : hi_chance,
 		"Name": "Oil of " + name,
-		"id": "oil-of-" + idify(name),
+		"id": "oil-of-" + slugify(name),
 		"Type": "oil",
 		"SpellName": name,
-		"SpellId": idify(name),
+		"SpellId": slugify(name),
 		"Price": float(gp),
 		"PriceUnit": "gp",
 		"SpellLevel" : spell_level,
