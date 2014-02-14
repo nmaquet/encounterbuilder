@@ -60,7 +60,7 @@ var ATTRIBUTES = {
 
 module.exports = function (mongoose) {
     return {
-        MAGIC_ITEMS_ATTRIBUTES : ATTRIBUTES,
+        MAGIC_ITEMS_ATTRIBUTES : Object.keys(ATTRIBUTES),
         MagicItem :  mongoose.model('MagicItem', ATTRIBUTES)
     }
 };

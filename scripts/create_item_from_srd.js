@@ -81,7 +81,9 @@ for (var i in srd_items) {
             eb_item[attribute] = trim(srd_value);
         }
     }
-    eb_items.push(eb_item);
+    if (eb_item.Name !== "") {
+        eb_items.push(eb_item);
+    }
     // compareWithKyleItems(eb_item, srd_items[i].id);
 }
 
