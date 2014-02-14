@@ -35,7 +35,7 @@ module.exports = function (magicitemCollection, defaultFindLimit) {
         var magicItems;
         var count;
         var options = {
-            fields: {Name: 1, Price: 1, PriceUnit: 1, Source: 1, id: 1},
+            fields: {Name: 1, Price: 1, PriceUnit: 1, Source: 1, id: 1, Derived : 1},
             limit: Number(request.query.findLimit || defaultFindLimit),
             skip: Number(request.query.skip || 0),
             sort: getSortOption(request)

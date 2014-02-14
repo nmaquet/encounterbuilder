@@ -2,6 +2,7 @@
 
 DEMONSQUID.MONSTER_SOURCE_ABBREVIATIONS =
 {
+    "Ultimate Equipment" : "UE",
     "PFRPG Core": "Core",
     "PFRPG Bestiary 2": "PB2",
     "PFRPG Bestiary 3": "PB3",

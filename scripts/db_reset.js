@@ -5,22 +5,6 @@ var mongoose = require('mongoose');
 var Monster = require('./monsterModel')(mongoose).Monster;
 var MagicItem = require('./magicItemModel')(mongoose).MagicItem;
 
-var DerivedMagicItem = mongoose.model('DerivedMagicItem', {
-    "CL": Number,
-    "HighChance": Number,
-    "LowChance": Number,
-    "MagicType": String,
-    "Name": String,
-    "Price": Number,
-    "PriceUnit": String,
-    "Rarity": String,
-    "SpellId": String,
-    "SpellLevel": Number,
-    "SpellName": String,
-    "Type": String,
-    "id": String
-});
-
 if (process.env.USE_TEST_DB) {
     var db = mongoose.connect(process.env['MONGODB_TEST_URL']);
 } else {
@@ -51,8 +35,7 @@ function generateId(name, ids) {
 var monsterCount = 0;
 var monsterDone = false;
 var itemCount = 0;
-var itemDone = false;
-var derivedItemsDone = false;
+var magicItemsDone = false;
 
 Monster.remove({}, function (error) {
 
@@ -82,7 +65,7 @@ Monster.remove({}, function (error) {
                     console.log("inserted " + monsterCount + " monsters");
                     console.log("monster insert done");
                     monsterDone = true;
-                    if (itemDone && derivedItemsDone) {
+                    if (magicItemsDone) {
                         db.disconnect();
                     }
                 }
@@ -97,43 +80,12 @@ MagicItem.remove({}, function (error) {
         throw error;
     }
 
-    var magicItems = __dirname + '/../data/items/magic-items.json';
-
-    fs.readFile(magicItems, 'utf8', function (error, items) {
-        if (error) {
-            throw error;
-        }
-        items = JSON.parse(items);
-        if (process.env.USE_TEST_DB) {
-            items = items.splice(0, 300);
-        }
-        for (var item in items) {
-            items[item].id = generateId(items[item].Name, magic_item_ids);
-            MagicItem.create(items[item], function (error) {
-                if (error) {
-                    throw error;
-                }
-                itemCount++;
-                if (itemCount == items.length) {
-                    console.log("inserted " + itemCount + " magic items");
-                    console.log("magic items insert done");
-                    itemDone = true;
-                    if (monsterDone && derivedItemsDone) {
-                        db.disconnect();
-                    }
-                }
-            });
-        }
-    });
-});
-
-DerivedMagicItem.remove({}, function (error) {
-
-    if (error) {
-        throw error;
-    }
-
-    var filenames = [ __dirname + '/../data/items/scrolls.json', __dirname + '/../data/items/potions_and_oils.json', __dirname + '/../data/items/wands.json'];
+    var filenames = [
+        __dirname + '/../data/items/magic-items.json',
+        __dirname + '/../data/items/scrolls.json',
+        __dirname + '/../data/items/potions_and_oils.json',
+        __dirname + '/../data/items/wands.json'
+    ];
 
     var fileDone = 0;
     for (var i in filenames) {
@@ -148,19 +100,25 @@ DerivedMagicItem.remove({}, function (error) {
             var derivedItemCount = 0;
             for (var item in items) {
                 items[item].id = generateId(items[item].Name, magic_item_ids);
-                DerivedMagicItem.create(items[item], function (error) {
+                if (items[item].LowChance) {
+                    items[item].Derived = true;
+                    items[item].Source = "PFRPG Core";
+                } else {
+                    items[item].Derived = false;
+                }
+                MagicItem.create(items[item], function (error) {
                     if (error) {
                         throw error;
                     }
                     derivedItemCount++;
                     if (derivedItemCount == items.length) {
-                        console.log("inserted " + derivedItemCount + " derived items");
-                        console.log("derived items file insert done");
+                        console.log("inserted " + derivedItemCount + " magic items");
+                        console.log("magic items file insert done");
                         fileDone += 1;
                         if (fileDone === filenames.length ){
-                            derivedItemsDone = true;
+                            magicItemsDone = true;
                         }
-                        if (monsterDone && itemDone && derivedItemsDone ) {
+                        if (monsterDone && magicItemsDone ) {
                             db.disconnect();
                         }
                     }
@@ -168,5 +126,4 @@ DerivedMagicItem.remove({}, function (error) {
             }
         })
     }
-    ;
 });
