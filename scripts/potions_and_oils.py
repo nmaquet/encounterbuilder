@@ -129,14 +129,18 @@ uncommon[3] = """01-12	Burrow	750 gp
 78-87	Fire trap	775 gp
 88-100	Nondetection	800 gp"""
 
+def idify(string):
+	return string.lower().replace(" ", "-").replace(",","").replace("/","-").replace("'", "-")
+
 def potion(lo_chance, hi_chance, name, gp, spell_level, caster_level, rarity):
 	result = {
 		"LowChance" : lo_chance,
 		"HighChance" : hi_chance,
 		"Name": "Potion of " + name,
-		"id": "potion-of-" + name.lower().replace(" ", "-").replace(",","").replace("/","-").replace("'", "-"),
+		"id": "potion-of-" + idify(name),
 		"Type": "potion",
 		"SpellName": name,
+		"SpellId" : idify(name),
 		"Price": gp,
 		"PriceUnit": "gp",
 		"SpellLevel" : spell_level,
@@ -150,10 +154,11 @@ def oil(lo_chance, hi_chance, name, gp, spell_level, caster_level, rarity):
 		"LowChance" : lo_chance,
 		"HighChance" : hi_chance,
 		"Name": "Oil of " + name,
-		"id": "oil-of-" + name.lower().replace(" ", "-").replace(",","").replace("/","-").replace("'", "-"),
+		"id": "oil-of-" + idify(name),
 		"Type": "oil",
 		"SpellName": name,
-		"Price": gp,
+		"SpellId": idify(name),
+		"Price": float(gp),
 		"PriceUnit": "gp",
 		"SpellLevel" : spell_level,
 		"CL" : caster_level,
