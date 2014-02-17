@@ -339,56 +339,56 @@ describe("lootService", function () {
             ]});
         });
 
-        it("should generate more loot for budget 100", function () {
+        it("should generate more loot for budget 900", function () {
+            /* 500 GP ******************************************/
+            /* 80 gp */
+            diceService.prepareDice({die: 4, value: 4, n: 2});
+            /* 4 pp */
+            diceService.prepareDice({die: 4, value: 4, n: 1});
 
-            /* 360 sp */
-            diceService.prepareDice({die: 6, value: 6, n: 6});
-            /* 32 gp */
-            diceService.prepareDice({die: 4, value: 4, n: 8});
-
-            /* scroll level one */
+            /* potion level two */
+            diceService.prepareDice({die: 100, value: 26, n: 1});
+            /* common */
             diceService.prepareDice({die: 100, value: 45, n: 1});
-            /* common arcane */
-            diceService.prepareDice({die: 100, value: 45, n: 1});
-            /* hypnotism */
-            diceService.prepareDice({die: 100, value: 38, n: 1});
-            /* scroll level one */
-            diceService.prepareDice({die: 100, value: 45, n: 1});
-            /* common arcane */
-            diceService.prepareDice({die: 100, value: 45, n: 1});
-            /* hypnotism */
+            /* darkvision*/
             diceService.prepareDice({die: 100, value: 38, n: 1});
 
-            var items = service.generateTypeDLoot(100);
-            expect(items).to.deep.equal({coins: {pp: 0, gp: 32, sp: 360, cp: 0}, items: [
-                {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Hypnotism", "id": "scroll-of-hypnotism", amount: 2}
-            ]});
-        });
-
-        it("should generate more loot and different scrolls for budget 100", function () {
-
-            /* 360 sp */
-            diceService.prepareDice({die: 6, value: 6, n: 6});
-            /* 32 gp */
-            diceService.prepareDice({die: 4, value: 4, n: 8});
-
-            /* scroll level one */
-            diceService.prepareDice({die: 100, value: 45, n: 1});
-            /* common arcane */
-            diceService.prepareDice({die: 100, value: 45, n: 1});
-            /* hypnotism */
-            diceService.prepareDice({die: 100, value: 38, n: 1});
-            /* scroll level zero */
-            diceService.prepareDice({die: 100, value: 2, n: 1});
+            /* scroll level three */
+            diceService.prepareDice({die: 100, value: 99, n: 1});
             /* uncommon divine */
-            diceService.prepareDice({die: 100, value: 100, n: 1});
-            /* resistance */
-            diceService.prepareDice({die: 100, value: 55, n: 1});
+            diceService.prepareDice({die: 100, value: 92, n: 1});
+            /* contagion */
+            diceService.prepareDice({die: 100, value: 25, n: 1});
 
-            var items = service.generateTypeDLoot(100);
-            expect(items).to.deep.equal({coins: {pp: 0, gp: 32, sp: 360, cp: 0}, items: [
-                {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Hypnotism", "id": "scroll-of-hypnotism", amount: 1},
-                {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Resistance", "id": "scroll-of-resistance", amount: 1}
+            /* 400 GP ******************************************/
+            /* potion level one */
+            diceService.prepareDice({die: 100, value: 26, n: 1});
+            /* common */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* mage armor */
+            diceService.prepareDice({die: 100, value: 38, n: 1});
+
+            /* scroll level three */
+            diceService.prepareDice({die: 100, value: 99, n: 1});
+            /* uncommon arcane */
+            diceService.prepareDice({die: 100, value: 46, n: 1});
+            /* daylight */
+            diceService.prepareDice({die: 100, value: 19, n: 1});
+
+            /* scroll level three */
+            diceService.prepareDice({die: 100, value: 99, n: 1});
+            /* uncommon arcane */
+            diceService.prepareDice({die: 100, value: 46, n: 1});
+            /* rage */
+            diceService.prepareDice({die: 100, value: 67, n: 1});
+
+            var items = service.generateTypeDLoot(900);
+            expect(items).to.deep.equal({coins: {pp: 4, gp: 80, sp: 0, cp: 0}, items: [
+                {"Price": 300.0, "PriceUnit": "gp", "Name": "Potion of Darkvision", "id": "potion-of-darkvision", amount: 1},
+                {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Contagion", "id": "scroll-of-contagion", amount: 1},
+                {"Price": 50.0, "PriceUnit": "gp", "Name": "Potion of Mage armor", "id": "potion-of-mage-armor", amount: 1},
+                {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Daylight", "id": "scroll-of-daylight", amount: 1},
+                {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Rage", "id": "scroll-of-rage", amount: 1},
             ]});
         });
     });
