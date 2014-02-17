@@ -16,10 +16,8 @@ DEMONSQUID.encounterBuilderServices.factory('diceService', [
                 return sum;
             },
             chooseOne: function (choices) {
-                return choices[uniform(0, choices.length - 1)];
+                var i = uniform(0, choices.length);
+                return choices[i];
             }
-
         };
-
-
     }]);
