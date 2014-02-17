@@ -119,6 +119,76 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 {n: 2, die: 6, amount: 1000, unit: 'gp'},
                 {n: 8, die: 10, amount: 100, unit: 'pp'}
             ]
+        };
+
+        var typeDLoot = {
+            50: [
+                [
+                    {n: 3, die: 6, amount: 10, unit: 'sp', type: 'coins'},
+                    {n: 4, die: 4, amount: 1, unit: 'gp', type: 'coins'},
+                    {n: 1, die: 1, amount: 1, type: 'scroll', rarity: 'lesser_minor'}
+                ],
+                [
+                    {n: 2, die: 4, amount: 10, unit: 'sp', type: 'coins'},
+                    {n: 2, die: 4, amount: 1, unit: 'gp', type: 'coins'},
+                    {n: 1, die: 1, amount: 1, type: 'potion', rarity: 'lesser_minor'}
+                ]
+            ]
+        };
+
+        var randomScrollLevel = {
+            lesser_minor: function () {
+                return rangeIn100([15, 95], [0, 1, 2]);
+            },
+            greater_minor: function () {
+                return rangeIn100([5, 35, 90], [0, 1, 2, 3]);
+            },
+            lesser_medium: function () {
+                return rangeIn100([10, 55], [2, 3, 4]);
+            },
+            greater_medium: function () {
+                return rangeIn100([20, 60], [3, 4, 5]);
+            },
+            lesser_major: function () {
+                return rangeIn100([30, 65, 90], [4, 5, 6, 7]);
+            },
+            greater_major: function () {
+                return rangeIn100([5, 35, 70], [6, 7, 8, 9]);
+            }
+        };
+
+        var randomPotionLevel = {
+            lesser_minor: function () {
+                return rangeIn100([40], [0, 1]);
+            },
+            greater_minor: function () {
+                return rangeIn100([10, 60], [0, 1, 2]);
+            },
+            lesser_medium: function () {
+                return rangeIn100([25, 85], [1, 2, 3]);
+            },
+            greater_medium: function () {
+                return rangeIn100([10, 50], [1, 2, 3]);
+            },
+            lesser_major: function () {
+                return rangeIn100([35], [2, 3]);
+            },
+            greater_major: function () {
+                return rangeIn100([10], [2, 3]);
+            }
+        };
+
+        function rangeIn100(upperBounds, values) {
+            if (values.length !== upperBounds - 1) {
+                throw Error("upperBounds and values mismatch");
+            }
+            var dieResult = diceService.roll(100, 1);
+            for (var i in upperBounds) {
+                if (dieResult <= upperBounds[i]) {
+                    return values[i];
+                }
+            }
+            return values[upperBounds.length];
         }
 
         var budgetMultipliers = {
@@ -237,4 +307,5 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
         };
 
         return service;
-    }]);
+    }])
+;
