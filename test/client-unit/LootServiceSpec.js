@@ -391,5 +391,20 @@ describe("lootService", function () {
                 {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Rage", "id": "scroll-of-rage", amount: 1},
             ]});
         });
+
+        it("should generate one wand with loot value 1500", function () {
+
+            /* wand level one */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* common */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* alarm */
+            diceService.prepareDice({die: 100, value: 1, n: 1});
+
+            var items = service.generateTypeDLoot(1500);
+            expect(items).to.deep.equal({coins: {pp: 0, gp: 0, sp: 0, cp: 0}, items: [
+                {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Alarm", "id": "wand-of-alarm", amount: 1}
+            ]});
+        });
     });
 });
