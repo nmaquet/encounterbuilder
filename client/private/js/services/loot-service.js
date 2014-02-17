@@ -193,7 +193,466 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                     {amount: 2, type: 'potion', magnitude: 'greater_minor'},
                     {amount: 1, type: 'scroll', magnitude: 'greater_minor'}
                 ]
+            ],
+            1500: [
+                [
+                    {amount: 1, type: 'wand', magnitude: 'greater_minor'},
+                ]
             ]
+        };
+
+        var randomWand = {
+            common: {
+                "0": function () {
+                    return rangeIn100([7, 14, 20, 28, 34, 42, 49, 55, 60, 66, 73, 81, 88, 95], [
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Acid splash", "id": "wand-of-acid-splash"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Create water", "id": "wand-of-create-water"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Daze", "id": "wand-of-daze"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Detect magic", "id": "wand-of-detect-magic"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Ghost sound", "id": "wand-of-ghost-sound"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Light", "id": "wand-of-light"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Mage hand", "id": "wand-of-mage-hand"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Mending", "id": "wand-of-mending"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Message", "id": "wand-of-message"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Prestidigitation", "id": "wand-of-prestidigitation"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Purify food and drink", "id": "wand-of-purify-food-and-drink"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Ray of frost", "id": "wand-of-ray-of-frost"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Read magic", "id": "wand-of-read-magic"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Stabilize", "id": "wand-of-stabilize"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Touch of fatigue", "id": "wand-of-touch-of-fatigue"}
+                    ]);
+                },
+                "1": function () {
+                    return rangeIn100([2, 3, 5, 11, 14, 17, 19, 21, 23, 24, 31, 33, 37, 38, 41, 43, 45, 46, 48, 50, 52, 58, 60, 67, 68, 70, 71, 73, 74, 75, 76, 77, 79, 81, 84, 86, 87, 89, 90, 94, 95, 96, 99], [
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Alarm", "id": "wand-of-alarm"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Animate rope", "id": "wand-of-animate-rope"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Bane", "id": "wand-of-bane"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Bless", "id": "wand-of-bless"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Burning hands", "id": "wand-of-burning-hands"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Cause fear", "id": "wand-of-cause-fear"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Charm person", "id": "wand-of-charm-person"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Color spray", "id": "wand-of-color-spray"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Command", "id": "wand-of-command"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Comprehend languages", "id": "wand-of-comprehend-languages"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Cure light wounds", "id": "wand-of-cure-light-wounds"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Disguise self", "id": "wand-of-disguise-self"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Divine favor", "id": "wand-of-divine-favor"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Endure elements", "id": "wand-of-endure-elements"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Enlarge person", "id": "wand-of-enlarge-person"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Entangle", "id": "wand-of-entangle"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Expeditious retreat", "id": "wand-of-expeditious-retreat"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Feather fall", "id": "wand-of-feather-fall"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Grease", "id": "wand-of-grease"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Identify", "id": "wand-of-identify"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Inflict light wounds", "id": "wand-of-inflict-light-wounds"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Mage armor", "id": "wand-of-mage-armor"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Magic fang", "id": "wand-of-magic-fang"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Magic missile", "id": "wand-of-magic-missile"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Magic stone", "id": "wand-of-magic-stone"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Magic weapon", "id": "wand-of-magic-weapon"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Obscuring mist", "id": "wand-of-obscuring-mist"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Produce flame", "id": "wand-of-produce-flame"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Protection from chaos", "id": "wand-of-protection-from-chaos"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Protection from evil", "id": "wand-of-protection-from-evil"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Protection from good", "id": "wand-of-protection-from-good"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Protection from law", "id": "wand-of-protection-from-law"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Ray of enfeeblement", "id": "wand-of-ray-of-enfeeblement"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Remove fear", "id": "wand-of-remove-fear"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Shield", "id": "wand-of-shield"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Shield of faith", "id": "wand-of-shield-of-faith"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Shillelagh", "id": "wand-of-shillelagh"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Shocking grasp", "id": "wand-of-shocking-grasp"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Silent image", "id": "wand-of-silent-image"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Sleep", "id": "wand-of-sleep"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Summon monster I", "id": "wand-of-summon-monster-i"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Summon nature's ally I", "id": "wand-of-summon-nature-s-ally-i"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of True strike", "id": "wand-of-true-strike"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Unseen servant", "id": "wand-of-unseen-servant"}
+                    ]);
+                },
+                "2": function () {
+                    return rangeIn100([2, 3, 5, 7, 10, 11, 14, 16, 22, 25, 26, 27, 29, 30, 31, 32, 33, 35, 37, 38, 40, 43, 46, 51, 52, 54, 55, 57, 59, 60, 61, 64, 66, 71, 73, 74, 76, 78, 81, 83, 86, 88, 90, 92, 96, 97, 99], [
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Acid arrow", "id": "wand-of-acid-arrow"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Aid", "id": "wand-of-aid"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Alter self", "id": "wand-of-alter-self"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Barkskin", "id": "wand-of-barkskin"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Bear's endurance", "id": "wand-of-bear-s-endurance"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Blur", "id": "wand-of-blur"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Bull's strength", "id": "wand-of-bull-s-strength"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Cat's grace", "id": "wand-of-cat-s-grace"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Cure moderate wounds", "id": "wand-of-cure-moderate-wounds"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Darkness", "id": "wand-of-darkness"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Darkvision", "id": "wand-of-darkvision"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Delay poison", "id": "wand-of-delay-poison"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Eagle's splendor", "id": "wand-of-eagle-s-splendor"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of False life", "id": "wand-of-false-life"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Find traps", "id": "wand-of-find-traps"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Flame blade", "id": "wand-of-flame-blade"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Flaming sphere", "id": "wand-of-flaming-sphere"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Fog cloud", "id": "wand-of-fog-cloud"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Fox's cunning", "id": "wand-of-fox-s-cunning"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Glitterdust", "id": "wand-of-glitterdust"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Heat metal", "id": "wand-of-heat-metal"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Hold person", "id": "wand-of-hold-person"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Inflict moderate wounds", "id": "wand-of-inflict-moderate-wounds"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Invisibility", "id": "wand-of-invisibility"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Knock", "id": "wand-of-knock"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Levitate", "id": "wand-of-levitate"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Minor image", "id": "wand-of-minor-image"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Mirror image", "id": "wand-of-mirror-image"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Owl's wisdom", "id": "wand-of-owl-s-wisdom"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Pyrotechnics", "id": "wand-of-pyrotechnics"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Remove paralysis", "id": "wand-of-remove-paralysis"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Resist energy", "id": "wand-of-resist-energy"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Restoration, lesser", "id": "wand-of-restoration-lesser"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Scorching ray", "id": "wand-of-scorching-ray"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of See invisibility", "id": "wand-of-see-invisibility"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Shatter", "id": "wand-of-shatter"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Shield other", "id": "wand-of-shield-other"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Silence", "id": "wand-of-silence"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Sound burst", "id": "wand-of-sound-burst"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Spider climb", "id": "wand-of-spider-climb"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Spiritual weapon", "id": "wand-of-spiritual-weapon"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Summon monster II", "id": "wand-of-summon-monster-ii"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Summon nature's ally II", "id": "wand-of-summon-nature-s-ally-ii"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Summon swarm", "id": "wand-of-summon-swarm"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Web", "id": "wand-of-web"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Whispering wind", "id": "wand-of-whispering-wind"},
+                        {"Price": 5750.0, "PriceUnit": "gp", "Name": "Wand of Augury", "id": "wand-of-augury"},
+                        {"Price": 5750.0, "PriceUnit": "gp", "Name": "Wand of Fire trap", "id": "wand-of-fire-trap"}
+                    ]);
+                },
+                "3": function () {
+                    return rangeIn100([2, 4, 7, 8, 14, 16, 18, 20, 25, 28, 34, 35, 37, 38, 40, 42, 45, 47, 48, 50, 55, 56, 57, 58, 59, 60, 62, 64, 66, 70, 74, 75, 77, 79, 82, 83, 85, 87, 89, 90, 92, 93, 94, 97, 99], [
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Beast shape I", "id": "wand-of-beast-shape-i"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Blink", "id": "wand-of-blink"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Call lightning", "id": "wand-of-call-lightning"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Create food and water", "id": "wand-of-create-food-and-water"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Cure serious wounds", "id": "wand-of-cure-serious-wounds"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Daylight", "id": "wand-of-daylight"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Deep slumber", "id": "wand-of-deep-slumber"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Deeper darkness", "id": "wand-of-deeper-darkness"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Dispel magic", "id": "wand-of-dispel-magic"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Displacement", "id": "wand-of-displacement"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Fireball", "id": "wand-of-fireball"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Flame arrow", "id": "wand-of-flame-arrow"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Fly", "id": "wand-of-fly"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Gaseous form", "id": "wand-of-gaseous-form"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Haste", "id": "wand-of-haste"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Heroism", "id": "wand-of-heroism"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Inflict serious wounds", "id": "wand-of-inflict-serious-wounds"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Invisibility purge", "id": "wand-of-invisibility-purge"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Invisibility sphere", "id": "wand-of-invisibility-sphere"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Keen edge", "id": "wand-of-keen-edge"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Lightning bolt", "id": "wand-of-lightning-bolt"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Magic circle against chaos", "id": "wand-of-magic-circle-against-chaos"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Magic circle against evil", "id": "wand-of-magic-circle-against-evil"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Magic circle against good", "id": "wand-of-magic-circle-against-good"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Magic circle against law", "id": "wand-of-magic-circle-against-law"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Magic fang, greater", "id": "wand-of-magic-fang-greater"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Magic vestment", "id": "wand-of-magic-vestment"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Magic weapon, greater", "id": "wand-of-magic-weapon-greater"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Major image", "id": "wand-of-major-image"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Prayer", "id": "wand-of-prayer"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Protection from energy", "id": "wand-of-protection-from-energy"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Remove blindness/deafness", "id": "wand-of-remove-blindness-deafness"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Remove curse", "id": "wand-of-remove-curse"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Remove disease", "id": "wand-of-remove-disease"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Searing light", "id": "wand-of-searing-light"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Sleet storm", "id": "wand-of-sleet-storm"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Slow", "id": "wand-of-slow"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Speak with dead", "id": "wand-of-speak-with-dead"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Stinking cloud", "id": "wand-of-stinking-cloud"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Stone shape", "id": "wand-of-stone-shape"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Suggestion", "id": "wand-of-suggestion"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Summon monster III", "id": "wand-of-summon-monster-iii"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Summon nature's ally III", "id": "wand-of-summon-nature-s-ally-iii"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Vampiric touch", "id": "wand-of-vampiric-touch"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Water breathing", "id": "wand-of-water-breathing"},
+                        {"Price": 23750.0, "PriceUnit": "gp", "Name": "Wand of Animate dead", "id": "wand-of-animate-dead"}
+                    ]);
+                },
+                "4": function () {
+                    return rangeIn100([2, 4, 7, 8, 11, 14, 16, 22, 24, 28, 29, 30, 33, 35, 37, 39, 42, 44, 48, 51, 53, 54, 56, 58, 61, 65, 66, 69, 70, 72, 73, 74, 76, 79, 80, 81, 82, 87, 91, 93, 95, 96, 98, 99], [
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Air walk", "id": "wand-of-air-walk"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Beast shape II", "id": "wand-of-beast-shape-ii"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Black tentacles", "id": "wand-of-black-tentacles"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Chaos hammer", "id": "wand-of-chaos-hammer"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Charm monster", "id": "wand-of-charm-monster"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Confusion", "id": "wand-of-confusion"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Crushing despair", "id": "wand-of-crushing-despair"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Cure critical wounds", "id": "wand-of-cure-critical-wounds"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Death ward", "id": "wand-of-death-ward"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Dimension door", "id": "wand-of-dimension-door"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Dimensional anchor", "id": "wand-of-dimensional-anchor"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Dismissal", "id": "wand-of-dismissal"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Divine power", "id": "wand-of-divine-power"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Elemental body I", "id": "wand-of-elemental-body-i"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Enervation", "id": "wand-of-enervation"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Enlarge person, mass", "id": "wand-of-enlarge-person-mass"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Fear", "id": "wand-of-fear"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Fire shield", "id": "wand-of-fire-shield"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Flame strike", "id": "wand-of-flame-strike"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Freedom of movement", "id": "wand-of-freedom-of-movement"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Globe of invulnerability, lesser", "id": "wand-of-globe-of-invulnerability-lesser"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Holy smite", "id": "wand-of-holy-smite"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Ice storm", "id": "wand-of-ice-storm"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Imbue with spell ability", "id": "wand-of-imbue-with-spell-ability"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Inflict critical wounds", "id": "wand-of-inflict-critical-wounds"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Invisibility, greater", "id": "wand-of-invisibility-greater"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Order's wrath", "id": "wand-of-order-s-wrath"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Phantasmal killer", "id": "wand-of-phantasmal-killer"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Resilient sphere", "id": "wand-of-resilient-sphere"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Scrying", "id": "wand-of-scrying"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Sending", "id": "wand-of-sending"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Shout", "id": "wand-of-shout"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Solid fog", "id": "wand-of-solid-fog"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Spell immunity", "id": "wand-of-spell-immunity"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Summon monster IV", "id": "wand-of-summon-monster-iv"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Summon nature's ally IV", "id": "wand-of-summon-nature-s-ally-iv"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Unholy blight", "id": "wand-of-unholy-blight"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Wall of fire", "id": "wand-of-wall-of-fire"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Wall of ice", "id": "wand-of-wall-of-ice"},
+                        {"Price": 22250.0, "PriceUnit": "gp", "Name": "Wand of Divination", "id": "wand-of-divination"},
+                        {"Price": 26000.0, "PriceUnit": "gp", "Name": "Wand of Restoration", "id": "wand-of-restoration"},
+                        {"Price": 30000.0, "PriceUnit": "gp", "Name": "Wand of Break enchantment", "id": "wand-of-break-enchantment"},
+                        {"Price": 33500.0, "PriceUnit": "gp", "Name": "Wand of Stoneskin", "id": "wand-of-stoneskin"},
+                        {"Price": 46000.0, "PriceUnit": "gp", "Name": "Wand of Planar ally, lesser", "id": "wand-of-planar-ally-lesser"},
+                        {"Price": 71000.0, "PriceUnit": "gp", "Name": "Wand of Restoration (Can dispel permanent negative levels)", "id": "wand-of-restoration-can-dispel-permanent-negative-levels"}
+                    ]);
+                }
+            },
+            uncommon: {
+                "0": function () {
+                    return rangeIn100([6, 15, 22, 31, 40, 48, 56, 65, 73, 79, 86, 94], [
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Arcane mark", "id": "wand-of-arcane-mark"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Bleed", "id": "wand-of-bleed"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Dancing lights", "id": "wand-of-dancing-lights"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Detect poison", "id": "wand-of-detect-poison"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Disrupt undead", "id": "wand-of-disrupt-undead"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Flare", "id": "wand-of-flare"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Guidance", "id": "wand-of-guidance"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Know direction", "id": "wand-of-know-direction"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Lullaby", "id": "wand-of-lullaby"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Open/close", "id": "wand-of-open-close"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Resistance", "id": "wand-of-resistance"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Spark", "id": "wand-of-spark"},
+                        {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Virtue", "id": "wand-of-virtue"}
+                    ]);
+                },
+                "1": function () {
+                    return rangeIn100([2, 5, 7, 8, 10, 12, 14, 17, 19, 21, 22, 23, 24, 25, 26, 28, 29, 31, 35, 37, 38, 39, 41, 44, 47, 49, 51, 52, 54, 56, 58, 60, 63, 65, 66, 68, 69, 71, 72, 75, 78, 80, 83, 85, 87, 88, 89, 92, 96, 97, 98, 99], [
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Ant haul", "id": "wand-of-ant-haul"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Aspect of the falcon", "id": "wand-of-aspect-of-the-falcon"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Bless weapon", "id": "wand-of-bless-weapon"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Calm animals", "id": "wand-of-calm-animals"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Charm animal", "id": "wand-of-charm-animal"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Chill touch", "id": "wand-of-chill-touch"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Compel hostility", "id": "wand-of-compel-hostility"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Confusion, lesser", "id": "wand-of-confusion-lesser"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Corrosive touch", "id": "wand-of-corrosive-touch"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Deathwatch", "id": "wand-of-deathwatch"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Detect animals or plants", "id": "wand-of-detect-animals-or-plants"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Detect chaos", "id": "wand-of-detect-chaos"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Detect evil", "id": "wand-of-detect-evil"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Detect good", "id": "wand-of-detect-good"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Detect law", "id": "wand-of-detect-law"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Detect secret doors", "id": "wand-of-detect-secret-doors"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Detect snares and pits", "id": "wand-of-detect-snares-and-pits"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Detect undead", "id": "wand-of-detect-undead"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Doom", "id": "wand-of-doom"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Entropic shield", "id": "wand-of-entropic-shield"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Erase", "id": "wand-of-erase"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Faerie fire", "id": "wand-of-faerie-fire"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Feather step", "id": "wand-of-feather-step"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Floating disk", "id": "wand-of-floating-disk"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Goodberry", "id": "wand-of-goodberry"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Hide from animals", "id": "wand-of-hide-from-animals"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Hide from undead", "id": "wand-of-hide-from-undead"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Hideous laughter", "id": "wand-of-hideous-laughter"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Hold portal", "id": "wand-of-hold-portal"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Hypnotism", "id": "wand-of-hypnotism"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Icicle dagger", "id": "wand-of-icicle-dagger"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Ill omen", "id": "wand-of-ill-omen"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Jump", "id": "wand-of-jump"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Longstrider", "id": "wand-of-longstrider"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Magic aura", "id": "wand-of-magic-aura"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Mount", "id": "wand-of-mount"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Obscure object", "id": "wand-of-obscure-object"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Pass without trace", "id": "wand-of-pass-without-trace"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Ray of sickening", "id": "wand-of-ray-of-sickening"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Reduce person", "id": "wand-of-reduce-person"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Sanctuary", "id": "wand-of-sanctuary"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Shock shield", "id": "wand-of-shock-shield"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Speak with animals", "id": "wand-of-speak-with-animals"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Stone fist", "id": "wand-of-stone-fist"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Stone shield", "id": "wand-of-stone-shield"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Summon minor monster", "id": "wand-of-summon-minor-monster"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Undetectable alignment", "id": "wand-of-undetectable-alignment"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Urban grace", "id": "wand-of-urban-grace"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Vanish", "id": "wand-of-vanish"},
+                        {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Ventriloquism", "id": "wand-of-ventriloquism"},
+                        {"Price": 1250.0, "PriceUnit": "gp", "Name": "Wand of Magic mouth", "id": "wand-of-magic-mouth"},
+                        {"Price": 2000.0, "PriceUnit": "gp", "Name": "Wand of Bless water", "id": "wand-of-bless-water"},
+                        {"Price": 2000.0, "PriceUnit": "gp", "Name": "Wand of Curse water", "id": "wand-of-curse-water"}
+                    ]);
+                },
+                "2": function () {
+                    return rangeIn100([2, 5, 6, 7, 10, 13, 15, 18, 21, 24, 25, 27, 29, 32, 33, 35, 39, 42, 46, 48, 50, 51, 53, 55, 56, 57, 59, 60, 61, 63, 65, 66, 67, 69, 72, 74, 76, 78, 80, 82, 84, 86, 88, 91, 93, 95, 96, 97, 98, 99], [
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Align weapon", "id": "wand-of-align-weapon"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Animal aspect", "id": "wand-of-animal-aspect"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Animal messenger", "id": "wand-of-animal-messenger"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Animal trance", "id": "wand-of-animal-trance"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Aspect of the bear", "id": "wand-of-aspect-of-the-bear"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Bestow weapon proficiency", "id": "wand-of-bestow-weapon-proficiency"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Blindness/deafness", "id": "wand-of-blindness-deafness"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Burning gaze", "id": "wand-of-burning-gaze"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Calm emotions", "id": "wand-of-calm-emotions"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Chill metal", "id": "wand-of-chill-metal"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Command undead", "id": "wand-of-command-undead"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Daze monster", "id": "wand-of-daze-monster"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Death knell", "id": "wand-of-death-knell"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Defensive shock", "id": "wand-of-defensive-shock"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Delay pain", "id": "wand-of-delay-pain"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Detect thoughts", "id": "wand-of-detect-thoughts"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Disguise other", "id": "wand-of-disguise-other"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Effortless armor", "id": "wand-of-effortless-armor"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Elemental touch", "id": "wand-of-elemental-touch"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Enthrall", "id": "wand-of-enthrall"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Gentle repose", "id": "wand-of-gentle-repose"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Ghoul touch", "id": "wand-of-ghoul-touch"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Glide", "id": "wand-of-glide"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Groundswell", "id": "wand-of-groundswell"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Gust of wind", "id": "wand-of-gust-of-wind"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Hold animal", "id": "wand-of-hold-animal"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Hypnotic pattern", "id": "wand-of-hypnotic-pattern"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Locate object", "id": "wand-of-locate-object"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Make whole", "id": "wand-of-make-whole"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Misdirection", "id": "wand-of-misdirection"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Oppressive boredom", "id": "wand-of-oppressive-boredom"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Protection from arrows", "id": "wand-of-protection-from-arrows"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Reduce animal", "id": "wand-of-reduce-animal"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Rope trick", "id": "wand-of-rope-trick"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Scare", "id": "wand-of-scare"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Share language", "id": "wand-of-share-language"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Soften earth and stone", "id": "wand-of-soften-earth-and-stone"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Spectral hand", "id": "wand-of-spectral-hand"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Status", "id": "wand-of-status"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Tongues", "id": "wand-of-tongues"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Touch of idiocy", "id": "wand-of-touch-of-idiocy"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Tree shape", "id": "wand-of-tree-shape"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Warp wood", "id": "wand-of-warp-wood"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Weapon of awe", "id": "wand-of-weapon-of-awe"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Wood shape", "id": "wand-of-wood-shape"},
+                        {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Zone of truth", "id": "wand-of-zone-of-truth"},
+                        {"Price": 5750.0, "PriceUnit": "gp", "Name": "Wand of Arcane lock", "id": "wand-of-arcane-lock"},
+                        {"Price": 5750.0, "PriceUnit": "gp", "Name": "Wand of Consecrate", "id": "wand-of-consecrate"},
+                        {"Price": 5750.0, "PriceUnit": "gp", "Name": "Wand of Desecrate", "id": "wand-of-desecrate"},
+                        {"Price": 7000.0, "PriceUnit": "gp", "Name": "Wand of Continual flame", "id": "wand-of-continual-flame"},
+                        {"Price": 7000.0, "PriceUnit": "gp", "Name": "Wand of Phantom trap", "id": "wand-of-phantom-trap"}
+                    ]);
+                },
+                "3": function () {
+                    return rangeIn100([4, 6, 8, 11, 14, 17, 20, 22, 23, 25, 29, 30, 34, 35, 37, 40, 43, 45, 46, 49, 52, 54, 55, 57, 60, 61, 65, 67, 69, 70, 71, 73, 74, 76, 77, 81, 84, 86, 87, 89, 91, 95, 97, 98, 99], [
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Animal aspect, greater", "id": "wand-of-animal-aspect-greater"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Aqueous orb", "id": "wand-of-aqueous-orb"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Arcane sight", "id": "wand-of-arcane-sight"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Archon's aura", "id": "wand-of-archon-s-aura"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Ash storm", "id": "wand-of-ash-storm"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Bestow curse", "id": "wand-of-bestow-curse"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Clairaudience/clairvoyance", "id": "wand-of-clairaudience-clairvoyance"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Contagion", "id": "wand-of-contagion"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Diminish plants", "id": "wand-of-diminish-plants"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Dominate animal", "id": "wand-of-dominate-animal"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Elemental aura", "id": "wand-of-elemental-aura"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Explosive runes", "id": "wand-of-explosive-runes"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Force punch", "id": "wand-of-force-punch"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Halt undead", "id": "wand-of-halt-undead"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Helping hand", "id": "wand-of-helping-hand"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Hostile levitation", "id": "wand-of-hostile-levitation"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Howling agony", "id": "wand-of-howling-agony"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Hydraulic torrent", "id": "wand-of-hydraulic-torrent"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Mad monkeys", "id": "wand-of-mad-monkeys"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Meld into stone", "id": "wand-of-meld-into-stone"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Neutralize poison", "id": "wand-of-neutralize-poison"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Pain strike", "id": "wand-of-pain-strike"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Phantom steed", "id": "wand-of-phantom-steed"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Plant growth", "id": "wand-of-plant-growth"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Poison", "id": "wand-of-poison"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Quench", "id": "wand-of-quench"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Rage", "id": "wand-of-rage"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Ray of exhaustion", "id": "wand-of-ray-of-exhaustion"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Resinous skin", "id": "wand-of-resinous-skin"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Secret page", "id": "wand-of-secret-page"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Shrink item", "id": "wand-of-shrink-item"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Snare", "id": "wand-of-snare"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Speak with plants", "id": "wand-of-speak-with-plants"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Spike growth", "id": "wand-of-spike-growth"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Tiny hut", "id": "wand-of-tiny-hut"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Water walk", "id": "wand-of-water-walk"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Wind wall", "id": "wand-of-wind-wall"},
+                        {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Wrathful mantle", "id": "wand-of-wrathful-mantle"},
+                        {"Price": 13750.0, "PriceUnit": "gp", "Name": "Wand of Illusory script", "id": "wand-of-illusory-script"},
+                        {"Price": 13750.0, "PriceUnit": "gp", "Name": "Wand of Nondetection", "id": "wand-of-nondetection"},
+                        {"Price": 15750.0, "PriceUnit": "gp", "Name": "Wand of Glibness", "id": "wand-of-glibness"},
+                        {"Price": 15750.0, "PriceUnit": "gp", "Name": "Wand of Good hope", "id": "wand-of-good-hope"},
+                        {"Price": 15750.0, "PriceUnit": "gp", "Name": "Wand of Heal mount", "id": "wand-of-heal-mount"},
+                        {"Price": 15750.0, "PriceUnit": "gp", "Name": "Wand of Sculpt sound", "id": "wand-of-sculpt-sound"},
+                        {"Price": 21250.0, "PriceUnit": "gp", "Name": "Wand of Glyph of warding", "id": "wand-of-glyph-of-warding"},
+                        {"Price": 36250.0, "PriceUnit": "gp", "Name": "Wand of Sepia snake sigil", "id": "wand-of-sepia-snake-sigil"}
+                    ]);
+                },
+                "4": function () {
+                    return rangeIn100([1, 4, 7, 11, 12, 13, 15, 18, 19, 20, 24, 28, 30, 34, 36, 37, 38, 40, 42, 43, 46, 48, 50, 53, 54, 56, 59, 60, 63, 67, 70, 74, 76, 79, 80, 82, 83, 84, 87, 91, 94, 95, 97, 98, 99], [
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Antiplant shell", "id": "wand-of-antiplant-shell"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Arcane eye", "id": "wand-of-arcane-eye"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Aspect of the stag", "id": "wand-of-aspect-of-the-stag"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Ball lightning", "id": "wand-of-ball-lightning"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Blight", "id": "wand-of-blight"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Command plants", "id": "wand-of-command-plants"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Control water", "id": "wand-of-control-water"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Darkvision, greater", "id": "wand-of-darkvision-greater"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Detect scrying", "id": "wand-of-detect-scrying"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Discern lies", "id": "wand-of-discern-lies"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Dragon's breath", "id": "wand-of-dragon-s-breath"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of False life, greater", "id": "wand-of-false-life-greater"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Geas, lesser", "id": "wand-of-geas-lesser"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Ghost wolf", "id": "wand-of-ghost-wolf"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Giant vermin", "id": "wand-of-giant-vermin"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Hallucinatory terrain", "id": "wand-of-hallucinatory-terrain"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Illusory wall", "id": "wand-of-illusory-wall"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Locate creature", "id": "wand-of-locate-creature"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Minor creation", "id": "wand-of-minor-creation"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Mnemonic enhancer", "id": "wand-of-mnemonic-enhancer"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Obsidian flow", "id": "wand-of-obsidian-flow"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Rainbow pattern", "id": "wand-of-rainbow-pattern"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Reduce person, mass", "id": "wand-of-reduce-person-mass"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Reincarnate", "id": "wand-of-reincarnate"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Repel vermin", "id": "wand-of-repel-vermin"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Ride the waves", "id": "wand-of-ride-the-waves"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Rusting grasp", "id": "wand-of-rusting-grasp"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Secure shelter", "id": "wand-of-secure-shelter"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Shadow conjuration", "id": "wand-of-shadow-conjuration"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Shadow step", "id": "wand-of-shadow-step"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Shocking image", "id": "wand-of-shocking-image"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Spike stones", "id": "wand-of-spike-stones"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Volcanic storm", "id": "wand-of-volcanic-storm"},
+                        {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Wandering star motes", "id": "wand-of-wandering-star-motes"},
+                        {"Price": 30000.0, "PriceUnit": "gp", "Name": "Wand of Animal growth", "id": "wand-of-animal-growth"},
+                        {"Price": 30000.0, "PriceUnit": "gp", "Name": "Wand of Commune with nature", "id": "wand-of-commune-with-nature"},
+                        {"Price": 30000.0, "PriceUnit": "gp", "Name": "Wand of Dispel chaos", "id": "wand-of-dispel-chaos"},
+                        {"Price": 30000.0, "PriceUnit": "gp", "Name": "Wand of Dispel evil", "id": "wand-of-dispel-evil"},
+                        {"Price": 30000.0, "PriceUnit": "gp", "Name": "Wand of Dominate person", "id": "wand-of-dominate-person"},
+                        {"Price": 30000.0, "PriceUnit": "gp", "Name": "Wand of Hold monster", "id": "wand-of-hold-monster"},
+                        {"Price": 30000.0, "PriceUnit": "gp", "Name": "Wand of Holy sword", "id": "wand-of-holy-sword"},
+                        {"Price": 30000.0, "PriceUnit": "gp", "Name": "Wand of Mark of justice", "id": "wand-of-mark-of-justice"},
+                        {"Price": 30000.0, "PriceUnit": "gp", "Name": "Wand of Modify memory", "id": "wand-of-modify-memory"},
+                        {"Price": 30000.0, "PriceUnit": "gp", "Name": "Wand of Tree stride", "id": "wand-of-tree-stride"},
+                        {"Price": 30000.0, "PriceUnit": "gp", "Name": "Wand of Zone of silence", "id": "wand-of-zone-of-silence"},
+                        {"Price": 33500.0, "PriceUnit": "gp", "Name": "Wand of Legend lore", "id": "wand-of-legend-lore"}
+                    ]);
+                }
+            }
         };
 
         var randomScrollLevel = {
@@ -235,6 +694,27 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             },
             greater_major: function () {
                 return rangeIn100([10], [2, 3]);
+            }
+        };
+
+        var randomWandLevel = {
+            lesser_minor: function () {
+                return rangeIn100([40], [0, 1]);
+            },
+            greater_minor: function () {
+                return rangeIn100([80], [1, 2]);
+            },
+            lesser_medium: function () {
+                return rangeIn100([75], [2, 3]);
+            },
+            greater_medium: function () {
+                return rangeIn100([20, 80], [2, 3, 4]);
+            },
+            lesser_major: function () {
+                return rangeIn100([60], [3, 4]);
+            },
+            greater_major: function () {
+                return rangeIn100([30], [3, 4]);
             }
         };
 
@@ -1837,6 +2317,12 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return randomPotion[rarity][potionLevel]();
         }
 
+        service.generateWand = function (magnitude) {
+            var wandLevel = randomWandLevel[magnitude]();
+            var rarity = rangeIn100([75], ["common", "uncommon"]);
+            return randomWand[rarity][wandLevel]();
+        }
+
         service.generateTypeDLoot = function (budget) {
             var gpValues = knapsackService.knapsack(Object.keys(typeDLoot), budget);
             var loot = {coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: []};
@@ -1858,6 +2344,11 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         var amount = partialLoot.amount;
                         for (var l = 0; l < amount; ++l) {
                             addItem(service.generatePotion(partialLoot.magnitude), loot.items);
+                        }
+                    } else if (partialLoot.type === 'wand') {
+                        var amount = partialLoot.amount;
+                        for (var m = 0; m < amount; ++m) {
+                            addItem(service.generateWand(partialLoot.magnitude), loot.items);
                         }
                     }
                 }
