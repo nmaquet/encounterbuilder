@@ -279,4 +279,16 @@ describe("lootService", function () {
         });
 
     });
+
+    describe("service.generateScroll", function() {
+
+        it("should generate a scroll of 'flaming sphere'", function() {
+            diceService.prepareDice({die: 100, value: 45, n: 1}); /* scroll level two */
+            diceService.prepareDice({die: 100, value: 45, n: 1}); /* common arcane */
+            diceService.prepareDice({die: 100, value: 38, n: 1}); /* flaming sphere */
+            var item = service.generateScroll("greater_minor");
+            expect(item).to.deep.equal({"Price": 150.0, "PriceUnit": "gp", "Name": "Scroll of Flaming sphere", "id": "scroll-of-flaming-sphere"});
+        });
+
+    });
 });
