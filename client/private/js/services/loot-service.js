@@ -1743,28 +1743,67 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             }
         }
 
+        function addItem(item, items) {
+            for (var i in items) {
+                if (items[i].id === item.id) {
+                    items[i].amount += 1;
+                    return;
+                }
+            }
+            item.amount = 1;
+            items.push(item);
+        };
+
+        function generateScroll(magnitude) {
+            var scrollLevel = randomScrollLevel[magnitude]();
+            var rarityAndMagicType = rangeIn100([45, 60, 90], [
+                ["common", "arcane"],
+                ["uncommon", "arcane"],
+                ["common", "divine"],
+                ["uncommon", "divine"]
+            ]);
+            var rarity = rarityAndMagicType[0];
+            var magicType = rarityAndMagicType[1];
+            return randomScroll[rarity][magicType][scrollLevel]();
+        }
+
+        function generatePotion(magnitude) {
+            var potionLevel = randomPotionLevel[magnitude]();
+            if (potionLevel === 0) {
+                var rarity = "common";
+            } else {
+                var rarity = rangeIn100([75], ["common", "uncommon"]);
+            }
+            return randomPotion[rarity][potionLevel]();
+        }
+
         function generateTypeDLoot(budget) {
             var gpValues = knapsackService.knapsack(Object.keys(typeDLoot), budget);
             var loot = {coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: []};
             for (var i in gpValues) {
                 var gpValue = gpValues[i];
                 var partialLoots = diceService.chooseOne(typeDLoot[gpValue]);
-
                 for (var j in partialLoots) {
                     var partialLoot = partialLoots[j];
 
-                    if (partialLoot.type === 'coins'){
+                    if (partialLoot.type === 'coins') {
                         loot.coins[partialLoot.unit] += diceService.roll(partialLoot.die, partialLoot.n) * partialLoot.amount;
                     }
-                    else if (partialLoot.type === 'scroll'){
-                        var scrollLevel = randomScrollLevel[partialLoot.magnitude]();
+                    else if (partialLoot.type === 'scroll') {
                         var amount = partialLoot.amount;
-                        var dieResult = diceService.roll(100,1);
+                        for (var k = 0; k < amount; ++k) {
+                            addItem(generateScroll(partialLoot.magnitude), loot.items);
+                        }
+                    } else if (partialLoot.type === 'potion') {
+                        var amount = partialLoot.amount;
+                        for (var l = 0; l < amount; ++l) {
+                            addItem(generatePotion(partialLoot.magnitude), loot.items);
+                        }
                     }
                 }
             }
-
         }
+
         return service;
     }])
 ;
