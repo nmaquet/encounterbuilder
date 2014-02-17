@@ -1754,7 +1754,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             items.push(item);
         };
 
-        function generateScroll(magnitude) {
+        service.generateScroll = function(magnitude) {
             var scrollLevel = randomScrollLevel[magnitude]();
             var rarityAndMagicType = rangeIn100([45, 60, 90], [
                 ["common", "arcane"],
@@ -1767,7 +1767,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return randomScroll[rarity][magicType][scrollLevel]();
         }
 
-        function generatePotion(magnitude) {
+        service.generatePotion = function(magnitude) {
             var potionLevel = randomPotionLevel[magnitude]();
             if (potionLevel === 0) {
                 var rarity = "common";
@@ -1792,12 +1792,12 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                     else if (partialLoot.type === 'scroll') {
                         var amount = partialLoot.amount;
                         for (var k = 0; k < amount; ++k) {
-                            addItem(generateScroll(partialLoot.magnitude), loot.items);
+                            addItem(service.generateScroll(partialLoot.magnitude), loot.items);
                         }
                     } else if (partialLoot.type === 'potion') {
                         var amount = partialLoot.amount;
                         for (var l = 0; l < amount; ++l) {
-                            addItem(generatePotion(partialLoot.magnitude), loot.items);
+                            addItem(service.generatePotion(partialLoot.magnitude), loot.items);
                         }
                     }
                 }
