@@ -81,7 +81,11 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             $scope.randomizeLoot = function (encounter) {
                 var loot = lootService.generateEncounterLoot(encounter, 'medium');
                 encounter.coins = loot.coins;
-                encounter.items = loot.items;
+                encounter.items = {};
+                for (var i in loot.items) {
+                    var item = loot.items[i];
+                    encounter.items[item.id] = item;
+                }
                 encounterService.encounterChanged(encounter);
             }
         }

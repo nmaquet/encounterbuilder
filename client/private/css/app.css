@@ -30,6 +30,14 @@
     display: inline;
 }
 
+.encounter-items-buttons {
+    display: none;
+}
+
+.encounter-item-row:hover .encounter-items-buttons {
+    display: inline;
+}
+
 .btn-xmini {
     padding: 0px 3px;
     font-size: 2px;
