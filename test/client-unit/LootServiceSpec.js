@@ -339,59 +339,6 @@ describe("lootService", function () {
             ]});
         });
 
-        it("should generate more loot for budget 900", function () {
-            /* 500 GP ******************************************/
-            /* 80 gp */
-            diceService.prepareDice({die: 4, value: 4, n: 2});
-            /* 4 pp */
-            diceService.prepareDice({die: 4, value: 4, n: 1});
-
-            /* potion level two */
-            diceService.prepareDice({die: 100, value: 26, n: 1});
-            /* common */
-            diceService.prepareDice({die: 100, value: 45, n: 1});
-            /* darkvision*/
-            diceService.prepareDice({die: 100, value: 38, n: 1});
-
-            /* scroll level three */
-            diceService.prepareDice({die: 100, value: 99, n: 1});
-            /* uncommon divine */
-            diceService.prepareDice({die: 100, value: 92, n: 1});
-            /* contagion */
-            diceService.prepareDice({die: 100, value: 25, n: 1});
-
-            /* 400 GP ******************************************/
-            /* potion level one */
-            diceService.prepareDice({die: 100, value: 26, n: 1});
-            /* common */
-            diceService.prepareDice({die: 100, value: 45, n: 1});
-            /* mage armor */
-            diceService.prepareDice({die: 100, value: 38, n: 1});
-
-            /* scroll level three */
-            diceService.prepareDice({die: 100, value: 99, n: 1});
-            /* uncommon arcane */
-            diceService.prepareDice({die: 100, value: 46, n: 1});
-            /* daylight */
-            diceService.prepareDice({die: 100, value: 19, n: 1});
-
-            /* scroll level three */
-            diceService.prepareDice({die: 100, value: 99, n: 1});
-            /* uncommon arcane */
-            diceService.prepareDice({die: 100, value: 46, n: 1});
-            /* rage */
-            diceService.prepareDice({die: 100, value: 67, n: 1});
-
-            var items = service.generateTypeDLoot(900);
-            expect(items).to.deep.equal({coins: {pp: 4, gp: 80, sp: 0, cp: 0}, items: [
-                {"Price": 300.0, "PriceUnit": "gp", "Name": "Potion of Darkvision", "id": "potion-of-darkvision", amount: 1},
-                {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Contagion", "id": "scroll-of-contagion", amount: 1},
-                {"Price": 50.0, "PriceUnit": "gp", "Name": "Potion of Mage armor", "id": "potion-of-mage-armor", amount: 1},
-                {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Daylight", "id": "scroll-of-daylight", amount: 1},
-                {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Rage", "id": "scroll-of-rage", amount: 1},
-            ]});
-        });
-
         it("should generate one wand with loot value 1500", function () {
 
             /* wand level one */
