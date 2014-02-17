@@ -38,6 +38,9 @@ function createDiceServiceMock() {
             }
             nextDice[die] = nextDice[die].splice(n);
             return sum;
+        },
+        chooseOne: function (choices) {
+            return choices[0];
         }
     }
 };
@@ -253,50 +256,140 @@ describe("lootService", function () {
         });
     });
 
-    describe("service.generatePotion", function() {
+    describe("service.generatePotion", function () {
 
-        it("should generate a potion of 'cure light wounds'", function() {
-            diceService.prepareDice({die: 100, value: 60, n: 1}); /* potion level one */
-            diceService.prepareDice({die: 100, value: 60, n: 1}); /* common */
-            diceService.prepareDice({die: 100, value: 10, n: 1}); /* cure light wounds */
+        it("should generate a potion of 'cure light wounds'", function () {
+            /* potion level one */
+            diceService.prepareDice({die: 100, value: 60, n: 1});
+            /* common */
+            diceService.prepareDice({die: 100, value: 60, n: 1});
+            /* cure light wounds */
+            diceService.prepareDice({die: 100, value: 10, n: 1});
             var item = service.generatePotion("lesser_minor");
             expect(item).to.deep.equal({"Price": 50.0, "PriceUnit": "gp", "Name": "Potion of Cure light wounds", "id": "potion-of-cure-light-wounds"});
         });
 
-        it("should generate a potion of 'guidance'", function() {
-            diceService.prepareDice({die: 100, value: 35, n: 1}); /* potion level zero */
-            diceService.prepareDice({die: 100, value: 17, n: 1}); /* guidance */
+        it("should generate a potion of 'guidance'", function () {
+            /* potion level zero */
+            diceService.prepareDice({die: 100, value: 35, n: 1});
+            /* guidance */
+            diceService.prepareDice({die: 100, value: 17, n: 1});
             var item = service.generatePotion("lesser_minor");
             expect(item).to.deep.equal({"Price": 25.0, "PriceUnit": "gp", "Name": "Potion of Guidance", "id": "potion-of-guidance"});
         });
 
-        it("should generate a potion of 'flame arrow'", function() {
-            diceService.prepareDice({die: 100, value: 12, n: 1}); /* potion level 3 */
-            diceService.prepareDice({die: 100, value: 80, n: 1}); /* uncommon */
-            diceService.prepareDice({die: 100, value: 55, n: 1}); /* flame arrow */
+        it("should generate a potion of 'flame arrow'", function () {
+            /* potion level 3 */
+            diceService.prepareDice({die: 100, value: 12, n: 1});
+            /* uncommon */
+            diceService.prepareDice({die: 100, value: 80, n: 1});
+            /* flame arrow */
+            diceService.prepareDice({die: 100, value: 55, n: 1});
             var item = service.generatePotion("greater_major");
             expect(item).to.deep.equal({"Price": 750.0, "PriceUnit": "gp", "Name": "Potion of Flame arrow", "id": "potion-of-flame-arrow"});
         });
 
     });
 
-    describe("service.generateScroll", function() {
+    describe("service.generateScroll", function () {
 
-        it("should generate a scroll of 'flaming sphere'", function() {
-            diceService.prepareDice({die: 100, value: 45, n: 1}); /* scroll level two */
-            diceService.prepareDice({die: 100, value: 45, n: 1}); /* common arcane */
-            diceService.prepareDice({die: 100, value: 38, n: 1}); /* flaming sphere */
+        it("should generate a scroll of 'flaming sphere'", function () {
+            /* scroll level two */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* common arcane */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* flaming sphere */
+            diceService.prepareDice({die: 100, value: 38, n: 1});
             var item = service.generateScroll("greater_minor");
             expect(item).to.deep.equal({"Price": 150.0, "PriceUnit": "gp", "Name": "Scroll of Flaming sphere", "id": "scroll-of-flaming-sphere"});
         });
 
-        it("should generate a scroll of 'gate'", function() {
-            diceService.prepareDice({die: 100, value: 71, n: 1}); /* scroll level nine */
-            diceService.prepareDice({die: 100, value: 61, n: 1}); /* common divine */
-            diceService.prepareDice({die: 100, value: 23, n: 1}); /* gate */
+        it("should generate a scroll of 'gate'", function () {
+            /* scroll level nine */
+            diceService.prepareDice({die: 100, value: 71, n: 1});
+            /* common divine */
+            diceService.prepareDice({die: 100, value: 61, n: 1});
+            /* gate */
+            diceService.prepareDice({die: 100, value: 23, n: 1});
             var item = service.generateScroll("greater_major");
             expect(item).to.deep.equal({"Price": 3825.0, "PriceUnit": "gp", "Name": "Scroll of Gate", "id": "scroll-of-gate"});
         });
 
+    });
+
+    describe("service.generateTypeDLoot", function () {
+
+        it("should generate loot", function () {
+
+            /* 180 sp */
+            diceService.prepareDice({die: 6, value: 6, n: 3});
+            /* 16 gp */
+            diceService.prepareDice({die: 4, value: 4, n: 4});
+
+            /* scroll level one */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* common arcane */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* hypnotism */
+            diceService.prepareDice({die: 100, value: 38, n: 1});
+
+            var items = service.generateTypeDLoot(50);
+            expect(items).to.deep.equal({coins: {pp: 0, gp: 16, sp: 180, cp: 0}, items: [
+                {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Hypnotism", "id": "scroll-of-hypnotism", amount: 1}
+            ]});
+        });
+
+        it("should generate more loot for budget 100", function () {
+
+            /* 360 sp */
+            diceService.prepareDice({die: 6, value: 6, n: 6});
+            /* 32 gp */
+            diceService.prepareDice({die: 4, value: 4, n: 8});
+
+            /* scroll level one */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* common arcane */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* hypnotism */
+            diceService.prepareDice({die: 100, value: 38, n: 1});
+            /* scroll level one */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* common arcane */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* hypnotism */
+            diceService.prepareDice({die: 100, value: 38, n: 1});
+
+            var items = service.generateTypeDLoot(100);
+            expect(items).to.deep.equal({coins: {pp: 0, gp: 32, sp: 360, cp: 0}, items: [
+                {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Hypnotism", "id": "scroll-of-hypnotism", amount: 2}
+            ]});
+        });
+
+        it("should generate more loot and different scrolls for budget 100", function () {
+
+            /* 360 sp */
+            diceService.prepareDice({die: 6, value: 6, n: 6});
+            /* 32 gp */
+            diceService.prepareDice({die: 4, value: 4, n: 8});
+
+            /* scroll level one */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* common arcane */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* hypnotism */
+            diceService.prepareDice({die: 100, value: 38, n: 1});
+            /* scroll level zero */
+            diceService.prepareDice({die: 100, value: 2, n: 1});
+            /* uncommon divine */
+            diceService.prepareDice({die: 100, value: 100, n: 1});
+            /* resistance */
+            diceService.prepareDice({die: 100, value: 55, n: 1});
+
+            var items = service.generateTypeDLoot(100);
+            expect(items).to.deep.equal({coins: {pp: 0, gp: 32, sp: 360, cp: 0}, items: [
+                {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Hypnotism", "id": "scroll-of-hypnotism", amount: 1},
+                {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Resistance", "id": "scroll-of-resistance", amount: 1}
+            ]});
+        });
     });
 });

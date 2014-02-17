@@ -542,21 +542,21 @@ uncommon_arcane[9] = """01-06	Create demiplane, greater	3,825 gp
 89-95	Winds of vengeance	3,825 gp
 96-100	Refuge	4,325 gp"""
 
-common_divine[0] = """01-11	Bleed	12 gp, 5 sp
-12-21	Create water	12 gp, 5 sp
-22-34	Detect magic	12 gp, 5 sp
-35-44	Know direction	12 gp, 5 sp
-45-55	Light	12 gp, 5 sp
-56-65	Mending	12 gp, 5 sp
-66-75	Purify food and drink	12 gp, 5 sp
-76-88	Read magic	12 gp, 5 sp
-89-100	Stabilize	12 gp, 5 sp"""
-uncommon_divine[0]="""01-15	Detect poison	12 gp, 5 sp
-16-33	Flare	12 gp, 5 sp
-34-50	Guidance	12 gp, 5 sp
-51-68	Resistance	12 gp, 5 sp
-69-85	Spark	12 gp, 5 sp
-86-100	Virtue	12 gp, 5 sp"""
+common_divine[0] = """01-11	Bleed	12.5 gp
+12-21	Create water	12.5 gp
+22-34	Detect magic	12.5 gp
+35-44	Know direction	12.5 gp
+45-55	Light	12.5 gp
+56-65	Mending	12.5 gp
+66-75	Purify food and drink	12.5 gp
+76-88	Read magic	12.5 gp
+89-100	Stabilize	12.5 gp"""
+uncommon_divine[0]="""01-15	Detect poison	12.5 gp
+16-33	Flare	12.5 gp
+34-50	Guidance	12.5 gp
+51-68	Resistance	12.5 gp
+69-85	Spark	12.5 gp
+86-100	Virtue	12.5 gp"""
 common_divine[1]="""01-04	Bane	25 gp
 05-10	Bless	25 gp
 11-15	Cause fear	25 gp

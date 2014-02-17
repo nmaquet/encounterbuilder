@@ -7685,14 +7685,14 @@
         "HighChance": 11, 
         "LowChance": 1, 
         "MagicType": "divine", 
-        "Name": "Scroll of Bleed 12 gp,", 
-        "Price": 5.0, 
+        "Name": "Scroll of Bleed", 
+        "Price": 12.5, 
         "PriceUnit": "gp", 
         "Rarity": "common", 
-        "SpellId": "bleed-gp", 
+        "SpellId": "bleed", 
         "SpellLevel": 0, 
-        "SpellName": "Bleed 12 gp,", 
-        "id": "scroll-of-bleed-gp"
+        "SpellName": "Bleed", 
+        "id": "scroll-of-bleed"
     }, 
     {
         "CL": 1, 
@@ -7700,14 +7700,14 @@
         "HighChance": 21, 
         "LowChance": 12, 
         "MagicType": "divine", 
-        "Name": "Scroll of Create water 12 gp,", 
-        "Price": 5.0, 
+        "Name": "Scroll of Create water", 
+        "Price": 12.5, 
         "PriceUnit": "gp", 
         "Rarity": "common", 
-        "SpellId": "create-water-gp", 
+        "SpellId": "create-water", 
         "SpellLevel": 0, 
-        "SpellName": "Create water 12 gp,", 
-        "id": "scroll-of-create-water-gp"
+        "SpellName": "Create water", 
+        "id": "scroll-of-create-water"
     }, 
     {
         "CL": 1, 
@@ -7715,14 +7715,14 @@
         "HighChance": 34, 
         "LowChance": 22, 
         "MagicType": "divine", 
-        "Name": "Scroll of Detect magic 12 gp,", 
-        "Price": 5.0, 
+        "Name": "Scroll of Detect magic", 
+        "Price": 12.5, 
         "PriceUnit": "gp", 
         "Rarity": "common", 
-        "SpellId": "detect-magic-gp", 
+        "SpellId": "detect-magic", 
         "SpellLevel": 0, 
-        "SpellName": "Detect magic 12 gp,", 
-        "id": "scroll-of-detect-magic-gp"
+        "SpellName": "Detect magic", 
+        "id": "scroll-of-detect-magic"
     }, 
     {
         "CL": 1, 
@@ -7730,14 +7730,14 @@
         "HighChance": 44, 
         "LowChance": 35, 
         "MagicType": "divine", 
-        "Name": "Scroll of Know direction 12 gp,", 
-        "Price": 5.0, 
+        "Name": "Scroll of Know direction", 
+        "Price": 12.5, 
         "PriceUnit": "gp", 
         "Rarity": "common", 
-        "SpellId": "know-direction-gp", 
+        "SpellId": "know-direction", 
         "SpellLevel": 0, 
-        "SpellName": "Know direction 12 gp,", 
-        "id": "scroll-of-know-direction-gp"
+        "SpellName": "Know direction", 
+        "id": "scroll-of-know-direction"
     }, 
     {
         "CL": 1, 
@@ -7745,14 +7745,14 @@
         "HighChance": 55, 
         "LowChance": 45, 
         "MagicType": "divine", 
-        "Name": "Scroll of Light 12 gp,", 
-        "Price": 5.0, 
+        "Name": "Scroll of Light", 
+        "Price": 12.5, 
         "PriceUnit": "gp", 
         "Rarity": "common", 
-        "SpellId": "light-gp", 
+        "SpellId": "light", 
         "SpellLevel": 0, 
-        "SpellName": "Light 12 gp,", 
-        "id": "scroll-of-light-gp"
+        "SpellName": "Light", 
+        "id": "scroll-of-light"
     }, 
     {
         "CL": 1, 
@@ -7760,14 +7760,14 @@
         "HighChance": 65, 
         "LowChance": 56, 
         "MagicType": "divine", 
-        "Name": "Scroll of Mending 12 gp,", 
-        "Price": 5.0, 
+        "Name": "Scroll of Mending", 
+        "Price": 12.5, 
         "PriceUnit": "gp", 
         "Rarity": "common", 
-        "SpellId": "mending-gp", 
+        "SpellId": "mending", 
         "SpellLevel": 0, 
-        "SpellName": "Mending 12 gp,", 
-        "id": "scroll-of-mending-gp"
+        "SpellName": "Mending", 
+        "id": "scroll-of-mending"
     }, 
     {
         "CL": 1, 
@@ -7775,14 +7775,14 @@
         "HighChance": 75, 
         "LowChance": 66, 
         "MagicType": "divine", 
-        "Name": "Scroll of Purify food and drink 12 gp,", 
-        "Price": 5.0, 
+        "Name": "Scroll of Purify food and drink", 
+        "Price": 12.5, 
         "PriceUnit": "gp", 
         "Rarity": "common", 
-        "SpellId": "purify-food-and-drink-gp", 
+        "SpellId": "purify-food-and-drink", 
         "SpellLevel": 0, 
-        "SpellName": "Purify food and drink 12 gp,", 
-        "id": "scroll-of-purify-food-and-drink-gp"
+        "SpellName": "Purify food and drink", 
+        "id": "scroll-of-purify-food-and-drink"
     }, 
     {
         "CL": 1, 
@@ -7790,14 +7790,14 @@
         "HighChance": 88, 
         "LowChance": 76, 
         "MagicType": "divine", 
-        "Name": "Scroll of Read magic 12 gp,", 
-        "Price": 5.0, 
+        "Name": "Scroll of Read magic", 
+        "Price": 12.5, 
         "PriceUnit": "gp", 
         "Rarity": "common", 
-        "SpellId": "read-magic-gp", 
+        "SpellId": "read-magic", 
         "SpellLevel": 0, 
-        "SpellName": "Read magic 12 gp,", 
-        "id": "scroll-of-read-magic-gp"
+        "SpellName": "Read magic", 
+        "id": "scroll-of-read-magic"
     }, 
     {
         "CL": 1, 
@@ -7805,14 +7805,14 @@
         "HighChance": 100, 
         "LowChance": 89, 
         "MagicType": "divine", 
-        "Name": "Scroll of Stabilize 12 gp,", 
-        "Price": 5.0, 
+        "Name": "Scroll of Stabilize", 
+        "Price": 12.5, 
         "PriceUnit": "gp", 
         "Rarity": "common", 
-        "SpellId": "stabilize-gp", 
+        "SpellId": "stabilize", 
         "SpellLevel": 0, 
-        "SpellName": "Stabilize 12 gp,", 
-        "id": "scroll-of-stabilize-gp"
+        "SpellName": "Stabilize", 
+        "id": "scroll-of-stabilize"
     }, 
     {
         "CL": 1, 
@@ -10910,14 +10910,14 @@
         "HighChance": 15, 
         "LowChance": 1, 
         "MagicType": "divine", 
-        "Name": "Scroll of Detect poison 12 gp,", 
-        "Price": 5.0, 
+        "Name": "Scroll of Detect poison", 
+        "Price": 12.5, 
         "PriceUnit": "gp", 
         "Rarity": "uncommon", 
-        "SpellId": "detect-poison-gp", 
+        "SpellId": "detect-poison", 
         "SpellLevel": 0, 
-        "SpellName": "Detect poison 12 gp,", 
-        "id": "scroll-of-detect-poison-gp"
+        "SpellName": "Detect poison", 
+        "id": "scroll-of-detect-poison"
     }, 
     {
         "CL": 1, 
@@ -10925,14 +10925,14 @@
         "HighChance": 33, 
         "LowChance": 16, 
         "MagicType": "divine", 
-        "Name": "Scroll of Flare 12 gp,", 
-        "Price": 5.0, 
+        "Name": "Scroll of Flare", 
+        "Price": 12.5, 
         "PriceUnit": "gp", 
         "Rarity": "uncommon", 
-        "SpellId": "flare-gp", 
+        "SpellId": "flare", 
         "SpellLevel": 0, 
-        "SpellName": "Flare 12 gp,", 
-        "id": "scroll-of-flare-gp"
+        "SpellName": "Flare", 
+        "id": "scroll-of-flare"
     }, 
     {
         "CL": 1, 
@@ -10940,14 +10940,14 @@
         "HighChance": 50, 
         "LowChance": 34, 
         "MagicType": "divine", 
-        "Name": "Scroll of Guidance 12 gp,", 
-        "Price": 5.0, 
+        "Name": "Scroll of Guidance", 
+        "Price": 12.5, 
         "PriceUnit": "gp", 
         "Rarity": "uncommon", 
-        "SpellId": "guidance-gp", 
+        "SpellId": "guidance", 
         "SpellLevel": 0, 
-        "SpellName": "Guidance 12 gp,", 
-        "id": "scroll-of-guidance-gp"
+        "SpellName": "Guidance", 
+        "id": "scroll-of-guidance"
     }, 
     {
         "CL": 1, 
@@ -10955,14 +10955,14 @@
         "HighChance": 68, 
         "LowChance": 51, 
         "MagicType": "divine", 
-        "Name": "Scroll of Resistance 12 gp,", 
-        "Price": 5.0, 
+        "Name": "Scroll of Resistance", 
+        "Price": 12.5, 
         "PriceUnit": "gp", 
         "Rarity": "uncommon", 
-        "SpellId": "resistance-gp", 
+        "SpellId": "resistance", 
         "SpellLevel": 0, 
-        "SpellName": "Resistance 12 gp,", 
-        "id": "scroll-of-resistance-gp"
+        "SpellName": "Resistance", 
+        "id": "scroll-of-resistance"
     }, 
     {
         "CL": 1, 
@@ -10970,14 +10970,14 @@
         "HighChance": 85, 
         "LowChance": 69, 
         "MagicType": "divine", 
-        "Name": "Scroll of Spark 12 gp,", 
-        "Price": 5.0, 
+        "Name": "Scroll of Spark", 
+        "Price": 12.5, 
         "PriceUnit": "gp", 
         "Rarity": "uncommon", 
-        "SpellId": "spark-gp", 
+        "SpellId": "spark", 
         "SpellLevel": 0, 
-        "SpellName": "Spark 12 gp,", 
-        "id": "scroll-of-spark-gp"
+        "SpellName": "Spark", 
+        "id": "scroll-of-spark"
     }, 
     {
         "CL": 1, 
@@ -10985,14 +10985,14 @@
         "HighChance": 100, 
         "LowChance": 86, 
         "MagicType": "divine", 
-        "Name": "Scroll of Virtue 12 gp,", 
-        "Price": 5.0, 
+        "Name": "Scroll of Virtue", 
+        "Price": 12.5, 
         "PriceUnit": "gp", 
         "Rarity": "uncommon", 
-        "SpellId": "virtue-gp", 
+        "SpellId": "virtue", 
         "SpellLevel": 0, 
-        "SpellName": "Virtue 12 gp,", 
-        "id": "scroll-of-virtue-gp"
+        "SpellName": "Virtue", 
+        "id": "scroll-of-virtue"
     }, 
     {
         "CL": 1, 

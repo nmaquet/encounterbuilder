@@ -467,15 +467,15 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 divine: {
                     "0": function () {
                         return rangeIn100([11, 21, 34, 44, 55, 65, 75, 88], [
-                            {"Price": 5.0, "PriceUnit": "gp", "Name": "Scroll of Bleed 12 gp,", "id": "scroll-of-bleed-gp"},
-                            {"Price": 5.0, "PriceUnit": "gp", "Name": "Scroll of Create water 12 gp,", "id": "scroll-of-create-water-gp"},
-                            {"Price": 5.0, "PriceUnit": "gp", "Name": "Scroll of Detect magic 12 gp,", "id": "scroll-of-detect-magic-gp"},
-                            {"Price": 5.0, "PriceUnit": "gp", "Name": "Scroll of Know direction 12 gp,", "id": "scroll-of-know-direction-gp"},
-                            {"Price": 5.0, "PriceUnit": "gp", "Name": "Scroll of Light 12 gp,", "id": "scroll-of-light-gp"},
-                            {"Price": 5.0, "PriceUnit": "gp", "Name": "Scroll of Mending 12 gp,", "id": "scroll-of-mending-gp"},
-                            {"Price": 5.0, "PriceUnit": "gp", "Name": "Scroll of Purify food and drink 12 gp,", "id": "scroll-of-purify-food-and-drink-gp"},
-                            {"Price": 5.0, "PriceUnit": "gp", "Name": "Scroll of Read magic 12 gp,", "id": "scroll-of-read-magic-gp"},
-                            {"Price": 5.0, "PriceUnit": "gp", "Name": "Scroll of Stabilize 12 gp,", "id": "scroll-of-stabilize-gp"}
+                            {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Bleed", "id": "scroll-of-bleed-gp"},
+                            {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Create water", "id": "scroll-of-create-water-gp"},
+                            {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Detect magic", "id": "scroll-of-detect-magic-gp"},
+                            {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Know direction", "id": "scroll-of-know-direction-gp"},
+                            {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Light", "id": "scroll-of-light-gp"},
+                            {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Mending", "id": "scroll-of-mending-gp"},
+                            {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Purify food and drink", "id": "scroll-of-purify-food-and-drink-gp"},
+                            {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Read magic", "id": "scroll-of-read-magic-gp"},
+                            {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Stabilize,", "id": "scroll-of-stabilize-gp"}
                         ]);
                     },
                     "1": function () {
@@ -1038,12 +1038,12 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 divine: {
                     "0": function () {
                         return rangeIn100([15, 33, 50, 68, 85], [
-                            {"Price": 5.0, "PriceUnit": "gp", "Name": "Scroll of Detect poison 12 gp,", "id": "scroll-of-detect-poison-gp"},
-                            {"Price": 5.0, "PriceUnit": "gp", "Name": "Scroll of Flare 12 gp,", "id": "scroll-of-flare-gp"},
-                            {"Price": 5.0, "PriceUnit": "gp", "Name": "Scroll of Guidance 12 gp,", "id": "scroll-of-guidance-gp"},
-                            {"Price": 5.0, "PriceUnit": "gp", "Name": "Scroll of Resistance 12 gp,", "id": "scroll-of-resistance-gp"},
-                            {"Price": 5.0, "PriceUnit": "gp", "Name": "Scroll of Spark 12 gp,", "id": "scroll-of-spark-gp"},
-                            {"Price": 5.0, "PriceUnit": "gp", "Name": "Scroll of Virtue 12 gp,", "id": "scroll-of-virtue-gp"}
+                            {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Detect poison", "id": "scroll-of-detect-poison"},
+                            {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Flare", "id": "scroll-of-flare"},
+                            {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Guidance", "id": "scroll-of-guidance"},
+                            {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Resistance", "id": "scroll-of-resistance"},
+                            {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Spark", "id": "scroll-of-spark"},
+                            {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Virtue", "id": "scroll-of-virtue"}
                         ]);
                     },
                     "1": function () {
@@ -1691,7 +1691,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
         };
 
         service.generateEncounterNonNPCLoot = function (budget, lootType) {
-            var generateLoot = {A: generateTypeALoot, D: generateTypeDLoot};
+            var generateLoot = {A: generateTypeALoot, D: service.generateTypeDLoot};
             return generateLoot[lootType](budget);
         };
 
@@ -1777,7 +1777,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return randomPotion[rarity][potionLevel]();
         }
 
-        function generateTypeDLoot(budget) {
+        service.generateTypeDLoot= function(budget) {
             var gpValues = knapsackService.knapsack(Object.keys(typeDLoot), budget);
             var loot = {coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: []};
             for (var i in gpValues) {
@@ -1802,7 +1802,8 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                     }
                 }
             }
-        }
+            return loot;
+        };
 
         return service;
     }])
