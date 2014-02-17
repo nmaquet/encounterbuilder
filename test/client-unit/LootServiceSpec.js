@@ -252,4 +252,23 @@ describe("lootService", function () {
             expect(loot).to.deep.equal({coins: {pp: 1400, gp: 8000, sp: 0, cp: 0}, items: []});
         });
     });
+
+    describe("service.generatePotion", function() {
+
+        it("should generate a potion of 'cure light wounds'", function() {
+            diceService.prepareDice({die: 100, value: 60, n: 1}); /* potion level one */
+            diceService.prepareDice({die: 100, value: 60, n: 1}); /* common */
+            diceService.prepareDice({die: 100, value: 10, n: 1}); /* cure light wounds */
+            var item = service.generatePotion("lesser_minor");
+            expect(item).to.deep.equal({"Price": 50.0, "PriceUnit": "gp", "Name": "Potion of Cure light wounds", "id": "potion-of-cure-light-wounds"});
+        });
+
+        it("should generate a potion of 'guidance'", function() {
+            diceService.prepareDice({die: 100, value: 35, n: 1}); /* potion level zero */
+            diceService.prepareDice({die: 100, value: 17, n: 1}); /* guidance */
+            var item = service.generatePotion("lesser_minor");
+            expect(item).to.deep.equal({"Price": 25.0, "PriceUnit": "gp", "Name": "Potion of Guidance", "id": "potion-of-guidance"});
+        });
+
+    });
 });

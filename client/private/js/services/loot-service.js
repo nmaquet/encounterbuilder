@@ -1613,8 +1613,8 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
         };
 
         function rangeIn100(upperBounds, values) {
-            if (values.length !== upperBounds - 1) {
-                throw Error("upperBounds and values mismatch");
+            if (values.length  !== upperBounds.length + 1) {
+                throw Error("upperBounds and values mismatch '" + upperBounds + "' '" + values + "'");
             }
             var dieResult = diceService.roll(100, 1);
             for (var i in upperBounds) {
@@ -1754,7 +1754,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             items.push(item);
         };
 
-        service.generateScroll = function(magnitude) {
+        service.generateScroll = function (magnitude) {
             var scrollLevel = randomScrollLevel[magnitude]();
             var rarityAndMagicType = rangeIn100([45, 60, 90], [
                 ["common", "arcane"],
@@ -1767,7 +1767,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return randomScroll[rarity][magicType][scrollLevel]();
         }
 
-        service.generatePotion = function(magnitude) {
+        service.generatePotion = function (magnitude) {
             var potionLevel = randomPotionLevel[magnitude]();
             if (potionLevel === 0) {
                 var rarity = "common";
