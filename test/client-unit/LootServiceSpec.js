@@ -290,5 +290,13 @@ describe("lootService", function () {
             expect(item).to.deep.equal({"Price": 150.0, "PriceUnit": "gp", "Name": "Scroll of Flaming sphere", "id": "scroll-of-flaming-sphere"});
         });
 
+        it("should generate a scroll of 'gate'", function() {
+            diceService.prepareDice({die: 100, value: 71, n: 1}); /* scroll level nine */
+            diceService.prepareDice({die: 100, value: 61, n: 1}); /* common divine */
+            diceService.prepareDice({die: 100, value: 23, n: 1}); /* gate */
+            var item = service.generateScroll("greater_major");
+            expect(item).to.deep.equal({"Price": 3825.0, "PriceUnit": "gp", "Name": "Scroll of Gate", "id": "scroll-of-gate"});
+        });
+
     });
 });
