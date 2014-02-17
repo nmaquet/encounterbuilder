@@ -270,5 +270,13 @@ describe("lootService", function () {
             expect(item).to.deep.equal({"Price": 25.0, "PriceUnit": "gp", "Name": "Potion of Guidance", "id": "potion-of-guidance"});
         });
 
+        it("should generate a potion of 'flame arrow'", function() {
+            diceService.prepareDice({die: 100, value: 12, n: 1}); /* potion level 3 */
+            diceService.prepareDice({die: 100, value: 80, n: 1}); /* uncommon */
+            diceService.prepareDice({die: 100, value: 55, n: 1}); /* flame arrow */
+            var item = service.generatePotion("greater_major");
+            expect(item).to.deep.equal({"Price": 750.0, "PriceUnit": "gp", "Name": "Potion of Flame arrow", "id": "potion-of-flame-arrow"});
+        });
+
     });
 });
