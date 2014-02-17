@@ -133,6 +133,66 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                     {n: 2, die: 4, amount: 1, unit: 'gp', type: 'coins'},
                     {amount: 1, type: 'potion', magnitude: 'lesser_minor'}
                 ]
+            ],
+            100: [
+                [
+                    {n: 4, die: 6, amount: 10, unit: 'sp', type: 'coins'},
+                    {n: 3, die: 10, amount: 1, unit: 'gp', type: 'coins'},
+                    {amount: 1, type: 'potion', magnitude: 'lesser_minor'},
+                    {amount: 1, type: 'scroll', magnitude: 'lesser_minor'}
+                ]
+            ],
+            150: [
+                [
+                    {n: 2, die: 4, amount: 10, unit: 'sp', type: 'coins'},
+                    {n: 6, die: 6, amount: 1, unit: 'gp', type: 'coins'},
+                    {amount: 1, type: 'scroll', magnitude: 'greater_minor'}
+                ]
+            ],
+            200: [
+                [
+                    {n: 2, die: 4, amount: 10, unit: 'sp', type: 'coins'},
+                    {n: 4, die: 6, amount: 1, unit: 'gp', type: 'coins'},
+                    {amount: 1, type: 'potion', magnitude: 'greater_minor'},
+                    {amount: 1, type: 'scroll', magnitude: 'lesser_minor'}
+                ]
+            ],
+            250: [
+                [
+                    {n: 3, die: 6, amount: 10, unit: 'sp', type: 'coins'},
+                    {n: 3, die: 6, amount: 1, unit: 'gp', type: 'coins'},
+                    {n: 1, die: 4, amount: 1, unit: 'pp', type: 'coins'},
+                    {amount: 2, type: 'potion', magnitude: 'lesser_minor'},
+                    {amount: 1, type: 'scroll', magnitude: 'greater_minor'}
+                ]
+            ],
+            300: [
+                [
+                    {n: 2, die: 4, amount: 10, unit: 'sp', type: 'coins'},
+                    {n: 6, die: 6, amount: 1, unit: 'gp', type: 'coins'},
+                    {amount: 1, type: 'potion', magnitude: 'greater_minor'},
+                    {amount: 1, type: 'scroll', magnitude: 'greater_minor'}
+                ]
+            ],
+            400: [
+                [
+                    {amount: 1, type: 'potion', magnitude: 'greater_minor'},
+                    {amount: 2, type: 'scroll', magnitude: 'greater_minor'}
+                ]
+            ],
+            500: [
+                [
+                    {n: 2, die: 4, amount: 10, unit: 'gp', type: 'coins'},
+                    {n: 1, die: 4, amount: 1, unit: 'pp', type: 'coins'},
+                    {amount: 1, type: 'potion', magnitude: 'lesser_medium'},
+                    {amount: 1, type: 'scroll', magnitude: 'greater_minor'}
+                ],
+                [
+                    {n: 2, die: 4, amount: 10, unit: 'gp', type: 'coins'},
+                    {n: 1, die: 4, amount: 1, unit: 'pp', type: 'coins'},
+                    {amount: 2, type: 'potion', magnitude: 'greater_minor'},
+                    {amount: 1, type: 'scroll', magnitude: 'greater_minor'}
+                ]
             ]
         };
 
@@ -1613,7 +1673,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
         };
 
         function rangeIn100(upperBounds, values) {
-            if (values.length  !== upperBounds.length + 1) {
+            if (values.length !== upperBounds.length + 1) {
                 throw Error("upperBounds and values mismatch '" + upperBounds + "' '" + values + "'");
             }
             var dieResult = diceService.roll(100, 1);
@@ -1777,7 +1837,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return randomPotion[rarity][potionLevel]();
         }
 
-        service.generateTypeDLoot= function(budget) {
+        service.generateTypeDLoot = function (budget) {
             var gpValues = knapsackService.knapsack(Object.keys(typeDLoot), budget);
             var loot = {coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: []};
             for (var i in gpValues) {
