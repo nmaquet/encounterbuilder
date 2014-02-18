@@ -143,102 +143,92 @@ Arrow(s), thistle (1) ;  1 gp  ;  -;   -  ; - ;  -  ; 0.15 lbs  ;  P  ; see text
 Arrow(s), trip (1);  25 gp ;  see text ;   see text   ; see text ;   see text ;   see text  ;  see text  ;  see text  ;  EoG
 Arrow(s), whistling (20)   ; 2 gp ;   -;   -  ; -   ;-  ; 3 lbs.  ;-;   - ;  UC
 """
-exotic_light="""
-Light Melee Weapons Cost    Dmg (S) Dmg (M) Critical    Range   Weight1 Type2   Special Source
-Aklys   5 gp    1d6 1d8 X2  20 ft.  2 lbs.  B   performance, trip   UC
-Axe, knuckle    9 gp    1d4 1d6 x3  -   2 lbs.  S   monk, performance   UC
-Barbazu beard   25 gp   1d3 1d4 X2  -   5 lbs   S   see text    Cheliax
-Battle poi  5 gp    1d3 fire    1d4 fire    X2  -   2 lbs.  fire    -   AA
-Dagger, swordbreaker    10 gp   1d3 1d4 X2  -   3 lbs.  S   disarm, sunder  APG
-Flying Talon    15 gp   1d3 1d4 X2  10 ft.  5 lbs.  P   disarm, trip    D1
-Helmet, dwarven boulder 20 gp   1d3 1d4 X2  -   10 lbs. B   see text    ARG
-Kama    2 gp    1d4 1d6 x2  -   2 lbs.  S   monk, trip  CRB
-Katar, tri-bladed   6 gp    1d3 1d4 x4  -   2 lbs.  P   -   PCS
-Knife, butterfly    5 gp    1d3 1d4 19-20/X2    -   1 lb.   P or S  -   AA
-Maulaxe, dwarven    25 gp   1d4 1d6 x3  10 ft.  5 lbs.  B or S  -   AA
-Nunchaku    2 gp    1d4 1d6 x2  -   2 lbs.  B   disarm, monk    CRB
-Quadrens    8 gp    1d4 1d6 19-20/X2    -   2 lbs.  P   performance UC
-Rope gauntlet   2 sp    1d3 1d4 X2  -   2 lbs.  B (or S)    -   AA
-Sai 1 gp    1d3 1d4 x2  -   1 lb.   B   disarm, monk    CRB
-Siangham    3 gp    1d4 1d6 x2  -   1 lb.   P   monk    CRB
-Sica    10 gp   1d4 1d6 X2  -   2 lbs.  S   performance UC
-Thorn bracer    30 gp   1d4 1d6 X2  -   3 lbs.  P   -   PCS
-Whip, scorpion  5 gp    1d3 1d4 X2  -   3 lbs.  S   disarm, performance, reach, trip    UC
+exotic_light="""Aklys  ; 5 gp ;   1d6 ;1d8; X2 ; 20 ft. ; 2 lbs. ; B ;  performance, trip ;  UC
+Axe, knuckle  ;  9 gp   ; 1d4 ;1d6 ;x3 ; -  ; 2 lbs. ; S   ;monk, performance ;  UC
+Barbazu beard   ;25 gp   ;1d3; 1d4; X2 ; - ;  5 lbs  ; S  ; see text ;   Cheliax
+Battle poi  ;5 gp  ;  1d3  ;   1d4  ;   X2 ; - ;  2 lbs.;  fire   ; - ;  AA
+Dagger, swordbreaker   ; 10 gp ;  1d3 ;1d4 ;X2  ;- ;  3 lbs. ; S  ; disarm, sunder;  APG
+Flying Talon   ; 15 gp  ; 1d3; 1d4 ;X2 ; 10 ft. ; 5 lbs. ; P ;  disarm, trip ;   D1
+Helmet, dwarven boulder; 20 gp  ; 1d3 ;1d4; X2 ; -  ; 10 lbs.; B ;  see text ;   ARG
+Kama   ; 2 gp  ;  1d4 ;1d6; x2 ; -  ; 2 lbs.;  S ;  monk, trip ; CRB
+Katar, tri-bladed ;  6 gp ;   1d3 ;1d4; x4 ; - ;  2 lbs. ; P;   - ;  PCS
+Knife, butterfly   ; 5 gp  ;  1d3 ;1d4; 19-20/X2;    - ;  1 lb. ;  P or S;  - ;  AA
+Maulaxe, dwarven   ; 25 gp ;  1d4 ;1d6 ;x3 ; 10 ft.  ;5 lbs. ; B or S  ;-   ;AA
+Nunchaku   ; 2 gp ;   1d4; 1d6 ;x2;  -  ; 2 lbs. ; B  ; disarm, monk  ;  CRB
+Quadrens ;   8 gp  ;  1d4; 1d6 ;19-20/X2   ; - ; 2 lbs.;  P  ; performance; UC
+Rope gauntlet  ; 2 sp  ;  1d3; 1d4 ;X2 ; -  ; 2 lbs.;  B (or S) ;   - ;  AA
+Sai ;1 gp  ;  1d3 ;1d4 ;x2;  -  ; 1 lb. ;  B   ;disarm, monk   ; CRB
+Siangham    ;3 gp ;   1d4; 1d6 ;x2  ;-;  1 lb.;   P;   monk;    CRB
+Sica   ; 10 gp   ;1d4 ;1d6; X2;  - ;  2 lbs. ; S  ; performance; UC
+Thorn bracer  ;  30 gp ;  1d4 ;1d6;X2 ; - ;  3 lbs.;  P ;  -;   PCS
+Whip, scorpion ; 5 gp ;   1d3 ;1d4 ;X2;  - ;  3 lbs.;  S   ;disarm, performance, reach, trip ;   UC
 """
-exotic_one_handed="""
-One-Handed Melee Weapons    Cost    Dmg (S) Dmg (M) Critical    Range   Weight1 Type2   Special Source
-Axe, hooked 20 gp   1d6 1d8 x3  -   7 lbs.  S   disarm, performance, trip   UC
-Falcata 18 gp   1d6 1d8 19-20/x3    -   4 lbs.  S   -   APG
-Flindbar    ?   1d6 1d8 ?   -   ?   B   disarm  CMR
-Khopesh 20 gp   1d6 1d8 19-20/X2    -   8 lbs.  S   trip    APG
-Rhoka   5 gp    1d6 1d8 18-20/X2    -   6 lbs.  S   -   AA
-Sabre, sawtooth 35 gp   1d6 1d8 19-20/X2    -   2 lbs.  S   -   ISWG
-Shotel  30 gp   1d6 1d8 x3  -   3 lbs.  P   performance UC
-Sword, dueling  20 gp   1d6 1d8 19-20/X2    -   3 lbs   S   -   ISWG
-Sword, bastard  35 gp   1d8 1d10    19-20/X2    -   6 lbs.  S   -   CRB
-Waraxe, dwarven 30 gp   1d8 1d10    x3  -   8 lbs.  S   -   CRB
-Waraxe, dwarven double  60 gp   1d8 1d10    X3  -   12 lbs. S   see text    ARG
-Whip    1 gp    1d2 1d3 X2  -   2 lbs.  S   disarm, nonlethal, reach, trip  CRB
+exotic_one_handed="""Axe, hooked; 20 gp ; 1d6; 1d8; x3 ; -   ;7 lbs. ; S  ; disarm, performance, trip;   UC
+Falcata ;18 gp  ; 1d6 ;1d8; 19-20/x3 ;   -  ; 4 lbs. ; S ;  - ;  APG
+Flindbar  ;  0 gp ;   1d6 ;1d8;X2  ; - ;  ? ;  B ;  disarm  ;CMR
+Khopesh ;20 gp  ; 1d6 ;1d8 ;19-20/X2 ;   - ;  8 lbs.;  S ;  trip;    APG
+Rhoka  ; 5 gp ;  1d6 ;1d8;18-20/X2;    - ;  6 lbs.;  S  ; - ;  AA
+Sabre, sawtooth ;35 gp ;  1d6 ;1d8; 19-20/X2;    - ;  2 lbs. ; S;   -;   ISWG
+Shotel;  30 gp ;  1d6 ;1d8; x3 ; - ;  3 lbs. ; P;   performance ;UC
+Sword, dueling ; 20 gp ;  1d6 ;1d8 ;19-20/X2  ;  -  ; 3 lbs ;  S ;  -;   ISWG
+Sword, bastard ; 35 gp;   1d8 ;1d10 ;   19-20/X2  ;  -  ; 6 lbs.;  S  ; - ;  CRB
+Waraxe, dwarven ;30 gp  ; 1d8; 1d10  ;  x3;  -  ; 8 lbs. ; S  ; - ;  CRB
+Waraxe, dwarven double;  60 gp  ; 1d8 ;1d10 ;   X3 ; - ;  12 lbs. ;S  ; see text ;   ARG
+Whip ;   1 gp;    ;1d2; 1d3 ;X2 ; - ;  2 lbs.;  S;   disarm, nonlethal, reach, trip;  CRB
 """
-exotic_two_handed="""
-Two-Handed Melee Weapons    Cost    Dmg (S) Dmg (M) Critical    Range   Weight1 Type2   Special Source
-Axe, Orc Double 60 gp   1d6/1d6 1d8/1d8 x3  -   15 lbs. S   double  CRB
-Battle Ladder   20 gp   1d4/1d4 1d6/1d6 X2  -   8 lbs.  B   trip    GoG
-Boarding gaff   8 gp    1d4/1d4 1d6/1d6 X2  -   8 lbs.  S   double, reach, trip PoIS
-Chain, Spiked   25 gp   1d6     2d4     X2      -   10 lbs. P   disarm, trip    CRB
-Curve blade, elven  80 gp   1d8 1d10    18-20/X2    -   7 lbs.  S   -   CRB
-Dorn Dergar, dwarven    50 gp   1d8 1d10    X2  -   15 lbs. B   reach   DoG
-Fauchard    14 gp   1d8 1d10    18-20/X2    -   10 lbs. S   reach, trip CHR
-Flail, dire 90 gp   1d6/1d6 1d8/1d8 X2  -   10 lbs. B   disarm, double, trip    CRB
-Flailpole   15 gp   1d6 1d8 X2  -   10 lbs. S   reach, trip GoG
-Flambard    50 gp   1d8 1d10    19-20/X2    -   6 lbs.  S   sunder  AA
-Flying blade    40 gp   1d10    1d12    x3  -   12 lbs. S   performance, reach  UC
-Garrote 3 gp    1d4 1d6 X2  -   1 lb.   S   grapple, see text   AA
-Hammer, Gnome hooked    20 gp   1d6/1d4 1d8/1d6 x3/x4   -   6 lbs.  B or P  double, trip    CRB
-Harpoon 5 gp    1d6 1d8 x3  10 ft.  16 lbs. P   grapple PoIS
-Longaxe, dwarven    50 gp   1d10    1d12    X3  -   14 lbs. S   reach   ARG
-Longhammer, dwarven 70 gp   1d10    2d6 X3  -   20 lbs. B   reach   ARG
-Mancatcher  15 gp   1   1d2 X2  -   10 lbs. P   grapple, reach, see text    APG
-Net, snag   30 gp   see text    see text    -   10 ft.  10 lbs. P   trip, see text  ARG
-Piston maul 70 gp   1d8 1d10    X2  -   15 lbs. B   see text    GoG
-Ripsaw glaive   30 gp   1d8 1d10    x3  -   12 lbs. S   reach, see text GoG
-Scarf, bladed   12 gp   1d4 1d6 X2  -   2 lbs.  S   disarm, trip    ISWG
-Spear, totem    25 gp   1d8 1d10    x3  10 ft.  6 lbs.  P or S  see text    CRB
-Sword, two-bladed   100 gp  1d6/1d6 1d8/1d8 19-20/X2    -   10 lbs. S   double  CRB
-Urgrosh, dwarven    50 gp   1d6/1d4 1d8/1d6 x3  -   12 lbs. P or S  brace, double   CRB
+exotic_two_handed="""Axe, Orc Double; 60 gp   ;1d6/1d6 ;1d8/1d8 ;x3 ; - ;  15 lbs.; S ;  double;  CRB
+Battle Ladder  ; 20 gp  ; 1d4/1d4 ;1d6/1d6; X2  ;- ;  8 lbs. ; B;  double, trip  ;  GoG
+Boarding gaff  ; 8 gp  ;  1d4/1d4; 1d6/1d6 ;X2 ; - ;  8 lbs. ; S ;  double, reach, trip ;PoIS
+Chain, Spiked;   25 gp ;  1d6 ;    2d4   ;  X2 ;     -  ; 10 lbs. ;P ;  disarm, trip ;   CRB
+Curve blade, elven  ;80 gp  ; 1d8 ;1d10 ;   18-20/X2   ; - ;  7 lbs. ; S ;  -;   CRB
+Dorn Dergar, dwarven  ;  50 gp ;  1d8 ;1d10   ; X2 ; - ;  15 lbs.; B ;  reach ;  DoG
+Fauchard   ; 14 gp ;  1d8; 1d10  ;  18-20/X2 ;   - ;  10 lbs.; S ;  reach, trip ;CHR
+Flail, dire ;90 gp ;  1d6/1d6 ;1d8/1d8 ;X2  ;- ;  10 lbs.; B   ;disarm, double, trip ;   CRB
+Flailpole  ; 15 gp  ; 1d6 ;1d8 ;X2 ; -  ; 10 lbs.; S  ; reach, trip ;GoG
+Flambard   ; 50 gp ;  1d8 ;1d10 ;   19-20/X2  ;  - ;  6 lbs. ; S  ; sunder;  AA
+Flying blade   ; 40 gp  ; 1d10 ;   1d12 ;   x3  ;- ;  12 lbs. ;S ;  performance, reach;  UC
+Garrote; 3 gp  ;  1d4; 1d6 ;X2 ; -  ; 1 lb. ;  S  ; grapple, see text  ; AA
+Hammer, Gnome hooked  ;  20 gp ;  1d6/1d4; 1d8/1d6; x3/x4 ;  -  ; 6 lbs.  ;B or P ; double, trip   ; CRB
+Harpoon ;5 gp  ;  1d6 ;1d8; x3 ; 10 ft.  ;16 lbs.; P;   grapple; PoIS
+Longaxe, dwarven ;   50 gp;   1d10 ;   1d12 ;   X3  ;-;   14 lbs.; S ;  reach;   ARG
+Longhammer, dwarven; 70 gp ;  1d10   ; 2d6; X3;  - ;  20 lbs.; B   ;reach;   ARG
+Mancatcher ; 15 gp ;  1;   1d2; X2 ; -  ; 10 lbs.; P  ; grapple, reach, see text ;   APG
+Net, snag  ; 30 gp ;  see text ;   see text;    - ;  10 ft. ; 10 lbs.; P  ; trip, see text  ;ARG
+Piston maul ;70 gp ;  1d8 ;1d10 ;   X2 ; -;   15 lbs.; B  ; see text  ;  GoG
+Ripsaw glaive   ;30 gp ;  1d8 ;1d10  ;  x3;  -;   12 lbs.; S ;  reach, see text ;GoG
+Scarf, bladed  ; 12 gp ;  1d4 ;1d6 ;X2 ; - ;  2 lbs. ; S ;  disarm, trip  ;  ISWG
+Spear, totem  ;  25 gp  ; 1d8 ;1d10  ;  x3 ; 10 ft. ; 6 lbs. ; P or S ; see text  ;  CRB
+Sword, two-bladed ;  100 gp;  1d6/1d6; 1d8/1d8 ;19-20/X2 ;   -   ;10 lbs.; S  ; double ; CRB
+Urgrosh, dwarven  ;  50 gp  ; 1d6/1d4 ;1d8/1d6 ;x3 ; - ;  12 lbs. ;P or S  ;brace, double  ; CRB
 """
-exotic_ranged="""
-Ranged Weapons  Cost    Dmg (S) Dmg (M) Critical    Range   Weight1 Type2   Special Source
-Bola    5 gp    1d3 1d4 X2  10 ft.  2 lbs.  B   nonlethal, trip CRB
-Bola, Brutal    15 gp   1d3 1d4 X2  10 ft.  2 lbs.  B and P trip    ISWG
-Boomerang   3 gp    1d4 1d6 X2  30 ft.  3 lbs.  B   -   APG
-Bow, thorn  50 gp   1d4 1d6 x3  40 ft.  2 lbs.  P   -   AA
-Crossbow, double    300 gp  1d6 1d8 19-20/X2    80 ft.  18 lbs. P   -   APG
-Crossbow, hand  100 gp  1d3 1d4 19-20/X2    30 ft.  2 lbs.  P   -   CRB
-Crossbow, launching 75 gp   -   -   -   30 ft.  8 lbs.  -   see text    AA
-Crossbow, repeating heavy   400 gp  1d8 1d10    19-20/X2    120 ft. 12 lbs. P   -   CRB
-Crossbow, repeating 250 gp  1d6 1d8 19-20/X2    80 ft.  6 lbs.  P   -   CRB
-Flask Thrower   25 gp   -   -   -   20 ft.  4 lbs.  -   see text    GoG
-Grappling hook  6 gp    1d4 1d6 X2  10 ft.  14 lbs. P   grapple PoIS
-Lasso   1 sp    -   -   -   -   5 lbs.  -   see text    APG
-Net 20 gp   -   -   -   10 ft.  6 lbs.  -   -   CRB
-Shield, throwing    +50 gp  1d4 1d6 X2  20 ft.  -   B   performance, trip   UC
-Shrillshaft javelin 35 gp   1d4 1d6 X2  30 ft.  3 lbs.  P   see text    GoG
-Shuriken (5)    1 gp    1   1d2 X2  10 ft.  1/2 lbs.    P   monk    CRB
-Sling, double   10 gp   1d3 1d4 X2  50 ft.  1 lb.   B   double, see text    HoG
-Sling glove 5 gp    1d3 1d4 X2  50 ft.  2 lbs.  B   -   AA
-Sling staff, halfling   20 gp   1d6 1d8 x3  80 ft.  3 lbs.  B   -   CRB
-Sling, stitched -   1d4 1d6 X2  -   1 lb.   B   disarm, trip    HoG
+exotic_ranged="""Bola   ; 5 gp ;   1d3 ;1d4; X2 ; 10 ft.;  2 lbs. ; B ;  nonlethal, trip; CRB
+Bola, Brutal ;   15 gp;   1d3 ;1d4; X2 ; 10 ft.;  2 lbs.;  B and P ;trip  ;  ISWG
+Boomerang ;  3 gp  ;  1d4; 1d6; X2;  30 ft.;  3 lbs.;  B  ; -   ;APG
+Bow, thorn ; 50 gp ;  1d4 ;1d6 ;x3 ; 40 ft. ; 2 lbs. ; P  ; - ;  AA
+Crossbow, double ;   300 gp  ;1d6 ;1d8 ;19-20/X2 ;   80 ft. ; 18 lbs.; P  ; -  ; APG
+Crossbow, hand  ;100 gp ; 1d3 ;1d4; 19-20/X2;    30 ft.;  2 lbs.;  P ;  -  ; CRB
+Crossbow, launching ;75 gp ;  -;   -;   -;   30 ft.;  8 lbs.;  -   ;see text  ;  AA
+Crossbow, repeating heavy ;  400 gp;  1d8 ;1d10  ;  19-20/X2  ;  120 ft.; 12 lbs.; P  ; -  ; CRB
+Crossbow, repeating; 250 gp  ;1d6; 1d8; 19-20/X2;    80 ft.  ;6 lbs.;  P ;  -  ; CRB
+Flask Thrower  ; 25 gp ;  - ;  -   ;- ;  20 ft. ; 4 lbs. ; -;   see text ;  GoG
+Grappling hook ; 6 gp  ;  1d4 ;1d6 ;X2 ; 10 ft. ; 14 lbs. ;P  ; grapple ;PoIS
+Lasso   ;1 sp ;   - ;  -  ; -  ; - ;  5 lbs. ; - ;  see text  ;  APG
+Net ;20 gp ;  - ;  -  ; -  ; 10 ft. ; 6 lbs. ; - ;  -  ; CRB
+Shield, throwing  ;  +50 gp ; 1d4 ;1d6 ;X2 ; 20 ft. ; - ;  B ;  performance, trip ;  UC
+Shrillshaft javelin ;35 gp ;  1d4 ;1d6; X2 ; 30 ft. ; 3 lbs.;  P  ; see text  ;  GoG
+Shuriken (5)   ; 1 gp  ;  1   ;1d2; X2;  10 ft.;  1/2 lbs.;    P ;  monk   ; CRB
+Sling, double  ; 10 gp ;  1d3 ;1d4; X2;  50 ft.;  1 lb. ;  B   ;double, see text ;   HoG
+Sling glove ;5 gp  ;  1d3 ;1d4; X2 ; 50 ft.;  2 lbs. ; B ;  - ;  AA
+Sling staff, halfling  ; 20 gp ;  1d6 ;1d8; x3;  80 ft. ; 3 lbs. ; B ;  -;   CRB
+Sling, stitched; - ;  1d4 ;1d6 ;X2 ; -  ; 1 lb. ;  B  ; disarm, trip ;   HoG
 """
-exotic_ammunition="""
-Ammunition  Cost    Dmg (S) Dmg (M) Critical    Range   Weight1 Type2   Special Source
-Crossbow bolt(s), heavy/light/hand (10) 1 gp    -   -   -   -   1 lb.   -   -   CRB
-Crossbow bolt(s), repeating, heavy/light (5)    1 gp    -   -   -   -   1 lb.   -   -   CRB
-Little starstones (10)  5 cp    1   1   -   -   2 lbs.  B   nonlethal   HoG
-Sharpstones (10)    1 gp    1d3 1d4 -   -   5 lbs.  P or S  -   HoG
-Softstones (10) 1 sp    -   -   -   -   4 lbs.  B   nonlethal   HoG
-Spongestones (10)   10 gp   -   -   -   -   2 lbs.  P   -   HoG
-Thorn (20)  1 gp    -   -   -   -   1 lb.   -   -   W1"""
+exotic_ammunition="""Crossbow bolt(s), heavy/light/hand (10); 1 gp ;   - ;  - ;  -;   -;   1 lb.  ; - ;  - ;  CRB
+Crossbow bolt(s), repeating, heavy/light (5) ;   1 gp  ;  -  ; - ;  -  ; -  ; 1 lb.  ; - ;  - ;  CRB
+Little starstones (10)  ;5 cp ;   1 ;  1  ; - ;  -  ; 2 lbs. ; B;   nonlethal;   HoG
+Sharpstones (10)  ; 1 gp  ;  1d3 ;1d4 ;- ;  - ;  5 lbs. ; P or S ; - ;  HoG
+Softstones (10); 1 sp ;   -;   -  ; - ;  - ;  4 lbs.;  B ;  nonlethal ;  HoG
+Spongestones (10) ;  10 gp;   -;   -  ; -  ; -  ; 2 lbs.;  P  ; -;   HoG
+Thorn (20) ;1 gp ;   - ;  - ;  -  ; - ;  1 lb. ;  - ;  - ;  W1"""
 
 def slugify(string):
     res = []
@@ -278,7 +268,7 @@ def weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,sourc
 def parseTable(text,proficiency,weapontype):
     table = []
     for line in text.splitlines():
-        #print(line)
+        print(line)
         splitted = line.split(";")
         name = splitted[0].strip()
         price = splitted[1].split()
@@ -311,6 +301,11 @@ if __name__ == "__main__":
     table += parseTable(martial_two_handed,"martial","two-handed")
     table += parseTable(martial_ranged,"martial","ranged")
     table += parseTable(martial_ammunition,"martial","ammunition")
+    table += parseTable(exotic_light,"exotic","light")
+    table += parseTable(exotic_one_handed,"exotic","one-handed")
+    table += parseTable(exotic_two_handed,"exotic","two-handed")
+    table += parseTable(exotic_ranged,"exotic","ranged")
+    table += parseTable(exotic_ammunition,"exotic","ammunition")
     string = json.dumps(table, indent=4, sort_keys=True)
     with open("../data/items/weapons.json", "w") as f:
         f.write(string)
