@@ -34,6 +34,7 @@
         "xml2js"   : "*",
         "csvtojson"   : "*",
         "cheerio" :"*",
+        "request":"*",
         "fast-levenshtein" : "*"
       }
 }

@@ -54,7 +54,16 @@ var ATTRIBUTES = {
     "Rarity": String,
     "SpellId": String,
     "SpellLevel": Number,
-    "SpellName": String
+    "SpellName": String,
+    /*weapons attribute*/
+    "Crit": String,
+    "DamageType": String,
+    "DmgM": String,
+    "DmgS": String,
+    "Proficiency": String,
+    "Range": String,
+    "Special": String,
+    "WeaponType": String
 };
 
 module.exports = function (mongoose) {

@@ -74,17 +74,20 @@ Monster.remove({}, function (error) {
     });
 });
 
-MagicItem.remove({}, function (error) {
+MagicItem.remove({}, function (error,count ) {
 
     if (error) {
         throw error;
     }
+    console.log(count+ "documents removed" );
+
 
     var filenames = [
         __dirname + '/../data/items/magic-items.json',
         __dirname + '/../data/items/scrolls.json',
         __dirname + '/../data/items/potions_and_oils.json',
-        __dirname + '/../data/items/wands.json'
+        __dirname + '/../data/items/wands.json',
+        __dirname + '/../data/items/weapons.json'
     ];
 
     var fileDone = 0;
