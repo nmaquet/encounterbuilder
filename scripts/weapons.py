@@ -49,109 +49,99 @@ Bullet(s), sling (10)  ; 1 sp ;   -;  -  ; - ;  - ;  5 lbs. ; - ;  -  ; CRB
 Bullet(s), smoke (10)  ; 100 gp  ;-  ; -  ; -;   -;   5 lbs. ; -  ; see text ;   PCS
 Dart(s), blowgun (10)  ; 5 sp  ;  - ;  -   ;-  ; - ;  1 lb. ;  -  ; - ;  CRB
 """
-martial_light="""
-Light Melee Weapons Cost    Dmg (S) Dmg (M) Critical    Range   Weight1 Type2   Special Source
-Axe, boarding   6 gp    1d4 1d6 x3  -   3 lbs.  P or S  -   PoIS
-Axe, throwing   8 gp    1d4 1d6 X2  10 ft.  2 lbs.  S   -   CRB
-Blade boot  25 gp   1d3 1d4 X2  -   2 lbs.  P   see text    AA
-Cat-o'-nine-tails   1 gp    1d3 1d4 X2  -   1 lb.   S   disarm, nonlethal   PoIS
-Dogslicer   8 gp    1d4 1d6 19-20/X2    -   1 lb.   S   fragile ARG
-Hammer, light   1 gp    1d3 1d4 X2  20 ft.  2 lbs.  B   -   CRB
-Gladius 15 gp   1d4 1d6 19-20/X2    -   3 lbs.  P or S  performance UC
-Handaxe 6 gp    1d4 1d6 x3  -   3 lbs.  S   -   CRB
-Knife, switchblade  5 gp    1d3 1d4 19-20/X2    10 ft.  1 lb.   P   -   AA
-Kobold tail attachment, Long lash   15 gp   1d4 1d6 X2  -   1 lb.   S   reach   ARG
-Kobold tail attachment, Pounder 1 gp    1d6 1d8 X2  -   4 lbs.  B   -   ARG
-Kobold tail attachment, Razored 3 gp    1d6 1d8 19-20/X2    -   2 lbs.  S   -   ARG
-Kobold tail attachment, Spiked  3 gp    1d6 1d8 X3  -   2 lbs.  P   -   ARG
-Kobold tail attachment, Sweeper 7 gp    1d4 1d6 X2  -   3 lbs.  B   trip    ARG
-Kukri   8 gp    1d3 1d4 18-20/x2    -   2 lbs.  S   -   CRB
-Pick, light 4 gp    1d3 1d4 x4  -   3 lbs.  P   -   CRB
-Ratfolk tailblade   11 gp   1d2 1d3 20/X2   -   1/2 lb. S   -   ARG
-Sap 1 gp    1d4 1d6 X2  -   2 lbs.  B   nonlethal   CRB
-Sea-knife   8 gp    1d3 1d4 19-20/X2    -   1 lb.   S   -   ARG
-Shield, light   special 1d2 1d3 X2  -   special B   -   CRB
-Spiked armor    special 1d4 1d6 X2  -   special P   -   CRB
-Spiked shield, light    special 1d3 1d4 X2  -   special P   -   CRB
-Starknife   24 gp   1d3 1d4 x3  20 ft.  3 lbs.  P   -   CRB
-Sword, short    10 gp   1d4 1d6 19-20/X2    -   2 lbs.  P   -   CRB
-War razor   8 gp    1d3 1d4 19-20/X2    -   1 lb.   S   -   ISWG
+martial_light="""Axe, boarding ;  6 gp  ;  1d4; 1d6 ;x3 ; -   ;3 lbs. ; P or S  ;-  ; PoIS
+Axe, throwing ;  8 gp   ; 1d4 ;1d6 ;X2  ;10 ft.  ;2 lbs. ; S   ;-  ; CRB
+Blade boot ; 25 gp ;  1d3 ;1d4 ;X2  ;-  ; 2 lbs. ; P  ; see text;    AA
+Cat-o'-nine-tails ;  1 gp   ; 1d3 ;1d4; X2 ; -  ; 1 lb.  ; S ;  disarm, nonlethal ;  PoIS
+Dogslicer  ; 8 gp ;   1d4 ;1d6 ;19-20/X2 ;   -  ; 1 lb.  ; S ;  fragile ;ARG
+Hammer, light ;  1 gp ;   1d3 ;1d4; X2 ; 20 ft.;  2 lbs.;  B  ; -  ; CRB
+Gladius ;15 gp ;  1d4 ;1d6 ;19-20/X2  ;  -  ; 3 lbs.;  P or S;  performance; UC
+Handaxe ;6 gp ;   1d4 ;1d6 ;x3  ;- ;  3 lbs. ; S  ; -  ; CRB
+Knife, switchblade  ;5 gp  ;  1d3; 1d4; 19-20/X2 ;   10 ft. ; 1 lb.;   P  ; - ;  AA
+Kobold tail attachment, Long lash ;  15 gp ;  1d4; 1d6 ;X2 ; -  ; 1 lb.;   S ;  reach ;  ARG
+Kobold tail attachment, Pounder ;1 gp  ;  1d6; 1d8 ;X2;  -  ; 4 lbs.;  B ;  - ;  ARG
+Kobold tail attachment, Razored; 3 gp ;   1d6; 1d8 ;19-20/X2  ;  - ;  2 lbs.;  S ;  - ;  ARG
+Kobold tail attachment, Spiked  ;3 gp ;   1d6 ;1d8 ;X3  ;-  ; 2 lbs.;  P  ; - ;  ARG
+Kobold tail attachment, Sweeper ;7 gp  ;  1d4 ;1d6; X2 ; - ;  3 lbs. ; B ;  trip  ;  ARG
+Kukri  ; 8 gp ;   1d3 ;1d4 ;18-20/x2  ;  -;   2 lbs.;  S ; -  ; CRB
+Pick, light ;4 gp ;   1d3 ;1d4 ;x4  ;-  ; 3 lbs.;  P  ; - ;  CRB
+Ratfolk tailblade ;  11 gp;   1d2 ;1d3 ;20/X2 ;  - ;  1/2 lb.; S  ; - ;  ARG
+Sap ;1 gp ;  1d4; 1d6; X2  ;- ;  2 lbs.;  B;   nonlethal ;  CRB
+Sea-knife  ; 8 gp  ;  1d3; 1d4; 19-20/X2   ; -  ; 1 lb. ;  S  ; -  ; ARG
+Shield, light wooden  ; 3 gp; 1d2; 1d3; X2  ;- ;  special ;B  ; -  ; CRB
+Spiked armor  ;  50 gp; 1d4; 1d6; X2 ; - ;  special ;P  ; -  ; CRB
+Spiked shield, light ; 10 gp; 1d3; 1d4 ;X2 ; -  ; special; P ;  - ;  CRB
+Starknife  ; 24 gp  ; 1d3; 1d4 ;x3 ; 20 ft. ; 3 lbs.;  P ;  - ;  CRB
+Sword, short  ;  10 gp   ;1d4 ;1d6; 19-20/X2;    -   ;2 lbs.  ;P ;  -  ; CRB
+War razor ;  8 gp  ;  1d3 ;1d4 ;19-20/X2 ;   -   ;1 lb. ;  S  ; -  ; ISWG
 """
-martial_one_handed="""
-One-Handed Melee Weapons    Cost    Dmg (S) Dmg (M) Critical    Range   Weight1 Type2   Special Source
-Battleaxe   10 gp   1d6 1d8 x3  -   6 lbs.  S   -   CRB
-Combat scabbard  1 gp    1d4    1d6 x2   -   1 lb.  B   improvised, see text     AA
-Cutlass 15 gp   1d4 1d6 18-20/X2    -   4 lbs.  S   -   PoIS
-Flail   8 gp    1d6 1d8 X2  -   5 lbs.  B   disarm, trip    CRB
-Klar    12 gp   1d4 1d6 X2  -   6 lbs.  S   -   ISWG
-Longsword   15 gp   1d6 1d8 19-20/X2    -   4 lbs.  S   -   CRB
-Pick, heavy 8 gp    1d4 1d6 x4  -   6 lbs.  P   -   CRB
-Rapier  20 gp   1d4 1d6 18-20/X2    -   2 lbs.  P   -   CRB
-Scabbard, combat (sharpened)    10 gp   1d4 1d6 18-20/X2    -   1 lb.   S   see text    AA
-Scimitar    15 gp   1d4 1d6 18-20/X2    -   4 lbs.  S   -   CRB
-Scizore 20 gp   1d8 1d10    X2  -   3 lbs.  P   -   UC
-Shield, heavy   special 1d3 1d4 X2  -   special B   -   CRB
-Spiked shield, heavy    special 1d4 1d6 X2  -   special P   -   CRB
-Sword cane  45 gp   1d4 1d6 X2  -   4 lbs.  P   see text    APG
-Terbutje    5 gp    1d6 1d8 19-20/X2    -   2 lbs.  S   fragile AA
-Terbutje, steel 20 gp   1d6 1d8 19-20/X2    -   4 lbs.  S   -   AA
-Trident 15 gp   1d6 1d8 X2  10 ft.  4 lbs.  P   brace   CRB
-Warhammer   12 gp   1d6 1d8 x3  -   5 lbs.  B   -   CRB
+martial_one_handed="""Battleaxe   ;10 gp ;  1d6 ;1d8;x3  ;- ;  6 lbs.  ;S  ; - ;  CRB
+Combat scabbard ; 1 gp  ;  1d4  ;  1d6 ;x2 ;  -   ;1 lb. ; B ;  improvised, see text ;    AA
+Cutlass ;15 gp  ; 1d4 ;1d6 ;18-20/X2  ;  -  ; 4 lbs. ; S  ; -  ; PoIS
+Flail  ; 8 gp ;   1d6 ;1d8 ;X2 ; - ;  5 lbs. ; B  ; disarm, trip ;   CRB
+Klar   ; 12 gp ;  1d4 ;1d6 ;X2 ; -;   6 lbs.;  S  ;-  ; ISWG
+Longsword ;  15 gp  ; 1d6 ;1d8; 19-20/X2   ; -;   4 lbs.;  S  ; -  ; CRB
+Pick, heavy; 8 gp  ;  1d4 ;1d6; x4;  - ;  6 lbs.;  P;   -  ; CRB
+Rapier ; 20 gp ;  1d4 ;1d6 ;18-20/X2;    - ;  2 lbs.;  P  ; -  ; CRB
+Scabbard, combat (sharpened)  ;  10 gp ;  1d4 ;1d6 ;18-20/X2 ;   - ;  1 lb. ;  S  ; see text   ; AA
+Scimitar   ; 15 gp  ; 1d4; 1d6 ;18-20/X2  ;  -  ; 4 lbs.;  S   ;- ;  CRB
+Scizore ;20 gp  ; 1d8 ;1d10 ;   X2 ; -  ; 3 lbs. ; P  ; -;   UC
+Shield, heavy wooden ; 7 gp ;1d3 ;1d4 ;X2;  -  ; special ;B  ; -  ; CRB
+Spiked shield, heavy   ; 10 gp; 1d4 ;1d6; X2 ; -  ; special; P ;  - ;  CRB
+Sword cane ; 45 gp  ; 1d4 ;1d6; X2 ; - ;  4 lbs.  ;P  ; see text  ;  APG
+Terbutje  ;  5 gp  ;  1d6 ;1d8 ;19-20/X2  ;  -   ;2 lbs. ; S ;  fragile; AA
+Terbutje, steel; 20 gp ;  1d6 ;1d8; 19-20/X2    ;- ;  4 lbs. ; S ;  - ;  AA
+Trident ;15 gp ;  1d6 ;1d8 ;X2  ;10 ft.;  4 lbs.;  P ;  brace ;  CRB
+Warhammer   ;12 gp ;  1d6 ;1d8; x3 ; -  ; 5 lbs. ; B  ; -  ; CRB
 """
-martial_two_handed="""
-Two-Handed Melee Weapons    Cost    Dmg (S) Dmg (M) Critical    Range   Weight1 Type2   Special Source
-Bardiche    13 gp   1d8 1d10    19-20/X2    -   14 lbs. S   brace, reach, see text  APG
-Bec de corbin   15 gp   1d8 1d10    x3  -   12 lbs. B or P  brace, reach, see text  APG
-Bill    11 gp   1d6 1d8 x3  -   11 lbs. S   brace, disarm, reach, see text  APG
-Earth breaker   40 gp   1d10    2d6 x3  -   14 lbs. B   -   ISWG
-Falchion    75 gp   1d6 2d4 18-20/X2    -   8 lbs.  S   -   CRB
-Flail, heavy    15 gp   1d8 1d10    19-20/X2    -   10 lbs. B   disarm, trip    CRB
-Glaive  8 gp    1d8 1d10    x3  -   10 lbs. S   reach   CRB
-Glaive-guisarme 12 gp   1d8 1d10    x3  -   10 lbs. S   brace, reach, see text  APG
-Greataxe    20 gp   1d10    1d12    x3  -   12 lbs. S   -   CRB
-Greatclub   5 gp    1d8 1d10    X2  -   8 lbs.  B   -   CRB
-Greatsword  50 gp   1d10    2d6 19-20/X2    -   8 lbs.  S   -   CRB
-Guisarme    9 gp    1d6 2d4 x3  -   12 lbs. S   reach, trip CRB
-Halberd 10 gp   1d8 1d10    x3  -   12 lbs. P or S  brace, trip CRB
-Hammer, lucerne 15 gp   1d10    1d12    X2  -   12 lbs. B or P  brace, reach, see text  APG
-Horsechopper    10 gp   1d8 1d10    x3  -   12 lbs. P or S  reach, trip ARG
-Lance   10 gp   1d6 1d8 x3  -   10 lbs. P   reach   CRB
-Ogre hook   24 gp   1d8 1d10    x3  -   10 lbs. P   trip    ISWG
-Pickaxe 14 gp   1d6 1d8 x4  -   12 lbs. P   -   AP14
-Ranseur 10 gp   1d6 2d4 x3  -   12 lbs. P   disarm, reach   CRB
-Scythe  18 gp   1d6 2d4 x4  -   10 lbs. P or S  trip    CRB
-Spear, syringe  100 gp  1d6 1d8 x3  20 ft.  6 lbs.  P   brace, see text AA
+martial_two_handed="""Bardiche ;   13 gp ;  1d8; 1d10 ;   19-20/X2 ;   -;   14 lbs.; S  ; brace, reach, see text ; APG
+Bec de corbin ;  15 gp ;  1d8 ;1d10  ;  x3  ;-  ; 12 lbs.; B or P;  brace, reach, see text ; APG
+Bill   ; 11 gp  ; 1d6 ;1d8 ;x3 ; - ;  11 lbs. ;S ;  brace, disarm, reach, see text ; APG
+Earth breaker ;  40 gp ;  1d10  ;  2d6; x3 ; -  ; 14 lbs. ;B  ; - ;  ISWG
+Falchion ;   75 gp ;  1d6; 2d4 ;18-20/X2   ; - ;  8 lbs.;  S  ; - ;  CRB
+Flail, heavy  ;  15 gp  ; 1d8 ;1d10 ;   19-20/X2;    -;   10 lbs.; B;   disarm, trip ;   CRB
+Glaive ; 8 gp  ;  1d8 ;1d10 ;   x3  ;-  ; 10 lbs.; S  ; reach   ;CRB
+Glaive-guisarme ;12 gp  ; 1d8; 1d10 ;   x3 ; - ;  10 lbs.; S  ; brace, reach, see text ; APG
+Greataxe   ; 20 gp ;  1d10 ;   1d12   ; x3  ;-  ; 12 lbs.; S ;  - ;  CRB
+Greatclub ;  5 gp  ;  1d8 ;1d10 ;   X2 ; - ;  8 lbs.;  B ;  - ;  CRB
+Greatsword ; 50 gp ;  1d10  ;  2d6 ;19-20/X2;    - ;  8 lbs.;  S  ; -;   CRB
+Guisarme  ;  9 gp  ;  1d6; 2d4 ;x3 ; - ;  12 lbs.; S ;  reach, trip ;CRB
+Halberd ;10 gp ;  1d8 ;1d10  ;  x3 ; - ;  12 lbs. ;P or S ; brace, trip; CRB
+Hammer, lucerne ;15 gp;   1d10 ;   1d12 ;   X2 ; - ;  12 lbs.; B or P ; brace, reach, see text ; APG
+Horsechopper    ;10 gp  ; 1d8 ;1d10 ;   x3;  - ;  12 lbs.; P or S;  reach, trip ;ARG
+Lance  ; 10 gp ;  1d6 ;1d8 ;x3 ; -  ; 10 lbs. ;P ;  reach ;  CRB
+Ogre hook  ; 24 gp ;  1d8; 1d10  ;  x3  ;- ;  10 lbs.; P ;  trip ;   ISWG
+Pickaxe ;14 gp;  1d6; 1d8; x4 ; - ;  12 lbs.; P  ; - ;  AP14
+Ranseur ;10 gp;   1d6 ;2d4 ;x3  ;- ;  12 lbs.; P  ; disarm, reach  ; CRB
+Scythe ; 18 gp  ; 1d6 ;2d4 ;x4 ; -  ; 10 lbs.; P or S ; trip ;   CRB
+Spear, syringe ; 100 gp ; 1d6 ;1d8 ;x3 ; 20 ft.;  6 lbs.;  P  ; brace, see text; AA
 """
-martial_ranged="""
-Ranged Weapons  Cost    Dmg (S) Dmg (M) Critical    Range   Weight1 Type2   Special Source
-Ammentum    -   1d4 1d6 X2  50 ft.  1 lb.   P   performance UC
-Chakram 1 gp    1d6 1d8 X2  30 ft.  1 lb.   S   -   APG
-Dart, jolting   100 gp  1d3 1d4 X2  20 ft.  1/2 lb. P   see text    ARG
-Hunga munga 4 gp    1d4 1d6 X2  15 ft.  3 lbs.  P   -   AA
-Longbow 75 gp   1d6 1d8 x3  100 ft. 3 lbs.  P   -   CRB
-Longbow, composite  100 gp  1d6 1d8 x3  110 ft. 3 lbs.  P   -   CRB
-Pilum   5 gp    1d6 1d8 X2  20 ft.  4 lbs.  P   see text    APG
-Shortbow    30 gp   1d4 1d6 x3  60 ft.  2 lbs.  P   -   CRB
-Shortbow, composite 75 gp   1d4 1d6 x3  70 ft.  2 lbs.  P   -   CRB
+martial_ranged="""Ammentum  ;  -;   1d4 ;1d6 ;X2 ; 50 ft. ; 1 lb. ;  P;   performance ;UC
+Chakram ;1 gp  ;  1d6; 1d8 ;X2;  30 ft. ; 1 lb. ;  S ;  - ;  APG
+Dart, jolting ;  100 gp;  1d3; 1d4; X2 ; 20 ft.;  1/2 lb.; P  ; see text ;   ARG
+Hunga munga ;4 gp  ;  1d4; 1d6 ;X2  ;15 ft. ; 3 lbs. ; P ;  - ;  AA
+Longbow ;75 gp  ; 1d6; 1d8; x3  ;100 ft.; 3 lbs.;  P  ; -  ; CRB
+Longbow, composite ; 100 gp ; 1d6 ;1d8; x3;  110 ft. ;3 lbs. ; P ;  - ;  CRB
+Pilum   ;5 gp ;   1d6 ;1d8 ;X2  ;20 ft. ; 4 lbs.;  P;   see text ;   APG
+Shortbow   ; 30 gp ;  1d4 ;1d6 ;x3 ; 60 ft. ; 2 lbs. ; P ;  - ;  CRB
+Shortbow, composite ;75 gp  ; 1d4 ;1d6; x3;  70 ft.;  2 lbs. ; P ;  - ;  CRB
 """
-martial_ammunition="""
-Ammunition  Cost    Dmg (S) Dmg (M) Critical    Range   Weight1 Type2   Special Source
-Arrow(s), common (20)   1 gp    -   -   -   -   3 lbs.  P   -   CRB
-Arrow(s), bleeding (1)  360 gp  see text    see text    see text    see text    see text    see text    see text    EoG
-Arrow(s), blunt (20)    2 gp    -   -   -   -   3 lbs.  B   see text    APG
-Arrow(s), durable (1)   1 gp    see text    see text    see text    see text    see text    see text    see text    EoG
-Arrow(s), dye (1)   1 gp    see text    see text    see text    see text    4 lbs.  -   see text    EoG
-Arrow(s), flight (20)   2 gp    -   -   -   see text    3 lbs.  P   see text    APG
-Arrow(s), lodestone (1) 10 gp   see text    see text    see text    see text    see text    see text    see text    EoG
-Arrow(s), pheromone (1) 15 gp   see text    see text    see text    see text    see text    see text    see text    EoG
-Arrow(s), raining (1)   30 gp   see text    see text    see text    see text    see text    see text    see text    EoG
-Arrow(s), slow burn (1) 150 gp  see text    see text    see text    see text    see text    see text    see text    EoG
-Arrow(s), smoke (1) 10 gp   -   -   -   -   -   P   see text    APG
-Arrow(s), splintercloud (1) 25 gp   see text    see text    see text    see text    see text    see text    see text    EoG
-Arrow(s), tanglefoot (1)    20 gp   see text    see text    see text    see text    see text    see text    see text    EoG
-Arrow(s), thistle (1)   1 gp    -   -   -   -   0.15 lbs    P   see text    AA
-Arrow(s), trip (1)  25 gp   see text    see text    see text    see text    see text    see text    see text    EoG
-Arrow(s), whistling (20)    2 gp    -   -   -   -   3 lbs.  -   -   UC
+martial_ammunition="""Arrow(s), common (20) ;  1 gp  ;  - ;  - ;  - ;  -  ; 3 lbs.  ;P ;  -  ; CRB
+Arrow(s), bleeding (1) ; 360 gp ; see text  ;  see text  ;  see text  ;  see text ;   see text    ;see text ;   see text  ;  EoG
+Arrow(s), blunt (20)  ;  2 gp ;   - ;  -  ; -  ; - ;  3 lbs. ; B   ;see text ;   APG
+Arrow(s), durable (1) ;  1 gp   ; see text ;   see text ;  see text  ;  see text   ; see text ;   see text   ; see text ;   EoG
+Arrow(s), dye (1) ;  1 gp  ;  see text  ;  see text;    see text   ; see text ;   4 lbs.;  -  ; see text   ; EoG
+Arrow(s), flight (20) ;  2 gp   ; -;   - ;  -  ; see text ;   3 lbs. ; P  ; see text  ;  APG
+Arrow(s), lodestone (1); 10 gp  ; see text  ;  see text  ;  see text  ;  see text ;   see text ;   see text;    see text  ;  EoG
+Arrow(s), pheromone (1);15 gp ;  see text;    see text    ;see text ;   see text  ;  see text   ; see text  ;  see text ;   EoG
+Arrow(s), raining (1)  ; 30 gp  ; see text ;   see text  ;  see text   ; see text   ; see text ;   see text  ;  see text  ;  EoG
+Arrow(s), slow burn (1) ;150 gp ; see text   ; see text ;   see text ;   see text  ;  see text ;   see text  ;  see text  ;  EoG
+Arrow(s), smoke (1) ;10 gp;   -  ; -  ; -;   - ;  -  ; P   ;see text   ; APG
+Arrow(s), splintercloud (1); 25 gp  ; see text  ;  see text   ; see text ;   see text;    see text ;   see text ;   see text  ;  EoG
+Arrow(s), tanglefoot (1)   ; 20 gp  ; see text   ; see text ;   see text ;   see text ;   see text   ; see text   ; see text   ; EoG
+Arrow(s), thistle (1) ;  1 gp  ;  -;   -  ; - ;  -  ; 0.15 lbs  ;  P  ; see text  ;  AA
+Arrow(s), trip (1);  25 gp ;  see text ;   see text   ; see text ;   see text ;   see text  ;  see text  ;  see text  ;  EoG
+Arrow(s), whistling (20)   ; 2 gp ;   -;   -  ; -   ;-  ; 3 lbs.  ;-;   - ;  UC
 """
 exotic_light="""
 Light Melee Weapons Cost    Dmg (S) Dmg (M) Critical    Range   Weight1 Type2   Special Source
@@ -288,6 +278,7 @@ def weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,sourc
 def parseTable(text,proficiency,weapontype):
     table = []
     for line in text.splitlines():
+        #print(line)
         splitted = line.split(";")
         name = splitted[0].strip()
         price = splitted[1].split()
@@ -315,6 +306,11 @@ if __name__ == "__main__":
     table += parseTable(simple_two_handed,"simple","two-handed")
     table += parseTable(simple_ranged,"simple","ranged")
     table += parseTable(simple_ammunition,"simple","ammunition")
+    table += parseTable(martial_light,"martial","light")
+    table += parseTable(martial_one_handed,"martial","one-handed")
+    table += parseTable(martial_two_handed,"martial","two-handed")
+    table += parseTable(martial_ranged,"martial","ranged")
+    table += parseTable(martial_ammunition,"martial","ammunition")
     string = json.dumps(table, indent=4, sort_keys=True)
     with open("../data/items/weapons.json", "w") as f:
         f.write(string)
