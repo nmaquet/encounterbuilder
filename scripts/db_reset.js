@@ -54,32 +54,33 @@ Monster.remove({}, function (error) {
             monsters = monsters.splice(0, 300);
         }
         for (var monster in monsters) {
+
             monsters[monster].CR = Number(eval(monsters[monster].CR));
             monsters[monster].id = generateId(monsters[monster].Name, monster_ids);
-            Monster.create(monsters[monster], function (error) {
-                if (error) {
-                    throw error;
-                }
-                monsterCount++;
-                if (monsterCount == monsters.length) {
-                    console.log("inserted " + monsterCount + " monsters");
-                    console.log("monster insert done");
-                    monsterDone = true;
-                    if (magicItemsDone) {
-                        db.disconnect();
-                    }
-                }
-            });
         }
+
+
+        Monster.collection.insert(monsters, function (error) {
+            if (error) {
+                throw error;
+            }
+            console.log(monsters.length + " monsters inserted")
+            monsterDone = true;
+            if (magicItemsDone) {
+                db.disconnect();
+            }
+
+        });
+
     });
 });
 
-MagicItem.remove({}, function (error,count ) {
+MagicItem.remove({}, function (error, count) {
 
     if (error) {
         throw error;
     }
-    console.log(count+ "documents removed" );
+    console.log(count + "documents removed");
 
 
     var filenames = [
@@ -91,44 +92,33 @@ MagicItem.remove({}, function (error,count ) {
         __dirname + '/../data/items/enchanted_weapons.json',
         __dirname + '/../data/items/armors_and_shields.json'
     ];
-
-    var fileDone = 0;
+    var itemsToInsert = [];
     for (var i in filenames) {
-        fs.readFile(filenames[i], 'utf8', function (error, items) {
-            if (error) {
-                throw error;
+        var items = fs.readFileSync(filenames[i], 'utf8');
+        items = JSON.parse(items);
+        if (process.env.USE_TEST_DB) {
+            items = items.splice(0, 300);
+        }
+        for (var item in items) {
+            items[item].id = items[item].id || generateId(items[item].Name, magic_item_ids);
+            if (items[item].LowChance) {
+                items[item].Derived = true;
+                items[item].Source = "PFRPG Core";
+            } else {
+                items[item].Derived = false;
             }
-            items = JSON.parse(items);
-            if (process.env.USE_TEST_DB) {
-                items = items.splice(0, 300);
-            }
-            var derivedItemCount = 0;
-            for (var item in items) {
-                items[item].id = items[item].id || generateId(items[item].Name, magic_item_ids);
-                if (items[item].LowChance) {
-                    items[item].Derived = true;
-                    items[item].Source = "PFRPG Core";
-                } else {
-                    items[item].Derived = false;
-                }
-                MagicItem.create(items[item], function (error) {
-                    if (error) {
-                        throw error;
-                    }
-                    derivedItemCount++;
-                    if (derivedItemCount == items.length) {
-                        console.log("inserted " + derivedItemCount + " magic items");
-                        console.log("magic items file insert done");
-                        fileDone += 1;
-                        if (fileDone === filenames.length ){
-                            magicItemsDone = true;
-                        }
-                        if (monsterDone && magicItemsDone ) {
-                            db.disconnect();
-                        }
-                    }
-                });
-            }
-        })
+            itemsToInsert.push(items[item]);
+        }
     }
+
+    MagicItem.collection.insert(itemsToInsert, function (error) {
+        if (error) {
+            throw error;
+        }
+        console.log(itemsToInsert.length + " items inserted")
+        magicItemsDone = true;
+        if (monsterDone) {
+            db.disconnect();
+        }
+    });
 });
