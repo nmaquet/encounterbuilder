@@ -44,7 +44,7 @@ Shield, heavy steel ; 20 gp ; +2 ; - ;  -2 ; 15% ; - ; - ; 15 lbs. ; CRB
 Shield, tower ; 30 gp ; +43 ; +2 ;  -10 ; 50% ; - ; - ; 45 lbs. ; CRB"""
 
 extras = """Armor spikes ; +50 gp ; - ; - ; - ; - ; - ; - ; +10 lbs. ; CRB
-Gauntlet, locked ; 8 gp ; - ; - ; special ; n/a4 ; - ; - ; +5 lbs. ; AA
+Gauntlet, locked ; 8 gp ; - ; - ; - ; n/a ; - ; - ; +5 lbs. ; AA
 Shield spikes ; +10 gp ; - ; - ; - ; - ; - ; - ; +5 lbs. ; CRB
 Shield, throwing ; +50 gp ; - ; - ; - ; - ; - ; - ; - ; AA"""
 
@@ -59,21 +59,24 @@ def slugify(string):
         res.pop()
     return "".join(res)
     
-def armor_or_shield(name,cost,price_unit,armor_bonus,max_dex_bonus,armor_check_penalty,arcane_spell_failure,speed_30_ft,speed_20_ft,weight,source,type):
+def armor_or_shield(name,cost,price_unit,armor_bonus,max_dex_bonus,armor_check_penalty,arcane_spell_failure,speed_30_ft,speed_20_ft,weight,source,type, mwk):
     if cost == "-":
         cost = 0
         price_unit = "gp"
+    if armor_check_penalty == "-":
+        armor_check_penalty = 0
+    name = ("Mwk " + name) if mwk else name
     result = {
         "Name": name,
         "id": slugify(name),
         "Group": "Armor",
         "ArmorType": type,
-        "Price": float(cost.replace(",","")),
+        "Price": float(cost.replace(",","")) + (150 if mwk else 0),
         "PriceUnit": price_unit,
         "CL" : 0,
         "ArmorBonus" : armor_bonus,
         "MaxDexBonus" : max_dex_bonus,
-        "ArmorCheckPenalty" : armor_check_penalty,
+        "ArmorCheckPenalty" : max(0, float(armor_check_penalty) - (1 if mwk else 0)),
         "ArcaneSpellFailure" : arcane_spell_failure,
         "Speed30Ft" : speed_30_ft,
         "Speed20Ft" : speed_20_ft,
@@ -102,9 +105,9 @@ def parseTable(text, type):
         speed_20_ft = splitted[7].strip()
         weight = splitted[8].strip()
         source = splitted[9].strip()
-        table.append(armor_or_shield(name,cost,price_unit,armor_bonus,max_dex_bonus,armor_check_penalty,arcane_spell_failure,speed_30_ft,speed_20_ft,weight,source,type))
-    return table    
-        
+        table.append(armor_or_shield(name,cost,price_unit,armor_bonus,max_dex_bonus,armor_check_penalty,arcane_spell_failure,speed_30_ft,speed_20_ft,weight,source,type, mwk=True))
+        table.append(armor_or_shield(name,cost,price_unit,armor_bonus,max_dex_bonus,armor_check_penalty,arcane_spell_failure,speed_30_ft,speed_20_ft,weight,source,type, mwk=False))
+    return table
     
 if __name__ == "__main__":
     table=[] 
