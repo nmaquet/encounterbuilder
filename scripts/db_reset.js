@@ -40,7 +40,6 @@ var magicItemsDone = false;
 function batchInsert(collection, array, batchSize, callback, array_length) {
     array_length = array_length || array.length;
     if (array.length === 0) {
-        process.stdout.write("\n");
         return callback(null);
     }
     var batch = array.splice(0, batchSize);
@@ -49,7 +48,7 @@ function batchInsert(collection, array, batchSize, callback, array_length) {
             callback(error);
         } else {
             var percent = Math.floor(((array_length - array.length) / array_length).toFixed(2) * 100)
-            process.stdout.write("(" + percent + "%) ");
+            process.stdout.write("(" + percent + "% : inserted " + (array_length - array.length) + " out of " + array_length + ")\r");
             batchInsert(collection, array, batchSize, callback, array_length);
         }
     });
@@ -128,7 +127,7 @@ MagicItem.remove({}, function (error, count) {
         }
     }
 
-    batchInsert(MagicItem.collection, itemsToInsert, 500, function (error) {
+    batchInsert(MagicItem.collection, itemsToInsert, 3000, function (error) {
         if (error) {
             throw error;
         }
