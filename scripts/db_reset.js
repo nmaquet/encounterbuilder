@@ -87,7 +87,8 @@ MagicItem.remove({}, function (error,count ) {
         __dirname + '/../data/items/scrolls.json',
         __dirname + '/../data/items/potions_and_oils.json',
         __dirname + '/../data/items/wands.json',
-        __dirname + '/../data/items/weapons.json'
+        __dirname + '/../data/items/weapons.json',
+        __dirname + '/../data/items/armors_and_shields.json'
     ];
 
     var fileDone = 0;

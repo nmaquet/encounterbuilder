@@ -45,8 +45,8 @@ var ATTRIBUTES = {
     /* computed attributes */
     "id": String,
     "PriceUnit": String,
-    "CostUnit" : String,
-    "Derived" : Boolean,
+    "CostUnit": String,
+    "Derived": Boolean,
     /* derived magic item attributes */
     "HighChance": Number,
     "LowChance": Number,
@@ -63,13 +63,21 @@ var ATTRIBUTES = {
     "Proficiency": String,
     "Range": String,
     "Special": String,
-    "WeaponType": String
+    "WeaponType": String,
+    /* armor attributes */
+    "ArcaneSpellFailure": String,
+    "ArmorBonus": String,
+    "ArmorCheckPenalty": String,
+    "ArmorType": String,
+    "MaxDexBonus": String,
+    "Speed20Ft": String,
+    "Speed30Ft": String
 };
 
 module.exports = function (mongoose) {
     return {
-        MAGIC_ITEMS_ATTRIBUTES : Object.keys(ATTRIBUTES),
-        MagicItem :  mongoose.model('MagicItem', ATTRIBUTES)
+        MAGIC_ITEMS_ATTRIBUTES: Object.keys(ATTRIBUTES),
+        MagicItem: mongoose.model('MagicItem', ATTRIBUTES)
     }
 };
 
