@@ -81,7 +81,8 @@ def armor_or_shield(name,cost,price_unit,armor_bonus,max_dex_bonus,armor_check_p
         "Speed30Ft" : speed_30_ft,
         "Speed20Ft" : speed_20_ft,
         "Weight":weight,
-        "Source":source
+        "Source":source,
+        "Mwk":mwk
     }
     return result
 

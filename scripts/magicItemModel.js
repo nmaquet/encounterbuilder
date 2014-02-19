@@ -55,6 +55,7 @@ var ATTRIBUTES = {
     "SpellId": String,
     "SpellLevel": Number,
     "SpellName": String,
+    "Mwk": Boolean,
     /*weapons attribute*/
     "Crit": String,
     "DamageType": String,

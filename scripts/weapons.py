@@ -40,14 +40,14 @@ Javelin ;1 gp   ; 1d4 ;1d6; X2 ; 30 ft. ; 2 lbs.;  P   ;-  ; CRB
 Sling  ; 0 gp  ; 1d3 ;1d4 ;X2  ;50 ft.;  - ;  B  ; -  ; CRB
 Stingchuck ; 0 gp ;  1d3 ;1d4 ;X2 ; 10 ft. ; 9 lbs.;  B  ; see text  ;  AA
 """
-simple_ammunition="""Bolt(s), crossbow (10) ; 1 gp ;   - ;  -  ; -  ; -  ; 1 lb. ;  -  ; - ;  CRB
-Bolt(s), acid (1)   ;40 gp ;  -  ; - ;  -  ; - ;  0.1 lb. ;-  ; see text;    AP15
-Bolt(s), Drow poison (1)  ;  100 gp  ;- ;  -  ; -  ; - ;  0.1 lb. ;- ;  see text;    AP15
-Bolt(s), fire (1);   50 gp ;  - ;  -  ; -  ; - ;  0.1 lb.; -  ; see text  ;  AP15
-Bullet(s), groaning (10) ;   2 gp   ; - ;  - ;  - ;  - ;  5 lbs. ; -  ; see text ;   AA
-Bullet(s), sling (10)  ; 1 sp ;   -;  -  ; - ;  - ;  5 lbs. ; - ;  -  ; CRB
-Bullet(s), smoke (10)  ; 100 gp  ;-  ; -  ; -;   -;   5 lbs. ; -  ; see text ;   PCS
-Dart(s), blowgun (10)  ; 5 sp  ;  - ;  -   ;-  ; - ;  1 lb. ;  -  ; - ;  CRB
+simple_ammunition="""Bolt, crossbow (10) ; 1 gp ;   - ;  -  ; -  ; -  ; 1 lb. ;  -  ; - ;  CRB
+Bolt, acid (1)   ;40 gp ;  -  ; - ;  -  ; - ;  0.1 lb. ;-  ; see text;    AP15
+Bolt, Drow poison (1)  ;  100 gp  ;- ;  -  ; -  ; - ;  0.1 lb. ;- ;  see text;    AP15
+Bolt, fire (1);   50 gp ;  - ;  -  ; -  ; - ;  0.1 lb.; -  ; see text  ;  AP15
+Bullet, groaning (10) ;   2 gp   ; - ;  - ;  - ;  - ;  5 lbs. ; -  ; see text ;   AA
+Bullet, sling (10)  ; 1 sp ;   -;  -  ; - ;  - ;  5 lbs. ; - ;  -  ; CRB
+Bullet, smoke (10)  ; 100 gp  ;-  ; -  ; -;   -;   5 lbs. ; -  ; see text ;   PCS
+Dart, blowgun (10)  ; 5 sp  ;  - ;  -   ;-  ; - ;  1 lb. ;  -  ; - ;  CRB
 """
 martial_light="""Axe, boarding ;  6 gp  ;  1d4; 1d6 ;x3 ; -   ;3 lbs. ; P or S  ;-  ; PoIS
 Axe, throwing ;  8 gp   ; 1d4 ;1d6 ;X2  ;10 ft.  ;2 lbs. ; S   ;-  ; CRB
@@ -126,22 +126,22 @@ Pilum   ;5 gp ;   1d6 ;1d8 ;X2  ;20 ft. ; 4 lbs.;  P;   see text ;   APG
 Shortbow   ; 30 gp ;  1d4 ;1d6 ;x3 ; 60 ft. ; 2 lbs. ; P ;  - ;  CRB
 Shortbow, composite ;75 gp  ; 1d4 ;1d6; x3;  70 ft.;  2 lbs. ; P ;  - ;  CRB
 """
-martial_ammunition="""Arrow(s), common (20) ;  1 gp  ;  - ;  - ;  - ;  -  ; 3 lbs.  ;P ;  -  ; CRB
-Arrow(s), bleeding (1) ; 360 gp ; see text  ;  see text  ;  see text  ;  see text ;   see text    ;see text ;   see text  ;  EoG
-Arrow(s), blunt (20)  ;  2 gp ;   - ;  -  ; -  ; - ;  3 lbs. ; B   ;see text ;   APG
-Arrow(s), durable (1) ;  1 gp   ; see text ;   see text ;  see text  ;  see text   ; see text ;   see text   ; see text ;   EoG
-Arrow(s), dye (1) ;  1 gp  ;  see text  ;  see text;    see text   ; see text ;   4 lbs.;  -  ; see text   ; EoG
-Arrow(s), flight (20) ;  2 gp   ; -;   - ;  -  ; see text ;   3 lbs. ; P  ; see text  ;  APG
-Arrow(s), lodestone (1); 10 gp  ; see text  ;  see text  ;  see text  ;  see text ;   see text ;   see text;    see text  ;  EoG
-Arrow(s), pheromone (1);15 gp ;  see text;    see text    ;see text ;   see text  ;  see text   ; see text  ;  see text ;   EoG
-Arrow(s), raining (1)  ; 30 gp  ; see text ;   see text  ;  see text   ; see text   ; see text ;   see text  ;  see text  ;  EoG
-Arrow(s), slow burn (1) ;150 gp ; see text   ; see text ;   see text ;   see text  ;  see text ;   see text  ;  see text  ;  EoG
-Arrow(s), smoke (1) ;10 gp;   -  ; -  ; -;   - ;  -  ; P   ;see text   ; APG
-Arrow(s), splintercloud (1); 25 gp  ; see text  ;  see text   ; see text ;   see text;    see text ;   see text ;   see text  ;  EoG
-Arrow(s), tanglefoot (1)   ; 20 gp  ; see text   ; see text ;   see text ;   see text ;   see text   ; see text   ; see text   ; EoG
-Arrow(s), thistle (1) ;  1 gp  ;  -;   -  ; - ;  -  ; 0.15 lbs  ;  P  ; see text  ;  AA
-Arrow(s), trip (1);  25 gp ;  see text ;   see text   ; see text ;   see text ;   see text  ;  see text  ;  see text  ;  EoG
-Arrow(s), whistling (20)   ; 2 gp ;   -;   -  ; -   ;-  ; 3 lbs.  ;-;   - ;  UC
+martial_ammunition="""Arrow, common (20) ;  1 gp  ;  - ;  - ;  - ;  -  ; 3 lbs.  ;P ;  -  ; CRB
+Arrow, bleeding (1) ; 360 gp ; see text  ;  see text  ;  see text  ;  see text ;   see text    ;see text ;   see text  ;  EoG
+Arrow, blunt (20)  ;  2 gp ;   - ;  -  ; -  ; - ;  3 lbs. ; B   ;see text ;   APG
+Arrow, durable (1) ;  1 gp   ; see text ;   see text ;  see text  ;  see text   ; see text ;   see text   ; see text ;   EoG
+Arrow, dye (1) ;  1 gp  ;  see text  ;  see text;    see text   ; see text ;   4 lbs.;  -  ; see text   ; EoG
+Arrow, flight (20) ;  2 gp   ; -;   - ;  -  ; see text ;   3 lbs. ; P  ; see text  ;  APG
+Arrow, lodestone (1); 10 gp  ; see text  ;  see text  ;  see text  ;  see text ;   see text ;   see text;    see text  ;  EoG
+Arrow, pheromone (1);15 gp ;  see text;    see text    ;see text ;   see text  ;  see text   ; see text  ;  see text ;   EoG
+Arrow, raining (1)  ; 30 gp  ; see text ;   see text  ;  see text   ; see text   ; see text ;   see text  ;  see text  ;  EoG
+Arrow, slow burn (1) ;150 gp ; see text   ; see text ;   see text ;   see text  ;  see text ;   see text  ;  see text  ;  EoG
+Arrow, smoke (1) ;10 gp;   -  ; -  ; -;   - ;  -  ; P   ;see text   ; APG
+Arrow, splintercloud (1); 25 gp  ; see text  ;  see text   ; see text ;   see text;    see text ;   see text ;   see text  ;  EoG
+Arrow, tanglefoot (1)   ; 20 gp  ; see text   ; see text ;   see text ;   see text ;   see text   ; see text   ; see text   ; EoG
+Arrow, thistle (1) ;  1 gp  ;  -;   -  ; - ;  -  ; 0.15 lbs  ;  P  ; see text  ;  AA
+Arrow, trip (1);  25 gp ;  see text ;   see text   ; see text ;   see text ;   see text  ;  see text  ;  see text  ;  EoG
+Arrow, whistling (20)   ; 2 gp ;   -;   -  ; -   ;-  ; 3 lbs.  ;-;   - ;  UC
 """
 exotic_light="""Aklys  ; 5 gp ;   1d6 ;1d8; X2 ; 20 ft. ; 2 lbs. ; B ;  performance, trip ;  UC
 Axe, knuckle  ;  9 gp   ; 1d4 ;1d6 ;x3 ; -  ; 2 lbs. ; S   ;monk, performance ;  UC
@@ -222,8 +222,8 @@ Sling glove ;5 gp  ;  1d3 ;1d4; X2 ; 50 ft.;  2 lbs. ; B ;  - ;  AA
 Sling staff, halfling  ; 20 gp ;  1d6 ;1d8; x3;  80 ft. ; 3 lbs. ; B ;  -;   CRB
 Sling, stitched; - ;  1d4 ;1d6 ;X2 ; -  ; 1 lb. ;  B  ; disarm, trip ;   HoG
 """
-exotic_ammunition="""Crossbow bolt(s), heavy/light/hand (10); 1 gp ;   - ;  - ;  -;   -;   1 lb.  ; - ;  - ;  CRB
-Crossbow bolt(s), repeating, heavy/light (5) ;   1 gp  ;  -  ; - ;  -  ; -  ; 1 lb.  ; - ;  - ;  CRB
+exotic_ammunition="""Crossbow bolt, heavy/light/hand (10); 1 gp ;   - ;  - ;  -;   -;   1 lb.  ; - ;  - ;  CRB
+Crossbow bolt, repeating, heavy/light (5) ;   1 gp  ;  -  ; - ;  -  ; -  ; 1 lb.  ; - ;  - ;  CRB
 Little starstones (10)  ;5 cp ;   1 ;  1  ; - ;  -  ; 2 lbs. ; B;   nonlethal;   HoG
 Sharpstones (10)  ; 1 gp  ;  1d3 ;1d4 ;- ;  - ;  5 lbs. ; P or S ; - ;  HoG
 Softstones (10); 1 sp ;   -;   -  ; - ;  - ;  4 lbs.;  B ;  nonlethal ;  HoG
@@ -241,17 +241,18 @@ def slugify(string):
         res.pop()
     return "".join(res)
     
-def weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype):
+def weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype, mwk):
     if cost == "-":
         cost = 0
         price_unit = "gp"
+    name = ("Mwk " + name) if mwk else name
     result = {
         "Name": name,
         "id": slugify(name),
         "Group": "Weapon",
         "WeaponType":weapontype,
         "Proficiency":proficiency,
-        "Price": float(cost),
+        "Price": float(cost) + (300 if mwk else 0),
         "PriceUnit": price_unit,
         "CL" : 0,
         "DmgS":dmg_s,
@@ -261,7 +262,8 @@ def weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,sourc
         "Weight":weight,
         "DamageType":type,
         "Special":special,
-        "Source":source
+        "Source":source,
+        "Mwk":mwk
     }
     return result
 
@@ -285,7 +287,9 @@ def parseTable(text,proficiency,weapontype):
         type = splitted[7].strip()
         special = splitted[8].strip()
         source = splitted[9].strip()
-        table.append(weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype))
+        if weapontype != 'ammunition':
+            table.append(weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype, mwk=True))
+        table.append(weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype, mwk=False))
     return table    
         
     
