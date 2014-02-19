@@ -56,40 +56,57 @@ function idify(string) {
     return string.toLowerCase().replace(" ", "-");
 }
 
+var priceModifiers = {
+    1: 2000,
+    2: 8000,
+    3: 18000,
+    4: 32000,
+    5: 50000,
+    6: 72000,
+    7: 98000,
+    8: 128000,
+    9: 162000,
+    10: 200000
+}
+
 var enchantedWeapons = []
 
 for (var i in weapons) {
     var weapon = weapons[i];
     if (weapon.WeaponType !== 'ranged' && weapon.WeaponType !== 'ammunition' && weapon.Mwk === false) {
-        for (var j in meleeSpecialAbilitiesPlusOne) {
-            var ability = meleeSpecialAbilitiesPlusOne[j];
+        for (var weaponBonus = 1; weaponBonus <= 5; weaponBonus++) {
+            for (var j in meleeSpecialAbilitiesPlusOne) {
+                var ability = meleeSpecialAbilitiesPlusOne[j];
+                var enchantedWeapon = clone(weapon);
+                enchantedWeapon.Mwk = true;
+                enchantedWeapon.Enchanted = true;
+                enchantedWeapon.SpecialAbilities = [idify(ability.name)];
+                enchantedWeapon.WeaponBonus = weaponBonus;
+                enchantedWeapon.EnhancementBonus = weaponBonus + 1;
+                if (ability.flatprice) {
+                    enchantedWeapon.Price += 300 + priceModifiers[enchantedWeapon.EnhancementBonus - 1] + ability.flatprice;
+                } else {
+                    enchantedWeapon.Price += 300 + priceModifiers[enchantedWeapon.EnhancementBonus];
+                }
+                enchantedWeapon.CL = Math.max(3 * enchantedWeapon.EnhancementBonus, ability.cl);
+                enchantedWeapon.Name = ability.name + " " + enchantedWeapon.Name.toLowerCase() + " +" + enchantedWeapon.WeaponBonus;
+                enchantedWeapon.id = idify(ability.name) + "-" + enchantedWeapon.id + "-" + enchantedWeapon.WeaponBonus;
+                enchantedWeapons.push(enchantedWeapon);
+            }
             var enchantedWeapon = clone(weapon);
-            var priceModifier = 300 + 2000 + (ability.flatprice ? ability.flatprice : 6000);
-            enchantedWeapon.Price += priceModifier;
             enchantedWeapon.Mwk = true;
             enchantedWeapon.Enchanted = true;
-            enchantedWeapon.SpecialAbilities = [idify(ability.name)];
-            enchantedWeapon.WeaponBonus = 1;
-            enchantedWeapon.EnhancementBonus = 2;
-            enchantedWeapon.CL = Math.max(3 * enchantedWeapon.EnhancementBonus, ability.cl);
-            enchantedWeapon.Name = ability.name + " " + enchantedWeapon.Name.toLowerCase() + " +" + enchantedWeapon.WeaponBonus;
-            enchantedWeapon.id = idify(ability.name) + "-" + enchantedWeapon.id + "-" + enchantedWeapon.WeaponBonus;
+            enchantedWeapon.WeaponBonus = weaponBonus;
+            enchantedWeapon.EnhancementBonus = weaponBonus;
+            enchantedWeapon.Price += 300 + priceModifiers[enchantedWeapon.EnhancementBonus];
+            enchantedWeapon.CL = 3 * enchantedWeapon.EnhancementBonus;
+            enchantedWeapon.Name = enchantedWeapon.Name + " +" + enchantedWeapon.WeaponBonus;
+            enchantedWeapon.id = enchantedWeapon.id + "-" + enchantedWeapon.WeaponBonus;
             enchantedWeapons.push(enchantedWeapon);
         }
-        var enchantedWeapon = clone(weapon);
-        var priceModifier = 300 + 2000;
-        enchantedWeapon.Price += priceModifier;
-        enchantedWeapon.Mwk = true;
-        enchantedWeapon.Enchanted = true;
-        enchantedWeapon.WeaponBonus = 1;
-        enchantedWeapon.EnhancementBonus = 1;
-        enchantedWeapon.CL = 3 * enchantedWeapon.EnhancementBonus;
-        enchantedWeapon.Name = enchantedWeapon.Name + " +" + enchantedWeapon.WeaponBonus;
-        enchantedWeapon.id = enchantedWeapon.id + "-" + enchantedWeapon.WeaponBonus;
-        enchantedWeapons.push(enchantedWeapon);
     }
 }
 
 console.log("generated " + enchantedWeapons.length + " enchanted objects");
 
-fs.writeFileSync(__dirname + "/../data/items/enchanted_weapons.json", JSON.stringify(enchantedWeapons));
+fs.writeFileSync(__dirname + "/../data/items/enchanted_weapons.json", JSON.stringify(enchantedWeapons, null, 4));
