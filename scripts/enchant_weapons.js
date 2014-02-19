@@ -125,7 +125,7 @@ function enchantWeaponNoAbility(weapon, weaponBonus) {
     enchantedWeapon.id = enchantedWeapon.id + "-" + enchantedWeapon.WeaponBonus;
     return enchantedWeapon;
 }
-function enchantWeaponWithAbility(ability, weapon, weaponBonus,abilityBonus) {
+function enchantWeaponWithAbility(ability, weapon, weaponBonus, abilityBonus) {
 
     var enchantedWeapon = clone(weapon);
     enchantedWeapon.Mwk = true;
@@ -149,18 +149,25 @@ function enchantWeaponWithAbility(ability, weapon, weaponBonus,abilityBonus) {
 function main() {
     for (var i in weapons) {
         var weapon = weapons[i];
-        if (weapon.WeaponType !== 'ranged' && weapon.WeaponType !== 'ammunition' && weapon.Mwk === false) {
-            for (var weaponBonus = 1; weaponBonus <= 5; weaponBonus++) {
-                for (var abilityBonus = 1; abilityBonus <= 5; abilityBonus++) {
-                    for (var j in meleeSpecialAbilities[abilityBonus]) {
-                        var ability = meleeSpecialAbilities[abilityBonus][j];
-                        var enchantedWeapon = enchantWeaponWithAbility(ability, weapon, weaponBonus,abilityBonus);
-                        enchantedWeapons.push(enchantedWeapon);
-                    }
+        if (weapon.Mwk === true) {
+            continue;
+        }
+        if (weapon.WeaponType !== 'ranged' && weapon.WeaponType !== 'ammunition') {
+            var abilityTable = meleeSpecialAbilities;
+        }
+        else {
+            continue;
+        }
+        for (var weaponBonus = 1; weaponBonus <= 5; weaponBonus++) {
+            for (var abilityBonus = 1; abilityBonus <= 5; abilityBonus++) {
+                for (var j in abilityTable[abilityBonus]) {
+                    var ability = abilityTable[abilityBonus][j];
+                    var enchantedWeapon = enchantWeaponWithAbility(ability, weapon, weaponBonus, abilityBonus);
+                    enchantedWeapons.push(enchantedWeapon);
                 }
-                var enchantedWeapon = enchantWeaponNoAbility(weapon, weaponBonus);
-                enchantedWeapons.push(enchantedWeapon);
             }
+            var enchantedWeapon = enchantWeaponNoAbility(weapon, weaponBonus);
+            enchantedWeapons.push(enchantedWeapon);
         }
     }
 }
