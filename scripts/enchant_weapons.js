@@ -94,6 +94,99 @@ var meleeSpecialAbilities = {
         {name: "Transformative", cl: 10, flatprice: 10000}
     ]
 };
+var rangedSpecialAbilities = {
+    1: [
+        {name: 'Adaptive', flatprice: 1000, cl: 0},
+        {name: 'Impervious', flatprice: 3000, cl: 0},
+        {name: 'Glamered',  flatprice: 4000, cl: 0},
+        {name: 'Allying', cl: 5},
+        {name: 'Bane', cl: 8},
+        {name: 'Called', cl: 9},
+        {name: 'Conductive', cl: 8},
+        {name: 'Conserving', cl: 7},
+        {name: 'Corrosive', cl: 10},
+        {name: 'Cruel', cl: 5},
+        {name: 'Cunning', cl: 6},
+        {name: 'Distance', cl: 6},
+        {name: 'Flaming', cl: 10},
+        {name: 'Frost', cl: 8},
+        {name: 'Huntsman', cl: 7},
+        {name: 'Jurist', cl: 4},
+        {name: 'Limning', cl: 5},
+        {name: 'Lucky', cl: 8},
+        {name: 'Merciful', cl: 5},
+        {name: 'Planar', cl: 9},
+        {name: 'Reliable', cl: 8},
+        {name: 'Returning', cl: 7},
+        {name: 'Seeking', cl: 12},
+        {name: 'Shock', cl: 8},
+        {name: 'Thundering', cl: 5}
+    ],
+    2: [
+        {name: "Anarchic", cl: 7},
+        {name: "Anchoring", cl: 10},
+        {name: "Axiomatic", cl: 7},
+        {name: "Corrosive burst", cl: 12},
+        {name: "Designating, lesser", cl: 7},
+        {name: "Endless ammunition", cl: 9},
+        {name: "Flaming burst", cl: 12},
+        {name: "Holy", cl: 7},
+        {name: "Icy burst", cl: 10},
+        {name: "Igniting", cl: 12},
+        {name: "Phase locking", cl: 7},
+        {name: "Shocking burst", cl: 10},
+        {name: "Stalking", cl: 10},
+        {name: "Unholy", cl: 7}
+    ],
+    3: [
+        {name: "Lucky, greater", cl: 12},
+        {name: "Reliable, greater", cl: 12},
+        {name: "Speed", cl: 7}
+    ],
+    4: [
+        {name: "Brilliant energy", cl: 16},
+        {name: "Designating, greater", cl: 12},
+        {name: "Nimble shot", cl: 11},
+        {name: "Second chance", cl: 11}
+    ]
+};
+
+var ammunitionSpecialAbilities = {
+    1: [
+        {name: 'Dry load', flatprice: 1500, cl: 3},
+        {name: 'Bane', cl: 8},
+        {name: 'Conductive', cl: 8},
+        {name: 'Corrosive', cl: 10},
+        {name: 'Cruel', cl: 5},
+        {name: 'Cunning', cl: 6},
+        {name: 'Flaming', cl: 10},
+        {name: 'Frost', cl: 8},
+        {name: 'Ghost touch', cl: 9},
+        {name: 'Limning', cl: 5},
+        {name: 'Merciful', cl: 5},
+        {name: 'Planar', cl: 9},
+        {name: 'Seeking', cl: 12},
+        {name: 'Shock', cl: 8},
+        {name: 'Thundering', cl: 5}
+    ],
+    2: [
+        {name: "Anarchic", cl: 7},
+        {name: "Axiomatic", cl: 7},
+        {name: "Corrosive burst", cl: 12},
+        {name: "Designating, lesser", cl: 7},
+        {name: "Flaming burst", cl: 12},
+        {name: "Holy", cl: 7},
+        {name: "Icy burst", cl: 10},
+        {name: "Igniting", cl: 12},
+        {name: "Phase locking", cl: 7},
+        {name: "Shocking burst", cl: 10},
+        {name: "Unholy", cl: 7}
+    ],
+    4: [
+        {name: "Brilliant energy", cl: 16},
+        {name: "Designating, greater", cl: 12},
+    ]
+};
 
 function idify(string) {
     return string.toLowerCase().replace(" ", "-");
@@ -155,11 +248,20 @@ function main() {
         if (weapon.WeaponType !== 'ranged' && weapon.WeaponType !== 'ammunition') {
             var abilityTable = meleeSpecialAbilities;
         }
+        else if (weapon.WeaponType === 'ranged'){
+            var abilityTable = rangedSpecialAbilities;
+        }
+        else if (weapon.WeaponType === 'ammunition'){
+            var abilityTable = ammunitionSpecialAbilities;
+        }
         else {
-            continue;
+            throw Error("unknown weapon type : " + weapon.WeaponType + " for : " + weapon.Name);
         }
         for (var weaponBonus = 1; weaponBonus <= 5; weaponBonus++) {
             for (var abilityBonus = 1; abilityBonus <= 5; abilityBonus++) {
+                if (abilityTable[abilityBonus] === undefined) {
+                    continue;
+                }
                 for (var j in abilityTable[abilityBonus]) {
                     var ability = abilityTable[abilityBonus][j];
                     var enchantedWeapon = enchantWeaponWithAbility(ability, weapon, weaponBonus, abilityBonus);
