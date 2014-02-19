@@ -102,7 +102,7 @@ MagicItem.remove({}, function (error,count ) {
             }
             var derivedItemCount = 0;
             for (var item in items) {
-                items[item].id = generateId(items[item].Name, magic_item_ids);
+                items[item].id = items[item].id || generateId(items[item].Name, magic_item_ids);
                 if (items[item].LowChance) {
                     items[item].Derived = true;
                     items[item].Source = "PFRPG Core";
