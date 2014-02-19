@@ -37,11 +37,31 @@ var monsterDone = false;
 var itemCount = 0;
 var magicItemsDone = false;
 
-Monster.remove({}, function (error) {
+function batchInsert(collection, array, batchSize, callback, array_length) {
+    array_length = array_length || array.length;
+    if (array.length === 0) {
+        process.stdout.write("\n");
+        return callback(null);
+    }
+    var batch = array.splice(0, batchSize);
+    collection.insert(batch, function(error) {
+        if (error) {
+            callback(error);
+        } else {
+            var percent = Math.floor(((array_length - array.length) / array_length).toFixed(2) * 100)
+            process.stdout.write("(" + percent + "%) ");
+            batchInsert(collection, array, batchSize, callback, array_length);
+        }
+    });
+}
+
+Monster.remove({}, function (error, count) {
 
     if (error) {
         throw error;
     }
+
+    console.log(count + " monsters removed");
 
     var monsterFile = __dirname + '/../data/monsters/monsters.json';
 
@@ -58,20 +78,15 @@ Monster.remove({}, function (error) {
             monsters[monster].CR = Number(eval(monsters[monster].CR));
             monsters[monster].id = generateId(monsters[monster].Name, monster_ids);
         }
-
-
-        Monster.collection.insert(monsters, function (error) {
+        batchInsert(Monster.collection, monsters, 500, function (error) {
             if (error) {
                 throw error;
             }
-            console.log(monsters.length + " monsters inserted")
             monsterDone = true;
             if (magicItemsDone) {
                 db.disconnect();
             }
-
         });
-
     });
 });
 
@@ -80,8 +95,8 @@ MagicItem.remove({}, function (error, count) {
     if (error) {
         throw error;
     }
-    console.log(count + "documents removed");
 
+    console.log(count + " magic items removed");
 
     var filenames = [
         __dirname + '/../data/items/magic-items.json',
@@ -92,7 +107,9 @@ MagicItem.remove({}, function (error, count) {
         __dirname + '/../data/items/enchanted_weapons.json',
         __dirname + '/../data/items/armors_and_shields.json'
     ];
+
     var itemsToInsert = [];
+
     for (var i in filenames) {
         var items = fs.readFileSync(filenames[i], 'utf8');
         items = JSON.parse(items);
@@ -111,11 +128,10 @@ MagicItem.remove({}, function (error, count) {
         }
     }
 
-    MagicItem.collection.insert(itemsToInsert, function (error) {
+    batchInsert(MagicItem.collection, itemsToInsert, 500, function (error) {
         if (error) {
             throw error;
         }
-        console.log(itemsToInsert.length + " items inserted")
         magicItemsDone = true;
         if (monsterDone) {
             db.disconnect();
