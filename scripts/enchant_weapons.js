@@ -72,7 +72,7 @@ for (var i in weapons) {
             enchantedWeapon.WeaponBonus = 1;
             enchantedWeapon.EnhancementBonus = 2;
             enchantedWeapon.CL = Math.max(3 * enchantedWeapon.EnhancementBonus, ability.cl);
-            enchantedWeapon.Name = ability.name + " " + enchantedWeapon.Name + " +" + enchantedWeapon.WeaponBonus;
+            enchantedWeapon.Name = ability.name + " " + enchantedWeapon.Name.toLowerCase() + " +" + enchantedWeapon.WeaponBonus;
             enchantedWeapon.id = idify(ability.name) + "-" + enchantedWeapon.id + "-" + enchantedWeapon.WeaponBonus;
             enchantedWeapons.push(enchantedWeapon);
         }
