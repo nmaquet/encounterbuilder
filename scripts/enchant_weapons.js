@@ -94,11 +94,19 @@ var meleeSpecialAbilities = {
         {name: "Transformative", cl: 10, flatprice: 10000}
     ]
 };
+
 var rangedSpecialAbilities = {
     1: [
-        {name: 'Adaptive', flatprice: 1000, cl: 0},
+        {name: 'Adaptive', flatprice: 1000, cl: 0, filter: function (weapon) {
+            if (weapon.Name.toLowerCase().indexOf("bow") === -1 || weapon.Name.toLowerCase().indexOf("composite") === -1) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }},
         {name: 'Impervious', flatprice: 3000, cl: 0},
-        {name: 'Glamered',  flatprice: 4000, cl: 0},
+        {name: 'Glamered', flatprice: 4000, cl: 0},
         {name: 'Allying', cl: 5},
         {name: 'Bane', cl: 8},
         {name: 'Called', cl: 9},
@@ -248,10 +256,10 @@ function main() {
         if (weapon.WeaponType !== 'ranged' && weapon.WeaponType !== 'ammunition') {
             var abilityTable = meleeSpecialAbilities;
         }
-        else if (weapon.WeaponType === 'ranged'){
+        else if (weapon.WeaponType === 'ranged') {
             var abilityTable = rangedSpecialAbilities;
         }
-        else if (weapon.WeaponType === 'ammunition'){
+        else if (weapon.WeaponType === 'ammunition') {
             var abilityTable = ammunitionSpecialAbilities;
         }
         else {
@@ -264,6 +272,9 @@ function main() {
                 }
                 for (var j in abilityTable[abilityBonus]) {
                     var ability = abilityTable[abilityBonus][j];
+                    if (ability.filter && ability.filter(weapon) ){
+                        continue;
+                    }
                     var enchantedWeapon = enchantWeaponWithAbility(ability, weapon, weaponBonus, abilityBonus);
                     enchantedWeapons.push(enchantedWeapon);
                 }
