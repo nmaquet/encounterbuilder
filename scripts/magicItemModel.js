@@ -72,7 +72,11 @@ var ATTRIBUTES = {
     "ArmorType": String,
     "MaxDexBonus": String,
     "Speed20Ft": String,
-    "Speed30Ft": String
+    "Speed30Ft": String,
+    /* enchanted weapons attributes */
+    "Enchanted": Boolean,
+    "SpecialAbilities": [ String ],
+    "WeaponBonus": Number
 };
 
 module.exports = function (mongoose) {
