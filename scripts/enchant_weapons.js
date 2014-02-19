@@ -19,7 +19,7 @@ var meleeSpecialAbilities = {
         {name: 'Courageous', cl: 3},
         {name: 'Cruel', cl: 5},
         {name: 'Cunning', cl: 6},
-        {name: 'Deadly', cl: 5},
+        {name: 'Deadly', cl: 5 /*FIXME only melee non lethal */},
         {name: 'Defending', cl: 8},
         {name: 'Dispelling', cl: 10},
         {name: 'Flaming', cl: 10},
@@ -32,7 +32,7 @@ var meleeSpecialAbilities = {
         {name: 'Heartseeker', cl: 7},
         {name: 'Huntsman', cl: 7},
         {name: 'Jurist', cl: 4},
-        {name: 'Keen', cl: 10},
+        {name: 'Keen', cl: 10 /*FIXME only Piercing or Slashing */},
         {name: 'Ki focus', cl: 8},
         {name: 'Limning', cl: 5},
         {name: 'Menacing', cl: 10},
@@ -55,7 +55,7 @@ var meleeSpecialAbilities = {
     2: [
         {name: "Advancing", cl: 5},
         {name: "Anarchic", cl: 7},
-        {name: "Anchoring", cl: 10},
+        {name: "Anchoring", cl: 10 /*FIXME only melee or thrown */},
         {name: "Axiomatic", cl: 7},
         {name: "Corrosive burst", cl: 12},
         {name: "Defiant", cl: 10},
@@ -67,7 +67,7 @@ var meleeSpecialAbilities = {
         {name: "Holy", cl: 7},
         {name: "Icy burst", cl: 10},
         {name: "Igniting", cl: 12},
-        {name: "Impact", cl: 9},
+        {name: "Impact", cl: 9 /*FIXME only not light*/},
         {name: "Invigorating", cl: 5},
         {name: "Ki intensifying", cl: 12},
         {name: "Lifesurge", cl: 8},
@@ -111,7 +111,7 @@ var rangedSpecialAbilities = {
         {name: 'Bane', cl: 8},
         {name: 'Called', cl: 9},
         {name: 'Conductive', cl: 8},
-        {name: 'Conserving', cl: 7},
+        {name: 'Conserving', cl: 7 /*FIXME only firearms */},
         {name: 'Corrosive', cl: 10},
         {name: 'Cruel', cl: 5},
         {name: 'Cunning', cl: 6},
@@ -121,22 +121,22 @@ var rangedSpecialAbilities = {
         {name: 'Huntsman', cl: 7},
         {name: 'Jurist', cl: 4},
         {name: 'Limning', cl: 5},
-        {name: 'Lucky', cl: 8},
+        {name: 'Lucky', cl: 8 /*FIXME only fireams */},
         {name: 'Merciful', cl: 5},
         {name: 'Planar', cl: 9},
-        {name: 'Reliable', cl: 8},
-        {name: 'Returning', cl: 7},
+        {name: 'Reliable', cl: 8 /*FIXME only firearms */},
+        {name: 'Returning', cl: 7 /*FIXME only thrown */},
         {name: 'Seeking', cl: 12},
         {name: 'Shock', cl: 8},
         {name: 'Thundering', cl: 5}
     ],
     2: [
         {name: "Anarchic", cl: 7},
-        {name: "Anchoring", cl: 10},
+        {name: "Anchoring", cl: 10 /*FIXME only melee or thrown */},
         {name: "Axiomatic", cl: 7},
         {name: "Corrosive burst", cl: 12},
         {name: "Designating, lesser", cl: 7},
-        {name: "Endless ammunition", cl: 9},
+        {name: "Endless ammunition", cl: 9 /*FIXME only bows & crossbows*/},
         {name: "Flaming burst", cl: 12},
         {name: "Holy", cl: 7},
         {name: "Icy burst", cl: 10},
@@ -147,21 +147,21 @@ var rangedSpecialAbilities = {
         {name: "Unholy", cl: 7}
     ],
     3: [
-        {name: "Lucky, greater", cl: 12},
-        {name: "Reliable, greater", cl: 12},
+        {name: "Lucky, greater", cl: 12 /*FIXME only firearms */},
+        {name: "Reliable, greater", cl: 12 /*FIXME only fireamrs */},
         {name: "Speed", cl: 7}
     ],
     4: [
         {name: "Brilliant energy", cl: 16},
         {name: "Designating, greater", cl: 12},
         {name: "Nimble shot", cl: 11},
-        {name: "Second chance", cl: 11}
+        {name: "Second chance", cl: 11 /*FIXME only bows */}
     ]
 };
 
 var ammunitionSpecialAbilities = {
     1: [
-        {name: 'Dry load', flatprice: 1500, cl: 3},
+        {name: 'Dry load', flatprice: 1500, cl: 3 /*FIXME only alchemical or metal cartriges */},
         {name: 'Bane', cl: 8},
         {name: 'Conductive', cl: 8},
         {name: 'Corrosive', cl: 10},
