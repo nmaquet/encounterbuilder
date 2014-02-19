@@ -86,12 +86,12 @@ var meleeSpecialAbilities = {
     ],
     4: [
         {name: "Brilliant energy", cl: 16},
-        {name: "Dancing", cl: 15}
+        {name: "Dancing", cl: 15},
+        {name: "Dueling", cl: 5, flatprice: 14000}
     ],
     5: [
         {name: "Vorpal", cl: 18},
-        {name: "Transformative", cl: 10, flatprice: 10000},
-        {name: "Dueling", cl: 5, flatprice: 14000}
+        {name: "Transformative", cl: 10, flatprice: 10000}
     ]
 };
 
@@ -113,43 +113,59 @@ var priceModifiers = {
 }
 
 var enchantedWeapons = []
+function enchantWeaponNoAbility(weapon, weaponBonus) {
+    var enchantedWeapon = clone(weapon);
+    enchantedWeapon.Mwk = true;
+    enchantedWeapon.Enchanted = true;
+    enchantedWeapon.WeaponBonus = weaponBonus;
+    enchantedWeapon.EnhancementBonus = weaponBonus;
+    enchantedWeapon.Price += 300 + priceModifiers[enchantedWeapon.EnhancementBonus];
+    enchantedWeapon.CL = 3 * enchantedWeapon.EnhancementBonus;
+    enchantedWeapon.Name = enchantedWeapon.Name + " +" + enchantedWeapon.WeaponBonus;
+    enchantedWeapon.id = enchantedWeapon.id + "-" + enchantedWeapon.WeaponBonus;
+    return enchantedWeapon;
+}
+function enchantWeaponWithAbility(ability, weapon, weaponBonus,abilityBonus) {
 
-for (var i in weapons) {
-    var weapon = weapons[i];
-    if (weapon.WeaponType !== 'ranged' && weapon.WeaponType !== 'ammunition' && weapon.Mwk === false) {
-        for (var weaponBonus = 1; weaponBonus <= 5; weaponBonus++) {
-            for (var j in meleeSpecialAbilities[1]) {
-                var ability = meleeSpecialAbilities[1][j];
-                var enchantedWeapon = clone(weapon);
-                enchantedWeapon.Mwk = true;
-                enchantedWeapon.Enchanted = true;
-                enchantedWeapon.SpecialAbilities = [idify(ability.name)];
-                enchantedWeapon.WeaponBonus = weaponBonus;
-                enchantedWeapon.EnhancementBonus = weaponBonus + 1;
-                if (ability.flatprice) {
-                    enchantedWeapon.Price += 300 + priceModifiers[enchantedWeapon.EnhancementBonus - 1] + ability.flatprice;
-                } else {
-                    enchantedWeapon.Price += 300 + priceModifiers[enchantedWeapon.EnhancementBonus];
+    var enchantedWeapon = clone(weapon);
+    enchantedWeapon.Mwk = true;
+    enchantedWeapon.Enchanted = true;
+    enchantedWeapon.SpecialAbilities = [idify(ability.name)];
+    enchantedWeapon.WeaponBonus = weaponBonus;
+
+    if (ability.flatprice) {
+        enchantedWeapon.EnhancementBonus = weaponBonus;
+        enchantedWeapon.Price += 300 + priceModifiers[enchantedWeapon.EnhancementBonus] + ability.flatprice;
+    } else {
+        enchantedWeapon.EnhancementBonus = weaponBonus + abilityBonus;
+        enchantedWeapon.Price += 300 + priceModifiers[enchantedWeapon.EnhancementBonus];
+    }
+
+    enchantedWeapon.CL = Math.max(3 * enchantedWeapon.EnhancementBonus, ability.cl);
+    enchantedWeapon.Name = ability.name + " " + enchantedWeapon.Name.toLowerCase() + " +" + enchantedWeapon.WeaponBonus;
+    enchantedWeapon.id = idify(ability.name) + "-" + enchantedWeapon.id + "-" + enchantedWeapon.WeaponBonus;
+    return enchantedWeapon;
+}
+function main() {
+    for (var i in weapons) {
+        var weapon = weapons[i];
+        if (weapon.WeaponType !== 'ranged' && weapon.WeaponType !== 'ammunition' && weapon.Mwk === false) {
+            for (var weaponBonus = 1; weaponBonus <= 5; weaponBonus++) {
+                for (var abilityBonus = 1; abilityBonus <= 5; abilityBonus++) {
+                    for (var j in meleeSpecialAbilities[abilityBonus]) {
+                        var ability = meleeSpecialAbilities[abilityBonus][j];
+                        var enchantedWeapon = enchantWeaponWithAbility(ability, weapon, weaponBonus,abilityBonus);
+                        enchantedWeapons.push(enchantedWeapon);
+                    }
                 }
-                enchantedWeapon.CL = Math.max(3 * enchantedWeapon.EnhancementBonus, ability.cl);
-                enchantedWeapon.Name = ability.name + " " + enchantedWeapon.Name.toLowerCase() + " +" + enchantedWeapon.WeaponBonus;
-                enchantedWeapon.id = idify(ability.name) + "-" + enchantedWeapon.id + "-" + enchantedWeapon.WeaponBonus;
+                var enchantedWeapon = enchantWeaponNoAbility(weapon, weaponBonus);
                 enchantedWeapons.push(enchantedWeapon);
             }
-            var enchantedWeapon = clone(weapon);
-            enchantedWeapon.Mwk = true;
-            enchantedWeapon.Enchanted = true;
-            enchantedWeapon.WeaponBonus = weaponBonus;
-            enchantedWeapon.EnhancementBonus = weaponBonus;
-            enchantedWeapon.Price += 300 + priceModifiers[enchantedWeapon.EnhancementBonus];
-            enchantedWeapon.CL = 3 * enchantedWeapon.EnhancementBonus;
-            enchantedWeapon.Name = enchantedWeapon.Name + " +" + enchantedWeapon.WeaponBonus;
-            enchantedWeapon.id = enchantedWeapon.id + "-" + enchantedWeapon.WeaponBonus;
-            enchantedWeapons.push(enchantedWeapon);
         }
     }
 }
 
+main();
 console.log("generated " + enchantedWeapons.length + " enchanted objects");
 
 fs.writeFileSync(__dirname + "/../data/items/enchanted_weapons.json", JSON.stringify(enchantedWeapons, null, 4));
