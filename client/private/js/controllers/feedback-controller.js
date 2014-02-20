@@ -4,8 +4,9 @@ DEMONSQUID.encounterBuilderControllers.controller('FeedbackController', ['$http'
     function ($http, $timeout, $location) {
         startUserVoice();
 
+
         if (!$.cookie('feedbackPopupAppeared') && !$.cookie('neverShowFeedbackPopover')) {
-            $http.get('/partials/feedback-popover.html').success(function (html) {
+            $http.get('/feedback-popover.html').success(function (html) {
                 var popoverOptions = {
                     html: true,
                     title: "Help us improve Encounter Builder",
@@ -16,7 +17,7 @@ DEMONSQUID.encounterBuilderControllers.controller('FeedbackController', ['$http'
                 var threeDays = 3;
                 $("#feedback").popover(popoverOptions);
                 var delay = 2 * 60 * 1000;
-                /* FIXME: hack to know if we run in karma or not */
+                // FIXME: hack to know if we run in karma or not
                 if ($location.port() == 9877) {
                     delay = 0;
                 }
@@ -26,7 +27,6 @@ DEMONSQUID.encounterBuilderControllers.controller('FeedbackController', ['$http'
                 }, delay * 0);
             });
         }
-
         function startUserVoice() {
             var UserVoice = window.UserVoice || [];
             (function () {
