@@ -282,18 +282,44 @@ var priceModifiers = {
 }
 
 var enchantedWeapons = []
+
+function ammunitionName(weapon) {
+    var match = /([^\(]*)\((\d*)\)/.exec(weapon.Name);
+    if (match) {
+        return match[1].trim();
+    } else {
+        throw Error("no ammunition quantity");
+    }
+}
+
+function ammunitionQuantity(weapon) {
+    var match = /([^\(]*)\((\d*)\)/.exec(weapon.Name);
+    if (match) {
+        return Number(match[2].trim());
+    } else {
+        throw Error("no ammunition quantity");
+    }
+}
+
+
 function enchantWeaponNoAbility(weapon, weaponBonus) {
     var enchantedWeapon = clone(weapon);
     enchantedWeapon.Mwk = true;
     enchantedWeapon.Enchanted = true;
     enchantedWeapon.WeaponBonus = weaponBonus;
+    if (weapon.WeaponType === "ammunition") {
+        enchantedWeapon.Price = Math.round(50 * (enchantedWeapon.Price / ammunitionQuantity(enchantedWeapon)));
+        enchantedWeapon.Name = ammunitionName(enchantedWeapon)+ " +" + enchantedWeapon.WeaponBonus + " (50)";
+    } else {
+        enchantedWeapon.Name = enchantedWeapon.Name + " +" + enchantedWeapon.WeaponBonus;
+    }
     enchantedWeapon.EnhancementBonus = weaponBonus;
     enchantedWeapon.Price += 300 + priceModifiers[enchantedWeapon.EnhancementBonus];
     enchantedWeapon.CL = 3 * enchantedWeapon.EnhancementBonus;
-    enchantedWeapon.Name = enchantedWeapon.Name + " +" + enchantedWeapon.WeaponBonus;
     enchantedWeapon.id = enchantedWeapon.id + "-" + enchantedWeapon.WeaponBonus;
     return enchantedWeapon;
 }
+
 function enchantWeaponWithAbility(ability, weapon, weaponBonus, abilityBonus) {
 
     var enchantedWeapon = clone(weapon);
@@ -301,7 +327,12 @@ function enchantWeaponWithAbility(ability, weapon, weaponBonus, abilityBonus) {
     enchantedWeapon.Enchanted = true;
     enchantedWeapon.SpecialAbilities = [idify(ability.name)];
     enchantedWeapon.WeaponBonus = weaponBonus;
-
+    if (weapon.WeaponType === "ammunition") {
+        enchantedWeapon.Price = Math.round(50 * (enchantedWeapon.Price / ammunitionQuantity(enchantedWeapon)));
+        enchantedWeapon.Name = ability.name + " " + ammunitionName(enchantedWeapon).toLowerCase() + " +" + enchantedWeapon.WeaponBonus + " (50)";
+    } else {
+        enchantedWeapon.Name = ability.name + " " + enchantedWeapon.Name.toLowerCase() + " +" + enchantedWeapon.WeaponBonus;
+    }
     if (ability.flatprice) {
         enchantedWeapon.EnhancementBonus = weaponBonus;
         enchantedWeapon.Price += 300 + priceModifiers[enchantedWeapon.EnhancementBonus] + ability.flatprice;
@@ -309,9 +340,7 @@ function enchantWeaponWithAbility(ability, weapon, weaponBonus, abilityBonus) {
         enchantedWeapon.EnhancementBonus = weaponBonus + abilityBonus;
         enchantedWeapon.Price += 300 + priceModifiers[enchantedWeapon.EnhancementBonus];
     }
-
     enchantedWeapon.CL = Math.max(3 * enchantedWeapon.EnhancementBonus, ability.cl);
-    enchantedWeapon.Name = ability.name + " " + enchantedWeapon.Name.toLowerCase() + " +" + enchantedWeapon.WeaponBonus;
     enchantedWeapon.id = idify(ability.name) + "-" + enchantedWeapon.id + "-" + enchantedWeapon.WeaponBonus;
     return enchantedWeapon;
 }

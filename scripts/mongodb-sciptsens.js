@@ -20,10 +20,9 @@ MongoClient.connect(MONGODB_URL, function (error, db) {
 });
 
 function main(db) {
-    db.collection('monsters').find({Class: {$ne: ''}}).toArray(function (error, data) {
-        for (var i in data) {
-            console.log(parseClass(data[i].Class));
-        }
+    db.collection('magicitems').find({Enchanted: {$exists: false}}).toArray(function (error, data) {
+        console.log(error);
+        console.log(data.length);
         console.log('done');
         db.close();
     });
@@ -53,7 +52,7 @@ function parseClass(Class) {
     if (Class.indexOf('/') === -1) {
         var singleClass = parseSingleClass(Class);
         var heroic = basicClasses.indexOf(singleClass.class) === -1;
-        return {'heroic': heroic,'level':singleClass.classLevel , 'classes': [singleClass]};
+        return {'heroic': heroic, 'level': singleClass.classLevel, 'classes': [singleClass]};
     }
     else {
         var classes = Class.split('/');
@@ -67,6 +66,6 @@ function parseClass(Class) {
                 heroic = basicClasses.indexOf(multipleClasses[j].class) === -1;
             }
         }
-        return {'heroic': heroic,'level':level, 'classes': multipleClasses};
+        return {'heroic': heroic, 'level': level, 'classes': multipleClasses};
     }
 }
