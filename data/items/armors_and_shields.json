@@ -980,14 +980,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": true, 
-        "Name": "Mwk Madu, leather", 
+        "Name": "Mwk Leather madu", 
         "Price": 180.0, 
         "PriceUnit": "gp", 
         "Source": "AA", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "5 lbs.", 
-        "id": "mwk-madu-leather"
+        "id": "mwk-leather-madu"
     }, 
     {
         "ArcaneSpellFailure": "5%", 
@@ -998,14 +998,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": false, 
-        "Name": "Madu, leather", 
+        "Name": "Leather madu", 
         "Price": 30.0, 
         "PriceUnit": "gp", 
         "Source": "AA", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "5 lbs.", 
-        "id": "madu-leather"
+        "id": "leather-madu"
     }, 
     {
         "ArcaneSpellFailure": "5%", 
@@ -1016,14 +1016,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": true, 
-        "Name": "Mwk Madu, steel", 
+        "Name": "Mwk Steel madu", 
         "Price": 190.0, 
         "PriceUnit": "gp", 
         "Source": "AA", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "6 lbs.", 
-        "id": "mwk-madu-steel"
+        "id": "mwk-steel-madu"
     }, 
     {
         "ArcaneSpellFailure": "5%", 
@@ -1034,14 +1034,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": false, 
-        "Name": "Madu, steel", 
+        "Name": "Steel madu", 
         "Price": 40.0, 
         "PriceUnit": "gp", 
         "Source": "AA", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "6 lbs.", 
-        "id": "madu-steel"
+        "id": "steel-madu"
     }, 
     {
         "ArcaneSpellFailure": "5%", 
@@ -1052,14 +1052,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": true, 
-        "Name": "Mwk Shield, light wooden", 
+        "Name": "Mwk Light wooden shield", 
         "Price": 153.0, 
         "PriceUnit": "gp", 
         "Source": "CRB", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "5 lbs.", 
-        "id": "mwk-shield-light-wooden"
+        "id": "mwk-light-wooden-shield"
     }, 
     {
         "ArcaneSpellFailure": "5%", 
@@ -1070,14 +1070,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": false, 
-        "Name": "Shield, light wooden", 
+        "Name": "Light wooden shield", 
         "Price": 3.0, 
         "PriceUnit": "gp", 
         "Source": "CRB", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "5 lbs.", 
-        "id": "shield-light-wooden"
+        "id": "light-wooden-shield"
     }, 
     {
         "ArcaneSpellFailure": "5%", 
@@ -1088,14 +1088,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": true, 
-        "Name": "Mwk Shield, light wooden (quickdraw)", 
+        "Name": "Mwk Light wooden shield (quickdraw)", 
         "Price": 203.0, 
         "PriceUnit": "gp", 
         "Source": "APG", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "6 lbs.", 
-        "id": "mwk-shield-light-wooden-quickdraw"
+        "id": "mwk-light-wooden-shield-quickdraw"
     }, 
     {
         "ArcaneSpellFailure": "5%", 
@@ -1106,14 +1106,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": false, 
-        "Name": "Shield, light wooden (quickdraw)", 
+        "Name": "Light wooden shield (quickdraw)", 
         "Price": 53.0, 
         "PriceUnit": "gp", 
         "Source": "APG", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "6 lbs.", 
-        "id": "shield-light-wooden-quickdraw"
+        "id": "light-wooden-shield-quickdraw"
     }, 
     {
         "ArcaneSpellFailure": "5%", 
@@ -1124,14 +1124,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": true, 
-        "Name": "Mwk Shield, light steel", 
+        "Name": "Mwk Light steel shield", 
         "Price": 159.0, 
         "PriceUnit": "gp", 
         "Source": "CRB", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "6 lbs.", 
-        "id": "mwk-shield-light-steel"
+        "id": "mwk-light-steel-shield"
     }, 
     {
         "ArcaneSpellFailure": "5%", 
@@ -1142,14 +1142,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": false, 
-        "Name": "Shield, light steel", 
+        "Name": "Light steel shield", 
         "Price": 9.0, 
         "PriceUnit": "gp", 
         "Source": "CRB", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "6 lbs.", 
-        "id": "shield-light-steel"
+        "id": "light-steel-shield"
     }, 
     {
         "ArcaneSpellFailure": "5%", 
@@ -1160,14 +1160,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": true, 
-        "Name": "Mwk Shield, light steel (quickdraw)", 
+        "Name": "Mwk Light steel shield (quickdraw)", 
         "Price": 209.0, 
         "PriceUnit": "gp", 
         "Source": "APG", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "7 lbs.", 
-        "id": "mwk-shield-light-steel-quickdraw"
+        "id": "mwk-light-steel-shield-quickdraw"
     }, 
     {
         "ArcaneSpellFailure": "5%", 
@@ -1178,14 +1178,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": false, 
-        "Name": "Shield, light steel (quickdraw)", 
+        "Name": "Light steel shield (quickdraw)", 
         "Price": 59.0, 
         "PriceUnit": "gp", 
         "Source": "APG", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "7 lbs.", 
-        "id": "shield-light-steel-quickdraw"
+        "id": "light-steel-shield-quickdraw"
     }, 
     {
         "ArcaneSpellFailure": "15%", 
@@ -1196,14 +1196,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": true, 
-        "Name": "Mwk Shield, heavy wooden", 
+        "Name": "Mwk Heavy wooden shield", 
         "Price": 157.0, 
         "PriceUnit": "gp", 
         "Source": "CRB", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "10 lbs.", 
-        "id": "mwk-shield-heavy-wooden"
+        "id": "mwk-heavy-wooden-shield"
     }, 
     {
         "ArcaneSpellFailure": "15%", 
@@ -1214,14 +1214,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": false, 
-        "Name": "Shield, heavy wooden", 
+        "Name": "Heavy wooden shield", 
         "Price": 7.0, 
         "PriceUnit": "gp", 
         "Source": "CRB", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "10 lbs.", 
-        "id": "shield-heavy-wooden"
+        "id": "heavy-wooden-shield"
     }, 
     {
         "ArcaneSpellFailure": "15%", 
@@ -1232,14 +1232,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": true, 
-        "Name": "Mwk Shield, heavy steel", 
+        "Name": "Mwk Heavy steel shield", 
         "Price": 170.0, 
         "PriceUnit": "gp", 
         "Source": "CRB", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "15 lbs.", 
-        "id": "mwk-shield-heavy-steel"
+        "id": "mwk-heavy-steel-shield"
     }, 
     {
         "ArcaneSpellFailure": "15%", 
@@ -1250,14 +1250,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": false, 
-        "Name": "Shield, heavy steel", 
+        "Name": "Heavy steel shield", 
         "Price": 20.0, 
         "PriceUnit": "gp", 
         "Source": "CRB", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "15 lbs.", 
-        "id": "shield-heavy-steel"
+        "id": "heavy-steel-shield"
     }, 
     {
         "ArcaneSpellFailure": "50%", 
@@ -1268,14 +1268,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "+2", 
         "Mwk": true, 
-        "Name": "Mwk Shield, tower", 
+        "Name": "Mwk Tower shield", 
         "Price": 180.0, 
         "PriceUnit": "gp", 
         "Source": "CRB", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "45 lbs.", 
-        "id": "mwk-shield-tower"
+        "id": "mwk-tower-shield"
     }, 
     {
         "ArcaneSpellFailure": "50%", 
@@ -1286,14 +1286,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "+2", 
         "Mwk": false, 
-        "Name": "Shield, tower", 
+        "Name": "Tower shield", 
         "Price": 30.0, 
         "PriceUnit": "gp", 
         "Source": "CRB", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "45 lbs.", 
-        "id": "shield-tower"
+        "id": "tower-shield"
     }, 
     {
         "ArcaneSpellFailure": "-", 
@@ -1340,14 +1340,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": true, 
-        "Name": "Mwk Gauntlet, locked", 
+        "Name": "Mwk Locked gauntlet", 
         "Price": 158.0, 
         "PriceUnit": "gp", 
         "Source": "AA", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "+5 lbs.", 
-        "id": "mwk-gauntlet-locked"
+        "id": "mwk-locked-gauntlet"
     }, 
     {
         "ArcaneSpellFailure": "n/a", 
@@ -1358,14 +1358,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": false, 
-        "Name": "Gauntlet, locked", 
+        "Name": "Locked gauntlet", 
         "Price": 8.0, 
         "PriceUnit": "gp", 
         "Source": "AA", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "+5 lbs.", 
-        "id": "gauntlet-locked"
+        "id": "locked-gauntlet"
     }, 
     {
         "ArcaneSpellFailure": "-", 
@@ -1412,14 +1412,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": true, 
-        "Name": "Mwk Shield, throwing", 
+        "Name": "Mwk Throwing shield", 
         "Price": 200.0, 
         "PriceUnit": "gp", 
         "Source": "AA", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "-", 
-        "id": "mwk-shield-throwing"
+        "id": "mwk-throwing-shield"
     }, 
     {
         "ArcaneSpellFailure": "-", 
@@ -1430,13 +1430,13 @@
         "Group": "Armor", 
         "MaxDexBonus": "-", 
         "Mwk": false, 
-        "Name": "Shield, throwing", 
+        "Name": "Throwing shield", 
         "Price": 50.0, 
         "PriceUnit": "gp", 
         "Source": "AA", 
         "Speed20Ft": "-", 
         "Speed30Ft": "-", 
         "Weight": "-", 
-        "id": "shield-throwing"
+        "id": "throwing-shield"
     }
 ]

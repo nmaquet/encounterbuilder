@@ -33,20 +33,20 @@ Stoneplate ; 1,800 gp ; +9 ; +1 ; -6 ; 35% ; 15 ft. ; 10 ft. ; 75 lbs. ; ISWG"""
 
 shields = """Buckler ; 5 gp ; +1 ; - ;  -1 ; 5% ; - ; - ; 5 lbs. ; CRB
 Klar ; 12 gp ; +1 ; - ; -1 ; 5% ; - ; - ; 6 lbs. ; ISWG
-Madu, leather ; 30 gp ; +1 ; - ; -2 ; 5% ; - ; - ; 5 lbs. ; AA
-Madu, steel ; 40 gp ; +1 ; - ; -2 ; 5% ; - ; - ; 6 lbs. ; AA
-Shield, light wooden ; 3 gp ; +1 ; - ;  -1 ; 5% ; - ; - ; 5 lbs. ; CRB
-Shield, light wooden (quickdraw) ; 53 gp ; +1 ; - ; -2 ; 5% ; - ; - ; 6 lbs. ; APG
-Shield, light steel ; 9 gp ; +1 ; - ;  -1 ; 5% ; - ; - ; 6 lbs. ; CRB
-Shield, light steel (quickdraw) ; 59 gp ; +1 ; - ; -2 ; 5% ; - ; - ; 7 lbs. ; APG
-Shield, heavy wooden ; 7 gp ; +2 ; - ;  -2 ; 15% ; - ; - ; 10 lbs. ; CRB
-Shield, heavy steel ; 20 gp ; +2 ; - ;  -2 ; 15% ; - ; - ; 15 lbs. ; CRB
-Shield, tower ; 30 gp ; +43 ; +2 ;  -10 ; 50% ; - ; - ; 45 lbs. ; CRB"""
+Leather madu ; 30 gp ; +1 ; - ; -2 ; 5% ; - ; - ; 5 lbs. ; AA
+Steel madu ; 40 gp ; +1 ; - ; -2 ; 5% ; - ; - ; 6 lbs. ; AA
+Light wooden shield; 3 gp ; +1 ; - ;  -1 ; 5% ; - ; - ; 5 lbs. ; CRB
+Light wooden shield (quickdraw) ; 53 gp ; +1 ; - ; -2 ; 5% ; - ; - ; 6 lbs. ; APG
+Light steel shield ; 9 gp ; +1 ; - ;  -1 ; 5% ; - ; - ; 6 lbs. ; CRB
+Light steel shield (quickdraw) ; 59 gp ; +1 ; - ; -2 ; 5% ; - ; - ; 7 lbs. ; APG
+Heavy wooden shield ; 7 gp ; +2 ; - ;  -2 ; 15% ; - ; - ; 10 lbs. ; CRB
+Heavy steel shield ; 20 gp ; +2 ; - ;  -2 ; 15% ; - ; - ; 15 lbs. ; CRB
+Tower shield ; 30 gp ; +43 ; +2 ;  -10 ; 50% ; - ; - ; 45 lbs. ; CRB"""
 
 extras = """Armor spikes ; +50 gp ; - ; - ; - ; - ; - ; - ; +10 lbs. ; CRB
-Gauntlet, locked ; 8 gp ; - ; - ; - ; n/a ; - ; - ; +5 lbs. ; AA
+Locked gauntlet ; 8 gp ; - ; - ; - ; n/a ; - ; - ; +5 lbs. ; AA
 Shield spikes ; +10 gp ; - ; - ; - ; - ; - ; - ; +5 lbs. ; CRB
-Shield, throwing ; +50 gp ; - ; - ; - ; - ; - ; - ; - ; AA"""
+Throwing shield; +50 gp ; - ; - ; - ; - ; - ; - ; - ; AA"""
 
 def slugify(string):
     res = []
