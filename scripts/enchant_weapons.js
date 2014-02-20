@@ -57,6 +57,14 @@ var meleeSpecialAbilities = {
         {name: 'Ominous', cl: 5},
         {name: 'Planar', cl: 9},
         {name: 'Quenching', cl: 5},
+        {name: 'Returning', cl: 7 ,filter: function (weapon) {
+            if (weapon.Range.indexOf("ft") === -1 ) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }},
         {name: 'Seaborne', cl: 7},
         {name: 'Shock', cl: 8},
         {name: 'Spell storing', cl: 12},
@@ -69,7 +77,14 @@ var meleeSpecialAbilities = {
     2: [
         {name: "Advancing", cl: 5},
         {name: "Anarchic", cl: 7},
-        {name: "Anchoring", cl: 10 /*FIXME only melee or thrown */},
+        {name: "Anchoring", cl: 10 ,filter: function (weapon) {
+            if (weapon.Range.indexOf("ft") === -1 ) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }},
         {name: "Axiomatic", cl: 7},
         {name: "Corrosive burst", cl: 12},
         {name: "Defiant", cl: 10},
@@ -132,7 +147,14 @@ var rangedSpecialAbilities = {
         {name: 'Bane', cl: 8},
         {name: 'Called', cl: 9},
         {name: 'Conductive', cl: 8},
-        {name: 'Conserving', cl: 7 /*FIXME only firearms */},
+        {name: 'Conserving', cl: 7 , filter: function (weapon) {
+            if (weapon.WeaponType.toLowerCase().indexOf("firearm") === -1) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }},
         {name: 'Corrosive', cl: 10},
         {name: 'Cruel', cl: 5},
         {name: 'Cunning', cl: 6},
@@ -142,18 +164,30 @@ var rangedSpecialAbilities = {
         {name: 'Huntsman', cl: 7},
         {name: 'Jurist', cl: 4},
         {name: 'Limning', cl: 5},
-        {name: 'Lucky', cl: 8 /*FIXME only fireams */},
+        {name: 'Lucky', cl: 8 , filter: function (weapon) {
+            if (weapon.WeaponType.toLowerCase().indexOf("firearm") === -1) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }},
         {name: 'Merciful', cl: 5},
         {name: 'Planar', cl: 9},
-        {name: 'Reliable', cl: 8 /*FIXME only firearms */},
-        {name: 'Returning', cl: 7 /*FIXME only thrown */},
+        {name: 'Reliable', cl: 8 , filter: function (weapon) {
+            if (weapon.WeaponType.toLowerCase().indexOf("firearm") === -1) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }},
         {name: 'Seeking', cl: 12},
         {name: 'Shock', cl: 8},
         {name: 'Thundering', cl: 5}
     ],
     2: [
         {name: "Anarchic", cl: 7},
-        {name: "Anchoring", cl: 10 /*FIXME only melee or thrown */},
         {name: "Axiomatic", cl: 7},
         {name: "Corrosive burst", cl: 12},
         {name: "Designating, lesser", cl: 7},
@@ -175,8 +209,22 @@ var rangedSpecialAbilities = {
         {name: "Unholy", cl: 7}
     ],
     3: [
-        {name: "Lucky, greater", cl: 12 /*FIXME only firearms */},
-        {name: "Reliable, greater", cl: 12 /*FIXME only fireamrs */},
+        {name: "Lucky, greater", cl: 12 , filter: function (weapon) {
+            if (weapon.WeaponType.toLowerCase().indexOf("firearm") === -1) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }},
+        {name: "Reliable, greater", cl: 12 , filter: function (weapon) {
+            if (weapon.WeaponType.toLowerCase().indexOf("firearm") === -1) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }},
         {name: "Speed", cl: 7}
     ],
     4: [
@@ -196,7 +244,14 @@ var rangedSpecialAbilities = {
 
 var ammunitionSpecialAbilities = {
     1: [
-        {name: 'Dry load', flatprice: 1500, cl: 3 /*FIXME only alchemical or metal cartriges */},
+        {name: 'Dry load', flatprice: 1500, cl: 3, filter: function (weapon) {
+            if (weapon.Name.toLowerCase().indexOf("alchemical cartridge") === -1 && weapon.Name.toLowerCase().indexOf("metal cartridge") === -1) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }},
         {name: 'Bane', cl: 8},
         {name: 'Conductive', cl: 8},
         {name: 'Corrosive', cl: 10},
