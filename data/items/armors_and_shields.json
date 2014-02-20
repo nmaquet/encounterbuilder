@@ -44,14 +44,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "+8", 
         "Mwk": true, 
-        "Name": "Mwk Padded", 
+        "Name": "Mwk Padded armor", 
         "Price": 155.0, 
         "PriceUnit": "gp", 
         "Source": "CRB", 
         "Speed20Ft": "20 ft.", 
         "Speed30Ft": "30 ft.", 
         "Weight": "10 lbs.", 
-        "id": "mwk-padded"
+        "id": "mwk-padded-armor"
     }, 
     {
         "ArcaneSpellFailure": "5%", 
@@ -62,14 +62,14 @@
         "Group": "Armor", 
         "MaxDexBonus": "+8", 
         "Mwk": false, 
-        "Name": "Padded", 
+        "Name": "Padded armor", 
         "Price": 5.0, 
         "PriceUnit": "gp", 
         "Source": "CRB", 
         "Speed20Ft": "20 ft.", 
         "Speed30Ft": "30 ft.", 
         "Weight": "10 lbs.", 
-        "id": "padded"
+        "id": "padded-armor"
     }, 
     {
         "ArcaneSpellFailure": "10%", 

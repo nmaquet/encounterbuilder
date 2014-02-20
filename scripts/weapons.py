@@ -270,7 +270,6 @@ def weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,sourc
 def parseTable(text,proficiency,weapontype):
     table = []
     for line in text.splitlines():
-        print(line)
         splitted = line.split(";")
         if len(splitted) != 10:
             raise ValueError("invalid line : "+ line)
@@ -291,8 +290,10 @@ def parseTable(text,proficiency,weapontype):
         source = splitted[9].strip()
         if weapontype != 'ammunition':
             table.append(weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype, mwk=True))
+            print table[-1]["Name"]
         table.append(weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype, mwk=False))
-    return table    
+        print table[-1]["Name"]
+    return table
         
     
 if __name__ == "__main__":

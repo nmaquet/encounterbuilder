@@ -4,7 +4,7 @@
 import json
 
 light_armors = """Armored Kilt ; 20 gp ; +1 ; +6 ; 0 ; 0% ; 30 ft. ; 20 ft. ; 10 lbs. ; AA
-Padded ; 5 gp ; +1 ; +8 ; 0 ; 5% ; 30 ft. ; 20 ft. ; 10 lbs. ; CRB
+Padded armor; 5 gp ; +1 ; +8 ; 0 ; 5% ; 30 ft. ; 20 ft. ; 10 lbs. ; CRB
 Quilted Cloth ; 100 gp ; +1 ; +8 ; 0 ; 10% ; 30 ft. ; 20 ft. ; 15 lbs. ; APG
 Leather ; 10 gp ; +2 ; +6 ; 0 ; 10% ; 30 ft. ; 20 ft. ; 15 lbs. ; CRB
 Rosewood armor ; 50 gp ; +2 ; +6 ; 0 ; 10% ; 30 ft. ; 20 ft. ; 15 lbs. ; AA
