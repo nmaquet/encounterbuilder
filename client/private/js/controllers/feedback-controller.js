@@ -24,7 +24,7 @@ DEMONSQUID.encounterBuilderControllers.controller('FeedbackController', ['$http'
                 $timeout(function () {
                     $('#feedback').popover('toggle')
                     $.cookie('feedbackPopupAppeared', true, {expires: threeDays});
-                }, delay * 0);
+                }, delay);
             });
         }
         function startUserVoice() {
