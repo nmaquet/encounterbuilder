@@ -44,6 +44,7 @@ module.exports = function (magicitemCollection, defaultFindLimit) {
         magicitemCollection.find(query, options).toArray(function (error, data) {
                 magicItems = data;
                 if (error) {
+                    console.log(error);
                     response.json({error:error});
                     return;
                 }
@@ -55,6 +56,7 @@ module.exports = function (magicitemCollection, defaultFindLimit) {
         magicitemCollection.count(query, function (error, value) {
             count = value;
             if (error) {
+                console.log(error);
                 response.json({error:error});
                 return;
             }
