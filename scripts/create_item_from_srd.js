@@ -82,6 +82,7 @@ for (var i in srd_items) {
         }
     }
     if (eb_item.Name !== "") {
+        delete eb_item.id;
         eb_items.push(eb_item);
     }
     // compareWithKyleItems(eb_item, srd_items[i].id);

@@ -301,6 +301,24 @@ function ammunitionQuantity(weapon) {
     }
 }
 
+function ammunitionWeight(weapon) {
+    var match = /([\d\.]*) lbs*\.*/.exec(weapon.Weight);
+    if (weapon.Weight === "see text") {
+        return ammunitionQuantity(weapon) * 3/20;
+    }
+    else if (weapon.Weight === "-") {
+        return 0;
+    }
+    else if (match) {
+        return Number(match[1].trim());
+    } else {
+        throw Error("no weapon weight for weapon " + weapon.Name + " (weight = '" + weapon.Weight + "')");
+    }
+}
+
+function pounds(weight) {
+    return weight === 1 ? "lb." : "lbs.";
+}
 
 function enchantWeaponNoAbility(weapon, weaponBonus) {
     var enchantedWeapon = clone(weapon);
@@ -308,7 +326,10 @@ function enchantWeaponNoAbility(weapon, weaponBonus) {
     enchantedWeapon.Enchanted = true;
     enchantedWeapon.WeaponBonus = weaponBonus;
     if (weapon.WeaponType === "ammunition") {
-        enchantedWeapon.Price = Math.round(50 * (enchantedWeapon.Price / ammunitionQuantity(enchantedWeapon)));
+        var quantity = ammunitionQuantity(enchantedWeapon);
+        enchantedWeapon.Price = Math.round(50 * (enchantedWeapon.Price / quantity));
+        var weight = Math.round(50 * (ammunitionWeight(enchantedWeapon) / quantity));
+        enchantedWeapon.Weight = "" + weight + " " + pounds(weight);
         enchantedWeapon.Name = ammunitionName(enchantedWeapon)+ " +" + enchantedWeapon.WeaponBonus + " (50)";
     } else {
         enchantedWeapon.Name = enchantedWeapon.Name + " +" + enchantedWeapon.WeaponBonus;
@@ -328,7 +349,10 @@ function enchantWeaponWithAbility(ability, weapon, weaponBonus, abilityBonus) {
     enchantedWeapon.SpecialAbilities = [idify(ability.name)];
     enchantedWeapon.WeaponBonus = weaponBonus;
     if (weapon.WeaponType === "ammunition") {
-        enchantedWeapon.Price = Math.round(50 * (enchantedWeapon.Price / ammunitionQuantity(enchantedWeapon)));
+        var quantity = ammunitionQuantity(enchantedWeapon);
+        enchantedWeapon.Price = Math.round(50 * (enchantedWeapon.Price / quantity));
+        var weight = Math.round(50 * (ammunitionWeight(enchantedWeapon) / quantity));
+        enchantedWeapon.Weight = "" + weight + " " + pounds(weight);
         enchantedWeapon.Name = ability.name + " " + ammunitionName(enchantedWeapon).toLowerCase() + " +" + enchantedWeapon.WeaponBonus + " (50)";
     } else {
         enchantedWeapon.Name = ability.name + " " + enchantedWeapon.Name.toLowerCase() + " +" + enchantedWeapon.WeaponBonus;
