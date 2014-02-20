@@ -65,7 +65,7 @@ function main(db) {
     app.get('/feedback-popover.html', clientRoutes.feedbackPopover);
     app.get('/login.html', clientRoutes.login);
     app.get('/encounter-builder.html', clientRoutes.encounterBuilder);
-    app.get('*', clientRoutes.default);
+    app.get('/', clientRoutes.default);
 
     var port = process.env.PORT || 3000;
 
