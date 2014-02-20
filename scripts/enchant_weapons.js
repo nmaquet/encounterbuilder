@@ -5,6 +5,82 @@ var fs = require('fs');
 var weapons = require(__dirname + "/../data/items/weapons.json");
 var clone = require(__dirname + "/../server/clone.js")().clone;
 
+var ONLY_NON_LETHAL = function (weapon) {
+    if (weapon.Special.toLowerCase().indexOf("nonlethal") === -1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+};
+var ONLY_P_OR_S = function (weapon) {
+    if (weapon.DamageType.indexOf("P") === -1 && weapon.DamageType.indexOf("S") === -1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+};
+var ONLY_HAS_RANGE = function (weapon) {
+    if (weapon.Range.indexOf("ft") === -1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+};
+var ONLY_NOT_LIGHT = function (weapon) {
+    if (weapon.WeaponType.indexOf("light") !== -1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+};
+var ONLY_COMPOSITE_BOWS = function (weapon) {
+    if (weapon.Name.toLowerCase().indexOf("bow") === -1 || weapon.Name.toLowerCase().indexOf("composite") === -1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+};
+var ONLY_BOWS_AND_CROSSBOWS = function (weapon) {
+    if (weapon.DamageType.indexOf("bow") === -1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+};
+
+var ONLY_FIREARMS = function (weapon) {
+    if (weapon.WeaponType.toLowerCase().indexOf("firearm") === -1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+};
+var ONLY_ALCHEMICAL_OR_METAL_CARTRIDGES = function (weapon) {
+    if (weapon.Name.toLowerCase().indexOf("alchemical cartridge") === -1 && weapon.Name.toLowerCase().indexOf("metal cartridge") === -1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+};
+
+var ONLY_BOWS = function (weapon) {
+    if (weapon.DamageType.indexOf("bow") === -1 || weapon.DamageType.indexOf("crossbow") !== -1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+};
+
+
 var meleeSpecialAbilities = {
     1: [
         {name: 'Impervious', flatprice: 3000, cl: 0},
@@ -19,14 +95,7 @@ var meleeSpecialAbilities = {
         {name: 'Courageous', cl: 3},
         {name: 'Cruel', cl: 5},
         {name: 'Cunning', cl: 6},
-        {name: 'Deadly', cl: 5 ,filter: function (weapon) {
-            if (weapon.Special.toLowerCase().indexOf("nonlethal") === -1) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }},
+        {name: 'Deadly', cl: 5, filter: ONLY_NON_LETHAL},
         {name: 'Defending', cl: 8},
         {name: 'Dispelling', cl: 10},
         {name: 'Flaming', cl: 10},
@@ -39,14 +108,7 @@ var meleeSpecialAbilities = {
         {name: 'Heartseeker', cl: 7},
         {name: 'Huntsman', cl: 7},
         {name: 'Jurist', cl: 4},
-        {name: 'Keen', cl: 10 ,filter: function (weapon) {
-            if (weapon.DamageType.indexOf("P") === -1 && weapon.DamageType.indexOf("S") === -1) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }},
+        {name: 'Keen', cl: 10, filter: ONLY_P_OR_S},
         {name: 'Ki focus', cl: 8},
         {name: 'Limning', cl: 5},
         {name: 'Menacing', cl: 10},
@@ -57,14 +119,7 @@ var meleeSpecialAbilities = {
         {name: 'Ominous', cl: 5},
         {name: 'Planar', cl: 9},
         {name: 'Quenching', cl: 5},
-        {name: 'Returning', cl: 7 ,filter: function (weapon) {
-            if (weapon.Range.indexOf("ft") === -1 ) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }},
+        {name: 'Returning', cl: 7, filter: ONLY_HAS_RANGE},
         {name: 'Seaborne', cl: 7},
         {name: 'Shock', cl: 8},
         {name: 'Spell storing', cl: 12},
@@ -77,14 +132,7 @@ var meleeSpecialAbilities = {
     2: [
         {name: "Advancing", cl: 5},
         {name: "Anarchic", cl: 7},
-        {name: "Anchoring", cl: 10 ,filter: function (weapon) {
-            if (weapon.Range.indexOf("ft") === -1 ) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }},
+        {name: "Anchoring", cl: 10, filter: ONLY_HAS_RANGE},
         {name: "Axiomatic", cl: 7},
         {name: "Corrosive burst", cl: 12},
         {name: "Defiant", cl: 10},
@@ -96,14 +144,7 @@ var meleeSpecialAbilities = {
         {name: "Holy", cl: 7},
         {name: "Icy burst", cl: 10},
         {name: "Igniting", cl: 12},
-        {name: "Impact", cl: 9 ,filter: function (weapon) {
-            if (weapon.WeaponType.indexOf("light") !== -1) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }},
+        {name: "Impact", cl: 9, filter: ONLY_NOT_LIGHT },
         {name: "Invigorating", cl: 5},
         {name: "Ki intensifying", cl: 12},
         {name: "Lifesurge", cl: 8},
@@ -133,28 +174,14 @@ var meleeSpecialAbilities = {
 
 var rangedSpecialAbilities = {
     1: [
-        {name: 'Adaptive', flatprice: 1000, cl: 0, filter: function (weapon) {
-            if (weapon.Name.toLowerCase().indexOf("bow") === -1 || weapon.Name.toLowerCase().indexOf("composite") === -1) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }},
+        {name: 'Adaptive', flatprice: 1000, cl: 0, filter: ONLY_COMPOSITE_BOWS},
         {name: 'Impervious', flatprice: 3000, cl: 0},
         {name: 'Glamered', flatprice: 4000, cl: 0},
         {name: 'Allying', cl: 5},
         {name: 'Bane', cl: 8},
         {name: 'Called', cl: 9},
         {name: 'Conductive', cl: 8},
-        {name: 'Conserving', cl: 7 , filter: function (weapon) {
-            if (weapon.WeaponType.toLowerCase().indexOf("firearm") === -1) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }},
+        {name: 'Conserving', cl: 7, filter: ONLY_FIREARMS},
         {name: 'Corrosive', cl: 10},
         {name: 'Cruel', cl: 5},
         {name: 'Cunning', cl: 6},
@@ -164,24 +191,10 @@ var rangedSpecialAbilities = {
         {name: 'Huntsman', cl: 7},
         {name: 'Jurist', cl: 4},
         {name: 'Limning', cl: 5},
-        {name: 'Lucky', cl: 8 , filter: function (weapon) {
-            if (weapon.WeaponType.toLowerCase().indexOf("firearm") === -1) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }},
+        {name: 'Lucky', cl: 8, filter: ONLY_FIREARMS},
         {name: 'Merciful', cl: 5},
         {name: 'Planar', cl: 9},
-        {name: 'Reliable', cl: 8 , filter: function (weapon) {
-            if (weapon.WeaponType.toLowerCase().indexOf("firearm") === -1) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }},
+        {name: 'Reliable', cl: 8, filter: ONLY_FIREARMS},
         {name: 'Seeking', cl: 12},
         {name: 'Shock', cl: 8},
         {name: 'Thundering', cl: 5}
@@ -191,14 +204,7 @@ var rangedSpecialAbilities = {
         {name: "Axiomatic", cl: 7},
         {name: "Corrosive burst", cl: 12},
         {name: "Designating, lesser", cl: 7},
-        {name: "Endless ammunition", cl: 9 ,filter: function (weapon) {
-            if (weapon.DamageType.indexOf("bow") === -1) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }},
+        {name: "Endless ammunition", cl: 9, filter: ONLY_BOWS_AND_CROSSBOWS},
         {name: "Flaming burst", cl: 12},
         {name: "Holy", cl: 7},
         {name: "Icy burst", cl: 10},
@@ -209,49 +215,21 @@ var rangedSpecialAbilities = {
         {name: "Unholy", cl: 7}
     ],
     3: [
-        {name: "Lucky, greater", cl: 12 , filter: function (weapon) {
-            if (weapon.WeaponType.toLowerCase().indexOf("firearm") === -1) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }},
-        {name: "Reliable, greater", cl: 12 , filter: function (weapon) {
-            if (weapon.WeaponType.toLowerCase().indexOf("firearm") === -1) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }},
+        {name: "Lucky, greater", cl: 12, filter: ONLY_FIREARMS},
+        {name: "Reliable, greater", cl: 12, filter: ONLY_FIREARMS},
         {name: "Speed", cl: 7}
     ],
     4: [
         {name: "Brilliant energy", cl: 16},
         {name: "Designating, greater", cl: 12},
         {name: "Nimble shot", cl: 11},
-        {name: "Second chance", cl: 11, filter: function (weapon) {
-            if (weapon.DamageType.indexOf("bow") === -1 || weapon.DamageType.indexOf("crossbow") !== -1) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }}
+        {name: "Second chance", cl: 11, filter: ONLY_BOWS }
     ]
 };
 
 var ammunitionSpecialAbilities = {
     1: [
-        {name: 'Dry load', flatprice: 1500, cl: 3, filter: function (weapon) {
-            if (weapon.Name.toLowerCase().indexOf("alchemical cartridge") === -1 && weapon.Name.toLowerCase().indexOf("metal cartridge") === -1) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }},
+        {name: 'Dry load', flatprice: 1500, cl: 3, filter: ONLY_ALCHEMICAL_OR_METAL_CARTRIDGES},
         {name: 'Bane', cl: 8},
         {name: 'Conductive', cl: 8},
         {name: 'Corrosive', cl: 10},
@@ -362,7 +340,7 @@ function main() {
                 }
                 for (var j in abilityTable[abilityBonus]) {
                     var ability = abilityTable[abilityBonus][j];
-                    if (ability.filter && ability.filter(weapon) ){
+                    if (ability.filter && ability.filter(weapon)) {
                         continue;
                     }
                     var enchantedWeapon = enchantWeaponWithAbility(ability, weapon, weaponBonus, abilityBonus);
