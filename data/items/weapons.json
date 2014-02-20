@@ -3997,7 +3997,7 @@
         "DmgS": "1d6", 
         "Group": "Weapon", 
         "Mwk": true, 
-        "Name": "Mwk Longbow", 
+        "Name": "Mwk Long",
         "Price": 375.0, 
         "PriceUnit": "gp", 
         "Proficiency": "martial", 
@@ -4006,7 +4006,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "3 lbs.", 
-        "id": "mwk-longbow"
+        "id": "mwk-long"
     }, 
     {
         "CL": 0, 
@@ -4016,7 +4016,7 @@
         "DmgS": "1d6", 
         "Group": "Weapon", 
         "Mwk": false, 
-        "Name": "Longbow", 
+        "Name": "Long",
         "Price": 75.0, 
         "PriceUnit": "gp", 
         "Proficiency": "martial", 
@@ -4025,7 +4025,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "3 lbs.", 
-        "id": "longbow"
+        "id": "long"
     }, 
     {
         "CL": 0, 
@@ -4035,7 +4035,7 @@
         "DmgS": "1d6", 
         "Group": "Weapon", 
         "Mwk": true, 
-        "Name": "Mwk Longbow, composite", 
+        "Name": "Mwk Long, composite",
         "Price": 400.0, 
         "PriceUnit": "gp", 
         "Proficiency": "martial", 
@@ -4044,7 +4044,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "3 lbs.", 
-        "id": "mwk-longbow-composite"
+        "id": "mwk-long-composite"
     }, 
     {
         "CL": 0, 
@@ -4054,7 +4054,7 @@
         "DmgS": "1d6", 
         "Group": "Weapon", 
         "Mwk": false, 
-        "Name": "Longbow, composite", 
+        "Name": "Long, composite",
         "Price": 100.0, 
         "PriceUnit": "gp", 
         "Proficiency": "martial", 
@@ -4063,7 +4063,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "3 lbs.", 
-        "id": "longbow-composite"
+        "id": "long-composite"
     }, 
     {
         "CL": 0, 
@@ -4111,7 +4111,7 @@
         "DmgS": "1d4", 
         "Group": "Weapon", 
         "Mwk": true, 
-        "Name": "Mwk Shortbow", 
+        "Name": "Mwk Short",
         "Price": 330.0, 
         "PriceUnit": "gp", 
         "Proficiency": "martial", 
@@ -4120,7 +4120,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "mwk-shortbow"
+        "id": "mwk-short"
     }, 
     {
         "CL": 0, 
@@ -4130,7 +4130,7 @@
         "DmgS": "1d4", 
         "Group": "Weapon", 
         "Mwk": false, 
-        "Name": "Shortbow", 
+        "Name": "Short",
         "Price": 30.0, 
         "PriceUnit": "gp", 
         "Proficiency": "martial", 
@@ -4139,7 +4139,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "shortbow"
+        "id": "short"
     }, 
     {
         "CL": 0, 
@@ -4149,7 +4149,7 @@
         "DmgS": "1d4", 
         "Group": "Weapon", 
         "Mwk": true, 
-        "Name": "Mwk Shortbow, composite", 
+        "Name": "Mwk Short, composite",
         "Price": 375.0, 
         "PriceUnit": "gp", 
         "Proficiency": "martial", 
@@ -4158,7 +4158,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "mwk-shortbow-composite"
+        "id": "mwk-short-composite"
     }, 
     {
         "CL": 0, 
@@ -4168,7 +4168,7 @@
         "DmgS": "1d4", 
         "Group": "Weapon", 
         "Mwk": false, 
-        "Name": "Shortbow, composite", 
+        "Name": "Short, composite",
         "Price": 75.0, 
         "PriceUnit": "gp", 
         "Proficiency": "martial", 
@@ -4177,7 +4177,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "shortbow-composite"
+        "id": "short-composite"
     }, 
     {
         "CL": 0, 
@@ -6695,7 +6695,7 @@
         "DmgS": "1d4", 
         "Group": "Weapon", 
         "Mwk": true, 
-        "Name": "Mwk Bow, thorn", 
+        "Name": "Mwk , thorn",
         "Price": 350.0, 
         "PriceUnit": "gp", 
         "Proficiency": "exotic", 
@@ -6704,7 +6704,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "mwk-bow-thorn"
+        "id": "mwk--thorn"
     }, 
     {
         "CL": 0, 
@@ -6714,7 +6714,7 @@
         "DmgS": "1d4", 
         "Group": "Weapon", 
         "Mwk": false, 
-        "Name": "Bow, thorn", 
+        "Name": ", thorn",
         "Price": 50.0, 
         "PriceUnit": "gp", 
         "Proficiency": "exotic", 
@@ -6723,7 +6723,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "bow-thorn"
+        "id": "-thorn"
     }, 
     {
         "CL": 0, 
@@ -6733,7 +6733,7 @@
         "DmgS": "1d6", 
         "Group": "Weapon", 
         "Mwk": true, 
-        "Name": "Mwk Crossbow, double", 
+        "Name": "Mwk Cross, double",
         "Price": 600.0, 
         "PriceUnit": "gp", 
         "Proficiency": "exotic", 
@@ -6742,7 +6742,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "18 lbs.", 
-        "id": "mwk-crossbow-double"
+        "id": "mwk-cross-double"
     }, 
     {
         "CL": 0, 
@@ -6752,7 +6752,7 @@
         "DmgS": "1d6", 
         "Group": "Weapon", 
         "Mwk": false, 
-        "Name": "Crossbow, double", 
+        "Name": "Cross, double",
         "Price": 300.0, 
         "PriceUnit": "gp", 
         "Proficiency": "exotic", 
@@ -6761,7 +6761,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "18 lbs.", 
-        "id": "crossbow-double"
+        "id": "cross-double"
     }, 
     {
         "CL": 0, 
@@ -6771,7 +6771,7 @@
         "DmgS": "1d3", 
         "Group": "Weapon", 
         "Mwk": true, 
-        "Name": "Mwk Crossbow, hand", 
+        "Name": "Mwk Cross, hand",
         "Price": 400.0, 
         "PriceUnit": "gp", 
         "Proficiency": "exotic", 
@@ -6780,7 +6780,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "mwk-crossbow-hand"
+        "id": "mwk-cross-hand"
     }, 
     {
         "CL": 0, 
@@ -6790,7 +6790,7 @@
         "DmgS": "1d3", 
         "Group": "Weapon", 
         "Mwk": false, 
-        "Name": "Crossbow, hand", 
+        "Name": "Cross, hand",
         "Price": 100.0, 
         "PriceUnit": "gp", 
         "Proficiency": "exotic", 
@@ -6799,7 +6799,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "crossbow-hand"
+        "id": "cross-hand"
     }, 
     {
         "CL": 0, 
@@ -6809,7 +6809,7 @@
         "DmgS": "-", 
         "Group": "Weapon", 
         "Mwk": true, 
-        "Name": "Mwk Crossbow, launching", 
+        "Name": "Mwk Cross, launching",
         "Price": 375.0, 
         "PriceUnit": "gp", 
         "Proficiency": "exotic", 
@@ -6818,7 +6818,7 @@
         "Special": "see text", 
         "WeaponType": "ranged", 
         "Weight": "8 lbs.", 
-        "id": "mwk-crossbow-launching"
+        "id": "mwk-cross-launching"
     }, 
     {
         "CL": 0, 
@@ -6828,7 +6828,7 @@
         "DmgS": "-", 
         "Group": "Weapon", 
         "Mwk": false, 
-        "Name": "Crossbow, launching", 
+        "Name": "Cross, launching",
         "Price": 75.0, 
         "PriceUnit": "gp", 
         "Proficiency": "exotic", 
@@ -6837,7 +6837,7 @@
         "Special": "see text", 
         "WeaponType": "ranged", 
         "Weight": "8 lbs.", 
-        "id": "crossbow-launching"
+        "id": "cross-launching"
     }, 
     {
         "CL": 0, 
@@ -6847,7 +6847,7 @@
         "DmgS": "1d8", 
         "Group": "Weapon", 
         "Mwk": true, 
-        "Name": "Mwk Crossbow, repeating heavy", 
+        "Name": "Mwk Cross, repeating heavy",
         "Price": 700.0, 
         "PriceUnit": "gp", 
         "Proficiency": "exotic", 
@@ -6856,7 +6856,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "12 lbs.", 
-        "id": "mwk-crossbow-repeating-heavy"
+        "id": "mwk-cross-repeating-heavy"
     }, 
     {
         "CL": 0, 
@@ -6866,7 +6866,7 @@
         "DmgS": "1d8", 
         "Group": "Weapon", 
         "Mwk": false, 
-        "Name": "Crossbow, repeating heavy", 
+        "Name": "Cross, repeating heavy",
         "Price": 400.0, 
         "PriceUnit": "gp", 
         "Proficiency": "exotic", 
@@ -6875,7 +6875,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "12 lbs.", 
-        "id": "crossbow-repeating-heavy"
+        "id": "cross-repeating-heavy"
     }, 
     {
         "CL": 0, 
@@ -6885,7 +6885,7 @@
         "DmgS": "1d6", 
         "Group": "Weapon", 
         "Mwk": true, 
-        "Name": "Mwk Crossbow, repeating", 
+        "Name": "Mwk Cross, repeating",
         "Price": 550.0, 
         "PriceUnit": "gp", 
         "Proficiency": "exotic", 
@@ -6894,7 +6894,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "6 lbs.", 
-        "id": "mwk-crossbow-repeating"
+        "id": "mwk-cross-repeating"
     }, 
     {
         "CL": 0, 
@@ -6904,7 +6904,7 @@
         "DmgS": "1d6", 
         "Group": "Weapon", 
         "Mwk": false, 
-        "Name": "Crossbow, repeating", 
+        "Name": "Cross, repeating",
         "Price": 250.0, 
         "PriceUnit": "gp", 
         "Proficiency": "exotic", 
@@ -6913,7 +6913,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "6 lbs.", 
-        "id": "crossbow-repeating"
+        "id": "cross-repeating"
     }, 
     {
         "CL": 0, 
@@ -7341,7 +7341,7 @@
         "DmgS": "-", 
         "Group": "Weapon", 
         "Mwk": false, 
-        "Name": "Crossbow bolt, heavy/light/hand (10)", 
+        "Name": "Cross bolt, heavy/light/hand (10)",
         "Price": 1.0, 
         "PriceUnit": "gp", 
         "Proficiency": "exotic", 
@@ -7350,7 +7350,7 @@
         "Special": "-", 
         "WeaponType": "ammunition", 
         "Weight": "1 lb.", 
-        "id": "crossbow-bolt-heavy-light-hand"
+        "id": "cross-bolt-heavy-light-hand"
     }, 
     {
         "CL": 0, 
@@ -7360,7 +7360,7 @@
         "DmgS": "-", 
         "Group": "Weapon", 
         "Mwk": false, 
-        "Name": "Crossbow bolt, repeating, heavy/light (5)", 
+        "Name": "Cross bolt, repeating, heavy/light (5)",
         "Price": 1.0, 
         "PriceUnit": "gp", 
         "Proficiency": "exotic", 
@@ -7369,7 +7369,7 @@
         "Special": "-", 
         "WeaponType": "ammunition", 
         "Weight": "1 lb.", 
-        "id": "crossbow-bolt-repeating-heavy-light"
+        "id": "cross-bolt-repeating-heavy-light"
     }, 
     {
         "CL": 0, 

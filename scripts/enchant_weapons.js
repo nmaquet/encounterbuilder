@@ -39,7 +39,14 @@ var meleeSpecialAbilities = {
         {name: 'Heartseeker', cl: 7},
         {name: 'Huntsman', cl: 7},
         {name: 'Jurist', cl: 4},
-        {name: 'Keen', cl: 10 /*FIXME only Piercing or Slashing */},
+        {name: 'Keen', cl: 10 ,filter: function (weapon) {
+            if (weapon.DamageType.indexOf("P") === -1 && weapon.DamageType.indexOf("S") === -1) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }},
         {name: 'Ki focus', cl: 8},
         {name: 'Limning', cl: 5},
         {name: 'Menacing', cl: 10},
@@ -74,7 +81,14 @@ var meleeSpecialAbilities = {
         {name: "Holy", cl: 7},
         {name: "Icy burst", cl: 10},
         {name: "Igniting", cl: 12},
-        {name: "Impact", cl: 9 /*FIXME only not light*/},
+        {name: "Impact", cl: 9 ,filter: function (weapon) {
+            if (weapon.WeaponType.indexOf("light") !== -1) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }},
         {name: "Invigorating", cl: 5},
         {name: "Ki intensifying", cl: 12},
         {name: "Lifesurge", cl: 8},
@@ -143,7 +157,14 @@ var rangedSpecialAbilities = {
         {name: "Axiomatic", cl: 7},
         {name: "Corrosive burst", cl: 12},
         {name: "Designating, lesser", cl: 7},
-        {name: "Endless ammunition", cl: 9 /*FIXME only bows & crossbows*/},
+        {name: "Endless ammunition", cl: 9 ,filter: function (weapon) {
+            if (weapon.DamageType.indexOf("bow") === -1) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }},
         {name: "Flaming burst", cl: 12},
         {name: "Holy", cl: 7},
         {name: "Icy burst", cl: 10},
@@ -162,7 +183,14 @@ var rangedSpecialAbilities = {
         {name: "Brilliant energy", cl: 16},
         {name: "Designating, greater", cl: 12},
         {name: "Nimble shot", cl: 11},
-        {name: "Second chance", cl: 11 /*FIXME only bows */}
+        {name: "Second chance", cl: 11, filter: function (weapon) {
+            if (weapon.DamageType.indexOf("bow") === -1 || weapon.DamageType.indexOf("crossbow") !== -1) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }}
     ]
 };
 
