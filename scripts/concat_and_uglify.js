@@ -36,6 +36,7 @@ var jsFiles = [
     "client/private/js/controllers/search-item-controller.js",
     "client/private/js/controllers/item-details-controller.js",
     "client/private/js/directives/click-to-edit.js",
+    "client/private/js/directives/confirm-click.js",
     "client/private/js/filters/abbreviate-monster-source.js",
     "client/private/js/filters/number-to-fraction-string.js",
     "client/private/js/services/monster-service.js",
