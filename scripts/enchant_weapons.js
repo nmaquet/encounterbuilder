@@ -321,6 +321,9 @@ function main() {
         if (weapon.Mwk === true) {
             continue;
         }
+        if (weapon.Name == "Unarmed strike") {
+            continue;
+        }
         if (weapon.WeaponType !== 'ranged' && weapon.WeaponType !== 'ammunition') {
             var abilityTable = meleeSpecialAbilities;
         }
