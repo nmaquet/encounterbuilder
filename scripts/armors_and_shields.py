@@ -22,13 +22,13 @@ Chainmail ; 150 gp ; +6 ; +2 ;  -5 ; 30% ; 20 ft. ; 15 ft. ; 40 lbs. ; CRB
 Breastplate ; 200 gp ; +6 ; +3 ;  -4 ; 25% ; 20 ft. ; 15 ft. ; 30 lbs. ; CRB
 Breastplate (agile) ; 400 gp ; +6 ; +3 ; -4 ; 25% ; 20 ft. ; 15 ft. ; 25 lbs. ; APG"""
 
-heavy_armors = """Splint mail ; 200 gp ; +7 ; +0 ;  -7 ; 40% ; 20 ft.2 ; 15 ft.2 ; 45 lbs. ; CRB
-Banded mail ; 250 gp ; +7 ; +1 ;  -6 ; 35% ; 20 ft.2 ; 15 ft.2 ; 35 lbs. ; CRB
-Field Plate ; 1,200 gp ; +7 ; +1 ; -5 ; 35% ; 20 ft.2 ; 15 ft.2 ; 50 lbs. ; ISWG
-Half-plate ; 600 gp ; +8 ; +0 ;  -7 ; 40% ; 20 ft.2 ; 15 ft.2 ; 50 lbs. ; CRB
-Half-plate (agile) ; 850 gp ; +8 ; +0 ; -7 ; 40% ; 20 ft.2 ; 15 ft.2 ; 55 lbs. ; APG
-Full plate ; 1,500 gp ; +9 ; +1 ;  -6 ; 35% ; 20 ft.2 ; 15 ft.2 ; 50 lbs. ; CRB
-Hellknight plate ; 2,000 gp ; +9 ; +1 ; -5 ; 35% ; 20 ft.2 ; 15 ft.2 ; 50 lbs. ; ISWG
+heavy_armors = """Splint mail ; 200 gp ; +7 ; +0 ;  -7 ; 40% ; 20 ft. ; 15 ft. ; 45 lbs. ; CRB
+Banded mail ; 250 gp ; +7 ; +1 ;  -6 ; 35% ; 20 ft. ; 15 ft. ; 35 lbs. ; CRB
+Field Plate ; 1,200 gp ; +7 ; +1 ; -5 ; 35% ; 20 ft. ; 15 ft. ; 50 lbs. ; ISWG
+Half-plate ; 600 gp ; +8 ; +0 ;  -7 ; 40% ; 20 ft. ; 15 ft. ; 50 lbs. ; CRB
+Half-plate (agile) ; 850 gp ; +8 ; +0 ; -7 ; 40% ; 20 ft. ; 15 ft. ; 55 lbs. ; APG
+Full plate ; 1,500 gp ; +9 ; +1 ;  -6 ; 35% ; 20 ft. ; 15 ft. ; 50 lbs. ; CRB
+Hellknight plate ; 2,000 gp ; +9 ; +1 ; -5 ; 35% ; 20 ft. ; 15 ft. ; 50 lbs. ; ISWG
 Stoneplate ; 1,800 gp ; +9 ; +1 ; -6 ; 35% ; 15 ft. ; 10 ft. ; 75 lbs. ; ISWG"""
 
 shields = """Buckler ; 5 gp ; +1 ; - ;  -1 ; 5% ; - ; - ; 5 lbs. ; CRB
@@ -76,7 +76,7 @@ def armor_or_shield(name,cost,price_unit,armor_bonus,max_dex_bonus,armor_check_p
         "CL" : 0,
         "ArmorBonus" : armor_bonus,
         "MaxDexBonus" : max_dex_bonus,
-        "ArmorCheckPenalty" : max(0, float(armor_check_penalty) - (1 if mwk else 0)),
+        "ArmorCheckPenalty" : min(0, float(armor_check_penalty) + (1 if mwk else 0)),
         "ArcaneSpellFailure" : arcane_spell_failure,
         "Speed30Ft" : speed_30_ft,
         "Speed20Ft" : speed_20_ft,

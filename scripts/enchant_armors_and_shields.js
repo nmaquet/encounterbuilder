@@ -140,6 +140,7 @@ var enchantedArmorsAndShields = []
 function enchantArmorOrShieldNoAbility(armorOrShield, bonus) {
     var enchantedArmorOrShield = clone(armorOrShield);
     enchantedArmorOrShield.Mwk = true;
+    enchantedArmorOrShield.ArmorCheckPenalty = Math.min(0, enchantedArmorOrShield.ArmorCheckPenalty + 1);
     enchantedArmorOrShield.Enchanted = true;
     enchantedArmorOrShield.ArmorBonus = bonus;
     enchantedArmorOrShield.EnhancementBonus = bonus;
@@ -149,14 +150,14 @@ function enchantArmorOrShieldNoAbility(armorOrShield, bonus) {
     enchantedArmorOrShield.id = enchantedArmorOrShield.id + "-" + enchantedArmorOrShield.ArmorBonus;
     return enchantedArmorOrShield;
 }
-function enchantArmorOrShieldWithAbility(ability, armorOrShield, armorBonus, abilityBonus) {
 
+function enchantArmorOrShieldWithAbility(ability, armorOrShield, armorBonus, abilityBonus) {
     var enchantedArmorOrShield = clone(armorOrShield);
     enchantedArmorOrShield.Mwk = true;
+    enchantedArmorOrShield.ArmorCheckPenalty = Math.min(0, enchantedArmorOrShield.ArmorCheckPenalty + 1);
     enchantedArmorOrShield.Enchanted = true;
     enchantedArmorOrShield.SpecialAbilities = [idify(ability.name)];
     enchantedArmorOrShield.ArmorBonus = armorBonus;
-
     if (ability.flatprice) {
         enchantedArmorOrShield.EnhancementBonus = armorBonus;
         enchantedArmorOrShield.Price += 150 + priceModifiers[enchantedArmorOrShield.EnhancementBonus] + ability.flatprice;
@@ -170,6 +171,7 @@ function enchantArmorOrShieldWithAbility(ability, armorOrShield, armorBonus, abi
     enchantedArmorOrShield.id = idify(ability.name) + "-" + enchantedArmorOrShield.id + "-" + enchantedArmorOrShield.ArmorBonus;
     return enchantedArmorOrShield;
 }
+
 function main() {
     for (var i in armors) {
         var armorOrShield = armors[i];
