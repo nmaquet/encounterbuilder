@@ -45,6 +45,7 @@ module.exports = function (magicitemCollection, defaultFindLimit) {
                 magicItems = data;
                 if (error) {
                     response.json({error:error});
+                    return;
                 }
                 if (count !== undefined) {
                     response.json({count: count, magicItems: magicItems});
@@ -55,6 +56,7 @@ module.exports = function (magicitemCollection, defaultFindLimit) {
             count = value;
             if (error) {
                 response.json({error:error});
+                return;
             }
             if (magicItems !== undefined) {
                 response.json({count: count, magicItems: magicItems});
