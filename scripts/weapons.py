@@ -174,7 +174,7 @@ Sword, dueling ; 20 gp ;  1d6 ;1d8 ;19-20/X2  ;  -  ; 3 lbs ;  S ;  -;   ISWG
 Sword, bastard ; 35 gp;   1d8 ;1d10 ;   19-20/X2  ;  -  ; 6 lbs.;  S  ; - ;  CRB
 Waraxe, dwarven ;30 gp  ; 1d8; 1d10  ;  x3;  -  ; 8 lbs. ; S  ; - ;  CRB
 Waraxe, dwarven double;  60 gp  ; 1d8 ;1d10 ;   X3 ; - ;  12 lbs. ;S  ; see text ;   ARG
-Whip ;   1 gp;    ;1d2; 1d3 ;X2 ; - ;  2 lbs.;  S;   disarm, nonlethal, reach, trip;  CRB
+Whip ;   1 gp;1d2; 1d3 ;X2 ; - ;  2 lbs.;  S;   disarm, nonlethal, reach, trip;  CRB
 """
 exotic_two_handed="""Axe, Orc Double; 60 gp   ;1d6/1d6 ;1d8/1d8 ;x3 ; - ;  15 lbs.; S ;  double;  CRB
 Battle Ladder  ; 20 gp  ; 1d4/1d4 ;1d6/1d6; X2  ;- ;  8 lbs. ; B;  double, trip  ;  GoG
@@ -272,6 +272,8 @@ def parseTable(text,proficiency,weapontype):
     for line in text.splitlines():
         print(line)
         splitted = line.split(";")
+        if len(splitted) != 10:
+            raise ValueError("invalid line : "+ line)
         name = splitted[0].strip()
         price = splitted[1].split()
         cost = price[0].strip()

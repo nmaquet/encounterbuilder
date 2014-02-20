@@ -19,7 +19,14 @@ var meleeSpecialAbilities = {
         {name: 'Courageous', cl: 3},
         {name: 'Cruel', cl: 5},
         {name: 'Cunning', cl: 6},
-        {name: 'Deadly', cl: 5 /*FIXME only melee non lethal */},
+        {name: 'Deadly', cl: 5 ,filter: function (weapon) {
+            if (weapon.Special.toLowerCase().indexOf("nonlethal") === -1) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }},
         {name: 'Defending', cl: 8},
         {name: 'Dispelling', cl: 10},
         {name: 'Flaming', cl: 10},
