@@ -3,7 +3,7 @@ div.encounter(ng-show="encounter")
         span.encounter-name.pointer(click-to-edit='encounter.Name', on-save="encounterChanged()")
         span#encounter-cr
             | (CR {{encounter.CR | numberToFractionString}})
-            a.pointer.remove-encounter(ng-click="removeEncounter(encounter)", confirm-click="Are you sure?")
+            a.pointer.remove-encounter(ng-click="removeEncounter(encounter)")
                 i.icon-trash
     .row-fluid
         legend Monsters
@@ -29,7 +29,7 @@ div.encounter(ng-show="encounter")
             span#encounter-xp {{encounter.xp | number}}
     .row-fluid
         legend Treasure
-            a.pointer.randomize-loot(ng-click="randomizeLoot(encounter)", confirm-click="Are you sure?")
+            a.pointer.randomize-loot(ng-click="randomizeLoot(encounter)")
                 i.icon-refresh
         ul#encounter-items.unstyled
             li.encounter-item-row(ng-repeat='(id,item) in encounter.items')

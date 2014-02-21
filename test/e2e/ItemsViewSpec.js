@@ -43,7 +43,7 @@ describe('Items View', function () {
         expect(element('ul.nav-tabs li.active').text()).toBe('Monsters');
         element('#itemsTab').click();
         expect(element('ul.nav-tabs li.active').text()).toBe('Items');
-        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Adamantine Breastplate");
+        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Acid bolt (1)");
     });
 
     it('should display 5 pages and 4 arrows when opening items tab', function () {
@@ -53,27 +53,27 @@ describe('Items View', function () {
 
     it('the pagination should work', function () {
         element('#itemsTab').click();
-        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Adamantine Breastplate");
+        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Acid bolt (1)");
         element("a:contains(2)").click();
-        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Death's Head Talisman 24HD");
+        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Bane gauntlet +1");
     });
 
     it('should find three items and sort by name when searching for "plate""', function () {
         element('#itemsTab').click();
         inputNameSubstring('plate');
-        expect(repeater('tr.item-row').count()).toBe(3);
+        expect(repeater('tr.item-row').count()).toBe(19);
         expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Adamantine Breastplate");
-        expect(element('tr.item-row:nth-child(2) td:nth-child(1) p').text()).toBe("Dragonhide Plate");
-        expect(element('tr.item-row:nth-child(3) td:nth-child(1) p').text()).toBe("Dwarven Plate");
+        expect(element('tr.item-row:nth-child(2) td:nth-child(1) p').text()).toBe("Breastplate");
+        expect(element('tr.item-row:nth-child(3) td:nth-child(1) p').text()).toBe("Breastplate (agile)");
     });
 
     it('should sort by price when asked', function () {
         element('#itemsTab').click();
         inputNameSubstring('plate');
         select('sortOrder').option('price');
-        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Dragonhide Plate");
-        expect(element('tr.item-row:nth-child(2) td:nth-child(1) p').text()).toBe("Adamantine Breastplate");
-        expect(element('tr.item-row:nth-child(3) td:nth-child(1) p').text()).toBe("Dwarven Plate");
+        expect(element('tr.item-row:nth-child(1) td:nth-child(1) p').text()).toBe("Breastplate");
+        expect(element('tr.item-row:nth-child(2) td:nth-child(1) p').text()).toBe("Mwk Breastplate");
+        expect(element('tr.item-row:nth-child(3) td:nth-child(1) p').text()).toBe("Breastplate (agile)");
     });
 
     it('should sort by CL when asked', function () {

@@ -22,7 +22,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterListController',
                     ++i;
                 } while(exists(encounter.Name));
                 selectedEncounterService.selectedEncounter(encounter);
-                encounterService.encounters.push(encounter);
+                encounterService.encounters.unshift(encounter);
                 encounterService.encounterChanged(encounter);
             }
 

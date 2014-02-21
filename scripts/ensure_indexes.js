@@ -31,7 +31,7 @@ function createMagicItemsIndex(db) {
         Name: 1,
         CL: 1,
         Price:1
-    }
+    };
     db.collection('magicitems').ensureIndex(magicItemsIndexedFields, function (error, info) {
         if (error) {
             console.log("Error :");
@@ -48,7 +48,7 @@ function createMonsersIndex(db) {
     var monstersIndexedFields = {
         Name: 1,
         CR: 1
-    }
+    };
     db.collection('monsters').ensureIndex(monstersIndexedFields, function (error, info) {
         if (error) {
             console.log("Error :");

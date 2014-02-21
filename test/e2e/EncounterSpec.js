@@ -6,8 +6,13 @@ describe('Encounter', function () {
         input('nameSubstring').enter(text);
     }
 
-    beforeEach(function(){
+    var initialized = false;
+    beforeEach(function () {
         browser().navigateTo('/');
+
+        if (!initialized) {
+
+        }
     });
 
     it('should allow login', function () {
@@ -38,13 +43,13 @@ describe('Encounter', function () {
         expect(element('li.encounter-monster-row:nth-child(1) span.monster-cr').text()).toBe("CR 1/8");
     });
 
-    it('should add two Adamantine Breastplate to encounter when user clicks on the "plus" button twice in the search results list', function () {
+    it('should add two Acid bolt (1) to encounter when user clicks on the "plus" button twice in the search results list', function () {
         expect(repeater('li.encounter-item-row').count()).toBe(0);
         element('tr.item-row:nth-child(1) td:nth-child(4) button').click();
         element('tr.item-row:nth-child(1) td:nth-child(4) button').click();
         expect(repeater('li.encounter-item-row').count()).toBe(1);
         expect(element('li.encounter-item-row:nth-child(1) span.item-amount').text()).toBe("2");
-        expect(element('li.encounter-item-row:nth-child(1) span.item-name').text()).toBe("Adamantine Breastplate");
+        expect(element('li.encounter-item-row:nth-child(1) span.item-name').text()).toBe("Acid bolt (1)");
     });
 
     it('should add two Bats to encounter when user clicks enters "2" and on the "plus in the search results list', function () {
@@ -63,7 +68,7 @@ describe('Encounter', function () {
         expect(repeater('li.encounter-monster-row').count()).toBe(0);
     });
 
-    it('should remove all Adamantine Breastplates from encounter when user clicks on the remove button', function () {
+    it('should remove all Acid bolt (1)s from encounter when user clicks on the remove button', function () {
         expect(repeater('li.encounter-item-row').count()).toBe(1);
         element('li.encounter-item-row:nth-child(1) button.remove-item-btn').click();
         expect(repeater('li.encounter-item-row').count()).toBe(0);
@@ -79,7 +84,7 @@ describe('Encounter', function () {
         expect(element('li.encounter-monster-row:nth-child(1) span.monster-amount').text()).toBe("3");
     });
 
-    it('should remove one Adamantine Breastplate from encounter when user clicks on the minus button', function () {
+    it('should remove one Acid bolt (1) from encounter when user clicks on the minus button', function () {
         element('tr.item-row:nth-child(1) td:nth-child(4) button').click();
         element('tr.item-row:nth-child(1) td:nth-child(4) button').click();
         element('tr.item-row:nth-child(1) td:nth-child(4) button').click();
@@ -88,14 +93,14 @@ describe('Encounter', function () {
         element('li.encounter-item-row:nth-child(1) button.decrement-item-btn').click();
         expect(element('li.encounter-item-row:nth-child(1) span.item-amount').text()).toBe("3");
     });
-    
+
     it('should add one Bat from encounter when user clicks on the plus button', function () {
         expect(element('li.encounter-monster-row:nth-child(1) span.monster-amount').text()).toBe("3");
         element('li.encounter-monster-row:nth-child(1) button.increment-monster-btn').click();
         expect(element('li.encounter-monster-row:nth-child(1) span.monster-amount').text()).toBe("4");
     });
 
-    it('should add one Adamantine Breastplate from encounter when user clicks on the plus button', function () {
+    it('should add one Acid bolt (1) from encounter when user clicks on the plus button', function () {
         expect(element('li.encounter-item-row:nth-child(1) span.item-amount').text()).toBe("3");
         element('li.encounter-item-row:nth-child(1) button.increment-item-btn').click();
         expect(element('li.encounter-item-row:nth-child(1) span.item-amount').text()).toBe("4");
@@ -122,30 +127,33 @@ describe('Encounter', function () {
 
     it('should update the right-side pane when you click on an item in the encounter panel', function () {
         element('li.encounter-item-row:nth-child(1) span.item-name a').click();
-        expect(element('h2:visible').text()).toBe("Adamantine Breastplate");
+        expect(element('h2:visible').text()).toBe("Acid bolt (1)");
     });
 
-    it ('should create a second encounter',function(){
+    it('should create a second encounter', function () {
         element('a.encounter-dropdown').click();
         element('a.encounter-dropdown-create').click();
         expect(element('a.encounter-dropdown').text()).toBe("Untitled #1 (CR 0)\n ");
         expect(repeater('li.encounter-monster-row').count()).toBe(0);
     });
 
-    it ('should reselect the first encounter',function(){
-        expect(element('a.encounter-dropdown').text()).toBe("Untitled #1 (CR 0)\n ");
+    it('should reselect the first encounter', function () {
+        expect(element('a.encounter-dropdown').text()).toBe("Untitled #0 (CR 1/8)\n ");
         element('a.encounter-dropdown').click();
         element('a.encounter-dropdown-select').click();
-        expect(element('a.encounter-dropdown').text()).toBe("Untitled #0 (CR 1/8)\n ");
+        expect(element('a.encounter-dropdown').text()).toBe("Untitled #1 (CR 0)\n ");
+
     });
 
     it('should remove both encounters', function () {
         expect(element('.encounter').css("display")).not().toBe("none");
         expect(element('.encounter-no-encounter').css("display")).toBe("none");
         element('a.remove-encounter').click();
-        sleep(0.5); /* wait for jquery animations to terminate */
+        sleep(0.5);
+        /* wait for jquery animations to terminate */
         element('a.remove-encounter').click();
-        sleep(0.5); /* wait for jquery animations to terminate */
+        sleep(0.5);
+        /* wait for jquery animations to terminate */
         expect(element('.encounter').css("display")).toBe("none");
         expect(element('.encounter-no-encounter').css("display")).not().toBe("none");
     });
@@ -154,7 +162,8 @@ describe('Encounter', function () {
         expect(browser().location().path()).toBe('/app');
         element("#user-dropdown").click();
         element("#user-dropdown-logout").click();
-        sleep(0.1); /* necessary to wait for page reload... ugly, I know */
+        sleep(0.1);
+        /* necessary to wait for page reload... ugly, I know */
         expect(browser().location().path()).toBe('/login');
     });
 });
