@@ -132,23 +132,30 @@ describe('Encounter', function () {
         expect(repeater('li.encounter-monster-row').count()).toBe(0);
     });
 
-    it('should reselect the first encounter', function () {
-        expect(element('a.encounter-dropdown').text()).toBe("Untitled #0 (CR 1/8)\n ");
-        element('a.encounter-dropdown').click();
-        element('a.encounter-dropdown-select').click();
-        expect(element('a.encounter-dropdown').text()).toBe("Untitled #1 (CR 0)\n ");
-
+    it('should not remove the encounter when clicking on "no" on the popover', function () {
+        element('a.remove-encounter').click();
+        element('.confirm-dialog-btn-no').click();
+        /* wait for jquery animations to terminate */
+        sleep(0.5);
+        element('a.remove-encounter').click();
+        element('.confirm-dialog-btn-no').click();
+        /* wait for jquery animations to terminate */
+        sleep(0.5);
+        expect(element('.encounter').css("display")).not().toBe("none");
+        expect(element('.encounter-no-encounter').css("display")).toBe("none");
     });
 
     it('should remove both encounters', function () {
         expect(element('.encounter').css("display")).not().toBe("none");
         expect(element('.encounter-no-encounter').css("display")).toBe("none");
         element('a.remove-encounter').click();
-        sleep(0.5);
+        element('.confirm-dialog-btn-yes').click();
         /* wait for jquery animations to terminate */
+        sleep(0.5);
         element('a.remove-encounter').click();
-        sleep(0.5);
+        element('.confirm-dialog-btn-yes').click();
         /* wait for jquery animations to terminate */
+        sleep(0.5);
         expect(element('.encounter').css("display")).toBe("none");
         expect(element('.encounter-no-encounter').css("display")).not().toBe("none");
     });

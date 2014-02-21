@@ -65,8 +65,19 @@ describe('EncounterComputedValues', function () {
         expect(element('span.encounter-coins-cp').text()).toBe("          0 cp                 ");
     });
 
+    it('should display 0 coins after clicking the randomize loot button and clicking "no"', function () {
+        element('a.randomize-loot').click();
+        element('.confirm-dialog-btn-no').click();
+        //FIXME whitespace! easier said than done because element('').text() doesn't return a string but a promise
+        expect(element('span.encounter-coins-pp').text()).toBe("          0 pp                 ");
+        expect(element('span.encounter-coins-gp').text()).toBe("          0 gp                 ");
+        expect(element('span.encounter-coins-sp').text()).toBe("          0 sp                 ");
+        expect(element('span.encounter-coins-cp').text()).toBe("          0 cp                 ");
+    });
+
     it('should display a lot of  coins after clicking the randomize loot button ', function () {
         element('a.randomize-loot').click();
+        element('.confirm-dialog-btn-yes').click();
         //FIXME whitespace! easier said than done because element('').text() doesn't return a string but a promise
         expect(element('span.encounter-coins-pp').text()).not().toBe("          0 pp                 ");
         expect(element('span.encounter-coins-gp').text()).not().toBe("          0 gp                 ");
@@ -76,6 +87,7 @@ describe('EncounterComputedValues', function () {
 
     it('should remove the encounter', function () {
         element('a.remove-encounter').click();
+        element('.confirm-dialog-btn-yes').click();
         sleep(0.5); /* wait for jquery animations to terminate */
         expect(element('.encounter').css("display")).toBe("none");
         expect(element('.encounter-no-encounter').css("display")).not().toBe("none");
