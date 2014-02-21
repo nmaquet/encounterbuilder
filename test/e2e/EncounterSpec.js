@@ -6,13 +6,8 @@ describe('Encounter', function () {
         input('nameSubstring').enter(text);
     }
 
-    var initialized = false;
     beforeEach(function () {
         browser().navigateTo('/');
-
-        if (!initialized) {
-
-        }
     });
 
     it('should allow login', function () {
