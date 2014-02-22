@@ -6,10 +6,10 @@ var uglify_js = require("uglify-js");
 
 var cssFiles = [
     // Dependencies
-    "client/private/bower_components/bootstrap.css/css/bootstrap.css",
+    "client/private/bower_components/bootstrap/dist/css/bootstrap.css",
     "client/private/bower_components/jquery-ui/themes/base/jquery-ui.css",
     // App files
-    "client/private/css/app.css"
+    "client/private/css/encounter-builder.css"
 ];
 
 var jsFiles = [
@@ -22,7 +22,7 @@ var jsFiles = [
     "client/private/bower_components/jquery/jquery.js",
     "client/private/bower_components/jquery-ui/ui/jquery-ui.js",
     "client/private/bower_components/jquery-cookie/jquery.cookie.js",
-    "client/private/bower_components/bootstrap.css/js/bootstrap.js",
+    "client/private/bower_components/bootstrap/dist/js/bootstrap.js",
     // App files
     "client/private/js/app.js", /* app.js MUST be the first app file ! */
     "client/private/js/controllers/encounter-controller.js",

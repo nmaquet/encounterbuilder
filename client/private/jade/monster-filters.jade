@@ -1,12 +1,12 @@
-.row-fluid
+.row
     label(for='search') Search
     input#monster-search(type='text', name='search', placeholder='Type something…', ng-model='nameSubstring')
-    .row-fluid
+    .row
         label(for='sort') Sort by:
         select#monster-sort(ng-model='orderProp')
             option(value='name') Name
             option(value='cr') Challenge Rating
-    .row-fluid
+    .row
         label(for='type') Type:
         select#type(ng-model='type')
             option(value='any') Any

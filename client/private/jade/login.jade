@@ -32,7 +32,7 @@ style(type='text/css').
 
 .container(ng-controller='LoginController')
     .content
-        .alert.alert-error(ng-if='loginFailed')
+        .alert.alert-danger(ng-if='loginFailed')
             strong Log in failed
         .row
             .login-form
@@ -43,4 +43,4 @@ style(type='text/css').
                             input(type='text', placeholder='Username', name='username', ng-model='username')
                         .clearfix
                             input(type='password', placeholder='Password', name='password', ng-model='password')
-                        button#login-button.btn.primary(type='submit') Log in
+                        button#login-button.btn.btn-default.primary(type='submit') Log in

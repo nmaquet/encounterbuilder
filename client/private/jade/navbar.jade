@@ -1,59 +1,59 @@
 .navbar-inner
-    .container-fluid
-        button.btn.btn-navbar(type='button', data-toggle='collapse', data-target='.nav-collapse')
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-        a.brand(href='#', title='') Encounter Builder
+    .row
+        button.btn.btn-default.navbar-btn(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.glyphicon-bar
+            span.glyphicon-bar
+            span.glyphicon-bar
+        a.navbar-brand(href='#', title='') Encounter Builder
         .dropdown.navbar-text.pull-left(ng-controller="EncounterListController")
-            a.encounter-dropdown.dropdown-toggle.btn.navbar-link(role='button', data-toggle='dropdown', ng-show="selectedEncounter")
+            a.encounter-dropdown.dropdown-toggle.btn.btn-default.navbar-link(role='button', data-toggle='dropdown', ng-show="selectedEncounter")
                 | {{selectedEncounter.Name}} (CR {{selectedEncounter.CR | numberToFractionString}})
                 | &nbsp;
                 b.caret
-            a.encounter-dropdown-no-encounter.dropdown-toggle.btn.navbar-link(role='button', data-toggle='dropdown', ng-hide="selectedEncounter")
+            a.encounter-dropdown-no-encounter.dropdown-toggle.btn.btn-default.navbar-link(role='button', data-toggle='dropdown', ng-hide="selectedEncounter")
                 | (no encounters)
                 | &nbsp;
                 b.caret
             ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
                 li
                     a.encounter-dropdown-create.pointer(tabindex='-1', ng-click='createEncounter()')
-                        i.icon-plus
+                        i.glyphicon-plus
                         strong &nbsp;Create new encounter
                 li.divider.pointer
                 li(ng-repeat='encounter in encounters')
                     a.pointer.encounter-dropdown-select(tabindex='-1', ng-click='selectEncounter(encounter)')
-                        i.icon-chevron-right
+                        i.glyphicon-chevron-right
                         | &nbsp;{{encounter.Name}} (CR {{encounter.CR | numberToFractionString}})
-        .nav-collapse.collapse
+        .navbar-collapse.collapse
             ul.nav.nav-social
                 li.active
                     a(href='#todo')
-                        i.icon-eye-open.icon-white
+                        i.glyphicon-eye-open.glyphicon-white
                         | Views
                 li
                     a(href='#todo')
-                        i.icon-heart.icon-white
+                        i.glyphicon-heart.glyphicon-white
                         | Likes
                 li
                     a(href='#todo')
-                        i.icon-bullhorn.icon-white
+                        i.glyphicon-bullhorn.glyphicon-white
                         | Comments
                 li
                     a(href='#todo')
-                        i.icon-user.icon-white
+                        i.glyphicon-user.glyphicon-white
                         | Spawns
             ul.nav.nav-settings
                 li.active
                     a(href='#todo')
-                        i.icon-cog.icon-white
+                        i.glyphicon-cog.glyphicon-white
                 li
                     a(href='#todo')
-                        i.icon-folder-close.icon-white
+                        i.glyphicon-folder-close.glyphicon-white
                 li
                     a#feedback.pointer(data-uv-trigger='data-uv-trigger', style='background-color: #E2753A; color: white; position: fixed;', data-toggle='popover', ng-controller='FeedbackController') Send us Feedback !!!
             .dropdown.navbar-text.pull-right(ng-controller='LogoutController')
-                a#user-dropdown.dropdown-toggle.btn.navbar-link(role='button', data-toggle='dropdown')
-                    i.icon-user
+                a#user-dropdown.dropdown-toggle.btn.btn-default.navbar-link(role='button', data-toggle='dropdown')
+                    i.glyphicon-user
                     | &nbsp;{{user.username}}&nbsp;
                     b.caret
                 ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')

@@ -1,9 +1,9 @@
-.row-fluid
-    .span8
+.row
+    .col-md-8
         h2 {{monster.Name}}
         small Source: {{monster.Source}}
         p {{monster.Description_Visual}}
-    .span4
+    .col-md-4
         .thumbnail
             ul.unstyled
                 li
@@ -21,8 +21,8 @@
                 li
                     strong Senses
                     | &nbsp;{{monster.Senses}}
-.row-fluid
-    .span8
+.row
+    .col-md-8
         legend Offense
         ul.unstyled
             li
@@ -41,7 +41,7 @@
                 strong Special Attacks
                 | &nbsp;{{monster.SpecialAttacks}};
             li(ng-bind-html='monster.SLASafe')
-    .span4
+    .col-md-4
         legend Defense
         ul.unstyled
             li
@@ -70,8 +70,8 @@
             li(ng-if='monster.SR')
                 strong SR
                 | &nbsp;{{monster.SR}}
-.row-fluid
-    .span8
+.row
+    .col-md-8
         legend Statistics
         ul.unstyled
             li
@@ -109,7 +109,7 @@
             li
                 strong SQ
                 | &nbsp;{{monster.SQ}}
-    .span4
+    .col-md-4
         div
             legend Ecology
         div
@@ -123,13 +123,13 @@
                 li
                     strong Treasure
                     | &nbsp;{{monster.Treasure}}
-.row-fluid
-    .span12
+.row
+    .col-md-12
         span(ng-if='monster.SpecialAbilitiesSafe')
             legend Special Abilities
             // FIXME Use jQuery to change the <h5> tags into <p> or <div>
             div(ng-bind-html='monster.SpecialAbilitiesSafe')
-.row-fluid
-    .span12
+.row
+    .col-md-12
         legend Description
         div(ng-bind-html='monster.DescriptionSafe')

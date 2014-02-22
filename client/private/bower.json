@@ -11,7 +11,7 @@
         "jquery": "~1.10",
         "jquery-ui": "~1.10",
         "jquery-cookie":"~1.4",
-        "bootstrap.css": "~2.3"
+        "bootstrap": "~3.1"
     },
     "devDependencies": {
         "angular-mocks": "~1.2"

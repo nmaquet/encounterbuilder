@@ -4,8 +4,8 @@ div.encounter(ng-show="encounter")
         span#encounter-cr
             | (CR {{encounter.CR | numberToFractionString}})
             a.pointer.remove-encounter(ng-click="removeEncounter(encounter)", confirm-click="Are you sure ?", confirm-title="Delete encounter")
-                i.icon-trash
-    .row-fluid
+                i.glyphicon-trash
+    .row
         legend Monsters
         ul#encounter-monsters.unstyled
             li.encounter-monster-row(ng-repeat='(id,monster) in encounter.Monsters')
@@ -18,19 +18,19 @@ div.encounter(ng-show="encounter")
                     strong CR {{monster.CR | numberToFractionString}}
                 | &nbsp;
                 span.encounter-monsters-buttons.pointer
-                    button.btn.btn-xmini.decrement-monster-btn(ng-class="{disabled: monster.amount<=1}", ng-disabled="monster.amount<=1", ng-click='decrementMonster(monster)')
-                        i.icon-minus
-                    button.btn.btn-xmini.increment-monster-btn(ng-click='incrementMonster(monster)')
-                        i.icon-plus
-                    button.btn.btn-danger.btn-xmini.remove-monster-btn(ng-click='removeMonsterById(id)')
-                        i.icon-remove
+                    button.btn.btn-default.btn-xs.decrement-monster-btn(ng-class="{disabled: monster.amount<=1}", ng-disabled="monster.amount<=1", ng-click='decrementMonster(monster)')
+                        i.glyphicon-minus
+                    button.btn.btn-default.btn-xs.increment-monster-btn(ng-click='incrementMonster(monster)')
+                        i.glyphicon-plus
+                    button.btn.btn-danger.btn-xs.remove-monster-btn(ng-click='removeMonsterById(id)')
+                        i.glyphicon-remove
         p
             b XP&nbsp;
             span#encounter-xp {{encounter.xp | number}}
-    .row-fluid
+    .row
         legend Treasure
             a.pointer.randomize-loot(ng-click="randomizeLoot(encounter)" , confirm-click="Are you sure ?", confirm-title="Randomize treasure")
-                i.icon-refresh
+                i.glyphicon-refresh
         ul#encounter-items.unstyled
             li.encounter-item-row(ng-repeat='(id,item) in encounter.items')
                 span.badge.badge-info.item-amount {{item.amount}}
@@ -42,12 +42,12 @@ div.encounter(ng-show="encounter")
                     |{{item.Price}}&nbsp;{{item.PriceUnit}}
                 | &nbsp;
                 span.encounter-items-buttons.pointer
-                    button.btn.btn-xmini.decrement-item-btn(ng-class="{disabled: item.amount<=1}", ng-disabled="item.amount<=1", ng-click='decrementItem(item)')
-                        i.icon-minus
-                    button.btn.btn-xmini.increment-item-btn(ng-click='incrementItem(item)')
-                        i.icon-plus
+                    button.btn.btn-default.btn-xmini.decrement-item-btn(ng-class="{disabled: item.amount<=1}", ng-disabled="item.amount<=1", ng-click='decrementItem(item)')
+                        i.glyphicon-minus
+                    button.btn.btn-default.btn-xmini.increment-item-btn(ng-click='incrementItem(item)')
+                        i.glyphicon-plus
                     button.btn.btn-danger.btn-xmini.remove-item-btn(ng-click='removeItemById(id)')
-                        i.icon-remove
+                        i.glyphicon-remove
         b Coins
         span.encounter-coins-pp.pointer(click-to-edit='encounter.coins.pp', display="{{encounter.coins.pp | number}} pp", on-save="encounterChanged()", numeric="true")
         span.encounter-coins-gp.pointer(click-to-edit='encounter.coins.gp', display="{{encounter.coins.gp | number}} gp", on-save="encounterChanged()", numeric="true")
