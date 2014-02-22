@@ -1,7 +1,9 @@
-.container-fluid
+header
+    include header
+.container
     .row
         .col-md-3
-            .well.encounter-well.sidebar-nav(ng-controller='EncounterController')
+            .section.col-sm-12.encounter-well.sidebar-nav(ng-controller='EncounterController')
                 include encounter
         .col-md-9(ng-controller='TabController')
             .row
@@ -15,22 +17,19 @@
                                 | Items
             .row(ng-show="selectedTab === 'monsters'")
                 .col-md-4(ng-controller='SearchMonsterController')
-                    .well.sidebar-nav
+                    .section.sidebar-nav
                         include monster-filters
                     .result-list
                         include monster-list
-                .col-md-8.well(ng-controller='MonsterDetailController')
+                .col-md-8.section(ng-controller='MonsterDetailController')
                     include monster-details
             .row(ng-show="selectedTab === 'items'")
                 .col-md-4(ng-controller='SearchItemController')
-                    .well.sidebar-nav
+                    .section.sidebar-nav
                         include item-filters
                     .result-list
                         include item-list
-                .col-md-8.well(ng-controller='ItemDetailsController')
+                .col-md-8.section(ng-controller='ItemDetailsController')
                     include item-details
-.navbar.navbar-inverse.navbar-fixed-top
-    include navbar
-hr
 footer
     include footer

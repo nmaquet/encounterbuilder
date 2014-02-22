@@ -1,0 +1,19 @@
+.encounter-row {
+  overflow: hidden;
+  font-size: 12px;
+  a {
+    color: white;
+  }
+  .badge {
+    font-size: 11px;
+  }
+  .price-container {
+    font-size: 11px;
+  }
+  .table & > td {
+    padding: 8px 2px;
+  }
+}
+.encounter-items-buttons {
+  @extend .pointer;
+}

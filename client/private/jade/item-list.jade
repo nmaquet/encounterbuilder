@@ -16,5 +16,5 @@ table.items.table.table-striped.well
             td(ng-class='{selected: selectedItemId == item.id}')
                 input(type='text', placeholder='1', ng-model='item.amountToAdd', style='width: 25px;')
                 button.btn.btn-default.btn-xs(ng-class="{disabled: !selectedEncounter}", ng-disabled="!selectedEncounter", ng-click='addItem(item)')
-                    i.fa-plus
+                    i.icon.fa-plus
 pagination.pagination-sm.page.pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')

@@ -1,4 +1,7 @@
 .round { @include border-radius(50%); }
+.no-border { border-width: 0; }
+.no-radius { @include border-radius(0); }
+
 .animate { @include transition(all, 0.3s, ease-in-out); }
 .pointer { cursor: pointer; }
 

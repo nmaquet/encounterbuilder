@@ -1,0 +1,21 @@
+//GREY SHADES
+$coal: #1f1c11;
+$grey-dark: #6e6b69;
+$grey: #bdb8b4;
+$grey-light: #d9d6d4;
+//GOLD SHADES
+$gold-dark: #665924;
+$gold: #b2932f;
+//RED SHADES
+$red: #9d1f1f;
+$red-light: #c82020;
+//BLUE SHADES
+$teal: #057882;
+
+//THEME TEAL
+body.teal {
+  background-color: $teal;
+  .section {
+    background-color: $grey-light;
+  }
+}
