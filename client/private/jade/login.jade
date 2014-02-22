@@ -1,15 +1,22 @@
 .container(ng-controller='LoginController')
     .content
-        .alert.alert-danger(ng-if='loginFailed')
-            strong Log in failed
-        .row
-            .login-form
-                h2 Log In
-                form#login(ng-submit='submit()')
-                    fieldset.row
+    #ogl-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='ogl-modal-label', aria-hidden='false')
+    .modal-dialog.modal-sm
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4.modal-title
+                    |Log In
+            .modal-body
+                .alert.alert-danger(ng-if='loginFailed')
+                    strong Log in failed
+                form#login.row(ng-submit='submit()')
+                    fieldset.col-sm-12
                         .form-group
                             input.form-control(type='text', placeholder='Username', name='username', ng-model='username')
                         .form-group
                             input.form-control(type='password', placeholder='Password', name='password', ng-model='password')
-                        button#login-button.btn.btn-default.primary(type='submit')
-                            |Log in
+                    .row
+                    .col-sm-12
+                        button#login-button.btn.btn-default.primary.pull-right(type='submit')
+                            | Log in
