@@ -1,35 +1,3 @@
-style(type='text/css').
-    /* Override some defaults */
-    html, body {
-        background-color: #eee;
-    }
-    body {
-        padding-top: 40px;
-    }
-    .container {
-        width: 300px;
-    }
-    /* The white background content wrapper */
-    .container > .content {
-        background-color: #fff;
-        padding: 20px;
-        margin: 0 -20px;
-        -webkit-border-radius: 10px 10px 10px 10px;
-        -moz-border-radius: 10px 10px 10px 10px;
-        border-radius: 10px 10px 10px 10px;
-        -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
-        -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
-        box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
-    }
-    .login-form {
-        margin-left: 65px;
-    }
-    legend {
-        margin-right: -50px;
-        font-weight: bold;
-        color: #404040;
-    }
-
 .container(ng-controller='LoginController')
     .content
         .alert.alert-danger(ng-if='loginFailed')
@@ -38,9 +6,10 @@ style(type='text/css').
             .login-form
                 h2 Log In
                 form#login(ng-submit='submit()')
-                    fieldset
-                        .clearfix
-                            input(type='text', placeholder='Username', name='username', ng-model='username')
-                        .clearfix
-                            input(type='password', placeholder='Password', name='password', ng-model='password')
-                        button#login-button.btn.btn-default.primary(type='submit') Log in
+                    fieldset.row
+                        .form-group
+                            input.form-control(type='text', placeholder='Username', name='username', ng-model='username')
+                        .form-group
+                            input.form-control(type='password', placeholder='Password', name='password', ng-model='password')
+                        button#login-button.btn.btn-default.primary(type='submit')
+                            |Log in

@@ -4,11 +4,13 @@
             span © DemonSquid 2014
             | &nbsp; &nbsp;
             a.btn(data-target='#ogl-modal', role='button', data-toggle='modal') Open Game License
-#ogl-modal.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='ogl-modal-label', aria-hidden='true')
-    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-    .modal-header
-        h3#ogl-modal-label Open Game Content
-    .modal-body
-        include ogl
-    .modal-footer
-        button.btn(data-dismiss='modal', aria-hidden='true') Close
+#ogl-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='ogl-modal-label', aria-hidden='true')
+    .modal-dialog.modal-lg
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h3#ogl-modal-label Open Game Content
+            .modal-body.overflow-y
+                include ogl
+            .modal-footer
+                button.btn(data-dismiss='modal', aria-hidden='true') Close

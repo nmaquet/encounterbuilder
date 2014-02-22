@@ -1,3 +1,19 @@
 .round { @include border-radius(50%); }
 .animate { @include transition(all, 0.3s, ease-in-out); }
 .pointer { cursor: pointer; }
+
+.overflow-y {
+  overflow-y: auto;
+  &.modal-body {
+    max-height: 400px;
+    @media (min-width: $screen-sm-min) {
+      max-height: 400px;
+    }
+    @media (min-width: $screen-md-min) {
+      max-height: 600px;
+    }
+    @media (min-width: $screen-lg-min) {
+      max-height: 800px;
+    }
+  }
+}
