@@ -1,9 +1,49 @@
-.navbar-inner
+.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+    .container
+        .navbar-header
+            button.navbar-toggle.collapsed(type="button",data-toggle='collapse',data-target='.navbar-collapse')
+                span.sr-only
+                    |Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                span.sr-only
+                    |Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+            a.navbar-brand.pointer(href='#', title='Go to home page')
+                |Encounter Builder
+        .navbar-collapse.collapse
+            ul.nav.navbar-nav.navbar-right
+                li
+                    a#feedback.pointer(data-uv-trigger='data-uv-trigger', data-toggle='popover', ng-controller='FeedbackController') Send us Feedback !!!
+
+                li.dropdown(ng-controller='LogoutController')
+                    a#user-dropdown.text-right.dropdown-toggle.pointer(role='button', data-toggle='dropdown')
+                        i.fa.fa-user
+                        | &nbsp;{{user.username}}&nbsp;
+                        b.caret
+                    ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
+                        li
+                            a.pointer(tabindex='-1')
+                                |Profile
+                        li
+                            a.pointer(tabindex='-1')
+                                |Settings
+                        li.divider
+                        li
+                            a#user-dropdown-logout.pointer(tabindex='-1', ng-click='logout()')
+                                | Log out
+
+//.navbar-inner
     .row
-        button.btn.btn-default.navbar-btn(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-            span.glyphicon-bar
-            span.glyphicon-bar
-            span.glyphicon-bar
+        button.btn(type='button', data-toggle='collapse', data-target='.navbar-collapse')                                                                                                         span.sr-only
+            | Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
         a.navbar-brand(href='#', title='') Encounter Builder
         .dropdown.navbar-text.pull-left(ng-controller="EncounterListController")
             a.encounter-dropdown.dropdown-toggle.btn.btn-default.navbar-link(role='button', data-toggle='dropdown', ng-show="selectedEncounter")
@@ -17,43 +57,43 @@
             ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
                 li
                     a.encounter-dropdown-create.pointer(tabindex='-1', ng-click='createEncounter()')
-                        i.glyphicon-plus
+                        i.fa.fa-plus
                         strong &nbsp;Create new encounter
                 li.divider.pointer
                 li(ng-repeat='encounter in encounters')
                     a.pointer.encounter-dropdown-select(tabindex='-1', ng-click='selectEncounter(encounter)')
-                        i.glyphicon-chevron-right
+                        i.fa.fa-chevron-right
                         | &nbsp;{{encounter.Name}} (CR {{encounter.CR | numberToFractionString}})
         .navbar-collapse.collapse
             ul.nav.nav-social
                 li.active
                     a(href='#todo')
-                        i.glyphicon-eye-open.glyphicon-white
+                        i.fa.fa-eye-open
                         | Views
                 li
                     a(href='#todo')
-                        i.glyphicon-heart.glyphicon-white
+                        i.fa.fa-heart
                         | Likes
                 li
                     a(href='#todo')
-                        i.glyphicon-bullhorn.glyphicon-white
+                        i.fa.fa-bullhorn
                         | Comments
                 li
                     a(href='#todo')
-                        i.glyphicon-user.glyphicon-white
+                        i.fa.fa-user
                         | Spawns
             ul.nav.nav-settings
                 li.active
                     a(href='#todo')
-                        i.glyphicon-cog.glyphicon-white
+                        i.fa-cog.fa
                 li
                     a(href='#todo')
-                        i.glyphicon-folder-close.glyphicon-white
+                        i.fa-folder-close.fa
                 li
                     a#feedback.pointer(data-uv-trigger='data-uv-trigger', style='background-color: #E2753A; color: white; position: fixed;', data-toggle='popover', ng-controller='FeedbackController') Send us Feedback !!!
             .dropdown.navbar-text.pull-right(ng-controller='LogoutController')
                 a#user-dropdown.dropdown-toggle.btn.btn-default.navbar-link(role='button', data-toggle='dropdown')
-                    i.glyphicon-user
+                    i.fa.fa-user
                     | &nbsp;{{user.username}}&nbsp;
                     b.caret
                 ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
