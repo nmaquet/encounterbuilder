@@ -80,7 +80,7 @@ var tempfile = "scripts/temp";
 
 concat(jsFiles, tempfile);
 uglify(tempfile, 'client/public/js/encounterbuilder.min.js');
-concat(cssFiles, 'client/public/css/encounterbuilder.min.css');
+//concat(cssFiles, 'client/public/css/encounterbuilder.min.css');
 
 fs.unlinkSync(tempfile);
 
