@@ -1,9 +1,8 @@
-.container-fluid
-    .row
-        .col-md-12
-            span © DemonSquid 2014
-            | &nbsp; &nbsp;
-            a.btn(data-target='#ogl-modal', role='button', data-toggle='modal') Open Game License
+.row.footer-bottom
+    .container
+        span © DemonSquid 2014
+        a.pointer(data-target='#ogl-modal', role='button', data-toggle='modal') Open Game License
+
 #ogl-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='ogl-modal-label', aria-hidden='true')
     .modal-dialog.modal-lg
         .modal-content
@@ -14,3 +13,4 @@
                 include ogl
             .modal-footer
                 button.btn(data-dismiss='modal', aria-hidden='true') Close
+                    .navbar-wrapper

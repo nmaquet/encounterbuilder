@@ -13,6 +13,15 @@
   -o-border-radius: $radius;
   border-radius: $radius;
 }
+@mixin background-size-cover() {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/bg/bg_forest_teal.png', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/bg/bg_forest_teal.png', sizingMethod='scale')";
+
+}
 
 // TRANSITIONS
 @mixin transition($transition-property, $transition-time, $method) {

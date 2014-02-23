@@ -5,7 +5,7 @@
         p {{monster.Description_Visual}}
     .col-md-4
         .thumbnail
-            ul.unstyled
+            ul.list-unstyled
                 li
                     strong CR
                     | &nbsp;{{monster.CR | numberToFractionString}}
@@ -24,7 +24,7 @@
 .row
     .col-md-8
         legend Offense
-        ul.unstyled
+        ul.list-unstyled
             li
                 strong SPD
                 | &nbsp;{{monster.Speed}}
@@ -43,7 +43,7 @@
             li(ng-bind-html='monster.SLASafe')
     .col-md-4
         legend Defense
-        ul.unstyled
+        ul.list-unstyled
             li
                 strong
                     abbr(title='Armor Class') AC
@@ -73,7 +73,7 @@
 .row
     .col-md-8
         legend Statistics
-        ul.unstyled
+        ul.list-unstyled
             li
                 strong Str
                 | &nbsp;{{monster.Str}},
@@ -113,7 +113,7 @@
         div
             legend Ecology
         div
-            ul.unstyled
+            ul.list-unstyled
                 li
                     strong Environment
                     | &nbsp;{{monster.Environment}}

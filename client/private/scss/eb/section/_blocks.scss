@@ -1,5 +1,9 @@
 html, body { height: 100%; min-height: 100%; }
 
+.app-content {
+  margin-bottom: $grid-gutter-width;
+}
+
 .section {
   overflow: hidden;
   &.sidebar-nav, &.result-list {

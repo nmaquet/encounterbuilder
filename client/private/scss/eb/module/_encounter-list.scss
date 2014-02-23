@@ -51,9 +51,10 @@
     }
     th, td {
       padding: 8px 4px;
-      border-color: $brown;
       border-color: $brown-transparent;
     }
+  }
+  tbody .encounter-row {
     @include transition(all,0.2s,ease-in-out);
     &:hover { background-color: $grey-light-transparent-2; }
   }

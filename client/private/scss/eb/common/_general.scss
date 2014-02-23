@@ -29,3 +29,16 @@
     }
   }
 }
+
+*::selection {
+  color: white;
+  background: $teal-transparent;
+}
+::selection {
+  color: white;
+  background: $teal-transparent; /* Safari */
+}
+::-moz-selection {
+  color: white;
+  background: $teal-transparent; /* Firefox */
+}

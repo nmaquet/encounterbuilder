@@ -1,11 +1,21 @@
 //THEME TEAL
 body.teal {
-  background-color: $teal-dark;
+  background: $teal-dark url('../img/bg/bg_forest_teal.png') no-repeat center center fixed;
+  @include background-size-cover();
   .section {
     background-color: $grey-light;
-      &.encounter-well {
+    &.encounter-well {
       background-color: $brown-dark;
       @include gradientGreyDark();
+    }
+  }
+  .result-list {
+    @include gradientGreyLight();
+    .table td {
+      &.selected {
+        background-color: $teal-light;
+        color: white;
+      }
     }
   }
 }

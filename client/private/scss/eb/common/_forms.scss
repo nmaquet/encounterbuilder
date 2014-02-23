@@ -3,11 +3,18 @@ label {
 }
 [ng-show='isEditing'],
 [ng-hide='isEditing'] {
+  overflow: hidden;
+  max-width: 100%;
   input[type="text"] {
+    max-width: 100%;
     display: inline-block;
     color: white;
     background: transparent;
     border: none;
     padding: 5px 2px 0 2px;
+    &:focus {
+      outline: none !important;
+      border-color: $red;
+    }
   }
 }
