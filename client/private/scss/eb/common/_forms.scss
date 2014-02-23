@@ -1,0 +1,13 @@
+label {
+  font-weight: normal;
+}
+[ng-show='isEditing'],
+[ng-hide='isEditing'] {
+  input[type="text"] {
+    display: inline-block;
+    color: white;
+    background: transparent;
+    border: none;
+    padding: 5px 2px 0 2px;
+  }
+}

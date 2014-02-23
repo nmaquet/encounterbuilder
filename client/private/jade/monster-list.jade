@@ -1,20 +1,30 @@
-table.monsters.table.table-striped.well
-    thead
-        tr
-            th Name
-            th CR
-            th Source
-    tbody
-        tr.pointer.monster-row(ng-repeat='monster in monsters')
-            td(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
-                p {{monster.Name}}
-            td(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
-                p {{monster.CR | numberToFractionString}}
-            td(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
-                abbr(title='{{monster.Source}}')
-                    small {{monster.Source | abbreviateMonsterSource}}
-            td(ng-class='{selected: selectedMonsterId == monster.id}')
-                input(type='text', placeholder='1', ng-model='monster.amountToAdd', style='width: 25px;')
-                button.btn.btn-default.btn-xs(ng-class="{disabled: !selectedEncounter}", ng-disabled="!selectedEncounter", ng-click='addMonster(monster)')
-                    i.icon.fa-plus
-pagination.pagination-sm.page.pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
+.form-inline.form-group
+    .col-xs-12
+        label(for='sort') Sort by:
+        select.form-control#monster-sort(ng-model='orderProp')
+            option(value='name') Name
+            option(value='cr') Challenge Rating
+
+.col-xs-12
+    table.monsters.table.table-striped.table-condensed(valign='middle')
+        thead
+            tr.result-row
+                th Name
+                th CR
+                th(colspan='3') Source
+        tbody
+            tr.pointer.monster-row(ng-repeat='monster in monsters')
+                td(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
+                    span {{monster.Name}}
+                td(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
+                    span {{monster.CR | numberToFractionString}}
+                td(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
+                    abbr(title='{{monster.Source}}')
+                        small {{monster.Source | abbreviateMonsterSource}}
+                td(ng-class='{selected: selectedMonsterId == monster.id}')
+                    input(type='text', placeholder='1', ng-model='monster.amountToAdd', style='width: 25px;')
+                td(ng-class='{selected: selectedMonsterId == monster.id}')
+                    button.item-btn.add-item-btn(ng-class="{disabled: !selectedEncounter}", ng-disabled="!selectedEncounter", ng-click='addMonster(monster)')
+                        i.icon.icon-plus
+                            | +
+    .pagination.pagination-sm.page.pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')

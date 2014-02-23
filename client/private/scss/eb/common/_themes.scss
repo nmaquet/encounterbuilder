@@ -1,0 +1,11 @@
+//THEME TEAL
+body.teal {
+  background-color: $teal-dark;
+  .section {
+    background-color: $grey-light;
+      &.encounter-well {
+      background-color: $brown-dark;
+      @include gradientGreyDark();
+    }
+  }
+}

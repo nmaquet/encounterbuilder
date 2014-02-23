@@ -4,7 +4,7 @@ var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 
 
-if (process.env.USE_TEST_DB === 1) {
+if (process.env.USE_TEST_DB) {
     var MONGODB_URL = process.env['MONGODB_TEST_URL'];
 }
 else {
@@ -12,6 +12,7 @@ else {
 }
 
 MongoClient.connect(MONGODB_URL, function (error, db) {
+    console.log('connecting to '+MONGODB_URL);
     if (error) {
         console.log(error);
     } else {

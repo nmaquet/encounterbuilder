@@ -1,2 +1,17 @@
-.navbar.navbar-inverse.navbar-fixed-top
-    include navbar
+.nav-top-wrapper.hidden-xs
+    .container
+        .nav-top
+            a.font-title.navbar-brand(href='#', title='Go to home page')
+                | Encounter Builder
+            .nav-social.pull-right
+                a(href='facebook/', target='_blank', title='Like us on Facebook')
+                    i.icon.icon-lg.square.fa.fa-facebook
+                a(href='facebook/', target='_blank', title='Follow us on Twitter')
+                    i.icon.icon-lg.square.fa.fa-twitter
+                a(href='facebook/', target='_blank', title='Join us on Google+')
+                    i.icon.icon-lg.square.fa.fa-google-plus
+.navbar-wrapper
+    .container
+        .row
+            .col-sm-12
+                include navbar

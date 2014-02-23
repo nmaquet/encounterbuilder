@@ -1,3 +1,11 @@
+// OPACITY
+@mixin opacity($alpha) {
+  opacity: $alpha;
+  -moz-opacity: $alpha;
+  //-ms-filter:'progid:DXImageTransform.Microsoft.Alpha'(Opacity=$alpha);
+}
+
+// BOXES
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
@@ -6,6 +14,7 @@
   border-radius: $radius;
 }
 
+// TRANSITIONS
 @mixin transition($transition-property, $transition-time, $method) {
   -webkit-transition: $transition-property $transition-time $method;
   -moz-transition: $transition-property $transition-time $method;

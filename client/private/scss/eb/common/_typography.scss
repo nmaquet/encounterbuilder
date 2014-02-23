@@ -1,5 +1,33 @@
 // FONTAWESOME (http://fortawesome.github.io/Font-Awesome/icons/)
 @import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css");
+@import url("http://fonts.googleapis.com/css?family=Metamorphous");
+$font-metamorphous: 'Metamorphous', $font-family-serif ;
 
+.sans-serif { font-family: $font-family-sans-serif; }
+.serif { font-family: $font-family-serif; }
+.font-title { font-family: $font-metamorphous; }
 .uppercase { text-transform: uppercase; }
-.icon { font-style: normal; }
+.light { font-weight: 300; }
+.bold { font-weight: 800; }
+.icon { font-style: normal; display: inline-block; }
+.no-underline { text-decoration: none; }
+.underline-dotted { border-bottom: 1px dotted $grey-light-transparent; }
+
+body { color: $coal; }
+a {
+  &.pointer {
+    @include transition(all, 0.2s,ease-in-out);
+  }
+  color: $teal;
+  &:hover { color: $red-light; }
+  .section & {
+    color: $red;
+    &:hover {  color: white; }
+  }
+}
+
+//TEXT-COLORS
+.platinum { color: $platinum; }
+.gold { color: $gold-2; }
+.silver { color: $silver; }
+.copper { color: $copper; }

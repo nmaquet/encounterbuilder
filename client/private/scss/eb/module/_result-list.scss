@@ -1,0 +1,12 @@
+.sidebar-nav, .result-list {
+  background-color: $grey-light-2;
+  label {
+    font-size: 13px;
+  }
+}
+.result-list {
+  @include gradientGreyLight();
+  .table td {
+    vertical-align: middle;
+  }
+}

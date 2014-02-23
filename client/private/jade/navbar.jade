@@ -1,76 +1,20 @@
-.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
-    .container
-        .navbar-header
-            button.navbar-toggle.collapsed(type="button",data-toggle='collapse',data-target='.navbar-collapse')
-                span.sr-only
-                    |Toggle navigation
-                    span.icon-bar
-                    span.icon-bar
-                    span.icon-bar
-            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-                span.sr-only
-                    |Toggle navigation
-                    span.icon-bar
-                    span.icon-bar
-                    span.icon-bar
-        .navbar-collapse.collapse
-            ul.nav.navbar-nav.navbar-right
-                li.dropdown.pull-left(ng-controller="EncounterListController")
-                    a.encounter-dropdown.dropdown-toggle(role='button', data-toggle='dropdown', ng-show="selectedEncounter")
-                        | {{selectedEncounter.Name}} (CR {{selectedEncounter.CR | numberToFractionString}})
-                        | &nbsp;
-                        b.caret
-                    a.encounter-dropdown-no-encounter.dropdown-toggle.btn.btn-default(role='button', data-toggle='dropdown', ng-hide="selectedEncounter")
-                        | (no encounters)
-                        | &nbsp;
-                        b.caret
-                    ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
-                        li
-                            a.encounter-dropdown-create.pointer(tabindex='-1', ng-click='createEncounter()')
-                                i.icon.fa.fa-plus
-                                strong &nbsp;Create new encounter
-                        li.divider.pointer
-                        li(ng-repeat='encounter in encounters')
-                            a.pointer.encounter-dropdown-select(tabindex='-1', ng-click='selectEncounter(encounter)')
-                                i.icon.fa.fa-chevron-right
-                                | &nbsp;{{encounter.Name}} (CR {{encounter.CR | numberToFractionString}})
-                li
-                    a#feedback.pointer(data-uv-trigger='data-uv-trigger', data-toggle='popover', ng-controller='FeedbackController') Send us Feedback !!!
-
-                li.dropdown(ng-controller='LogoutController')
-                    a#user-dropdown.text-right.dropdown-toggle.pointer(role='button', data-toggle='dropdown')
-                        i.icon.fa.fa-user
-                        | &nbsp;{{user.username}}&nbsp;
-                        b.caret
-                    ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
-                        li
-                            a.pointer(tabindex='-1')
-                                |Profile
-                        li
-                            a.pointer(tabindex='-1')
-                                i.icon.fa.fa-cog &nbsp;
-                                |Settings
-                        li.divider
-                        li
-                            a#user-dropdown-logout.pointer(tabindex='-1', ng-click='logout()')
-                                | Log out
-//.navbar-inner
-    .row
-        button.btn(type='button', data-toggle='collapse', data-target='.navbar-collapse')                                                                                                         span.sr-only
-            | Toggle navigation
+.navbar.navbar-red.no-radius(role='navigation')
+    .navbar-header.no-padding-left.col-sm-4.col-lg-3
+        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only
+                | Toggle navigation
             span.icon-bar
             span.icon-bar
             span.icon-bar
-        a.navbar-brand(href='#', title='') Encounter Builder
-        .dropdown.navbar-text.pull-left(ng-controller="EncounterListController")
-            a.encounter-dropdown.dropdown-toggle.btn.btn-default(role='button', data-toggle='dropdown', ng-show="selectedEncounter")
-                | {{selectedEncounter.Name}} (CR {{selectedEncounter.CR | numberToFractionString}})
-                | &nbsp;
-                b.caret
-            a.encounter-dropdown-no-encounter.dropdown-toggle.btn.btn-default(role='button', data-toggle='dropdown', ng-hide="selectedEncounter")
-                | (no encounters)
-                | &nbsp;
-                b.caret
+        a.visible-xs.navbar-brand(href='#', title='Go to home page')
+            | Encounter Builder
+        div.dropdown#encounter-dropdown-container.pointer(ng-controller="EncounterListController")
+            a.encounter-dropdown.dropdown-toggle.col-xs-12(role='button', data-toggle='dropdown', ng-show="selectedEncounter")
+                span.encounter-dropdown-name {{selectedEncounter.Name}} (CR {{selectedEncounter.CR | numberToFractionString}})
+                i.icon.fa.fa-angle-down.square.white.pull-right
+            a.encounter-dropdown.dropdown-toggle.col-xs-12(role='button', data-toggle='dropdown', ng-hide="selectedEncounter")
+                span.encounter-dropdown-name (no encounters)
+                i.icon.fa.fa-angle-down.square.white.pull-right
             ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
                 li
                     a.encounter-dropdown-create.pointer(tabindex='-1', ng-click='createEncounter()')
@@ -81,45 +25,94 @@
                     a.pointer.encounter-dropdown-select(tabindex='-1', ng-click='selectEncounter(encounter)')
                         i.icon.fa.fa-chevron-right
                         | &nbsp;{{encounter.Name}} (CR {{encounter.CR | numberToFractionString}})
-        .navbar-collapse.collapse
-            ul.nav.nav-social
-                li.active
-                    a(href='#todo')
-                        i.icon.fa.fa-eye-open
-                        | Views
-                li
-                    a(href='#todo')
-                        i.icon.fa.fa-heart
-                        | Likes
-                li
-                    a(href='#todo')
-                        i.icon.fa.fa-bullhorn
-                        | Comments
-                li
-                    a(href='#todo')
-                        i.icon.fa.fa-user
-                        | Spawns
-            ul.nav.nav-settings
-                li.active
-                    a(href='#todo')
-                        i.fa-cog.fa
-                li
-                    a(href='#todo')
-                        i.fa-folder-close.fa
-                li
-                    a#feedback.pointer(data-uv-trigger='data-uv-trigger', style='background-color: #E2753A; color: white; position: fixed;', data-toggle='popover', ng-controller='FeedbackController') Send us Feedback !!!
-            .dropdown.navbar-text.pull-right(ng-controller='LogoutController')
-                a#user-dropdown.dropdown-toggle.btn.btn-default(role='button', data-toggle='dropdown')
+    .navbar-collapse.collapse
+        ul.nav.navbar-nav.navbar-right
+            li
+                a#feedback.pointer(data-uv-trigger='data-uv-trigger', data-toggle='popover', ng-controller='FeedbackController') Send us Feedback !!!
+
+            li.dropdown(ng-controller='LogoutController')
+                a#user-dropdown.text-right.dropdown-toggle.pointer(role='button', data-toggle='dropdown')
                     i.icon.fa.fa-user
                     | &nbsp;{{user.username}}&nbsp;
                     b.caret
                 ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
                     li
-                        a.pointer(tabindex='-1') Profile
+                        a.pointer(tabindex='-1')
+                            |Profile
                     li
-                        a.pointer(tabindex='-1') Settings
-                    li.divider.pointer
+                        a.pointer(tabindex='-1')
+                            i.icon.fa.fa-cog &nbsp;
+                            |Settings
+                    li.divider
                     li
                         a#user-dropdown-logout.pointer(tabindex='-1', ng-click='logout()')
-                            | Log
-                            | out
+                            | Log out
+    //.navbar-inner
+        .row
+            button.btn(type='button', data-toggle='collapse', data-target='.navbar-collapse')                                                                                                         span.sr-only
+                | Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            a.navbar-brand(href='#', title='') Encounter Builder
+            .dropdown.navbar-text.pull-left(ng-controller="EncounterListController")
+                a.encounter-dropdown.dropdown-toggle.btn.btn-default(role='button', data-toggle='dropdown', ng-show="selectedEncounter")
+                    | {{selectedEncounter.Name}} (CR {{selectedEncounter.CR | numberToFractionString}})
+                    | &nbsp;
+                    b.caret
+                a.encounter-dropdown-no-encounter.dropdown-toggle.btn.btn-default(role='button', data-toggle='dropdown', ng-hide="selectedEncounter")
+                    | (no encounters)
+                    | &nbsp;
+                    b.caret
+                ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
+                    li
+                        a.encounter-dropdown-create.pointer(tabindex='-1', ng-click='createEncounter()')
+                            i.icon.fa.fa-plus
+                            strong &nbsp;Create new encounter
+                    li.divider.pointer
+                    li(ng-repeat='encounter in encounters')
+                        a.pointer.encounter-dropdown-select(tabindex='-1', ng-click='selectEncounter(encounter)')
+                            i.icon.fa.fa-chevron-right
+                            | &nbsp;{{encounter.Name}} (CR {{encounter.CR | numberToFractionString}})
+            .navbar-collapse.collapse
+                ul.nav.nav-social
+                    li.active
+                        a(href='#todo')
+                            i.icon.fa.fa-eye-open
+                            | Views
+                    li
+                        a(href='#todo')
+                            i.icon.fa.fa-heart
+                            | Likes
+                    li
+                        a(href='#todo')
+                            i.icon.fa.fa-bullhorn
+                            | Comments
+                    li
+                        a(href='#todo')
+                            i.icon.fa.fa-user
+                            | Spawns
+                ul.nav.nav-settings
+                    li.active
+                        a(href='#todo')
+                            i.fa-cog.fa
+                    li
+                        a(href='#todo')
+                            i.fa-folder-close.fa
+                    li
+                        a#feedback.pointer(data-uv-trigger='data-uv-trigger', style='background-color: #E2753A; color: white; position: fixed;', data-toggle='popover', ng-controller='FeedbackController') Send us Feedback !!!
+                .dropdown.navbar-text.pull-right(ng-controller='LogoutController')
+                    a#user-dropdown.dropdown-toggle.btn.btn-default(role='button', data-toggle='dropdown')
+                        i.icon.fa.fa-user
+                        | &nbsp;{{user.username}}&nbsp;
+                        b.caret
+                    ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
+                        li
+                            a.pointer(tabindex='-1') Profile
+                        li
+                            a.pointer(tabindex='-1') Settings
+                        li.divider.pointer
+                        li
+                            a#user-dropdown-logout.pointer(tabindex='-1', ng-click='logout()')
+                                | Log
+                                | out

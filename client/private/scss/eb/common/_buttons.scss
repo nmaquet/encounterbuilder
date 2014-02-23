@@ -1,4 +1,26 @@
-.item-btn, .btn {
+.icon{
+  text-align: center;
+  &.icon-lg {
+    font-size: 24px;
+}
+  &.square {
+    margin-left: 0.125em;
+    padding: 0;
+    line-height: 1.25;
+    width: 1.25em;
+    height: 1.25em;
+  }
+}
+
+.item-btn, .btn, .icon, .badge {
+  &.white {
+    color: $red;
+    background-color: white;
+    &:hover {
+      color: $red-light;
+      background-color: $white-transparent;
+    }
+  }
   &.grey {
     color: $red;
     background-color: $grey-light;
@@ -23,7 +45,12 @@
   @include transition(all,0.2s,ease-in-out);
   margin-left: 0.125em;
   padding: 0;
-  line-height: 1;
+  line-height: 1.25;
   width: 1.25em;
   height: 1.25em;
+  color: $brown-dark;
+  background-color: $grey-light-transparent;
+  &:hover{
+    background-color: $grey-light;
+  }
 }

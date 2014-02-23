@@ -1,5 +1,15 @@
 doctype html
-html(lang='en', ng-app='encounterBuilderApp')
+//if lt IE 7
+    html(class="no-js ie6 lt-ie7", lang="en", ng-app='encounterBuilderApp')
+//if IE 7
+    html(class="no-js ie7 lt-ie8", lang="en", ng-app='encounterBuilderApp')
+//if IE 8
+    html(class="no-js ie8 lt-ie9", lang="en", ng-app='encounterBuilderApp')
+//if IE 9
+    html(class="no-js ie9 lt-ie10", lang="en", ng-app='encounterBuilderApp')
+// [if gte IE 9] <!
+html(class="no-js gte-ie9", lang='en', ng-app='encounterBuilderApp')
+    // <![endif]
     head
         meta(charset='utf-8')
         title Encounter Builder - Home
@@ -7,7 +17,7 @@ html(lang='en', ng-app='encounterBuilderApp')
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
         meta(name='description', content='')
         meta(name='author', content='')
-        style(type='text/css').
+        //style(type='text/css').
             body {
                 padding-top: 70px;
                 padding-bottom: 30px;

@@ -1,14 +1,14 @@
 {
   "name": "angular",
-  "version": "1.2.8-build.2093+sha.1c045f1",
+  "version": "1.2.14-build.2315+sha.832be41",
   "main": "./angular.js",
   "dependencies": {},
   "homepage": "https://github.com/angular/bower-angular",
-  "_release": "1.2.8-build.2093+sha.1c045f1",
+  "_release": "1.2.14-build.2315+sha.832be41",
   "_resolution": {
     "type": "version",
-    "tag": "v1.2.8-build.2093+sha.1c045f1",
-    "commit": "c7a4f380b36667b063d5f1b1dcb5aaebba43cf0c"
+    "tag": "v1.2.14-build.2315+sha.832be41",
+    "commit": "7bb385efc83e68008005005459ab3f2270419dab"
   },
   "_source": "git://github.com/angular/bower-angular.git",
   "_target": "~1.2",

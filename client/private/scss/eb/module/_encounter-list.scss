@@ -1,17 +1,61 @@
-.encounter-row {
-  overflow: hidden;
-  font-size: 12px;
+.encounter-no-encounter {
+  padding-top: ($grid-gutter-width/2);
+  padding-bottom: ($grid-gutter-width/2);
+}
+.encounter, .encounter-no-encounter {
+  color: white;
+  .heading {
+    padding-top: ($grid-gutter-width/2);
+    padding-bottom: ($grid-gutter-width/2);
+    background-color: $coal-transparent;
+    .icon-remove {
+      font-size: 18px;
+      line-height: 0;
+    }
+  }
+  .content {
+    padding-top: ($grid-gutter-width/2);
+    padding-bottom: ($grid-gutter-width/2);
+  }
+  .encounter-title {
+    margin-top: 0;
+    font-size: 18px;
+  }
+ .legend {
+   border-bottom: 0px solid transparent;
+     font-size: 16px;
+     color: white;
+   .icon {
+     color: $grey-light;
+     line-height: 22px;
+   }
+ }
   a {
-    color: white;
+    @extend .no-underline;
   }
-  .badge {
-    font-size: 11px;
-  }
-  .price-container {
-    font-size: 11px;
-  }
-  .table & > td {
-    padding: 8px 2px;
+}
+.encounter-list {
+  margin-left: -4px;
+  margin-right: -4px;
+  .encounter-row {
+    overflow: hidden;
+    font-size: 12px;
+    a {
+      color: white;
+    }
+    .badge {
+      font-size: 11px;
+    }
+    .price-container {
+      font-size: 11px;
+    }
+    th, td {
+      padding: 8px 4px;
+      border-color: $brown;
+      border-color: $brown-transparent;
+    }
+    @include transition(all,0.2s,ease-in-out);
+    &:hover { background-color: $grey-light-transparent-2; }
   }
 }
 .encounter-items-buttons {
