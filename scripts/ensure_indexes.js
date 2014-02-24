@@ -1,5 +1,6 @@
 "use strict";
 
+var async = require('async');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 
@@ -18,50 +19,28 @@ MongoClient.connect(MONGODB_URL, function (error, db) {
     }
 });
 
-var DONE = 0;
-function closedbWhenDone(db) {
-    DONE++;
-    if (DONE === 2) {
-        db.close();
-    }
-}
-
-function createMagicItemsIndex(db) {
-    var magicItemsIndexedFields = {
-        Name: 1,
-        CL: 1,
-        Price:1
-    };
-    db.collection('magicitems').ensureIndex(magicItemsIndexedFields, function (error, info) {
-        if (error) {
-            console.log("Error :");
-            console.log(error);
-        } else {
-            console.log("Info :");
-            console.log(info);
-        }
-        closedbWhenDone(db);
-    });
-}
-
-function createMonsersIndex(db) {
-    var monstersIndexedFields = {
-        Name: 1,
-        CR: 1
-    };
-    db.collection('monsters').ensureIndex(monstersIndexedFields, function (error, info) {
-        if (error) {
-            console.log("Error :");
-            console.log(error);
-        } else {
-            console.log("Info :");
-            console.log(info);
-        }
-        closedbWhenDone(db);
+function generateIndex(collection, fields, callback) {
+    collection.ensureIndex(fields, function (error, info) {
+        callback(error, info);
     });
 }
 
 function main(db) {
-    createMagicItemsIndex(db);
-    createMonsersIndex(db);
+    async.parallel([
+        function (callback) {
+            generateIndex(db.collection('magicitems'), { Name: 1, CL: 1, Price: 1 }, callback);
+        },
+        function (callback) {
+            generateIndex(db.collection('monsters'), { Name: 1, CR: 1}, callback);
+        },
+        function (callback) {
+            generateIndex(db.collection('magicitems'), { Enchanted: 1}, callback);
+        }
+    ],
+        function (error, results) {
+            console.log("Error : " + error);
+            console.log(results);
+            db.close();
+            console.log("done.");
+        });
 }
