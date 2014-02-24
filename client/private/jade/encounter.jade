@@ -5,9 +5,14 @@ div.encounter(ng-show="encounter")
                 i.icon.icon-remove
                     | ×
             h3.encounter-title.font-title
-                span.encounter-name.pointer.underline-dotted(click-to-edit='encounter.Name', on-save="encounterChanged()")
-                span#encounter-cr
-                    | (CR {{encounter.CR | numberToFractionString}})
+                span.encounter-name.pointer(click-to-edit='encounter.Name', on-save="encounterChanged()")
+        .col-sm-12
+            span#encounter-cr.pull-right
+                strong CR&nbsp;
+                |{{encounter.CR | numberToFractionString}}
+            span#encounter-xp.pull-left
+                strong XP&nbsp;
+                |{{encounter.xp | number}}
     .row.content.content-monsters
         .col-sm-12
             legend.legend

@@ -3,7 +3,7 @@
 DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
     function ($compile) {
         var editorTemplate =
-            '<span class="click-to-edit col-xs-12" ng-click="edit();">' +
+            '<span class="click-to-edit underline-dotted" ng-click="edit();">' +
             '   <span ng-hide="isEditing">' +
             '       {{display || value}} ' +
             '   </span>' +
@@ -49,7 +49,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
                 $scope.save = function () {
                     if ($scope.numeric && Number($scope.editedValue) >= 0) {
                         $scope.value = Number($scope.editedValue);
-                    } else if (!$scope.numeric) {
+                    } else if (!$scope.numeric && $scope.editedValue.length>0 ) {
                         $scope.value = $scope.editedValue;
                     }
                     $scope.isEditing = false;
