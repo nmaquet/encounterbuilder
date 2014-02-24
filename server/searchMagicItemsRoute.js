@@ -42,7 +42,10 @@ module.exports = function (magicitemCollection, defaultFindLimit) {
             sort: getSortOption(request)
         }
         var query = getQuery(request);
-        magicitemCollection.find(query, options).toArray(function (error, data) {
+
+        var cursor = magicitemCollection.find(query, options);
+        
+        cursor.toArray(function (error, data) {
             magicItems = data;
             if (error) {
                 console.log(error);
@@ -54,7 +57,7 @@ module.exports = function (magicitemCollection, defaultFindLimit) {
             }
         });
 
-        magicitemCollection.count(query, function (error, value) {
+        cursor.count(function (error, value) {
             count = value;
             if (error) {
                 console.log(error);
