@@ -40,6 +40,9 @@
         option(value='shoulders') Shoulders
         option(value='wrist') Wrist
 .form-group.col-xs-12
+    label(for='enchanted-checkbox') Include enchanted items:
+    input.form-control#enchanted-checkbox(type='checkbox',ng-model='includeEnchanted')
+.form-group.col-xs-12
     label(for='cl-range') CL range:
     input.form-control.hidden#cl-range(type='text', ng-model='clRange', readonly='readonly')
     .col-xs-12

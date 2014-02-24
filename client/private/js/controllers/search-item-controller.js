@@ -8,6 +8,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
         $scope.sortOrder = 'name';
         $scope.group = 'any';
         $scope.slot = 'any';
+        $scope.includeEnchanted = false;
 
         $scope.totalItems = 0;
         $scope.currentPage = 1;
@@ -25,7 +26,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
                 skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
                 findLimit: $scope.itemsPerPage,
                 minCL: $scope.minCL,
-                maxCL: $scope.maxCL
+                maxCL: $scope.maxCL,
+                enchanted: $scope.includeEnchanted
             };
             itemService.search(params, function (error, data) {
                 if (error) {
@@ -38,7 +40,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
             });
         }
 
-        $scope.$watchCollection("[sortOrder, group, slot, currentPage]", function () {
+        $scope.$watchCollection("[sortOrder, group, slot, currentPage, includeEnchanted]", function () {
             refreshItems();
         });
 
