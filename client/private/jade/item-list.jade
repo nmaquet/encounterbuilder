@@ -1,6 +1,6 @@
 .form-inline.form-group
     .col-xs-12
-        label(for='sort') Sort by:
+        label(for='sort') Sort by:&nbsp;
         select.form-control#item-sort(ng-model='sortOrder')
             option(value='name') Name
             option(value='price') Price
@@ -15,9 +15,9 @@
         tbody
             tr.pointer.item-row(ng-repeat='item in items')
                 td(ng-class='{selected: selectedItemId == item.id}', ng-click='selectItemById(item.id)')
-                    p {{item.Name}}
+                    span {{item.Name}}
                 td(ng-class='{selected: selectedItemId == item.id}', ng-click='selectItemById(item.id)')
-                    p {{item.Price}}&nbsp;{{item.PriceUnit}}
+                    span {{item.Price}}&nbsp;{{item.PriceUnit}}
                 td(ng-class='{selected: selectedItemId == item.id}', ng-click='selectItemById(item.id)')
                     abbr(title='{{item.Source}}')
                         small {{item.Source | abbreviateMonsterSource}}

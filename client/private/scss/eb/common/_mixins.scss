@@ -6,6 +6,16 @@
 }
 
 // BOXES
+@mixin box-shadow($horizontal,$vertical,$blur,$color) {
+  -moz-box-shadow: $horizontal $vertical $blur $color;
+  -webkit-box-shadow: $horizontal $vertical $blur $color;
+  box-shadow: $horizontal $vertical $blur $color;
+}
+@mixin box-shadow-inset($horizontal,$vertical,$blur,$color) {
+  -moz-box-shadow: inset $horizontal $vertical $blur $color;
+  -webkit-box-shadow: inset $horizontal $vertical $blur $color;
+  box-shadow: inset $horizontal $vertical $blur $color;
+}
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;

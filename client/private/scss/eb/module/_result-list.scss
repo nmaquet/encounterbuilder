@@ -8,4 +8,12 @@
   .table td {
     vertical-align: middle;
   }
+  .table > tbody > tr > td:first-child {
+    max-width: 30%;
+    overflow: hidden;
+  }
+}
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: $white-transparent-2;
 }
