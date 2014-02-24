@@ -34,7 +34,7 @@ describe("ItemService", function () {
             itemService.search({}, function(error, serverData) {
                 callbackData = serverData;
             });
-            $httpBackend.expectGET("/api/search-magic-items/?").respond(200, response);
+            $httpBackend.expectGET("/api/search-magic-items/").respond(200, response);
             $httpBackend.flush();
             expect(callbackData).to.deep.equal(response);
         });
@@ -45,7 +45,7 @@ describe("ItemService", function () {
             itemService.search({}, function(error, serverData) {
                 callbacError = error;
             });
-            $httpBackend.expectGET("/api/search-magic-items/?").respond(500, error);
+            $httpBackend.expectGET("/api/search-magic-items/").respond(500, error);
             $httpBackend.flush();
             expect(callbacError).to.equal(error);
         });

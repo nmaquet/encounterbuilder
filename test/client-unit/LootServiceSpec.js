@@ -354,4 +354,39 @@ describe("lootService", function () {
             ]});
         });
     });
-});
+    describe("service.generateMwkArmor", function () {
+
+        it("should generate a mwk light armor", function () {
+
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+
+            var armor = service.generateMwkArmor("lightArmorOrShield");
+            expect(armor).to.deep.equal({"Price": 159.0, "PriceUnit": "gp", "Name": "Mwk Light steel shield", "id": "mwk-light-steel-shield"});
+        });
+        it("should generate a mwk medium armor", function () {
+
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+
+            var armor = service.generateMwkArmor("mediumArmor");
+            expect(armor).to.deep.equal({"Price": 300.0, "PriceUnit": "gp", "Name": "Mwk Chainmail", "id": "mwk-chainmail"});
+        });
+        it("should generate a mwk heavy armor", function () {
+
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+
+            var armor = service.generateMwkArmor("heavyArmor");
+            expect(armor).to.deep.equal(  {"Price": 400.0, "PriceUnit": "gp", "Name": "Mwk Banded mail", "id": "mwk-banded-mail"});
+        });
+    });
+    describe("service.generateMwkWeapon", function () {
+
+        it("should generate a mwk weapon", function () {
+
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+
+            var weapon = service.generateMwkWeapon();
+            console.log(weapon.Name);
+            expect(weapon).to.deep.equal({"Price": 306.0, "PriceUnit": "gp", "Name": "Mwk Handaxe", "id": "mwk-handaxe"});
+        });
+    });
+    });
