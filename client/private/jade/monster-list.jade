@@ -6,7 +6,7 @@
             option(value='cr') Challenge Rating
 
 .col-xs-12
-    table.monsters.table.table-striped.table-condensed(valign='middle')
+    table.monsters.table.table-striped.table-condensed
         thead
             tr.result-row
                 th Name
@@ -27,4 +27,4 @@
                     button.item-btn.add-item-btn(ng-class="{disabled: !selectedEncounter}", ng-disabled="!selectedEncounter", ng-click='addMonster(monster)')
                         i.icon.icon-plus
                             | +
-    .pagination.pagination-sm.page.pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
+    pagination.pagination-sm.page.pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')

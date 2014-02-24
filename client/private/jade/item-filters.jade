@@ -1,50 +1,47 @@
-.row
-    label(for='search') Search
-    input#item-search(type='text', name='search', placeholder='Type something…', ng-model='itemNameSubstring')
-    .row
-        label(for='sort') Sort by:
-        select#item-sort(ng-model='sortOrder')
-            option(value='name') Name
-            option(value='price') Price
-            option(value='cl') Caster Level
-    .row
-        label(for='group') Group:
-        select#type(ng-model='group')
-            option(value='any') Any
-            option(value='Armor') Armor
-            option(value='Artifact') Artifact
-            option(value='Cursed') Cursed
-            option(value='Legendary Weapon') Legendary Weapon
-            option(value='Oil') Oil
-            option(value='Potion') Potion
-            option(value='Ring') Ring
-            option(value='Rod') Rod
-            option(value='Scroll') Scroll
-            option(value='Staff') Staff
-            option(value='Wand') Wand
-            option(value='Weapon') Weapon
-            option(value='Wondrous Item') Wondrous Item
-    .row
-        label(for='slot') Slot:
-        select#type(ng-model='slot')
-            option(value='any') Any
-            option(value='amulet') Amulet
-            option(value='armor') Armor
-            option(value='arms') Arms
-            option(value='belt') Belt
-            option(value='body') Body
-            option(value='chest') Chest
-            option(value='eyes') Eyes
-            option(value='feet') Feet
-            option(value='head') Head
-            option(value='headband') Headband
-            option(value='neck') Neck
-            option(value='ring') Ring
-            option(value='shield') Shield
-            option(value='shoulders') Shoulders
-            option(value='wrist') Wrist
-    p
-        label(for='cl-range') CL range:
-        input#cl-range(type='text', ng-model='clRange', readonly='readonly')
+.form-group.col-xs-12
+    //label(for='search') Search
+    input.form-control#item-search(type='text', name='search', placeholder='Search something…', ng-model='itemNameSubstring')
+.form-group.col-xs-12
+    //label(for='group') Group:
+    select.form-control#type(ng-model='group')
+        option(value='any') Choose group
+        option(value='any') Any
+        option(value='Armor') Armor
+        option(value='Artifact') Artifact
+        option(value='Cursed') Cursed
+        option(value='Legendary Weapon') Legendary Weapon
+        option(value='Oil') Oil
+        option(value='Potion') Potion
+        option(value='Ring') Ring
+        option(value='Rod') Rod
+        option(value='Scroll') Scroll
+        option(value='Staff') Staff
+        option(value='Wand') Wand
+        option(value='Weapon') Weapon
+        option(value='Wondrous Item') Wondrous Item
+.form-group.col-xs-12
+    //label(for='slot') Slot:
+    select.form-control#type(ng-model='slot')
+        option(value='any') Choose slot
+        option(value='any') Any
+        option(value='amulet') Amulet
+        option(value='armor') Armor
+        option(value='arms') Arms
+        option(value='belt') Belt
+        option(value='body') Body
+        option(value='chest') Chest
+        option(value='eyes') Eyes
+        option(value='feet') Feet
+        option(value='head') Head
+        option(value='headband') Headband
+        option(value='neck') Neck
+        option(value='ring') Ring
+        option(value='shield') Shield
+        option(value='shoulders') Shoulders
+        option(value='wrist') Wrist
+.form-group.col-xs-12
+    label(for='cl-range') CL range:
+    input.form-control.hidden#cl-range(type='text', ng-model='clRange', readonly='readonly')
+    .col-xs-12
     #slider-cl-range
 
