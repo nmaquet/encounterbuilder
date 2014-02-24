@@ -118,6 +118,8 @@ MagicItem.remove({}, function (error, count) {
         }
         for (var item in items) {
             items[item].id = items[item].id || generateId(items[item].Name, magic_item_ids);
+            items[item].Enchanted  = items[item].Enchanted || false;
+            /* "spell items" : potions, scrolls, etc. */
             if (items[item].LowChance) {
                 items[item].Derived = true;
                 items[item].Source = "PFRPG Core";
