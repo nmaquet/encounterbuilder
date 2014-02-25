@@ -17,7 +17,6 @@ DEMONSQUID.clone = function (object) {
         }
     }
     return clone;
-
 };
 
 

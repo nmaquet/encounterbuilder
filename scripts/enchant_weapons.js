@@ -46,7 +46,7 @@ var ONLY_COMPOSITE_BOWS = function (weapon) {
     }
 };
 var ONLY_BOWS_AND_CROSSBOWS = function (weapon) {
-    if (weapon.DamageType.indexOf("bow") === -1) {
+    if (weapon.Name.indexOf("bow") === -1) {
         return true;
     }
     else {
@@ -72,7 +72,7 @@ var ONLY_ALCHEMICAL_OR_METAL_CARTRIDGES = function (weapon) {
 };
 
 var ONLY_BOWS = function (weapon) {
-    if (weapon.DamageType.indexOf("bow") === -1 || weapon.DamageType.indexOf("crossbow") !== -1) {
+    if (weapon.Name.indexOf("bow") === -1 || weapon.Name.indexOf("crossbow") !== -1) {
         return true;
     }
     else {

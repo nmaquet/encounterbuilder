@@ -2507,9 +2507,43 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             }
         };
 
+        var weaponAbilityFilters = {
+            onlyNonLethal: function (weapon) {
+                return (weapon.Name !== 'Whip' && weapon.Name !== 'Bola');
+            },
+            onlyPorS: function (weapon) {
+                return (!weapon._pOrS);
+            },
+            onlyHasRange: function (weapon) {
+                return (weapon._melee && weapon.Name !== "Dagger" && weapon.Name !== "Light hammer" && weapon.Name !== "Spear");
+            },
+            onlyNonLight: function (weapon) {
+                return (!weapon._melee || !weapon._light);
+            },
+            onlyCompositeBows: function (weapon) {
+                return (weapon.Name.toLowerCase().indexOf("bow") === -1 || weapon.Name.toLowerCase().indexOf("composite") === -1);
+            },
+            onlyBowsAndCrossbows: function (weapon) {
+                return (weapon.Name.indexOf("bow") === -1);
+            },
+            onlyFirearms: function (weapon) {
+                return true;
+                /* there are no firearms in this random weapon table */
+            },
+            onlyBows: function (weapon) {
+                return (weapon.Name.indexOf("bow") === -1 || weapon.Name.indexOf("crossbow") !== -1);
+            }
+        }
+        
         var randomWeapon = {
             create: function () {
                 return DEMONSQUID.clone(rangeIn100(this.chanceTable, this.valueTable));
+            },
+            clean: function (weapon) {
+                delete weapon._light;
+                delete weapon._pOrS;
+                delete weapon._melee;
+                return weapon;
             },
             createMwk: function () {
                 var weapon = this.create();
@@ -2525,48 +2559,47 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 weapon.id = weapon.id + "-" + weaponBonus;
                 return weapon;
             },
-            priceModifiers: { 1: 2000, 2: 8000, 3: 18000, 4: 32000, 5: 50000, 6: 72000, 7: 98000, 8: 128000, 9: 162000, 10: 200000
-            },
+            priceModifiers: { 1: 2000, 2: 8000, 3: 18000, 4: 32000, 5: 50000, 6: 72000, 7: 98000, 8: 128000, 9: 162000, 10: 200000 },
             chanceTable: [2, 5, 7, 10, 13, 17, 20, 22, 24, 26, 29, 31, 34, 36, 40, 43, 47, 50,
                 53, 56, 58, 60, 63, 65, 68, 71, 74, 77, 81, 83, 86, 89, 92, 95, 96, 98],
             valueTable: [
-                {"Price": 35.0, "PriceUnit": "gp", "Name": "Bastard sword", "id": "bastard-sword"},
-                {"Price": 10.0, "PriceUnit": "gp", "Name": "Battleaxe", "id": "battleaxe"},
-                {"Price": 5.0, "PriceUnit": "gp", "Name": "Bola", "id": "bola"},
-                {"Price": 0.0, "PriceUnit": "gp", "Name": "Club", "id": "club"},
-                {"Price": 100.0, "PriceUnit": "gp", "Name": "Composite longbow", "id": "composite-longbow"},
-                {"Price": 75.0, "PriceUnit": "gp", "Name": "Composite shortbow", "id": "composite-shortbow"},
-                {"Price": 2.0, "PriceUnit": "gp", "Name": "Dagger", "id": "dagger"},
-                {"Price": 5.0, "PriceUnit": "gp", "Name": "Dart", "id": "dart"},
-                {"Price": 30.0, "PriceUnit": "gp", "Name": "Dwarven waraxe", "id": "dwarven-waraxe"},
-                {"Price": 75.0, "PriceUnit": "gp", "Name": "Falchion", "id": "falchion"},
-                {"Price": 2.0, "PriceUnit": "gp", "Name": "Gauntlet", "id": "gauntlet"},
-                {"Price": 8.0, "PriceUnit": "gp", "Name": "Glaive", "id": "glaive"},
-                {"Price": 20.0, "PriceUnit": "gp", "Name": "Greataxe", "id": "greataxe"},
-                {"Price": 5.0, "PriceUnit": "gp", "Name": "Greatclub", "id": "greatclub"},
-                {"Price": 50.0, "PriceUnit": "gp", "Name": "Greatsword", "id": "greatsword"},
-                {"Price": 10.0, "PriceUnit": "gp", "Name": "Halberd", "id": "halberd"},
-                {"Price": 6.0, "PriceUnit": "gp", "Name": "Handaxe", "id": "handaxe"},
-                {"Price": 50.0, "PriceUnit": "gp", "Name": "Heavy crossbow", "id": "Heavy crossbow"},
-                {"Price": 15.0, "PriceUnit": "gp", "Name": "Heavy flail", "id": "heavy-flail"},
-                {"Price": 12.0, "PriceUnit": "gp", "Name": "Heavy mace", "id": "heavy mace"},
-                {"Price": 10.0, "PriceUnit": "gp", "Name": "Lance", "id": "lance"},
-                {"Price": 35.0, "PriceUnit": "gp", "Name": "Light crossbow", "id": "light-crossbow"},
-                {"Price": 8.0, "PriceUnit": "gp", "Name": "Flail", "id": "flail"},
-                {"Price": 1.0, "PriceUnit": "gp", "Name": "Light hammer", "id": "light-hammer"},
-                {"Price": 5.0, "PriceUnit": "gp", "Name": "Light mace", "id": "light-mace"},
-                {"Price": 4.0, "PriceUnit": "gp", "Name": "Light pick", "id": "light-pick"},
-                {"Price": 75.0, "PriceUnit": "gp", "Name": "Longbow", "id": "longbow"},
-                {"Price": 5.0, "PriceUnit": "gp", "Name": "Longspear", "id": "longspear"},
-                {"Price": 15.0, "PriceUnit": "gp", "Name": "Longsword", "id": "longsword"},
-                {"Price": 8.0, "PriceUnit": "gp", "Name": "Morningstar", "id": "morningstar"},
-                {"Price": 2.0, "PriceUnit": "gp", "Name": "Nunchaku", "id": "nunchaku"},
-                {"Price": 0.0, "PriceUnit": "gp", "Name": "Quarterstaff", "id": "quarterstaff"},
-                {"Price": 20.0, "PriceUnit": "gp", "Name": "Rapier", "id": "rapier"},
-                {"Price": 2.0, "PriceUnit": "gp", "Name": "Spear", "id": "spear"},
-                {"Price": 15.0, "PriceUnit": "gp", "Name": "Trident", "id": "trident"},
-                {"Price": 12.0, "PriceUnit": "gp", "Name": "Warhammer", "id": "warhammer"},
-                {"Price": 1.0, "PriceUnit": "gp", "Name": "Whip", "id": "whip"}
+                {_light: false, _pOrS: true, _melee: true, "Price": 35.0, "PriceUnit": "gp", "Name": "Bastard sword", "id": "bastard-sword"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 10.0, "PriceUnit": "gp", "Name": "Battleaxe", "id": "battleaxe"},
+                {_light: false, _pOrS: false, _melee: false, "Price": 5.0, "PriceUnit": "gp", "Name": "Bola", "id": "bola"},
+                {_light: false, _pOrS: false, _melee: true, "Price": 0.0, "PriceUnit": "gp", "Name": "Club", "id": "club"},
+                {_light: false, _pOrS: true, _melee: false, "Price": 100.0, "PriceUnit": "gp", "Name": "Composite longbow", "id": "composite-longbow"},
+                {_light: false, _pOrS: true, _melee: false, "Price": 75.0, "PriceUnit": "gp", "Name": "Composite shortbow", "id": "composite-shortbow"},
+                {_light: true, _pOrS: true, _melee: true, "Price": 2.0, "PriceUnit": "gp", "Name": "Dagger", "id": "dagger"},
+                {_light: false, _pOrS: true, _melee: false, "Price": 5.0, "PriceUnit": "gp", "Name": "Dart", "id": "dart"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 30.0, "PriceUnit": "gp", "Name": "Dwarven waraxe", "id": "dwarven-waraxe"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 75.0, "PriceUnit": "gp", "Name": "Falchion", "id": "falchion"},
+                {_light: true, _pOrS: true, _melee: true, "Price": 2.0, "PriceUnit": "gp", "Name": "Gauntlet", "id": "gauntlet"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 8.0, "PriceUnit": "gp", "Name": "Glaive", "id": "glaive"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 20.0, "PriceUnit": "gp", "Name": "Greataxe", "id": "greataxe"},
+                {_light: false, _pOrS: false, _melee: true, "Price": 5.0, "PriceUnit": "gp", "Name": "Greatclub", "id": "greatclub"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 50.0, "PriceUnit": "gp", "Name": "Greatsword", "id": "greatsword"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 10.0, "PriceUnit": "gp", "Name": "Halberd", "id": "halberd"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 6.0, "PriceUnit": "gp", "Name": "Handaxe", "id": "handaxe"},
+                {_light: false, _pOrS: true, _melee: false, "Price": 50.0, "PriceUnit": "gp", "Name": "Heavy crossbow", "id": "Heavy crossbow"},
+                {_light: false, _pOrS: false, _melee: true, "Price": 15.0, "PriceUnit": "gp", "Name": "Heavy flail", "id": "heavy-flail"},
+                {_light: false, _pOrS: false, _melee: true, "Price": 12.0, "PriceUnit": "gp", "Name": "Heavy mace", "id": "heavy mace"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 10.0, "PriceUnit": "gp", "Name": "Lance", "id": "lance"},
+                {_light: false, _pOrS: true, _melee: false, "Price": 35.0, "PriceUnit": "gp", "Name": "Light crossbow", "id": "light-crossbow"},
+                {_light: false, _pOrS: false, _melee: true, "Price": 8.0, "PriceUnit": "gp", "Name": "Flail", "id": "flail"},
+                {_light: true, _pOrS: false, _melee: true, "Price": 1.0, "PriceUnit": "gp", "Name": "Light hammer", "id": "light-hammer"},
+                {_light: true, _pOrS: false, _melee: true, "Price": 5.0, "PriceUnit": "gp", "Name": "Light mace", "id": "light-mace"},
+                {_light: true, _pOrS: true, _melee: true, "Price": 4.0, "PriceUnit": "gp", "Name": "Light pick", "id": "light-pick"},
+                {_light: false, _pOrS: true, _melee: false, "Price": 75.0, "PriceUnit": "gp", "Name": "Longbow", "id": "longbow"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 5.0, "PriceUnit": "gp", "Name": "Longspear", "id": "longspear"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 15.0, "PriceUnit": "gp", "Name": "Longsword", "id": "longsword"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 8.0, "PriceUnit": "gp", "Name": "Morningstar", "id": "morningstar"},
+                {_light: true, _pOrS: false, _melee: true, "Price": 2.0, "PriceUnit": "gp", "Name": "Nunchaku", "id": "nunchaku"},
+                {_light: false, _pOrS: false, _melee: true, "Price": 0.0, "PriceUnit": "gp", "Name": "Quarterstaff", "id": "quarterstaff"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 20.0, "PriceUnit": "gp", "Name": "Rapier", "id": "rapier"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 2.0, "PriceUnit": "gp", "Name": "Spear", "id": "spear"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 15.0, "PriceUnit": "gp", "Name": "Trident", "id": "trident"},
+                {_light: false, _pOrS: false, _melee: true, "Price": 12.0, "PriceUnit": "gp", "Name": "Warhammer", "id": "warhammer"},
+                {_light: false, _pOrS: true, _melee: true, "Price": 1.0, "PriceUnit": "gp", "Name": "Whip", "id": "whip"}
             ],
             meleeSpecialAbilities: {
                 1: { chanceTable: [1, 2, 3, 8, 9, 10, 12, 16, 17, 18, 19, 21, 22, 26, 27, 33, 39, 41, 45, 47, 48, 49,
@@ -2584,7 +2617,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {enhancementBonus: 1, name: 'Courageous'},
                         {enhancementBonus: 1, name: 'Cruel'},
                         {enhancementBonus: 1, name: 'Cunning'},
-                        {enhancementBonus: 1, name: 'Deadly', filter: this.filters.onlyNonLethal},
+                        {enhancementBonus: 1, name: 'Deadly', filter: weaponAbilityFilters.onlyNonLethal},
                         {enhancementBonus: 1, name: 'Defending'},
                         {enhancementBonus: 1, name: 'Dispelling'},
                         {enhancementBonus: 1, name: 'Flaming'},
@@ -2597,7 +2630,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {enhancementBonus: 1, name: 'Heartseeker'},
                         {enhancementBonus: 1, name: 'Huntsman'},
                         {enhancementBonus: 1, name: 'Jurist'},
-                        {enhancementBonus: 1, name: 'Keen', filter: this.filters.onlyPorS},
+                        {enhancementBonus: 1, name: 'Keen', filter: weaponAbilityFilters.onlyPorS},
                         {enhancementBonus: 1, name: 'Ki focus'},
                         {enhancementBonus: 1, name: 'Limning'},
                         {enhancementBonus: 1, name: 'Menacing'},
@@ -2608,7 +2641,6 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {enhancementBonus: 1, name: 'Ominous'},
                         {enhancementBonus: 1, name: 'Planar'},
                         {enhancementBonus: 1, name: 'Quenching'},
-                        {enhancementBonus: 1, name: 'Returning', filter: this.filters.onlyHasRange},
                         {enhancementBonus: 1, name: 'Seaborne'},
                         {enhancementBonus: 1, name: 'Shock'},
                         {enhancementBonus: 1, name: 'Spell storing'},
@@ -2623,7 +2655,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                     valueTable: [
                         {name: "Advancing"},
                         {name: "Anarchic"},
-                        {name: "Anchoring", filter: this.filters.onlyHasRange},
+                        {name: "Anchoring", filter: weaponAbilityFilters.onlyHasRange},
                         {name: "Axiomatic"},
                         {name: "Corrosive burst"},
                         {name: "Defiant"},
@@ -2635,7 +2667,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {name: "Holy"},
                         {name: "Icy burst"},
                         {name: "Igniting"},
-                        {name: "Impact", filter: this.filters.onlyNonLight},
+                        {name: "Impact", filter: weaponAbilityFilters.onlyNonLight},
                         {name: "Invigorating"},
                         {name: "Ki intensifying"},
                         {name: "Lifesurge"},
@@ -2668,14 +2700,14 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             rangedSpecialAbilities: {
                 1: {chanceTable: [1, 2, 3, 6, 15, 16, 19, 20, 24, 25, 28, 36, 45, 54, 58, 62, 63, 64, 66, 67, 68, 76, 84, 92],
                     valueTable: [
-                        {name: 'Adaptive', flatprice: 1000, filter: this.filters.onlyCompositeBows},
+                        {name: 'Adaptive', flatprice: 1000, filter: weaponAbilityFilters.onlyCompositeBows},
                         {name: 'Impervious', flatprice: 3000},
                         {name: 'Glamered', flatprice: 4000},
                         {name: 'Allying'},
                         {name: 'Bane'},
                         {name: 'Called'},
                         {name: 'Conductive'},
-                        {name: 'Conserving', filter: this.filters.onlyFirearms},
+                        {name: 'Conserving', filter: weaponAbilityFilters.onlyFirearms},
                         {name: 'Corrosive'},
                         {name: 'Cruel'},
                         {name: 'Cunning'},
@@ -2685,10 +2717,10 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {name: 'Huntsman'},
                         {name: 'Jurist'},
                         {name: 'Limning'},
-                        {name: 'Lucky', filter: this.filters.onlyFirearms},
+                        {name: 'Lucky', filter: weaponAbilityFilters.onlyFirearms},
                         {name: 'Merciful'},
                         {name: 'Planar'},
-                        {name: 'Reliable', filter: this.filters.onlyFirearms},
+                        {name: 'Reliable', filter: weaponAbilityFilters.onlyFirearms},
                         {name: 'Seeking'},
                         {name: 'Shock'},
                         {name: 'Thundering'}
@@ -2700,7 +2732,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {name: "Axiomatic"},
                         {name: "Corrosive burst"},
                         {name: "Designating, lesser"},
-                        {name: "Endless ammunition", filter: this.filters.onlyBowsAndCrossbows},
+                        {name: "Endless ammunition", filter: weaponAbilityFilters.onlyBowsAndCrossbows},
                         {name: "Flaming burst"},
                         {name: "Holy"},
                         {name: "Icy burst"},
@@ -2713,55 +2745,48 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 },
                 3: {chanceTable: [25, 45, 85, 94, 96, 98],
                     valueTable: [
-                        {name: "Lucky, greater", filter: this.filters.onlyFirearms},
-                        {name: "Reliable, greater", filter: this.filters.onlyFirearms},
+                        {name: "Lucky, greater", filter: weaponAbilityFilters.onlyFirearms},
+                        {name: "Reliable, greater", filter: weaponAbilityFilters.onlyFirearms},
                         {name: "Speed"},
                         {name: "Brilliant energy", enhancementBonus: 4},
                         {name: "Designating, greater", enhancementBonus: 4},
                         {name: "Nimble shot", enhancementBonus: 4},
-                        {name: "Second chance", filter: this.filters.onlyBows, enhancementBonus: 4}
+                        {name: "Second chance", filter: weaponAbilityFilters.onlyBows, enhancementBonus: 4}
                     ]
-                }
-            },
-            filters: {
-                onlyNonLethal: function (weapon) {
-                    return (weapon.Special.toLowerCase().indexOf("nonlethal") === -1);
-                },
-                onlyPorS: function (weapon) {
-                    return (weapon.DamageType.indexOf("P") === -1 && weapon.DamageType.indexOf("S") === -1);
-                },
-                onlyHasRange: function (weapon) {
-                    return (weapon.Range.indexOf("ft") === -1);
-                },
-                onlyNonLight: function (weapon) {
-                    return (weapon.WeaponType.indexOf("light") !== -1);
-                },
-                onlyCompositeBows: function (weapon) {
-                    return (weapon.Name.toLowerCase().indexOf("bow") === -1 || weapon.Name.toLowerCase().indexOf("composite") === -1);
-                },
-                onlyBowsAndCrossbows: function (weapon) {
-                    return (weapon.DamageType.indexOf("bow") === -1);
-                },
-                onlyFirearms: function (weapon) {
-                    return (weapon.WeaponType.toLowerCase().indexOf("firearm") === -1);
-                },
-                onlyBows: function (weapon) {
-                    return (weapon.DamageType.indexOf("bow") === -1 || weapon.DamageType.indexOf("crossbow") !== -1);
                 }
             }
         };
 
         service.generateMwkArmor = function (type) {
-            return randomArmor.createMwk(type);
+            return randomWeapon.clean(randomArmor.createMwk(type));
         }
 
         service.generateMwkWeapon = function () {
-            return randomWeapon.createMwk();
+            return randomWeapon.clean(randomWeapon.createMwk());
         }
 
-        service.generateMagicWeapon = function (weaponBonus, abilities) {
-            if (abilities === undefined) {
-                return randomWeapon.createMagicWeapon(weaponBonus);
+        service.generateMagicWeapon = function (weaponBonus, firstSpecialAbilityLevel, secondSpecialAbilityLevel) {
+            if (firstSpecialAbilityLevel === undefined) {
+                return randomWeapon.clean(randomWeapon.createMagicWeapon(weaponBonus));
+            } else if (secondSpecialAbilityLevel === undefined) {
+                var weapon = randomWeapon.create();
+                if (weapon._melee) {
+                    var abilityTable = randomWeapon.meleeSpecialAbilities[Math.min(4, firstSpecialAbilityLevel)];
+                }
+                else {
+                    var abilityTable = randomWeapon.rangedSpecialAbilities[Math.min(3, firstSpecialAbilityLevel)];
+                }
+                do {
+                    var ability = rangeIn100(abilityTable.chanceTable, abilityTable.valueTable);
+                } while (ability.filter && ability.filter(weapon));
+                weapon.Name = ability.name + " " + weapon.Name.toLowerCase() + " +" + weaponBonus;
+                if (ability.flatprice) {
+                    weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus] + ability.flatprice;
+                } else {
+                    weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus + firstSpecialAbilityLevel];
+                }
+                weapon.id = DEMONSQUID.idify(ability.name) + "-" + weapon.id + "-" + weaponBonus;
+                return randomWeapon.clean(weapon);
             }
         }
 

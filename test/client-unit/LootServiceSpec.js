@@ -354,6 +354,7 @@ describe("lootService", function () {
             ]});
         });
     });
+
     describe("service.generateMwkArmor", function () {
 
         it("should generate a mwk light armor", function () {
@@ -363,6 +364,7 @@ describe("lootService", function () {
             var armor = service.generateMwkArmor("lightArmorOrShield");
             expect(armor).to.deep.equal({"Price": 159.0, "PriceUnit": "gp", "Name": "Mwk Light steel shield", "id": "mwk-light-steel-shield"});
         });
+
         it("should generate a mwk medium armor", function () {
 
             diceService.prepareDice({die: 100, value: 45, n: 1});
@@ -370,14 +372,16 @@ describe("lootService", function () {
             var armor = service.generateMwkArmor("mediumArmor");
             expect(armor).to.deep.equal({"Price": 300.0, "PriceUnit": "gp", "Name": "Mwk Chainmail", "id": "mwk-chainmail"});
         });
+
         it("should generate a mwk heavy armor", function () {
 
             diceService.prepareDice({die: 100, value: 45, n: 1});
 
             var armor = service.generateMwkArmor("heavyArmor");
-            expect(armor).to.deep.equal(  {"Price": 400.0, "PriceUnit": "gp", "Name": "Mwk Banded mail", "id": "mwk-banded-mail"});
+            expect(armor).to.deep.equal({"Price": 400.0, "PriceUnit": "gp", "Name": "Mwk Banded mail", "id": "mwk-banded-mail"});
         });
     });
+
     describe("service.generateMwkWeapon", function () {
 
         it("should generate a mwk weapon", function () {
@@ -386,14 +390,23 @@ describe("lootService", function () {
             expect(weapon).to.deep.equal({"Price": 306.0, "PriceUnit": "gp", "Name": "Mwk Handaxe", "id": "mwk-handaxe"});
         });
     });
+
     describe("service.generateMagicWeapon", function () {
 
         it("should generate a magic weapon without abilities", function () {
             diceService.prepareDice({die: 100, value: 45, n: 1});
             var weapon = service.generateMagicWeapon(1);
-            console.log(weapon);
             expect(weapon).to.deep.equal({"Price": 2306.0, "PriceUnit": "gp", "Name": "Handaxe +1", "id": "handaxe-1"});
+        });
+
+        it("should generate a magic weapon with one +1 ability", function () {
+            /* handaxe */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* flaming */
+            diceService.prepareDice({die: 100, value: 30, n: 1});
+            var weapon = service.generateMagicWeapon(1, 1);
+            expect(weapon).to.deep.equal({"Price": 8306.0, "PriceUnit": "gp", "Name": "Flaming handaxe +1", "id": "flaming-handaxe-1"});
         });
     });
 
-    });
+});
