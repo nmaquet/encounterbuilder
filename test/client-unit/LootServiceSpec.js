@@ -526,4 +526,47 @@ describe("lootService", function () {
         });
     });
 
+    describe("service.generateMagicArmorOrShieldByMagnitude", function () {
+
+        it("should generate a Greater Major +5 magic armor or shield with one +1 ability ", function () {
+            /* +5 with +1 special ability */
+            diceService.prepareDice({die: 100, value: 53, n: 1});
+            /* heavy steel shield */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* blinding */
+            diceService.prepareDice({die: 100, value: 30, n: 1});
+            var armorOrShield = service.generateMagicArmorOrShieldByMagnitude("greater_major");
+            console.log(armorOrShield);
+            expect(armorOrShield).to.deep.equal({"Price": 36170.0, "PriceUnit": "gp", "Name": "Blinding heavy steel shield +5", "id": "blinding-heavy-steel-shield-5"});
+        });
+
+        it("should generate a Lesser Medium +1 magic armor or shield with two +1 abilities ", function () {
+            /* +1 with two +1 special ability */
+            diceService.prepareDice({die: 100, value: 46, n: 1});
+            /* half plate */
+            diceService.prepareDice({die: 100, value: 44, n: 1});
+            /* bolstering */
+            diceService.prepareDice({die: 100, value: 30, n: 1});
+            /* bitter */
+            diceService.prepareDice({die: 100, value: 19, n: 1});
+            var weapon = service.generateMagicArmorOrShieldByMagnitude("lesser_medium");
+            expect(weapon).to.deep.equal({"Price": 9750.0, "PriceUnit": "gp", "Name": "Bolstering bitter half-plate +1", "id": "bolstering-bitter-half-plate-1"});
+        });
+
+        it("should generate reroll whenever encountering the same special ability twice", function () {
+            /* +1 with two +1 special ability */
+            diceService.prepareDice({die: 100, value: 46, n: 1});
+            /* half plate */
+            diceService.prepareDice({die: 100, value: 44, n: 1});
+            /* bolstering (x2) */
+            diceService.prepareDice({die: 100, value: 30, n: 1});
+            diceService.prepareDice({die: 100, value: 30, n: 1});
+            /* bitter */
+            diceService.prepareDice({die: 100, value: 19, n: 1});
+            var weapon = service.generateMagicArmorOrShieldByMagnitude("lesser_medium");
+            expect(weapon).to.deep.equal({"Price": 9750.0, "PriceUnit": "gp", "Name": "Bolstering bitter half-plate +1", "id": "bolstering-bitter-half-plate-1"});
+        });
+    });
+
+
 });

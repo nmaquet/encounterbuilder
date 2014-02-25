@@ -2288,7 +2288,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
 
         function rangeIn100(upperBounds, values) {
             if (values.length !== upperBounds.length + 1) {
-                throw Error("upperBounds and values mismatch '" + upperBounds + "' '" + values + "'");
+                throw Error("upperBounds and values mismatch '" + upperBounds + "' '" + values + "'" + "(" + upperBounds.length + " vs " + values.length + ")");
             }
             var dieResult = diceService.roll(100, 1);
             for (var i in upperBounds) {
@@ -2997,7 +2997,6 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 {_shield: false, "Price": 50, "PriceUnit": "gp", "Name": "Scale mail", "id": "scale-mail"},
                 {_shield: false, "Price": 200, "PriceUnit": "gp", "Name": "Splint mail", "id": "splint-mail"},
                 {_shield: false, "Price": 25, "PriceUnit": "gp", "Name": "Studded leather armor", "id": "studded-leather-armor"},
-                {_shield: true, "Price": 30, "PriceUnit": "gp", "Name": "Tower shield", "id": "tower-shield"},
                 {_shield: true, "Price": 30, "PriceUnit": "gp", "Name": "Tower shield", "id": "tower-shield"}
             ],
             armorSpecialAbilities: {
