@@ -2946,14 +2946,14 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         var ability1Bonus = (ability1.flatprice === undefined ? (ability1.enhancementBonus || abilityLevel1) : 0 );
                         var ability2Bonus = (ability2.flatprice === undefined ? (ability2.enhancementBonus || abilityLevel2) : 0 );
                         var totalAbilityBonus = ability1Bonus + ability2Bonus;
-                        armorOrShield.Price += 300 + totalFlatPrice + randomMagicArmorOrShield.priceModifiers[armorOrShieldBonus + totalAbilityBonus];
+                        armorOrShield.Price += 150 + totalFlatPrice + randomMagicArmorOrShield.priceModifiers[armorOrShieldBonus + totalAbilityBonus];
                         armorOrShield.id = DEMONSQUID.idify(ability1.name) + "-" + DEMONSQUID.idify(ability2.name) + "-" + armorOrShield.id + "-" + armorOrShieldBonus;
                     }
                     else {
                         armorOrShield.Name = ability1.name + " " + armorOrShield.Name.toLowerCase() + " +" + armorOrShieldBonus;
                         var totalFlatPrice = (ability1.flatprice || 0);
                         var totalAbilityBonus = (ability1.flatprice === undefined ? (ability1.enhancementBonus || abilityLevel1) : 0 );
-                        armorOrShield.Price += 300 + totalFlatPrice + randomMagicArmorOrShield.priceModifiers[armorOrShieldBonus + totalAbilityBonus];
+                        armorOrShield.Price += 150 + totalFlatPrice + randomMagicArmorOrShield.priceModifiers[armorOrShieldBonus + totalAbilityBonus];
                         armorOrShield.id = DEMONSQUID.idify(ability1.name) + "-" + armorOrShield.id + "-" + armorOrShieldBonus;
                     }
                 }
