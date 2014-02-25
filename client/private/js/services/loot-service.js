@@ -2902,14 +2902,14 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
 
             function addRandomAbility(weapon) {
                 do {
-                    var firstAbility = rangeIn100(abilityTable1.chanceTable, abilityTable1.valueTable);
-                } while (firstAbility.filter && firstAbility.filter(weapon));
+                    var ability1 = rangeIn100(abilityTable1.chanceTable, abilityTable1.valueTable);
+                } while (ability1.filter && ability1.filter(weapon));
                 if (abilityLevel2) {
                     do {
-                        var secondAbility = rangeIn100(abilityTable2.chanceTable, abilityTable2.valueTable);
-                    } while (secondAbility.filter && secondAbility.filter(weapon));
+                        var ability2 = rangeIn100(abilityTable2.chanceTable, abilityTable2.valueTable);
+                    } while ((ability2.filter && ability2.filter(weapon)) || (ability2.name === ability1.name));
                 }
-                applyAbilities(weapon, firstAbility, secondAbility);
+                applyAbilities(weapon, ability1, ability2);
             }
         }
 

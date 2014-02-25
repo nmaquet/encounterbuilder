@@ -510,6 +510,20 @@ describe("lootService", function () {
             var weapon = service.generateMagicWeaponByMagnitude("lesser_medium");
             expect(weapon).to.deep.equal({"Price": 18306.0, "PriceUnit": "gp", "Name": "Flaming cruel handaxe +1", "id": "flaming-cruel-handaxe-1"});
         });
+
+        it("should generate reroll whenever encountering the same special ability twice", function () {
+            /* +1 with two +1 special ability */
+            diceService.prepareDice({die: 100, value: 46, n: 1});
+            /* handaxe */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* flaming (x2)*/
+            diceService.prepareDice({die: 100, value: 30, n: 1});
+            diceService.prepareDice({die: 100, value: 30, n: 1});
+            /* cruel */
+            diceService.prepareDice({die: 100, value: 19, n: 1});
+            var weapon = service.generateMagicWeaponByMagnitude("lesser_medium");
+            expect(weapon).to.deep.equal({"Price": 18306.0, "PriceUnit": "gp", "Name": "Flaming cruel handaxe +1", "id": "flaming-cruel-handaxe-1"});
+        });
     });
 
 });
