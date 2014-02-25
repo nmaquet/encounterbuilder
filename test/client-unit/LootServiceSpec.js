@@ -381,11 +381,8 @@ describe("lootService", function () {
     describe("service.generateMwkWeapon", function () {
 
         it("should generate a mwk weapon", function () {
-
             diceService.prepareDice({die: 100, value: 45, n: 1});
-
             var weapon = service.generateMwkWeapon();
-            console.log(weapon.Name);
             expect(weapon).to.deep.equal({"Price": 306.0, "PriceUnit": "gp", "Name": "Mwk Handaxe", "id": "mwk-handaxe"});
         });
     });

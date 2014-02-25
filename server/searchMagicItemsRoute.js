@@ -11,7 +11,9 @@ function getQuery(request) {
     if (request.query.slot && request.query.slot != 'any') {
         query.Slot = request.query.slot;
     }
-    query.Enchanted = request.query.enchanted === 'true' || false;
+    if (request.query.enchanted !== 'true') {
+        query.Enchanted = false;
+    }
     var minCL = Number(request.query.minCL || 0);
     var maxCL = Number(request.query.maxCL || 20);
     if (minCL != 0 || maxCL != 20) {
@@ -44,7 +46,7 @@ module.exports = function (magicitemCollection, defaultFindLimit) {
         var query = getQuery(request);
 
         var cursor = magicitemCollection.find(query, options);
-        
+
         cursor.toArray(function (error, data) {
             magicItems = data;
             if (error) {

@@ -77,30 +77,30 @@ div.encounter(ng-show="encounter")
                                     i.icon.icon-remove
                                         | ×
             tfoot
-                    tr.encounter-row
-                        td
-                        td(colspan='3')
-                            .col-xs-8.text-right
-                                strong Coins
-                            .col-xs-4
-                                ul.list-unstyled.text-right
-                                    li
-                                        span.encounter-coins-pp.pointer.underline-dotted(click-to-edit='encounter.coins.pp', display="{{encounter.coins.pp | number}}", on-save="encounterChanged()", numeric="true")
-                                        i.icon.fa.fa-bullseye.platinum(title='Platinum Pieces')
-                                    li
-                                        span.encounter-coins-gp.pointer.underline-dotted(click-to-edit='encounter.coins.gp', display="{{encounter.coins.gp | number}}", on-save="encounterChanged()", numeric="true")
-                                        i.icon.fa.fa-bullseye.gold(title='Gold Pieces')
-                                    li
-                                        span.encounter-coins-sp.pointer.underline-dotted(click-to-edit='encounter.coins.sp', display="{{encounter.coins.sp | number}}", on-save="encounterChanged()", numeric="true")
-                                        i.icon.fa.fa-bullseye.silver(title='Silver Pieces')
-                                    li
-                                        span.encounter-coins-cp.pointer.underline-dotted(click-to-edit='encounter.coins.cp', display="{{encounter.coins.cp | number}}", on-save="encounterChanged()", numeric="true")
-                                        i.icon.fa.fa-bullseye.copper(title='Copper Pieces')
-                            .col-xs-8.text-right
-                                strong Value
-                            .col-xs-4
-                                .text-right
-                                    span#encounter-loot-value {{encounter.lootValue | number}}
+                tr.encounter-row
+                    td
+                    td(colspan='3')
+                        .col-xs-8.text-right
+                            strong Coins
+                        .col-xs-4
+                            ul.list-unstyled.text-right
+                                li
+                                    span.encounter-coins-pp.pointer.underline-dotted(click-to-edit='encounter.coins.pp', display="{{encounter.coins.pp | number}}", on-save="encounterChanged()", numeric="true")
+                                    i.icon.fa.fa-bullseye.platinum(title='Platinum Pieces')
+                                li
+                                    span.encounter-coins-gp.pointer.underline-dotted(click-to-edit='encounter.coins.gp', display="{{encounter.coins.gp | number}}", on-save="encounterChanged()", numeric="true")
+                                    i.icon.fa.fa-bullseye.gold(title='Gold Pieces')
+                                li
+                                    span.encounter-coins-sp.pointer.underline-dotted(click-to-edit='encounter.coins.sp', display="{{encounter.coins.sp | number}}", on-save="encounterChanged()", numeric="true")
+                                    i.icon.fa.fa-bullseye.silver(title='Silver Pieces')
+                                li
+                                    span.encounter-coins-cp.pointer.underline-dotted(click-to-edit='encounter.coins.cp', display="{{encounter.coins.cp | number}}", on-save="encounterChanged()", numeric="true")
+                                    i.icon.fa.fa-bullseye.copper(title='Copper Pieces')
+                        .col-xs-8.text-right
+                            strong Value
+                        .col-xs-4
+                            .text-right
+                                span#encounter-loot-value {{encounter.lootValue | number}}
 
 
 div.encounter-no-encounter(ng-hide="encounter")
