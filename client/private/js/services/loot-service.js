@@ -2549,7 +2549,14 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 this.clean(weapon);
                 return weapon;
             },
-            generateMagicWeapon: function (weaponBonus, abilityLevel1, abilityLevel2) {
+            generate: function (magnitude) {
+                /* FIXME: cannot yet handle specific weapons */
+                do {
+                    var weaponPower = randomWeapon.powerTable.random(magnitude);
+                } while (weaponPower.specific);
+                return this.generateByBonus(weaponPower.weaponBonus, weaponPower.specialAbility1, weaponPower.specialAbility2);
+            },
+            generateByBonus: function (weaponBonus, abilityLevel1, abilityLevel2) {
                 if (abilityLevel1 === undefined) {
                     var weapon = create();
                     weapon.Name = weapon.Name + " +" + weaponBonus;
@@ -2614,13 +2621,6 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                     }
                     applyAbilities(weapon, ability1, ability2);
                 }
-            },
-            generateMagicWeaponByMagnitude: function (magnitude) {
-                /* FIXME: cannot yet handle specific weapons */
-                do {
-                    var weaponPower = randomWeapon.powerTable.random(magnitude);
-                } while (weaponPower.specific);
-                return this.generateMagicWeapon(weaponPower.weaponBonus, weaponPower.specialAbility1, weaponPower.specialAbility2);
             },
             priceModifiers: { 1: 2000, 2: 8000, 3: 18000, 4: 32000, 5: 50000, 6: 72000, 7: 98000, 8: 128000, 9: 162000, 10: 200000 },
             chanceTable: [2, 5, 7, 10, 13, 17, 20, 22, 24, 26, 29, 31, 34, 36, 40, 43, 47, 50,
@@ -3213,12 +3213,12 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return randomWeapon.createMwk();
         }
 
-        service.generateMagicWeaponByMagnitude = function (magnitude) {
-            return randomWeapon.generateMagicWeaponByMagnitude(magnitude);
+        service.generateMagicWeapon = function (magnitude) {
+            return randomWeapon.generate(magnitude);
         }
 
-        service.generateMagicWeapon = function (weaponBonus, abilityLevel1, abilityLevel2) {
-            return randomWeapon.generateMagicWeapon(weaponBonus, abilityLevel1, abilityLevel2);
+        service.generateMagicWeaponByBonus = function (weaponBonus, abilityLevel1, abilityLevel2) {
+            return randomWeapon.generateByBonus(weaponBonus, abilityLevel1, abilityLevel2);
         }
 
         service.generateMagicArmorOrShield = function (magnitude) {

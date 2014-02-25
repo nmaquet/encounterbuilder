@@ -391,11 +391,11 @@ describe("lootService", function () {
         });
     });
 
-    describe("service.generateMagicWeapon", function () {
+    describe("service.generateMagicWeaponByBonus", function () {
 
         it("should generate a magic weapon without abilities", function () {
             diceService.prepareDice({die: 100, value: 45, n: 1});
-            var weapon = service.generateMagicWeapon(1);
+            var weapon = service.generateMagicWeaponByBonus(1);
             expect(weapon).to.deep.equal({"Price": 2306.0, "PriceUnit": "gp", "Name": "Handaxe +1", "id": "handaxe-1"});
         });
 
@@ -404,7 +404,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 100, value: 45, n: 1});
             /* flaming */
             diceService.prepareDice({die: 100, value: 30, n: 1});
-            var weapon = service.generateMagicWeapon(1, 1);
+            var weapon = service.generateMagicWeaponByBonus(1, 1);
             expect(weapon).to.deep.equal({"Price": 8306.0, "PriceUnit": "gp", "Name": "Flaming handaxe +1", "id": "flaming-handaxe-1"});
         });
 
@@ -413,7 +413,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 100, value: 45, n: 1});
             /* disruption */
             diceService.prepareDice({die: 100, value: 30, n: 1});
-            var weapon = service.generateMagicWeapon(1, 2);
+            var weapon = service.generateMagicWeaponByBonus(1, 2);
             expect(weapon).to.deep.equal({"Price": 18306.0, "PriceUnit": "gp", "Name": "Disruption handaxe +1", "id": "disruption-handaxe-1"});
         });
 
@@ -422,7 +422,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 100, value: 45, n: 1});
             /* repositioning */
             diceService.prepareDice({die: 100, value: 30, n: 1});
-            var weapon = service.generateMagicWeapon(1, 3);
+            var weapon = service.generateMagicWeaponByBonus(1, 3);
             expect(weapon).to.deep.equal({"Price": 32306.0, "PriceUnit": "gp", "Name": "Repositioning handaxe +1", "id": "repositioning-handaxe-1"});
         });
 
@@ -431,7 +431,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 100, value: 45, n: 1});
             /* brilliant energy */
             diceService.prepareDice({die: 100, value: 30, n: 1});
-            var weapon = service.generateMagicWeapon(1, 4);
+            var weapon = service.generateMagicWeaponByBonus(1, 4);
             expect(weapon).to.deep.equal({"Price": 50306.0, "PriceUnit": "gp", "Name": "Brilliant energy handaxe +1", "id": "brilliant-energy-handaxe-1"});
         });
 
@@ -440,7 +440,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 100, value: 45, n: 1});
             /* brilliant energy */
             diceService.prepareDice({die: 100, value: 30, n: 1});
-            var weapon = service.generateMagicWeapon(1, 5);
+            var weapon = service.generateMagicWeaponByBonus(1, 5);
             expect(weapon).to.deep.equal({"Price": 50306.0, "PriceUnit": "gp", "Name": "Brilliant energy handaxe +1", "id": "brilliant-energy-handaxe-1"});
         });
 
@@ -449,7 +449,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 100, value: 45, n: 1});
             /* brilliant energy */
             diceService.prepareDice({die: 100, value: 85, n: 1});
-            var weapon = service.generateMagicWeapon(1, 5);
+            var weapon = service.generateMagicWeaponByBonus(1, 5);
             expect(weapon).to.deep.equal({"Price": 72306.0, "PriceUnit": "gp", "Name": "Vorpal handaxe +1", "id": "vorpal-handaxe-1"});
         });
 
@@ -458,7 +458,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 100, value: 45, n: 1});
             /* Vorpal */
             diceService.prepareDice({die: 100, value: 85, n: 1});
-            var weapon = service.generateMagicWeapon(1, 4);
+            var weapon = service.generateMagicWeaponByBonus(1, 4);
             expect(weapon).to.deep.equal({"Price": 72306.0, "PriceUnit": "gp", "Name": "Vorpal handaxe +1", "id": "vorpal-handaxe-1"});
         });
 
@@ -469,7 +469,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 100, value: 85, n: 1});
             /* flaming */
             diceService.prepareDice({die: 100, value: 30, n: 1});
-            var weapon = service.generateMagicWeapon(1, 5, 1);
+            var weapon = service.generateMagicWeaponByBonus(1, 5, 1);
             expect(weapon).to.deep.equal({"Price": 98306.0, "PriceUnit": "gp", "Name": "Vorpal flaming handaxe +1", "id": "vorpal-flaming-handaxe-1"});
         });
 
@@ -480,12 +480,12 @@ describe("lootService", function () {
             diceService.prepareDice({die: 100, value: 85, n: 1});
             /* Speed */
             diceService.prepareDice({die: 100, value: 42, n: 1});
-            var weapon = service.generateMagicWeapon(1, 2, 3);
+            var weapon = service.generateMagicWeaponByBonus(1, 2, 3);
             expect(weapon).to.deep.equal({"Price": 72306.0, "PriceUnit": "gp", "Name": "Unholy speed handaxe +1", "id": "unholy-speed-handaxe-1"});
         });
     });
 
-    describe("service.generateMagicWeaponByMagnitude", function () {
+    describe("service.generateMagicWeapon", function () {
 
         it("should generate a Greater Major +5 magic weapon with one +1 ability ", function () {
             /* +5 with +1 special ability */
@@ -494,7 +494,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 100, value: 45, n: 1});
             /* flaming */
             diceService.prepareDice({die: 100, value: 30, n: 1});
-            var weapon = service.generateMagicWeaponByMagnitude("greater_major");
+            var weapon = service.generateMagicWeapon("greater_major");
             expect(weapon).to.deep.equal({"Price": 72306.0, "PriceUnit": "gp", "Name": "Flaming handaxe +5", "id": "flaming-handaxe-5"});
         });
 
@@ -507,7 +507,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 100, value: 30, n: 1});
             /* cruel */
             diceService.prepareDice({die: 100, value: 19, n: 1});
-            var weapon = service.generateMagicWeaponByMagnitude("lesser_medium");
+            var weapon = service.generateMagicWeapon("lesser_medium");
             expect(weapon).to.deep.equal({"Price": 18306.0, "PriceUnit": "gp", "Name": "Flaming cruel handaxe +1", "id": "flaming-cruel-handaxe-1"});
         });
 
@@ -521,7 +521,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 100, value: 30, n: 1});
             /* cruel */
             diceService.prepareDice({die: 100, value: 19, n: 1});
-            var weapon = service.generateMagicWeaponByMagnitude("lesser_medium");
+            var weapon = service.generateMagicWeapon("lesser_medium");
             expect(weapon).to.deep.equal({"Price": 18306.0, "PriceUnit": "gp", "Name": "Flaming cruel handaxe +1", "id": "flaming-cruel-handaxe-1"});
         });
     });
