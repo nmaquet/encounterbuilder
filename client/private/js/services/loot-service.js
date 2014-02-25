@@ -2518,7 +2518,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 weapon.Price += 300;
                 return weapon;
             },
-            createMagicWeapon: function(weaponBonus){
+            createMagicWeapon: function (weaponBonus) {
                 var weapon = this.create();
                 weapon.Name = weapon.Name + " +" + weaponBonus;
                 weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus];
@@ -2567,7 +2567,177 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 {"Price": 15.0, "PriceUnit": "gp", "Name": "Trident", "id": "trident"},
                 {"Price": 12.0, "PriceUnit": "gp", "Name": "Warhammer", "id": "warhammer"},
                 {"Price": 1.0, "PriceUnit": "gp", "Name": "Whip", "id": "whip"}
-            ]
+            ],
+            meleeSpecialAbilities: {
+                1: [
+                    {enhancementBonus: 1, name: 'Impervious', flatprice: 3000, cl: 0},
+                    {enhancementBonus: 1, name: 'Glamered', flatprice: 4000, cl: 0},
+                    {enhancementBonus: 1, name: 'Allying', cl: 5},
+                    {enhancementBonus: 1, name: 'Bane', cl: 8},
+                    {enhancementBonus: 1, name: 'Benevolent', cl: 5},
+                    {enhancementBonus: 1, name: 'Called', cl: 9},
+                    {enhancementBonus: 1, name: 'Conductive', cl: 8},
+                    {enhancementBonus: 1, name: 'Corrosive', cl: 10},
+                    {enhancementBonus: 1, name: 'Countering', cl: 5},
+                    {enhancementBonus: 1, name: 'Courageous', cl: 3},
+                    {enhancementBonus: 1, name: 'Cruel', cl: 5},
+                    {enhancementBonus: 1, name: 'Cunning', cl: 6},
+                    {enhancementBonus: 1, name: 'Deadly', cl: 5, filter: this.filters.onlyNonLethal},
+                    {enhancementBonus: 1, name: 'Defending', cl: 8},
+                    {enhancementBonus: 1, name: 'Dispelling', cl: 10},
+                    {enhancementBonus: 1, name: 'Flaming', cl: 10},
+                    {enhancementBonus: 1, name: 'Frost', cl: 8},
+                    {enhancementBonus: 1, name: 'Furious', cl: 8},
+                    {enhancementBonus: 1, name: 'Ghost touch', cl: 9},
+                    {enhancementBonus: 1, name: 'Grayflame', cl: 6},
+                    {enhancementBonus: 1, name: 'Grounding', cl: 5},
+                    {enhancementBonus: 1, name: 'Guardian', cl: 8},
+                    {enhancementBonus: 1, name: 'Heartseeker', cl: 7},
+                    {enhancementBonus: 1, name: 'Huntsman', cl: 7},
+                    {enhancementBonus: 1, name: 'Jurist', cl: 4},
+                    {enhancementBonus: 1, name: 'Keen', cl: 10, filter: this.filters.onlyPorS},
+                    {enhancementBonus: 1, name: 'Ki focus', cl: 8},
+                    {enhancementBonus: 1, name: 'Limning', cl: 5},
+                    {enhancementBonus: 1, name: 'Menacing', cl: 10},
+                    {enhancementBonus: 1, name: 'Merciful', cl: 5},
+                    {enhancementBonus: 1, name: 'Mighty cleaving', cl: 8},
+                    {enhancementBonus: 1, name: 'Mimetic', cl: 5},
+                    {enhancementBonus: 1, name: 'Neutralizing', cl: 5},
+                    {enhancementBonus: 1, name: 'Ominous', cl: 5},
+                    {enhancementBonus: 1, name: 'Planar', cl: 9},
+                    {enhancementBonus: 1, name: 'Quenching', cl: 5},
+                    {enhancementBonus: 1, name: 'Returning', cl: 7, filter: this.filters.onlyHasRange},
+                    {enhancementBonus: 1, name: 'Seaborne', cl: 7},
+                    {enhancementBonus: 1, name: 'Shock', cl: 8},
+                    {enhancementBonus: 1, name: 'Spell storing', cl: 12},
+                    {enhancementBonus: 1, name: 'Thawing', cl: 5},
+                    {enhancementBonus: 1, name: 'Throwing', cl: 5},
+                    {enhancementBonus: 1, name: 'Thundering', cl: 5},
+                    {enhancementBonus: 1, name: 'Valiant', cl: 5},
+                    {enhancementBonus: 1, name: 'Vicious', cl: 9}
+                ],
+                2: [
+                    {name: "Advancing", cl: 5},
+                    {name: "Anarchic", cl: 7},
+                    {name: "Anchoring", cl: 10, filter: this.filters.onlyHasRange},
+                    {name: "Axiomatic", cl: 7},
+                    {name: "Corrosive burst", cl: 12},
+                    {name: "Defiant", cl: 10},
+                    {name: "Dispelling burst", cl: 12},
+                    {name: "Disruption", cl: 14},
+                    {name: "Flaming burst", cl: 12},
+                    {name: "Furyborn", cl: 7},
+                    {name: "Glorious", cl: 5},
+                    {name: "Holy", cl: 7},
+                    {name: "Icy burst", cl: 10},
+                    {name: "Igniting", cl: 12},
+                    {name: "Impact", cl: 9, filter: this.filters.onlyNonLight },
+                    {name: "Invigorating", cl: 5},
+                    {name: "Ki intensifying", cl: 12},
+                    {name: "Lifesurge", cl: 8},
+                    {name: "Negating", cl: 5},
+                    {name: "Phase locking", cl: 7},
+                    {name: "Shocking burst", cl: 10},
+                    {name: "Stalking", cl: 10},
+                    {name: "Unholy", cl: 7},
+                    {name: "Wounding", cl: 10}
+                ],
+                3: [
+                    {name: "Nullifying", cl: 12},
+                    {name: "Repositioning", cl: 10},
+                    {name: "Speed", cl: 7},
+                    {name: "Spellstealing", cl: 13}
+                ],
+                4: [
+                    {name: "Brilliant energy", cl: 16},
+                    {name: "Dancing", cl: 15},
+                    {name: "Dueling", cl: 5, flatprice: 14000}
+                ],
+                5: [
+                    {name: "Vorpal", cl: 18},
+                    {name: "Transformative", cl: 10, flatprice: 10000}
+                ]
+            },
+            rangedSpecialAbilities: {
+                1: [
+                    {name: 'Adaptive', flatprice: 1000, cl: 0, filter: this.filters.onlyCompositeBows},
+                    {name: 'Impervious', flatprice: 3000, cl: 0},
+                    {name: 'Glamered', flatprice: 4000, cl: 0},
+                    {name: 'Allying', cl: 5},
+                    {name: 'Bane', cl: 8},
+                    {name: 'Called', cl: 9},
+                    {name: 'Conductive', cl: 8},
+                    {name: 'Conserving', cl: 7, filter: this.filters.onlyFirearms},
+                    {name: 'Corrosive', cl: 10},
+                    {name: 'Cruel', cl: 5},
+                    {name: 'Cunning', cl: 6},
+                    {name: 'Distance', cl: 6},
+                    {name: 'Flaming', cl: 10},
+                    {name: 'Frost', cl: 8},
+                    {name: 'Huntsman', cl: 7},
+                    {name: 'Jurist', cl: 4},
+                    {name: 'Limning', cl: 5},
+                    {name: 'Lucky', cl: 8, filter: this.filters.onlyFirearms},
+                    {name: 'Merciful', cl: 5},
+                    {name: 'Planar', cl: 9},
+                    {name: 'Reliable', cl: 8, filter: this.filters.onlyFirearms},
+                    {name: 'Seeking', cl: 12},
+                    {name: 'Shock', cl: 8},
+                    {name: 'Thundering', cl: 5}
+                ],
+                2: [
+                    {name: "Anarchic", cl: 7},
+                    {name: "Axiomatic", cl: 7},
+                    {name: "Corrosive burst", cl: 12},
+                    {name: "Designating, lesser", cl: 7},
+                    {name: "Endless ammunition", cl: 9, filter: this.filters.onlyBowsAndCrossbows},
+                    {name: "Flaming burst", cl: 12},
+                    {name: "Holy", cl: 7},
+                    {name: "Icy burst", cl: 10},
+                    {name: "Igniting", cl: 12},
+                    {name: "Phase locking", cl: 7},
+                    {name: "Shocking burst", cl: 10},
+                    {name: "Stalking", cl: 10},
+                    {name: "Unholy", cl: 7}
+                ],
+                3: [
+                    {name: "Lucky, greater", cl: 12, filter: this.filters.onlyFirearms},
+                    {name: "Reliable, greater", cl: 12, filter: this.filters.onlyFirearms},
+                    {name: "Speed", cl: 7}
+                ],
+                4: [
+                    {name: "Brilliant energy", cl: 16},
+                    {name: "Designating, greater", cl: 12},
+                    {name: "Nimble shot", cl: 11},
+                    {name: "Second chance", cl: 11, filter: this.filters.onlyBows }
+                ]
+            },
+            filters: {
+                onlyNonLethal: function (weapon) {
+                    return (weapon.Special.toLowerCase().indexOf("nonlethal") === -1);
+                },
+                onlyPorS: function (weapon) {
+                    return (weapon.DamageType.indexOf("P") === -1 && weapon.DamageType.indexOf("S") === -1);
+                },
+                onlyHasRange: function (weapon) {
+                    return (weapon.Range.indexOf("ft") === -1);
+                },
+                onlyNonLight: function (weapon) {
+                    return (weapon.WeaponType.indexOf("light") !== -1);
+                },
+                onlyCompositeBows: function (weapon) {
+                    return (weapon.Name.toLowerCase().indexOf("bow") === -1 || weapon.Name.toLowerCase().indexOf("composite") === -1);
+                },
+                onlyBowsAndCrossbows: function (weapon) {
+                    return (weapon.DamageType.indexOf("bow") === -1);
+                },
+                onlyFirearms: function (weapon) {
+                    return (weapon.WeaponType.toLowerCase().indexOf("firearm") === -1);
+                },
+                onlyBows: function (weapon) {
+                    return (weapon.DamageType.indexOf("bow") === -1 || weapon.DamageType.indexOf("crossbow") !== -1);
+                }
+            }
         };
 
         service.generateMwkArmor = function (type) {
