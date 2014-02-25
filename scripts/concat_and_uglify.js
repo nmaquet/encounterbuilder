@@ -46,9 +46,7 @@ var jsFiles = [
     "client/private/js/services/encounter-service.js",
     "client/private/js/services/item-service.js",
     "client/private/js/services/cr-service.js",
-    "client/private/js/services/loot-service.js",
-    "client/private/js/services/dice-service.js",
-    "client/private/js/services/knapsack-service.js"
+    "client/private/js/services/loot-service.js"
 ];
 
 function concat(fileList, distPath) {

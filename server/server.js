@@ -41,6 +41,11 @@ function main(db) {
     });
 
     var authentication = require('./authentication')();
+    var clone = require('./clone')();
+    var idify = require('./idify')();
+    var diceService = require('./diceService')();
+    var knapsackService = require('./knapsackService')();
+    var lootService = require('./lootService')(diceService, knapsackService, clone, idify);
 
     var searchMonstersRoute = require('./searchMonstersRoute')(collections.monsters, FIND_LIMIT);
     var searchMagicItemsRoute = require('./searchMagicItemsRoute')(collections.magicitems, FIND_LIMIT);
@@ -50,7 +55,7 @@ function main(db) {
     var logoutRoute = require('./logoutRoute')();
     var userDataRoute = require('./userDataRoute')(collections.encounters);
     var clientRoutes = require('./clientRoutes')();
-    var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID);
+    var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
 
     app.get('/api/search-monsters', authentication.check, searchMonstersRoute);
     app.get('/api/search-magic-items', authentication.check, searchMagicItemsRoute);
@@ -61,6 +66,7 @@ function main(db) {
     app.post("/login", loginRoute);
     app.post("/api/upsert-encounter", authentication.check, encounterRoute.upsert);
     app.post("/api/remove-encounter", authentication.check, encounterRoute.delete);
+    app.post("/api/generate-encounter-loot", authentication.check, encounterRoute.generateLoot);
 
     app.get('/feedback-popover.html', clientRoutes.feedbackPopover);
     app.get('/login.html', clientRoutes.login);

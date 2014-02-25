@@ -1,18 +1,10 @@
 "use strict";
 
 
-var expect = chai.expect;
-
-var service;
+var expect = require('chai').expect;
+var service = require('../../server/knapsackService')();
 
 describe("knapsackService", function () {
-
-    beforeEach(module("encounterBuilderApp"));
-
-
-    beforeEach(inject(function (_knapsackService_) {
-        service = _knapsackService_;
-    }));
 
    it("should return values when target equals to existing value", function () {
         var result = service.knapsack([5], 5);

@@ -1,16 +1,15 @@
 "use strict";
 
-module.exports = function (encounterCollection, ObjectID) {
+module.exports = function (encounterCollection, ObjectID, lootService) {
     return {
         upsert: function (request, response) {
             var username = request.session.user.username;
             var encounter = request.body.encounter;
             encounter.Username = username;
-
             if (encounter._id) {
                 var selector = {_id: ObjectID(encounter._id), Username: username};
                 delete encounter._id;
-                encounterCollection.update(selector, encounter, {}, function (error,result) {
+                encounterCollection.update(selector, encounter, {}, function (error, result) {
                     if (error) {
                         console.log(error);
                         response.json({error: "could not update encounter"});
@@ -48,6 +47,28 @@ module.exports = function (encounterCollection, ObjectID) {
             else {
                 response.json({error: "no encounter id"});
             }
+        },
+        generateLoot: function (request, response) {
+            var username = request.session.user.username;
+            var encounter = request.body.encounter;
+            var loot = lootService.generateEncounterLoot(encounter);
+            encounter.coins = loot.coins;
+            encounter.items = {};
+            for (var i in loot.items) {
+                encounter.items[loot.items[i].id] = loot.items[i];
+            }
+            encounter.Username = username;
+            var selector = {_id: ObjectID(encounter._id), Username: username};
+            delete encounter._id;
+            encounterCollection.update(selector, encounter, {}, function (error, result) {
+                if (error) {
+                    console.log(error);
+                    response.json({error: "could not update encounter"});
+                }
+                else {
+                    response.json({coins: encounter.coins, items: encounter.items});
+                }
+            });
         }
     }
 };

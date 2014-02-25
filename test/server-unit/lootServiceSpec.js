@@ -1,9 +1,12 @@
 "use strict";
 
-var expect = chai.expect;
+var expect = require('chai').expect;
 
 var service;
 var diceService;
+var knapsackService = require('../../server/knapsackService')();
+var clone = require('../../server/clone')();
+var idify = require('../../server/idify')();
 
 function createDiceServiceMock() {
 
@@ -47,16 +50,11 @@ function createDiceServiceMock() {
 
 describe("lootService", function () {
 
-    beforeEach(module("encounterBuilderApp"));
 
-    beforeEach(module(function ($provide) {
-        $provide.factory('diceService', createDiceServiceMock);
-    }));
-
-    beforeEach(inject(function (_lootService_, _diceService_) {
-        service = _lootService_;
-        diceService = _diceService_;
-    }));
+    beforeEach(function () {
+        diceService = createDiceServiceMock();
+        service = require('../../server/lootService')(diceService, knapsackService, clone, idify);
+    });
 
     afterEach(function () {
         diceService.verifyNoRemainingDice();
@@ -567,6 +565,4 @@ describe("lootService", function () {
             expect(weapon).to.deep.equal({"Price": 9750.0, "PriceUnit": "gp", "Name": "Bolstering bitter half-plate +1", "id": "bolstering-bitter-half-plate-1"});
         });
     });
-
-
 });

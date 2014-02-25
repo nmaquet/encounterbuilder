@@ -72,21 +72,19 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
 
             $scope.createFirstEncounter = function () {
                 /* FIXME: this is duplicated with encounter-list-controller */
-                var encounter = { Name: "Untitled #0", CR: "0", Monsters: {}, coins: {pp:0,gp:0,sp:0,cp:0}};
+                var encounter = { Name: "Untitled #0", CR: "0", Monsters: {}, coins: {pp: 0, gp: 0, sp: 0, cp: 0}};
                 selectedEncounterService.selectedEncounter(encounter);
                 encounterService.encounters.unshift(encounter);
                 encounterService.encounterChanged(encounter);
             }
 
             $scope.randomizeLoot = function (encounter) {
-                var loot = lootService.generateEncounterLoot(encounter, 'medium');
-                encounter.coins = loot.coins;
-                encounter.items = {};
-                for (var i in loot.items) {
-                    var item = loot.items[i];
-                    encounter.items[item.id] = item;
-                }
-                encounterService.encounterChanged(encounter);
+                lootService.generateEncounterLoot(encounter, 'medium', function (coins, items) {
+                    encounter.coins = coins;
+                    encounter.items = items;
+                    /* FIXME: this works, but makes a wasteful upsert */
+                    encounterService.encounterChanged(encounter);
+                });
             }
         }
     ]);
