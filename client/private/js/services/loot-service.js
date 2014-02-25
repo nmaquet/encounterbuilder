@@ -2536,16 +2536,13 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
         }
 
         var randomWeapon = {
-            create: function () {
-                return DEMONSQUID.clone(rangeIn100(this.chanceTable, this.valueTable));
-            },
             clean: function (weapon) {
                 delete weapon._light;
                 delete weapon._pOrS;
                 delete weapon._melee;
             },
             createMwk: function () {
-                var weapon = this.create();
+                var weapon = DEMONSQUID.clone(rangeIn100(this.chanceTable, this.valueTable));
                 weapon.Name = "Mwk " + weapon.Name;
                 weapon.id = "mwk-" + weapon.id;
                 weapon.Price += 300;
@@ -2554,14 +2551,14 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             },
             generateMagicWeapon: function (weaponBonus, abilityLevel1, abilityLevel2) {
                 if (abilityLevel1 === undefined) {
-                    var weapon = this.create();
+                    var weapon = create();
                     weapon.Name = weapon.Name + " +" + weaponBonus;
                     weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus];
                     weapon.id = weapon.id + "-" + weaponBonus;
                     randomWeapon.clean(weapon);
                     return weapon;
                 } else {
-                    var weapon = randomWeapon.create();
+                    var weapon = create();
                     if (weapon._melee) {
                         abilityLevel1 = Math.min(4, abilityLevel1);
                         var abilityTable1 = randomWeapon.meleeSpecialAbilities[abilityLevel1];
@@ -2581,6 +2578,10 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                     addRandomAbility(weapon);
                     randomWeapon.clean(weapon);
                     return weapon;
+                }
+
+                function create() {
+                    return DEMONSQUID.clone(rangeIn100(randomWeapon.chanceTable, randomWeapon.valueTable));
                 }
 
                 function applyAbilities(weapon, ability1, ability2) {
