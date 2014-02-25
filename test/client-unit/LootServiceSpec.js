@@ -485,4 +485,31 @@ describe("lootService", function () {
         });
     });
 
+    describe("service.generateMagicWeaponByMagnitude", function () {
+
+        it("should generate a Greater Major +5 magic weapon with one +1 ability ", function () {
+            /* +5 with +1 special ability */
+            diceService.prepareDice({die: 100, value: 53, n: 1});
+            /* handaxe */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* flaming */
+            diceService.prepareDice({die: 100, value: 30, n: 1});
+            var weapon = service.generateMagicWeaponByMagnitude("greater_major");
+            expect(weapon).to.deep.equal({"Price": 72306.0, "PriceUnit": "gp", "Name": "Flaming handaxe +5", "id": "flaming-handaxe-5"});
+        });
+
+        it("should generate a Lesser Medium +1 magic weapon with two +1 abilities ", function () {
+            /* +1 with two +1 special ability */
+            diceService.prepareDice({die: 100, value: 46, n: 1});
+            /* handaxe */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* flaming */
+            diceService.prepareDice({die: 100, value: 30, n: 1});
+            /* cruel */
+            diceService.prepareDice({die: 100, value: 19, n: 1});
+            var weapon = service.generateMagicWeaponByMagnitude("lesser_medium");
+            expect(weapon).to.deep.equal({"Price": 18306.0, "PriceUnit": "gp", "Name": "Flaming cruel handaxe +1", "id": "flaming-cruel-handaxe-1"});
+        });
+    });
+
 });

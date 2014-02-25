@@ -2753,6 +2753,84 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {name: "Second chance", filter: weaponAbilityFilters.onlyBows, enhancementBonus: 4}
                     ]
                 }
+            },
+            powerTable: {
+                random: function (magnitude) {
+                    return rangeIn100(this[magnitude].chanceTable, this[magnitude].valueTable);
+                },
+                lesser_minor: {
+                    chanceTable: [80],
+                    valueTable: [
+                        {specific: false, weaponBonus: 1},
+                        {specific: true}
+                    ]
+                },
+                greater_minor: {
+                    chanceTable: [26, 53, 80],
+                    valueTable: [
+                        {specific: false, weaponBonus: 1},
+                        {specific: false, weaponBonus: 2},
+                        {specific: false, weaponBonus: 1, specialAbility1: 1},
+                        {specific: true}
+                    ]
+                },
+                lesser_medium: {
+                    chanceTable: [10, 20, 32, 44, 56, 68, 80],
+                    valueTable: [
+                        {specific: false, weaponBonus: 1},
+                        {specific: false, weaponBonus: 2},
+                        {specific: false, weaponBonus: 3},
+                        {specific: false, weaponBonus: 1, specialAbility1: 1},
+                        {specific: false, weaponBonus: 1, specialAbility1: 1, specialAbility2: 1},
+                        {specific: false, weaponBonus: 1, specialAbility1: 2},
+                        {specific: false, weaponBonus: 2, specialAbility1: 1},
+                        {specific: true}
+                    ]
+                },
+                greater_medium: {
+                    chanceTable: [10, 22, 32, 44, 56, 68, 80],
+                    valueTable: [
+                        {specific: false, weaponBonus: 2},
+                        {specific: false, weaponBonus: 3},
+                        {specific: false, weaponBonus: 1, specialAbility1: 1},
+                        {specific: false, weaponBonus: 1, specialAbility1: 2},
+                        {specific: false, weaponBonus: 2, specialAbility1: 1},
+                        {specific: false, weaponBonus: 2, specialAbility1: 2},
+                        {specific: false, weaponBonus: 3, specialAbility1: 1},
+                        {specific: true}
+                    ]
+                },
+                lesser_major: {
+                    chanceTable: [10, 22, 32, 44, 56, 68, 80],
+                    valueTable: [
+                        {specific: false, weaponBonus: 3},
+                        {specific: false, weaponBonus: 4},
+                        {specific: false, weaponBonus: 1, specialAbility1: 2},
+                        {specific: false, weaponBonus: 1, specialAbility1: 3},
+                        {specific: false, weaponBonus: 2, specialAbility1: 2},
+                        {specific: false, weaponBonus: 3, specialAbility1: 1},
+                        {specific: false, weaponBonus: 4, specialAbility1: 1},
+                        {specific: true}
+                    ]
+                },
+                greater_major: {
+                    chanceTable: [10, 20, 30, 38, 46, 51, 59, 67, 71, 74, 77, 80],
+                    valueTable: [
+                        {specific: false, weaponBonus: 4},
+                        {specific: false, weaponBonus: 5},
+                        {specific: false, weaponBonus: 4, specialAbility1: 1},
+                        {specific: false, weaponBonus: 4, specialAbility1: 2},
+                        {specific: false, weaponBonus: 4, specialAbility1: 3},
+                        {specific: false, weaponBonus: 4, specialAbility1: 4},
+                        {specific: false, weaponBonus: 5, specialAbility1: 1},
+                        {specific: false, weaponBonus: 5, specialAbility1: 2},
+                        {specific: false, weaponBonus: 5, specialAbility1: 3},
+                        {specific: false, weaponBonus: 5, specialAbility1: 4},
+                        {specific: false, weaponBonus: 5, specialAbility1: 4, specialAbility2: 1},
+                        {specific: false, weaponBonus: 5, specialAbility1: 3, specialAbility2: 2},
+                        {specific: true}
+                    ]
+                }
             }
         };
 
@@ -2764,6 +2842,14 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             var weapon = randomWeapon.createMwk();
             randomWeapon.clean(weapon);
             return weapon;
+        }
+
+        service.generateMagicWeaponByMagnitude = function (magnitude) {
+            /* FIXME: cannot yet handle specific weapons */
+            do {
+                var weaponPower = randomWeapon.powerTable.random(magnitude);
+            } while (weaponPower.specific);
+            return service.generateMagicWeapon(weaponPower.weaponBonus, weaponPower.specialAbility1, weaponPower.specialAbility2);
         }
 
         service.generateMagicWeapon = function (weaponBonus, abilityLevel1, abilityLevel2) {
@@ -2808,7 +2894,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 else {
                     weapon.Name = ability1.name + " " + weapon.Name.toLowerCase() + " +" + weaponBonus;
                     var totalFlatPrice = (ability1.flatprice || 0);
-                    var totalAbilityBonus = (ability1.flatprice === undefined ? (ability1.enhancementBonus|| abilityLevel1) : 0 );
+                    var totalAbilityBonus = (ability1.flatprice === undefined ? (ability1.enhancementBonus || abilityLevel1) : 0 );
                     weapon.Price += 300 + totalFlatPrice + randomWeapon.priceModifiers[weaponBonus + totalAbilityBonus];
                     weapon.id = DEMONSQUID.idify(ability1.name) + "-" + weapon.id + "-" + weaponBonus;
                 }
