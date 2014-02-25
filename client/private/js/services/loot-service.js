@@ -2771,14 +2771,17 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             } else if (secondSpecialAbilityLevel === undefined) {
                 var weapon = randomWeapon.create();
                 if (weapon._melee) {
-                    var abilityTable = randomWeapon.meleeSpecialAbilities[Math.min(4, firstSpecialAbilityLevel)];
+                    var abilityBonus = Math.min(4, firstSpecialAbilityLevel);
+                    var abilityTable = randomWeapon.meleeSpecialAbilities[abilityBonus];
                 }
                 else {
-                    var abilityTable = randomWeapon.rangedSpecialAbilities[Math.min(3, firstSpecialAbilityLevel)];
+                    var abilityBonus = Math.min(3, firstSpecialAbilityLevel);
+                    var abilityTable = randomWeapon.rangedSpecialAbilities[abilityBonus];
                 }
                 do {
                     var ability = rangeIn100(abilityTable.chanceTable, abilityTable.valueTable);
                 } while (ability.filter && ability.filter(weapon));
+                firstSpecialAbilityLevel = ability.enhancementBonus || abilityBonus;
                 weapon.Name = ability.name + " " + weapon.Name.toLowerCase() + " +" + weaponBonus;
                 if (ability.flatprice) {
                     weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus] + ability.flatprice;
