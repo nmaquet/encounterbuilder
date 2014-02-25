@@ -2552,16 +2552,12 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 this.clean(weapon);
                 return weapon;
             },
-            createMagicWeapon: function (weaponBonus) {
-                var weapon = this.create();
-                weapon.Name = weapon.Name + " +" + weaponBonus;
-                weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus];
-                weapon.id = weapon.id + "-" + weaponBonus;
-                return weapon;
-            },
             generateMagicWeapon: function (weaponBonus, abilityLevel1, abilityLevel2) {
                 if (abilityLevel1 === undefined) {
-                    var weapon = randomWeapon.createMagicWeapon(weaponBonus);
+                    var weapon = this.create();
+                    weapon.Name = weapon.Name + " +" + weaponBonus;
+                    weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus];
+                    weapon.id = weapon.id + "-" + weaponBonus;
                     randomWeapon.clean(weapon);
                     return weapon;
                 } else {
@@ -2908,16 +2904,12 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             clean: function (armorOrShield) {
                 delete armorOrShield._shield;
             },
-            createMagicArmorOrShield: function (armorOrShieldBonus) {
-                var armorOrShield = this.create();
-                armorOrShield.Name = armorOrShield.Name + " +" + armorOrShieldBonus;
-                armorOrShield.Price += 150 + randomMagicArmorOrShield.priceModifiers[armorOrShieldBonus];
-                armorOrShield.id = armorOrShield.id + "-" + armorOrShieldBonus;
-                return armorOrShield;
-            },
             generateMagicArmorOrShield: function (armorOrShieldBonus, abilityLevel1, abilityLevel2) {
                 if (abilityLevel1 === undefined) {
-                    var armorOrShield = randomMagicArmorOrShield.createMagicArmorOrShield(armorOrShieldBonus);
+                    var armorOrShield = this.create();
+                    armorOrShield.Name = armorOrShield.Name + " +" + armorOrShieldBonus;
+                    armorOrShield.Price += 150 + randomMagicArmorOrShield.priceModifiers[armorOrShieldBonus];
+                    armorOrShield.id = armorOrShield.id + "-" + armorOrShieldBonus;
                     randomMagicArmorOrShield.clean(armorOrShield);
                     return armorOrShield;
                 } else {
