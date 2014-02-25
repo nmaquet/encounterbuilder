@@ -468,11 +468,10 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                     { magnitude: "lesser_major", type: "weapon"}
                 ]
             ],
-            40000:[
+            40000: [
                 { magnitude: "greater_major", type: "armorOrShield"},
                 { magnitude: "greater_minor", type: "weapon"}
-                ]
-            ,
+            ],
             50000: [
                 [
                     { magnitude: "greater_major", type: "armorOrShield"},
@@ -2526,7 +2525,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
         };
 
         service.generateEncounterNonNPCLoot = function (budget, lootType) {
-            var generateLoot = {A: generateTypeALoot, D: service.generateTypeDLoot};
+            var generateLoot = {A: generateTypeALoot, D: service.generateTypeDLoot, E: service.generateTypeELoot};
             return generateLoot[lootType](budget);
         };
 
@@ -2535,7 +2534,8 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             var budget = service.calculateNPCBudget(monsterBrief, speed);
             var loot = {coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: []};
             for (var i = 0; i < (monsterBrief.amount || 1); i++) {
-                accumulateLoot(loot, service.generateEncounterNonNPCLoot(budget, diceService.chooseOne(['A', 'D'])));
+                //FIXME check creature type for allowed loot type
+                accumulateLoot(loot, service.generateEncounterNonNPCLoot(budget, diceService.chooseOne(['A', 'D', 'E'])));
             }
             return loot;
         };
@@ -2555,7 +2555,8 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
 
         service.generateEncounterLoot = function (encounter, speed) {
             var nonNPCBudget = service.calculateNonNPCLootValue(encounter, speed);
-            var loot = service.generateEncounterNonNPCLoot(nonNPCBudget, diceService.chooseOne(['A', 'D']));
+            //FIXME check creature type for allowed loot type
+            var loot = service.generateEncounterNonNPCLoot(nonNPCBudget, diceService.chooseOne(['A', 'D', 'E']));
             var npcLoot = service.generateEncounterNPCLoot(encounter, speed);
             accumulateLoot(loot, npcLoot);
             return loot;
@@ -2942,6 +2943,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {name: 'Merciful'},
                         {name: 'Planar'},
                         {name: 'Reliable', filter: weaponAbilityFilters.onlyFirearms},
+                        {name: 'Returning', /* FIXME: needs a filter */},
                         {name: 'Seeking'},
                         {name: 'Shock'},
                         {name: 'Thundering'}
@@ -3193,6 +3195,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {name: 'Hosteling', flatprice: 7500},
                         {name: 'Radiant', flatprice: 7500},
                         {name: 'Delving', flatprice: 10000},
+                        {name: 'Putrid', flatprice: 10000},
                         {name: 'Fortification (moderate)'},
                         {name: "Ghost touch"},
                         {name: "Invulnerability"},
@@ -3420,6 +3423,30 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return loot;
         };
 
+        service.generateTypeELoot = function (budget) {
+            var gpValues = knapsackService.knapsack(Object.keys(typeELoot), budget);
+            var loot = {coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: []};
+            for (var i in gpValues) {
+                var gpValue = gpValues[i];
+                var partialLoots = diceService.chooseOne(typeELoot[gpValue]);
+                for (var j in partialLoots) {
+                    var partialLoot = partialLoots[j];
+                    if (partialLoot.mwk && partialLoot.type === "weapon") {
+                        addItem(randomWeapon.createMwk(), loot.items);
+                    }
+                    else if (partialLoot.mwk && partialLoot.type === "armorOrShield") {
+                        addItem(randomMundaneArmorOrShield.createMwk(partialLoot.armorType), loot.items);
+                    }
+                    else if (partialLoot.type === "weapon") {
+                        addItem(randomWeapon.generate(partialLoot.magnitude), loot.items);
+                    }
+                    else {
+                        addItem(randomMagicArmorOrShield.generate(partialLoot.magnitude), loot.items);
+                    }
+                }
+            }
+            return loot;
+        };
         return service;
     }])
 ;

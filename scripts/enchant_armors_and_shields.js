@@ -41,6 +41,7 @@ var armorSpecialAbilities = {
         {name: 'Hosteling', flatprice: 7500, cl: 9},
         {name: 'Radiant', flatprice: 7500, cl: 6},
         {name: 'Delving', flatprice: 10000, cl: 5},
+        {name: 'Putrid', flatprice: 10000, cl:5},
         {name: 'Fortification (moderate)', cl: 13},
         {name: "Ghost touch", cl: 15},
         {name: "Invulnerability", cl: 18},
