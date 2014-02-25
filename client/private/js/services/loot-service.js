@@ -2765,28 +2765,27 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return randomWeapon.clean(randomWeapon.createMwk());
         }
 
-        service.generateMagicWeapon = function (weaponBonus, firstSpecialAbilityLevel, secondSpecialAbilityLevel) {
-            if (firstSpecialAbilityLevel === undefined) {
+        service.generateMagicWeapon = function (weaponBonus, abilityLevel1, abilityLevel2) {
+            if (abilityLevel1 === undefined) {
                 return randomWeapon.clean(randomWeapon.createMagicWeapon(weaponBonus));
-            } else if (secondSpecialAbilityLevel === undefined) {
+            } else if (abilityLevel2 === undefined) {
                 var weapon = randomWeapon.create();
                 if (weapon._melee) {
-                    var abilityBonus = Math.min(4, firstSpecialAbilityLevel);
-                    var abilityTable = randomWeapon.meleeSpecialAbilities[abilityBonus];
+                    abilityLevel1 = Math.min(4, abilityLevel1);
+                    var abilityTable = randomWeapon.meleeSpecialAbilities[abilityLevel1];
                 }
                 else {
-                    var abilityBonus = Math.min(3, firstSpecialAbilityLevel);
-                    var abilityTable = randomWeapon.rangedSpecialAbilities[abilityBonus];
+                    abilityLevel1 = Math.min(3, abilityLevel1);
+                    var abilityTable = randomWeapon.rangedSpecialAbilities[abilityLevel1];
                 }
                 do {
                     var ability = rangeIn100(abilityTable.chanceTable, abilityTable.valueTable);
                 } while (ability.filter && ability.filter(weapon));
-                firstSpecialAbilityLevel = ability.enhancementBonus || abilityBonus;
                 weapon.Name = ability.name + " " + weapon.Name.toLowerCase() + " +" + weaponBonus;
                 if (ability.flatprice) {
                     weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus] + ability.flatprice;
                 } else {
-                    weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus + firstSpecialAbilityLevel];
+                    weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus + (ability.enhancementBonus || abilityLevel1)];
                 }
                 weapon.id = DEMONSQUID.idify(ability.name) + "-" + weapon.id + "-" + weaponBonus;
                 return randomWeapon.clean(weapon);
