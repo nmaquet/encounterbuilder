@@ -441,7 +441,6 @@ describe("lootService", function () {
             /* brilliant energy */
             diceService.prepareDice({die: 100, value: 30, n: 1});
             var weapon = service.generateMagicWeapon(1, 5);
-            console.log(weapon);
             expect(weapon).to.deep.equal({"Price": 50306.0, "PriceUnit": "gp", "Name": "Brilliant energy handaxe +1", "id": "brilliant-energy-handaxe-1"});
         });
 
@@ -451,28 +450,38 @@ describe("lootService", function () {
             /* brilliant energy */
             diceService.prepareDice({die: 100, value: 85, n: 1});
             var weapon = service.generateMagicWeapon(1, 5);
-            console.log(weapon);
             expect(weapon).to.deep.equal({"Price": 72306.0, "PriceUnit": "gp", "Name": "Vorpal handaxe +1", "id": "vorpal-handaxe-1"});
         });
 
         it("should generate a magic weapon with one +5 ability even if asking for +4 but lucky roll", function () {
             /* handaxe */
             diceService.prepareDice({die: 100, value: 45, n: 1});
-            /* brilliant energy */
+            /* Vorpal */
             diceService.prepareDice({die: 100, value: 85, n: 1});
             var weapon = service.generateMagicWeapon(1, 4);
-            console.log(weapon);
             expect(weapon).to.deep.equal({"Price": 72306.0, "PriceUnit": "gp", "Name": "Vorpal handaxe +1", "id": "vorpal-handaxe-1"});
         });
 
-        it("should generate a magic weapon with one +5 ability", function () {
+        it("should generate a magic weapon with one +5 ability and one +1 ability ", function () {
             /* handaxe */
             diceService.prepareDice({die: 100, value: 45, n: 1});
-            /* brilliant energy */
+            /* Vorpal */
             diceService.prepareDice({die: 100, value: 85, n: 1});
-            var weapon = service.generateMagicWeapon(1, 5);
-            console.log(weapon);
-            expect(weapon).to.deep.equal({"Price": 72306.0, "PriceUnit": "gp", "Name": "Vorpal handaxe +1", "id": "vorpal-handaxe-1"});
+            /* flaming */
+            diceService.prepareDice({die: 100, value: 30, n: 1});
+            var weapon = service.generateMagicWeapon(1, 5, 1);
+            expect(weapon).to.deep.equal({"Price": 98306.0, "PriceUnit": "gp", "Name": "Vorpal flaming handaxe +1", "id": "vorpal-flaming-handaxe-1"});
+        });
+
+        it("should generate a magic weapon with one +2 ability and one +3 ability ", function () {
+            /* handaxe */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* Unholy */
+            diceService.prepareDice({die: 100, value: 85, n: 1});
+            /* Speed */
+            diceService.prepareDice({die: 100, value: 42, n: 1});
+            var weapon = service.generateMagicWeapon(1, 2, 3);
+            expect(weapon).to.deep.equal({"Price": 72306.0, "PriceUnit": "gp", "Name": "Unholy speed handaxe +1", "id": "unholy-speed-handaxe-1"});
         });
     });
 

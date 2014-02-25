@@ -2797,7 +2797,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
 
             function applyAbilities(weapon, ability1, ability2) {
                 if (ability2) {
-                    weapon.Name = ability1.name + " " + ability2.Name.toLowerCase() + " " + weapon.Name.toLowerCase() + " +" + weaponBonus;
+                    weapon.Name = ability1.name + " " + ability2.name.toLowerCase() + " " + weapon.Name.toLowerCase() + " +" + weaponBonus;
                     var totalFlatPrice = (ability1.flatprice || 0) + (ability2.flatprice || 0);
                     var ability1Bonus = (ability1.flatprice === undefined ? (ability1.enhancementBonus || abilityLevel1) : 0 );
                     var ability2Bonus = (ability2.flatprice === undefined ? (ability2.enhancementBonus || abilityLevel2) : 0 );
