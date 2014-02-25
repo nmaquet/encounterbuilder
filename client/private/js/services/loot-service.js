@@ -2461,8 +2461,19 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
         }
 
         var randomArmor = {
-            lightArmorOrShield :  function () {
-                return rangeIn100([11, 18, 27, 36, 45, 54, 63, 72, 81, 90], [
+            create: function (type) {
+                return DEMONSQUID.clone(rangeIn100(this[type].chanceTable, this[type].valueTable));
+            },
+            createMwk: function(type){
+                var armor = this.create(type);
+                armor.Name = "Mwk " + armor.Name;
+                armor.id = "mwk-" + armor.id;
+                armor.Price += 150;
+                return armor;
+            },
+            lightArmorOrShield: {
+                chanceTable: [11, 18, 27, 36, 45, 54, 63, 72, 81, 90],
+                valueTable: [
                     {"Price": 3.0, "PriceUnit": "gp", "Name": "Light wooden shield", "id": "light-wooden-shield"},
                     {"Price": 5.0, "PriceUnit": "gp", "Name": "Buckler", "id": "buckler"},
                     {"Price": 5.0, "PriceUnit": "gp", "Name": "Padded armor", "id": "padded-armor"},
@@ -2474,84 +2485,88 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                     {"Price": 25.0, "PriceUnit": "gp", "Name": "Studded leather", "id": "studded-leather"},
                     {"Price": 30.0, "PriceUnit": "gp", "Name": "Tower shield", "id": "tower-shield"},
                     {"Price": 100.0, "PriceUnit": "gp", "Name": "Chain shirt", "id": "chain-shirt"}
-                ]);},
-            mediumArmor :  function () {
-                return rangeIn100([33, 66], [
+                ]
+            },
+            mediumArmor: {
+                chanceTable: [33, 66],
+                valueTable: [
                     {"Price": 50.0, "PriceUnit": "gp", "Name": "Scale mail", "id": "scale-mail"},
                     {"Price": 150.0, "PriceUnit": "gp", "Name": "Chainmail", "id": "chainmail"},
                     {"Price": 200.0, "PriceUnit": "gp", "Name": "Breastplate", "id": "breastplate"}
 
-                ]);}
-            ,
-            heavyArmor :  function () {
-                return rangeIn100([33,60,85], [
+                ]
+            },
+            heavyArmor: {
+                chanceTable: [33, 60, 85],
+                valueTable: [
                     {"Price": 200.0, "PriceUnit": "gp", "Name": "Splint mail", "id": "splint-mail"},
                     {"Price": 250.0, "PriceUnit": "gp", "Name": "Banded mail", "id": "banded-mail"},
                     {"Price": 600.0, "PriceUnit": "gp", "Name": "Half-plate", "id": "half-plate"},
                     {"Price": 1500.0, "PriceUnit": "gp", "Name": "Full plate", "id": "full-plate"}
-
-                ]);}
+                ]
+            }
         };
 
-        function randomMwkWeapon(){
-            return rangeIn100(randomWeaponChanceTable,randomWeaponValueTable);
-        }
-
-        var randomWeaponChanceTable = [2,5,7,10,13,17,20,22,24,26,29,31,34,36,40,43,47,50,53,56,58,60,63,65,68,71,74,77,81,83,86,89,92,95,96,98];
-        var randomWeaponValueTable = [
-            {"Price": 35.0, "PriceUnit": "gp", "Name": "Bastard sword", "id": "bastard-sword"},
-            {"Price": 10.0, "PriceUnit": "gp", "Name": "Battleaxe", "id": "battleaxe"},
-            {"Price": 5.0, "PriceUnit": "gp", "Name": "Bola", "id": "bola"},
-            {"Price": 0.0, "PriceUnit": "gp", "Name": "Club", "id": "club"},
-            {"Price": 100.0, "PriceUnit": "gp", "Name": "Composite longbow", "id": "composite-longbow"},
-            {"Price": 75.0, "PriceUnit": "gp", "Name": "Composite shortbow", "id": "composite-shortbow"},
-            {"Price": 2.0, "PriceUnit": "gp", "Name": "Dagger", "id": "dagger"},
-            {"Price": 5.0, "PriceUnit": "gp", "Name": "Dart", "id": "dart"},
-            {"Price": 30.0, "PriceUnit": "gp", "Name": "Dwarven waraxe", "id": "dwarven-waraxe"},
-            {"Price": 75.0, "PriceUnit": "gp", "Name": "Falchion", "id": "falchion"},
-            {"Price": 2.0, "PriceUnit": "gp", "Name": "Gauntlet", "id": "gauntlet"},
-            {"Price": 8.0, "PriceUnit": "gp", "Name": "Glaive", "id": "glaive"},
-            {"Price": 20.0, "PriceUnit": "gp", "Name": "Greataxe", "id": "greataxe"},
-            {"Price": 5.0, "PriceUnit": "gp", "Name": "Greatclub", "id": "greatclub"},
-            {"Price": 50.0, "PriceUnit": "gp", "Name": "Greatsword", "id": "greatsword"},
-            {"Price": 10.0, "PriceUnit": "gp", "Name": "Halberd", "id": "halberd"},
-            {"Price": 6.0, "PriceUnit": "gp", "Name": "Handaxe", "id": "handaxe"},
-            {"Price": 50.0, "PriceUnit": "gp", "Name": "Heavy crossbow", "id": "Heavy crossbow"},
-            {"Price": 15.0, "PriceUnit": "gp", "Name": "Heavy flail", "id": "heavy-flail"},
-            {"Price": 12.0, "PriceUnit": "gp", "Name": "Heavy mace", "id": "heavy mace"},
-            {"Price": 10.0, "PriceUnit": "gp", "Name": "Lance", "id": "lance"},
-            {"Price": 35.0, "PriceUnit": "gp", "Name": "Light crossbow", "id": "light-crossbow"},
-            {"Price": 8.0, "PriceUnit": "gp", "Name": "Flail", "id": "flail"},
-            {"Price": 1.0, "PriceUnit": "gp", "Name": "Light hammer", "id": "light-hammer"},
-            {"Price": 5.0, "PriceUnit": "gp", "Name": "Light mace", "id": "light-mace"},
-            {"Price": 4.0, "PriceUnit": "gp", "Name": "Light pick", "id": "light-pick"},
-            {"Price": 75.0, "PriceUnit": "gp", "Name": "Longbow", "id": "longbow"},
-            {"Price": 5.0, "PriceUnit": "gp", "Name": "Longspear", "id": "longspear"},
-            {"Price": 15.0, "PriceUnit": "gp", "Name": "Longsword", "id": "longsword"},
-            {"Price": 8.0, "PriceUnit": "gp", "Name": "Morningstar", "id": "morningstar"},
-            {"Price": 2.0, "PriceUnit": "gp", "Name": "Nunchaku", "id": "nunchaku"},
-            {"Price": 0.0, "PriceUnit": "gp", "Name": "Quarterstaff", "id": "quarterstaff"},
-            {"Price": 20.0, "PriceUnit": "gp", "Name": "Rapier", "id": "rapier"},
-            {"Price": 2.0, "PriceUnit": "gp", "Name": "Spear", "id": "spear"},
-            {"Price": 15.0, "PriceUnit": "gp", "Name": "Trident", "id": "trident"},
-            {"Price": 12.0, "PriceUnit": "gp", "Name": "Warhammer", "id": "warhammer"},
-            {"Price": 1.0, "PriceUnit": "gp", "Name": "Whip", "id": "whip"}
-        ];
+        var randomWeapon = {
+            create: function () {
+                return DEMONSQUID.clone(rangeIn100(this.chanceTable, this.valueTable));
+            },
+            createMwk: function () {
+                var weapon = this.create();
+                weapon.Name = "Mwk " + weapon.Name;
+                weapon.id = "mwk-" + weapon.id;
+                weapon.Price += 300;
+                return weapon;
+            },
+            chanceTable: [2, 5, 7, 10, 13, 17, 20, 22, 24, 26, 29, 31, 34, 36, 40, 43, 47, 50,
+                53, 56, 58, 60, 63, 65, 68, 71, 74, 77, 81, 83, 86, 89, 92, 95, 96, 98],
+            valueTable: [
+                {"Price": 35.0, "PriceUnit": "gp", "Name": "Bastard sword", "id": "bastard-sword"},
+                {"Price": 10.0, "PriceUnit": "gp", "Name": "Battleaxe", "id": "battleaxe"},
+                {"Price": 5.0, "PriceUnit": "gp", "Name": "Bola", "id": "bola"},
+                {"Price": 0.0, "PriceUnit": "gp", "Name": "Club", "id": "club"},
+                {"Price": 100.0, "PriceUnit": "gp", "Name": "Composite longbow", "id": "composite-longbow"},
+                {"Price": 75.0, "PriceUnit": "gp", "Name": "Composite shortbow", "id": "composite-shortbow"},
+                {"Price": 2.0, "PriceUnit": "gp", "Name": "Dagger", "id": "dagger"},
+                {"Price": 5.0, "PriceUnit": "gp", "Name": "Dart", "id": "dart"},
+                {"Price": 30.0, "PriceUnit": "gp", "Name": "Dwarven waraxe", "id": "dwarven-waraxe"},
+                {"Price": 75.0, "PriceUnit": "gp", "Name": "Falchion", "id": "falchion"},
+                {"Price": 2.0, "PriceUnit": "gp", "Name": "Gauntlet", "id": "gauntlet"},
+                {"Price": 8.0, "PriceUnit": "gp", "Name": "Glaive", "id": "glaive"},
+                {"Price": 20.0, "PriceUnit": "gp", "Name": "Greataxe", "id": "greataxe"},
+                {"Price": 5.0, "PriceUnit": "gp", "Name": "Greatclub", "id": "greatclub"},
+                {"Price": 50.0, "PriceUnit": "gp", "Name": "Greatsword", "id": "greatsword"},
+                {"Price": 10.0, "PriceUnit": "gp", "Name": "Halberd", "id": "halberd"},
+                {"Price": 6.0, "PriceUnit": "gp", "Name": "Handaxe", "id": "handaxe"},
+                {"Price": 50.0, "PriceUnit": "gp", "Name": "Heavy crossbow", "id": "Heavy crossbow"},
+                {"Price": 15.0, "PriceUnit": "gp", "Name": "Heavy flail", "id": "heavy-flail"},
+                {"Price": 12.0, "PriceUnit": "gp", "Name": "Heavy mace", "id": "heavy mace"},
+                {"Price": 10.0, "PriceUnit": "gp", "Name": "Lance", "id": "lance"},
+                {"Price": 35.0, "PriceUnit": "gp", "Name": "Light crossbow", "id": "light-crossbow"},
+                {"Price": 8.0, "PriceUnit": "gp", "Name": "Flail", "id": "flail"},
+                {"Price": 1.0, "PriceUnit": "gp", "Name": "Light hammer", "id": "light-hammer"},
+                {"Price": 5.0, "PriceUnit": "gp", "Name": "Light mace", "id": "light-mace"},
+                {"Price": 4.0, "PriceUnit": "gp", "Name": "Light pick", "id": "light-pick"},
+                {"Price": 75.0, "PriceUnit": "gp", "Name": "Longbow", "id": "longbow"},
+                {"Price": 5.0, "PriceUnit": "gp", "Name": "Longspear", "id": "longspear"},
+                {"Price": 15.0, "PriceUnit": "gp", "Name": "Longsword", "id": "longsword"},
+                {"Price": 8.0, "PriceUnit": "gp", "Name": "Morningstar", "id": "morningstar"},
+                {"Price": 2.0, "PriceUnit": "gp", "Name": "Nunchaku", "id": "nunchaku"},
+                {"Price": 0.0, "PriceUnit": "gp", "Name": "Quarterstaff", "id": "quarterstaff"},
+                {"Price": 20.0, "PriceUnit": "gp", "Name": "Rapier", "id": "rapier"},
+                {"Price": 2.0, "PriceUnit": "gp", "Name": "Spear", "id": "spear"},
+                {"Price": 15.0, "PriceUnit": "gp", "Name": "Trident", "id": "trident"},
+                {"Price": 12.0, "PriceUnit": "gp", "Name": "Warhammer", "id": "warhammer"},
+                {"Price": 1.0, "PriceUnit": "gp", "Name": "Whip", "id": "whip"}
+            ]
+        };
 
         service.generateMwkArmor = function (type) {
-            var armor = DEMONSQUID.clone(randomArmor[type]());
-            armor.Name = "Mwk "+   armor.Name;
-            armor.id = "mwk-"+armor.id;
-            armor.Price+=150;
-            return armor;
+            return randomArmor.createMwk(type);
         }
 
         service.generateMwkWeapon = function () {
-            var weapon = DEMONSQUID.clone(randomMwkWeapon());
-            weapon.Name = "Mwk "+   weapon.Name;
-            weapon.id = "mwk-"+weapon.id;
-            weapon.Price+=300;
-            return weapon;
+            return randomWeapon.createMwk();
         }
 
         service.generateTypeDLoot = function (budget) {
