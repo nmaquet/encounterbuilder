@@ -441,6 +441,7 @@ describe("lootService", function () {
             /* brilliant energy */
             diceService.prepareDice({die: 100, value: 30, n: 1});
             var weapon = service.generateMagicWeapon(1, 5);
+            console.log(weapon);
             expect(weapon).to.deep.equal({"Price": 50306.0, "PriceUnit": "gp", "Name": "Brilliant energy handaxe +1", "id": "brilliant-energy-handaxe-1"});
         });
 

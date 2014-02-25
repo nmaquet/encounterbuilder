@@ -2766,29 +2766,41 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
         }
 
         service.generateMagicWeapon = function (weaponBonus, abilityLevel1, abilityLevel2) {
+
             if (abilityLevel1 === undefined) {
                 return randomWeapon.clean(randomWeapon.createMagicWeapon(weaponBonus));
             } else if (abilityLevel2 === undefined) {
                 var weapon = randomWeapon.create();
-                if (weapon._melee) {
-                    abilityLevel1 = Math.min(4, abilityLevel1);
-                    var abilityTable = randomWeapon.meleeSpecialAbilities[abilityLevel1];
-                }
-                else {
-                    abilityLevel1 = Math.min(3, abilityLevel1);
-                    var abilityTable = randomWeapon.rangedSpecialAbilities[abilityLevel1];
-                }
-                do {
-                    var ability = rangeIn100(abilityTable.chanceTable, abilityTable.valueTable);
-                } while (ability.filter && ability.filter(weapon));
+                weapon =  addRandomAbility(weapon,abilityLevel1);
+                return randomWeapon.clean(weapon);
+            }
+
+            function applyAbility(weapon,ability,abilityLevel) {
                 weapon.Name = ability.name + " " + weapon.Name.toLowerCase() + " +" + weaponBonus;
                 if (ability.flatprice) {
                     weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus] + ability.flatprice;
                 } else {
-                    weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus + (ability.enhancementBonus || abilityLevel1)];
+                    weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus + (ability.enhancementBonus || abilityLevel)];
                 }
                 weapon.id = DEMONSQUID.idify(ability.name) + "-" + weapon.id + "-" + weaponBonus;
-                return randomWeapon.clean(weapon);
+                return weapon;
+            }
+            function addRandomAbility(weapon,abilityLevel){
+                if (weapon._melee) {
+                    abilityLevel = Math.min(4, abilityLevel);
+                    var abilityTable = randomWeapon.meleeSpecialAbilities[abilityLevel];
+                }
+                else {
+                    abilityLevel = Math.min(3, abilityLevel);
+                    var abilityTable = randomWeapon.rangedSpecialAbilities[abilityLevel];
+                }
+                do {
+                    var ability = rangeIn100(abilityTable.chanceTable, abilityTable.valueTable);
+                } while (ability.filter && ability.filter(weapon));
+
+
+                weapon = applyAbility(weapon, ability,abilityLevel );
+                return weapon;
             }
         }
 
