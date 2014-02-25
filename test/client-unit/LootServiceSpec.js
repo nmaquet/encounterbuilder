@@ -386,4 +386,14 @@ describe("lootService", function () {
             expect(weapon).to.deep.equal({"Price": 306.0, "PriceUnit": "gp", "Name": "Mwk Handaxe", "id": "mwk-handaxe"});
         });
     });
+    describe("service.generateMagicWeapon", function () {
+
+        it("should generate a magic weapon without abilities", function () {
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            var weapon = service.generateMagicWeapon(1);
+            console.log(weapon);
+            expect(weapon).to.deep.equal({"Price": 2306.0, "PriceUnit": "gp", "Name": "Handaxe +1", "id": "handaxe-1"});
+        });
+    });
+
     });

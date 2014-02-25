@@ -2464,7 +2464,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             create: function (type) {
                 return DEMONSQUID.clone(rangeIn100(this[type].chanceTable, this[type].valueTable));
             },
-            createMwk: function(type){
+            createMwk: function (type) {
                 var armor = this.create(type);
                 armor.Name = "Mwk " + armor.Name;
                 armor.id = "mwk-" + armor.id;
@@ -2518,6 +2518,15 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 weapon.Price += 300;
                 return weapon;
             },
+            createMagicWeapon: function(weaponBonus){
+                var weapon = this.create();
+                weapon.Name = weapon.Name + " +" + weaponBonus;
+                weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus];
+                weapon.id = weapon.id + "-" + weaponBonus;
+                return weapon;
+            },
+            priceModifiers: { 1: 2000, 2: 8000, 3: 18000, 4: 32000, 5: 50000, 6: 72000, 7: 98000, 8: 128000, 9: 162000, 10: 200000
+            },
             chanceTable: [2, 5, 7, 10, 13, 17, 20, 22, 24, 26, 29, 31, 34, 36, 40, 43, 47, 50,
                 53, 56, 58, 60, 63, 65, 68, 71, 74, 77, 81, 83, 86, 89, 92, 95, 96, 98],
             valueTable: [
@@ -2569,6 +2578,12 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return randomWeapon.createMwk();
         }
 
+        service.generateMagicWeapon = function (weaponBonus, abilities) {
+            if (abilities === undefined) {
+                return randomWeapon.createMagicWeapon(weaponBonus);
+            }
+        }
+
         service.generateTypeDLoot = function (budget) {
             var gpValues = knapsackService.knapsack(Object.keys(typeDLoot), budget);
             var loot = {coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: []};
@@ -2603,4 +2618,5 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
         };
 
         return service;
-    }]);
+    }])
+;
