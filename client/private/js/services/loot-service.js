@@ -2460,7 +2460,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return randomWand[rarity][wandLevel]();
         }
 
-        var randomArmor = {
+        var randomMundaneArmorOrShield = {
             create: function (type) {
                 return DEMONSQUID.clone(rangeIn100(this[type].chanceTable, this[type].valueTable));
             },
@@ -2834,24 +2834,17 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             }
         };
 
-        var randomArmorOrShield = {
+        var randomMagicArmorOrShield = {
             create: function () {
                 return DEMONSQUID.clone(rangeIn100(this.chanceTable, this.valueTable));
             },
             clean: function (armorOrShield) {
                 delete armorOrShield._shield;
             },
-            createMwk: function () {
-                var armorOrShield = this.create();
-                armorOrShield.Name = "Mwk " + armorOrShield.Name;
-                armorOrShield.id = "mwk-" + armorOrShield.id;
-                armorOrShield.Price += 150;
-                return armorOrShield;
-            },
             createMagicArmorOrShield: function (armorOrShieldBonus) {
                 var armorOrShield = this.create();
                 armorOrShield.Name = armorOrShield.Name + " +" + armorOrShieldBonus;
-                armorOrShield.Price += 150 + randomArmorOrShield.priceModifiers[armorOrShieldBonus];
+                armorOrShield.Price += 150 + randomMagicArmorOrShield.priceModifiers[armorOrShieldBonus];
                 armorOrShield.id = armorOrShield.id + "-" + armorOrShieldBonus;
                 return armorOrShield;
             },
@@ -3090,7 +3083,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
         };
 
         service.generateMwkArmor = function (type) {
-            return randomArmor.createMwk(type);
+            return randomMundaneArmorOrShield.createMwk(type);
         }
 
         service.generateMwkWeapon = function () {
