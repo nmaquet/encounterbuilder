@@ -2898,22 +2898,23 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
         };
 
         var randomMagicArmorOrShield = {
-            create: function () {
-                return DEMONSQUID.clone(rangeIn100(this.chanceTable, this.valueTable));
+            generate: function (magnitude) {
+                /* FIXME: cannot yet handle specific armorOrShields */
+                do {
+                    var armorOrShieldPower = randomMagicArmorOrShield.powerTable.random(magnitude);
+                } while (armorOrShieldPower.specific);
+                return this.generateByBonus(armorOrShieldPower.armorOrShieldBonus, armorOrShieldPower.specialAbility1, armorOrShieldPower.specialAbility2);
             },
-            clean: function (armorOrShield) {
-                delete armorOrShield._shield;
-            },
-            generateMagicArmorOrShield: function (armorOrShieldBonus, abilityLevel1, abilityLevel2) {
+            generateByBonus: function (armorOrShieldBonus, abilityLevel1, abilityLevel2) {
                 if (abilityLevel1 === undefined) {
-                    var armorOrShield = this.create();
+                    var armorOrShield = create();
                     armorOrShield.Name = armorOrShield.Name + " +" + armorOrShieldBonus;
                     armorOrShield.Price += 150 + randomMagicArmorOrShield.priceModifiers[armorOrShieldBonus];
                     armorOrShield.id = armorOrShield.id + "-" + armorOrShieldBonus;
-                    randomMagicArmorOrShield.clean(armorOrShield);
+                    clean(armorOrShield);
                     return armorOrShield;
                 } else {
-                    var armorOrShield = randomMagicArmorOrShield.create();
+                    var armorOrShield = create();
                     if (armorOrShield._shield) {
                         var abilityTable1 = randomMagicArmorOrShield.shieldSpecialAbilities[abilityLevel1];
                         if (abilityLevel2) {
@@ -2927,8 +2928,16 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         }
                     }
                     addRandomAbility(armorOrShield);
-                    randomMagicArmorOrShield.clean(armorOrShield);
+                    clean(armorOrShield);
                     return armorOrShield;
+                }
+
+                function create() {
+                    return DEMONSQUID.clone(rangeIn100(randomMagicArmorOrShield.chanceTable, randomMagicArmorOrShield.valueTable));
+                }
+
+                function clean(armorOrShield) {
+                    delete armorOrShield._shield;
                 }
 
                 function applyAbilities(armorOrShield, ability1, ability2) {
@@ -2961,13 +2970,6 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                     }
                     applyAbilities(armorOrShield, ability1, ability2);
                 }
-            },
-            generateMagicArmorOrShieldByMagnitude: function (magnitude) {
-                /* FIXME: cannot yet handle specific armorOrShields */
-                do {
-                    var armorOrShieldPower = randomMagicArmorOrShield.powerTable.random(magnitude);
-                } while (armorOrShieldPower.specific);
-                return this.generateMagicArmorOrShield(armorOrShieldPower.armorOrShieldBonus, armorOrShieldPower.specialAbility1, armorOrShieldPower.specialAbility2);
             },
             priceModifiers: { 1: 1000, 2: 4000, 3: 9000, 4: 16000, 5: 25000, 6: 36000, 7: 49000, 8: 64000, 9: 81000, 10: 100000 },
             chanceTable: [5, 13, 16, 24, 30, 38, 44, 49, 56, 60, 67, 72, 76, 79, 85, 89, 96],
@@ -3218,12 +3220,12 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             return randomWeapon.generateMagicWeapon(weaponBonus, abilityLevel1, abilityLevel2);
         }
 
-        service.generateMagicArmorOrShieldByMagnitude = function (magnitude) {
-            return randomMagicArmorOrShield.generateMagicArmorOrShieldByMagnitude(magnitude);
+        service.generateMagicArmorOrShield = function (magnitude) {
+            return randomMagicArmorOrShield.generate(magnitude);
         }
 
-        service.generateMagicArmorOrShield = function (armorBonus, abilityLevel1, abilityLevel2) {
-            return randomMagicArmorOrShield.generateMagicArmorOrShield(armorBonus, abilityLevel1, abilityLevel2);
+        service.generateMagicArmorOrShieldByBonus = function (armorBonus, abilityLevel1, abilityLevel2) {
+            return randomMagicArmorOrShield.generateByBonus(armorBonus, abilityLevel1, abilityLevel2);
         }
 
         service.generateTypeDLoot = function (budget) {

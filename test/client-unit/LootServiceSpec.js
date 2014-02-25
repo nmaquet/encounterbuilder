@@ -526,7 +526,7 @@ describe("lootService", function () {
         });
     });
 
-    describe("service.generateMagicArmorOrShieldByMagnitude", function () {
+    describe("service.generateMagicArmorOrShield", function () {
 
         it("should generate a Greater Major +5 magic armor or shield with one +1 ability ", function () {
             /* +5 with +1 special ability */
@@ -535,7 +535,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 100, value: 45, n: 1});
             /* blinding */
             diceService.prepareDice({die: 100, value: 30, n: 1});
-            var armorOrShield = service.generateMagicArmorOrShieldByMagnitude("greater_major");
+            var armorOrShield = service.generateMagicArmorOrShield("greater_major");
             console.log(armorOrShield);
             expect(armorOrShield).to.deep.equal({"Price": 36170.0, "PriceUnit": "gp", "Name": "Blinding heavy steel shield +5", "id": "blinding-heavy-steel-shield-5"});
         });
@@ -549,7 +549,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 100, value: 30, n: 1});
             /* bitter */
             diceService.prepareDice({die: 100, value: 19, n: 1});
-            var weapon = service.generateMagicArmorOrShieldByMagnitude("lesser_medium");
+            var weapon = service.generateMagicArmorOrShield("lesser_medium");
             expect(weapon).to.deep.equal({"Price": 9750.0, "PriceUnit": "gp", "Name": "Bolstering bitter half-plate +1", "id": "bolstering-bitter-half-plate-1"});
         });
 
@@ -563,7 +563,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 100, value: 30, n: 1});
             /* bitter */
             diceService.prepareDice({die: 100, value: 19, n: 1});
-            var weapon = service.generateMagicArmorOrShieldByMagnitude("lesser_medium");
+            var weapon = service.generateMagicArmorOrShield("lesser_medium");
             expect(weapon).to.deep.equal({"Price": 9750.0, "PriceUnit": "gp", "Name": "Bolstering bitter half-plate +1", "id": "bolstering-bitter-half-plate-1"});
         });
     });
