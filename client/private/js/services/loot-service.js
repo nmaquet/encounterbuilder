@@ -2834,77 +2834,50 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             }
         };
 
-        var randomArmor = {
-            /* TODO: FIX THIS SHIT */
+        var randomArmorOrShield = {
             create: function () {
                 return DEMONSQUID.clone(rangeIn100(this.chanceTable, this.valueTable));
             },
             /* TODO: FIX THIS SHIT */
-            clean: function (armor) {
-                delete armor._light;
-                delete armor._pOrS;
-                delete armor._melee;
+            clean: function (armorOrShield) {
+                delete armorOrShield._shield;
             },
-            /* TODO: FIX THIS SHIT */
             createMwk: function () {
-                var armor = this.create();
-                armor.Name = "Mwk " + armor.Name;
-                armor.id = "mwk-" + armor.id;
-                armor.Price += 300;
-                return armor;
+                var armorOrShield = this.create();
+                armorOrShield.Name = "Mwk " + armorOrShield.Name;
+                armorOrShield.id = "mwk-" + armorOrShield.id;
+                armorOrShield.Price += 150;
+                return armorOrShield;
             },
-            /* TODO: FIX THIS SHIT */
-            createMagicArmor: function (armorBonus) {
-                var armor = this.create();
-                armor.Name = armor.Name + " +" + armorBonus;
-                armor.Price += 300 + randomArmor.priceModifiers[armorBonus];
-                armor.id = armor.id + "-" + armorBonus;
-                return armor;
+            createMagicArmorOrShield: function (armorOrShieldBonus) {
+                var armorOrShield = this.create();
+                armorOrShield.Name = armorOrShield.Name + " +" + armorOrShieldBonus;
+                armorOrShield.Price += 150 + randomArmorOrShield.priceModifiers[armorOrShieldBonus];
+                armorOrShield.id = armorOrShield.id + "-" + armorOrShieldBonus;
+                return armorOrShield;
             },
-            /* TODO: FIX THIS SHIT */
-            priceModifiers: { 1: 2000, 2: 8000, 3: 18000, 4: 32000, 5: 50000, 6: 72000, 7: 98000, 8: 128000, 9: 162000, 10: 200000 },
-            /* TODO: FIX THIS SHIT */
-            chanceTable: [2, 5, 7, 10, 13, 17, 20, 22, 24, 26, 29, 31, 34, 36, 40, 43, 47, 50,
-                53, 56, 58, 60, 63, 65, 68, 71, 74, 77, 81, 83, 86, 89, 92, 95, 96, 98],
-            /* TODO: FIX THIS SHIT */
+            priceModifiers: { 1: 1000, 2: 4000, 3: 9000, 4: 16000, 5: 25000, 6: 36000, 7: 49000, 8: 64000, 9: 81000, 10: 100000 },
+            chanceTable: [5, 13, 16, 24, 30, 38, 44, 49, 56, 60, 67, 72, 76, 79, 85, 89, 96],
             valueTable: [
-                {_light: false, _pOrS: true, _melee: true, "Price": 35.0, "PriceUnit": "gp", "Name": "Bastard sword", "id": "bastard-sword"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 10.0, "PriceUnit": "gp", "Name": "Battleaxe", "id": "battleaxe"},
-                {_light: false, _pOrS: false, _melee: false, "Price": 5.0, "PriceUnit": "gp", "Name": "Bola", "id": "bola"},
-                {_light: false, _pOrS: false, _melee: true, "Price": 0.0, "PriceUnit": "gp", "Name": "Club", "id": "club"},
-                {_light: false, _pOrS: true, _melee: false, "Price": 100.0, "PriceUnit": "gp", "Name": "Composite longbow", "id": "composite-longbow"},
-                {_light: false, _pOrS: true, _melee: false, "Price": 75.0, "PriceUnit": "gp", "Name": "Composite shortbow", "id": "composite-shortbow"},
-                {_light: true, _pOrS: true, _melee: true, "Price": 2.0, "PriceUnit": "gp", "Name": "Dagger", "id": "dagger"},
-                {_light: false, _pOrS: true, _melee: false, "Price": 5.0, "PriceUnit": "gp", "Name": "Dart", "id": "dart"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 30.0, "PriceUnit": "gp", "Name": "Dwarven waraxe", "id": "dwarven-waraxe"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 75.0, "PriceUnit": "gp", "Name": "Falchion", "id": "falchion"},
-                {_light: true, _pOrS: true, _melee: true, "Price": 2.0, "PriceUnit": "gp", "Name": "Gauntlet", "id": "gauntlet"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 8.0, "PriceUnit": "gp", "Name": "Glaive", "id": "glaive"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 20.0, "PriceUnit": "gp", "Name": "Greataxe", "id": "greataxe"},
-                {_light: false, _pOrS: false, _melee: true, "Price": 5.0, "PriceUnit": "gp", "Name": "Greatclub", "id": "greatclub"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 50.0, "PriceUnit": "gp", "Name": "Greatsword", "id": "greatsword"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 10.0, "PriceUnit": "gp", "Name": "Halberd", "id": "halberd"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 6.0, "PriceUnit": "gp", "Name": "Handaxe", "id": "handaxe"},
-                {_light: false, _pOrS: true, _melee: false, "Price": 50.0, "PriceUnit": "gp", "Name": "Heavy crossbow", "id": "Heavy crossbow"},
-                {_light: false, _pOrS: false, _melee: true, "Price": 15.0, "PriceUnit": "gp", "Name": "Heavy flail", "id": "heavy-flail"},
-                {_light: false, _pOrS: false, _melee: true, "Price": 12.0, "PriceUnit": "gp", "Name": "Heavy mace", "id": "heavy mace"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 10.0, "PriceUnit": "gp", "Name": "Lance", "id": "lance"},
-                {_light: false, _pOrS: true, _melee: false, "Price": 35.0, "PriceUnit": "gp", "Name": "Light crossbow", "id": "light-crossbow"},
-                {_light: false, _pOrS: false, _melee: true, "Price": 8.0, "PriceUnit": "gp", "Name": "Flail", "id": "flail"},
-                {_light: true, _pOrS: false, _melee: true, "Price": 1.0, "PriceUnit": "gp", "Name": "Light hammer", "id": "light-hammer"},
-                {_light: true, _pOrS: false, _melee: true, "Price": 5.0, "PriceUnit": "gp", "Name": "Light mace", "id": "light-mace"},
-                {_light: true, _pOrS: true, _melee: true, "Price": 4.0, "PriceUnit": "gp", "Name": "Light pick", "id": "light-pick"},
-                {_light: false, _pOrS: true, _melee: false, "Price": 75.0, "PriceUnit": "gp", "Name": "Longbow", "id": "longbow"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 5.0, "PriceUnit": "gp", "Name": "Longspear", "id": "longspear"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 15.0, "PriceUnit": "gp", "Name": "Longsword", "id": "longsword"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 8.0, "PriceUnit": "gp", "Name": "Morningstar", "id": "morningstar"},
-                {_light: true, _pOrS: false, _melee: true, "Price": 2.0, "PriceUnit": "gp", "Name": "Nunchaku", "id": "nunchaku"},
-                {_light: false, _pOrS: false, _melee: true, "Price": 0.0, "PriceUnit": "gp", "Name": "Quarterstaff", "id": "quarterstaff"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 20.0, "PriceUnit": "gp", "Name": "Rapier", "id": "rapier"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 2.0, "PriceUnit": "gp", "Name": "Spear", "id": "spear"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 15.0, "PriceUnit": "gp", "Name": "Trident", "id": "trident"},
-                {_light: false, _pOrS: false, _melee: true, "Price": 12.0, "PriceUnit": "gp", "Name": "Warhammer", "id": "warhammer"},
-                {_light: false, _pOrS: true, _melee: true, "Price": 1.0, "PriceUnit": "gp", "Name": "Whip", "id": "whip"}
+                {_shield: false, "Price": 250, "PriceUnit": "gp", "Name": "Banded mail", "id": "banded-mail"},
+                {_shield: false, "Price": 200, "PriceUnit": "gp", "Name": "Breastplate", "id": "breastplate"},
+                {_shield: true, "Price": 5, "PriceUnit": "gp", "Name": "Buckler", "id": "buckler"},
+                {_shield: false, "Price": 100, "PriceUnit": "gp", "Name": "Chain shirt", "id": "chain-shirt"},
+                {_shield: false, "Price": 150, "PriceUnit": "gp", "Name": "Chainmail", "id": "chainmail"},
+                {_shield: false, "Price": 1500, "PriceUnit": "gp", "Name": "Full plate", "id": "full-plate"},
+                {_shield: false, "Price": 600, "PriceUnit": "gp", "Name": "Half-plate", "id": "half-plate"},
+                {_shield: true, "Price": 20, "PriceUnit": "gp", "Name": "Heavy steel shield", "id": "heavy-steel-shield"},
+                {_shield: true, "Price": 7, "PriceUnit": "gp", "Name": "Heavy wooden shield", "id": "heavy-wooden-shield"},
+                {_shield: false, "Price": 15, "PriceUnit": "gp", "Name": "Hide", "id": "hide"},
+                {_shield: false, "Price": 10, "PriceUnit": "gp", "Name": "Leather armor", "id": "leather-armor"},
+                {_shield: true, "Price": 9, "PriceUnit": "gp", "Name": "Light steel shield", "id": "light-steel-shield"},
+                {_shield: true, "Price": 3, "PriceUnit": "gp", "Name": "Light wooden shield", "id": "light-wooden-shield"},
+                {_shield: false, "Price": 5, "PriceUnit": "gp", "Name": "Padded armor", "id": "padded-armor"},
+                {_shield: false, "Price": 50, "PriceUnit": "gp", "Name": "Scale mail", "id": "scale-mail"},
+                {_shield: false, "Price": 200, "PriceUnit": "gp", "Name": "Splint mail", "id": "splint-mail"},
+                {_shield: false, "Price": 25, "PriceUnit": "gp", "Name": "Studded leather armor", "id": "studded-leather-armor"},
+                {_shield: true, "Price": 30, "PriceUnit": "gp", "Name": "Tower shield", "id": "tower-shield"},
+                {_shield: true, "Price": 30, "PriceUnit": "gp", "Name": "Tower shield", "id": "tower-shield"}
             ],
             /* TODO: FIX THIS SHIT */
             meleeSpecialAbilities: {
@@ -2924,7 +2897,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {enhancementBonus: 1, name: 'Courageous'},
                         {enhancementBonus: 1, name: 'Cruel'},
                         {enhancementBonus: 1, name: 'Cunning'},
-                        {enhancementBonus: 1, name: 'Deadly', filter: armorAbilityFilters.onlyNonLethal},
+                        {enhancementBonus: 1, name: 'Deadly', filter: armorOrShieldAbilityFilters.onlyNonLethal},
                         {enhancementBonus: 1, name: 'Defending'},
                         {enhancementBonus: 1, name: 'Dispelling'},
                         {enhancementBonus: 1, name: 'Flaming'},
@@ -2937,7 +2910,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {enhancementBonus: 1, name: 'Heartseeker'},
                         {enhancementBonus: 1, name: 'Huntsman'},
                         {enhancementBonus: 1, name: 'Jurist'},
-                        {enhancementBonus: 1, name: 'Keen', filter: armorAbilityFilters.onlyPorS},
+                        {enhancementBonus: 1, name: 'Keen', filter: armorOrShieldAbilityFilters.onlyPorS},
                         {enhancementBonus: 1, name: 'Ki focus'},
                         {enhancementBonus: 1, name: 'Limning'},
                         {enhancementBonus: 1, name: 'Menacing'},
@@ -2963,7 +2936,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                     valueTable: [
                         {name: "Advancing"},
                         {name: "Anarchic"},
-                        {name: "Anchoring", filter: armorAbilityFilters.onlyHasRange},
+                        {name: "Anchoring", filter: armorOrShieldAbilityFilters.onlyHasRange},
                         {name: "Axiomatic"},
                         {name: "Corrosive burst"},
                         {name: "Defiant"},
@@ -2975,7 +2948,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {name: "Holy"},
                         {name: "Icy burst"},
                         {name: "Igniting"},
-                        {name: "Impact", filter: armorAbilityFilters.onlyNonLight},
+                        {name: "Impact", filter: armorOrShieldAbilityFilters.onlyNonLight},
                         {name: "Invigorating"},
                         {name: "Ki intensifying"},
                         {name: "Lifesurge"},
@@ -3012,14 +2985,14 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 /* TODO: FIX THIS SHIT */
                 1: {chanceTable: [1, 2, 3, 6, 15, 16, 19, 20, 24, 25, 28, 36, 45, 54, 58, 62, 63, 64, 66, 67, 68, 76, 84, 92],
                     valueTable: [
-                        {name: 'Adaptive', flatprice: 1000, filter: armorAbilityFilters.onlyCompositeBows},
+                        {name: 'Adaptive', flatprice: 1000, filter: armorOrShieldAbilityFilters.onlyCompositeBows},
                         {name: 'Impervious', flatprice: 3000},
                         {name: 'Glamered', flatprice: 4000},
                         {name: 'Allying'},
                         {name: 'Bane'},
                         {name: 'Called'},
                         {name: 'Conductive'},
-                        {name: 'Conserving', filter: armorAbilityFilters.onlyFirearms},
+                        {name: 'Conserving', filter: armorOrShieldAbilityFilters.onlyFirearms},
                         {name: 'Corrosive'},
                         {name: 'Cruel'},
                         {name: 'Cunning'},
@@ -3029,10 +3002,10 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {name: 'Huntsman'},
                         {name: 'Jurist'},
                         {name: 'Limning'},
-                        {name: 'Lucky', filter: armorAbilityFilters.onlyFirearms},
+                        {name: 'Lucky', filter: armorOrShieldAbilityFilters.onlyFirearms},
                         {name: 'Merciful'},
                         {name: 'Planar'},
-                        {name: 'Reliable', filter: armorAbilityFilters.onlyFirearms},
+                        {name: 'Reliable', filter: armorOrShieldAbilityFilters.onlyFirearms},
                         {name: 'Seeking'},
                         {name: 'Shock'},
                         {name: 'Thundering'}
@@ -3045,7 +3018,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {name: "Axiomatic"},
                         {name: "Corrosive burst"},
                         {name: "Designating, lesser"},
-                        {name: "Endless ammunition", filter: armorAbilityFilters.onlyBowsAndCrossbows},
+                        {name: "Endless ammunition", filter: armorOrShieldAbilityFilters.onlyBowsAndCrossbows},
                         {name: "Flaming burst"},
                         {name: "Holy"},
                         {name: "Icy burst"},
@@ -3059,13 +3032,13 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 /* TODO: FIX THIS SHIT */
                 3: {chanceTable: [25, 45, 85, 94, 96, 98],
                     valueTable: [
-                        {name: "Lucky, greater", filter: armorAbilityFilters.onlyFirearms},
-                        {name: "Reliable, greater", filter: armorAbilityFilters.onlyFirearms},
+                        {name: "Lucky, greater", filter: armorOrShieldAbilityFilters.onlyFirearms},
+                        {name: "Reliable, greater", filter: armorOrShieldAbilityFilters.onlyFirearms},
                         {name: "Speed"},
                         {name: "Brilliant energy", enhancementBonus: 4},
                         {name: "Designating, greater", enhancementBonus: 4},
                         {name: "Nimble shot", enhancementBonus: 4},
-                        {name: "Second chance", filter: armorAbilityFilters.onlyBows, enhancementBonus: 4}
+                        {name: "Second chance", filter: armorOrShieldAbilityFilters.onlyBows, enhancementBonus: 4}
                     ]
                 }
             },
@@ -3078,7 +3051,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 lesser_minor: {
                     chanceTable: [80],
                     valueTable: [
-                        {specific: false, armorBonus: 1},
+                        {specific: false, armorOrShieldBonus: 1},
                         {specific: true}
                     ]
                 },
@@ -3086,9 +3059,9 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 greater_minor: {
                     chanceTable: [26, 53, 80],
                     valueTable: [
-                        {specific: false, armorBonus: 1},
-                        {specific: false, armorBonus: 2},
-                        {specific: false, armorBonus: 1, specialAbility1: 1},
+                        {specific: false, armorOrShieldBonus: 1},
+                        {specific: false, armorOrShieldBonus: 2},
+                        {specific: false, armorOrShieldBonus: 1, specialAbility1: 1},
                         {specific: true}
                     ]
                 },
@@ -3096,13 +3069,13 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 lesser_medium: {
                     chanceTable: [10, 20, 32, 44, 56, 68, 80],
                     valueTable: [
-                        {specific: false, armorBonus: 1},
-                        {specific: false, armorBonus: 2},
-                        {specific: false, armorBonus: 3},
-                        {specific: false, armorBonus: 1, specialAbility1: 1},
-                        {specific: false, armorBonus: 1, specialAbility1: 1, specialAbility2: 1},
-                        {specific: false, armorBonus: 1, specialAbility1: 2},
-                        {specific: false, armorBonus: 2, specialAbility1: 1},
+                        {specific: false, armorOrShieldBonus: 1},
+                        {specific: false, armorOrShieldBonus: 2},
+                        {specific: false, armorOrShieldBonus: 3},
+                        {specific: false, armorOrShieldBonus: 1, specialAbility1: 1},
+                        {specific: false, armorOrShieldBonus: 1, specialAbility1: 1, specialAbility2: 1},
+                        {specific: false, armorOrShieldBonus: 1, specialAbility1: 2},
+                        {specific: false, armorOrShieldBonus: 2, specialAbility1: 1},
                         {specific: true}
                     ]
                 },
@@ -3110,13 +3083,13 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 greater_medium: {
                     chanceTable: [10, 22, 32, 44, 56, 68, 80],
                     valueTable: [
-                        {specific: false, armorBonus: 2},
-                        {specific: false, armorBonus: 3},
-                        {specific: false, armorBonus: 1, specialAbility1: 1},
-                        {specific: false, armorBonus: 1, specialAbility1: 2},
-                        {specific: false, armorBonus: 2, specialAbility1: 1},
-                        {specific: false, armorBonus: 2, specialAbility1: 2},
-                        {specific: false, armorBonus: 3, specialAbility1: 1},
+                        {specific: false, armorOrShieldBonus: 2},
+                        {specific: false, armorOrShieldBonus: 3},
+                        {specific: false, armorOrShieldBonus: 1, specialAbility1: 1},
+                        {specific: false, armorOrShieldBonus: 1, specialAbility1: 2},
+                        {specific: false, armorOrShieldBonus: 2, specialAbility1: 1},
+                        {specific: false, armorOrShieldBonus: 2, specialAbility1: 2},
+                        {specific: false, armorOrShieldBonus: 3, specialAbility1: 1},
                         {specific: true}
                     ]
                 },
@@ -3124,13 +3097,13 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 lesser_major: {
                     chanceTable: [10, 22, 32, 44, 56, 68, 80],
                     valueTable: [
-                        {specific: false, armorBonus: 3},
-                        {specific: false, armorBonus: 4},
-                        {specific: false, armorBonus: 1, specialAbility1: 2},
-                        {specific: false, armorBonus: 1, specialAbility1: 3},
-                        {specific: false, armorBonus: 2, specialAbility1: 2},
-                        {specific: false, armorBonus: 3, specialAbility1: 1},
-                        {specific: false, armorBonus: 4, specialAbility1: 1},
+                        {specific: false, armorOrShieldBonus: 3},
+                        {specific: false, armorOrShieldBonus: 4},
+                        {specific: false, armorOrShieldBonus: 1, specialAbility1: 2},
+                        {specific: false, armorOrShieldBonus: 1, specialAbility1: 3},
+                        {specific: false, armorOrShieldBonus: 2, specialAbility1: 2},
+                        {specific: false, armorOrShieldBonus: 3, specialAbility1: 1},
+                        {specific: false, armorOrShieldBonus: 4, specialAbility1: 1},
                         {specific: true}
                     ]
                 },
@@ -3138,18 +3111,18 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 greater_major: {
                     chanceTable: [10, 20, 30, 38, 46, 51, 59, 67, 71, 74, 77, 80],
                     valueTable: [
-                        {specific: false, armorBonus: 4},
-                        {specific: false, armorBonus: 5},
-                        {specific: false, armorBonus: 4, specialAbility1: 1},
-                        {specific: false, armorBonus: 4, specialAbility1: 2},
-                        {specific: false, armorBonus: 4, specialAbility1: 3},
-                        {specific: false, armorBonus: 4, specialAbility1: 4},
-                        {specific: false, armorBonus: 5, specialAbility1: 1},
-                        {specific: false, armorBonus: 5, specialAbility1: 2},
-                        {specific: false, armorBonus: 5, specialAbility1: 3},
-                        {specific: false, armorBonus: 5, specialAbility1: 4},
-                        {specific: false, armorBonus: 5, specialAbility1: 4, specialAbility2: 1},
-                        {specific: false, armorBonus: 5, specialAbility1: 3, specialAbility2: 2},
+                        {specific: false, armorOrShieldBonus: 4},
+                        {specific: false, armorOrShieldBonus: 5},
+                        {specific: false, armorOrShieldBonus: 4, specialAbility1: 1},
+                        {specific: false, armorOrShieldBonus: 4, specialAbility1: 2},
+                        {specific: false, armorOrShieldBonus: 4, specialAbility1: 3},
+                        {specific: false, armorOrShieldBonus: 4, specialAbility1: 4},
+                        {specific: false, armorOrShieldBonus: 5, specialAbility1: 1},
+                        {specific: false, armorOrShieldBonus: 5, specialAbility1: 2},
+                        {specific: false, armorOrShieldBonus: 5, specialAbility1: 3},
+                        {specific: false, armorOrShieldBonus: 5, specialAbility1: 4},
+                        {specific: false, armorOrShieldBonus: 5, specialAbility1: 4, specialAbility2: 1},
+                        {specific: false, armorOrShieldBonus: 5, specialAbility1: 3, specialAbility2: 2},
                         {specific: true}
                     ]
                 }
