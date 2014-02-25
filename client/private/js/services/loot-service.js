@@ -2838,7 +2838,6 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
             create: function () {
                 return DEMONSQUID.clone(rangeIn100(this.chanceTable, this.valueTable));
             },
-            /* TODO: FIX THIS SHIT */
             clean: function (armorOrShield) {
                 delete armorOrShield._shield;
             },
@@ -2879,175 +2878,141 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 {_shield: true, "Price": 30, "PriceUnit": "gp", "Name": "Tower shield", "id": "tower-shield"},
                 {_shield: true, "Price": 30, "PriceUnit": "gp", "Name": "Tower shield", "id": "tower-shield"}
             ],
-            /* TODO: FIX THIS SHIT */
-            meleeSpecialAbilities: {
-                /* TODO: FIX THIS SHIT */
-                1: { chanceTable: [1, 2, 3, 8, 9, 10, 12, 16, 17, 18, 19, 21, 22, 26, 27, 33, 39, 41, 45, 47, 48, 49,
-                    50, 52, 54, 59, 61, 62, 64, 65, 68, 69, 70, 71, 72, 73, 74, 80, 85, 86, 91, 96, 97],
+            armorSpecialAbilities: {
+                1: {
+                    chanceTable: [6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 71, 76, 82, 88, 94],
                     valueTable: [
-                        {enhancementBonus: 1, name: 'Impervious', flatprice: 3000},
-                        {enhancementBonus: 1, name: 'Glamered', flatprice: 4000},
-                        {enhancementBonus: 1, name: 'Allying'},
-                        {enhancementBonus: 1, name: 'Bane'},
-                        {enhancementBonus: 1, name: 'Benevolent'},
-                        {enhancementBonus: 1, name: 'Called'},
-                        {enhancementBonus: 1, name: 'Conductive'},
-                        {enhancementBonus: 1, name: 'Corrosive'},
-                        {enhancementBonus: 1, name: 'Countering'},
-                        {enhancementBonus: 1, name: 'Courageous'},
-                        {enhancementBonus: 1, name: 'Cruel'},
-                        {enhancementBonus: 1, name: 'Cunning'},
-                        {enhancementBonus: 1, name: 'Deadly', filter: armorOrShieldAbilityFilters.onlyNonLethal},
-                        {enhancementBonus: 1, name: 'Defending'},
-                        {enhancementBonus: 1, name: 'Dispelling'},
-                        {enhancementBonus: 1, name: 'Flaming'},
-                        {enhancementBonus: 1, name: 'Frost'},
-                        {enhancementBonus: 1, name: 'Furious'},
-                        {enhancementBonus: 1, name: 'Ghost touch'},
-                        {enhancementBonus: 1, name: 'Grayflame'},
-                        {enhancementBonus: 1, name: 'Grounding'},
-                        {enhancementBonus: 1, name: 'Guardian'},
-                        {enhancementBonus: 1, name: 'Heartseeker'},
-                        {enhancementBonus: 1, name: 'Huntsman'},
-                        {enhancementBonus: 1, name: 'Jurist'},
-                        {enhancementBonus: 1, name: 'Keen', filter: armorOrShieldAbilityFilters.onlyPorS},
-                        {enhancementBonus: 1, name: 'Ki focus'},
-                        {enhancementBonus: 1, name: 'Limning'},
-                        {enhancementBonus: 1, name: 'Menacing'},
-                        {enhancementBonus: 1, name: 'Merciful'},
-                        {enhancementBonus: 1, name: 'Mighty cleaving'},
-                        {enhancementBonus: 1, name: 'Mimetic'},
-                        {enhancementBonus: 1, name: 'Neutralizing'},
-                        {enhancementBonus: 1, name: 'Ominous'},
-                        {enhancementBonus: 1, name: 'Planar'},
-                        {enhancementBonus: 1, name: 'Quenching'},
-                        {enhancementBonus: 1, name: 'Seaborne'},
-                        {enhancementBonus: 1, name: 'Shock'},
-                        {enhancementBonus: 1, name: 'Spell storing'},
-                        {enhancementBonus: 1, name: 'Thawing'},
-                        {enhancementBonus: 1, name: 'Throwing'},
-                        {enhancementBonus: 1, name: 'Thundering'},
-                        {enhancementBonus: 1, name: 'Valiant'},
-                        {enhancementBonus: 1, name: 'Vicious'}
+                        {name: 'Benevolent', flatprice: 2000},
+                        {name: 'Poison-resistant', flatprice: 2250},
+                        {name: 'Balanced'},
+                        {name: 'Bitter'},
+                        {name: 'Bolstering'},
+                        {name: 'Brawling'},
+                        {name: 'Champion'},
+                        {name: 'Dastard'},
+                        {name: 'Deathless'},
+                        {name: 'Defiant'},
+                        {name: 'Fortification (light)'},
+                        {name: 'Grinding'},
+                        {name: 'Impervious'},
+                        {name: 'Mirrored'},
+                        {name: 'Spell storing'},
+                        {name: 'Stanching'},
+                        {name: 'Warding'}
                     ]
                 },
-                /* TODO: FIX THIS SHIT */
-                2: {chanceTable: [1, 10, 19, 20, 27, 28, 29, 38, 47, 48, 49, 58, 67, 68, 69, 70, 71, 72, 73, 74, 83, 84, 91],
+                2: {chanceTable: [12, 24, 38, 52, 64, 76, 88],
                     valueTable: [
-                        {name: "Advancing"},
-                        {name: "Anarchic"},
-                        {name: "Anchoring", filter: armorOrShieldAbilityFilters.onlyHasRange},
-                        {name: "Axiomatic"},
-                        {name: "Corrosive burst"},
-                        {name: "Defiant"},
-                        {name: "Dispelling burst"},
-                        {name: "Disruption"},
-                        {name: "Flaming burst"},
-                        {name: "Furyborn"},
-                        {name: "Glorious"},
-                        {name: "Holy"},
-                        {name: "Icy burst"},
-                        {name: "Igniting"},
-                        {name: "Impact", filter: armorOrShieldAbilityFilters.onlyNonLight},
-                        {name: "Invigorating"},
-                        {name: "Ki intensifying"},
-                        {name: "Lifesurge"},
-                        {name: "Negating"},
-                        {name: "Phase locking"},
-                        {name: "Shocking burst"},
-                        {name: "Stalking"},
-                        {name: "Unholy"},
-                        {name: "Wounding"}
+                        {name: 'Glamered', flatprice: 2700},
+                        {name: 'Jousting', flatprice: 3750},
+                        {name: 'Shadow', flatprice: 3750},
+                        {name: 'Slick', flatprice: 3750},
+                        {name: 'Expeditious', flatprice: 4000},
+                        {name: 'Creeping', flatprice: 5000},
+                        {name: 'Rallying', flatprice: 5000},
+                        {name: "Spell resistance (13)"}
                     ]
                 },
-                /* TODO: FIX THIS SHIT */
-                3: {chanceTable: [20, 40, 80],
+                3: {chanceTable: [8, 17, 26, 36, 45, 55, 65, 74, 84, 92],
                     valueTable: [
-                        {name: "Nullifying"},
-                        {name: "Repositioning"},
-                        {name: "Speed"},
-                        {name: "Spellstealing"}
+                        {name: 'Adhesive', flatprice: 7000},
+                        {name: 'Hosteling', flatprice: 7500},
+                        {name: 'Radiant', flatprice: 7500},
+                        {name: 'Delving', flatprice: 10000},
+                        {name: 'Fortification (moderate)'},
+                        {name: "Ghost touch"},
+                        {name: "Invulnerability"},
+                        {name: "Spell resistance (15)"},
+                        {name: "Titanic"},
+                        {name: "Wild"}
                     ]
                 },
-                /* TODO: FIX THIS SHIT */
-                4: {chanceTable: [40, 80, 90, 95],
+                4: {chanceTable: [16, 33, 50, 67, 83],
                     valueTable: [
-                        {name: "Brilliant energy"},
-                        {name: "Dancing"},
-                        {name: "Vorpal", enhancementBonus: 5},
-                        {name: "Dueling", flatprice: 14000},
-                        {name: "Transformative", flatprice: 10000}
+                        {name: 'Harmonizing', flatprice: 15000},
+                        {name: 'Shadow, improved', flatprice: 15000},
+                        {name: 'Slick, improved', flatprice: 15000},
+                        {name: 'Energy resistance', flatprice: 18000},
+                        {name: 'Martyring', flatprice: 18000},
+                        {name: "Spell resistance (17)"},
+                    ]
+                },
+                5: {chanceTable: [8, 15, 23, 30, 37, 45, 53, 61, 69, 76, 84, 92],
+                    valueTable: [
+                        {name: 'Righteous', flatprice: 27000},
+                        {name: 'Unbound', flatprice: 27000},
+                        {name: 'Unrighteous', flatprice: 27000},
+                        {name: 'Vigilant', flatprice: 27000},
+                        {name: 'Determination', flatprice: 30000},
+                        {name: 'Shadow, greater', flatprice: 33750},
+                        {name: 'Slick, greater', flatprice: 33750},
+                        {name: 'Energy resistance, improved', flatprice: 42000},
+                        {name: 'Etherealness', flatprice: 49000},
+                        {name: 'Undead controlling', flatprice: 49000},
+                        {name: 'Energy resistance, greater', flatprice: 66000},
+                        {name: "Fortification (heavy)"},
+                        {name: "Spell resistance (19)"}
                     ]
                 }
             },
-            /* TODO: FIX THIS SHIT */
-            rangedSpecialAbilities: {
-                /* TODO: FIX THIS SHIT */
-                1: {chanceTable: [1, 2, 3, 6, 15, 16, 19, 20, 24, 25, 28, 36, 45, 54, 58, 62, 63, 64, 66, 67, 68, 76, 84, 92],
+            shieldSpecialAbilities: {
+                1: {chanceTable: [10, 19, 28, 37, 46, 55, 64, 73, 82, 91],
                     valueTable: [
-                        {name: 'Adaptive', flatprice: 1000, filter: armorOrShieldAbilityFilters.onlyCompositeBows},
-                        {name: 'Impervious', flatprice: 3000},
-                        {name: 'Glamered', flatprice: 4000},
-                        {name: 'Allying'},
-                        {name: 'Bane'},
-                        {name: 'Called'},
-                        {name: 'Conductive'},
-                        {name: 'Conserving', filter: armorOrShieldAbilityFilters.onlyFirearms},
-                        {name: 'Corrosive'},
-                        {name: 'Cruel'},
-                        {name: 'Cunning'},
-                        {name: 'Distance'},
-                        {name: 'Flaming'},
-                        {name: 'Frost'},
-                        {name: 'Huntsman'},
-                        {name: 'Jurist'},
-                        {name: 'Limning'},
-                        {name: 'Lucky', filter: armorOrShieldAbilityFilters.onlyFirearms},
-                        {name: 'Merciful'},
-                        {name: 'Planar'},
-                        {name: 'Reliable', filter: armorOrShieldAbilityFilters.onlyFirearms},
-                        {name: 'Seeking'},
-                        {name: 'Shock'},
-                        {name: 'Thundering'}
+                        {name: 'Poison-resistant', flatprice: 2250},
+                        {name: 'Arrow catching'},
+                        {name: 'Bashing'},
+                        {name: 'Blinding'},
+                        {name: 'Clangorous'},
+                        {name: 'Defiant'},
+                        {name: 'Fortification (light)'},
+                        {name: 'Grinding'},
+                        {name: 'Impervious'},
+                        {name: 'Mirrored'},
+                        {name: 'Ramming'}
                     ]
                 },
-                /* TODO: FIX THIS SHIT */
-                2: {chanceTable: [10, 13, 23, 31, 34, 37, 48, 58, 69, 73, 76, 86, 90],
+                2: {chanceTable: [15, 30, 50, 67, 82],
                     valueTable: [
-                        {name: "Anarchic"},
-                        {name: "Axiomatic"},
-                        {name: "Corrosive burst"},
-                        {name: "Designating, lesser"},
-                        {name: "Endless ammunition", filter: armorOrShieldAbilityFilters.onlyBowsAndCrossbows},
-                        {name: "Flaming burst"},
-                        {name: "Holy"},
-                        {name: "Icy burst"},
-                        {name: "Igniting"},
-                        {name: "Phase locking"},
-                        {name: "Shocking burst"},
-                        {name: "Stalking"},
-                        {name: "Unholy"}
+                        {name: 'Rallying', flatprice: 5000},
+                        {name: 'Wyrmsbreath', flatprice: 5000},
+                        {name: "Animated"},
+                        {name: "Arrow deflection"},
+                        {name: "Merging"},
+                        {name: "Spell resistance (13)"}
                     ]
                 },
-                /* TODO: FIX THIS SHIT */
-                3: {chanceTable: [25, 45, 85, 94, 96, 98],
+                3: {chanceTable: [15, 32, 49, 66, 83],
                     valueTable: [
-                        {name: "Lucky, greater", filter: armorOrShieldAbilityFilters.onlyFirearms},
-                        {name: "Reliable, greater", filter: armorOrShieldAbilityFilters.onlyFirearms},
-                        {name: "Speed"},
-                        {name: "Brilliant energy", enhancementBonus: 4},
-                        {name: "Designating, greater", enhancementBonus: 4},
-                        {name: "Nimble shot", enhancementBonus: 4},
-                        {name: "Second chance", filter: armorOrShieldAbilityFilters.onlyBows, enhancementBonus: 4}
+                        {name: 'Hosteling', flatprice: 7500},
+                        {name: 'Radiant', flatprice: 7500},
+                        {name: 'Fortification (moderate)'},
+                        {name: "Ghost touch"},
+                        {name: "Spell resistance (15)"},
+                        {name: "Wild"}
+                    ]
+                },
+                4: {chanceTable: [50],
+                    valueTable: [
+                        {name: 'Energy resistance', flatprice: 18000},
+                        {name: "Spell resistance (17)"}
+                    ]
+                },
+                5: {chanceTable: [11, 27, 38, 55, 70, 85],
+                    valueTable: [
+                        {name: 'Determination', flatprice: 30000},
+                        {name: 'Energy resistance, improved', flatprice: 42000},
+                        {name: 'Undead controlling', flatprice: 49000},
+                        {name: 'Energy resistance, greater', flatprice: 66000},
+                        {name: "Fortification (heavy)"},
+                        {name: "Reflecting"},
+                        {name: "Spell resistance (19)"}
                     ]
                 }
             },
-            /* TODO: FIX THIS SHIT */
             powerTable: {
                 random: function (magnitude) {
                     return rangeIn100(this[magnitude].chanceTable, this[magnitude].valueTable);
                 },
-                /* TODO: FIX THIS SHIT */
                 lesser_minor: {
                     chanceTable: [80],
                     valueTable: [
@@ -3055,7 +3020,6 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {specific: true}
                     ]
                 },
-                /* TODO: FIX THIS SHIT */
                 greater_minor: {
                     chanceTable: [26, 53, 80],
                     valueTable: [
@@ -3065,7 +3029,6 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {specific: true}
                     ]
                 },
-                /* TODO: FIX THIS SHIT */
                 lesser_medium: {
                     chanceTable: [10, 20, 32, 44, 56, 68, 80],
                     valueTable: [
@@ -3079,7 +3042,6 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {specific: true}
                     ]
                 },
-                /* TODO: FIX THIS SHIT */
                 greater_medium: {
                     chanceTable: [10, 22, 32, 44, 56, 68, 80],
                     valueTable: [
@@ -3093,7 +3055,6 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {specific: true}
                     ]
                 },
-                /* TODO: FIX THIS SHIT */
                 lesser_major: {
                     chanceTable: [10, 22, 32, 44, 56, 68, 80],
                     valueTable: [
@@ -3107,7 +3068,6 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {specific: true}
                     ]
                 },
-                /* TODO: FIX THIS SHIT */
                 greater_major: {
                     chanceTable: [10, 20, 30, 38, 46, 51, 59, 67, 71, 74, 77, 80],
                     valueTable: [
@@ -3120,9 +3080,9 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                         {specific: false, armorOrShieldBonus: 5, specialAbility1: 1},
                         {specific: false, armorOrShieldBonus: 5, specialAbility1: 2},
                         {specific: false, armorOrShieldBonus: 5, specialAbility1: 3},
+                        {specific: false, armorOrShieldBonus: 5, specialAbility1: 2, specialAbility2: 2},
                         {specific: false, armorOrShieldBonus: 5, specialAbility1: 4},
-                        {specific: false, armorOrShieldBonus: 5, specialAbility1: 4, specialAbility2: 1},
-                        {specific: false, armorOrShieldBonus: 5, specialAbility1: 3, specialAbility2: 2},
+                        {specific: false, armorOrShieldBonus: 5, specialAbility1: 5},
                         {specific: true}
                     ]
                 }

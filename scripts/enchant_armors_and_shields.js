@@ -105,7 +105,7 @@ var shieldSpecialAbilities = {
     ],
     4: [
         {name: 'Energy resistance', flatprice: 18000, cl: 3},
-        {name: "Spell resistance (17)", cl: 15},
+        {name: "Spell resistance (17)", cl: 15}
     ],
     5: [
         {name: 'Determination', flatprice: 30000, cl: 10},
