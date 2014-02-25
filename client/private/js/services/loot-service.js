@@ -2534,7 +2534,7 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 return (weapon.Name.indexOf("bow") === -1 || weapon.Name.indexOf("crossbow") !== -1);
             }
         }
-        
+
         var randomWeapon = {
             create: function () {
                 return DEMONSQUID.clone(rangeIn100(this.chanceTable, this.valueTable));
@@ -2543,7 +2543,6 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
                 delete weapon._light;
                 delete weapon._pOrS;
                 delete weapon._melee;
-                return weapon;
             },
             createMwk: function () {
                 var weapon = this.create();
@@ -2758,49 +2757,73 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ "diceService", "kna
         };
 
         service.generateMwkArmor = function (type) {
-            return randomWeapon.clean(randomArmor.createMwk(type));
+            return randomArmor.createMwk(type);
         }
 
         service.generateMwkWeapon = function () {
-            return randomWeapon.clean(randomWeapon.createMwk());
+            var weapon = randomWeapon.createMwk();
+            randomWeapon.clean(weapon);
+            return weapon;
         }
 
         service.generateMagicWeapon = function (weaponBonus, abilityLevel1, abilityLevel2) {
 
             if (abilityLevel1 === undefined) {
-                return randomWeapon.clean(randomWeapon.createMagicWeapon(weaponBonus));
-            } else if (abilityLevel2 === undefined) {
-                var weapon = randomWeapon.create();
-                weapon =  addRandomAbility(weapon,abilityLevel1);
-                return randomWeapon.clean(weapon);
-            }
-
-            function applyAbility(weapon,ability,abilityLevel) {
-                weapon.Name = ability.name + " " + weapon.Name.toLowerCase() + " +" + weaponBonus;
-                if (ability.flatprice) {
-                    weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus] + ability.flatprice;
-                } else {
-                    weapon.Price += 300 + randomWeapon.priceModifiers[weaponBonus + (ability.enhancementBonus || abilityLevel)];
-                }
-                weapon.id = DEMONSQUID.idify(ability.name) + "-" + weapon.id + "-" + weaponBonus;
+                var weapon = randomWeapon.createMagicWeapon(weaponBonus);
+                randomWeapon.clean(weapon);
                 return weapon;
-            }
-            function addRandomAbility(weapon,abilityLevel){
+            } else {
+                var weapon = randomWeapon.create();
                 if (weapon._melee) {
-                    abilityLevel = Math.min(4, abilityLevel);
-                    var abilityTable = randomWeapon.meleeSpecialAbilities[abilityLevel];
+                    abilityLevel1 = Math.min(4, abilityLevel1);
+                    var abilityTable1 = randomWeapon.meleeSpecialAbilities[abilityLevel1];
+                    if (abilityLevel2) {
+                        abilityLevel2 = Math.min(4, abilityLevel2);
+                        var abilityTable2 = randomWeapon.meleeSpecialAbilities[abilityLevel2];
+                    }
                 }
                 else {
-                    abilityLevel = Math.min(3, abilityLevel);
-                    var abilityTable = randomWeapon.rangedSpecialAbilities[abilityLevel];
+                    abilityLevel1 = Math.min(3, abilityLevel1);
+                    var abilityTable1 = randomWeapon.rangedSpecialAbilities[abilityLevel1];
+                    if (abilityLevel2) {
+                        abilityLevel2 = Math.min(3, abilityLevel2);
+                        var abilityTable2 = randomWeapon.rangedSpecialAbilities[abilityLevel2];
+                    }
                 }
-                do {
-                    var ability = rangeIn100(abilityTable.chanceTable, abilityTable.valueTable);
-                } while (ability.filter && ability.filter(weapon));
-
-
-                weapon = applyAbility(weapon, ability,abilityLevel );
+                addRandomAbility(weapon);
+                randomWeapon.clean(weapon);
                 return weapon;
+            }
+
+            function applyAbilities(weapon, ability1, ability2) {
+                if (ability2) {
+                    weapon.Name = ability1.name + " " + ability2.Name.toLowerCase() + " " + weapon.Name.toLowerCase() + " +" + weaponBonus;
+                    var totalFlatPrice = (ability1.flatprice || 0) + (ability2.flatprice || 0);
+                    var ability1Bonus = (ability1.flatprice === undefined ? (ability1.enhancementBonus || abilityLevel1) : 0 );
+                    var ability2Bonus = (ability2.flatprice === undefined ? (ability2.enhancementBonus || abilityLevel2) : 0 );
+                    var totalAbilityBonus = ability1Bonus + ability2Bonus;
+                    weapon.Price += 300 + totalFlatPrice + randomWeapon.priceModifiers[weaponBonus + totalAbilityBonus];
+                    weapon.id = DEMONSQUID.idify(ability1.name) + "-" + DEMONSQUID.idify(ability2.name) + "-" + weapon.id + "-" + weaponBonus;
+                }
+                else {
+                    weapon.Name = ability1.name + " " + weapon.Name.toLowerCase() + " +" + weaponBonus;
+                    var totalFlatPrice = (ability1.flatprice || 0);
+                    var totalAbilityBonus = (ability1.flatprice === undefined ? (ability1.enhancementBonus|| abilityLevel1) : 0 );
+                    weapon.Price += 300 + totalFlatPrice + randomWeapon.priceModifiers[weaponBonus + totalAbilityBonus];
+                    weapon.id = DEMONSQUID.idify(ability1.name) + "-" + weapon.id + "-" + weaponBonus;
+                }
+            }
+
+            function addRandomAbility(weapon) {
+                do {
+                    var firstAbility = rangeIn100(abilityTable1.chanceTable, abilityTable1.valueTable);
+                } while (firstAbility.filter && firstAbility.filter(weapon));
+                if (abilityLevel2) {
+                    do {
+                        var secondAbility = rangeIn100(abilityTable2.chanceTable, abilityTable2.valueTable);
+                    } while (secondAbility.filter && secondAbility.filter(weapon));
+                }
+                applyAbilities(weapon, firstAbility, secondAbility);
             }
         }
 

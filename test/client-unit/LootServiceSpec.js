@@ -451,6 +451,7 @@ describe("lootService", function () {
             /* brilliant energy */
             diceService.prepareDice({die: 100, value: 85, n: 1});
             var weapon = service.generateMagicWeapon(1, 5);
+            console.log(weapon);
             expect(weapon).to.deep.equal({"Price": 72306.0, "PriceUnit": "gp", "Name": "Vorpal handaxe +1", "id": "vorpal-handaxe-1"});
         });
 
@@ -460,6 +461,17 @@ describe("lootService", function () {
             /* brilliant energy */
             diceService.prepareDice({die: 100, value: 85, n: 1});
             var weapon = service.generateMagicWeapon(1, 4);
+            console.log(weapon);
+            expect(weapon).to.deep.equal({"Price": 72306.0, "PriceUnit": "gp", "Name": "Vorpal handaxe +1", "id": "vorpal-handaxe-1"});
+        });
+
+        it("should generate a magic weapon with one +5 ability", function () {
+            /* handaxe */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* brilliant energy */
+            diceService.prepareDice({die: 100, value: 85, n: 1});
+            var weapon = service.generateMagicWeapon(1, 5);
+            console.log(weapon);
             expect(weapon).to.deep.equal({"Price": 72306.0, "PriceUnit": "gp", "Name": "Vorpal handaxe +1", "id": "vorpal-handaxe-1"});
         });
     });
