@@ -11,12 +11,18 @@ describe("lootService", function () {
 
     describe("service.generateTypeELoot", function () {
 
-        for (var budgetLowerBound = 0; budgetLowerBound <= 1000000; budgetLowerBound += 1000) {
+        for (var budgetLowerBound = 0; budgetLowerBound < 1000000; budgetLowerBound += 1000) {
 
             it("should generate loot for budgets " + budgetLowerBound + " to " + (budgetLowerBound + 950), function () {
 
                 for (var budget = budgetLowerBound; budget <= budgetLowerBound + 950; budget += 50) {
                     var loot = service.generateTypeELoot(budget);
+
+                    expect(loot.coins.pp).to.equal(0);
+                    expect(loot.coins.gp).to.equal(0);
+                    expect(loot.coins.sp).to.equal(0);
+                    expect(loot.coins.cp).to.equal(0);
+
                     for (var i in loot.items) {
                         var item = loot.items[i];
                         expect(typeof item.Price).to.equal('number');
