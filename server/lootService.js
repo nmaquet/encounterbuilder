@@ -1,7 +1,7 @@
 "use strict";
 
-var clone = require('./clone')();
-var idify = require('./idify')();
+var clone = require('./clone')().clone;
+var idify = require('./idify')().idify;
 
 var diceService, knapsackService;
 
@@ -2621,7 +2621,7 @@ function generateWand(magnitude) {
 
 var randomMundaneArmorOrShield = {
     create: function (type) {
-        return clone.clone(rangeIn100(this[type].chanceTable, this[type].valueTable));
+        return clone(rangeIn100(this[type].chanceTable, this[type].valueTable));
     },
     createMwk: function (type) {
         var armor = this.create(type);
@@ -2701,7 +2701,7 @@ var randomWeapon = {
         delete weapon._melee;
     },
     createMwk: function () {
-        var weapon = clone.clone(rangeIn100(this.chanceTable, this.valueTable));
+        var weapon = clone(rangeIn100(this.chanceTable, this.valueTable));
         weapon.Name = "Mwk " + weapon.Name;
         weapon.id = "mwk-" + weapon.id;
         weapon.Price += 300;
@@ -2747,7 +2747,7 @@ var randomWeapon = {
         }
 
         function create() {
-            return clone.clone(rangeIn100(randomWeapon.chanceTable, randomWeapon.valueTable));
+            return clone(rangeIn100(randomWeapon.chanceTable, randomWeapon.valueTable));
         }
 
         function applyAbilities(weapon, ability1, ability2) {
@@ -2758,14 +2758,14 @@ var randomWeapon = {
                 var ability2Bonus = (ability2.flatprice === undefined ? (ability2.enhancementBonus || abilityLevel2) : 0 );
                 var totalAbilityBonus = ability1Bonus + ability2Bonus;
                 weapon.Price += 300 + totalFlatPrice + randomWeapon.priceModifiers[weaponBonus + totalAbilityBonus];
-                weapon.id = idify.idify(ability1.name) + "-" + idify.idify(ability2.name) + "-" + weapon.id + "-" + weaponBonus;
+                weapon.id = idify(ability1.name) + "-" + idify(ability2.name) + "-" + weapon.id + "-" + weaponBonus;
             }
             else {
                 weapon.Name = ability1.name + " " + weapon.Name.toLowerCase() + " +" + weaponBonus;
                 var totalFlatPrice = (ability1.flatprice || 0);
                 var totalAbilityBonus = (ability1.flatprice === undefined ? (ability1.enhancementBonus || abilityLevel1) : 0 );
                 weapon.Price += 300 + totalFlatPrice + randomWeapon.priceModifiers[weaponBonus + totalAbilityBonus];
-                weapon.id = idify.idify(ability1.name) + "-" + weapon.id + "-" + weaponBonus;
+                weapon.id = idify(ability1.name) + "-" + weapon.id + "-" + weaponBonus;
             }
         }
 
@@ -3094,7 +3094,7 @@ var randomMagicArmorOrShield = {
         }
 
         function create() {
-            return clone.clone(rangeIn100(randomMagicArmorOrShield.chanceTable, randomMagicArmorOrShield.valueTable));
+            return clone(rangeIn100(randomMagicArmorOrShield.chanceTable, randomMagicArmorOrShield.valueTable));
         }
 
         function clean(armorOrShield) {
@@ -3109,14 +3109,14 @@ var randomMagicArmorOrShield = {
                 var ability2Bonus = (ability2.flatprice === undefined ? (ability2.enhancementBonus || abilityLevel2) : 0 );
                 var totalAbilityBonus = ability1Bonus + ability2Bonus;
                 armorOrShield.Price += 150 + totalFlatPrice + randomMagicArmorOrShield.priceModifiers[armorOrShieldBonus + totalAbilityBonus];
-                armorOrShield.id = idify.idify(ability1.name) + "-" + idify.idify(ability2.name) + "-" + armorOrShield.id + "-" + armorOrShieldBonus;
+                armorOrShield.id = idify(ability1.name) + "-" + idify(ability2.name) + "-" + armorOrShield.id + "-" + armorOrShieldBonus;
             }
             else {
                 armorOrShield.Name = ability1.name + " " + armorOrShield.Name.toLowerCase() + " +" + armorOrShieldBonus;
                 var totalFlatPrice = (ability1.flatprice || 0);
                 var totalAbilityBonus = (ability1.flatprice === undefined ? (ability1.enhancementBonus || abilityLevel1) : 0 );
                 armorOrShield.Price += 150 + totalFlatPrice + randomMagicArmorOrShield.priceModifiers[armorOrShieldBonus + totalAbilityBonus];
-                armorOrShield.id = idify.idify(ability1.name) + "-" + armorOrShield.id + "-" + armorOrShieldBonus;
+                armorOrShield.id = idify(ability1.name) + "-" + armorOrShield.id + "-" + armorOrShieldBonus;
             }
         }
 
