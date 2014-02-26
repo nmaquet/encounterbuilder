@@ -11,8 +11,6 @@ var randomWeapon;
 var generateMwkWeapon;
 var generateMagicWeaponByBonus;
 var generateMagicWeapon;
-var randomPotion;
-var randomPotionLevel;
 var generatePotion;
 
 var monsterTypeToLootTypeTable = {
@@ -2357,8 +2355,6 @@ module.exports = function (_diceService_, _knapsackService_) {
     generateMwkWeapon = require('./weapons')(diceService).generateMwkWeapon;
     generateMagicWeaponByBonus = require('./weapons')(diceService).generateMagicWeaponByBonus;
     generateMagicWeapon = require('./weapons')(diceService).generateMagicWeapon;
-    randomPotion = require('./potions')(diceService).randomPotion;
-    randomPotionLevel = require('./potions')(diceService).randomPotionLevel ;
     generatePotion = require('./potions')(diceService).generatePotion ;
     return {
         generateEncounterLoot: generateEncounterLoot,
