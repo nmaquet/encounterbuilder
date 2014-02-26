@@ -8,6 +8,9 @@ var diceService, knapsackService;
 var randomMundaneArmorOrShield;
 var randomMagicArmorOrShield;
 var randomWeapon;
+var generateMwkWeapon;
+var generateMagicWeaponByBonus;
+var generateMagicWeapon;
 
 var monsterTypeToLootTypeTable = {
     aberration: {A: true, B: true, D: true, E: true},
@@ -2613,18 +2616,6 @@ function generateMwkArmor(type) {
     return randomMundaneArmorOrShield.createMwk(type);
 }
 
-function generateMwkWeapon() {
-    return randomWeapon.createMwk();
-}
-
-function generateMagicWeapon(magnitude) {
-    return randomWeapon.generate(magnitude);
-}
-
-function generateMagicWeaponByBonus(weaponBonus, abilityLevel1, abilityLevel2) {
-    return randomWeapon.generateByBonus(weaponBonus, abilityLevel1, abilityLevel2);
-}
-
 function generateMagicArmorOrShield(magnitude) {
     return randomMagicArmorOrShield.generate(magnitude);
 }
@@ -2697,6 +2688,9 @@ module.exports = function (_diceService_, _knapsackService_) {
     randomMundaneArmorOrShield = require('./armorsAndShields')(diceService).randomMundaneArmorOrShield;
     randomMagicArmorOrShield = require('./armorsAndShields')(diceService).randomMagicArmorOrShield;
     randomWeapon = require('./weapons')(diceService).randomWeapon;
+    generateMwkWeapon = require('./weapons')(diceService).generateMwkWeapon;
+    generateMagicWeaponByBonus = require('./weapons')(diceService).generateMagicWeaponByBonus;
+    generateMagicWeapon = require('./weapons')(diceService).generateMagicWeapon;
     return {
         generateEncounterLoot: generateEncounterLoot,
         mostGenerousBudgetMultiplierAmongNonNPC : mostGenerousBudgetMultiplierAmongNonNPC,

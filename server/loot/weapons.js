@@ -397,9 +397,24 @@ var randomWeapon = {
     }
 };
 
+function generateMwkWeapon() {
+    return randomWeapon.createMwk();
+}
+
+function generateMagicWeapon(magnitude) {
+    return randomWeapon.generate(magnitude);
+}
+
+function generateMagicWeaponByBonus(weaponBonus, abilityLevel1, abilityLevel2) {
+    return randomWeapon.generateByBonus(weaponBonus, abilityLevel1, abilityLevel2);
+}
+
 module.exports = function (_diceService_) {
     diceService = _diceService_;
     return {
         randomWeapon: randomWeapon,
+        generateMwkWeapon: generateMwkWeapon,
+        generateMagicWeapon : generateMagicWeapon,
+        generateMagicWeaponByBonus : generateMagicWeaponByBonus
     }
 };
