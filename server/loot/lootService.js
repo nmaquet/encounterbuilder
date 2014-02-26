@@ -2620,10 +2620,6 @@ function generateMagicArmorOrShield(magnitude) {
     return randomMagicArmorOrShield.generate(magnitude);
 }
 
-function generateMagicArmorOrShieldByBonus(armorBonus, abilityLevel1, abilityLevel2) {
-    return randomMagicArmorOrShield.generateByBonus(armorBonus, abilityLevel1, abilityLevel2);
-}
-
 function generateTypeDLoot(budget) {
     var gpValues = knapsackService.knapsack(Object.keys(typeDLoot), budget);
     var loot = {coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: []};
