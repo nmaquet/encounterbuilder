@@ -17,12 +17,12 @@ var rings = [];
 
 var processParagraphWithID = function (index) {
 
-    var name = this.text();
+    var name = [this.text()];
 
     var firstParagraph = this.next();
     expect(firstParagraph.hasClass("stat-block-1")).to.be.true;
     var priceAuraCLWeight = firstParagraph.text().split(";");
-    var price = /Price (.*)/.exec(priceAuraCLWeight[0])[1];
+    var price = [/Price (.*)/.exec(priceAuraCLWeight[0])[1]];
     var aura = /Aura (.*)/.exec(priceAuraCLWeight[1])[1];
     var cl = /CL (\d*)/.exec(priceAuraCLWeight[2])[1];
     var weight = /Weight (.*)/.exec(priceAuraCLWeight[3])[1];
@@ -49,11 +49,11 @@ var processParagraphWithID = function (index) {
     var firstCostParagraph = p.next();
     expect(firstCostParagraph.hasClass("stat-block-1")).to.be.true;
 
-    var cost = /Cost (.*)/.exec(firstCostParagraph.text())[1];
+    var cost = [/Cost (.*)/.exec(firstCostParagraph.text())[1]];
 
     var firstRequirementsParagraph;
     if (firstCostParagraph.next().hasClass("stat-block-1")) {
-        return console.log("FIXME: ignoring variant " + name);
+       return console.log("FIXME: ignoring variant " + name);
     } else {
         firstRequirementsParagraph = firstCostParagraph.next();
     }
@@ -61,30 +61,31 @@ var processParagraphWithID = function (index) {
     expect(firstRequirementsParagraph.hasClass("stat-block")).to.be.true;
 
     var requirements = firstRequirementsParagraph.text();
-
-    var ring = {
-        "CL": Number(cl),
-        "Group": "Ring",
-        "Name": name,
-        "Price": parsePrice(price),
-        "PriceUnit": "gp",
-        Aura: aura,
-        Weight:weight,
-        Cost: parsePrice(cost),
-        CostUnit:"gp",
-        Requirements:requirements,
-        Description:description,
-        "id": idify(name)
+    for (var i in name) {
+        var ring = {
+            "CL": Number(cl),
+            "Group": "Ring",
+            "Name": name[i],
+            "Price": parsePrice(price[i]),
+            "PriceUnit": "gp",
+            Aura: aura,
+            Weight: weight,
+            Cost: parsePrice(cost[i]),
+            CostUnit: "gp",
+            Requirements: requirements,
+            Description: description,
+            "id": idify(name[i])
+        }
+        rings.push(ring);
     }
-    rings.push(ring);
 };
 
 function parsePrice(text) {
     if (String(text).trim().toLowerCase() === "varies") {
         return;
     }
-    else{
-        return Number(text.split(" ")[0].replace(",",""));
+    else {
+        return Number(text.split(" ")[0].replace(",", ""));
     }
 }
 
