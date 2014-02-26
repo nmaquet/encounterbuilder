@@ -33,8 +33,16 @@ var processParagraphWithID = function (index) {
     var firstDescriptionParagraph;
 
     if (secondParagraph.hasClass('stat-block-1')) {
+        var variants = secondParagraph.text().split(";");
+        name =[];
+        price = [];
+        for (var i in variants){
+            var variant = variants[i];
+            name.push( variant.split("rod")[0].trim() + " rod");
+            price.push(variant.split("rod")[1].trim());
+        }
+
         firstDescriptionParagraph = secondParagraph.next();
-        return  console.log("FIXME ignoring variant for: " + name);
     } else {
         firstDescriptionParagraph = secondParagraph;
         expect(firstDescriptionParagraph.hasClass("stat-block")).to.be.true;
@@ -51,14 +59,11 @@ var processParagraphWithID = function (index) {
     var firstCostParagraph = p.next();
     expect(firstCostParagraph.hasClass("stat-block-1")).to.be.true;
 
-    cost = cost || [/Cost (.*)/.exec(firstCostParagraph.text())[1]];
-
     var firstRequirementsParagraph;
     if (!firstCostParagraph.next().hasClass("stat-block-1")) {
         firstRequirementsParagraph = firstCostParagraph.next();
     }
     else{
-        return  console.log("FIXME ignoring variant for: " + name);
         firstRequirementsParagraph = firstCostParagraph.next().next();
     }
     expect(firstRequirementsParagraph.hasClass("stat-block")).to.be.true;
@@ -73,7 +78,7 @@ var processParagraphWithID = function (index) {
             "PriceUnit": "gp",
             Aura: aura,
             Weight: weight,
-            Cost: parsePrice(cost[i]),
+            Cost: parsePrice(price[i]) / 2 || undefined,
             CostUnit: "gp",
             Requirements: requirements,
             Description: description,
