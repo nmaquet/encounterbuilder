@@ -13,6 +13,8 @@ var generateWand;
 var generateScroll;
 var generateMwkArmor;
 var generateMagicArmorOrShield;
+var typeALoot;
+var typeELoot;
 
 var monsterTypeToLootTypeTable = {
     aberration: {A: true, B: true, D: true, E: true},
@@ -74,62 +76,6 @@ var npcLevelToLootValue = {
     '18': {'basic': 75000, 'heroic': 96000},
     '19': {'basic': 96000, 'heroic': 123000},
     '20': {'basic': 123000, 'heroic': 159000}
-};
-
-var typeALoot = {
-    1: [
-        {n: 5, die: 10, amount: 1, unit: 'cp'},
-        {n: 3, die: 4, amount: 1, unit: 'sp'}
-    ],
-    5: [
-        {n: 2, die: 6, amount: 10, unit: 'cp'},
-        {n: 4, die: 8, amount: 1, unit: 'sp'},
-        {n: 1, die: 4, amount: 1, unit: 'gp'}
-    ],
-    10: [
-        {n: 5, die: 10, amount: 10, unit: 'cp'},
-        {n: 5, die: 10, amount: 1, unit: 'sp'},
-        {n: 1, die: 8, amount: 1, unit: 'gp'}
-    ],
-    25: [
-        {n: 2, die: 4, amount: 100, unit: 'cp'},
-        {n: 3, die: 6, amount: 10, unit: 'sp'},
-        {n: 4, die: 4, amount: 1, unit: 'gp'}
-    ],
-    50: [
-        {n: 4, die: 4, amount: 100, unit: 'cp'},
-        {n: 4, die: 6, amount: 10, unit: 'sp'},
-        {n: 8, die: 6, amount: 1, unit: 'gp'}
-    ],
-    100: [
-        {n: 6, die: 8, amount: 10, unit: 'sp'},
-        {n: 3, die: 4, amount: 10, unit: 'gp'}
-    ],
-    200: [
-        {n: 2, die: 4, amount: 100, unit: 'sp'},
-        {n: 4, die: 4, amount: 10, unit: 'gp'},
-        {n: 2, die: 4, amount: 1, unit: 'pp'}
-    ],
-    500: [
-        {n: 6, die: 6, amount: 10, unit: 'gp'},
-        {n: 8, die: 6, amount: 1, unit: 'pp'}
-    ],
-    1000: [
-        {n: 2, die: 4, amount: 100, unit: 'gp'},
-        {n: 10, die: 10, amount: 1, unit: 'pp'}
-    ],
-    5000: [
-        {n: 4, die: 8, amount: 100, unit: 'gp'},
-        {n: 6, die: 10, amount: 10, unit: 'pp'}
-    ],
-    10000: [
-        {n: 2, die: 4, amount: 1000, unit: 'gp'},
-        {n: 12, die: 8, amount: 10, unit: 'pp'}
-    ],
-    50000: [
-        {n: 2, die: 6, amount: 1000, unit: 'gp'},
-        {n: 8, die: 10, amount: 100, unit: 'pp'}
-    ]
 };
 
 var typeDLoot = {
@@ -346,163 +292,6 @@ var typeDLoot = {
     ]
 };
 
-var typeELoot = {
-    200: [
-        [
-            {mwk: true, type: "armorOrShield", armorType: "lightArmorOrShield"}
-        ]
-    ],
-    300: [
-        [
-            {mwk: true, type: "armorOrShield", armorType: "mediumArmor"}
-        ]
-    ],
-    350: [
-        [
-            {mwk: true, type: "weapon"}
-        ]
-    ],
-    1000: [
-        [
-            {mwk: true, type: "armorOrShield", armorType: "heavyArmor"}
-        ]
-    ],
-    1500: [
-        [
-            { magnitude: "lesser_minor", type: "armorOrShield"}
-        ]
-    ],
-    2500: [
-        [
-            { magnitude: "lesser_minor", type: "weapon"}
-        ]
-    ],
-    3000: [
-        [
-            { magnitude: "greater_minor", type: "armorOrShield"}
-        ],
-        [
-            {mwk: true, type: "armorOrShield", armorType: "mediumArmor"},
-            {mwk: true, type: "armorOrShield", armorType: "lightArmorOrShield"},//FIXME this is supposed to be mwk Shield
-            { magnitude: "lesser_minor", type: "weapon"}
-        ]
-
-    ],
-    4000: [
-        [
-            { magnitude: "lesser_minor", type: "armorOrShield"},
-            { magnitude: "lesser_minor", type: "weapon"}
-        ]
-    ],
-    5500: [
-        [
-            { magnitude: "greater_minor", type: "armorOrShield"},
-            { magnitude: "lesser_minor", type: "weapon"}
-        ]
-    ],
-    6000: [
-        [
-            { magnitude: "greater_minor", type: "weapon"}
-        ]
-    ],
-    7500: [
-        [
-            { magnitude: "lesser_minor", type: "armorOrShield"},
-            { magnitude: "greater_minor", type: "weapon"}
-        ]
-    ],
-    8000: [
-        [
-            { magnitude: "greater_minor", type: "armorOrShield"},
-            { magnitude: "lesser_minor", type: "weapon"},
-            { magnitude: "lesser_minor", type: "weapon"}
-
-        ]
-    ],
-    9000: [
-        [
-            { magnitude: "greater_minor", type: "armorOrShield"},
-            { magnitude: "greater_minor", type: "weapon"}
-        ]
-    ],
-    10000: [
-        [
-            { magnitude: "lesser_medium", type: "armorOrShield"},
-            { magnitude: "lesser_minor", type: "weapon"}
-        ]
-    ],
-    13000: [
-        [
-            { magnitude: "lesser_medium", type: "weapon"}
-        ],
-        [
-            { magnitude: "lesser_medium", type: "armorOrShield"},
-            { magnitude: "greater_minor", type: "weapon"}
-        ]
-    ],
-    15000: [
-        [
-            { magnitude: "greater_medium", type: "armorOrShield"},
-            { magnitude: "lesser_minor", type: "weapon"}
-        ]
-    ],
-    20000: [
-        [
-            { magnitude: "lesser_medium", type: "armorOrShield"},
-            { magnitude: "lesser_medium", type: "weapon"}
-        ]
-    ],
-    25000: [
-        [
-            { magnitude: "greater_minor", type: "armorOrShield"},
-            { magnitude: "greater_medium", type: "weapon"}
-        ]
-    ],
-    30000: [
-        [
-            { magnitude: "lesser_major", type: "armorOrShield"},
-            { magnitude: "lesser_minor", type: "weapon"},
-            { magnitude: "greater_minor", type: "weapon"}
-        ],
-        [
-            { magnitude: "lesser_medium", type: "armorOrShield"},
-            { magnitude: "greater_medium", type: "weapon"}
-        ]
-    ],
-    35000: [
-        [
-            { magnitude: "lesser_major", type: "armorOrShield"},
-            { magnitude: "lesser_medium", type: "weapon"}
-        ],
-        [
-            { magnitude: "lesser_minor", type: "armorOrShield"},
-            { magnitude: "lesser_major", type: "weapon"}
-        ]
-    ],
-    40000: [
-        { magnitude: "greater_major", type: "armorOrShield"},
-        { magnitude: "greater_minor", type: "weapon"}
-    ],
-    50000: [
-        [
-            { magnitude: "greater_major", type: "armorOrShield"},
-            { magnitude: "lesser_medium", type: "weapon"}
-        ]
-    ],
-    75000: [
-        [
-            { magnitude: "greater_minor", type: "armorOrShield"},
-            { magnitude: "greater_major", type: "weapon"}
-        ]
-    ],
-    100000: [
-        [
-            { magnitude: "greater_major", type: "armorOrShield"},
-            { magnitude: "greater_major", type: "weapon"}
-        ]
-    ]
-};
-
 var budgetMultipliers = {
     'none': 0,
     'incidental': 0.5,
@@ -703,6 +492,8 @@ module.exports = function (_diceService_, _knapsackService_) {
     generatePotion = require('./potions')(diceService).generatePotion;
     generateWand = require('./wands')(diceService).generateWand;
     generateScroll = require('./scrolls')(diceService).generateScroll;
+    typeELoot = require('./typeE')().typeELoot;
+    typeALoot = require('./typeA')().typeALoot;
     return {
         generateEncounterLoot: generateEncounterLoot,
         mostGenerousBudgetMultiplierAmongNonNPC: mostGenerousBudgetMultiplierAmongNonNPC,
