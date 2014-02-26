@@ -187,8 +187,6 @@ function generatePotion(magnitude) {
 module.exports = function (_diceService_) {
     diceService = _diceService_;
     return {
-        randomPotion: randomPotion,
-        randomPotionLevel : randomPotionLevel,
         generatePotion : generatePotion
     }
 };
