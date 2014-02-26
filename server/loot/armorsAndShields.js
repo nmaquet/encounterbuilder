@@ -360,10 +360,20 @@ var randomMagicArmorOrShield = {
     }
 };
 
+function generateMwkArmor(type) {
+    return randomMundaneArmorOrShield.createMwk(type);
+}
+
+function generateMagicArmorOrShield(magnitude) {
+    return randomMagicArmorOrShield.generate(magnitude);
+}
+
 module.exports = function (_diceService_) {
     diceService = _diceService_;
     return {
         randomMagicArmorOrShield: randomMagicArmorOrShield,
-        randomMundaneArmorOrShield: randomMundaneArmorOrShield
+        randomMundaneArmorOrShield: randomMundaneArmorOrShield,
+        generateMwkArmor : generateMwkArmor,
+        generateMagicArmorOrShield : generateMagicArmorOrShield
     }
 };
