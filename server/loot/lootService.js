@@ -676,16 +676,16 @@ function generateTypeELoot(budget) {
         for (var j in partialLoots) {
             var partialLoot = partialLoots[j];
             if (partialLoot.mwk && partialLoot.type === "weapon") {
-                addItem(randomWeapon.createMwk(), loot.items);
+                addItem(generateMwkWeapon(), loot.items);
             }
             else if (partialLoot.mwk && partialLoot.type === "armorOrShield") {
-                addItem(randomMundaneArmorOrShield.createMwk(partialLoot.armorType), loot.items);
+                addItem(generateMwkArmor(partialLoot.armorType), loot.items);
             }
             else if (partialLoot.type === "weapon") {
-                addItem(randomWeapon.generate(partialLoot.magnitude), loot.items);
+                addItem(generateMagicWeapon(partialLoot.magnitude), loot.items);
             }
             else {
-                addItem(randomMagicArmorOrShield.generate(partialLoot.magnitude), loot.items);
+                addItem(generateMagicArmorOrShield(partialLoot.magnitude), loot.items);
             }
         }
     }
