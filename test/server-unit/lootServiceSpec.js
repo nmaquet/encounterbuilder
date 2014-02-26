@@ -534,7 +534,6 @@ describe("lootService", function () {
             /* blinding */
             diceService.prepareDice({die: 100, value: 30, n: 1});
             var armorOrShield = service.generateMagicArmorOrShield("greater_major");
-            console.log(armorOrShield);
             expect(armorOrShield).to.deep.equal({"Price": 36170.0, "PriceUnit": "gp", "Name": "Blinding heavy steel shield +5", "id": "blinding-heavy-steel-shield-5"});
         });
 
