@@ -42,6 +42,18 @@ function createDiceServiceMock() {
         },
         chooseOne: function (choices) {
             return choices[0];
+        },
+        rangeIn100: function (upperBounds, values) {
+            if (values.length !== upperBounds.length + 1) {
+                throw Error("upperBounds and values mismatch '" + upperBounds + "' '" + values + "'" + "(" + upperBounds.length + " vs " + values.length + ")");
+            }
+            var dieResult = this.roll(100, 1);
+            for (var i in upperBounds) {
+                if (dieResult <= upperBounds[i]) {
+                    return values[i];
+                }
+            }
+            return values[upperBounds.length];
         }
     }
 };

@@ -5,6 +5,9 @@ var idify = require('./../idify')().idify;
 
 var diceService, knapsackService;
 
+var randomMundaneArmorOrShield;
+var randomMagicArmorOrShield;
+
 var monsterTypeToLootTypeTable = {
     aberration: {A: true, B: true, D: true, E: true},
     animal: {A: true, B: true, D: true, E: true},
@@ -497,7 +500,7 @@ var typeELoot = {
 var randomWand = {
     common: {
         "0": function () {
-            return rangeIn100([7, 14, 20, 28, 34, 42, 49, 55, 60, 66, 73, 81, 88, 95], [
+            return diceService.rangeIn100([7, 14, 20, 28, 34, 42, 49, 55, 60, 66, 73, 81, 88, 95], [
                 {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Acid splash", "id": "wand-of-acid-splash"},
                 {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Create water", "id": "wand-of-create-water"},
                 {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Daze", "id": "wand-of-daze"},
@@ -516,7 +519,7 @@ var randomWand = {
             ]);
         },
         "1": function () {
-            return rangeIn100([2, 3, 5, 11, 14, 17, 19, 21, 23, 24, 31, 33, 37, 38, 41, 43, 45, 46, 48, 50, 52, 58, 60, 67, 68, 70, 71, 73, 74, 75, 76, 77, 79, 81, 84, 86, 87, 89, 90, 94, 95, 96, 99], [
+            return diceService.rangeIn100([2, 3, 5, 11, 14, 17, 19, 21, 23, 24, 31, 33, 37, 38, 41, 43, 45, 46, 48, 50, 52, 58, 60, 67, 68, 70, 71, 73, 74, 75, 76, 77, 79, 81, 84, 86, 87, 89, 90, 94, 95, 96, 99], [
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Alarm", "id": "wand-of-alarm"},
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Animate rope", "id": "wand-of-animate-rope"},
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Bane", "id": "wand-of-bane"},
@@ -564,7 +567,7 @@ var randomWand = {
             ]);
         },
         "2": function () {
-            return rangeIn100([2, 3, 5, 7, 10, 11, 14, 16, 22, 25, 26, 27, 29, 30, 31, 32, 33, 35, 37, 38, 40, 43, 46, 51, 52, 54, 55, 57, 59, 60, 61, 64, 66, 71, 73, 74, 76, 78, 81, 83, 86, 88, 90, 92, 96, 97, 99], [
+            return diceService.rangeIn100([2, 3, 5, 7, 10, 11, 14, 16, 22, 25, 26, 27, 29, 30, 31, 32, 33, 35, 37, 38, 40, 43, 46, 51, 52, 54, 55, 57, 59, 60, 61, 64, 66, 71, 73, 74, 76, 78, 81, 83, 86, 88, 90, 92, 96, 97, 99], [
                 {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Acid arrow", "id": "wand-of-acid-arrow"},
                 {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Aid", "id": "wand-of-aid"},
                 {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Alter self", "id": "wand-of-alter-self"},
@@ -616,7 +619,7 @@ var randomWand = {
             ]);
         },
         "3": function () {
-            return rangeIn100([2, 4, 7, 8, 14, 16, 18, 20, 25, 28, 34, 35, 37, 38, 40, 42, 45, 47, 48, 50, 55, 56, 57, 58, 59, 60, 62, 64, 66, 70, 74, 75, 77, 79, 82, 83, 85, 87, 89, 90, 92, 93, 94, 97, 99], [
+            return diceService.rangeIn100([2, 4, 7, 8, 14, 16, 18, 20, 25, 28, 34, 35, 37, 38, 40, 42, 45, 47, 48, 50, 55, 56, 57, 58, 59, 60, 62, 64, 66, 70, 74, 75, 77, 79, 82, 83, 85, 87, 89, 90, 92, 93, 94, 97, 99], [
                 {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Beast shape I", "id": "wand-of-beast-shape-i"},
                 {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Blink", "id": "wand-of-blink"},
                 {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Call lightning", "id": "wand-of-call-lightning"},
@@ -666,7 +669,7 @@ var randomWand = {
             ]);
         },
         "4": function () {
-            return rangeIn100([2, 4, 7, 8, 11, 14, 16, 22, 24, 28, 29, 30, 33, 35, 37, 39, 42, 44, 48, 51, 53, 54, 56, 58, 61, 65, 66, 69, 70, 72, 73, 74, 76, 79, 80, 81, 82, 87, 91, 93, 95, 96, 98, 99], [
+            return diceService.rangeIn100([2, 4, 7, 8, 11, 14, 16, 22, 24, 28, 29, 30, 33, 35, 37, 39, 42, 44, 48, 51, 53, 54, 56, 58, 61, 65, 66, 69, 70, 72, 73, 74, 76, 79, 80, 81, 82, 87, 91, 93, 95, 96, 98, 99], [
                 {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Air walk", "id": "wand-of-air-walk"},
                 {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Beast shape II", "id": "wand-of-beast-shape-ii"},
                 {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Black tentacles", "id": "wand-of-black-tentacles"},
@@ -717,7 +720,7 @@ var randomWand = {
     },
     uncommon: {
         "0": function () {
-            return rangeIn100([6, 15, 22, 31, 40, 48, 56, 65, 73, 79, 86, 94], [
+            return diceService.rangeIn100([6, 15, 22, 31, 40, 48, 56, 65, 73, 79, 86, 94], [
                 {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Arcane mark", "id": "wand-of-arcane-mark"},
                 {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Bleed", "id": "wand-of-bleed"},
                 {"Price": 375.0, "PriceUnit": "gp", "Name": "Wand of Dancing lights", "id": "wand-of-dancing-lights"},
@@ -734,7 +737,7 @@ var randomWand = {
             ]);
         },
         "1": function () {
-            return rangeIn100([2, 5, 7, 8, 10, 12, 14, 17, 19, 21, 22, 23, 24, 25, 26, 28, 29, 31, 35, 37, 38, 39, 41, 44, 47, 49, 51, 52, 54, 56, 58, 60, 63, 65, 66, 68, 69, 71, 72, 75, 78, 80, 83, 85, 87, 88, 89, 92, 96, 97, 98, 99], [
+            return diceService.rangeIn100([2, 5, 7, 8, 10, 12, 14, 17, 19, 21, 22, 23, 24, 25, 26, 28, 29, 31, 35, 37, 38, 39, 41, 44, 47, 49, 51, 52, 54, 56, 58, 60, 63, 65, 66, 68, 69, 71, 72, 75, 78, 80, 83, 85, 87, 88, 89, 92, 96, 97, 98, 99], [
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Ant haul", "id": "wand-of-ant-haul"},
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Aspect of the falcon", "id": "wand-of-aspect-of-the-falcon"},
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Wand of Bless weapon", "id": "wand-of-bless-weapon"},
@@ -791,7 +794,7 @@ var randomWand = {
             ]);
         },
         "2": function () {
-            return rangeIn100([2, 5, 6, 7, 10, 13, 15, 18, 21, 24, 25, 27, 29, 32, 33, 35, 39, 42, 46, 48, 50, 51, 53, 55, 56, 57, 59, 60, 61, 63, 65, 66, 67, 69, 72, 74, 76, 78, 80, 82, 84, 86, 88, 91, 93, 95, 96, 97, 98, 99], [
+            return diceService.rangeIn100([2, 5, 6, 7, 10, 13, 15, 18, 21, 24, 25, 27, 29, 32, 33, 35, 39, 42, 46, 48, 50, 51, 53, 55, 56, 57, 59, 60, 61, 63, 65, 66, 67, 69, 72, 74, 76, 78, 80, 82, 84, 86, 88, 91, 93, 95, 96, 97, 98, 99], [
                 {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Align weapon", "id": "wand-of-align-weapon"},
                 {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Animal aspect", "id": "wand-of-animal-aspect"},
                 {"Price": 4500.0, "PriceUnit": "gp", "Name": "Wand of Animal messenger", "id": "wand-of-animal-messenger"},
@@ -846,7 +849,7 @@ var randomWand = {
             ]);
         },
         "3": function () {
-            return rangeIn100([4, 6, 8, 11, 14, 17, 20, 22, 23, 25, 29, 30, 34, 35, 37, 40, 43, 45, 46, 49, 52, 54, 55, 57, 60, 61, 65, 67, 69, 70, 71, 73, 74, 76, 77, 81, 84, 86, 87, 89, 91, 95, 97, 98, 99], [
+            return diceService.rangeIn100([4, 6, 8, 11, 14, 17, 20, 22, 23, 25, 29, 30, 34, 35, 37, 40, 43, 45, 46, 49, 52, 54, 55, 57, 60, 61, 65, 67, 69, 70, 71, 73, 74, 76, 77, 81, 84, 86, 87, 89, 91, 95, 97, 98, 99], [
                 {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Animal aspect, greater", "id": "wand-of-animal-aspect-greater"},
                 {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Aqueous orb", "id": "wand-of-aqueous-orb"},
                 {"Price": 11250.0, "PriceUnit": "gp", "Name": "Wand of Arcane sight", "id": "wand-of-arcane-sight"},
@@ -896,7 +899,7 @@ var randomWand = {
             ]);
         },
         "4": function () {
-            return rangeIn100([1, 4, 7, 11, 12, 13, 15, 18, 19, 20, 24, 28, 30, 34, 36, 37, 38, 40, 42, 43, 46, 48, 50, 53, 54, 56, 59, 60, 63, 67, 70, 74, 76, 79, 80, 82, 83, 84, 87, 91, 94, 95, 97, 98, 99], [
+            return diceService.rangeIn100([1, 4, 7, 11, 12, 13, 15, 18, 19, 20, 24, 28, 30, 34, 36, 37, 38, 40, 42, 43, 46, 48, 50, 53, 54, 56, 59, 60, 63, 67, 70, 74, 76, 79, 80, 82, 83, 84, 87, 91, 94, 95, 97, 98, 99], [
                 {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Antiplant shell", "id": "wand-of-antiplant-shell"},
                 {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Arcane eye", "id": "wand-of-arcane-eye"},
                 {"Price": 21000.0, "PriceUnit": "gp", "Name": "Wand of Aspect of the stag", "id": "wand-of-aspect-of-the-stag"},
@@ -950,64 +953,64 @@ var randomWand = {
 
 var randomScrollLevel = {
     lesser_minor: function () {
-        return rangeIn100([15, 95], [0, 1, 2]);
+        return diceService.rangeIn100([15, 95], [0, 1, 2]);
     },
     greater_minor: function () {
-        return rangeIn100([5, 35, 90], [0, 1, 2, 3]);
+        return diceService.rangeIn100([5, 35, 90], [0, 1, 2, 3]);
     },
     lesser_medium: function () {
-        return rangeIn100([10, 55], [2, 3, 4]);
+        return diceService.rangeIn100([10, 55], [2, 3, 4]);
     },
     greater_medium: function () {
-        return rangeIn100([20, 60], [3, 4, 5]);
+        return diceService.rangeIn100([20, 60], [3, 4, 5]);
     },
     lesser_major: function () {
-        return rangeIn100([30, 65, 90], [4, 5, 6, 7]);
+        return diceService.rangeIn100([30, 65, 90], [4, 5, 6, 7]);
     },
     greater_major: function () {
-        return rangeIn100([5, 35, 70], [6, 7, 8, 9]);
+        return diceService.rangeIn100([5, 35, 70], [6, 7, 8, 9]);
     }
 };
 
 var randomPotionLevel = {
     lesser_minor: function () {
-        return rangeIn100([40], [0, 1]);
+        return diceService.rangeIn100([40], [0, 1]);
     },
     greater_minor: function () {
-        return rangeIn100([10, 60], [0, 1, 2]);
+        return diceService.rangeIn100([10, 60], [0, 1, 2]);
     },
     lesser_medium: function () {
-        return rangeIn100([25, 85], [1, 2, 3]);
+        return diceService.rangeIn100([25, 85], [1, 2, 3]);
     },
     greater_medium: function () {
-        return rangeIn100([10, 50], [1, 2, 3]);
+        return diceService.rangeIn100([10, 50], [1, 2, 3]);
     },
     lesser_major: function () {
-        return rangeIn100([35], [2, 3]);
+        return diceService.rangeIn100([35], [2, 3]);
     },
     greater_major: function () {
-        return rangeIn100([10], [2, 3]);
+        return diceService.rangeIn100([10], [2, 3]);
     }
 };
 
 var randomWandLevel = {
     lesser_minor: function () {
-        return rangeIn100([40], [0, 1]);
+        return diceService.rangeIn100([40], [0, 1]);
     },
     greater_minor: function () {
-        return rangeIn100([80], [1, 2]);
+        return diceService.rangeIn100([80], [1, 2]);
     },
     lesser_medium: function () {
-        return rangeIn100([75], [2, 3]);
+        return diceService.rangeIn100([75], [2, 3]);
     },
     greater_medium: function () {
-        return rangeIn100([20, 80], [2, 3, 4]);
+        return diceService.rangeIn100([20, 80], [2, 3, 4]);
     },
     lesser_major: function () {
-        return rangeIn100([60], [3, 4]);
+        return diceService.rangeIn100([60], [3, 4]);
     },
     greater_major: function () {
-        return rangeIn100([30], [3, 4]);
+        return diceService.rangeIn100([30], [3, 4]);
     }
 };
 
@@ -1015,7 +1018,7 @@ var randomScroll = {
     common: {
         arcane: {
             "0": function () {
-                return rangeIn100([9, 17, 27, 35, 45, 55, 63, 72, 81, 91], [
+                return diceService.rangeIn100([9, 17, 27, 35, 45, 55, 63, 72, 81, 91], [
                     {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Acid splash", "id": "scroll-of-acid-splash"},
                     {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Daze", "id": "scroll-of-daze"},
                     {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Detect magic", "id": "scroll-of-detect-magic"},
@@ -1030,7 +1033,7 @@ var randomScroll = {
                 ]);
             },
             "1": function () {
-                return rangeIn100([5, 9, 14, 17, 21, 24, 28, 32, 36, 39, 42, 48, 54, 58, 62, 64, 67, 69, 71, 75, 80, 84, 88, 93, 96], [
+                return diceService.rangeIn100([5, 9, 14, 17, 21, 24, 28, 32, 36, 39, 42, 48, 54, 58, 62, 64, 67, 69, 71, 75, 80, 84, 88, 93, 96], [
                     {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Burning hands", "id": "scroll-of-burning-hands"},
                     {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Cause fear", "id": "scroll-of-cause-fear"},
                     {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Charm person", "id": "scroll-of-charm-person"},
@@ -1060,7 +1063,7 @@ var randomScroll = {
                 ]);
             },
             "2": function () {
-                return rangeIn100([4, 7, 12, 15, 20, 24, 27, 30, 34, 37, 40, 44, 47, 52, 54, 58, 61, 65, 69, 73, 75, 80, 83, 85, 88, 91, 93, 98], [
+                return diceService.rangeIn100([4, 7, 12, 15, 20, 24, 27, 30, 34, 37, 40, 44, 47, 52, 54, 58, 61, 65, 69, 73, 75, 80, 83, 85, 88, 91, 93, 98], [
                     {"Price": 150.0, "PriceUnit": "gp", "Name": "Scroll of Acid arrow", "id": "scroll-of-acid-arrow"},
                     {"Price": 150.0, "PriceUnit": "gp", "Name": "Scroll of Alter self", "id": "scroll-of-alter-self"},
                     {"Price": 150.0, "PriceUnit": "gp", "Name": "Scroll of Bear's endurance", "id": "scroll-of-bear-s-endurance"},
@@ -1093,7 +1096,7 @@ var randomScroll = {
                 ]);
             },
             "3": function () {
-                return rangeIn100([3, 7, 12, 16, 21, 24, 29, 32, 37, 40, 43, 46, 51, 54, 57, 60, 63, 66, 70, 74, 78, 81, 84, 87, 90, 94, 97], [
+                return diceService.rangeIn100([3, 7, 12, 16, 21, 24, 29, 32, 37, 40, 43, 46, 51, 54, 57, 60, 63, 66, 70, 74, 78, 81, 84, 87, 90, 94, 97], [
                     {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Beast shape I", "id": "scroll-of-beast-shape-i"},
                     {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Blink", "id": "scroll-of-blink"},
                     {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Dispel magic", "id": "scroll-of-dispel-magic"},
@@ -1125,7 +1128,7 @@ var randomScroll = {
                 ]);
             },
             "4": function () {
-                return rangeIn100([3, 5, 9, 14, 18, 21, 26, 29, 32, 36, 38, 43, 47, 50, 54, 59, 64, 67, 71, 74, 76, 78, 80, 83, 88, 92, 97], [
+                return diceService.rangeIn100([3, 5, 9, 14, 18, 21, 26, 29, 32, 36, 38, 43, 47, 50, 54, 59, 64, 67, 71, 74, 76, 78, 80, 83, 88, 92, 97], [
                     {"Price": 700.0, "PriceUnit": "gp", "Name": "Scroll of Beast shape II", "id": "scroll-of-beast-shape-ii"},
                     {"Price": 700.0, "PriceUnit": "gp", "Name": "Scroll of Bestow curse", "id": "scroll-of-bestow-curse"},
                     {"Price": 700.0, "PriceUnit": "gp", "Name": "Scroll of Black tentacles", "id": "scroll-of-black-tentacles"},
@@ -1157,7 +1160,7 @@ var randomScroll = {
                 ]);
             },
             "5": function () {
-                return rangeIn100([3, 7, 10, 15, 21, 23, 26, 31, 35, 40, 43, 46, 51, 54, 56, 58, 62, 65, 69, 73, 76, 82, 88, 92, 95, 97], [
+                return diceService.rangeIn100([3, 7, 10, 15, 21, 23, 26, 31, 35, 40, 43, 46, 51, 54, 56, 58, 62, 65, 69, 73, 76, 82, 88, 92, 95, 97], [
                     {"Price": 1125.0, "PriceUnit": "gp", "Name": "Scroll of Baleful polymorph", "id": "scroll-of-baleful-polymorph"},
                     {"Price": 1125.0, "PriceUnit": "gp", "Name": "Scroll of Beast shape III", "id": "scroll-of-beast-shape-iii"},
                     {"Price": 1125.0, "PriceUnit": "gp", "Name": "Scroll of Break enchantment", "id": "scroll-of-break-enchantment"},
@@ -1188,7 +1191,7 @@ var randomScroll = {
                 ]);
             },
             "6": function () {
-                return rangeIn100([3, 7, 10, 13, 16, 19, 25, 31, 37, 40, 42, 47, 50, 53, 56, 59, 62, 65, 67, 70, 72, 76, 79, 82, 84, 87, 89, 92, 96, 98], [
+                return diceService.rangeIn100([3, 7, 10, 13, 16, 19, 25, 31, 37, 40, 42, 47, 50, 53, 56, 59, 62, 65, 67, 70, 72, 76, 79, 82, 84, 87, 89, 92, 96, 98], [
                     {"Price": 1650.0, "PriceUnit": "gp", "Name": "Scroll of Acid fog", "id": "scroll-of-acid-fog"},
                     {"Price": 1650.0, "PriceUnit": "gp", "Name": "Scroll of Antimagic field", "id": "scroll-of-antimagic-field"},
                     {"Price": 1650.0, "PriceUnit": "gp", "Name": "Scroll of Bear's endurance, mass", "id": "scroll-of-bear-s-endurance-mass"},
@@ -1223,7 +1226,7 @@ var randomScroll = {
                 ]);
             },
             "7": function () {
-                return rangeIn100([4, 7, 13, 17, 22, 27, 30, 35, 39, 42, 48, 53, 57, 62, 66, 70, 73, 78, 81, 87, 90, 93, 97], [
+                return diceService.rangeIn100([4, 7, 13, 17, 22, 27, 30, 35, 39, 42, 48, 53, 57, 62, 66, 70, 73, 78, 81, 87, 90, 93, 97], [
                     {"Price": 2275.0, "PriceUnit": "gp", "Name": "Scroll of Arcane sight, greater", "id": "scroll-of-arcane-sight-greater"},
                     {"Price": 2275.0, "PriceUnit": "gp", "Name": "Scroll of Banishment", "id": "scroll-of-banishment"},
                     {"Price": 2275.0, "PriceUnit": "gp", "Name": "Scroll of Delayed blast fireball", "id": "scroll-of-delayed-blast-fireball"},
@@ -1251,7 +1254,7 @@ var randomScroll = {
                 ]);
             },
             "8": function () {
-                return rangeIn100([5, 9, 13, 18, 23, 28, 33, 40, 45, 49, 55, 59, 66, 72, 76, 80, 85, 90, 94, 97], [
+                return diceService.rangeIn100([5, 9, 13, 18, 23, 28, 33, 40, 45, 49, 55, 59, 66, 72, 76, 80, 85, 90, 94, 97], [
                     {"Price": 3000.0, "PriceUnit": "gp", "Name": "Scroll of Charm monster, mass", "id": "scroll-of-charm-monster-mass"},
                     {"Price": 3000.0, "PriceUnit": "gp", "Name": "Scroll of Demand", "id": "scroll-of-demand"},
                     {"Price": 3000.0, "PriceUnit": "gp", "Name": "Scroll of Dimensional lock", "id": "scroll-of-dimensional-lock"},
@@ -1276,7 +1279,7 @@ var randomScroll = {
                 ]);
             },
             "9": function () {
-                return rangeIn100([6, 11, 16, 23, 28, 33, 39, 47, 55, 61, 66, 71, 79, 85, 90, 96], [
+                return diceService.rangeIn100([6, 11, 16, 23, 28, 33, 39, 47, 55, 61, 66, 71, 79, 85, 90, 96], [
                     {"Price": 3825.0, "PriceUnit": "gp", "Name": "Scroll of Dominate monster", "id": "scroll-of-dominate-monster"},
                     {"Price": 3825.0, "PriceUnit": "gp", "Name": "Scroll of Energy drain", "id": "scroll-of-energy-drain"},
                     {"Price": 3825.0, "PriceUnit": "gp", "Name": "Scroll of Freedom", "id": "scroll-of-freedom"},
@@ -1299,7 +1302,7 @@ var randomScroll = {
         },
         divine: {
             "0": function () {
-                return rangeIn100([11, 21, 34, 44, 55, 65, 75, 88], [
+                return diceService.rangeIn100([11, 21, 34, 44, 55, 65, 75, 88], [
                     {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Bleed", "id": "scroll-of-bleed-gp"},
                     {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Create water", "id": "scroll-of-create-water-gp"},
                     {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Detect magic", "id": "scroll-of-detect-magic-gp"},
@@ -1312,7 +1315,7 @@ var randomScroll = {
                 ]);
             },
             "1": function () {
-                return rangeIn100([4, 10, 15, 19, 22, 28, 30, 32, 34, 36, 39, 45, 48, 52, 57, 61, 65, 68, 71, 74, 77, 80, 84, 88, 94, 97], [
+                return diceService.rangeIn100([4, 10, 15, 19, 22, 28, 30, 32, 34, 36, 39, 45, 48, 52, 57, 61, 65, 68, 71, 74, 77, 80, 84, 88, 94, 97], [
                     {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Bane", "id": "scroll-of-bane"},
                     {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Bless", "id": "scroll-of-bless"},
                     {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Cause fear", "id": "scroll-of-cause-fear"},
@@ -1343,7 +1346,7 @@ var randomScroll = {
                 ]);
             },
             "2": function () {
-                return rangeIn100([4, 6, 8, 13, 16, 19, 22, 24, 30, 33, 36, 39, 41, 44, 46, 50, 52, 56, 60, 63, 65, 68, 73, 77, 81, 85, 89, 91, 93, 95, 97], [
+                return diceService.rangeIn100([4, 6, 8, 13, 16, 19, 22, 24, 30, 33, 36, 39, 41, 44, 46, 50, 52, 56, 60, 63, 65, 68, 73, 77, 81, 85, 89, 91, 93, 95, 97], [
                     {"Price": 150.0, "PriceUnit": "gp", "Name": "Scroll of Aid", "id": "scroll-of-aid"},
                     {"Price": 150.0, "PriceUnit": "gp", "Name": "Scroll of Align weapon", "id": "scroll-of-align-weapon"},
                     {"Price": 150.0, "PriceUnit": "gp", "Name": "Scroll of Animal messenger", "id": "scroll-of-animal-messenger"},
@@ -1379,7 +1382,7 @@ var randomScroll = {
                 ]);
             },
             "3": function () {
-                return rangeIn100([3, 8, 15, 19, 23, 28, 33, 37, 40, 42, 44, 46, 48, 52, 57, 59, 65, 68, 70, 73, 76, 79, 81, 85, 87, 89, 91, 95, 97], [
+                return diceService.rangeIn100([3, 8, 15, 19, 23, 28, 33, 37, 40, 42, 44, 46, 48, 52, 57, 59, 65, 68, 70, 73, 76, 79, 81, 85, 87, 89, 91, 95, 97], [
                     {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Bestow curse", "id": "scroll-of-bestow-curse"},
                     {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Call lightning", "id": "scroll-of-call-lightning"},
                     {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Cure serious wounds", "id": "scroll-of-cure-serious-wounds"},
@@ -1413,7 +1416,7 @@ var randomScroll = {
                 ]);
             },
             "4": function () {
-                return rangeIn100([4, 7, 15, 19, 22, 25, 28, 33, 39, 43, 46, 51, 56, 61, 64, 68, 73, 77, 80, 83, 86, 89, 93, 96], [
+                return diceService.rangeIn100([4, 7, 15, 19, 22, 25, 28, 33, 39, 43, 46, 51, 56, 61, 64, 68, 73, 77, 80, 83, 86, 89, 93, 96], [
                     {"Price": 700.0, "PriceUnit": "gp", "Name": "Scroll of Air walk", "id": "scroll-of-air-walk"},
                     {"Price": 700.0, "PriceUnit": "gp", "Name": "Scroll of Chaos hammer", "id": "scroll-of-chaos-hammer"},
                     {"Price": 700.0, "PriceUnit": "gp", "Name": "Scroll of Cure critical wounds", "id": "scroll-of-cure-critical-wounds"},
@@ -1442,7 +1445,7 @@ var randomScroll = {
                 ]);
             },
             "5": function () {
-                return rangeIn100([2, 4, 7, 11, 16, 21, 25, 30, 34, 37, 42, 47, 53, 57, 62, 67, 70, 73, 75, 77, 80, 82, 87, 91, 94], [
+                return diceService.rangeIn100([2, 4, 7, 11, 16, 21, 25, 30, 34, 37, 42, 47, 53, 57, 62, 67, 70, 73, 75, 77, 80, 82, 87, 91, 94], [
                     {"Price": 1125.0, "PriceUnit": "gp", "Name": "Scroll of Animal growth", "id": "scroll-of-animal-growth"},
                     {"Price": 1125.0, "PriceUnit": "gp", "Name": "Scroll of Atonement", "id": "scroll-of-atonement"},
                     {"Price": 1125.0, "PriceUnit": "gp", "Name": "Scroll of Baleful polymorph", "id": "scroll-of-baleful-polymorph"},
@@ -1472,7 +1475,7 @@ var randomScroll = {
                 ]);
             },
             "6": function () {
-                return rangeIn100([5, 11, 16, 21, 27, 32, 37, 43, 47, 55, 63, 69, 74, 78, 83, 87, 91, 96], [
+                return diceService.rangeIn100([5, 11, 16, 21, 27, 32, 37, 43, 47, 55, 63, 69, 74, 78, 83, 87, 91, 96], [
                     {"Price": 1650.0, "PriceUnit": "gp", "Name": "Scroll of Bear's endurance, mass", "id": "scroll-of-bear-s-endurance-mass"},
                     {"Price": 1650.0, "PriceUnit": "gp", "Name": "Scroll of Blade barrier", "id": "scroll-of-blade-barrier"},
                     {"Price": 1650.0, "PriceUnit": "gp", "Name": "Scroll of Bull's strength, mass", "id": "scroll-of-bull-s-strength-mass"},
@@ -1495,7 +1498,7 @@ var randomScroll = {
                 ]);
             },
             "7": function () {
-                return rangeIn100([4, 10, 17, 24, 28, 33, 40, 44, 50, 55, 60, 65, 69, 73, 78, 82, 89, 94], [
+                return diceService.rangeIn100([4, 10, 17, 24, 28, 33, 40, 44, 50, 55, 60, 65, 69, 73, 78, 82, 89, 94], [
                     {"Price": 2275.0, "PriceUnit": "gp", "Name": "Scroll of Blasphemy", "id": "scroll-of-blasphemy"},
                     {"Price": 2275.0, "PriceUnit": "gp", "Name": "Scroll of Control weather", "id": "scroll-of-control-weather"},
                     {"Price": 2275.0, "PriceUnit": "gp", "Name": "Scroll of Creeping doom", "id": "scroll-of-creeping-doom"},
@@ -1518,7 +1521,7 @@ var randomScroll = {
                 ]);
             },
             "8": function () {
-                return rangeIn100([8, 14, 23, 31, 38, 44, 51, 59, 65, 73, 78, 83, 89, 95], [
+                return diceService.rangeIn100([8, 14, 23, 31, 38, 44, 51, 59, 65, 73, 78, 83, 89, 95], [
                     {"Price": 3000.0, "PriceUnit": "gp", "Name": "Scroll of Antimagic field", "id": "scroll-of-antimagic-field"},
                     {"Price": 3000.0, "PriceUnit": "gp", "Name": "Scroll of Cloak of chaos", "id": "scroll-of-cloak-of-chaos"},
                     {"Price": 3000.0, "PriceUnit": "gp", "Name": "Scroll of Cure critical wounds, mass", "id": "scroll-of-cure-critical-wounds-mass"},
@@ -1537,7 +1540,7 @@ var randomScroll = {
                 ]);
             },
             "9": function () {
-                return rangeIn100([7, 15, 22, 30, 40, 48, 58, 65, 73, 81, 87, 93], [
+                return diceService.rangeIn100([7, 15, 22, 30, 40, 48, 58, 65, 73, 81, 87, 93], [
                     {"Price": 3825.0, "PriceUnit": "gp", "Name": "Scroll of Elemental swarm", "id": "scroll-of-elemental-swarm"},
                     {"Price": 3825.0, "PriceUnit": "gp", "Name": "Scroll of Energy drain", "id": "scroll-of-energy-drain"},
                     {"Price": 3825.0, "PriceUnit": "gp", "Name": "Scroll of Etherealness", "id": "scroll-of-etherealness"},
@@ -1558,7 +1561,7 @@ var randomScroll = {
     uncommon: {
         arcane: {
             "0": function () {
-                return rangeIn100([7, 17, 25, 35, 42, 51, 61, 68, 75, 83, 92], [
+                return diceService.rangeIn100([7, 17, 25, 35, 42, 51, 61, 68, 75, 83, 92], [
                     {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Arcane mark", "id": "scroll-of-arcane-mark"},
                     {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Bleed", "id": "scroll-of-bleed"},
                     {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Dancing lights", "id": "scroll-of-dancing-lights"},
@@ -1574,7 +1577,7 @@ var randomScroll = {
                 ]);
             },
             "1": function () {
-                return rangeIn100([2, 6, 8, 12, 15, 18, 23, 26, 30, 33, 36, 38, 40, 43, 46, 48, 51, 54, 58, 60, 63, 66, 69, 71, 74, 77, 80, 84, 88, 91, 96, 98], [
+                return diceService.rangeIn100([2, 6, 8, 12, 15, 18, 23, 26, 30, 33, 36, 38, 40, 43, 46, 48, 51, 54, 58, 60, 63, 66, 69, 71, 74, 77, 80, 84, 88, 91, 96, 98], [
                     {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Air bubble", "id": "scroll-of-air-bubble"},
                     {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Alarm", "id": "scroll-of-alarm"},
                     {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Animate rope", "id": "scroll-of-animate-rope"},
@@ -1611,7 +1614,7 @@ var randomScroll = {
                 ]);
             },
             "2": function () {
-                return rangeIn100([3, 6, 9, 12, 14, 16, 20, 23, 27, 31, 34, 38, 40, 41, 44, 47, 51, 54, 57, 60, 62, 63, 65, 67, 70, 73, 77, 80, 83, 85, 88, 90, 93, 94, 96, 97, 99], [
+                return diceService.rangeIn100([3, 6, 9, 12, 14, 16, 20, 23, 27, 31, 34, 38, 40, 41, 44, 47, 51, 54, 57, 60, 62, 63, 65, 67, 70, 73, 77, 80, 83, 85, 88, 90, 93, 94, 96, 97, 99], [
                     {"Price": 150.0, "PriceUnit": "gp", "Name": "Scroll of Bestow weapon proficiency", "id": "scroll-of-bestow-weapon-proficiency"},
                     {"Price": 150.0, "PriceUnit": "gp", "Name": "Scroll of Blindness/deafness", "id": "scroll-of-blindness-deafness"},
                     {"Price": 150.0, "PriceUnit": "gp", "Name": "Scroll of Burning gaze", "id": "scroll-of-burning-gaze"},
@@ -1653,7 +1656,7 @@ var randomScroll = {
                 ]);
             },
             "3": function () {
-                return rangeIn100([3, 6, 8, 12, 15, 17, 20, 24, 27, 30, 35, 38, 43, 45, 47, 49, 51, 56, 61, 65, 68, 70, 73, 75, 78, 80, 83, 86, 90, 92, 95, 96, 99], [
+                return diceService.rangeIn100([3, 6, 8, 12, 15, 17, 20, 24, 27, 30, 35, 38, 43, 45, 47, 49, 51, 56, 61, 65, 68, 70, 73, 75, 78, 80, 83, 86, 90, 92, 95, 96, 99], [
                     {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Animate dead, lesser", "id": "scroll-of-animate-dead-lesser"},
                     {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Aqueous orb", "id": "scroll-of-aqueous-orb"},
                     {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Arcane sight", "id": "scroll-of-arcane-sight"},
@@ -1691,7 +1694,7 @@ var randomScroll = {
                 ]);
             },
             "4": function () {
-                return rangeIn100([2, 6, 10, 13, 17, 19, 23, 28, 32, 35, 39, 41, 43, 46, 50, 54, 57, 59, 62, 64, 68, 71, 74, 79, 83, 85, 89, 94, 97, 99], [
+                return diceService.rangeIn100([2, 6, 10, 13, 17, 19, 23, 28, 32, 35, 39, 41, 43, 46, 50, 54, 57, 59, 62, 64, 68, 71, 74, 79, 83, 85, 89, 94, 97, 99], [
                     {"Price": 700.0, "PriceUnit": "gp", "Name": "Scroll of Acid pit", "id": "scroll-of-acid-pit"},
                     {"Price": 700.0, "PriceUnit": "gp", "Name": "Scroll of Arcane eye", "id": "scroll-of-arcane-eye"},
                     {"Price": 700.0, "PriceUnit": "gp", "Name": "Scroll of Ball lightning", "id": "scroll-of-ball-lightning"},
@@ -1726,7 +1729,7 @@ var randomScroll = {
                 ]);
             },
             "5": function () {
-                return rangeIn100([2, 4, 6, 9, 13, 15, 19, 22, 25, 29, 33, 36, 38, 40, 43, 46, 50, 54, 56, 60, 64, 68, 70, 73, 76, 79, 82, 84, 86, 90, 94, 98], [
+                return diceService.rangeIn100([2, 4, 6, 9, 13, 15, 19, 22, 25, 29, 33, 36, 38, 40, 43, 46, 50, 54, 56, 60, 64, 68, 70, 73, 76, 79, 82, 84, 86, 90, 94, 98], [
                     {"Price": 1125.0, "PriceUnit": "gp", "Name": "Scroll of Absorb toxicity", "id": "scroll-of-absorb-toxicity"},
                     {"Price": 1125.0, "PriceUnit": "gp", "Name": "Scroll of Animal growth", "id": "scroll-of-animal-growth"},
                     {"Price": 1125.0, "PriceUnit": "gp", "Name": "Scroll of Blight", "id": "scroll-of-blight"},
@@ -1763,7 +1766,7 @@ var randomScroll = {
                 ]);
             },
             "6": function () {
-                return rangeIn100([4, 8, 12, 15, 20, 26, 30, 35, 39, 45, 48, 53, 57, 59, 61, 66, 68, 71, 76, 80, 84, 87, 92, 95, 98], [
+                return diceService.rangeIn100([4, 8, 12, 15, 20, 26, 30, 35, 39, 45, 48, 53, 57, 59, 61, 66, 68, 71, 76, 80, 84, 87, 92, 95, 98], [
                     {"Price": 1650.0, "PriceUnit": "gp", "Name": "Scroll of Analyze dweomer", "id": "scroll-of-analyze-dweomer"},
                     {"Price": 1650.0, "PriceUnit": "gp", "Name": "Scroll of Battlemind link", "id": "scroll-of-battlemind-link"},
                     {"Price": 1650.0, "PriceUnit": "gp", "Name": "Scroll of Cloak of dreams", "id": "scroll-of-cloak-of-dreams"},
@@ -1793,7 +1796,7 @@ var randomScroll = {
                 ]);
             },
             "7": function () {
-                return rangeIn100([3, 7, 10, 14, 19, 23, 29, 34, 40, 44, 49, 53, 56, 61, 65, 70, 74, 78, 81, 84, 88, 91, 93, 96, 98], [
+                return diceService.rangeIn100([3, 7, 10, 14, 19, 23, 29, 34, 40, 44, 49, 53, 56, 61, 65, 70, 74, 78, 81, 84, 88, 91, 93, 96, 98], [
                     {"Price": 2275.0, "PriceUnit": "gp", "Name": "Scroll of Control undead", "id": "scroll-of-control-undead"},
                     {"Price": 2275.0, "PriceUnit": "gp", "Name": "Scroll of Control weather", "id": "scroll-of-control-weather"},
                     {"Price": 2275.0, "PriceUnit": "gp", "Name": "Scroll of Create demiplane, lesser", "id": "scroll-of-create-demiplane-lesser"},
@@ -1823,7 +1826,7 @@ var randomScroll = {
                 ]);
             },
             "8": function () {
-                return rangeIn100([4, 10, 12, 15, 19, 24, 29, 34, 38, 43, 47, 52, 56, 62, 66, 72, 76, 81, 87, 91, 95, 98], [
+                return diceService.rangeIn100([4, 10, 12, 15, 19, 24, 29, 34, 38, 43, 47, 52, 56, 62, 66, 72, 76, 81, 87, 91, 95, 98], [
                     {"Price": 3000.0, "PriceUnit": "gp", "Name": "Scroll of Antipathy", "id": "scroll-of-antipathy"},
                     {"Price": 3000.0, "PriceUnit": "gp", "Name": "Scroll of Clenched fist", "id": "scroll-of-clenched-fist"},
                     {"Price": 3000.0, "PriceUnit": "gp", "Name": "Scroll of Clone", "id": "scroll-of-clone"},
@@ -1850,7 +1853,7 @@ var randomScroll = {
                 ]);
             },
             "9": function () {
-                return rangeIn100([6, 15, 23, 31, 38, 44, 50, 57, 65, 72, 79, 88, 95], [
+                return diceService.rangeIn100([6, 15, 23, 31, 38, 44, 50, 57, 65, 72, 79, 88, 95], [
                     {"Price": 3825.0, "PriceUnit": "gp", "Name": "Scroll of Create demiplane, greater", "id": "scroll-of-create-demiplane-greater"},
                     {"Price": 3825.0, "PriceUnit": "gp", "Name": "Scroll of Crushing hand", "id": "scroll-of-crushing-hand"},
                     {"Price": 3825.0, "PriceUnit": "gp", "Name": "Scroll of Etherealness", "id": "scroll-of-etherealness"},
@@ -1870,7 +1873,7 @@ var randomScroll = {
         },
         divine: {
             "0": function () {
-                return rangeIn100([15, 33, 50, 68, 85], [
+                return diceService.rangeIn100([15, 33, 50, 68, 85], [
                     {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Detect poison", "id": "scroll-of-detect-poison"},
                     {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Flare", "id": "scroll-of-flare"},
                     {"Price": 12.5, "PriceUnit": "gp", "Name": "Scroll of Guidance", "id": "scroll-of-guidance"},
@@ -1880,7 +1883,7 @@ var randomScroll = {
                 ]);
             },
             "1": function () {
-                return rangeIn100([4, 7, 9, 12, 15, 17, 18, 20, 23, 27, 30, 33, 36, 39, 42, 46, 47, 49, 52, 55, 59, 62, 65, 68, 72, 74, 75, 78, 81, 85, 88, 91, 95, 98], [
+                return diceService.rangeIn100([4, 7, 9, 12, 15, 17, 18, 20, 23, 27, 30, 33, 36, 39, 42, 46, 47, 49, 52, 55, 59, 62, 65, 68, 72, 74, 75, 78, 81, 85, 88, 91, 95, 98], [
                     {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Ant haul", "id": "scroll-of-ant-haul"},
                     {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Aspect of the falcon", "id": "scroll-of-aspect-of-the-falcon"},
                     {"Price": 25.0, "PriceUnit": "gp", "Name": "Scroll of Calm animals", "id": "scroll-of-calm-animals"},
@@ -1919,7 +1922,7 @@ var randomScroll = {
                 ]);
             },
             "2": function () {
-                return rangeIn100([4, 6, 10, 13, 17, 20, 24, 27, 30, 34, 37, 41, 43, 46, 48, 51, 53, 55, 58, 60, 62, 65, 68, 70, 73, 76, 79, 82, 84, 85, 88, 91, 93, 95, 97, 99], [
+                return diceService.rangeIn100([4, 6, 10, 13, 17, 20, 24, 27, 30, 34, 37, 41, 43, 46, 48, 51, 53, 55, 58, 60, 62, 65, 68, 70, 73, 76, 79, 82, 84, 85, 88, 91, 93, 95, 97, 99], [
                     {"Price": 150.0, "PriceUnit": "gp", "Name": "Scroll of Animal aspect", "id": "scroll-of-animal-aspect"},
                     {"Price": 150.0, "PriceUnit": "gp", "Name": "Scroll of Animal trance", "id": "scroll-of-animal-trance"},
                     {"Price": 150.0, "PriceUnit": "gp", "Name": "Scroll of Animate dead, lesser", "id": "scroll-of-animate-dead-lesser"},
@@ -1960,7 +1963,7 @@ var randomScroll = {
                 ]);
             },
             "3": function () {
-                return rangeIn100([4, 8, 12, 16, 19, 22, 26, 30, 34, 36, 40, 45, 48, 51, 56, 58, 61, 64, 67, 72, 75, 80, 83, 87, 90, 93, 96, 98], [
+                return diceService.rangeIn100([4, 8, 12, 16, 19, 22, 26, 30, 34, 36, 40, 45, 48, 51, 56, 58, 61, 64, 67, 72, 75, 80, 83, 87, 90, 93, 96, 98], [
                     {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Aqueous orb", "id": "scroll-of-aqueous-orb"},
                     {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Archon's aura", "id": "scroll-of-archon-s-aura"},
                     {"Price": 375.0, "PriceUnit": "gp", "Name": "Scroll of Bestow insight", "id": "scroll-of-bestow-insight"},
@@ -1993,7 +1996,7 @@ var randomScroll = {
                 ]);
             },
             "4": function () {
-                return rangeIn100([4, 6, 11, 15, 21, 25, 28, 31, 35, 39, 43, 49, 55, 59, 63, 67, 72, 75, 78, 83, 87, 90, 93, 98], [
+                return diceService.rangeIn100([4, 6, 11, 15, 21, 25, 28, 31, 35, 39, 43, 49, 55, 59, 63, 67, 72, 75, 78, 83, 87, 90, 93, 98], [
                     {"Price": 700.0, "PriceUnit": "gp", "Name": "Scroll of Absorb toxicity", "id": "scroll-of-absorb-toxicity"},
                     {"Price": 700.0, "PriceUnit": "gp", "Name": "Scroll of Antiplant shell", "id": "scroll-of-antiplant-shell"},
                     {"Price": 700.0, "PriceUnit": "gp", "Name": "Scroll of Aspect of the stag", "id": "scroll-of-aspect-of-the-stag"},
@@ -2022,7 +2025,7 @@ var randomScroll = {
                 ]);
             },
             "5": function () {
-                return rangeIn100([3, 8, 11, 15, 21, 24, 28, 31, 34, 37, 40, 43, 46, 52, 55, 58, 63, 66, 72, 76, 79, 82, 86, 90, 92, 94, 96, 98, 99], [
+                return diceService.rangeIn100([3, 8, 11, 15, 21, 24, 28, 31, 34, 37, 40, 43, 46, 52, 55, 58, 63, 66, 72, 76, 79, 82, 86, 90, 92, 94, 96, 98, 99], [
                     {"Price": 1125.0, "PriceUnit": "gp", "Name": "Scroll of Air walk, communal", "id": "scroll-of-air-walk-communal"},
                     {"Price": 1125.0, "PriceUnit": "gp", "Name": "Scroll of Aspect of the wolf", "id": "scroll-of-aspect-of-the-wolf"},
                     {"Price": 1125.0, "PriceUnit": "gp", "Name": "Scroll of Blessing of the salamander", "id": "scroll-of-blessing-of-the-salamander"},
@@ -2056,7 +2059,7 @@ var randomScroll = {
                 ]);
             },
             "6": function () {
-                return rangeIn100([5, 9, 15, 19, 23, 29, 33, 37, 42, 46, 51, 54, 59, 63, 67, 70, 74, 77, 83, 86, 90, 92, 95, 98], [
+                return diceService.rangeIn100([5, 9, 15, 19, 23, 29, 33, 37, 42, 46, 51, 54, 59, 63, 67, 70, 74, 77, 83, 86, 90, 92, 95, 98], [
                     {"Price": 1650.0, "PriceUnit": "gp", "Name": "Scroll of Animate objects", "id": "scroll-of-animate-objects"},
                     {"Price": 1650.0, "PriceUnit": "gp", "Name": "Scroll of Antilife shell", "id": "scroll-of-antilife-shell"},
                     {"Price": 1650.0, "PriceUnit": "gp", "Name": "Scroll of Banishment", "id": "scroll-of-banishment"},
@@ -2085,7 +2088,7 @@ var randomScroll = {
                 ]);
             },
             "7": function () {
-                return rangeIn100([8, 17, 24, 30, 38, 45, 53, 60, 67, 76, 83, 89, 95], [
+                return diceService.rangeIn100([8, 17, 24, 30, 38, 45, 53, 60, 67, 76, 83, 89, 95], [
                     {"Price": 2275.0, "PriceUnit": "gp", "Name": "Scroll of Animate plants", "id": "scroll-of-animate-plants"},
                     {"Price": 2275.0, "PriceUnit": "gp", "Name": "Scroll of Changestaff", "id": "scroll-of-changestaff"},
                     {"Price": 2275.0, "PriceUnit": "gp", "Name": "Scroll of Circle of clarity", "id": "scroll-of-circle-of-clarity"},
@@ -2103,7 +2106,7 @@ var randomScroll = {
                 ]);
             },
             "8": function () {
-                return rangeIn100([7, 13, 18, 24, 31, 37, 42, 49, 56, 61, 68, 75, 83, 88, 95], [
+                return diceService.rangeIn100([7, 13, 18, 24, 31, 37, 42, 49, 56, 61, 68, 75, 83, 88, 95], [
                     {"Price": 3000.0, "PriceUnit": "gp", "Name": "Scroll of Animal shapes", "id": "scroll-of-animal-shapes"},
                     {"Price": 3000.0, "PriceUnit": "gp", "Name": "Scroll of Blood mist", "id": "scroll-of-blood-mist"},
                     {"Price": 3000.0, "PriceUnit": "gp", "Name": "Scroll of Control plants", "id": "scroll-of-control-plants"},
@@ -2123,7 +2126,7 @@ var randomScroll = {
                 ]);
             },
             "9": function () {
-                return rangeIn100([8, 15, 22, 31, 39, 47, 56, 64, 71, 80, 87, 94], [
+                return diceService.rangeIn100([8, 15, 22, 31, 39, 47, 56, 64, 71, 80, 87, 94], [
                     {"Price": 3825.0, "PriceUnit": "gp", "Name": "Scroll of Antipathy", "id": "scroll-of-antipathy"},
                     {"Price": 3825.0, "PriceUnit": "gp", "Name": "Scroll of Clashing rocks", "id": "scroll-of-clashing-rocks"},
                     {"Price": 3825.0, "PriceUnit": "gp", "Name": "Scroll of Create demiplane, greater", "id": "scroll-of-create-demiplane-greater"},
@@ -2146,7 +2149,7 @@ var randomScroll = {
 var randomPotion = {
     common: {
         "0": function () {
-            return rangeIn100([14, 28, 44, 58, 72, 86], [
+            return diceService.rangeIn100([14, 28, 44, 58, 72, 86], [
                 {"Price": 25.0, "PriceUnit": "gp", "Name": "Potion of Arcane mark", "id": "potion-of-arcane-mark"},
                 {"Price": 25.0, "PriceUnit": "gp", "Name": "Potion of Guidance", "id": "potion-of-guidance"},
                 {"Price": 25.0, "PriceUnit": "gp", "Name": "Potion of Light", "id": "potion-of-light"},
@@ -2157,7 +2160,7 @@ var randomPotion = {
             ]);
         },
         "1": function () {
-            return rangeIn100([4, 14, 19, 27, 33, 41, 47, 55, 60, 64, 68, 72, 76, 81, 87, 92], [
+            return diceService.rangeIn100([4, 14, 19, 27, 33, 41, 47, 55, 60, 64, 68, 72, 76, 81, 87, 92], [
                 {"Price": 50.0, "PriceUnit": "gp", "Name": "Potion of Bless weapon", "id": "potion-of-bless-weapon"},
                 {"Price": 50.0, "PriceUnit": "gp", "Name": "Potion of Cure light wounds", "id": "potion-of-cure-light-wounds"},
                 {"Price": 50.0, "PriceUnit": "gp", "Name": "Potion of Endure elements", "id": "potion-of-endure-elements"},
@@ -2178,7 +2181,7 @@ var randomPotion = {
             ]);
         },
         "2": function () {
-            return rangeIn100([4, 7, 11, 16, 20, 25, 30, 37, 41, 44, 49, 54, 61, 66, 71, 73, 76, 80, 84, 88, 92, 94, 98], [
+            return diceService.rangeIn100([4, 7, 11, 16, 20, 25, 30, 37, 41, 44, 49, 54, 61, 66, 71, 73, 76, 80, 84, 88, 92, 94, 98], [
                 {"Price": 300.0, "PriceUnit": "gp", "Name": "Potion of Aid", "id": "potion-of-aid"},
                 {"Price": 300.0, "PriceUnit": "gp", "Name": "Potion of Align weapon", "id": "potion-of-align-weapon"},
                 {"Price": 300.0, "PriceUnit": "gp", "Name": "Potion of Barkskin", "id": "potion-of-barkskin"},
@@ -2206,7 +2209,7 @@ var randomPotion = {
             ]);
         },
         "3": function () {
-            return rangeIn100([6, 10, 14, 20, 25, 29, 35, 40, 44, 48, 52, 57, 60, 63, 66, 69, 71, 74, 77, 81, 86, 91, 96], [
+            return diceService.rangeIn100([6, 10, 14, 20, 25, 29, 35, 40, 44, 48, 52, 57, 60, 63, 66, 69, 71, 74, 77, 81, 86, 91, 96], [
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Potion of Cure serious wounds", "id": "potion-of-cure-serious-wounds"},
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Potion of Dispel magic", "id": "potion-of-dispel-magic"},
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Potion of Displacement", "id": "potion-of-displacement"},
@@ -2236,7 +2239,7 @@ var randomPotion = {
     },
     uncommon: {
         "1": function () {
-            return rangeIn100([4, 11, 16, 20, 26, 30, 34, 41, 49, 53, 58, 64, 68, 75, 80, 84, 92], [
+            return diceService.rangeIn100([4, 11, 16, 20, 26, 30, 34, 41, 49, 53, 58, 64, 68, 75, 80, 84, 92], [
                 {"Price": 50.0, "PriceUnit": "gp", "Name": "Potion of Animate rope", "id": "potion-of-animate-rope"},
                 {"Price": 50.0, "PriceUnit": "gp", "Name": "Potion of Ant haul", "id": "potion-of-ant-haul"},
                 {"Price": 50.0, "PriceUnit": "gp", "Name": "Potion of Cloak of the shade", "id": "potion-of-cloak-of-the-shade"},
@@ -2258,7 +2261,7 @@ var randomPotion = {
             ]);
         },
         "2": function () {
-            return rangeIn100([6, 14, 19, 24, 30, 35, 40, 48, 56, 61, 67, 72, 76, 82, 90, 95], [
+            return diceService.rangeIn100([6, 14, 19, 24, 30, 35, 40, 48, 56, 61, 67, 72, 76, 82, 90, 95], [
                 {"Price": 300.0, "PriceUnit": "gp", "Name": "Potion of Ablative barrier", "id": "potion-of-ablative-barrier"},
                 {"Price": 300.0, "PriceUnit": "gp", "Name": "Potion of Acute senses", "id": "potion-of-acute-senses"},
                 {"Price": 300.0, "PriceUnit": "gp", "Name": "Potion of Arcane lock", "id": "potion-of-arcane-lock"},
@@ -2279,7 +2282,7 @@ var randomPotion = {
             ]);
         },
         "3": function () {
-            return rangeIn100([12, 22, 34, 49, 58, 67, 77, 87], [
+            return diceService.rangeIn100([12, 22, 34, 49, 58, 67, 77, 87], [
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Potion of Burrow", "id": "potion-of-burrow"},
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Potion of Countless eyes", "id": "potion-of-countless-eyes"},
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Potion of Daylight", "id": "potion-of-daylight"},
@@ -2297,7 +2300,7 @@ var randomPotion = {
 var randomOil = {
     common: {
         "0": function () {
-            return rangeIn100([14, 28, 44, 58, 72, 86], [
+            return diceService.rangeIn100([14, 28, 44, 58, 72, 86], [
                 {"Price": 25.0, "PriceUnit": "gp", "Name": "Oil of Arcane mark", "id": "oil-of-arcane-mark"},
                 {"Price": 25.0, "PriceUnit": "gp", "Name": "Oil of Guidance", "id": "oil-of-guidance"},
                 {"Price": 25.0, "PriceUnit": "gp", "Name": "Oil of Light", "id": "oil-of-light"},
@@ -2308,7 +2311,7 @@ var randomOil = {
             ]);
         },
         "1": function () {
-            return rangeIn100([4, 14, 19, 27, 33, 41, 47, 55, 60, 64, 68, 72, 76, 81, 87, 92], [
+            return diceService.rangeIn100([4, 14, 19, 27, 33, 41, 47, 55, 60, 64, 68, 72, 76, 81, 87, 92], [
                 {"Price": 50.0, "PriceUnit": "gp", "Name": "Oil of Bless weapon", "id": "oil-of-bless-weapon"},
                 {"Price": 50.0, "PriceUnit": "gp", "Name": "Oil of Cure light wounds", "id": "oil-of-cure-light-wounds"},
                 {"Price": 50.0, "PriceUnit": "gp", "Name": "Oil of Endure elements", "id": "oil-of-endure-elements"},
@@ -2329,7 +2332,7 @@ var randomOil = {
             ]);
         },
         "2": function () {
-            return rangeIn100([4, 7, 11, 16, 20, 25, 30, 37, 41, 44, 49, 54, 61, 66, 71, 73, 76, 80, 84, 88, 92, 94, 98], [
+            return diceService.rangeIn100([4, 7, 11, 16, 20, 25, 30, 37, 41, 44, 49, 54, 61, 66, 71, 73, 76, 80, 84, 88, 92, 94, 98], [
                 {"Price": 300.0, "PriceUnit": "gp", "Name": "Oil of Aid", "id": "oil-of-aid"},
                 {"Price": 300.0, "PriceUnit": "gp", "Name": "Oil of Align weapon", "id": "oil-of-align-weapon"},
                 {"Price": 300.0, "PriceUnit": "gp", "Name": "Oil of Barkskin", "id": "oil-of-barkskin"},
@@ -2357,7 +2360,7 @@ var randomOil = {
             ]);
         },
         "3": function () {
-            return rangeIn100([6, 10, 14, 20, 25, 29, 35, 40, 44, 48, 52, 57, 60, 63, 66, 69, 71, 74, 77, 81, 86, 91, 96], [
+            return diceService.rangeIn100([6, 10, 14, 20, 25, 29, 35, 40, 44, 48, 52, 57, 60, 63, 66, 69, 71, 74, 77, 81, 86, 91, 96], [
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Oil of Cure serious wounds", "id": "oil-of-cure-serious-wounds"},
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Oil of Dispel magic", "id": "oil-of-dispel-magic"},
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Oil of Displacement", "id": "oil-of-displacement"},
@@ -2387,7 +2390,7 @@ var randomOil = {
     },
     uncommon: {
         "1": function () {
-            return rangeIn100([4, 11, 16, 20, 26, 30, 34, 41, 49, 53, 58, 64, 68, 75, 80, 84, 92], [
+            return diceService.rangeIn100([4, 11, 16, 20, 26, 30, 34, 41, 49, 53, 58, 64, 68, 75, 80, 84, 92], [
                 {"Price": 50.0, "PriceUnit": "gp", "Name": "Oil of Animate rope", "id": "oil-of-animate-rope"},
                 {"Price": 50.0, "PriceUnit": "gp", "Name": "Oil of Ant haul", "id": "oil-of-ant-haul"},
                 {"Price": 50.0, "PriceUnit": "gp", "Name": "Oil of Cloak of the shade", "id": "oil-of-cloak-of-the-shade"},
@@ -2409,7 +2412,7 @@ var randomOil = {
             ]);
         },
         "2": function () {
-            return rangeIn100([6, 14, 19, 24, 30, 35, 40, 48, 56, 61, 67, 72, 76, 82, 90, 95], [
+            return diceService.rangeIn100([6, 14, 19, 24, 30, 35, 40, 48, 56, 61, 67, 72, 76, 82, 90, 95], [
                 {"Price": 300.0, "PriceUnit": "gp", "Name": "Oil of Ablative barrier", "id": "oil-of-ablative-barrier"},
                 {"Price": 300.0, "PriceUnit": "gp", "Name": "Oil of Acute senses", "id": "oil-of-acute-senses"},
                 {"Price": 300.0, "PriceUnit": "gp", "Name": "Oil of Arcane lock", "id": "oil-of-arcane-lock"},
@@ -2430,7 +2433,7 @@ var randomOil = {
             ]);
         },
         "3": function () {
-            return rangeIn100([12, 22, 34, 49, 58, 67, 77, 87], [
+            return diceService.rangeIn100([12, 22, 34, 49, 58, 67, 77, 87], [
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Oil of Burrow", "id": "oil-of-burrow"},
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Oil of Countless eyes", "id": "oil-of-countless-eyes"},
                 {"Price": 750.0, "PriceUnit": "gp", "Name": "Oil of Daylight", "id": "oil-of-daylight"},
@@ -2444,19 +2447,6 @@ var randomOil = {
         }
     }
 };
-
-function rangeIn100(upperBounds, values) {
-    if (values.length !== upperBounds.length + 1) {
-        throw Error("upperBounds and values mismatch '" + upperBounds + "' '" + values + "'" + "(" + upperBounds.length + " vs " + values.length + ")");
-    }
-    var dieResult = diceService.roll(100, 1);
-    for (var i in upperBounds) {
-        if (dieResult <= upperBounds[i]) {
-            return values[i];
-        }
-    }
-    return values[upperBounds.length];
-}
 
 var budgetMultipliers = {
     'none': 0,
@@ -2592,7 +2582,7 @@ function addItem(item, items) {
 
 function generateScroll(magnitude) {
     var scrollLevel = randomScrollLevel[magnitude]();
-    var rarityAndMagicType = rangeIn100([45, 60, 90], [
+    var rarityAndMagicType = diceService.rangeIn100([45, 60, 90], [
         ["common", "arcane"],
         ["uncommon", "arcane"],
         ["common", "divine"],
@@ -2608,63 +2598,16 @@ function generatePotion(magnitude) {
     if (potionLevel === 0) {
         var rarity = "common";
     } else {
-        var rarity = rangeIn100([75], ["common", "uncommon"]);
+        var rarity = diceService.rangeIn100([75], ["common", "uncommon"]);
     }
     return randomPotion[rarity][potionLevel]();
 }
 
 function generateWand(magnitude) {
     var wandLevel = randomWandLevel[magnitude]();
-    var rarity = rangeIn100([75], ["common", "uncommon"]);
+    var rarity = diceService.rangeIn100([75], ["common", "uncommon"]);
     return randomWand[rarity][wandLevel]();
 }
-
-var randomMundaneArmorOrShield = {
-    create: function (type) {
-        return clone(rangeIn100(this[type].chanceTable, this[type].valueTable));
-    },
-    createMwk: function (type) {
-        var armor = this.create(type);
-        armor.Name = "Mwk " + armor.Name;
-        armor.id = "mwk-" + armor.id;
-        armor.Price += 150;
-        return armor;
-    },
-    lightArmorOrShield: {
-        chanceTable: [11, 18, 27, 36, 45, 54, 63, 72, 81, 90],
-        valueTable: [
-            {"Price": 3.0, "PriceUnit": "gp", "Name": "Light wooden shield", "id": "light-wooden-shield"},
-            {"Price": 5.0, "PriceUnit": "gp", "Name": "Buckler", "id": "buckler"},
-            {"Price": 5.0, "PriceUnit": "gp", "Name": "Padded armor", "id": "padded-armor"},
-            {"Price": 7.0, "PriceUnit": "gp", "Name": "Heavy wooden shield", "id": "heavy-wooden-shield"},
-            {"Price": 9.0, "PriceUnit": "gp", "Name": "Light steel shield", "id": "light-steel-shield"},
-            {"Price": 10.0, "PriceUnit": "gp", "Name": "Leather", "id": "leather"},
-            {"Price": 15.0, "PriceUnit": "gp", "Name": "hide", "id": "hide"},
-            {"Price": 20.0, "PriceUnit": "gp", "Name": "Heavy steel shield", "id": "heavy-steel-shield"},
-            {"Price": 25.0, "PriceUnit": "gp", "Name": "Studded leather", "id": "studded-leather"},
-            {"Price": 30.0, "PriceUnit": "gp", "Name": "Tower shield", "id": "tower-shield"},
-            {"Price": 100.0, "PriceUnit": "gp", "Name": "Chain shirt", "id": "chain-shirt"}
-        ]
-    },
-    mediumArmor: {
-        chanceTable: [33, 66],
-        valueTable: [
-            {"Price": 50.0, "PriceUnit": "gp", "Name": "Scale mail", "id": "scale-mail"},
-            {"Price": 150.0, "PriceUnit": "gp", "Name": "Chainmail", "id": "chainmail"},
-            {"Price": 200.0, "PriceUnit": "gp", "Name": "Breastplate", "id": "breastplate"}
-
-        ]
-    },
-    heavyArmor: {
-        chanceTable: [33, 60, 85],
-        valueTable: [
-            {"Price": 200.0, "PriceUnit": "gp", "Name": "Splint mail", "id": "splint-mail"},
-            {"Price": 250.0, "PriceUnit": "gp", "Name": "Banded mail", "id": "banded-mail"},
-            {"Price": 600.0, "PriceUnit": "gp", "Name": "Half-plate", "id": "half-plate"},
-            {"Price": 1500.0, "PriceUnit": "gp", "Name": "Full plate", "id": "full-plate"}
-        ]
-    }
-};
 
 var weaponAbilityFilters = {
     onlyNonLethal: function (weapon) {
@@ -2701,7 +2644,7 @@ var randomWeapon = {
         delete weapon._melee;
     },
     createMwk: function () {
-        var weapon = clone(rangeIn100(this.chanceTable, this.valueTable));
+        var weapon = clone(diceService.rangeIn100(this.chanceTable, this.valueTable));
         weapon.Name = "Mwk " + weapon.Name;
         weapon.id = "mwk-" + weapon.id;
         weapon.Price += 300;
@@ -2747,7 +2690,7 @@ var randomWeapon = {
         }
 
         function create() {
-            return clone(rangeIn100(randomWeapon.chanceTable, randomWeapon.valueTable));
+            return clone(diceService.rangeIn100(randomWeapon.chanceTable, randomWeapon.valueTable));
         }
 
         function applyAbilities(weapon, ability1, ability2) {
@@ -2771,11 +2714,11 @@ var randomWeapon = {
 
         function addRandomAbility(weapon) {
             do {
-                var ability1 = rangeIn100(abilityTable1.chanceTable, abilityTable1.valueTable);
+                var ability1 = diceService.rangeIn100(abilityTable1.chanceTable, abilityTable1.valueTable);
             } while (ability1.filter && ability1.filter(weapon));
             if (abilityLevel2) {
                 do {
-                    var ability2 = rangeIn100(abilityTable2.chanceTable, abilityTable2.valueTable);
+                    var ability2 = diceService.rangeIn100(abilityTable2.chanceTable, abilityTable2.valueTable);
                 } while ((ability2.filter && ability2.filter(weapon)) || (ability2.name === ability1.name));
             }
             applyAbilities(weapon, ability1, ability2);
@@ -2980,7 +2923,7 @@ var randomWeapon = {
     },
     powerTable: {
         random: function (magnitude) {
-            return rangeIn100(this[magnitude].chanceTable, this[magnitude].valueTable);
+            return diceService.rangeIn100(this[magnitude].chanceTable, this[magnitude].valueTable);
         },
         lesser_minor: {
             chanceTable: [80],
@@ -3052,314 +2995,6 @@ var randomWeapon = {
                 {specific: false, weaponBonus: 5, specialAbility1: 4},
                 {specific: false, weaponBonus: 5, specialAbility1: 4, specialAbility2: 1},
                 {specific: false, weaponBonus: 5, specialAbility1: 3, specialAbility2: 2},
-                {specific: true}
-            ]
-        }
-    }
-};
-
-var randomMagicArmorOrShield = {
-    generate: function (magnitude) {
-        /* FIXME: cannot yet handle specific armorOrShields */
-        do {
-            var armorOrShieldPower = randomMagicArmorOrShield.powerTable.random(magnitude);
-        } while (armorOrShieldPower.specific);
-        return this.generateByBonus(armorOrShieldPower.armorOrShieldBonus, armorOrShieldPower.specialAbility1, armorOrShieldPower.specialAbility2);
-    },
-    generateByBonus: function (armorOrShieldBonus, abilityLevel1, abilityLevel2) {
-        if (abilityLevel1 === undefined) {
-            var armorOrShield = create();
-            armorOrShield.Name = armorOrShield.Name + " +" + armorOrShieldBonus;
-            armorOrShield.Price += 150 + randomMagicArmorOrShield.priceModifiers[armorOrShieldBonus];
-            armorOrShield.id = armorOrShield.id + "-" + armorOrShieldBonus;
-            clean(armorOrShield);
-            return armorOrShield;
-        } else {
-            var armorOrShield = create();
-            if (armorOrShield._shield) {
-                var abilityTable1 = randomMagicArmorOrShield.shieldSpecialAbilities[abilityLevel1];
-                if (abilityLevel2) {
-                    var abilityTable2 = randomMagicArmorOrShield.shieldSpecialAbilities[abilityLevel2];
-                }
-            }
-            else {
-                var abilityTable1 = randomMagicArmorOrShield.armorSpecialAbilities[abilityLevel1];
-                if (abilityLevel2) {
-                    var abilityTable2 = randomMagicArmorOrShield.armorSpecialAbilities[abilityLevel2];
-                }
-            }
-            addRandomAbility(armorOrShield);
-            clean(armorOrShield);
-            return armorOrShield;
-        }
-
-        function create() {
-            return clone(rangeIn100(randomMagicArmorOrShield.chanceTable, randomMagicArmorOrShield.valueTable));
-        }
-
-        function clean(armorOrShield) {
-            delete armorOrShield._shield;
-        }
-
-        function applyAbilities(armorOrShield, ability1, ability2) {
-            if (ability2) {
-                armorOrShield.Name = ability1.name + " " + ability2.name.toLowerCase() + " " + armorOrShield.Name.toLowerCase() + " +" + armorOrShieldBonus;
-                var totalFlatPrice = (ability1.flatprice || 0) + (ability2.flatprice || 0);
-                var ability1Bonus = (ability1.flatprice === undefined ? (ability1.enhancementBonus || abilityLevel1) : 0 );
-                var ability2Bonus = (ability2.flatprice === undefined ? (ability2.enhancementBonus || abilityLevel2) : 0 );
-                var totalAbilityBonus = ability1Bonus + ability2Bonus;
-                armorOrShield.Price += 150 + totalFlatPrice + randomMagicArmorOrShield.priceModifiers[armorOrShieldBonus + totalAbilityBonus];
-                armorOrShield.id = idify(ability1.name) + "-" + idify(ability2.name) + "-" + armorOrShield.id + "-" + armorOrShieldBonus;
-            }
-            else {
-                armorOrShield.Name = ability1.name + " " + armorOrShield.Name.toLowerCase() + " +" + armorOrShieldBonus;
-                var totalFlatPrice = (ability1.flatprice || 0);
-                var totalAbilityBonus = (ability1.flatprice === undefined ? (ability1.enhancementBonus || abilityLevel1) : 0 );
-                armorOrShield.Price += 150 + totalFlatPrice + randomMagicArmorOrShield.priceModifiers[armorOrShieldBonus + totalAbilityBonus];
-                armorOrShield.id = idify(ability1.name) + "-" + armorOrShield.id + "-" + armorOrShieldBonus;
-            }
-        }
-
-        function addRandomAbility(armorOrShield) {
-            do {
-                var ability1 = rangeIn100(abilityTable1.chanceTable, abilityTable1.valueTable);
-            } while (ability1.filter && ability1.filter(armorOrShield));
-            if (abilityLevel2) {
-                do {
-                    var ability2 = rangeIn100(abilityTable2.chanceTable, abilityTable2.valueTable);
-                } while ((ability2.filter && ability2.filter(armorOrShield)) || (ability2.name === ability1.name));
-            }
-            applyAbilities(armorOrShield, ability1, ability2);
-        }
-    },
-    priceModifiers: { 1: 1000, 2: 4000, 3: 9000, 4: 16000, 5: 25000, 6: 36000, 7: 49000, 8: 64000, 9: 81000, 10: 100000 },
-    chanceTable: [5, 13, 16, 24, 30, 38, 44, 49, 56, 60, 67, 72, 76, 79, 85, 89, 96],
-    valueTable: [
-        {_shield: false, "Price": 250, "PriceUnit": "gp", "Name": "Banded mail", "id": "banded-mail"},
-        {_shield: false, "Price": 200, "PriceUnit": "gp", "Name": "Breastplate", "id": "breastplate"},
-        {_shield: true, "Price": 5, "PriceUnit": "gp", "Name": "Buckler", "id": "buckler"},
-        {_shield: false, "Price": 100, "PriceUnit": "gp", "Name": "Chain shirt", "id": "chain-shirt"},
-        {_shield: false, "Price": 150, "PriceUnit": "gp", "Name": "Chainmail", "id": "chainmail"},
-        {_shield: false, "Price": 1500, "PriceUnit": "gp", "Name": "Full plate", "id": "full-plate"},
-        {_shield: false, "Price": 600, "PriceUnit": "gp", "Name": "Half-plate", "id": "half-plate"},
-        {_shield: true, "Price": 20, "PriceUnit": "gp", "Name": "Heavy steel shield", "id": "heavy-steel-shield"},
-        {_shield: true, "Price": 7, "PriceUnit": "gp", "Name": "Heavy wooden shield", "id": "heavy-wooden-shield"},
-        {_shield: false, "Price": 15, "PriceUnit": "gp", "Name": "Hide", "id": "hide"},
-        {_shield: false, "Price": 10, "PriceUnit": "gp", "Name": "Leather armor", "id": "leather-armor"},
-        {_shield: true, "Price": 9, "PriceUnit": "gp", "Name": "Light steel shield", "id": "light-steel-shield"},
-        {_shield: true, "Price": 3, "PriceUnit": "gp", "Name": "Light wooden shield", "id": "light-wooden-shield"},
-        {_shield: false, "Price": 5, "PriceUnit": "gp", "Name": "Padded armor", "id": "padded-armor"},
-        {_shield: false, "Price": 50, "PriceUnit": "gp", "Name": "Scale mail", "id": "scale-mail"},
-        {_shield: false, "Price": 200, "PriceUnit": "gp", "Name": "Splint mail", "id": "splint-mail"},
-        {_shield: false, "Price": 25, "PriceUnit": "gp", "Name": "Studded leather armor", "id": "studded-leather-armor"},
-        {_shield: true, "Price": 30, "PriceUnit": "gp", "Name": "Tower shield", "id": "tower-shield"}
-    ],
-    armorSpecialAbilities: {
-        1: {
-            chanceTable: [6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 71, 76, 82, 88, 94],
-            valueTable: [
-                {name: 'Benevolent', flatprice: 2000},
-                {name: 'Poison-resistant', flatprice: 2250},
-                {name: 'Balanced'},
-                {name: 'Bitter'},
-                {name: 'Bolstering'},
-                {name: 'Brawling'},
-                {name: 'Champion'},
-                {name: 'Dastard'},
-                {name: 'Deathless'},
-                {name: 'Defiant'},
-                {name: 'Fortification (light)'},
-                {name: 'Grinding'},
-                {name: 'Impervious'},
-                {name: 'Mirrored'},
-                {name: 'Spell storing'},
-                {name: 'Stanching'},
-                {name: 'Warding'}
-            ]
-        },
-        2: {chanceTable: [12, 24, 38, 52, 64, 76, 88],
-            valueTable: [
-                {name: 'Glamered', flatprice: 2700},
-                {name: 'Jousting', flatprice: 3750},
-                {name: 'Shadow', flatprice: 3750},
-                {name: 'Slick', flatprice: 3750},
-                {name: 'Expeditious', flatprice: 4000},
-                {name: 'Creeping', flatprice: 5000},
-                {name: 'Rallying', flatprice: 5000},
-                {name: "Spell resistance (13)"}
-            ]
-        },
-        3: {chanceTable: [8, 17, 26, 36, 45, 55, 65, 74, 84, 92],
-            valueTable: [
-                {name: 'Adhesive', flatprice: 7000},
-                {name: 'Hosteling', flatprice: 7500},
-                {name: 'Radiant', flatprice: 7500},
-                {name: 'Delving', flatprice: 10000},
-                {name: 'Putrid', flatprice: 10000},
-                {name: 'Fortification (moderate)'},
-                {name: "Ghost touch"},
-                {name: "Invulnerability"},
-                {name: "Spell resistance (15)"},
-                {name: "Titanic"},
-                {name: "Wild"}
-            ]
-        },
-        4: {chanceTable: [16, 33, 50, 67, 83],
-            valueTable: [
-                {name: 'Harmonizing', flatprice: 15000},
-                {name: 'Shadow, improved', flatprice: 15000},
-                {name: 'Slick, improved', flatprice: 15000},
-                {name: 'Energy resistance', flatprice: 18000},
-                {name: 'Martyring', flatprice: 18000},
-                {name: "Spell resistance (17)"}
-            ]
-        },
-        5: {chanceTable: [8, 15, 23, 30, 37, 45, 53, 61, 69, 76, 84, 92],
-            valueTable: [
-                {name: 'Righteous', flatprice: 27000},
-                {name: 'Unbound', flatprice: 27000},
-                {name: 'Unrighteous', flatprice: 27000},
-                {name: 'Vigilant', flatprice: 27000},
-                {name: 'Determination', flatprice: 30000},
-                {name: 'Shadow, greater', flatprice: 33750},
-                {name: 'Slick, greater', flatprice: 33750},
-                {name: 'Energy resistance, improved', flatprice: 42000},
-                {name: 'Etherealness', flatprice: 49000},
-                {name: 'Undead controlling', flatprice: 49000},
-                {name: 'Energy resistance, greater', flatprice: 66000},
-                {name: "Fortification (heavy)"},
-                {name: "Spell resistance (19)"}
-            ]
-        }
-    },
-    shieldSpecialAbilities: {
-        1: {chanceTable: [10, 19, 28, 37, 46, 55, 64, 73, 82, 91],
-            valueTable: [
-                {name: 'Poison-resistant', flatprice: 2250},
-                {name: 'Arrow catching'},
-                {name: 'Bashing'},
-                {name: 'Blinding'},
-                {name: 'Clangorous'},
-                {name: 'Defiant'},
-                {name: 'Fortification (light)'},
-                {name: 'Grinding'},
-                {name: 'Impervious'},
-                {name: 'Mirrored'},
-                {name: 'Ramming'}
-            ]
-        },
-        2: {chanceTable: [15, 30, 50, 67, 82],
-            valueTable: [
-                {name: 'Rallying', flatprice: 5000},
-                {name: 'Wyrmsbreath', flatprice: 5000},
-                {name: "Animated"},
-                {name: "Arrow deflection"},
-                {name: "Merging"},
-                {name: "Spell resistance (13)"}
-            ]
-        },
-        3: {chanceTable: [15, 32, 49, 66, 83],
-            valueTable: [
-                {name: 'Hosteling', flatprice: 7500},
-                {name: 'Radiant', flatprice: 7500},
-                {name: 'Fortification (moderate)'},
-                {name: "Ghost touch"},
-                {name: "Spell resistance (15)"},
-                {name: "Wild"}
-            ]
-        },
-        4: {chanceTable: [50],
-            valueTable: [
-                {name: 'Energy resistance', flatprice: 18000},
-                {name: "Spell resistance (17)"}
-            ]
-        },
-        5: {chanceTable: [11, 27, 38, 55, 70, 85],
-            valueTable: [
-                {name: 'Determination', flatprice: 30000},
-                {name: 'Energy resistance, improved', flatprice: 42000},
-                {name: 'Undead controlling', flatprice: 49000},
-                {name: 'Energy resistance, greater', flatprice: 66000},
-                {name: "Fortification (heavy)"},
-                {name: "Reflecting"},
-                {name: "Spell resistance (19)"}
-            ]
-        }
-    },
-    powerTable: {
-        random: function (magnitude) {
-            return rangeIn100(this[magnitude].chanceTable, this[magnitude].valueTable);
-        },
-        lesser_minor: {
-            chanceTable: [80],
-            valueTable: [
-                {specific: false, armorOrShieldBonus: 1},
-                {specific: true}
-            ]
-        },
-        greater_minor: {
-            chanceTable: [26, 53, 80],
-            valueTable: [
-                {specific: false, armorOrShieldBonus: 1},
-                {specific: false, armorOrShieldBonus: 2},
-                {specific: false, armorOrShieldBonus: 1, specialAbility1: 1},
-                {specific: true}
-            ]
-        },
-        lesser_medium: {
-            chanceTable: [10, 20, 32, 44, 56, 68, 80],
-            valueTable: [
-                {specific: false, armorOrShieldBonus: 1},
-                {specific: false, armorOrShieldBonus: 2},
-                {specific: false, armorOrShieldBonus: 3},
-                {specific: false, armorOrShieldBonus: 1, specialAbility1: 1},
-                {specific: false, armorOrShieldBonus: 1, specialAbility1: 1, specialAbility2: 1},
-                {specific: false, armorOrShieldBonus: 1, specialAbility1: 2},
-                {specific: false, armorOrShieldBonus: 2, specialAbility1: 1},
-                {specific: true}
-            ]
-        },
-        greater_medium: {
-            chanceTable: [10, 22, 32, 44, 56, 68, 80],
-            valueTable: [
-                {specific: false, armorOrShieldBonus: 2},
-                {specific: false, armorOrShieldBonus: 3},
-                {specific: false, armorOrShieldBonus: 1, specialAbility1: 1},
-                {specific: false, armorOrShieldBonus: 1, specialAbility1: 2},
-                {specific: false, armorOrShieldBonus: 2, specialAbility1: 1},
-                {specific: false, armorOrShieldBonus: 2, specialAbility1: 2},
-                {specific: false, armorOrShieldBonus: 3, specialAbility1: 1},
-                {specific: true}
-            ]
-        },
-        lesser_major: {
-            chanceTable: [10, 22, 32, 44, 56, 68, 80],
-            valueTable: [
-                {specific: false, armorOrShieldBonus: 3},
-                {specific: false, armorOrShieldBonus: 4},
-                {specific: false, armorOrShieldBonus: 1, specialAbility1: 2},
-                {specific: false, armorOrShieldBonus: 1, specialAbility1: 3},
-                {specific: false, armorOrShieldBonus: 2, specialAbility1: 2},
-                {specific: false, armorOrShieldBonus: 3, specialAbility1: 1},
-                {specific: false, armorOrShieldBonus: 4, specialAbility1: 1},
-                {specific: true}
-            ]
-        },
-        greater_major: {
-            chanceTable: [10, 20, 30, 38, 46, 51, 59, 67, 71, 74, 77, 80],
-            valueTable: [
-                {specific: false, armorOrShieldBonus: 4},
-                {specific: false, armorOrShieldBonus: 5},
-                {specific: false, armorOrShieldBonus: 4, specialAbility1: 1},
-                {specific: false, armorOrShieldBonus: 4, specialAbility1: 2},
-                {specific: false, armorOrShieldBonus: 4, specialAbility1: 3},
-                {specific: false, armorOrShieldBonus: 4, specialAbility1: 4},
-                {specific: false, armorOrShieldBonus: 5, specialAbility1: 1},
-                {specific: false, armorOrShieldBonus: 5, specialAbility1: 2},
-                {specific: false, armorOrShieldBonus: 5, specialAbility1: 3},
-                {specific: false, armorOrShieldBonus: 5, specialAbility1: 2, specialAbility2: 2},
-                {specific: false, armorOrShieldBonus: 5, specialAbility1: 4},
-                {specific: false, armorOrShieldBonus: 5, specialAbility1: 5},
                 {specific: true}
             ]
         }
@@ -3451,6 +3086,8 @@ function generateTypeELoot(budget) {
 module.exports = function (_diceService_, _knapsackService_) {
     diceService = _diceService_;
     knapsackService = _knapsackService_;
+    randomMundaneArmorOrShield = require('./armorsAndShields')(diceService).randomMundaneArmorOrShield;
+    randomMagicArmorOrShield = require('./armorsAndShields')(diceService).randomMagicArmorOrShield;
     return {
         generateEncounterLoot: generateEncounterLoot,
         mostGenerousBudgetMultiplierAmongNonNPC : mostGenerousBudgetMultiplierAmongNonNPC,

@@ -17,9 +17,23 @@ function chooseOne(choices) {
     return choices[i];
 }
 
+function rangeIn100(upperBounds, values) {
+    if (values.length !== upperBounds.length + 1) {
+        throw Error("upperBounds and values mismatch '" + upperBounds + "' '" + values + "'" + "(" + upperBounds.length + " vs " + values.length + ")");
+    }
+    var dieResult = roll(100, 1);
+    for (var i in upperBounds) {
+        if (dieResult <= upperBounds[i]) {
+            return values[i];
+        }
+    }
+    return values[upperBounds.length];
+}
+
 module.exports = function () {
     return {
         roll: roll,
-        chooseOne: chooseOne
+        chooseOne: chooseOne,
+        rangeIn100 : rangeIn100
     };
 };
