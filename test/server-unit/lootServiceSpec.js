@@ -5,8 +5,6 @@ var expect = require('chai').expect;
 var service;
 var diceService;
 var knapsackService = require('../../server/knapsackService')();
-var clone = require('../../server/clone')();
-var idify = require('../../server/idify')();
 
 function createDiceServiceMock() {
 
@@ -53,7 +51,7 @@ describe("lootService", function () {
 
     beforeEach(function () {
         diceService = createDiceServiceMock();
-        service = require('../../server/lootService')(diceService, knapsackService, clone, idify);
+        service = require('../../server/lootService')(diceService, knapsackService);
     });
 
     afterEach(function () {

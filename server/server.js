@@ -41,11 +41,9 @@ function main(db) {
     });
 
     var authentication = require('./authentication')();
-    var clone = require('./clone')();
-    var idify = require('./idify')();
     var diceService = require('./diceService')();
     var knapsackService = require('./knapsackService')();
-    var lootService = require('./lootService')(diceService, knapsackService, clone, idify);
+    var lootService = require('./lootService')(diceService, knapsackService);
 
     var searchMonstersRoute = require('./searchMonstersRoute')(collections.monsters, FIND_LIMIT);
     var searchMagicItemsRoute = require('./searchMagicItemsRoute')(collections.magicitems, FIND_LIMIT);

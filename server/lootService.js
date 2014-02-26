@@ -1,6 +1,9 @@
 "use strict";
 
-var diceService, knapsackService, clone, idify;
+var clone = require('./clone')();
+var idify = require('./idify')();
+
+var diceService, knapsackService;
 
 var monsterTypeToLootTypeTable = {
     aberration: {A: true, B: true, D: true, E: true},
@@ -3445,11 +3448,9 @@ function generateTypeELoot(budget) {
     return loot;
 };
 
-module.exports = function (_diceService_, _knapsackService_, _clone_, _idify_) {
+module.exports = function (_diceService_, _knapsackService_) {
     diceService = _diceService_;
     knapsackService = _knapsackService_;
-    clone = _clone_;
-    idify = _idify_;
     return {
         generateEncounterLoot: generateEncounterLoot,
         mostGenerousBudgetMultiplierAmongNonNPC : mostGenerousBudgetMultiplierAmongNonNPC,
