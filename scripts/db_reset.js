@@ -105,7 +105,8 @@ MagicItem.remove({}, function (error, count) {
         __dirname + '/../data/items/weapons.json',
         __dirname + '/../data/items/enchanted_weapons.json',
         __dirname + '/../data/items/armors_and_shields.json',
-        __dirname + '/../data/items/enchanted_armors_and_shields.json'
+        __dirname + '/../data/items/enchanted_armors_and_shields.json',
+        __dirname + '/../data/items/rings.json'
     ];
 
     var itemsToInsert = [];

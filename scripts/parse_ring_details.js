@@ -20,7 +20,7 @@ var variantNames = {
     "Ring of Energy Resistance": ["Ring of energy resistance, minor", "Ring of energy resistance, major", "Ring of energy resistance, greater"],
     "Ring of Inner Fortitude": ["Ring of inner fortitude, minor", "Ring of inner fortitude, major", "Ring of inner fortitude, greater"],
     "Ring of Protection": ["Ring of Protection +1", "Ring of Protection +2", "Ring of Protection +3", "Ring of Protection +4", "Ring of Protection +5"],
-    "Ring of Revelation": [" Ring of revelation, lesser", " Ring of revelation, greater", " Ring of revelation, superior"],
+    "Ring of Revelation": ["Ring of revelation, lesser", "Ring of revelation, greater", "Ring of revelation, superior"],
     "Ring of Spell Knowledge": ["Ring of spell knowledge I", "Ring of spell knowledge II", "Ring of spell knowledge III", "Ring of spell knowledge IV"],
     "Ring of Wizardry": ["Ring of Wizardry I", "Ring of Wizardry II", "Ring of Wizardry III", "Ring of Wizardry IV"]
 
@@ -107,6 +107,7 @@ var processParagraphWithID = function (index) {
             CostUnit: "gp",
             Requirements: requirements,
             Description: description,
+            Source:"Ultimate Equipment",
             "id": idify(name[i])
         }
         rings.push(ring);
