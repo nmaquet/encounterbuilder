@@ -12,6 +12,7 @@ var generateMwkWeapon;
 var generateMagicWeaponByBonus;
 var generateMagicWeapon;
 var randomPotion;
+var randomPotionLevel;
 
 var monsterTypeToLootTypeTable = {
     aberration: {A: true, B: true, D: true, E: true},
@@ -974,27 +975,6 @@ var randomScrollLevel = {
     },
     greater_major: function () {
         return diceService.rangeIn100([5, 35, 70], [6, 7, 8, 9]);
-    }
-};
-
-var randomPotionLevel = {
-    lesser_minor: function () {
-        return diceService.rangeIn100([40], [0, 1]);
-    },
-    greater_minor: function () {
-        return diceService.rangeIn100([10, 60], [0, 1, 2]);
-    },
-    lesser_medium: function () {
-        return diceService.rangeIn100([25, 85], [1, 2, 3]);
-    },
-    greater_medium: function () {
-        return diceService.rangeIn100([10, 50], [1, 2, 3]);
-    },
-    lesser_major: function () {
-        return diceService.rangeIn100([35], [2, 3]);
-    },
-    greater_major: function () {
-        return diceService.rangeIn100([10], [2, 3]);
     }
 };
 
@@ -2387,6 +2367,7 @@ module.exports = function (_diceService_, _knapsackService_) {
     generateMagicWeaponByBonus = require('./weapons')(diceService).generateMagicWeaponByBonus;
     generateMagicWeapon = require('./weapons')(diceService).generateMagicWeapon;
     randomPotion = require('./potions')(diceService).randomPotion;
+    randomPotionLevel = require('./potions')(diceService).randomPotionLevel ;
     return {
         generateEncounterLoot: generateEncounterLoot,
         mostGenerousBudgetMultiplierAmongNonNPC : mostGenerousBudgetMultiplierAmongNonNPC,
