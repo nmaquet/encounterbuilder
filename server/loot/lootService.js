@@ -295,6 +295,7 @@ module.exports = function (_diceService_, _knapsackService_) {
         generateScroll: generateScroll,
         generateTypeDLoot: generateTypeDLoot,
         generateTypeELoot: generateTypeELoot,
+        generateTypeALoot: generateTypeALoot,
         generateMwkArmor: generateMwkArmor,
         generateMwkWeapon: generateMwkWeapon,
         generateMagicWeaponByBonus: generateMagicWeaponByBonus,
