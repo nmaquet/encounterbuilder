@@ -291,6 +291,7 @@ var randomWeapon = {
         2: {chanceTable: [10, 13, 23, 31, 34, 37, 48, 58, 69, 73, 76, 86, 90],
             valueTable: [
                 {name: "Anarchic"},
+                {name: "Anchoring"  /* FIXME: needs a filter */},
                 {name: "Axiomatic"},
                 {name: "Corrosive burst"},
                 {name: "Designating, lesser"},

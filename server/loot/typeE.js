@@ -134,8 +134,10 @@ var typeELoot = {
         ]
     ],
     40000: [
-        { magnitude: "greater_major", type: "armorOrShield"},
-        { magnitude: "greater_minor", type: "weapon"}
+        [
+            { magnitude: "greater_major", type: "armorOrShield"},
+            { magnitude: "greater_minor", type: "weapon"}
+        ]
     ],
     50000: [
         [
