@@ -5,9 +5,6 @@ var idify = require('./../idify')().idify;
 
 var diceService, knapsackService;
 
-var randomMundaneArmorOrShield;
-var randomMagicArmorOrShield;
-var randomWeapon;
 var generateMwkWeapon;
 var generateMagicWeaponByBonus;
 var generateMagicWeapon;
@@ -698,11 +695,8 @@ function generateTypeELoot(budget) {
 module.exports = function (_diceService_, _knapsackService_) {
     diceService = _diceService_;
     knapsackService = _knapsackService_;
-    randomMundaneArmorOrShield = require('./armorsAndShields')(diceService).randomMundaneArmorOrShield;
-    randomMagicArmorOrShield = require('./armorsAndShields')(diceService).randomMagicArmorOrShield;
     generateMwkArmor = require('./armorsAndShields')(diceService).generateMwkArmor;
     generateMagicArmorOrShield = require('./armorsAndShields')(diceService).generateMagicArmorOrShield;
-    randomWeapon = require('./weapons')(diceService).randomWeapon;
     generateMwkWeapon = require('./weapons')(diceService).generateMwkWeapon;
     generateMagicWeaponByBonus = require('./weapons')(diceService).generateMagicWeaponByBonus;
     generateMagicWeapon = require('./weapons')(diceService).generateMagicWeapon;

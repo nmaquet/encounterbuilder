@@ -412,7 +412,6 @@ function generateMagicWeaponByBonus(weaponBonus, abilityLevel1, abilityLevel2) {
 module.exports = function (_diceService_) {
     diceService = _diceService_;
     return {
-        randomWeapon: randomWeapon,
         generateMwkWeapon: generateMwkWeapon,
         generateMagicWeapon : generateMagicWeapon,
         generateMagicWeaponByBonus : generateMagicWeaponByBonus

@@ -371,8 +371,6 @@ function generateMagicArmorOrShield(magnitude) {
 module.exports = function (_diceService_) {
     diceService = _diceService_;
     return {
-        randomMagicArmorOrShield: randomMagicArmorOrShield,
-        randomMundaneArmorOrShield: randomMundaneArmorOrShield,
         generateMwkArmor : generateMwkArmor,
         generateMagicArmorOrShield : generateMagicArmorOrShield
     }
