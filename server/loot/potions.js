@@ -174,10 +174,21 @@ var randomPotionLevel = {
     }
 };
 
+function generatePotion(magnitude) {
+    var potionLevel = randomPotionLevel[magnitude]();
+    if (potionLevel === 0) {
+        var rarity = "common";
+    } else {
+        var rarity = diceService.rangeIn100([75], ["common", "uncommon"]);
+    }
+    return randomPotion[rarity][potionLevel]();
+}
+
 module.exports = function (_diceService_) {
     diceService = _diceService_;
     return {
         randomPotion: randomPotion,
-        randomPotionLevel : randomPotionLevel
+        randomPotionLevel : randomPotionLevel,
+        generatePotion : generatePotion
     }
 };

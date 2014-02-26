@@ -13,6 +13,7 @@ var generateMagicWeaponByBonus;
 var generateMagicWeapon;
 var randomPotion;
 var randomPotionLevel;
+var generatePotion;
 
 var monsterTypeToLootTypeTable = {
     aberration: {A: true, B: true, D: true, E: true},
@@ -2275,16 +2276,6 @@ function generateScroll(magnitude) {
     return randomScroll[rarity][magicType][scrollLevel]();
 }
 
-function generatePotion(magnitude) {
-    var potionLevel = randomPotionLevel[magnitude]();
-    if (potionLevel === 0) {
-        var rarity = "common";
-    } else {
-        var rarity = diceService.rangeIn100([75], ["common", "uncommon"]);
-    }
-    return randomPotion[rarity][potionLevel]();
-}
-
 function generateWand(magnitude) {
     var wandLevel = randomWandLevel[magnitude]();
     var rarity = diceService.rangeIn100([75], ["common", "uncommon"]);
@@ -2368,6 +2359,7 @@ module.exports = function (_diceService_, _knapsackService_) {
     generateMagicWeapon = require('./weapons')(diceService).generateMagicWeapon;
     randomPotion = require('./potions')(diceService).randomPotion;
     randomPotionLevel = require('./potions')(diceService).randomPotionLevel ;
+    generatePotion = require('./potions')(diceService).generatePotion ;
     return {
         generateEncounterLoot: generateEncounterLoot,
         mostGenerousBudgetMultiplierAmongNonNPC : mostGenerousBudgetMultiplierAmongNonNPC,
