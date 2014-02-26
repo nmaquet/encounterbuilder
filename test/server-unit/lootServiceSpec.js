@@ -574,4 +574,32 @@ describe("lootService", function () {
             expect(weapon).to.deep.equal({"Price": 9750.0, "PriceUnit": "gp", "Name": "Bolstering bitter half-plate +1", "id": "bolstering-bitter-half-plate-1"});
         });
     });
+
+    describe("service.generateTypeELoot", function () {
+
+        it("should generate one greater major weapon and one greater major armor", function () {
+
+            /* +5 with +1 special ability */
+            diceService.prepareDice({die: 100, value: 53, n: 1});
+            /* heavy steel shield */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* blinding */
+            diceService.prepareDice({die: 100, value: 30, n: 1});
+
+            /* +5 +3 +2 weapon */
+            diceService.prepareDice({die: 100, value: 78, n: 1});
+            /* handaxe */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* +3 ability speed */
+            diceService.prepareDice({die: 100, value: 45, n: 1});
+            /* +2 ability Anarchic */
+            diceService.prepareDice({die: 100, value: 7, n: 1});
+
+            var items = service.generateTypeELoot(100000);
+            expect(items).to.deep.equal({coins: {pp: 0, gp: 0, sp: 0, cp: 0}, items: [
+                {"Price": 36170.0, "PriceUnit": "gp", "Name": "Blinding heavy steel shield +5", "id": "blinding-heavy-steel-shield-5","amount": 1},
+                {"Price": 200306.0, "PriceUnit": "gp", "Name": "Speed anarchic handaxe +5", "id": "speed-anarchic-handaxe-5","amount": 1}
+            ]});
+        });
+    });
 });
