@@ -15,6 +15,36 @@ var elementWithID = function (index) {
 
 var rings = [];
 
+var variantNames = {
+    "Dungeon Ring": ["Jailer's dungeon ring", "Prisoner's dungeon ring"],
+    "Ring of Energy Resistance": ["Ring of energy resistance, minor", "Ring of energy resistance, major", "Ring of energy resistance, greater"],
+    "Ring of Inner Fortitude": ["Ring of inner fortitude, minor", "Ring of inner fortitude, major", "Ring of inner fortitude, greater"],
+    "Ring of Protection": ["Ring of Protection +1", "Ring of Protection +2", "Ring of Protection +3", "Ring of Protection +4", "Ring of Protection +5"],
+    "Ring of Revelation": [" Ring of revelation, lesser", " Ring of revelation, greater", " Ring of revelation, superior"],
+    "Ring of Spell Knowledge": ["Ring of spell knowledge I", "Ring of spell knowledge II", "Ring of spell knowledge III", "Ring of spell knowledge IV"],
+    "Ring of Wizardry": ["Ring of Wizardry I", "Ring of Wizardry II", "Ring of Wizardry III", "Ring of Wizardry IV"]
+
+}
+var variantPrices = {
+    "Dungeon Ring": ["16,000 gp", "250 gp"],
+    "Ring of Energy Resistance": ["12,000 gp", "28,000 gp", "44,000 gp"],
+    "Ring of Inner Fortitude": ["18,000 gp", "42,000 gp", "66,000 gp"],
+    "Ring of Protection": ["2,000 gp", "8,000 gp", "18,000 gp", "32,000 gp", "50,000 gp"],
+    "Ring of Revelation": ["10,000 gp", "16,000 gp", "24,000 gp"],
+    "Ring of Spell Knowledge": ["1500 gp", "6,000 gp", "13,500 gp", "24,000 gp"],
+    "Ring of Wizardry": ["20000 gp", "40000 gp", "70000 gp", "100000 gp"]
+};
+
+var variantCosts = {
+    "Dungeon Ring": ["8,000 gp", "125 gp"],
+    "Ring of Energy Resistance": ["6,000 gp", "14,000 gp", "22,000 gp"],
+    "Ring of Inner Fortitude": ["9,000 gp", "21,000 gp", "33,000 gp"],
+    "Ring of Protection": ["1,000 gp", "4,000 gp", "9,000 gp", "16,000 gp", "25,000 gp"],
+    "Ring of Revelation": ["5,000 gp", "8,000 gp", "12,000 gp"],
+    "Ring of Spell Knowledge": ["750 gp", "3,000 gp", "6250 gp", "12,000 gp"],
+    "Ring of Wizardry": ["10000 gp", "20000 gp", "35000 gp", "50000 gp"]
+};
+
 var processParagraphWithID = function (index) {
 
     var name = [this.text()];
@@ -26,13 +56,16 @@ var processParagraphWithID = function (index) {
     var aura = /Aura (.*)/.exec(priceAuraCLWeight[1])[1];
     var cl = /CL (\d*)/.exec(priceAuraCLWeight[2])[1];
     var weight = /Weight (.*)/.exec(priceAuraCLWeight[3])[1];
-
+    var cost;
     var secondParagraph = firstParagraph.next();
     var firstDescriptionParagraph;
 
     if (secondParagraph.hasClass('stat-block-1')) {
         firstDescriptionParagraph = secondParagraph.next();
-        return console.log("FIXME: ignoring variant " + name);
+        var primaryName = name;
+        name = variantNames[primaryName];
+        price = variantPrices[primaryName];
+        cost = variantCosts[primaryName];
     } else {
         firstDescriptionParagraph = secondParagraph;
         expect(firstDescriptionParagraph.hasClass("stat-block")).to.be.true;
@@ -49,15 +82,15 @@ var processParagraphWithID = function (index) {
     var firstCostParagraph = p.next();
     expect(firstCostParagraph.hasClass("stat-block-1")).to.be.true;
 
-    var cost = [/Cost (.*)/.exec(firstCostParagraph.text())[1]];
+    cost = cost || [/Cost (.*)/.exec(firstCostParagraph.text())[1]];
 
     var firstRequirementsParagraph;
-    if (firstCostParagraph.next().hasClass("stat-block-1")) {
-       return console.log("FIXME: ignoring variant " + name);
-    } else {
+    if (!firstCostParagraph.next().hasClass("stat-block-1")) {
         firstRequirementsParagraph = firstCostParagraph.next();
     }
-
+    else{
+        firstRequirementsParagraph = firstCostParagraph.next().next();
+    }
     expect(firstRequirementsParagraph.hasClass("stat-block")).to.be.true;
 
     var requirements = firstRequirementsParagraph.text();
