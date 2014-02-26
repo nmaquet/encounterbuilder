@@ -3,6 +3,7 @@
 var fs = require('fs');
 var cheerio = require('cheerio');
 var expect = require('chai').expect;
+var idify = require('../server/idify')().idify;
 
 var html = fs.readFileSync(__dirname + '/../data/contrib/ring_descriptions_prd.html');
 
@@ -12,7 +13,10 @@ var elementWithID = function (index) {
     return this.attr("id") !== undefined;
 };
 
+var rings = [];
+
 var processParagraphWithID = function (index) {
+
     var name = this.text();
 
     var firstParagraph = this.next();
@@ -20,7 +24,7 @@ var processParagraphWithID = function (index) {
     var priceAuraCLWeight = firstParagraph.text().split(";");
     var price = /Price (.*)/.exec(priceAuraCLWeight[0])[1];
     var aura = /Aura (.*)/.exec(priceAuraCLWeight[1])[1];
-    var cl = /CL (.*)/.exec(priceAuraCLWeight[2])[1];
+    var cl = /CL (\d*)/.exec(priceAuraCLWeight[2])[1];
     var weight = /Weight (.*)/.exec(priceAuraCLWeight[3])[1];
 
     var secondParagraph = firstParagraph.next();
@@ -58,8 +62,31 @@ var processParagraphWithID = function (index) {
 
     var requirements = firstRequirementsParagraph.text();
 
-    console.log("Requirements : " + requirements);
-    console.log();
+    var ring = {
+        "CL": Number(cl),
+        "Group": "Ring",
+        "Name": name,
+        "Price": parsePrice(price),
+        "PriceUnit": "gp",
+        Aura: aura,
+        Weight:weight,
+        Cost: parsePrice(cost),
+        CostUnit:"gp",
+        Requirements:requirements,
+        Description:description,
+        "id": idify(name)
+    }
+    rings.push(ring);
 };
 
+function parsePrice(text) {
+    if (String(text).trim().toLowerCase() === "varies") {
+        return;
+    }
+    else{
+        return Number(text.split(" ")[0].replace(",",""));
+    }
+}
+
 $("p").filter(elementWithID).each(processParagraphWithID);
+fs.writeFileSync(__dirname + "/../data/items/rings.json", JSON.stringify(rings, null, 4));
