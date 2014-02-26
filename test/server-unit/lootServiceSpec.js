@@ -51,7 +51,7 @@ describe("lootService", function () {
 
     beforeEach(function () {
         diceService = createDiceServiceMock();
-        service = require('../../server/lootService')(diceService, knapsackService);
+        service = require('../../server/loot/lootService')(diceService, knapsackService);
     });
 
     afterEach(function () {

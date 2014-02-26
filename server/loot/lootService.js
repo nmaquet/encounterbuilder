@@ -1,7 +1,7 @@
 "use strict";
 
-var clone = require('./clone')().clone;
-var idify = require('./idify')().idify;
+var clone = require('./../clone')().clone;
+var idify = require('./../idify')().idify;
 
 var diceService, knapsackService;
 
