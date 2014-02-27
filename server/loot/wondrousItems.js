@@ -1037,7 +1037,7 @@ var random_wondrous_item = {
                 {"Price": 10000.0, "PriceUnit": "gp", "Name": "Caltrop boots", "id": "caltrop-boots"},
                 {"Price": 10000.0, "PriceUnit": "gp", "Name": "Tremor boots", "id": "tremor-boots"},
                 {"Price": 10500.0, "PriceUnit": "gp", "Name": "Boots of the mastodon", "id": "boots-of-the-mastodon"},
-                {"Price": 10500.0, "PriceUnit": "gp", "Name": "Shoes of the lightning leaper", "id": "shoes-of-the-lightning-leaper"},
+                {"Price": 10500.0, "PriceUnit": "gp", "Name": "Shoes of lightning leaping", "id": "shoes-of-lightning-leaping"},
                 {"Price": 12000.0, "PriceUnit": "gp", "Name": "Boots of speed", "id": "boots-of-speed"},
                 {"Price": 12000.0, "PriceUnit": "gp", "Name": "Verdant boots", "id": "verdant-boots"},
                 {"Price": 16000.0, "PriceUnit": "gp", "Name": "Horseshoes of crushing blows +2", "id": "horseshoes-of-crushing-blows-2"},
