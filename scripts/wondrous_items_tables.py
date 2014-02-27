@@ -80,16 +80,16 @@ items["body"]["lesser_minor"] = """01-20	Robe of infinite twine	1,000 gp
 81-100	Druid's vestment	3,750 gp"""
 
 items["body"]["greater_minor"] = """01-15	Cassock of the clergy	4,600 gp
-16-30	Mnemonic vestments	5,000 gp
+16-30	Mnemonic vestment	5,000 gp
 31-45	Robe of components	5,000 gp
 46-60	Sorcerer's robe	5,000 gp
 61-75	Eidolon anchoring harness	6,000 gp
 76-100	Robe of useful items	7,000 gp"""
 
 items["body"]["lesser_medium"] = """01-15	Robe of blending	8,400 gp
-16-26	Blazing robes	11,000 gp
+16-26	Blazing robe	11,000 gp
 27-37	Shocking robe	11,000 gp
-38-48	Voidfrost robes	11,000 gp
+38-48	Voidfrost robe	11,000 gp
 49-59	Bodywrap of mighty strikes +2	12,000 gp
 60-75	Monk's robe	13,000 gp
 76-100	Robe of arcane heritage	16,000 gp"""

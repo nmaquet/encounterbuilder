@@ -64,9 +64,9 @@ var random_wondrous_item = {
             chanceTable: [15, 26, 37, 48, 59, 75],
             valueTable: [
                 {"Price": 8400.0, "PriceUnit": "gp", "Name": "Robe of blending", "id": "robe-of-blending"},
-                {"Price": 11000.0, "PriceUnit": "gp", "Name": "Blazing robes", "id": "blazing-robes"},
+                {"Price": 11000.0, "PriceUnit": "gp", "Name": "Blazing robe", "id": "blazing-robe"},
                 {"Price": 11000.0, "PriceUnit": "gp", "Name": "Shocking robe", "id": "shocking-robe"},
-                {"Price": 11000.0, "PriceUnit": "gp", "Name": "Voidfrost robes", "id": "voidfrost-robes"},
+                {"Price": 11000.0, "PriceUnit": "gp", "Name": "Voidfrost robe", "id": "voidfrost-robe"},
                 {"Price": 12000.0, "PriceUnit": "gp", "Name": "Bodywrap of mighty strikes +2", "id": "bodywrap-of-mighty-strikes-2"},
                 {"Price": 13000.0, "PriceUnit": "gp", "Name": "Monk's robe", "id": "monk-s-robe"},
                 {"Price": 16000.0, "PriceUnit": "gp", "Name": "Robe of arcane heritage", "id": "robe-of-arcane-heritage"}
