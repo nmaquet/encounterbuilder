@@ -115,33 +115,33 @@
         "CL": 8,
         "Group": "Wondrous Item",
         "Slot": "belt",
-        "Name": "Belt of Giant Strength ",
-        "Price": 4,
+        "Name": "Belt of Giant Strength +4",
+        "Price": 16000,
         "PriceUnit": "gp",
         "Aura": "moderate transmutation",
         "Weight": "1 lb.",
-        "Cost": 2,
+        "Cost": 8000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, bull's strength",
         "Description": "This belt is a thick leather affair, often decorated with huge metal buckles. The belt grants the wearer an enhancement bonus to Strength of +2, +4, or +6. Treat this as a temporary ability bonus for the first 24 hours the belt is worn.",
         "Source": "Ultimate Equipment",
-        "id": "belt-of-giant-strength-"
+        "id": "belt-of-giant-strength-4"
     },
     {
         "CL": 8,
         "Group": "Wondrous Item",
         "Slot": "belt",
-        "Name": "Belt of Giant Strength ",
-        "Price": 6,
+        "Name": "Belt of Giant Strength +6",
+        "Price": 36000,
         "PriceUnit": "gp",
         "Aura": "moderate transmutation",
         "Weight": "1 lb.",
-        "Cost": 3,
+        "Cost": 18000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, bull's strength",
         "Description": "This belt is a thick leather affair, often decorated with huge metal buckles. The belt grants the wearer an enhancement bonus to Strength of +2, +4, or +6. Treat this as a temporary ability bonus for the first 24 hours the belt is worn.",
         "Source": "Ultimate Equipment",
-        "id": "belt-of-giant-strength-"
+        "id": "belt-of-giant-strength-6"
     },
     {
         "CL": 8,
@@ -173,7 +173,7 @@
         "Requirements": "Craft Wondrous Item, cat's grace",
         "Description": "This belt has a large silver buckle, usually depicting the image of a tiger. The belt grants the wearer an enhancement bonus to Dexterity of +2, +4, or +6. Treat this as a temporary ability bonus for the first 24 hours the belt is worn.",
         "Source": "Ultimate Equipment",
-        "id": "belt-of-incredible-dexterity-"
+        "id": "belt-of-incredible-dexterity"
     },
     {
         "CL": 8,
@@ -189,7 +189,7 @@
         "Requirements": "Craft Wondrous Item, cat's grace",
         "Description": "This belt has a large silver buckle, usually depicting the image of a tiger. The belt grants the wearer an enhancement bonus to Dexterity of +2, +4, or +6. Treat this as a temporary ability bonus for the first 24 hours the belt is worn.",
         "Source": "Ultimate Equipment",
-        "id": "belt-of-incredible-dexterity-"
+        "id": "belt-of-incredible-dexterity"
     },
     {
         "CL": 8,
@@ -221,7 +221,7 @@
         "Requirements": "Craft Wondrous Item, bear's endurance",
         "Description": "This belt's golden buckle depicts a bear's head. The belt grants the wearer an enhancement bonus to Constitution of +2, +4, or +6. Treat this as a temporary ability bonus for the first 24 hours the belt is worn.",
         "Source": "Ultimate Equipment",
-        "id": "belt-of-mighty-constitution-"
+        "id": "belt-of-mighty-constitution"
     },
     {
         "CL": 8,
@@ -237,7 +237,7 @@
         "Requirements": "Craft Wondrous Item, bear's endurance",
         "Description": "This belt's golden buckle depicts a bear's head. The belt grants the wearer an enhancement bonus to Constitution of +2, +4, or +6. Treat this as a temporary ability bonus for the first 24 hours the belt is worn.",
         "Source": "Ultimate Equipment",
-        "id": "belt-of-mighty-constitution-"
+        "id": "belt-of-mighty-constitution"
     },
     {
         "CL": 12,
@@ -301,7 +301,7 @@
         "Requirements": "Craft Wondrous Item, bear's endurance, bull's strength, and/or cat's grace",
         "Description": "This belt grants the wearer an enhancement bonus to two physical ability scores (Strength, Dexterity, or Constitution) of +2, +4, or +6. Treat this as a temporary ability bonus for the first 24 hours the belt is worn. These bonuses are chosen when the belt is created and cannot be changed.",
         "Source": "Ultimate Equipment",
-        "id": "belt-of-physical-might-"
+        "id": "belt-of-physical-might"
     },
     {
         "CL": 12,
@@ -317,7 +317,7 @@
         "Requirements": "Craft Wondrous Item, bear's endurance, bull's strength, and/or cat's grace",
         "Description": "This belt grants the wearer an enhancement bonus to two physical ability scores (Strength, Dexterity, or Constitution) of +2, +4, or +6. Treat this as a temporary ability bonus for the first 24 hours the belt is worn. These bonuses are chosen when the belt is created and cannot be changed.",
         "Source": "Ultimate Equipment",
-        "id": "belt-of-physical-might-"
+        "id": "belt-of-physical-might"
     },
     {
         "CL": 16,
@@ -349,7 +349,7 @@
         "Requirements": "Craft Wondrous Item, bear's endurance, bull's strength, cat's grace",
         "Description": "This belt has a large platinum buckle and grants the wearer an enhancement bonus to all physical ability scores (Strength, Dexterity, and Constitution) of +2, +4, or +6. Treat this as a temporary ability bonus for the first 24 hours the belt is worn.",
         "Source": "Ultimate Equipment",
-        "id": "belt-of-physical-perfection-"
+        "id": "belt-of-physical-perfection"
     },
     {
         "CL": 16,
@@ -365,7 +365,7 @@
         "Requirements": "Craft Wondrous Item, bear's endurance, bull's strength, cat's grace",
         "Description": "This belt has a large platinum buckle and grants the wearer an enhancement bonus to all physical ability scores (Strength, Dexterity, and Constitution) of +2, +4, or +6. Treat this as a temporary ability bonus for the first 24 hours the belt is worn.",
         "Source": "Ultimate Equipment",
-        "id": "belt-of-physical-perfection-"
+        "id": "belt-of-physical-perfection"
     },
     {
         "CL": 10,
