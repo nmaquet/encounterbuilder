@@ -5,7 +5,7 @@ var cheerio = require('cheerio');
 var expect = require('chai').expect;
 var idify = require('../server/idify')().idify;
 
-var html = fs.readFileSync(__dirname + '/../data/contrib/wondrous_hand_descriptions_prd.html');
+var html = fs.readFileSync(__dirname + '/../data/prd_fixed_html/wondrous_hand_descriptions_prd.html');
 
 var $ = cheerio.load(html);
 
