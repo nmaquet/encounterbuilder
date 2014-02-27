@@ -37,6 +37,7 @@ var processParagraphWithID = function (index) {
         var originalName = name[0];
         name = [];
         price = [];
+        /* MESSAGE TO FUTURE SELF: YOU'RE SCREWED ^^' 27/02/2014 @ 13h09 */
         for (var i in variants) {
             var variant = variants[i].trim();
             console.log(variant);
@@ -46,11 +47,17 @@ var processParagraphWithID = function (index) {
             else if (variant.split(" ")[0].trim()[0] === "(") {
                 name.push(originalName + " " + variant.split(")")[0].trim() + ")");
             }
+            else if (variant.split(" ")[0].trim()[0] === "{") {
+                name.push(originalName + " " + variant.split("}")[0].replace("{","").trim());
+            }
             else {
                 name.push(originalName + ", " + variant.split(" ")[0].trim());
             }
             if (variant.split(" ")[0].trim()[0] === "(") {
                 price.push(variant.split(")")[1].trim());
+            }
+            else if (variant.split(" ")[0].trim()[0] === "{") {
+                price.push(variant.split("}")[1].trim());
             }
             else {
                 price.push(variant.split(" ")[1].trim());
