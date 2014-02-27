@@ -595,7 +595,7 @@
         "CL": 5,
         "Group": "Wondrous Item",
         "Slot": "shoulders",
-        "Name": "Vambraces of the Djinni",
+        "Name": "Vambraces of the Genie, Djinni",
         "Price": 18900,
         "PriceUnit": "gp",
         "Aura": "faint evocation",
@@ -605,13 +605,13 @@
         "Requirements": "Craft Wondrous Item, protection from elements and the three spells the wearer can use",
         "Description": "These bracers are decorated with icons representing air, earth, fire, or water, and depictions of genies appropriate to that element. The item protects the wearer against hot and cold environments as if she were using <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/endureElements.html#_endure-elements\">endure elements</a></i> The vambraces' materials and other powers depend on their associated genie type.<i>Djinni</i>: These mithral bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/gaseousForm.html#_gaseous-form\">gaseous form</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/invisibility.html#_invisibility\">invisibility</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/windWall.html#_wind-wall\">wind wall</a></i> each once per day.<i>Efreeti</i>: These scorched bronze bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/invisibility.html#_invisibility\">invisibility</a></i> (self only), <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/produceFlame.html#_produce-flame\">produce flame</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/pyrotechnics.html#_pyrotechnics\">pyrotechnics</a> </i>each once per day.<i>Marid</i>: These coral bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/hydraulicTorrent.html#_hydraulic-torrent-\">hydraulic torrent</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/invisibility.html#_invisibility\">invisibility</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/waterBreathing.html#_water-breathing\">water breathing</a></i> each once per day.<i>Shaitan</i>: These adamantine bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/glitterdust.html#_glitterdust\">glitterdust</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/meldIntoStone.html#_meld-into-stone\">meld into stone</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/stoneShape.html#_stone-shape\">stone shape</a></i> each once per day.",
         "Source": "Ultimate Equipment",
-        "id": "vambraces-of-the-djinni"
+        "id": "vambraces-of-the-genie-djinni"
     },
     {
         "CL": 5,
         "Group": "Wondrous Item",
         "Slot": "shoulders",
-        "Name": "Vambraces of the Efreeti",
+        "Name": "Vambraces of the Genie, Efreeti",
         "Price": 14400,
         "PriceUnit": "gp",
         "Aura": "faint evocation",
@@ -621,13 +621,13 @@
         "Requirements": "Craft Wondrous Item, protection from elements and the three spells the wearer can use",
         "Description": "These bracers are decorated with icons representing air, earth, fire, or water, and depictions of genies appropriate to that element. The item protects the wearer against hot and cold environments as if she were using <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/endureElements.html#_endure-elements\">endure elements</a></i> The vambraces' materials and other powers depend on their associated genie type.<i>Djinni</i>: These mithral bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/gaseousForm.html#_gaseous-form\">gaseous form</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/invisibility.html#_invisibility\">invisibility</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/windWall.html#_wind-wall\">wind wall</a></i> each once per day.<i>Efreeti</i>: These scorched bronze bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/invisibility.html#_invisibility\">invisibility</a></i> (self only), <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/produceFlame.html#_produce-flame\">produce flame</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/pyrotechnics.html#_pyrotechnics\">pyrotechnics</a> </i>each once per day.<i>Marid</i>: These coral bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/hydraulicTorrent.html#_hydraulic-torrent-\">hydraulic torrent</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/invisibility.html#_invisibility\">invisibility</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/waterBreathing.html#_water-breathing\">water breathing</a></i> each once per day.<i>Shaitan</i>: These adamantine bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/glitterdust.html#_glitterdust\">glitterdust</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/meldIntoStone.html#_meld-into-stone\">meld into stone</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/stoneShape.html#_stone-shape\">stone shape</a></i> each once per day.",
         "Source": "Ultimate Equipment",
-        "id": "vambraces-of-the-efreeti"
+        "id": "vambraces-of-the-genie-efreeti"
     },
     {
         "CL": 5,
         "Group": "Wondrous Item",
         "Slot": "shoulders",
-        "Name": "Vambraces of the Marid",
+        "Name": "Vambraces of the Genie, Marid",
         "Price": 18900,
         "PriceUnit": "gp",
         "Aura": "faint evocation",
@@ -637,13 +637,13 @@
         "Requirements": "Craft Wondrous Item, protection from elements and the three spells the wearer can use",
         "Description": "These bracers are decorated with icons representing air, earth, fire, or water, and depictions of genies appropriate to that element. The item protects the wearer against hot and cold environments as if she were using <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/endureElements.html#_endure-elements\">endure elements</a></i> The vambraces' materials and other powers depend on their associated genie type.<i>Djinni</i>: These mithral bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/gaseousForm.html#_gaseous-form\">gaseous form</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/invisibility.html#_invisibility\">invisibility</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/windWall.html#_wind-wall\">wind wall</a></i> each once per day.<i>Efreeti</i>: These scorched bronze bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/invisibility.html#_invisibility\">invisibility</a></i> (self only), <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/produceFlame.html#_produce-flame\">produce flame</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/pyrotechnics.html#_pyrotechnics\">pyrotechnics</a> </i>each once per day.<i>Marid</i>: These coral bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/hydraulicTorrent.html#_hydraulic-torrent-\">hydraulic torrent</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/invisibility.html#_invisibility\">invisibility</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/waterBreathing.html#_water-breathing\">water breathing</a></i> each once per day.<i>Shaitan</i>: These adamantine bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/glitterdust.html#_glitterdust\">glitterdust</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/meldIntoStone.html#_meld-into-stone\">meld into stone</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/stoneShape.html#_stone-shape\">stone shape</a></i> each once per day.",
         "Source": "Ultimate Equipment",
-        "id": "vambraces-of-the-marid"
+        "id": "vambraces-of-the-genie-marid"
     },
     {
         "CL": 5,
         "Group": "Wondrous Item",
         "Slot": "shoulders",
-        "Name": "Vambraces of the Shaitan",
+        "Name": "Vambraces of the Genie, Shaitan",
         "Price": 18900,
         "PriceUnit": "gp",
         "Aura": "faint evocation",
@@ -653,7 +653,7 @@
         "Requirements": "Craft Wondrous Item, protection from elements and the three spells the wearer can use",
         "Description": "These bracers are decorated with icons representing air, earth, fire, or water, and depictions of genies appropriate to that element. The item protects the wearer against hot and cold environments as if she were using <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/endureElements.html#_endure-elements\">endure elements</a></i> The vambraces' materials and other powers depend on their associated genie type.<i>Djinni</i>: These mithral bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/gaseousForm.html#_gaseous-form\">gaseous form</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/invisibility.html#_invisibility\">invisibility</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/windWall.html#_wind-wall\">wind wall</a></i> each once per day.<i>Efreeti</i>: These scorched bronze bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/invisibility.html#_invisibility\">invisibility</a></i> (self only), <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/produceFlame.html#_produce-flame\">produce flame</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/pyrotechnics.html#_pyrotechnics\">pyrotechnics</a> </i>each once per day.<i>Marid</i>: These coral bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/hydraulicTorrent.html#_hydraulic-torrent-\">hydraulic torrent</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/invisibility.html#_invisibility\">invisibility</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/waterBreathing.html#_water-breathing\">water breathing</a></i> each once per day.<i>Shaitan</i>: These adamantine bracers allow the wearer to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/glitterdust.html#_glitterdust\">glitterdust</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/meldIntoStone.html#_meld-into-stone\">meld into stone</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/stoneShape.html#_stone-shape\">stone shape</a></i> each once per day.",
         "Source": "Ultimate Equipment",
-        "id": "vambraces-of-the-shaitan"
+        "id": "vambraces-of-the-genie-shaitan"
     },
     {
         "CL": 7,
