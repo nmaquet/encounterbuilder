@@ -204,7 +204,7 @@ items["feet"]["greater_minor"] = """01-07	Burglar boots, minor	4,000 gp
 20-26	Slippers of cloudwalking	4,400 gp
 27-40	Slippers of spider climbing	4,800 gp
 41-46	Sandals of the lightest step	5,000 gp
-47-60		5,500 gp
+47-60	Boots of striding and springing	5,500 gp
 61-68	Horseshoes of a zephyr	6,000 gp
 69-75	Haunted shoes	6,480 gp
 76-82	Jaunt boots	7,200 gp
@@ -255,7 +255,7 @@ items["hands"]["greater_minor"] = """01-12	Gauntlets of the skilled maneuver	4,0
 44-55	Gloves of arcane striking	5,000 gp
 56-65	Poisoner's gloves	5,000 gp
 66-75	Magnetist's gloves	6,000 gp
-76-100		6,250 gp"""
+76-100	Gloves of swimming and climbing	6,250 gp"""
 
 items["hands"]["lesser_medium"] = """01-02	Deliquescent gloves	8,000 gp
 03-05	Form-fixing gauntlets	8,000 gp
@@ -573,7 +573,7 @@ items["wrists"]["greater_major"] = """01-60	Bracers of armor +7	49,000 gp
 
 items["slotless"]["lesser_minor"] = """01	Feather token (anchor)	50 gp
 02	Universal solvent	50 gp
-03–04	Ioun torch	75 gp
+03-04	Ioun torch	75 gp
 05	Stubborn nail	100 gp
 06	War paint of the terrible visage	100 gp
 07	Elixir of love	150 gp
@@ -583,67 +583,67 @@ items["slotless"]["lesser_minor"] = """01	Feather token (anchor)	50 gp
 11	Hybridization funnel	200 gp
 12	Soul soap	200 gp
 13	Dust of tracelessness	250 gp
-14–16	Elixir of hiding	250 gp
-17–19	Elixir of swimming	250 gp
-20–22	Elixir of tumbling	250 gp
-23–25	Elixir of vision	250 gp
-26–27	Nightdrops	250 gp
+14-16	Elixir of hiding	250 gp
+17-19	Elixir of swimming	250 gp
+20-22	Elixir of tumbling	250 gp
+23-25	Elixir of vision	250 gp
+26-27	Nightdrops	250 gp
 28	Oil of silence	250 gp
-29–31	Silversheen	250 gp
+29-31	Silversheen	250 gp
 32	Traveler's any-tool	250 gp
-33–34	Bottle of messages	300 gp
-35–36	Feather token (bird)	300 gp
+33-34	Bottle of messages	300 gp
+35-36	Feather token (bird)	300 gp
 37	Origami swarm	300 gp
 38	Alluring golden apple	400 gp
 39	Feather token (tree)	400 gp
 40	Key of lock jamming	400 gp
-41–42	Feather token (swan boat)	450 gp
+41-42	Feather token (swan boat)	450 gp
 43	Animated portrait	500 gp
 44	Bottled misfortune	500 gp
-45–46	Elixir of truth	500 gp
-47–48	Feather token (whip)	500 gp
-49–51	Scabbard of honing	500 gp
-52–53	Seer's tea	550 gp
-54–57	Abjurant salt	600 gp
-58–61	Arrow magnet	600 gp
-62–63	Dust of darkness	600 gp
-64–69	Campfire bead	720 gp
-70–72	Archon's torch	750 gp
-73–75	Book of extended summoning (lesser)	750 gp
-76–79	Iron rope	750 gp
-80–83	Snapleaf	750 gp
-84–86	Bottled yeti fur	800 gp
-87–89	Defoliant polish	800 gp
-90–92	Dust of emulation	800 gp
-93–97	Steadfast gut-stone	800 gp
-98–100	Dust of dryness	850 gp"""
+45-46	Elixir of truth	500 gp
+47-48	Feather token (whip)	500 gp
+49-51	Scabbard of honing	500 gp
+52-53	Seer's tea	550 gp
+54-57	Abjurant salt	600 gp
+58-61	Arrow magnet	600 gp
+62-63	Dust of darkness	600 gp
+64-69	Campfire bead	720 gp
+70-72	Archon's torch	750 gp
+73-75	Book of extended summoning (lesser)	750 gp
+76-79	Iron rope	750 gp
+80-83	Snapleaf	750 gp
+84-86	Bottled yeti fur	800 gp
+87-89	Defoliant polish	800 gp
+90-92	Dust of emulation	800 gp
+93-97	Steadfast gut-stone	800 gp
+98-100	Dust of dryness	850 gp"""
 
-items["slotless"]["greater_minor"] = """01–03	Roll on the Least Minor table	—
+items["slotless"]["greater_minor"] = """01-03	RANDOM_LEAST_MINOR	0 gp
 04	Anatomy doll	1,000 gp
 05	Bead of newt prevention	1,000 gp
 06	Beast-bond brand	1,000 gp
 07	Bookplate of recall	1,000 gp
-08–09	Boro bead (1st)	1,000 gp
+08-09	Boro bead (1st)	1,000 gp
 10	Concealing pocket	1,000 gp
 11	Dowsing syrup	1,000 gp
 12	Incense of transcendence	1,000 gp
-13–14	Page of spell knowledge (1st)	1,000 gp
-15–17	Pearl of Power (1st)	1,000 gp
+13-14	Page of spell knowledge (1st)	1,000 gp
+15-17	Pearl of Power (1st)	1,000 gp
 18	Preserving flask (1st)	1,000 gp
-19–20	Pyxes of redirected focus	1,000 gp
-21–22	Salve of slipperiness	1,000 gp
+19-20	Pyxes of redirected focus	1,000 gp
+21-22	Salve of slipperiness	1,000 gp
 23	Wasp nest of swarming	1,000 gp
-24–26	Elixir of fire breath	1,100 gp
+24-26	Elixir of fire breath	1,100 gp
 27	Grave salt	1,100 gp
-28–29	Pipes of the sewers	1,150 gp
-30–31	Dust of illusion	1,200 gp
-32–33	Goblin skull bomb	1,200 gp
-34–35	Elixir of dragon breath	1,400 gp
+28-29	Pipes of the sewers	1,150 gp
+30-31	Dust of illusion	1,200 gp
+32-33	Goblin skull bomb	1,200 gp
+34-35	Elixir of dragon breath	1,400 gp
 36	Bookmark of deception	1,500 gp
 37	Word bottle	1,500 gp
 38	Dust of acid consumption	1,600 gp
-39–40	Dust of appearance	1,800 gp
-41–42	Efficient quiver	1,800 gp
+39-40	Dust of appearance	1,800 gp
+41-42	Efficient quiver	1,800 gp
 43	Pipes of sounding	1,800 gp
 44	Scabbard of vigor	1,800 gp
 45	Agile alpenstock	2,000 gp
@@ -651,45 +651,45 @@ items["slotless"]["greater_minor"] = """01–03	Roll on the Least Minor table	�
 47	Clamor box	2,000 gp
 48	Dry load powder horn	2,000 gp
 49	Goblin fire drum (normal)	2,000 gp
-50–51	Handy haversack	2,000 gp
-52–53	Horn of fog	2,000 gp
+50-51	Handy haversack	2,000 gp
+52-53	Horn of fog	2,000 gp
 54	Iron spike of safe passage	2,000 gp
 55	Knight's pennon (honor)	2,200 gp
-56–59	Volatile vaporizer (1st)	2,200 gp
-60–62	Elemental gem	2,250 gp
-63–64	Flying ointment	2,250 gp
+56-59	Volatile vaporizer (1st)	2,200 gp
+60-62	Elemental gem	2,250 gp
+63-64	Flying ointment	2,250 gp
 65	Sovereign glue	2,400 gp
 66	Apple of eternal sleep	2,500 gp
-67–68	Bag of holding (type I)	2,500 gp
+67-68	Bag of holding (type I)	2,500 gp
 69	Candle of truth	2,500 gp
 70	Hexing doll	2,500 gp
-71–72	Stone of alarm	2,700 gp
+71-72	Stone of alarm	2,700 gp
 73	Book of extended summoning (standard)	2,750 gp
-74–77	Bead of force	3,000 gp
+74-77	Bead of force	3,000 gp
 78	Cauldron of brewing	3,000 gp
-79–80	Chime of opening	3,000 gp
+79-80	Chime of opening	3,000 gp
 81	Philter of love	3,000 gp
-82–86	Rope of climbing	3,000 gp
-87–88	Volatile vaporizer (2nd)	3,000 gp
+82-86	Rope of climbing	3,000 gp
+87-88	Volatile vaporizer (2nd)	3,000 gp
 89	Shroud of disintegration	3,300 gp
-90–92	Bag of tricks (gray)	3,400 gp
-93–95	Dust of disappearance	3,500 gp
+90-92	Bag of tricks (gray)	3,400 gp
+93-95	Dust of disappearance	3,500 gp
 96	Dust of weighty burdens	3,600 gp
 97	Noble's vigilant pillbox	3,600 gp
-98–99	Figurine of wondrous power (silver raven)	3,800 gp
+98-99	Figurine of wondrous power (silver raven)	3,800 gp
 100	Volatile vaporizer (3rd)	3,800 gp"""
 
 items["slotless"]["lesser_medium"] = """01	Boro bead (2nd)	4,000 gp
 02	Cautionary creance	4,000 gp
 03	Escape ladder	4,000 gp
 04	Far-reaching sight	4,000 gp
-05–06	Ioun stone (clear spindle)	4,000 gp
+05-06	Ioun stone (clear spindle)	4,000 gp
 07	Marvelous pigments	4,000 gp
-08–15	Page of spell knowledge (2nd)	4,000 gp
-16–25	Pearl of Power (2nd)	4,000 gp
+08-15	Page of spell knowledge (2nd)	4,000 gp
+16-25	Pearl of Power (2nd)	4,000 gp
 26	Preserving flask (2nd)	4,000 gp
 27	Restorative ointment	4,000 gp
-28–30	Stone salve	4,000 gp
+28-30	Stone salve	4,000 gp
 31	Wind-caller compass	4,400 gp
 32	Goblin fire drum (greater)	4,500 gp
 33	Knight's pennon (battle)	4,500 gp
@@ -697,11 +697,11 @@ items["slotless"]["lesser_medium"] = """01	Boro bead (2nd)	4,000 gp
 35	Void dust	4,500 gp
 36	Incense of meditation	4,900 gp
 37	Admixture vial	5,000 gp
-38–51	Bag of holding (type II)	5,000 gp
+38-51	Bag of holding (type II)	5,000 gp
 52	Bone razor	5,000 gp
 53	Horn of the huntmaster	5,000 gp
 54	Insistent doorknocker	5,000 gp
-55–56	Ioun stone (dusty rose prism)	5,000 gp
+55-56	Ioun stone (dusty rose prism)	5,000 gp
 57	Mallet of building	5,000 gp
 58	Polymorphic pouch	5,000 gp
 59	Scabbard of stanching	5,000 gp
@@ -723,19 +723,19 @@ items["slotless"]["lesser_medium"] = """01	Boro bead (2nd)	4,000 gp
 75	Stone familiar	6,000 gp
 76	Book of extended summoning (greater)	6,126 gp
 77	Dragonbone divination sticks	6,400 gp
-78–79	Horn of goodness/evil	6,500 gp
+78-79	Horn of goodness/evil	6,500 gp
 79	Naga-scale bindi	6,600 gp
 80	Bottle of shadows	7,000 gp
 81	Cape of bravado	7,000 gp
-82–83	Instant bridge	7,000 gp
+82-83	Instant bridge	7,000 gp
 84	Mirror of guarding reflections	7,000 gp
 85	Folding boat	7,200 gp
-86–87	Bottle of air	7,250 gp
-88–94	Bag of holding (type III)	7,400 gp
+86-87	Bottle of air	7,250 gp
+88-94	Bag of holding (type III)	7,400 gp
 95	Balm of impish grace	7,500 gp
 96	Candle of clean air	7,500 gp
 97	Harp of charming	7,500 gp
-98–100	Manual of war	7,500 gp"""
+98-100	Manual of war	7,500 gp"""
 
 items["slotless"]["greater_medium"] = """01	Chalice of poison weeping	8,000 gp
 02	Exorcist's aspergillum	8,000 gp
@@ -751,18 +751,18 @@ items["slotless"]["greater_medium"] = """01	Chalice of poison weeping	8,000 gp
 12	Needles of fleshgraving	8,000 gp
 13	Restless lockpicks	8,000 gp
 14	Werewhistle	8,000 gp
-15–16	Deck of illusions	8,100 gp
+15-16	Deck of illusions	8,100 gp
 17	Candle of invocation	8,400 gp
-18–19	Bag of tricks (rust)	8,500 gp
+18-19	Bag of tricks (rust)	8,500 gp
 20	Boro bead (3rd)	9,000 gp
 21	Decanter of endless water	9,000 gp
 22	Loathsome mirror	9,000 gp
-23–25	Page of spell knowledge (3rd)	9,000 gp
-26–31	Pearl of Power (3rd)	9,000 gp
+23-25	Page of spell knowledge (3rd)	9,000 gp
+26-31	Pearl of Power (3rd)	9,000 gp
 32	Preserving flask (3rd)	9,000 gp
 33	Figurine of wondrous power (serpentine owl)	9,100 gp
 34	Strand of prayer beads (lesser)	9,600 gp
-35–38	Bag of holding (type IV)	10,000 gp
+35-38	Bag of holding (type IV)	10,000 gp
 39	Boundary chalk	10,000 gp
 40	Chime of resounding silence	10,000 gp
 41	Construct channel brick	10,000 gp
@@ -774,7 +774,7 @@ items["slotless"]["greater_medium"] = """01	Chalice of poison weeping	8,000 gp
 47	Figurine of wondrous power (ebony fly)	10,000 gp
 48	Figurine of wondrous power (slate spider)	10,000 gp
 49	Hourglass of last chances	10,000 gp
-50–51	Ioun stone (dark blue rhomboid)	10,000 gp
+50-51	Ioun stone (dark blue rhomboid)	10,000 gp
 52	Ki mat	10,000 gp
 53	Lord's banner (swiftness)	10,000 gp
 54	Malleable symbol	10,000 gp
@@ -803,82 +803,82 @@ items["slotless"]["greater_medium"] = """01	Chalice of poison weeping	8,000 gp
 77	Horn of the tritons	15,000 gp
 78	Pearl of the sirines	15,300 gp
 79	Figurine of wondrous power (onyx dog)	15,500 gp
-80–81	Bag of tricks (tan)	16,000 gp
+80-81	Bag of tricks (tan)	16,000 gp
 82	Boro bead (4th)	16,000 gp
 83	Page of spell knowledge (4th)	16,000 gp
-84–87	Pearl of Power (4th)	16,000 gp
+84-87	Pearl of Power (4th)	16,000 gp
 88	Preserving flask (4th)	16,000 gp
-89–91	Scabbard of keen edges	16,000 gp
-92–93	Figurine of wondrous power (golden lions)	16,500 gp
-94–95	Chime of interruption	16,800 gp
-96–99	Broom of flying	17,000 gp
+89-91	Scabbard of keen edges	16,000 gp
+92-93	Figurine of wondrous power (golden lions)	16,500 gp
+94-95	Chime of interruption	16,800 gp
+96-99	Broom of flying	17,000 gp
 100	Figurine of wondrous power (marble elephant)	17,000 gp"""
 
-items["slotless"]["lesser_major"] = """01–03	Ioun stone (iridescent spindle)	18,000 gp
+items["slotless"]["lesser_major"] = """01-03	Ioun stone (iridescent spindle)	18,000 gp
 04	Orb of foul Abaddon	18,000 gp
-05–08	Carpet of flying (5 ft. by 5 ft.)	20,000 gp
+05-08	Carpet of flying (5 ft. by 5 ft.)	20,000 gp
 09	Horn of antagonism	20,000 gp
-10–13	Horn of blasting	20,000 gp
-14–17	Ioun stone (pale lavender ellipsoid)	20,000 gp
-18–21	Ioun stone (pearly white spindle)	20,000 gp
-22–24	Master's perfect golden bell	20,000 gp
-25–27	Necromancer's athame	20,000 gp
-28–31	Portable hole	20,000 gp
-32–35	Stone of good luck	20,000 gp
-36–37	Figurine of wondrous power (ivory goats)	21,000 gp
-38–40	Rope of entanglement	21,000 gp
-41–42	Golem manual (stone)	22,000 gp
+10-13	Horn of blasting	20,000 gp
+14-17	Ioun stone (pale lavender ellipsoid)	20,000 gp
+18-21	Ioun stone (pearly white spindle)	20,000 gp
+22-24	Master's perfect golden bell	20,000 gp
+25-27	Necromancer's athame	20,000 gp
+28-31	Portable hole	20,000 gp
+32-35	Stone of good luck	20,000 gp
+36-37	Figurine of wondrous power (ivory goats)	21,000 gp
+38-40	Rope of entanglement	21,000 gp
+41-42	Golem manual (stone)	22,000 gp
 43	Orb of golden heaven	22,000 gp
-44–45	Mattock of the titans	23,348 gp
-46–48	Drinking horn of bottomless valor	24,000 gp
-49–51	Boro bead (5th)	25,000 gp
-52–53	Chaos emerald	25,000 gp
-54–57	Page of spell knowledge (5th)	25,000 gp
-58–64	Pearl of Power (5th)	25,000 gp
-65–67	Preserving flask (5th)	25,000 gp
-68–69	Maul of the titans	25,305 gp
-70–73	Iron bands of binding	26,000 gp
-74–76	Cube of frost resistance	27,000 gp
-77–80	Manual of bodily health +1	27,500 gp
-81–84	Manual of gainful exercise +1	27,500 gp
-85–88	Manual of quickness of action +1	27,500 gp
-89–92	Tome of clear thought +1	27,500 gp
-93–96	Tome of leadership and influence +1	27,500 gp
-97–100	Tome of understanding +1	27,500 gp"""
+44-45	Mattock of the titans	23,348 gp
+46-48	Drinking horn of bottomless valor	24,000 gp
+49-51	Boro bead (5th)	25,000 gp
+52-53	Chaos emerald	25,000 gp
+54-57	Page of spell knowledge (5th)	25,000 gp
+58-64	Pearl of Power (5th)	25,000 gp
+65-67	Preserving flask (5th)	25,000 gp
+68-69	Maul of the titans	25,305 gp
+70-73	Iron bands of binding	26,000 gp
+74-76	Cube of frost resistance	27,000 gp
+77-80	Manual of bodily health +1	27,500 gp
+81-84	Manual of gainful exercise +1	27,500 gp
+85-88	Manual of quickness of action +1	27,500 gp
+89-92	Tome of clear thought +1	27,500 gp
+93-96	Tome of leadership and influence +1	27,500 gp
+97-100	Tome of understanding +1	27,500 gp"""
 
-items["slotless"]["greater_major"] = """01–03	Crystal ball with see invisibility	50,000 gp
-04–05	Horn of Valhalla	50,000 gp
-06–08	Crystal ball with detect thoughts	51,000 gp
+items["slotless"]["greater_major"] = """01-03	Crystal ball with see invisibility	50,000 gp
+04-05	Horn of Valhalla	50,000 gp
+06-08	Crystal ball with detect thoughts	51,000 gp
 09	Last leaves of the autumn dryad	52,000 gp
-10–11	Instant fortress	55,000 gp
-12–15	Manual of bodily health +2	55,000 gp
-16–19	Manual of gainful exercise +2	55,000 gp
-20–23	Manual of quickness of action +2	55,000 gp
-24–27	Tome of clear thought +2	55,000 gp
-28–31	Tome of leadership and influence +2	55,000 gp
-32–35	Tome of understanding +2	55,000 gp
+10-11	Instant fortress	55,000 gp
+12-15	Manual of bodily health +2	55,000 gp
+16-19	Manual of gainful exercise +2	55,000 gp
+20-23	Manual of quickness of action +2	55,000 gp
+24-27	Tome of clear thought +2	55,000 gp
+28-31	Tome of leadership and influence +2	55,000 gp
+32-35	Tome of understanding +2	55,000 gp
 36	Lord's banner (terror)	56,000 gp
 37	Carpet of flying (10 ft. by 10 ft.)	60,000 gp
-38–39	Darkskull	60,000 gp
+38-39	Darkskull	60,000 gp
 40	Orb of pure law	60,000 gp
 41	Cube of force	62,000 gp
-42–43	Page of spell knowledge (8th)	64,000 gp
-44–49	Pearl of Power (8th)	64,000 gp
+42-43	Page of spell knowledge (8th)	64,000 gp
+44-49	Pearl of Power (8th)	64,000 gp
 50	Crystal ball with telepathy	70,000 gp
 51	Horn of blasting (greater)	70,000 gp
-52–54	Pearl of Power (two spells)	70,000 gp
+52-54	Pearl of Power (two spells)	70,000 gp
 55	Gem of seeing	75,000 gp
 56	Lord's banner (victory)	75,000 gp
 57	Crystal ball with true seeing	80,000 gp
-58–59	Page of spell knowledge (9th)	81,000 gp
-60–62	Pearl of Power (9th)	81,000 gp
+58-59	Page of spell knowledge (9th)	81,000 gp
+60-62	Pearl of Power (9th)	81,000 gp
 63	Well of many worlds	82,000 gp
-64–65	Manual of bodily health +3	82,500 gp
-66–67	Manual of gainful exercise +3	82,500 gp
-68–69	Manual of quickness of action +3	82,500 gp
-70–71	Tome of clear thought +3	82,500 gp
-72–73	Tome of leadership and influence +3	82,500 gp
-74–75	Tome of understanding +3	82,500 gp
+64-65	Manual of bodily health +3	82,500 gp
+66-67	Manual of gainful exercise +3	82,500 gp
+68-69	Manual of quickness of action +3	82,500 gp
+70-71	Tome of clear thought +3	82,500 gp
+72-73	Tome of leadership and influence +3	82,500 gp
+74-75	Tome of understanding +3	82,500 gp
 76	Apparatus of the crab	90,000 gp
 77	Bowl of conjuring water elementals	90,000 gp
 78	Brazier of conjuring fire elementals	90,000 gp
@@ -918,7 +918,7 @@ def wondrous_item(name, price):
 def slugify(string):
 	res = []
 	for c in string:
-		if c.isalpha(): 
+		if c.isalnum():
 			res.append(c.lower())
 		elif res and res[-1] != '-':
 			res.append('-')
@@ -933,7 +933,10 @@ def parseTable(text, magnitude):
     for line in text.splitlines():
         splitted = line.split()
         chance = splitted[0]
-        lo_chance, hi_chance = map(int, chance.split("-"))
+        if (all(c.isdigit() for c in chance)):
+            lo_chance = hi_chance = int(chance)
+        else:
+            lo_chance, hi_chance = map(int, chance.split("-"))
         upperBounds.append(hi_chance)
         price = splitted[-2]
         name = " ".join(splitted[1:-2])
