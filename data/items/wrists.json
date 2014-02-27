@@ -560,6 +560,22 @@
         "id": "shackles-of-durance-vile"
     },
     {
+        "CL": 1,
+        "Group": "Wondrous Item",
+        "Slot": "shoulders",
+        "Name": "Sleeves of Many Garments",
+        "Price": 200,
+        "PriceUnit": "gp",
+        "Aura": "faint illusion",
+        "Weight": "1 lb.",
+        "Cost": 100,
+        "CostUnit": "gp",
+        "Requirements": "Craft Wondrous Item, disguise self",
+        "Description": "These translucent cloth tubes easily fit over their wearer's arms. The wearer of these sleeves can, when she slips them on, choose to transform her current garments into any other nonmagical set of clothing. These new clothes fit her perfectly and are always clean and mended unless she specifically designates otherwise. When she removes the sleeves, her clothes revert to their original form.",
+        "Source": "Ultimate Equipment",
+        "id": "sleeves-of-many-garments"
+    },
+    {
         "CL": 4,
         "Group": "Wondrous Item",
         "Slot": "shoulders",
