@@ -1,5 +1,12 @@
 
 var random_wondrous_item = require('../server/loot/wondrousItems')().random_wondrous_item;
+var levenshtein = require("fast-levenshtein");
+
+function getDistance(object1, object2) {
+    var string1 = "" + object1;
+    var string2 = "" + object2;
+    return levenshtein.get(string1, string2);
+}
 
 var items = {
     belt : require('../data/items/belts.json'),
@@ -29,15 +36,23 @@ for (var slot in random_wondrous_item) {
             if (tableItem === "ROLL_ON_LESSER_MINOR_TABLE") {
                 continue;
             }
+            var minDistance = Number.MAX_VALUE;
+            var closest = null;
             var found = false;
             for (var j in items[slot]) {
                 var descriptionItem = items[slot][j];
                 if (tableItem.id === descriptionItem.id) {
                     found = true;
+                    break;
+                }
+                var distance = getDistance(tableItem.id, descriptionItem.id);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closest = descriptionItem;
                 }
             }
             if (!found) {
-                console.log("unknown id " + tableItem.id);
+                console.log("unknown id " + tableItem.id + " (closest was " + (closest ? closest.id  : null) + ")");
             }
         }
     }
