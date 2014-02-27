@@ -81,6 +81,9 @@ for (i in fake_slots) {
         }
         for (j in fake_slot_table[slot][magnitude].valueTable) {
             tableItem = fake_slot_table[slot][magnitude].valueTable[j];
+            if (tableItem.Metamagic){
+                continue;
+            }
             minDistance = Number.MAX_VALUE;
             closest = null;
             found = false;
