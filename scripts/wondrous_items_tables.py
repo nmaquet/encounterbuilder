@@ -957,5 +957,7 @@ if __name__ == "__main__":
             magnitudes.append(parseTable(items[slot][magnitude], magnitude))
         wondrous_items.append("""%s : { \n %s \n }""" % (slot, ",\n".join(magnitudes)))
     string = """var random_wondrous_item = { \n %s \n };""" % (",\n".join(wondrous_items))
-    with open("../data/items/wondrous_items_tables.js", "w") as f:
-        f.write(string)
+
+    print "wondrousItems.json contains a lot of hand fixes... if you regenerate it using this script, you'll loose these changes !";
+    #with open("../data/items/wondrous_items_tables.js", "w") as f:
+    #    f.write(string)
