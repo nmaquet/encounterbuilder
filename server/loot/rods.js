@@ -94,9 +94,15 @@ var random_rods = {
     }
 };
 
+function generateRod(magnitude) {
+    return random_rods[magnitude].create();
+}
+
+
 module.exports = function (_diceService_) {
     diceService = _diceService_;
     return {
-        random_rods : random_rods
+        random_rods: random_rods,
+        generateRod: generateRod
     }
 };

@@ -141,9 +141,15 @@ var random_ring = {
     }
 };
 
+function generateRing(magnitude) {
+    return random_ring[magnitude].create();
+}
+
+
 module.exports = function (_diceService_) {
     diceService = _diceService_;
     return {
-        random_ring : random_ring
+        random_ring: random_ring,
+        generateRing: generateRing
     }
 };

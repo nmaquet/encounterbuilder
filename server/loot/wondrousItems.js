@@ -1421,9 +1421,15 @@ var random_wondrous_item = {
     }
 };
 
+function generateWondrousItem(magnitude) {
+    return random_wondrous_item.create(magnitude);
+}
+
+
 module.exports = function (_diceService_) {
     diceService = _diceService_;
     return {
-        random_wondrous_item: random_wondrous_item
+        random_wondrous_item: random_wondrous_item,
+        generateWondrousItem:generateWondrousItem
     }
 };

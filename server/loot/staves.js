@@ -113,9 +113,15 @@ var random_staff = {
     }
 };
 
+function generateStaff(magnitude) {
+    return random_staff[magnitude].create();
+}
+
+
 module.exports = function (_diceService_) {
     diceService = _diceService_;
     return {
-        random_staff : random_staff
+        random_staff: random_staff,
+        generateStaff: generateStaff
     }
 };

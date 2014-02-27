@@ -13,9 +13,14 @@ var generateWand;
 var generateScroll;
 var generateMwkArmor;
 var generateMagicArmorOrShield;
+var generateWondrousItem;
+var generateRod;
+var generateRing;
+var generateStaff;
 var typeALoot;
 var typeDLoot;
 var typeELoot;
+var typeGLoot;
 
 var monsterTypeToLootTypeTable = {
     aberration: {A: true, B: true, D: true, E: true},
@@ -146,7 +151,7 @@ function calculateNonNPCLootValue(encounter, speed) {
 };
 
 function generateEncounterNonNPCLoot(budget, lootType) {
-    var generateLoot = {A: generateTypeALoot, D: generateTypeDLoot, E: generateTypeELoot};
+    var generateLoot = {A: generateTypeALoot, D: generateTypeDLoot, E: generateTypeELoot, G: generateTypeGLoot};
     return generateLoot[lootType](budget);
 };
 
@@ -155,7 +160,7 @@ function generateNPCLoot(monsterBrief, speed) {
     var loot = {coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: []};
     for (var i = 0; i < (monsterBrief.amount || 1); i++) {
         //FIXME check creature type for allowed loot type
-        accumulateLoot(loot, generateEncounterNonNPCLoot(budget, diceService.chooseOne(['A', 'D', 'E'])));
+        accumulateLoot(loot, generateEncounterNonNPCLoot(budget, diceService.chooseOne(['A', 'D', 'E', 'G'])));
     }
     return loot;
 };
@@ -176,7 +181,7 @@ function generateEncounterNPCLoot(encounter, speed) {
 function generateEncounterLoot(encounter, speed) {
     var nonNPCBudget = calculateNonNPCLootValue(encounter, speed);
     //FIXME check creature type for allowed loot type
-    var loot = generateEncounterNonNPCLoot(nonNPCBudget, diceService.chooseOne(['A', 'D', 'E']));
+    var loot = generateEncounterNonNPCLoot(nonNPCBudget, diceService.chooseOne(['A', 'D', 'E', 'G']));
     var npcLoot = generateEncounterNPCLoot(encounter, speed);
     accumulateLoot(loot, npcLoot);
     return loot;
@@ -268,6 +273,64 @@ function generateTypeELoot(budget) {
     return loot;
 };
 
+function generateTypeGLoot(budget) {
+    var gpValues = knapsackService.knapsack(Object.keys(typeGLoot), budget);
+    var loot = {coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: []};
+    for (var i in gpValues) {
+        var gpValue = gpValues[i];
+        var partialLoots = typeGLoot[gpValue];
+        for (var j in partialLoots) {
+            var partialLoot = partialLoots[j];
+
+            if (partialLoot.type === 'coins') {
+                loot.coins[partialLoot.unit] += diceService.roll(partialLoot.die, partialLoot.n) * partialLoot.amount;
+            }
+            else if (partialLoot.type === 'scroll') {
+                var amount = partialLoot.amount;
+                for (var k = 0; k < amount; ++k) {
+                    addItem(generateScroll(partialLoot.magnitude), loot.items);
+                }
+            } else if (partialLoot.type === 'potion') {
+                var amount = partialLoot.amount;
+                for (var l = 0; l < amount; ++l) {
+                    addItem(generatePotion(partialLoot.magnitude), loot.items);
+                }
+            } else if (partialLoot.type === 'wand') {
+                var amount = partialLoot.amount;
+                for (var m = 0; m < amount; ++m) {
+                    addItem(generateWand(partialLoot.magnitude), loot.items);
+                }
+            } else if (partialLoot.type === 'ring') {
+                var amount = partialLoot.amount;
+                for (var m = 0; m < amount; ++m) {
+                    addItem(generateRing(partialLoot.magnitude), loot.items);
+                }
+            } else if (partialLoot.type === 'staff') {
+                var amount = partialLoot.amount;
+                for (var m = 0; m < amount; ++m) {
+                    addItem(generateStaff(partialLoot.magnitude), loot.items);
+                }
+            } else if (partialLoot.type === 'wondrous') {
+                var amount = partialLoot.amount;
+                for (var m = 0; m < amount; ++m) {
+                    addItem(generateWondrousItem(partialLoot.magnitude), loot.items);
+                }
+            } else if (partialLoot.type === 'rod') {
+                var amount = partialLoot.amount;
+                for (var m = 0; m < amount; ++m) {
+                    addItem(generateRod(partialLoot.magnitude), loot.items);
+                }
+            } else if (partialLoot.mwk && partialLoot.type === "weapon") {
+                addItem(generateMwkWeapon(), loot.items);
+            } else if (partialLoot.type === "weapon") {
+                addItem(generateMagicWeapon(partialLoot.magnitude), loot.items);
+            }
+        }
+    }
+    return loot;
+};
+
+
 module.exports = function (_diceService_, _knapsackService_) {
     diceService = _diceService_;
     knapsackService = _knapsackService_;
@@ -279,9 +342,14 @@ module.exports = function (_diceService_, _knapsackService_) {
     generatePotion = require('./potions')(diceService).generatePotion;
     generateWand = require('./wands')(diceService).generateWand;
     generateScroll = require('./scrolls')(diceService).generateScroll;
+    generateWondrousItem = require('./wondrousItems')(diceService).generateWondrousItem;
+    generateRod = require('./rods')(diceService).generateRod;
+    generateRing = require('./rings')(diceService).generateRing;
+    generateStaff = require('./staves')(diceService).generateStaff;
     typeALoot = require('./typeA')().typeALoot;
     typeDLoot = require('./typeD')().typeDLoot;
     typeELoot = require('./typeE')().typeELoot;
+    typeGLoot = require('./typeG')().typeGLoot;
     return {
         generateEncounterLoot: generateEncounterLoot,
         mostGenerousBudgetMultiplierAmongNonNPC: mostGenerousBudgetMultiplierAmongNonNPC,
@@ -296,6 +364,7 @@ module.exports = function (_diceService_, _knapsackService_) {
         generateTypeDLoot: generateTypeDLoot,
         generateTypeELoot: generateTypeELoot,
         generateTypeALoot: generateTypeALoot,
+        generateTypeGLoot: generateTypeGLoot,
         generateMwkArmor: generateMwkArmor,
         generateMwkWeapon: generateMwkWeapon,
         generateMagicWeaponByBonus: generateMagicWeaponByBonus,

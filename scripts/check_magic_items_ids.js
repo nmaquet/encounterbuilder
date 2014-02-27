@@ -1,8 +1,9 @@
+"use strict";
 
 var random_wondrous_item = require('../server/loot/wondrousItems')().random_wondrous_item;
 var random_ring = require('../server/loot/rings')().random_ring;
-var random_staff = require('../server/loot/rings')().random_staff;
-var random_rod = require('../server/loot/rings')().random_rod;
+var random_staff = require('../server/loot/staves')().random_staff;
+var random_rod = require('../server/loot/rods')().random_rods;
 
 var levenshtein = require("fast-levenshtein");
 
@@ -72,24 +73,24 @@ for (var slot in random_wondrous_item) {
 var fake_slots = ["rings", "rods", "staves"];
 var fake_slot_table = {"rings" : random_ring, "rods" : random_rod, "staves" : random_staff};
 
-for (var i in fake_slots) {
-    var slot = fake_slots[i];
-    for (var magnitude in fake_slot_table[slot]) {
+for (i in fake_slots) {
+    slot = fake_slots[i];
+    for (magnitude in fake_slot_table[slot]) {
         if (!fake_slot_table[slot].hasOwnProperty(magnitude)) {
             continue
         }
-        for (var i in fake_slot_table[slot][magnitude].valueTable) {
-            var tableItem = fake_slot_table[slot][magnitude].valueTable[i];
-            var minDistance = Number.MAX_VALUE;
-            var closest = null;
-            var found = false;
-            for (var j in items[slot]) {
-                var descriptionItem = items[slot][j];
+        for (j in fake_slot_table[slot][magnitude].valueTable) {
+            tableItem = fake_slot_table[slot][magnitude].valueTable[j];
+            minDistance = Number.MAX_VALUE;
+            closest = null;
+            found = false;
+            for (var k in items[slot]) {
+                descriptionItem = items[slot][k];
                 if (tableItem.id === descriptionItem.id) {
                     found = true;
                     break;
                 }
-                var distance = getDistance(tableItem.id, descriptionItem.id);
+                distance = getDistance(tableItem.id, descriptionItem.id);
                 if (distance < minDistance) {
                     minDistance = distance;
                     closest = descriptionItem;
