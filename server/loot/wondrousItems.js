@@ -1310,7 +1310,7 @@ var random_wondrous_item = {
                 {"Price": 64000.0, "PriceUnit": "gp", "Name": "Headband of mental resilience", "id": "headband-of-mental-resilience"},
                 {"Price": 64000.0, "PriceUnit": "gp", "Name": "Headband of mental superiority +4", "id": "headband-of-mental-superiority-4"},
                 {"Price": 81000.0, "PriceUnit": "gp", "Name": "Headband of aerial agility +6", "id": "headband-of-aerial-agility-6"},
-                {"Price": 90000.0, "PriceUnit": "gp", "Name": "Headband of metal prowess +6", "id": "headband-of-metal-prowess-6"},
+                {"Price": 90000.0, "PriceUnit": "gp", "Name": "Headband of mental prowess +6", "id": "headband-of-mental-prowess-6"},
                 {"Price": 144000.0, "PriceUnit": "gp", "Name": "Headband of mental superiority +6", "id": "headband-of-mental-superiority-6"}
             ]
         }
