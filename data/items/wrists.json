@@ -2,7 +2,7 @@
     {
         "CL": 3,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Armbands of the Brawler",
         "Price": 500,
         "PriceUnit": "gp",
@@ -18,7 +18,7 @@
     {
         "CL": 5,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Arrowmaster's Bracers",
         "Price": 13900,
         "PriceUnit": "gp",
@@ -34,7 +34,7 @@
     {
         "CL": 5,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bonebreaker Gauntlets",
         "Price": 6000,
         "PriceUnit": "gp",
@@ -50,7 +50,7 @@
     {
         "CL": 7,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracelet of Bargaining",
         "Price": 14500,
         "PriceUnit": "gp",
@@ -66,7 +66,7 @@
     {
         "CL": 15,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracelet of Friends",
         "Price": 19000,
         "PriceUnit": "gp",
@@ -82,7 +82,7 @@
     {
         "CL": 5,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracelet of Mercy",
         "Price": 15000,
         "PriceUnit": "gp",
@@ -98,7 +98,7 @@
     {
         "CL": 9,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracelet of Second Chances",
         "Price": 15750,
         "PriceUnit": "gp",
@@ -114,7 +114,7 @@
     {
         "CL": 8,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of Archery, Greater",
         "Price": 25000,
         "PriceUnit": "gp",
@@ -130,7 +130,7 @@
     {
         "CL": 4,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of Archery, Lesser",
         "Price": 5000,
         "PriceUnit": "gp",
@@ -146,7 +146,7 @@
     {
         "CL": 7,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of Armor +1",
         "Price": 1000,
         "PriceUnit": "gp",
@@ -162,7 +162,7 @@
     {
         "CL": 7,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of Armor +2",
         "Price": 4000,
         "PriceUnit": "gp",
@@ -178,7 +178,7 @@
     {
         "CL": 7,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of Armor +3",
         "Price": 9000,
         "PriceUnit": "gp",
@@ -194,7 +194,7 @@
     {
         "CL": 7,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of Armor +4",
         "Price": 16000,
         "PriceUnit": "gp",
@@ -210,7 +210,7 @@
     {
         "CL": 7,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of Armor +5",
         "Price": 25000,
         "PriceUnit": "gp",
@@ -226,7 +226,7 @@
     {
         "CL": 7,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of Armor +6",
         "Price": 36000,
         "PriceUnit": "gp",
@@ -242,7 +242,7 @@
     {
         "CL": 7,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of Armor +7",
         "Price": 49000,
         "PriceUnit": "gp",
@@ -258,7 +258,7 @@
     {
         "CL": 7,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of Armor +8",
         "Price": 64000,
         "PriceUnit": "gp",
@@ -274,7 +274,7 @@
     {
         "CL": 3,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of Falcon's Aim",
         "Price": 4000,
         "PriceUnit": "gp",
@@ -290,7 +290,7 @@
     {
         "CL": 1,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of Steadiness",
         "Price": 2000,
         "PriceUnit": "gp",
@@ -306,7 +306,7 @@
     {
         "CL": 15,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of Sworn Vengeance",
         "Price": 25000,
         "PriceUnit": "gp",
@@ -322,7 +322,7 @@
     {
         "CL": 8,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of the Avenging Knight",
         "Price": 11500,
         "PriceUnit": "gp",
@@ -338,7 +338,7 @@
     {
         "CL": 7,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of the Glib Entertainer",
         "Price": 7900,
         "PriceUnit": "gp",
@@ -354,7 +354,7 @@
     {
         "CL": 9,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Bracers of the Merciful Knight",
         "Price": 15600,
         "PriceUnit": "gp",
@@ -370,7 +370,7 @@
     {
         "CL": 3,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Burglar's Bracers",
         "Price": 1050,
         "PriceUnit": "gp",
@@ -386,7 +386,7 @@
     {
         "CL": 5,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Charm Bracelet",
         "Price": 8000,
         "PriceUnit": "gp",
@@ -402,7 +402,7 @@
     {
         "CL": 11,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Dimensional Shackles",
         "Price": 28000,
         "PriceUnit": "gp",
@@ -418,7 +418,7 @@
     {
         "CL": 8,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Duelist's Vambraces",
         "Price": 8000,
         "PriceUnit": "gp",
@@ -434,7 +434,7 @@
     {
         "CL": 8,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Gauntlets of Skill at Arms",
         "Price": 30000,
         "PriceUnit": "gp",
@@ -450,7 +450,7 @@
     {
         "CL": 5,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Inquisitor's Bastion Vambraces",
         "Price": 4000,
         "PriceUnit": "gp",
@@ -466,7 +466,7 @@
     {
         "CL": 3,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Longarm Bracers",
         "Price": 7200,
         "PriceUnit": "gp",
@@ -482,7 +482,7 @@
     {
         "CL": 1,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Manacles of Cooperation",
         "Price": 2000,
         "PriceUnit": "gp",
@@ -498,7 +498,7 @@
     {
         "CL": 7,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Merciful Vambraces",
         "Price": 8000,
         "PriceUnit": "gp",
@@ -514,7 +514,7 @@
     {
         "CL": 6,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Seducer's Bane",
         "Price": 9900,
         "PriceUnit": "gp",
@@ -530,7 +530,7 @@
     {
         "CL": 3,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Shackles of Compliance",
         "Price": 3280,
         "PriceUnit": "gp",
@@ -546,7 +546,7 @@
     {
         "CL": 9,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Shackles of Durance Vile",
         "Price": 16200,
         "PriceUnit": "gp",
@@ -562,7 +562,7 @@
     {
         "CL": 1,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Sleeves of Many Garments",
         "Price": 200,
         "PriceUnit": "gp",
@@ -578,7 +578,7 @@
     {
         "CL": 4,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Spellguard Bracers",
         "Price": 5000,
         "PriceUnit": "gp",
@@ -594,7 +594,7 @@
     {
         "CL": 5,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Vambraces of Defense",
         "Price": 6000,
         "PriceUnit": "gp",
@@ -610,7 +610,7 @@
     {
         "CL": 5,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Vambraces of the Genie, Djinni",
         "Price": 18900,
         "PriceUnit": "gp",
@@ -626,7 +626,7 @@
     {
         "CL": 5,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Vambraces of the Genie, Efreeti",
         "Price": 14400,
         "PriceUnit": "gp",
@@ -642,7 +642,7 @@
     {
         "CL": 5,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Vambraces of the Genie, Marid",
         "Price": 18900,
         "PriceUnit": "gp",
@@ -658,7 +658,7 @@
     {
         "CL": 5,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Vambraces of the Genie, Shaitan",
         "Price": 18900,
         "PriceUnit": "gp",
@@ -674,7 +674,7 @@
     {
         "CL": 7,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Vambraces of the Tactician",
         "Price": 8000,
         "PriceUnit": "gp",
@@ -690,7 +690,7 @@
     {
         "CL": 5,
         "Group": "Wondrous Item",
-        "Slot": "shoulders",
+        "Slot": "wrists",
         "Name": "Verdant Vine",
         "Price": 6000,
         "PriceUnit": "gp",

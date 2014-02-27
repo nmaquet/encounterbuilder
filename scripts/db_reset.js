@@ -110,7 +110,17 @@ MagicItem.remove({}, function (error, count) {
         __dirname + '/../data/items/rods.json',
         __dirname + '/../data/items/staves.json',
         __dirname + '/../data/items/belts.json',
-        __dirname + '/../data/items/body.json'
+        __dirname + '/../data/items/body.json',
+        __dirname + '/../data/items/chests.json',
+        __dirname + '/../data/items/eyes.json',
+        __dirname + '/../data/items/feet.json',
+        __dirname + '/../data/items/hands.json',
+        __dirname + '/../data/items/head.json',
+        __dirname + '/../data/items/headbands.json',
+        __dirname + '/../data/items/necks.json',
+        __dirname + '/../data/items/shoulders.json',
+        __dirname + '/../data/items/slotless.json',
+        __dirname + '/../data/items/wrists.json'
     ];
 
     var itemsToInsert = [];

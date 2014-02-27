@@ -77,7 +77,7 @@ var processParagraphWithID = function (index) {
         var item = {
             "CL": Number(cl),
             "Group": "Wondrous Item",
-            "Slot":"shoulders",
+            "Slot":"wrists",
             "Name": name[i],
             "Price": parsePrice(price[i]),
             "PriceUnit": "gp",
