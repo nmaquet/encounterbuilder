@@ -5,7 +5,7 @@ import json
 
 items = {}
 
-items["lesser_minor"] = """01-07	Dungeon ring, prisoner's	250 gp
+items["lesser_minor"] = """01-07	Prisoner's dungeon ring	250 gp
 08-16	Ring of arcane signets	1,000 gp
 17-25	Ring of spell knowledge I	1,500 gp
 26-40	Ring of protection +1	2,000 gp
@@ -52,7 +52,7 @@ items["lesser_medium"] = """01-02	Ring of forcefangs	8,000 gp
 80-82	Ring of the sea strider	14,000 gp
 83-85	Ring of retribution	15,000 gp
 86-89	Ring of water walking	15,000 gp
-90-95	Dungeon ring, jailer's	16,000 gp
+90-95	Jailer's dungeon ring	16,000 gp
 96-100	Ring of revelation, greater	16,000 gp"""
 items["greater_medium"] = """01-04	Ring of inner fortitude, minor	18,000 gp
 05-16	Ring of protection +3	18,000 gp

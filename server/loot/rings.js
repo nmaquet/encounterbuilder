@@ -31,7 +31,7 @@ var random_ring = {
         },
         chanceTable: [7, 16, 25, 40, 47, 57, 66, 75, 84, 93],
         valueTable: [
-            {"Price": 250.0, "PriceUnit": "gp", "Name": "Dungeon ring, prisoner's", "id": "dungeon-ring-prisoner-s"},
+            {"Price": 250.0, "PriceUnit": "gp", "Name": "Prisoner's dungeon ring", "id": "prisoner-s-dungeon-ring"},
             {"Price": 1000.0, "PriceUnit": "gp", "Name": "Ring of arcane signets", "id": "ring-of-arcane-signets"},
             {"Price": 1500.0, "PriceUnit": "gp", "Name": "Ring of spell knowledge I", "id": "ring-of-spell-knowledge-i"},
             {"Price": 2000.0, "PriceUnit": "gp", "Name": "Ring of protection +1", "id": "ring-of-protection-1"},
@@ -111,7 +111,7 @@ var random_ring = {
             {"Price": 14000.0, "PriceUnit": "gp", "Name": "Ring of the sea strider", "id": "ring-of-the-sea-strider"},
             {"Price": 15000.0, "PriceUnit": "gp", "Name": "Ring of retribution", "id": "ring-of-retribution"},
             {"Price": 15000.0, "PriceUnit": "gp", "Name": "Ring of water walking", "id": "ring-of-water-walking"},
-            {"Price": 16000.0, "PriceUnit": "gp", "Name": "Dungeon ring, jailer's", "id": "dungeon-ring-jailer-s"},
+            {"Price": 16000.0, "PriceUnit": "gp", "Name": "Jailer's dungeon ring", "id": "jailer-s-dungeon-ring"},
             {"Price": 16000.0, "PriceUnit": "gp", "Name": "Ring of revelation, greater", "id": "ring-of-revelation-greater"}
         ]
     },
