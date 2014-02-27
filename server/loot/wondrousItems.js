@@ -1418,6 +1418,6 @@ var random_wondrous_item = {
 module.exports = function (_diceService_) {
     diceService = _diceService_;
     return {
-
+        random_wondrous_item : random_wondrous_item
     }
 };
