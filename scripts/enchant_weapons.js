@@ -4,6 +4,7 @@ var fs = require('fs');
 
 var weapons = require(__dirname + "/../data/items/weapons.json");
 var clone = require(__dirname + "/../server/clone.js")().clone;
+var idify = require(__dirname + "/../server/idify.js")().idify;
 
 var ONLY_NON_LETHAL = function (weapon) {
     if (weapon.Special.toLowerCase().indexOf("nonlethal") === -1) {
@@ -263,10 +264,6 @@ var ammunitionSpecialAbilities = {
         {name: "Designating, greater", cl: 12},
     ]
 };
-
-function idify(string) {
-    return string.toLowerCase().replace(" ", "-");
-}
 
 var priceModifiers = {
     1: 2000,

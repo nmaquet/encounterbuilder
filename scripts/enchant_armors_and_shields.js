@@ -4,7 +4,7 @@ var fs = require('fs');
 
 var armors = require(__dirname + "/../data/items/armors_and_shields.json");
 var clone = require(__dirname + "/../server/clone.js")().clone;
-
+var idify = require(__dirname + "/../server/idify.js")().idify;
 
 var armorSpecialAbilities = {
     1: [
@@ -118,11 +118,6 @@ var shieldSpecialAbilities = {
         {name: "Spell resistance (19)", cl: 15}
     ]
 };
-
-
-function idify(string) {
-    return string.toLowerCase().replace(" ", "-");
-}
 
 var priceModifiers = {
     1: 1000,
