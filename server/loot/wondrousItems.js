@@ -39,7 +39,7 @@ var random_wondrous_item = {
             chanceTable: [15, 30, 45, 60, 75],
             valueTable: [
                 {"Price": 4600.0, "PriceUnit": "gp", "Name": "Cassock of the clergy", "id": "cassock-of-the-clergy"},
-                {"Price": 5000.0, "PriceUnit": "gp", "Name": "Mnemonic vestments", "id": "mnemonic-vestments"},
+                {"Price": 5000.0, "PriceUnit": "gp", "Name": "Mnemonic vestment", "id": "mnemonic-vestment"},
                 {"Price": 5000.0, "PriceUnit": "gp", "Name": "Robe of components", "id": "robe-of-components"},
                 {"Price": 5000.0, "PriceUnit": "gp", "Name": "Sorcerer's robe", "id": "sorcerer-s-robe"},
                 {"Price": 6000.0, "PriceUnit": "gp", "Name": "Eidolon anchoring harness", "id": "eidolon-anchoring-harness"},

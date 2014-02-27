@@ -54,7 +54,7 @@ for (var slot in random_wondrous_item) {
                 }
             }
             if (!found) {
-                console.log("unknown id " + tableItem.id + " (closest was " + (closest ? closest.id  : null) + ")");
+                console.log(slot + " " + magnitude + " " + "unknown id " + tableItem.id + " (closest was " + (closest ? closest.id  : null) + ")");
                 ERROR_COUNT++;
             }
         }
