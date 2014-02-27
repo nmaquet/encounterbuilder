@@ -4264,16 +4264,17 @@
         "CL": 17,
         "Group": "Wondrous Item",
         "Slot": "slotless",
-        "Name": "Pearl of Power, Two",
-        "Price": null,
+        "Name": "Pearl of Power Two spells",
+        "Price": 70000,
         "PriceUnit": "gp",
         "Aura": "strong transmutation",
         "Weight": "—",
+        "Cost": 35000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, creator must be able to cast spells of the spell level to be recalled",
         "Description": "This seemingly normal pearl of average size and luster is a potent aid to all spellcasters who prepare spells. Once per day on command, a <i>pearl of power</i> enables the possessor to recall any one spell that she had prepared and then cast that day. The spell is then prepared again, just as if it had not been cast. The spell must be of a particular level, depending on the pearl. Different pearls exist for recalling one spell per day of each level from 1st through 9th and for the recall of two spells per day (each of a different level, 6th or lower).",
         "Source": "Ultimate Equipment",
-        "id": "pearl-of-power-two"
+        "id": "pearl-of-power-two-spells"
     },
     {
         "CL": 8,
