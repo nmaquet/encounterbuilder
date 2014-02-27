@@ -43,10 +43,18 @@ var processParagraphWithID = function (index) {
             if (variant.split(" ")[0].trim()[0] === "+") {
                 name.push(originalName + " " + variant.split(" ")[0].trim());
             }
+            else if (variant.split(" ")[0].trim()[0] === "(") {
+                name.push(originalName + " " + variant.split(")")[0].trim()) + ")";
+            }
             else {
                 name.push(originalName + ", " + variant.split(" ")[0].trim());
             }
-            price.push(variant.split(" ")[1].trim());
+            if (variant.split(" ")[0].trim()[0] === "(") {
+                price.push(variant.split(")")[1].trim());
+            }
+            else {
+                price.push(variant.split(" ")[1].trim());
+            }
         }
 
         firstDescriptionParagraph = secondParagraph.next();
