@@ -5,6 +5,8 @@ var mongoose = require('mongoose');
 var Monster = require('./monsterModel')(mongoose).Monster;
 var MagicItem = require('./magicItemModel')(mongoose).MagicItem;
 
+var idify = require(__dirname + "/../server/idify.js")().idify;
+
 if (process.env.USE_TEST_DB) {
     var db = mongoose.connect(process.env['MONGODB_TEST_URL']);
 } else {
@@ -15,7 +17,7 @@ var monster_ids = [];
 var magic_item_ids = [];
 
 function generateId(name, ids) {
-    var prefix = name.toLowerCase().replace(/\s/g, "-");
+    var prefix = idify(name);
 
     if (ids.indexOf(prefix) === -1) {
         ids.push(prefix);
