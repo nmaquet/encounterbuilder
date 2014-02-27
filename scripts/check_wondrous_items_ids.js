@@ -1,5 +1,9 @@
 
 var random_wondrous_item = require('../server/loot/wondrousItems')().random_wondrous_item;
+var random_ring = require('../server/loot/rings')().random_ring;
+var random_staff = require('../server/loot/rings')().random_staff;
+var random_rod = require('../server/loot/rings')().random_rod;
+
 var levenshtein = require("fast-levenshtein");
 
 function getDistance(object1, object2) {
@@ -20,7 +24,11 @@ var items = {
     neck : require('../data/items/necks.json'),
     shoulders : require('../data/items/shoulders.json'),
     wrists : require('../data/items/wrists.json'),
-    slotless : require('../data/items/slotless.json')
+    slotless : require('../data/items/slotless.json'),
+    /* fake slots */
+    rings : require('../data/items/rings.json'),
+    staves : require('../data/items/staves.json'),
+    rods : require('../data/items/rods.json')
 }
 
 var ERROR_COUNT = 0;
@@ -38,6 +46,40 @@ for (var slot in random_wondrous_item) {
             if (tableItem === "ROLL_ON_LESSER_MINOR_TABLE") {
                 continue;
             }
+            var minDistance = Number.MAX_VALUE;
+            var closest = null;
+            var found = false;
+            for (var j in items[slot]) {
+                var descriptionItem = items[slot][j];
+                if (tableItem.id === descriptionItem.id) {
+                    found = true;
+                    break;
+                }
+                var distance = getDistance(tableItem.id, descriptionItem.id);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closest = descriptionItem;
+                }
+            }
+            if (!found) {
+                console.log(slot + " " + magnitude + " " + "unknown id " + tableItem.id + " (closest was " + (closest ? closest.id  : null) + ")");
+                ERROR_COUNT++;
+            }
+        }
+    }
+}
+
+var fake_slots = ["rings", "rods", "staves"];
+var fake_slot_table = {"rings" : random_ring, "rods" : random_rod, "staves" : random_staff};
+
+for (var i in fake_slots) {
+    var slot = fake_slots[i];
+    for (var magnitude in fake_slot_table[slot]) {
+        if (!fake_slot_table[slot].hasOwnProperty(magnitude)) {
+            continue
+        }
+        for (var i in fake_slot_table[slot][magnitude].valueTable) {
+            var tableItem = fake_slot_table[slot][magnitude].valueTable[i];
             var minDistance = Number.MAX_VALUE;
             var closest = null;
             var found = false;
