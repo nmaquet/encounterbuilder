@@ -23,6 +23,8 @@ var items = {
     slotless : require('../data/items/slotless.json')
 }
 
+var ERROR_COUNT = 0;
+
 for (var slot in random_wondrous_item) {
     if (!random_wondrous_item.hasOwnProperty(slot)) {
         continue
@@ -53,7 +55,10 @@ for (var slot in random_wondrous_item) {
             }
             if (!found) {
                 console.log("unknown id " + tableItem.id + " (closest was " + (closest ? closest.id  : null) + ")");
+                ERROR_COUNT++;
             }
         }
     }
 }
+
+console.log("\n There were " + ERROR_COUNT + " errors");
