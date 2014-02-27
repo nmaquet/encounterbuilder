@@ -44,7 +44,7 @@ var processParagraphWithID = function (index) {
                 name.push(originalName + " " + variant.split(" ")[0].trim());
             }
             else if (variant.split(" ")[0].trim()[0] === "(") {
-                name.push(originalName + " " + variant.split(")")[0].trim()) + ")";
+                name.push(originalName + " " + variant.split(")")[0].trim() + ")");
             }
             else {
                 name.push(originalName + ", " + variant.split(" ")[0].trim());
