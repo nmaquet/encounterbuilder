@@ -971,7 +971,7 @@ var random_wondrous_item = {
             valueTable: [
                 {"Price": 21000.0, "PriceUnit": "gp", "Name": "Shoes of the firewalker", "id": "shoes-of-the-firewalker"},
                 {"Price": 24000.0, "PriceUnit": "gp", "Name": "Dryad sandals", "id": "dryad-sandals"},
-                {"Price": 27000.0, "PriceUnit": "gp", "Name": "Horseshoes of the mist", "id": "horseshoes-of-the-mist"}
+                {"Price": 27000.0, "PriceUnit": "gp", "Name": "Horseshoes of mist", "id": "horseshoes-of-mist"}
             ]
         },
         lesser_minor: {
