@@ -15,6 +15,9 @@ module.exports = function () {
                     id += "-";
                 }
             }
+            if (id[id.length - 1] === "-"){
+                id = id.slice(0, id.length - 1);
+            }
             return id;
         }
     };
