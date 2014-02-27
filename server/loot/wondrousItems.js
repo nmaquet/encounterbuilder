@@ -766,7 +766,7 @@ var random_wondrous_item = {
                 {"Price": 2000.0, "PriceUnit": "gp", "Name": "Horn of fog", "id": "horn-of-fog"},
                 {"Price": 2000.0, "PriceUnit": "gp", "Name": "Iron spike of safe passage", "id": "iron-spike-of-safe-passage"},
                 {"Price": 2200.0, "PriceUnit": "gp", "Name": "Knight's pennon (honor)", "id": "knight-s-pennon-honor"},
-                {"Price": 2200.0, "PriceUnit": "gp", "Name": "Volatile vaporizer (1st)", "id": "volatile-vaporizer-1st"},
+                {"Price": 2200.0, "PriceUnit": "gp", "Name": "Volatile vaporizer, 1st level", "id": "volatile-vaporizer-1st-level"},
                 {"Price": 2250.0, "PriceUnit": "gp", "Name": "Elemental gem", "id": "elemental-gem"},
                 {"Price": 2250.0, "PriceUnit": "gp", "Name": "Flying ointment", "id": "flying-ointment"},
                 {"Price": 2400.0, "PriceUnit": "gp", "Name": "Sovereign glue", "id": "sovereign-glue"},
@@ -781,14 +781,14 @@ var random_wondrous_item = {
                 {"Price": 3000.0, "PriceUnit": "gp", "Name": "Chime of opening", "id": "chime-of-opening"},
                 {"Price": 3000.0, "PriceUnit": "gp", "Name": "Philter of love", "id": "philter-of-love"},
                 {"Price": 3000.0, "PriceUnit": "gp", "Name": "Rope of climbing", "id": "rope-of-climbing"},
-                {"Price": 3000.0, "PriceUnit": "gp", "Name": "Volatile vaporizer (2nd)", "id": "volatile-vaporizer-2nd"},
+                {"Price": 3000.0, "PriceUnit": "gp", "Name": "Volatile vaporizer, 2nd level", "id": "volatile-vaporizer-2nd-level"},
                 {"Price": 3300.0, "PriceUnit": "gp", "Name": "Shroud of disintegration", "id": "shroud-of-disintegration"},
                 {"Price": 3400.0, "PriceUnit": "gp", "Name": "Bag of tricks (gray)", "id": "bag-of-tricks-gray"},
                 {"Price": 3500.0, "PriceUnit": "gp", "Name": "Dust of disappearance", "id": "dust-of-disappearance"},
                 {"Price": 3600.0, "PriceUnit": "gp", "Name": "Dust of weighty burdens", "id": "dust-of-weighty-burdens"},
                 {"Price": 3600.0, "PriceUnit": "gp", "Name": "Noble's vigilant pillbox", "id": "noble-s-vigilant-pillbox"},
                 {"Price": 3800.0, "PriceUnit": "gp", "Name": "Figurine of wondrous power (silver raven)", "id": "figurine-of-wondrous-power-silver-raven"},
-                {"Price": 3800.0, "PriceUnit": "gp", "Name": "Volatile vaporizer (3rd)", "id": "volatile-vaporizer-3rd"}
+                {"Price": 3800.0, "PriceUnit": "gp", "Name": "Volatile vaporizer, 3rd level", "id": "volatile-vaporizer-3rd-level"}
             ]
         },
         lesser_major: {
