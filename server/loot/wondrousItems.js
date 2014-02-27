@@ -5,6 +5,12 @@ var clone = require('./../clone')().clone;
 var diceService;
 
 var random_wondrous_item = {
+    create: function (magnitude) {
+        var slot = diceService.rangeIn100(this.slotChanceTable, this.slotValueTable);
+        return this[slot][magnitude].create();
+    },
+    slotChanceTable: [6, 12, 17, 22, 28, 34, 41, 47, 54, 61, 67],
+    slotValueTable: ["belt", "body", "chest", "eyes", "feet", "hands", "head", "headband", "neck", "shoulders", "wrists", "slotless"],
     body: {
         greater_medium: {
             create: function () {
@@ -1418,6 +1424,6 @@ var random_wondrous_item = {
 module.exports = function (_diceService_) {
     diceService = _diceService_;
     return {
-        random_wondrous_item : random_wondrous_item
+        random_wondrous_item: random_wondrous_item
     }
 };
