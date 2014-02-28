@@ -66,9 +66,10 @@ function main(db) {
     app.post("/api/remove-encounter", authentication.check, encounterRoute.delete);
     app.post("/api/generate-encounter-loot", authentication.check, encounterRoute.generateLoot);
 
-    app.get('/feedback-popover.html', clientRoutes.feedbackPopover);
+    app.get('/feedback-popover.html', authentication.check, clientRoutes.feedbackPopover);
     app.get('/login.html', clientRoutes.login);
-    app.get('/encounter-builder.html', clientRoutes.encounterBuilder);
+    app.get('/encounter-builder.html', authentication.check, clientRoutes.encounterBuilder);
+    app.get('/printable-encounter.html', authentication.check, clientRoutes.printableEncounter);
     app.get('/', clientRoutes.default);
 
     var port = process.env.PORT || 3000;

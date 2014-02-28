@@ -13,6 +13,9 @@ module.exports = function () {
         },
         feedbackPopover: function (request, response) {
             response.render('../client/private/jade/feedback-popover.jade');
+        },
+        printableEncounter: function (request, response) {
+            response.render('../client/private/jade/printable-encounter.jade');
         }
     }
 };

@@ -21,6 +21,7 @@ var jsFiles = [
     "client/private/bower_components/jquery-ui/ui/jquery-ui.js",
     "client/private/bower_components/jquery-cookie/jquery.cookie.js",
     "client/private/bower_components/bootstrap/dist/js/bootstrap.js",
+    "client/private/bower_components/async/lib/async.js",
     // App files
     "client/private/js/app.js", /* app.js MUST be the first app file ! */
     "client/private/js/extra/clone.js",
@@ -35,6 +36,7 @@ var jsFiles = [
     "client/private/js/controllers/tab-controller.js",
     "client/private/js/controllers/search-item-controller.js",
     "client/private/js/controllers/item-details-controller.js",
+    "client/private/js/controllers/printable-encounter-controller.js",
     "client/private/js/directives/click-to-edit.js",
     "client/private/js/directives/confirm-click.js",
     "client/private/js/filters/abbreviate-monster-source.js",

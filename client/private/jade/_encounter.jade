@@ -1,9 +1,13 @@
 div.encounter(ng-show="encounter")
     .row.heading
         .col-sm-12
-            a.pointer.remove-encounter.pull-right(ng-click="removeEncounter(encounter)", confirm-click="Are you sure ?", confirm-title="Delete encounter")
-                i.icon.icon-remove
-                    | ×
+            .pull-right
+                a.pointer.print-encounter(ng-click="printSelectedEncounter()")
+                    i.icon.fa.fa-print
+                    |&nbsp;
+                a.pointer.remove-encounter(ng-click="removeEncounter(encounter)", confirm-click="Are you sure ?", confirm-title="Delete encounter")
+                    i.icon.icon-remove
+                        | ×
             h3.encounter-title.font-title
                 span.encounter-name.pointer(click-to-edit='encounter.Name', on-save="encounterChanged()")
         .col-sm-12

@@ -66,6 +66,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     encounter.Monsters = {};
                 }
                 if (!encounter.Monsters[monster.id]) {
+                    //FIXME use DEMONSQUID.clone
                     encounter.Monsters[monster.id] = {
                         amount: Number(monster.amountToAdd),
                         Name: monster.Name,

@@ -19,6 +19,9 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider',
             .when('/login', {
                 templateUrl: 'login.html'
             })
+            .when('/print-encounter', {
+                templateUrl: 'printable-encounter.html'
+            })
             .otherwise({
                 redirectTo: '/app'
             });

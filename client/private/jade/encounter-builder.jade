@@ -1,10 +1,10 @@
 header
-    include header
+    include _header
 .container.app-content
     .row
         .col-sm-4.col-lg-3
             .section.col-sm-12.encounter-well.gradient.shadow(ng-controller='EncounterController')
-                include encounter
+                include _encounter
         .col-sm-8.col-lg-9(ng-controller='TabController')
             .row
                 .col-xs-12.no-padding-left
@@ -19,19 +19,19 @@ header
                 .col-xs-12.no-padding-left
                     .col-md-5.col-lg-4.no-padding-left.shadow(ng-controller='SearchMonsterController')
                         .section.sidebar-nav
-                            include monster-filters
+                            include _monster-filters
                         .section.result-list
-                            include monster-list
+                            include _monster-list
                     .col-md-7.col-lg-8.section.shadow(ng-controller='MonsterDetailController')
-                        include monster-details
+                        include _monster-details
             .row(ng-show="selectedTab === 'items'")
                 .col-xs-12.no-padding-left
                     .col-md-5.col-lg-4.no-padding-left.shadow(ng-controller='SearchItemController')
                         .section.sidebar-nav
-                            include item-filters
+                            include _item-filters
                         .section.result-list
-                            include item-list
+                            include _item-list
                     .col-md-7.col-lg-8.section.shadow(ng-controller='ItemDetailsController')
-                        include item-details
+                        include _item-details
 footer
-    include footer
+    include _footer

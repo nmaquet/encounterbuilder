@@ -1,0 +1,15 @@
+.container.app-content(ng-controller='PrintableEncounterController')
+    .row
+        .col-sm-12.col-lg-12
+            .section.col-sm-12.encounter-well.gradient.shadow
+                button.item-btn.back-btn(ng-click='back()') Back
+                .row.heading
+                    .col-sm-12
+                h3.encounter-title.font-title
+                    span.encounter-name
+                        |{{encounter.Name}}
+    .row
+        .section.col-sm-12
+            ul.list-unstyled
+                li(ng-repeat="monster in monsters")
+                    |{{monser.Name}}
