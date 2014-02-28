@@ -1,15 +1,26 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('PrintableEncounterController',
-    ['$scope', '$location', 'selectedEncounterService', 'monsterService',
-        function ($scope, $location, selectedEncounterService, monsterService) {
+    ['$scope', '$location', '$timeout', 'selectedEncounterService', 'encounterService', 'monsterService',
+        function ($scope, $location, $timeout, selectedEncounterService, encounterService, monsterService) {
 
-            $scope.encounter = selectedEncounterService.selectedEncounter();
+            $scope.monstersOdd = [];
+            $scope.monstersEven = [];
 
-            $scope.monsters = [];
-
-            monsterService.getMultiple(Object.keys($scope.encounter.Monsters), function (error, monsters) {
-                $scope.monsters = monsters;
+            selectedEncounterService.register(function () {
+                $scope.encounter = selectedEncounterService.selectedEncounter();
+                monsterService.getMultiple(Object.keys($scope.encounter.Monsters), function (error, monsters) {
+                    for (var i in monsters) {
+                        if (i % 2 === 0) {
+                            $scope.monstersOdd.push(monsters[i]);
+                        } else{
+                            $scope.monstersEven.push(monsters[i]);
+                        }
+                    }
+                    $timeout(function () {
+                        window.print();
+                    }, 0);
+                });
             });
 
             $scope.back = function () {

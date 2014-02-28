@@ -1,27 +1,52 @@
 .row
     .col-md-8
-        h2 {{monster.Name}}
-        small Source: {{monster.Source}}
-        p {{monster.Description_Visual}}
+        h3 {{monster.Name}} ({{encounter.Monsters[monster.id].amount}})
+            span.pull-right  CR {{monster.CR | numberToFractionString}}
     .col-md-4
-        .thumbnail
-            ul.list-unstyled
-                li
-                    strong CR
-                    | &nbsp;{{monster.CR | numberToFractionString}}
-                li
-                    strong XP
-                    | &nbsp;{{monster.XP}}
-                li
-                    strong {{monster.Alignment}}
-                    | &nbsp;{{monster.Size}} {{monster.Type}} {{monster.SubType}}
-                li
-                    strong Init
-                    | &nbsp;{{monster.Init}}
-                li
-                    strong Senses
-                    | &nbsp;{{monster.Senses}}
+        ul.list-unstyled
+            li
+                strong XP
+                | &nbsp;{{monster.XP}}
+                | &nbsp;
+                strong {{monster.Alignment}}
+                | &nbsp;{{monster.Size}} {{monster.Type}} {{monster.SubType}}
+            li
+                strong Init
+                | &nbsp;{{monster.Init}}
+                | &nbsp;
+                strong Senses
+                | &nbsp;{{monster.Senses}}
 .row
+    .col-md-4
+        legend Defense
+        ul.list-unstyled
+            li
+                strong AC
+                | &nbsp;{{monster.AC}}
+            li
+                strong HP
+                | &nbsp;{{monster.HP}}
+            li
+                strong Fort
+                | &nbsp;{{monster.Fort}},
+                | &nbsp;
+                strong Ref
+                | &nbsp;{{monster.Ref}},
+                | &nbsp;
+                strong Will
+                | &nbsp;{{monster.Will}}
+            li(ng-if='monster.DR')
+                strong DR
+                | &nbsp;{{monster.DR}};
+            li(ng-if='monster.Immune')
+                strong Immune
+                | &nbsp;{{monster.Immune}};
+            li(ng-if='monster.Weaknesses')
+                strong Weaknesses
+                | &nbsp;{{monster.Weaknesses}};
+            li(ng-if='monster.SR')
+                strong SR
+                | &nbsp;{{monster.SR}}
     .col-md-8
         legend Offense
         ul.list-unstyled
@@ -41,35 +66,6 @@
                 strong Special Attacks
                 | &nbsp;{{monster.SpecialAttacks}};
             li(ng-bind-html='monster.SLASafe')
-    .col-md-4
-        legend Defense
-        ul.list-unstyled
-            li
-                strong
-                    abbr(title='Armor Class') AC
-                | &nbsp;{{monster.AC}}
-            li
-                strong HP
-                | &nbsp;{{monster.HP}}
-            li
-                strong Fort
-                | &nbsp;{{monster.Fort}},
-                strong Ref
-                | &nbsp;{{monster.Ref}},
-                strong Will
-                | &nbsp;{{monster.Will}}
-            li(ng-if='monster.DR')
-                strong DR
-                | &nbsp;{{monster.DR}};
-            li(ng-if='monster.Immune')
-                strong Immune
-                | &nbsp;{{monster.Immune}};
-            li(ng-if='monster.Weaknesses')
-                strong Weaknesses
-                | &nbsp;{{monster.Weaknesses}};
-            li(ng-if='monster.SR')
-                strong SR
-                | &nbsp;{{monster.SR}}
 .row
     .col-md-8
         legend Statistics
@@ -77,16 +73,22 @@
             li
                 strong Str
                 | &nbsp;{{monster.Str}},
+                | &nbsp;
                 strong Dex
                 | &nbsp;{{monster.Dex}},
+                | &nbsp;
                 strong Con
                 | &nbsp;{{monster.Con}},
+                | &nbsp;
                 strong Int
                 | &nbsp;{{monster.Int}},
+                | &nbsp;
                 strong Wis
                 | &nbsp;{{monster.Wis}},
+                | &nbsp;
                 strong Cha
                 | &nbsp;{{monster.Cha}}
+                | &nbsp;
             li
                 strong Base Atk
                 | &nbsp;{{monster.BaseAtk}};
@@ -106,30 +108,15 @@
             li
                 strong Languages
                 | &nbsp;{{monster.Languages}}
-            li
+            li(ng-if="monster.SQ")
                 strong SQ
                 | &nbsp;{{monster.SQ}}
-    .col-md-4
-        div
-            legend Ecology
-        div
-            ul.list-unstyled
-                li
-                    strong Environment
-                    | &nbsp;{{monster.Environment}}
-                li
-                    strong Organization
-                    | &nbsp;{{monster.Organization}}
-                li
-                    strong Treasure
-                    | &nbsp;{{monster.Treasure}}
+            li
+                strong Treasure
+                | {{monster.Treasure}}
 .row
     .col-md-12
         span(ng-if='monster.SpecialAbilitiesSafe')
             legend Special Abilities
             // FIXME Use jQuery to change the <h5> tags into <p> or <div>
             div(ng-bind-html='monster.SpecialAbilitiesSafe')
-.row
-    .col-md-12
-        legend Description
-        div(ng-bind-html='monster.DescriptionSafe')
