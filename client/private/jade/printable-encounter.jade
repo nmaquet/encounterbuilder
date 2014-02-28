@@ -23,9 +23,8 @@
         .col-xs-12.col-lg-12
             include _printable-encounter-summary
     .page-break
-    .row
-        div(style="padding-top: 30px")
-            .row
-                .col-xs-12
-                    .col-xs-12(ng-repeat="monster in monsters")
-                        include _printable-monster-details
+    .printed-parent(ng-repeat="monster_row in monsters_rows")
+        .row
+            .col-xs-6(ng-repeat="monster in monster_row")
+                include _printable-monster-details
+        .page-break
