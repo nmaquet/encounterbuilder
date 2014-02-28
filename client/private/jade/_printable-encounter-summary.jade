@@ -1,0 +1,47 @@
+div(ng-show="encounter")
+    .row.heading
+        .col-sm-12
+            h3.font-title
+                span.encounter-name. {{encounter.Name}}
+            span#encounter-cr.pull-right
+                strong CR&nbsp;
+                | {{encounter.CR | numberToFractionString}}
+            span#encounter-xp.pull-left
+                strong XP&nbsp;
+                | {{encounter.xp | number}}
+    .row
+        .col-xs-12
+            legend.legend
+                span Monsters
+            span.col-xs-4(ng-repeat='(id,monster) in encounter.Monsters')
+                span
+                    small {{monster.amount}}&nbsp;
+                span
+                    small {{monster.Name}}&nbsp;
+                span
+                    small CR&nbsp;{{monster.CR | numberToFractionString}}
+
+
+    .row
+        .col-xs-12
+            legend
+                span Treasure
+        div
+            span.col-xs-4(ng-repeat='(id,item) in encounter.items')
+                span
+                    small {{item.amount}}&nbsp;
+                span
+                    small {{item.Name}}&nbsp;
+            .col-xs-12(style="padding-top:10px")
+                | Coins&nbsp;
+                span {{encounter.coins.pp | number}}&nbsp;
+                | pp&nbsp;
+                span {{encounter.coins.gp | number}}&nbsp;
+                | gp&nbsp;
+                span {{encounter.coins.sp | number}}&nbsp;
+                | sp&nbsp;
+                span {{encounter.coins.cp | number}}&nbsp;
+                | cp&nbsp;
+            .col-xs-12
+                | Value&nbsp;
+                span {{encounter.lootValue | number}}&nbsp;gp

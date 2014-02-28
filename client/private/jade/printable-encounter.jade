@@ -1,4 +1,4 @@
-.container.app-content(ng-controller='PrintableEncounterController')
+.container(ng-controller='PrintableEncounterController')
     style(type='text/css').
         #back-btn {
             background-color: #9d1f1f;
@@ -8,26 +8,24 @@
             padding-right: 15px;
             padding-bottom: 5px;
         }
-        .printed-monster-row {
+        .page-break {
             page-break-after: always;
         }
+        .printed-parent {
+            float:none;
+        }
+        body{
+            background:white !important;
+            color:black;
+        }
+
     .row
-        .col-sm-12.col-lg-12
-            .section.col-sm-12.encounter-well.gradient.shadow
-                .encounter
-                    .hidden-print
-                        a.pointer#back-btn(ng-click='back()') Back
-                    .row.heading
-                        .col-sm-12
-                            h1.encounter-title.font-title
-                                span.encounter-name
-                                    |{{encounter.Name}}
-                                span.pull-right  CR {{encounter.CR | numberToFractionString}}
-            div(style="padding-top: 30px")
-                .row
-                    .col-xs-6.no-padding-left.printed-monster(ng-repeat="monster in monstersOdd")
-                        .col-xs-12.section.shadow(ng-controller='MonsterDetailController')
-                            include _printable-monster-details
-                    .col-xs-6.no-padding-left.printed-monster(ng-repeat="monster in monstersEven")
-                        .col-xs-12.section.shadow(ng-controller='MonsterDetailController')
-                            include _printable-monster-details
+        .col-xs-12.col-lg-12
+            include _printable-encounter-summary
+    .page-break
+    .row
+        div(style="padding-top: 30px")
+            .row
+                .col-xs-12
+                    .col-xs-12(ng-repeat="monster in monsters")
+                        include _printable-monster-details
