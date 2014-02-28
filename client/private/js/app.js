@@ -14,10 +14,12 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider
             .when('/app', {
-                templateUrl: 'encounter-builder.html'
+                templateUrl: 'encounter-builder.html',
+                css : ['css/encounterbuilder.min.css']
             })
             .when('/login', {
-                templateUrl: 'login.html'
+                templateUrl: 'login.html',
+                css : ['css/encounterbuilder.min.css']
             })
             .when('/print-encounter', {
                 templateUrl: 'printable-encounter.html'

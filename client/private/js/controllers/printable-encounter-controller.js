@@ -10,7 +10,6 @@ DEMONSQUID.encounterBuilderControllers.controller('PrintableEncounterController'
 
             monsterService.getMultiple(Object.keys($scope.encounter.Monsters), function (error, monsters) {
                 $scope.monsters = monsters;
-                console.log(monsters);
             });
 
             $scope.back = function () {

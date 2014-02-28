@@ -23,21 +23,23 @@ DEMONSQUID.encounterBuilderServices.factory('monsterService', ['$http', function
                 });
         },
         getMultiple: function (ids, callback) {
+            function pushTask(id) {
+                tasks.push(function (taskCallback) {
+                        $http.get('/api/monster/' + id)
+                            .success(function (data) {
+                                taskCallback(null, data.monster);
+                            })
+                            .error(function (error) {
+                                taskCallback(error, null);
+                            });
+                    }
+                );
+            }
             var tasks = [];
             for (var i in ids) {
-                tasks.push(function (taskCallback) {
-                    $http.get('/api/monster/' + ids[i])
-                        .success(function (data) {
-                            console.log("success " + data);
-                            taskCallback(null, data.monster);
-                        })
-                        .error(function (error) {
-                            taskCallback(error, null);
-                        });
-                })
+                pushTask(ids[i]);
             }
             window.async.parallel(tasks, function (error, results) {
-                console.log("final parallel callback " + results + "error " + error);
                 callback(error, results);
             });
         }
