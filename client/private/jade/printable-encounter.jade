@@ -18,7 +18,14 @@
             background:white !important;
             color:black;
         }
-
+        @media print
+        {
+            #footer {
+                display: block;
+                position: fixed;
+                bottom: 0;
+            }
+        }
     .row
         .col-xs-12.col-lg-12
             include _printable-encounter-summary
@@ -30,3 +37,7 @@
             .col-xs-12(ng-if="monster_row.length === 1", ng-repeat="monster in monster_row")
                 include _printable-monster-details
         .page-break
+span#footer
+    strong Encounter Builder
+    | &nbsp;
+    em Less prep. More game.
