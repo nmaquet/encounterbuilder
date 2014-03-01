@@ -14,16 +14,16 @@
                 th(colspan='3') Source
         tbody
             tr.pointer.monster-row(ng-repeat='monster in monsters')
-                td(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
+                td.name-container(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
                     span {{monster.Name}}
-                td(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
+                td.price-container(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
                     span {{monster.CR | numberToFractionString}}
-                td(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
+                td.source-container(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
                     abbr(title='{{monster.Source}}')
                         small {{monster.Source | abbreviateMonsterSource}}
-                td(ng-class='{selected: selectedMonsterId == monster.id}')
-                    input(type='text', placeholder='1', ng-model='monster.amountToAdd', style='width: 25px;')
-                td(ng-class='{selected: selectedMonsterId == monster.id}')
+                td.input-container(ng-class='{selected: selectedMonsterId == monster.id}')
+                    input(type='text', placeholder='1', ng-model='monster.amountToAdd')
+                td.btn-container(ng-class='{selected: selectedMonsterId == monster.id}')
                     button.item-btn.add-item-btn(ng-class="{disabled: !selectedEncounter}", ng-disabled="!selectedEncounter", ng-click='addMonster(monster)')
                         i.icon.icon-plus
                             | +

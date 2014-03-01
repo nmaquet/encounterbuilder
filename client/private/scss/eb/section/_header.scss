@@ -24,6 +24,31 @@
     @include opacity(1);
     &:hover { @include opacity(0.6); }
   }
+
+  @media (max-width: $screen-xxs-max) {
+    min-height: 80px;
+    .navbar-brand { padding-top: 45px;}
+  }
+  @media (max-width: $screen-sm-max) {
+    min-height: 80px;
+    .navbar-brand { padding-top: 45px;}
+  }
+  @media (min-width: $screen-xs-min) {
+    min-height: 80px;
+    .navbar-brand { padding-top: 45px;}
+  }
+  @media (min-width: $screen-sm-min) {
+    min-height: 100px;
+    .navbar-brand { padding-top: 58px;}
+  }
+  @media (min-width: $screen-md-min) {
+    min-height: 140px;
+    .navbar-brand { padding-top: 80px;}
+  }
+  @media (min-width: $screen-md-min) {
+    min-height: 160px;
+    .navbar-brand { padding-top: 94px;}
+  }
 }
 
 
@@ -43,7 +68,7 @@
   clear: both;
   font-weight: normal;
   line-height: 1.42857;
-  color: #333333;
+  color: $coal;
   white-space: nowrap;
 }
 

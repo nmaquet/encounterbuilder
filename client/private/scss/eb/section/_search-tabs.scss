@@ -1,13 +1,12 @@
 #search-tabs {
-  background-color: $red;
+  border-bottom: 0px solid transparent;
+  margin-bottom: ($grid-gutter-width/2);
   li {
+    border-right: 1px solid $coal-transparent;
     margin-bottom: 0;
-    &:last-child, &.last { a { margin-right: 0; } }
+    &:last-child, &.last { a { margin-right: 0; border-right-width: 0;} }
 
-    background-color: transparent;
-    background-image: url('../img/bg/bg_texture.png');
-    background-repeat: repeat-x;
-    background-position: left top;
+    background: $red url('../img/bg/bg_texture.png')repeat-x left top;
     &:nth-child(1), &.tab-1 { background-position: 0 0; }
     &:nth-child(2), &.tab-2 { background-position: -20% 0; }
     &:nth-child(3), &.tab-3 { background-position: -40% 0; }
@@ -16,13 +15,12 @@
     a {
       @extend .no-radius;
       @extend .font-title;
-      border-width: 0;
       margin-right: 0;
       color: $grey-light;
       background: transparent url('../img/bg/noisy-texture-100x100-o3-d10-c-312e27-t1.png') repeat left top;
       &:hover {
         color: white;
-        background-color: $red-transparent;
+        border-color: transparent;
       }
     }
     &:hover {
@@ -34,6 +32,10 @@
       a {
         color: white;
         background-color: transparent;
+        border-top-color: $brown-transparent;
+        border-bottom-color: $coal-transparent;
+        border-left-color: $brown-transparent;
+        border-right-color: $coal-transparent;
       }
     }
     .icon { margin-right: 0.5em; }

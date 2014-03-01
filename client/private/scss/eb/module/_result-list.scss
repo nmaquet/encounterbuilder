@@ -3,10 +3,28 @@
   label {
     font-size: 13px;
   }
+  input, select {
+    @include border-radius(3px);
+    @include box-shadow-inset(0px,1px,4px,$coal-transparent-2);
+    @include gradientInput();
+    border: 0 solid transparent;
+    color: $coal;
+  }
 }
 .result-list {
   .table td {
+    input {
+      max-width: 25px;
+      @extend .text-center;
+    }
     vertical-align: middle;
+    font-size: 12px;
+    &.price {
+      text-align: right;
+    }
+    &.price, &.source {
+      font-size: 0.925em;
+    }
   }
   .table > tbody > tr > td:first-child {
     max-width: 30%;
