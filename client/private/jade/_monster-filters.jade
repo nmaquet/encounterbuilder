@@ -20,7 +20,9 @@
         option(value='undead') Undead
         option(value='vermin') Vermin
 .form-group.col-xs-12
-        label(for='cr-range') CR range:
-        input.form-control.hidden#cr-range(type='text', ng-model='crRange', readonly='readonly')
-        .col-xs-12
+    .col-xs-3.col-sm-2.col-md-3
+        .row
+            label(for='cr-range') CR range:
+            input.form-control.hidden#cr-range(type='text', ng-model='crRange', readonly='readonly')
+    .col-xs-9.col-sm-10.col-md-9
         #slider-cr-range

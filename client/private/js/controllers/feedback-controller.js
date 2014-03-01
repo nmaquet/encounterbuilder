@@ -38,9 +38,9 @@ DEMONSQUID.encounterBuilderControllers.controller('FeedbackController', ['$http'
                 s.parentNode.insertBefore(uv, s)
             })();
             UserVoice.push(['set', {
-                accent_color: '#448dd6',
-                trigger_color: 'white',
-                trigger_background_color: '#e2753a'
+                accent_color: '#33939c',
+                trigger_color: '#9d1f1f',
+                trigger_background_color: 'white'
             }]);
             UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'bottom-right' }]);
             UserVoice.push(['autoprompt', {}]);
