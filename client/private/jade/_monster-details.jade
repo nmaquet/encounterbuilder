@@ -1,135 +1,182 @@
-.row
-    .col-md-8
-        h2 {{monster.Name}}
+.row.heading.result-heading
+    .col-xs-8.col-lg-9.name-container
+        h2.title.font-title {{monster.Name}}
         small Source: {{monster.Source}}
-        p {{monster.Description_Visual}}
-    .col-md-4
-        .thumbnail
-            ul.list-unstyled
-                li
-                    strong CR
-                    | &nbsp;{{monster.CR | numberToFractionString}}
-                li
+    .col-xs-4.col-lg-3.cr-container
+        h3.title.font-title CR
+            | &nbsp;{{monster.CR | numberToFractionString}}
+        strong XP
+        | &nbsp;{{monster.XP}}
+        .row.btn-container
+            a.col-xs-3.no-padding.action-btn.btn-1.pointer(title='Copy')
+                i.icon.fa.fa-copy
+            a.col-xs-3.no-padding.action-btn.btn-2.pointer(title='Settings')
+                i.icon.fa.fa-cogs
+            a.col-xs-3.no-padding.action-btn.btn-3.pointer(title='Zap')
+                i.icon.fa.fa-flash
+            a.col-xs-3.no-padding.action-btn.btn-4.pointer(title='Delete')
+                i.icon.fa.fa-times
+
+.row.section.result-content
+    .col-xs-12.cat
+        p.intro.underlined {{monster.Description_Visual}}
+        ul.list-inline
+            li
+                span
                     strong XP
                     | &nbsp;{{monster.XP}}
-                li
+            li
+                span
                     strong {{monster.Alignment}}
                     | &nbsp;{{monster.Size}} {{monster.Type}} {{monster.SubType}}
-                li
+            li
+                span
                     strong Init
                     | &nbsp;{{monster.Init}}
-                li
+            li
+                span
                     strong Senses
                     | &nbsp;{{monster.Senses}}
-.row
-    .col-md-8
-        legend Offense
-        ul.list-unstyled
-            li
-                strong SPD
-                | &nbsp;{{monster.Speed}}
-            li
-                strong Melee
-                | &nbsp;{{monster.Melee}}
-            li
-                strong Space
-                | &nbsp;{{monster.Space}}
-                | &nbsp;
-                strong Reach
-                | &nbsp;{{monster.Reach}}
-            li(ng-if='monster.SpecialAttacks')
-                strong Special Attacks
-                | &nbsp;{{monster.SpecialAttacks}};
-            li(ng-bind-html='monster.SLASafe')
-    .col-md-4
-        legend Defense
-        ul.list-unstyled
-            li
-                strong
-                    abbr(title='Armor Class') AC
-                | &nbsp;{{monster.AC}}
-            li
-                strong HP
-                | &nbsp;{{monster.HP}}
-            li
-                strong Fort
-                | &nbsp;{{monster.Fort}},
-                strong Ref
-                | &nbsp;{{monster.Ref}},
-                strong Will
-                | &nbsp;{{monster.Will}}
-            li(ng-if='monster.DR')
-                strong DR
-                | &nbsp;{{monster.DR}};
-            li(ng-if='monster.Immune')
-                strong Immune
-                | &nbsp;{{monster.Immune}};
-            li(ng-if='monster.Weaknesses')
-                strong Weaknesses
-                | &nbsp;{{monster.Weaknesses}};
-            li(ng-if='monster.SR')
-                strong SR
-                | &nbsp;{{monster.SR}}
-.row
-    .col-md-8
-        legend Statistics
-        ul.list-unstyled
-            li
-                strong Str
-                | &nbsp;{{monster.Str}},
-                strong Dex
-                | &nbsp;{{monster.Dex}},
-                strong Con
-                | &nbsp;{{monster.Con}},
-                strong Int
-                | &nbsp;{{monster.Int}},
-                strong Wis
-                | &nbsp;{{monster.Wis}},
-                strong Cha
-                | &nbsp;{{monster.Cha}}
-            li
-                strong Base Atk
-                | &nbsp;{{monster.BaseAtk}};
-                strong CMB
-                | &nbsp;{{monster.CMB}};
-                strong CMD
-                | &nbsp;{{monster.CMD}}
-            li
-                strong Feats
-                | &nbsp;{{monster.Feats}}
-            li
-                strong Skills
-                | &nbsp;{{monster.Skills}}
-                | &nbsp;
-                strong Racial Modifiers
-                | &nbsp;{{monster.RacialMods}}
-            li
-                strong Languages
-                | &nbsp;{{monster.Languages}}
-            li
-                strong SQ
-                | &nbsp;{{monster.SQ}}
-    .col-md-4
-        div
-            legend Ecology
-        div
-            ul.list-unstyled
-                li
-                    strong Environment
-                    | &nbsp;{{monster.Environment}}
-                li
-                    strong Organization
-                    | &nbsp;{{monster.Organization}}
-                li
-                    strong Treasure
-                    | &nbsp;{{monster.Treasure}}
-.row
-    .col-md-12
+    .col-xs-12
+        .row
+            .col-lg-6.cat.decor
+                legend.legend.font-title Offense
+                ul.list-unstyled
+                    li
+                        span
+                            strong SPD
+                            | &nbsp;{{monster.Speed}}
+                    li
+                        span
+                            strong Melee
+                            | &nbsp;{{monster.Melee}}
+                    li
+                        span
+                            strong Space
+                            | &nbsp;{{monster.Space}}
+                            | &nbsp;
+                        span
+                            strong Reach
+                            | &nbsp;{{monster.Reach}}
+                    li(ng-if='monster.SpecialAttacks')
+                        span
+                            strong Special Attacks
+                            | &nbsp;{{monster.SpecialAttacks}};
+                    li(ng-bind-html='monster.SLASafe')
+            .col-lg-6.cat.decor
+                legend.legend.font-title Defense
+                ul.list-unstyled
+                    li
+                        span
+                            strong
+                                abbr(title='Armor Class') AC
+                            | &nbsp;{{monster.AC}}
+                    li
+                        span
+                            strong HP
+                            | &nbsp;{{monster.HP}}
+                    li
+                        span
+                            strong Fort
+                            | &nbsp;{{monster.Fort}},
+                        span
+                            strong Ref
+                            | &nbsp;{{monster.Ref}},
+                        span
+                            strong Will
+                            | &nbsp;{{monster.Will}}
+                    li(ng-if='monster.DR')
+                        span
+                            strong DR
+                            | &nbsp;{{monster.DR}};
+                    li(ng-if='monster.Immune')
+                        span
+                            strong Immune
+                            | &nbsp;{{monster.Immune}};
+                    li(ng-if='monster.Weaknesses')
+                        span
+                            strong Weaknesses
+                            | &nbsp;{{monster.Weaknesses}};
+                    li(ng-if='monster.SR')
+                        span
+                            strong SR
+                            | &nbsp;{{monster.SR}}
+
+    .col-xs-12
+        .row
+            .col-lg-6.cat.decor
+                legend.legend.font-title Statistics
+                ul.list-unstyled
+                    li
+                        span
+                            strong Str
+                            | &nbsp;{{monster.Str}},
+                        span
+                            strong Dex
+                            | &nbsp;{{monster.Dex}},
+                        span
+                            strong Con
+                            | &nbsp;{{monster.Con}},
+                        span
+                            strong Int
+                            | &nbsp;{{monster.Int}},
+                        span
+                            strong Wis
+                            | &nbsp;{{monster.Wis}},
+                        span
+                            strong Cha
+                            | &nbsp;{{monster.Cha}}
+                    li
+                        span
+                            strong Base Atk
+                            | &nbsp;{{monster.BaseAtk}};
+                        span
+                            strong CMB
+                            | &nbsp;{{monster.CMB}};
+                        span
+                            strong CMD
+                            | &nbsp;{{monster.CMD}}
+                    li
+                        span
+                            strong Feats
+                            | &nbsp;{{monster.Feats}}
+                    li
+                        span
+                            strong Skills
+                            | &nbsp;{{monster.Skills}}
+                        span
+                            strong Racial Modifiers
+                            | &nbsp;{{monster.RacialMods}}
+                    li
+                        span
+                            strong Languages
+                            | &nbsp;{{monster.Languages}}
+                    li
+                        span
+                            strong SQ
+                            | &nbsp;{{monster.SQ}}
+            .col-lg-6.cat.decor
+                div
+                    legend.legend.font-title Ecology
+                div
+                    ul.list-unstyled
+                        li
+                            span
+                                strong Environment
+                                | &nbsp;{{monster.Environment}}
+                        li
+                            span
+                                strong Organization
+                                | &nbsp;{{monster.Organization}}
+                        li
+                            span
+                                strong Treasure
+                                | &nbsp;{{monster.Treasure}}
+    .col-xs-12.cat.decor
         span(ng-if='monster.SpecialAbilitiesSafe')
-            legend Special Abilities
+            legend.legend.font-title Special Abilities
             // FIXME Use jQuery to change the <h5> tags into <p> or <div>
             div(ng-bind-html='monster.SpecialAbilitiesSafe')
-.row
-    .col-md-12
-        legend Description
+    .col-xs-12.cat.decor
+        legend.legend.font-title Description
         div(ng-bind-html='monster.DescriptionSafe')

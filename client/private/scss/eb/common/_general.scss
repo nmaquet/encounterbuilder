@@ -1,5 +1,6 @@
 .no-padding-left { padding-left: 0; }
 .no-padding-right { padding-right: 0; }
+.no-padding { padding-left: 0; padding-right: 0; }
 
 .round { @include border-radius(50%); }
 .no-border { border-width: 0; }
@@ -35,9 +36,9 @@
 }
 
 *::selection {
-  color: white;
-  background: $teal-transparent;
-}
+   color: white;
+   background: $teal-transparent;
+ }
 ::selection {
   color: white;
   background: $teal-transparent; /* Safari */

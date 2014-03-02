@@ -1,17 +1,32 @@
 // FONTAWESOME (http://fortawesome.github.io/Font-Awesome/icons/)
 @import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css");
 @import url("http://fonts.googleapis.com/css?family=Metamorphous");
+//@import url("http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic");
 $font-metamorphous: 'Metamorphous', $font-family-serif ;
+$font-baskerville: 'Libre Baskerville', $font-family-serif ;
 
+//FONT FAMILY
 .sans-serif { font-family: $font-family-sans-serif; }
 .serif { font-family: $font-family-serif; }
 .font-title { font-family: $font-metamorphous; }
-.uppercase { text-transform: uppercase; }
+//.font-title { font-family: $font-baskerville }
+
+//FONT WEIGHT & +
 .light { font-weight: 300; }
 .bold { font-weight: 800; }
+.italic { font-style: italic; }
 .icon { font-style: normal; display: inline-block; }
+.uppercase { text-transform: uppercase; }
+
+//UNDERLINE
 .no-underline { text-decoration: none; }
-.underline-dotted { border-bottom: 1px dotted $grey-light-transparent; }
+.underline-dotted {
+  border-bottom: 1px dotted $grey-light-transparent;
+  &:focus, &:hover {
+      outline: none !important;
+      border-color: $red;
+  }
+}
 
 body { color: $coal; }
 a {
@@ -23,6 +38,53 @@ a {
   .section & {
     color: $red;
     &:hover {  color: white; }
+  }
+}
+.quote {
+  position: relative;
+  overflow: hidden;
+  p:first-child {
+    text-indent: 2em;
+  }
+  &:before, &:after {
+    position: absolute;
+    font-size: 2em;
+    @include opacity(0.5);
+    line-height: 1;
+  }
+  &:before {
+    content: '“';
+    top: 0;
+    left: 0;
+    text-indent: 0;
+  }
+  &:after {
+    content: '”';
+    text-indent: 0.25em;
+    bottom: 0.05em;
+    //right: 0;
+  }
+}
+.intro {
+  position: relative;
+  overflow: hidden;
+  font-size: 1.125em;
+  text-indent: 1.75em !important;
+  color: $brown;
+
+  &:before, &:after {
+    position: absolute;
+    font-size: 1.5em;
+    color : $teal-transparent;
+    color: $grey-light-transparent;
+    text-shadow: 1px 1px 0 $brown-dark-transparent;
+  }
+  &:before {
+    content: '❖';
+    top: 0;
+    left: 0;
+    line-height: 1;
+    text-indent: 0;
   }
 }
 

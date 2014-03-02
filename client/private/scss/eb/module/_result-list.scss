@@ -1,3 +1,6 @@
+.sidebar-nav {
+  background: url("../img/bg/bg_texture.png") repeat-x center top;
+}
 .sidebar-nav, .result-list {
   background-color: $grey-light-2;
   label {
@@ -7,11 +10,13 @@
     @include border-radius(3px);
     @include box-shadow-inset(0px,1px,4px,$coal-transparent-2);
     @include gradientInput();
-    border: 0 solid transparent;
+    border: 1px solid $grey;
     color: $coal;
   }
 }
 .result-list {
+
+  .table th { color: $grey-dark; }
   .table td {
     input {
       max-width: 25px;

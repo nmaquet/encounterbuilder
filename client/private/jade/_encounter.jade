@@ -4,7 +4,7 @@ div.encounter(ng-show="encounter")
             .pull-right
                 a.pointer.remove-encounter(ng-click="removeEncounter(encounter)", confirm-click="Are you sure ?", confirm-title="Delete encounter")
                     i.icon.icon-remove
-                        | ×
+                        | &#10008;
             h3.encounter-title.font-title
                 span.encounter-name.pointer(click-to-edit='encounter.Name', on-save="encounterChanged()")
         .col-sm-12
@@ -44,7 +44,7 @@ div.encounter(ng-show="encounter")
                                         | -
                                 //button.item-btn.light-grey.increment-monster-btn(ng-click='incrementMonster(monster)')
                                     i.icon
-                                        | +
+                                        | &#9769;
                                 button.item-btn.remove-monster-btn(ng-click='removeMonsterById(id)')
                                     i.icon.icon-remove
                                         | ×
@@ -59,7 +59,7 @@ div.encounter(ng-show="encounter")
         .col-sm-12
             legend.legend
                 span Treasure
-                i.icon.fa.fa-github.pull-left
+                i.icon.fa.fa-flask.pull-left
                 a.pointer.randomize-loot.pull-right(title='Randomize', ng-click="randomizeLoot(encounter)" , confirm-click="Are you sure ?", confirm-title="Randomize treasure")
                     i.icon.fa.fa-random
             table.table.encounter-list#encounter-items

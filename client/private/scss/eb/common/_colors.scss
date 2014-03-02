@@ -1,6 +1,6 @@
 //GREY SHADES
 $coal: #1E1A0D;
-$coa-2: #1f1c11;
+$coal-2: #1f1c11;
 $coal-transparent: rgba(31, 28, 17,0.7);
 $coal-transparent-2: rgba(31, 28, 17,0.4);
 $grey-dark: #56534A;
@@ -19,9 +19,15 @@ $brown-dark: #312e27;
 $brown-dark-transparent: rgba(49, 46, 39, 0.3);
 $brown: #57544a;
 $brown-transparent: rgba(87, 84, 74, 0.2);
+$brown-btn-1: $coal;
+$brown-btn-2: #353126;
+$brown-btn-3: #4B483E;
+$brown-btn-4: #625F56;
+
 //GOLD SHADES
 $gold-dark: #665924;
 $gold: #b2932f;
+$gold-btn: #BFA544;
 //METAL SHADES
 $platinum: #e2f4f7;
 $gold-2: #e8cc0f;
@@ -36,7 +42,9 @@ $red-dark: #5c1000;
 $teal: #057882;
 $teal-light: #33939c;
 $teal-transparent: rgba(51, 147, 156, 0.7);
+$teal-transparent-1: rgba(51, 147, 156, 0.1);
 $teal-dark: #004f53;
+$teal-dark-2: #002d33;
 
 // GRADIENT
 @mixin gradientGreyDark {

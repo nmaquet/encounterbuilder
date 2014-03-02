@@ -18,10 +18,10 @@
 .ui-slider .ui-slider-handle {
   position: absolute;
   z-index: 2;
-  width: 1.2em;
+  width: 0.6em;
   height: 1.2em;
   cursor: col-resize;
-  @include border-radius(50%);
+  @include border-radius(0);
   &:focus {
     border-color: $teal;
     outline: 0;
@@ -42,6 +42,10 @@
 .ui-slider.ui-state-disabled .ui-slider-handle,
 .ui-slider.ui-state-disabled .ui-slider-range {
   filter: inherit;
+}
+
+#slider-min-cr {
+
 }
 
 .ui-slider-horizontal {

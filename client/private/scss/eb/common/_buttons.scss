@@ -51,6 +51,7 @@
   color: $brown-dark;
   background-color: $grey-light-transparent;
   &:hover{
-    background-color: $grey-light;
+    color: white;
+    background-color: $teal-transparent;
   }
 }

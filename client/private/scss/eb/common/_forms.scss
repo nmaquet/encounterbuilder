@@ -17,3 +17,12 @@ label {
     }
   }
 }
+button, input, select {
+  outline: none;
+}
+.form-control {
+  //border-color: transparent;
+  &:focus {
+    border-color: $teal-transparent;
+  }
+}

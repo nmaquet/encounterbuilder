@@ -1,27 +1,54 @@
-.heading
-    h2 {{item.Name}}
-    small Source: {{item.Source}}
-    div
-        div
-            b Aura&nbsp;
-            | {{item.Aura}};&nbsp;
-            b CL&nbsp;
+.row.heading.result-heading
+    .col-xs-8.col-lg-9.name-container
+        h2.title.font-title {{item.Name}}
+        small Source: {{item.Source}}
+    .col-xs-4.col-lg-3.cr-container
+        h3.title.font-title CL
             | {{item.CL}}
-        div
-            b Group&nbsp;
-            | {{item.Group}};&nbsp;
-            b Slot&nbsp;
-            | {{item.Slot}};&nbsp;
-            b Price&nbsp;
-            | {{item.Price}}&nbsp;{{item.PriceUnit}};&nbsp;
-            b Weight&nbsp;
-            | {{item.Weight}}.
-    legend Description
-    p {{item.Description}}
-    legend Construction
-    div
-        b Requirements&nbsp;
-        | {{item.Requirements}};
-    div
-        b Cost&nbsp;
-        | {{item.Cost}}&nbsp;{{item.CostUnit}}
+        strong {{item.Price}}&nbsp;{{item.PriceUnit}}
+        .row.btn-container
+            a.col-xs-3.no-padding.action-btn.btn-1.pointer(title='Copy')
+                i.icon.fa.fa-copy
+            a.col-xs-3.no-padding.action-btn.btn-2.pointer(title='Settings')
+                i.icon.fa.fa-cogs
+            a.col-xs-3.no-padding.action-btn.btn-3.pointer(title='Zap')
+                i.icon.fa.fa-flash
+            a.col-xs-3.no-padding.action-btn.btn-4.pointer(title='Delete')
+                i.icon.fa.fa-times
+.row.section.result-content
+    .col-xs-12
+        p.intro.underlined
+            strong Aura&nbsp;
+            | {{item.Aura}};&nbsp;
+    .col-lg-6.cat
+        ul.list-unstyled
+            li
+                span
+                    strong Group&nbsp;
+                    | {{item.Group}}
+            li
+                span
+                    strong Slot&nbsp;
+                    | {{item.Slot}}
+            li
+                span
+                    strong Weight&nbsp;
+                    | {{item.Weight}}.
+            li
+                span
+                    strong Price&nbsp;
+                    | {{item.Price}}&nbsp;{{item.PriceUnit}}
+    .col-xs-12.cat.decor
+        legend.legend.font-title Construction
+        ul.list-unstyled
+            li
+                span
+                    strong Requirements&nbsp;
+                    | {{item.Requirements}};
+            li
+                span
+                    strong Cost&nbsp;
+                    | {{item.Cost}}&nbsp;{{item.CostUnit}}
+    .col-xs-12.cat.decor
+        legend.legend.font-title Description
+        p {{item.Description}}
