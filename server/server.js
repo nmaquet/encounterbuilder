@@ -33,6 +33,7 @@ function main(db) {
         app.use("/css", express.static(__dirname + '/../client/public/css'));
         app.use("/img", express.static(__dirname + '/../client/public/img'));
         app.use("/js", express.static(__dirname + '/../client/public/js'));
+        app.use("/", express.static(__dirname + '/../website/'));
         app.use(express.logger('dev'));
         app.use(express.bodyParser());
         app.use(express.methodOverride());
