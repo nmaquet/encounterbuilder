@@ -70,6 +70,7 @@ function main(db) {
     app.get('/login.html', clientRoutes.login);
     app.get('/encounter-builder.html', authentication.check, clientRoutes.encounterBuilder);
     app.get('/printable-encounter.html', authentication.check, clientRoutes.printableEncounter);
+    app.get('/app', clientRoutes.app);
     app.get('/', clientRoutes.default);
 
     var port = process.env.PORT || 3000;
