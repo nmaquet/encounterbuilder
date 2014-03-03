@@ -1,5 +1,4 @@
 'use strict';
-
 var DEMONSQUID = {};
 
 DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
@@ -7,7 +6,8 @@ DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
     'encounterBuilderControllers',
     'encounterBuilderFilters',
     'encounterBuilderServices',
-    'encounterBuilderDirectives'
+    'encounterBuilderDirectives',
+    'ui.bootstrap'
 ]);
 
 DEMONSQUID.encounterBuilderApp.config(['$routeProvider',
@@ -41,14 +41,16 @@ DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', 'encount
                 }
                 selectedEncounterService.selectedEncounter(encounters[0], true /* allow undefined */);
             }
-            if (!$rootScope.username) {
+            if ($rootScope.user === undefined) {
                 $http.get('/api/user-data')
                     .success(function (userData) {
+
                         $rootScope.user = userData.user;
-                        if (!$rootScope.user) {
+                        if ($rootScope.user === undefined) {
                             $location.path('/login');
                         } else {
                             loadEncounters(userData.Encounters);
+                            $location.path(next.originalPath);
                         }
                     })
                     .error(function (error) {

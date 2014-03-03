@@ -22,6 +22,8 @@ var jsFiles = [
     "client/private/bower_components/jquery-cookie/jquery.cookie.js",
     "client/private/bower_components/bootstrap/dist/js/bootstrap.js",
     "client/private/bower_components/async/lib/async.js",
+    "client/private/angular-ui/ui-bootstrap-0.10.0.js",
+    "client/private/angular-ui/ui-bootstrap-tpls-0.10.0.js",
     // App files
     "client/private/js/app.js", /* app.js MUST be the first app file ! */
     "client/private/js/extra/clone.js",
