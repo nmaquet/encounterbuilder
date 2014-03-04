@@ -100,7 +100,6 @@ a:after {
     font-family: 'Open Sans', sans-serif;
     font-size: 13px;
     font-weight: 600;
-    text-transform: uppercase;
     letter-spacing: 2px;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -126,6 +125,8 @@ a:after {
 .navbar-default .navbar-brand {
     color: #1abc9c;
     *padding-right: 40px;
+    font-family: "Metamorphous";
+    font-size: 25px;
 }
 
 .navbar-default .navbar-brand:hover {
