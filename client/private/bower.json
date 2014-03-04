@@ -12,7 +12,8 @@
     "jquery-cookie": "~1.4",
     "bootstrap": "~3.1",
     "twbs-bootstrap-sass": "~3.1",
-    "async":"~0.2"
+    "async":"~0.2",
+    "angular-ui-bower":"~0.10"
   },
   "devDependencies": {
     "angular-mocks": "~1.2"
