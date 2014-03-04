@@ -6,10 +6,10 @@ module.exports = function (userCollection, authenticate) {
             if (user) {
                 request.session.regenerate(function () {
                     request.session.user = user;
-                    response.redirect("/app");
+                    response.send(200);
                 });
             } else {
-                response.json({error:'Login Failed'});
+                response.send(401, "login failed");
             }
         });
     }

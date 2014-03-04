@@ -33,5 +33,20 @@ body
         $('.carousel').carousel({
             interval: 3500
         })
-
-
+        $("#login-form").submit(function() {
+            $.ajax({
+                type: "POST",
+                url: '/login',
+                data: $("#login-form").serialize(),
+                success: function(data) {
+                    window.location.href = "/app";
+                },
+                error: function(data) {
+                    $("#login-failed-alert").removeClass("hidden");
+                }
+             });
+             return false; // avoid to execute the actual submit of the form.
+        });
+        $('#login').on('shown.bs.modal', function () {
+            $('#username').focus();
+        })
