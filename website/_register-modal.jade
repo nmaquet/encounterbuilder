@@ -3,9 +3,11 @@
         .modal-content
             .modal-header
                 button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-                h4#register.modal-title Register
+                h4#register.modal-title Sign up
             .modal-body
-                form.form-horizontal
+                p.
+                    We are  currently in private Beta. If you would like to participate send us an email at <a href="mailto:beta@encounterbuilder.com?subject=Please%20sign%20me%20up%20to%20the%20private%20Beta">beta@encounterbuilder.com</a> and we'll be in touch.
+                //form.form-horizontal
                     .form-group
                         label.col-md-4.control-label(for='nameinput') Your Name
                         .col-md-5
@@ -22,5 +24,4 @@
                             input#passwordinput.form-control.input-md(name='passwordinput', type='password', placeholder='Password', required='')
                             span.help-block Password must be at least 8 characters
             .modal-footer
-                button.btn.btn-default(type='button', data-dismiss='modal') Cancel
-                button.btn.btn-theme(type='submit') Register
+                button.btn.btn-default(type='button', data-dismiss='modal') Ok
