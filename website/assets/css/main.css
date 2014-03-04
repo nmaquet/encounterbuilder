@@ -424,55 +424,56 @@ a:after {
 
 /*ribbon banner*/
 
-.ribbon-wrapper-green {
-    width: 85px;
-    height: 88px;
+.ribbon-wrapper {
+    width: 185px;
+    height: 94px;
     overflow: hidden;
     position: absolute;
     top: -3px;
-    right: -3px;
+    left: 30px;
 }
 
-.ribbon-green {
+.ribbon {
     font: bold 15px Sans-Serif;
     color: #333;
     text-align: center;
     text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
-    -webkit-transform: rotate(45deg);
-    -moz-transform:    rotate(45deg);
-    -ms-transform:     rotate(45deg);
-    -o-transform:      rotate(45deg);
+    -webkit-transform: rotate(315deg);
+    -moz-transform:    rotate(315deg);
+    -ms-transform:     rotate(315deg);
+    -o-transform:      rotate(315deg);
     position: relative;
     padding: 7px 0;
-    left: -5px;
+    left: 0px;
+    right:-5px;
     top: 15px;
-    width: 120px;
-    background-color: #BFDC7A;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45));
-    background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45);
-    background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45);
-    background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45);
-    background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45);
-    color: #6a6340;
+    width: 250px;
+    background-color: #c82020;
+    background-image: -webkit-gradient(linear, right bottom, right top, from(#c82020), to(#9D1A00));
+    background-image: -webkit-linear-gradient(top, #c82020, #9D1A00);
+    background-image:    -moz-linear-gradient(top, #c82020, #9D1A00);
+    background-image:     -ms-linear-gradient(top, #c82020, #9D1A00);
+    background-image:      -o-linear-gradient(top, #c82020, #9D1A00);
+    color: white;
     -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
     -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
     box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
 }
 
-.ribbon-green:before, .ribbon-green:after {
+.ribbon:before, .ribbon:after {
     content: "";
-    border-top:   3px solid #6e8900;
+    border-top:   3px solid #9D1A00;
     border-left:  3px solid transparent;
     border-right: 3px solid transparent;
     position:absolute;
     bottom: -3px;
 }
 
-.ribbon-green:before {
-    left: 0;
-}
-.ribbon-green:after {
+.ribbon:before {
     right: 0;
+}
+.ribbon:after {
+    left: 0;
 }
 /* 
    Media Queries
