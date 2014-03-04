@@ -3,7 +3,7 @@
 var fs = require('fs');
 var cheerio = require('cheerio');
 var expect = require('chai').expect;
-var idify = require('../server/idify')().idify;
+var idify = require('../server/utils')().idify;
 
 var html = fs.readFileSync(__dirname + '/../data/prd_fixed_html/wondrous_wrists_descriptions_prd.html');
 

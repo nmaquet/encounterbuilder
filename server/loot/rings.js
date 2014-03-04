@@ -1,6 +1,6 @@
 "use strict";
 
-var clone = require('./../clone')().clone;
+var clone = require('./../utils')().clone;
 
 var diceService;
 

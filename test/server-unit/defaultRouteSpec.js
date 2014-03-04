@@ -13,7 +13,7 @@ describe("defaultRoute", function () {
 
     it("should render the index.jade file", function () {
         defaultRoute(mock.request, mock.response);
-        expect(mock.response.render.path).to.equal('../client/private/jade/index.jade');
+        expect(mock.response.render.path).to.equal('../website/index.jade');
     });
 
 });

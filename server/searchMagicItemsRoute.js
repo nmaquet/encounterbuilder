@@ -1,9 +1,9 @@
 "use strict";
-
+var escapeRegExp = require('./utils')().escapeRegExp;
 function getQuery(request) {
     var query = {};
     if (request.query.nameSubstring) {
-        query.Name = new RegExp(request.query.nameSubstring, "i");
+        query.Name = new RegExp(escapeRegExp(request.query.nameSubstring), "i");
     }
     if (request.query.group && request.query.group != 'any') {
         query.Group = request.query.group;
