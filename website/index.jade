@@ -1,0 +1,282 @@
+doctype html
+
+head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description", content="Bootstack - Bootstrap 3 Theme")
+    meta(name="author", content="Nicolas Maquet & Christophe Muylaert")
+    link(rel="shortcut icon", href="assets/ico/favicon.png")
+    title Encounter Builder - Home
+    link(href="assets/css/bootstrap.min.css", rel="stylesheet")
+    link(href="assets/css/main.css", rel="stylesheet")
+    link(href="assets/css/linecons.css", rel="stylesheet")
+    link(href="assets/css/font-awesome.min.css", rel="stylesheet")
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,700', rel='stylesheet', type='text/css')
+    link(href="assets/css/jquery.feedback_me.css", rel="stylesheet")
+    script(src="assets/js/modernizr.custom.js")
+
+body
+    #navigation.navbar.navbar-default.navbar-fixed-top
+        .container
+            .navbar-header
+                button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand(href='#')
+                    b Encounter Builder
+            .navbar-collapse.collapse
+                ul.nav.navbar-nav
+                    li.active
+                        a.smoothScroll(href='#home') Home
+                    li
+                        a.smoothScroll(href='#features') Features
+                    li
+                        a.smoothScroll(href='#pricing') Pricing
+                    li
+                        a.smoothScroll(href='#contact') Contact
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href='#login', data-toggle='modal', data-target='#login') Login
+                    li
+                        a(href='#register', data-toggle='modal', data-target='#register') Register
+    #login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='login', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h4#login.modal-title Login
+                .modal-body
+                    form.form-horizontal(method='post', action='/login')
+                        .form-group
+                            label.col-md-4.control-label(for='username') Username
+                            .col-md-5
+                                input#username.form-control.input-md(name='username', type='text', placeholder='Username', required='')
+                                span.help-block Your username
+                        .form-group
+                            label.col-md-4.control-label(for='passwordinput') Password
+                            .col-md-5
+                                input#password.form-control.input-md(name='password', type='password', placeholder='Password', required='')
+                                span.help-block Your password
+                        .modal-footer
+                            button.btn.btn-default(type='button', data-dismiss='modal') Cancel
+                            button.btn.btn-theme(type='submit') Login
+    #register.modal.fade(tabindex='-1', role='dialog', aria-labelledby='register', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h4#register.modal-title Register
+                .modal-body
+                    form.form-horizontal
+                        .form-group
+                            label.col-md-4.control-label(for='nameinput') Your Name
+                            .col-md-5
+                                input#nameinput.form-control.input-md(name='nameinput', type='text', placeholder='Your name', required='')
+                                span.help-block Your first and last name
+                        .form-group
+                            label.col-md-4.control-label(for='emailinput') Your Email
+                            .col-md-5
+                                input#emailinput.form-control.input-md(name='emailinput', type='email', placeholder='Your email', required='')
+                                span.help-block Your email address
+                        .form-group
+                            label.col-md-4.control-label(for='passwordinput') Password
+                            .col-md-5
+                                input#passwordinput.form-control.input-md(name='passwordinput', type='password', placeholder='Password', required='')
+                                span.help-block Password must be at least 8 characters
+                .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Cancel
+                    button.btn.btn-theme(type='submit') Register
+    section#home(name='home')
+    #headerwrap
+        .container
+            .row.centered
+                .col-lg-12
+                    h1 Welcome To <b style='font-family: Metamorphous;'>Encounter Builder</b>
+                    h3 Save time preparing your Pathfinder encounters. Play more!
+                    br
+                .col-lg-2
+                    h5 Thousands of Monsters
+                    p Encounter Builder includes thousands of monsters from CR 1/8 all the way up to CR 39 (yes, Lucifer is a real badass).
+                    img.hidden-xs.hidden-sm.hidden-md(src='assets/img/arrow1.png')
+                .col-lg-8
+                    img.img-responsive(src='assets/img/app-bg.png', alt='')
+                    a.btn.btn-lg.btn-theme.smoothScroll(href='#features', type='submit') LEARN MORE
+                .col-lg-2
+                    br
+                    img.hidden-xs.hidden-sm.hidden-md(src='assets/img/arrow2.png')
+                    h5 Thousands of Items
+                    p Encounter Builder includes thousands of loot items for all levels of play, and can randomly generate an appropriate treasure for any encounter.
+    section#features(name='features')
+    #intro
+        .container
+            .row.centered
+                h1 What we've done so far.
+                hr
+                br
+                br
+                .col-lg-3
+                    licon.li_pen
+                    h3 Monster & Item Databases
+                    p Look up the stats for any of the included thousands of monsters and items.
+                .col-lg-3
+                    licon.li_lab
+                    h3 Loot Generator
+                    p Randomly (or manually) generate appropriate loot for any encounter.
+                .col-lg-3
+                    licon.li_like
+                    h3 Easy Encounter Building
+                    p Automatically calculates the challenge rating, XP and loot value.
+                .col-lg-3
+                    licon.li_settings
+                    h3 Print or export to PDF
+                    p Encounter Builder can export all stat blocks in a printer-friendly format.
+            br
+    #features
+        .container
+            .row
+                h1.centered What's coming soon.
+                hr
+                br
+                br
+                p Here are some of the features we plan to add to Encounter Builder:
+                h3
+                    licon.li_star
+                    | Apply Monster Templates
+                p
+                    | Want to spice up your boring goblin dog ? How about an advanced zombie goblin dog ? In just two clicks, Encounter Builder will rebuild the creature stats for you.
+                h3
+                    licon.li_eye
+                    | Balance Monsters by Role
+                p
+                    | Want a supporting caster to your pack of Minotaurs ? Encounter Builder will automatically suggest ideal complementary creatures that go together nicely.
+                h3
+                    licon.li_user
+                    | NPC Creator
+                p
+                    | Need a cool level 6 warrior NPC with a few custom twists ? Encounter Builder will soon include a fully-featured NPC creator.
+                p And much more!
+            br
+            br
+            br
+    #divider01
+        .container
+            .row.centered
+                #carousel-example-generic.carousel.slide
+                    .carousel-inner
+                        .item.active
+                            h1 Working with Bootstack was amazing. Their team is incredible.
+                        .item
+                            h1 Bootstack has helped my team build amazing products. This team Rocks!
+                    br
+                    br
+                    br
+    #pricing
+        .container.centered
+            br
+            h2 Our Pricing Options
+            hr
+            br
+            br
+            .col-lg-4
+                .pricing-option
+                    .pricing-top
+                        span.pricing-edition Dragon
+                        span.price
+                            sup $
+                            span.price-amount 14
+                            small /mo
+                        span.special-label yearly subscription : $8 / month
+                    ul
+                        li
+                            strong Unlimited
+                            | encounters
+                        li
+                            strong No limit
+                            | on monster CR
+                        li
+                            strong No limit
+                            | on encounter CR
+                        li
+                            | Ideal for PC's of
+                            strong all levels
+                    a.pricing-signup(href='index.html#') Get Started
+            .col-lg-4
+                .pricing-option
+                    .pricing-top
+                        span.pricing-edition Lich
+                        span.price
+                            sup $
+                            span.price-amount 9
+                            small /mo
+                        span.special-label yearly subscription : $5 / month
+                    ul
+                        li
+                            strong Unlimited
+                            | encounters
+                        li
+                            | Monsters up to
+                            strong CR 10
+                        li
+                            | Encounters up to
+                            strong CR 20
+                        li
+                            | Ideal for PC's
+                            strong level 1 to 14
+                    a.pricing-signup(href='index.html#') Get Started
+            .row
+                .col-lg-4
+                    .pricing-option
+                        .pricing-top
+                            span.pricing-edition Orc
+                            span.price
+                                sup $
+                                span.price-amount 0
+                                small /mo
+                        ul
+                            li
+                                strong Unlimited
+                                | encounters
+                            li
+                                | Monsters up to
+                                strong CR 5
+                            li
+                                | Encounters up to
+                                strong CR 10
+                            li
+                                | Ideal for PC's
+                                strong level 1 to 7
+                        a.pricing-signup(href='index.html#') Get Started
+    section#contact(name='contact')
+    #footerwrap
+        .container.centered
+            .row
+                .col-lg-6
+                    h3 We Are Social
+                    br
+                    p
+                        a(href='https://www.facebook.com/EncounterBuilder')
+                            i.fa.fa-facebook.fa-lg
+                        a(href='https://twitter.com/buildEncounters')
+                            i.fa.fa-twitter.fa-lg
+                        a(href='https://plus.google.com/100708201261690131120')
+                            i.fa.fa-google-plus.fa-lg
+                .col-lg-6
+                    h3 Newsletter
+                    br
+                    p Subscribe to our newsletter and be the first to know our latest updates.
+                    .form-inline
+                        input.form-control(type='text', placeholder='Your email')
+                        &nbsp;
+                        button.btn.btn-theme(type='button') Subscribe
+    #c
+        .container.centered © Copyright 2014 DemonSquid, Inc. All Rights Reserved.
+    script(src='assets/js/jquery.min.js')
+    script(src='assets/js/bootstrap.min.js')
+    script(src='assets/js/jquery.easing.1.3.js')
+    script(src='assets/js/smoothscroll.js')
+    script(src='assets/js/retina.js')
+    script.
+        $('.carousel').carousel({
+            interval: 3500
+        })

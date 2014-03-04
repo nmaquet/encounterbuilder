@@ -3,7 +3,7 @@
 module.exports = function () {
     return {
         default: function (request, response) {
-            response.render('../client/private/jade/index.jade');
+            response.render('../website/index.jade');
         },
         app: function (request, response) {
             response.render('../client/private/jade/app.jade');
