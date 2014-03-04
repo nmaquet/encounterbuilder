@@ -6,7 +6,7 @@ module.exports = function (userCollection, authenticate) {
             if (user) {
                 request.session.regenerate(function () {
                     request.session.user = user;
-                    response.json({});
+                    response.redirect("/app");
                 });
             } else {
                 response.json({error:'Login Failed'});

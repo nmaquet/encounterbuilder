@@ -62,13 +62,13 @@
 	        <h4 class="modal-title" id="login">Login</h4>
 	      </div>
 	      <div class="modal-body">
-	        <form class="form-horizontal">
+	        <form class="form-horizontal" method="post" action="/login">
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="username">Username</label>
 				  <div class="col-md-5">
 				  <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" required>
-				  <span class="help-block">Your email address</span>
+				  <span class="help-block">Your username</span>
 				  </div>
 				</div>
 
@@ -76,12 +76,13 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="passwordinput">Password</label>
 				  <div class="col-md-5">
-				    <input id="passwordinput" name="passwordinput" type="password" placeholder="Password" class="form-control input-md" required>
+				    <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required>
 				    <span class="help-block">Your password</span>
 				  </div>
 				</div>
 
 				<!-- Multiple Checkboxes (inline) -->
+                <!--
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="rememberme"></label>
 				  <div class="col-md-4">
@@ -93,12 +94,13 @@
 				    <a href="#">Forgot password?</a>
 				  </div>
 				</div>
+                -->
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-theme">Login</button>
+                </div>
 			</form>
-
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-	        <button type="submit" class="btn btn-theme">Login</button>
 	      </div>
 	    </div>
 	  </div>

@@ -16,9 +16,6 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider',
             .when('/', {
                 templateUrl: 'encounter-builder.html'
             })
-            .when('/login', {
-                templateUrl: 'login.html'
-            })
             .when('/print-encounter', {
                 templateUrl: 'printable-encounter.html',
                 css : []
@@ -28,8 +25,8 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider',
             });
     }]);
 
-DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', 'encounterService', 'selectedEncounterService',
-    function ($rootScope, $http, $location, encounterService, selectedEncounterService) {
+DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', '$window', 'encounterService', 'selectedEncounterService',
+    function ($rootScope, $http, $location, $window, encounterService, selectedEncounterService) {
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
             function loadEncounters(serverEncounters) {
                 var encounters = encounterService.encounters;
@@ -44,10 +41,9 @@ DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', 'encount
             if ($rootScope.user === undefined) {
                 $http.get('/api/user-data')
                     .success(function (userData) {
-
                         $rootScope.user = userData.user;
                         if ($rootScope.user === undefined) {
-                            $location.path('/login');
+                            $window.location.href = '/';
                         } else {
                             loadEncounters(userData.Encounters);
                             $location.path(next.originalPath);
@@ -55,7 +51,7 @@ DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', 'encount
                     })
                     .error(function (error) {
                         console.log(error);
-                        $location.path('/login');
+                        $window.location.href = '/';
                     });
             }
         });
