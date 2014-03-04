@@ -1,0 +1,21 @@
+#login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='login', aria-hidden='true')
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4#login.modal-title Login
+            .modal-body
+                form.form-horizontal(method='post', action='/login')
+                    .form-group
+                        label.col-md-4.control-label(for='username') Username
+                        .col-md-5
+                            input#username.form-control.input-md(name='username', type='text', placeholder='Username', required='')
+                            span.help-block Your username
+                    .form-group
+                        label.col-md-4.control-label(for='passwordinput') Password
+                        .col-md-5
+                            input#password.form-control.input-md(name='password', type='password', placeholder='Password', required='')
+                            span.help-block Your password
+                    .modal-footer
+                        button.btn.btn-default(type='button', data-dismiss='modal') Cancel
+                        button.btn.btn-theme(type='submit') Login

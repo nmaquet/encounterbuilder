@@ -1,0 +1,26 @@
+#register.modal.fade(tabindex='-1', role='dialog', aria-labelledby='register', aria-hidden='true')
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4#register.modal-title Register
+            .modal-body
+                form.form-horizontal
+                    .form-group
+                        label.col-md-4.control-label(for='nameinput') Your Name
+                        .col-md-5
+                            input#nameinput.form-control.input-md(name='nameinput', type='text', placeholder='Your name', required='')
+                            span.help-block Your first and last name
+                    .form-group
+                        label.col-md-4.control-label(for='emailinput') Your Email
+                        .col-md-5
+                            input#emailinput.form-control.input-md(name='emailinput', type='email', placeholder='Your email', required='')
+                            span.help-block Your email address
+                    .form-group
+                        label.col-md-4.control-label(for='passwordinput') Password
+                        .col-md-5
+                            input#passwordinput.form-control.input-md(name='passwordinput', type='password', placeholder='Password', required='')
+                            span.help-block Password must be at least 8 characters
+            .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal') Cancel
+                button.btn.btn-theme(type='submit') Register
