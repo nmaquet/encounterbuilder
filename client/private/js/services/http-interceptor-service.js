@@ -5,7 +5,7 @@ DEMONSQUID.encounterBuilderServices.factory('httpInterceptorService', ['$q', '$w
         return {
             'responseError': function (rejection) {
                 if (rejection.status === 401) {
-                    $window.location.href = "/";
+                    $window.location.href = "/?promptLogin=true";
                 }
                 return $q.reject(rejection);
             }
