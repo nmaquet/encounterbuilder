@@ -10,8 +10,8 @@ DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
     'ui.bootstrap'
 ]);
 
-DEMONSQUID.encounterBuilderApp.config(['$routeProvider',
-    function ($routeProvider) {
+DEMONSQUID.encounterBuilderApp.config(['$routeProvider','$httpProvider',
+    function ($routeProvider,$httpProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'encounter-builder.html'
@@ -23,6 +23,7 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider',
             .otherwise({
                 redirectTo: '/'
             });
+        $httpProvider.interceptors.push('httpInterceptorService');
     }]);
 
 DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', '$window', 'encounterService', 'selectedEncounterService',
