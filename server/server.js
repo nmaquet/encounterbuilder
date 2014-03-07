@@ -38,7 +38,7 @@ function main(db) {
         app.use(express.bodyParser());
         app.use(express.methodOverride());
         app.use(express.cookieParser());
-        app.use(express.session({secret: "THECATZHAZITZ" /* FIXME: use process.env */}));
+        app.use(express.session({secret: process.env['SESSION_SECRET']}));
     });
 
     var authentication = require('./authentication')();
