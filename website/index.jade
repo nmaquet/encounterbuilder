@@ -19,6 +19,8 @@ body
     include _navbar
     include _login-modal
     include _register-modal
+    #logged-in.hide
+        a#app-link(href='/app') Welcome Back! Click here to go to Encounter Builder
     include _home
     include _features
     include _divider
@@ -32,7 +34,7 @@ body
     script.
         $('.carousel').carousel({
             interval: 6000
-        })
+        });
         $("#login-form").submit(function() {
             $.ajax({
                 type: "POST",
@@ -49,8 +51,21 @@ body
         });
         $('#login').on('shown.bs.modal', function () {
             $('#username').focus();
-        })
+        });
         $(window).load(function(){
+            $.ajax({
+                type: "get",
+                url: '/api/user-data',
+                success: function(userData) {
+                    if (userData.user !== undefined){
+                        $('#login-link').addClass('hide');
+                        $('#register-link').addClass('hide');
+                        $('#logged-in').removeClass('hide');
+                    }
+                }
+             });
+
+
             var queryStrings = getQueryStrings();
             if (queryStrings['promptLogin']==='true'){
                 $('#login').modal('show');

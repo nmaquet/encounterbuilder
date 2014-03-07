@@ -175,6 +175,14 @@ a:after {
     color: #bdc3c7;
 }
 
+#logged-in{
+    width: auto;
+    height:30px;
+    display: block;
+    margin-top: 50px;
+    text-align: center;
+    font-weight: 600;
+}
 
 /* 
    Wrap Sections
@@ -485,22 +493,7 @@ a:after {
     box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
 }
 
-.ribbon:before, .ribbon:after {
-    content: "";
-    border-top:   3px solid #9D1A00;
-    border-left:  3px solid transparent;
-    border-right: 3px solid transparent;
-    position:absolute;
-    bottom: -3px;
-}
-
-.ribbon:before {
-    right: 0;
-}
-.ribbon:after {
-    left: 0;
-}
-/* 
+/*
    Media Queries
    --------------------------------------------------------------------- */
 
