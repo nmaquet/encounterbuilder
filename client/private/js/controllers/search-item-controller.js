@@ -12,7 +12,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
 
         $scope.totalItems = 0;
         $scope.currentPage = 1;
-        $scope.itemsPerPage = 50;
+        $scope.itemsPerPage = 15;
         $scope.maxSize = 5;
 
         $scope.items = [];

@@ -48,9 +48,12 @@
             | include enchanted items
 .form-group.col-xs-12
     .col-xs-3.col-sm-2.col-md-3
+
         .row
             label(for='cl-range') CL range:
-            input.form-control.hidden#cl-range(type='text', ng-model='clRange', readonly='readonly')
     .col-xs-9.col-sm-10.col-md-9
-        #slider-cl-range
-
+        .row
+            #slider-cl-range
+    .col-xs-4.col-sm-4.col-md-4.col-lg-offset-8
+        .row
+            input.form-control.pull-right#cl-range(type='text', ng-model='clRange', readonly='readonly')

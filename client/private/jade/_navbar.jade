@@ -28,7 +28,7 @@
     .navbar-collapse.collapse
         ul.nav.navbar-nav.navbar-right
             li
-                a#feedback.pointer(data-uv-trigger='data-uv-trigger', data-toggle='popover', ng-controller='FeedbackController') Send us Feedback !!!
+                a#feedback.pointer(href="http://forums.encounterbuilder.com" target="_blank" data-toggle='popover', ng-controller='FeedbackController') Got feedback? Head to our forums!
 
             li.dropdown(ng-controller='LogoutController')
                 a#user-dropdown.text-right.dropdown-toggle.pointer(role='button', data-toggle='dropdown')
@@ -36,10 +36,10 @@
                     | &nbsp;{{user.username}}&nbsp;
                     b.caret
                 ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
-                    li
+                    //li
                         a.pointer(tabindex='-1')
                             |Profile
-                    li
+                    //li
                         a.pointer(tabindex='-1')
                             i.icon.fa.fa-cog &nbsp;
                             |Settings

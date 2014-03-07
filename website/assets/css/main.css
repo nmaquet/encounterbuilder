@@ -178,6 +178,14 @@ a:after {
     color: #bdc3c7;
 }
 
+#logged-in{
+    width: auto;
+    height:30px;
+    display: block;
+    margin-top: 50px;
+    text-align: center;
+    font-weight: 600;
+}
 
 /* 
    Wrap Sections
@@ -534,7 +542,8 @@ body.blog-body {
         display: none;
     }
 }
-/* 
+
+/*
    Media Queries
    --------------------------------------------------------------------- */
 
