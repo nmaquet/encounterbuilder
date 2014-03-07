@@ -2,9 +2,6 @@
 
 DEMONSQUID.encounterBuilderControllers.controller('FeedbackController', ['$http', '$timeout', '$location',
     function ($http, $timeout, $location) {
-        startUserVoice();
-
-
         if (!$.cookie('feedbackPopupAppeared') && !$.cookie('neverShowFeedbackPopover')) {
             $http.get('/feedback-popover.html').success(function (html) {
                 var popoverOptions = {
@@ -26,25 +23,6 @@ DEMONSQUID.encounterBuilderControllers.controller('FeedbackController', ['$http'
                     $.cookie('feedbackPopupAppeared', true, {expires: threeDays});
                 }, delay);
             });
-        }
-        function startUserVoice() {
-            var UserVoice = window.UserVoice || [];
-            (function () {
-                var uv = document.createElement('script');
-                uv.type = 'text/javascript';
-                uv.async = true;
-                uv.src = '//widget.uservoice.com/ZWyHUaD1fQxrHq9orNnIvg.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(uv, s)
-            })();
-            UserVoice.push(['set', {
-                accent_color: '#33939c',
-                trigger_color: '#9d1f1f',
-                trigger_background_color: 'white'
-            }]);
-            UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'bottom-right' }]);
-            UserVoice.push(['autoprompt', {}]);
-            window.UserVoice = UserVoice;
         }
     }
 ]);

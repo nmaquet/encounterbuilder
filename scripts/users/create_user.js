@@ -52,7 +52,7 @@ function main(db) {
             }
             else {
                 var subject = "Welcome to Demon Squid's Encounter Builder private beta".replace(" ", "%20");
-                var body = "Hey, \n here is your username and password for Encounter Builder.\n " +
+                var body = "Hey, \n here is your username and password for Encounter Builder.\n\n" +
                     "username:" + username + "\n" + "password:" + randomString + "\n" + "Currently you can't change or reset your password yourself but this will work very soon, in the meantime if you need to reset it, send us an email";
                 body = body.replaceAll(" ", "%20").replaceAll("\n", "%0A");
                 var bcc = "beta@encounterbuilder.com";
