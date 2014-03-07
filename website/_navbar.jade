@@ -1,7 +1,7 @@
 #navigation.navbar.navbar-default.navbar-fixed-top
     .container
         .ribbon-wrapper
-            .ribbon BETA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            .ribbon BETA
         .navbar-header
             button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
                 span.icon-bar
@@ -9,6 +9,8 @@
                 span.icon-bar
             a.navbar-brand(href='#')
                 strong Encounter Builder
+                span.beta-small-screen
+                    |  BETA
         .nav-social.pull-right(style="padding-left:20px;")
             a(href='https://www.facebook.com/EncounterBuilder', target='_blank', title='Like us on Facebook', style="color: #c82020;")
                 i.icon.icon-lg.square.fa.fa-facebook
@@ -25,7 +27,9 @@
                 li
                     a.smoothScroll(href='#pricing') Pricing
                 li
-                    a.smoothScroll(href='#contact') Contact
+                    a(href='http://forums.encounterbuilder.com') Forums
+                li
+                    a(href='/blog') Blog
                 li
                     a(href='#register', data-toggle='modal', data-target='#register',style='color:#c82020;') Private Beta Signup
             ul.nav.navbar-nav.navbar-right
