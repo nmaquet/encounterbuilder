@@ -5,6 +5,9 @@ module.exports = function () {
         default: function (request, response) {
             response.render('../website/index.jade');
         },
+        blog: function (request, response) {
+            response.render('../website/blog.jade');
+        },
         app: function (request, response) {
             response.render('../client/private/jade/app.jade');
         },
