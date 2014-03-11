@@ -28,8 +28,8 @@ body {
     -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-    font-size: 18px;
     color:black;
+    font-family: "Lucida Sans";
 }
 
 .icon {
