@@ -3,6 +3,7 @@
 function generateUserSchema(mongoose) {
     return new mongoose.Schema({
         username: String,
+        email:String,
         salt: String,
         hash: String
     });
