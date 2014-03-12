@@ -5,14 +5,20 @@ var mongoose = require('mongoose');
 var Monster = require('./monsterModel')(mongoose).Monster;
 var MagicItem = require('./magicItemModel')(mongoose).MagicItem;
 
-var idify = require(__dirname + "/../server/idify.js")().idify;
+var idify = require(__dirname + "/../server/utils.js")().idify;
 
-if (process.env.USE_TEST_DB) {
-    var db = mongoose.connect(process.env['MONGODB_TEST_URL']);
-} else {
-    var db = mongoose.connect(process.env['MONGODB_URL']);
+if (process.argv[2]){
+    var MONGODB_URL = process.argv[2];
+}
+else if (process.env.USE_TEST_DB) {
+    var MONGODB_URL = process.env['MONGODB_TEST_URL'];
+}
+else {
+    var MONGODB_URL = process.env['MONGODB_URL'];
 }
 
+console.log("mongodb url : "+MONGODB_URL);
+var db = mongoose.connect(MONGODB_URL);
 var monster_ids = [];
 var magic_item_ids = [];
 
