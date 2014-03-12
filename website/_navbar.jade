@@ -1,4 +1,12 @@
 #navigation.navbar.navbar-default.navbar-fixed-top
+    .navbar-social
+        span
+            a(href='https://www.facebook.com/EncounterBuilder', target='_blank', title='Like us on Facebook', style="color: #c82020;")
+                i.icon.icon-lg.square.fa.fa-facebook
+            a(href='https://twitter.com/buildEncounters', target='_blank', title='Follow us on Twitter', style="color: #c82020;")
+                i.icon.icon-lg.square.fa.fa-twitter
+            a(href='https://plus.google.com/100708201261690131120', target='_blank', title='Join us on Google+', style="color: #c82020;")
+                i.icon.icon-lg.square.fa.fa-google-plus
     .container
         .ribbon-wrapper
             .ribbon BETA
@@ -11,13 +19,6 @@
                 strong Encounter Builder
                 span.beta-small-screen
                     |  BETA
-        .nav-social.pull-right(style="padding-left:20px;")
-            a(href='https://www.facebook.com/EncounterBuilder', target='_blank', title='Like us on Facebook', style="color: #c82020;")
-                i.icon.icon-lg.square.fa.fa-facebook
-            a(href='https://twitter.com/buildEncounters', target='_blank', title='Follow us on Twitter', style="color: #c82020;")
-                i.icon.icon-lg.square.fa.fa-twitter
-            a(href='https://plus.google.com/100708201261690131120', target='_blank', title='Join us on Google+', style="color: #c82020;")
-                i.icon.icon-lg.square.fa.fa-google-plus
         .navbar-collapse.collapse
             ul.nav.navbar-nav
                 li.active
@@ -34,6 +35,5 @@
                     a.smoothScroll(href='/#links') Links
                 li
                     a#register-link(href='#register', data-toggle='modal', data-target='#register',style='color:#c82020;') Signup
-            ul.nav.navbar-nav.navbar-right
                 li
                     a#login-link(href='#login', data-toggle='modal', data-target='#login') Login
