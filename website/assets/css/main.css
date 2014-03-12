@@ -572,3 +572,30 @@ body.blog-body {
         font-size: 40px;
     }
 }
+
+.pointer {
+    cursor: pointer;
+}
+
+#dragon-pricing {
+    background: url("../img/dragon-bg.jpg") no-repeat center top;
+}
+
+#lich-pricing {
+    background: url("../img/lich-bg.jpg") no-repeat center top;
+}
+
+#minotaur-pricing {
+    background: url("../img/minotaur-bg.jpg") no-repeat center top;
+}
+
+.whiteTextShadow {
+    color: #fff;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+.pricing-option {
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}

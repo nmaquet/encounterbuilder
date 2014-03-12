@@ -275,7 +275,7 @@
     .switch-ios.switch-light input:checked ~ span span:last-of-type {
       opacity: 1;
       color: white; }
-  .switch-ios.switch-toggle {
+    .pointer.switch-ios.switch-toggle {
     background-color: #fafafa;
     border: 1px solid lightgrey;
     border-radius: 30px;

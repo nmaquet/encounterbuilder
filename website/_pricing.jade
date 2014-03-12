@@ -9,25 +9,25 @@
         .row
             .col-xs-12
                 .col-xs-3.center
-                    .switch-toggle.switch-ios
-                        input#monthlyRadio(name='view', type='radio', checked='', onclick="monthlyRadioClicked();")
-                        label(for='monthlyRadio', onclick='') Monthly
-                        input#yearlyRadio(name='view', type='radio', onclick="yearlyRadioClicked();")
-                        label(for='yearlyRadio', onclick='') Yearly
-                        a
+                    .switch-toggle.switch-ios.pointer
+                        input#monthlyRadio.pointer(name='view', type='radio', checked='', onclick="monthlyRadioClicked();")
+                        label.pointer(for='monthlyRadio', onclick='') Monthly
+                        input#yearlyRadio.pointer(name='view', type='radio', onclick="yearlyRadioClicked();")
+                        label.pointer(for='yearlyRadio', onclick='') Yearly
+                        a.pointer
         // TEST BEGIN
         br
         br
         .row
             .col-lg-4
                 .pricing-option
-                    .pricing-top
-                        span.pricing-edition Dragon
-                        span.price.monthlyPrice
+                    .pricing-top#dragon-pricing
+                        span.pricing-edition.whiteTextShadow Dragon
+                        span.price.monthlyPrice.whiteTextShadow
                             sup $
                             span.price-amount 8
                             small /month
-                        span.price.yearlyPrice.hide
+                        span.price.yearlyPrice.whiteTextShadow.hide
                             sup $
                             span.price-amount 59
                             small /year
@@ -48,13 +48,13 @@
                     a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Get Started
             .col-lg-4
                 .pricing-option
-                    .pricing-top
-                        span.pricing-edition Lich
-                        span.price.monthlyPrice
+                    .pricing-top#lich-pricing
+                        span.pricing-edition.whiteTextShadow Lich
+                        span.price.monthlyPrice.whiteTextShadow
                             sup $
                             span.price-amount 5
                             small /month
-                        span.price.yearlyPrice.hide
+                        span.price.yearlyPrice.whiteTextShadow.hide
                             sup $
                             span.price-amount 45
                             small /year
@@ -75,13 +75,13 @@
                     a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Get Started
             .col-lg-4
                 .pricing-option
-                    .pricing-top
-                        span.pricing-edition Orc
-                        span.price.monthlyPrice
+                    .pricing-top#minotaur-pricing
+                        span.pricing-edition.whiteTextShadow Minotaur
+                        span.price.monthlyPrice.whiteTextShadow
                             sup $
                             span.price-amount 0
                             small /month
-                        span.price.yearlyPrice.hide
+                        span.price.yearlyPrice.whiteTextShadow.hide
                             sup $
                             span.price-amount 0
                             small /year
