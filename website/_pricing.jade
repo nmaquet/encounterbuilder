@@ -10,22 +10,28 @@
             .col-xs-12
                 .col-xs-3.center
                     .switch-toggle.switch-ios
-                        input#week(name='view', type='radio', checked='checked')
-                        label(for='week', onclick='') Monthly
-                        input#month(name='view', type='radio')
-                        label(for='month', onclick='') Yearly
+                        input#monthlyRadio(name='view', type='radio', checked='', onclick="monthlyRadioClicked();")
+                        label(for='monthlyRadio', onclick='') Monthly
+                        input#yearlyRadio(name='view', type='radio', onclick="yearlyRadioClicked();")
+                        label(for='yearlyRadio', onclick='') Yearly
                         a
+        // TEST BEGIN
+        br
         br
         .row
             .col-lg-4
                 .pricing-option
                     .pricing-top
                         span.pricing-edition Dragon
-                        span.price
+                        span.price.monthlyPrice
                             sup $
                             span.price-amount 8
                             small /month
-                        span.special-label yearly subscription : $49 / year
+                        span.price.yearlyPrice.hide
+                            sup $
+                            span.price-amount 59
+                            small /year
+                        span.special-label.yearlyPrice.hide you save $37
                     ul
                         li
                             strong Unlimited&nbsp;
@@ -44,11 +50,15 @@
                 .pricing-option
                     .pricing-top
                         span.pricing-edition Lich
-                        span.price
+                        span.price.monthlyPrice
                             sup $
                             span.price-amount 5
                             small /month
-                        span.special-label yearly subscription : $29 / year
+                        span.price.yearlyPrice.hide
+                            sup $
+                            span.price-amount 45
+                            small /year
+                        span.special-label.yearlyPrice.hide you save $15
                     ul
                         li
                             strong Unlimited&nbsp;
@@ -67,10 +77,14 @@
                 .pricing-option
                     .pricing-top
                         span.pricing-edition Orc
-                        span.price
+                        span.price.monthlyPrice
                             sup $
                             span.price-amount 0
                             small /month
+                        span.price.yearlyPrice.hide
+                            sup $
+                            span.price-amount 0
+                            small /year
                     ul
                         li
                             strong Unlimited&nbsp;
