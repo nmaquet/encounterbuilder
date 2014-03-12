@@ -25,7 +25,7 @@ $('#login').on('shown.bs.modal', function () {
 
 $(window).load(function () {
     $.ajax({
-        type: "get",
+        type: "post",
         url: '/api/user-data',
         success: function (userData) {
             if (userData.user !== undefined) {

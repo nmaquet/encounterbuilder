@@ -18,7 +18,7 @@ module.exports = function (encounterCollection) {
             })
         }
         else {
-            response.json({});
+            response.send(401, 'access denied');
         }
     }
 };

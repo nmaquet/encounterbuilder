@@ -40,7 +40,7 @@ DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', '$window
                 selectedEncounterService.selectedEncounter(encounters[0], true /* allow undefined */);
             }
             if ($rootScope.user === undefined) {
-                $http.get('/api/user-data')
+                $http.post('/api/user-data')
                     .success(function (userData) {
                         $rootScope.user = userData.user;
                         if ($rootScope.user === undefined) {

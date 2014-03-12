@@ -66,8 +66,8 @@ function main(db) {
     app.get('/api/search-magic-items', authentication.check, searchMagicItemsRoute);
     app.get('/api/monster/:id', authentication.check, monsterRoute);
     app.get('/api/magic-item/:id', authentication.check, magicItemRoute);
-    app.get('/api/user-data', userDataRoute);
-    app.get('/logout', logoutRoute);
+    app.post('/api/user-data', userDataRoute);
+    app.post('/logout', logoutRoute);
     app.post("/login", loginRoute);
     app.post("/api/upsert-encounter", authentication.check, encounterRoute.upsert);
     app.post("/api/remove-encounter", authentication.check, encounterRoute.delete);
