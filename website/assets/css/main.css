@@ -624,7 +624,7 @@ body.blog-body {
 
 @media (max-width: 450px) {
     .navbar-default .navbar-brand {
-        font-size: 18px;
+        font-size: 14px;
     }
     .beta-small-screen{
         font-size: 10px;
