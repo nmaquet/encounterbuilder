@@ -8,14 +8,17 @@ var fs = require('fs');
 var express = require('express');
 var app = express();
 var MongoClient = require('mongodb').MongoClient;
+var MongoStore = require('connect-mongo')(express);
 var ObjectID = require('mongodb').ObjectID;
 
-
-if (process.env.USE_TEST_DB) {
+if (process.env['USE_TEST_DB']) {
     var MONGODB_URL = process.env['MONGODB_TEST_URL'];
 }
 else {
     var MONGODB_URL = process.env['MONGODB_URL'];
+    var SESSION_STORE = new MongoStore({
+        url: process.env['SESSION_MONGODB_URL']
+    });
 }
 
 MongoClient.connect(MONGODB_URL, function (error, db) {
@@ -38,7 +41,10 @@ function main(db) {
         app.use(express.bodyParser());
         app.use(express.methodOverride());
         app.use(express.cookieParser());
-        app.use(express.session({secret: process.env['SESSION_SECRET']}));
+        app.use(express.session({
+            store: SESSION_STORE,
+            secret: process.env['SESSION_SECRET']
+        }));
     });
 
     var authentication = require('./authentication')();
