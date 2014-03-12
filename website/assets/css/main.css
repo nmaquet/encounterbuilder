@@ -630,3 +630,8 @@ body.blog-body {
         font-size: 10px;
     }
 }
+
+#priceSwitch {
+    max-width: 200px;
+    margin: auto;
+}

@@ -8,13 +8,12 @@
         br
         .row
             .col-xs-12
-                .col-xs-3.center
-                    .switch-toggle.switch-ios.pointer
-                        input#monthlyRadio.pointer(name='view', type='radio', checked='', onclick="monthlyRadioClicked();")
-                        label.pointer(for='monthlyRadio', onclick='') Monthly
-                        input#yearlyRadio.pointer(name='view', type='radio', onclick="yearlyRadioClicked();")
-                        label.pointer(for='yearlyRadio', onclick='') Yearly
-                        a.pointer
+                .switch-toggle.switch-ios.pointer#priceSwitch
+                    input#monthlyRadio.pointer(name='view', type='radio', checked='', onclick="monthlyRadioClicked();")
+                    label.pointer(for='monthlyRadio', onclick='') Monthly
+                    input#yearlyRadio.pointer(name='view', type='radio', onclick="yearlyRadioClicked();")
+                    label.pointer(for='yearlyRadio', onclick='') Yearly
+                    a.pointer
         // TEST BEGIN
         br
         br
