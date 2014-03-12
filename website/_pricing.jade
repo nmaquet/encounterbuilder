@@ -6,54 +6,63 @@
         h3(style="color:red")
             |We have not yet launched so these prices are still subject to changes.
         br
-        br
-        .col-lg-4
-            .pricing-option
-                .pricing-top
-                    span.pricing-edition Dragon
-                    span.price
-                        sup $
-                        span.price-amount 8
-                        small /month
-                    span.special-label yearly subscription : $49 / year
-                ul
-                    li
-                        strong Unlimited&nbsp;
-                        | encounters
-                    li
-                        strong No limit&nbsp;
-                        | on monster CR
-                    li
-                        strong No limit&nbsp;
-                        | on encounter CR
-                    li
-                        | Ideal for PC's of&nbsp;
-                        strong all levels
-                a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Get Started
-        .col-lg-4
-            .pricing-option
-                .pricing-top
-                    span.pricing-edition Lich
-                    span.price
-                        sup $
-                        span.price-amount 5
-                        small /month
-                    span.special-label yearly subscription : $29 / year
-                ul
-                    li
-                        strong Unlimited&nbsp;
-                        | encounters
-                    li
-                        | Monsters up to&nbsp;
-                        strong CR 10
-                    li
-                        | Encounters up to&nbsp;
-                        strong CR 20
-                    li
-                        | Ideal for PC's&nbsp;
-                        strong level 1 to 14
-                a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Get Started
         .row
+            .col-xs-12
+                .col-xs-3.center
+                    .switch-toggle.switch-ios
+                        input#week(name='view', type='radio', checked='checked')
+                        label(for='week', onclick='') Monthly
+                        input#month(name='view', type='radio')
+                        label(for='month', onclick='') Yearly
+                        a
+        br
+        .row
+            .col-lg-4
+                .pricing-option
+                    .pricing-top
+                        span.pricing-edition Dragon
+                        span.price
+                            sup $
+                            span.price-amount 8
+                            small /month
+                        span.special-label yearly subscription : $49 / year
+                    ul
+                        li
+                            strong Unlimited&nbsp;
+                            | encounters
+                        li
+                            strong No limit&nbsp;
+                            | on monster CR
+                        li
+                            strong No limit&nbsp;
+                            | on encounter CR
+                        li
+                            | Ideal for PC's of&nbsp;
+                            strong all levels
+                    a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Get Started
+            .col-lg-4
+                .pricing-option
+                    .pricing-top
+                        span.pricing-edition Lich
+                        span.price
+                            sup $
+                            span.price-amount 5
+                            small /month
+                        span.special-label yearly subscription : $29 / year
+                    ul
+                        li
+                            strong Unlimited&nbsp;
+                            | encounters
+                        li
+                            | Monsters up to&nbsp;
+                            strong CR 10
+                        li
+                            | Encounters up to&nbsp;
+                            strong CR 20
+                        li
+                            | Ideal for PC's&nbsp;
+                            strong level 1 to 14
+                    a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Get Started
             .col-lg-4
                 .pricing-option
                     .pricing-top
