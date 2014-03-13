@@ -57,6 +57,7 @@ function main(db) {
     var monsterRoute = require('./monsterRoute')(collections.monsters);
     var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
     var loginRoute = require('./loginRoute')(collections.users, authentication.authenticate);
+    var changePasswordRoute = require('./changePasswordRoute')(collections.users, authentication);
     var logoutRoute = require('./logoutRoute')();
     var userDataRoute = require('./userDataRoute')(collections.encounters);
     var clientRoutes = require('./clientRoutes')();
@@ -72,6 +73,7 @@ function main(db) {
     app.post("/api/upsert-encounter", authentication.check, encounterRoute.upsert);
     app.post("/api/remove-encounter", authentication.check, encounterRoute.delete);
     app.post("/api/generate-encounter-loot", authentication.check, encounterRoute.generateLoot);
+    app.post("/api/change-password", authentication.check, changePasswordRoute);
 
     app.get('/feedback-popover.html', authentication.check, clientRoutes.feedbackPopover);
     app.get('/login.html', clientRoutes.login);

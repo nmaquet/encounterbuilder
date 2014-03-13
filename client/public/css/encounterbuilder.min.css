@@ -5842,6 +5842,15 @@ input.ng-pristine + .password-do-not-match {
   border-color: #ec3f41;
 }
 
+/* Set submit button */
+form .btn-primary, form.ng-valid .btn[disabled] {
+  display: none;
+}
+
+form.ng-invalid .btn-primary[disabled], form.ng-valid .btn {
+  display: inline-block;
+}
+
 .table {
   margin-bottom: 0;
 }
