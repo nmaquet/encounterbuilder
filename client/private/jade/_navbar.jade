@@ -36,6 +36,9 @@
                     | &nbsp;{{user.username}}&nbsp;
                     b.caret
                 ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
+                    li
+                        a.pointer(tabindex='-1',data-target='#password_modal', role='button', data-toggle='modal')
+                            | Change password
                     //li
                         a.pointer(tabindex='-1')
                             |Profile
@@ -47,6 +50,7 @@
                     li
                         a#user-dropdown-logout.pointer(tabindex='-1', ng-click='logout()')
                             | Log out
+include _change-password
     //.navbar-inner
         .row
             button.btn(type='button', data-toggle='collapse', data-target='.navbar-collapse')                                                                                                         span.sr-only
