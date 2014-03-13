@@ -5813,6 +5813,35 @@ button, input, select {
   border-color: rgba(51, 147, 156, 0.7);
 }
 
+.password-do-not-match {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  top: -6px;
+  left: 160px;
+  width: 200px;
+  padding: 10px;
+  background: #fefefe;
+  font-size: .875em;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px #aaa;
+  border: 1px solid #ddd;
+  opacity: 0.9;
+}
+
+input.ng-pristine + .password-do-not-match {
+  display: none;
+}
+
+.ng-dirty.ng-invalid {
+  border-color: #ec3f41;
+}
+
+.ng-invalid + .password-do-not-match {
+  display: block;
+  border-color: #ec3f41;
+}
+
 .table {
   margin-bottom: 0;
 }
