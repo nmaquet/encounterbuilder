@@ -92,6 +92,7 @@ var NPC_MODEL = {
     "Mythic": String,
     "MT": Number,
     /* Extra Computed Attributes */
+    "id":String,
     "Description": String,
     "Description_Visual": String,
     "Str": Number,

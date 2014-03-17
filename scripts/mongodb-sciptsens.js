@@ -21,10 +21,10 @@ MongoClient.connect(MONGODB_URL, function (error, db) {
 });
 
 function main(db) {
-    db.collection('encounters').find({}).toArray(function (error, data) {
+    db.collection('npcs').find({}).toArray(function (error, data) {
         console.log(error);
         console.log(data.length);
-        console.log(JSON.stringify(data));
+        console.log(JSON.stringify(data[36]));
         console.log('done');
         db.close();
     });

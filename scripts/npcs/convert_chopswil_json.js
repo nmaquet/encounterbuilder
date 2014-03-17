@@ -6,7 +6,7 @@ var cheerio = require("cheerio");
 var fakeMongoose = {model: function () {
 }};
 
-var chopswil_npcs = require("../../data/contrib/npcs_chopswil.json");
+var chopswil_npcs = require("../../data/contrib/chopswil_npcs.json");
 var NPC_ATTRIBUTES = require('./npcModel')(fakeMongoose).NPC_ATTRIBUTES;
 
 var ATTRIBUTE_FILTERS = {
@@ -17,6 +17,8 @@ var ATTRIBUTE_FILTERS = {
         return getSRDNpcVisualDescription(srdNpc, $);
     },
     Str: function (srdNpc, $) {
+        //console.log(srdNpc.Name);
+        //console.log(srdNpc.AbilityScores);
         return  /Str\s*(\d*)/.exec(srdNpc.AbilityScores)[1];
     },
     Dex: function (srdNpc, $) {
@@ -197,8 +199,10 @@ function cleanupSRDNpc(srdNpc, $) {
         var attributeFilter = ATTRIBUTE_FILTERS[attribute];
         if (attributeFilter) {
             npc[attribute] = attributeFilter(srdNpc, $);
-        } else {
+        } else if (typeof npc[attribute] === "string") {
             npc[attribute] = srdNpc[attribute].trim();
+        } else {
+            npc[attribute] = srdNpc[attribute];
         }
         if (npc[attribute] === '') {
             delete npc[attribute];
@@ -233,6 +237,6 @@ for (var name in npcNameCount) {
     }
 }
 
-fs.writeFileSync('../data/npcs/npcs.json', JSON.stringify(npcs));
+fs.writeFileSync('../../data/npcs/npcs.json', JSON.stringify(npcs,null,4));
 
 console.log("done");
