@@ -16,6 +16,8 @@ head
     script(src="assets/js/modernizr.custom.js")
 
 body
+    script.
+            var WRInitTime=(new Date()).getTime();
     include _navbar
     include _login-modal
     include _register-modal
@@ -32,6 +34,11 @@ body
     script(src='assets/js/smoothscroll.js')
     script(src='assets/js/retina.js')
     script(src='assets/js/main.js')
+    script.
+        // function ClickTalePreRecordingHook() { /* place your customized code here */  }
+        document.write(unescape("%3Cscript%20src='" + (document.location.protocol=='https:'?
+        "https://clicktalecdn.sslcs.cdngc.net/www02/ptc/51d0da2f-d688-44c5-8ea6-7215f6828f52.js":
+        "http://cdn.clicktale.net/www02/ptc/51d0da2f-d688-44c5-8ea6-7215f6828f52.js")+"'%20type='text/javascript'%3E%3C/script%3E"));
     script.
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
