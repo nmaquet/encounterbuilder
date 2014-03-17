@@ -6,7 +6,7 @@ var cheerio = require("cheerio");
 var fakeMongoose = {model: function () {
 }};
 
-var chopswil_npcs = require("../data/contrib/npcs_partial.json");
+var chopswil_npcs = require("../../data/contrib/npcs_chopswil.json");
 var NPC_ATTRIBUTES = require('./npcModel')(fakeMongoose).NPC_ATTRIBUTES;
 
 var ATTRIBUTE_FILTERS = {
@@ -15,42 +15,6 @@ var ATTRIBUTE_FILTERS = {
     },
     Description_Visual: function (srdNpc, $) {
         return getSRDNpcVisualDescription(srdNpc, $);
-    },
-    Init: function (srdNpc, $) {
-        return parseAttributeFromSrdNpc($("b:contains(Init)"), /Init\s*([-,\+]\d*);/);
-    },
-    Senses: function (srdNpc, $) {
-        return parseAttributeFromSrdNpc($("b:contains(Senses)"), /.*;\s*Senses\s*(.*)/);
-    },
-    SR: function (srdNpc, $) {
-        return parseAttributeFromSrdNpc($("b:contains(SR)"), /.*SR\s*(.*)/);
-    },
-    DR: function (srdNpc, $) {
-        return parseAttributeFromSrdNpc($("b:contains(DR)"), /.*DR\s*([^;]*)/);
-    },
-    Immune: function (srdNpc, $) {
-        var immune = parseAttributeFromSrdNpc($("b:contains(Immune)"), /.*Immune\s*([^;]*)/);
-        var weakness = immune.indexOf("Weaknesses");
-        if (weakness != -1) {
-            immune = immune.slice(0, weakness).trim();
-        }
-        return immune;
-    },
-    Weaknesses: function (srdNpc, $) {
-        var weakness = parseAttributeFromSrdNpc($("b:contains(Weaknesses)"), /.*Weaknesses\s*([^;]*)/);
-        if (weakness) return weakness;
-        return parseAttributeFromSrdNpc($("b:contains(Immune)"), /.*Weaknesses\s*([^;]*)/);
-    },
-    SpecialAttacks: function (srdNpc, $) {
-        return parseAttributeFromSrdNpc($("b:contains(Special Attacks)"), /.*Special Attacks\s*(.*)/);
-    },
-    SpellLikeAbilities: function (srdNpc, $) {
-        var element = $("b:contains(Spell-Like Abilities)");
-        if (!element.text()) {
-            //stupid typo in source
-            element = $("b:contains(Spell- Like Abilities)");
-        }
-        return element.parent().html();
     },
     Str: function (srdNpc, $) {
         return  /Str\s*(\d*)/.exec(srdNpc.AbilityScores)[1];
@@ -69,18 +33,6 @@ var ATTRIBUTE_FILTERS = {
     },
     Cha: function (srdNpc, $) {
         return  /Cha\s*(\d*)/.exec(srdNpc.AbilityScores)[1];
-    },
-    BaseAtk: function (srdNpc, $) {
-        return parseAttributeFromSrdNpc($("b:contains(Base Atk)"), /.*Base Atk\s*([^;]*)/);
-    },
-    CMB: function (srdNpc, $) {
-        return parseAttributeFromSrdNpc($("b:contains(CMB)"), /.*CMB\s*([^;]*)/);
-    },
-    CMD: function (srdNpc, $) {
-        return parseAttributeFromSrdNpc($("b:contains(CMD)"), /.*CMD\s*(.*)/);
-    },
-    SpecialAbilities: function (srdNpc, $) {
-        return getSRDNpcSpecialAbilities(srdNpc, $);
     },
     TreasureBudget: function (srdNpc) {
         return getBudget(srdNpc)
@@ -218,25 +170,9 @@ function parseClass(Class) {
     }
 }
 
-function parseAttributeFromSrdNpc(element, regex) {
-    if (!element.text()) {
-        return "";
-    }
-    var match = regex.exec(element.parent().text());
-    if (!match) {
-        return "";
-    }
-    return match[1];
-}
-
 function getSRDNpcVisualDescription(npc, $) {
     var element = $("div > h3 > i");
     return element.text();
-}
-
-function getSRDNpcSpecialAbilities(npc, $) {
-    var element = $("div:contains(SPECIAL ABILITIES)");
-    return element.next().next().html();
 }
 
 function getSRDNpcDescription(npc, $) {
@@ -244,30 +180,15 @@ function getSRDNpcDescription(npc, $) {
         var element = $("div").eq(div).children().first();
         return element.html();
     }
+    var exceptions = {
 
-    var kyleDescription = getKyleNpcByID(npc.id).Description;
-    if (kyleDescription == undefined) {
-        console.log("[WARNING] no Kyle Npc '" + npc.Name + "' => guessing description at div 14 !");
+    };
+    if (exceptions[npc.Name] === undefined) {
         return get(14);
+    } else {
+        return get(exceptions[npc.Name]);
     }
-    var div = [14, 12, 16];
-    var minDistance = Number.MAX_VALUE;
-    var bestDescription = null;
-    var ACCEPTABLE_DISTANCE = 0.20;
-    for (var i in div) {
-        var description = get(div[i]);
-        var distance = getDistance(description, kyleDescription);
-        if (distance < minDistance) {
-            minDistance = distance;
-            bestDescription = description;
-        }
-        if (minDistance <= ACCEPTABLE_DISTANCE) {
-            break;
-        }
-    }
-    return bestDescription;
 }
-
 
 function cleanupSRDNpc(srdNpc, $) {
     var npc = {};
