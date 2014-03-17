@@ -13,6 +13,8 @@ module.exports = function (config) {
             "client/private/bower_components/jquery-ui/ui/jquery-ui.js",
             "client/private/bower_components/jquery-cookie/jquery.cookie.js",
             "client/private/bower_components/bootstrap.css/js/bootstrap.js",
+            "client/private/angular-ui/ui-bootstrap-0.10.0.js",
+            "client/private/angular-ui/ui-bootstrap-tpls-0.10.0.js",
             'client/private/js/**/*.js',
             'client/private/js/app.js',
             'test/client-unit/*.js'
