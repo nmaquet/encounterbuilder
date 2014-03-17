@@ -1,0 +1,183 @@
+// TODO: adapt this
+.row.heading.result-heading
+    .col-xs-8.col-lg-9.name-container
+        h2.title.font-title {{npc.Name}}
+        small Source: {{npc.Source}}
+    .col-xs-4.col-lg-3.cr-container
+        h3.title.font-title CR
+            | &nbsp;{{npc.CR | numberToFractionString}}
+        strong XP
+        | &nbsp;{{npc.XP}}
+        //.row.btn-container
+            a.col-xs-3.no-padding.action-btn.btn-1.pointer(title='Copy')
+                i.icon.fa.fa-copy
+            a.col-xs-3.no-padding.action-btn.btn-2.pointer(title='Settings')
+                i.icon.fa.fa-cogs
+            a.col-xs-3.no-padding.action-btn.btn-3.pointer(title='Zap')
+                i.icon.fa.fa-flash
+            a.col-xs-3.no-padding.action-btn.btn-4.pointer(title='Delete')
+                i.icon.fa.fa-times
+
+.row.section.result-content
+    .col-xs-12.cat
+        p.intro.underlined {{npc.Description_Visual}}
+        ul.list-inline
+            li
+                span
+                    strong XP
+                    | &nbsp;{{npc.XP}}
+            li
+                span
+                    strong {{npc.Alignment}}
+                    | &nbsp;{{npc.Size}} {{npc.Type}} {{npc.SubType}}
+            li
+                span
+                    strong Init
+                    | &nbsp;{{npc.Init}}
+            li
+                span
+                    strong Senses
+                    | &nbsp;{{npc.Senses}}
+    .col-xs-12
+        .row
+            .col-lg-6.cat.decor
+                legend.legend.font-title Offense
+                ul.list-unstyled
+                    li
+                        span
+                            strong SPD
+                            | &nbsp;{{npc.Speed}}
+                    li
+                        span
+                            strong Melee
+                            | &nbsp;{{npc.Melee}}
+                    li
+                        span
+                            strong Space
+                            | &nbsp;{{npc.Space}}
+                            | &nbsp;
+                        span
+                            strong Reach
+                            | &nbsp;{{npc.Reach}}
+                    li(ng-if='npc.SpecialAttacks')
+                        span
+                            strong Special Attacks
+                            | &nbsp;{{npc.SpecialAttacks}};
+                    li(ng-bind-html='npc.SLASafe')
+            .col-lg-6.cat.decor
+                legend.legend.font-title Defense
+                ul.list-unstyled
+                    li
+                        span
+                            strong
+                                abbr(title='Armor Class') AC
+                            | &nbsp;{{npc.AC}}
+                    li
+                        span
+                            strong HP
+                            | &nbsp;{{npc.HP}}
+                    li
+                        span
+                            strong Fort
+                            | &nbsp;{{npc.Fort}},
+                        span
+                            strong Ref
+                            | &nbsp;{{npc.Ref}},
+                        span
+                            strong Will
+                            | &nbsp;{{npc.Will}}
+                    li(ng-if='npc.DR')
+                        span
+                            strong DR
+                            | &nbsp;{{npc.DR}};
+                    li(ng-if='npc.Immune')
+                        span
+                            strong Immune
+                            | &nbsp;{{npc.Immune}};
+                    li(ng-if='npc.Weaknesses')
+                        span
+                            strong Weaknesses
+                            | &nbsp;{{npc.Weaknesses}};
+                    li(ng-if='npc.SR')
+                        span
+                            strong SR
+                            | &nbsp;{{npc.SR}}
+
+    .col-xs-12
+        .row
+            .col-lg-6.cat.decor
+                legend.legend.font-title Statistics
+                ul.list-unstyled
+                    li
+                        span
+                            strong Str
+                            | &nbsp;{{npc.Str}},
+                        span
+                            strong Dex
+                            | &nbsp;{{npc.Dex}},
+                        span
+                            strong Con
+                            | &nbsp;{{npc.Con}},
+                        span
+                            strong Int
+                            | &nbsp;{{npc.Int}},
+                        span
+                            strong Wis
+                            | &nbsp;{{npc.Wis}},
+                        span
+                            strong Cha
+                            | &nbsp;{{npc.Cha}}
+                    li
+                        span
+                            strong Base Atk
+                            | &nbsp;{{npc.BaseAtk}};
+                        span
+                            strong CMB
+                            | &nbsp;{{npc.CMB}};
+                        span
+                            strong CMD
+                            | &nbsp;{{npc.CMD}}
+                    li
+                        span
+                            strong Feats
+                            | &nbsp;{{npc.Feats}}
+                    li
+                        span
+                            strong Skills
+                            | &nbsp;{{npc.Skills}}
+                        span
+                            strong Racial Modifiers
+                            | &nbsp;{{npc.RacialMods}}
+                    li
+                        span
+                            strong Languages
+                            | &nbsp;{{npc.Languages}}
+                    li
+                        span
+                            strong SQ
+                            | &nbsp;{{npc.SQ}}
+            .col-lg-6.cat.decor
+                div
+                    legend.legend.font-title Ecology
+                div
+                    ul.list-unstyled
+                        li
+                            span
+                                strong Environment
+                                | &nbsp;{{npc.Environment}}
+                        li
+                            span
+                                strong Organization
+                                | &nbsp;{{npc.Organization}}
+                        li
+                            span
+                                strong Treasure
+                                | &nbsp;{{npc.Treasure}}
+    .col-xs-12.cat.decor
+        span(ng-if='npc.SpecialAbilitiesSafe')
+            legend.legend.font-title Special Abilities
+            // FIXME Use jQuery to change the <h5> tags into <p> or <div>
+            div(ng-bind-html='npc.SpecialAbilitiesSafe')
+    .col-xs-12.cat.decor
+        legend.legend.font-title Description
+        div(ng-bind-html='npc.DescriptionSafe')

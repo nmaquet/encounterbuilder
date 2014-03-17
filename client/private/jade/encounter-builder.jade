@@ -9,23 +9,27 @@ header
             .row
                 .col-xs-12.no-padding-left
                     ul.nav.nav-tabs.text-center#search-tabs
-                        li.col-fifth.tab-1
+                        li.col-sixth.tab-1
                             a#monstersTab.pointer(ng-click="showTab('monsters')", data-toggle="tab")
                                 i.icon.fa.fa-bug
-                                span.tab-name Monsters
-                        li.col-fifth.tab-2
+                                span(style="font-size:90%").tab-name Monsters
+                        li.col-sixth.tab-2
+                            a#monstersTab.pointer(ng-click="showTab('npcs')", data-toggle="tab")
+                                i.icon.fa.fa-user
+                                span.tab-name NPCs
+                        li.col-sixth.tab-3
                             a#itemsTab.pointer(ng-click="showTab('items')", data-toggle="tab")
                                 i.icon.fa.fa-flask
                                 span.tab-name Items
-                        //li.col-fifth.tab-3
+                        //li.col-sixth.tab-4
                             a#monstersTab.pointer(ng-click="showTab('monsters')", data-toggle="tab")
                                 i.icon.fa.fa-magic
                                 span.tab-name Spells
-                        //li.col-fifth.tab-4
+                        //li.col-sixth.tab-5
                             a#itemsTab.pointer(ng-click="showTab('items')", data-toggle="tab")
                                 i.icon.fa.fa-star
                                 span.tab-name Feats
-                        //li.col-fifth.last.tab-5
+                        //li.col-sixth.last.tab-6
                             a#itemsTab.pointer(ng-click="showTab('items')", data-toggle="tab")
                                 i.icon.fa.fa-key
                                 span.tab-name Rules
@@ -38,6 +42,15 @@ header
                             include _monster-list
                     .col-sm-6.col-md-7.col-lg-8.search-result.app-content.section.shadow(ng-controller='MonsterDetailController')
                         include _monster-details
+            .row(ng-show="selectedTab === 'npcs'")
+                .col-xs-12.no-padding-left
+                    .col-sm-6.col-md-5.col-lg-4.no-padding-left(ng-controller='SearchNpcController')
+                        .section.sidebar-nav.shadow
+                            include _npc-filters
+                        .section.result-list.app-content.shadow
+                            include _npc-list
+                    .col-sm-6.col-md-7.col-lg-8.search-result.app-content.section.shadow(ng-controller='NpcDetailController')
+                        include _npc-details
             .row(ng-show="selectedTab === 'items'")
                 .col-xs-12.no-padding-left
                     .col-sm-6.col-md-5.col-lg-4.no-padding-left(ng-controller='SearchItemController')

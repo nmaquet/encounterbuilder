@@ -41,7 +41,7 @@ module.exports = function (npcsCollection, defaultFindLimit) {
                 response.json({error: error});
             }
             if (count !== undefined) {
-                response.json({count: count, monsters: npcs});
+                response.json({count: count, npcs: npcs});
             }
         });
 
