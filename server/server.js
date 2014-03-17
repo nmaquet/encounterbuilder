@@ -53,6 +53,7 @@ function main(db) {
     var lootService = require('./loot/lootService')(diceService, knapsackService);
 
     var searchMonstersRoute = require('./searchMonstersRoute')(collections.monsters, FIND_LIMIT);
+    var searchNpcsRoute = require('./searchNpcsRoute')(collections.npcs, FIND_LIMIT);
     var searchMagicItemsRoute = require('./searchMagicItemsRoute')(collections.magicitems, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(collections.monsters);
     var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
@@ -64,6 +65,7 @@ function main(db) {
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
 
     app.get('/api/search-monsters', authentication.check, searchMonstersRoute);
+    app.get('/api/search-npcs', authentication.check, searchNpcsRoute);
     app.get('/api/search-magic-items', authentication.check, searchMagicItemsRoute);
     app.get('/api/monster/:id', authentication.check, monsterRoute);
     app.get('/api/magic-item/:id', authentication.check, magicItemRoute);
