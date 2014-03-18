@@ -4,13 +4,6 @@ var EOL = '\n';
 var fs = require('fs');
 var uglify_js = require("uglify-js");
 
-var cssFiles = [
-    // Dependencies
-    "client/private/bower_components/bootstrap/dist/css/bootstrap.css",
-    "client/private/bower_components/jquery-ui/themes/base/jquery-ui.css",
-    // App files
-    "client/private/css/encounter-builder.css"
-];
 
 var jsFiles = [
     // Dependencies
@@ -22,6 +15,7 @@ var jsFiles = [
     "client/private/bower_components/jquery-cookie/jquery.cookie.js",
     "client/private/bower_components/bootstrap/dist/js/bootstrap.js",
     "client/private/bower_components/async/lib/async.js",
+    "client/private/bower_components/nouislider/jquery.nouislider.js",
     "client/private/angular-ui/ui-bootstrap-0.10.0.js",
     "client/private/angular-ui/ui-bootstrap-tpls-0.10.0.js",
     // App files
@@ -88,7 +82,6 @@ var tempfile = "scripts/temp";
 
 concat(jsFiles, tempfile);
 uglify(tempfile, 'client/public/js/encounterbuilder.min.js');
-//concat(cssFiles, 'client/public/css/encounterbuilder.min.css');
 
 fs.unlinkSync(tempfile);
 

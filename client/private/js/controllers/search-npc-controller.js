@@ -6,6 +6,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
 
             $scope.nameSubstring = '';
             $scope.orderProp = 'cr';
+            $scope.minCR = 0;
+            $scope.maxCR = 39;
 
             $scope.$watchCollection("[orderProp, currentPage]", function () {
                 $scope.refreshNpcs();
@@ -80,6 +82,17 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             $scope.minCR = 0;
             $scope.maxCR = 40;
             $scope.crRange = $scope.minCR + " - " + $scope.maxCR;
+
+            console.log("initializing slider");
+
+            $("#npcCRSlider").noUiSlider({
+                start: [0, 20],
+                connect: true,
+                range: {
+                    'min': 0,
+                    'max': 39
+                }
+            });
 
             /* selectedMonsterService.selectedMonsterId('bat'); */
 

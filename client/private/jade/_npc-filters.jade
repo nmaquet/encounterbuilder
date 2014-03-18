@@ -1,4 +1,38 @@
 // TODO: adapt this
 .form-group.col-xs-12
-    //label(for='monster-search') Search
-    input.form-control#monster-search(type='text', name='search', placeholder='Search something…', ng-model='nameSubstring')
+    //label(for='npc-search') Search
+    input.form-control#npc-search(type='text', name='search', placeholder='Search something…', ng-model='nameSubstring')
+.form-group.col-xs-12
+    //label(for='class') Class:
+    select.form-control#class(ng-model='class')
+        option(value='any') Choose class
+        option(value='any') Any
+        optgroup(label="Core Classes")
+            option(value='any') Barbarian
+            option(value='aberration') Bard
+            option(value='animal') Cleric
+            option(value='construct') Druid
+            option(value='dragon') Fighter
+            option(value='fey') Monk
+            option(value='humanoid') Paladin
+            option(value='magical beast') Ranger
+            option(value='ooze') Rogue
+            option(value='outsider') Sorcerer
+            option(value='plant') Wizard
+        optgroup(label="Base Classes")
+            option(value='any') Alchemist
+            option(value='any') Cavalier
+            option(value='aberration') Gunslinger
+            option(value='animal') Inquisitor
+            option(value='construct') Magus
+            option(value='dragon') Oracle
+            option(value='fey') Summoner
+            option(value='humanoid') Witch
+        optgroup(label="NPC Classes")
+            option(value='any') Adept
+            option(value='any') Aristocrat
+            option(value='aberration') Commoner
+            option(value='animal') Expert
+            option(value='construct') Warrior
+.form-group.col-xs-12
+    div#npcCRSlider.noUi-target.noUi-ltr.noUi-horizontal.noUi-background
