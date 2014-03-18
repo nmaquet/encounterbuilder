@@ -2,12 +2,15 @@
 
 var metricsCollection;
 
-function insertEvent(username, event) {
+function insertEvent(username, event, metadata) {
     var metric = {
         username: username,
         event: event,
         timestamp: new Date()
     };
+    if (metadata) {
+        metric.metadata = metadata;
+    }
     metricsCollection.insert(metric, function (error) {
         if (error) {
             console.log(error);
@@ -31,7 +34,7 @@ function logRemoveEncounter(request, response, next) {
 }
 
 function logGenerateEncounterLoot(request, response, next) {
-    insertEvent(request.session.user.username, "GENERATE_ENCOUNTER_LOOT");
+    insertEvent(request.session.user.username, "GENERATE_ENCOUNTER_LOOT", {CR : request.body.encounter.CR});
     next();
 }
 
