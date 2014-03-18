@@ -68,8 +68,8 @@ function main(db) {
     app.get('/api/monster/:id', authentication.check, metrics.logSelectMonster, monsterRoute);
     app.get('/api/magic-item/:id', authentication.check, metrics.logSelectItem, magicItemRoute);
     app.post('/api/user-data', userDataRoute);
-    app.post('/logout', logoutRoute);
-    app.post("/login", loginRoute);
+    app.post('/logout',metrics.logLogout, logoutRoute);
+    app.post("/login",metrics.logLogin, loginRoute);
     app.post("/api/upsert-encounter", authentication.check, metrics.logUpsertEncounter, encounterRoute.upsert);
     app.post("/api/remove-encounter", authentication.check, metrics.logRemoveEncounter, encounterRoute.delete);
     app.post("/api/generate-encounter-loot", authentication.check, metrics.logGenerateEncounterLoot, encounterRoute.generateLoot);

@@ -78,6 +78,20 @@ function main(db) {
             }
             ,
             function (callback) {
+                db.collection('metrics').find({event: "LOGIN"}).count(function (error, count) {
+                    console.log("Login attempts: " + count);
+                    callback(error, null);
+                });
+            }
+            ,
+            function (callback) {
+                db.collection('metrics').find({event: "LOGOUT"}).count(function (error, count) {
+                    console.log("Logouts: " + count);
+                    callback(error, null);
+                });
+            }
+            ,
+            function (callback) {
                 db.close();
                 callback(null, null);
             }
