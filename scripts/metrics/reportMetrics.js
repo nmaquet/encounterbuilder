@@ -16,6 +16,7 @@ function main(db) {
         [
             function (callback) {
                 db.collection('metrics').find({event: "CREATE_ENCOUNTER"}).count(function (error, count) {
+                    console.log("");
                     console.log("Encounters created: " + count);
                     callback(error, null);
                 });
@@ -91,9 +92,25 @@ function main(db) {
                 });
             },
             function (callback) {
+                console.log("");
                 var pipeline = [
                     {$match: {event: "SELECT_MONSTER"}},
                     {$group: {_id: "$metadata.monsterId", count: {$sum: 1}}},
+                    {$sort: { count: -1} }
+                ];
+                db.collection('metrics').aggregate(pipeline, function (error, results) {
+                    for (var i in results){
+                        console.log("Selected "+ results[i]._id + " "+ results[i].count + " times");
+                    }
+                    callback(error, null);
+                });
+            }
+            ,
+            function (callback) {
+                console.log("");
+                var pipeline = [
+                    {$match: {event: "SELECT_ITEM"}},
+                    {$group: {_id: "$metadata.itemId", count: {$sum: 1}}},
                     {$sort: { count: -1} }
                 ];
                 db.collection('metrics').aggregate(pipeline, function (error, results) {
