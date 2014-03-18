@@ -89,6 +89,19 @@ function main(db) {
                     console.log("Logouts: " + count);
                     callback(error, null);
                 });
+            },
+            function (callback) {
+                var pipeline = [
+                    {$match: {event: "SELECT_MONSTER"}},
+                    {$group: {_id: "$metadata.monsterId", count: {$sum: 1}}},
+                    {$sort: { count: -1} }
+                ];
+                db.collection('metrics').aggregate(pipeline, function (error, results) {
+                    for (var i in results){
+                        console.log("Selected "+ results[i]._id + " "+ results[i].count + " times");
+                    }
+                    callback(error, null);
+                });
             }
             ,
             function (callback) {
@@ -99,6 +112,7 @@ function main(db) {
         function (error) {
             if (error) {
                 console.log(error);
+                db.close();
             }
         }
     );
