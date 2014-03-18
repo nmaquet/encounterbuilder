@@ -7,7 +7,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             $scope.nameSubstring = '';
             $scope.orderProp = 'cr';
             $scope.minCR = 0;
-            $scope.maxCR = 39;
+            $scope.maxCR = 20;
 
             $scope.$watchCollection("[orderProp, currentPage]", function () {
                 $scope.refreshNpcs();
@@ -43,7 +43,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
 
 
             $scope.selectNpc = function (id) {
-                /* selectedMonsterService.selectedMonsterId(id) */;
+                /* selectedMonsterService.selectedMonsterId(id) */
+                ;
             }
 
             $scope.addNpc = function (npc) {
@@ -61,10 +62,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                         Name: npc.Name,
                         xp: npc.XP,
                         CR: npc.CR,
-                        Type : npc.Type,
-                        TreasureBudget : npc.TreasureBudget,
-                        Heroic : npc.Heroic,
-                        Level : npc.Level
+                        Type: npc.Type,
+                        TreasureBudget: npc.TreasureBudget,
+                        Heroic: npc.Heroic,
+                        Level: npc.Level
                     };
                 }
                 else {
@@ -79,29 +80,31 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             $scope.itemsPerPage = 15;
             $scope.maxSize = 5;
             $scope.listTimestamp = 0;
-            $scope.minCR = 0;
-            $scope.maxCR = 40;
-            $scope.crRange = $scope.minCR + " - " + $scope.maxCR;
-
-            console.log("initializing slider");
 
             $("#npcCRSlider").noUiSlider({
                 start: [0, 20],
                 connect: true,
+                step:1,
                 range: {
                     'min': 0,
-                    'max': 39
+                    'max': 20
                 }
+            });
+
+            $("#npcCRSlider").on('slide', function () {
+                $scope.minCR = $("#npcCRSlider").val()[0];
+                $scope.maxCR = $("#npcCRSlider").val()[1];
+                $scope.$apply();
             });
 
             /* selectedMonsterService.selectedMonsterId('bat'); */
 
             /* selectedMonsterService.register(function () {
-                $scope.selectedMonsterId = selectedMonsterService.selectedMonsterId();
-            }); */
+             $scope.selectedMonsterId = selectedMonsterService.selectedMonsterId();
+             }); */
 
             /* selectedEncounterService.register(function () {
-                $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
-            }); */
+             $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
+             }); */
         }
     ]);
