@@ -21,7 +21,7 @@ MongoClient.connect(MONGODB_URL, function (error, db) {
 });
 
 function main(db) {
-    db.collection('users').find({}).toArray(function (error, data) {
+    db.collection('metrics').find({}).toArray(function (error, data) {
         console.log(error);
         console.log(data.length);
         console.log(JSON.stringify(data));

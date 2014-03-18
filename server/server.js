@@ -48,6 +48,7 @@ function main(db) {
     });
 
     var authentication = require('./authentication')();
+    var metrics = require('./usageMetrics')(collections.metrics);
     var diceService = require('./diceService')();
     var knapsackService = require('./knapsackService')();
     var lootService = require('./loot/lootService')(diceService, knapsackService);
@@ -69,7 +70,7 @@ function main(db) {
     app.post('/api/user-data', userDataRoute);
     app.post('/logout', logoutRoute);
     app.post("/login", loginRoute);
-    app.post("/api/upsert-encounter", authentication.check, encounterRoute.upsert);
+    app.post("/api/upsert-encounter", authentication.check, metrics.logUpsertEncounter, encounterRoute.upsert);
     app.post("/api/remove-encounter", authentication.check, encounterRoute.delete);
     app.post("/api/generate-encounter-loot", authentication.check, encounterRoute.generateLoot);
 
