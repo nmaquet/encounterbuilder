@@ -2,36 +2,10 @@
 
 var metricsCollection;
 
-function logUpsertEncounter(request, response, next) {
-    var username = request.session.user.username;
-    var encounter = request.body.encounter;
-    if (encounter._id === undefined) {
-        var metric = {
-            username: username,
-            event: "CREATE_ENCOUNTER",
-            timestamp: new Date()
-        };
-    }
-    else {
-        var metric = {
-            username: username,
-            event: "UPDATE_ENCOUNTER",
-            timestamp: new Date()
-        };
-    }
-    metricsCollection.insert(metric, function (error) {
-        if (error) {
-            console.log(error);
-        }
-    });
-    next();
-}
-
-function logRemoveEncounter(request, response, next) {
-    var username = request.session.user.username;
+function insertEvent(username, event) {
     var metric = {
         username: username,
-        event: "REMOVE_ENCOUNTER",
+        event: event,
         timestamp: new Date()
     };
     metricsCollection.insert(metric, function (error) {
@@ -39,6 +13,20 @@ function logRemoveEncounter(request, response, next) {
             console.log(error);
         }
     });
+}
+
+function logUpsertEncounter(request, response, next) {
+    if (request.body.encounter._id === undefined) {
+        insertEvent(request.session.user.username, "CREATE_ENCOUNTER");
+    }
+    else {
+        insertEvent(request.session.user.username, "UPDATE_ENCOUNTER");
+    }
+    next();
+}
+
+function logRemoveEncounter(request, response, next) {
+    insertEvent(request.session.user.username, "REMOVE_ENCOUNTER");
     next();
 }
 
