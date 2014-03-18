@@ -1,39 +1,37 @@
-// TODO: adapt this
 .form-group.col-xs-12
-    //label(for='npc-search') Search
     input.form-control#npc-search(type='text', name='search', placeholder='Search something…', ng-model='nameSubstring')
 .form-group.col-xs-12
-    //label(for='class') Class:
     select.form-control#class(ng-model='class')
+        // FIXME: this is weird
         option(value='any') Choose class
         option(value='any') Any
         optgroup(label="Core Classes")
-            option(value='any') Barbarian
-            option(value='aberration') Bard
-            option(value='animal') Cleric
-            option(value='construct') Druid
-            option(value='dragon') Fighter
-            option(value='fey') Monk
-            option(value='humanoid') Paladin
-            option(value='magical beast') Ranger
-            option(value='ooze') Rogue
-            option(value='outsider') Sorcerer
-            option(value='plant') Wizard
+            option(value='barbarian') Barbarian
+            option(value='bard') Bard
+            option(value='cleric') Cleric
+            option(value='druid') Druid
+            option(value='fighter') Fighter
+            option(value='monk') Monk
+            option(value='paladin') Paladin
+            option(value='ranger') Ranger
+            option(value='rogue') Rogue
+            option(value='sorcerer') Sorcerer
+            option(value='wizard') Wizard
         optgroup(label="Base Classes")
-            option(value='any') Alchemist
-            option(value='any') Cavalier
-            option(value='aberration') Gunslinger
-            option(value='animal') Inquisitor
-            option(value='construct') Magus
-            option(value='dragon') Oracle
-            option(value='fey') Summoner
-            option(value='humanoid') Witch
+            option(value='alchemist') Alchemist
+            option(value='cavalier') Cavalier
+            option(value='gunslinger') Gunslinger
+            option(value='inquisitor') Inquisitor
+            option(value='magus') Magus
+            option(value='oracle') Oracle
+            option(value='summoner') Summoner
+            option(value='witch') Witch
         optgroup(label="NPC Classes")
-            option(value='any') Adept
-            option(value='any') Aristocrat
-            option(value='aberration') Commoner
-            option(value='animal') Expert
-            option(value='construct') Warrior
+            option(value='adept') Adept
+            option(value='aristocrat') Aristocrat
+            option(value='commoner') Commoner
+            option(value='expert') Expert
+            option(value='warrior') Warrior
 .form-group.col-xs-12
     .col-xs-4
         .row

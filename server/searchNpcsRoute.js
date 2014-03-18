@@ -6,6 +6,9 @@ function getQuery(request) {
     if (request.query.nameSubstring) {
         query.Name = new RegExp( escapeRegExp(request.query.nameSubstring), "i");
     }
+    if (request.query.class && request.query.class !== 'any') {
+        query.Classes = { $elemMatch : {Class : request.query.class} };
+    }
     var minCR = Number(request.query.minCR || 0);
     var maxCR = Number(request.query.maxCR || 40);
     if (minCR != 0 || maxCR != 40) {
@@ -15,7 +18,7 @@ function getQuery(request) {
 }
 
 function getSortOption(request) {
-    if (request.query.order === "cr") {
+    if (request.query.sortBy === "cr") {
         return ['CR', 'Name'];
     } else {
         return ['Name', 'CR'];

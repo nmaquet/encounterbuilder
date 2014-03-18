@@ -1,9 +1,8 @@
 .form-group.col-xs-12
-    //label(for='monster-search') Search
     input.form-control#monster-search(type='text', name='search', placeholder='Search something…', ng-model='nameSubstring')
 .form-group.col-xs-12
-    //label(for='type') Type:
     select.form-control#type(ng-model='type')
+        // FIXME: this is weird
         option(value='any') Choose type
         option(value='any') Any
         option(value='aberration') Aberration
@@ -23,13 +22,8 @@
     .col-xs-3.col-sm-2.col-md-3
         .row
             label(for='cr-range') CR range:
-
     .col-xs-9.col-sm-10.col-md-9
         #slider-cr-range
     col-xs-4.col-sm-4.col-md-4.col-lg-offset-8
         .row
             input.form-control.pull-right#cr-range(type='text', ng-model='crRange', readonly='readonly')
-            //span#slider-min-cr.ui-slider-handle
-                |{{minCR}}
-            //span#slider-max-cr.ui-slider-handle
-                | {{maxCR}}

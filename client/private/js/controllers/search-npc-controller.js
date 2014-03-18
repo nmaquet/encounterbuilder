@@ -5,11 +5,17 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
         function ($scope, $timeout, npcService, encounterService, selectedEncounterService) {
 
             $scope.nameSubstring = '';
-            $scope.orderProp = 'cr';
+            $scope.class = 'any';
             $scope.minCR = 0;
             $scope.maxCR = 20;
+            $scope.sortBy = 'cr';
+            $scope.totalItems = 0;
+            $scope.currentPage = 1;
+            $scope.itemsPerPage = 15;
+            $scope.maxSize = 5;
+            $scope.listTimestamp = 0;
 
-            $scope.$watchCollection("[orderProp, currentPage]", function () {
+            $scope.$watchCollection("[sortBy, currentPage, class]", function () {
                 $scope.refreshNpcs();
             });
 
@@ -21,12 +27,24 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 }, 300);
             });
 
+            $scope.$watchCollection("[minCR, maxCR]", function (crRange) {
+                $timeout(function () {
+                    if (crRange[0] === $scope.minCR && crRange[1] === $scope.maxCR) {
+                        $scope.refreshNpcs();
+                    }
+                }, 300);
+            });
+
+
             $scope.refreshNpcs = function () {
                 var params = {
                     nameSubstring: $scope.nameSubstring,
-                    order: $scope.orderProp,
+                    sortBy: $scope.sortBy,
+                    class: $scope.class,
                     skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
-                    findLimit: $scope.itemsPerPage
+                    findLimit: $scope.itemsPerPage,
+                    minCR: $scope.minCR,
+                    maxCR: $scope.maxCR
                 };
                 npcService.search(params, function (error, data) {
                     if (error) {
@@ -44,7 +62,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
 
             $scope.selectNpc = function (id) {
                 /* selectedMonsterService.selectedMonsterId(id) */
-                ;
             }
 
             $scope.addNpc = function (npc) {
@@ -74,12 +91,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 delete npc.amountToAdd;
                 encounterService.encounterChanged(encounter);
             }
-
-            $scope.totalItems = 0;
-            $scope.currentPage = 1;
-            $scope.itemsPerPage = 15;
-            $scope.maxSize = 5;
-            $scope.listTimestamp = 0;
 
             $("#npcCRSlider").noUiSlider({
                 start: [0, 20],
