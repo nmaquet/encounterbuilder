@@ -71,6 +71,13 @@ function main(db) {
             }
             ,
             function (callback) {
+                db.collection('metrics').find({event: "PRINT_ENCOUNTER"}).count(function (error, count) {
+                    console.log("Encounter prints: " + count);
+                    callback(error, null);
+                });
+            }
+            ,
+            function (callback) {
                 db.close();
                 callback(null, null);
             }

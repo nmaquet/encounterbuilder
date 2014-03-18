@@ -58,6 +58,12 @@ function logSelectItem(request, response, next) {
     next();
 }
 
+
+function logPrintEncounter(request, response, next) {
+    insertEvent(request.session.user.username, "PRINT_ENCOUNTER");
+    next();
+}
+
 module.exports = function (collection) {
     metricsCollection = collection;
     return {
@@ -67,6 +73,7 @@ module.exports = function (collection) {
         logSearchMonster : logSearchMonster,
         logSearchItem : logSearchItem,
         logSelectMonster : logSelectMonster,
-        logSelectItem : logSelectItem
+        logSelectItem : logSelectItem,
+        logPrintEncounter : logPrintEncounter
     }
 };
