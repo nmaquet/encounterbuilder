@@ -48,6 +48,7 @@ function main(db) {
     });
 
     var authentication = require('./authentication')();
+    var metrics = require('./usageMetrics')(collections.metrics);
     var diceService = require('./diceService')();
     var knapsackService = require('./knapsackService')();
     var lootService = require('./loot/lootService')(diceService, knapsackService);
@@ -64,23 +65,22 @@ function main(db) {
     var clientRoutes = require('./clientRoutes')();
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
 
-    app.get('/api/search-monsters', authentication.check, searchMonstersRoute);
-    app.get('/api/search-npcs', authentication.check, searchNpcsRoute);
-    app.get('/api/search-magic-items', authentication.check, searchMagicItemsRoute);
-    app.get('/api/monster/:id', authentication.check, monsterRoute);
-    app.get('/api/magic-item/:id', authentication.check, magicItemRoute);
+    app.get('/api/search-monsters', authentication.check, metrics.logSearchMonster, searchMonstersRoute);
+    app.get('/api/search-magic-items', authentication.check, metrics.logSearchItem, searchMagicItemsRoute);
+    app.get('/api/monster/:id', authentication.check, metrics.logSelectMonster, monsterRoute);
+    app.get('/api/magic-item/:id', authentication.check, metrics.logSelectItem, magicItemRoute);
     app.post('/api/user-data', userDataRoute);
-    app.post('/logout', logoutRoute);
-    app.post("/login", loginRoute);
-    app.post("/api/upsert-encounter", authentication.check, encounterRoute.upsert);
-    app.post("/api/remove-encounter", authentication.check, encounterRoute.delete);
-    app.post("/api/generate-encounter-loot", authentication.check, encounterRoute.generateLoot);
+    app.post('/logout',metrics.logLogout, logoutRoute);
+    app.post("/login",metrics.logLogin, loginRoute);
+    app.post("/api/upsert-encounter", authentication.check, metrics.logUpsertEncounter, encounterRoute.upsert);
+    app.post("/api/remove-encounter", authentication.check, metrics.logRemoveEncounter, encounterRoute.delete);
+    app.post("/api/generate-encounter-loot", authentication.check, metrics.logGenerateEncounterLoot, encounterRoute.generateLoot);
     app.post("/api/change-password", authentication.check, changePasswordRoute);
 
     app.get('/feedback-popover.html', authentication.check, clientRoutes.feedbackPopover);
     app.get('/login.html', clientRoutes.login);
     app.get('/encounter-builder.html', authentication.check, clientRoutes.encounterBuilder);
-    app.get('/printable-encounter.html', authentication.check, clientRoutes.printableEncounter);
+    app.get('/printable-encounter.html', authentication.check, metrics.logPrintEncounter, clientRoutes.printableEncounter);
     app.get('/app', clientRoutes.app);
     app.get('/blog', clientRoutes.blog);
     app.get('/', clientRoutes.default);
