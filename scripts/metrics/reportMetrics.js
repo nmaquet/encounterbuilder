@@ -99,8 +99,8 @@ function main(db) {
                     {$sort: { count: -1} }
                 ];
                 db.collection('metrics').aggregate(pipeline, function (error, results) {
-                    for (var i in results){
-                        console.log("Selected "+ results[i]._id + " "+ results[i].count + " times");
+                    for (var i in results) {
+                        console.log("Selected " + results[i]._id + " " + results[i].count + " times");
                     }
                     callback(error, null);
                 });
@@ -114,8 +114,8 @@ function main(db) {
                     {$sort: { count: -1} }
                 ];
                 db.collection('metrics').aggregate(pipeline, function (error, results) {
-                    for (var i in results){
-                        console.log("Selected "+ results[i]._id + " "+ results[i].count + " times");
+                    for (var i in results) {
+                        console.log("Selected " + results[i]._id + " " + results[i].count + " times");
                     }
                     callback(error, null);
                 });
@@ -128,8 +128,8 @@ function main(db) {
                     {$sort: { count: -1} }
                 ];
                 db.collection('metrics').aggregate(pipeline, function (error, results) {
-                    for (var i in results){
-                        console.log("User: "+ results[i]._id + " attempted to login "+ results[i].count + " times");
+                    for (var i in results) {
+                        console.log("User: " + results[i]._id + " attempted to login " + results[i].count + " times");
                     }
                     callback(error, null);
                 });
@@ -142,8 +142,23 @@ function main(db) {
                     {$sort: { count: -1} }
                 ];
                 db.collection('metrics').aggregate(pipeline, function (error, results) {
-                    for (var i in results){
-                        console.log("User: "+ results[i]._id + " logged out "+ results[i].count + " times");
+                    for (var i in results) {
+                        console.log("User: " + results[i]._id + " logged out " + results[i].count + " times");
+                    }
+                    callback(error, null);
+                });
+            }
+            ,
+            function (callback) {
+                console.log("");
+                var pipeline = [
+                    {$match: {}},
+                    {$group: {_id: "$username", count: {$sum: 1}}},
+                    {$sort: { count: -1} }
+                ];
+                db.collection('metrics').aggregate(pipeline, function (error, results) {
+                    for (var i in results) {
+                        console.log("User: " + results[i]._id + " has made " + results[i].count + " actions");
                     }
                     callback(error, null);
                 });
