@@ -36,6 +36,13 @@ function main(db) {
             }
             ,
             function (callback) {
+                db.collection('metrics').find({event: "GENERATE_ENCOUNTER_LOOT"}).count(function (error, count) {
+                    console.log("Encounter loots generated: " + count);
+                    callback(error, null);
+                });
+            }
+            ,
+            function (callback) {
                 db.close();
                 callback(null, null);
             }

@@ -30,10 +30,16 @@ function logRemoveEncounter(request, response, next) {
     next();
 }
 
+function logGenerateEncounterLoot(request, response, next) {
+    insertEvent(request.session.user.username, "GENERATE_ENCOUNTER_LOOT");
+    next();
+}
+
 module.exports = function (collection) {
     metricsCollection = collection;
     return {
         logUpsertEncounter: logUpsertEncounter,
-        logRemoveEncounter: logRemoveEncounter
+        logRemoveEncounter: logRemoveEncounter,
+        logGenerateEncounterLoot: logGenerateEncounterLoot
     }
 };
