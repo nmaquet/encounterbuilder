@@ -12,7 +12,7 @@ function logUpsertEncounter(request, response, next) {
             timestamp: new Date()
         };
     }
-    else{
+    else {
         var metric = {
             username: username,
             event: "UPDATE_ENCOUNTER",
@@ -27,9 +27,25 @@ function logUpsertEncounter(request, response, next) {
     next();
 }
 
+function logRemoveEncounter(request, response, next) {
+    var username = request.session.user.username;
+    var metric = {
+        username: username,
+        event: "REMOVE_ENCOUNTER",
+        timestamp: new Date()
+    };
+    metricsCollection.insert(metric, function (error) {
+        if (error) {
+            console.log(error);
+        }
+    });
+    next();
+}
+
 module.exports = function (collection) {
     metricsCollection = collection;
     return {
-        logUpsertEncounter: logUpsertEncounter
+        logUpsertEncounter: logUpsertEncounter,
+        logRemoveEncounter: logRemoveEncounter
     }
 };

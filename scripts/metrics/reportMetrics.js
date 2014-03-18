@@ -29,6 +29,13 @@ function main(db) {
             }
             ,
             function (callback) {
+                db.collection('metrics').find({event: "REMOVE_ENCOUNTER"}).count(function (error, count) {
+                    console.log("Encounters removed: " + count);
+                    callback(error, null);
+                });
+            }
+            ,
+            function (callback) {
                 db.close();
                 callback(null, null);
             }

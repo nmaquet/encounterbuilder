@@ -71,7 +71,7 @@ function main(db) {
     app.post('/logout', logoutRoute);
     app.post("/login", loginRoute);
     app.post("/api/upsert-encounter", authentication.check, metrics.logUpsertEncounter, encounterRoute.upsert);
-    app.post("/api/remove-encounter", authentication.check, encounterRoute.delete);
+    app.post("/api/remove-encounter", authentication.check, metrics.logRemoveEncounter, encounterRoute.delete);
     app.post("/api/generate-encounter-loot", authentication.check, encounterRoute.generateLoot);
 
     app.get('/feedback-popover.html', authentication.check, clientRoutes.feedbackPopover);
