@@ -43,6 +43,13 @@ function main(db) {
             }
             ,
             function (callback) {
+                db.collection('metrics').find({event: "SEARCH_MONSTER"}).count(function (error, count) {
+                    console.log("Monster searches: " + count);
+                    callback(error, null);
+                });
+            }
+            ,
+            function (callback) {
                 db.close();
                 callback(null, null);
             }

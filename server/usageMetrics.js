@@ -38,11 +38,17 @@ function logGenerateEncounterLoot(request, response, next) {
     next();
 }
 
+function logSearchMonster(request, response, next) {
+    insertEvent(request.session.user.username, "SEARCH_MONSTER", {query : request.query});
+    next();
+}
+
 module.exports = function (collection) {
     metricsCollection = collection;
     return {
         logUpsertEncounter: logUpsertEncounter,
         logRemoveEncounter: logRemoveEncounter,
-        logGenerateEncounterLoot: logGenerateEncounterLoot
+        logGenerateEncounterLoot: logGenerateEncounterLoot,
+        logSearchMonster : logSearchMonster
     }
 };
