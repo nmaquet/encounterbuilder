@@ -53,6 +53,11 @@ function logSelectMonster(request, response, next) {
     next();
 }
 
+function logSelectItem(request, response, next) {
+    insertEvent(request.session.user.username, "SELECT_ITEM", {itemId : request.params.id});
+    next();
+}
+
 module.exports = function (collection) {
     metricsCollection = collection;
     return {
@@ -61,6 +66,7 @@ module.exports = function (collection) {
         logGenerateEncounterLoot: logGenerateEncounterLoot,
         logSearchMonster : logSearchMonster,
         logSearchItem : logSearchItem,
-        logSelectMonster : logSelectMonster
+        logSelectMonster : logSelectMonster,
+        logSelectItem : logSelectItem
     }
 };

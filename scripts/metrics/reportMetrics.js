@@ -64,6 +64,13 @@ function main(db) {
             }
             ,
             function (callback) {
+                db.collection('metrics').find({event: "SELECT_ITEM"}).count(function (error, count) {
+                    console.log("Item selections: " + count);
+                    callback(error, null);
+                });
+            }
+            ,
+            function (callback) {
                 db.close();
                 callback(null, null);
             }
