@@ -65,7 +65,7 @@ function main(db) {
 
     app.get('/api/search-monsters', authentication.check, metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-magic-items', authentication.check, metrics.logSearchItem, searchMagicItemsRoute);
-    app.get('/api/monster/:id', authentication.check, monsterRoute);
+    app.get('/api/monster/:id', authentication.check, metrics.logSelectMonster, monsterRoute);
     app.get('/api/magic-item/:id', authentication.check, magicItemRoute);
     app.post('/api/user-data', userDataRoute);
     app.post('/logout', logoutRoute);

@@ -48,6 +48,11 @@ function logSearchItem(request, response, next) {
     next();
 }
 
+function logSelectMonster(request, response, next) {
+    insertEvent(request.session.user.username, "SELECT_MONSTER", {monsterId : request.params.id});
+    next();
+}
+
 module.exports = function (collection) {
     metricsCollection = collection;
     return {
@@ -55,6 +60,7 @@ module.exports = function (collection) {
         logRemoveEncounter: logRemoveEncounter,
         logGenerateEncounterLoot: logGenerateEncounterLoot,
         logSearchMonster : logSearchMonster,
-        logSearchItem : logSearchItem
+        logSearchItem : logSearchItem,
+        logSelectMonster : logSelectMonster
     }
 };
