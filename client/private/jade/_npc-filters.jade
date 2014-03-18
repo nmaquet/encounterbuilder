@@ -26,6 +26,10 @@
             option(value='oracle') Oracle
             option(value='summoner') Summoner
             option(value='witch') Witch
+        optgroup(label="Alternate Classes")
+            option(value='antipaladin') Antipaladin
+            option(value='ninja') Ninja
+            option(value='samurai') Samurai
         optgroup(label="NPC Classes")
             option(value='adept') Adept
             option(value='aristocrat') Aristocrat
@@ -35,6 +39,6 @@
 .form-group.col-xs-12
     .col-xs-4
         .row
-            label(for='npcCRSlider') <strong>CR</strong> {{minCR|number}} - {{(maxCR < 20) ? (maxCR | number) : "20+"}}
+            label(for='npcCRSlider') <strong>CR</strong> {{minCR | number}} - {{(maxCR < 20) ? (maxCR | number) : "20+"}}
     .col-xs-8
         #npcCRSlider
