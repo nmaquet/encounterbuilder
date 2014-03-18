@@ -64,7 +64,7 @@ function main(db) {
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
 
     app.get('/api/search-monsters', authentication.check, metrics.logSearchMonster, searchMonstersRoute);
-    app.get('/api/search-magic-items', authentication.check, searchMagicItemsRoute);
+    app.get('/api/search-magic-items', authentication.check, metrics.logSearchItem, searchMagicItemsRoute);
     app.get('/api/monster/:id', authentication.check, monsterRoute);
     app.get('/api/magic-item/:id', authentication.check, magicItemRoute);
     app.post('/api/user-data', userDataRoute);

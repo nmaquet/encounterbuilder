@@ -50,6 +50,13 @@ function main(db) {
             }
             ,
             function (callback) {
+                db.collection('metrics').find({event: "SEARCH_ITEM"}).count(function (error, count) {
+                    console.log("Item searches: " + count);
+                    callback(error, null);
+                });
+            }
+            ,
+            function (callback) {
                 db.close();
                 callback(null, null);
             }
