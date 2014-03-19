@@ -26,14 +26,9 @@ describe("spellList", function () {
 
     it("should produce HTML for nOOb spellcasters", function () {
         var element = createElement(SPELLS_KNOWN_NOOB);
-        var lines = [
-            '<span>',
-            '<p><strong>Spells Barely Known</strong> (CL 0)</p>',
-            '<ul>',
-            '<li class="spell-list-item">0 (at will)&emdash;detect magic</li>',
-            '</ul>',
-            '</span>'
-        ]
-        expect(element.html()).to.equal(lines.join(""));
+        expect(element.find("strong").text()).to.equal("Spells Barely Known");
+        expect(element.find("li").length).to.equal(1);
+        expect(element.find("li").hasClass("spell-list-item")).to.equal(true);
+        expect(element.find("li").text()).to.equal("0 (at will)&emdash;detect magic");
     });
 });

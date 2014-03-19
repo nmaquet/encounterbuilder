@@ -20,7 +20,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('spellList',[ '$compile',
             link:function(scope){
                 scope.title = "Spells Barely Known";
                 scope.CL = "0";
-                scope.spellListItems = ["0 (at will)-detect magic"];
+                scope.spellListItems = ["0 (at will)&emdash;detect magic"];
             }
         };
     }]);
