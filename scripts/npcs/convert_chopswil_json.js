@@ -148,7 +148,7 @@ function parseClass(Class) {
                 classLevel = Number(words[i]);
             }
         }
-        return {Class: readClass, Level: classLevel};
+        return {Class: readClass.trim(), Level: classLevel};
     }
 
     if (Class.indexOf('/') === -1) {
@@ -208,6 +208,7 @@ function cleanupSRDNpc(srdNpc, $) {
             delete npc[attribute];
         }
     }
+    delete npc.id;
     return npc;
 }
 
