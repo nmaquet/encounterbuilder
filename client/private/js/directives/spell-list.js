@@ -2,19 +2,25 @@
 
 DEMONSQUID.encounterBuilderDirectives.directive('spellList',[ '$compile',
     function ($compile) {
-        var spellListTemplate =
-            '<p>{{spells}}</p>';
-
+        var templateLines = [
+            '<span>',
+            '<p><strong>{{title}}</strong> (CL {{CL}})</p>',
+            '<ul>',
+            '<li class="spell-list-item" ng-repeat="item in spellListItems">{{item}}</li>',
+            '</ul>',
+            '</span>'
+        ] ;
         return {
             restrict: "E",
             replace: true,
-            template: spellListTemplate,
+            template: templateLines.join(""),
             scope: {
                 spellString: "@spellString"
             },
             link:function(scope){
-                console.log(scope.spellString);
-                scope.spells = scope.spellString;
+                scope.title = "Spells Barely Known";
+                scope.CL = "0";
+                scope.spellListItems = ["0 (at will)-detect magic"];
             }
         };
     }]);
