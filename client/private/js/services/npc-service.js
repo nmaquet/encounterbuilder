@@ -13,17 +13,17 @@ DEMONSQUID.encounterBuilderServices.factory('npcService', ['$http', function ($h
                     callback(error, null);
                 });
         }
-        /*
         ,
         get: function (id, callback) {
-            $http.get('/api/monster/' + id)
+            $http.get('/api/npc/' + id)
                 .success(function (data) {
-                    callback(data.error, data.monster);
+                    callback(data.error, data.npc);
                 })
                 .error(function (error) {
                     callback(error, null);
                 });
-        },
+        }
+        /*,
         getMultiple: function (ids, callback) {
             function pushTask(id) {
                 tasks.push(function (taskCallback) {

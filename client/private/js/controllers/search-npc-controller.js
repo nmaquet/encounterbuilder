@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
-    ['$scope', '$timeout', 'npcService', 'encounterService', 'selectedEncounterService',
-        function ($scope, $timeout, npcService, encounterService, selectedEncounterService) {
+    ['$scope', '$timeout', 'npcService', 'encounterService', 'selectedEncounterService', 'selectedNpcService',
+        function ($scope, $timeout, npcService, encounterService, selectedEncounterService, selectedNpcService) {
 
             $scope.nameSubstring = '';
             $scope.class = 'any';
@@ -61,8 +61,11 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
 
 
             $scope.selectNpc = function (id) {
-                /* selectedMonsterService.selectedMonsterId(id) */
+                selectedNpcService.selectedNpcId(id);
             }
+            selectedNpcService.register(function () {
+                $scope.selectedNpcId = selectedNpcService.selectedNpcId();
+            });
 
             $scope.addNpc = function (npc) {
                 if (!/^(\d+)$/.exec(npc.amountToAdd)) {
@@ -95,7 +98,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             $("#npcCRSlider").noUiSlider({
                 start: [0, 20],
                 connect: true,
-                step:1,
+                step: 1,
                 range: {
                     'min': 0,
                     'max': 20
@@ -110,9 +113,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
 
             /* selectedMonsterService.selectedMonsterId('bat'); */
 
-            /* selectedMonsterService.register(function () {
-             $scope.selectedMonsterId = selectedMonsterService.selectedMonsterId();
-             }); */
 
             /* selectedEncounterService.register(function () {
              $scope.selectedEncounter = selectedEncounterService.selectedEncounter();

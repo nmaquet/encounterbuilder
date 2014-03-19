@@ -1,6 +1,6 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('selectedMonsterService', ['$rootScope', '$timeout',
+DEMONSQUID.encounterBuilderServices.factory('selectedNpcService', ['$rootScope', '$timeout',
     function ($rootScope, $timeout) {
 
         var SELECTED_NPC_CHANGED = 'selectedNpcChanged';
