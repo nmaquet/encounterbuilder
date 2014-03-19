@@ -8,7 +8,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             $scope.class = 'any';
             $scope.minCR = 0;
             $scope.maxCR = 20;
-            $scope.sortBy = 'cr';
+            $scope.sortBy = 'name';
             $scope.totalItems = 0;
             $scope.currentPage = 1;
             $scope.itemsPerPage = 15;
@@ -59,13 +59,15 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 });
             }
 
-
             $scope.selectNpc = function (id) {
                 selectedNpcService.selectedNpcId(id);
             }
+
             selectedNpcService.register(function () {
                 $scope.selectedNpcId = selectedNpcService.selectedNpcId();
             });
+
+            selectedNpcService.selectedNpcId("12-headed-hydra");
 
             $scope.addNpc = function (npc) {
                 if (!/^(\d+)$/.exec(npc.amountToAdd)) {
@@ -110,12 +112,5 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 $scope.maxCR = $("#npcCRSlider").val()[1];
                 $scope.$apply();
             });
-
-            /* selectedMonsterService.selectedMonsterId('bat'); */
-
-
-            /* selectedEncounterService.register(function () {
-             $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
-             }); */
         }
     ]);

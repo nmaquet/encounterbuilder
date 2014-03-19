@@ -51,7 +51,6 @@ var NPC_MODEL = {
     "SQ": String,
     "Environment": String,
     "Organization": String,
-    "Treasure": String,
     "Group": String,
     "Source": String,
     "SpecialAbilities": String,
@@ -101,7 +100,6 @@ var NPC_MODEL = {
     "Int": Number,
     "Wis": Number,
     "Cha": Number,
-    "TreasureBudget": String,
     "Heroic": String,
     "Level": Number,
     "Classes": [

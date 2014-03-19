@@ -1,7 +1,7 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
-    function ($compile) {
+DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit',
+    function () {
         var editorTemplate =
             '<span class="click-to-edit" ng-click="edit();">' +
             '   <span ng-hide="isEditing" class="underline-dotted">' +
@@ -58,4 +58,4 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit', [ '$compile',
                 };
             }]
         };
-    }])
+    })

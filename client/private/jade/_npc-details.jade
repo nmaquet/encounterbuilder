@@ -20,16 +20,16 @@
 
 .row.section.result-content
     .col-xs-12.cat
-        p.intro.underlined {{npc.Description_Visual}}
-        ul.list-inline
+        p(ng-if="npc.Description_Visual").intro.underlined {{npc.Description_Visual}}
+        ul.list-unstyled
             li
                 span
                     strong XP
                     | &nbsp;{{npc.XP}}
+            li(ng-if="npc.Gender||npc.Race||npc.Classes")
+                span {{npc.Gender}} {{npc.Race}} {{npc.Classes|classesToString}}
             li
-                span
-                    strong {{npc.Alignment}}
-                    | &nbsp;{{npc.Size}} {{npc.Type}} {{npc.SubType}}
+                span {{npc.Alignment}} {{npc.Size}} {{npc.Type}} {{npc.SubType}}
             li
                 span
                     strong Init
@@ -41,41 +41,17 @@
     .col-xs-12
         .row
             .col-lg-6.cat.decor
-                legend.legend.font-title Offense
-                ul.list-unstyled
-                    li
-                        span
-                            strong SPD
-                            | &nbsp;{{npc.Speed}}
-                    li
-                        span
-                            strong Melee
-                            | &nbsp;{{npc.Melee}}
-                    li
-                        span
-                            strong Space
-                            | &nbsp;{{npc.Space}}
-                            | &nbsp;
-                        span
-                            strong Reach
-                            | &nbsp;{{npc.Reach}}
-                    li(ng-if='npc.SpecialAttacks')
-                        span
-                            strong Special Attacks
-                            | &nbsp;{{npc.SpecialAttacks}};
-                    li(ng-bind-html='npc.SLASafe')
-            .col-lg-6.cat.decor
                 legend.legend.font-title Defense
                 ul.list-unstyled
                     li
                         span
                             strong
                                 abbr(title='Armor Class') AC
-                            | &nbsp;{{npc.AC}}
+                            | &nbsp;{{npc.AC}}; {{npc.AC_Mods}}
                     li
                         span
                             strong HP
-                            | &nbsp;{{npc.HP}}
+                            | &nbsp;{{npc.HP}} {{npc.HD}}
                     li
                         span
                             strong Fort
@@ -86,6 +62,13 @@
                         span
                             strong Will
                             | &nbsp;{{npc.Will}}
+                    li(ng-if='npc.DefensiveAbilities')
+                        span
+                            strong Defensive Abilities
+                            |&nbsp;{{npc.DefensiveAbilities}}
+                        span(ng-if='npc.Resist')
+                            strong Resist
+                            | &nbsp;{{npc.Resist}}
                     li(ng-if='npc.DR')
                         span
                             strong DR
@@ -102,9 +85,59 @@
                         span
                             strong SR
                             | &nbsp;{{npc.SR}}
-
+            .col-lg-6.cat.decor
+                legend.legend.font-title Offense
+                ul.list-unstyled
+                    li
+                        span
+                            strong SPD
+                            | &nbsp;{{npc.Speed}}
+                    li
+                        span
+                            strong Melee
+                            | &nbsp;{{npc.Melee}}
+                    li(ng-if="npc.Ranged")
+                        span
+                            strong Ranged
+                            | &nbsp;{{npc.Ranged}}
+                    li
+                        span
+                            strong Space
+                            | &nbsp;{{npc.Space}}
+                            | &nbsp;
+                        span
+                            strong Reach
+                            | &nbsp;{{npc.Reach}}
+                    li(ng-if='npc.SpecialAttacks')
+                        span
+                            strong Special Attacks
+                            | &nbsp;{{npc.SpecialAttacks}};
+                    li(ng-if='npc.SpellsKnown')
+                        spell-list(spell-string="{{npc.SpellsKnown}}")
+                    li(ng-bind-html='npc.SLASafe')
     .col-xs-12
         .row
+            .col-lg-6.cat.decor(ng-if='npc.BeforeCombat||npc.DuringCombat||npc.Morale||npc.BaseStatistics')
+                div
+                    legend.legend.font-title Tactics
+                div
+                    ul.list-unstyled
+                        li(ng-if='npc.BeforeCombat')
+                            span
+                                strong Before Combat
+                                | &nbsp;{{npc.BeforeCombat}}
+                        li(ng-if='npc.DuringCombat')
+                            span
+                                strong During Combat
+                                | &nbsp;{{npc.DuringCombat}}
+                        li(ng-if='npc.Morale')
+                            span
+                                strong Morale
+                                | &nbsp;{{npc.Morale}}
+                        li(ng-if='npc.BaseStatistics')
+                            span
+                                strong Base Statistics
+                                | &nbsp;{{npc.BaseStatistics}}
             .col-lg-6.cat.decor
                 legend.legend.font-title Statistics
                 ul.list-unstyled
@@ -145,7 +178,7 @@
                         span
                             strong Skills
                             | &nbsp;{{npc.Skills}}
-                        span
+                        span(ng-if="npc.RacialMods")
                             strong Racial Modifiers
                             | &nbsp;{{npc.RacialMods}}
                     li
@@ -153,31 +186,14 @@
                             strong Languages
                             | &nbsp;{{npc.Languages}}
                     li
-                        span
+                        span(ng-if="npc.SQ")
                             strong SQ
                             | &nbsp;{{npc.SQ}}
-            .col-lg-6.cat.decor
-                div
-                    legend.legend.font-title Ecology
-                div
-                    ul.list-unstyled
-                        li
-                            span
-                                strong Environment
-                                | &nbsp;{{npc.Environment}}
-                        li
-                            span
-                                strong Organization
-                                | &nbsp;{{npc.Organization}}
-                        li
-                            span
-                                strong Treasure
-                                | &nbsp;{{npc.Treasure}}
     .col-xs-12.cat.decor
         span(ng-if='npc.SpecialAbilitiesSafe')
             legend.legend.font-title Special Abilities
             // FIXME Use jQuery to change the <h5> tags into <p> or <div>
             div(ng-bind-html='npc.SpecialAbilitiesSafe')
-    .col-xs-12.cat.decor
+    .col-xs-12.cat.decor(ng-if='npc.Description')
         legend.legend.font-title Description
         div(ng-bind-html='npc.DescriptionSafe')

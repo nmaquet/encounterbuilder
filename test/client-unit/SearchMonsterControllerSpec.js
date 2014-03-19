@@ -34,9 +34,9 @@ describe("SearchMonsterController", function () {
         expect($scope.nameSubstring).to.equal("");
     });
 
-    it("should initialize the sort order to *challenge rating*", function () {
+    it("should initialize the sort order to *name*", function () {
         instantiateController();
-        expect($scope.orderProp).to.equal("cr");
+        expect($scope.orderProp).to.equal("name");
     });
 
     it("should put a refreshMonsters() function in the scope", function () {
@@ -49,7 +49,7 @@ describe("SearchMonsterController", function () {
         instantiateController();
         $scope.$apply();
         /* force angular to resolve the $watchCollection */
-        var params = {nameSubstring: "", order: "cr", type: "any", skip:0, findLimit:15, minCR:0, maxCR:40};
+        var params = {nameSubstring: "", order: "name", type: "any", skip:0, findLimit:15, minCR:0, maxCR:40};
         expect(monsterService.search.params).to.deep.equal(params);
         monsterService.search.callback(null, {monsters: monsters, timestamp: 1000, count:42});
         expect($scope.monsters).to.equal(monsters);

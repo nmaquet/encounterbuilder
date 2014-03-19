@@ -18,3 +18,11 @@ DEMONSQUID.encounterBuilderControllers.controller('NpcDetailController', ['$scop
         });
     }
 ]);
+
+function parseSpellknown(spells){
+    spells = spells.replace("Spells Known ","");
+    var CL = spells.substring(1, spells.indexOf(')'));
+    spells = spells.slice(0,spells.indexOf(')'));
+    var spellsByLevel = spells.split("-");
+    return spells;
+}

@@ -5,7 +5,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
         function ($scope, $timeout, monsterService, selectedMonsterService, encounterService, selectedEncounterService) {
 
             $scope.nameSubstring = '';
-            $scope.orderProp = 'cr';
+            $scope.orderProp = 'name';
             $scope.type = 'any';
 
 
