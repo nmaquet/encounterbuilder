@@ -1,13 +1,58 @@
 "use strict";
+
 var escapeRegExp = require('./utils')().escapeRegExp;
+var async = require('async');
+
+var CLASS_QUERIES = {
+    default: function (request) {
+        return { $elemMatch: {Class: { $regex: "^" + request.query.class } } };
+    },
+    wizard: function (request) {
+        var wizards = [
+            "wizard",
+            "illusionist",
+            "conjurer",
+            "necromancer",
+            "diviner",
+            "evoker",
+            "abjurer",
+            "transmuter",
+            "enchanter",
+            "earth elementalist wizard",
+            "air elementalist wizard",
+            "fire elementalist wizard",
+            "water elementalist wizard"
+        ];
+        return  { $elemMatch: {Class: { $regex: "^(" + wizards.join("|") + ")" } } };
+    },
+    exable: function (request) {
+        return { $elemMatch: {Class: { $regex: "^(ex-){0,1}" + request.query.class + ".*" } } };
+    },
+    paladin: function (request) {
+        return CLASS_QUERIES.exable(request);
+    },
+    druid: function (request) {
+        return CLASS_QUERIES.exable(request);
+    },
+    cleric: function (request) {
+        return CLASS_QUERIES.exable(request);
+    },
+    inquisitor: function (request) {
+        return CLASS_QUERIES.exable(request);
+    },
+    antipaladin: function (request) {
+        return CLASS_QUERIES.exable(request);
+    }
+}
 
 function getQuery(request) {
     var query = {};
     if (request.query.nameSubstring) {
-        query.Name = new RegExp( escapeRegExp(request.query.nameSubstring), "i");
+        query.Name = new RegExp(escapeRegExp(request.query.nameSubstring), "i");
     }
     if (request.query.class && request.query.class !== 'any') {
-        query.Classes = { $elemMatch : {Class : request.query.class} };
+        var classQuery = CLASS_QUERIES[request.query.class] || CLASS_QUERIES.default;
+        query.Classes = classQuery(request);
     }
     var minCR = Number(request.query.minCR || 0);
     var maxCR = Number(request.query.maxCR || 40);
@@ -32,31 +77,45 @@ module.exports = function (npcsCollection, defaultFindLimit) {
         var count;
 
         var options = {
-            fields: {Name: 1, CR: 1, XP: 1, id: 1, Source: 1, TreasureBudget: 1, Type: 1, Heroic : 1, Level: 1},
+            fields: {Name: 1, CR: 1, XP: 1, id: 1, Source: 1, TreasureBudget: 1, Type: 1, Heroic: 1, Level: 1},
             limit: Number(request.query.findLimit || defaultFindLimit),
             skip: Number(request.query.skip || 0),
             sort: getSortOption(request)
         }
 
-        npcsCollection.find(query, options).toArray(function (error, data) {
-            npcs = data;
-            if (error) {
-                response.json({error: error});
+        async.parallel([
+            function (callback) {
+                npcsCollection.find(query, options).toArray(function (error, npcs) {
+                    if (error) {
+                        callback(error, null);
+                    }
+                    else {
+                        callback(null, npcs);
+                    }
+                });
+            },
+            function (callback) {
+                npcsCollection.count(query, function (error, count) {
+                    if (error) {
+                        callback(error, null);
+                    }
+                    else {
+                        callback(null, count);
+                    }
+                });
             }
-            if (count !== undefined) {
-                response.json({count: count, npcs: npcs});
+        ],
+            function (error, results) {
+                if (error) {
+                    throw error;
+                }
+                if (error) {
+                    response.json({error: error});
+                } else {
+                    response.json({npcs: results[0], count: results[1]});
+                }
             }
-        });
-
-        npcsCollection.count(query, function (error, value) {
-            count = value;
-            if (error) {
-                response.json({error: error});
-            }
-            if (npcs !== undefined) {
-                response.json({count: count, npcs: npcs});
-            }
-        });
+        );
     }
 }
 

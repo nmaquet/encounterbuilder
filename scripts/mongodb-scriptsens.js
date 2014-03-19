@@ -21,9 +21,9 @@ MongoClient.connect(MONGODB_URL, function (error, db) {
 });
 
 function main(db) {
-    db.collection('metrics').find({}).toArray(function (error, data) {
+    db.collection('npcs').distinct('Classes.Class', function (error, docs) {
         console.log(error);
-        console.log(JSON.stringify(data));
+        console.log(JSON.stringify(docs, null, 4));
         console.log('done');
         db.close();
     });
