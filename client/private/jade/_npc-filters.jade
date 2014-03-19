@@ -2,9 +2,7 @@
     input.form-control#npc-search(type='text', name='search', placeholder='Search something…', ng-model='nameSubstring')
 .form-group.col-xs-12
     select.form-control#class(ng-model='class')
-        // FIXME: this is weird
-        option(value='any') Choose class
-        option(value='any') Any
+        option(value='any') Any class
         optgroup(label="Core Classes")
             option(value='barbarian') Barbarian
             option(value='bard') Bard
@@ -36,6 +34,8 @@
             option(value='commoner') Commoner
             option(value='expert') Expert
             option(value='warrior') Warrior
+        optgroup(label="Other")
+            option(value='animal companion') Animal Companion
 .form-group.col-xs-12
     .col-xs-4
         .row

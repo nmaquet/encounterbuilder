@@ -12,7 +12,7 @@ else {
 }
 
 MongoClient.connect(MONGODB_URL, function (error, db) {
-    console.log('connecting to '+MONGODB_URL);
+    console.log('connecting to ' + MONGODB_URL);
     if (error) {
         console.log(error);
     } else {
@@ -21,7 +21,7 @@ MongoClient.connect(MONGODB_URL, function (error, db) {
 });
 
 function main(db) {
-    db.collection('npcs').distinct('Classes.Class', function (error, docs) {
+    db.collection('npcs').find({Classes: { $elemMatch: {Class: { $regex : "animal" }}}}).toArray(function (error, docs) {
         console.log(error);
         console.log(JSON.stringify(docs, null, 4));
         console.log('done');
