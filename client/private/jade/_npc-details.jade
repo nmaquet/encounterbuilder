@@ -40,7 +40,7 @@
                     | &nbsp;{{npc.Senses}}
     .col-xs-12
         .row
-            .col-lg-6.cat.decor
+            .col-xs-12.cat.decor
                 legend.legend.font-title Defense
                 ul.list-unstyled
                     li
@@ -65,7 +65,7 @@
                     li(ng-if='npc.DefensiveAbilities')
                         span
                             strong Defensive Abilities
-                            |&nbsp;{{npc.DefensiveAbilities}}
+                            | &nbsp;{{npc.DefensiveAbilities}}
                         span(ng-if='npc.Resist')
                             strong Resist
                             | &nbsp;{{npc.Resist}}
@@ -85,7 +85,8 @@
                         span
                             strong SR
                             | &nbsp;{{npc.SR}}
-            .col-lg-6.cat.decor
+        .row
+            .col-xs-12.cat.decor
                 legend.legend.font-title Offense
                 ul.list-unstyled
                     li
@@ -114,12 +115,15 @@
                             | &nbsp;{{npc.SpecialAttacks}};
                     li(ng-if='npc.SpellsKnown')
                         spell-list(spell-string="{{npc.SpellsKnown}}")
+                    li(ng-if='npc.Bloodline')
+                        span
+                            strong Bloodline
+                            | &nbsp;{{npc.Bloodline}}
                     li(ng-if='npc.SpellsPrepared')
                         spell-list(spell-string="{{npc.SpellsPrepared}}")
                     li(ng-bind-html='npc.SLASafe')
-    .col-xs-12
         .row
-            .col-lg-6.cat.decor(ng-if='npc.BeforeCombat||npc.DuringCombat||npc.Morale||npc.BaseStatistics')
+            .col-xs-12.cat.decor(ng-if='npc.BeforeCombat||npc.DuringCombat||npc.Morale||npc.BaseStatistics')
                 div
                     legend.legend.font-title Tactics
                 div
@@ -140,7 +144,7 @@
                             span
                                 strong Base Statistics
                                 | &nbsp;{{npc.BaseStatistics}}
-            .col-lg-6.cat.decor
+            .col-xs-12.cat.decor
                 legend.legend.font-title Statistics
                 ul.list-unstyled
                     li
@@ -191,6 +195,15 @@
                         span(ng-if="npc.SQ")
                             strong SQ
                             | &nbsp;{{npc.SQ}}
+                    li
+                        span
+                            span(ng-if="npc.Gear")
+                                strong Combat Gear
+                                | &nbsp;{{npc.Gear}}
+                            span(ng-if="npc.Gear && npc.OtherGear") ;&nbsp;
+                            span(ng-if="npc.OtherGear")
+                                strong Other Gear
+                                | &nbsp;{{npc.OtherGear}}
     .col-xs-12.cat.decor
         span(ng-if='npc.SpecialAbilitiesSafe')
             legend.legend.font-title Special Abilities
