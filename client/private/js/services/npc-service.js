@@ -22,14 +22,13 @@ DEMONSQUID.encounterBuilderServices.factory('npcService', ['$http', function ($h
                 .error(function (error) {
                     callback(error, null);
                 });
-        }
-        /*,
+        },
         getMultiple: function (ids, callback) {
             function pushTask(id) {
                 tasks.push(function (taskCallback) {
-                        $http.get('/api/monster/' + id)
+                        $http.get('/api/npc/' + id)
                             .success(function (data) {
-                                taskCallback(null, data.monster);
+                                taskCallback(null, data.npc);
                             })
                             .error(function (error) {
                                 taskCallback(error, null);
@@ -45,6 +44,5 @@ DEMONSQUID.encounterBuilderServices.factory('npcService', ['$http', function ($h
                 callback(error, results);
             });
         }
-        */
     };
 }]);

@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('PrintableEncounterController',
-    ['$scope', '$location', '$timeout', '$sce', 'selectedEncounterService', 'encounterService', 'monsterService',
-        function ($scope, $location, $timeout, $sce, selectedEncounterService, encounterService, monsterService) {
+    ['$scope', '$location', '$timeout', '$sce', 'selectedEncounterService', 'encounterService', 'monsterService', 'npcService',
+        function ($scope, $location, $timeout, $sce, selectedEncounterService, encounterService, monsterService, npcService) {
 
             $scope.monsters_rows = [];
 
@@ -29,15 +29,14 @@ DEMONSQUID.encounterBuilderControllers.controller('PrintableEncounterController'
                     monster.SLASafe = $sce.trustAsHtml(monster.SpellLikeAbilities);
                     monster.SpecialAbilitiesSafe = $sce.trustAsHtml(monster.SpecialAbilities);
                 }
-                console.log($scope.monsters_rows.map(function (row) {
-                    row.map(function (monster) {
-                        return monster.Name;
-                    })
-                }));
-                console.log($scope.monsters_rows);
-                $timeout(function () {
-                    window.print();
-                }, 0);
+                npcService.getMultiple(Object.keys($scope.encounter.Npcs), function (error, npcs) {
+                    $scope.npcs = npcs;
+
+                    $timeout(function () {
+                        window.print();
+                    }, 0);
+                });
+
             });
 
             $scope.back = function () {

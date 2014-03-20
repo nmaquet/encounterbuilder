@@ -37,6 +37,11 @@
             .col-xs-12(ng-if="monster_row.length === 1", ng-repeat="monster in monster_row")
                 include _printable-monster-details
         .page-break
+    .printed-parent(ng-repeat="npc in npcs")
+        .row
+            .col-xs-12
+                include _printable-npc-details
+        .page-break
 span#footer
     strong Encounter Builder
     | &nbsp;

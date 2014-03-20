@@ -20,6 +20,16 @@ div(ng-show="encounter")
                     small {{monster.Name}}&nbsp;
                 span
                     small CR&nbsp;{{monster.CR | numberToFractionString}}
+        .col-xs-12
+            legend.legend
+                span NPCs
+            span.col-xs-4(ng-repeat='(id,npc) in encounter.Npcs')
+                span
+                    small {{npc.amount}}&nbsp;
+                span
+                    small {{npc.Name}}&nbsp;
+                span
+                    small CR&nbsp;{{npc.CR | numberToFractionString}}
 
 
     .row
