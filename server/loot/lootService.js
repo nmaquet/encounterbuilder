@@ -182,6 +182,12 @@ function generateEncounterNPCLoot(encounter, speed) {
             }
         }
     }
+    for (var property in encounter.Npcs) {
+        if (encounter.Npcs.hasOwnProperty(property)) {
+            var npc = encounter.Npcs[property];
+            accumulateLoot(loot, generateNPCLoot(npc, speed));
+        }
+    }
     return loot
 };
 

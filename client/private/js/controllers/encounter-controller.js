@@ -32,6 +32,15 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                 });
             }
 
+            $scope.atLeastOneMonster = function () {
+                return ($scope.encounter.Monsters !== undefined) && (Object.keys($scope.encounter.Monsters).length > 0);
+            }
+
+            $scope.atLeastOneNpc = function () {
+                return ($scope.encounter.Npcs !== undefined) && (Object.keys($scope.encounter.Npcs).length > 0);
+            }
+
+
             $scope.incrementMonster = function (monster) {
                 monster.amount++;
                 $scope.encounterChanged();
@@ -46,6 +55,11 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
 
             $scope.removeMonsterById = function (monsterId) {
                 delete $scope.encounter.Monsters[monsterId];
+                $scope.encounterChanged();
+            }
+
+            $scope.removeNpcById = function (monsterId) {
+                delete $scope.encounter.Npcs[monsterId];
                 $scope.encounterChanged();
             }
 
@@ -66,7 +80,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                 $scope.encounterChanged();
             }
 
-            $scope.printSelectedEncounter = function(){
+            $scope.printSelectedEncounter = function () {
                 $location.path('/print-encounter');
             }
 

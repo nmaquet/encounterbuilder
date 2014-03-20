@@ -67,6 +67,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 $scope.selectedNpcId = selectedNpcService.selectedNpcId();
             });
 
+            selectedEncounterService.register(function () {
+                $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
+            });
+
             selectedNpcService.selectedNpcId("12-headed-hydra");
 
             $scope.addNpc = function (npc) {
@@ -78,14 +82,12 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                     encounter.Npcs = {};
                 }
                 if (!encounter.Npcs[npc.id]) {
-                    //FIXME use DEMONSQUID.clone
                     encounter.Npcs[npc.id] = {
                         amount: Number(npc.amountToAdd),
                         Name: npc.Name,
-                        xp: npc.XP,
+                        XP: npc.XP,
                         CR: npc.CR,
                         Type: npc.Type,
-                        TreasureBudget: npc.TreasureBudget,
                         Heroic: npc.Heroic,
                         Level: npc.Level
                     };

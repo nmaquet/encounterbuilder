@@ -70,7 +70,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     encounter.Monsters[monster.id] = {
                         amount: Number(monster.amountToAdd),
                         Name: monster.Name,
-                        xp: monster.XP,
+                        XP: monster.XP,
                         CR: monster.CR,
                         Type : monster.Type,
                         TreasureBudget : monster.TreasureBudget,

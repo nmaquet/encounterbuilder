@@ -6,7 +6,10 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
         function calculateXp(encounter){
             var xp = 0;
             for (var i in encounter.Monsters){
-                xp += Number(encounter.Monsters[i].xp) * encounter.Monsters[i].amount;
+                xp += Number(encounter.Monsters[i].XP) * encounter.Monsters[i].amount;
+            }
+            for (var i in encounter.Npcs){
+                xp += Number(encounter.Npcs[i].XP) * encounter.Npcs[i].amount;
             }
             return xp;
         }

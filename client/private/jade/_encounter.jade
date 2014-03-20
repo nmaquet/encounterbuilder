@@ -10,16 +10,20 @@ div.encounter(ng-show="encounter")
         .col-sm-12
             span#encounter-cr.pull-right
                 strong CR&nbsp;
-                |{{encounter.CR | numberToFractionString}}
+                | {{encounter.CR | numberToFractionString}}
             span#encounter-xp.pull-left
                 strong XP&nbsp;
-                |{{encounter.xp | number}}
+                | {{encounter.xp | number}}
         .col-sm-12
             .pull-right
                 a.pointer.print-encounter(ng-click="printSelectedEncounter()")
                     i.icon.fa.fa-print
                     | &nbsp;
-    .row.content.content-monsters
+    .row.content.content-monsters(ng-if="!atLeastOneMonster()&&!atLeastOneNpc()")
+        .col-sm-12
+            span
+                em You can add a monster or NPC from the search results.
+    .row.content.content-monsters(ng-if="atLeastOneMonster()")
         .col-sm-12
             legend.legend
                 span Monsters
@@ -39,21 +43,32 @@ div.encounter(ng-show="encounter")
                                     | {{monster.CR | numberToFractionString}}
                         td.btn-container
                             span.encounter-monsters-buttons.pointer.pull-right
-                                //button.item-btn.light-grey.decrement-monster-btn(ng-class="{disabled: monster.amount<=1}", ng-disabled="monster.amount<=1", ng-click='decrementMonster(monster)')
-                                    i.icon
-                                        | -
-                                //button.item-btn.light-grey.increment-monster-btn(ng-click='incrementMonster(monster)')
-                                    i.icon
-                                        | &#9769;
                                 button.item-btn.remove-monster-btn(ng-click='removeMonsterById(id)')
                                     i.icon.icon-remove
                                         | ×
-                tfoot
-                    tr.encounter-row
-                        td
-                        td.text-right(colspan='3')
-                            strong XP&nbsp;
-                            span#encounter-xp {{encounter.xp | number}}
+    .row.content.content-npcs(ng-if="atLeastOneNpc()")
+        .col-sm-12
+            legend.legend
+                span NPCs
+                i.icon.fa.fa-user.pull-left
+            table#encounter-npcs.table.encounter-list
+                tbody
+                    tr.encounter-row.encounter-npc-row(ng-repeat='(id,npc) in encounter.Npcs')
+                        td.badge-container
+                            span.badge.red.pointer.npc-amount {{npc.amount}}
+                        td.name-container
+                            span.npc-name
+                                a.pointer(ng-click='selectNpcById(id)') {{npc.Name}}
+                        td.cr-container
+                            span.npc-cr
+                                strong
+                                    small CR&nbsp;
+                                    | {{npc.CR | numberToFractionString}}
+                        td.btn-container
+                            span.encounter-npcs-buttons.pointer.pull-right
+                                button.item-btn.remove-npc-btn(ng-click='removeNpcById(id)')
+                                    i.icon.icon-remove
+                                        | ×
 
     .row.content.content-treasure
         .col-sm-12
