@@ -114,6 +114,8 @@
                             | &nbsp;{{npc.SpecialAttacks}};
                     li(ng-if='npc.SpellsKnown')
                         spell-list(spell-string="{{npc.SpellsKnown}}")
+                    li(ng-if='npc.SpellsPrepared')
+                        spell-list(spell-string="{{npc.SpellsPrepared}}")
                     li(ng-bind-html='npc.SLASafe')
     .col-xs-12
         .row

@@ -5,7 +5,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('spellList', [ '$compile',
     function ($compile) {
         var templateLines = [
             '<span>',
-            '<p><strong class="spell-title">{{title}}</strong><span class="spell-cl">(CL {{CL}})</span></p>',
+            '<p><strong class="spell-title">{{title}}</strong> <span class="spell-cl">(CL {{CL}})</span></p>',
             '<ul>',
             '<li class="spell-list-item" ng-repeat="item in spellListItems">{{item}}</li>',
             '</ul>',
