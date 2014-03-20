@@ -7,6 +7,7 @@
     var SPELLS_KNOWN_NOOB_2 = "Spells Almost Known (CL 0) 0 (at will)-ghost sounds";
     var SPELLS_KNOWN_EGARTHIS = "Spells Known (CL 5th) 2nd (5/day)-bull's strength, false life, scorching ray 1st (7/day)-alarm, burning hands (DC 14), color spray (DC 14), mage armor, magic missile 0 (at will)-detect magic, detect poison, mage hand, message, read magic, touch of fatigue (DC 13)";
     var SPELLS_KNOWN_EGARTHIS_WITH_DC_30_COLOR_SPRAY = "Spells Known (CL 5th) 2nd (5/day)-bull's strength, false life, scorching ray 1st (7/day)-alarm, burning hands (DC 14), color spray (DC 30), mage armor, magic missile 0 (at will)-detect magic, detect poison, mage hand, message, read magic, touch of fatigue (DC 13)";
+    var SPELLS_KNOWN_CLERIC_NOOB_1 = "Spells Almost Known (CL 0) 0 (at will)-blightD, false lifeD";
 
     describe("spellList", function () {
 
@@ -61,6 +62,11 @@
             expect(element.find("li:nth-child(1)").text()).to.equal("2nd (5/day)—bull's strength, false life, scorching ray");
             expect(element.find("li:nth-child(2)").text()).to.equal("1st (7/day)—alarm, burning hands (DC 14), color spray (DC 30), mage armor, magic missile");
             expect(element.find("li:nth-child(3)").text()).to.equal("0 (at will)—detect magic, detect poison, mage hand, message, read magic, touch of fatigue (DC 13)");
+        });
+
+        it("should produce HTML for Clerics with Domain Spells", function () {
+            var element = createElement(SPELLS_KNOWN_CLERIC_NOOB_1);
+            expect(element.find("li:nth-child(1)").html()).to.equal("0 (at will)—blightD, false life<sup>D</sup>");
         });
     });
 })();
