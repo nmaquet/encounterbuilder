@@ -39,9 +39,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('spellList', [ '$compile',
                     match = matches[i];
                     nextMatch = matches[Number(i) + 1];
                     if (nextMatch) {
-                        scope.spellListItems.push(spellList.slice(match.index, nextMatch.index).trim());
+                        scope.spellListItems.push(spellList.slice(match.index, nextMatch.index).trim().replace("-", "—"));
                     } else {
-                        scope.spellListItems.push(spellList.slice(match.index).trim());
+                        scope.spellListItems.push(spellList.slice(match.index).trim().replace("-", "—"));
                     }
                 }
             }

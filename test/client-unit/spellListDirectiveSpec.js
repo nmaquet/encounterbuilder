@@ -32,7 +32,7 @@
             expect(element.find(".spell-cl").text()).to.equal("(CL 0)");
             expect(element.find("li").length).to.equal(1);
             expect(element.find("li").hasClass("spell-list-item")).to.equal(true);
-            //expect(element.find("li").text()).to.equal("0 (at will)&emdash;detect magic");
+            expect(element.find("li").text()).to.equal("0 (at will)—detect magic");
         });
 
         it("should produce HTML for nOOb spellcaster 2", function () {
@@ -41,7 +41,18 @@
             expect(element.find(".spell-cl").text()).to.equal("(CL 0)");
             expect(element.find("li").length).to.equal(1);
             expect(element.find("li").hasClass("spell-list-item")).to.equal(true);
-            //expect(element.find("li").text()).to.equal("0 (at will)&emdash;ghost sounds");
+            expect(element.find("li").text()).to.equal("0 (at will)—ghost sounds");
+        });
+
+        it("should produce HTML for Egarthis", function () {
+            var element = createElement(SPELLS_KNOWN_EGARTHIS);
+            expect(element.find(".spell-title").text()).to.equal("Spells Known");
+            expect(element.find(".spell-cl").text()).to.equal("(CL 5th)");
+            expect(element.find("li").length).to.equal(3);
+            expect(element.find("li").hasClass("spell-list-item")).to.equal(true);
+            expect(element.find("li:nth-child(1)").text()).to.equal("2nd (5/day)—bull's strength, false life, scorching ray");
+            expect(element.find("li:nth-child(2)").text()).to.equal("1st (7/day)—alarm, burning hands (DC 14), color spray (DC 14), mage armor, magic missile");
+            expect(element.find("li:nth-child(3)").text()).to.equal("0 (at will)—detect magic, detect poison, mage hand, message, read magic, touch of fatigue (DC 13)");
         });
     });
 })();
