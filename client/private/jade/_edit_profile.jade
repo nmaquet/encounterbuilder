@@ -1,0 +1,45 @@
+#password_modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='password-modal-label',aria-hidden='true',ng-controller="PasswordController")
+    .modal-dialog
+        .modal-content.modal-lg
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h3#password-modal-label Edit Profile
+            .modal-body
+                .row
+                    .col-xs-6
+                        form
+                            .form-group
+                                label.col-md-8.control-label(for='current_password') User Name
+                                .controls
+                                    input.form-control.input-md(type='text',ng-model="username", name='username',required='')
+                            .form-group
+                                label.col-md-8.control-label(for='new_password') Email
+                                .controls
+                                    input.form-control.input-md(type='text', name='email',required='', ng-model="email")
+                            .form-group
+                                label.col-md-8.control-label(for='confirm_password') Full Name
+                                .controls
+                                    input.form-control.input-md(type='text', name='fullname', ng-model="fullname")
+                            .form-group
+                                button.btn.btn-primary.pull-left(type="submit", ng-click="save()" ) Save changes
+                    .col-xs-6
+                        form
+                            .form-group
+                                label.col-md-8.control-label(for='current_password') Current Password
+                                .controls
+                                    input.form-control.input-md(type='password',ng-model="password", name='current_password',required='')
+                            .form-group
+                                label.col-md-8.control-label(for='new_password') New Password
+                                .controls
+                                    input.form-control.input-md(type='password', name='new_password',required='', ng-model="password1", equals="{{password2}}")
+                                    .password-do-not-match
+                                        h4 new passwords do not match
+                            .form-group
+                                label.col-md-8.control-label(for='confirm_password') Confirm Password
+                                .controls
+                                    input.form-control.input-md(type='password', name='confirm_password',required='', ng-model="password2", equals="{{password1}}")
+                            .form-group
+                                button.btn.btn-primary.pull-left(type="submit", ng-click="save()" ) Change Password
+            .modal-footer
+                button.btn(href='#', data-dismiss='modal', aria-hidden='true', ng-click="close()") Close
+
