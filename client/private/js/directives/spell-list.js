@@ -1,16 +1,21 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderDirectives.directive('spellList', [ '$compile',
+DEMONSQUID.encounterBuilderDirectives.directive('spellList', [ '$sce',
+    function ($sce) {
 
-    function ($compile) {
+        function processDomainSpells(spellList) {
+            return spellList.replace(/([a-z])D/g, "$1<sup>D</sup>")
+        }
+
         var templateLines = [
             '<span>',
             '<strong class="spell-title">{{title}}</strong> <span class="spell-cl">(CL {{CL}})</span>',
             '<ul class="list-unstyled">',
-            '<li class="spell-list-item" ng-repeat="item in spellListItems">{{item}}</li>',
+            '<li class="spell-list-item" ng-repeat="item in spellListItems" ng-bind-html="item"></li>',
             '</ul>',
             '</span>'
         ];
+
         return {
             restrict: "E",
             replace: true,
@@ -22,7 +27,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('spellList', [ '$compile',
                 scope.$watch("spellString", function () {
                     var titleAndCLEnd = scope.spellString.indexOf(")") + 1;
                     var titleAndCL = scope.spellString.slice(0, titleAndCLEnd);
-                    var spellList = scope.spellString.slice(titleAndCLEnd);
+                    var spellList = processDomainSpells(scope.spellString.slice(titleAndCLEnd));
 
                     scope.title = /([^\(]*) \(CL ([^\)]+)\)/.exec(titleAndCL)[1].trim();
                     scope.CL = /\(CL ([^\)]+)\)/.exec(titleAndCL)[1].trim();
@@ -39,9 +44,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('spellList', [ '$compile',
                         match = matches[i];
                         nextMatch = matches[Number(i) + 1];
                         if (nextMatch) {
-                            scope.spellListItems.push(spellList.slice(match.index, nextMatch.index).trim().replace("-", "—"));
+                            scope.spellListItems.push($sce.trustAsHtml(spellList.slice(match.index, nextMatch.index).trim().replace("-", "—")));
                         } else {
-                            scope.spellListItems.push(spellList.slice(match.index).trim().replace("-", "—"));
+                            scope.spellListItems.push($sce.trustAsHtml(spellList.slice(match.index).trim().replace("-", "—")));
                         }
                     }
                 });

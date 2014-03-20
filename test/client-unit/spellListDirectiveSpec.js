@@ -66,7 +66,7 @@
 
         it("should produce HTML for Clerics with Domain Spells", function () {
             var element = createElement(SPELLS_KNOWN_CLERIC_NOOB_1);
-            expect(element.find("li:nth-child(1)").html()).to.equal("0 (at will)—blightD, false life<sup>D</sup>");
+            expect(element.find("li:nth-child(1)").html()).to.equal("0 (at will)—blight<sup>D</sup>, false life<sup>D</sup>");
         });
     });
 })();
