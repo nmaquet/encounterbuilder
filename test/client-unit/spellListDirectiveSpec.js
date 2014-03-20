@@ -73,7 +73,7 @@
         it("should produce HTML for nOOb spellcaster 3 missing the (at will) part", function () {
             var element = createElement(SPELLS_KNOWN_NOOB_3_NO_AT_WILL);
             expect(element.find("li:nth-child(1)").html()).to.equal("1st (7/day)—alarm");
-            expect(element.find("li:nth-child(2)").html()).to.equal("0—ghost sounds");
+            expect(element.find("li:nth-child(2)").html()).to.equal("0 (at will)—ghost sounds");
         });
     });
 })();

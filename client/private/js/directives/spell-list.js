@@ -7,6 +7,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('spellList', [ '$sce',
             return spellList.replace(/([a-z])D/g, "$1<sup>D</sup>")
         }
 
+        function processMissingAtWill(spellList) {
+            return spellList.replace(/0-/g, "0 (at will)-")
+        }
+
         var templateLines = [
             '<span>',
             '<strong class="spell-title">{{title}}</strong> <span class="spell-cl">(CL {{CL}})</span>',
@@ -27,7 +31,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('spellList', [ '$sce',
                 scope.$watch("spellString", function () {
                     var titleAndCLEnd = scope.spellString.indexOf(")") + 1;
                     var titleAndCL = scope.spellString.slice(0, titleAndCLEnd);
-                    var spellList = processDomainSpells(scope.spellString.slice(titleAndCLEnd));
+                    var spellList = processMissingAtWill(processDomainSpells(scope.spellString.slice(titleAndCLEnd)));
 
                     scope.title = /([^\(]*) \(CL ([^\)]+)\)/.exec(titleAndCL)[1].trim();
                     scope.CL = /\(CL ([^\)]+)\)/.exec(titleAndCL)[1].trim();
