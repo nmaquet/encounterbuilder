@@ -31,7 +31,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('spellList', [ '$compile',
                 var match;
                 var nextMatch;
                 var matches = [];
-                var spellLevelRegex = /(0|1st|2nd|3rd|4th|5th|6th|7th|8th|9th)([^-]*)-/g;
+                var spellLevelRegex = /(0 \(at will\)|1st|2nd|3rd|4th|5th|6th|7th|8th|9th)([^-]*)-/g;
                 while (null !== (match = spellLevelRegex.exec(spellList))) {
                     matches.push(match);
                 }
