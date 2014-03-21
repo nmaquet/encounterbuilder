@@ -21,7 +21,11 @@ MongoClient.connect(MONGODB_URL, function (error, db) {
 });
 
 function main(db) {
-    db.collection('npcs').find({Classes: { $elemMatch: {Class: { $regex : "animal" }}}}).toArray(function (error, docs) {
+    var options = {
+        fields: { Source: 1}
+    }
+
+    db.collection('npcs').distinct({ Source: { $regex : new RegExp("AP") }}, function (error, docs) {
         console.log(error);
         console.log(JSON.stringify(docs, null, 4));
         console.log('done');
