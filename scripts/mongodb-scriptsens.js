@@ -21,9 +21,10 @@ MongoClient.connect(MONGODB_URL, function (error, db) {
 });
 
 function main(db) {
-    db.collection('npcs').find({Classes: { $elemMatch: {Class: { $regex : "animal" }}}}).toArray(function (error, docs) {
+    db.collection('users').find({}, {fields: {username: 1, email:1, _id:0}}).toArray(function (error, docs) {
         console.log(error);
         console.log(JSON.stringify(docs, null, 4));
+        console.log(docs.length);
         console.log('done');
         db.close();
     });

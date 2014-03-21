@@ -34,7 +34,7 @@ var jsFiles = [
     "client/private/js/controllers/search-item-controller.js",
     "client/private/js/controllers/item-details-controller.js",
     "client/private/js/controllers/printable-encounter-controller.js",
-    "client/private/js/controllers/password-controller.js",
+    "client/private/js/controllers/profile-controller.js",
     "client/private/js/directives/click-to-edit.js",
     "client/private/js/directives/confirm-click.js",
     "client/private/js/directives/head.js",

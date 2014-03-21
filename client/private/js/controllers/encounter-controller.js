@@ -33,11 +33,11 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             }
 
             $scope.atLeastOneMonster = function () {
-                return ($scope.encounter.Monsters !== undefined) && (Object.keys($scope.encounter.Monsters).length > 0);
+                return ($scope.encounter !== undefined) && ($scope.encounter.Monsters !== undefined) && (Object.keys($scope.encounter.Monsters).length > 0);
             }
 
             $scope.atLeastOneNpc = function () {
-                return ($scope.encounter.Npcs !== undefined) && (Object.keys($scope.encounter.Npcs).length > 0);
+                return ($scope.encounter !== undefined) && ($scope.encounter.Npcs !== undefined) && (Object.keys($scope.encounter.Npcs).length > 0);
             }
 
 

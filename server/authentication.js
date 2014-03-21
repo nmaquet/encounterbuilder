@@ -22,7 +22,7 @@ function hash(pwd, salt, fn) {
 
 function authenticate(userCollection, username, password, callback) {
     userCollection.findOne({ username: username }, function (error, user) {
-        if (error || !user) {
+        if (error || !user || !password) {
             if (error) {
                 console.log(error);
             }

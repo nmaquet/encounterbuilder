@@ -25,8 +25,7 @@ module.exports = function (userCollection, authentication) {
                             });
                     });
                 } else {
-                    //FIXME send appropriate error so that the modal can display something
-                    response.send(401, 'access denied');
+                    response.json({error : "wrong password"});
                 }
             });
         }

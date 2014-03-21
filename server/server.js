@@ -61,8 +61,9 @@ function main(db) {
     var npcRoute = require('./npcRoute')(collections.npcs);
     var loginRoute = require('./loginRoute')(collections.users, authentication.authenticate);
     var changePasswordRoute = require('./changePasswordRoute')(collections.users, authentication);
+    var changeUserDataRoute = require('./changeUserDataRoute')(collections.users,collections.encounters, authentication);
     var logoutRoute = require('./logoutRoute')();
-    var userDataRoute = require('./userDataRoute')(collections.encounters);
+    var userDataRoute = require('./userDataRoute')(collections.encounters, collections.users);
     var clientRoutes = require('./clientRoutes')();
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
 
@@ -79,6 +80,7 @@ function main(db) {
     app.post("/api/remove-encounter", authentication.check, metrics.logRemoveEncounter, encounterRoute.delete);
     app.post("/api/generate-encounter-loot", authentication.check, metrics.logGenerateEncounterLoot, encounterRoute.generateLoot);
     app.post("/api/change-password", authentication.check, changePasswordRoute);
+    app.post("/api/change-user-data", authentication.check, changeUserDataRoute);
 
     app.get('/feedback-popover.html', authentication.check, clientRoutes.feedbackPopover);
     app.get('/login.html', clientRoutes.login);
