@@ -1,0 +1,18 @@
+//.form-inline.form-group
+    .col-xs-12
+        label(for='sort') Sort by:&nbsp;
+        select.form-control#spell-sort(ng-model='sortBy')
+            option(value='name') Name
+.col-xs-12
+    table.spells.table.table-striped.table-condensed
+        thead
+            tr.result-row
+                th Name
+                th(colspan='3') Source
+        tbody
+            tr.pointer.spell-row(ng-repeat='spell in spells')
+                td.name-container(ng-class='{selected: selectedSpellId == spell.id}', ng-click='selectSpellById(spell.id)')
+                    span {{spell.name}}
+                td.source-container(ng-class='{selected: selectedSpellId == spell.id}', ng-click='selectSpellById(spell.id)')
+                    abbr(title='{{spell.source}}') {{spell.source | abbreviateMonsterSource}}
+    pagination.pagination-sm.page.pointer(boundary-links='true', total-items='totalSpells', page='currentPage', items-per-page='spellsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')

@@ -1,0 +1,51 @@
+.row.heading.result-heading
+    .col-xs-12.col-lg-12.name-container
+        h2.title.font-title {{spell.name}}
+        small Source: {{spell.source}}
+.row.section.result-content
+    .col-xs-12.cat
+        ul.list-unstyled
+            li
+                span
+                    strong School&nbsp;
+                    | {{spell.school}}
+                    span(ng-if="spell.subschool") &nbsp;({{spell.subschool}})
+                    span(ng-if="spell.descriptor") &nbsp;[{{spell.descriptor}}]
+                    | ;&nbsp;
+                    strong Level&nbsp;
+                    | {{spell.spell_level}}
+            li(ng-if="spell.casting_time")
+                span
+                    strong Casting Time&nbsp;
+                    | {{spell.casting_time}}
+            li(ng-if="spell.components")
+                span
+                    strong Components&nbsp;
+                    | {{spell.components}}
+            li(ng-if="spell.effect")
+                span
+                    strong Range&nbsp;
+                    | {{spell.range}}.
+            li(ng-if="spell.effect")
+                span
+                    strong Effect&nbsp;
+                    | {{spell.effect}}
+            li(ng-if="spell.targets")
+                span
+                    strong Target&nbsp;
+                    | {{spell.targets}}
+            li(ng-if="spell.duration")
+                span
+                    strong Duration&nbsp;
+                    | {{spell.duration}}
+            li(ng-if="spell.saving_throw||!!spell.spell_resistence")
+                span
+                    strong Saving Throw&nbsp;
+                    | {{spell.saving_throw}}
+                    span(ng-if="!!spell.spell_resistence")
+                        | ;&nbsp;
+                        strong Spell Resistance&nbsp;
+                        | {{spell.spell_resistence}}
+    .col-xs-12.cat.decor
+        legend.legend.font-title Description
+        div(ng-bind-html='spell.descriptionSafe')

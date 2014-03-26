@@ -3,81 +3,35 @@
 var escapeRegExp = require('./utils')().escapeRegExp;
 var async = require('async');
 
-var CLASS_QUERIES = {
-    default: function (request) {
-        return { $elemMatch: {Class: { $regex: "^" + request.query.class } } };
-    },
-    wizard: function (request) {
-        var wizards = [
-            "wizard",
-            "illusionist",
-            "conjurer",
-            "necromancer",
-            "diviner",
-            "evoker",
-            "abjurer",
-            "transmuter",
-            "enchanter",
-            "earth elementalist wizard",
-            "air elementalist wizard",
-            "fire elementalist wizard",
-            "water elementalist wizard"
-        ];
-        return  { $elemMatch: {Class: { $regex: "^(" + wizards.join("|") + ")" } } };
-    },
-    exable: function (request) {
-        return { $elemMatch: {Class: { $regex: "^(ex-){0,1}" + request.query.class + ".*" } } };
-    },
-    paladin: function (request) {
-        return CLASS_QUERIES.exable(request);
-    },
-    druid: function (request) {
-        return CLASS_QUERIES.exable(request);
-    },
-    cleric: function (request) {
-        return CLASS_QUERIES.exable(request);
-    },
-    inquisitor: function (request) {
-        return CLASS_QUERIES.exable(request);
-    },
-    antipaladin: function (request) {
-        return CLASS_QUERIES.exable(request);
-    }
-}
-
 function getQuery(request) {
     var query = {};
     if (request.query.nameSubstring) {
-        query.Name = new RegExp(escapeRegExp(request.query.nameSubstring), "i");
+        query.name = new RegExp(escapeRegExp(request.query.nameSubstring), "i");
     }
     if (request.query.class && request.query.class !== 'any') {
-        var classQuery = CLASS_QUERIES[request.query.class] || CLASS_QUERIES.default;
-        query.Classes = classQuery(request);
+        query.classes = { $elemMatch: {class: request.query.class} };
     }
-    var minCR = Number(request.query.minCR || 0);
-    var maxCR = Number(request.query.maxCR || 40);
-    if (minCR != 0 || maxCR != 40) {
-        query.CR = { $gte: minCR, $lte: maxCR};
+    var minLevel = Number(request.query.minLevel || 0);
+    var maxLevel = Number(request.query.maxLevel || 9);
+    if (minLevel != 0 || maxLevel != 9) {
+        query.classes = query.classes || {$elemMatch: {}};
+        query.classes.$elemMatch.level = {$gte: minLevel, $lte: maxLevel};
     }
     return query;
 }
 
 function getSortOption(request) {
-    if (request.query.sortBy === "cr") {
-        return ['CR', 'Name'];
-    } else {
-        return ['Name', 'CR'];
-    }
+    return ['name'];
 }
 
-module.exports = function (npcsCollection, defaultFindLimit) {
+module.exports = function (spellCollection, defaultFindLimit) {
     return function (request, response) {
         var query = getQuery(request);
-        var npcs;
+        var spells;
         var count;
 
         var options = {
-            fields: {Name: 1, CR: 1, XP: 1, id: 1, Source: 1, Type: 1, Heroic: 1, Level: 1},
+            fields: {name: 1, id: 1, source: 1, spell_level: 1, _id: 0},
             limit: Number(request.query.findLimit || defaultFindLimit),
             skip: Number(request.query.skip || 0),
             sort: getSortOption(request)
@@ -85,34 +39,19 @@ module.exports = function (npcsCollection, defaultFindLimit) {
 
         async.parallel([
             function (callback) {
-                npcsCollection.find(query, options).toArray(function (error, npcs) {
-                    if (error) {
-                        callback(error, null);
-                    }
-                    else {
-                        callback(null, npcs);
-                    }
-                });
+                spellCollection.find(query, options).toArray(callback);
             },
             function (callback) {
-                npcsCollection.count(query, function (error, count) {
-                    if (error) {
-                        callback(error, null);
-                    }
-                    else {
-                        callback(null, count);
-                    }
-                });
+                spellCollection.count(query, callback);
             }
         ],
             function (error, results) {
                 if (error) {
-                    throw error;
+                    console.log(error);
+                    response.send(500);
                 }
-                if (error) {
-                    response.json({error: error});
-                } else {
-                    response.json({npcs: results[0], count: results[1]});
+                else {
+                    response.json({spells: results[0], count: results[1]});
                 }
             }
         );

@@ -56,9 +56,11 @@ function main(db) {
     var searchMonstersRoute = require('./searchMonstersRoute')(collections.monsters, FIND_LIMIT);
     var searchNpcsRoute = require('./searchNpcsRoute')(collections.npcs, FIND_LIMIT);
     var searchMagicItemsRoute = require('./searchMagicItemsRoute')(collections.magicitems, FIND_LIMIT);
+    var searchSpellsRoute = require('./searchSpellsRoute')(collections.spells, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(collections.monsters);
     var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
     var npcRoute = require('./npcRoute')(collections.npcs);
+    var spellRoute = require('./spellRoute')(collections.spells);
     var loginRoute = require('./loginRoute')(collections.users, authentication.authenticate);
     var changePasswordRoute = require('./changePasswordRoute')(collections.users, authentication);
     var changeUserDataRoute = require('./changeUserDataRoute')(collections.users,collections.encounters, authentication);
@@ -69,10 +71,12 @@ function main(db) {
 
     app.get('/api/search-monsters', authentication.check, metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', authentication.check, /* FIXME: add search NPCS log */ searchNpcsRoute);
+    app.get('/api/search-spells', authentication.check, /* FIXME: add search Spells log */ searchSpellsRoute);
     app.get('/api/search-magic-items', authentication.check, metrics.logSearchItem, searchMagicItemsRoute);
     app.get('/api/monster/:id', authentication.check, metrics.logSelectMonster, monsterRoute);
     app.get('/api/magic-item/:id', authentication.check, metrics.logSelectItem, magicItemRoute);
     app.get('/api/npc/:id', authentication.check,/* FIXME: add get NPC log */ npcRoute);
+    app.get('/api/spell/:id', authentication.check,/* FIXME: add get spell log */ spellRoute);
     app.post('/api/user-data', userDataRoute);
     app.post('/logout',metrics.logLogout, logoutRoute);
     app.post("/login",metrics.logLogin, loginRoute);
