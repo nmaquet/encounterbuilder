@@ -1,6 +1,7 @@
 "use strict";
 
 var async = require("async");
+var escapeRegExp = require('./utils')().escapeRegExp;
 
 module.exports = function (userCollection, encounterCollection, authentication) {
     return function (request, response) {
@@ -12,11 +13,11 @@ module.exports = function (userCollection, encounterCollection, authentication) 
         };
         async.series([
             function (callback) {
-                if (request.body.username === request.session.user.username) {
+                if (request.body.username.toLowerCase() === request.session.user.username.toLowerCase()) {
                     callback(null);
                 }
                 else {
-                    userCollection.count({username: request.body.username}, function (error, count) {
+                    userCollection.count({username: new RegExp("^" + escapeRegExp(request.body.username) + "$", "i")}, function (error, count) {
                         if (error) {
                             callback(error);
                         }
@@ -30,11 +31,11 @@ module.exports = function (userCollection, encounterCollection, authentication) 
                 }
             },
             function (callback) {
-                if (request.body.email === request.session.user.email) {
+                if (request.body.email.toLowerCase() === request.session.user.email.toLowerCase()) {
                     callback(null);
                 }
                 else {
-                    userCollection.count({email: request.body.email}, function (error, count) {
+                    userCollection.count({email: new RegExp("^" + escapeRegExp(request.body.email) + "$", "i")}, function (error, count) {
                         if (error) {
                             callback(error);
                         }

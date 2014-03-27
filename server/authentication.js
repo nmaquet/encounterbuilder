@@ -4,6 +4,8 @@ var crypto = require('crypto');
 var SALT_LENGTH = 128;
 var PBKDF2_ITERATIONS = 12000;
 
+var escapeRegExp = require('./utils')().escapeRegExp;
+
 function hash(pwd, salt, fn) {
     if (3 == arguments.length) {
         crypto.pbkdf2(pwd, salt, PBKDF2_ITERATIONS, SALT_LENGTH, fn);
@@ -21,7 +23,7 @@ function hash(pwd, salt, fn) {
 }
 
 function authenticate(userCollection, username, password, callback) {
-    userCollection.findOne({ username: username }, function (error, user) {
+    userCollection.findOne({ username: new RegExp("^" + escapeRegExp(username) + "$", "i") }, function (error, user) {
         if (error || !user || !password) {
             if (error) {
                 console.log(error);
