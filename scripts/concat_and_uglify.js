@@ -42,6 +42,7 @@ var jsFiles = [
     "client/private/js/directives/head.js",
     "client/private/js/directives/equals.js",
     "client/private/js/directives/spell-list.js",
+    "client/private/js/directives/linkify-spells.js",
     "client/private/js/filters/abbreviate-monster-source.js",
     "client/private/js/filters/number-to-fraction-string.js",
     "client/private/js/filters/classes-to-string.js",

@@ -1,7 +1,17 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('spellService', ['$http', function ($http) {
+    var spells = null;
+    $http.get('/api/search-spells/', {params: {findLimit: 2000}})
+        .success(function (data) {
+            spells = data.spells.map(function (spell) {
+                return spell.name;
+            });
+        });
     return {
+        spells: function () {
+            return spells;
+        },
         search: function (params, callback) {
             var now = new Date().getTime();
             $http.get('/api/search-spells/', {params: params})

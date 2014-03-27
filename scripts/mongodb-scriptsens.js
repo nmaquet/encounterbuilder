@@ -2,7 +2,8 @@
 
 var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
-
+var fs = require('fs');
+var util = require('util');
 
 if (process.env.USE_TEST_DB) {
     var MONGODB_URL = process.env['MONGODB_TEST_URL'];
@@ -22,12 +23,59 @@ MongoClient.connect(MONGODB_URL, function (error, db) {
 
 function main(db) {
     db.collection('spells').find({}, {fields: {name: 1, _id: 0}}).toArray(function (error, docs) {
-        console.log(error);
-        console.log(JSON.stringify(docs.map(function (x) {
-            return x.name;
-        }), null, 4));
-        console.log(docs.length);
-        console.log('done');
+        /*console.log(error);
+         console.log(JSON.stringify(docs.map(function (x) {
+         return x.name;
+         }), null, 4));
+         console.log(docs.length);
+         console.log('done');*/
+
+        var spellIds = docs.map(function (x) {
+            return x.name.toLowerCase();
+        });
+
+        /********** SOLUTION WITH INDEX OF *************/
+        /*  var before = new Date();
+
+         var haystack = fs.readFileSync('test.html').toString().toLowerCase();
+         var matches = {};
+         for (var i in spellIds) {
+         var spellId = spellIds[i];
+         var pos = -1;
+         do {
+         pos = haystack.indexOf(spellId, pos + 1);
+         if (pos != -1) {
+         matches[spellId] = matches[spellId] || [];
+         matches[spellId].push(pos);
+         }
+         console.log(util.inspect(process.memoryUsage()));
+         } while (pos != -1);
+         }
+
+         var after = new Date();
+
+
+         console.log(after - before);*/
+        /********** SOLUTION WITH REGEX *************/
+        var haystack = fs.readFileSync('test.html').toString().toLowerCase();
+        var regex = new RegExp("\\b(" + spellIds.join("|") + ")\\b", "g");
+        var match;
+        var matches = {};
+
+        var before = new Date();
+
+        while (null !== (match = regex.exec(haystack))) {
+            matches[match[0]] = matches[match[0]] || [];
+            matches[match[0]].push(match.index);
+
+            console.log(util.inspect(process.memoryUsage()));
+        }
+
+        var after = new Date();
+
+        // console.log(JSON.stringify(matches, null, 4));
+
+        console.log(after - before);
         db.close();
     });
 }

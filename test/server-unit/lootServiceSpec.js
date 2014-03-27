@@ -602,6 +602,7 @@ describe("lootService", function () {
             ]});
         });
     });
+
     describe("service.generateTypeELoot", function () {
 
         it("should generate one greater major weapon and one greater major armor", function () {
@@ -629,42 +630,4 @@ describe("lootService", function () {
             ]});
         });
     });
-
-    describe("service.generateTypeGLoot", function () {
-
-        it("should generate some random stuff", function () {
-
-            diceService.prepareDice({die: 4, value: 4, n: 16});
-            diceService.prepareDice({die: 100, value: 53, n: 1});
-            diceService.prepareDice({die: 100, value: 53, n: 1});
-            diceService.prepareDice({die: 100, value: 53, n: 1});
-            diceService.prepareDice({die: 100, value: 53, n: 1});
-            diceService.prepareDice({die: 100, value: 53, n: 1});
-            diceService.prepareDice({die: 100, value: 53, n: 1});
-            diceService.prepareDice({die: 100, value: 53, n: 50});
-
-
-            /* +5 with +1 special ability */
-            diceService.prepareDice({die: 100, value: 53, n: 1});
-            /* heavy steel shield */
-            diceService.prepareDice({die: 100, value: 45, n: 1});
-            /* blinding */
-            diceService.prepareDice({die: 100, value: 30, n: 1});
-
-            /* +5 +3 +2 weapon */
-            diceService.prepareDice({die: 100, value: 78, n: 1});
-            /* handaxe */
-            diceService.prepareDice({die: 100, value: 45, n: 1});
-            /* +3 ability speed */
-            diceService.prepareDice({die: 100, value: 45, n: 1});
-            /* +2 ability Anarchic */
-            diceService.prepareDice({die: 100, value: 7, n: 1});
-
-            var items = service.generateTypeGLoot(100000);
-            //console.log(items);
-            expect(true).to.be.true;
-
-        });
-    });
-
 });
