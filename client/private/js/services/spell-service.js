@@ -4,9 +4,11 @@ DEMONSQUID.encounterBuilderServices.factory('spellService', ['$http', function (
     var spells = null;
     $http.get('/api/search-spells/', {params: {findLimit: 2000}})
         .success(function (data) {
-            spells = data.spells.map(function (spell) {
-                return spell.name;
-            });
+            spells = {names: []};
+            for (var i in data.spells) {
+                spells.names.push(data.spells[i].name);
+                spells[data.spells[i].name.toLowerCase()] = data.spells[i].id;
+            }
         });
     return {
         spells: function () {

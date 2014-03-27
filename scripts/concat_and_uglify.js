@@ -7,12 +7,12 @@ var uglify_js = require("uglify-js");
 
 var jsFiles = [
     // Dependencies
-    "client/private/bower_components/angular/angular.js",
-    "client/private/bower_components/angular-route/angular-route.js",
-    "client/private/bower_components/angular-resource/angular-resource.js",
     "client/private/bower_components/jquery/jquery.js",
     "client/private/bower_components/jquery-ui/ui/jquery-ui.js",
     "client/private/bower_components/jquery-cookie/jquery.cookie.js",
+    "client/private/bower_components/angular/angular.js",
+    "client/private/bower_components/angular-route/angular-route.js",
+    "client/private/bower_components/angular-resource/angular-resource.js",
     "client/private/bower_components/bootstrap/dist/js/bootstrap.js",
     "client/private/bower_components/async/lib/async.js",
     "client/private/bower_components/nouislider/jquery.nouislider.js",
