@@ -1,7 +1,7 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderDirectives.directive('linkifySpells', ['$compile', '$timeout', 'spellService', 'selectedSpellService',
-    function ($compile, $timeout, spellService, selectedSpellService) {
+DEMONSQUID.encounterBuilderDirectives.directive('linkifySpells', ['$compile', 'spellService', 'selectedSpellService',
+    function ($compile, spellService, selectedSpellService) {
         var spells;
         var regex;
         return {
@@ -11,9 +11,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkifySpells', ['$compile', '$
             link: function compile(scope, element) {
                 scope.selectSpell = function (spellId) {
                     selectedSpellService.selectedSpellId(spellId);
-                    $timeout(function () {
-                        angular.element('#spellsTab').click();
-                    }, 0)
+                    $('#spellsTab').click();
                 }
                 scope.$watch(scope.watchedExpression, function (value) {
                     spells = spells || spellService.spells();
