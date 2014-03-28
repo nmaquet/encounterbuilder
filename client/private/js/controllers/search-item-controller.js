@@ -52,13 +52,14 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
             }, 300);
         });
 
-        $scope.$watch('clRange', function (clRange) {
+        $scope.$watchCollection("[minCL, maxCL]", function (clRange) {
             $timeout(function () {
-                if (clRange === $scope.clRange) {
+                if (clRange[0] === $scope.minCL && clRange[1] === $scope.maxCL) {
                     refreshItems();
                 }
             }, 300);
         });
+
 
         $scope.selectItemById = function (id) {
             selectedItemService.selectedItemId(id);
@@ -94,19 +95,20 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
 
         $scope.minCL = 0;
         $scope.maxCL = 20;
-        $scope.clRange = $scope.minCL + " - " + $scope.maxCL;
-
-        $("#slider-cl-range").slider({
-            range: true,
-            min: 0,
-            max: 20,
-            values: [ 0, 20 ],
-            slide: function (event, ui) {
-                $scope.minCL = ui.values[0];
-                $scope.maxCL = ui.values[1];
-                $scope.clRange = $scope.minCL + " - " + $scope.maxCL;
-                $scope.$apply();
+        $("#itemCLSlider").noUiSlider({
+            start: [0, 20],
+            connect: true,
+            step: 1,
+            range: {
+                'min': 0,
+                'max': 20
             }
+        });
+
+        $("#itemCLSlider").on('slide', function () {
+            $scope.minCL = $("#itemCLSlider").val()[0];
+            $scope.maxCL = $("#itemCLSlider").val()[1];
+            $scope.$apply();
         });
 
     }

@@ -4,7 +4,7 @@ DEMONSQUID.encounterBuilderControllers.controller('TabController', ['$scope',
     function ($scope) {
         $scope.selectedTab = 'monsters';
         $('#monstersTab').tab('show');
-        $scope.showTab = function(tab){
+        $scope.showTab = function (tab) {
             $scope.selectedTab = tab;
         }
         $('#monstersTab').click(function (e) {

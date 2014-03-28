@@ -25,6 +25,8 @@
                 span
                     strong XP
                     | &nbsp;{{monster.XP}}
+            li(ng-if="monster.Gender||monster.Race||monster.Classes")
+                span {{monster.Gender}} {{monster.Race}} {{monster.Classes|classesToString}}
             li
                 span
                     strong {{monster.Alignment}}
@@ -62,7 +64,15 @@
                         span
                             strong Special Attacks
                             | &nbsp;{{monster.SpecialAttacks}};
-                    li(ng-bind-html='monster.SLASafe')
+                    li(ng-if='monster.SpellsKnown')
+                        spell-list(spell-string="{{monster.SpellsKnown}}")
+                    li(ng-if='monster.Bloodline')
+                        span
+                            strong Bloodline
+                            | &nbsp;{{monster.Bloodline}}
+                    li(ng-if='monster.SpellsPrepared')
+                        spell-list(spell-string="{{monster.SpellsPrepared}}" )
+                    li(ng-bind-html='monster.SLASafe' ,linkify-spells='monster.SLASafe')
             .col-lg-6.cat.decor
                 legend.legend.font-title Defense
                 ul.list-unstyled
@@ -176,7 +186,7 @@
         span(ng-if='monster.SpecialAbilitiesSafe')
             legend.legend.font-title Special Abilities
             // FIXME Use jQuery to change the <h5> tags into <p> or <div>
-            div(ng-bind-html='monster.SpecialAbilitiesSafe')
+            div(ng-bind-html='monster.SpecialAbilitiesSafe' ,linkify-spells='monster.SpecialAbilitiesSafe')
     .col-xs-12.cat.decor
         legend.legend.font-title Description
-        div(ng-bind-html='monster.DescriptionSafe')
+        div(ng-bind-html='monster.DescriptionSafe',linkify-spells='monster.DescriptionSafe')
