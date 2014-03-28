@@ -3,7 +3,7 @@
 var MongoClient = require('mongodb').MongoClient;
 var async = require('async');
 
-MongoClient.connect(process.env['MONGODB_TEST'], function (error, db) {
+MongoClient.connect(process.env['MONGODB_URL'], function (error, db) {
     if (error) {
         console.log(error);
     } else {
