@@ -70,13 +70,13 @@ function main(db) {
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
 
     app.get('/api/search-monsters', authentication.check, metrics.logSearchMonster, searchMonstersRoute);
-    app.get('/api/search-npcs', authentication.check, /* FIXME: add search NPCS log */ searchNpcsRoute);
-    app.get('/api/search-spells', authentication.check, /* FIXME: add search Spells log */ searchSpellsRoute);
+    app.get('/api/search-npcs', authentication.check, metrics.logSearchNpc, searchNpcsRoute);
+    app.get('/api/search-spells', authentication.check, metrics.logSearchSpell, searchSpellsRoute);
     app.get('/api/search-magic-items', authentication.check, metrics.logSearchItem, searchMagicItemsRoute);
     app.get('/api/monster/:id', authentication.check, metrics.logSelectMonster, monsterRoute);
     app.get('/api/magic-item/:id', authentication.check, metrics.logSelectItem, magicItemRoute);
-    app.get('/api/npc/:id', authentication.check,/* FIXME: add get NPC log */ npcRoute);
-    app.get('/api/spell/:id', authentication.check,/* FIXME: add get spell log */ spellRoute);
+    app.get('/api/npc/:id', authentication.check,metrics.logSelectNpc, npcRoute);
+    app.get('/api/spell/:id', authentication.check,metrics.logSelectSpell, spellRoute);
     app.post('/api/user-data', userDataRoute);
     app.post('/logout',metrics.logLogout, logoutRoute);
     app.post("/login",metrics.logLogin, loginRoute);

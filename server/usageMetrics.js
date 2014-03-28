@@ -48,16 +48,37 @@ function logSearchItem(request, response, next) {
     next();
 }
 
+function logSearchSpell(request, response, next) {
+    insertEvent(request.session.user.username, "SEARCH_SPELL", {query : request.query});
+    next();
+}
+
 function logSelectMonster(request, response, next) {
     insertEvent(request.session.user.username, "SELECT_MONSTER", {monsterId : request.params.id});
     next();
 }
+
+function logSearchNPC(request, response, next) {
+    insertEvent(request.session.user.username, "SEARCH_NPC", {query : request.query});
+    next();
+}
+
+
+function logSelectNPC(request, response, next) {
+    insertEvent(request.session.user.username, "SELECT_NPC", {npcId : request.params.id});
+    next();
+}
+
 
 function logSelectItem(request, response, next) {
     insertEvent(request.session.user.username, "SELECT_ITEM", {itemId : request.params.id});
     next();
 }
 
+function logSelectSpell(request, response, next) {
+    insertEvent(request.session.user.username, "SELECT_SPELL", {spellId : request.params.id});
+    next();
+}
 
 function logPrintEncounter(request, response, next) {
     insertEvent(request.session.user.username, "PRINT_ENCOUNTER");
@@ -83,6 +104,10 @@ module.exports = function (collection) {
         logSearchItem : logSearchItem,
         logSelectMonster : logSelectMonster,
         logSelectItem : logSelectItem,
+        logSearchNpc : logSearchNPC,
+        logSelectNpc : logSelectNPC,
+        logSearchSpell : logSearchSpell,
+        logSelectSpell : logSelectSpell,
         logPrintEncounter : logPrintEncounter,
         logLogin : logLogin,
         logLogout : logLogout

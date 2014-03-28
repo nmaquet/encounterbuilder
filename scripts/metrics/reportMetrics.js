@@ -3,7 +3,7 @@
 var MongoClient = require('mongodb').MongoClient;
 var async = require('async');
 
-MongoClient.connect(process.env['MONGODB_URL'], function (error, db) {
+MongoClient.connect(process.env['MONGODB_TEST'], function (error, db) {
     if (error) {
         console.log(error);
     } else {
@@ -55,6 +55,18 @@ function main(db) {
                     console.log("Item searches: " + count);
                     callback(error, null);
                 });
+            } ,
+            function (callback) {
+                db.collection('metrics').find({event: "SEARCH_NPC"}).count(function (error, count) {
+                    console.log("Npc searches: " + count);
+                    callback(error, null);
+                });
+            } ,
+            function (callback) {
+                db.collection('metrics').find({event: "SEARCH_SPELL"}).count(function (error, count) {
+                    console.log("Spell searches: " + count);
+                    callback(error, null);
+                });
             }
             ,
             function (callback) {
@@ -67,6 +79,18 @@ function main(db) {
             function (callback) {
                 db.collection('metrics').find({event: "SELECT_ITEM"}).count(function (error, count) {
                     console.log("Item selections: " + count);
+                    callback(error, null);
+                });
+            },
+            function (callback) {
+                db.collection('metrics').find({event: "SELECT_SPELL"}).count(function (error, count) {
+                    console.log("Spell selections: " + count);
+                    callback(error, null);
+                });
+            },
+            function (callback) {
+                db.collection('metrics').find({event: "SELECT_NPC"}).count(function (error, count) {
+                    console.log("Npc selections: " + count);
                     callback(error, null);
                 });
             }
@@ -120,6 +144,34 @@ function main(db) {
                     callback(error, null);
                 });
             } ,
+            function (callback) {
+                console.log("");
+                var pipeline = [
+                    {$match: {event: "SELECT_NPC"}},
+                    {$group: {_id: "$metadata.npcId", count: {$sum: 1}}},
+                    {$sort: { count: -1} }
+                ];
+                db.collection('metrics').aggregate(pipeline, function (error, results) {
+                    for (var i in results) {
+                        console.log("Selected " + results[i]._id + " " + results[i].count + " times");
+                    }
+                    callback(error, null);
+                });
+            } ,
+            function (callback) {
+                console.log("");
+                var pipeline = [
+                    {$match: {event: "SELECT_SPELL"}},
+                    {$group: {_id: "$metadata.spellId", count: {$sum: 1}}},
+                    {$sort: { count: -1} }
+                ];
+                db.collection('metrics').aggregate(pipeline, function (error, results) {
+                    for (var i in results) {
+                        console.log("Selected " + results[i]._id + " " + results[i].count + " times");
+                    }
+                    callback(error, null);
+                });
+            },
             function (callback) {
                 console.log("");
                 var pipeline = [
