@@ -56,22 +56,27 @@ function main(db) {
     var searchMonstersRoute = require('./searchMonstersRoute')(collections.monsters, FIND_LIMIT);
     var searchNpcsRoute = require('./searchNpcsRoute')(collections.npcs, FIND_LIMIT);
     var searchMagicItemsRoute = require('./searchMagicItemsRoute')(collections.magicitems, FIND_LIMIT);
+    var searchSpellsRoute = require('./searchSpellsRoute')(collections.spells, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(collections.monsters);
     var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
     var npcRoute = require('./npcRoute')(collections.npcs);
+    var spellRoute = require('./spellRoute')(collections.spells);
     var loginRoute = require('./loginRoute')(collections.users, authentication.authenticate);
     var changePasswordRoute = require('./changePasswordRoute')(collections.users, authentication);
+    var changeUserDataRoute = require('./changeUserDataRoute')(collections.users,collections.encounters, authentication);
     var logoutRoute = require('./logoutRoute')();
-    var userDataRoute = require('./userDataRoute')(collections.encounters);
+    var userDataRoute = require('./userDataRoute')(collections.encounters, collections.users);
     var clientRoutes = require('./clientRoutes')();
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
 
     app.get('/api/search-monsters', authentication.check, metrics.logSearchMonster, searchMonstersRoute);
-    app.get('/api/search-npcs', authentication.check, /* FIXME: add search NPCS log */ searchNpcsRoute);
+    app.get('/api/search-npcs', authentication.check, metrics.logSearchNpc, searchNpcsRoute);
+    app.get('/api/search-spells', authentication.check, metrics.logSearchSpell, searchSpellsRoute);
     app.get('/api/search-magic-items', authentication.check, metrics.logSearchItem, searchMagicItemsRoute);
     app.get('/api/monster/:id', authentication.check, metrics.logSelectMonster, monsterRoute);
     app.get('/api/magic-item/:id', authentication.check, metrics.logSelectItem, magicItemRoute);
-    app.get('/api/npc/:id', authentication.check,/* FIXME: add get NPC log */ npcRoute);
+    app.get('/api/npc/:id', authentication.check,metrics.logSelectNpc, npcRoute);
+    app.get('/api/spell/:id', authentication.check,metrics.logSelectSpell, spellRoute);
     app.post('/api/user-data', userDataRoute);
     app.post('/logout',metrics.logLogout, logoutRoute);
     app.post("/login",metrics.logLogin, loginRoute);
@@ -79,6 +84,7 @@ function main(db) {
     app.post("/api/remove-encounter", authentication.check, metrics.logRemoveEncounter, encounterRoute.delete);
     app.post("/api/generate-encounter-loot", authentication.check, metrics.logGenerateEncounterLoot, encounterRoute.generateLoot);
     app.post("/api/change-password", authentication.check, changePasswordRoute);
+    app.post("/api/change-user-data", authentication.check, changeUserDataRoute);
 
     app.get('/feedback-popover.html', authentication.check, clientRoutes.feedbackPopover);
     app.get('/login.html', clientRoutes.login);

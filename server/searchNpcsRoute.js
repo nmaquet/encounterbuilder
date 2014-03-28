@@ -107,11 +107,10 @@ module.exports = function (npcsCollection, defaultFindLimit) {
         ],
             function (error, results) {
                 if (error) {
-                    throw error;
+                    console.log(error);
+                    response.send(500);
                 }
-                if (error) {
-                    response.json({error: error});
-                } else {
+                else {
                     response.json({npcs: results[0], count: results[1]});
                 }
             }

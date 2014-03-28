@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
-    ['$scope', '$location', 'encounterService', 'selectedMonsterService', 'selectedEncounterService', 'selectedItemService', 'lootService',
-        function ($scope, $location, encounterService, selectedMonsterService, selectedEncounterService, selectedItemService, lootService) {
+    ['$scope', '$location', 'encounterService', 'selectedMonsterService', 'selectedEncounterService', 'selectedItemService', 'selectedNpcService', 'lootService',
+        function ($scope, $location, encounterService, selectedMonsterService, selectedEncounterService, selectedItemService, selectedNpcService, lootService) {
 
             $scope.encounterChanged = function () {
                 if ($scope.encounter) {
@@ -15,6 +15,11 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             $scope.selectMonsterById = function (id) {
                 selectedMonsterService.selectedMonsterId(id);
                 $('#monstersTab').click();
+            }
+
+            $scope.selectNpcById = function (id) {
+                selectedNpcService.selectedNpcId(id);
+                $('#npcTab').click();
             }
 
             $scope.selectItemById = function (id) {
@@ -33,11 +38,11 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             }
 
             $scope.atLeastOneMonster = function () {
-                return ($scope.encounter.Monsters !== undefined) && (Object.keys($scope.encounter.Monsters).length > 0);
+                return ($scope.encounter !== undefined) && ($scope.encounter.Monsters !== undefined) && (Object.keys($scope.encounter.Monsters).length > 0);
             }
 
             $scope.atLeastOneNpc = function () {
-                return ($scope.encounter.Npcs !== undefined) && (Object.keys($scope.encounter.Npcs).length > 0);
+                return ($scope.encounter !== undefined) && ($scope.encounter.Npcs !== undefined) && (Object.keys($scope.encounter.Npcs).length > 0);
             }
 
 

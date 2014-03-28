@@ -21,9 +21,9 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                 }, 300);
             });
 
-            $scope.$watch('crRange', function (crRange) {
+            $scope.$watchCollection("[minCR, maxCR]", function (crRange) {
                 $timeout(function () {
-                    if (crRange === $scope.crRange) {
+                    if (crRange[0] === $scope.minCR && crRange[1] === $scope.maxCR) {
                         $scope.refreshMonsters();
                     }
                 }, 300);
@@ -92,21 +92,23 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             $scope.listTimestamp = 0;
             $scope.minCR = 0;
             $scope.maxCR = 40;
-            $scope.crRange = $scope.minCR + " - " + $scope.maxCR;
 
             selectedMonsterService.selectedMonsterId('bat');
 
-            $("#slider-cr-range").slider({
-                range: true,
-                min: 0,
-                max: 40,
-                values: [ 0, 40 ],
-                slide: function (event, ui) {
-                    $scope.minCR = ui.values[0];
-                    $scope.maxCR = ui.values[1];
-                    $scope.crRange = $scope.minCR + " - " + $scope.maxCR;
-                    $scope.$apply();
+            $("#monsterCRSlider").noUiSlider({
+                start: [0, 40],
+                connect: true,
+                step: 1,
+                range: {
+                    'min': 0,
+                    'max': 40
                 }
+            });
+
+            $("#monsterCRSlider").on('slide', function () {
+                $scope.minCR = $("#monsterCRSlider").val()[0];
+                $scope.maxCR = $("#monsterCRSlider").val()[1];
+                $scope.$apply();
             });
 
             selectedMonsterService.register(function () {

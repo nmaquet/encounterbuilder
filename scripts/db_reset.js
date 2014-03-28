@@ -1,10 +1,10 @@
 var fs = require("fs");
 
-//FIXME remove mongoose
 var mongoose = require('mongoose');
 var Monster = require('./monsterModel')(mongoose).Monster;
 var MagicItem = require('./magicItemModel')(mongoose).MagicItem;
 var Npc = require('./npcs/npcModel')(mongoose).Npc;
+var Spell = require('./spells/spellModel')(mongoose).Spell;
 
 var idify = require(__dirname + "/../server/utils.js")().idify;
 var async = require('async');
@@ -23,6 +23,7 @@ console.log("mongodb url : " + MONGODB_URL);
 var db = mongoose.connect(MONGODB_URL);
 var monster_ids = [];
 var npc_ids = [];
+var spell_ids = [];
 var magic_item_ids = [];
 
 function generateId(name, ids) {
@@ -64,7 +65,7 @@ function resetMonster(callback) {
     Monster.remove({}, function (error, count) {
 
         if (error) {
-            callback(error,null);
+            callback(error, null);
         }
 
         console.log(count + " monsters removed");
@@ -115,6 +116,35 @@ function resetNpcs(callback) {
                 npcs[npc].id = generateId(npcs[npc].Name, npc_ids);
             }
             batchInsert(Npc.collection, npcs, 500, function (error) {
+                callback(error, null);
+            });
+        });
+    });
+}
+
+function resetSpells(callback) {
+    Spell.remove({}, function (error, count) {
+
+        if (error) {
+            callback(error, null);
+        }
+
+        console.log(count + " spells removed");
+
+        var spellsFile = __dirname + '/../data/spells/spells.json';
+
+        fs.readFile(spellsFile, 'utf8', function (error, spells) {
+            if (error) {
+                callback(error, null);
+            }
+            spells = JSON.parse(spells);
+            if (process.env.USE_TEST_DB) {
+                spells = spells.splice(0, 300);
+            }
+            for (var spell in spells) {
+                spells[spell].id = generateId(spells[spell].name, spell_ids);
+            }
+            batchInsert(Spell.collection, spells, 500, function (error) {
                 callback(error, null);
             });
         });
@@ -183,7 +213,7 @@ function resetMagicItems(callback) {
         });
     });
 }
-async.parallel([resetMonster, resetMagicItems, resetNpcs], function (error, results) {
+async.parallel([resetMonster, resetMagicItems, resetNpcs, resetSpells], function (error, results) {
     console.log("Error : " + error);
     console.log(results);
     db.disconnect();

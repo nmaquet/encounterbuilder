@@ -15,7 +15,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('spellList', [ '$sce',
             '<span>',
             '<strong class="spell-title">{{title}}</strong> <span class="spell-cl">(CL {{CL}})</span>',
             '<ul class="list-unstyled">',
-            '<li class="spell-list-item" ng-repeat="item in spellListItems" ng-bind-html="item"></li>',
+            '<li class="spell-list-item" ng-repeat="item in spellListItems" ng-bind-html="item" linkify-spells="item"></li>',
             '</ul>',
             '</span>'
         ];

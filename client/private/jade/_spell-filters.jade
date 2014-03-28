@@ -1,0 +1,30 @@
+.form-group.col-xs-12
+    input.form-control#npc-search(type='text', name='search', placeholder='Search something…', ng-model='spellNameSubstring')
+.form-group.col-xs-12
+    select.form-control#class(ng-model='class')
+        option(value='any') Any class
+        optgroup(label="Core Classes")
+            option(value='bard') Bard
+            option(value='cleric') Cleric
+            option(value='druid') Druid
+            option(value='paladin') Paladin
+            option(value='ranger') Ranger
+            option(value='sorcerer') Sorcerer
+            option(value='wizard') Wizard
+        optgroup(label="Base Classes")
+            option(value='alchemist') Alchemist
+            option(value='inquisitor') Inquisitor
+            option(value='magus') Magus
+            option(value='oracle') Oracle
+            option(value='summoner') Summoner
+            option(value='witch') Witch
+        optgroup(label="Alternate Classes")
+            option(value='antipaladin') Antipaladin
+        optgroup(label="NPC Classes")
+            option(value='adept') Adept
+.form-group.col-xs-12
+    .col-xs-4
+        .row
+            label(for='spellLevelSlider') <strong>Level</strong> {{minLevel | number}} - {{maxLevel| number }}
+    .col-xs-8
+        #spellLevelSlider

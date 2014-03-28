@@ -1,0 +1,70 @@
+
+                    <!-- ngIf: npc.SpecialAttacks -->
+                    <li ng-if="npc.SpecialAttacks" class="ng-scope"><span class="ng-binding"><strong>Special
+                        Attacks</strong>&nbsp;intense spells (+9 damage), paralysis (DC 30);</span></li>
+                    <!-- end ngIf: npc.SpecialAttacks --><!-- ngIf: npc.SpellsKnown --><!-- ngIf: npc.Bloodline -->
+                    <!-- ngIf: npc.SpellsPrepared -->
+                    <li ng-if="npc.SpellsPrepared" class="ng-scope"><span
+                            spell-string="Evoker Spells Prepared (CL 19th; concentration +30) 9th-crushing hand, quickened empowered fireball (2, DC 25), meteor swarm (DC 31), time stop, wish 8th-clenched fist, empowered disintegrate (DC 27), polymorph any object, quickened resilient sphere (2), telekinetic sphere (DC 30) 7th-delayed blast fireball (2, DC 29), finger of death (DC 28), greater scrying (DC 28), empowered quickened magic missile (2), prismatic spray (DC 29), project image (DC 28) 6th-chain lightning (2, DC 28), disintegrate, quickened eagle's splendor, flesh to stone (DC 27), freezing sphere (DC 28), mass suggestion (DC 27), mislead (DC 27) 5th-cone of cold (DC 27), empowered fireball (2, DC 25), quickened magic missile (2), telekinesis (DC 26), wall of force (2) 4th-charm monster (DC 25), greater invisibility, ice storm (2), empowered scorching ray (3), wall of ice (DC 26) 3rd-displacement, fireball (2, DC 25), fly, lightning bolt (2, DC 25), empowered magic missile (2), suggestion (DC 24) 2nd-alter self, detect thoughts (2, DC 23), false life, flaming sphere (DC 24), gentle repose, mirror image, scorching ray (2) 1st-burning hands (DC 23), charm person (DC 22), magic missile (5), ray of enfeeblement (DC 22), silent image (DC 22) 0 (at will)-detect magic, mage hand, prestidigitation (DC 21), read magic"
+                            class="ng-isolate-scope"><strong class="spell-title ng-binding">Evoker Spells
+                        Prepared</strong> <span class="spell-cl ng-binding">(CL 19th; concentration +30)</span><ul
+                            class="list-unstyled"><!-- ngRepeat: item in spellListItems -->
+                        <li class="spell-list-item ng-scope ng-binding" ng-repeat="item in spellListItems"
+                            ng-bind-html="item">9th—crushing hand, quickened empowered fireball (2, DC 25), meteor swarm
+                            (DC 31), time stop, wish
+                        </li>
+                        <!-- end ngRepeat: item in spellListItems -->
+                        <li class="spell-list-item ng-scope ng-binding" ng-repeat="item in spellListItems"
+                            ng-bind-html="item">8th—clenched fist, empowered disintegrate (DC 27), polymorph any object,
+                            quickened resilient sphere (2), telekinetic sphere (DC 30)
+                        </li>
+                        <!-- end ngRepeat: item in spellListItems -->
+                        <li class="spell-list-item ng-scope ng-binding" ng-repeat="item in spellListItems"
+                            ng-bind-html="item">7th—delayed blast fireball (2, DC 29), finger of death (DC 28), greater
+                            scrying (DC 28), empowered quickened magic missile (2), prismatic spray (DC 29), project
+                            image (DC 28)
+                        </li>
+                        <!-- end ngRepeat: item in spellListItems -->
+                        <li class="spell-list-item ng-scope ng-binding" ng-repeat="item in spellListItems"
+                            ng-bind-html="item">6th—chain lightning (2, DC 28), disintegrate, quickened eagle's
+                            splendor, flesh to stone (DC 27), freezing sphere (DC 28), mass suggestion (DC 27), mislead
+                            (DC 27)
+                        </li>
+                        <!-- end ngRepeat: item in spellListItems -->
+                        <li class="spell-list-item ng-scope ng-binding" ng-repeat="item in spellListItems"
+                            ng-bind-html="item">5th—cone of cold (DC 27), empowered fireball (2, DC 25), quickened magic
+                            missile (2), telekinesis (DC 26), wall of force (2)
+                        </li>
+                        <!-- end ngRepeat: item in spellListItems -->
+                        <li class="spell-list-item ng-scope ng-binding" ng-repeat="item in spellListItems"
+                            ng-bind-html="item">4th—charm monster (DC 25), greater invisibility, ice storm (2),
+                            empowered scorching ray (3), wall of ice (DC 26)
+                        </li>
+                        <!-- end ngRepeat: item in spellListItems -->
+                        <li class="spell-list-item ng-scope ng-binding" ng-repeat="item in spellListItems"
+                            ng-bind-html="item">3rd—displacement, fireball (2, DC 25), fly, lightning bolt (2, DC 25),
+                            empowered magic missile (2), suggestion (DC 24)
+                        </li>
+                        <!-- end ngRepeat: item in spellListItems -->
+                        <li class="spell-list-item ng-scope ng-binding" ng-repeat="item in spellListItems"
+                            ng-bind-html="item">2nd—alter self, detect thoughts (2, DC 23), false life, flaming sphere
+                            (DC 24), gentle repose, mirror image, scorching ray (2)
+                        </li>
+                        <!-- end ngRepeat: item in spellListItems -->
+                        <li class="spell-list-item ng-scope ng-binding" ng-repeat="item in spellListItems"
+                            ng-bind-html="item">1st—burning hands (DC 23), charm person (DC 22), magic missile (5), ray
+                            of enfeeblement (DC 22), silent image (DC 22)
+                        </li>
+                        <!-- end ngRepeat: item in spellListItems -->
+                        <li class="spell-list-item ng-scope ng-binding" ng-repeat="item in spellListItems"
+                            ng-bind-html="item">0 (at will)—detect magic, mage hand, prestidigitation (DC 21), read
+                            magic
+                        </li>
+                        <!-- end ngRepeat: item in spellListItems --></ul></span></li>
+                    <!-- end ngIf: npc.SpellsPrepared -->
+                    <li ng-bind-html="npc.SLASafe" class="ng-binding">Conjurer Spell-Like Abilities (CL 19th;
+                        concentration +30) At Will-elemental wall (19 rounds/day) 14/day-force missile (1d4+9)
+                    </li>
+                </ul>
+            </div>
+        </div>
