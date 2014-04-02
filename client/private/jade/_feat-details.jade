@@ -10,7 +10,8 @@
             li(ng-if="feat.prerequisites")
                 span
                     strong Prerequisites
-                    | : {{feat.prerequisites}}
+                    | : 
+                    span(linkify='feat.prerequisites',linkify-type="feat")
             li(ng-if="feat.benefit")
                 span
                     strong Benefit
