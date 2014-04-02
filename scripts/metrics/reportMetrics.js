@@ -70,6 +70,13 @@ function main(db) {
             }
             ,
             function (callback) {
+                db.collection('metrics').find({event: "SEARCH_FEAT"}).count(function (error, count) {
+                    console.log("Feat searches: " + count);
+                    callback(error, null);
+                });
+            }
+            ,
+            function (callback) {
                 db.collection('metrics').find({event: "SELECT_MONSTER"}).count(function (error, count) {
                     console.log("Monster selections: " + count);
                     callback(error, null);

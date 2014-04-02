@@ -53,6 +53,11 @@ function logSearchSpell(request, response, next) {
     next();
 }
 
+function logSearchFeat(request, response, next) {
+    insertEvent(request.session.user.username, "SEARCH_FEAT", {query : request.query});
+    next();
+}
+
 function logSelectMonster(request, response, next) {
     insertEvent(request.session.user.username, "SELECT_MONSTER", {monsterId : request.params.id});
     next();
@@ -107,6 +112,7 @@ module.exports = function (collection) {
         logSearchNpc : logSearchNPC,
         logSelectNpc : logSelectNPC,
         logSearchSpell : logSearchSpell,
+        logSearchFeat : logSearchFeat,
         logSelectSpell : logSelectSpell,
         logPrintEncounter : logPrintEncounter,
         logLogin : logLogin,
