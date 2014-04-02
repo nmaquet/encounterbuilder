@@ -2,6 +2,15 @@
 
 var escapeRegExp = require('./utils')().escapeRegExp;
 var async = require('async');
+var TYPE_FLAGS = {
+    "Teamwork": "teamwork",
+    "Critical": "critical",
+    "Grit": "grit",
+    "Style": "style",
+    "Performance": "performance",
+    "Racial": "racial",
+    "Companion / Familiar": "companion_familiar"
+};
 
 function getQuery(request) {
     var query = {};
@@ -9,7 +18,11 @@ function getQuery(request) {
         query.name = new RegExp(escapeRegExp(request.query.nameSubstring), "i");
     }
     if (request.query.type && request.query.type != 'any') {
-        query.type = request.query.type;
+        if (TYPE_FLAGS[request.query.type] !== undefined) {
+            query[TYPE_FLAGS[request.query.type]] = true;
+        } else {
+            query.type = request.query.type;
+        }
     }
     return query;
 }
@@ -32,13 +45,13 @@ module.exports = function (featCollection, defaultFindLimit) {
         }
 
         async.parallel([
-            function (callback) {
-                featCollection.find(query, options).toArray(callback);
-            },
-            function (callback) {
-                featCollection.count(query, callback);
-            }
-        ],
+                function (callback) {
+                    featCollection.find(query, options).toArray(callback);
+                },
+                function (callback) {
+                    featCollection.count(query, callback);
+                }
+            ],
             function (error, results) {
                 if (error) {
                     console.log(error);

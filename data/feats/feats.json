@@ -2937,7 +2937,7 @@
     },
     {
         "name": "Awesome Blow",
-        "type": "Monster, Combat",
+        "type": "Monster",
         "description": "This creature can send opponents flying.",
         "prerequisites": "Str 25, Power Attack, Improved Bull Rush, size Large or larger.",
         "benefit": "As a standard action, the creature may perform an awesome blow combat maneuver. If the creature's maneuver succeeds against a corporeal opponent smaller than itself, its opponent takes damage (typically slam damage plus Strength bonus) and is knocked flying 10 feet in a direction of the attacking creature's choice and falls prone. The attacking creature can only push the opponent in a straight line, and the opponent can't move closer to the attacking creature than the square it started in. If an obstacle prevents the completion of the opponent's move, the opponent and the obstacle each take 1d6 points of damage, and the opponent is knocked prone in the space adjacent to the obstacle.",
@@ -3054,7 +3054,7 @@
     },
     {
         "name": "Multiattack",
-        "type": "Monster, Combat",
+        "type": "Monster",
         "description": "This creature is particularly skilled at making attacks with its natural weapons.",
         "prerequisites": "Three or more natural attacks.",
         "benefit": "The creature's secondary attacks with natural weapons take only a -2 penalty.",
@@ -7290,7 +7290,7 @@
     },
     {
         "name": "Extra Grit",
-        "type": "General",
+        "type": "Grit",
         "description": "You have more grit than the ordinary gunslinger.",
         "prerequisites": "Grit class feature or the Amateur Gunslinger feat.",
         "benefit": "You gain 2 extra grit points at the start of each day, and your maximum grit increases by 2.",
@@ -8175,7 +8175,7 @@
     },
     {
         "name": "Leaping Shot Deed",
-        "type": "General",
+        "type": "Grit",
         "description": "You leap through the air, guns blazing.",
         "prerequisites": "Dex 13, grit class feature or Amateur Gunslinger feat, Dodge, Mobility, base attack bonus +4.",
         "prerequisite_feats": "Dodge, Mobility",
@@ -8689,7 +8689,7 @@
     },
     {
         "name": "No Name",
-        "type": "General",
+        "type": "Grit",
         "description": "You don't need an elaborate disguise to keep your identity under wraps.",
         "prerequisites": "Grit class feature or Amateur Gunslinger feat, Bluff 4 ranks.",
         "benefit": "You often rely on surprise and misdirection in your social dealings. You gain a +2 bonus on Bluff checks, and you can spend 1 grit point to gain a +10 bonus on Disguise checks for 10 minutes per your gunslinger level (minimum 10 minutes). This deed does not actually change your appearance, but rather allows you to hide your identity in other ways.",
@@ -9216,7 +9216,7 @@
     },
     {
         "name": "Ricochet Shot Deed",
-        "type": "General",
+        "type": "Grit",
         "description": "You can ricochet a firearm shot off the wall and still hit your target.",
         "prerequisites": "Grit class feature or Amateur Gunslinger feat, Blind-Fight.",
         "prerequisite_feats": "Blind-Fight",
@@ -9333,7 +9333,7 @@
     },
     {
         "name": "Secret Stash Deed",
-        "type": "General",
+        "type": "Grit",
         "description": "You are so skilled at stashing small packets of firearm ammunition and black powder on your person that you sometimes surprise yourself when you find them.",
         "prerequisites": "Grit class feature or Amateur Gunslinger feat, Sleight of Hand 1 rank.",
         "benefit": "Spend 1 grit point while in combat to recover either 1 bullet and 1 dose of black powder or 1 alchemical cartridge from a hidden stash on your person that you had, until now, forgotten about. If the bullet and black powder or the alchemical cartridges are normal shot, you do not need to pay for the ammunition. If you want to recover any other kind of ammunition, you must pay for it with gold pieces from your character's wealth. The grit cost of this deed cannot be decreased by the Signature Deed feat, the true grit class feature, or any other similar effect that reduces the number of grit points you spend to use a deed. You also gain a +4 bonus on any Sleight of Hand checks made while gambling.",
@@ -9531,7 +9531,7 @@
     },
     {
         "name": "Signature Deed",
-        "type": "General",
+        "type": "Grit",
         "description": "You are known for performing a particular deed, and can perform it with greater ease.",
         "prerequisites": "Grit class feature, gunslinger level 11th.",
         "benefit": "Pick a deed that you have access to and that you must spend grit to perform. You can perform this deed for 1 fewer grit point (minimum 0). If the amount of grit needed to perform the deed is reduced to 0, you can perform this deed for the normal action cost as long as you have at least 1 grit point.",
@@ -24676,7 +24676,7 @@
     },
     {
         "name": "Blowout Shot Deed",
-        "type": "General",
+        "type": "Grit",
         "description": "By using a specially prepared mix of reagents, you can create concussive blasts with your firearm.",
         "prerequisites": "Craft (alchemy) 3 ranks, grit class feature or Amateur GunslingerUC feat.",
         "benefit": "Spend 1 grit point to retrieve a specially prepared dose of black powder from your person. The next time you use the firearm you've loaded with this special black powder, the concussive blast knocks you back 5 feet from the direction at which you were aiming. If there is no available space behind you, you brace yourself against the obstacle and do not move from your square. Any creatures within the first range increment of the firearm struck by this attack take damage as normal and must succeed at a Ref lex save (DC = 10 + 1/2 your gunslinger level + your Int modifier) or be pushed back 10 feet. Creatures within two range increments are pushed back 5 feet, while creatures farther away than this are unaffected by the concussive blast.",
@@ -24692,7 +24692,7 @@
     },
     {
         "name": "Whip-Shot Deed",
-        "type": "General",
+        "type": "Grit",
         "description": "You can fire your weapon and strike with it at the same time.",
         "prerequisites": "Grit class feature or Amateur GunslingerUC feat, pistol-whip deed.",
         "benefit": "Whenever you use your pistol-whip deed, you can fire a single bullet from your firearm at the same time that you strike a foe with the butt of your firearm. You must spend a total of 2 grit points to use the pistol-whip deed in this way, and must still succeed at a ranged touch attack against the target of your pistolwhip deed to hit. You cannot use the scatter weapon quality of a firearm when you use this feat.",
@@ -24978,7 +24978,7 @@
     },
     {
         "name": "Fabulist",
-        "type": "General",
+        "type": "Grit",
         "description": "You enjoy telling tall tales and gain confidence when others believe them.",
         "prerequisites": "Amateur GunslingerUC feat or grit class feature.",
         "prerequisite_feats": "Amateur Gunslinger",
@@ -24995,7 +24995,7 @@
     },
     {
         "name": "Gun Twirling",
-        "type": "General",
+        "type": "Grit",
         "description": "You can spin and juggle a small firearm, making it difficult to predict where you will shoot.",
         "prerequisites": "Amateur GunslingerUC feat or grit class feature, Dazzling Display, Weapon Focus.",
         "prerequisite_feats": "Dazzling Display, Weapon Focus",
@@ -25012,7 +25012,7 @@
     },
     {
         "name": "Named Bullet",
-        "type": "General",
+        "type": "Grit",
         "description": "You can craft ammunition intended to kill specific foes.",
         "prerequisites": "Amateur GunslingerUC feat or grit class feature, GunsmithingUC, base attack bonus +5.",
         "prerequisite_feats": "Gunsmithing",

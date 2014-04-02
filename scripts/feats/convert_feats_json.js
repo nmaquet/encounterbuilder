@@ -38,6 +38,12 @@
                 feat[attribute] = srdFeat[attribute].trim();
             }
         }
+        if (feat.type === "Monster, Combat") {
+            feat.type = "Monster";
+        }
+        if (feat.grit) {
+            feat.type = "Grit";
+        }
         delete feat.id;
         return feat;
     }

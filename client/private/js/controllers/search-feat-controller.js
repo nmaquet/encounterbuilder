@@ -17,6 +17,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
             function refreshFeats() {
                 var params = {
                     nameSubstring: $scope.featNameSubstring,
+                    type: $scope.type,
                     skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
                     findLimit: $scope.itemsPerPage
                 };
