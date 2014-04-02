@@ -85,6 +85,11 @@ function logSelectSpell(request, response, next) {
     next();
 }
 
+function logSelectFeat(request, response, next) {
+    insertEvent(request.session.user.username, "SELECT_FEAT", {featId : request.params.id});
+    next();
+}
+
 function logPrintEncounter(request, response, next) {
     insertEvent(request.session.user.username, "PRINT_ENCOUNTER");
     next();
@@ -114,6 +119,7 @@ module.exports = function (collection) {
         logSearchSpell : logSearchSpell,
         logSearchFeat : logSearchFeat,
         logSelectSpell : logSelectSpell,
+        logSelectFeat : logSelectFeat,
         logPrintEncounter : logPrintEncounter,
         logLogin : logLogin,
         logLogout : logLogout
