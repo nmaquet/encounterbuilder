@@ -1,24 +1,31 @@
 "use strict";
 var allowedTypes = ["undefined", "boolean", "number", "string"];
 module.exports = function () {
+    function idify(string) {
+        var alphaNumeric = /^[a-z0-9]$/i;
+        var id = "";
+        for (var i in string) {
+            var char = string[i];
+            if (alphaNumeric.test(char)) {
+                id += char.toLowerCase();
+            }
+            else if (id[id.length - 1] !== "-") {
+                id += "-";
+            }
+        }
+        if (id[id.length - 1] === "-") {
+            id = id.slice(0, id.length - 1);
+        }
+        return id;
+    };
     return {
-        idify: function (string) {
-
-            var alphaNumeric = /^[a-z0-9]$/i;
-            var id = "";
-            for (var i in string) {
-                var char = string[i];
-                if (alphaNumeric.test(char)) {
-                    id += char.toLowerCase();
-                }
-                else if (id[id.length - 1] !== "-") {
-                    id += "-";
-                }
+        idify: idify,
+        idifyFeat: function (feat) {
+            var featId = idify(feat.name);
+            if (feat.type === "Mythic") {
+                featId += "-mythic";
             }
-            if (id[id.length - 1] === "-") {
-                id = id.slice(0, id.length - 1);
-            }
-            return id;
+            return featId;
         },
         escapeRegExp: function (str) {
             return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
