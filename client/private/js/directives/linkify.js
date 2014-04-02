@@ -1,13 +1,13 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderDirectives.directive('linkifySpells', ['$compile', 'spellService', 'selectedSpellService',
+DEMONSQUID.encounterBuilderDirectives.directive('linkify', ['$compile', 'spellService', 'selectedSpellService',
     function ($compile, spellService, selectedSpellService) {
         var spells;
         var regex;
         return {
             restrict: 'A',
             replace: true,
-            scope: {watchedExpression: "&linkifySpells"},
+            scope: {watchedExpression: "&linkify", type: "@linkifyType"},
             link: function compile(scope, element) {
                 scope.selectSpell = function (spellId) {
                     selectedSpellService.selectedSpellId(spellId);

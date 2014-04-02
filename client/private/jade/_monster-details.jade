@@ -72,7 +72,7 @@
                             | &nbsp;{{monster.Bloodline}}
                     li(ng-if='monster.SpellsPrepared')
                         spell-list(spell-string="{{monster.SpellsPrepared}}" )
-                    li(ng-bind-html='monster.SLASafe' ,linkify-spells='monster.SLASafe')
+                    li(ng-bind-html='monster.SLASafe' ,linkify='monster.SLASafe',linkify-type="spell")
             .col-lg-6.cat.decor
                 legend.legend.font-title Defense
                 ul.list-unstyled
@@ -186,7 +186,7 @@
         span(ng-if='monster.SpecialAbilitiesSafe')
             legend.legend.font-title Special Abilities
             // FIXME Use jQuery to change the <h5> tags into <p> or <div>
-            div(ng-bind-html='monster.SpecialAbilitiesSafe' ,linkify-spells='monster.SpecialAbilitiesSafe')
+            div(ng-bind-html='monster.SpecialAbilitiesSafe' ,linkify='monster.SpecialAbilitiesSafe',linkify-type="spell")
     .col-xs-12.cat.decor
         legend.legend.font-title Description
-        div(ng-bind-html='monster.DescriptionSafe',linkify-spells='monster.DescriptionSafe')
+        div(ng-bind-html='monster.DescriptionSafe',linkify='monster.DescriptionSafe',linkify-type="spell")
