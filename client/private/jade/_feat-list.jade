@@ -1,0 +1,13 @@
+.col-xs-12
+    table.feats.table.table-striped.table-condensed
+        thead
+            tr.result-row
+                th Name
+                th(colspan='3') Source
+        tbody
+            tr.pointer.feat-row(ng-repeat='feat in feats')
+                td.name-container(ng-class='{selected: selectedFeatId == feat.id}', ng-click='selectFeatById(feat.id)')
+                    span {{feat.name}}
+                td.source-container(ng-class='{selected: selectedFeatId == feat.id}', ng-click='selectFeatById(feat.id)')
+                    abbr(title='{{feat.source}}') {{feat.source | abbreviateMonsterSource}}
+    pagination.pagination-sm.page.pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
