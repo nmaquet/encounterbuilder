@@ -64,7 +64,7 @@ function main(db) {
     var spellRoute = require('./spellRoute')(collections.spells);
     var loginRoute = require('./loginRoute')(collections.users, authentication.authenticate);
     var changePasswordRoute = require('./changePasswordRoute')(collections.users, authentication);
-    var changeUserDataRoute = require('./changeUserDataRoute')(collections.users,collections.encounters, authentication);
+    var changeUserDataRoute = require('./changeUserDataRoute')(collections.users, collections.encounters, authentication);
     var logoutRoute = require('./logoutRoute')();
     var userDataRoute = require('./userDataRoute')(collections.encounters, collections.users);
     var clientRoutes = require('./clientRoutes')();
@@ -77,16 +77,22 @@ function main(db) {
     app.get('/api/search-magic-items', authentication.check, metrics.logSearchItem, searchMagicItemsRoute);
     app.get('/api/monster/:id', authentication.check, metrics.logSelectMonster, monsterRoute);
     app.get('/api/magic-item/:id', authentication.check, metrics.logSelectItem, magicItemRoute);
-    app.get('/api/npc/:id', authentication.check,metrics.logSelectNpc, npcRoute);
-    app.get('/api/spell/:id', authentication.check,metrics.logSelectSpell, spellRoute);
+    app.get('/api/npc/:id', authentication.check, metrics.logSelectNpc, npcRoute);
+    app.get('/api/spell/:id', authentication.check, metrics.logSelectSpell, spellRoute);
     app.post('/api/user-data', userDataRoute);
-    app.post('/logout',metrics.logLogout, logoutRoute);
-    app.post("/login",metrics.logLogin, loginRoute);
+    app.post('/logout', metrics.logLogout, logoutRoute);
+    app.post("/login", metrics.logLogin, loginRoute);
     app.post("/api/upsert-encounter", authentication.check, metrics.logUpsertEncounter, encounterRoute.upsert);
     app.post("/api/remove-encounter", authentication.check, metrics.logRemoveEncounter, encounterRoute.delete);
     app.post("/api/generate-encounter-loot", authentication.check, metrics.logGenerateEncounterLoot, encounterRoute.generateLoot);
     app.post("/api/change-password", authentication.check, changePasswordRoute);
     app.post("/api/change-user-data", authentication.check, changeUserDataRoute);
+
+    app.get("/api/crash", authentication.check,
+        function (request, response) {
+            throw Error("You asked for it !");
+        }
+    );
 
     app.get('/feedback-popover.html', authentication.check, clientRoutes.feedbackPopover);
     app.get('/login.html', clientRoutes.login);
