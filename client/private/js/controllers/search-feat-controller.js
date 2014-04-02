@@ -44,7 +44,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
                 $scope.selectedFeatId = selectedFeatService.selectedFeatId();
             });
 
-            selectedFeatService.selectedFeatId("create-pit");
+            selectedFeatService.selectedFeatId("arc-slinger");
 
             $scope.$watch('featNameSubstring', function (featNameSubstring) {
                 $timeout(function () {

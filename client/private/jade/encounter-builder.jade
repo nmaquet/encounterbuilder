@@ -76,8 +76,7 @@ header
                             include _feat-filters
                         .section.result-list.app-content.shadow
                             include _feat-list
-                    //(ng-controller='SpellDetailsController')
-                    .col-sm-6.col-md-7.col-lg-8.search-result.section.app-content.shadow
-                        //include _spell-details
+                    .col-sm-6.col-md-7.col-lg-8.search-result.section.app-content.shadow(ng-controller='FeatDetailsController')
+                        include _feat-details
 footer
     include _footer
