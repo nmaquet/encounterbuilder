@@ -1,9 +1,24 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderDirectives.directive('linkify', ['$compile', 'spellService', 'selectedSpellService',
-    function ($compile, spellService, selectedSpellService) {
-        var spells;
-        var regex;
+DEMONSQUID.encounterBuilderDirectives.directive('linkify',
+    ['$compile', 'spellService', 'selectedSpellService', 'featService', 'selectedFeatService',
+    function ($compile, spellService, selectedSpellService, featService, selectedFeatService) {
+
+        var types = {
+            spell: {
+                list : null,
+                regex : null,
+                getList: spellService.spells,
+                selectFunctionName: "selectSpell"
+            },
+            feat: {
+                list : null,
+                regex : null,
+                getList: featService.feats,
+                selectFunctionName: "selectFeat"
+            }
+        };
+
         return {
             restrict: 'A',
             replace: true,
@@ -12,13 +27,17 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify', ['$compile', 'spellSe
                 scope.selectSpell = function (spellId) {
                     selectedSpellService.selectedSpellId(spellId);
                     $('#spellsTab').click();
-                }
+                };
+                scope.selectFeat = function (featId) {
+                    selectedFeatService.selectedFeatId(featId);
+                    $('#featsTab').click();
+                };
                 scope.$watch(scope.watchedExpression, function (value) {
-                    spells = spells || spellService.spells();
-                    if (!spells) {
+                    types[scope.type].list = types[scope.type].list || types[scope.type].getList();
+                    if (!types[scope.type]) {
                         return;
                     }
-                    regex = regex || new RegExp("\\b(" + spells.names.join("|") + ")\\b", "ig");
+                    types[scope.type].regex = types[scope.type].regex || new RegExp("\\b(" + types[scope.type].list.names.join("|") + ")\\b", "ig");
                     if (!value) {
                         return;
                     }
@@ -26,9 +45,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify', ['$compile', 'spellSe
                     var match = null;
                     var parts = [];
                     var position = 0;
-                    while (null !== (match = regex.exec(value))) {
+                    while (null !== (match = types[scope.type].regex.exec(value))) {
                         parts.push(value.slice(position, match.index));
-                        parts.push('<a class="pointer" ng-click="selectSpell(\'' + spells[match[0].toLowerCase()] + '\')">' + match[0] + '</a>');
+                        parts.push('<a class="pointer" ng-click="' + types[scope.type].selectFunctionName + '(\'' + types[scope.type].list[match[0].toLowerCase()] + '\')">' + match[0] + ' </a>');
                         position = match.index + match[0].length;
                     }
                     parts.push(value.slice(position));

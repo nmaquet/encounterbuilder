@@ -128,18 +128,21 @@
                     legend.legend.font-title Tactics
                 div
                     ul.list-unstyled
-                        li(ng-if='npc.BeforeCombat', linkify='npc.BeforeCombat',linkify-type="spell")
+                        li(ng-if='npc.BeforeCombat', )
                             span
                                 strong Before Combat
-                                | &nbsp;{{npc.BeforeCombat}}
-                        li(ng-if='npc.DuringCombat', linkify='npc.DuringCombat',linkify-type="spell")
+                                | &nbsp;
+                                span(linkify='npc.BeforeCombat',linkify-type="spell")
+                        li(ng-if='npc.DuringCombat')
                             span
                                 strong During Combat
-                                | &nbsp;{{npc.DuringCombat}}
-                        li(ng-if='npc.Morale', linkify='npc.Morale',linkify-type="spell")
+                                | &nbsp;
+                                span(linkify='npc.DuringCombat',linkify-type="spell")
+                        li(ng-if='npc.Morale')
                             span
                                 strong Morale
-                                | &nbsp;{{npc.Morale}}
+                                | &nbsp;
+                                span(linkify='npc.Morale',linkify-type="spell")
                         li(ng-if='npc.BaseStatistics')
                             span
                                 strong Base Statistics
@@ -179,7 +182,8 @@
                     li
                         span
                             strong Feats
-                            | &nbsp;{{npc.Feats}}
+                            | &nbsp;
+                            span(linkify="npc.Feats", linkify-type="feat")
                     li
                         span
                             strong Skills
