@@ -114,14 +114,14 @@
                             strong Special Attacks
                             | &nbsp;{{npc.SpecialAttacks}};
                     li(ng-if='npc.SpellsKnown')
-                        spell-list(spell-string="{{npc.SpellsKnown}}")
+                        spell-list(spell-string="{{npc.SpellsKnown}}", mythic="npc.Mythic")
                     li(ng-if='npc.Bloodline')
                         span
                             strong Bloodline
                             | &nbsp;{{npc.Bloodline}}
                     li(ng-if='npc.SpellsPrepared')
-                        spell-list(spell-string="{{npc.SpellsPrepared}}" )
-                    li(ng-bind-html='npc.SLASafe',linkify='npc.SLASafe',linkify-type="spell")
+                        spell-list(spell-string="{{npc.SpellsPrepared}}" , mythic="npc.Mythic")
+                    li(ng-bind-html='npc.SLASafe',linkify='npc.SLASafe',linkify-type="spell", mythic="npc.Mythic")
         .row
             .col-xs-12.cat.decor(ng-if='npc.BeforeCombat||npc.DuringCombat||npc.Morale||npc.BaseStatistics')
                 div
@@ -132,17 +132,17 @@
                             span
                                 strong Before Combat
                                 | &nbsp;
-                                span(linkify='npc.BeforeCombat',linkify-type="spell")
+                                span(linkify='npc.BeforeCombat',linkify-type="spell", mythic="npc.Mythic")
                         li(ng-if='npc.DuringCombat')
                             span
                                 strong During Combat
                                 | &nbsp;
-                                span(linkify='npc.DuringCombat',linkify-type="spell")
+                                span(linkify='npc.DuringCombat',linkify-type="spell", mythic="npc.Mythic")
                         li(ng-if='npc.Morale')
                             span
                                 strong Morale
                                 | &nbsp;
-                                span(linkify='npc.Morale',linkify-type="spell")
+                                span(linkify='npc.Morale',linkify-type="spell", mythic="npc.Mythic")
                         li(ng-if='npc.BaseStatistics')
                             span
                                 strong Base Statistics
@@ -183,7 +183,7 @@
                         span
                             strong Feats
                             | &nbsp;
-                            span(linkify="npc.Feats", linkify-type="feat")
+                            span(linkify="npc.Feats", linkify-type="feat", mythic="npc.Mythic")
                     li
                         span
                             strong Skills
@@ -212,7 +212,7 @@
         span(ng-if='npc.SpecialAbilitiesSafe')
             legend.legend.font-title Special Abilities
             // FIXME Use jQuery to change the <h5> tags into <p> or <div>
-            div(ng-bind-html='npc.SpecialAbilitiesSafe',linkify='npc.SpecialAbilitiesSafe',linkify-type="spell")
+            div(ng-bind-html='npc.SpecialAbilitiesSafe',linkify='npc.SpecialAbilitiesSafe',linkify-type="spell", mythic="npc.Mythic")
     .col-xs-12.cat.decor(ng-if='npc.Description')
         legend.legend.font-title Description
-        div(ng-bind-html='npc.DescriptionSafe',linkify='npc.DescriptionSafe',linkify-type="spell")
+        div(ng-bind-html='npc.DescriptionSafe',linkify='npc.DescriptionSafe',linkify-type="spell", mythic="npc.Mythic")

@@ -72,7 +72,7 @@
                             | &nbsp;{{monster.Bloodline}}
                     li(ng-if='monster.SpellsPrepared')
                         spell-list(spell-string="{{monster.SpellsPrepared}}" )
-                    li(ng-bind-html='monster.SLASafe' ,linkify='monster.SLASafe',linkify-type="spell")
+                    li(ng-bind-html='monster.SLASafe' ,linkify='monster.SLASafe',linkify-type="spell", mythic="monster.Mythic")
             .col-lg-6.cat.decor
                 legend.legend.font-title Defense
                 ul.list-unstyled
@@ -149,7 +149,7 @@
                     li
                         span
                             strong Feats&nbsp;
-                            span(linkify="monster.Feats",linkify-type="feat")
+                            span(linkify="monster.Feats",linkify-type="feat", mythic="monster.Mythic")
                     li
                         span
                             strong Skills
@@ -186,7 +186,7 @@
         span(ng-if='monster.SpecialAbilitiesSafe')
             legend.legend.font-title Special Abilities
             // FIXME Use jQuery to change the <h5> tags into <p> or <div>
-            div(ng-bind-html='monster.SpecialAbilitiesSafe' ,linkify='monster.SpecialAbilitiesSafe',linkify-type="spell")
+            div(ng-bind-html='monster.SpecialAbilitiesSafe', linkify='monster.SpecialAbilitiesSafe',linkify-type="spell", mythic="monster.Mythic")
     .col-xs-12.cat.decor
         legend.legend.font-title Description
-        div(ng-bind-html='monster.DescriptionSafe',linkify='monster.DescriptionSafe',linkify-type="spell")
+        div(ng-bind-html='monster.DescriptionSafe',linkify='monster.DescriptionSafe',linkify-type="spell", mythic="monster.Mythic")

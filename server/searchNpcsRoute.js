@@ -84,27 +84,27 @@ module.exports = function (npcsCollection, defaultFindLimit) {
         }
 
         async.parallel([
-            function (callback) {
-                npcsCollection.find(query, options).toArray(function (error, npcs) {
-                    if (error) {
-                        callback(error, null);
-                    }
-                    else {
-                        callback(null, npcs);
-                    }
-                });
-            },
-            function (callback) {
-                npcsCollection.count(query, function (error, count) {
-                    if (error) {
-                        callback(error, null);
-                    }
-                    else {
-                        callback(null, count);
-                    }
-                });
-            }
-        ],
+                function (callback) {
+                    npcsCollection.find(query, options).toArray(function (error, npcs) {
+                        if (error) {
+                            callback(error, null);
+                        }
+                        else {
+                            callback(null, npcs);
+                        }
+                    });
+                },
+                function (callback) {
+                    npcsCollection.count(query, function (error, count) {
+                        if (error) {
+                            callback(error, null);
+                        }
+                        else {
+                            callback(null, count);
+                        }
+                    });
+                }
+            ],
             function (error, results) {
                 if (error) {
                     console.log(error);

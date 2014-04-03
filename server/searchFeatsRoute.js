@@ -38,7 +38,7 @@ module.exports = function (featCollection, defaultFindLimit) {
         var count;
 
         var options = {
-            fields: {name: 1, id: 1, source: 1, _id: 0},
+            fields: {name: 1, id: 1, source: 1, type: 1, _id: 0},
             limit: Number(request.query.findLimit || defaultFindLimit),
             skip: Number(request.query.skip || 0),
             sort: getSortOption(request)

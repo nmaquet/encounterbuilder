@@ -1,7 +1,7 @@
 "use strict";
-var allowedTypes = ["undefined", "boolean", "number", "string"];
 
 DEMONSQUID.clone = function (object) {
+    var allowedTypes = ["undefined", "boolean", "number", "string"];
     if (Object.getPrototypeOf(object) !== Object.prototype) {
         throw Error("Non clonable object with prototype: " + object.prototype);
     }
@@ -17,6 +17,14 @@ DEMONSQUID.clone = function (object) {
         }
     }
     return clone;
+};
+
+DEMONSQUID.idify = function (string) {
+    return string.toLowerCase().replace(" ", "-");
+};
+
+DEMONSQUID.escapeRegExp = function (str) {
+    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 };
 
 

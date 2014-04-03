@@ -4,6 +4,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify',
     ['$compile', 'spellService', 'selectedSpellService', 'featService', 'selectedFeatService',
         function ($compile, spellService, selectedSpellService, featService, selectedFeatService) {
 
+            function processMythicSuperscript(string) {
+                return string.replace(/([a-z])(M|B|UM|APG|UC)/g, "$1<sup>$2</sup>")
+            }
+
             var types = {
                 spell: {
                     list: null,
@@ -22,7 +26,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify',
             return {
                 restrict: 'A',
                 replace: true,
-                scope: {watchedExpression: "&linkify", type: "@linkifyType"},
+                scope: {watchedExpression: "&linkify", type: "@linkifyType", mythic: "@mythic"},
                 link: function compile(scope, element) {
                     scope.selectSpell = function (spellId) {
                         selectedSpellService.selectedSpellId(spellId);
@@ -47,13 +51,22 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify',
                                 continue;
                             }
                             value = value.toString();
+                            if (scope.mythic) {
+                                value = processMythicSuperscript(value);
+                            }
+
                             var match = null;
                             var parts = [];
                             var position = 0;
                             while (null !== (match = types[typesArray[i]].regex.exec(value))) {
                                 parts.push(value.slice(position, match.index));
-                                parts.push('<a class="pointer" ng-click="' + types[typesArray[i]].selectFunctionName + '(\'' + types[typesArray[i]].list[match[0].toLowerCase()] + '\')">' + match[0] + '</a>');
+                                var id = types[typesArray[i]].list[match[0].toLowerCase()];
                                 position = match.index + match[0].length;
+                                if (scope.mythic && scope.type === "feat" && value.slice(position, position + "<sup>M</sup>".length) === "<sup>M</sup>") {
+                                    id += "-mythic";
+                                }
+                                var clickHandler = types[typesArray[i]].selectFunctionName + '(\'' + id + '\')';
+                                parts.push('<a class="pointer" ng-click="' + clickHandler + '">' + match[0] + '</a>');
                             }
                             parts.push(value.slice(position));
                             value = parts.join("");

@@ -133,6 +133,9 @@ var ATTRIBUTE_FILTERS = {
         if (srdMonster.Class) {
             return parseClass(srdMonster.Class).Level;
         }
+    },
+    Mythic: function(srdMonster) {
+        return srdMonster.Mythic === "1";
     }
 }
 
@@ -385,6 +388,6 @@ for (var name in monsterNameCount) {
     }
 }
 
-fs.writeFileSync('../data/monsters/monsters.json', JSON.stringify(monsters));
+fs.writeFileSync('../data/monsters/monsters.json', JSON.stringify(monsters,null,4));
 
 console.log("done");

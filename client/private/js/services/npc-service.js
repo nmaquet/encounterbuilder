@@ -4,6 +4,9 @@ DEMONSQUID.encounterBuilderServices.factory('npcService', ['$http', function ($h
     return {
         search: function (params, callback) {
             var now = new Date().getTime();
+            if (params.maxCR >= 20) {
+                params.maxCR = 40;
+            }
             $http.get('/api/search-npcs/', {params: params})
                 .success(function (data) {
                     data["timestamp"] = now;
@@ -12,8 +15,7 @@ DEMONSQUID.encounterBuilderServices.factory('npcService', ['$http', function ($h
                 .error(function (error) {
                     callback(error, null);
                 });
-        }
-        ,
+        },
         get: function (id, callback) {
             $http.get('/api/npc/' + id)
                 .success(function (data) {
@@ -36,6 +38,7 @@ DEMONSQUID.encounterBuilderServices.factory('npcService', ['$http', function ($h
                     }
                 );
             }
+
             var tasks = [];
             for (var i in ids) {
                 pushTask(ids[i]);

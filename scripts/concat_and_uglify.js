@@ -20,8 +20,7 @@ var jsFiles = [
     "client/private/angular-ui/ui-bootstrap-tpls-0.10.0.js",
     // App files
     "client/private/js/app.js", /* app.js MUST be the first app file ! */
-    "client/private/js/extra/clone.js",
-    "client/private/js/extra/idify.js",
+    "client/private/js/extra/utils.js",
     "client/private/js/controllers/encounter-controller.js",
     "client/private/js/controllers/search-monster-controller.js",
     "client/private/js/controllers/search-npc-controller.js",
