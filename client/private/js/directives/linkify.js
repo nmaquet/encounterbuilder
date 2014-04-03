@@ -52,7 +52,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify',
                             var position = 0;
                             while (null !== (match = types[typesArray[i]].regex.exec(value))) {
                                 parts.push(value.slice(position, match.index));
-                                parts.push('<a class="pointer" ng-click="' + types[typesArray[i]].selectFunctionName + '(\'' + types[typesArray[i]].list[match[0].toLowerCase()] + '\')">' + match[0] + ' </a>');
+                                parts.push('<a class="pointer" ng-click="' + types[typesArray[i]].selectFunctionName + '(\'' + types[typesArray[i]].list[match[0].toLowerCase()] + '\')">' + match[0] + '</a>');
                                 position = match.index + match[0].length;
                             }
                             parts.push(value.slice(position));
