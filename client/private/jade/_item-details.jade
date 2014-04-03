@@ -26,10 +26,10 @@
                 span
                     strong Group&nbsp;
                     | {{item.Group}}
-            li(ng-if="item.SpellId && item.SpellName")
+            li(ng-if="item.SpellName")
                 span
                     strong Spell&nbsp;
-                    | <a class="pointer" ng-click="selectSpell('{{item.SpellId}}')">{{item.SpellName}}</a>
+                    span(linkify="item.SpellName",linkify-type="spell", mythic="false")
             li(ng-if="item.Slot")
                 span
                     strong Slot&nbsp;
@@ -73,8 +73,20 @@
                 p.
                     The person applying an oil is the effective caster, but the object is the target.
             div(ng-show="item.Group === 'Scroll'")
-                p SCROOOOOL
+                p.
+                    A scroll is a spell (or collection of spells) that has been stored in written form.
+                    A spell on a scroll can be used only once. The writing vanishes from the scroll when the spell is activated.
+                    Using a scroll is basically like casting a spell.
+                    The price of a scroll is equal to the level of the spell × the creator's caster level × 25 gp.
+                    If the scroll has a material component cost, it is added to the base price and cost to create.
+                    Note that some spells appear at different levels for different casters. The level of such spells depends on the caster scribing the scroll.
             div(ng-show="item.Group === 'Wand'")
-                p WAAAAAAND
+                p.
+                    A wand is a thin baton that contains a single spell of 4th level or lower.
+                    A wand has 50 charges when created—each charge allows the use of the wand's spell one time.
+                    A wand that runs out of charges is just a stick.
+                    The price of a wand is equal to the level of the spell × the creator's caster level × 750 gp.
+                    If the wand has a material component cost, it is added to the base price and cost to create once for each charge (50 × material component cost).
+                    Note that some spells appear at different levels for different casters. The level of such spells depends on the caster crafting the wand.
         div(ng-hide="item.Derived")
             p {{item.Description}}
