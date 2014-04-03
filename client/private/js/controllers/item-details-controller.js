@@ -9,6 +9,13 @@ DEMONSQUID.encounterBuilderControllers.controller('ItemDetailsController',
                         console.log(error);
                     } else {
                         $scope.item = item;
+                        if ($scope.item.Derived) {
+                            if ($scope.item.Group === "Potion") {
+                                $scope.item.Requirements = "Brew Potion, " + item.SpellName;
+                                $scope.item.Cost = Number(item.Price) / 2;
+                                $scope.item.CostUnit = $scope.item.PriceUnit;
+                            }
+                        }
                     }
                 });
             });

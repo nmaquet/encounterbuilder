@@ -16,39 +16,65 @@
             a.col-xs-3.no-padding.action-btn.btn-4.pointer(title='Delete')
                 i.icon.fa.fa-times
 .row.section.result-content
-    .col-xs-12
-        p.intro.underlined
-            strong Aura&nbsp;
-            | {{item.Aura}};&nbsp;
     .col-lg-6.cat
         ul.list-unstyled
-            li
+            li(ng-if="item.Aura")
+                span
+                    strong Aura&nbsp;
+                    | {{item.Aura}}
+            li(ng-if="item.Group")
                 span
                     strong Group&nbsp;
                     | {{item.Group}}
-            li
+            li(ng-if="item.SpellId && item.SpellName")
+                span
+                    strong Spell&nbsp;
+                    | <a class="pointer" ng-click="selectSpell('{{item.SpellId}}')">{{item.SpellName}}</a>
+            li(ng-if="item.Slot")
                 span
                     strong Slot&nbsp;
                     | {{item.Slot}}
-            li
+            li(ng-if="item.Weight")
                 span
                     strong Weight&nbsp;
-                    | {{item.Weight}}.
-            li
+                    | {{item.Weight}}
+            li(ng-if="item.Price")
                 span
                     strong Price&nbsp;
                     | {{item.Price}}&nbsp;{{item.PriceUnit}}
-    .col-xs-12.cat.decor
+    .col-xs-12.cat.decor(ng-if="item.Requirements || item.Cost")
         legend.legend.font-title Construction
         ul.list-unstyled
-            li
+            li(ng-if="item.Requirements")
                 span
                     strong Requirements&nbsp;
                     span(linkify="item.Requirements",linkify-type="feat,spell", mythic="false")
-            li
+            li(ng-if="item.Cost")
                 span
                     strong Cost&nbsp;
                     | {{item.Cost}}&nbsp;{{item.CostUnit}}
     .col-xs-12.cat.decor
         legend.legend.font-title Description
-        p {{item.Description}}
+        div(ng-show="item.Derived")
+            div(ng-show="item.Group === 'Potion' || item.Group === 'Oil'")
+                p.
+                    A potion is a magic liquid that produces its effect when imbibed. Potions vary incredibly in appearance.
+                    Magic oils are similar to potions, except that oils are applied externally rather than imbibed.
+                    A potion or oil can be used only once. It can duplicate the effect of a spell of up to 3rd level that
+                    has a casting time of less than 1 minute and targets one or more creatures or objects.
+                    The price of a potion is equal to the level of the spell × the creator's caster level × 50 gp.
+                    If the potion has a material component cost, it is added to the base price and cost to create.
+                    Note that some spells appear at different levels for different casters. The level of such spells depends on the caster brewing the potion.
+                p.
+                    Potions are like spells cast upon the imbiber. The character taking the potion doesn't get to make any
+                    decisions about the effect—the caster who brewed the potion has already done so.
+                    The drinker of a potion is both the effective target and the caster of the effect
+                    (though the potion indicates the caster level, the drinker still controls the effect).
+                p.
+                    The person applying an oil is the effective caster, but the object is the target.
+            div(ng-show="item.Group === 'Scroll'")
+                p SCROOOOOL
+            div(ng-show="item.Group === 'Wand'")
+                p WAAAAAAND
+        div(ng-hide="item.Derived")
+            p {{item.Description}}
