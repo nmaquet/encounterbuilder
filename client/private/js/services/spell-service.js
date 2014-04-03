@@ -9,6 +9,10 @@ DEMONSQUID.encounterBuilderServices.factory('spellService', ['$http', function (
                 spells.names.push(data.spells[i].name);
                 spells[data.spells[i].name.toLowerCase()] = data.spells[i].id;
             }
+            /* we need to have longest names first so that they get matched in priority in the linkify directive */
+            /* e.g. "Accursed Hex" needs to be before "Accursed" */
+            spells.names.sort();
+            spells.names.reverse();
         });
     return {
         spells: function () {
