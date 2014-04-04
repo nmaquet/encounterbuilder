@@ -22,10 +22,10 @@ MongoClient.connect(MONGODB_URL, function (error, db) {
 });
 
 function main(db) {
-    db.collection('feats').find({}, {fields: {name: 1, id: 1, _id: 0}}).toArray(function (error, docs) {
+    db.collection('magicitems').find({Derived: true}, {fields: {Group:1, id: 1, _id: 0}}).toArray(function (error, docs) {
         console.log(error);
         console.log(JSON.stringify(docs.map(function (x) {
-            return x.id;
+            return x.Group;
         }), null, 4));
         console.log(docs.length);
         console.log('done');

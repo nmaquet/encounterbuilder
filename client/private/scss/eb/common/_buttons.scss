@@ -55,3 +55,10 @@
     background-color: $teal-transparent;
   }
 }
+
+.badge-editing input {
+  padding: 0px;
+  margin: 0px;
+  max-width:20px !important;
+  max-height:17px !important;
+}
