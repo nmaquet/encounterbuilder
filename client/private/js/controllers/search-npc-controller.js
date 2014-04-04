@@ -71,8 +71,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
             });
 
-            selectedNpcService.selectedNpcId("12-headed-hydra");
-
             $scope.addNpc = function (npc) {
                 if (!/^(\d+)$/.exec(npc.amountToAdd)) {
                     npc.amountToAdd = 1;

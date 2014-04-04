@@ -5,7 +5,7 @@ DEMONSQUID.encounterBuilderServices.factory('selectedMonsterService', ['$rootSco
 
         var SELECTED_MONSTER_CHANGED = 'selectedMonsterChanged';
         var service = {};
-        var selectedMonsterId = "bat";
+        var selectedMonsterId = "aashaq-s-wyvern";
 
         service.selectedMonsterId = function (monsterId) {
             if (monsterId && monsterId !== selectedMonsterId) {

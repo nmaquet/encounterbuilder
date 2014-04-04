@@ -5,7 +5,7 @@ DEMONSQUID.encounterBuilderServices.factory('selectedFeatService', ['$rootScope'
 
         var SELECTED_FEAT_CHANGED = 'selectedFeatChanged';
         var service = {};
-        var selectedFeatId = "";
+        var selectedFeatId = "ability-focus";
 
         service.selectedFeatId = function (spellId) {
             if (spellId && spellId !== selectedFeatId) {

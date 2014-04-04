@@ -5,7 +5,7 @@ DEMONSQUID.encounterBuilderServices.factory('selectedSpellService', ['$rootScope
 
         var SELECTED_SPELL_CHANGED = 'selectedSpellChanged';
         var service = {};
-        var selectedSpellId = "";
+        var selectedSpellId = "ablative-barrier";
 
         service.selectedSpellId = function (spellId) {
             if (spellId && spellId !== selectedSpellId) {
