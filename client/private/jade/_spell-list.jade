@@ -14,5 +14,5 @@
                 td.name-container(ng-class='{selected: selectedSpellId == spell.id}', ng-click='selectSpellById(spell.id)')
                     span {{spell.name}}
                 td.source-container(ng-class='{selected: selectedSpellId == spell.id}', ng-click='selectSpellById(spell.id)')
-                    abbr(title='{{spell.source}}') {{spell.source | abbreviateMonsterSource}}
+                    abbr(title='{{spell.source}}') {{spell.source | abbreviateSource}}
     pagination.pagination-sm.page.pointer(boundary-links='true', total-items='totalSpells', page='currentPage', items-per-page='spellsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')

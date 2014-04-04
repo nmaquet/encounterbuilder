@@ -9,5 +9,5 @@
                 td.name-container(ng-class='{selected: selectedFeatId == feat.id}', ng-click='selectFeatById(feat.id)')
                     span {{feat.name}}
                 td.source-container(ng-class='{selected: selectedFeatId == feat.id}', ng-click='selectFeatById(feat.id)')
-                    abbr(title='{{feat.source}}') {{feat.source | abbreviateMonsterSource}}
+                    abbr(title='{{feat.source}}') {{feat.source | abbreviateSource}}
     pagination.pagination-sm.page.pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')

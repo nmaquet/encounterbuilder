@@ -1,6 +1,6 @@
 'use strict';
 
-DEMONSQUID.MONSTER_SOURCE_ABBREVIATIONS =
+DEMONSQUID.SOURCE_ABBREVIATIONS =
 {
     "Academy Of Secrets": "AoS",
     "Advanced Player's Guide": "APG",
@@ -210,12 +210,12 @@ DEMONSQUID.MONSTER_SOURCE_ABBREVIATIONS =
     "fgfg": "?"
 };
 
-DEMONSQUID.encounterBuilderFilters.filter('abbreviateMonsterSource', function () {
+DEMONSQUID.encounterBuilderFilters.filter('abbreviateSource', function () {
     return function (source) {
         if (source.length <= 5) {
             return source;
         }
-        return DEMONSQUID.MONSTER_SOURCE_ABBREVIATIONS[source] || "?";
+        return DEMONSQUID.SOURCE_ABBREVIATIONS[source] || "?";
     };
 });
 
