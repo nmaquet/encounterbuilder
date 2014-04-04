@@ -77,6 +77,10 @@
                         span
                             strong Immune
                             | &nbsp;{{npc.Immune}};
+                    li(ng-if='npc.Resist')
+                        span
+                            strong Resist
+                            | &nbsp;{{npc.Resist}};
                     li(ng-if='npc.Weaknesses')
                         span
                             strong Weaknesses
