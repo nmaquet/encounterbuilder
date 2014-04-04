@@ -4,8 +4,9 @@ var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 var fs = require('fs');
 var util = require('util');
+var async = require('async');
 
-if (process.env.USE_TEST_DB) {
+if (process.env['USE_TEST_DB']) {
     var MONGODB_URL = process.env['MONGODB_TEST_URL'];
 }
 else {
@@ -13,7 +14,6 @@ else {
 }
 
 MongoClient.connect(MONGODB_URL, function (error, db) {
-    console.log('connecting to ' + MONGODB_URL);
     if (error) {
         console.log(error);
     } else {
@@ -21,15 +21,24 @@ MongoClient.connect(MONGODB_URL, function (error, db) {
     }
 });
 
-function main(db) {
-    db.collection('magicitems').find({Derived: true}, {fields: {Group:1, id: 1, _id: 0}}).toArray(function (error, docs) {
-        console.log(error);
-        console.log(JSON.stringify(docs.map(function (x) {
-            return x.Group;
-        }), null, 4));
-        console.log(docs.length);
-        console.log('done');
 
+function main(db) {
+    var jobs = [];
+    var collections = ["feats", "spells", "magicitems", "monsters", "npcs"];
+    var sources = [];
+    for (var i in collections) {
+        (function (collection) {
+            jobs.push(function (next) {
+                db.collection(collection).find({}, {fields: {source: 1, Source: 1}}).toArray(function (error, docs) {
+                    for (var i in docs) {
+                        console.log(docs[i].Source || docs[i].source);
+                    }
+                    next();
+                });
+            });
+        })(collections[i]);
+    }
+    async.series(jobs, function () {
         db.close();
     });
 }
