@@ -1,25 +1,43 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http','crService',
-    function ($timeout, $http,crService) {
+DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', 'crService',
+    function ($timeout, $http, crService) {
 
-        function calculateXp(encounter){
+        function calculateXp(encounter) {
             var xp = 0;
-            for (var i in encounter.Monsters){
-                xp += Number(encounter.Monsters[i].XP) * encounter.Monsters[i].amount;
+            for (var id in encounter.Monsters) {
+                xp += Number(encounter.Monsters[id].XP) * encounter.Monsters[id].amount;
             }
-            for (var i in encounter.Npcs){
-                xp += Number(encounter.Npcs[i].XP) * encounter.Npcs[i].amount;
+            for (id in encounter.Npcs) {
+                xp += Number(encounter.Npcs[id].XP) * encounter.Npcs[id].amount;
             }
             return xp;
         }
 
+        function removeItemsWithZeroAmount(encounter) {
+            for (var id in encounter.Monsters) {
+                if (encounter.Monsters[id].amount <= 0) {
+                    delete encounter.Monsters[id];
+                }
+            }
+            for (id in encounter.Npcs) {
+                if (encounter.Npcs[id].amount <= 0) {
+                    delete encounter.Npcs[id];
+                }
+            }
+            for (id in encounter.items) {
+                if (encounter.items[id].amount <= 0) {
+                    delete encounter.items[id];
+                }
+            }
+        }
+
         function calculateLootValue(encounter) {
             var multipliers = {
-                "cp" : 1,
-                "sp" : 10,
-                "gp" : 100,
-                "pp" : 1000
+                "cp": 1,
+                "sp": 10,
+                "gp": 100,
+                "pp": 1000
             };
             var lootValue = 0;
             lootValue += Number(encounter.coins.cp);
@@ -31,7 +49,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 var price = Number(encounter.items[i].Price) || 0;
                 lootValue += price * multiplier * encounter.items[i].amount;
             }
-            return Math.round(lootValue/100);
+            return Math.round(lootValue / 100);
         }
 
         var service = {};
@@ -58,6 +76,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
             encounter.xp = calculateXp(encounter);
             encounter.lootValue = calculateLootValue(encounter);
             encounter.CR = crService.calculateCR(encounter);
+            removeItemsWithZeroAmount(encounter);
             $http.post('/api/upsert-encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response._id) {
