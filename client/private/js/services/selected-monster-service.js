@@ -17,11 +17,9 @@ DEMONSQUID.encounterBuilderServices.factory('selectedMonsterService', ['$rootSco
         };
 
         service.register = function (callback) {
+            callback();
             $rootScope.$on(SELECTED_MONSTER_CHANGED, callback);
-            $timeout(function () {
-                callback();
-            });
-        }
+        };
 
         return service;
     }]);

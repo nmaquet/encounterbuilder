@@ -88,7 +88,6 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             $scope.printSelectedEncounter = function () {
                 $location.path('/print-encounter');
             }
-
             selectedEncounterService.register(function () {
                 $scope.encounter = selectedEncounterService.selectedEncounter();
             });

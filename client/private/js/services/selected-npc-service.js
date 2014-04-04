@@ -17,11 +17,9 @@ DEMONSQUID.encounterBuilderServices.factory('selectedNpcService', ['$rootScope',
         };
 
         service.register = function (callback) {
+            callback();
             $rootScope.$on(SELECTED_NPC_CHANGED, callback);
-            $timeout(function () {
-                callback();
-            });
-        }
+        };
 
         return service;
     }]);

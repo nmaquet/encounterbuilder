@@ -17,11 +17,9 @@ DEMONSQUID.encounterBuilderServices.factory('selectedItemService', ['$rootScope'
         };
 
         service.register = function (callback) {
+            callback();
             $rootScope.$on(SELECTED_ITEM_CHANGED, callback);
-            $timeout(function () {
-                callback();
-            });
-        }
+        };
 
         return service;
     }]);
