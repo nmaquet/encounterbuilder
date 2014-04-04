@@ -103,6 +103,10 @@
                         span
                             strong Immune
                             | &nbsp;{{monster.Immune}};
+                    li(ng-if='monster.Resist')
+                        span
+                            strong Resist
+                            | &nbsp;{{monster.Resist}};
                     li(ng-if='monster.Weaknesses')
                         span
                             strong Weaknesses

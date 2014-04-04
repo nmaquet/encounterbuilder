@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('linkify',
-    ['$compile', 'spellService', 'selectedSpellService', 'featService', 'selectedFeatService',
-        function ($compile, spellService, selectedSpellService, featService, selectedFeatService) {
+    ['$compile', '$timeout', 'spellService', 'selectedSpellService', 'featService', 'selectedFeatService',
+        function ($compile, $timeout, spellService, selectedSpellService, featService, selectedFeatService) {
 
             function processMythicSuperscript(string) {
                 return string.replace(/([a-z])(M|B|UM|APG|UC)/g, "$1<sup>$2</sup>")
@@ -29,12 +29,16 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify',
                 scope: {watchedExpression: "&linkify", type: "@linkifyType", mythic: "@mythic"},
                 link: function compile(scope, element) {
                     scope.selectSpell = function (spellId) {
-                        selectedSpellService.selectedSpellId(spellId);
-                        $('#spellsTab').click();
+                        $timeout(function () {
+                            selectedSpellService.selectedSpellId(spellId);
+                            $('#spellsTab').click();
+                        });
                     };
                     scope.selectFeat = function (featId) {
-                        selectedFeatService.selectedFeatId(featId);
-                        $('#featsTab').click();
+                        $timeout(function () {
+                            selectedFeatService.selectedFeatId(featId);
+                            $('#featsTab').click();
+                        });
                     };
                     scope.$watch(scope.watchedExpression, function (value) {
                         var typesArray = scope.type.split(",");

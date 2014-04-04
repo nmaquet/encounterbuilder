@@ -60,6 +60,7 @@ var MONSTER_MODEL = {
     "SR": String,
     "DR": String,
     "Immune": String,
+    "Resist": String,
     "Weaknesses": String,
     "SpecialAttacks": String,
     "SpellLikeAbilities": String,
