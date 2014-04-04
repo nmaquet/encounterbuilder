@@ -5,7 +5,7 @@ DEMONSQUID.encounterBuilderServices.factory('selectedItemService', ['$rootScope'
 
         var SELECTED_ITEM_CHANGED = 'selectedItemChanged';
         var service = {};
-        var selectedItemId = 'chelish-crux';
+        var selectedItemId = '-2-cursed-sword';
 
         service.selectedItemId = function (itemId) {
             if (itemId && itemId !== selectedItemId) {
@@ -17,11 +17,9 @@ DEMONSQUID.encounterBuilderServices.factory('selectedItemService', ['$rootScope'
         };
 
         service.register = function (callback) {
+            callback();
             $rootScope.$on(SELECTED_ITEM_CHANGED, callback);
-            $timeout(function () {
-                callback();
-            });
-        }
+        };
 
         return service;
     }]);

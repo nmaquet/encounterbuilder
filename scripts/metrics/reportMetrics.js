@@ -70,6 +70,13 @@ function main(db) {
             }
             ,
             function (callback) {
+                db.collection('metrics').find({event: "SEARCH_FEAT"}).count(function (error, count) {
+                    console.log("Feat searches: " + count);
+                    callback(error, null);
+                });
+            }
+            ,
+            function (callback) {
                 db.collection('metrics').find({event: "SELECT_MONSTER"}).count(function (error, count) {
                     console.log("Monster selections: " + count);
                     callback(error, null);
@@ -85,6 +92,12 @@ function main(db) {
             function (callback) {
                 db.collection('metrics').find({event: "SELECT_SPELL"}).count(function (error, count) {
                     console.log("Spell selections: " + count);
+                    callback(error, null);
+                });
+            },
+            function (callback) {
+                db.collection('metrics').find({event: "SELECT_FEAT"}).count(function (error, count) {
+                    console.log("Feat selections: " + count);
                     callback(error, null);
                 });
             },
@@ -117,6 +130,7 @@ function main(db) {
             },
             function (callback) {
                 console.log("");
+                console.log("** Selected Monsters **");
                 var pipeline = [
                     {$match: {event: "SELECT_MONSTER"}},
                     {$group: {_id: "$metadata.monsterId", count: {$sum: 1}}},
@@ -132,6 +146,7 @@ function main(db) {
             ,
             function (callback) {
                 console.log("");
+                console.log("** Selected Items **");
                 var pipeline = [
                     {$match: {event: "SELECT_ITEM"}},
                     {$group: {_id: "$metadata.itemId", count: {$sum: 1}}},
@@ -146,6 +161,7 @@ function main(db) {
             } ,
             function (callback) {
                 console.log("");
+                console.log("** Selected NPCs **");
                 var pipeline = [
                     {$match: {event: "SELECT_NPC"}},
                     {$group: {_id: "$metadata.npcId", count: {$sum: 1}}},
@@ -160,9 +176,25 @@ function main(db) {
             } ,
             function (callback) {
                 console.log("");
+                console.log("** Selected Spells **");
                 var pipeline = [
                     {$match: {event: "SELECT_SPELL"}},
                     {$group: {_id: "$metadata.spellId", count: {$sum: 1}}},
+                    {$sort: { count: -1} }
+                ];
+                db.collection('metrics').aggregate(pipeline, function (error, results) {
+                    for (var i in results) {
+                        console.log("Selected " + results[i]._id + " " + results[i].count + " times");
+                    }
+                    callback(error, null);
+                });
+            },
+            function (callback) {
+                console.log("");
+                console.log("** Selected Feats **");
+                var pipeline = [
+                    {$match: {event: "SELECT_FEAT"}},
+                    {$group: {_id: "$metadata.featId", count: {$sum: 1}}},
                     {$sort: { count: -1} }
                 ];
                 db.collection('metrics').aggregate(pipeline, function (error, results) {

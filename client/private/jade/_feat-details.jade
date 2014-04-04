@@ -1,0 +1,26 @@
+.row.heading.result-heading
+    .col-xs-12.col-lg-12.name-container
+        h2.title.font-title {{feat.name}} {{feat.typeFlags}}
+        small Source: {{feat.source}}
+.row.section.result-content
+    .col-xs-12.cat
+        span {{feat.description}}
+    .col-xs-12.cat
+        ul.list-unstyled
+            li(ng-if="feat.prerequisites")
+                span
+                    strong Prerequisites
+                    | :&nbsp;
+                    span(linkify='feat.prerequisites',linkify-type="feat", mythic="false")
+            li(ng-if="feat.benefit")
+                span
+                    strong Benefit
+                    | : {{feat.benefit}}
+            li(ng-if="feat.normal")
+                span
+                    strong Normal
+                    | : {{feat.normal}}
+            li(ng-if="feat.special")
+                span
+                    strong Special
+                    | : {{feat.special}}

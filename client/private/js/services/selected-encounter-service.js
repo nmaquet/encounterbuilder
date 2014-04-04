@@ -18,6 +18,7 @@ DEMONSQUID.encounterBuilderServices.factory('selectedEncounterService', ['$rootS
         };
 
         service.register = function (callback) {
+            callback();
             $rootScope.$on(SELECTED_ENCOUNTER_CHANGED, callback);
         }
 

@@ -69,8 +69,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
            $scope.selectedItemId = selectedItemService.selectedItemId();
         });
 
-
-
         $scope.addItem = function (item) {
             if (!/^(\d+)$/.exec(item.amountToAdd)) {
                 item.amountToAdd = 1;

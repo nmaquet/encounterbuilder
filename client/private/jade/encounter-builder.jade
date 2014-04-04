@@ -25,8 +25,8 @@ header
                             a#spellsTab.pointer(ng-click="showTab('spells')", data-toggle="tab")
                                 i.icon.fa.fa-magic
                                 span.tab-name Spells
-                        //li.col-sixth.tab-5
-                            a#itemsTab.pointer(ng-click="showTab('items')", data-toggle="tab")
+                        li.col-sixth.tab-5
+                            a#featsTab.pointer(ng-click="showTab('feats')", data-toggle="tab")
                                 i.icon.fa.fa-star
                                 span.tab-name Feats
                         //li.col-sixth.last.tab-6
@@ -69,5 +69,14 @@ header
                             include _spell-list
                     .col-sm-6.col-md-7.col-lg-8.search-result.section.app-content.shadow(ng-controller='SpellDetailsController')
                         include _spell-details
+            .row(ng-show="selectedTab === 'feats'")
+                .col-xs-12.no-padding-left
+                    .col-sm-6.col-md-5.col-lg-4.no-padding-left(ng-controller='SearchFeatController')
+                        .section.sidebar-nav.shadow
+                            include _feat-filters
+                        .section.result-list.app-content.shadow
+                            include _feat-list
+                    .col-sm-6.col-md-7.col-lg-8.search-result.section.app-content.shadow(ng-controller='FeatDetailsController')
+                        include _feat-details
 footer
     include _footer

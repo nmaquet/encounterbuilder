@@ -32,7 +32,7 @@ div.encounter(ng-show="encounter")
                 tbody
                     tr.encounter-row.encounter-monster-row(ng-repeat='(id,monster) in encounter.Monsters')
                         td.badge-container
-                            span.badge.red.pointer.monster-amount {{monster.amount}}
+                            span(click-to-edit='monster.amount', on-save="encounterChanged()", display-class="badge red pointer monster-amount", edit-class="badge red pointer monster-amount badge-editing", icon-class="hide", numeric="true")
                         td.name-container
                             span.monster-name
                                 a.pointer(ng-click='selectMonsterById(id)') {{monster.Name}}
@@ -55,7 +55,7 @@ div.encounter(ng-show="encounter")
                 tbody
                     tr.encounter-row.encounter-npc-row(ng-repeat='(id,npc) in encounter.Npcs')
                         td.badge-container
-                            span.badge.red.pointer.npc-amount {{npc.amount}}
+                            span(click-to-edit='npc.amount', on-save="encounterChanged()", display-class="badge red pointer npc-amount", edit-class="badge red pointer npc-amount badge-editing", icon-class="hide", numeric="true")
                         td.name-container
                             span.npc-name
                                 a.pointer(ng-click='selectNpcById(id)') {{npc.Name}}
@@ -69,7 +69,6 @@ div.encounter(ng-show="encounter")
                                 button.item-btn.remove-npc-btn(ng-click='removeNpcById(id)')
                                     i.icon.icon-remove
                                         | ×
-
     .row.content.content-treasure
         .col-sm-12
             legend.legend
@@ -81,7 +80,7 @@ div.encounter(ng-show="encounter")
                 tbody
                     tr.encounter-row.encounter-item-row(ng-repeat='(id,item) in encounter.items')
                         td.badge-container
-                            span.badge.red.pointer.item-amount {{item.amount}}
+                            span(click-to-edit='item.amount', on-save="encounterChanged()", display-class="badge red pointer item-amount", edit-class="badge red pointer item-amount badge-editing", icon-class="hide", numeric="true")
                         td.name-container
                             span.item-name
                                 a.pointer(ng-click='selectItemById(id)') {{item.Name}}

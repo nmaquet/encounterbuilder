@@ -20,7 +20,7 @@
                     span {{monster.CR | numberToFractionString}}
                 td.source-container(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
                     abbr(title='{{monster.Source}}')
-                        small {{monster.Source | abbreviateMonsterSource}}
+                        small {{monster.Source | abbreviateSource}}
                 td.input-container(ng-class='{selected: selectedMonsterId == monster.id}')
                     input(type='text', placeholder='1', ng-model='monster.amountToAdd')
                 td.btn-container(ng-class='{selected: selectedMonsterId == monster.id}')

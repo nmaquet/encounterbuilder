@@ -67,6 +67,9 @@ var ATTRIBUTE_FILTERS = {
         }
         return immune;
     },
+    Resist: function (srdMonster, $) {
+        return parseAttributeFromSrdMonster($("b:contains(Resist )"), /.*Resist\s*([^;]*)/);
+    },
     Weaknesses: function (srdMonster, $) {
         var weakness = parseAttributeFromSrdMonster($("b:contains(Weaknesses)"), /.*Weaknesses\s*([^;]*)/);
         if (weakness) return weakness;
@@ -133,6 +136,9 @@ var ATTRIBUTE_FILTERS = {
         if (srdMonster.Class) {
             return parseClass(srdMonster.Class).Level;
         }
+    },
+    Mythic: function (srdMonster) {
+        return srdMonster.Mythic === "1";
     }
 }
 
@@ -304,6 +310,9 @@ function compareMonsters(srdMonster, kyleMonster) {
     var MIN_LENGTH_RATIO = 0.3;
     var MAX_LENGTH_RATIO = 3.0;
     for (var i in MONSTER_ATTRIBUTES) {
+        if (MONSTER_ATTRIBUTES[i] !== "Resist"){
+            continue;
+        }
         var max_distance = DEFAULT_MAX_DISTANCE;
         var attribute = MONSTER_ATTRIBUTES[i];
         if (attribute == "Init" || attribute == "BaseAtk" || attribute == "CMB" && kyleMonster[attribute][0] != '-') {
@@ -359,14 +368,14 @@ for (var i in srd_monsters) {
     var $ = cheerio.load(srd_monsters[i].FullText);
 
     var cleanedUpMonster = cleanupSRDMonster(srd_monsters[i], $);
-    /*
+
      try {
      compareMonsters(cleanedUpMonster, kyleMonster);
      } catch (e) {
      console.log(e.stack);
      continue;
      }
-     */
+
     monsters.push(cleanedUpMonster);
     if (monsterNameCount[cleanedUpMonster.Name.toLowerCase()] !== undefined) {
         monsterNameCount[cleanedUpMonster.Name.toLowerCase()]++;
@@ -385,6 +394,6 @@ for (var name in monsterNameCount) {
     }
 }
 
-fs.writeFileSync('../data/monsters/monsters.json', JSON.stringify(monsters));
+fs.writeFileSync('../data/monsters/monsters.json', JSON.stringify(monsters, null, 4));
 
 console.log("done");

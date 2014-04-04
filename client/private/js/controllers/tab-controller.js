@@ -26,6 +26,11 @@ DEMONSQUID.encounterBuilderControllers.controller('TabController', ['$scope',
             e.preventDefault();
             $(this).tab('show');
             $scope.showTab("spells");
-        })
+        });
+        $('#featsTab').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+            $scope.showTab("feats");
+        });
     }
 ]);

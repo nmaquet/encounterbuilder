@@ -56,6 +56,9 @@ var ATTRIBUTE_FILTERS = {
         if (srdNpc.Class) {
             return parseClass(srdNpc.Class).Level;
         }
+    },
+    Mythic: function(srdNpc) {
+        return srdNpc.Mythic === "1";
     }
 }
 

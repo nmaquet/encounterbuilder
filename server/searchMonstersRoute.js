@@ -4,7 +4,7 @@ var escapeRegExp = require('./utils')().escapeRegExp;
 function getQuery(request) {
     var query = {};
     if (request.query.nameSubstring) {
-        query.Name = new RegExp( escapeRegExp(request.query.nameSubstring), "i");
+        query.Name = new RegExp(escapeRegExp(request.query.nameSubstring), "i");
     }
     if (request.query.type && request.query.type != 'any') {
         query.Type = request.query.type;
@@ -32,7 +32,7 @@ module.exports = function (monsterCollection, defaultFindLimit) {
         var count;
 
         var options = {
-            fields: {Name: 1, CR: 1, XP: 1, id: 1, Source: 1, TreasureBudget: 1, Type: 1, Heroic : 1, Level: 1},
+            fields: {Name: 1, CR: 1, XP: 1, id: 1, Source: 1, TreasureBudget: 1, Type: 1, Heroic: 1, Level: 1},
             limit: Number(request.query.findLimit || defaultFindLimit),
             skip: Number(request.query.skip || 0),
             sort: getSortOption(request)

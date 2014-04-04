@@ -4,11 +4,11 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit',
     function () {
         var editorTemplate =
             '<span class="click-to-edit" ng-click="edit();">' +
-            '   <span ng-hide="isEditing" class="underline-dotted">' +
+            '   <span ng-hide="isEditing" ng-class="displayClass">' +
             '       {{display || value}} ' +
-            '       <i class="icon icon-edit fa fa-edit pull-right"></i>' +
+            '       <i ng-class="iconClass"></i>' +
             '   </span>' +
-            '   <span ng-show="isEditing" class="underline-dotted">' +
+            '   <span ng-show="isEditing" ng-class="editClass">' +
             '       <input ng-model="editedValue" type="text">' +
             '   </span>' +
             '</span>';
@@ -21,7 +21,15 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit',
                 value: "=clickToEdit",
                 onSave: "&onSave",
                 display: "@display",
-                numeric: "=numeric"
+                numeric: "=numeric",
+                editClass: "@editClass",
+                displayClass: "@displayClass",
+                iconClass: "@iconClass"
+            },
+            compile: function (element, attrs) {
+                attrs.displayClass = attrs.displayClass || 'underline-dotted';
+                attrs.editClass = attrs.editClass || 'underline-dotted';
+                attrs.iconClass = attrs.iconClass || 'icon icon-edit fa fa-edit pull-right';
             },
             controller: [ '$scope', '$element', function ($scope, $element) {
 
@@ -58,4 +66,4 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit',
                 };
             }]
         };
-    })
+    });

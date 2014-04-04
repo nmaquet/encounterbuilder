@@ -8,7 +8,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             $scope.orderProp = 'name';
             $scope.type = 'any';
 
-
             $scope.$watchCollection("[orderProp, type, currentPage]", function () {
                 $scope.refreshMonsters();
             });
@@ -52,7 +51,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                 });
             }
 
-
             $scope.selectMonster = function (id) {
                 selectedMonsterService.selectedMonsterId(id);
             }
@@ -92,8 +90,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             $scope.listTimestamp = 0;
             $scope.minCR = 0;
             $scope.maxCR = 40;
-
-            selectedMonsterService.selectedMonsterId('bat');
 
             $("#monsterCRSlider").noUiSlider({
                 start: [0, 40],

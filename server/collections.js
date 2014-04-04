@@ -8,7 +8,8 @@ module.exports = function (db) {
         encounters: db.collection('encounters'),
         users: db.collection('users'),
         metrics: db.collection('metrics'),
-        spells: db.collection('spells')
+        spells: db.collection('spells'),
+        feats: db.collection('feats')
     }
 };
 

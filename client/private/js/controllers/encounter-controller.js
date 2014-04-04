@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
-    ['$scope', '$location', 'encounterService', 'selectedMonsterService', 'selectedEncounterService', 'selectedItemService', 'selectedNpcService', 'lootService',
-        function ($scope, $location, encounterService, selectedMonsterService, selectedEncounterService, selectedItemService, selectedNpcService, lootService) {
+    ['$scope', '$location', '$timeout', 'encounterService', 'selectedMonsterService', 'selectedEncounterService', 'selectedItemService', 'selectedNpcService', 'lootService',
+        function ($scope, $location, $timeout, encounterService, selectedMonsterService, selectedEncounterService, selectedItemService, selectedNpcService, lootService) {
 
             $scope.encounterChanged = function () {
                 if ($scope.encounter) {
@@ -13,18 +13,24 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             $scope.encounter = undefined;
 
             $scope.selectMonsterById = function (id) {
-                selectedMonsterService.selectedMonsterId(id);
-                $('#monstersTab').click();
+                $timeout(function () {
+                    selectedMonsterService.selectedMonsterId(id);
+                    $('#monstersTab').click();
+                });
             }
 
             $scope.selectNpcById = function (id) {
-                selectedNpcService.selectedNpcId(id);
-                $('#npcTab').click();
+                $timeout(function () {
+                    selectedNpcService.selectedNpcId(id);
+                    $('#npcTab').click();
+                });
             }
 
             $scope.selectItemById = function (id) {
-                selectedItemService.selectedItemId(id);
-                $('#itemsTab').click();
+                $timeout(function () {
+                    selectedItemService.selectedItemId(id);
+                    $('#itemsTab').click();
+                });
             }
 
             $scope.removeEncounter = function () {
@@ -88,7 +94,6 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             $scope.printSelectedEncounter = function () {
                 $location.path('/print-encounter');
             }
-
             selectedEncounterService.register(function () {
                 $scope.encounter = selectedEncounterService.selectedEncounter();
             });

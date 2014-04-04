@@ -5,8 +5,10 @@ var Monster = require('./monsterModel')(mongoose).Monster;
 var MagicItem = require('./magicItemModel')(mongoose).MagicItem;
 var Npc = require('./npcs/npcModel')(mongoose).Npc;
 var Spell = require('./spells/spellModel')(mongoose).Spell;
+var Feat = require('./feats/featModel')(mongoose).Feat;
 
 var idify = require(__dirname + "/../server/utils.js")().idify;
+var idifyFeat = require(__dirname + "/../server/utils.js")().idifyFeat;
 var async = require('async');
 
 if (process.argv[2]) {
@@ -24,6 +26,7 @@ var db = mongoose.connect(MONGODB_URL);
 var monster_ids = [];
 var npc_ids = [];
 var spell_ids = [];
+var feat_ids = [];
 var magic_item_ids = [];
 
 function generateId(name, ids) {
@@ -92,6 +95,7 @@ function resetMonster(callback) {
     });
 }
 
+
 function resetNpcs(callback) {
     Npc.remove({}, function (error, count) {
 
@@ -151,6 +155,35 @@ function resetSpells(callback) {
     });
 }
 
+function resetFeats(callback) {
+    Feat.remove({}, function (error, count) {
+
+        if (error) {
+            callback(error, null);
+        }
+
+        console.log(count + " feats removed");
+
+        var featsFile = __dirname + '/../data/feats/feats.json';
+
+        fs.readFile(featsFile, 'utf8', function (error, feats) {
+            if (error) {
+                callback(error, null);
+            }
+            feats = JSON.parse(feats);
+            if (process.env.USE_TEST_DB) {
+                feats = feats.splice(0, 300);
+            }
+            for (var feat in feats) {
+                feats[feat].id = generateId(idifyFeat(feats[feat]), feat_ids);
+            }
+            batchInsert(Feat.collection, feats, 500, function (error) {
+                callback(error, null);
+            });
+        });
+    });
+}
+
 function resetMagicItems(callback) {
     MagicItem.remove({}, function (error, count) {
 
@@ -161,29 +194,29 @@ function resetMagicItems(callback) {
         console.log(count + " magic items removed");
 
         var filenames = [
-            __dirname + '/../data/items/magic-items.json',
-            __dirname + '/../data/items/scrolls.json',
-            __dirname + '/../data/items/potions_and_oils.json',
-            __dirname + '/../data/items/wands.json',
-            __dirname + '/../data/items/weapons.json',
-            __dirname + '/../data/items/enchanted_weapons.json',
-            __dirname + '/../data/items/armors_and_shields.json',
-            __dirname + '/../data/items/enchanted_armors_and_shields.json',
-            __dirname + '/../data/items/rings.json',
-            __dirname + '/../data/items/rods.json',
-            __dirname + '/../data/items/staves.json',
-            __dirname + '/../data/items/belts.json',
-            __dirname + '/../data/items/body.json',
-            __dirname + '/../data/items/chests.json',
-            __dirname + '/../data/items/eyes.json',
-            __dirname + '/../data/items/feet.json',
-            __dirname + '/../data/items/hands.json',
-            __dirname + '/../data/items/head.json',
-            __dirname + '/../data/items/headbands.json',
-            __dirname + '/../data/items/necks.json',
-            __dirname + '/../data/items/shoulders.json',
-            __dirname + '/../data/items/slotless.json',
-            __dirname + '/../data/items/wrists.json'
+                __dirname + '/../data/items/magic-items.json',
+                __dirname + '/../data/items/scrolls.json',
+                __dirname + '/../data/items/potions_and_oils.json',
+                __dirname + '/../data/items/wands.json',
+                __dirname + '/../data/items/weapons.json',
+                __dirname + '/../data/items/enchanted_weapons.json',
+                __dirname + '/../data/items/armors_and_shields.json',
+                __dirname + '/../data/items/enchanted_armors_and_shields.json',
+                __dirname + '/../data/items/rings.json',
+                __dirname + '/../data/items/rods.json',
+                __dirname + '/../data/items/staves.json',
+                __dirname + '/../data/items/belts.json',
+                __dirname + '/../data/items/body.json',
+                __dirname + '/../data/items/chests.json',
+                __dirname + '/../data/items/eyes.json',
+                __dirname + '/../data/items/feet.json',
+                __dirname + '/../data/items/hands.json',
+                __dirname + '/../data/items/head.json',
+                __dirname + '/../data/items/headbands.json',
+                __dirname + '/../data/items/necks.json',
+                __dirname + '/../data/items/shoulders.json',
+                __dirname + '/../data/items/slotless.json',
+                __dirname + '/../data/items/wrists.json'
         ];
 
         var itemsToInsert = [];
@@ -213,9 +246,9 @@ function resetMagicItems(callback) {
         });
     });
 }
-async.parallel([resetMonster, resetMagicItems, resetNpcs, resetSpells], function (error, results) {
+async.parallel([resetMonster, /*resetMagicItems,*/ resetNpcs, resetSpells, resetFeats], function (error, results) {
     console.log("Error : " + error);
     console.log(results);
     db.disconnect();
-    console.log("done.");
+    console.log("done. WARNING MAGIC ITEMS NOT RESET");
 });

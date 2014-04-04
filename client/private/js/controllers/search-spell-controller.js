@@ -50,8 +50,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
                 $scope.selectedSpellId = selectedSpellService.selectedSpellId();
             });
 
-            selectedSpellService.selectedSpellId("create-pit");
-
             $scope.$watch('spellNameSubstring', function (spellNameSubstring) {
                 $timeout(function () {
                     if (spellNameSubstring === $scope.spellNameSubstring) {

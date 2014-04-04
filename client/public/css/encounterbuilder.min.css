@@ -5782,6 +5782,13 @@ a:hover {
   background-color: rgba(51, 147, 156, 0.7);
 }
 
+.badge-editing input {
+  padding: 0px;
+  margin: 0px;
+  max-width: 20px !important;
+  max-height: 17px !important;
+}
+
 label {
   font-weight: normal;
 }
@@ -5936,7 +5943,7 @@ form.ng-invalid .btn-primary[disabled], form.ng-valid .btn {
   font-size: 11px;
 }
 .encounter-list .encounter-row th, .encounter-list .encounter-row td {
-  padding: 8px 4px;
+  padding: 8px 6px;
   border-color: rgba(87, 84, 74, 0.2);
 }
 .encounter-list tbody .encounter-row {

@@ -5,7 +5,7 @@ DEMONSQUID.encounterBuilderServices.factory('selectedNpcService', ['$rootScope',
 
         var SELECTED_NPC_CHANGED = 'selectedNpcChanged';
         var service = {};
-        var selectedNpcId = "";
+        var selectedNpcId = "12-headed-hydra";
 
         service.selectedNpcId = function (npcId) {
             if (npcId && npcId !== selectedNpcId) {
@@ -17,11 +17,9 @@ DEMONSQUID.encounterBuilderServices.factory('selectedNpcService', ['$rootScope',
         };
 
         service.register = function (callback) {
+            callback();
             $rootScope.$on(SELECTED_NPC_CHANGED, callback);
-            $timeout(function () {
-                callback();
-            });
-        }
+        };
 
         return service;
     }]);
