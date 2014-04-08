@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
-    ['$scope', '$http', '$timeout', 'selectedItemService', 'itemService','selectedEncounterService','encounterService',
-    function ($scope, $http, $timeout, selectedItemService, itemService,selectedEncounterService,encounterService) {
+    ['$scope', '$http', '$timeout','$routeParams', 'selectedItemService', 'itemService','selectedEncounterService','encounterService',
+    function ($scope, $http, $timeout,$routeParams, selectedItemService, itemService,selectedEncounterService,encounterService) {
 
         $scope.itemNameSubstring = '';
         $scope.sortOrder = 'name';
@@ -16,7 +16,12 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
         $scope.maxSize = 5;
 
         $scope.items = [];
-
+        if ($routeParams.itemId) {
+            $timeout(function () {
+                selectedItemService.selectedItemId($routeParams.itemId);
+                $('#itemsTab').click();
+            });
+        }
         function refreshItems() {
             var params = {
                 nameSubstring: $scope.itemNameSubstring,

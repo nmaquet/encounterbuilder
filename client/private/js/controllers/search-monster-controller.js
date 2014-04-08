@@ -1,8 +1,20 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
-    ['$scope', '$timeout', 'monsterService', 'selectedMonsterService', 'encounterService', 'selectedEncounterService',
-        function ($scope, $timeout, monsterService, selectedMonsterService, encounterService, selectedEncounterService) {
+    ['$scope', '$timeout', '$location', '$routeParams', 'monsterService', 'selectedMonsterService', 'encounterService', 'selectedEncounterService', 'doNotReloadCurrentTemplate',
+        function ($scope, $timeout, $location, $routeParams, monsterService, selectedMonsterService, encounterService, selectedEncounterService, doNotReloadCurrentTemplate) {
+            doNotReloadCurrentTemplate($scope);
+
+            if ($routeParams.monsterId) {
+                $timeout(function () {
+                    if (selectedMonsterService.selectedMonsterId() === $routeParams.monsterId) {
+                        selectedMonsterService.updateUrl()
+                    } else {
+                        selectedMonsterService.selectedMonsterId($routeParams.monsterId);
+                    }
+                    $('#monstersTab').click();
+                });
+            }
 
             $scope.nameSubstring = '';
             $scope.orderProp = 'name';
@@ -70,10 +82,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                         Name: monster.Name,
                         XP: monster.XP,
                         CR: monster.CR,
-                        Type : monster.Type,
-                        TreasureBudget : monster.TreasureBudget,
-                        Heroic : monster.Heroic,
-                        Level : monster.Level
+                        Type: monster.Type,
+                        TreasureBudget: monster.TreasureBudget,
+                        Heroic: monster.Heroic,
+                        Level: monster.Level
                     };
                 }
                 else {
