@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
-    ['$scope', '$timeout', 'featService', 'selectedFeatService',
-        function ($scope, $timeout, featService, selectedFeatService) {
+    ['$scope', '$timeout','$routeParams', 'featService', 'selectedFeatService',
+        function ($scope, $timeout,$routeParams, featService, selectedFeatService) {
 
             $scope.featNameSubstring = '';
             $scope.type = 'any';
@@ -13,6 +13,13 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
             $scope.maxSize = 5;
 
             $scope.feats = [];
+
+            if ($routeParams.featId) {
+                $timeout(function () {
+                    selectedFeatService.selectedFeatId($routeParams.featId);
+                    $('#featsTab').click();
+                });
+            }
 
             function refreshFeats() {
                 var params = {
@@ -33,6 +40,15 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
             }
 
             $scope.$watchCollection("[currentPage, type]", function () {
+                if ($scope.currentPage < 9) {
+                    $scope.maxSize = 5;
+                }
+                else if ($scope.currentPage < 99) {
+                    $scope.maxSize = 4;
+                }
+                else {
+                    $scope.maxSize = 3;
+                }
                 refreshFeats();
             });
 

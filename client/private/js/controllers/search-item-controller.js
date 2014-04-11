@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
-    ['$scope', '$http', '$timeout', 'selectedItemService', 'itemService','selectedEncounterService','encounterService',
-    function ($scope, $http, $timeout, selectedItemService, itemService,selectedEncounterService,encounterService) {
+    ['$scope', '$http', '$timeout','$routeParams', 'selectedItemService', 'itemService','selectedEncounterService','encounterService',
+    function ($scope, $http, $timeout,$routeParams, selectedItemService, itemService,selectedEncounterService,encounterService) {
 
         $scope.itemNameSubstring = '';
         $scope.sortOrder = 'name';
@@ -16,7 +16,12 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
         $scope.maxSize = 5;
 
         $scope.items = [];
-
+        if ($routeParams.itemId) {
+            $timeout(function () {
+                selectedItemService.selectedItemId($routeParams.itemId);
+                $('#itemsTab').click();
+            });
+        }
         function refreshItems() {
             var params = {
                 nameSubstring: $scope.itemNameSubstring,
@@ -41,6 +46,15 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
         }
 
         $scope.$watchCollection("[sortOrder, group, slot, currentPage, includeEnchanted]", function () {
+            if ($scope.currentPage < 9) {
+                $scope.maxSize = 5;
+            }
+            else if ($scope.currentPage < 99) {
+                $scope.maxSize = 4;
+            }
+            else {
+                $scope.maxSize = 3;
+            }
             refreshItems();
         });
 

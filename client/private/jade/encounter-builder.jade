@@ -40,7 +40,7 @@ header
                             include _monster-filters
                         .section.result-list.app-content.shadow
                             include _monster-list
-                    .col-sm-6.col-md-7.col-lg-8.search-result.app-content.section.shadow(ng-controller='MonsterDetailController')
+                    .col-sm-6.col-md-7.col-lg-8.search-result.app-content.section.shadow(ng-controller='MonsterDetailController', pending="pending")
                         include _monster-details
             .row(ng-show="selectedTab === 'npcs'")
                 .col-xs-12.no-padding-left
@@ -49,7 +49,7 @@ header
                             include _npc-filters
                         .section.result-list.app-content.shadow
                             include _npc-list
-                    .col-sm-6.col-md-7.col-lg-8.search-result.app-content.section.shadow(ng-controller='NpcDetailController')
+                    .col-sm-6.col-md-7.col-lg-8.search-result.app-content.section.shadow(ng-controller='NpcDetailController', pending="pending")
                         include _npc-details
             .row(ng-show="selectedTab === 'items'")
                 .col-xs-12.no-padding-left
@@ -58,7 +58,7 @@ header
                             include _item-filters
                         .section.result-list.app-content.shadow
                             include _item-list
-                    .col-sm-6.col-md-7.col-lg-8.search-result.section.app-content.shadow(ng-controller='ItemDetailsController')
+                    .col-sm-6.col-md-7.col-lg-8.search-result.section.app-content.shadow(ng-controller='ItemDetailsController', pending="pending")
                         include _item-details
             .row(ng-show="selectedTab === 'spells'")
                 .col-xs-12.no-padding-left
@@ -67,7 +67,7 @@ header
                             include _spell-filters
                         .section.result-list.app-content.shadow
                             include _spell-list
-                    .col-sm-6.col-md-7.col-lg-8.search-result.section.app-content.shadow(ng-controller='SpellDetailsController')
+                    #spell-details.col-sm-6.col-md-7.col-lg-8.search-result.section.app-content.shadow(ng-controller='SpellDetailsController', pending="pending")
                         include _spell-details
             .row(ng-show="selectedTab === 'feats'")
                 .col-xs-12.no-padding-left
@@ -76,7 +76,7 @@ header
                             include _feat-filters
                         .section.result-list.app-content.shadow
                             include _feat-list
-                    .col-sm-6.col-md-7.col-lg-8.search-result.section.app-content.shadow(ng-controller='FeatDetailsController')
+                    .col-sm-6.col-md-7.col-lg-8.search-result.section.app-content.shadow(ng-controller='FeatDetailsController', pending="pending")
                         include _feat-details
 footer
     include _footer

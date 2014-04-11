@@ -2,8 +2,11 @@
 
 DEMONSQUID.encounterBuilderControllers.controller('NpcDetailController', ['$scope', '$sce', 'npcService', 'selectedNpcService',
     function ($scope, $sce, npcService, selectedNpcService) {
+        $scope.pending = false;
         selectedNpcService.register(function () {
+            $scope.pending = true;
             npcService.get(selectedNpcService.selectedNpcId(), function (error, npc) {
+                $scope.pending = false;
                 if (error) {
                     console.log(error);
                 } else {

@@ -1,0 +1,1042 @@
+[
+    {
+        "Group": "Art Object", 
+        "Name": "Bronze statuette of a warrior", 
+        "Price": 15.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "bronze-statuette-of-a-warrior"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Elaborate copper wind chimes", 
+        "Price": 20.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "elaborate-copper-wind-chimes"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Painted paper fan with silver slats", 
+        "Price": 20.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "painted-paper-fan-with-silver-slats"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Copper and glass decanter", 
+        "Price": 25.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "copper-and-glass-decanter"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver holy symbol", 
+        "Price": 25.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-holy-symbol"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Carved stone idol", 
+        "Price": 30.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "carved-stone-idol"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Set of six ivory dice", 
+        "Price": 30.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "set-of-six-ivory-dice"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Ivory bowl with animal carvings", 
+        "Price": 40.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "ivory-bowl-with-animal-carvings"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Porcelain doll with silk clothing", 
+        "Price": 40.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "porcelain-doll-with-silk-clothing"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Porcelain mask", 
+        "Price": 40.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "porcelain-mask"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Bronze flagon with warrior images", 
+        "Price": 50.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "bronze-flagon-with-warrior-images"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Copper brazier with religious markings", 
+        "Price": 50.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "copper-brazier-with-religious-markings"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Copper scepter with gold inlay", 
+        "Price": 50.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "copper-scepter-with-gold-inlay"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Crystal egg with silver stand", 
+        "Price": 50.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "crystal-egg-with-silver-stand"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Painting of a noblewoman", 
+        "Price": 50.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "painting-of-a-noblewoman"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Polished darkwood chalice", 
+        "Price": 50.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "polished-darkwood-chalice"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver baby rattle", 
+        "Price": 50.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-baby-rattle"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver chess set", 
+        "Price": 50.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-chess-set"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Carved ivory scroll case", 
+        "Price": 60.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "carved-ivory-scroll-case"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Decorated silver plate", 
+        "Price": 60.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "decorated-silver-plate"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Ivory drinking horn with copper ends", 
+        "Price": 60.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "ivory-drinking-horn-with-copper-ends"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver noble family seal", 
+        "Price": 60.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-noble-family-seal"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver statue of a dragon", 
+        "Price": 65.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-statue-of-a-dragon"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Electrum censer with silver filigree", 
+        "Price": 70.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "electrum-censer-with-silver-filigree"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver candelabra with holy symbol", 
+        "Price": 75.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-candelabra-with-holy-symbol"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver comb with ornate handle", 
+        "Price": 75.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-comb-with-ornate-handle"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver hand mirror", 
+        "Price": 75.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-hand-mirror"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Crystal skull", 
+        "Price": 80.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "crystal-skull"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Ornate silver flute", 
+        "Price": 80.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "ornate-silver-flute"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Engraved jade scarab", 
+        "Price": 85.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "engraved-jade-scarab"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gilded demon skull", 
+        "Price": 300.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gilded-demon-skull"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Marble idol", 
+        "Price": 300.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "marble-idol"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Masterwork darkwood lute", 
+        "Price": 300.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "masterwork-darkwood-lute"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Engraved mithral scarab", 
+        "Price": 400.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "engraved-mithral-scarab"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold and ivory decanter", 
+        "Price": 400.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-and-ivory-decanter"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold bowl with dragon engravings", 
+        "Price": 400.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-bowl-with-dragon-engravings"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold censer with platinum inlay", 
+        "Price": 400.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-censer-with-platinum-inlay"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold mask", 
+        "Price": 450.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-mask"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold and mithral baby rattle", 
+        "Price": 500.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-and-mithral-baby-rattle"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold chess set", 
+        "Price": 500.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-chess-set"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold flagon with religious markings", 
+        "Price": 500.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-flagon-with-religious-markings"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold puzzle box", 
+        "Price": 500.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-puzzle-box"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Platinum holy symbol", 
+        "Price": 500.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "platinum-holy-symbol"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold cup with royal crest", 
+        "Price": 550.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-cup-with-royal-crest"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold chalice with griffon carvings", 
+        "Price": 600.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-chalice-with-griffon-carvings"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Mithral scepter with gold inlay", 
+        "Price": 600.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "mithral-scepter-with-gold-inlay"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Decorated gold plate", 
+        "Price": 700.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "decorated-gold-plate"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold and platinum statuette of a deity", 
+        "Price": 750.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-and-platinum-statuette-of-a-deity"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold cauldron with alchemical symbols", 
+        "Price": 750.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-cauldron-with-alchemical-symbols"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Painting of a queen", 
+        "Price": 750.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "painting-of-a-queen"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Elaborate silver wind chimes", 
+        "Price": 60.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "elaborate-silver-wind-chimes"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Engraved gold scarab", 
+        "Price": 75.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "engraved-gold-scarab"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Painted silk fan with electrum slats", 
+        "Price": 75.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "painted-silk-fan-with-electrum-slats"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Preserved beast head on a plaque", 
+        "Price": 75.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "preserved-beast-head-on-a-plaque"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Set of six silver dice", 
+        "Price": 75.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "set-of-six-silver-dice"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver and glass decanter", 
+        "Price": 75.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-and-glass-decanter"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver bowl with lion engravings", 
+        "Price": 75.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-bowl-with-lion-engravings"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver mask", 
+        "Price": 75.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-mask"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Carved jade idol", 
+        "Price": 80.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "carved-jade-idol"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Porcelain doll with furs and jewelry", 
+        "Price": 80.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "porcelain-doll-with-furs-and-jewelry"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver brazier with religious markings", 
+        "Price": 80.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-brazier-with-religious-markings"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver flagon with religious markings", 
+        "Price": 80.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-flagon-with-religious-markings"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold censer with silver filigree", 
+        "Price": 90.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-censer-with-silver-filigree"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold and silver chess set", 
+        "Price": 100.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-and-silver-chess-set"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold baby rattle", 
+        "Price": 100.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-baby-rattle"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold holy symbol", 
+        "Price": 100.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-holy-symbol"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Masterwork lyre", 
+        "Price": 100.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "masterwork-lyre"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Painting of a princess", 
+        "Price": 100.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "painting-of-a-princess"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver cup with royal crest", 
+        "Price": 100.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-cup-with-royal-crest"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Decorated electrum plate", 
+        "Price": 110.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "decorated-electrum-plate"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold statue of a dragon", 
+        "Price": 110.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-statue-of-a-dragon"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold statue of a lion", 
+        "Price": 110.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-statue-of-a-lion"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Ivory drinking horn with silver ends", 
+        "Price": 110.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "ivory-drinking-horn-with-silver-ends"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold and silver hand mirror", 
+        "Price": 120.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-and-silver-hand-mirror"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver cauldron with animal symbols", 
+        "Price": 120.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-cauldron-with-animal-symbols"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver comb with gold handle", 
+        "Price": 125.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-comb-with-gold-handle"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver egg with dragon figurine", 
+        "Price": 125.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-egg-with-dragon-figurine"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver scepter with eagle symbols", 
+        "Price": 125.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-scepter-with-eagle-symbols"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Silver chalice with dragon carvings", 
+        "Price": 150.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "silver-chalice-with-dragon-carvings"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold candelabra with holy symbol", 
+        "Price": 200.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-candelabra-with-holy-symbol"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Book of lost songs by a famous bard", 
+        "Price": 3000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "book-of-lost-songs-by-a-famous-bard"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Darkwood and platinum music box", 
+        "Price": 4000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "darkwood-and-platinum-music-box"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Mithral hourglass with diamond dust", 
+        "Price": 4000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "mithral-hourglass-with-diamond-dust"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Jeweled egg with epic sorcerer's blood", 
+        "Price": 4500.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "jeweled-egg-with-epic-sorcerer-s-blood"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold urn containing hero's ashes", 
+        "Price": 5000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-urn-containing-hero-s-ashes"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Helm carved from a pit fiend skull", 
+        "Price": 5000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "helm-carved-from-a-pit-fiend-skull"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Holy text penned by a saint", 
+        "Price": 5000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "holy-text-penned-by-a-saint"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Painting of a beloved queen by a master", 
+        "Price": 5000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "painting-of-a-beloved-queen-by-a-master"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Platinum idol with mysterious markings", 
+        "Price": 5000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "platinum-idol-with-mysterious-markings"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Bejeweled sword of state", 
+        "Price": 6000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "bejeweled-sword-of-state"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Carved saint's femur", 
+        "Price": 6000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "carved-saint-s-femur"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Platinum chalice blessed by a saint", 
+        "Price": 6000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "platinum-chalice-blessed-by-a-saint"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Glowing metallic meteor", 
+        "Price": 6500.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "glowing-metallic-meteor"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold bejeweled royal orb", 
+        "Price": 7000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-bejeweled-royal-orb"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Crystallized dragon heart", 
+        "Price": 7500.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "crystallized-dragon-heart"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Engraved platinum scarab", 
+        "Price": 700.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "engraved-platinum-scarab"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gilded dragon skull", 
+        "Price": 800.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gilded-dragon-skull"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Platinum bowl with arcane engravings", 
+        "Price": 800.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "platinum-bowl-with-arcane-engravings"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Platinum censer with ornate markings", 
+        "Price": 800.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "platinum-censer-with-ornate-markings"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold decanter with grape vine patterns", 
+        "Price": 850.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-decanter-with-grape-vine-patterns"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Platinum mask", 
+        "Price": 900.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "platinum-mask"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold and mithral chess set", 
+        "Price": 1000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-and-mithral-chess-set"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold and platinum orrery", 
+        "Price": 1000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-and-platinum-orrery"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold flute", 
+        "Price": 1000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-flute"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Gold idol with strange carvings", 
+        "Price": 1000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "gold-idol-with-strange-carvings"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Platinum baby rattle", 
+        "Price": 1000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "platinum-baby-rattle"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Platinum holy symbol of a famous priest", 
+        "Price": 1000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "platinum-holy-symbol-of-a-famous-priest"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Decorated platinum plate", 
+        "Price": 1100.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "decorated-platinum-plate"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Platinum cauldron with odd symbols", 
+        "Price": 1100.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "platinum-cauldron-with-odd-symbols"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Platinum flagon with religious markings", 
+        "Price": 1100.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "platinum-flagon-with-religious-markings"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Platinum cup with royal crest", 
+        "Price": 1200.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "platinum-cup-with-royal-crest"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Platinum scepter with gold inlay", 
+        "Price": 1200.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "platinum-scepter-with-gold-inlay"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Platinum chalice with angel carvings", 
+        "Price": 1250.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "platinum-chalice-with-angel-carvings"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Platinum statuette of a deity", 
+        "Price": 1300.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "platinum-statuette-of-a-deity"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Painting of a queen by a master", 
+        "Price": 1500.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "painting-of-a-queen-by-a-master"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Frozen vampire soul", 
+        "Price": 7000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "frozen-vampire-soul"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Mithral-inlaid unicorn horn", 
+        "Price": 7000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "mithral-inlaid-unicorn-horn"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Crystallized god breath", 
+        "Price": 10000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "crystallized-god-breath"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Essence of truth", 
+        "Price": 10000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "essence-of-truth"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Globe of pristine air", 
+        "Price": 10000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "globe-of-pristine-air"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Heart of the mountain", 
+        "Price": 10000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "heart-of-the-mountain"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Inverted soul gem", 
+        "Price": 10000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "inverted-soul-gem"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Orb of living water", 
+        "Price": 10000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "orb-of-living-water"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Shard of pure fire", 
+        "Price": 10000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "shard-of-pure-fire"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Unmelting ice", 
+        "Price": 10000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "unmelting-ice"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Time jewel", 
+        "Price": 11000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "time-jewel"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Adamantine poiuyt", 
+        "Price": 12000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "adamantine-poiuyt"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Holy text written in saint's blood", 
+        "Price": 12000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "holy-text-written-in-saint-s-blood"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Mithral tribar", 
+        "Price": 12000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "mithral-tribar"
+    }, 
+    {
+        "Group": "Art Object", 
+        "Name": "Ethereal tapestry", 
+        "Price": 13000.0, 
+        "PriceUnit": "gp", 
+        "Source": "Ultimate Equipment", 
+        "id": "ethereal-tapestry"
+    }
+]

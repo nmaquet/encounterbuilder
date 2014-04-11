@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
-    ['$scope', '$timeout', 'npcService', 'encounterService', 'selectedEncounterService', 'selectedNpcService',
-        function ($scope, $timeout, npcService, encounterService, selectedEncounterService, selectedNpcService) {
+    ['$scope', '$timeout', '$routeParams', 'npcService', 'encounterService', 'selectedEncounterService', 'selectedNpcService',
+        function ($scope, $timeout, $routeParams, npcService, encounterService, selectedEncounterService, selectedNpcService) {
 
             $scope.nameSubstring = '';
             $scope.class = 'any';
@@ -15,7 +15,24 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             $scope.maxSize = 5;
             $scope.listTimestamp = 0;
 
+            if ($routeParams.npcId) {
+                $timeout(function () {
+                    selectedNpcService.selectedNpcId($routeParams.npcId);
+                    $('#npcTab').click();
+                });
+            }
+
+
             $scope.$watchCollection("[sortBy, currentPage, class]", function () {
+                if ($scope.currentPage < 9) {
+                    $scope.maxSize = 5;
+                }
+                else if ($scope.currentPage < 99) {
+                    $scope.maxSize = 4;
+                }
+                else {
+                    $scope.maxSize = 3;
+                }
                 $scope.refreshNpcs();
             });
 
@@ -57,11 +74,11 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                         }
                     }
                 });
-            }
+            };
 
             $scope.selectNpc = function (id) {
                 selectedNpcService.selectedNpcId(id);
-            }
+            };
 
             selectedNpcService.register(function () {
                 $scope.selectedNpcId = selectedNpcService.selectedNpcId();
@@ -95,7 +112,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 }
                 delete npc.amountToAdd;
                 encounterService.encounterChanged(encounter);
-            }
+            };
 
             $("#npcCRSlider").noUiSlider({
                 start: [0, 20],

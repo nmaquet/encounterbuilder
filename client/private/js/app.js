@@ -10,24 +10,30 @@ DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
     'ui.bootstrap'
 ]);
 
-DEMONSQUID.encounterBuilderApp.config(['$routeProvider','$httpProvider',
-    function ($routeProvider,$httpProvider) {
+DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
+    function ($routeProvider, $httpProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'encounter-builder.html'
+                templateUrl: 'encounter-builder.html',
+                reloadOnSearch: false
             })
             .when('/print-encounter', {
                 templateUrl: 'printable-encounter.html',
-                css : []
+                css: []
             })
+            .when('/monster/:monsterId', { templateUrl: 'encounter-builder.html'})
+            .when('/npc/:npcId', { templateUrl: 'encounter-builder.html'})
+            .when('/item/:itemId', { templateUrl: 'encounter-builder.html'})
+            .when('/spell/:spellId', { templateUrl: 'encounter-builder.html'})
+            .when('/feat/:featId', { templateUrl: 'encounter-builder.html'})
             .otherwise({
                 redirectTo: '/'
             });
         $httpProvider.interceptors.push('httpInterceptorService');
     }]);
 
-DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', '$window', 'encounterService', 'selectedEncounterService',
-    function ($rootScope, $http, $location, $window, encounterService, selectedEncounterService) {
+DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', '$window', '$routeParams', 'encounterService', 'selectedEncounterService',
+    function ($rootScope, $http, $location, $window, $routeParams, encounterService, selectedEncounterService) {
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
             function loadEncounters(serverEncounters) {
                 var encounters = encounterService.encounters;
@@ -39,6 +45,7 @@ DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', '$window
                 }
                 selectedEncounterService.selectedEncounter(encounters[0], true /* allow undefined */);
             }
+
             if ($rootScope.user === undefined) {
                 $http.post('/api/user-data')
                     .success(function (userData) {
@@ -57,6 +64,17 @@ DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', '$window
             }
         });
     }]);
+
+DEMONSQUID.encounterBuilderApp.factory('doNotReloadCurrentTemplate', ['$route', function ($route) {
+    return function (scope) {
+        var lastRoute = $route.current;
+        scope.$on('$locationChangeSuccess', function () {
+            if (lastRoute.$$route.templateUrl === $route.current.$$route.templateUrl) {
+                $route.current = lastRoute;
+            }
+        });
+    };
+}]);
 
 DEMONSQUID.encounterBuilderControllers = angular.module('encounterBuilderControllers', []);
 DEMONSQUID.encounterBuilderServices = angular.module('encounterBuilderServices', ['ngResource']);

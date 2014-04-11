@@ -216,7 +216,9 @@ function resetMagicItems(callback) {
                 __dirname + '/../data/items/necks.json',
                 __dirname + '/../data/items/shoulders.json',
                 __dirname + '/../data/items/slotless.json',
-                __dirname + '/../data/items/wrists.json'
+                __dirname + '/../data/items/wrists.json',
+                __dirname + '/../data/items/gems.json',
+                __dirname + '/../data/items/art-objects.json'
         ];
 
         var itemsToInsert = [];
@@ -246,9 +248,9 @@ function resetMagicItems(callback) {
         });
     });
 }
-async.parallel([resetMonster, /*resetMagicItems,*/ resetNpcs, resetSpells, resetFeats], function (error, results) {
+async.parallel([resetMonster, resetMagicItems, resetNpcs, resetSpells, resetFeats], function (error, results) {
     console.log("Error : " + error);
     console.log(results);
     db.disconnect();
-    console.log("done. WARNING MAGIC ITEMS NOT RESET");
+//    console.log("done. WARNING MAGIC ITEMS NOT RESET");
 });

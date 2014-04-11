@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
-    ['$scope', '$timeout', 'spellService', 'selectedSpellService',
-        function ($scope, $timeout, spellService, selectedSpellService) {
+    ['$scope', '$timeout','$routeParams', 'spellService', 'selectedSpellService',
+        function ($scope, $timeout,$routeParams, spellService, selectedSpellService) {
 
             $scope.spellNameSubstring = '';
             $scope.class = 'any';
@@ -16,6 +16,14 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
             $scope.maxSize = 5;
 
             $scope.spells = [];
+
+            if ($routeParams.spellId) {
+                $timeout(function () {
+                    selectedSpellService.selectedSpellId($routeParams.spellId);
+                    $('#spellsTab').click();
+                });
+            }
+
 
             function refreshSpells() {
                 var params = {
@@ -39,6 +47,15 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
             }
 
             $scope.$watchCollection("[sortBy, currentPage,class]", function () {
+                if ($scope.currentPage < 9) {
+                    $scope.maxSize = 5;
+                }
+                else if ($scope.currentPage < 99) {
+                    $scope.maxSize = 4;
+                }
+                else {
+                    $scope.maxSize = 3;
+                }
                 refreshSpells();
             });
 

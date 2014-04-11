@@ -3,8 +3,11 @@
 DEMONSQUID.encounterBuilderControllers.controller('ItemDetailsController',
     ['$scope', '$http', 'selectedItemService', 'itemService',
         function ($scope, $http, selectedItemService, itemService) {
+            $scope.pending = false;
             selectedItemService.register(function () {
+                $scope.pending = true;
                 itemService.get(selectedItemService.selectedItemId(), function (error, item) {
+                    $scope.pending = false;
                     if (error) {
                         console.log(error);
                     } else {

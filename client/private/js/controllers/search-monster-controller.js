@@ -1,14 +1,35 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
-    ['$scope', '$timeout', 'monsterService', 'selectedMonsterService', 'encounterService', 'selectedEncounterService',
-        function ($scope, $timeout, monsterService, selectedMonsterService, encounterService, selectedEncounterService) {
+    ['$scope', '$timeout', '$location', '$routeParams', 'monsterService', 'selectedMonsterService', 'encounterService', 'selectedEncounterService', 'doNotReloadCurrentTemplate',
+        function ($scope, $timeout, $location, $routeParams, monsterService, selectedMonsterService, encounterService, selectedEncounterService, doNotReloadCurrentTemplate) {
+            doNotReloadCurrentTemplate($scope);
+
+            if ($routeParams.monsterId) {
+                $timeout(function () {
+                    if (selectedMonsterService.selectedMonsterId() === $routeParams.monsterId) {
+                        selectedMonsterService.updateUrl()
+                    } else {
+                        selectedMonsterService.selectedMonsterId($routeParams.monsterId);
+                    }
+                    $('#monstersTab').click();
+                });
+            }
 
             $scope.nameSubstring = '';
             $scope.orderProp = 'name';
             $scope.type = 'any';
 
             $scope.$watchCollection("[orderProp, type, currentPage]", function () {
+                if ($scope.currentPage < 9) {
+                    $scope.maxSize = 5;
+                }
+                else if ($scope.currentPage < 99) {
+                    $scope.maxSize = 4;
+                }
+                else {
+                    $scope.maxSize = 3;
+                }
                 $scope.refreshMonsters();
             });
 
@@ -49,11 +70,11 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                         }
                     }
                 });
-            }
+            };
 
             $scope.selectMonster = function (id) {
                 selectedMonsterService.selectedMonsterId(id);
-            }
+            };
 
             $scope.addMonster = function (monster) {
                 if (!/^(\d+)$/.exec(monster.amountToAdd)) {
@@ -70,10 +91,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                         Name: monster.Name,
                         XP: monster.XP,
                         CR: monster.CR,
-                        Type : monster.Type,
-                        TreasureBudget : monster.TreasureBudget,
-                        Heroic : monster.Heroic,
-                        Level : monster.Level
+                        Type: monster.Type,
+                        TreasureBudget: monster.TreasureBudget,
+                        Heroic: monster.Heroic,
+                        Level: monster.Level
                     };
                 }
                 else {
@@ -81,12 +102,12 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                 }
                 delete monster.amountToAdd;
                 encounterService.encounterChanged(encounter);
-            }
+            };
 
             $scope.totalItems = 0;
             $scope.currentPage = 1;
             $scope.itemsPerPage = 15;
-            $scope.maxSize = 5;
+            $scope.maxSize = 4;
             $scope.listTimestamp = 0;
             $scope.minCR = 0;
             $scope.maxCR = 40;
