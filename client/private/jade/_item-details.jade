@@ -67,7 +67,7 @@
                     | {{item.Cost}}&nbsp;{{item.CostUnit}}
     .col-xs-12.cat.decor
         legend.legend.font-title Description
-        div(ng-show="item.Derived")
+        div(ng-show="item.Derived || item.Group === 'Art Object'")
             div(ng-show="item.Group === 'Potion' || item.Group === 'Oil'")
                 p.
                     A potion is a magic liquid that produces its effect when imbibed. Potions vary incredibly in appearance.
@@ -100,5 +100,19 @@
                     The price of a wand is equal to the level of the spell × the creator's caster level × 750 gp.
                     If the wand has a material component cost, it is added to the base price and cost to create once for each charge (50 × material component cost).
                     Note that some spells appear at different levels for different casters. The level of such spells depends on the caster crafting the wand.
+            div(ng-show="item.Group === 'Art Object'")
+                p.
+                    An art object is an item that has value not because of its function, but because of its aesthetics or the historical,
+                    religious, or sentimental value placed upon it by a particular culture.
+                    The following tables list art objects of value in a traditional fantasy campaign.
+                    In some cases, the listed price represents only the typical value of an item;
+                    it may have a higher value to a buyer who knows its origin or is descended from the original owner.
+                    For example, a painting of a historical queen may fetch a decent price in her home country,
+                    but it sells for much more if brought to an agent of the royal family.
+                    Likewise, a silver baby rattle is worth a certain amount as a curiosity or plaything for a wealthy merchant's son,
+                    but a historian might recognize markings on it that indicate it belonged to an infant prince who was killed in a succession war,
+                    and pay a higher price for it. In this way, an art object may easily be used as a plot hook.
+                p.
+                    Art objects can usually be bought or sold for their base price, and are sometimes used as currency.
         div(ng-hide="item.Derived")
             p {{item.Description}}

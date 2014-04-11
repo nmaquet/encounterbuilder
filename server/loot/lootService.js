@@ -18,8 +18,10 @@ var generateRod;
 var generateRing;
 var generateStaff;
 var generateGem;
+var generateArtObject;
 var typeALoot;
 var typeBLoot;
+var typeCLoot;
 var typeDLoot;
 var typeELoot;
 var typeFLoot;
@@ -157,6 +159,7 @@ function generateEncounterNonNPCLoot(budget, lootType) {
     var generateLoot = {
         A: generateTypeALoot,
         B: generateTypeBLoot,
+        C: generateTypeCLoot,
         D: generateTypeDLoot,
         E: generateTypeELoot,
         F: generateTypeFLoot,
@@ -170,7 +173,7 @@ function generateNPCLoot(monsterBrief, speed) {
     var loot = {coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: []};
     for (var i = 0; i < (monsterBrief.amount || 1); i++) {
         //FIXME check creature type for allowed loot type
-        accumulateLoot(loot, generateEncounterNonNPCLoot(budget, diceService.chooseOne(['A', 'B', 'D', 'E', 'G', 'F'])));
+        accumulateLoot(loot, generateEncounterNonNPCLoot(budget, diceService.chooseOne(['A', 'B', 'C', 'D', 'E', 'G', 'F'])));
     }
     return loot;
 };
@@ -197,7 +200,7 @@ function generateEncounterNPCLoot(encounter, speed) {
 function generateEncounterLoot(encounter, speed) {
     var nonNPCBudget = calculateNonNPCLootValue(encounter, speed);
     //FIXME check creature type for allowed loot type
-    var loot = generateEncounterNonNPCLoot(nonNPCBudget, diceService.chooseOne(['A', 'B', 'D', 'E', 'F', 'G']));
+    var loot = generateEncounterNonNPCLoot(nonNPCBudget, diceService.chooseOne(['A', 'B', 'C', 'D', 'E', 'F', 'G']));
     var npcLoot = generateEncounterNPCLoot(encounter, speed);
     accumulateLoot(loot, npcLoot);
     return loot;
@@ -209,6 +212,10 @@ function generateTypeALoot(budget) {
 
 function generateTypeBLoot(budget) {
     return generateLootForType(budget, typeBLoot);
+}
+
+function generateTypeCLoot(budget) {
+    return generateLootForType(budget, typeCLoot);
 }
 
 function addItem(item, items) {
@@ -252,6 +259,11 @@ function generateLootForType(budget, typeLootTable) {
                 amount = partialLoot.amount;
                 for (k = 0; k < amount; ++k) {
                     addItem(generateGem(partialLoot.grade), loot.items);
+                }
+            } else if (partialLoot.type === 'art_objects') {
+                amount = partialLoot.amount;
+                for (k = 0; k < amount; ++k) {
+                    addItem(generateArtObject(partialLoot.grade), loot.items);
                 }
             } else if (partialLoot.type === 'scroll') {
                 amount = partialLoot.amount;
@@ -320,8 +332,10 @@ module.exports = function (_diceService_, _knapsackService_) {
     generateRing = require('./rings')(diceService).generateRing;
     generateStaff = require('./staves')(diceService).generateStaff;
     generateGem = require('./gems')(diceService).generateGem;
+    generateArtObject = require('./artObjects')(diceService).generateArtObject;
     typeALoot = require('./typeA')().typeALoot;
     typeBLoot = require('./typeB')().typeBLoot;
+    typeCLoot = require('./typeC')().typeCLoot;
     typeDLoot = require('./typeD')().typeDLoot;
     typeELoot = require('./typeE')().typeELoot;
     typeFLoot = require('./typeF')().typeFLoot;
@@ -342,6 +356,7 @@ module.exports = function (_diceService_, _knapsackService_) {
         generateTypeFLoot: generateTypeFLoot,
         generateTypeALoot: generateTypeALoot,
         generateTypeBLoot: generateTypeBLoot,
+        generateTypeCLoot: generateTypeCLoot,
         generateTypeGLoot: generateTypeGLoot,
         generateMwkArmor: generateMwkArmor,
         generateMwkWeapon: generateMwkWeapon,

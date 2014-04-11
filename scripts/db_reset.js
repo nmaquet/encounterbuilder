@@ -217,7 +217,8 @@ function resetMagicItems(callback) {
                 __dirname + '/../data/items/shoulders.json',
                 __dirname + '/../data/items/slotless.json',
                 __dirname + '/../data/items/wrists.json',
-                __dirname + '/../data/items/gems.json'
+                __dirname + '/../data/items/gems.json',
+                __dirname + '/../data/items/art-objects.json'
         ];
 
         var itemsToInsert = [];
