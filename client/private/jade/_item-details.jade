@@ -4,8 +4,10 @@
         small Source: {{item.Source}}
     .col-xs-4.col-lg-3.cr-container
         h3.title.font-title CL
-            | {{item.CL}}
+            | {{item.CL || '0'}}
         strong {{item.Price}}&nbsp;{{item.PriceUnit}}
+        strong(ng-if="item.Group === 'Gem'")
+            em &nbsp;(average)
         //.row.btn-container
             a.col-xs-3.no-padding.action-btn.btn-1.pointer(title='Copy')
                 i.icon.fa.fa-copy
@@ -42,6 +44,16 @@
                 span
                     strong Price&nbsp;
                     | {{item.Price}}&nbsp;{{item.PriceUnit}}
+                    span(ng-if="item.Group === 'Gem'")
+                        em &nbsp;(average)
+            li(ng-if="item.BaseValue")
+                span
+                    strong Base Value&nbsp;
+                    | {{item.BaseValue}}&nbsp;{{item.PriceUnit}}
+            li(ng-if="item.AddedValue")
+                span
+                    strong Added Value&nbsp;
+                    | {{item.AddedValue}}
     .col-xs-12.cat.decor(ng-if="item.Requirements || item.Cost")
         legend.legend.font-title Construction
         ul.list-unstyled
