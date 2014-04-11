@@ -5779,6 +5779,16 @@ button.close {
     background-color: #FFFFFF;
   }
 }
+.pagination-sm > li > a {
+  padding: 5px 9px;
+  color: #696969;
+}
+
+.pagination-sm > li.active > a {
+  background-color: #33939c;
+  border-color: #33939c;
+}
+
 .sans-serif {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

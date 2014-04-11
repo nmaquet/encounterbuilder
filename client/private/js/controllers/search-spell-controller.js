@@ -47,6 +47,15 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
             }
 
             $scope.$watchCollection("[sortBy, currentPage,class]", function () {
+                if ($scope.currentPage < 9) {
+                    $scope.maxSize = 5;
+                }
+                else if ($scope.currentPage < 99) {
+                    $scope.maxSize = 4;
+                }
+                else {
+                    $scope.maxSize = 3;
+                }
                 refreshSpells();
             });
 

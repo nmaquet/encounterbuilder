@@ -21,6 +21,15 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             $scope.type = 'any';
 
             $scope.$watchCollection("[orderProp, type, currentPage]", function () {
+                if ($scope.currentPage < 9) {
+                    $scope.maxSize = 5;
+                }
+                else if ($scope.currentPage < 99) {
+                    $scope.maxSize = 4;
+                }
+                else {
+                    $scope.maxSize = 3;
+                }
                 $scope.refreshMonsters();
             });
 
@@ -61,11 +70,11 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                         }
                     }
                 });
-            }
+            };
 
             $scope.selectMonster = function (id) {
                 selectedMonsterService.selectedMonsterId(id);
-            }
+            };
 
             $scope.addMonster = function (monster) {
                 if (!/^(\d+)$/.exec(monster.amountToAdd)) {
@@ -93,12 +102,12 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                 }
                 delete monster.amountToAdd;
                 encounterService.encounterChanged(encounter);
-            }
+            };
 
             $scope.totalItems = 0;
             $scope.currentPage = 1;
             $scope.itemsPerPage = 15;
-            $scope.maxSize = 5;
+            $scope.maxSize = 4;
             $scope.listTimestamp = 0;
             $scope.minCR = 0;
             $scope.maxCR = 40;

@@ -236,3 +236,15 @@
     background-color:#FFFFFF}
 
 }
+
+// pagination
+
+.pagination-sm > li > a {
+  padding: 5px 9px;
+  color: #696969;
+}
+
+.pagination-sm > li.active > a {
+  background-color: $teal-light;
+  border-color: $teal-light;
+}

@@ -24,6 +24,15 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
 
 
             $scope.$watchCollection("[sortBy, currentPage, class]", function () {
+                if ($scope.currentPage < 9) {
+                    $scope.maxSize = 5;
+                }
+                else if ($scope.currentPage < 99) {
+                    $scope.maxSize = 4;
+                }
+                else {
+                    $scope.maxSize = 3;
+                }
                 $scope.refreshNpcs();
             });
 
@@ -65,11 +74,11 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                         }
                     }
                 });
-            }
+            };
 
             $scope.selectNpc = function (id) {
                 selectedNpcService.selectedNpcId(id);
-            }
+            };
 
             selectedNpcService.register(function () {
                 $scope.selectedNpcId = selectedNpcService.selectedNpcId();
@@ -103,7 +112,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 }
                 delete npc.amountToAdd;
                 encounterService.encounterChanged(encounter);
-            }
+            };
 
             $("#npcCRSlider").noUiSlider({
                 start: [0, 20],
