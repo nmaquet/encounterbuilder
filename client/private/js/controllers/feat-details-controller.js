@@ -12,9 +12,11 @@ DEMONSQUID.encounterBuilderControllers.controller('FeatDetailsController',
                 "racial": "Racial",
                 "companion_familiar": "Companion / Familiar"
             };
-
+            $scope.pending = false;
             selectedFeatService.register(function () {
+                $scope.pending = true;
                 featService.get(selectedFeatService.selectedFeatId(), function (error, feat) {
+                    $scope.pending = false;
                     if (error) {
                         console.log(error);
                     } else {

@@ -5552,6 +5552,22 @@ button.close {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
+.dimmed {
+  position: relative;
+}
+
+.dimmed:after {
+  content: " ";
+  z-index: 10;
+  display: block;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .overflow-y {
   overflow-y: auto;
 }
@@ -5591,6 +5607,178 @@ button.close {
   /* Firefox */
 }
 
+#floatingCirclesG {
+  margin-left: -25px;
+  margin-right: auto;
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  width: 50px;
+  height: 50px;
+  -moz-transform: scale(0.6);
+  -webkit-transform: scale(0.6);
+  -ms-transform: scale(0.6);
+  -o-transform: scale(0.6);
+  transform: scale(0.6);
+}
+
+.f_circleG {
+  position: absolute;
+  background-color: #FFFFFF;
+  height: 9px;
+  width: 9px;
+  -moz-border-radius: 5px;
+  -moz-animation-name: f_fadeG;
+  -moz-animation-duration: 0.32s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-direction: linear;
+  -webkit-border-radius: 5px;
+  -webkit-animation-name: f_fadeG;
+  -webkit-animation-duration: 0.32s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: linear;
+  -ms-border-radius: 5px;
+  -ms-animation-name: f_fadeG;
+  -ms-animation-duration: 0.32s;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-direction: linear;
+  -o-border-radius: 5px;
+  -o-animation-name: f_fadeG;
+  -o-animation-duration: 0.32s;
+  -o-animation-iteration-count: infinite;
+  -o-animation-direction: linear;
+  border-radius: 5px;
+  animation-name: f_fadeG;
+  animation-duration: 0.32s;
+  animation-iteration-count: infinite;
+  animation-direction: linear;
+}
+
+#frotateG_01 {
+  left: 0;
+  top: 20px;
+  -moz-animation-delay: 0.12s;
+  -webkit-animation-delay: 0.12s;
+  -ms-animation-delay: 0.12s;
+  -o-animation-delay: 0.12s;
+  animation-delay: 0.12s;
+}
+
+#frotateG_02 {
+  left: 6px;
+  top: 6px;
+  -moz-animation-delay: 0.16s;
+  -webkit-animation-delay: 0.16s;
+  -ms-animation-delay: 0.16s;
+  -o-animation-delay: 0.16s;
+  animation-delay: 0.16s;
+}
+
+#frotateG_03 {
+  left: 20px;
+  top: 0;
+  -moz-animation-delay: 0.2s;
+  -webkit-animation-delay: 0.2s;
+  -ms-animation-delay: 0.2s;
+  -o-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+#frotateG_04 {
+  right: 6px;
+  top: 6px;
+  -moz-animation-delay: 0.24s;
+  -webkit-animation-delay: 0.24s;
+  -ms-animation-delay: 0.24s;
+  -o-animation-delay: 0.24s;
+  animation-delay: 0.24s;
+}
+
+#frotateG_05 {
+  right: 0;
+  top: 20px;
+  -moz-animation-delay: 0.28s;
+  -webkit-animation-delay: 0.28s;
+  -ms-animation-delay: 0.28s;
+  -o-animation-delay: 0.28s;
+  animation-delay: 0.28s;
+}
+
+#frotateG_06 {
+  right: 6px;
+  bottom: 6px;
+  -moz-animation-delay: 0.32s;
+  -webkit-animation-delay: 0.32s;
+  -ms-animation-delay: 0.32s;
+  -o-animation-delay: 0.32s;
+  animation-delay: 0.32s;
+}
+
+#frotateG_07 {
+  left: 20px;
+  bottom: 0;
+  -moz-animation-delay: 0.36s;
+  -webkit-animation-delay: 0.36s;
+  -ms-animation-delay: 0.36s;
+  -o-animation-delay: 0.36s;
+  animation-delay: 0.36s;
+}
+
+#frotateG_08 {
+  left: 6px;
+  bottom: 6px;
+  -moz-animation-delay: 0.4s;
+  -webkit-animation-delay: 0.4s;
+  -ms-animation-delay: 0.4s;
+  -o-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+@-moz-keyframes f_fadeG {
+  0% {
+    background-color: #000000;
+  }
+
+  100% {
+    background-color: #FFFFFF;
+  }
+}
+@-webkit-keyframes f_fadeG {
+  0% {
+    background-color: #000000;
+  }
+
+  100% {
+    background-color: #FFFFFF;
+  }
+}
+@-ms-keyframes f_fadeG {
+  0% {
+    background-color: #000000;
+  }
+
+  100% {
+    background-color: #FFFFFF;
+  }
+}
+@-o-keyframes f_fadeG {
+  0% {
+    background-color: #000000;
+  }
+
+  100% {
+    background-color: #FFFFFF;
+  }
+}
+@keyframes f_fadeG {
+  0% {
+    background-color: #000000;
+  }
+
+  100% {
+    background-color: #FFFFFF;
+  }
+}
 .sans-serif {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
