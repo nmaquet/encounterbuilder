@@ -26,6 +26,7 @@ var typeDLoot;
 var typeELoot;
 var typeFLoot;
 var typeGLoot;
+var typeHLoot;
 
 var monsterTypeToLootTypeTable = {
     aberration: {A: true, B: true, D: true, E: true},
@@ -163,7 +164,8 @@ function generateEncounterNonNPCLoot(budget, lootType) {
         D: generateTypeDLoot,
         E: generateTypeELoot,
         F: generateTypeFLoot,
-        G: generateTypeGLoot
+        G: generateTypeGLoot,
+        H: generateTypeHLoot
     };
     return generateLoot[lootType](budget);
 };
@@ -173,7 +175,7 @@ function generateNPCLoot(monsterBrief, speed) {
     var loot = {coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: []};
     for (var i = 0; i < (monsterBrief.amount || 1); i++) {
         //FIXME check creature type for allowed loot type
-        accumulateLoot(loot, generateEncounterNonNPCLoot(budget, diceService.chooseOne(['A', 'B', 'C', 'D', 'E', 'G', 'F'])));
+        accumulateLoot(loot, generateEncounterNonNPCLoot(budget, diceService.chooseOne(['A', 'B', 'C', 'D', 'E', 'G', 'F','H'])));
     }
     return loot;
 };
@@ -200,7 +202,7 @@ function generateEncounterNPCLoot(encounter, speed) {
 function generateEncounterLoot(encounter, speed) {
     var nonNPCBudget = calculateNonNPCLootValue(encounter, speed);
     //FIXME check creature type for allowed loot type
-    var loot = generateEncounterNonNPCLoot(nonNPCBudget, diceService.chooseOne(['A', 'B', 'C', 'D', 'E', 'F', 'G']));
+    var loot = generateEncounterNonNPCLoot(nonNPCBudget, diceService.chooseOne(['A', 'B', 'C', 'D', 'E', 'F', 'G','H']));
     var npcLoot = generateEncounterNPCLoot(encounter, speed);
     accumulateLoot(loot, npcLoot);
     return loot;
@@ -239,6 +241,10 @@ function generateTypeELoot(budget) {
 
 function generateTypeGLoot(budget) {
     return generateLootForType(budget, typeGLoot);
+};
+
+function generateTypeHLoot(budget) {
+    return generateLootForType(budget, typeHLoot);
 };
 
 function generateTypeFLoot(budget) {
@@ -340,6 +346,7 @@ module.exports = function (_diceService_, _knapsackService_) {
     typeELoot = require('./typeE')().typeELoot;
     typeFLoot = require('./typeF')().typeFLoot;
     typeGLoot = require('./typeG')().typeGLoot;
+    typeHLoot = require('./typeH')().typeHLoot;
     return {
         generateEncounterLoot: generateEncounterLoot,
         mostGenerousBudgetMultiplierAmongNonNPC: mostGenerousBudgetMultiplierAmongNonNPC,
@@ -358,6 +365,7 @@ module.exports = function (_diceService_, _knapsackService_) {
         generateTypeBLoot: generateTypeBLoot,
         generateTypeCLoot: generateTypeCLoot,
         generateTypeGLoot: generateTypeGLoot,
+        generateTypeHLoot: generateTypeHLoot,
         generateMwkArmor: generateMwkArmor,
         generateMwkWeapon: generateMwkWeapon,
         generateMagicWeaponByBonus: generateMagicWeaponByBonus,
