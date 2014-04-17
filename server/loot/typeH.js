@@ -159,7 +159,7 @@ var typeHLoot = {
             { type: "gems", grade: 5, amount: 2},
             { type: "gems", grade: 6, amount: 1}
         ]
-    ],
+    ]
 };
 
 module.exports = function () {
