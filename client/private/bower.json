@@ -13,8 +13,7 @@
     "bootstrap": "~3.1",
     "twbs-bootstrap-sass": "~3.1",
     "async": "~0.2",
-    "fancybox": "~2.1.5",
-    "css-toggle-switch": "~2.1.5"
+    "fancytree" : "2.0.0-10"
   },
   "devDependencies": {
     "angular-mocks": "~1.3"
