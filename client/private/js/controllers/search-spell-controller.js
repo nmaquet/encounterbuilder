@@ -82,21 +82,5 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
                     }
                 }, 300);
             });
-
-            $("#spellLevelSlider").noUiSlider({
-                start: [0, 9],
-                connect: true,
-                step: 1,
-                range: {
-                    'min': 0,
-                    'max': 9
-                }
-            });
-
-            $("#spellLevelSlider").on('slide', function () {
-                $scope.minLevel = $("#spellLevelSlider").val()[0];
-                $scope.maxLevel = $("#spellLevelSlider").val()[1];
-                $scope.$apply();
-            });
         }
     ]);

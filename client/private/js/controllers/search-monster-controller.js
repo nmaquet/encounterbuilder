@@ -112,22 +112,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             $scope.minCR = 0;
             $scope.maxCR = 40;
 
-            $("#monsterCRSlider").noUiSlider({
-                start: [0, 40],
-                connect: true,
-                step: 1,
-                range: {
-                    'min': 0,
-                    'max': 40
-                }
-            });
-
-            $("#monsterCRSlider").on('slide', function () {
-                $scope.minCR = $("#monsterCRSlider").val()[0];
-                $scope.maxCR = $("#monsterCRSlider").val()[1];
-                $scope.$apply();
-            });
-
             selectedMonsterService.register(function () {
                 $scope.selectedMonsterId = selectedMonsterService.selectedMonsterId();
             });

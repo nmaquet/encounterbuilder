@@ -22,4 +22,4 @@
         .row
             label(for='monsterCRSlider') <strong>CR</strong> {{minCR | number}} - {{maxCR | number }}
     .col-xxs-8.col-xs-8
-        #monsterCRSlider
+        nouislider(min="minCR", max="maxCR")

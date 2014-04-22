@@ -15,7 +15,11 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
         $scope.itemsPerPage = 15;
         $scope.maxSize = 5;
 
+        $scope.minCL = 0;
+        $scope.maxCL = 20;
+
         $scope.items = [];
+
         if ($routeParams.itemId) {
             $timeout(function () {
                 selectedItemService.selectedItemId($routeParams.itemId);
@@ -99,29 +103,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
             }
             delete item.amountToAdd;
             encounterService.encounterChanged(encounter);
-        }
+        };
 
         selectedEncounterService.register(function() {
             $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
         })
-
-        $scope.minCL = 0;
-        $scope.maxCL = 20;
-        $("#itemCLSlider").noUiSlider({
-            start: [0, 20],
-            connect: true,
-            step: 1,
-            range: {
-                'min': 0,
-                'max': 20
-            }
-        });
-
-        $("#itemCLSlider").on('slide', function () {
-            $scope.minCL = $("#itemCLSlider").val()[0];
-            $scope.maxCL = $("#itemCLSlider").val()[1];
-            $scope.$apply();
-        });
-
     }
 ]);

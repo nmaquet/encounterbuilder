@@ -113,21 +113,5 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 delete npc.amountToAdd;
                 encounterService.encounterChanged(encounter);
             };
-
-            $("#npcCRSlider").noUiSlider({
-                start: [0, 20],
-                connect: true,
-                step: 1,
-                range: {
-                    'min': 0,
-                    'max': 20
-                }
-            });
-
-            $("#npcCRSlider").on('slide', function () {
-                $scope.minCR = $("#npcCRSlider").val()[0];
-                $scope.maxCR = $("#npcCRSlider").val()[1];
-                $scope.$apply();
-            });
         }
     ]);
