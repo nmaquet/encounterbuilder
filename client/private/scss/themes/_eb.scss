@@ -1,0 +1,60 @@
+//DEFAULT THEME
+@include selection(white, $teal-transparent);
+
+//THEME TEAL
+body.teal {
+  //select
+  @include selection(white, $teal-transparent);
+
+  //bg
+  background: $teal-dark-2 url('../img/bg/bg_forest_teal.png') no-repeat center center fixed;
+  @include background-size-cover();
+
+  // Layout
+  .l-section {
+    &.encounter-well {
+      background-color: $brown-dark;
+      @include gradient-grey-dark();
+    }
+  }
+  .l-search-tabs li { background-image: $img-texture-2; }
+  .sidebar-nav {
+    background-image: $img-texture-2;
+  }
+  .result-list {
+    @include gradient-grey-light();
+    .table td {
+      &.selected {
+        background-color: $teal-light;
+        color: white;
+      }
+    }
+  }
+  .search-result {
+    .result-heading, .cr-container {
+      background-image: $img-texture-1, $img-texture-2;
+      background-repeat: repeat, repeat-x;
+      background-position: center center, top center;
+    }
+    .result-heading {
+      background-color: $teal;
+      .no-multiplebgs & { background: $teal $img-texture-2 repeat-x top center; }
+    }
+    .cr-container {
+      background-color: $red;
+      .no-multiplebgs & { background: $red $img-texture-2 repeat-x top center; }
+    }
+    .result-content {
+      @include gradient-grey-light;
+      .t-legend { color:$teal; }
+    }
+  }
+  // Modules
+  .pagination > li {
+    &.active > a, &.active > span {
+      background-color: $teal-light;
+      border-color: $teal-light;
+    }
+  }
+  .noUi-connect { background: $teal;}
+}

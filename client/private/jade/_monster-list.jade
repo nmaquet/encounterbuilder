@@ -1,11 +1,11 @@
 .form-inline.form-group
-    .col-xs-12
+    .col-xxs-12.col-xs-12
         label(for='sort') Sort by:&nbsp;
         select.form-control#monster-sort(ng-model='orderProp')
             option(value='name') Name
             option(value='cr') Challenge Rating
 
-.col-xs-12
+.col-xxs-12.col-xs-12
     table.monsters.table.table-striped.table-condensed
         thead
             tr.result-row
@@ -13,12 +13,12 @@
                 th CR
                 th(colspan='3') Source
         tbody
-            tr.pointer.monster-row(ng-repeat='monster in monsters')
+            tr.is-pointer.monster-row(ng-repeat='monster in monsters')
                 td.name-container(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
                     span {{monster.Name}}
                 td.price-container(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
                     span {{monster.CR | numberToFractionString}}
-                td.source-container(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
+                td.src-container(ng-class='{selected: selectedMonsterId == monster.id}', ng-click='selectMonster(monster.id)')
                     abbr(title='{{monster.Source}}')
                         small {{monster.Source | abbreviateSource}}
                 td.input-container(ng-class='{selected: selectedMonsterId == monster.id}')
@@ -27,4 +27,4 @@
                     button.item-btn.add-item-btn(ng-class="{disabled: !selectedEncounter}", ng-disabled="!selectedEncounter", ng-click='addMonster(monster)')
                         i.icon.icon-plus
                             | +
-    pagination.pagination-sm.page.pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
+    pagination.pagination-sm.page.is-pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')

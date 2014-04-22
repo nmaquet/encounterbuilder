@@ -1,6 +1,6 @@
-.form-group.col-xs-12
+.form-group.col-xxs-12.col-xs-12
     input.form-control#npc-search(type='text', name='search', placeholder='Search something…', ng-model='spellNameSubstring')
-.form-group.col-xs-12
+.form-group.col-xxs-12.col-xs-12
     select.form-control#class(ng-model='class')
         option(value='any') Any class
         optgroup(label="Core Classes")
@@ -22,9 +22,9 @@
             option(value='antipaladin') Antipaladin
         optgroup(label="NPC Classes")
             option(value='adept') Adept
-.form-group.col-xs-12
-    .col-xs-4
+.form-group.col-xxs-12.col-xs-12
+    .col-xxs-4.col-xs-4
         .row
             label(for='spellLevelSlider') <strong>Level</strong> {{minLevel | number}} - {{maxLevel| number }}
-    .col-xs-8
+    .col-xxs-8.col-xs-8
         #spellLevelSlider

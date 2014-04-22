@@ -1,11 +1,15 @@
-footer {
+/* ==|====================
+   Layout/Footer
+   ======================= */
+
+.l-footer {
   position: relative;
   bottom: 0;
   max-width: 100%;
   width: 100%;
   margin-top: $grid-gutter-width;
 }
-.footer-bottom {
+.l-footer-bottom {
   overflow: hidden;
   background-color: $red-dark;
   color:white;
@@ -36,7 +40,7 @@ footer {
 
     background-color: transparent;
     color: white;
-    &.pointer:hover {
+    &.is-pointer:hover {
       background-color: $red;
     }
   }

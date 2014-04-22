@@ -1,11 +1,11 @@
 .row.heading.result-heading
-    .col-xs-12.col-lg-12.name-container
-        h2.title.font-title {{feat.name}} {{feat.typeFlags}}
+    .col-xxs-12.col-xs-12.col-lg-12.name-container
+        h2.t-title.t-title-result {{feat.name}} {{feat.typeFlags}}
         small Source: {{feat.source}}
-.row.section.result-content
-    .col-xs-12.cat
+.row.l-section.result-content
+    .col-xxs-12.col-xs-12.cat
         span {{feat.description}}
-    .col-xs-12.cat
+    .col-xxs-12.col-xs-12.cat
         ul.list-unstyled
             li(ng-if="feat.prerequisites")
                 span

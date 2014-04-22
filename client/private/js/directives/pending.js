@@ -23,9 +23,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('pending',
                 return function (scope, element) {
                     scope.$watch("pending", function () {
                         if (scope.pending) {
-                            element.addClass("dimmed");
+                            element.addClass("is-dimmed");
                         } else {
-                            element.removeClass("dimmed");
+                            element.removeClass("is-dimmed");
                         }
                     });
                 }

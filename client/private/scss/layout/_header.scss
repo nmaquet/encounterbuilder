@@ -1,26 +1,34 @@
-.navbar-header {
-  @media (max-width: $screen-xs-max) {
-    padding-left: 0;
-    padding-right: 0;
-  }
+/* ==|====================
+   Layout/Header
+   ======================= */
+
+.l-header {
 }
 
-.nav-top {
+//.l-navbar-header {
+//  @media (max-width: $screen-xs-max) {
+//    padding-left: 0;
+//    padding-right: 0;
+//  }
+//}
+
+.l-nav-top {
   min-height: 140px;
-  .nav-social {
+  .l-nav-social {
     margin-top: 12px;
     color: $red;
     a {
       color: $red;
       &:hover { color: white; }
-      @include transition(all,0.3s,ease-in-out)
+      @include transition(all 0.3s ease-in-out)
     }
   }
   .navbar-brand {
+    //@include initials;
     font-size: 30px;
     padding-top: 80px;
     color: white;
-    @include transition(all,0.3s,ease-in-out);
+    @include transition(all 0.3s ease-in-out);
     @include opacity(1);
     &:hover { @include opacity(0.6); }
   }
@@ -54,9 +62,9 @@
 
 .navbar {
   min-height: 50px;
-  height: 50px;
+  //height: 50px;
   border-width: 0;
-  a { color: white; }
+  &, a { color: white; }
   &.navbar-red {
     background-color: $red-transparent;
   }
@@ -72,7 +80,7 @@
   white-space: nowrap;
 }
 
-#encounter-dropdown-container {
+.encounter-dropdown-container {
   float: left;
   width: 100%;
   font-size: 18px;
@@ -104,7 +112,7 @@
   background-color: $red-light;
   border-color: $red-light;
 }
-#feedback {
+.l-nav-feedback a {
   background-color: $red;
   color: white;
   &:hover {

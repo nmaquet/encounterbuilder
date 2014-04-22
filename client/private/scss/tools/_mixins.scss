@@ -1,0 +1,434 @@
+// =======================
+// Tools/Mixins
+// Thanks to @sutterlity
+// https://github.com/sutter/POPY-Starter-integration-web/blob/master/scss/tools/_mixins.scss
+// =======================
+
+// -----------------------
+// == Base
+// -----------------------
+
+// = Inline-block
+// -----------------------------
+@mixin inline-block ($haslayout : true){
+	display: inline-block;
+	vertical-align: middle;
+	@if $haslayout == true {
+		.lt-ie8 & {
+			display: inline;
+			zoom: 1;
+		}
+	}
+}
+
+// = Clearfix
+// -----------------------------
+@mixin clearfix ($haslayout : true) {
+	@if $haslayout == true {
+		.lt-ie8 & {
+			zoom: 1;
+		}
+	}
+	&:before, &:after {
+		content: "";
+		display: table;
+	}
+	&:after {
+		clear: both
+	}
+}
+
+// = Opacity
+// -----------------------------
+@mixin opacity($opacity) {
+  filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+  -khtml-opacity: $opacity;
+  -moz-opacity: $opacity;
+  opacity: $opacity;
+
+  /* Hack IE6 */
+  .lt-ie7 & {
+      filter : alpha(opacity=#{round($opacity * 100)});
+      zoom: 1;
+  }
+}
+
+// = Placeholder
+// -----------------------------
+@mixin placeholder($color : $clr-mixin-placeholder) {
+	&::-webkit-input-placeholder {
+		color: $color;
+	}
+	&:-moz-placeholder {
+		color: $color;
+	}
+	&:-ms-input-placeholder {
+		color: $color;
+	}
+}
+
+// = Selection
+// -----------------------------
+$prefixes: ("-webkit-","-moz-", "");
+@mixin selection($color, $background) {
+	@each $prefix in $prefixes {
+		::#{$prefix}selection {
+			color: $color;
+			background: $background;
+			text-shadow:none;
+		}
+	}
+}
+
+// = Position
+// -----------------------------
+@mixin position ($position: relative, $coordinates: 0 0 0 0) {
+	@if type-of($position) == list {
+		$coordinates: $position;
+		$position: relative;
+	}
+	$top: nth($coordinates, 1);
+	$right: nth($coordinates, 2);
+	$bottom: nth($coordinates, 3);
+	$left: nth($coordinates, 4);
+	position: $position;
+	@if $top == auto {
+		top: $top;
+	}
+	@else if not(unitless($top)) {
+		top: $top;
+	}
+	@if $right == auto {
+		right: $right;
+	}
+	@else if not(unitless($right)) {
+		right: $right;
+	}
+	@if $bottom == auto {
+		bottom: $bottom;
+	}
+	@else if not(unitless($bottom)) {
+		bottom: $bottom;
+	}
+	@if $left == auto {
+		left: $left;
+	}
+	@else if not(unitless($left)) {
+		left: $left;
+	}
+}
+
+// ----------------------------------------------------------
+// == CSS3
+// ----------------------------------------------------------
+
+// = Prefixer
+// -----------------------------
+$prefix-for-webkit:    true !default;
+$prefix-for-mozilla:   true !default;
+$prefix-for-microsoft: true !default;
+$prefix-for-opera:     true !default;
+$prefix-for-spec:      true !default;
+
+@mixin prefixer ($property, $value, $prefixes) {
+	@each $prefix in $prefixes {
+
+		@if $prefix == webkit and $prefix-for-webkit == true {
+			-webkit-#{$property}: $value;
+		}
+		@else if $prefix == moz and $prefix-for-mozilla == true {
+			-moz-#{$property}: $value;
+		}
+		@else if $prefix == ms and $prefix-for-microsoft == true {
+			-ms-#{$property}: $value;
+		}
+		@else if $prefix == o and $prefix-for-opera == true {
+			-o-#{$property}: $value;
+		}
+		@else if $prefix == spec and $prefix-for-spec == true {
+			#{$property}: $value;
+		}
+		@else {
+			@warn "Unrecognized prefix: #{$prefix}";
+		}
+	}
+}
+
+@mixin disable-prefix-for-all() {
+	$prefix-for-webkit:    false;
+	$prefix-for-mozilla:   false;
+	$prefix-for-microsoft: false;
+	$prefix-for-opera:     false;
+	$prefix-for-spec:      false;
+}
+
+// = Border-radius
+// -----------------------------
+@mixin border-radius($radius : 5px) {
+	@include prefixer(border-radius, $radius, moz spec)
+}
+
+@mixin border-top-radius($radius : 5px) {
+	@include prefixer(border-top-left-radius, $radius, moz spec);
+	@include prefixer(border-top-right-radius, $radius, moz spec);
+}
+
+@mixin border-bottom-radius($radius : 5px) {
+	@include prefixer(border-bottom-left-radius, $radius, moz spec);
+	@include prefixer(border-bottom-right-radius, $radius, moz spec);
+}
+
+@mixin border-left-radius($radius : 5px) {
+	@include prefixer(border-top-left-radius, $radius, moz spec);
+	@include prefixer(border-bottom-left-radius, $radius, moz spec);
+}
+
+@mixin border-right-radius($radius : 5px) {
+	@include prefixer(border-top-right-radius, $radius, moz spec);
+	@include prefixer(border-bottom-right-radius, $radius, moz spec);
+}
+
+// = Transition
+// -----------------------------
+@mixin transition ($transition : all .3s ease-in-out) {
+	@include prefixer(transition, $transition, webkit moz ms o spec);
+}
+
+// = Box-sizing
+// -----------------------------
+@mixin box-sizing ($box : border-box) {
+	//  content-box | border-box | inherit
+	@include prefixer(box-sizing, $box, webkit moz spec);
+}
+
+// = Filter
+// -----------------------------
+@mixin filter (
+	$filter-1,
+	$filter-2 : false,
+	$filter-3 : false,
+	$filter-4 : false,
+	$filter-5 : false,
+	$filter-6 : false,
+	$filter-7 : false,
+	$filter-8 : false,
+	$filter-9 : false,
+	$filter-10: false
+	) {
+	$filter : compact($filter-1, $filter-2, $filter-3, $filter-4, $filter-5, $filter-6, $filter-7, $filter-8, $filter-9, $filter-10);
+	@include prefixer(filter, $filter, webkit moz spec);
+}
+
+// = UL
+// -----------------------------
+@mixin ul-list-inline() {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        @include inline-block();
+    }
+}
+
+@mixin reset-ul() {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+// = Transform
+// -----------------------------
+@mixin transform($property: none) {
+    @include prefixer(transform, $property, webkit moz ms o spec);
+}
+
+@mixin transform-origin($axes: 50%) {
+    @include prefixer(transform-origin, $axes, webkit moz ms o spec);
+}
+
+@mixin transform-style ($style: flat) {
+    @include prefixer(transform-style, $style, webkit moz ms o spec);
+}
+
+// = Keyframes
+// -----------------------------
+@mixin keyframes($name) {
+    $original-prefix-for-webkit:    $prefix-for-webkit;
+    $original-prefix-for-mozilla:   $prefix-for-mozilla;
+    $original-prefix-for-microsoft: $prefix-for-microsoft;
+    $original-prefix-for-opera:     $prefix-for-opera;
+    $original-prefix-for-spec:      $prefix-for-spec;
+
+    @if $original-prefix-for-webkit {
+        @include disable-prefix-for-all();
+        $prefix-for-webkit: true;
+        @-webkit-keyframes #{$name} {
+            @content;
+        }
+    }
+    @if $original-prefix-for-mozilla {
+        @include disable-prefix-for-all();
+        $prefix-for-mozilla: true;
+        @-moz-keyframes #{$name} {
+            @content;
+        }
+    }
+    @if $original-prefix-for-spec {
+        @include disable-prefix-for-all();
+        $prefix-for-spec: true;
+        @keyframes #{$name} {
+            @content;
+        }
+    }
+
+    $prefix-for-webkit:    $original-prefix-for-webkit   ;
+    $prefix-for-mozilla:   $original-prefix-for-mozilla  ;
+    $prefix-for-microsoft: $original-prefix-for-microsoft;
+    $prefix-for-opera:     $original-prefix-for-opera    ;
+    $prefix-for-spec:      $original-prefix-for-spec     ;
+}
+
+// = Calc
+// -----------------------------
+@mixin calc($property, $expression) {
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: -o-calc(#{$expression});
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+
+// = Boxes
+// -----------------------------
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    //-webkit-box-shadow:inset $top $left $blur $color;
+    //-moz-box-shadow:inset $top $left $blur $color;
+    //box-shadow:inset $top $left $blur $color;
+    @include prefixer(box-shadow, inset $top $left $blur $color, webkit moz ms o spec);
+  } @else {
+    //-webkit-box-shadow: $top $left $blur $color;
+    //-moz-box-shadow: $top $left $blur $color;
+    //box-shadow: $top $left $blur $color;
+    @include prefixer(box-shadow, $top $left $blur $color, webkit moz ms o spec);
+  }
+}
+
+// = Background-Image
+// -----------------------------
+
+// Background Size
+// ---------------
+@mixin background-size-cover() {
+  @include prefixer(background-size, cover, webkit moz o spec);
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/bg/bg_forest_teal.png', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/bg/bg_forest_teal.png', sizingMethod='scale')";
+}
+
+// Flexible Linear Gradient
+// ------------------------
+@mixin gradient-linear($from, $to, $size, $pie:"false") {
+  // bg-color
+  background-color: $to;
+  // bg-img
+  background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to)); // Chrome,Safari4+
+  background-image: -webkit-linear-gradient($from, $to); // Chrome10+,Safari5.1+
+  background-image: -moz-linear-gradient($from, $to); // FF3.6+
+  background-image: -o-linear-gradient($from, $to); // Opera 11.10+
+  background-image: -ms-linear-gradient($from, $to); // IE10+
+  background-image: linear-gradient($from, $to); // W3C
+  filter: unquote("progid:DXImageTransform.Microsoft.gradient( startColorstr=#{$from}, endColorstr=#{$to},GradientType=0 )"); // IE6-8
+  // PIE
+  @if $pie == "true" {
+    -pie-background: linear-gradient($from, $to); // For CSS3PIE
+  }
+  // bg-repeat
+  background-repeat: repeat-x;
+  // bg-size
+  @include prefixer(background-size, $size, webkit moz o spec);
+}
+
+// Linear Gradient width Color Stop
+// --------------------------------
+@mixin gradient-linear-with-color-stop($origin-x, $origin-y, $destination, $color-1, $color-2, $stop-1, $stop-2, $size, $pie:"false") {
+//EXEMPLE: background: -webkit-linear-gradient(top,  #eee 0%,#fff 100%);
+//         background: linear-gradient(to bottom, #eee 0%, #fff 100%);
+  // bg-color
+  background-color: $color-1;
+  background: -moz-linear-gradient($origin-y,  $color-1 $stop-1, $color-2 $stop-2); // FF3.6+
+  background: -webkit-gradient(linear, $origin-x $origin-y, $origin-x $destination, color-stop($stop-1,$color-1), color-stop($stop-2,$color-2)); // Chrome,Safari4+
+  background: -webkit-linear-gradient($origin-y, $color-1 $stop-1, $color-2 $stop-2); // Chrome10+,Safari5.1+
+  background: -o-linear-gradient($origin-y, $color-1 $stop-1, $color-2 $stop-2); // Opera 11.10+
+  background: -ms-linear-gradient($origin-y, $color-1 $stop-1, $color-2 $stop-2); // IE10+
+  background: linear-gradient(to $destination,  $color-1 $stop-1, $color-2 $stop-2); // W3C
+
+  // PIE
+  @if $pie == "true" {
+    // For CSS3PIE
+    -pie-background: linear-gradient(to $destination,  $color-1 $stop-1, $color-2 $stop-2); // W3C
+  }
+  // bg-repeat
+  background-repeat: repeat-x;
+  // bg-size
+  @include prefixer(background-size, $size, webkit moz o spec);
+}
+
+// Radial Gradient width Color Stop
+// --------------------------------
+@mixin gradient-radial($origin, $shape-size, $color-1, $color-2, $stop-1, $stop-2, $pie:"false") {
+//EXEMPLE: background-image: radial-gradient(center 160px, circle closest-corner, $brown 0%, $brown-dark 100%);
+  // bg-color
+  background-color: $color-2;
+  // bg-image
+  background-image: -ms-radial-gradient($origin, $shape-size, $color-1 $stop-1, $color-2 $stop-2); // IE10 Consumer Preview
+  background-image: -moz-radial-gradient($origin, $shape-size, $color-1 $stop-1, $color-2 $stop-2); // Mozilla Firefox
+  background-image: -o-radial-gradient($origin, $shape-size, $color-1 $stop-1, $color-2 $stop-2); // Opera
+  background-image: -webkit-gradient(radial, $origin, 0, center top, 320, color-stop($stop-1, $color-1), color-stop($stop-2, $color-2)); // Webkit (Safari/Chrome 10)
+  background-image: -webkit-radial-gradient($origin, $shape-size, $color-1 $stop-1, $color-2 $stop-2); // Webkit (Chrome 11+)
+  background-image: radial-gradient($shape-size at $origin, $color-1 $stop-1, $color-2 $stop-2); // W3C Markup, IE10 Release Preview
+  filter: unquote("progid:DXImageTransform.Microsoft.gradient( startColorstr=#{$color-1}, endColorstr=#{$color-2},GradientType=1 )"); // IE6-8
+
+  // PIE
+  @if $pie == "true" {
+    // For CSS3PIE
+    -pie-background: radial-gradient($shape-size at $origin, $color-1 $stop-1, $color-2 $stop-2);
+  }
+  // bg-repeat
+  background-repeat: no-repeat;
+  // bg-size
+  @include prefixer(background-size, $size, webkit moz o spec);
+}
+// Radial Gradient width Color Stop
+// --------------------------------
+@mixin gradient-radial-multiple-image($url, $origin, $shape-size, $color-1, $color-2, $stop-1, $stop-2) {
+//EXEMPLE: background-image: url('../img/bg/noisy-texture-100x100-o3-d10-c-312e27-t1.png'), radial-gradient(circle closest-corner at center 160px, $grey-light-2 0%, $grey-2 100%);
+  // bg-color
+  background-color: $color-2;
+  // bg-image
+  background-image: $url, -ms-radial-gradient($origin, $shape-size, $color-1 $stop-1, $color-2 $stop-2); // IE10 Consumer Preview
+  background-image: $url, -moz-radial-gradient($origin, $shape-size, $color-1 $stop-1, $color-2 $stop-2); // Mozilla Firefox
+  background-image: $url, -o-radial-gradient($origin, $shape-size, $color-1 $stop-1, $color-2 $stop-2); // Opera
+  background-image: $url, -webkit-gradient(radial, $origin, 0, center top, 320, color-stop($stop-1, $color-1), color-stop($stop-2, $color-2)); // Webkit (Safari/Chrome 10)
+  background-image: $url, -webkit-radial-gradient($origin, $shape-size, $color-1 $stop-1, $color-2 $stop-2); // Webkit (Chrome 11+)
+  background-image: $url, radial-gradient($shape-size at $origin, $color-1 $stop-1, $color-2 $stop-2); // W3C Markup, IE10 Release Preview
+  filter: unquote("progid:DXImageTransform.Microsoft.gradient( startColorstr=#{$color-1}, endColorstr=#{$color-2},GradientType=1 )"); // IE6-8
+  // bg-repeat
+  background-repeat: repeat, no-repeat;
+}
+
+// = UI
+// -----------------------------
+@mixin is-pointer() {
+  cursor: pointer;
+}
+
+@mixin no-underline() {
+  text-decoration: none;
+}
+
+@mixin initials() {
+  visibility: hidden;
+  &:first-letter { visibility: visible; }
+  @media (min-width: $screen-xs-min) { visibility: visible; }
+}

@@ -1,0 +1,35 @@
+.sidebar-nav, .result-list {
+  background: $grey-light-2 repeat-x center top;
+  label {
+    font-size: 13px;
+  }
+  input[type="text"], input[type="number"], input[type="password"], select {
+    @include border-radius(3px);
+    @include box-shadow(0px,1px,4px,$coal-transparent-2, $inset: true);
+    @include gradient-input();
+    border: 1px solid $grey;
+    color: $coal;
+  }
+}
+.result-list {
+
+  .table th { color: $grey-dark; }
+  .table {
+    input {
+      max-width: 25px;
+      text-align: center;
+    }
+    vertical-align: middle;
+    font-size: 12px;
+    .price-container, .src-container {
+      font-size: 0.925em;
+    }
+    .price-container {
+      text-align: right;
+    }
+  }
+  .table > tbody > tr > td:first-child {
+    max-width: 30%;
+    overflow: hidden;
+  }
+}

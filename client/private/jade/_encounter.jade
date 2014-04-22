@@ -2,11 +2,11 @@ div.encounter(ng-show="encounter")
     .row.heading
         .col-sm-12
             .pull-right
-                a.pointer.remove-encounter(ng-click="removeEncounter(encounter)", confirm-click="Are you sure ?", confirm-title="Delete encounter")
+                a.is-pointer.remove-encounter(ng-click="removeEncounter(encounter)", confirm-click="Are you sure ?", confirm-title="Delete encounter")
                     i.icon.icon-remove
                         | &#10008;
-            h3.encounter-title.font-title
-                span.encounter-name.pointer(click-to-edit='encounter.Name', on-save="encounterChanged()")
+            h3.t-title.t-encounter-title
+                span.encounter-name.is-pointer(click-to-edit='encounter.Name', on-save="encounterChanged()")
         .col-sm-12
             span#encounter-cr.pull-right
                 strong CR&nbsp;
@@ -16,7 +16,7 @@ div.encounter(ng-show="encounter")
                 | {{encounter.xp | number}}
         .col-sm-12
             .pull-right
-                a.pointer.print-encounter(ng-click="printSelectedEncounter()")
+                a.is-pointer.print-encounter(ng-click="printSelectedEncounter()")
                     i.icon.fa.fa-print
                     | &nbsp;
     .row.content.content-monsters(ng-if="!atLeastOneMonster()&&!atLeastOneNpc()")
@@ -25,7 +25,7 @@ div.encounter(ng-show="encounter")
                 em You can add a monster or NPC from the search results.
     .row.content.content-monsters(ng-if="atLeastOneMonster()")
         .col-sm-12
-            legend.legend
+            legend.t-legend
                 span Monsters
                 i.icon.fa.fa-bug.pull-left
             table#encounter-monsters.table.encounter-list
@@ -35,20 +35,20 @@ div.encounter(ng-show="encounter")
                             span(click-to-edit='monster.amount', on-save="encounterChanged()", display-class="badge red pointer monster-amount", edit-class="badge red pointer monster-amount badge-editing", icon-class="hide", numeric="true")
                         td.name-container
                             span.monster-name
-                                a.pointer(ng-click='selectMonsterById(id)') {{monster.Name}}
+                                a.is-pointer(ng-click='selectMonsterById(id)') {{monster.Name}}
                         td.cr-container
                             span.monster-cr
                                 strong
                                     small CR&nbsp;
                                     | {{monster.CR | numberToFractionString}}
                         td.btn-container
-                            span.encounter-monsters-buttons.pointer.pull-right
+                            span.encounter-monsters-buttons.is-pointer.pull-right
                                 button.item-btn.remove-monster-btn(ng-click='removeMonsterById(id)')
                                     i.icon.icon-remove
                                         | ×
     .row.content.content-npcs(ng-if="atLeastOneNpc()")
         .col-sm-12
-            legend.legend
+            legend.t-legend
                 span NPCs
                 i.icon.fa.fa-user.pull-left
             table#encounter-npcs.table.encounter-list
@@ -58,23 +58,23 @@ div.encounter(ng-show="encounter")
                             span(click-to-edit='npc.amount', on-save="encounterChanged()", display-class="badge red pointer npc-amount", edit-class="badge red pointer npc-amount badge-editing", icon-class="hide", numeric="true")
                         td.name-container
                             span.npc-name
-                                a.pointer(ng-click='selectNpcById(id)') {{npc.Name}}
+                                a.is-pointer(ng-click='selectNpcById(id)') {{npc.Name}}
                         td.cr-container
                             span.npc-cr
                                 strong
                                     small CR&nbsp;
                                     | {{npc.CR | numberToFractionString}}
                         td.btn-container
-                            span.encounter-npcs-buttons.pointer.pull-right
+                            span.encounter-npcs-buttons.is-pointer.pull-right
                                 button.item-btn.remove-npc-btn(ng-click='removeNpcById(id)')
                                     i.icon.icon-remove
                                         | ×
     .row.content.content-treasure
         .col-sm-12
-            legend.legend
+            legend.t-legend
                 span Treasure
                 i.icon.fa.fa-flask.pull-left
-                a.pointer.randomize-loot.pull-right(title='Randomize', ng-click="randomizeLoot(encounter)" , confirm-click="Are you sure ?", confirm-title="Randomize treasure")
+                a.is-pointer.randomize-loot.pull-right(title='Randomize', ng-click="randomizeLoot(encounter)" , confirm-click="Are you sure ?", confirm-title="Randomize treasure")
                     i.icon.fa.fa-random
             table.table.encounter-list#encounter-items
                 tbody
@@ -83,12 +83,12 @@ div.encounter(ng-show="encounter")
                             span(click-to-edit='item.amount', on-save="encounterChanged()", display-class="badge red pointer item-amount", edit-class="badge red pointer item-amount badge-editing", icon-class="hide", numeric="true")
                         td.name-container
                             span.item-name
-                                a.pointer(ng-click='selectItemById(id)') {{item.Name}}
+                                a.is-pointer(ng-click='selectItemById(id)') {{item.Name}}
                         td.price-container
                             span.item-price
                                 | {{item.Price}}&nbsp;{{item.PriceUnit}}
                         td.btn-container
-                            span.encounter-items-buttons.pointer.pull-right
+                            span.encounter-items-buttons.is-pointer.pull-right
                                 //button.item-btn.light-grey.decrement-item-btn(ng-class="{disabled: item.amount<=1}", ng-disabled="item.amount<=1", ng-click='decrementItem(item)')
                                     i.icon.fa.fa-minus
                                 //button.item-btn.light-grey.increment-item-btn(ng-click='incrementItem(item)')
@@ -101,25 +101,25 @@ div.encounter(ng-show="encounter")
                     td
                     td(colspan='3')
                         .row
-                            .col-xs-8.text-right
+                            .col-xxs-8.col-xs-8.text-right
                                 strong Coins
-                            .col-xs-4
+                            .col-xxs-4.col-xs-4
                                 ul.list-unstyled.text-right
                                     li
-                                        span.coins.encounter-coins-pp.pointer.underline-dotted(click-to-edit='encounter.coins.pp', display="{{encounter.coins.pp | number}}", on-save="encounterChanged()", numeric="true")
+                                        span.coins.encounter-coins-pp.is-pointer.t-underline-dotted(click-to-edit='encounter.coins.pp', display="{{encounter.coins.pp | number}}", on-save="encounterChanged()", numeric="true")
                                         i.icon.fa.fa-bullseye.platinum(title='Platinum Pieces')
                                     li
-                                        span.coins.encounter-coins-gp.pointer.underline-dotted(click-to-edit='encounter.coins.gp', display="{{encounter.coins.gp | number}}", on-save="encounterChanged()", numeric="true")
+                                        span.coins.encounter-coins-gp.is-pointer.t-underline-dotted(click-to-edit='encounter.coins.gp', display="{{encounter.coins.gp | number}}", on-save="encounterChanged()", numeric="true")
                                         i.icon.fa.fa-bullseye.gold(title='Gold Pieces')
                                     li
-                                        span.coins.encounter-coins-sp.pointer.underline-dotted(click-to-edit='encounter.coins.sp', display="{{encounter.coins.sp | number}}", on-save="encounterChanged()", numeric="true")
+                                        span.coins.encounter-coins-sp.is-pointer.t-underline-dotted(click-to-edit='encounter.coins.sp', display="{{encounter.coins.sp | number}}", on-save="encounterChanged()", numeric="true")
                                         i.icon.fa.fa-bullseye.silver(title='Silver Pieces')
                                     li
-                                        span.coins.encounter-coins-cp.pointer.underline-dotted(click-to-edit='encounter.coins.cp', display="{{encounter.coins.cp | number}}", on-save="encounterChanged()", numeric="true")
+                                        span.coins.encounter-coins-cp.is-pointer.t-underline-dotted(click-to-edit='encounter.coins.cp', display="{{encounter.coins.cp | number}}", on-save="encounterChanged()", numeric="true")
                                         i.icon.fa.fa-bullseye.copper(title='Copper Pieces')
-                            .col-xs-8.text-right
+                            .col-xxs-8.col-xs-8.text-right
                                 strong Value
-                            .col-xs-4
+                            .col-xxs-4.col-xs-4
                                 .text-right
                                     span#encounter-loot-value {{encounter.lootValue | number}}
 
@@ -127,6 +127,6 @@ div.encounter(ng-show="encounter")
 div.encounter-no-encounter(ng-hide="encounter")
     | There is no encounter. Please
     | &nbsp;
-    a.pointer(ng-click="createFirstEncounter()")
+    a.is-pointer(ng-click="createFirstEncounter()")
         | create one
     | .

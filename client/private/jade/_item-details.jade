@@ -1,23 +1,23 @@
 .row.heading.result-heading
-    .col-xs-8.col-lg-9.name-container
-        h2.title.font-title {{item.Name}}
+    .col-xxs-8.col-xs-8.col-lg-9.name-container
+        h2.t-title.t-title-result {{item.Name}}
         small Source: {{item.Source}}
-    .col-xs-4.col-lg-3.cr-container
-        h3.title.font-title CL
+    .col-xxs-4.col-xs-4.col-lg-3.cr-container
+        h3.t-title CL
             | {{item.CL || '0'}}
         strong {{item.Price}}&nbsp;{{item.PriceUnit}}
         strong(ng-if="item.Group === 'Gem'")
             em &nbsp;(average)
         //.row.btn-container
-            a.col-xs-3.no-padding.action-btn.btn-1.pointer(title='Copy')
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy')
                 i.icon.fa.fa-copy
-            a.col-xs-3.no-padding.action-btn.btn-2.pointer(title='Settings')
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Settings')
                 i.icon.fa.fa-cogs
-            a.col-xs-3.no-padding.action-btn.btn-3.pointer(title='Zap')
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Zap')
                 i.icon.fa.fa-flash
-            a.col-xs-3.no-padding.action-btn.btn-4.pointer(title='Delete')
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Delete')
                 i.icon.fa.fa-times
-.row.section.result-content
+.row.l-section.result-content
     .col-lg-6.cat
         ul.list-unstyled
             li(ng-if="item.Aura")
@@ -55,7 +55,7 @@
                     strong Added Value&nbsp;
                     | {{item.AddedValue}}
     .col-xs-12.cat.decor(ng-if="item.Requirements || item.Cost")
-        legend.legend.font-title Construction
+        legend.t-legend.t-title Construction
         ul.list-unstyled
             li(ng-if="item.Requirements")
                 span
@@ -66,7 +66,7 @@
                     strong Cost&nbsp;
                     | {{item.Cost}}&nbsp;{{item.CostUnit}}
     .col-xs-12.cat.decor
-        legend.legend.font-title Description
+        legend.t-legend.t-title Description
         div(ng-show="item.Derived || item.Group === 'Art Object'")
             div(ng-show="item.Group === 'Potion' || item.Group === 'Oil'")
                 p.

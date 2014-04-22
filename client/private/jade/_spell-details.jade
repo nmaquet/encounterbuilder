@@ -1,9 +1,9 @@
 .row.heading.result-heading
-    .col-xs-12.col-lg-12.name-container
-        h2.title.font-title {{spell.name}}
+    .col-xxs-12.col-xs-12.col-lg-12.name-container
+        h2.t-title.t-title-result {{spell.name}}
         small Source: {{spell.source}}
-.row.section.result-content
-    .col-xs-12.cat
+.row.l-section.result-content
+    .col-xxs-12.col-xs-12.cat
         ul.list-unstyled
             li
                 span
@@ -46,6 +46,6 @@
                         | ;&nbsp;
                         strong Spell Resistance&nbsp;
                         | {{spell.spell_resistence}}
-    .col-xs-12.cat.decor
-        legend.legend.font-title Description
+    .col-xxs-12.col-xs-12.cat.decor
+        legend.t-legend.t-title Description
         div(ng-bind-html='spell.descriptionSafe')

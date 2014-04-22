@@ -1,4 +1,46 @@
-@import "bootstrap";
-@import "bootstrap-overwrite";
-@import "eb";
-@import "nouislider/_jquery.nouislider";
+///* Compass */
+//@import "compass/css3/images";
+
+/* Tools */
+@import "base/bootstrap-overwrite";
+@import "tools/site-settings";
+@import "tools/mixins";
+//to delete
+@import "tools/functions";
+//@import "tools/helpers"; //to check and comment
+
+/* Base */
+@import "base/base";
+
+/* Fonts */
+@import "fonts/typography";
+@import "fonts/icons";
+
+/* Layout */
+//@import "layout/constrained";
+@import "layout/main";
+@import "layout/header";
+@import "layout/nav";
+@import "layout/footer";
+@import "layout/list-encounter";
+@import "layout/list-result";
+@import "layout/result";
+@import "layout/tabs-search";
+
+/* Modules */
+//@import "modules/animations";
+@import "modules/btn";
+@import "modules/icons";
+@import "modules/medias";
+@import "modules/forms";
+@import "modules/form-search";
+@import "modules/table";
+@import "modules/slider";
+@import "modules/pagination";
+@import "modules/nouislider/jquery.nouislider";
+
+/* States */
+@import "states/pending";
+
+/* Theme */
+@import "themes/eb";

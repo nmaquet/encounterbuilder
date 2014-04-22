@@ -1,5 +1,5 @@
 .row
-    .col-xs-8
+    .col-xxs-8.col-xs-8
         h3{{npc.Name}} ({{encounter.Npcs[npc.id].amount}})
             span.pull-right CR {{npc.CR | numberToFractionString}}
         ul.list-unstyled
@@ -19,9 +19,9 @@
                 span
                     strong Senses
                     | &nbsp;{{npc.Senses}}
-    .col-xs-12
+    .col-xxs-12.col-xs-12
         .row
-            .col-xs-12
+            .col-xxs-12.col-xs-12
                 legend Defense
                 ul.list-unstyled
                     li
@@ -67,7 +67,7 @@
                             strong SR
                             | &nbsp;{{npc.SR}}
         .row
-            .col-xs-12
+            .col-xxs-12.col-xs-12
                 legend Offense
                 ul.list-unstyled
                     li
@@ -104,7 +104,7 @@
                         spell-list(spell-string="{{npc.SpellsPrepared}}")
                     li(ng-bind-html='npc.SLASafe')
         .row
-            .col-xs-12(ng-if='npc.BeforeCombat||npc.DuringCombat||npc.Morale||npc.BaseStatistics')
+            .col-xxs-12.col-xs-12(ng-if='npc.BeforeCombat||npc.DuringCombat||npc.Morale||npc.BaseStatistics')
                 div
                     legend Tactics
                 div
@@ -125,7 +125,7 @@
                             span
                                 strong Base Statistics
                                 | &nbsp;{{npc.BaseStatistics}}
-            .col-xs-12
+            .col-xxs-12.col-xs-12
                 legend Statistics
                 ul.list-unstyled
                     li
@@ -185,12 +185,12 @@
                             span(ng-if="npc.OtherGear")
                                 strong Other Gear
                                 | &nbsp;{{npc.OtherGear}}
-    .col-xs-12
+    .col-xxs-12.col-xs-12
         span(ng-if='npc.SpecialAbilitiesSafe')
             legend Special Abilities
             // FIXME Use jQuery to change the <h5> tags into <p> or <div>
             div(ng-bind-html='npc.SpecialAbilitiesSafe')
-    .col-xs-12(ng-if='npc.Description')
+    .col-xxs-12.col-xs-12(ng-if='npc.Description')
         legend Description
         div(ng-bind-html='npc.DescriptionSafe')
                          
