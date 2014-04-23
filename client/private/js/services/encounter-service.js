@@ -1,7 +1,9 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', 'crService', 'selectedEncounterService',
-    function ($timeout, $http, crService, selectedEncounterService) {
+DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', '$rootScope', 'crService', 'selectedEncounterService',
+    function ($timeout, $http, $rootScope, crService, selectedEncounterService) {
+
+        var LOAD_SUCCESS = "encountersLoaded";
 
         function calculateXp(encounter) {
             var xp = 0;
@@ -62,11 +64,16 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                     service.encounters.push(userData.Encounters.pop())
                 }
                 selectedEncounterService.selectedEncounter(service.encounters[0], true /* allow undefined */);
+                $rootScope.$emit(LOAD_SUCCESS);
             })
             .error(function (error) {
                 console.log(error);
                 $window.location.href = '/';
             });
+
+        service.onLoadSuccess = function (callback) {
+            $rootScope.$on(LOAD_SUCCESS, callback);
+        };
 
         /* FIXME: don't we need a user callback ? */
         /* FIXME: The client of this function has no way to know whether this succeeds or not. */
