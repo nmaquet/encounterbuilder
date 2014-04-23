@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EncounterListController',
-    ['$scope', 'encounterService', 'selectedEncounterService',
-        function ($scope, encounterService, selectedEncounterService) {
+    ['$scope', 'encounterService', 'selectedEncounterService','contentTreeService',
+        function ($scope, encounterService, selectedEncounterService,contentTreeService) {
 
             $scope.encounters = encounterService.encounters;
 
@@ -21,6 +21,8 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterListController',
                     encounter = { Name: "Untitled #" + i, CR: "0", Monsters: {}, coins: {pp:0,gp:0,sp:0,cp:0}};
                     ++i;
                 } while(exists(encounter.Name));
+
+                contentTreeService.newEncounter(encounter);
                 selectedEncounterService.selectedEncounter(encounter);
                 encounterService.encounters.unshift(encounter);
                 encounterService.encounterChanged(encounter);
