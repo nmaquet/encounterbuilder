@@ -1,7 +1,7 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', 'crService',
-    function ($timeout, $http, crService) {
+DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', 'crService', 'selectedEncounterService',
+    function ($timeout, $http, crService, selectedEncounterService) {
 
         function calculateXp(encounter) {
             var xp = 0;
@@ -55,6 +55,18 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
         var service = {};
 
         service.encounters = [];
+
+        $http.post('/api/user-data')
+            .success(function (userData) {
+                while (userData.Encounters.length) {
+                    service.encounters.push(userData.Encounters.pop())
+                }
+                selectedEncounterService.selectedEncounter(service.encounters[0], true /* allow undefined */);
+            })
+            .error(function (error) {
+                console.log(error);
+                $window.location.href = '/';
+            });
 
         /* FIXME: don't we need a user callback ? */
         /* FIXME: The client of this function has no way to know whether this succeeds or not. */
