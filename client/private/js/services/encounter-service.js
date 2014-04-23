@@ -4,6 +4,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
     function ($timeout, $http, $rootScope, crService, selectedEncounterService) {
 
         var LOAD_SUCCESS = "encountersLoaded";
+        var ENCOUNTER_CHANGED = "encounterChanged";
 
         function calculateXp(encounter) {
             var xp = 0;
@@ -75,6 +76,10 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
             $rootScope.$on(LOAD_SUCCESS, callback);
         };
 
+        service.onEncounterChanged = function(callback) {
+            $rootScope.$on(ENCOUNTER_CHANGED, callback);
+        };
+
         /* FIXME: don't we need a user callback ? */
         /* FIXME: The client of this function has no way to know whether this succeeds or not. */
         service.remove = function (encounter) {
@@ -96,6 +101,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
             encounter.lootValue = calculateLootValue(encounter);
             encounter.CR = crService.calculateCR(encounter);
             removeItemsWithZeroAmount(encounter);
+            $rootScope.$emit(ENCOUNTER_CHANGED, encounter);
             $http.post('/api/upsert-encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response._id) {
@@ -108,7 +114,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 .error(function (response) {
                     console.log("post of encounter failed !");
                 });
-        }
+        };
 
         return service;
     }]);
