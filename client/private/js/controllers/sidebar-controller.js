@@ -1,11 +1,10 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('EncounterListController',
+DEMONSQUID.encounterBuilderControllers.controller('SidebarController',
     ['$scope', 'encounterService', 'selectedEncounterService','contentTreeService',
         function ($scope, encounterService, selectedEncounterService,contentTreeService) {
 
             $scope.encounters = encounterService.encounters;
-
             $scope.createEncounter = function () {
                 function exists(name) {
                     for (var encounter in encounterService.encounters) {

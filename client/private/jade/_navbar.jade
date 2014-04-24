@@ -61,23 +61,6 @@
                 span.icon-bar
                 span.icon-bar
                 span.icon-bar
-            div.dropdown.encounter-dropdown-container.is-pointer.hidden-xs#encounter-dropdown-container(ng-controller="EncounterListController")
-                a.encounter-dropdown.dropdown-toggle.col-xxs-12.col-xs-12(role='button', data-toggle='dropdown', ng-show="selectedEncounter")
-                    span.encounter-dropdown-name {{selectedEncounter.Name}} (CR {{selectedEncounter.CR | numberToFractionString}})
-                    i.icon.fa.fa-angle-down.square.white.pull-right
-                a.encounter-dropdown.dropdown-toggle.col-xxs-12.col-xs-12(role='button', data-toggle='dropdown', ng-hide="selectedEncounter")
-                    span.encounter-dropdown-name (no encounters)
-                    i.icon.fa.fa-angle-down.square.white.pull-right
-                ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
-                    li
-                        a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createEncounter()')
-                            i.icon.fa.fa-plus
-                            strong &nbsp;Create new encounter
-                    li.divider.is-pointer
-                    li(ng-repeat='encounter in encounters')
-                        a.is-pointer.encounter-dropdown-select(tabindex='-1', ng-click='selectEncounter(encounter)')
-                            i.icon.fa.fa-chevron-right
-                            | &nbsp;{{encounter.Name}} (CR {{encounter.CR | numberToFractionString}})
         .navbar-collapse.collapse
             ul.nav.navbar-nav.navbar-right
                 li.l-nav-feedback
@@ -103,23 +86,6 @@
                         li
                             a#user-dropdown-logout.is-pointer(tabindex='-1', ng-click='logout()')
                                 | Log out
-        div.dropdown.encounter-dropdown-container.is-pointer.visible-xs#encounter-dropdown-container(ng-controller="EncounterListController")
-            a.encounter-dropdown.dropdown-toggle.col-xxs-12.col-xs-12(role='button', data-toggle='dropdown', ng-show="selectedEncounter")
-                span.encounter-dropdown-name {{selectedEncounter.Name}} (CR {{selectedEncounter.CR | numberToFractionString}})
-                i.icon.fa.fa-angle-down.square.white.pull-right
-            a.encounter-dropdown.dropdown-toggle.col-xxs-12.col-xs-12(role='button', data-toggle='dropdown', ng-hide="selectedEncounter")
-                span.encounter-dropdown-name (no encounters)
-                i.icon.fa.fa-angle-down.square.white.pull-right
-            ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
-                li
-                    a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createEncounter()')
-                        i.icon.fa.fa-plus
-                        strong &nbsp;Create new encounter
-                li.divider.is-pointer
-                li(ng-repeat='encounter in encounters')
-                    a.is-pointer.encounter-dropdown-select(tabindex='-1', ng-click='selectEncounter(encounter)')
-                        i.icon.fa.fa-chevron-right
-                        | &nbsp;{{encounter.Name}} (CR {{encounter.CR | numberToFractionString}})
 include _edit_profile
     //.navbar-inner
         .row
