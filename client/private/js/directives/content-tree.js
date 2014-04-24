@@ -29,6 +29,13 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree', ['$rootScope','co
                         }
                     });
                 });
+                encounterService.onEncounterRemoved(function (event, encounter) {
+                    tree.visit(function (node) {
+                        if (node.data.encounter && node.data.encounter._id === encounter._id) {
+                            node.remove();
+                        }
+                    });
+                });
             }
         };
     }
