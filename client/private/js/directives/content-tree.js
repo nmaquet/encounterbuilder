@@ -1,7 +1,8 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderDirectives.directive('contentTree', ['$rootScope', 'contentTreeService', 'encounterService', 'selectedEncounterService',
-    function ($rootScope, contentTreeService, encounterService, selectedEncounterService) {
+DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
+    ['$rootScope', 'contentTreeService', 'encounterService', 'selectedEncounterService', 'selectedBinderService', 'selectedContentTypeService',
+    function ($rootScope, contentTreeService, encounterService, selectedEncounterService, selectedBinderService, selectedContentTypeService) {
 
         function link(scope, element) {
 
@@ -9,8 +10,12 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree', ['$rootScope', 'c
                 var node = data.node;
                 if (node.data.encounter) {
                     selectedEncounterService.selectedEncounter(node.data.encounter);
-                    $rootScope.$apply();
+                    selectedContentTypeService.selectedContentType("encounter");
+                } else if (node.folder) {
+                    selectedBinderService.selectedBinder({Name : node.title, nodeKey : node.key});
+                    selectedContentTypeService.selectedContentType("binder");
                 }
+                $rootScope.$apply();
             }
 
             function onNewEncounter(event, encounter) {
