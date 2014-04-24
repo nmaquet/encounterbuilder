@@ -1,8 +1,8 @@
-div.encounter(ng-show="encounter")
+div.encounter
     .row.heading
         .col-sm-12
             .pull-right
-                a.is-pointer.remove-encounter(ng-click="removeEncounter(encounter)", confirm-click="Are you sure ?", confirm-title="Delete encounter")
+                a.is-pointer.remove-encounter(on-confirm="removeEncounter(encounter)", confirm-click="Are you sure ?", confirm-title="Delete encounter")
                     i.icon.icon-remove
                         | &#10008;
             h3.t-title.t-encounter-title
@@ -74,7 +74,7 @@ div.encounter(ng-show="encounter")
             legend.t-legend
                 span Treasure
                 i.icon.fa.fa-flask.pull-left
-                a.is-pointer.randomize-loot.pull-right(title='Randomize', ng-click="randomizeLoot(encounter)" , confirm-click="Are you sure ?", confirm-title="Randomize treasure")
+                a.is-pointer.randomize-loot.pull-right(title='Randomize', on-confirm="randomizeLoot(encounter)" , confirm-click="Are you sure ?", confirm-title="Randomize treasure")
                     i.icon.fa.fa-random
             table.table.encounter-list#encounter-items
                 tbody
@@ -122,11 +122,3 @@ div.encounter(ng-show="encounter")
                             .col-xxs-4.col-xs-4
                                 .text-right
                                     span#encounter-loot-value {{encounter.lootValue | number}}
-
-
-div.encounter-no-encounter(ng-hide="encounter")
-    | There is no encounter. Please
-    | &nbsp;
-    a.is-pointer(ng-click="createFirstEncounter()")
-        | create one
-    | .

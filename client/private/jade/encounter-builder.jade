@@ -17,6 +17,14 @@ header.l-header
                             i.icon.fa.fa-folder
                             strong &nbsp;Create new binder
             content-tree
+        .col-xxs-12.col-xs-12.col-sm-3.col-lg-3.l-app-content.l-encounter-well-container(ng-show="contentType === 'none'")
+            .l-section.col-sm-12.encounter-well.gradient.l-shadow
+                div.encounter-no-encounter
+                | There is no encounter. Please
+                | &nbsp;
+                a.is-pointer(ng-click="createFirstEncounter()")
+                    | create one
+                | .
         .col-xxs-12.col-xs-12.col-sm-3.col-lg-3.l-app-content.l-encounter-well-container(ng-show="contentType === 'binder'")
             .l-section.col-sm-12.encounter-well.gradient.l-shadow(ng-controller='BinderController')
                 include _binder

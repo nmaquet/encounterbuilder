@@ -5,6 +5,9 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
 
         var NEW_ENCOUNTER = 'newEncounter';
         var NEW_BINDER = 'newBinder';
+        var BINDER_CHANGED = 'binderChanged';
+        var REMOVE_BINDER = 'removeBinder';
+
         var service = {};
         var contentTree = [];
 
@@ -31,6 +34,16 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
         service.register = function (callbacks) {
             $rootScope.$on(NEW_ENCOUNTER, callbacks[NEW_ENCOUNTER]);
             $rootScope.$on(NEW_BINDER, callbacks[NEW_BINDER]);
+            $rootScope.$on(BINDER_CHANGED, callbacks[BINDER_CHANGED]);
+            $rootScope.$on(REMOVE_BINDER, callbacks[REMOVE_BINDER]);
+        };
+
+        service.binderChanged = function(binder) {
+            $rootScope.$emit(BINDER_CHANGED, binder);
+        };
+
+        service.removeBinder = function(binder) {
+            $rootScope.$emit(REMOVE_BINDER, binder);
         };
 
         return service;
