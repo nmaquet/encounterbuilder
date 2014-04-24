@@ -1,0 +1,9 @@
+div.binder
+    .row.heading
+        .col-sm-12
+            .pull-right
+                a.is-pointer.remove-binder(ng-click="removeBinder(binder)", confirm-click="Are you sure ?", confirm-title="Delete binder")
+                    i.icon.icon-remove
+                        | &#10008;
+            h3.t-title.t-binder-title
+                span.binder-name.is-pointer(click-to-edit='binder.Name', on-save="binderChanged()")

@@ -5,7 +5,7 @@
 .encounter-well {
   background-color: $brown-dark;
 }
-.encounter, .encounter-no-encounter {
+.encounter, .encounter-no-encounter, .binder, .binder-no-binder {
   padding-bottom: ($grid-gutter-width/2);
   color: white;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
@@ -35,7 +35,7 @@
     padding-top: ($grid-gutter-width/4);
     padding-bottom: ($grid-gutter-width/4);
   }
-  .t-encounter-title {
+  .t-encounter-title, .t-binder-title {
     margin-top: 0;
   }
  .t-legend {
