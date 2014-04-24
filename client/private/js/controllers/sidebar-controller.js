@@ -25,11 +25,15 @@ DEMONSQUID.encounterBuilderControllers.controller('SidebarController',
                 selectedEncounterService.selectedEncounter(encounter);
                 encounterService.encounters.unshift(encounter);
                 encounterService.encounterChanged(encounter);
-            }
+            };
 
             $scope.selectEncounter = function (encounter) {
                 selectedEncounterService.selectedEncounter(encounter);
-            }
+            };
+
+            $scope.createBinder = function(){
+                contentTreeService.newBinder();
+            };
 
             selectedEncounterService.register(function () {
                 $scope.selectedEncounter = selectedEncounterService.selectedEncounter();

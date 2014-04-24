@@ -12,6 +12,10 @@ header.l-header
                         a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createEncounter()')
                             i.icon.fa.fa-plus
                             strong &nbsp;Create new encounter
+                    li
+                        a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createBinder()')
+                            i.icon.fa.fa-folder
+                            strong &nbsp;Create new binder
             content-tree
         .col-xxs-12.col-xs-12.col-sm-3.col-lg-3.l-app-content.l-encounter-well-container
             .l-section.col-sm-12.encounter-well.gradient.l-shadow(ng-controller='EncounterController')
