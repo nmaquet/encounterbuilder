@@ -61,6 +61,7 @@ var jsFiles = [
     "client/private/js/services/selected-npc-service.js",
     "client/private/js/services/selected-spell-service.js",
     "client/private/js/services/selected-feat-service.js",
+    "client/private/js/services/selected-binder-service.js",
     "client/private/js/services/content-tree-service.js",
     "client/private/js/services/encounter-service.js",
     "client/private/js/services/item-service.js",
