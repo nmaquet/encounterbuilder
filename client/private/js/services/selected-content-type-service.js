@@ -5,7 +5,7 @@ DEMONSQUID.encounterBuilderServices.factory('selectedContentTypeService', ['$roo
 
         var SELECTED_CONTENT_TYPE_CHANGED = 'selectedContentTypeChanged';
         var service = {};
-        var selectedContentType;
+        var selectedContentType = "encounter"; // FIXME ?
 
         service.selectedContentType = function (contentType, setUndefined) {
             setUndefined = setUndefined || false;

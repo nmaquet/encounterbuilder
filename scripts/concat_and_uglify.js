@@ -39,6 +39,8 @@ var jsFiles = [
     "client/private/js/controllers/search-feat-controller.js",
     "client/private/js/controllers/spell-details-controller.js",
     "client/private/js/controllers/feat-details-controller.js",
+    "client/private/js/controllers/content-controller.js",
+    "client/private/js/controllers/binder-controller.js",
     "client/private/js/directives/click-to-edit.js",
     "client/private/js/directives/confirm-click.js",
     "client/private/js/directives/head.js",
