@@ -34,12 +34,12 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             };
 
             $scope.removeEncounter = function () {
-                // FIXME: put back the blinking magic !
-                console.log("EncounterController::removEncounter");
-                var index = encounterService.encounters.indexOf($scope.encounter);
-                encounterService.encounters.splice(index, 1);
-                encounterService.remove($scope.encounter);
-                selectedEncounterService.selectedEncounter(encounterService.encounters[0], true /* allow undefined */);
+                $scope.startFade = function() {
+                    var index = encounterService.encounters.indexOf($scope.encounter);
+                    encounterService.encounters.splice(index, 1);
+                    encounterService.remove($scope.encounter);
+                    selectedEncounterService.selectedEncounter(encounterService.encounters[0], true /* allow undefined */);
+                };
             };
 
             $scope.atLeastOneMonster = function () {

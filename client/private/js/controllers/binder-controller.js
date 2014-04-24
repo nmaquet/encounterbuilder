@@ -22,7 +22,9 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
             };
 
             $scope.removeBinder = function () {
-                contentTreeService.removeBinder($scope.binder);
+                $scope.startFade = function() {
+                    contentTreeService.removeBinder($scope.binder);
+                };
             };
 
             $scope.hasDescendants = function () {
