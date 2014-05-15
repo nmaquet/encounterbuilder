@@ -150,9 +150,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                                 //    }
                                 // Don't allow dropping *over* a node (would create a child). Just
                                 // allow changing the order:
-                                 //    return ["before", "after"];
+                                //    return ["before", "after"];
                                 // Accept everything:
-                                return true;
+                                return node.folder;
                             },
                             dragOver: function (node, data) {
                             },
