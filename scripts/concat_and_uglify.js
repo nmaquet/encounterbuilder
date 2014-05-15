@@ -16,7 +16,7 @@ var jsFiles = [
     "client/private/bower_components/bootstrap/dist/js/bootstrap.js",
     "client/private/bower_components/async/lib/async.js",
     "client/private/bower_components/nouislider/jquery.nouislider.js",
-    "client/private/bower_components/fancytree/dist/jquery.fancytree.js",
+    "client/private/bower_components/fancytree/dist/jquery.fancytree-all.js",
     "client/private/angular-ui/ui-bootstrap-0.10.0.js",
     "client/private/angular-ui/ui-bootstrap-tpls-0.10.0.js",
     // App files

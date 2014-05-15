@@ -122,8 +122,56 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 contentTreeService.onLoadSuccess(function () {
                     console.log("contentTreeService.onLoadSuccess");
                     element.fancytree({
+                        extensions: ["dnd"],
                         source: contentTreeService.contentTree(),
-                        activate: onActivate
+                        activate: onActivate,
+                        dnd: {
+                            preventVoidMoves: true, // Prevent dropping nodes 'before self', etc.
+                            preventRecursiveMoves: true, // Prevent dropping nodes on own descendants
+                            autoExpandMS: 400,
+                            dragStart: function (node, data) {
+                                // This function MUST be defined to enable dragging for the tree.
+                                // Return false to cancel dragging of node.
+                                //    if( data.originalEvent.shiftKey ) ...
+                                return true;
+                            },
+                            dragEnter: function (node, data) {
+                                /* data.otherNode may be null for non-fancytree droppables.
+                                 * Return false to disallow dropping on node. In this case
+                                 * dragOver and dragLeave are not called.
+                                 * Return 'over', 'before, or 'after' to force a hitMode.
+                                 * Return ['before', 'after'] to restrict available hitModes.
+                                 * Any other return value will calc the hitMode from the cursor position.
+                                 */
+                                // Prevent dropping a parent below another parent (only sort
+                                // nodes under the same parent):
+                                //    if(node.parent !== data.otherNode.parent){
+                                //      return false;
+                                //    }
+                                // Don't allow dropping *over* a node (would create a child). Just
+                                // allow changing the order:
+                                 //    return ["before", "after"];
+                                // Accept everything:
+                                return true;
+                            },
+                            dragOver: function (node, data) {
+                            },
+                            dragLeave: function (node, data) {
+                            },
+                            dragStop: function (node, data) {
+                            },
+                            dragDrop: function (node, data) {
+                                // This function MUST be defined to enable dropping of items on the tree.
+                                // hitMode is 'before', 'after', or 'over'.
+                                // We could for example move the source to the new target:
+                                data.otherNode.moveTo(node, data.hitMode);
+                                contentTreeService.treeChanged(tree.toDict());
+                            },
+                            draggable: {
+                                zIndex: 1000,
+                                scroll: false
+                            }
+                        }
                     });
 
                     tree = element.fancytree("getTree");
