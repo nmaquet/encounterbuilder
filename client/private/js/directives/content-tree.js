@@ -136,23 +136,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                                 return true;
                             },
                             dragEnter: function (node, data) {
-                                /* data.otherNode may be null for non-fancytree droppables.
-                                 * Return false to disallow dropping on node. In this case
-                                 * dragOver and dragLeave are not called.
-                                 * Return 'over', 'before, or 'after' to force a hitMode.
-                                 * Return ['before', 'after'] to restrict available hitModes.
-                                 * Any other return value will calc the hitMode from the cursor position.
-                                 */
-                                // Prevent dropping a parent below another parent (only sort
-                                // nodes under the same parent):
-                                //    if(node.parent !== data.otherNode.parent){
-                                //      return false;
-                                //    }
-                                // Don't allow dropping *over* a node (would create a child). Just
-                                // allow changing the order:
-                                //    return ["before", "after"];
-                                // Accept everything:
-                                return node.folder;
+                                return node.folder || ["before", "after"];
                             },
                             dragOver: function (node, data) {
                             },
