@@ -1,11 +1,11 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', '$rootScope', 'crService', 'selectedEncounterService',
-    function ($timeout, $http, $rootScope, crService, selectedEncounterService) {
+DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', '$rootScope', 'crService',
+    function ($timeout, $http, $rootScope, crService) {
 
-        var LOAD_SUCCESS = "encountersLoaded";
         var ENCOUNTER_CHANGED = "encounterChanged";
         var ENCOUNTER_REMOVED = "encounterRemoved";
+        var NEW_ENCOUNTER_SUCCESS = "newEncounterSuccess";
 
         function calculateXp(encounter) {
             var xp = 0;
@@ -60,23 +60,6 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
 
         service.encounters = [];
 
-        $http.post('/api/user-data')
-            .success(function (userData) {
-                while (userData.Encounters.length) {
-                    service.encounters.push(userData.Encounters.pop())
-                }
-                selectedEncounterService.selectedEncounter(service.encounters[0], true /* allow undefined */);
-                $rootScope.$emit(LOAD_SUCCESS);
-            })
-            .error(function (error) {
-                console.log(error);
-                $window.location.href = '/';
-            });
-
-        service.onLoadSuccess = function (callback) {
-            $rootScope.$on(LOAD_SUCCESS, callback);
-        };
-
         service.onEncounterChanged = function (callback) {
             $rootScope.$on(ENCOUNTER_CHANGED, callback);
         };
@@ -85,10 +68,13 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
             $rootScope.$on(ENCOUNTER_REMOVED, callback);
         };
 
+        service.onNewEncounterSuccess = function (callback) {
+            $rootScope.$on(NEW_ENCOUNTER_SUCCESS, callback);
+        };
+
         /* FIXME: don't we need a user callback ? */
         /* FIXME: The client of this function has no way to know whether this succeeds or not. */
         service.remove = function (encounter) {
-            console.log("$emitting " + ENCOUNTER_REMOVED);
             $rootScope.$emit(ENCOUNTER_REMOVED, encounter);
             $http.post('/api/remove-encounter', { encounter: encounter })
                 .success(function (response) {
@@ -100,6 +86,22 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                     console.log("remove of encounter failed !");
                 });
         }
+
+        service.newEncounter = function (encounter) {
+            $http.post('/api/upsert-encounter', { encounter: encounter })
+                .success(function (response) {
+                    if (response._id) {
+                        encounter._id = response._id;
+                        $rootScope.$emit(NEW_ENCOUNTER_SUCCESS, encounter);
+                    }
+                    if (response.error) {
+                        console.log(error);
+                    }
+                })
+                .error(function (response) {
+                    console.log("post of encounter failed !");
+                });
+        };
 
         /* FIXME: don't we need a user callback ? */
         /* FIXME: The client of this function has no way to know whether this succeeds or not. */
@@ -120,6 +122,16 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 })
                 .error(function (response) {
                     console.log("post of encounter failed !");
+                });
+        };
+
+        service.get = function (id, callback) {
+            $http.get('/api/encounter/' + id)
+                .success(function (data) {
+                    callback(data.error, data.encounter);
+                })
+                .error(function (error) {
+                    callback(error, null);
                 });
         };
 

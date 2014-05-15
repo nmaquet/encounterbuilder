@@ -1,23 +1,32 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope', '$timeout', 'encounterService',
-    function ($rootScope, $timeout, encounterService) {
+DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope', '$timeout', '$http', 'encounterService', 'selectedEncounterService',
+    function ($rootScope, $timeout, $http, encounterService, selectedEncounterService) {
 
         var NEW_ENCOUNTER = 'newEncounter';
         var NEW_BINDER = 'newBinder';
         var BINDER_CHANGED = 'binderChanged';
         var REMOVE_BINDER = 'removeBinder';
+        var LOAD_SUCCESS = "contentTreeLoaded";
 
         var service = {};
         var contentTree = [];
 
-        encounterService.onLoadSuccess(function () {
-            var encounters = encounterService.encounters;
-            for (var i in  encounters) {
-                var encounter = encounters[i];
-                $rootScope.$emit(NEW_ENCOUNTER, encounter);
-            }
-        });
+        $http.post('/api/user-data')
+            .success(function (userData) {
+                if (userData.contentTree) {
+                    contentTree = userData.contentTree;
+                }
+                $rootScope.$emit(LOAD_SUCCESS);
+            })
+            .error(function (error) {
+                console.log(error);
+                $window.location.href = '/';
+            });
+
+        service.onLoadSuccess = function (callback) {
+            $rootScope.$on(LOAD_SUCCESS, callback);
+        };
 
         service.contentTree = function () {
             return contentTree;
@@ -38,13 +47,22 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             $rootScope.$on(REMOVE_BINDER, callbacks[REMOVE_BINDER]);
         };
 
-        service.binderChanged = function(binder) {
+        service.binderChanged = function (binder) {
             $rootScope.$emit(BINDER_CHANGED, binder);
         };
 
-        service.removeBinder = function(binder) {
+        service.removeBinder = function (binder) {
             $rootScope.$emit(REMOVE_BINDER, binder);
         };
+
+        service.treeChanged = function (tree) {
+            $http.post('/api/save-content-tree', { contentTree: tree })
+                .success(function (data) {
+                })
+                .error(function (error) {
+                    console.log(error);
+                });
+        }
 
         return service;
     }]);

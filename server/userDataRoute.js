@@ -2,7 +2,7 @@
 
 var async = require("async");
 
-module.exports = function (encounterCollection, userCollection) {
+module.exports = function (contentTreesCollection, userCollection) {
     return function (request, response) {
         if (request.session && request.session.user) {
             var username = request.session.user.username;
@@ -14,8 +14,8 @@ module.exports = function (encounterCollection, userCollection) {
                     });
                 },
                 function (callback) {
-                    encounterCollection.find({Username: username}).toArray(function (error, Encounters) {
-                        callback(error, Encounters);
+                    contentTreesCollection.find({username: username}, {fields: {username: 1, contentTree: 1, _id: 0}}).toArray(function (error, contentTree) {
+                        callback(error, contentTree[0].contentTree);
                     });
                 }
             ], function (error, results) {
@@ -26,7 +26,7 @@ module.exports = function (encounterCollection, userCollection) {
                 else {
                     var userData = {
                         user: results[0],
-                        Encounters: results[1]
+                        contentTree: results[1]
                     };
                     response.json(userData);
                 }

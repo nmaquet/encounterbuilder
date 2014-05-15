@@ -2,6 +2,18 @@
 
 module.exports = function (encounterCollection, ObjectID, lootService) {
     return {
+        findOne: function (request, response) {
+            var username = request.session.user.username;
+            var encounterId = request.params.id;
+            encounterCollection.findOne({_id: ObjectID(encounterId), Username: username}, function (error, encounter) {
+                if (error) {
+                    response.json({error: error});
+                }
+                else {
+                    response.json({encounter: encounter});
+                }
+            });
+        },
         upsert: function (request, response) {
             var username = request.session.user.username;
             var encounter = request.body.encounter;

@@ -65,11 +65,12 @@ function main(db) {
     var featRoute = require('./featRoute')(collections.feats);
     var loginRoute = require('./loginRoute')(collections.users, authentication.authenticate);
     var changePasswordRoute = require('./changePasswordRoute')(collections.users, authentication);
-    var changeUserDataRoute = require('./changeUserDataRoute')(collections.users,collections.encounters, authentication);
+    var changeUserDataRoute = require('./changeUserDataRoute')(collections.users, collections.encounters, authentication);
     var logoutRoute = require('./logoutRoute')();
-    var userDataRoute = require('./userDataRoute')(collections.encounters, collections.users);
+    var userDataRoute = require('./userDataRoute')(collections.contentTrees, collections.users);
     var clientRoutes = require('./clientRoutes')();
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
+    var contentTreeRoute = require('./contentTreeRoute')(collections.contentTrees);
 
     app.get('/api/search-monsters', authentication.check, metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', authentication.check, metrics.logSearchNpc, searchNpcsRoute);
@@ -78,17 +79,19 @@ function main(db) {
     app.get('/api/search-magic-items', authentication.check, metrics.logSearchItem, searchMagicItemsRoute);
     app.get('/api/monster/:id', authentication.check, metrics.logSelectMonster, monsterRoute);
     app.get('/api/magic-item/:id', authentication.check, metrics.logSelectItem, magicItemRoute);
-    app.get('/api/npc/:id', authentication.check,metrics.logSelectNpc, npcRoute);
-    app.get('/api/spell/:id', authentication.check,metrics.logSelectSpell, spellRoute);
-    app.get('/api/feat/:id', authentication.check,metrics.logSelectFeat, featRoute);
+    app.get('/api/npc/:id', authentication.check, metrics.logSelectNpc, npcRoute);
+    app.get('/api/spell/:id', authentication.check, metrics.logSelectSpell, spellRoute);
+    app.get('/api/feat/:id', authentication.check, metrics.logSelectFeat, featRoute);
+    app.get('/api/encounter/:id', authentication.check, metrics.logSelectEncounter, encounterRoute.findOne);
     app.post('/api/user-data', userDataRoute);
-    app.post('/logout',metrics.logLogout, logoutRoute);
-    app.post("/login",metrics.logLogin, loginRoute);
+    app.post('/logout', metrics.logLogout, logoutRoute);
+    app.post("/login", metrics.logLogin, loginRoute);
     app.post("/api/upsert-encounter", authentication.check, metrics.logUpsertEncounter, encounterRoute.upsert);
     app.post("/api/remove-encounter", authentication.check, metrics.logRemoveEncounter, encounterRoute.delete);
     app.post("/api/generate-encounter-loot", authentication.check, metrics.logGenerateEncounterLoot, encounterRoute.generateLoot);
     app.post("/api/change-password", authentication.check, changePasswordRoute);
     app.post("/api/change-user-data", authentication.check, changeUserDataRoute);
+    app.post("/api/save-content-tree", authentication.check, contentTreeRoute.updateContentTree);
 
     app.get('/feedback-popover.html', authentication.check, clientRoutes.feedbackPopover);
     app.get('/login.html', clientRoutes.login);

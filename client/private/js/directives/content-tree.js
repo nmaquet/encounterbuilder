@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
-    ['$rootScope', 'contentTreeService', 'encounterService', 'selectedEncounterService', 'selectedBinderService', 'selectedContentTypeService',
-        function ($rootScope, contentTreeService, encounterService, selectedEncounterService, selectedBinderService, selectedContentTypeService) {
+    ['$rootScope', '$timeout', 'contentTreeService', 'encounterService', 'selectedEncounterService', 'selectedBinderService', 'selectedContentTypeService',
+        function ($rootScope, $timeout, contentTreeService, encounterService, selectedEncounterService, selectedBinderService, selectedContentTypeService) {
 
             function link(scope, element) {
 
@@ -11,31 +11,34 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 }
 
                 function onActivate(event, data) {
-                    var node = data.node;
-                    if (node.data.encounter) {
-                        selectedEncounterService.selectedEncounter(node.data.encounter);
-                        selectedContentTypeService.selectedContentType("encounter");
-                    } else if (node.folder) {
-                        selectedBinderService.selectedBinder(makeBinder(node));
-                        selectedContentTypeService.selectedContentType("binder");
-                    }
-                    $rootScope.$apply();
+                    $timeout(function () {
+                        var node = data.node;
+                        if (node.data.encounterId) {
+                            selectedEncounterService.selectedEncounterId(node.data.encounterId);
+                            selectedContentTypeService.selectedContentType("encounter");
+                        } else if (node.folder) {
+                            selectedBinderService.selectedBinder(makeBinder(node));
+                            selectedContentTypeService.selectedContentType("binder");
+                        }
+                    });
+
                 }
 
                 function onNewEncounter(event, encounter) {
                     var activeNode = tree.getActiveNode();
                     if (activeNode === null) {
                         activeNode = tree.rootNode;
-                        activeNode.addNode({title: encounter.Name, encounter: encounter}).setActive(true);
+                        activeNode.addNode({title: encounter.Name, encounterId: encounter._id}).setActive(true);
                     }
                     else if (activeNode.folder === true) {
-                        var newNode = activeNode.addNode({title: encounter.Name, encounter: encounter});
+                        var newNode = activeNode.addNode({title: encounter.Name, encounterId: encounter._id});
                         newNode.setActive(true);
                         newNode.makeVisible();
                     }
                     else {
-                        activeNode.appendSibling({title: encounter.Name, encounter: encounter}).setActive(true);
+                        activeNode.appendSibling({title: encounter.Name, encounterId: encounter._id}).setActive(true);
                     }
+                    contentTreeService.treeChanged(tree.toDict());
                 }
 
                 function onNewBinder(event) {
@@ -52,25 +55,31 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     else {
                         activeNode.appendSibling({title: "newBinder", folder: true}).setActive(true);
                     }
+                    contentTreeService.treeChanged(tree.toDict());
                 }
 
                 function onEncounterChanged(event, encounter) {
                     tree.visit(function (node) {
-                        if (node.data.encounter && node.data.encounter._id === encounter._id) {
-                            node.setTitle(encounter.Name);
+                        if (node.data.encounterId && node.data.encounterId === encounter._id) {
+                            if (node.getTitle() !== encounter.Name) {
+                                node.setTitle(encounter.Name);
+                            }
+                            //FIXME this saves every ecounter change to the tree (including monsters and stuffs)
+                            contentTreeService.treeChanged(tree.toDict());
                         }
                     });
+
                 }
 
                 function onEncounterRemoved(event, encounter) {
-                    console.log("removing " + JSON.stringify(encounter));
                     var toRemove;
                     tree.visit(function (node) {
-                        if (node.data.encounter && node.data.encounter._id === encounter._id) {
+                        if (node.data.encounterId && node.data.encounterId === encounter._id) {
                             toRemove = node;
                         }
                     });
                     toRemove.remove();
+                    contentTreeService.treeChanged(tree.toDict());
                     if (tree.rootNode.getFirstChild() === null) {
                         selectedContentTypeService.selectedContentType("none");
                     }
@@ -82,34 +91,44 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                             node.setTitle(binder.Name);
                         }
                     });
+                    contentTreeService.treeChanged(tree.toDict());
                 }
 
                 function onRemoveBinder(event, binder) {
+                    var toRemove;
                     tree.visit(function (node) {
                         if (node.key === binder.nodeKey) {
-                            node.remove();
+                            toRemove = node;
                         }
                     });
+                    toRemove.remove();
+                    contentTreeService.treeChanged(tree.toDict());
                     var newActiveNode = tree.rootNode.getFirstChild();
                     if (newActiveNode === null) {
                         selectedContentTypeService.selectedContentType("none");
                     } else if (newActiveNode.folder === true) {
                         selectedBinderService.selectedBinder(makeBinder(newActiveNode));
                         selectedContentTypeService.selectedContentType("binder");
+                        newActiveNode.setActive(true);
                     } else if (newActiveNode.encounter !== undefined) {
                         selectedEncounterService.selectedEncounter(newActiveNode.encounter);
                         selectedContentTypeService.selectedContentType("encounter");
+                        newActiveNode.setActive(true);
                     }
                 }
 
-                element.fancytree({
-                    source: contentTreeService.contentTree(),
-                    activate: onActivate
+                var tree;
+                contentTreeService.register({newBinder: onNewBinder, removeBinder: onRemoveBinder, binderChanged: onBinderChanged});
+                contentTreeService.onLoadSuccess(function () {
+                    console.log("contentTreeService.onLoadSuccess");
+                    element.fancytree({
+                        source: contentTreeService.contentTree(),
+                        activate: onActivate
+                    });
+
+                    tree = element.fancytree("getTree");
                 });
-
-                var tree = element.fancytree("getTree");
-
-                contentTreeService.register({newEncounter: onNewEncounter, newBinder: onNewBinder, removeBinder: onRemoveBinder, binderChanged: onBinderChanged});
+                encounterService.onNewEncounterSuccess(onNewEncounter)
                 encounterService.onEncounterChanged(onEncounterChanged);
                 encounterService.onEncounterRemoved(onEncounterRemoved);
             }

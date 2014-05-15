@@ -24,7 +24,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SidebarController',
                 contentTreeService.newEncounter(encounter);
                 selectedEncounterService.selectedEncounter(encounter);
                 encounterService.encounters.unshift(encounter);
-                encounterService.encounterChanged(encounter);
+                encounterService.newEncounter(encounter);
             };
 
             $scope.selectEncounter = function (encounter) {
