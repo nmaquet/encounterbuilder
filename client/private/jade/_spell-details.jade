@@ -49,3 +49,9 @@
     .col-xxs-12.col-xs-12.cat.decor
         legend.t-legend.t-title Description
         div(ng-bind-html='spell.descriptionSafe')
+    .col-xxs-12.col-xs-12.cat.decor(ng-if="spell.mythic")
+        legend.t-legend.t-title Mythic
+        div
+            | {{spell.mythic_text}}
+        div
+            | {{spell.augmented}}
