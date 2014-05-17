@@ -1,6 +1,7 @@
 // BOOTSTRAP OVERWRITE
 .navbar { height: auto; }
 .navbar-nav.navbar-right:last-child { margin-right: 0; }
+.navbar-nav { margin: 0; }
 
 // UI
 .animate { @include transition(all 0.3s ease-in-out); }

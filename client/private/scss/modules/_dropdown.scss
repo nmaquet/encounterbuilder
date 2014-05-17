@@ -1,3 +1,31 @@
 [data-toggle="dropdown"], .sp-menu-toggle {
   @include no-select-text();
 }
+.dropdown, .dropdown-toggle, .is-pointer {
+  &, & > * {
+    @include selection(inherit, transparent !important);
+  }
+}
+
+// Slide Menu Dropdown
+.encounter-dropdown-container {
+  float: left;
+  width: 100%;
+  font-size: 18px;
+}
+.encounter-dropdown.dropdown-toggle {
+  background-color: $red;
+  line-height: 18px;
+  //padding-top: 0;
+  //padding-bottom: 0;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  overflow: hidden;
+  .encounter-dropdown-name {float: left;
+    max-width: 84%;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

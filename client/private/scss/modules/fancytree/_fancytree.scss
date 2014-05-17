@@ -25,13 +25,13 @@
  * Container and UL / LI
  *----------------------------------------------------------------------------*/
 ul.fancytree-container {
-  font-family: tahoma, arial, helvetica;
+  font-family: $font-family-sans-serif;
   font-size: 10pt;
   white-space: nowrap;
   padding: 3px;
   margin: 0;
   background-color: white;
-  border: 1px dotted gray;
+  //border: 1px dotted gray;
   overflow: auto;
   height: 100%;
 }

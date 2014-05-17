@@ -33,6 +33,11 @@ $navbar-red-toggle-border-color:        transparent !default;
 // Alternate navbars
 // --------------------------------------------------
 
+.l-header .nav > li > a {
+  display: inline-block;
+  padding-top: ($grid-gutter-width/2);
+  padding-bottom: ($grid-gutter-width/2);
+}
 // Default navbar
 .navbar-red {
   background-color: $navbar-red-bg;
@@ -147,3 +152,43 @@ $navbar-red-toggle-border-color:        transparent !default;
     }
   }
 }
+// ---------------------------
+//  Overwrite Boostrap Values
+// ---------------------------
+.navbar {
+  min-height: 50px;
+  //height: 50px;
+  border-width: 0;
+  &, a { color: white; }
+  &.navbar-red {
+    background-color: $red-transparent;
+  }
+}
+
+.nav-list-item {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857;
+  color: $coal;
+  white-space: nowrap;
+}
+.nav > li > a:hover,
+.nav > li > a:focus {
+  background-color: $red-light;
+  border-color: $red-light;
+}
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  background-color: $red-light;
+  border-color: $red-light;
+}
+
+//.navbar .dropdown {
+//  min-width: 160px;
+//  a {
+//    width: 100%;
+//  }
+//}

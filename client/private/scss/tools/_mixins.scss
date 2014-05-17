@@ -436,3 +436,66 @@ $prefix-for-spec:      true !default;
   &:first-letter { visibility: visible; }
   @media (min-width: $screen-xs-min) { visibility: visible; }
 }
+
+// = Scrollbar
+// -----------------------------
+@mixin scrollbar($size, $primary, $secondary, $tertiary, $radius) {
+
+  ::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+    @media screen and (max-width: $screen-xs-max) {
+      width:  ($size/2);
+      height: ($size/2);
+    }
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $primary;
+    //@include border-radius($size);
+    @include box-shadow(0, 0, ($size/2), $coal-transparent-2, $inset:true);
+    &:hover {
+      background-color: darken($primary,10%);
+    }
+  }
+
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: $tertiary;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $secondary;
+    @include box-shadow(0, 0,($size/2), $coal-transparent-2, $inset:true);
+    width: ($size/2);
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $primary;
+    scrollbar-track-color: $secondary;
+  }
+}
+//$prefixes: ("-webkit-","-moz-", "");
+//@mixin scrollbar($size, $primary, $secondary: lighten($primary, 25%)) {
+//  @each $prefix in $prefixes {
+//    ::#{$prefix}scrollbar {
+//      width:  $size;
+//      height: $size;
+//    }
+//    ::#{$prefix}-scrollbar-thumb {
+//      background: $primary;
+//    }
+//    ::#{$prefix}-scrollbar-track {
+//      background: $secondary;
+//    }
+//    ::#{$prefix}-scrollbar-thumb:window-inactive {
+//      background: $secondary;
+//    }
+//    // For Internet Explorer
+//    body {
+//      scrollbar-face-color: $primary;
+//      scrollbar-track-color: $secondary;
+//    }
+//  }
+//}
+

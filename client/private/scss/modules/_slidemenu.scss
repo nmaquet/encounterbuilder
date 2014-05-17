@@ -2,6 +2,28 @@
 // Modules/Slide & Push Menu
 //------------------------------------------------------------------------------
 
+$sp-menu-blue : #47a3da;
+$sp-menu-blue-light : #afdefa;
+$sp-menu-blue-dark : #0d77b6;
+$sp-menu-blue-medium : #258ecd;
+
+$sp-menu-red : $red;
+$sp-menu-red-light : $red-light;
+$sp-menu-red-dark : $red-dark;
+$sp-menu-red-medium : $red-transparent;
+
+$sp-menu-coal : $brown-dark;
+$sp-menu-coal-light : $grey;
+$sp-menu-coal-dark : $coal;
+$sp-menu-coal-medium : $brown;
+
+$sp-menu-text-color : white;
+$sp-menu-bg : $sp-menu-coal;
+$sp-menu-title : white;
+$sp-menu-text-bg : $sp-menu-coal-dark;
+$sp-menu-hover-bg : $sp-menu-coal-medium;
+$sp-menu-shadow : rgba(0,0,0,0.175);
+
 /* Trigger button */
 .navbar-container {
   @include transition(all .3s ease);
@@ -9,51 +31,93 @@
     padding-left: 240px;
   }
 }
+// Align icons and text vertically in the header
+.sp-menu-toggle {
+  display: table !important;
+  height: 50px;
+  max-height: 50px;
+  > * { display: table-cell; vertical-align: middle; }
+}
+.sp-menu-toggle-text {
+  @include transition(all .3s ease);
+  @include opacity(1);
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  display: inline-block;
+  line-height: 1;
+  .spm-open & {
+    @include opacity(0);
+    width: 0;
+    height: 0;
+  }
+}
+
+.sp-menu-header {
+  min-height: 50px;
+}
 
 /* General styles for all menus */
 .sp-menu {
-  background: #47a3da;
+  background-color: $sp-menu-bg;
   position: fixed;
-}
+  @include box-shadow(0,0,0,$sp-menu-shadow);
+  &.sp-menu-open { @include box-shadow(0,6px,24px,$sp-menu-shadow); }
 
-.sp-menu h3 {
-  color: #afdefa;
+  h1, h2, h3, .t-title {
+    color: $sp-menu-title;
+    font-size: 1.5em;
+    padding: ($grid-gutter-width/2);
+    margin: 0;
+    font-weight: 300;
+    background-color: $sp-menu-text-bg;
+  }
+
+  a {
+    display: block;
+    color: white;
+    font-size: 1em;
+    font-weight: 300;
+    &:hover {
+      background-color: $sp-menu-text-bg;
+      text-decoration: none;
+    }
+  }
+}
+.sp-menu-title {
+  color: $sp-menu-title;
   font-size: 1.9em;
   padding: 20px;
   margin: 0;
   font-weight: 300;
-  background: #0d77b6;
+  background-color: $sp-menu-text-bg;
 }
-
-.sp-menu a {
+.sp-menu-link {
   display: block;
-  color: #fff;
+  color: white;
   font-size: 1.1em;
   font-weight: 300;
+  &:hover {
+    background-color: $sp-menu-hover-bg;
+  }
 }
 
-.sp-menu a:hover {
-  background: #258ecd;
-}
-
-.sp-menu a:active {
-  background: #afdefa;
-  color: #47a3da;
-}
-
-/* Orientation-dependent styles for the content of the menu */
-
+// Orientation-dependent styles for the content of the menu
 .sp-menu-vertical {
   width: 240px;
   height: 100%;
   top: 0;
   //top: 60px;
   z-index: 1000;
-}
-
-.sp-menu-vertical a {
-  border-bottom: 1px solid #258ecd;
-  padding: 1em;
+  .sp-menu-content {
+    overflow-y: auto;
+  }
+  .sp-menu-list {
+    a {
+      border-bottom: 1px solid $sp-menu-text-bg;
+      padding: 1em;
+    }
+  }
 }
 
 .sp-menu-horizontal {
@@ -62,22 +126,24 @@
   left: 0;
   z-index: 1000;
   overflow: hidden;
+
+  h3 {
+    height: 100%;
+    width: 20%;
+    float: left;
+  }
+
+  .sp-menu-list {
+    a {
+      float: left;
+      width: 20%;
+      padding: 0.8em;
+      border-left: 1px solid $sp-menu-text-bg;
+    }
+  }
 }
 
-.sp-menu-horizontal h3 {
-  height: 100%;
-  width: 20%;
-  float: left;
-}
-
-.sp-menu-horizontal a {
-  float: left;
-  width: 20%;
-  padding: 0.8em;
-  border-left: 1px solid #258ecd;
-}
-
-/* Vertical menu that slides from the left or right */
+// Vertical menu that slides from the left or right
 
 .sp-menu-left {
   left: -240px;
@@ -95,7 +161,7 @@
   right: 0px;
 }
 
-/* Horizontal menu that slides from the top or bottom */
+// Horizontal menu that slides from the top or bottom
 
 .sp-menu-top {
   top: -150px;
@@ -113,7 +179,7 @@
   bottom: 0px;
 }
 
-/* Push classes applied to the body */
+// Push classes applied to the body
 
 .sp-menu-push {
   overflow-x: hidden;
@@ -129,14 +195,14 @@
   left: -240px;
 }
 
-/* Transitions */
+// Transitions
 
 .sp-menu,
 .sp-menu-push {
   @include transition(all .3s ease);
 }
 
-/* Example media queries */
+// Media queries
 
 @media screen and (max-width: 55.1875em){
 

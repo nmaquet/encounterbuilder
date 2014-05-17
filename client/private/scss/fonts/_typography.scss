@@ -98,10 +98,3 @@ a {
 .gold { color: $gold-2; }
 .silver { color: $silver; }
 .copper { color: $copper; }
-
-// EXCEPTIONS
-.dropdown, .dropdown-toggle, .is-pointer {
-  &, & > * {
-    @include selection(inherit, transparent !important);
-  }
-}
