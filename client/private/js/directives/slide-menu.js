@@ -9,14 +9,14 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', funct
         replace: false,
         link: function (scope, element) {
             console.log("slideMenu directive");
-            var body = $($document[0].body);
+            //var body = $($document[0].body);
             scope.$watch("slide", function () {
                 if (scope.slide) {
-                    body.addClass("spmenu-push-toright");
-                    element.addClass("spmenu-open");
+                    //body.addClass("sp-menu-slide-toright");
+                    element.addClass("sp-menu-open");
                 } else {
-                    body.removeClass("spmenu-push-toright");
-                    element.removeClass("spmenu-open");
+                    //body.removeClass("sp-menu-slide-toright");
+                    element.removeClass("sp-menu-open");
                 }
             });
 

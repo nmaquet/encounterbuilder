@@ -2,12 +2,12 @@
 // Modules/Slide & Push Menu
 //------------------------------------------------------------------------------
 /* General styles for all menus */
-.spmenu {
+.sp-menu {
   background: #47a3da;
   position: fixed;
 }
 
-.spmenu h3 {
+.sp-menu h3 {
   color: #afdefa;
   font-size: 1.9em;
   padding: 20px;
@@ -16,37 +16,38 @@
   background: #0d77b6;
 }
 
-.spmenu a {
+.sp-menu a {
   display: block;
   color: #fff;
   font-size: 1.1em;
   font-weight: 300;
 }
 
-.spmenu a:hover {
+.sp-menu a:hover {
   background: #258ecd;
 }
 
-.spmenu a:active {
+.sp-menu a:active {
   background: #afdefa;
   color: #47a3da;
 }
 
 /* Orientation-dependent styles for the content of the menu */
 
-.spmenu-vertical {
+.sp-menu-vertical {
   width: 240px;
   height: 100%;
-  top: 0;
+  //top: 0;
+  top: 60px;
   z-index: 1000;
 }
 
-.spmenu-vertical a {
+.sp-menu-vertical a {
   border-bottom: 1px solid #258ecd;
   padding: 1em;
 }
 
-.spmenu-horizontal {
+.sp-menu-horizontal {
   width: 100%;
   height: 150px;
   left: 0;
@@ -54,13 +55,13 @@
   overflow: hidden;
 }
 
-.spmenu-horizontal h3 {
+.sp-menu-horizontal h3 {
   height: 100%;
   width: 20%;
   float: left;
 }
 
-.spmenu-horizontal a {
+.sp-menu-horizontal a {
   float: left;
   width: 20%;
   padding: 0.8em;
@@ -69,60 +70,60 @@
 
 /* Vertical menu that slides from the left or right */
 
-.spmenu-left {
+.sp-menu-left {
   left: -240px;
 }
 
-.spmenu-right {
+.sp-menu-right {
   right: -240px;
 }
 
-.spmenu-left.spmenu-open {
+.sp-menu-left.sp-menu-open {
   left: 0px;
 }
 
-.spmenu-right.spmenu-open {
+.sp-menu-right.sp-menu-open {
   right: 0px;
 }
 
 /* Horizontal menu that slides from the top or bottom */
 
-.spmenu-top {
+.sp-menu-top {
   top: -150px;
 }
 
-.spmenu-bottom {
+.sp-menu-bottom {
   bottom: -150px;
 }
 
-.spmenu-top.spmenu-open {
+.sp-menu-top.sp-menu-open {
   top: 0px;
 }
 
-.spmenu-bottom.spmenu-open {
+.sp-menu-bottom.sp-menu-open {
   bottom: 0px;
 }
 
 /* Push classes applied to the body */
 
-.spmenu-push {
+.sp-menu-push {
   overflow-x: hidden;
   position: relative;
   left: 0;
 }
 
-.spmenu-push-toright {
+.sp-menu-push-toright {
   left: 240px;
 }
 
-.spmenu-push-toleft {
+.sp-menu-push-toleft {
   left: -240px;
 }
 
 /* Transitions */
 
-.spmenu,
-.spmenu-push {
+.sp-menu,
+.sp-menu-push {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -132,16 +133,16 @@
 
 @media screen and (max-width: 55.1875em){
 
-  .spmenu-horizontal {
+  .sp-menu-horizontal {
     font-size: 75%;
     height: 110px;
   }
 
-  .spmenu-top {
+  .sp-menu-top {
     top: -110px;
   }
 
-  .spmenu-bottom {
+  .sp-menu-bottom {
     bottom: -110px;
   }
 
@@ -149,21 +150,21 @@
 
 @media screen and (max-height: 26.375em){
 
-  .spmenu-vertical {
+  .sp-menu-vertical {
     font-size: 90%;
     width: 190px;
   }
 
-  .spmenu-left,
-  .spmenu-push-toleft {
+  .sp-menu-left,
+  .sp-menu-push-toleft {
     left: -190px;
   }
 
-  .spmenu-right {
+  .sp-menu-right {
     right: -190px;
   }
 
-  .spmenu-push-toright {
+  .sp-menu-push-toright {
     left: 190px;
   }
 }
