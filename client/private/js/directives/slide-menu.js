@@ -12,11 +12,11 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', funct
             var body = $($document[0].body);
             scope.$watch("slide", function () {
                 if (scope.slide) {
-                    body.addClass("cbp-spmenu-push-toright");
-                    element.addClass("cbp-spmenu-open");
+                    body.addClass("spmenu-push-toright");
+                    element.addClass("spmenu-open");
                 } else {
-                    body.removeClass("cbp-spmenu-push-toright");
-                    element.removeClass("cbp-spmenu-open");
+                    body.removeClass("spmenu-push-toright");
+                    element.removeClass("spmenu-open");
                 }
             });
 
