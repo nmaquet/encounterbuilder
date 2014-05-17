@@ -1,6 +1,15 @@
 //------------------------------------------------------------------------------
 // Modules/Slide & Push Menu
 //------------------------------------------------------------------------------
+
+/* Trigger button */
+.navbar-container {
+  @include transition(all .3s ease);
+  .spm-open & {
+    padding-left: 240px;
+  }
+}
+
 /* General styles for all menus */
 .sp-menu {
   background: #47a3da;
@@ -37,8 +46,8 @@
 .sp-menu-vertical {
   width: 240px;
   height: 100%;
-  //top: 0;
-  top: 60px;
+  top: 0;
+  //top: 60px;
   z-index: 1000;
 }
 
@@ -124,9 +133,7 @@
 
 .sp-menu,
 .sp-menu-push {
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  @include transition(all .3s ease);
 }
 
 /* Example media queries */

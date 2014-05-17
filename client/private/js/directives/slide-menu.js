@@ -9,13 +9,13 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', funct
         replace: false,
         link: function (scope, element) {
             console.log("slideMenu directive");
-            //var body = $($document[0].body);
+            var body = $($document[0].body);
             scope.$watch("slide", function () {
                 if (scope.slide) {
-                    //body.addClass("sp-menu-slide-toright");
+                    body.addClass("spm-open");
                     element.addClass("sp-menu-open");
                 } else {
-                    //body.removeClass("sp-menu-slide-toright");
+                    body.removeClass("spm-open");
                     element.removeClass("sp-menu-open");
                 }
             });
