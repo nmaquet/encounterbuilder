@@ -1,22 +1,22 @@
 header.l-header
     include _header
+nav#cbp-spmenu-s1.cbp-spmenu.cbp-spmenu-vertical.cbp-spmenu-left(slide-menu="openSidebar", ng-controller='SidebarController')
+    div.dropdown.encounter-dropdown-container.is-pointer
+        a.encounter-dropdown.dropdown-toggle.col-xxs-12.col-xs-12(role='button', data-toggle='dropdown')
+            span.encounter-dropdown-name CREATE
+            i.icon.fa.fa-angle-down.square.white.pull-right
+        ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
+            li
+                a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createEncounter()')
+                    i.icon.fa.fa-plus
+                    strong &nbsp;Create new encounter
+            li
+                a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createBinder()')
+                    i.icon.fa.fa-folder
+                    strong &nbsp;Create new binder
+    content-tree
 .container.l-xs-nopadding
-    .row(ng-controller='ContentController')
-        .col-xxs-12.col-xs-12.col-sm-2.col-lg-2.l-app-content.l-encounter-well-container(ng-controller='SidebarController')
-            div.dropdown.encounter-dropdown-container.is-pointer.hidden-xs
-                a.encounter-dropdown.dropdown-toggle.col-xxs-12.col-xs-12(role='button', data-toggle='dropdown')
-                    span.encounter-dropdown-name CREATE
-                    i.icon.fa.fa-angle-down.square.white.pull-right
-                ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
-                    li
-                        a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createEncounter()')
-                            i.icon.fa.fa-plus
-                            strong &nbsp;Create new encounter
-                    li
-                        a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createBinder()')
-                            i.icon.fa.fa-folder
-                            strong &nbsp;Create new binder
-            content-tree
+    .row
         .col-xxs-12.col-xs-12.col-sm-3.col-lg-3.l-app-content.l-encounter-well-container(ng-show="contentType === 'none'")
             .l-section.col-sm-12.encounter-well.gradient.l-shadow
                 div.encounter-no-encounter
@@ -25,13 +25,13 @@ header.l-header
                 a.is-pointer(ng-click="createFirstEncounter()")
                     | create one
                 | .
-        .col-xxs-12.col-xs-12.col-sm-3.col-lg-3.l-app-content.l-encounter-well-container(ng-show="contentType === 'binder'")
+        .col-xxs-12.col-xs-12.col-sm-4.col-lg-3.l-app-content.l-encounter-well-container(ng-show="contentType === 'binder'")
             .l-section.col-sm-12.encounter-well.gradient.l-shadow(ng-controller='BinderController', fade-in-fade-out="startFade")
                 include _binder
-        .col-xxs-12.col-xs-12.col-sm-3.col-lg-3.l-app-content.l-encounter-well-container(ng-show="contentType === 'encounter'")
+        .col-xxs-12.col-xs-12.col-sm-4.col-lg-3.l-app-content.l-encounter-well-container(ng-show="contentType === 'encounter'")
             .l-section.col-sm-12.encounter-well.gradient.l-shadow(ng-controller='EncounterController', fade-in-fade-out="startFade")
                 include _encounter
-        .col-xxs-12.col-xs-12.col-sm-7.col-lg-7.l-tabs-container(ng-controller='TabController', ng-show="contentType === 'encounter'")
+        .col-xxs-12.col-xs-12.col-sm-8.col-lg-9.l-tabs-container(ng-controller='TabController', ng-show="contentType === 'encounter'")
             ul.nav.nav-tabs.text-center#search-tabs.l-search-tabs
                 li.col-sixth.tab-1
                     a#monstersTab.is-pointer(ng-click="showTab('monsters')", data-toggle="tab")

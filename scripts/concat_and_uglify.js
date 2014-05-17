@@ -51,6 +51,7 @@ var jsFiles = [
     "client/private/js/directives/nouislider.js",
     "client/private/js/directives/content-tree.js",
     "client/private/js/directives/fade-in-fade-out.js",
+    "client/private/js/directives/slide-menu.js",
     "client/private/js/filters/abbreviate-source.js",
     "client/private/js/filters/number-to-fraction-string.js",
     "client/private/js/filters/classes-to-string.js",

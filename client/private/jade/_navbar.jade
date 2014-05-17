@@ -1,66 +1,12 @@
-//.navbar.navbar-red.no-radius(role='navigation')
-    .navbar-header.no-padding-left.col-sm-4.col-lg-3
-        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-            span.sr-only
-                | Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-        a.visible-xs.navbar-brand(href='#', title='Go to home page')
-            | Encounter Builder
-        div.dropdown.encounter-dropdown-container#encounter-dropdown-container.is-pointer(ng-controller="EncounterListController")
-            a.encounter-dropdown.dropdown-toggle.col-xxs-12.col-xs-12(role='button', data-toggle='dropdown', ng-show="selectedEncounter")
-                span.encounter-dropdown-name {{selectedEncounter.Name}} (CR {{selectedEncounter.CR | numberToFractionString}})
-                i.icon.fa.fa-angle-down.square.white.pull-right
-            a.encounter-dropdown.dropdown-toggle.col-xxs-12.col-xs-12(role='button', data-toggle='dropdown', ng-hide="selectedEncounter")
-                span.encounter-dropdown-name (no encounters)
-                i.icon.fa.fa-angle-down.square.white.pull-right
-            ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
-                li
-                    a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createEncounter()')
-                        i.icon.fa.fa-plus
-                        strong &nbsp;Create new encounter
-                li.divider.is-pointer
-                li(ng-repeat='encounter in encounters')
-                    a.is-pointer.encounter-dropdown-select(tabindex='-1', ng-click='selectEncounter(encounter)')
-                        i.icon.fa.fa-chevron-right
-                        | &nbsp;{{encounter.Name}} (CR {{encounter.CR | numberToFractionString}})
-    .navbar-collapse.collapse
-        ul.nav.navbar-nav.navbar-right
-            li.l-nav-feedback
-                a.is-pointer#feedback(href="http://forums.encounterbuilder.com" target="_blank" data-toggle='popover', ng-controller='FeedbackController') Got any feedback? Head to our forums!
-
-            li.dropdown(ng-controller='LogoutController')
-                a#user-dropdown.text-right.dropdown-toggle.is-pointer(role='button', data-toggle='dropdown')
-                    i.icon.fa.fa-user
-                    | &nbsp;{{user.username}}&nbsp;
-                    b.caret
-                ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
-                    li
-                        a.is-pointer(tabindex='-1',data-target='#profile-modal', role='button', data-toggle='modal')
-                            | Edit Profile
-                    //li
-                        a.is-pointer(tabindex='-1')
-                            |Profile
-                    //li
-                        a.is-pointer(tabindex='-1')
-                            i.icon.fa.fa-cog &nbsp;
-                            |Settings
-                    li.divider
-                    li
-                        a#user-dropdown-logout.is-pointer(tabindex='-1', ng-click='logout()')
-                            | Log out
 .navbar.navbar-default.navbar-red.no-radius(role='navigation')
     .row.l-xs-nomargin
-        .navbar-header.col-xxs-12.col-xs-12.col-sm-4.col-lg-3
-            a.navbar-brand.t-title.visible-xs(href='#', title='Go to home page')
-                | EB
-            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-                span.sr-only
-                    | Toggle navigation
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
+        .navbar-header
+            ul.nav.navbar-nav.navbar-right
+                li
+                    a.t-title.is-pointer(ng-click='toggleSidebar()')
+                        i.fa.fa-file-o
+                        | &nbsp;
+                        i.fa.fa-angle-left
         .navbar-collapse.collapse
             ul.nav.navbar-nav.navbar-right
                 li.l-nav-feedback
@@ -75,84 +21,8 @@
                         li
                             a.is-pointer(tabindex='-1',data-target='#profile-modal', role='button', data-toggle='modal')
                                 | Edit Profile
-                        //li
-                            a.is-pointer(tabindex='-1')
-                                |Profile
-                        //li
-                            a.is-pointer(tabindex='-1')
-                                i.icon.fa.fa-cog &nbsp;
-                                |Settings
                         li.divider
                         li
                             a#user-dropdown-logout.is-pointer(tabindex='-1', ng-click='logout()')
                                 | Log out
 include _edit_profile
-    //.navbar-inner
-        .row
-            button.btn(type='button', data-toggle='collapse', data-target='.navbar-collapse')                                                                                                         span.sr-only
-                | Toggle navigation
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
-            a.navbar-brand(href='#', title='') Encounter Builder
-            .dropdown.navbar-text.pull-left(ng-controller="EncounterListController")
-                a.encounter-dropdown.dropdown-toggle.btn.btn-default(role='button', data-toggle='dropdown', ng-show="selectedEncounter")
-                    | {{selectedEncounter.Name}} (CR {{selectedEncounter.CR | numberToFractionString}})
-                    | &nbsp;
-                    b.caret
-                a.encounter-dropdown-no-encounter.dropdown-toggle.btn.btn-default(role='button', data-toggle='dropdown', ng-hide="selectedEncounter")
-                    | (no encounters)
-                    | &nbsp;
-                    b.caret
-                ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
-                    li
-                        a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createEncounter()')
-                            i.icon.fa.fa-plus
-                            strong &nbsp;Create new encounter
-                    li.divider.is-pointer
-                    li(ng-repeat='encounter in encounters')
-                        a.is-pointer.encounter-dropdown-select(tabindex='-1', ng-click='selectEncounter(encounter)')
-                            i.icon.fa.fa-chevron-right
-                            | &nbsp;{{encounter.Name}} (CR {{encounter.CR | numberToFractionString}})
-            .navbar-collapse.collapse
-                ul.nav.nav-social
-                    li.active
-                        a(href='#todo')
-                            i.icon.fa.fa-eye-open
-                            | Views
-                    li
-                        a(href='#todo')
-                            i.icon.fa.fa-heart
-                            | Likes
-                    li
-                        a(href='#todo')
-                            i.icon.fa.fa-bullhorn
-                            | Comments
-                    li
-                        a(href='#todo')
-                            i.icon.fa.fa-user
-                            | Spawns
-                ul.nav.nav-settings
-                    li.active
-                        a(href='#todo')
-                            i.fa-cog.fa
-                    li
-                        a(href='#todo')
-                            i.fa-folder-close.fa
-                    li
-                        a#feedback.is-pointer(data-uv-trigger='data-uv-trigger', style='background-color: #E2753A; color: white; position: fixed;', data-toggle='popover', ng-controller='FeedbackController') Send us Feedback !!!
-                .dropdown.navbar-text.pull-right(ng-controller='LogoutController')
-                    a#user-dropdown.dropdown-toggle.btn.btn-default(role='button', data-toggle='dropdown')
-                        i.icon.fa.fa-user
-                        | &nbsp;{{user.username}}&nbsp;
-                        b.caret
-                    ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
-                        li
-                            a.is-pointer(tabindex='-1') Profile
-                        li
-                            a.is-pointer(tabindex='-1') Settings
-                        li.divider.is-pointer
-                        li
-                            a#user-dropdown-logout.is-pointer(tabindex='-1', ng-click='logout()')
-                                | Log
-                                | out

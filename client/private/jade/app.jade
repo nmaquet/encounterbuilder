@@ -27,11 +27,11 @@ html(class="no-js gte-ie9", lang='en', ng-app='encounterBuilderApp')
         // HTML5 shim, for IE6-8 support of HTML5 elements
         //if lt IE 9
           script(src='../assets/js/html5shiv.js')
-    body.teal
+    body.teal.cbp-spmenu-push
         // ClickTale Block 1
         script.
             var WRInitTime=(new Date()).getTime();
-        div(ng-view='ng-view')
+        div(ng-view='ng-view', ng-controller='ContentController')
         // ClickTale Block 2
         script.
             // function ClickTalePreRecordingHook() { /* place your customized code here */  }
