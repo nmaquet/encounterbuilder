@@ -1,28 +1,28 @@
 .navbar.navbar-default.navbar-red.no-radius(role='navigation')
-    .row.l-xs-nomargin
-        .navbar-header
-            ul.nav.navbar-nav.navbar-right
-                li
-                    a.t-title.is-pointer(ng-click='toggleSidebar()')
-                        i.fa.fa-file-o
-                        | &nbsp;
-                        i.fa.fa-angle-left
-        .navbar-collapse.collapse
-            ul.nav.navbar-nav.navbar-right
-                li.l-nav-feedback
-                    a.is-pointer#feedback(href="http://forums.encounterbuilder.com" target="_blank" data-toggle='popover', ng-controller='FeedbackController') Got any feedback? Head to our forums!
+        .l-xs-nomargin
+            .navbar-header
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a.t-title.is-pointer.sp-menu-toggle(ng-click='toggleSidebar()')
+                            i.fa.fa-file-o
+                            | &nbsp;
+                            i.fa.fa-angle-left
+            .navbar-collapse.collapse
+                ul.nav.navbar-nav.navbar-right
+                    li.l-nav-feedback
+                        a.is-pointer#feedback(href="http://forums.encounterbuilder.com" target="_blank" data-toggle='popover', ng-controller='FeedbackController') Got any feedback? Head to our forums!
 
-                li.dropdown(ng-controller='LogoutController')
-                    a#user-dropdown.dropdown-toggle.is-pointer(role='button', data-toggle='dropdown')
-                        i.icon.fa.fa-user
-                        | &nbsp;{{user.username}}&nbsp;
-                        b.caret
-                    ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
-                        li
-                            a.is-pointer(tabindex='-1',data-target='#profile-modal', role='button', data-toggle='modal')
-                                | Edit Profile
-                        li.divider
-                        li
-                            a#user-dropdown-logout.is-pointer(tabindex='-1', ng-click='logout()')
-                                | Log out
-include _edit_profile
+                    li.dropdown(ng-controller='LogoutController')
+                        a#user-dropdown.dropdown-toggle.is-pointer(role='button', data-toggle='dropdown')
+                            i.icon.fa.fa-user
+                            | &nbsp;{{user.username}}&nbsp;
+                            b.caret
+                        ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
+                            li
+                                a.is-pointer(tabindex='-1',data-target='#profile-modal', role='button', data-toggle='modal')
+                                    | Edit Profile
+                            li.divider
+                            li
+                                a#user-dropdown-logout.is-pointer(tabindex='-1', ng-click='logout()')
+                                    | Log out
+        include _edit_profile

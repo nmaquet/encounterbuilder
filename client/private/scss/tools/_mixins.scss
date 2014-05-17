@@ -423,6 +423,10 @@ $prefix-for-spec:      true !default;
   cursor: pointer;
 }
 
+@mixin no-select-text() {
+  @include prefixer(user-select, none, webkit moz ms o spec);
+}
+
 @mixin no-underline() {
   text-decoration: none;
 }
