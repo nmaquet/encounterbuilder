@@ -12,7 +12,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', funct
             var body = $($document[0].body);
             // Substract the Header height from the Slide-Push Menu
             var $spMenuContent = element.find(".sp-menu-content");
-            var spMenuHeight = $(window).height() - $(".l-header").height();
+            var spMenuHeight = $(window).height() - $(".navbar-wrapper").height();
 
             scope.$watch("slide", function () {
                 if (scope.slide) {
