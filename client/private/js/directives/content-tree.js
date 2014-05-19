@@ -19,6 +19,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         } else if (node.folder) {
                             selectedBinderService.selectedBinder(makeBinder(node));
                             selectedContentTypeService.selectedContentType("binder");
+                            contentTreeService.updateBinderLeaves(node.getChildren());
                         }
                     });
 
@@ -120,7 +121,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 var tree;
                 contentTreeService.register({newBinder: onNewBinder, removeBinder: onRemoveBinder, binderChanged: onBinderChanged});
                 contentTreeService.onLoadSuccess(function () {
-                    console.log("contentTreeService.onLoadSuccess");
                     element.fancytree({
                         extensions: ["dnd"],
                         source: contentTreeService.contentTree(),
@@ -159,6 +159,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     });
 
                     tree = element.fancytree("getTree");
+                    tree.getFirstChild().setActive(true);
                 });
                 encounterService.onNewEncounterSuccess(onNewEncounter)
                 encounterService.onEncounterChanged(onEncounterChanged);

@@ -27,7 +27,7 @@ section.sp-menu.sp-menu-vertical.sp-menu-left(slide-menu="openSidebar", ng-contr
                 a.is-pointer(ng-click="createFirstEncounter()")
                     | create one
                 | .
-        .col-xxs-12.col-xs-12.col-sm-4.col-lg-3.l-app-content.l-encounter-well-container(ng-show="contentType === 'binder'")
+        .col-xxs-12.col-xs-12.col-sm-12.col-lg-12.l-app-content.l-encounter-well-container(ng-show="contentType === 'binder'")
             .l-section.col-sm-12.encounter-well.gradient.l-shadow(ng-controller='BinderController', fade-in-fade-out="startFade")
                 include _binder
         .col-xxs-12.col-xs-12.col-sm-4.col-lg-3.l-app-content.l-encounter-well-container(ng-show="contentType === 'encounter'")

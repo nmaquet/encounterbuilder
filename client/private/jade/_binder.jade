@@ -7,3 +7,6 @@ div.binder
                         | &#10008;
             h3.t-title.t-binder-title
                 span.binder-name.is-pointer(click-to-edit='binder.Name', on-save="binderChanged()")
+    div(ng-repeat='encounter in leaves',ng-show="contentType === 'binder'")
+        .l-section.col-sm-3.encounter-well.gradient.l-shadow
+            include _encounter

@@ -135,5 +135,27 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 });
         };
 
+        service.getMultiple= function (ids, callback) {
+            function pushTask(id) {
+                tasks.push(function (taskCallback) {
+                        $http.get('/api/encounter/' + id)
+                            .success(function (data) {
+                                taskCallback(null, data.encounter);
+                            })
+                            .error(function (error) {
+                                taskCallback(error, null);
+                            });
+                    }
+                );
+            }
+            var tasks = [];
+            for (var i in ids) {
+                pushTask(ids[i]);
+            }
+            window.async.parallel(tasks, function (error, results) {
+                callback(error, results);
+            });
+        };
+
         return service;
     }]);

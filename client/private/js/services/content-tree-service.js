@@ -6,6 +6,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
         var NEW_ENCOUNTER = 'newEncounter';
         var NEW_BINDER = 'newBinder';
         var BINDER_CHANGED = 'binderChanged';
+        var LEAVES_CHANGED = 'leavesChanged';
         var REMOVE_BINDER = 'removeBinder';
         var LOAD_SUCCESS = "contentTreeLoaded";
 
@@ -47,6 +48,11 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             $rootScope.$on(REMOVE_BINDER, callbacks[REMOVE_BINDER]);
         };
 
+        service.onLeavesChange = function (callback) {
+            $rootScope.$on(LEAVES_CHANGED, callback);
+        };
+
+
         service.binderChanged = function (binder) {
             $rootScope.$emit(BINDER_CHANGED, binder);
         };
@@ -62,7 +68,24 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                 .error(function (error) {
                     console.log(error);
                 });
-        }
+        };
+
+        service.updateBinderLeaves = function (leaves) {
+            var ids = [];
+            for (var i in leaves) {
+                if (leaves[i].data.encounterId) {
+                    ids.push(leaves[i].data.encounterId);
+                }
+            }
+            encounterService.getMultiple(ids, function (error, encounters) {
+                if (error) {
+                    console.log(error);
+                }
+                else {
+                    $rootScope.$emit(LEAVES_CHANGED, encounters);
+                }
+            });
+        };
 
         return service;
     }]);

@@ -6,6 +6,7 @@ div.encounter
                     i.icon.icon-remove
                         | &#10008;
             h3.t-title.t-encounter-title
+                | {{encounter.Name}}
                 span.encounter-name.is-pointer(click-to-edit='encounter.Name', on-save="encounterChanged()")
         .col-sm-12
             span#encounter-cr.pull-right
