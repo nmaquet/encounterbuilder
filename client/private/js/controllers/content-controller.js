@@ -9,9 +9,5 @@ DEMONSQUID.encounterBuilderControllers.controller('ContentController', ['$scope'
         $scope.toggleSidebar = function () {
             $scope.openSidebar = !$scope.openSidebar;
         };
-        $scope.leaves = [];
-        contentTreeService.onLeavesChange(function (event, leaves) {
-            $scope.leaves = leaves;
-        });
     }
 ]);
