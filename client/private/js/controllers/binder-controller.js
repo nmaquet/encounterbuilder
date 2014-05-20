@@ -1,7 +1,7 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('BinderController',
-    function ($scope, selectedBinderService, contentTreeService) {
+    function ($scope, selectedBinderService, contentTreeService, encounterService) {
 
         $scope.removeBinderMessage = "Are you sure ?";
         $scope.leaves = [];
@@ -17,13 +17,27 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
             }
         });
 
-        $scope.binderChanged = function () {
-            contentTreeService.binderChanged($scope.binder);
+        $scope.encounterChanged = function (encounter) {
+            if (encounter) {
+                encounterService.encounterChanged(encounter);
+            }
         };
 
-        $scope.removeBinder = function () {
+        $scope.removeEncounter = function (encounter) {
             $scope.startFade = function () {
-                contentTreeService.removeBinder($scope.binder);
+                var index = $scope.leaves.indexOf(encounter);
+                $scope.leaves.splice(index, 1);
+                encounterService.remove(encounter);
+            };
+        };
+
+        $scope.binderChanged = function (optBinder) {
+            contentTreeService.binderChanged((optBinder === undefined) ? $scope.binder : optBinder);
+        };
+
+        $scope.removeBinder = function (optBinder) {
+            $scope.startFade = function () {
+                contentTreeService.removeBinder((optBinder === undefined) ? $scope.binder : optBinder);
             };
         };
 
@@ -41,5 +55,5 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
 
 
     },
-    ['$scope', 'selectedBinderService', 'contentTreeService'
+    ['$scope', 'selectedBinderService', 'contentTreeService', 'encounterService'
     ]);
