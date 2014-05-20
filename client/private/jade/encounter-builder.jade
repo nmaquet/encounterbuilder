@@ -27,10 +27,10 @@ section.sp-menu.sp-menu-vertical.sp-menu-left(slide-menu="openSidebar", ng-contr
                 a.is-pointer(ng-click="createFirstEncounter()")
                     | create one
                 | .
-        .col-xxs-12.col-xs-12.col-sm-12.col-lg-12.l-app-content.l-encounter-well-container(ng-show="contentType === 'binder'")
-            .l-section.col-sm-12.encounter-well.gradient.l-shadow(ng-controller='BinderController', fade-in-fade-out="startFade")
+        .col-xxs-12.col-xs-12.col-sm-12.col-lg-12.l-app-content(ng-show="contentType === 'binder'")
+            .l-section.col-sm-12.encounter-binder-container.encounter-binder.l-shadow.l-binder-container(ng-controller='BinderController', fade-in-fade-out="startFade")
                 include _binder
-        .col-xxs-12.col-xs-12.col-sm-4.col-lg-3.l-app-content.l-encounter-well-container(ng-show="contentType === 'encounter'")
+        .col-xxs-12.col-xs-12.col-sm-4.col-lg-3.l-app-content(ng-show="contentType === 'encounter'")
             .l-section.col-sm-12.encounter-well.gradient.l-shadow(ng-controller='EncounterController', fade-in-fade-out="startFade")
                 include _encounter
         .col-xxs-12.col-xs-12.col-sm-8.col-lg-9.l-tabs-container(ng-controller='TabController', ng-show="contentType === 'encounter'")

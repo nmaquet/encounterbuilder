@@ -62,7 +62,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 function onEncounterChanged(event, encounter) {
                     tree.visit(function (node) {
                         if (node.data.encounterId && node.data.encounterId === encounter._id) {
-                            if (node.getTitle() !== encounter.Name) {
+                            if (node.title !== encounter.Name) {
                                 node.setTitle(encounter.Name);
                             }
                             //FIXME this saves every ecounter change to the tree (including monsters and stuffs)

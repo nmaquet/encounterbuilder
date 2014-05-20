@@ -71,6 +71,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
         };
 
         service.updateBinderLeaves = function (leaves) {
+            console.log(leaves);
             var ids = [];
             for (var i in leaves) {
                 if (leaves[i].data.encounterId) {
@@ -82,7 +83,22 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                     console.log(error);
                 }
                 else {
-                    $rootScope.$emit(LEAVES_CHANGED, encounters);
+                    var enrichedLeaves = [];
+                    for (var j in leaves) {
+                        if (leaves[j].folder) {
+                            enrichedLeaves.push({Name: leaves[j].title, nodeKey: leaves[j].key, descendantCount: leaves[j].countChildren(true), type: "binder"})
+                        }
+                        else if (leaves[j].data.encounterId) {
+                            for (var k in encounters) {
+                                if (encounters[k]._id === leaves[j].data.encounterId) {
+                                    enrichedLeaves.push(encounters[k]);
+                                    break;
+                                }
+                            }
+
+                        }
+                    }
+                    $rootScope.$emit(LEAVES_CHANGED, enrichedLeaves);
                 }
             });
         };

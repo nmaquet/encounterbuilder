@@ -126,3 +126,6 @@ $img-texture-2: url('../img/bg/bg_texture.png');
   @include gradient-linear-with-color-stop(left, top, bottom, $grey-light-3, white, 0%, 100%, 100% 100%, $pie:"false");
   //@include gradient-linear($grey-light-3, white, 100% 100%, $pie:"false");
 }
+@mixin gradient-transparent-white {
+  @include gradient-radial-multiple-image($img-texture-1, center 160px, circle closest-corner, rgba(255,255,255,0.1), rgba(255,255,255,0.2), 0%, 100%);
+}

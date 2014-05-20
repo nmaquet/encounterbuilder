@@ -16,7 +16,16 @@ body.teal {
       background-color: $brown-dark;
       @include gradient-grey-dark();
     }
+    // Binder
+    &.encounter-binder-container {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
   }
+  //.encounter-binder, .encounter-binder-container .encounter-well {
+  //  @include gradient-transparent-white;
+  //  background: rgba(255,255,255,0.1);
+  //}
   .l-search-tabs li { background-image: $img-texture-2; }
   .sidebar-nav {
     background-image: $img-texture-2;

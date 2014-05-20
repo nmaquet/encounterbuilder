@@ -1,0 +1,22 @@
+/* ==|====================
+   Module/Tree
+   ======================= */
+
+.leaves {
+  overflow: hidden;
+
+  .leaf {
+    max-width: 480px;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    @media (min-width: $screen-sm) {
+      min-height: 310px;
+      max-width: 100%;
+    }
+  }
+}
+
+.leaf {
+  overflow: hidden;
+  margin-bottom: ($grid-gutter-width/2);
+}
