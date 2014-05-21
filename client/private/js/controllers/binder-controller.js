@@ -1,6 +1,7 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('BinderController',
+    ['$scope', 'selectedBinderService', 'contentTreeService', 'encounterService', 'selectedEncounterService','selectedContentTypeService',
     function ($scope, selectedBinderService, contentTreeService, encounterService, selectedEncounterService,selectedContentTypeService) {
 
         $scope.removeBinderMessage = "Are you sure ?";
@@ -64,6 +65,5 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
         });
 
 
-    },
-    ['$scope', 'selectedBinderService', 'contentTreeService', 'encounterService', 'selectedEncounterService','selectedContentTypeService'
+    }
     ]);
