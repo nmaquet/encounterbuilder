@@ -38,10 +38,17 @@
   background-color: $popover-title-bg;
   border-bottom: 1px solid darken($popover-title-bg, 5%);
   border-radius: 5px 5px 0 0;
+  color:#000000;
 }
 
 .popover-content {
   padding: 9px 14px;
+}
+.feedback-content{
+  color:black;
+}
+.l-popover-feedback{
+  background-color: #ffffff !important;
 }
 
 // Arrows

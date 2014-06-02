@@ -13,7 +13,7 @@ DEMONSQUID.encounterBuilderControllers.controller('FeedbackController', ['$http'
                 };
                 var threeDays = 3;
                 $("#feedback").popover(popoverOptions);
-                var delay = 2 * 60 * 1000;
+                var delay = 2 * 60 * 1000 *0;
                 // FIXME: hack to know if we run in karma or not
                 if ($location.port() == 9877) {
                     delay = 0;

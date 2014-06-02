@@ -4,16 +4,16 @@ script.
         $('#feedback').popover('hide');
         $.cookie('neverShowFeedbackPopover', true, { expires: threeYears });
     }
-p.
+p.feedback-content
     We are currently in early Beta and we'd love to know what you think. <br/>
     Get involved and share your ideas! <br/>
     Thanks! <br/>
 p
-    a.is-pointer(onclick='$(\'#feedback\').popover(\'hide\')')
+    a.l-popover-feedback.is-pointer(onclick='$(\'#feedback\').popover(\'hide\')')
         small(style="color:#9d1a00;") Remind me later
 
     | &nbsp;
     | &nbsp;
 
-    a.is-pointer(onclick='DEMONSQUID.closeFeedbackForever()')
+    a.l-popover-feedback.is-pointer(onclick='DEMONSQUID.closeFeedbackForever()')
         small(style="color:#9d1a00;") Don't show this again
