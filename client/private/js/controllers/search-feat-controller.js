@@ -13,6 +13,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
             $scope.maxSize = 5;
 
             $scope.feats = [];
+            $scope.refreshingFeats = false;
 
             if ($routeParams.featId) {
                 $timeout(function () {
@@ -22,6 +23,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
             }
 
             function refreshFeats() {
+                $scope.refreshingFeats = true;
                 var params = {
                     nameSubstring: $scope.featNameSubstring,
                     type: $scope.type,
@@ -36,6 +38,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
                         $scope.feats = data.feats;
                         $scope.totalItems = data.count;
                     }
+                    $scope.refreshingFeats = false;
                 });
             }
 

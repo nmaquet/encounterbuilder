@@ -16,6 +16,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
             $scope.maxSize = 5;
 
             $scope.spells = [];
+            $scope.refreshingSpells = false;
 
             if ($routeParams.spellId) {
                 $timeout(function () {
@@ -26,6 +27,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
 
 
             function refreshSpells() {
+                $scope.refreshingSpells = true;
                 var params = {
                     nameSubstring: $scope.spellNameSubstring,
                     class: $scope.class,
@@ -43,6 +45,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
                         $scope.spells = data.spells;
                         $scope.totalSpells = data.count;
                     }
+                    $scope.refreshingSpells = false;
                 });
             }
 

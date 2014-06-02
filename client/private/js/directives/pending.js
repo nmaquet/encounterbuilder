@@ -3,7 +3,7 @@
 DEMONSQUID.encounterBuilderDirectives.directive('pending',
     function () {
         var template =
-            '<div id="floatingCirclesGroup" class="hidden">' +
+            '<div id="floatingCirclesG" class="hidden">' +
             '     <div class="f_circleG" id="frotateG_01"></div>' +
             '     <div class="f_circleG" id="frotateG_02"></div>' +
             '     <div class="f_circleG" id="frotateG_03"></div>' +
@@ -23,10 +23,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('pending',
                 return function (scope, element) {
                     scope.$watch("isPending", function () {
                         if (scope.isPending) {
-                            element.find("#floatingCirclesGroup").removeClass("hidden");
+                            element.find("#floatingCirclesG").removeClass("hidden");
                             element.addClass("is-dimmed");
                         } else {
-                            element.find("#floatingCirclesGroup").addClass("hidden");
+                            element.find("#floatingCirclesG").addClass("hidden");
                             element.removeClass("is-dimmed");
                         }
                     });

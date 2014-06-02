@@ -19,6 +19,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
         $scope.maxCL = 20;
 
         $scope.items = [];
+        $scope.refreshingItems = false;
 
         if ($routeParams.itemId) {
             $timeout(function () {
@@ -27,6 +28,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
             });
         }
         function refreshItems() {
+            $scope.refreshingItems = true;
             var params = {
                 nameSubstring: $scope.itemNameSubstring,
                 sortOrder: $scope.sortOrder,
@@ -46,6 +48,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
                     $scope.items = data.magicItems;
                     $scope.totalItems = data.count;
                 }
+                $scope.refreshingItems = false;
             });
         }
 

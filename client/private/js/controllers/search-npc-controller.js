@@ -14,6 +14,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             $scope.itemsPerPage = 15;
             $scope.maxSize = 5;
             $scope.listTimestamp = 0;
+            $scope.refreshingNpcs = false;
 
             if ($routeParams.npcId) {
                 $timeout(function () {
@@ -54,6 +55,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
 
 
             $scope.refreshNpcs = function () {
+                $scope.refreshingNpcs = true;
                 var params = {
                     nameSubstring: $scope.nameSubstring,
                     sortBy: $scope.sortBy,
@@ -73,6 +75,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                             $scope.listTimestamp = data.timestamp;
                         }
                     }
+                    $scope.refreshingNpcs = false;
                 });
             };
 
