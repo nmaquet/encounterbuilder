@@ -69,33 +69,33 @@ section.sp-menu.sp-menu-vertical.sp-menu-left(slide-menu="openSidebar", ng-contr
                     include _monster-details
             .l-tab-content.l-tab-npcs(ng-show="selectedTab === 'npcs'")
                 .col-sm-6.col-md-5.col-lg-4.l-app-content.l-filters.l-filters-npcs(ng-controller='SearchNpcController')
-                    .l-section.sidebar-nav.l-shadow
+                    .row.l-section.sidebar-nav.l-shadow
                         include _npc-filters
-                    .l-section.result-list.l-shadow(pending="refreshingNpcs")
+                    .row.l-section.result-list.l-shadow(pending="refreshingNpcs")
                         include _npc-list
                 .col-sm-6.col-md-7.col-lg-8.l-app-content.l-section.l-shadow.search-result(ng-controller='NpcDetailController', pending="pending")
                     include _npc-details
             .l-tab-content.l-tab-items(ng-show="selectedTab === 'items'")
                 .col-sm-6.col-md-5.col-lg-4.l-app-content.l-filters.l-filters-items(ng-controller='SearchItemController')
-                    .l-section.sidebar-nav.l-shadow
+                    .row.l-section.sidebar-nav.l-shadow
                         include _item-filters
-                    .l-section.result-list.l-shadow(pending="refreshingItems")
+                    .row.l-section.result-list.l-shadow(pending="refreshingItems")
                         include _item-list
                 .col-sm-6.col-md-7.col-lg-8.l-app-content.l-section.l-shadow.search-result(ng-controller='ItemDetailsController', pending="pending")
                     include _item-details
             .l-tab-content.l-tab-spells(ng-show="selectedTab === 'spells'")
                 .col-sm-6.col-md-5.col-lg-4.l-app-content.l-filters.l-filters-spells(ng-controller='SearchSpellController')
-                    .l-section.sidebar-nav.l-shadow
+                    .row.l-section.sidebar-nav.l-shadow
                         include _spell-filters
-                    .l-section.result-list.l-shadow(pending="refreshingSpells")
+                    .row.l-section.result-list.l-shadow(pending="refreshingSpells")
                         include _spell-list
                 #spell-details.col-sm-6.col-md-7.col-lg-8.l-app-content.l-section.l-shadow.search-result(ng-controller='SpellDetailsController', pending="pending")
                     include _spell-details
             .l-tab-content.l-tab-feats(ng-show="selectedTab === 'feats'")
                 .col-sm-6.col-md-5.col-lg-4.l-app-content.l-filters.l-filters-feats(ng-controller='SearchFeatController')
-                    .l-section.sidebar-nav.l-shadow
+                    .row.l-section.sidebar-nav.l-shadow
                         include _feat-filters
-                    .l-section.result-list.l-shadow(pending="refreshingFeats")
+                    .row.l-section.result-list.l-shadow(pending="refreshingFeats")
                         include _feat-list
                 .col-sm-6.col-md-7.col-lg-8.l-app-content.l-section.l-shadow.search-result(ng-controller='FeatDetailsController', pending="pending")
                     include _feat-details
