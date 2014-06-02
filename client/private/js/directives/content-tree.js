@@ -72,6 +72,31 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
                 }
 
+                function onSelectedEncounterChanged(event) {
+                    var encounter = selectedEncounterService.selectedEncounter();
+                    if (tree) {
+                        tree.visit(function (node) {
+                            if (node.data.encounterId && node.data.encounterId === encounter._id) {
+                                node.setActive(true);
+                                return false;//stop iteration
+                            }
+                        });
+                    }
+
+                }
+                function onSelectedBinderChanged(event) {
+                    var binder = selectedBinderService.selectedBinder();
+                    if (tree) {
+                        tree.visit(function (node) {
+                            if (node.key && node.key === binder.nodeKey) {
+                                node.setActive(true);
+                                return false;//stop iteration
+                            }
+                        });
+                    }
+
+                }
+
                 function onEncounterRemoved(event, encounter) {
                     var toRemove;
                     tree.visit(function (node) {
@@ -169,9 +194,11 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 else {
                     contentTreeService.onLoadSuccess(initTree);
                 }
-                encounterService.onNewEncounterSuccess(onNewEncounter)
+                encounterService.onNewEncounterSuccess(onNewEncounter);
                 encounterService.onEncounterChanged(onEncounterChanged);
                 encounterService.onEncounterRemoved(onEncounterRemoved);
+                selectedEncounterService.register(onSelectedEncounterChanged);
+                selectedBinderService.register(onSelectedBinderChanged);
             }
 
             return {
