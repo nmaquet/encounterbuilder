@@ -26,6 +26,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', funct
                 // so that it's scrollable indenpendently of the rest of the body
                 $spMenuContent.height(spMenuHeight);
                 $(window).resize(function() {
+                    spMenuHeight = $(window).height() - $(".navbar-wrapper").height();
                     $spMenuContent.height(spMenuHeight);
                 });
             });
