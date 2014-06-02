@@ -63,7 +63,7 @@ section.sp-menu.sp-menu-vertical.sp-menu-left(slide-menu="openSidebar", ng-contr
                 .col-sm-6.col-md-5.col-lg-4.l-app-content.l-filters.l-filters-monsters(ng-controller='SearchMonsterController')
                     .row.l-section.sidebar-nav.l-shadow
                         include _monster-filters
-                    .row.l-section.result-list.l-shadow
+                    .row.l-section.result-list.l-shadow(pending="refreshingMonsters")
                         include _monster-list
                 .col-sm-6.col-md-7.col-lg-8.l-app-content.l-section.l-shadow.search-result(ng-controller='MonsterDetailController', pending="pending")
                     include _monster-details

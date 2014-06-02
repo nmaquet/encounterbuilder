@@ -19,6 +19,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             $scope.nameSubstring = '';
             $scope.orderProp = 'name';
             $scope.type = 'any';
+            $scope.refreshingMonsters = false;
 
             $scope.$watchCollection("[orderProp, type, currentPage]", function () {
                 if ($scope.currentPage < 9) {
@@ -50,6 +51,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             });
 
             $scope.refreshMonsters = function () {
+                $scope.refreshingMonsters = true;
                 var params = {
                     nameSubstring: $scope.nameSubstring,
                     order: $scope.orderProp,
@@ -69,6 +71,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                             $scope.listTimestamp = data.timestamp;
                         }
                     }
+                    $scope.refreshingMonsters = false;
                 });
             };
 
