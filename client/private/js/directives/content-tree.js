@@ -120,7 +120,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
                 var tree;
                 contentTreeService.register({newBinder: onNewBinder, removeBinder: onRemoveBinder, binderChanged: onBinderChanged});
-                contentTreeService.onLoadSuccess(function () {
+
+                function initTree() {
                     element.fancytree({
                         extensions: ["dnd"],
                         source: contentTreeService.contentTree(),
@@ -160,7 +161,14 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
                     tree = element.fancytree("getTree");
                     tree.getFirstChild().setActive(true);
-                });
+                }
+
+                if (contentTreeService.contentTree()) {
+                    initTree();
+                }
+                else {
+                    contentTreeService.onLoadSuccess(initTree);
+                }
                 encounterService.onNewEncounterSuccess(onNewEncounter)
                 encounterService.onEncounterChanged(onEncounterChanged);
                 encounterService.onEncounterRemoved(onEncounterRemoved);

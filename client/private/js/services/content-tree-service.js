@@ -11,7 +11,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
         var LOAD_SUCCESS = "contentTreeLoaded";
 
         var service = {};
-        var contentTree = [];
+        var contentTree = null;
 
         $http.post('/api/user-data')
             .success(function (userData) {
