@@ -70,7 +70,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify',
                                     id += "-mythic";
                                 }
                                 var clickHandler = types[typesArray[i]].selectFunctionName + '(\'' + id + '\')';
-                                parts.push('<a class="pointer" ng-click="' + clickHandler + '">' + match[0] + '</a>');
+                                parts.push('<a class="is-pointer" ng-click="' + clickHandler + '">' + match[0] + '</a>');
                             }
                             parts.push(value.slice(position));
                             value = parts.join("");
