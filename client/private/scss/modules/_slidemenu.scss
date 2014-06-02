@@ -27,9 +27,8 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
 /* Trigger button */
 .navbar-container {
   @include transition(all .3s ease);
-  .spm-open & {
-    padding-left: 240px;
-  }
+  .spm-open-left & { padding-left: 240px; }
+  .spm-open-right & { padding-right: 240px; }
 }
 // Align icons and text vertically in the header
 .sp-menu-toggle {

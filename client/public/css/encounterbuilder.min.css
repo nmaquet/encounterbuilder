@@ -8152,8 +8152,11 @@ table.fancytree-ext-columnview span.fancytree-node.fancytree-active {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.spm-open .navbar-container {
+.spm-open-left .navbar-container {
   padding-left: 240px;
+}
+.spm-open-right .navbar-container {
+  padding-right: 240px;
 }
 
 .sp-menu-toggle {

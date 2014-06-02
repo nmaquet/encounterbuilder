@@ -16,10 +16,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', funct
 
             scope.$watch("slide", function () {
                 if (scope.slide) {
-                    body.addClass("spm-open");
+                    body.addClass("spm-open spm-open-left spm-open-right");
                     element.addClass("sp-menu-open");
                 } else {
-                    body.removeClass("spm-open");
+                    body.removeClass("spm-open spm-open-left spm-open-right");
                     element.removeClass("sp-menu-open");
                 }
                 // Force Maximum height on the vertical Slide-Push Menu,
