@@ -1,6 +1,6 @@
 #profile-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='profile_modal-label',aria-hidden='true',ng-controller="ProfileController")
-    .modal-dialog
-        .modal-content.modal-lg
+    .modal-dialog.modal-lg
+        .modal-content
             .modal-header
                 button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
                 h3#profile_modal-label Edit Profile
@@ -12,21 +12,17 @@
                         legend Edit user details
                         form
                             .form-group
-                                label.col-md-8.control-label(for='current_password') User Name
-                                .controls
-                                    input.form-control.input-md(type='text', ng-model="username", name='username',required='')
+                                label.control-label(for='current_password') User Name
+                                input.form-control.input-md(type='text', ng-model="username", name='username',required='')
                             .form-group
-                                label.col-md-8.control-label(for='new_password') Email
-                                .controls
-                                    input#email.form-control.input-md(type='email', name='email',required='', ng-model="email")
+                                label.control-label(for='new_password') Email
+                                input#email.form-control.input-md(type='email', name='email',required='', ng-model="email")
                             .form-group
-                                label.col-md-8.control-label(for='confirm_password') Full Name
-                                .controls
-                                    input.form-control.input-md(type='text', name='fullname', ng-model="fullname")
+                                label.control-label(for='confirm_password') Full Name
+                                input.form-control.input-md(type='text', name='fullname', ng-model="fullname")
                             .form-group
-                                label.col-md-8.control-label(for='confirm_password') Confirm your password
-                                .controls
-                                    input.form-control.input-md(type='password', name='password', ng-model="confirmedPassword")
+                                label.control-label(for='confirm_password') Confirm your password
+                                input.form-control.input-md(type='password', name='password', ng-model="confirmedPassword")
                             .form-group
                                 button.btn.btn-primary.pull-left(type="submit", ng-click="changeUserData()", ng-disabled="!confirmedPassword || !username || !email") Save changes
                     br.visible-xs
@@ -34,17 +30,14 @@
                         legend Change password
                         form
                             .form-group
-                                label.col-md-8.control-label(for='current_password') Current Password
-                                .controls
-                                    input.form-control.input-md(type='password',ng-model="oldPassword", name='current_password')
+                                label.control-label(for='current_password') Current Password
+                                input.form-control.input-md(type='password',ng-model="oldPassword", name='current_password')
                             .form-group
-                                label.col-md-8.control-label(for='new_password') New Password
-                                .controls
-                                    input.form-control.input-md(type='password', name='new_password', ng-model="newPassword1")
+                                label.control-label(for='new_password') New Password
+                                input.form-control.input-md(type='password', name='new_password', ng-model="newPassword1")
                             .form-group
-                                label.col-md-8.control-label(for='confirm_password') Confirm Password
-                                .controls
-                                    input.form-control.input-md(type='password', name='confirm_password', ng-model="newPassword2")
+                                label.control-label(for='confirm_password') Confirm Password
+                                input.form-control.input-md(type='password', name='confirm_password', ng-model="newPassword2")
                             .form-group
                                 button.btn.btn-primary.pull-left(type="submit", ng-click="changePassword()", ng-disabled="!oldPassword || !newPassword1 || !newPassword2") Change Password
             .modal-footer
