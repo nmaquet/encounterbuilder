@@ -233,10 +233,15 @@ function generateEncounterNPCLoot(encounter, speed) {
 
 function generateEncounterLoot(encounter, speed) {
     var nonNPCBudget = calculateNonNPCLootValue(encounter, speed);
-    var loot = generateEncounterNonNPCLoot(nonNPCBudget,  diceService.chooseOne(getAllowedLootTypeForEncounter(nonNPCBudget, encounter)));
-    var npcLoot = generateEncounterNPCLoot(encounter, speed);
-    accumulateLoot(loot, npcLoot);
-    return loot;
+    var nonNPCBudgetTypes = getAllowedLootTypeForEncounter(nonNPCBudget, encounter);
+    if (nonNPCBudgetTypes.length > 0) {
+        var loot = generateEncounterNonNPCLoot(nonNPCBudget,  diceService.chooseOne());
+        var npcLoot = generateEncounterNPCLoot(encounter, speed);
+        accumulateLoot(loot, npcLoot);
+        return loot
+    } else {
+        return generateEncounterNPCLoot(encounter, speed);
+    }
 };
 
 function generateTypeALoot(budget) {
