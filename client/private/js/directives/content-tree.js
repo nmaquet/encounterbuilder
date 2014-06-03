@@ -86,7 +86,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 }
                 function onSelectedBinderChanged(event) {
                     var binder = selectedBinderService.selectedBinder();
-                    if (tree) {
+                    if (tree && binder) {
                         tree.visit(function (node) {
                             if (node.key && node.key === binder.nodeKey) {
                                 node.setActive(true);
@@ -112,12 +112,14 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 }
 
                 function onBinderChanged(event, binder) {
-                    tree.visit(function (node) {
-                        if (node.key === binder.nodeKey) {
-                            node.setTitle(binder.Name);
-                        }
-                    });
-                    contentTreeService.treeChanged(tree.toDict());
+                    if (binder) {
+                        tree.visit(function (node) {
+                            if (node.key === binder.nodeKey) {
+                                node.setTitle(binder.Name);
+                            }
+                        });
+                        contentTreeService.treeChanged(tree.toDict());
+                    }
                 }
 
                 function onRemoveBinder(event, binder) {
@@ -194,6 +196,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 else {
                     contentTreeService.onLoadSuccess(initTree);
                 }
+
                 encounterService.onNewEncounterSuccess(onNewEncounter);
                 encounterService.onEncounterChanged(onEncounterChanged);
                 encounterService.onEncounterRemoved(onEncounterRemoved);

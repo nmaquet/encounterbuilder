@@ -8,7 +8,7 @@
             span.binder-name.is-pointer(click-to-edit='binder.Name', on-save="binderChanged()")
 
     .encounter-dropdown-container
-        article.col-sm-6.col-md-4.col-lg-3.leaf(ng-repeat='leaf in leaves',ng-show="contentType === 'binder'",ng-click="selectLeaf(leaf)")
+        article.col-sm-6.col-md-4.col-lg-3.leaf(ng-repeat='leaf in leaves',ng-show="contentType === 'binder'")
             .l-section.encounter-well.gradient.l-shadow(ng-hide="'binder' === leaf.type")
                 include _encounter-ro
             .l-section.encounter-well.gradient.l-shadow(ng-show="'binder' === leaf.type")
@@ -19,4 +19,5 @@
                                 i.icon.icon-remove
                                     | &#10008;
                         h3.t-title.t-binder-title
-                            span.binder-name.is-pointer(click-to-edit='leaf.Name', on-save="binderChanged(leaf)")
+                            a.binder-name.is-pointer(ng-click="selectLeaf(leaf)")
+                                | {{leaf.Name}}

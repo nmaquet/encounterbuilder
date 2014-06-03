@@ -5,7 +5,8 @@ div.encounter
                 i.icon.icon-remove
                     | &#10008;
         h3.ect-title.t-title.t-encounter-title
-            span.encounter-name.is-pointer(click-to-edit='leaf.Name', on-save="encounterChanged(leaf)")
+            a.encounter-name.is-pointer(ng-click="selectLeaf(leaf)")
+                | {{leaf.Name}}
         .ect-xp
             span#encounter-cr.pull-right
                 strong CR&nbsp;
@@ -13,10 +14,6 @@ div.encounter
             span#encounter-xp.pull-left
                 strong XP&nbsp;
                 | {{leaf.xp | number}}
-        .ect-print.pull-right
-            a.is-pointer.print-encounter(ng-click="printSelectedEncounter(leaf)")
-                i.icon.fa.fa-print
-                    | &nbsp;
 
     .content.content-monsters.col-sm-12
         legend.t-legend

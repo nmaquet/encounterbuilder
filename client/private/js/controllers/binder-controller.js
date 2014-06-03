@@ -27,6 +27,7 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
         $scope.selectLeaf = function (leaf) {
             if (leaf.type === 'binder') {
                 selectedBinderService.selectedBinder(leaf);
+                selectedContentTypeService.selectedContentType("binder");
             }
             else {
                 selectedEncounterService.selectedEncounter(leaf);
@@ -63,7 +64,5 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
         contentTreeService.onLeavesChange(function (event, leaves) {
             $scope.leaves = leaves;
         });
-
-
     }
     ]);
