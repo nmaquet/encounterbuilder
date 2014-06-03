@@ -235,7 +235,7 @@ function generateEncounterLoot(encounter, speed) {
     var nonNPCBudget = calculateNonNPCLootValue(encounter, speed);
     var nonNPCBudgetTypes = getAllowedLootTypeForEncounter(nonNPCBudget, encounter);
     if (nonNPCBudgetTypes.length > 0) {
-        var loot = generateEncounterNonNPCLoot(nonNPCBudget,  diceService.chooseOne());
+        var loot = generateEncounterNonNPCLoot(nonNPCBudget,  diceService.chooseOne(nonNPCBudgetTypes));
         var npcLoot = generateEncounterNPCLoot(encounter, speed);
         accumulateLoot(loot, npcLoot);
         return loot
