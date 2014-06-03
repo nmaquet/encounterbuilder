@@ -11,6 +11,7 @@ div[ng-view='ng-view'] {
   min-height: 100%;
   //overflow-x: hidden;
   position: relative;
+  padding-top: 50px; //header height
 }
 
 /*[class*="col-"].no-padding-left {

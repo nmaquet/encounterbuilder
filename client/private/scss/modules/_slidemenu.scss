@@ -31,6 +31,9 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
   .spm-open-right & { padding-right: 240px; }
 }
 // Align icons and text vertically in the header
+.sp-menu-toggle-container {
+  display: inline-block;
+}
 .sp-menu-toggle {
   display: table !important;
   height: 50px;

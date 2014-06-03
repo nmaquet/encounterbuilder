@@ -29,7 +29,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit',
             compile: function (element, attrs) {
                 attrs.displayClass = attrs.displayClass || 't-underline-dotted';
                 attrs.editClass = attrs.editClass || 't-underline-dotted';
-                attrs.iconClass = attrs.iconClass || 'icon icon-edit fa fa-edit pull-right';
+                attrs.iconClass = attrs.iconClass || 'icon icon-edit fa fa-edit';
             },
             controller: [ '$scope', '$element', function ($scope, $element) {
 

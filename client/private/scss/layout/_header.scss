@@ -3,6 +3,9 @@
    ======================= */
 
 .l-header {
+  .navbar-nav { display: inline-block; }
+  .navbar-left { float: left; }
+  .navbar-right { float: right; }
 }
 
 //.l-navbar-header {

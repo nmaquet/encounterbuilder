@@ -1,6 +1,49 @@
 .navbar.navbar-default.navbar-red.no-radius.navbar-fixed-top(role='navigation')
     .navbar-container
-        .navbar-header
+        ul.nav.navbar-nav.navbar-left.sp-menu-toggle-container
+            li
+                a.t-title.is-pointer.sp-menu-toggle(ng-click='toggleLeftSidebar()')
+                    i.fa.fa-folder-open
+                    | &nbsp;
+                    i.fa.fa-angle-left
+                    | &nbsp;
+                    span.sp-menu-left-toggle-text.hidden-xs Content
+
+        ul.nav.navbar-nav.navbar-right.sp-menu-toggle-container
+            li
+                a.t-title.is-pointer.sp-menu-toggle(ng-click='toggleRightSidebar()')
+                    i.fa.fa-angle-right
+                    | &nbsp;
+                    i.fa.fa-book
+                    | &nbsp;
+                    span.sp-menu-right-toggle-text.hidden-xs Database
+
+        ul.nav.navbar-nav.navbar-right
+            li.l-nav-social.visible-lg
+                a(href='https://www.facebook.com/EncounterBuilder', target='_blank', title='Like us on Facebook')
+                    i.icon.square.fa.fa-facebook
+                a(href='https://twitter.com/buildEncounters', target='_blank', title='Follow us on Twitter')
+                    i.icon.square.fa.fa-twitter
+                a(href='https://plus.google.com/100708201261690131120', target='_blank', title='Join us on Google+')
+                    i.icon.square.fa.fa-google-plus
+            li.l-nav-feedback.visible-lg
+                a.is-pointer#feedback(href="http://forums.encounterbuilder.com" target="_blank" data-toggle='popover', ng-controller='FeedbackController') Got any feedback? Head to our forums!
+            li.dropdown(ng-controller='LogoutController')
+                a#user-dropdown.dropdown-toggle.is-pointer(role='button', data-toggle='dropdown')
+                    i.icon.fa.fa-user
+                    | &nbsp;{{user.username}}&nbsp;
+                    b.caret
+                ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
+                    li
+                        a.is-pointer(tabindex='-1',data-target='#profile-modal', role='button', data-toggle='modal')
+                            | Edit Profile
+                    li.divider
+                    li
+                        a#user-dropdown-logout.is-pointer(tabindex='-1', ng-click='logout()')
+                            | Log out
+
+
+        //.navbar-header
             ul.nav.navbar-nav.navbar-right
                 li
                     a.t-title.is-pointer.sp-menu-toggle(ng-click='toggleLeftSidebar()')
@@ -9,7 +52,7 @@
                         i.fa.fa-angle-left
                         | &nbsp;
                         span.sp-menu-left-toggle-text.hidden-xs Content
-        .navbar-collapse.collapse
+        //.navbar-collapse.collapse
             ul.nav.navbar-nav.navbar-right
                 li.l-nav-social
                     a(href='https://www.facebook.com/EncounterBuilder', target='_blank', title='Like us on Facebook')

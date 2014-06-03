@@ -7,8 +7,8 @@
 
   .leaf {
     max-width: 480px;
-    margin-left: 0 auto;
-    margin-right: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     @media (min-width: $screen-sm) {
       min-height: 310px;
       max-width: 100%;

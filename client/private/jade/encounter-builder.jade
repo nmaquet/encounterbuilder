@@ -83,74 +83,24 @@ section.sp-menu.sp-menu-vertical.sp-menu-right(slide-menu="rightSidebarOpened", 
         .col-xxs-12.col-xs-12.col-sm-12.col-lg-12.l-app-content(ng-show="contentType === 'binder'")
             .l-section.col-sm-12.encounter-binder-container.encounter-binder.l-shadow.l-binder-container(ng-controller='BinderController', fade-in-fade-out="startFade")
                 include _binder
-        .col-xxs-12.col-xs-12.col-sm-4.col-lg-3.l-app-content(ng-show="contentType === 'encounter'")
+        .col-xxs-12.col-xs-12.col-sm-6.col-lg-6.l-app-content(ng-show="contentType === 'encounter'")
             .l-section.col-sm-12.encounter-well.gradient.l-shadow(ng-controller='EncounterController', fade-in-fade-out="startFade")
                 include _encounter
-        .col-xxs-12.col-xs-12.col-sm-8.col-lg-9.l-tabs-container(ng-controller='TabController', ng-show="contentType === 'encounter'")
-            ul.nav.nav-tabs.text-center#search-tabs.l-search-tabs
-                li.col-sixth.tab-1
-                    a#monstersTab.is-pointer(ng-click="showTab('monsters')", data-toggle="tab")
-                        i.icon.fa.fa-bug
-                        span.tab-name Monsters
-                li.col-sixth.tab-2
-                    a#npcTab.is-pointer(ng-click="showTab('npcs')", data-toggle="tab")
-                        i.icon.fa.fa-user
-                        span.tab-name NPCs
-                li.col-sixth.tab-3
-                    a#itemsTab.is-pointer(ng-click="showTab('items')", data-toggle="tab")
-                        i.icon.fa.fa-flask
-                        span.tab-name Items
-                li.col-sixth.tab-4
-                    a#spellsTab.is-pointer(ng-click="showTab('spells')", data-toggle="tab")
-                        i.icon.fa.fa-magic
-                        span.tab-name Spells
-                li.col-sixth.tab-5
-                    a#featsTab.is-pointer(ng-click="showTab('feats')", data-toggle="tab")
-                        i.icon.fa.fa-star
-                        span.tab-name Feats
-                //li.col-sixth.last.tab-6
-                    a#itemsTab.is-pointer(ng-click="showTab('items')", data-toggle="tab")
-                        i.icon.fa.fa-key
-                        span.tab-name Rules
+        .col-xxs-12.col-xs-12.col-sm-6.col-lg-6.l-tabs-container(ng-controller='TabController', ng-show="contentType === 'encounter'")
             .l-tab-content.l-tab-monsters(ng-show="selectedTab === 'monsters'")
-                .col-sm-6.col-md-5.col-lg-4.l-app-content.l-filters.l-filters-monsters(ng-controller='SearchMonsterController')
-                    .row.l-section.sidebar-nav.l-shadow
-                        include _monster-filters
-                    .row.l-section.result-list.l-shadow(pending="refreshingMonsters")
-                        include _monster-list
-                .col-sm-6.col-md-7.col-lg-8.l-app-content.l-section.l-shadow.search-result(ng-controller='MonsterDetailController', pending="pending")
+                .col-xs-12.l-app-content.l-section.l-shadow.search-result(ng-controller='MonsterDetailController', pending="pending")
                     include _monster-details
             .l-tab-content.l-tab-npcs(ng-show="selectedTab === 'npcs'")
-                .col-sm-6.col-md-5.col-lg-4.l-app-content.l-filters.l-filters-npcs(ng-controller='SearchNpcController')
-                    .row.l-section.sidebar-nav.l-shadow
-                        include _npc-filters
-                    .row.l-section.result-list.l-shadow(pending="refreshingNpcs")
-                        include _npc-list
-                .col-sm-6.col-md-7.col-lg-8.l-app-content.l-section.l-shadow.search-result(ng-controller='NpcDetailController', pending="pending")
+                .col-xs-12.l-app-content.l-section.l-shadow.search-result(ng-controller='NpcDetailController', pending="pending")
                     include _npc-details
             .l-tab-content.l-tab-items(ng-show="selectedTab === 'items'")
-                .col-sm-6.col-md-5.col-lg-4.l-app-content.l-filters.l-filters-items(ng-controller='SearchItemController')
-                    .row.l-section.sidebar-nav.l-shadow
-                        include _item-filters
-                    .row.l-section.result-list.l-shadow(pending="refreshingItems")
-                        include _item-list
-                .col-sm-6.col-md-7.col-lg-8.l-app-content.l-section.l-shadow.search-result(ng-controller='ItemDetailsController', pending="pending")
+                .col-xs-12.l-app-content.l-section.l-shadow.search-result(ng-controller='ItemDetailsController', pending="pending")
                     include _item-details
             .l-tab-content.l-tab-spells(ng-show="selectedTab === 'spells'")
-                .col-sm-6.col-md-5.col-lg-4.l-app-content.l-filters.l-filters-spells(ng-controller='SearchSpellController')
-                    .row.l-section.sidebar-nav.l-shadow
-                        include _spell-filters
-                    .row.l-section.result-list.l-shadow(pending="refreshingSpells")
-                        include _spell-list
-                #spell-details.col-sm-6.col-md-7.col-lg-8.l-app-content.l-section.l-shadow.search-result(ng-controller='SpellDetailsController', pending="pending")
+                .col-xs-12.l-app-content.l-section.l-shadow.search-result(ng-controller='SpellDetailsController', pending="pending")
                     include _spell-details
             .l-tab-content.l-tab-feats(ng-show="selectedTab === 'feats'")
-                .col-sm-6.col-md-5.col-lg-4.l-app-content.l-filters.l-filters-feats(ng-controller='SearchFeatController')
-                    .row.l-section.sidebar-nav.l-shadow
-                        include _feat-filters
-                    .row.l-section.result-list.l-shadow(pending="refreshingFeats")
-                        include _feat-list
-                .col-sm-6.col-md-7.col-lg-8.l-app-content.l-section.l-shadow.search-result(ng-controller='FeatDetailsController', pending="pending")
+                .col-xs-12.l-app-content.l-section.l-shadow.search-result(ng-controller='FeatDetailsController', pending="pending")
                     include _feat-details
 footer.l-footer
     include _footer
