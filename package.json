@@ -38,6 +38,7 @@
         "csvtojson"   : "*",
         "cheerio" :"*",
         "request":"*",
-        "fast-levenshtein" : "*"
+        "fast-levenshtein" : "*",
+        "node-sass" : "*"
       }
 }

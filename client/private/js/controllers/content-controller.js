@@ -2,12 +2,16 @@
 
 DEMONSQUID.encounterBuilderControllers.controller('ContentController', ['$scope', 'selectedContentTypeService', 'contentTreeService',
     function ($scope, selectedContentTypeService, contentTreeService) {
-        $scope.openSidebar = true;
+        $scope.leftSidebarOpened = true;
+        $scope.rightSidebarOpened = true;
         selectedContentTypeService.register(function () {
             $scope.contentType = selectedContentTypeService.selectedContentType();
         });
-        $scope.toggleSidebar = function () {
-            $scope.openSidebar = !$scope.openSidebar;
+        $scope.toggleLeftSidebar = function () {
+            $scope.leftSidebarOpened = !$scope.leftSidebarOpened;
+        };
+        $scope.toggleRightSidebar = function () {
+            $scope.rightSidebarOpened = !$scope.rightSidebarOpened;
         };
     }
 ]);

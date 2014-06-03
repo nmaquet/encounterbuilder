@@ -52,6 +52,36 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
   }
 }
 
+.sp-menu-left-toggle-text {
+  @include transition(all .3s ease);
+  @include opacity(1);
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  display: inline-block;
+  line-height: 1;
+  .spm-open-left & {
+    @include opacity(0);
+    width: 0;
+    height: 0;
+  }
+}
+
+.sp-menu-right-toggle-text {
+  @include transition(all .3s ease);
+  @include opacity(1);
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  display: inline-block;
+  line-height: 1;
+  .spm-open-right & {
+    @include opacity(0);
+    width: 0;
+    height: 0;
+  }
+}
+
 .sp-menu-header {
   min-height: 50px;
 }

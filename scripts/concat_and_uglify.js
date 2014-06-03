@@ -3,7 +3,7 @@ var EOL = '\n';
 
 var fs = require('fs');
 var uglify_js = require("uglify-js");
-
+var sass = require("node-sass");
 
 var jsFiles = [
     // Dependencies
@@ -75,6 +75,12 @@ var jsFiles = [
     "client/private/js/services/http-interceptor-service.js",
 ];
 
+var cssFiles = [
+    "client/private/css/app.css"
+];
+
+var sassRootFile = "client/private/scss/encounter-builder.scss";
+
 function concat(fileList, distPath) {
     var out = fileList.map(function (filePath) {
         return fs.readFileSync(filePath, FILE_ENCODING);
@@ -100,11 +106,30 @@ function uglify(srcPath, distPath) {
     console.log(' ' + distPath + ' built.');
 }
 
-var tempfile = "scripts/temp";
+function makeJS() {
+    var tempfile = "scripts/temp";
+    concat(jsFiles, tempfile);
+    uglify(tempfile, 'client/public/js/encounterbuilder.min.js');
+    fs.unlinkSync(tempfile);
+}
 
-concat(jsFiles, tempfile);
-uglify(tempfile, 'client/public/js/encounterbuilder.min.js');
+function makeCSS() {
+    var tempfile = "scripts/temp";
+    sass.renderFile({
+        file: sassRootFile,
+        outFile: tempfile,
+        success: function() {
+            cssFiles.push(tempfile);
+            concat(cssFiles, "client/public/css/encounterbuilder.min.css");
+            fs.unlinkSync(tempfile);
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+}
 
-fs.unlinkSync(tempfile);
+makeJS();
+makeCSS();
 
 console.log("done");

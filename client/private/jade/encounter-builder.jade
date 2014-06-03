@@ -1,6 +1,6 @@
 header.l-header
     include _header
-section.sp-menu.sp-menu-vertical.sp-menu-left(slide-menu="openSidebar", ng-controller='SidebarController')
+section.sp-menu.sp-menu-vertical.sp-menu-left(slide-menu="leftSidebarOpened", ng-controller='SidebarController')
     header.sp-menu-header
         .dropdown.encounter-dropdown-container.is-pointer
             a.encounter-dropdown.dropdown-toggle.col-xxs-12.col-xs-12(role='button', data-toggle='dropdown')
@@ -17,7 +17,7 @@ section.sp-menu.sp-menu-vertical.sp-menu-left(slide-menu="openSidebar", ng-contr
                         strong &nbsp;Create new binder
     .sp-menu-content
         content-tree
-section.sp-menu.sp-menu-vertical.sp-menu-right(slide-menu="openSidebar", ng-controller='TabController')
+section.sp-menu.sp-menu-vertical.sp-menu-right(slide-menu="rightSidebarOpened", ng-controller='TabController')
     .sp-menu-content
         ul.text-center.l-search-tabs.list-unstyled
             li.tab-1
