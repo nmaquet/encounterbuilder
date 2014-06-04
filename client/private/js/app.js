@@ -26,8 +26,8 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
         $httpProvider.interceptors.push('httpInterceptorService');
     }]);
 
-DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', '$window', '$routeParams', 'encounterService', 'selectedEncounterService',
-    function ($rootScope, $http, $location, $window, $routeParams, encounterService, selectedEncounterService) {
+DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', '$window',
+    function ($rootScope, $http, $location, $window) {
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
             if ($rootScope.user === undefined) {
                 $http.post('/api/user-data')

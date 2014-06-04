@@ -87,12 +87,15 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 });
         }
 
-        service.newEncounter = function (encounter) {
+        service.newEncounter = function (encounter, onSuccess) {
             $http.post('/api/upsert-encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response._id) {
                         encounter._id = response._id;
                         $rootScope.$emit(NEW_ENCOUNTER_SUCCESS, encounter);
+                        if (onSuccess) {
+                            onSuccess(encounter);
+                        }
                     }
                     if (response.error) {
                         console.log(error);

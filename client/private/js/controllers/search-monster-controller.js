@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
-    ['$scope', '$timeout', '$location', '$routeParams', 'monsterService', 'encounterService', 'selectedEncounterService',
-        function ($scope, $timeout, $location, $routeParams, monsterService, encounterService, selectedEncounterService) {
+    ['$scope', '$timeout', '$location', '$routeParams', 'monsterService', 'encounterService', 'encounterEditorService',
+        function ($scope, $timeout, $location, $routeParams, monsterService, encounterService, encounterEditorService) {
 
             $scope.nameSubstring = '';
             $scope.orderProp = 'name';
@@ -67,11 +67,11 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                 $location.path('/monster/' + id);
             };
 
-            $scope.addMonster = function (monster) {
+            function addMonsterToEditedEncounter(monster) {
                 if (!/^(\d+)$/.exec(monster.amountToAdd)) {
                     monster.amountToAdd = 1;
                 }
-                var encounter = selectedEncounterService.selectedEncounter();
+                var encounter = encounterEditorService.encounter;
                 if (!encounter.Monsters) {
                     encounter.Monsters = {};
                 }
@@ -93,6 +93,13 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                 }
                 delete monster.amountToAdd;
                 encounterService.encounterChanged(encounter);
+            }
+
+            $scope.addMonster = function (monster) {
+                if ($routeParams.encounterId) {
+                    addMonsterToEditedEncounter(monster);
+                }
+                // FIXME: binder
             };
 
             $scope.totalItems = 0;
@@ -102,9 +109,5 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             $scope.listTimestamp = 0;
             $scope.minCR = 0;
             $scope.maxCR = 40;
-
-            selectedEncounterService.register(function () {
-                $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
-            });
         }
     ]);

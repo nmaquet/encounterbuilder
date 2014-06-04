@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
-    ['$scope', '$location', '$timeout', 'encounterService', 'selectedEncounterService', 'lootService',
-        function ($scope, $location, $timeout, encounterService, selectedEncounterService, lootService) {
+    ['$scope', '$location', '$timeout', '$routeParams', 'encounterService', 'lootService',
+        function ($scope, $location, $timeout, $routeParams, encounterService, lootService) {
 
             $scope.encounterChanged = function () {
                 if ($scope.encounter) {
@@ -10,7 +10,15 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                 }
             };
 
-            $scope.encounter = undefined;
+            // FIXME: add pending directive to this
+            encounterService.get($routeParams.encounterId, function (error, encounter) {
+                if (error) {
+                    console.log(error);
+                }
+                else {
+                    $scope.encounter = encounter;
+                }
+            });
 
             $scope.selectMonsterById = function (id) {
                 $location.path('/monster/' + id);
@@ -29,7 +37,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                     var index = encounterService.encounters.indexOf($scope.encounter);
                     encounterService.encounters.splice(index, 1);
                     encounterService.remove($scope.encounter);
-                    selectedEncounterService.selectedEncounter(encounterService.encounters[0], true /* allow undefined */);
+                    $location.path("/"); // FIXME: should go to the parent binder ?
                 };
             };
 
@@ -85,14 +93,9 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                 $location.path('/print-encounter');
             };
 
-            selectedEncounterService.register(function () {
-                $scope.encounter = selectedEncounterService.selectedEncounter();
-            });
-
             $scope.createFirstEncounter = function () {
                 /* FIXME: this is duplicated with encounter-list-controller */
                 var encounter = { Name: "Untitled #0", CR: "0", Monsters: {}, coins: {pp: 0, gp: 0, sp: 0, cp: 0}};
-                selectedEncounterService.selectedEncounter(encounter);
                 encounterService.encounters.unshift(encounter);
                 encounterService.encounterChanged(encounter);
             };

@@ -1,7 +1,7 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope', '$timeout', '$http', 'encounterService', 'selectedEncounterService',
-    function ($rootScope, $timeout, $http, encounterService, selectedEncounterService) {
+DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope', '$timeout', '$http', 'encounterService',
+    function ($rootScope, $timeout, $http, encounterService) {
 
         var NEW_ENCOUNTER = 'newEncounter';
         var NEW_BINDER = 'newBinder';

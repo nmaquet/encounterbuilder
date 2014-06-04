@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
-    ['$scope', '$timeout', '$routeParams', 'npcService', 'encounterService', 'selectedEncounterService',
-        function ($scope, $timeout, $routeParams, npcService, encounterService, selectedEncounterService) {
+    ['$scope', '$timeout', '$routeParams', 'npcService', 'encounterService', 'encounterEditorService',
+        function ($scope, $timeout, $routeParams, npcService, encounterService, encounterEditorService) {
 
             $scope.nameSubstring = '';
             $scope.class = 'any';
@@ -74,15 +74,11 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 $location.path('/npc/' + id);
             };
 
-            selectedEncounterService.register(function () {
-                $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
-            });
-
-            $scope.addNpc = function (npc) {
+            function addNpcToEditedEncounter(npc) {
                 if (!/^(\d+)$/.exec(npc.amountToAdd)) {
                     npc.amountToAdd = 1;
                 }
-                var encounter = selectedEncounterService.selectedEncounter();
+                var encounter = encounterEditorService.encounter;
                 if (!encounter.Npcs) {
                     encounter.Npcs = {};
                 }
@@ -102,6 +98,13 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 }
                 delete npc.amountToAdd;
                 encounterService.encounterChanged(encounter);
+            }
+
+            $scope.addNpc = function (npc) {
+                if ($routeParams.npcId) {
+                    addNpcToEditedEncounter(npc);
+                }
+                // FIXME: also allow adding to binder
             };
         }
     ]);

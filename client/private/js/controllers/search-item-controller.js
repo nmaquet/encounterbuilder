@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
-    ['$scope', '$http', '$timeout','$routeParams', 'itemService','selectedEncounterService','encounterService',
-    function ($scope, $http, $timeout,$routeParams, itemService,selectedEncounterService,encounterService) {
+    ['$scope', '$http', '$timeout','$routeParams', 'itemService', 'encounterService', 'encounterEditorService',
+    function ($scope, $http, $timeout, $routeParams, itemService, encounterService, encounterEditorService) {
 
         $scope.itemNameSubstring = '';
         $scope.sortOrder = 'name';
@@ -80,26 +80,29 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
             $location.path('/item/' + id);
         }
 
-        $scope.addItem = function (item) {
+        function addItemToEditedEncounter(item) {
             if (!/^(\d+)$/.exec(item.amountToAdd)) {
                 item.amountToAdd = 1;
             }
-            var encounter = selectedEncounterService.selectedEncounter();
+            var encounter = encounterEditorService.encounter;
             if (!encounter.items) {
                 encounter.items = {};
             }
             if (!encounter.items[item.id]) {
-                encounter.items[item.id] = {Name: item.Name, Price: item.Price,PriceUnit: item.PriceUnit, amount: Number(item.amountToAdd)};
+                encounter.items[item.id] = {Name: item.Name, Price: item.Price, PriceUnit: item.PriceUnit, amount: Number(item.amountToAdd)};
             }
             else {
                 encounter.items[item.id].amount += Number(item.amountToAdd) || 1;
             }
             delete item.amountToAdd;
             encounterService.encounterChanged(encounter);
-        };
+        }
 
-        selectedEncounterService.register(function() {
-            $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
-        })
+        $scope.addItem = function (item) {
+            if ($routeParams.encounterId) {
+                addItemToEditedEncounter(item);
+            }
+            // FIXME: allow to add an item to a binder if a binderId is in routeParams
+        };
     }
 ]);
