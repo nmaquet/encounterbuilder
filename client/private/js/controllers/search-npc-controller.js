@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
-    ['$scope', '$timeout', '$routeParams', 'npcService', 'encounterService', 'selectedEncounterService', 'selectedNpcService',
-        function ($scope, $timeout, $routeParams, npcService, encounterService, selectedEncounterService, selectedNpcService) {
+    ['$scope', '$timeout', '$routeParams', 'npcService', 'encounterService', 'selectedEncounterService',
+        function ($scope, $timeout, $routeParams, npcService, encounterService, selectedEncounterService) {
 
             $scope.nameSubstring = '';
             $scope.class = 'any';
@@ -15,14 +15,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             $scope.maxSize = 5;
             $scope.listTimestamp = 0;
             $scope.refreshingNpcs = false;
-
-            if ($routeParams.npcId) {
-                $timeout(function () {
-                    selectedNpcService.selectedNpcId($routeParams.npcId);
-                    $('#npcTab').click();
-                });
-            }
-
 
             $scope.$watchCollection("[sortBy, currentPage, class]", function () {
                 if ($scope.currentPage < 9) {
@@ -53,7 +45,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 }, 300);
             });
 
-
             $scope.refreshNpcs = function () {
                 $scope.refreshingNpcs = true;
                 var params = {
@@ -80,12 +71,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             };
 
             $scope.selectNpc = function (id) {
-                selectedNpcService.selectedNpcId(id);
+                $location.path('/npc/' + id);
             };
-
-            selectedNpcService.register(function () {
-                $scope.selectedNpcId = selectedNpcService.selectedNpcId();
-            });
 
             selectedEncounterService.register(function () {
                 $scope.selectedEncounter = selectedEncounterService.selectedEncounter();

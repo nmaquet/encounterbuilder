@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
-    ['$scope', '$location', '$timeout', 'encounterService', 'selectedEncounterService', 'selectedNpcService', 'lootService',
-        function ($scope, $location, $timeout, encounterService, selectedEncounterService, selectedNpcService, lootService) {
+    ['$scope', '$location', '$timeout', 'encounterService', 'selectedEncounterService', 'lootService',
+        function ($scope, $location, $timeout, encounterService, selectedEncounterService, lootService) {
 
             $scope.encounterChanged = function () {
                 if ($scope.encounter) {
@@ -17,10 +17,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             };
 
             $scope.selectNpcById = function (id) {
-                $timeout(function () {
-                    selectedNpcService.selectedNpcId(id);
-                    $('#npcTab').click();
-                });
+                $location.path('/npc/' + id);
             };
 
             $scope.selectItemById = function (id) {
