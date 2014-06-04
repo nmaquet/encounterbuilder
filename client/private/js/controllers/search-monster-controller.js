@@ -1,19 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
-    ['$scope', '$timeout', '$location', '$routeParams', 'monsterService', 'selectedMonsterService', 'encounterService', 'selectedEncounterService',
-        function ($scope, $timeout, $location, $routeParams, monsterService, selectedMonsterService, encounterService, selectedEncounterService) {
-
-            if ($routeParams.monsterId) {
-                $timeout(function () {
-                    if (selectedMonsterService.selectedMonsterId() === $routeParams.monsterId) {
-                        selectedMonsterService.updateUrl()
-                    } else {
-                        selectedMonsterService.selectedMonsterId($routeParams.monsterId);
-                    }
-                    $('#monstersTab').click();
-                });
-            }
+    ['$scope', '$timeout', '$location', '$routeParams', 'monsterService', 'encounterService', 'selectedEncounterService',
+        function ($scope, $timeout, $location, $routeParams, monsterService, encounterService, selectedEncounterService) {
 
             $scope.nameSubstring = '';
             $scope.orderProp = 'name';
@@ -75,7 +64,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             };
 
             $scope.selectMonster = function (id) {
-                selectedMonsterService.selectedMonsterId(id);
+                $location.path('/monster/' + id);
             };
 
             $scope.addMonster = function (monster) {
@@ -113,10 +102,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             $scope.listTimestamp = 0;
             $scope.minCR = 0;
             $scope.maxCR = 40;
-
-            selectedMonsterService.register(function () {
-                $scope.selectedMonsterId = selectedMonsterService.selectedMonsterId();
-            });
 
             selectedEncounterService.register(function () {
                 $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
