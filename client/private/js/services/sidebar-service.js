@@ -3,10 +3,25 @@
 DEMONSQUID.encounterBuilderServices.factory('sidebarService', [
     function () {
 
-        var service = {
-            leftSidebarOpened: true,
-            rightSidebarOpened: true
-        };
+        var leftSidebarOpened = true;
+        var rightSidebarOpened = true;
 
-        return service;
+        return {
+            leftSidebarOpened: {
+                get: function() {
+                    return leftSidebarOpened;
+                },
+                toggle: function() {
+                    leftSidebarOpened = !leftSidebarOpened;
+                }
+            },
+            rightSidebarOpened: {
+                get: function() {
+                    return rightSidebarOpened;
+                },
+                toggle: function() {
+                    rightSidebarOpened = !rightSidebarOpened
+                }
+            }
+        };
     }]);

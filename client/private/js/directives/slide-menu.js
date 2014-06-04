@@ -1,30 +1,35 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', 'sidebarService', function ($document, sidebarService) {
+DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', '$timeout', 'sidebarService', function ($document, $timeout, sidebarService) {
     return {
         restrict: "A",
-        scope: {
-            slide: "=slideMenu"
-        },
         compile: function (element) {
 
-            if (element.hasClass("sp-menu-left") && sidebarService.leftSidebarOpened) {
+            if (element.hasClass("sp-menu-left") && sidebarService.leftSidebarOpened.get()) {
                 element.addClass("sp-menu-open");
             }
 
-            if (element.hasClass("sp-menu-right") && sidebarService.rightSidebarOpened) {
+            if (element.hasClass("sp-menu-right") && sidebarService.rightSidebarOpened.get()) {
                 element.addClass("sp-menu-open");
             }
 
             return function (scope, element) {
                 var body = $($document[0].body);
 
+                var sidebarOpened;
+
+                if (element.hasClass("sp-menu-left")) {
+                    sidebarOpened = sidebarService.leftSidebarOpened;
+                } else if (element.hasClass("sp-menu-right")) {
+                    sidebarOpened = sidebarService.rightSidebarOpened;
+                }
+
                 // Substract the Header height from the Slide-Push Menu
                 var $spMenuContent = element.find(".sp-menu-content");
                 var spMenuHeight = $(window).height() - $(".navbar-wrapper").height();
 
-                scope.$watch("slide", function () {
-                    if (scope.slide) {
+                scope.$watch(sidebarOpened.get, function (opened) {
+                    if (opened) {
                         if (element.hasClass("sp-menu-left")) {
                             body.addClass("spm-open-left");
                         } else if (element.hasClass("sp-menu-right")) {
