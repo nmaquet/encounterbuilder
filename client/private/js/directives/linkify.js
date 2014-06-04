@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('linkify',
-    ['$compile', '$timeout', 'spellService', 'selectedSpellService', 'featService',
-        function ($compile, $timeout, spellService, selectedSpellService, featService) {
+    ['$compile', '$timeout', 'spellService', 'featService',
+        function ($compile, $timeout, spellService, featService) {
 
             function processMythicSuperscript(string) {
                 return string.replace(/([a-z])(M|B|UM|APG|UC)/g, "$1<sup>$2</sup>")
@@ -30,7 +30,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify',
                 link: function compile(scope, element) {
                     scope.selectSpell = function (spellId) {
                         $timeout(function () {
-                            selectedSpellService.selectedSpellId(spellId);
+                            $location.path('/spell/' + spellId);
                             $('#spellsTab').click();
                         });
                     };
