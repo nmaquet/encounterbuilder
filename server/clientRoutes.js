@@ -14,8 +14,23 @@ module.exports = function () {
         login: function (request, response) {
             response.render('../client/private/jade/login.jade');
         },
-        encounterBuilder: function (request, response) {
-            response.render('../client/private/jade/encounter-builder.jade');
+        encounter: function (request, response) {
+            response.render('../client/private/jade/encounter.jade');
+        },
+        monster: function (request, response) {
+            response.render('../client/private/jade/monster.jade');
+        },
+        npc: function (request, response) {
+            response.render('../client/private/jade/npc.jade');
+        },
+        item: function (request, response) {
+            response.render('../client/private/jade/item.jade');
+        },
+        spell: function (request, response) {
+            response.render('../client/private/jade/spell.jade');
+        },
+        feat: function (request, response) {
+            response.render('../client/private/jade/feat.jade');
         },
         feedbackPopover: function (request, response) {
             response.render('../client/private/jade/feedback-popover.jade');

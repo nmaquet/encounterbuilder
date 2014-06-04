@@ -1,0 +1,53 @@
+section.sp-menu.sp-menu-vertical.sp-menu-right(slide-menu="rightSidebarOpened", ng-controller='TabController')
+    .sp-menu-content
+        ul.text-center.l-search-tabs.list-unstyled
+            li.tab-1
+                a#monstersTab.is-pointer(ng-click="showTab('monsters')", data-toggle="tab")
+                    i.icon.fa.fa-bug
+                    span.tab-name Monsters
+            li.tab-2
+                a#npcTab.is-pointer(ng-click="showTab('npcs')", data-toggle="tab")
+                    i.icon.fa.fa-user
+                    span.tab-name NPCs
+            li.tab-3
+                a#itemsTab.is-pointer(ng-click="showTab('items')", data-toggle="tab")
+                    i.icon.fa.fa-flask
+                    span.tab-name Items
+            li.tab-4
+                a#spellsTab.is-pointer(ng-click="showTab('spells')", data-toggle="tab")
+                    i.icon.fa.fa-magic
+                    span.tab-name Spells
+            li.tab-5
+                a#featsTab.is-pointer(ng-click="showTab('feats')", data-toggle="tab")
+                    i.icon.fa.fa-star
+                    span.tab-name Feats
+        .l-tab-content.l-tab-monsters(ng-show="selectedTab === 'monsters'")
+            .l-app-content.l-filters.l-filters-monsters(ng-controller='SearchMonsterController')
+                .l-section.sidebar-nav.l-shadow
+                    include _monster-filters
+                .l-section.result-list.l-shadow(pending="refreshingMonsters")
+                    include _monster-list
+        .l-tab-content.l-tab-npcs(ng-show="selectedTab === 'npcs'")
+            .l-app-content.l-filters.l-filters-monsters(ng-controller='SearchNpcController')
+                .l-section.sidebar-nav.l-shadow
+                    include _npc-filters
+                .l-section.result-list.l-shadow(pending="refreshingNpcs")
+                    include _npc-list
+        .l-tab-content.l-tab-npcs(ng-show="selectedTab === 'items'")
+            .l-app-content.l-filters.l-filters-items(ng-controller='SearchItemController')
+                .l-section.sidebar-nav.l-shadow
+                    include _item-filters
+                .l-section.result-list.l-shadow(pending="refreshingItems")
+                    include _item-list
+        .l-tab-content.l-tab-spells(ng-show="selectedTab === 'spells'")
+            .l-app-content.l-filters.l-filters-spells(ng-controller='SearchSpellController')
+                .l-section.sidebar-nav.l-shadow
+                    include _spell-filters
+                .l-section.result-list.l-shadow(pending="refreshingSpells")
+                    include _spell-list
+        .l-tab-content.l-tab-spells(ng-show="selectedTab === 'feats'")
+            .l-app-content.l-filters.l-filters-spells(ng-controller='SearchFeatController')
+                .l-section.sidebar-nav.l-shadow
+                    include _feat-filters
+                .l-section.result-list.l-shadow(pending="refreshingFeats")
+                    include _feat-list

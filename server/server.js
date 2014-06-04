@@ -95,7 +95,12 @@ function main(db) {
 
     app.get('/feedback-popover.html', authentication.check, clientRoutes.feedbackPopover);
     app.get('/login.html', clientRoutes.login);
-    app.get('/encounter-builder.html', authentication.check, clientRoutes.encounterBuilder);
+    app.get('/encounter.html', authentication.check, clientRoutes.encounter);
+    app.get('/monster.html', authentication.check, clientRoutes.monster);
+    app.get('/npc.html', authentication.check, clientRoutes.npc);
+    app.get('/item.html', authentication.check, clientRoutes.item);
+    app.get('/spell.html', authentication.check, clientRoutes.spell);
+    app.get('/feat.html', authentication.check, clientRoutes.feat);
     app.get('/printable-encounter.html', authentication.check, metrics.logPrintEncounter, clientRoutes.printableEncounter);
     app.get('/app', clientRoutes.app);
     app.get('/blog', clientRoutes.blog);

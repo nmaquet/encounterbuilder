@@ -1,0 +1,38 @@
+header.l-header
+    include _header
+include _left-sidebar
+include _right-sidebar
+.container.l-xs-nopadding
+    .row
+        .col-xxs-12.col-xs-12.col-sm-3.col-lg-3.l-app-content.l-encounter-well-container(ng-show="contentType === 'none'")
+            .l-section.col-sm-12.encounter-well.gradient.l-shadow
+                div.encounter-no-encounter
+                | There is no encounter. Please
+                | &nbsp;
+                a.is-pointer(ng-click="createFirstEncounter()")
+                    | create one
+                | .
+        .col-xxs-12.col-xs-12.col-sm-12.col-lg-12.l-app-content(ng-show="contentType === 'binder'")
+            .l-section.col-sm-12.encounter-binder-container.encounter-binder.l-shadow.l-binder-container(ng-controller='BinderController', fade-in-fade-out="startFade")
+                include _binder
+        .col-xxs-12.col-xs-12.col-sm-6.col-lg-6.l-app-content(ng-show="contentType === 'encounter'")
+            .l-section.col-sm-12.encounter-well.gradient.l-shadow(ng-controller='EncounterController', fade-in-fade-out="startFade")
+                include _encounter
+        .col-xxs-12.col-xs-12.col-sm-6.col-lg-6.l-tabs-container(ng-controller='TabController', ng-show="contentType === 'encounter'")
+            .l-tab-content.l-tab-monsters(ng-show="selectedTab === 'monsters'")
+                .col-xs-12.l-app-content.l-section.l-shadow.search-result(ng-controller='MonsterDetailController', pending="pending")
+                    include _monster-details
+            .l-tab-content.l-tab-npcs(ng-show="selectedTab === 'npcs'")
+                .col-xs-12.l-app-content.l-section.l-shadow.search-result(ng-controller='NpcDetailController', pending="pending")
+                    include _npc-details
+            .l-tab-content.l-tab-items(ng-show="selectedTab === 'items'")
+                .col-xs-12.l-app-content.l-section.l-shadow.search-result(ng-controller='ItemDetailsController', pending="pending")
+                    include _item-details
+            .l-tab-content.l-tab-spells(ng-show="selectedTab === 'spells'")
+                .col-xs-12.l-app-content.l-section.l-shadow.search-result(ng-controller='SpellDetailsController', pending="pending")
+                    include _spell-details
+            .l-tab-content.l-tab-feats(ng-show="selectedTab === 'feats'")
+                .col-xs-12.l-app-content.l-section.l-shadow.search-result(ng-controller='FeatDetailsController', pending="pending")
+                    include _feat-details
+footer.l-footer
+    include _footer

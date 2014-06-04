@@ -13,19 +13,13 @@ DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
 DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
     function ($routeProvider, $httpProvider) {
         $routeProvider
-            .when('/', {
-                templateUrl: 'encounter-builder.html',
-                reloadOnSearch: false
-            })
-            .when('/print-encounter', {
-                templateUrl: 'printable-encounter.html',
-                css: []
-            })
-            .when('/monster/:monsterId', { templateUrl: 'encounter-builder.html'})
-            .when('/npc/:npcId', { templateUrl: 'encounter-builder.html'})
-            .when('/item/:itemId', { templateUrl: 'encounter-builder.html'})
-            .when('/spell/:spellId', { templateUrl: 'encounter-builder.html'})
-            .when('/feat/:featId', { templateUrl: 'encounter-builder.html'})
+            .when('/encounter/:encounterId', { templateUrl: 'encounter.html' })
+            /* .when('/print-encounter', { templateUrl: 'printable-encounter.html' }) */
+            .when('/monster/:monsterId', { templateUrl: 'monster.html'})
+            .when('/npc/:npcId', { templateUrl: 'npc.html'})
+            .when('/item/:itemId', { templateUrl: 'item.html'})
+            .when('/spell/:spellId', { templateUrl: 'spell.html'})
+            .when('/feat/:featId', { templateUrl: 'feat.html'})
             .otherwise({
                 redirectTo: '/'
             });
@@ -52,17 +46,6 @@ DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', '$window
             }
         });
     }]);
-
-DEMONSQUID.encounterBuilderApp.factory('doNotReloadCurrentTemplate', ['$route', function ($route) {
-    return function (scope) {
-        var lastRoute = $route.current;
-        scope.$on('$locationChangeSuccess', function () {
-            if (lastRoute.$$route.templateUrl === $route.current.$$route.templateUrl) {
-                $route.current = lastRoute;
-            }
-        });
-    };
-}]);
 
 DEMONSQUID.encounterBuilderControllers = angular.module('encounterBuilderControllers', []);
 DEMONSQUID.encounterBuilderServices = angular.module('encounterBuilderServices', ['ngResource']);

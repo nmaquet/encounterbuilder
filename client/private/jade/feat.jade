@@ -1,0 +1,10 @@
+header.l-header
+    include _header
+include _left-sidebar
+include _right-sidebar
+.container.l-xs-nopadding
+    .row
+        .col-md-6.col-xs-10.l-app-content.l-section.l-shadow.search-result(ng-controller='FeatDetailsController', pending="pending")
+            include _feat-details
+footer.l-footer
+        include _footer

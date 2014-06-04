@@ -1,9 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
-    ['$scope', '$timeout', '$location', '$routeParams', 'monsterService', 'selectedMonsterService', 'encounterService', 'selectedEncounterService', 'doNotReloadCurrentTemplate',
-        function ($scope, $timeout, $location, $routeParams, monsterService, selectedMonsterService, encounterService, selectedEncounterService, doNotReloadCurrentTemplate) {
-            doNotReloadCurrentTemplate($scope);
+    ['$scope', '$timeout', '$location', '$routeParams', 'monsterService', 'selectedMonsterService', 'encounterService', 'selectedEncounterService',
+        function ($scope, $timeout, $location, $routeParams, monsterService, selectedMonsterService, encounterService, selectedEncounterService) {
 
             if ($routeParams.monsterId) {
                 $timeout(function () {

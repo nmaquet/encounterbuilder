@@ -74,7 +74,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
                 function onSelectedEncounterChanged(event) {
                     var encounter = selectedEncounterService.selectedEncounter();
-                    if (tree) {
+                    if (tree && encounter) {
                         tree.visit(function (node) {
                             if (node.data.encounterId && node.data.encounterId === encounter._id) {
                                 node.setActive(true);
