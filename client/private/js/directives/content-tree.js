@@ -110,7 +110,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 contentTreeService.register({newBinder: onNewBinder, removeBinder: onRemoveBinder, binderChanged: onBinderChanged});
 
                 function initTree() {
-                    // FIXME: check routeParams and activate appropriate node
+
                     element.fancytree({
                         extensions: ["dnd"],
                         source: contentTreeService.contentTree(),
@@ -149,7 +149,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     });
 
                     tree = element.fancytree("getTree");
-                    tree.getFirstChild().setActive(true);
+                    // FIXME: check routeParams and activate appropriate node
                 }
 
                 if (contentTreeService.contentTree()) {

@@ -1,14 +1,14 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('ContentController', ['$scope', 'contentTreeService',
-    function ($scope, contentTreeService) {
-        $scope.leftSidebarOpened = true;
-        $scope.rightSidebarOpened = true;
+DEMONSQUID.encounterBuilderControllers.controller('ContentController', ['$scope', 'sidebarService',
+    function ($scope, sidebarService) {
+        $scope.leftSidebarOpened = sidebarService.leftSidebarOpened;
+        $scope.rightSidebarOpened = sidebarService.rightSidebarOpened;
         $scope.toggleLeftSidebar = function () {
-            $scope.leftSidebarOpened = !$scope.leftSidebarOpened;
+            sidebarService.leftSidebarOpened = $scope.leftSidebarOpened = !$scope.leftSidebarOpened;
         };
         $scope.toggleRightSidebar = function () {
-            $scope.rightSidebarOpened = !$scope.rightSidebarOpened;
+            sidebarService.rightSidebarOpened = $scope.rightSidebarOpened = !$scope.rightSidebarOpened;
         };
     }
 ]);

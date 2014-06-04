@@ -55,6 +55,7 @@ var jsFiles = [
     "client/private/js/filters/abbreviate-source.js",
     "client/private/js/filters/number-to-fraction-string.js",
     "client/private/js/filters/classes-to-string.js",
+    "client/private/js/services/sidebar-service.js",
     "client/private/js/services/monster-service.js",
     "client/private/js/services/npc-service.js",
     "client/private/js/services/spell-service.js",
