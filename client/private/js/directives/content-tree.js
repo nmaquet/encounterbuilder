@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
-    ['$rootScope', '$timeout', '$location', 'contentTreeService', 'encounterService',
-        function ($rootScope, $timeout, $location, contentTreeService, encounterService) {
+    ['$rootScope', '$timeout', '$location', '$routeParams', 'contentTreeService', 'encounterService',
+        function ($rootScope, $timeout, $location, $routeParams, contentTreeService, encounterService) {
 
             function link(scope, element) {
 
@@ -149,7 +149,19 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     });
 
                     tree = element.fancytree("getTree");
-                    // FIXME: check routeParams and activate appropriate node
+                    if ($routeParams.encounterId) {
+                        tree.visit(function (node) {
+                            if (node.data.encounterId && node.data.encounterId === $routeParams.encounterId) {
+                                node.setActive(true);
+                            }
+                        });
+                    } else if ($routeParams.binderId) {
+                        tree.visit(function (node) {
+                            if (node.folder && node.key === $routeParams.binderId) {
+                                node.setActive(true);
+                            }
+                        });
+                    }
                 }
 
                 if (contentTreeService.contentTree()) {
