@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
-    ['$scope', '$location', '$timeout', '$routeParams', 'encounterService', 'lootService',
-        function ($scope, $location, $timeout, $routeParams, encounterService, lootService) {
+    ['$scope', '$location', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService',
+        function ($scope, $location, $timeout, $routeParams, encounterService, lootService, encounterEditorService) {
 
             $scope.encounterChanged = function () {
                 if ($scope.encounter) {
@@ -16,7 +16,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                     console.log(error);
                 }
                 else {
-                    $scope.encounter = encounter;
+                    $scope.encounter = encounterEditorService.encounter = encounter;
                 }
             });
 

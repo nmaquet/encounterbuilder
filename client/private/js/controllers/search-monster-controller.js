@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
-    ['$scope', '$timeout', '$location', '$routeParams', 'monsterService', 'encounterService', 'encounterEditorService',
-        function ($scope, $timeout, $location, $routeParams, monsterService, encounterService, encounterEditorService) {
+    ['$scope', '$rootScope', '$timeout', '$location', '$routeParams', 'monsterService', 'encounterService', 'encounterEditorService',
+        function ($scope, $rootScope, $timeout, $location, $routeParams, monsterService, encounterService, encounterEditorService) {
 
             $scope.nameSubstring = '';
             $scope.orderProp = 'name';
