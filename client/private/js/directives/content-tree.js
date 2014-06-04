@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
-    ['$rootScope', '$timeout', '$location', 'contentTreeService', 'encounterService', 'selectedBinderService', 'selectedContentTypeService',
-        function ($rootScope, $timeout, $location, contentTreeService, encounterService, selectedBinderService, selectedContentTypeService) {
+    ['$rootScope', '$timeout', '$location', 'contentTreeService', 'encounterService', 'selectedBinderService',
+        function ($rootScope, $timeout, $location, contentTreeService, encounterService, selectedBinderService) {
 
             function link(scope, element) {
 
@@ -15,10 +15,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         var node = data.node;
                         if (node.data.encounterId) {
                             $location.path("/encounter/" + node.data.encounterId);
-                            selectedContentTypeService.selectedContentType("encounter");
                         } else if (node.folder) {
                             selectedBinderService.selectedBinder(makeBinder(node));
-                            selectedContentTypeService.selectedContentType("binder");
                             contentTreeService.updateBinderLeaves(node.getChildren());
                         }
                     });
@@ -94,9 +92,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     });
                     toRemove.remove();
                     contentTreeService.treeChanged(tree.toDict());
-                    if (tree.rootNode.getFirstChild() === null) {
-                        selectedContentTypeService.selectedContentType("none");
-                    }
                 }
 
                 function onBinderChanged(event, binder) {
@@ -120,15 +115,11 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     toRemove.remove();
                     contentTreeService.treeChanged(tree.toDict());
                     var newActiveNode = tree.rootNode.getFirstChild();
-                    if (newActiveNode === null) {
-                        selectedContentTypeService.selectedContentType("none");
-                    } else if (newActiveNode.folder === true) {
+                    if (newActiveNode.folder === true) {
                         selectedBinderService.selectedBinder(makeBinder(newActiveNode));
-                        selectedContentTypeService.selectedContentType("binder");
                         newActiveNode.setActive(true);
                     } else if (newActiveNode.encounter !== undefined) {
                         $location.path("/encounter/" + newActiveNode.data.encounterId); // FIXME check this works
-                        selectedContentTypeService.selectedContentType("encounter");
                         newActiveNode.setActive(true);
                     }
                 }

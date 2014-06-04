@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('BinderController',
-    ['$scope', 'selectedBinderService', 'contentTreeService', 'encounterService','selectedContentTypeService',
-    function ($scope, selectedBinderService, contentTreeService, encounterService, selectedContentTypeService) {
+    ['$scope', 'selectedBinderService', 'contentTreeService', 'encounterService',
+    function ($scope, selectedBinderService, contentTreeService, encounterService) {
 
         $scope.removeBinderMessage = "Are you sure ?";
         $scope.leaves = [];
@@ -27,11 +27,9 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
         $scope.selectLeaf = function (leaf) {
             if (leaf.type === 'binder') {
                 selectedBinderService.selectedBinder(leaf);
-                selectedContentTypeService.selectedContentType("binder");
             }
             else {
                 $location.path("/encounter/" + leaf._id);
-                selectedContentTypeService.selectedContentType('encounter');
             }
         };
 
