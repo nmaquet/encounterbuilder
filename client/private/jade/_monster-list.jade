@@ -24,7 +24,8 @@
                 td.input-container(ng-class='{selected: selectedMonsterId == monster.id}')
                     input(type='text', placeholder='1', ng-model='monster.amountToAdd')
                 td.btn-container(ng-class='{selected: selectedMonsterId == monster.id}')
-                    button.item-btn.add-item-btn(ng-class="{disabled: !selectedEncounter}", ng-disabled="!selectedEncounter", ng-click='addMonster(monster)')
+                    // FIXME should be disabled sometimes
+                    button.item-btn.add-item-btn(ng-click='addMonster(monster)')
                         i.icon.icon-plus
                             | +
     pagination.pagination-sm.page.is-pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
