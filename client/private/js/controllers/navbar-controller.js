@@ -1,6 +1,6 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('ContentController', ['$scope', 'sidebarService',
+DEMONSQUID.encounterBuilderControllers.controller('NavbarController', ['$scope', 'sidebarService',
     function ($scope, sidebarService) {
 
         $scope.toggleLeftSidebar = function () {
