@@ -13,8 +13,10 @@ DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
 DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
     function ($routeProvider, $httpProvider) {
         $routeProvider
+            .when('/', { templateUrl: 'home.html' })
             .when('/encounter/:encounterId', { templateUrl: 'encounter.html' })
             /* .when('/print-encounter', { templateUrl: 'printable-encounter.html' }) */
+            .when('/binder/:binderId', { templateUrl: 'binder.html' })
             .when('/monster/:monsterId', { templateUrl: 'monster.html'})
             .when('/npc/:npcId', { templateUrl: 'npc.html'})
             .when('/item/:itemId', { templateUrl: 'item.html'})

@@ -14,6 +14,12 @@ module.exports = function () {
         login: function (request, response) {
             response.render('../client/private/jade/login.jade');
         },
+        binder: function (request, response) {
+            response.render('../client/private/jade/binder.jade');
+        },
+        home: function (request, response) {
+            response.render('../client/private/jade/home.jade');
+        },
         encounter: function (request, response) {
             response.render('../client/private/jade/encounter.jade');
         },

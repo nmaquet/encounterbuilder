@@ -1,22 +1,14 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('BinderController',
-    ['$scope', 'selectedBinderService', 'contentTreeService', 'encounterService',
-    function ($scope, selectedBinderService, contentTreeService, encounterService) {
+    ['$scope', '$location', 'contentTreeService', 'encounterService',
+    function ($scope, $location, contentTreeService, encounterService) {
 
         $scope.removeBinderMessage = "Are you sure ?";
         $scope.leaves = [];
 
-        selectedBinderService.register(function () {
-            $scope.binder = selectedBinderService.selectedBinder();
-            if ($scope.binder) {
-                if ($scope.binder.descendantCount === 0) {
-                    $scope.removeBinderMessage = "Are you sure ?";
-                } else {
-                    $scope.removeBinderMessage = "This binder contains " + $scope.binder.descendantCount + " elements. Are you sure ?";
-                }
-            }
-        });
+        // FIXME: find a way to add this back
+        // $scope.removeBinderMessage = "This binder contains " + $scope.binder.descendantCount + " elements. Are you sure ?";
 
         $scope.encounterChanged = function (encounter) {
             if (encounter) {
@@ -26,7 +18,7 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
 
         $scope.selectLeaf = function (leaf) {
             if (leaf.type === 'binder') {
-                selectedBinderService.selectedBinder(leaf);
+                $location.path("/binder/" + leaf.nodeKey);
             }
             else {
                 $location.path("/encounter/" + leaf._id);

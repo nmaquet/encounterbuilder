@@ -95,6 +95,8 @@ function main(db) {
 
     app.get('/feedback-popover.html', authentication.check, clientRoutes.feedbackPopover);
     app.get('/login.html', clientRoutes.login);
+    app.get('/home.html', authentication.check, clientRoutes.home);
+    app.get('/binder.html', authentication.check, clientRoutes.binder);
     app.get('/encounter.html', authentication.check, clientRoutes.encounter);
     app.get('/monster.html', authentication.check, clientRoutes.monster);
     app.get('/npc.html', authentication.check, clientRoutes.npc);

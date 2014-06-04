@@ -1,14 +1,10 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
-    ['$rootScope', '$timeout', '$location', 'contentTreeService', 'encounterService', 'selectedBinderService',
-        function ($rootScope, $timeout, $location, contentTreeService, encounterService, selectedBinderService) {
+    ['$rootScope', '$timeout', '$location', 'contentTreeService', 'encounterService',
+        function ($rootScope, $timeout, $location, contentTreeService, encounterService) {
 
             function link(scope, element) {
-
-                function makeBinder(node) {
-                    return {Name: node.title, nodeKey: node.key, descendantCount: node.countChildren(true)};
-                }
 
                 function onActivate(event, data) {
                     $timeout(function () {
@@ -16,11 +12,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         if (node.data.encounterId) {
                             $location.path("/encounter/" + node.data.encounterId);
                         } else if (node.folder) {
-                            selectedBinderService.selectedBinder(makeBinder(node));
+                            $location.path("/binder/" + node.key);
                             contentTreeService.updateBinderLeaves(node.getChildren());
                         }
                     });
-
                 }
 
                 function onNewEncounter(event, encounter) {
@@ -70,19 +65,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
                 }
 
-                function onSelectedBinderChanged(event) {
-                    var binder = selectedBinderService.selectedBinder();
-                    if (tree && binder) {
-                        tree.visit(function (node) {
-                            if (node.key && node.key === binder.nodeKey) {
-                                node.setActive(true);
-                                return false;//stop iteration
-                            }
-                        });
-                    }
-
-                }
-
                 function onEncounterRemoved(event, encounter) {
                     var toRemove;
                     tree.visit(function (node) {
@@ -116,7 +98,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     contentTreeService.treeChanged(tree.toDict());
                     var newActiveNode = tree.rootNode.getFirstChild();
                     if (newActiveNode.folder === true) {
-                        selectedBinderService.selectedBinder(makeBinder(newActiveNode));
+                        $location.path("/binder/" + newActiveNode.nodeKey); // FIXME check this works
                         newActiveNode.setActive(true);
                     } else if (newActiveNode.encounter !== undefined) {
                         $location.path("/encounter/" + newActiveNode.data.encounterId); // FIXME check this works
@@ -180,7 +162,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 encounterService.onNewEncounterSuccess(onNewEncounter);
                 encounterService.onEncounterChanged(onEncounterChanged);
                 encounterService.onEncounterRemoved(onEncounterRemoved);
-                selectedBinderService.register(onSelectedBinderChanged);
             }
 
             return {
