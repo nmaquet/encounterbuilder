@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
-    ['$scope', '$http', '$timeout','$routeParams', 'selectedItemService', 'itemService','selectedEncounterService','encounterService',
-    function ($scope, $http, $timeout,$routeParams, selectedItemService, itemService,selectedEncounterService,encounterService) {
+    ['$scope', '$http', '$timeout','$routeParams', 'itemService','selectedEncounterService','encounterService',
+    function ($scope, $http, $timeout,$routeParams, itemService,selectedEncounterService,encounterService) {
 
         $scope.itemNameSubstring = '';
         $scope.sortOrder = 'name';
@@ -21,12 +21,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
         $scope.items = [];
         $scope.refreshingItems = false;
 
-        if ($routeParams.itemId) {
-            $timeout(function () {
-                selectedItemService.selectedItemId($routeParams.itemId);
-                $('#itemsTab').click();
-            });
-        }
         function refreshItems() {
             $scope.refreshingItems = true;
             var params = {
@@ -83,12 +77,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
 
 
         $scope.selectItemById = function (id) {
-            selectedItemService.selectedItemId(id);
+            $location.path('/item/' + id);
         }
-
-        selectedItemService.register(function(){
-           $scope.selectedItemId = selectedItemService.selectedItemId();
-        });
 
         $scope.addItem = function (item) {
             if (!/^(\d+)$/.exec(item.amountToAdd)) {

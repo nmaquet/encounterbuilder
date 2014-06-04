@@ -1,7 +1,7 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('TabController', ['$scope', '$location', '$timeout', '$routeParams', 'selectedNpcService', 'selectedItemService', 'selectedSpellService',
-    function ($scope, $location, $timeout, $routeParams, selectedNpcService, selectedItemService, selectedSpellService) {
+DEMONSQUID.encounterBuilderControllers.controller('TabController', ['$scope', '$location', '$timeout', '$routeParams', 'selectedNpcService', 'selectedSpellService',
+    function ($scope, $location, $timeout, $routeParams, selectedNpcService, selectedSpellService) {
 
         var tabs = {
             monster: $('#monstersTab'),
@@ -40,7 +40,6 @@ DEMONSQUID.encounterBuilderControllers.controller('TabController', ['$scope', '$
             e.preventDefault();
             $(this).tab('show');
             $scope.showTab("items");
-            selectedItemService.updateUrl();
         });
         $('#npcTab').click(function (e) {
             e.preventDefault();
