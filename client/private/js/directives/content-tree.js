@@ -14,7 +14,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                             $location.path("/encounter/" + node.data.encounterId);
                         } else if (node.folder) {
                             $location.path("/binder/" + node.key);
-                            contentTreeService.updateBinderLeaves(node.getChildren());
                         }
                     });
                 }
@@ -103,10 +102,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     contentTreeService.treeChanged(tree.toDict());
                     var newActiveNode = tree.rootNode.getFirstChild();
                     if (newActiveNode.folder === true) {
-                        $location.path("/binder/" + newActiveNode.nodeKey); // FIXME check this works
+                        $location.path("/binder/" + newActiveNode.nodeKey);
                         newActiveNode.setActive(true);
                     } else if (newActiveNode.encounter !== undefined) {
-                        $location.path("/encounter/" + newActiveNode.data.encounterId); // FIXME check this works
+                        $location.path("/encounter/" + newActiveNode.data.encounterId);
                         newActiveNode.setActive(true);
                     }
                 }
@@ -156,6 +155,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     });
 
                     tree = element.fancytree("getTree");
+                    contentTreeService.setTree(tree);
                     if ($routeParams.encounterId) {
                         tree.visit(function (node) {
                             if (node.data.encounterId && node.data.encounterId === $routeParams.encounterId) {

@@ -1,58 +1,60 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('BinderController',
-    ['$scope', '$location', 'contentTreeService', 'encounterService',
-    function ($scope, $location, contentTreeService, encounterService) {
+    ['$scope', '$location', '$routeParams', 'contentTreeService', 'encounterService',
+        function ($scope, $location, $routeParams, contentTreeService, encounterService) {
 
-        $scope.removeBinderMessage = "Are you sure ?";
-        $scope.leaves = [];
+            $scope.removeBinderMessage = "Are you sure ?";
+            $scope.binder = contentTreeService.getBinderByKey($routeParams.binderId);
+            $scope.leaves = [];
+            $scope.pending = true;
+            contentTreeService.getBinderChildrenByKey($routeParams.binderId, function (children) {
+                $scope.leaves = children;
+                $scope.pending= false;
+            });
 
-        // FIXME: find a way to add this back
-        // $scope.removeBinderMessage = "This binder contains " + $scope.binder.descendantCount + " elements. Are you sure ?";
+            //FIXME this only works for the parent binder, not for the children ones.
+            $scope.removeBinderMessage = "This binder contains " + $scope.binder.descendantCount + " elements. Are you sure ?";
 
-        $scope.encounterChanged = function (encounter) {
-            if (encounter) {
-                encounterService.encounterChanged(encounter);
-            }
-        };
-
-        $scope.selectLeaf = function (leaf) {
-            if (leaf.type === 'binder') {
-                $location.path("/binder/" + leaf.nodeKey);
-            }
-            else {
-                $location.path("/encounter/" + leaf._id);
-            }
-        };
-
-        $scope.removeEncounter = function (encounter) {
-            $scope.startFade = function () {
-                var index = $scope.leaves.indexOf(encounter);
-                $scope.leaves.splice(index, 1);
-                encounterService.remove(encounter);
+            $scope.encounterChanged = function (encounter) {
+                if (encounter) {
+                    encounterService.encounterChanged(encounter);
+                }
             };
-        };
 
-        $scope.binderChanged = function (optBinder) {
-            contentTreeService.binderChanged((optBinder === undefined) ? $scope.binder : optBinder);
-        };
-
-        $scope.removeBinder = function (optBinder) {
-            $scope.startFade = function () {
-                contentTreeService.removeBinder((optBinder === undefined) ? $scope.binder : optBinder);
+            $scope.selectLeaf = function (leaf) {
+                if (leaf.type === 'binder') {
+                    $location.path("/binder/" + leaf.nodeKey);
+                }
+                else {
+                    $location.path("/encounter/" + leaf._id);
+                }
             };
-        };
 
-        $scope.hasDescendants = function () {
-            return $scope.binder !== undefined && $scope.binder.descendantCount != 0;
-        };
+            $scope.removeEncounter = function (encounter) {
+                $scope.startFade = function () {
+                    var index = $scope.leaves.indexOf(encounter);
+                    $scope.leaves.splice(index, 1);
+                    encounterService.remove(encounter);
+                };
+            };
 
-        $scope.hasNoDescendants = function () {
-            return $scope.binder !== undefined && $scope.binder.descendantCount == 0;
-        };
+            $scope.binderChanged = function (optBinder) {
+                contentTreeService.binderChanged((optBinder === undefined) ? $scope.binder : optBinder);
+            };
 
-        contentTreeService.onLeavesChange(function (event, leaves) {
-            $scope.leaves = leaves;
-        });
-    }
+            $scope.removeBinder = function (optBinder) {
+                $scope.startFade = function () {
+                    contentTreeService.removeBinder((optBinder === undefined) ? $scope.binder : optBinder);
+                };
+            };
+
+            $scope.hasDescendants = function () {
+                return $scope.binder !== undefined && $scope.binder.descendantCount != 0;
+            };
+
+            $scope.hasNoDescendants = function () {
+                return $scope.binder !== undefined && $scope.binder.descendantCount == 0;
+            };
+        }
     ]);
