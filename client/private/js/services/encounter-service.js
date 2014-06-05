@@ -3,10 +3,6 @@
 DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', '$rootScope', 'crService',
     function ($timeout, $http, $rootScope, crService) {
 
-        var ENCOUNTER_CHANGED = "encounterChanged";
-        var ENCOUNTER_REMOVED = "encounterRemoved";
-        var NEW_ENCOUNTER_SUCCESS = "newEncounterSuccess";
-
         function calculateXp(encounter) {
             var xp = 0;
             for (var id in encounter.Monsters) {
@@ -60,22 +56,9 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
 
         service.encounters = [];
 
-        service.onEncounterChanged = function (callback) {
-            $rootScope.$on(ENCOUNTER_CHANGED, callback);
-        };
-
-        service.onEncounterRemoved = function (callback) {
-            $rootScope.$on(ENCOUNTER_REMOVED, callback);
-        };
-
-        service.onNewEncounterSuccess = function (callback) {
-            $rootScope.$on(NEW_ENCOUNTER_SUCCESS, callback);
-        };
-
         /* FIXME: don't we need a user callback ? */
         /* FIXME: The client of this function has no way to know whether this succeeds or not. */
         service.remove = function (encounter) {
-            $rootScope.$emit(ENCOUNTER_REMOVED, encounter);
             $http.post('/api/remove-encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response.error) {
@@ -92,7 +75,6 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 .success(function (response) {
                     if (response._id) {
                         encounter._id = response._id;
-                        $rootScope.$emit(NEW_ENCOUNTER_SUCCESS, encounter);
                         if (onSuccess) {
                             onSuccess(encounter);
                         }
@@ -113,7 +95,6 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
             encounter.lootValue = calculateLootValue(encounter);
             encounter.CR = crService.calculateCR(encounter);
             removeItemsWithZeroAmount(encounter);
-            $rootScope.$emit(ENCOUNTER_CHANGED, encounter);
             $http.post('/api/upsert-encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response._id) {
@@ -138,7 +119,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 });
         };
 
-        service.getMultiple= function (ids, callback) {
+        service.getMultiple = function (ids, callback) {
             function pushTask(id) {
                 tasks.push(function (taskCallback) {
                         $http.get('/api/encounter/' + id)
@@ -151,6 +132,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                     }
                 );
             }
+
             var tasks = [];
             for (var i in ids) {
                 pushTask(ids[i]);

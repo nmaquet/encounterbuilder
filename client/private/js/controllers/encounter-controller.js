@@ -1,12 +1,13 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
-    ['$scope', '$location', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService',
-        function ($scope, $location, $timeout, $routeParams, encounterService, lootService, encounterEditorService) {
+    ['$scope', '$location', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService','contentTreeService',
+        function ($scope, $location, $timeout, $routeParams, encounterService, lootService, encounterEditorService,contentTreeService) {
 
             $scope.encounterChanged = function () {
                 if ($scope.encounter) {
                     encounterService.encounterChanged($scope.encounter);
+                    contentTreeService.changeEncounter($scope.encounter);
                 }
             };
 
@@ -38,6 +39,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                     var index = encounterService.encounters.indexOf($scope.encounter);
                     encounterService.encounters.splice(index, 1);
                     encounterService.remove($scope.encounter);
+                    contentTreeService.removeEncounter($scope.encounter);
                     $location.path("/"); // FIXME: should go to the parent binder ?
                 };
             };

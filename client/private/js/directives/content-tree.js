@@ -22,96 +22,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     contentTreeService.treeChanged(tree.toDict());
                 }
 
-                function onNewEncounter(event, encounter) {
-                    var activeNode = tree.getActiveNode();
-                    if (activeNode === null) {
-                        activeNode = tree.rootNode;
-                        activeNode.addNode({title: encounter.Name, encounterId: encounter._id}).setActive(true);
-                    }
-                    else if (activeNode.folder === true) {
-                        var newNode = activeNode.addNode({title: encounter.Name, encounterId: encounter._id});
-                        newNode.setActive(true);
-                        newNode.makeVisible();
-                    }
-                    else {
-                        activeNode.appendSibling({title: encounter.Name, encounterId: encounter._id}).setActive(true);
-                    }
-                    contentTreeService.treeChanged(tree.toDict());
-                }
 
-                function onNewBinder(event) {
-                    var activeNode = tree.getActiveNode();
-                    if (activeNode === null) {
-                        activeNode = tree.rootNode;
-                        activeNode.addNode({title: "newBinder", folder: true});
-                    }
-                    else if (activeNode.folder === true) {
-                        var newNode = activeNode.addNode({title: "newBinder", folder: true});
-                        newNode.setActive(true);
-                        newNode.makeVisible();
-                    }
-                    else {
-                        activeNode.appendSibling({title: "newBinder", folder: true}).setActive(true);
-                    }
-                    contentTreeService.treeChanged(tree.toDict());
-                }
-
-                function onEncounterChanged(event, encounter) {
-                    tree.visit(function (node) {
-                        if (node.data.encounterId && node.data.encounterId === encounter._id) {
-                            if (node.title !== encounter.Name) {
-                                node.setTitle(encounter.Name);
-                            }
-                            //FIXME this saves every ecounter change to the tree (including monsters and stuffs)
-                            contentTreeService.treeChanged(tree.toDict());
-                        }
-                    });
-
-                }
-
-                function onEncounterRemoved(event, encounter) {
-                    var toRemove;
-                    tree.visit(function (node) {
-                        if (node.data.encounterId && node.data.encounterId === encounter._id) {
-                            toRemove = node;
-                        }
-                    });
-                    toRemove.remove();
-                    contentTreeService.treeChanged(tree.toDict());
-                }
-
-                function onBinderChanged(event, binder) {
-                    if (binder) {
-                        tree.visit(function (node) {
-                            if (node.key === binder.nodeKey) {
-                                node.setTitle(binder.Name);
-                            }
-                        });
-                        contentTreeService.treeChanged(tree.toDict());
-                    }
-                }
-
-                function onRemoveBinder(event, binder) {
-                    var toRemove;
-                    tree.visit(function (node) {
-                        if (node.key === binder.nodeKey) {
-                            toRemove = node;
-                        }
-                    });
-                    toRemove.remove();
-                    contentTreeService.treeChanged(tree.toDict());
-                    var newActiveNode = tree.rootNode.getFirstChild();
-                    if (newActiveNode.folder === true) {
-                        $location.path("/binder/" + newActiveNode.nodeKey);
-                        newActiveNode.setActive(true);
-                    } else if (newActiveNode.encounter !== undefined) {
-                        $location.path("/encounter/" + newActiveNode.data.encounterId);
-                        newActiveNode.setActive(true);
-                    }
-                }
 
                 var tree;
-                contentTreeService.register({newBinder: onNewBinder, removeBinder: onRemoveBinder, binderChanged: onBinderChanged});
 
                 function initTree() {
 
@@ -160,12 +73,14 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         tree.visit(function (node) {
                             if (node.data.encounterId && node.data.encounterId === $routeParams.encounterId) {
                                 node.setActive(true);
+                                return false;
                             }
                         });
                     } else if ($routeParams.binderId) {
                         tree.visit(function (node) {
                             if (node.folder && node.key === $routeParams.binderId) {
                                 node.setActive(true);
+                                return false;
                             }
                         });
                     }
@@ -177,10 +92,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 else {
                     contentTreeService.onLoadSuccess(initTree);
                 }
-
-                encounterService.onNewEncounterSuccess(onNewEncounter);
-                encounterService.onEncounterChanged(onEncounterChanged);
-                encounterService.onEncounterRemoved(onEncounterRemoved);
             }
 
             return {

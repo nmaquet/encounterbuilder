@@ -3,10 +3,6 @@
 DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope', '$timeout', '$http', 'encounterService',
     function ($rootScope, $timeout, $http, encounterService) {
 
-        var NEW_ENCOUNTER = 'newEncounter';
-        var NEW_BINDER = 'newBinder';
-        var BINDER_CHANGED = 'binderChanged';
-        var REMOVE_BINDER = 'removeBinder';
         var LOAD_SUCCESS = "contentTreeLoaded";
 
         var service = {};
@@ -14,10 +10,19 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
 
         var fancyTree = null;
 
+        var nodeKey = null;
+
+        function getNextNodeKey() {
+            while (fancyTree.getNodeByKey("" + ++nodeKey) !== null) {
+            }
+            return "" + nodeKey;
+        }
+
         $http.post('/api/user-data')
             .success(function (userData) {
                 if (userData.contentTree) {
                     contentTree = userData.contentTree;
+                    console.log(contentTree);
                 }
                 $rootScope.$emit(LOAD_SUCCESS);
             })
@@ -28,6 +33,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
 
         service.setTree = function (tree) {
             fancyTree = tree;
+            nodeKey = fancyTree.count();
         };
 
         service.getBinderByKey = function (key) {
@@ -35,6 +41,24 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             return {Name: node.title, nodeKey: node.key, descendantCount: node.countChildren(true)};
 
         };
+
+        service.createBinder = function () {
+            var activeNode = fancyTree.getActiveNode();
+            if (activeNode === null) {
+                activeNode = fancyTree.rootNode;
+                activeNode.addNode({title: "newBinder", folder: true});
+            }
+            else if (activeNode.folder === true) {
+                var newNode = activeNode.addNode({title: "newBinder", folder: true, key: getNextNodeKey()});
+                newNode.setActive(true);
+                newNode.makeVisible();
+            }
+            else {
+                activeNode.appendSibling({title: "newBinder", folder: true}).setActive(true);
+            }
+            service.treeChanged(fancyTree.toDict());
+        };
+
 
         service.onLoadSuccess = function (callback) {
             $rootScope.$on(LOAD_SUCCESS, callback);
@@ -44,27 +68,76 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             return contentTree;
         };
 
-        service.newEncounter = function (encounter) {
-            $rootScope.$emit(NEW_ENCOUNTER, encounter);
-        };
-
-        service.newBinder = function (encounter) {
-            $rootScope.$emit(NEW_BINDER, encounter);
-        };
-
-        service.register = function (callbacks) {
-            $rootScope.$on(NEW_ENCOUNTER, callbacks[NEW_ENCOUNTER]);
-            $rootScope.$on(NEW_BINDER, callbacks[NEW_BINDER]);
-            $rootScope.$on(BINDER_CHANGED, callbacks[BINDER_CHANGED]);
-            $rootScope.$on(REMOVE_BINDER, callbacks[REMOVE_BINDER]);
-        };
-
         service.binderChanged = function (binder) {
-            $rootScope.$emit(BINDER_CHANGED, binder);
+            if (binder) {
+                fancyTree.visit(function (node) {
+                    if (node.key === binder.nodeKey) {
+                        node.setTitle(binder.Name);
+                    }
+                });
+                service.treeChanged(fancyTree.toDict());
+            }
         };
 
         service.removeBinder = function (binder) {
-            $rootScope.$emit(REMOVE_BINDER, binder);
+            var toRemove;
+            fancyTree.visit(function (node) {
+                if (node.folder && node.key === binder.nodeKey) {
+                    toRemove = node;
+                }
+            });
+            toRemove.remove();
+            service.treeChanged(fancyTree.toDict());
+            var newActiveNode = fancyTree.rootNode.getFirstChild();
+            if (newActiveNode.folder === true) {
+                $location.path("/binder/" + newActiveNode.nodeKey);
+                newActiveNode.setActive(true);
+            } else if (newActiveNode.encounter !== undefined) {
+                $location.path("/encounter/" + newActiveNode.data.encounterId);
+                newActiveNode.setActive(true);
+            }
+        };
+
+        service.newEncounter = function (encounter) {
+            var activeNode = fancyTree.getActiveNode();
+            if (activeNode === null) {
+                activeNode = fancyTree.rootNode;
+                activeNode.addNode({title: encounter.Name, encounterId: encounter._id, key: getNextNodeKey()}).setActive(true);
+            }
+            else if (activeNode.folder === true) {
+                var newNode = activeNode.addNode({title: encounter.Name, encounterId: encounter._id, key: getNextNodeKey()});
+                newNode.setActive(true);
+                newNode.makeVisible();
+            }
+            else {
+                activeNode.appendSibling({title: encounter.Name, encounterId: encounter._id, key: getNextNodeKey()}).setActive(true);
+            }
+            service.treeChanged(fancyTree.toDict());
+        };
+
+        service.removeEncounter = function (encounter) {
+            var toRemove;
+            fancyTree.visit(function (node) {
+                if (node.data.encounterId && node.data.encounterId === encounter._id) {
+                    toRemove = node;
+                }
+            });
+            toRemove.remove();
+            service.treeChanged(fancyTree.toDict());
+        };
+
+        service.changeEncounter = function (encounter) {
+            fancyTree.visit(function (node) {
+                if (node.data.encounterId && node.data.encounterId === encounter._id) {
+                    if (node.title !== encounter.Name) {
+                        node.setTitle(encounter.Name);
+                        return false;
+                    }
+                    //FIXME this saves every ecounter change to the fancyTree (including monsters and stuffs)
+                    service.treeChanged(fancyTree.toDict());
+                }
+            });
+
         };
 
         service.treeChanged = function (tree) {
