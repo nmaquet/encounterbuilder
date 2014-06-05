@@ -39,7 +39,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             });
 
             $scope.refreshMonsters = function () {
-                $scope.refreshingMonsters = true;
                 var params = {
                     nameSubstring: $scope.nameSubstring,
                     order: $scope.orderProp,
@@ -49,6 +48,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     minCR: $scope.minCR,
                     maxCR: $scope.maxCR
                 };
+                $scope.refreshingMonsters = true;
                 monsterService.search(params, function (error, data) {
                     if (error) {
                         console.log('Error in your face: ' + error);

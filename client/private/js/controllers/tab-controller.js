@@ -1,7 +1,7 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('TabController', ['$scope', '$location', '$timeout', '$routeParams',
-    function ($scope, $location, $timeout, $routeParams) {
+DEMONSQUID.encounterBuilderControllers.controller('TabController', ['$scope', '$location', '$timeout', 'sidebarService',
+    function ($scope, $location, $timeout, sidebarService) {
 
         var tabs = {
             monster: $('#monstersTab'),
@@ -26,10 +26,11 @@ DEMONSQUID.encounterBuilderControllers.controller('TabController', ['$scope', '$
             }
         });
 
-        $scope.selectedTab = 'monsters';
+        $scope.selectedTab = sidebarService.selectedTab;
         $('#monstersTab').tab('show');
         $scope.showTab = function (tab) {
             $scope.selectedTab = tab;
+            sidebarService.selectedTab = tab;
         }
         $('#monstersTab').click(function (e) {
             e.preventDefault();

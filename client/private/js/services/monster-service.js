@@ -1,11 +1,19 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('monsterService', ['$http', function ($http) {
+    var lastSearchParam = null;
+    var lastSearchResults = null;
     return {
         search: function (params, callback) {
+            if (lastSearchResults && JSON.stringify(params) === JSON.stringify(lastSearchParam)) {
+                callback(null, lastSearchResults);
+                return;
+            }
             var now = new Date().getTime();
             $http.get('/api/search-monsters/', {params: params})
                 .success(function (data) {
+                    lastSearchParam = params;
+                    lastSearchResults = data;
                     data["timestamp"] = now;
                     callback(data.error, data);
                 })
@@ -35,6 +43,7 @@ DEMONSQUID.encounterBuilderServices.factory('monsterService', ['$http', function
                     }
                 );
             }
+
             var tasks = [];
             for (var i in ids) {
                 pushTask(ids[i]);
