@@ -6,18 +6,20 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
 
             var lastSearchParam = monsterService.lastSearchParam();
 
-            $scope.nameSubstring = lastSearchParam?lastSearchParam.nameSubstring :'';
-            $scope.orderProp = lastSearchParam?lastSearchParam.order :'name';
-            $scope.type = lastSearchParam?lastSearchParam.type :'any';
+            $scope.nameSubstring = lastSearchParam ? lastSearchParam.nameSubstring : '';
+            $scope.orderProp = lastSearchParam ? lastSearchParam.order : 'name';
+            $scope.type = lastSearchParam ? lastSearchParam.type : 'any';
             $scope.refreshingMonsters = false;
 
             $scope.totalItems = 0;
-            $scope.currentPage = lastSearchParam?lastSearchParam.currentPage :1;
+            $scope.currentPage = lastSearchParam ? lastSearchParam.currentPage : 1;
             $scope.itemsPerPage = 15;
             $scope.maxSize = 4;
             $scope.listTimestamp = 0;
-            $scope.minCR = lastSearchParam?lastSearchParam.minCR :0;
-            $scope.maxCR = lastSearchParam?lastSearchParam.maxCR :40;
+            $scope.minCR = lastSearchParam ? lastSearchParam.minCR : 0;
+            $scope.maxCR = lastSearchParam ? lastSearchParam.maxCR : 40;
+
+            $scope.selectedMonsterId = $routeParams.monsterId;
 
             $scope.$watchCollection("[orderProp, type, currentPage]", function () {
                 if ($scope.currentPage < 9) {

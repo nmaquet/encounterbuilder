@@ -17,6 +17,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             $scope.listTimestamp = 0;
             $scope.refreshingNpcs = false;
 
+            $scope.selectedNpcId = $routeParams.npcId;
+
             $scope.$watchCollection("[sortBy, currentPage, class]", function () {
                 if ($scope.currentPage < 9) {
                     $scope.maxSize = 5;

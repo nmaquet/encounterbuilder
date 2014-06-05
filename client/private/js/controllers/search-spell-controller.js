@@ -20,6 +20,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
             $scope.spells = [];
             $scope.refreshingSpells = false;
 
+            $scope.selectedSpellId = $routeParams.spellId;
+
             function refreshSpells() {
                 $scope.refreshingSpells = true;
                 var params = {
