@@ -10,8 +10,9 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                 }
             };
 
-            // FIXME: add pending directive to this
+            $scope.pending = true;
             encounterService.get($routeParams.encounterId, function (error, encounter) {
+                $scope.pending = false;
                 if (error) {
                     console.log(error);
                 }
