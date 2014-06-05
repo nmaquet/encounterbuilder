@@ -46,7 +46,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             var activeNode = fancyTree.getActiveNode();
             if (activeNode === null) {
                 activeNode = fancyTree.rootNode;
-                activeNode.addNode({title: "newBinder", folder: true});
+                activeNode.addNode({title: "newBinder", folder: true, key: getNextNodeKey()});
             }
             else if (activeNode.folder === true) {
                 var newNode = activeNode.addNode({title: "newBinder", folder: true, key: getNextNodeKey()});
@@ -54,7 +54,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                 newNode.makeVisible();
             }
             else {
-                activeNode.appendSibling({title: "newBinder", folder: true}).setActive(true);
+                activeNode.appendSibling({title: "newBinder", folder: true, key: getNextNodeKey()}).setActive(true);
             }
             service.treeChanged(fancyTree.toDict());
         };
