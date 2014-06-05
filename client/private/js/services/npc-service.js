@@ -4,6 +4,7 @@ DEMONSQUID.encounterBuilderServices.factory('npcService', ['$http', function ($h
     var lastSearchParam = null;
     var lastSearchResults = null;
     return {
+        lastSearchParam: function(){return lastSearchParam;},
         search: function (params, callback) {
             if (params.maxCR >= 20) {
                 params.maxCR = 40;

@@ -1,17 +1,19 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
-    ['$scope', '$timeout','$routeParams', 'spellService',
-        function ($scope, $timeout,$routeParams, spellService) {
+    ['$scope', '$timeout', '$routeParams', '$location', 'spellService',
+        function ($scope, $timeout, $routeParams, $location, spellService) {
 
-            $scope.spellNameSubstring = '';
-            $scope.class = 'any';
-            $scope.sortBy = 'name';
-            $scope.minLevel = 0;
-            $scope.maxLevel = 9;
+            var lastSearchParam = spellService.lastSearchParam();
+
+            $scope.spellNameSubstring = lastSearchParam ? lastSearchParam.nameSubstring : '';
+            $scope.class = lastSearchParam ? lastSearchParam.class : 'any';
+            $scope.sortBy = lastSearchParam ? lastSearchParam.sortBy : 'name';
+            $scope.minLevel = lastSearchParam ? lastSearchParam.minLevel : 0;
+            $scope.maxLevel = lastSearchParam ? lastSearchParam.maxLevel : 9;
 
             $scope.totalSpells = 0;
-            $scope.currentPage = 1;
+            $scope.currentPage = lastSearchParam ? lastSearchParam.currentPage : 1;
             $scope.spellsPerPage = 15;
             $scope.maxSize = 5;
 
@@ -27,6 +29,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
                     maxLevel: $scope.maxLevel,
                     sortBy: $scope.sortBy,
                     skip: ($scope.currentPage - 1) * $scope.spellsPerPage,
+                    currentPage: $scope.currentPage,
                     findLimit: $scope.spellsPerPage
                 };
                 spellService.search(params, function (error, data) {

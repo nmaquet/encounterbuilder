@@ -17,6 +17,7 @@ DEMONSQUID.encounterBuilderServices.factory('spellService', ['$http', function (
             spells.names.reverse();
         });
     return {
+        lastSearchParam: function(){return lastSearchParam;},
         spells: function () {
             return spells;
         },

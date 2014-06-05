@@ -4,11 +4,13 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
     ['$scope', '$timeout','$routeParams', '$location', 'featService',
         function ($scope, $timeout,$routeParams, $location, featService) {
 
-            $scope.featNameSubstring = '';
-            $scope.type = 'any';
+            var lastSearchParam = featService.lastSearchParam();
+
+            $scope.featNameSubstring = lastSearchParam?lastSearchParam.nameSubstring :'';
+            $scope.type = lastSearchParam?lastSearchParam.type :'any';
 
             $scope.totalItems = 0;
-            $scope.currentPage = 1;
+            $scope.currentPage = lastSearchParam?lastSearchParam.currentPage :1;
             $scope.itemsPerPage = 15;
             $scope.maxSize = 5;
 
@@ -21,6 +23,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
                     nameSubstring: $scope.featNameSubstring,
                     type: $scope.type,
                     skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
+                    currentPage:$scope.currentPage,
                     findLimit: $scope.itemsPerPage
                 };
                 featService.search(params, function (error, data) {

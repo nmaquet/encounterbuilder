@@ -1,16 +1,17 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
-    ['$scope', '$timeout', '$routeParams', 'npcService', 'encounterService', 'encounterEditorService',
-        function ($scope, $timeout, $routeParams, npcService, encounterService, encounterEditorService) {
+    ['$scope', '$timeout', '$routeParams', '$location', 'npcService', 'encounterService', 'encounterEditorService',
+        function ($scope, $timeout, $routeParams, $location, npcService, encounterService, encounterEditorService) {
 
-            $scope.nameSubstring = '';
-            $scope.class = 'any';
-            $scope.minCR = 0;
-            $scope.maxCR = 20;
-            $scope.sortBy = 'name';
+            var lastSearchParam = npcService.lastSearchParam();
+            $scope.nameSubstring = lastSearchParam ? lastSearchParam.nameSubstring : '';
+            $scope.class = lastSearchParam ? lastSearchParam.class : 'any';
+            $scope.minCR = lastSearchParam ? lastSearchParam.minCR : 0;
+            $scope.maxCR = lastSearchParam ? lastSearchParam.maxCR : 20;
+            $scope.sortBy = lastSearchParam ? lastSearchParam.sortBy : 'name';
             $scope.totalItems = 0;
-            $scope.currentPage = 1;
+            $scope.currentPage = lastSearchParam ? lastSearchParam.currentPage : 1;
             $scope.itemsPerPage = 15;
             $scope.maxSize = 5;
             $scope.listTimestamp = 0;
@@ -52,6 +53,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                     sortBy: $scope.sortBy,
                     class: $scope.class,
                     skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
+                    currentPage: $scope.currentPage,
                     findLimit: $scope.itemsPerPage,
                     minCR: $scope.minCR,
                     maxCR: $scope.maxCR

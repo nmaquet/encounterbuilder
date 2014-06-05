@@ -33,6 +33,7 @@ DEMONSQUID.encounterBuilderServices.factory('featService', ['$http', function ($
             feats.names.reverse();
         });
     return {
+        lastSearchParam: function(){return lastSearchParam;},
         feats: function () {
             return feats;
         },
