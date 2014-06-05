@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('linkify',
-    ['$compile', '$timeout', 'spellService', 'featService',
-        function ($compile, $timeout, spellService, featService) {
+    ['$compile', '$timeout', '$location', 'spellService', 'featService',
+        function ($compile, $timeout, $location, spellService, featService) {
 
             function processMythicSuperscript(string) {
                 return string.replace(/([a-z])(M|B|UM|APG|UC)/g, "$1<sup>$2</sup>")
