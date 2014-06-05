@@ -37,8 +37,6 @@ DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', '$window
                         $rootScope.user = userData.user;
                         if ($rootScope.user === undefined) {
                             $window.location.href = '/';
-                        } else {
-                            $location.path(next.originalPath);
                         }
                     })
                     .error(function (error) {

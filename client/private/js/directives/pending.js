@@ -22,7 +22,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('pending',
                 element.append(template);
                 return function (scope, element) {
                     scope.$watch("isPending", function () {
-                        console.log("pending:" + scope.isPending);
                         if (scope.isPending) {
                             element.find("#floatingCirclesG").removeClass("hidden");
                             element.addClass("is-dimmed");
