@@ -1,10 +1,10 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('ItemDetailsController',
-    ['$scope', '$http', '$location', 'itemService',
-        function ($scope, $http, $location, itemService) {
+    ['$scope', '$http', '$routeParams', 'itemService',
+        function ($scope, $http, $routeParams, itemService) {
             $scope.pending = true;
-            itemService.get($location.itemId, function (error, item) {
+            itemService.get($routeParams.itemId, function (error, item) {
                 $scope.pending = false;
                 if (error) {
                     console.log(error);
