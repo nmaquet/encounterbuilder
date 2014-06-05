@@ -4,10 +4,20 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
     ['$scope', '$rootScope', '$timeout', '$location', '$routeParams', 'monsterService', 'encounterService', 'encounterEditorService',
         function ($scope, $rootScope, $timeout, $location, $routeParams, monsterService, encounterService, encounterEditorService) {
 
-            $scope.nameSubstring = '';
-            $scope.orderProp = 'name';
-            $scope.type = 'any';
+            var lastSearchParam = monsterService.lastSearchParam();
+
+            $scope.nameSubstring = lastSearchParam?lastSearchParam.nameSubstring :'';
+            $scope.orderProp = lastSearchParam?lastSearchParam.order :'name';
+            $scope.type = lastSearchParam?lastSearchParam.type :'any';
             $scope.refreshingMonsters = false;
+
+            $scope.totalItems = 0;
+            $scope.currentPage = lastSearchParam?lastSearchParam.currentPage :1;
+            $scope.itemsPerPage = 15;
+            $scope.maxSize = 4;
+            $scope.listTimestamp = 0;
+            $scope.minCR = lastSearchParam?lastSearchParam.minCR :0;
+            $scope.maxCR = lastSearchParam?lastSearchParam.maxCR :40;
 
             $scope.$watchCollection("[orderProp, type, currentPage]", function () {
                 if ($scope.currentPage < 9) {
@@ -44,6 +54,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     order: $scope.orderProp,
                     type: $scope.type,
                     skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
+                    currentPage: $scope.currentPage,
                     findLimit: $scope.itemsPerPage,
                     minCR: $scope.minCR,
                     maxCR: $scope.maxCR
@@ -102,12 +113,5 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                 // FIXME: binder
             };
 
-            $scope.totalItems = 0;
-            $scope.currentPage = 1;
-            $scope.itemsPerPage = 15;
-            $scope.maxSize = 4;
-            $scope.listTimestamp = 0;
-            $scope.minCR = 0;
-            $scope.maxCR = 40;
         }
     ]);

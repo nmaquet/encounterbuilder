@@ -4,6 +4,7 @@ DEMONSQUID.encounterBuilderServices.factory('monsterService', ['$http', function
     var lastSearchParam = null;
     var lastSearchResults = null;
     return {
+        lastSearchParam: function(){return lastSearchParam;},
         search: function (params, callback) {
             if (lastSearchResults && JSON.stringify(params) === JSON.stringify(lastSearchParam)) {
                 callback(null, lastSearchResults);
