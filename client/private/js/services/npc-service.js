@@ -1,14 +1,23 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('npcService', ['$http', function ($http) {
+    var lastSearchParam = null;
+    var lastSearchResults = null;
     return {
         search: function (params, callback) {
-            var now = new Date().getTime();
             if (params.maxCR >= 20) {
                 params.maxCR = 40;
             }
+            if (lastSearchResults && JSON.stringify(params) === JSON.stringify(lastSearchParam)) {
+                callback(null, lastSearchResults);
+                return;
+            }
+            var now = new Date().getTime();
+
             $http.get('/api/search-npcs/', {params: params})
                 .success(function (data) {
+                    lastSearchParam = params;
+                    lastSearchResults = data;
                     data["timestamp"] = now;
                     callback(data.error, data);
                 })

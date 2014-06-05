@@ -1,11 +1,19 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('itemService', ['$http', function ($http) {
+    var lastSearchParam = null;
+    var lastSearchResults = null;
     return {
         /* FIXME: we should implement some throttling at some point */
         search: function (params, callback) {
+            if (lastSearchResults && JSON.stringify(params) === JSON.stringify(lastSearchParam)) {
+                callback(null, lastSearchResults);
+                return;
+            }
             $http.get('/api/search-magic-items/', {params : params})
                 .success(function (data) {
+                    lastSearchParam = params;
+                    lastSearchResults = data;
                     callback(null, data);
                 })
                 .error(function (error) {

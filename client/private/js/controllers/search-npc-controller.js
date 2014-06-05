@@ -58,7 +58,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 };
                 npcService.search(params, function (error, data) {
                     if (error) {
-                        console.log('Error in your face: ' + error);
+                        console.log(error);
                     } else {
                         if (data.timestamp >= $scope.listTimestamp) {
                             $scope.npcs = data.npcs;

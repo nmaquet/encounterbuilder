@@ -4,30 +4,30 @@ DEMONSQUID.encounterBuilderControllers.controller('TabController', ['$scope', '$
     function ($scope, $location, $timeout, sidebarService) {
 
         var tabs = {
-            monster: $('#monstersTab'),
-            item: $('#itemsTab'),
-            npc: $('#npcTab'),
-            spell: $('#spellsTab'),
-            feat: $('#featsTab')
+            monsters: $('#monstersTab'),
+            items: $('#itemsTab'),
+            npcs: $('#npcTab'),
+            spells: $('#spellsTab'),
+            feats: $('#featsTab')
         }
 
-        $scope.$on("$locationChangeStart", function (event, nextLocation, currentLocation) {
-
-            var match = /\/(.*)\//.exec($location.path());
-            if (match) {
-                var requestedTab = match[1];
-                if ($scope.selectedTab.indexOf(requestedTab) === -1) {
-                    if (tabs[requestedTab]) {
-                        $timeout(function () {
-                            tabs[requestedTab].click();
-                        });
-                    }
-                }
-            }
-        });
+//        $scope.$on("$locationChangeStart", function (event, nextLocation, currentLocation) {
+//
+//            var match = /\/(.*)\//.exec($location.path());
+//            if (match) {
+//                var requestedTab = match[1];
+//                if ($scope.selectedTab.indexOf(requestedTab) === -1) {
+//                    if (tabs[requestedTab]) {
+//                        $timeout(function () {
+//                            tabs[requestedTab].click();
+//                        });
+//                    }
+//                }
+//            }
+//        });
 
         $scope.selectedTab = sidebarService.selectedTab;
-        $('#monstersTab').tab('show');
+       tabs[$scope.selectedTab].tab('show');
         $scope.showTab = function (tab) {
             $scope.selectedTab = tab;
             sidebarService.selectedTab = tab;
