@@ -28,7 +28,7 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
 .navbar-container {
   @include transition(all .3s ease);
   .spm-open-left & { padding-left: 240px; }
-  .spm-open-right & { padding-right: 240px; }
+  .spm-open-right & { padding-right: 300px; }
 }
 // Align icons and text vertically in the header
 .sp-menu-toggle-container {
@@ -152,6 +152,10 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
   }
 }
 
+.sp-menu-vertical.sp-menu-right {
+  width: 300px;
+}
+
 .sp-menu-horizontal {
   width: 100%;
   height: 150px;
@@ -182,7 +186,7 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
 }
 
 .sp-menu-right {
-  right: -240px;
+  right: -300px;
 }
 
 .sp-menu-left.sp-menu-open {
