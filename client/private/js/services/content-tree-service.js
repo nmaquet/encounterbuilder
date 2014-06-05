@@ -52,7 +52,6 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             $rootScope.$on(LEAVES_CHANGED, callback);
         };
 
-
         service.binderChanged = function (binder) {
             $rootScope.$emit(BINDER_CHANGED, binder);
         };
@@ -62,6 +61,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
         };
 
         service.treeChanged = function (tree) {
+            contentTree = tree;
             $http.post('/api/save-content-tree', { contentTree: tree })
                 .success(function (data) {
                 })

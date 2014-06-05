@@ -7,6 +7,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
             function link(scope, element) {
 
                 function onActivate(event, data) {
+                    contentTreeService.treeChanged(tree.toDict());
                     $timeout(function () {
                         var node = data.node;
                         if (node.data.encounterId) {
@@ -16,6 +17,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                             contentTreeService.updateBinderLeaves(node.getChildren());
                         }
                     });
+                }
+
+                function onExpandOrCollapse(event, data) {
+                    contentTreeService.treeChanged(tree.toDict());
                 }
 
                 function onNewEncounter(event, encounter) {
@@ -115,6 +120,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         extensions: ["dnd"],
                         source: contentTreeService.contentTree(),
                         activate: onActivate,
+                        expand: onExpandOrCollapse,
+                        collapse: onExpandOrCollapse,
                         dnd: {
                             preventVoidMoves: true, // Prevent dropping nodes 'before self', etc.
                             preventRecursiveMoves: true, // Prevent dropping nodes on own descendants
