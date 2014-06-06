@@ -28,19 +28,25 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', '$tim
                 var $spMenuContent = element.find(".sp-menu-content");
                 var spMenuHeight = $(window).height() - $(".navbar-wrapper").height();
 
+                body.addClass("sp-menu-push");
+
                 scope.$watch(sidebarOpened.get, function (opened) {
                     if (opened) {
                         if (element.hasClass("sp-menu-left")) {
-                            body.addClass("spm-open-left");
+                            body.addClass("spm-open-left"); // FIXME this shouldnt be here
+                            body.addClass("sp-menu-push-toright");
                         } else if (element.hasClass("sp-menu-right")) {
-                            body.addClass("spm-open-right");
+                            body.addClass("spm-open-right"); // FIXME this shouldnt be here
+                            body.addClass("sp-menu-push-toleft");
                         }
                         element.addClass("sp-menu-open");
                     } else {
                         if (element.hasClass("sp-menu-left")) {
-                            body.removeClass("spm-open-left");
+                            body.removeClass("spm-open-left"); // FIXME this shouldnt be here
+                            body.removeClass("sp-menu-push-toright");
                         } else if (element.hasClass("sp-menu-right")) {
-                            body.removeClass("spm-open-right");
+                            body.removeClass("spm-open-right"); // FIXME this shouldnt be here
+                            body.removeClass("sp-menu-push-toleft");
                         }
                         element.removeClass("sp-menu-open");
                     }
