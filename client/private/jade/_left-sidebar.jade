@@ -38,6 +38,7 @@ div(ng-controller='SidebarController')
             h2. Favourites
         div(ng-show="selectedTab === 'creations'")
             h2. Creations
-        div(ng-show="selectedTab === 'database'")
-            h2. Database
-            include _database
+        div(ng-switch="selectedTab")
+            .database(ng-switch-when="database")
+                h2. Database
+                include _database
