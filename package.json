@@ -19,7 +19,8 @@
         "uglify-js"   : "~2.4",
         "jade"        : "~1.1.5",
         "async"        : "0.2.10",
-        "connect-mongo": "~0.3"
+        "connect-mongo": "~0.3",
+        "node-sass" : "*"
     },
     "devDependencies" : {
         "mongoose"    : "~3.6.2",
@@ -38,7 +39,6 @@
         "csvtojson"   : "*",
         "cheerio" :"*",
         "request":"*",
-        "fast-levenshtein" : "*",
-        "node-sass" : "*"
+        "fast-levenshtein" : "*"
       }
 }
