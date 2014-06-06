@@ -30,6 +30,7 @@ var jsFiles = [
     "client/private/js/controllers/monster-detail-controller.js",
     "client/private/js/controllers/npc-detail-controller.js",
     "client/private/js/controllers/feedback-controller.js",
+    "client/private/js/controllers/left-sidebar-tab-controller.js",
     "client/private/js/controllers/tab-controller.js",
     "client/private/js/controllers/search-item-controller.js",
     "client/private/js/controllers/item-details-controller.js",

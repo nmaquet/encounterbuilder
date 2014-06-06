@@ -4,7 +4,7 @@ DEMONSQUID.encounterBuilderServices.factory('sidebarService', [
     function () {
 
         var leftSidebarOpened = true;
-        var rightSidebarOpened = true;
+        var rightSidebarOpened = false;
         var selectedTab = "monsters";
 
         return {
