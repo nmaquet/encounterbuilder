@@ -1,13 +1,19 @@
 .navbar.navbar-default.navbar-red.no-radius.navbar-fixed-top(role='navigation', ng-controller="NavbarController")
     .navbar-container
-        ul.nav.navbar-nav.navbar-left.sp-menu-toggle-container.hidden-xs
+
+        ul.nav.navbar-nav.navbar-left.visible-xs
             li
-                a.t-title.is-pointer.sp-menu-toggle(ng-click='toggleLeftSidebar()')
-                    i.fa.fa-folder-open
+                a.t-title.is-pointer(href="/app")
+                    i.fa.fa-chevron-left
                     | &nbsp;
-                    i.fa.fa-angle-left
+                    span. Back
+
+        ul.nav.navbar-nav.navbar-left.visible-xs
+            li
+                a.t-title.is-pointer(href="/app")
+                    i.fa.fa-home
                     | &nbsp;
-                    span.sp-menu-left-toggle-text.hidden-xs Content
+                    span. Home
 
         ul.nav.navbar-nav.navbar-right.sp-menu-toggle-container.hidden-xs
             li

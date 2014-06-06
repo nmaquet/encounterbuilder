@@ -1,10 +1,13 @@
-header.l-header
-    include _header
-include _left-sidebar
-include _right-sidebar
-.container.l-xs-nopadding
-    .row
-        .col-md-6.col-xs-10.l-app-content.l-section.l-shadow.search-result(ng-controller='NpcDetailController', pending="pending")
-            include _npc-details
-footer.l-footer
-        include _footer
+#wrapper
+    include _right-sidebar
+    #sidebar-wrapper.home
+        include _left-sidebar
+    #page-content-wrapper
+        header.l-header
+            include _header
+        .l-xs-nopadding
+            .row
+                .col-md-6.col-xs-10.l-app-content.l-section.l-shadow.search-result(ng-controller='NpcDetailController', pending="pending")
+                    include _npc-details
+        footer.l-footer
+                include _footer

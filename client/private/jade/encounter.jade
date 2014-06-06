@@ -1,22 +1,25 @@
-header.l-header
-    include _header
-include _left-sidebar
-include _right-sidebar
-.container.l-xs-nopadding
-    .row
-        //.col-xxs-12.col-xs-12.col-sm-3.col-lg-3.l-app-content.l-encounter-well-container
-            .l-section.col-sm-12.encounter-well.gradient.l-shadow
-                div.encounter-no-encounter
-                | There is no encounter. Please
-                | &nbsp;
-                a.is-pointer(ng-click="createFirstEncounter()")
-                    | create one
-                | .
-        //.col-xxs-12.col-xs-12.col-sm-12.col-lg-12.l-app-content
-            .l-section.col-sm-12.encounter-binder-container.encounter-binder.l-shadow.l-binder-container(ng-controller='BinderController', fade-in-fade-out="startFade")
-                include _binder
-        .col-xxs-12.col-xs-12.col-sm-6.col-lg-6.l-app-content(ng-controller='EncounterController', pending="pending")
-            .l-section.col-sm-12.encounter-well.gradient.l-shadow(fade-in-fade-out="startFade")
-                include _encounter
-footer.l-footer
-    include _footer
+#wrapper
+    include _right-sidebar
+    #sidebar-wrapper.home
+        include _left-sidebar
+    #page-content-wrapper
+        header.l-header
+            include _header
+        .l-xs-nopadding
+            .row
+                //.col-xxs-12.col-xs-12.col-sm-3.col-lg-3.l-app-content.l-encounter-well-container
+                    .l-section.col-sm-12.encounter-well.gradient.l-shadow
+                        div.encounter-no-encounter
+                        | There is no encounter. Please
+                        | &nbsp;
+                        a.is-pointer(ng-click="createFirstEncounter()")
+                            | create one
+                        | .
+                //.col-xxs-12.col-xs-12.col-sm-12.col-lg-12.l-app-content
+                    .l-section.col-sm-12.encounter-binder-container.encounter-binder.l-shadow.l-binder-container(ng-controller='BinderController', fade-in-fade-out="startFade")
+                        include _binder
+                .col-xxs-12.col-xs-12.col-sm-6.col-lg-6.l-app-content(ng-controller='EncounterController', pending="pending")
+                    .l-section.col-sm-12.encounter-well.gradient.l-shadow(fade-in-fade-out="startFade")
+                        include _encounter
+        footer.l-footer
+            include _footer

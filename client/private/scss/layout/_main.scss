@@ -43,7 +43,7 @@ div[ng-view='ng-view'] {
 }
 .l-encounter-well-container, .l-filters {
   @media (max-width: $screen-xs-max) {
-    max-width: 320px;
+    //max-width: 320px;
     //position: absolute;
   }
   /*position: absolute;
@@ -64,4 +64,66 @@ div[ng-view='ng-view'] {
   }
 }
 
+@media (min-width: 767px) {
 
+  #wrapper {
+    padding-left: 350px;
+    transition: all 0.4s ease 0s;
+  }
+
+  #sidebar-wrapper {
+    margin-left: -300px;
+    left: 300px;
+    width: 300px;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.4s ease 0s;
+  }
+
+  #page-content-wrapper {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  #wrapper {
+  }
+
+  #sidebar-wrapper {
+    display: none;
+  }
+
+  #page-content-wrapper {
+    width: 100%;
+  }
+
+}
+
+.home {
+  background-color: $brown-dark;
+  @include box-shadow(0,0,0,rgba(0,0,0,0.175));
+
+  h1, h2, h3, .t-title {
+    color: white;
+    font-size: 1.5em;
+    padding: ($grid-gutter-width/2);
+    margin: 0;
+    font-weight: 300;
+    background-color: $brown-dark;
+  }
+
+  a {
+    display: block;
+    color: white;
+    font-size: 1em;
+    font-weight: 300;
+    &:hover {
+      background-color: $brown-dark;
+      text-decoration: none;
+    }
+  }
+}
