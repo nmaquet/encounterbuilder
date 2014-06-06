@@ -5,16 +5,20 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', '$tim
         restrict: "A",
         compile: function (element) {
 
+            var body = $($document[0].body);
+
             if (element.hasClass("sp-menu-left") && sidebarService.leftSidebarOpened.get()) {
                 element.addClass("sp-menu-open");
+                body.addClass("sp-menu-push-toright");
             }
 
             if (element.hasClass("sp-menu-right") && sidebarService.rightSidebarOpened.get()) {
                 element.addClass("sp-menu-open");
             }
 
+            body.addClass("sp-menu-push");
+
             return function (scope, element) {
-                var body = $($document[0].body);
 
                 var sidebarOpened;
 
@@ -27,8 +31,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', '$tim
                 // Substract the Header height from the Slide-Push Menu
                 var $spMenuContent = element.find(".sp-menu-content");
                 var spMenuHeight = $(window).height() - $(".navbar-wrapper").height();
-
-                body.addClass("sp-menu-push");
 
                 scope.$watch(sidebarOpened.get, function (opened) {
                     if (opened) {
