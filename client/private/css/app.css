@@ -27,19 +27,19 @@
 }
 
 .encounter-monsters-buttons {
-    display: none;
+    visibility: hidden;
 }
 
 .encounter-monster-row:hover .encounter-monsters-buttons {
-    display: inline;
+    visibility: visible;
 }
 
 .encounter-items-buttons {
-    display: none;
+    visibility: hidden;
 }
 
 .encounter-item-row:hover .encounter-items-buttons {
-    display: inline;
+    visibility: visible;
 }
 
 .btn-xmini {
