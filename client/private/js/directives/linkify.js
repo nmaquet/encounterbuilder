@@ -41,6 +41,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify',
                         });
                     };
                     scope.$watch(scope.watchedExpression, function (value) {
+
+                        DEMONSQUID.startProfile("linkify");
+
                         var typesArray = scope.type.split(",");
                         for (var i in typesArray) {
                             if (!types[typesArray[i]]) {
@@ -77,6 +80,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify',
                         }
                         element.html(value);
                         $compile(element.contents())(scope);
+
+                        DEMONSQUID.stopProfile("linkify");
                     });
                 }
             };
