@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
-    ['$rootScope', '$timeout', '$location', '$routeParams', 'contentTreeService', 'encounterService',
-        function ($rootScope, $timeout, $location, $routeParams, contentTreeService, encounterService) {
+    ['$rootScope', '$timeout', '$routeParams', 'contentTreeService', 'encounterService',
+        function ($rootScope, $timeout, $routeParams, contentTreeService, encounterService) {
 
             function link(scope, element) {
 
@@ -11,9 +11,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     $timeout(function () {
                         var node = data.node;
                         if (node.data.encounterId) {
-                            $location.path("/encounter/" + node.data.encounterId);
+                            scope.go("/encounter/" + node.data.encounterId);
                         } else if (node.folder) {
-                            $location.path("/binder/" + node.key);
+                            scope.go("/binder/" + node.key);
                         }
                     });
                 }

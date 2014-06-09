@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
-    ['$scope', '$location', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService','contentTreeService',
-        function ($scope, $location, $timeout, $routeParams, encounterService, lootService, encounterEditorService,contentTreeService) {
+    ['$scope', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService','contentTreeService',
+        function ($scope, $timeout, $routeParams, encounterService, lootService, encounterEditorService,contentTreeService) {
 
             $scope.encounterChanged = function () {
                 if ($scope.encounter) {
@@ -23,15 +23,15 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             });
 
             $scope.selectMonsterById = function (id) {
-                $location.path('/monster/' + id);
+                $scope.go('/monster/' + id);
             };
 
             $scope.selectNpcById = function (id) {
-                $location.path('/npc/' + id);
+                $scope.go('/npc/' + id);
             };
 
             $scope.selectItemById = function (id) {
-                $location.path('/item/' + id);
+                $scope.go('/item/' + id);
             };
 
             $scope.removeEncounter = function () {
@@ -40,7 +40,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                     encounterService.encounters.splice(index, 1);
                     encounterService.remove($scope.encounter);
                     contentTreeService.removeEncounter($scope.encounter);
-                    $location.path("/"); // FIXME: should go to the parent binder ?
+                    $scope.go("/"); // FIXME: should go to the parent binder ?
                 };
             };
 
@@ -93,7 +93,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             };
 
             $scope.printSelectedEncounter = function () {
-                $location.path('/print-encounter');
+                $scope.go('/print-encounter');
             };
 
             $scope.createFirstEncounter = function () {

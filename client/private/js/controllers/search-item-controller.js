@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
-    ['$scope', '$http', '$timeout', '$routeParams', '$location', 'itemService', 'encounterService', 'encounterEditorService',
-        function ($scope, $http, $timeout, $routeParams, $location, itemService, encounterService, encounterEditorService) {
+    ['$scope', '$http', '$timeout', '$routeParams', 'itemService', 'encounterService', 'encounterEditorService',
+        function ($scope, $http, $timeout, $routeParams, itemService, encounterService, encounterEditorService) {
 
             var lastSearchParam = itemService.lastSearchParam();
 
@@ -82,8 +82,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
 
 
             $scope.selectItemById = function (id) {
-                $location.path('/item/' + id);
-            }
+                $scope.go('/item/' + id);
+            };
 
             function addItemToEditedEncounter(item) {
                 if (!/^(\d+)$/.exec(item.amountToAdd)) {

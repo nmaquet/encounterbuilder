@@ -13,6 +13,7 @@ var jsFiles = [
     "client/private/bower_components/angular/angular.js",
     "client/private/bower_components/angular-route/angular-route.js",
     "client/private/bower_components/angular-resource/angular-resource.js",
+    "client/private/bower_components/angular-animate/angular-animate.js",
     "client/private/bower_components/bootstrap/dist/js/bootstrap.js",
     "client/private/bower_components/async/lib/async.js",
     "client/private/bower_components/nouislider/jquery.nouislider.js",
@@ -22,6 +23,7 @@ var jsFiles = [
     // App files
     "client/private/js/app.js", /* app.js MUST be the first app file ! */
     "client/private/js/extra/utils.js",
+    "client/private/js/controllers/main-controller.js",
     "client/private/js/controllers/encounter-controller.js",
     "client/private/js/controllers/search-monster-controller.js",
     "client/private/js/controllers/search-npc-controller.js",
@@ -71,7 +73,8 @@ var jsFiles = [
 ];
 
 var cssFiles = [
-    "client/private/css/app.css"
+    "client/private/css/app.css",
+    "client/private/css/animate.css"
 ];
 
 var sassRootFile = "client/private/scss/encounter-builder.scss";

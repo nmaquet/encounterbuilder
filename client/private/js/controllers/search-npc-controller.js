@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
-    ['$scope', '$timeout', '$routeParams', '$location', 'npcService', 'encounterService', 'encounterEditorService',
-        function ($scope, $timeout, $routeParams, $location, npcService, encounterService, encounterEditorService) {
+    ['$scope', '$timeout', '$routeParams', 'npcService', 'encounterService', 'encounterEditorService',
+        function ($scope, $timeout, $routeParams, npcService, encounterService, encounterEditorService) {
 
             var lastSearchParam = npcService.lastSearchParam();
             $scope.nameSubstring = lastSearchParam ? lastSearchParam.nameSubstring : '';
@@ -75,7 +75,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             };
 
             $scope.selectNpc = function (id) {
-                $location.path('/npc/' + id);
+                $scope.go('/npc/' + id);
             };
 
             function addNpcToEditedEncounter(npc) {

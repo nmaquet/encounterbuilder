@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('PrintableEncounterController',
-    ['$scope', '$location', '$timeout', '$sce', '$routeParams', 'encounterService', 'monsterService', 'npcService',
-        function ($scope, $location, $timeout, $sce, $routeParams, encounterService, monsterService, npcService) {
+    ['$scope', '$timeout', '$sce', '$routeParams', 'encounterService', 'monsterService', 'npcService',
+        function ($scope, $timeout, $sce, $routeParams, encounterService, monsterService, npcService) {
 
             $scope.monsters_rows = [];
 
@@ -46,7 +46,7 @@ DEMONSQUID.encounterBuilderControllers.controller('PrintableEncounterController'
             });
 
             $scope.back = function () {
-                $location.path('/');
+                $scope.go('/');
             }
         }
     ]);

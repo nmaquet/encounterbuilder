@@ -3,6 +3,7 @@ var DEMONSQUID = {};
 
 DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
     'ngRoute',
+    'ngAnimate',
     'encounterBuilderControllers',
     'encounterBuilderFilters',
     'encounterBuilderServices',
@@ -28,8 +29,8 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
         $httpProvider.interceptors.push('httpInterceptorService');
     }]);
 
-DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$location', '$window',
-    function ($rootScope, $http, $location, $window) {
+DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$window',
+    function ($rootScope, $http, $window) {
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
             if ($rootScope.user === undefined) {
                 $http.post('/api/user-data')

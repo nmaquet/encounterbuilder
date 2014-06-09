@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SidebarController',
-    ['$scope', '$location', 'encounterService', 'encounterEditorService', 'contentTreeService',
-        function ($scope, $location, encounterService, encounterEditorService, contentTreeService) {
+    ['$scope', 'encounterService', 'encounterEditorService', 'contentTreeService',
+        function ($scope, encounterService, encounterEditorService, contentTreeService) {
 
             $scope.encounters = encounterService.encounters;
             $scope.createEncounter = function () {
@@ -32,7 +32,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SidebarController',
             };
 
             $scope.selectEncounter = function (encounter) {
-                $location.path("/encounter/" + encounter._id);
+                $scope.go("/encounter/" + encounter._id);
             };
 
             $scope.createBinder = function () {

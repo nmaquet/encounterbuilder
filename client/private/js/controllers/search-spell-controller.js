@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
-    ['$scope', '$timeout', '$routeParams', '$location', 'spellService',
-        function ($scope, $timeout, $routeParams, $location, spellService) {
+    ['$scope', '$timeout', '$routeParams', 'spellService',
+        function ($scope, $timeout, $routeParams, spellService) {
 
             var lastSearchParam = spellService.lastSearchParam();
 
@@ -60,7 +60,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
             });
 
             $scope.selectSpellById = function (id) {
-                $location.path('/spell/' + id);
+                $scope.go('/spell/' + id);
             }
 
             $scope.$watch('spellNameSubstring', function (spellNameSubstring) {

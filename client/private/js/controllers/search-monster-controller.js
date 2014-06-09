@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
-    ['$scope', '$rootScope', '$timeout', '$location', '$routeParams', 'monsterService', 'encounterService', 'encounterEditorService',
-        function ($scope, $rootScope, $timeout, $location, $routeParams, monsterService, encounterService, encounterEditorService) {
+    ['$scope', '$rootScope', '$timeout', '$routeParams', 'monsterService', 'encounterService', 'encounterEditorService',
+        function ($scope, $rootScope, $timeout, $routeParams, monsterService, encounterService, encounterEditorService) {
 
             var lastSearchParam = monsterService.lastSearchParam();
 
@@ -77,7 +77,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             };
 
             $scope.selectMonster = function (id) {
-                $location.path('/monster/' + id);
+                $scope.go('/monster/' + id);
             };
 
             function addMonsterToEditedEncounter(monster) {

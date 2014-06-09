@@ -90,10 +90,10 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             service.treeChanged(fancyTree.toDict());
             var newActiveNode = fancyTree.rootNode.getFirstChild();
             if (newActiveNode.folder === true) {
-                $location.path("/binder/" + newActiveNode.nodeKey);
+                $rootScope.go("/binder/" + newActiveNode.nodeKey);
                 newActiveNode.setActive(true);
             } else if (newActiveNode.encounter !== undefined) {
-                $location.path("/encounter/" + newActiveNode.data.encounterId);
+                $rootScope.go("/encounter/" + newActiveNode.data.encounterId);
                 newActiveNode.setActive(true);
             }
         };
