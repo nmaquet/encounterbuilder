@@ -1,7 +1,7 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('NavbarController', ['$scope', 'sidebarService',
-    function ($scope, sidebarService) {
+DEMONSQUID.encounterBuilderControllers.controller('NavbarController', ['$scope', '$route', 'sidebarService',
+    function ($scope, $route, sidebarService) {
 
         $scope.toggleLeftSidebar = function () {
             sidebarService.leftSidebarOpened.toggle();
@@ -10,5 +10,9 @@ DEMONSQUID.encounterBuilderControllers.controller('NavbarController', ['$scope',
         $scope.toggleRightSidebar = function () {
             sidebarService.rightSidebarOpened.toggle();
         };
+
+        $scope.notHome = $route.current.templateUrl !== 'home.html';
+
+        console.log("notHome set to " + $scope.notHome);
     }
 ]);
