@@ -3,9 +3,13 @@
 DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '$rootScope', '$window', '$location',
     function ($scope, $rootScope, $window, $location) {
         $scope.slide = '';
-        $rootScope.back = function () {
+        $rootScope.back = function (path) {
             $scope.slide = 'slide-right';
-            $window.history.back();
+            if (path) {
+                $location.url(path);
+            } else {
+                $window.history.back();
+            }
         };
         $rootScope.go = function (path) {
             $scope.slide = 'slide-left';

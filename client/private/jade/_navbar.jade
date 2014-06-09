@@ -10,7 +10,7 @@
 
         ul.nav.navbar-nav.navbar-left.visible-xs(ng-if='notHome')
             li
-                a.t-title.is-pointer(href="/app")
+                a.t-title.is-pointer(ng-click="back('/')")
                     i.fa.fa-home
                     | &nbsp;
                     span. Home
