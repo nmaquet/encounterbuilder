@@ -1,12 +1,2 @@
-#wrapper
-    div(ng-if="tabletWidthOrLarger")
-        div(ng-include="'right-sidebar.html'")
-    #sidebar-wrapper.home(ng-if="tabletWidthOrLarger")
-        div(ng-include="'left-sidebar.html'")
-    #page-content-wrapper
-        header.l-header
-            include _header
-        .home
-            include left-sidebar
-        footer.l-footer
-            include _footer
+.home
+    include left-sidebar

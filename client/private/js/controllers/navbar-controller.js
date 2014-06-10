@@ -11,6 +11,7 @@ DEMONSQUID.encounterBuilderControllers.controller('NavbarController', ['$scope',
             sidebarService.rightSidebarOpened.toggle();
         };
 
-        $scope.notHome = $route.current.templateUrl !== 'home.html';
+        // FIXME
+        // $scope.notHome = $route.current.templateUrl !== 'home.html';
     }
 ]);

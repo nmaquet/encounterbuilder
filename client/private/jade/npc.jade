@@ -1,14 +1,4 @@
-#wrapper
-    div(ng-if="tabletWidthOrLarger")
-        div(ng-include="'right-sidebar.html'")
-    #sidebar-wrapper.home(ng-if="tabletWidthOrLarger")
-        div(ng-include="'left-sidebar.html'")
-    #page-content-wrapper
-        header.l-header
-            include _header
-        .l-xs-nopadding
-            .row
-                .col-md-6.col-xs-10.l-app-content.l-section.l-shadow.search-result(ng-controller='NpcDetailController', pending="pending")
-                    include _npc-details
-        footer.l-footer
-                include _footer
+.l-xs-nopadding
+    .row
+        .col-md-6.col-xs-10.l-app-content.l-section.l-shadow.search-result(ng-controller='NpcDetailController', pending="pending")
+            include _npc-details
