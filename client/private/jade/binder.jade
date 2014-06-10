@@ -1,7 +1,7 @@
 #wrapper
     include _right-sidebar
-    #sidebar-wrapper.home
-        include _left-sidebar
+    #sidebar-wrapper.home(ng-if="tabletWidthOrLarger")
+        div(ng-include="'left-sidebar.html'")
     #page-content-wrapper
         header.l-header
             include _header

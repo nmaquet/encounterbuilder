@@ -3,6 +3,10 @@
 DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '$rootScope', '$window', '$location', '$timeout',
     function ($scope, $rootScope, $window, $location, $timeout) {
 
+        $scope.tabletWidthOrLarger = $(window).width() > 767;
+
+        console.log("$scope.tabletWidthOrLarger : " + $scope.tabletWidthOrLarger);
+
         function slideRightAfterPageLoad() {
             $timeout(function(){
                 $scope.routeChangeTransition = 'slide-right';
