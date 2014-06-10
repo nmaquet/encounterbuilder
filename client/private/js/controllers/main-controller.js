@@ -1,18 +1,27 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '$rootScope', '$window', '$location',
-    function ($scope, $rootScope, $window, $location) {
-        $scope.routeChangeTransition = '';
+DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '$rootScope', '$window', '$location', '$timeout',
+    function ($scope, $rootScope, $window, $location, $timeout) {
+
+        function slideRightAfterPageLoad() {
+            $timeout(function(){
+                $scope.routeChangeTransition = 'slide-right';
+            }, 1500);
+        }
+
         $rootScope.back = function (path) {
-            $scope.routeChangeTransition = 'slide-right';
             if (path) {
                 $location.url(path);
             } else {
                 $window.history.back();
             }
         };
+
         $rootScope.go = function (path) {
             $scope.routeChangeTransition = 'slide-left';
             $location.url(path);
+            slideRightAfterPageLoad();
         }
+
+        slideRightAfterPageLoad();
     }]);
