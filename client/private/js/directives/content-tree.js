@@ -6,7 +6,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
             function link(scope, element) {
 
-                function onActivate(event, data) {
+                function onClick(event, data) {
                     contentTreeService.treeChanged(tree.toDict());
                     $timeout(function () {
                         var node = data.node;
@@ -31,7 +31,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     element.fancytree({
                         extensions: ["dnd"],
                         source: contentTreeService.contentTree(),
-                        activate: onActivate,
+                        click: onClick,
                         expand: onExpandOrCollapse,
                         collapse: onExpandOrCollapse,
                         dnd: {

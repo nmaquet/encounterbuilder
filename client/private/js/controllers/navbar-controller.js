@@ -12,7 +12,5 @@ DEMONSQUID.encounterBuilderControllers.controller('NavbarController', ['$scope',
         };
 
         $scope.notHome = $route.current.templateUrl !== 'home.html';
-
-        console.log("notHome set to " + $scope.notHome);
     }
 ]);
