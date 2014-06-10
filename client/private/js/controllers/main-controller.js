@@ -2,9 +2,9 @@
 
 DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '$rootScope', '$window', '$location',
     function ($scope, $rootScope, $window, $location) {
-        $scope.slide = '';
+        $scope.routeChangeTransition = '';
         $rootScope.back = function (path) {
-            $scope.slide = 'slide-right';
+            $scope.routeChangeTransition = 'slide-right';
             if (path) {
                 $location.url(path);
             } else {
@@ -12,7 +12,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
             }
         };
         $rootScope.go = function (path) {
-            $scope.slide = 'slide-left';
+            $scope.routeChangeTransition = 'slide-left';
             $location.url(path);
         }
     }]);
