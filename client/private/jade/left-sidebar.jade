@@ -33,12 +33,13 @@ div(ng-controller='SidebarController')
                         a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createBinder()')
                             i.icon.fa.fa-folder
                             strong &nbsp;Create new binder
-            content-tree
-        div(ng-show="selectedTab === 'favourites'")
-            h2. Favourites
-        div(ng-show="selectedTab === 'creations'")
-            h2. Creations
         div(ng-switch="selectedTab")
+            .database(ng-switch-when="campaigns")
+                content-tree
+            div(ng-switch-when="favourites")
+                h2. Favourites
+            div(ng-switch-when="creations")
+                h2. Creations
             .database(ng-switch-when="database")
                 h2. Database
                 include _database
