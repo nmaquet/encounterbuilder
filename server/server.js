@@ -104,6 +104,7 @@ function main(db) {
     app.get('/spell.html', authentication.check, clientRoutes.spell);
     app.get('/feat.html', authentication.check, clientRoutes.feat);
     app.get('/left-sidebar.html', authentication.check, clientRoutes.leftSidebar);
+    app.get('/right-sidebar.html', authentication.check, clientRoutes.rightSidebar);
     app.get('/printable-encounter.html', authentication.check, metrics.logPrintEncounter, clientRoutes.printableEncounter);
     app.get('/app', clientRoutes.app);
     app.get('/blog', clientRoutes.blog);
