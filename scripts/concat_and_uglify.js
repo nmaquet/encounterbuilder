@@ -14,6 +14,7 @@ var jsFiles = [
     "client/private/bower_components/angular-route/angular-route.js",
     "client/private/bower_components/angular-resource/angular-resource.js",
     "client/private/bower_components/angular-animate/angular-animate.js",
+    "client/private/bower_components/angular-touch/angular-touch.js",
     "client/private/bower_components/bootstrap/dist/js/bootstrap.js",
     "client/private/bower_components/async/lib/async.js",
     "client/private/bower_components/nouislider/jquery.nouislider.js",
