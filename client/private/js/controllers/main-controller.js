@@ -1,11 +1,13 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '$rootScope', '$window', '$location', '$timeout',
-    function ($scope, $rootScope, $window, $location, $timeout) {
+DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '$rootScope', '$window', '$location', '$timeout', '$animate',
+    function ($scope, $rootScope, $window, $location, $timeout, $animate) {
 
         $scope.tabletWidthOrLarger = $(window).width() > 767;
 
-        console.log("$scope.tabletWidthOrLarger : " + $scope.tabletWidthOrLarger);
+        if($scope.tabletWidthOrLarger) {
+            $animate.enabled(false);
+        }
 
         function slideRightAfterPageLoad() {
             $timeout(function(){
@@ -25,7 +27,8 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
             $scope.routeChangeTransition = 'slide-left';
             $location.url(path);
             slideRightAfterPageLoad();
-        }
+        };
 
         slideRightAfterPageLoad();
-    }]);
+    }
+]);
