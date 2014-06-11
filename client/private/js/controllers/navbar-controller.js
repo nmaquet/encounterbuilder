@@ -1,7 +1,7 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('NavbarController', ['$scope', '$route', 'sidebarService',
-    function ($scope, $route, sidebarService) {
+DEMONSQUID.encounterBuilderControllers.controller('NavbarController', ['$scope', '$rootScope', '$location', 'sidebarService',
+    function ($scope, $rootScope, $location, sidebarService) {
 
         $scope.toggleLeftSidebar = function () {
             sidebarService.leftSidebarOpened.toggle();
@@ -11,7 +11,14 @@ DEMONSQUID.encounterBuilderControllers.controller('NavbarController', ['$scope',
             sidebarService.rightSidebarOpened.toggle();
         };
 
-        // FIXME
-        // $scope.notHome = $route.current.templateUrl !== 'home.html';
+        function updateNotHome() {
+            $scope.notHome = $location.path() !== '/';
+        }
+
+        $rootScope.$on('$locationChangeSuccess', function() {
+            updateNotHome();
+        });
+
+        updateNotHome();
     }
 ]);
