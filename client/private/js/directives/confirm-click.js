@@ -1,17 +1,17 @@
 'use strict';
 
 DEMONSQUID.confirmClick = {
-    nextPopOverId : 0
+    nextPopOverId: 0
 }
 
-DEMONSQUID.encounterBuilderDirectives.directive('confirmClick', function () {
+DEMONSQUID.encounterBuilderDirectives.directive('confirmClick', ['$rootScope', function ($rootScope) {
     return {
         priority: 1,
         terminal: true,
-        scope : {
-            confirmClick : "@",
-            confirmTitle : "@",
-            onConfirm : '&'
+        scope: {
+            confirmClick: "@",
+            confirmTitle: "@",
+            onConfirm: '&'
         },
         link: function (scope, element) {
 
@@ -20,14 +20,18 @@ DEMONSQUID.encounterBuilderDirectives.directive('confirmClick', function () {
             var noId = "confirm-dialog-btn-no-" + id;
 
             var self = $(element);
+            var placement = 'left';
+            if ($rootScope.tabletWidthOrLarger) {
+                placement = 'right';
+            }
 
             self.bind('click', function (e) {
                 var popoverOptions = {
                     trigger: 'manual',
                     title: scope.confirmTitle || 'Confirmation',
                     html: true,
-                    placement: 'right',
-                    container: 'body',
+                    placement: placement,
+                    container: '#wrapper',
                     content: scope.confirmClick + '\
 						<p class="button-group" style="margin-top: 10px; text-align: center;">\
 							<button type="button" class="btn btn-small btn-danger confirm-dialog-btn-yes" id="' + yesId + '">Yes</button>\
@@ -43,7 +47,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('confirmClick', function () {
                 $('#' + noId).bind('click', function (e) {
                     self.popover('destroy');
                 });
+                $rootScope.$on('$locationChangeStart', function (e) {
+                    self.popover('destroy');
+                });
             });
         }
     };
-});
+}]);
