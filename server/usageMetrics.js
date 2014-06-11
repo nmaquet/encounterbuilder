@@ -18,13 +18,13 @@ function insertEvent(username, event, metadata) {
     });
 }
 
-function logUpsertEncounter(request, response, next) {
-    if (request.body.encounter._id === undefined) {
-        insertEvent(request.session.user.username, "CREATE_ENCOUNTER");
-    }
-    else {
-        insertEvent(request.session.user.username, "UPDATE_ENCOUNTER");
-    }
+function logUpdateEncounter(request, response, next) {
+    insertEvent(request.session.user.username, "CREATE_ENCOUNTER");
+    next();
+}
+
+function logCreateEncounter(request, response, next) {
+    insertEvent(request.session.user.username, "UPDATE_ENCOUNTER");
     next();
 }
 
@@ -111,7 +111,8 @@ function logLogout(request, response, next) {
 module.exports = function (collection) {
     metricsCollection = collection;
     return {
-        logUpsertEncounter: logUpsertEncounter,
+        logUpdateEncounter: logUpdateEncounter,
+        logCreateEncounter: logCreateEncounter,
         logRemoveEncounter: logRemoveEncounter,
         logGenerateEncounterLoot: logGenerateEncounterLoot,
         logSearchMonster: logSearchMonster,

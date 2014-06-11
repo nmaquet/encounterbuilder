@@ -98,21 +98,23 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             }
         };
 
-        service.newEncounter = function (encounter) {
-            var activeNode = fancyTree.getActiveNode();
-            if (activeNode === null) {
-                activeNode = fancyTree.rootNode;
-                activeNode.addNode({title: encounter.Name, encounterId: encounter._id, key: getNextNodeKey()}).setActive(true);
-            }
-            else if (activeNode.folder === true) {
-                var newNode = activeNode.addNode({title: encounter.Name, encounterId: encounter._id, key: getNextNodeKey()});
-                newNode.setActive(true);
-                newNode.makeVisible();
-            }
-            else {
-                activeNode.appendSibling({title: encounter.Name, encounterId: encounter._id, key: getNextNodeKey()}).setActive(true);
-            }
-            service.treeChanged(fancyTree.toDict());
+        service.createEncounter = function () {
+            encounterService.createEncounter(function (encounter) {
+                var activeNode = fancyTree.getActiveNode();
+                if (activeNode === null) {
+                    activeNode = fancyTree.rootNode;
+                    activeNode.addNode({title: encounter.Name, encounterId: encounter._id, key: getNextNodeKey()}).setActive(true);
+                }
+                else if (activeNode.folder === true) {
+                    var newNode = activeNode.addNode({title: encounter.Name, encounterId: encounter._id, key: getNextNodeKey()});
+                    newNode.setActive(true);
+                    newNode.makeVisible();
+                }
+                else {
+                    activeNode.appendSibling({title: encounter.Name, encounterId: encounter._id, key: getNextNodeKey()}).setActive(true);
+                }
+                service.treeChanged(fancyTree.toDict());
+            });
         };
 
         service.removeEncounter = function (encounter) {

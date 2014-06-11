@@ -70,18 +70,14 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 });
         }
 
-        service.newEncounter = function (encounter, onSuccess) {
-            $http.post('/api/upsert-encounter', { encounter: encounter })
+        service.createEncounter = function (onSuccess) {
+            $http.post('/api/create-encounter')
                 .success(function (response) {
-                    if (response._id) {
-                        encounter._id = response._id;
-                        if (onSuccess) {
-                            onSuccess(encounter);
-                        }
-                    }
                     if (response.error) {
                         console.log(error);
                     }
+                    onSuccess(response.encounter);
+
                 })
                 .error(function (response) {
                     console.log("post of encounter failed !");
@@ -95,7 +91,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
             encounter.lootValue = calculateLootValue(encounter);
             encounter.CR = crService.calculateCR(encounter);
             removeItemsWithZeroAmount(encounter);
-            $http.post('/api/upsert-encounter', { encounter: encounter })
+            $http.post('/api/update-encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response._id) {
                         encounter._id = response._id;

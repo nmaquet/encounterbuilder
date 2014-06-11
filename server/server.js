@@ -86,7 +86,8 @@ function main(db) {
     app.post('/api/user-data', userDataRoute);
     app.post('/logout', metrics.logLogout, logoutRoute);
     app.post("/login", metrics.logLogin, loginRoute);
-    app.post("/api/upsert-encounter", authentication.check, metrics.logUpsertEncounter, encounterRoute.upsert);
+    app.post("/api/update-encounter", authentication.check, metrics.logUpdateEncounter, encounterRoute.update);
+    app.post("/api/create-encounter", authentication.check, metrics.logCreateEncounter, encounterRoute.create);
     app.post("/api/remove-encounter", authentication.check, metrics.logRemoveEncounter, encounterRoute.delete);
     app.post("/api/generate-encounter-loot", authentication.check, metrics.logGenerateEncounterLoot, encounterRoute.generateLoot);
     app.post("/api/change-password", authentication.check, changePasswordRoute);
