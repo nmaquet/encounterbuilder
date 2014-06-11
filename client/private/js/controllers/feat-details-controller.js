@@ -13,7 +13,7 @@ DEMONSQUID.encounterBuilderControllers.controller('FeatDetailsController',
                 "companion_familiar": "Companion / Familiar"
             };
             $scope.pending = true;
-            featService.get($routeParams.featId, function (error, feat) {
+            featService.get($routeParams.featId || $routeParams.detailsId, function (error, feat) {
                 $scope.pending = false;
                 if (error) {
                     console.log(error);

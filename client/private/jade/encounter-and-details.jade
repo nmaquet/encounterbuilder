@@ -1,0 +1,20 @@
+section.row(ng-controller='ContentController')
+    .col-sm-6.col-lg-6.l-app-content(ng-controller='EncounterController', pending="pending")
+        .l-section.col-sm-12.encounter-well.gradient.l-shadow(fade-in-fade-out="startFade")
+        include _encounter
+    .detail-pane(ng-switch='contentType')
+        .l-xs-nopadding(ng-switch-when='monster')
+            .col-md-6.col-xs-10.l-app-content.l-section.l-shadow.search-result(ng-controller='MonsterDetailController', pending="pending")
+                include _monster-details
+        .l-xs-nopadding(ng-switch-when='npc')
+            .col-md-6.col-xs-10.l-app-content.l-section.l-shadow.search-result(ng-controller='NpcDetailController', pending="pending")
+                include _npc-details
+        .l-xs-nopadding(ng-switch-when='item')
+            .col-md-6.col-xs-10.l-app-content.l-section.l-shadow.search-result(ng-controller='ItemDetailsController', pending="pending")
+                include _item-details
+        .l-xs-nopadding(ng-switch-when='spell')
+            .col-md-6.col-xs-10.l-app-content.l-section.l-shadow.search-result(ng-controller='SpellDetailsController', pending="pending")
+                include _spell-details
+        .l-xs-nopadding(ng-switch-when='feat')
+            .col-md-6.col-xs-10.l-app-content.l-section.l-shadow.search-result(ng-controller='FeatDetailsController', pending="pending")
+                include _feat-details

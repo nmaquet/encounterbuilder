@@ -82,7 +82,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
 
 
             $scope.selectItemById = function (id) {
-                $scope.go('/item/' + id);
+                $scope.go('item', id);
             };
 
             function addItemToEditedEncounter(item) {

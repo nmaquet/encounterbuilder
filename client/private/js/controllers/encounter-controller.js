@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
-    ['$scope', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService','contentTreeService',
-        function ($scope, $timeout, $routeParams, encounterService, lootService, encounterEditorService,contentTreeService) {
+    ['$scope', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService', 'contentTreeService',
+        function ($scope, $timeout, $routeParams, encounterService, lootService, encounterEditorService, contentTreeService) {
 
             $scope.encounterChanged = function () {
                 if ($scope.encounter) {
@@ -23,19 +23,19 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             });
 
             $scope.selectMonsterById = function (id) {
-                $scope.go('/monster/' + id);
+                $scope.go('monster', id);
             };
 
             $scope.selectNpcById = function (id) {
-                $scope.go('/npc/' + id);
+                $scope.go('npc', id);
             };
 
             $scope.selectItemById = function (id) {
-                $scope.go('/item/' + id);
+                $scope.go('item', id);
             };
 
             $scope.removeEncounter = function () {
-                $scope.startFade = function() {
+                $scope.startFade = function () {
                     var index = encounterService.encounters.indexOf($scope.encounter);
                     encounterService.encounters.splice(index, 1);
                     encounterService.remove($scope.encounter);

@@ -6,7 +6,7 @@
 }
 
 html, body { height: 100%; min-height: 100%; }
-div[ng-view='ng-view'] {
+#wrapper {
   height: 100%;
   min-height: 100%;
   //overflow-x: hidden;
@@ -96,10 +96,6 @@ div[ng-view='ng-view'] {
 
   #sidebar-wrapper {
     display: none;
-  }
-
-  #page-content-wrapper {
-    width: 100%;
   }
 
 }

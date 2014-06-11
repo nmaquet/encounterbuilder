@@ -4,7 +4,7 @@ DEMONSQUID.encounterBuilderControllers.controller('ItemDetailsController',
     ['$scope', '$http', '$routeParams', 'itemService',
         function ($scope, $http, $routeParams, itemService) {
             $scope.pending = true;
-            itemService.get($routeParams.itemId, function (error, item) {
+            itemService.get($routeParams.itemId || $routeParams.detailsId, function (error, item) {
                 $scope.pending = false;
                 if (error) {
                     console.log(error);

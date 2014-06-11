@@ -3,7 +3,7 @@
 DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$sce', '$routeParams', 'monsterService',
     function ($scope, $sce, $routeParams, monsterService) {
         $scope.pending = true;
-        monsterService.get($routeParams.monsterId, function (error, monster) {
+        monsterService.get($routeParams.monsterId || $routeParams.detailsId, function (error, monster) {
             $scope.pending = false;
             if (error) {
                 console.log(error);

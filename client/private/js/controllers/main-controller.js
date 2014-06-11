@@ -24,10 +24,36 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
             }
         };
 
-        $rootScope.go = function (path) {
-            $scope.routeChangeTransition = 'slide-left';
-            $location.url(path);
-            slideRightAfterPageLoad();
+        $rootScope.go = function (type, id) {
+
+            //FIXME This feels like a completely stupid way of doing this, but right now it's all my brain seems to be able to do...
+
+            if ($scope.tabletWidthOrLarger && $location.path() !== "/") {
+                if (type === 'binder') {
+                    $location.path("/" + type + "/" + id);
+                }
+                else {
+                    var params = $location.path().split('/');
+                    if (type === 'encounter') {
+                        params[1] = type;
+                        params[2] = id;
+
+                    }
+                    else {
+                        if (params[1] === 'encounter' && params.length === 3) {
+                            params.push(type);
+                            params.push(id);
+                        } else {
+                            params[params.length - 2] = type;
+                            params[params.length - 1] = id;
+                        }
+                    }
+                    $location.path(params.join("/"));
+                }
+            }
+            else {
+                $location.path("/" + type + "/" + id);
+            }
         };
 
         slideRightAfterPageLoad();

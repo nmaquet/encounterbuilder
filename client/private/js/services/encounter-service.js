@@ -52,6 +52,8 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
             return Math.round(lootValue / 100);
         }
 
+        var lastId = null;
+        var lastEncounter = null;
         var service = {};
 
         service.encounters = [];
@@ -106,6 +108,10 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
         };
 
         service.get = function (id, callback) {
+            if (lastId && lastId === id) {
+                callback(null, lastEncounter);
+                return;
+            }
             $http.get('/api/encounter/' + id)
                 .success(function (data) {
                     callback(data.error, data.encounter);

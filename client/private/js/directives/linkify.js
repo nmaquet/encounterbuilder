@@ -30,13 +30,13 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify',
                 link: function compile(scope, element) {
                     scope.selectSpell = function (spellId) {
                         $timeout(function () {
-                            $rootScope.go('/spell/' + spellId);
+                            $rootScope.go('spell', spellId);
                             $('#spellsTab').click();
                         });
                     };
                     scope.selectFeat = function (featId) {
                         $timeout(function () {
-                            $rootScope.go('/feat/' + featId);
+                            $rootScope.go('feat', featId);
                             $('#featsTab').click();
                         });
                     };

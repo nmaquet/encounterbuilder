@@ -4,7 +4,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SpellDetailsController',
     ['$scope', '$http', '$sce', '$routeParams', 'spellService',
         function ($scope, $http, $sce, $routeParams, spellService) {
             $scope.pending = true;
-            spellService.get($routeParams.spellId, function (error, spell) {
+            spellService.get($routeParams.spellId || $routeParams.detailsId, function (error, spell) {
                 $scope.pending = false;
                 if (error) {
                     console.log(error);

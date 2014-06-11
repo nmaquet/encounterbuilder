@@ -3,7 +3,7 @@
 DEMONSQUID.encounterBuilderControllers.controller('NpcDetailController', ['$scope', '$sce', '$routeParams', 'npcService',
     function ($scope, $sce, $routeParams, npcService) {
         $scope.pending = true;
-        npcService.get($routeParams.npcId, function (error, npc) {
+        npcService.get($routeParams.npcId || $routeParams.detailsId, function (error, npc) {
             $scope.pending = false;
             if (error) {
                 console.log(error);
@@ -20,10 +20,10 @@ DEMONSQUID.encounterBuilderControllers.controller('NpcDetailController', ['$scop
 ]);
 
 // FIXME remove this ?
-function parseSpellknown(spells){
-    spells = spells.replace("Spells Known ","");
+function parseSpellknown(spells) {
+    spells = spells.replace("Spells Known ", "");
     var CL = spells.substring(1, spells.indexOf(')'));
-    spells = spells.slice(0,spells.indexOf(')'));
+    spells = spells.slice(0, spells.indexOf(')'));
     var spellsByLevel = spells.split("-");
     return spells;
 }
