@@ -61,6 +61,18 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
             sidebarService.rightSidebarOpened.toggle();
         };
 
+        $scope.anySidebarIsOpened = function () {
+            return sidebarService.leftSidebarOpened.get() || sidebarService.rightSidebarOpened.get();
+        };
+
+        $scope.leftSidebarIsOpened = function () {
+            return sidebarService.leftSidebarOpened.get();
+        };
+
+        $scope.rightSidebarIsOpened = function () {
+            return sidebarService.rightSidebarOpened.get();
+        };
+
         $scope.swipeRight = function() {
             var rightSidebarOpened = sidebarService.rightSidebarOpened.get();
             var leftSidebarClosed = !sidebarService.leftSidebarOpened.get();

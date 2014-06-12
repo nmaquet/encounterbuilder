@@ -1,6 +1,7 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('sidebarService', [
+    
     function () {
 
         var leftSidebarOpened = true;
