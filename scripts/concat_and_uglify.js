@@ -89,28 +89,26 @@ function concat(fileList, distPath) {
     console.log(' ' + distPath + ' built.');
 }
 
-function uglify(srcPath, distPath) {
-    var contents = fs.readFileSync(srcPath, FILE_ENCODING);
-    if (!process.env['DO_NOT_UGLIFY']) {
-        var ast = uglify_js.parse(contents);
-        var compressor = uglify_js.Compressor();
-        ast.figure_out_scope();
-        ast = ast.transform(compressor);
-        ast.figure_out_scope();
-        ast.compute_char_frequency();
-        ast.mangle_names();
-        fs.writeFileSync(distPath, ast.print_to_string(), FILE_ENCODING);
-    } else {
-        fs.writeFileSync(distPath, contents, FILE_ENCODING);
-    }
-    console.log(' ' + distPath + ' built.');
-}
-
 function makeJS() {
-    var tempfile = "scripts/temp";
-    concat(jsFiles, tempfile);
-    uglify(tempfile, 'client/public/js/encounterbuilder.min.js');
-    fs.unlinkSync(tempfile);
+    var relativeJsFiles = jsFiles.map(function(path){
+       return "../../../" + path;
+    });
+    var mangle;
+    if(process.env['DO_NOT_UGLIFY']) {
+        mangle = false;
+    } else {
+        mangle = true;
+    }
+    process.chdir("client/public/js/");
+    var result = uglify_js.minify(relativeJsFiles, { outSourceMap: "encounterbuilder.min.js", compress: false, mangle: mangle });
+    fs.writeFileSync('encounterbuilder.min.js', result.code, FILE_ENCODING);
+    if (fs.existsSync('encounterbuilder.min.js.map')) {
+        fs.unlinkSync('encounterbuilder.min.js.map');
+    }
+    if (process.env['DO_NOT_UGLIFY']) {
+        fs.writeFileSync('encounterbuilder.min.js.map', result.map, FILE_ENCODING);
+    }
+    process.chdir("../../../");
 }
 
 function makeCSS() {
