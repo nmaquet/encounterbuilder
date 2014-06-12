@@ -6,6 +6,11 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
         $scope.tabletWidthOrLarger = $(window).width() > 767;
         $rootScope.tabletWidthOrLarger = $scope.tabletWidthOrLarger;
 
+        $(window).resize(function () {
+            $scope.tabletWidthOrLarger = $(window).width() > 767;
+            $rootScope.tabletWidthOrLarger = $scope.tabletWidthOrLarger;
+        });
+
         $rootScope.back = function (path) {
             if (path) {
                 $location.url(path);
@@ -73,7 +78,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
             return sidebarService.rightSidebarOpened.get();
         };
 
-        $scope.swipeRight = function() {
+        $scope.swipeRight = function () {
             var rightSidebarOpened = sidebarService.rightSidebarOpened.get();
             var leftSidebarClosed = !sidebarService.leftSidebarOpened.get();
             if (rightSidebarOpened) {
@@ -83,7 +88,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
             }
         };
 
-        $scope.swipeLeft = function() {
+        $scope.swipeLeft = function () {
             var leftSidebarOpened = sidebarService.leftSidebarOpened.get();
             var rightSidebarClosed = !sidebarService.rightSidebarOpened.get();
             if (leftSidebarOpened) {
