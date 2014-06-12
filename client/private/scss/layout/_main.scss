@@ -5,7 +5,7 @@
 .l-main {
 }
 
-html, body { height: 100%; min-height: 100%; }
+html, body {font-size: 62.5%; height: 100%; min-height: 100%; }
 #wrapper {
   height: 100%;
   min-height: 100%;
@@ -32,6 +32,7 @@ html, body { height: 100%; min-height: 100%; }
 }
 .l-app-content {
   margin-bottom: $grid-gutter-width;
+  @include font-size(14);
   /*padding-left: 0;
   padding-right: 0;
   @media (min-width: $screen-sm-min) {

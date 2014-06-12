@@ -7,35 +7,39 @@
 // -----------------------
 // == Base
 // -----------------------
+@mixin font-size($sizeValue: 16) {
+  font-size: ($sizeValue) + px;
+  font-size: $sizeValue/10 + rem;
+}
 
 // = Inline-block
 // -----------------------------
-@mixin inline-block ($haslayout : true){
-	display: inline-block;
-	vertical-align: middle;
-	@if $haslayout == true {
-		.lt-ie8 & {
-			display: inline;
-			zoom: 1;
-		}
-	}
+@mixin inline-block($haslayout: true) {
+  display: inline-block;
+  vertical-align: middle;
+  @if $haslayout == true {
+    .lt-ie8 & {
+      display: inline;
+      zoom: 1;
+    }
+  }
 }
 
 // = Clearfix
 // -----------------------------
-@mixin clearfix ($haslayout : true) {
-	@if $haslayout == true {
-		.lt-ie8 & {
-			zoom: 1;
-		}
-	}
-	&:before, &:after {
-		content: "";
-		display: table;
-	}
-	&:after {
-		clear: both
-	}
+@mixin clearfix($haslayout: true) {
+  @if $haslayout == true {
+    .lt-ie8 & {
+      zoom: 1;
+    }
+  }
+  &:before, &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both
+  }
 }
 
 // = Opacity
@@ -48,74 +52,70 @@
 
   /* Hack IE6 */
   .lt-ie7 & {
-      filter : alpha(opacity=#{round($opacity * 100)});
-      zoom: 1;
+    filter: alpha(opacity=#{round($opacity * 100)});
+    zoom: 1;
   }
 }
 
 // = Placeholder
 // -----------------------------
-@mixin placeholder($color : $clr-mixin-placeholder) {
-	&::-webkit-input-placeholder {
-		color: $color;
-	}
-	&:-moz-placeholder {
-		color: $color;
-	}
-	&:-ms-input-placeholder {
-		color: $color;
-	}
+@mixin placeholder($color: $clr-mixin-placeholder) {
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  &:-moz-placeholder {
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
 }
 
 // = Selection
 // -----------------------------
-$prefixes: ("-webkit-","-moz-", "");
+$prefixes: ("-webkit-", "-moz-", "");
 @mixin selection($color, $background) {
-	@each $prefix in $prefixes {
-		::#{$prefix}selection {
-			color: $color;
-			background: $background;
-			text-shadow:none;
-		}
-	}
+  @each $prefix in $prefixes {
+    ::#{$prefix}selection {
+      color: $color;
+      background: $background;
+      text-shadow: none;
+    }
+  }
 }
 
 // = Position
 // -----------------------------
-@mixin position ($position: relative, $coordinates: 0 0 0 0) {
-	@if type-of($position) == list {
-		$coordinates: $position;
-		$position: relative;
-	}
-	$top: nth($coordinates, 1);
-	$right: nth($coordinates, 2);
-	$bottom: nth($coordinates, 3);
-	$left: nth($coordinates, 4);
-	position: $position;
-	@if $top == auto {
-		top: $top;
-	}
-	@else if not(unitless($top)) {
-		top: $top;
-	}
-	@if $right == auto {
-		right: $right;
-	}
-	@else if not(unitless($right)) {
-		right: $right;
-	}
-	@if $bottom == auto {
-		bottom: $bottom;
-	}
-	@else if not(unitless($bottom)) {
-		bottom: $bottom;
-	}
-	@if $left == auto {
-		left: $left;
-	}
-	@else if not(unitless($left)) {
-		left: $left;
-	}
+@mixin position($position: relative, $coordinates: 0 0 0 0) {
+  @if type-of($position) == list {
+    $coordinates: $position;
+    $position: relative;
+  }
+  $top: nth($coordinates, 1);
+  $right: nth($coordinates, 2);
+  $bottom: nth($coordinates, 3);
+  $left: nth($coordinates, 4);
+  position: $position;
+  @if $top == auto {
+    top: $top;
+  } @else if not(unitless($top)) {
+    top: $top;
+  }
+  @if $right == auto {
+    right: $right;
+  } @else if not(unitless($right)) {
+    right: $right;
+  }
+  @if $bottom == auto {
+    bottom: $bottom;
+  } @else if not(unitless($bottom)) {
+    bottom: $bottom;
+  }
+  @if $left == auto {
+    left: $left;
+  } @else if not(unitless($left)) {
+    left: $left;
+  }
 }
 
 // ----------------------------------------------------------
@@ -124,170 +124,162 @@ $prefixes: ("-webkit-","-moz-", "");
 
 // = Prefixer
 // -----------------------------
-$prefix-for-webkit:    true !default;
-$prefix-for-mozilla:   true !default;
+$prefix-for-webkit: true !default;
+$prefix-for-mozilla: true !default;
 $prefix-for-microsoft: true !default;
-$prefix-for-opera:     true !default;
-$prefix-for-spec:      true !default;
+$prefix-for-opera: true !default;
+$prefix-for-spec: true !default;
 
-@mixin prefixer ($property, $value, $prefixes) {
-	@each $prefix in $prefixes {
+@mixin prefixer($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
 
-		@if $prefix == webkit and $prefix-for-webkit == true {
-			-webkit-#{$property}: $value;
-		}
-		@else if $prefix == moz and $prefix-for-mozilla == true {
-			-moz-#{$property}: $value;
-		}
-		@else if $prefix == ms and $prefix-for-microsoft == true {
-			-ms-#{$property}: $value;
-		}
-		@else if $prefix == o and $prefix-for-opera == true {
-			-o-#{$property}: $value;
-		}
-		@else if $prefix == spec and $prefix-for-spec == true {
-			#{$property}: $value;
-		}
-		@else {
-			@warn "Unrecognized prefix: #{$prefix}";
-		}
-	}
+    @if $prefix == webkit and $prefix-for-webkit == true {
+      -webkit-#{$property}: $value;
+    } @else if $prefix == moz and $prefix-for-mozilla == true {
+      -moz-#{$property}: $value;
+    } @else if $prefix == ms and $prefix-for-microsoft == true {
+      -ms-#{$property}: $value;
+    } @else if $prefix == o and $prefix-for-opera == true {
+      -o-#{$property}: $value;
+    } @else if $prefix == spec and $prefix-for-spec == true {
+      #{$property}: $value;
+    } @else {
+      @warn "Unrecognized prefix: #{$prefix}";
+    }
+  }
 }
 
 @mixin disable-prefix-for-all() {
-	$prefix-for-webkit:    false;
-	$prefix-for-mozilla:   false;
-	$prefix-for-microsoft: false;
-	$prefix-for-opera:     false;
-	$prefix-for-spec:      false;
+  $prefix-for-webkit: false;
+  $prefix-for-mozilla: false;
+  $prefix-for-microsoft: false;
+  $prefix-for-opera: false;
+  $prefix-for-spec: false;
 }
 
 // = Border-radius
 // -----------------------------
-@mixin border-radius($radius : 5px) {
-	@include prefixer(border-radius, $radius, moz spec)
+@mixin border-radius($radius: 5px) {
+  @include prefixer(border-radius, $radius, moz spec)
 }
 
-@mixin border-top-radius($radius : 5px) {
-	@include prefixer(border-top-left-radius, $radius, moz spec);
-	@include prefixer(border-top-right-radius, $radius, moz spec);
+@mixin border-top-radius($radius: 5px) {
+  @include prefixer(border-top-left-radius, $radius, moz spec);
+  @include prefixer(border-top-right-radius, $radius, moz spec);
 }
 
-@mixin border-bottom-radius($radius : 5px) {
-	@include prefixer(border-bottom-left-radius, $radius, moz spec);
-	@include prefixer(border-bottom-right-radius, $radius, moz spec);
+@mixin border-bottom-radius($radius: 5px) {
+  @include prefixer(border-bottom-left-radius, $radius, moz spec);
+  @include prefixer(border-bottom-right-radius, $radius, moz spec);
 }
 
-@mixin border-left-radius($radius : 5px) {
-	@include prefixer(border-top-left-radius, $radius, moz spec);
-	@include prefixer(border-bottom-left-radius, $radius, moz spec);
+@mixin border-left-radius($radius: 5px) {
+  @include prefixer(border-top-left-radius, $radius, moz spec);
+  @include prefixer(border-bottom-left-radius, $radius, moz spec);
 }
 
-@mixin border-right-radius($radius : 5px) {
-	@include prefixer(border-top-right-radius, $radius, moz spec);
-	@include prefixer(border-bottom-right-radius, $radius, moz spec);
+@mixin border-right-radius($radius: 5px) {
+  @include prefixer(border-top-right-radius, $radius, moz spec);
+  @include prefixer(border-bottom-right-radius, $radius, moz spec);
 }
 
 // = Transition
 // -----------------------------
-@mixin transition ($transition : all .3s ease-in-out) {
-	@include prefixer(transition, $transition, webkit moz ms o spec);
+@mixin transition($transition: all .3s ease-in-out) {
+  @include prefixer(transition, $transition, webkit moz ms o spec);
 }
 
 // = Box-sizing
 // -----------------------------
-@mixin box-sizing ($box : border-box) {
-	//  content-box | border-box | inherit
-	@include prefixer(box-sizing, $box, webkit moz spec);
+@mixin box-sizing($box: border-box) {
+  //  content-box | border-box | inherit
+  @include prefixer(box-sizing, $box, webkit moz spec);
 }
 
 // = Filter
 // -----------------------------
-@mixin filter (
-	$filter-1,
-	$filter-2 : false,
-	$filter-3 : false,
-	$filter-4 : false,
-	$filter-5 : false,
-	$filter-6 : false,
-	$filter-7 : false,
-	$filter-8 : false,
-	$filter-9 : false,
-	$filter-10: false
-	) {
-	$filter : compact($filter-1, $filter-2, $filter-3, $filter-4, $filter-5, $filter-6, $filter-7, $filter-8, $filter-9, $filter-10);
-	@include prefixer(filter, $filter, webkit moz spec);
+@mixin filter($filter-1,
+$filter-2: false,
+$filter-3: false,
+$filter-4: false,
+$filter-5: false,
+$filter-6: false,
+$filter-7: false,
+$filter-8: false,
+$filter-9: false,
+$filter-10: false) {
+  $filter: compact($filter-1, $filter-2, $filter-3, $filter-4, $filter-5, $filter-6, $filter-7, $filter-8, $filter-9, $filter-10);
+  @include prefixer(filter, $filter, webkit moz spec);
 }
 
 // = UL
 // -----------------------------
 @mixin ul-list-inline() {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
-    li {
-        @include inline-block();
-    }
+  li {
+    @include inline-block();
+  }
 }
 
 @mixin reset-ul() {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-
 
 // = Transform
 // -----------------------------
 @mixin transform($property: none) {
-    @include prefixer(transform, $property, webkit moz ms o spec);
+  @include prefixer(transform, $property, webkit moz ms o spec);
 }
 
 @mixin transform-origin($axes: 50%) {
-    @include prefixer(transform-origin, $axes, webkit moz ms o spec);
+  @include prefixer(transform-origin, $axes, webkit moz ms o spec);
 }
 
-@mixin transform-style ($style: flat) {
-    @include prefixer(transform-style, $style, webkit moz ms o spec);
+@mixin transform-style($style: flat) {
+  @include prefixer(transform-style, $style, webkit moz ms o spec);
 }
 
 // = Keyframes
 // -----------------------------
 @mixin keyframes($name) {
-    $original-prefix-for-webkit:    $prefix-for-webkit;
-    $original-prefix-for-mozilla:   $prefix-for-mozilla;
-    $original-prefix-for-microsoft: $prefix-for-microsoft;
-    $original-prefix-for-opera:     $prefix-for-opera;
-    $original-prefix-for-spec:      $prefix-for-spec;
+  $original-prefix-for-webkit: $prefix-for-webkit;
+  $original-prefix-for-mozilla: $prefix-for-mozilla;
+  $original-prefix-for-microsoft: $prefix-for-microsoft;
+  $original-prefix-for-opera: $prefix-for-opera;
+  $original-prefix-for-spec: $prefix-for-spec;
 
-    @if $original-prefix-for-webkit {
-        @include disable-prefix-for-all();
-        $prefix-for-webkit: true;
-        @-webkit-keyframes #{$name} {
-            @content;
-        }
+  @if $original-prefix-for-webkit {
+    @include disable-prefix-for-all();
+    $prefix-for-webkit: true;
+    @-webkit-keyframes #{$name} {
+      @content;
     }
-    @if $original-prefix-for-mozilla {
-        @include disable-prefix-for-all();
-        $prefix-for-mozilla: true;
-        @-moz-keyframes #{$name} {
-            @content;
-        }
+  }
+  @if $original-prefix-for-mozilla {
+    @include disable-prefix-for-all();
+    $prefix-for-mozilla: true;
+    @-moz-keyframes #{$name} {
+      @content;
     }
-    @if $original-prefix-for-spec {
-        @include disable-prefix-for-all();
-        $prefix-for-spec: true;
-        @keyframes #{$name} {
-            @content;
-        }
+  }
+  @if $original-prefix-for-spec {
+    @include disable-prefix-for-all();
+    $prefix-for-spec: true;
+    @keyframes #{$name} {
+      @content;
     }
+  }
 
-    $prefix-for-webkit:    $original-prefix-for-webkit   ;
-    $prefix-for-mozilla:   $original-prefix-for-mozilla  ;
-    $prefix-for-microsoft: $original-prefix-for-microsoft;
-    $prefix-for-opera:     $original-prefix-for-opera    ;
-    $prefix-for-spec:      $original-prefix-for-spec     ;
+  $prefix-for-webkit: $original-prefix-for-webkit;
+  $prefix-for-mozilla: $original-prefix-for-mozilla;
+  $prefix-for-microsoft: $original-prefix-for-microsoft;
+  $prefix-for-opera: $original-prefix-for-opera;
+  $prefix-for-spec: $original-prefix-for-spec;
 }
 
 // = Calc
@@ -328,7 +320,7 @@ $prefix-for-spec:      true !default;
 
 // Flexible Linear Gradient
 // ------------------------
-@mixin gradient-linear($from, $to, $size, $pie:"false") {
+@mixin gradient-linear($from, $to, $size, $pie: "false") {
   // bg-color
   background-color: $to;
   // bg-img
@@ -351,22 +343,22 @@ $prefix-for-spec:      true !default;
 
 // Linear Gradient width Color Stop
 // --------------------------------
-@mixin gradient-linear-with-color-stop($origin-x, $origin-y, $destination, $color-1, $color-2, $stop-1, $stop-2, $size, $pie:"false") {
-//EXEMPLE: background: -webkit-linear-gradient(top,  #eee 0%,#fff 100%);
-//         background: linear-gradient(to bottom, #eee 0%, #fff 100%);
+@mixin gradient-linear-with-color-stop($origin-x, $origin-y, $destination, $color-1, $color-2, $stop-1, $stop-2, $size, $pie: "false") {
+  //EXEMPLE: background: -webkit-linear-gradient(top,  #eee 0%,#fff 100%);
+  //         background: linear-gradient(to bottom, #eee 0%, #fff 100%);
   // bg-color
   background-color: $color-1;
-  background: -moz-linear-gradient($origin-y,  $color-1 $stop-1, $color-2 $stop-2); // FF3.6+
-  background: -webkit-gradient(linear, $origin-x $origin-y, $origin-x $destination, color-stop($stop-1,$color-1), color-stop($stop-2,$color-2)); // Chrome,Safari4+
+  background: -moz-linear-gradient($origin-y, $color-1 $stop-1, $color-2 $stop-2); // FF3.6+
+  background: -webkit-gradient(linear, $origin-x $origin-y, $origin-x $destination, color-stop($stop-1, $color-1), color-stop($stop-2, $color-2)); // Chrome,Safari4+
   background: -webkit-linear-gradient($origin-y, $color-1 $stop-1, $color-2 $stop-2); // Chrome10+,Safari5.1+
   background: -o-linear-gradient($origin-y, $color-1 $stop-1, $color-2 $stop-2); // Opera 11.10+
   background: -ms-linear-gradient($origin-y, $color-1 $stop-1, $color-2 $stop-2); // IE10+
-  background: linear-gradient(to $destination,  $color-1 $stop-1, $color-2 $stop-2); // W3C
+  background: linear-gradient(to $destination, $color-1 $stop-1, $color-2 $stop-2); // W3C
 
   // PIE
   @if $pie == "true" {
     // For CSS3PIE
-    -pie-background: linear-gradient(to $destination,  $color-1 $stop-1, $color-2 $stop-2); // W3C
+    -pie-background: linear-gradient(to $destination, $color-1 $stop-1, $color-2 $stop-2); // W3C
   }
   // bg-repeat
   background-repeat: repeat-x;
@@ -376,8 +368,8 @@ $prefix-for-spec:      true !default;
 
 // Radial Gradient width Color Stop
 // --------------------------------
-@mixin gradient-radial($origin, $shape-size, $color-1, $color-2, $stop-1, $stop-2, $pie:"false") {
-//EXEMPLE: background-image: radial-gradient(center 160px, circle closest-corner, $brown 0%, $brown-dark 100%);
+@mixin gradient-radial($origin, $shape-size, $color-1, $color-2, $stop-1, $stop-2, $pie: "false") {
+  //EXEMPLE: background-image: radial-gradient(center 160px, circle closest-corner, $brown 0%, $brown-dark 100%);
   // bg-color
   background-color: $color-2;
   // bg-image
@@ -399,10 +391,11 @@ $prefix-for-spec:      true !default;
   // bg-size
   @include prefixer(background-size, $size, webkit moz o spec);
 }
+
 // Radial Gradient width Color Stop
 // --------------------------------
 @mixin gradient-radial-multiple-image($url, $origin, $shape-size, $color-1, $color-2, $stop-1, $stop-2) {
-//EXEMPLE: background-image: url('../img/bg/noisy-texture-100x100-o3-d10-c-312e27-t1.png'), radial-gradient(circle closest-corner at center 160px, $grey-light-2 0%, $grey-2 100%);
+  //EXEMPLE: background-image: url('../img/bg/noisy-texture-100x100-o3-d10-c-312e27-t1.png'), radial-gradient(circle closest-corner at center 160px, $grey-light-2 0%, $grey-2 100%);
   // bg-color
   background-color: $color-2;
   // bg-image
@@ -433,8 +426,12 @@ $prefix-for-spec:      true !default;
 
 @mixin initials() {
   visibility: hidden;
-  &:first-letter { visibility: visible; }
-  @media (min-width: $screen-xs-min) { visibility: visible; }
+  &:first-letter {
+    visibility: visible;
+  }
+  @media (min-width: $screen-xs-min) {
+    visibility: visible;
+  }
 }
 
 // = Scrollbar
@@ -442,10 +439,10 @@ $prefix-for-spec:      true !default;
 @mixin scrollbar($size, $primary, $secondary, $tertiary, $radius) {
 
   ::-webkit-scrollbar {
-    width:  $size;
+    width: $size;
     height: $size;
     @media screen and (max-width: $screen-xs-max) {
-      width:  ($size/2);
+      width: ($size/2);
       height: ($size/2);
     }
   }
@@ -453,9 +450,9 @@ $prefix-for-spec:      true !default;
   ::-webkit-scrollbar-thumb {
     background-color: $primary;
     //@include border-radius($size);
-    @include box-shadow(0, 0, ($size/2), $coal-transparent-2, $inset:true);
+    @include box-shadow(0, 0, ($size/2), $coal-transparent-2, $inset: true);
     &:hover {
-      background-color: darken($primary,10%);
+      background-color: darken($primary, 10%);
     }
   }
 
@@ -465,7 +462,7 @@ $prefix-for-spec:      true !default;
 
   ::-webkit-scrollbar-track {
     background: $secondary;
-    @include box-shadow(0, 0,($size/2), $coal-transparent-2, $inset:true);
+    @include box-shadow(0, 0, ($size/2), $coal-transparent-2, $inset: true);
     width: ($size/2);
   }
 
@@ -475,6 +472,7 @@ $prefix-for-spec:      true !default;
     scrollbar-track-color: $secondary;
   }
 }
+
 //$prefixes: ("-webkit-","-moz-", "");
 //@mixin scrollbar($size, $primary, $secondary: lighten($primary, 25%)) {
 //  @each $prefix in $prefixes {

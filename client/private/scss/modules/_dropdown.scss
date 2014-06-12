@@ -11,7 +11,7 @@
 .encounter-dropdown-container {
   float: left;
   width: 100%;
-  font-size: 18px;
+  @include font-size(18);
 }
 .encounter-dropdown.dropdown-toggle {
   background-color: $red;

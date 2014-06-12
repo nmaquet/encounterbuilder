@@ -13,7 +13,7 @@
   overflow: hidden;
   background-color: $red-dark;
   color:white;
-  font-size: 13px;
+  @include font-size(13);
   a, span {
     text-decoration: none;
     display: inline-block;

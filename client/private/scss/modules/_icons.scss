@@ -41,7 +41,7 @@ $sprites2x: sprite-map("icons-2x/*.png");
 .icon{
   text-align: center;
   &.icon-lg {
-    font-size: 24px;
+    @include font-size(24);
   }
   &.square {
     margin-left: 0.125em;

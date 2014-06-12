@@ -28,7 +28,7 @@
   }
   .navbar-brand {
     //@include initials;
-    font-size: 30px;
+    @include font-size(30);
     padding-top: 80px;
     color: white;
     @include transition(all 0.3s ease-in-out);

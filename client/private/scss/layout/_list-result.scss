@@ -1,7 +1,7 @@
 .sidebar-nav, .result-list {
   background: $grey-light-2 repeat-x center top;
   label {
-    font-size: 13px;
+    @include font-size(13);
   }
   input[type="text"], input[type="number"], input[type="password"], select {
     @include border-radius(3px);
@@ -20,7 +20,7 @@
       text-align: center;
     }
     vertical-align: middle;
-    font-size: 12px;
+    @include font-size(12);
     .price-container, .src-container {
       font-size: 0.925em;
     }
