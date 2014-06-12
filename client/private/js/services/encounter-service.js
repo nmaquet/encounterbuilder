@@ -114,6 +114,8 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
             }
             $http.get('/api/encounter/' + id)
                 .success(function (data) {
+                    lastId = id;
+                    lastEncounter = data.encounter;
                     callback(data.error, data.encounter);
                 })
                 .error(function (error) {
