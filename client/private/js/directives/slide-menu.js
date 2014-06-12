@@ -1,11 +1,13 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', '$timeout', 'sidebarService', function ($document, $timeout, sidebarService) {
+DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', '$rootScope', '$timeout', 'sidebarService', function ($document, $rootScope, $timeout, sidebarService) {
     return {
         restrict: "A",
         compile: function (element) {
 
             var body = $($document[0].body);
+
+            var innerWrapper = $('#inner-wrapper');
 
             if (element.hasClass("sp-menu-left") && sidebarService.leftSidebarOpened.get()) {
                 element.addClass("sp-menu-open");
@@ -36,12 +38,18 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', '$tim
                         } else if (element.hasClass("sp-menu-right")) {
                             body.addClass("spm-open-right"); // FIXME this shouldnt be here
                         }
+                        if (!$rootScope.tabletWidthOrLarger) {
+                            innerWrapper.addClass("is-dimmed");
+                        }
                         element.addClass("sp-menu-open");
                     } else {
                         if (element.hasClass("sp-menu-left")) {
                             body.removeClass("spm-open-left"); // FIXME this shouldnt be here
                         } else if (element.hasClass("sp-menu-right")) {
                             body.removeClass("spm-open-right"); // FIXME this shouldnt be here
+                        }
+                        if (!$rootScope.tabletWidthOrLarger) {
+                            innerWrapper.removeClass("is-dimmed");
                         }
                         element.removeClass("sp-menu-open");
                     }

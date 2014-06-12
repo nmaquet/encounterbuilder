@@ -34,11 +34,12 @@ html(class="no-js gte-ie9", lang='en', ng-app='encounterBuilderApp')
         #wrapper(ng-controller='MainController', ng-swipe-right="swipeRight()", ng-swipe-left="swipeLeft()", ng-swipe-disable-mouse)
             include _left-sidebar
             include _right-sidebar
-            header.l-header
-                include _header
-            div(ng-view='ng-view')
-            footer.l-footer
-                include _footer
+            #inner-wrapper
+                header.l-header
+                    include _header
+                div(ng-view='ng-view')
+                footer.l-footer
+                    include _footer
         // ClickTale Block 2
         script.
             // function ClickTalePreRecordingHook() { /* place your customized code here */  }
