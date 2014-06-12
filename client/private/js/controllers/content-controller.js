@@ -1,12 +1,7 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('ContentController', ['$scope', '$routeParams', '$rootScope',
-    function ($scope, $routeParams, $rootScope) {
-
+DEMONSQUID.encounterBuilderControllers.controller('ContentController', ['$scope', '$routeParams',
+    function ($scope, $routeParams) {
         $scope.contentType = $routeParams.type;
-
-        $rootScope.$on('$routeChangeSuccess', function () {
-            $scope.contentType = $routeParams.type;
-        });
     }
 ]);
