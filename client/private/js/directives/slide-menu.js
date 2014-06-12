@@ -9,14 +9,11 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', '$tim
 
             if (element.hasClass("sp-menu-left") && sidebarService.leftSidebarOpened.get()) {
                 element.addClass("sp-menu-open");
-                body.addClass("sp-menu-push-toright");
             }
 
             if (element.hasClass("sp-menu-right") && sidebarService.rightSidebarOpened.get()) {
                 element.addClass("sp-menu-open");
             }
-
-            body.addClass("sp-menu-push");
 
             return function (scope, element) {
 
@@ -36,7 +33,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', '$tim
                     if (opened) {
                         if (element.hasClass("sp-menu-left")) {
                             body.addClass("spm-open-left"); // FIXME this shouldnt be here
-                            body.addClass("sp-menu-push-toright");
                         } else if (element.hasClass("sp-menu-right")) {
                             body.addClass("spm-open-right"); // FIXME this shouldnt be here
                         }
@@ -44,7 +40,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', '$tim
                     } else {
                         if (element.hasClass("sp-menu-left")) {
                             body.removeClass("spm-open-left"); // FIXME this shouldnt be here
-                            body.removeClass("sp-menu-push-toright");
                         } else if (element.hasClass("sp-menu-right")) {
                             body.removeClass("spm-open-right"); // FIXME this shouldnt be here
                         }

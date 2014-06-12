@@ -1,7 +1,7 @@
 section.sp-menu.sp-menu-vertical.sp-menu-left(slide-menu)
     div(ng-controller='SidebarController')
         div(ng-controller='LeftSidebarTabController')
-            .left-sidebar-header
+            header.sp-menu-header
                 ul.nav.nav-tabs.text-center#search-tabs.l-search-tabs
                     li.col-fourth.tab-1
                         a#campaignsTab.is-pointer(ng-click="selectTab('campaigns')", data-toggle="tab")
@@ -19,28 +19,29 @@ section.sp-menu.sp-menu-vertical.sp-menu-left(slide-menu)
                         a#databaseTab.is-pointer(ng-click="selectTab('database')", data-toggle="tab")
                             i.icon.fa.fa-book
                             // span.tab-name Databae
-            div(ng-show="selectedTab === 'campaigns'")
-                h2. Campaigns
-                .dropdown.encounter-dropdown-container.is-pointer
-                    a.encounter-dropdown.dropdown-toggle.col-xxs-12.col-xs-12(role='button', data-toggle='dropdown')
-                        span.encounter-dropdown-name Create
-                        i.icon.fa.fa-angle-down.square.white.pull-right
-                    ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
-                        li
-                            a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createEncounter()')
-                                i.icon.fa.fa-plus
-                                strong &nbsp;Create new encounter
-                        li
-                            a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createBinder()')
-                                i.icon.fa.fa-folder
-                                strong &nbsp;Create new binder
-            div(ng-switch="selectedTab")
-                .database(ng-switch-when="campaigns")
-                    content-tree.clearfix
-                div(ng-switch-when="favourites")
-                    h2. Favourites
-                div(ng-switch-when="creations")
-                    h2. Creations
-                .database(ng-switch-when="database")
-                    h2. Database
-                    include _database
+            .sp-menu-content
+                div(ng-show="selectedTab === 'campaigns'")
+                    h2. Campaigns
+                    .dropdown.encounter-dropdown-container.is-pointer
+                        a.encounter-dropdown.dropdown-toggle.col-xxs-12.col-xs-12(role='button', data-toggle='dropdown')
+                            span.encounter-dropdown-name Create
+                            i.icon.fa.fa-angle-down.square.white.pull-right
+                        ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
+                            li
+                                a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createEncounter()')
+                                    i.icon.fa.fa-plus
+                                    strong &nbsp;Create new encounter
+                            li
+                                a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createBinder()')
+                                    i.icon.fa.fa-folder
+                                    strong &nbsp;Create new binder
+                div(ng-switch="selectedTab")
+                    .database(ng-switch-when="campaigns")
+                        content-tree.clearfix
+                    div(ng-switch-when="favourites")
+                        h2. Favourites
+                    div(ng-switch-when="creations")
+                        h2. Creations
+                    .database(ng-switch-when="database")
+                        h2. Database
+                        include _database
