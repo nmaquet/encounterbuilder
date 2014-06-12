@@ -31,7 +31,7 @@ html(class="no-js gte-ie9", lang='en', ng-app='encounterBuilderApp')
         // ClickTale Block 1
         script.
             var WRInitTime=(new Date()).getTime();
-        #wrapper(ng-controller='MainController')
+        #wrapper(ng-controller='MainController', ng-swipe-right="swipeRight()", ng-swipe-left="swipeLeft()")
             include _left-sidebar
             include _right-sidebar
             header.l-header

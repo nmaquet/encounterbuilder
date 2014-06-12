@@ -1,7 +1,7 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '$rootScope', '$window', '$location', '$timeout',
-    function ($scope, $rootScope, $window, $location, $timeout) {
+DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '$rootScope', '$window', '$location', 'sidebarService',
+    function ($scope, $rootScope, $window, $location, sidebarService) {
 
         $scope.tabletWidthOrLarger = $(window).width() > 767;
         $rootScope.tabletWidthOrLarger = $scope.tabletWidthOrLarger;
@@ -43,6 +43,28 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
             }
             else {
                 $location.path("/" + type + "/" + id);
+            }
+        };
+
+        $scope.toggleLeftSidebar = function () {
+            sidebarService.leftSidebarOpened.toggle();
+        };
+
+        $scope.toggleRightSidebar = function () {
+            sidebarService.rightSidebarOpened.toggle();
+        };
+
+        $scope.swipeRight = function() {
+            var leftSidebarClosed = !sidebarService.leftSidebarOpened.get();
+            if (leftSidebarClosed) {
+                sidebarService.leftSidebarOpened.toggle(); // open left sidebar
+            }
+        };
+
+        $scope.swipeLeft = function() {
+            var leftSidebarOpened = sidebarService.leftSidebarOpened.get();
+            if (leftSidebarOpened) {
+                sidebarService.leftSidebarOpened.toggle(); // close left sidebar
             }
         };
     }
