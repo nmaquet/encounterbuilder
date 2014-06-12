@@ -26,9 +26,9 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
 
 /* Trigger button */
 .navbar-container {
-  @include transition(all .3s ease);
-  .spm-open-left & { padding-left: 300px; }
-  .spm-open-right & { padding-right: 300px; }
+  // @include transition(all .3s ease);
+  // .spm-open-left & { padding-left: 300px; }
+  // .spm-open-right & { padding-right: 300px; }
 }
 // Align icons and text vertically in the header
 .sp-menu-toggle-container {
@@ -48,11 +48,11 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
   height: auto;
   display: inline-block;
   line-height: 1;
-  .spm-open & {
-    @include opacity(0);
-    width: 0;
-    height: 0;
-  }
+//  .spm-open & {
+//    @include opacity(0);
+//    width: 0;
+//    height: 0;
+//  }
 }
 
 .sp-menu-left-toggle-text {
@@ -63,11 +63,11 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
   height: auto;
   display: inline-block;
   line-height: 1;
-  .spm-open-left & {
-    @include opacity(0);
-    width: 0;
-    height: 0;
-  }
+//  .spm-open-left & {
+//    @include opacity(0);
+//    width: 0;
+//    height: 0;
+//  }
 }
 
 .sp-menu-right-toggle-text {
@@ -78,11 +78,11 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
   height: auto;
   display: inline-block;
   line-height: 1;
-  .spm-open-right & {
-    @include opacity(0);
-    width: 0;
-    height: 0;
-  }
+//  .spm-open-right & {
+//    @include opacity(0);
+//    width: 0;
+//    height: 0;
+//  }
 }
 
 .sp-menu-header {
@@ -91,6 +91,7 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
 
 /* General styles for all menus */
 .sp-menu {
+  margin-top: 50px;
   background-color: $sp-menu-bg;
   position: fixed;
   @include box-shadow(0,0,0,$sp-menu-shadow);
