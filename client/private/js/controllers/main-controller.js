@@ -55,16 +55,22 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
         };
 
         $scope.swipeRight = function() {
+            var rightSidebarOpened = sidebarService.rightSidebarOpened.get();
             var leftSidebarClosed = !sidebarService.leftSidebarOpened.get();
-            if (leftSidebarClosed) {
+            if (rightSidebarOpened) {
+                sidebarService.rightSidebarOpened.toggle(); // close right sidebar
+            } else if (leftSidebarClosed) {
                 sidebarService.leftSidebarOpened.toggle(); // open left sidebar
             }
         };
 
         $scope.swipeLeft = function() {
             var leftSidebarOpened = sidebarService.leftSidebarOpened.get();
+            var rightSidebarClosed = !sidebarService.rightSidebarOpened.get();
             if (leftSidebarOpened) {
                 sidebarService.leftSidebarOpened.toggle(); // close left sidebar
+            } else if (rightSidebarClosed) {
+                sidebarService.rightSidebarOpened.toggle(); // open right sidebar
             }
         };
     }
