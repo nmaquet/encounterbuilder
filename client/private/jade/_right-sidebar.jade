@@ -1,6 +1,6 @@
 section.sp-menu.sp-menu-vertical.sp-menu-right(slide-menu)
     .l-tabs-container(ng-controller='TabController')
-        header.sp-menu-header
+        .sp-menu-content
             ul.nav.nav-tabs.text-center.l-search-tabs
                 li.col-fifth.tab-1
                     a#monstersTab.is-pointer(ng-click="showTab('monsters')", data-toggle="tab")
@@ -22,39 +22,39 @@ section.sp-menu.sp-menu-vertical.sp-menu-right(slide-menu)
                     a#featsTab.is-pointer(ng-click="showTab('feats')", data-toggle="tab")
                         i.icon.fa.fa-star
                         // span.tab-name Feats
-        .sp-menu-content.database(ng-switch="selectedTab")
-            .l-tab-content.l-tab-monsters(ng-switch-when='monsters')
-                .l-app-content.l-filters.l-filters-monsters(ng-controller='SearchMonsterController')
-                    h2. Monsters
-                    .l-section.sidebar-nav.l-shadow
-                        include _monster-filters
-                    .l-section.result-list.l-shadow(pending="refreshingMonsters")
-                        include _monster-list
-            .l-tab-content.l-tab-npcs(ng-switch-when='npcs')
-                .l-app-content.l-filters.l-filters-monsters(ng-controller='SearchNpcController')
-                    h2. NPC's
-                    .l-section.sidebar-nav.l-shadow
-                        include _npc-filters
-                    .l-section.result-list.l-shadow(pending="refreshingNpcs")
-                        include _npc-list
-            .l-tab-content.l-tab-npcs(ng-switch-when='items')
-                .l-app-content.l-filters.l-filters-items(ng-controller='SearchItemController')
-                    h2. Items
-                    .l-section.sidebar-nav.l-shadow
-                        include _item-filters
-                    .l-section.result-list.l-shadow(pending="refreshingItems")
-                        include _item-list
-            .l-tab-content.l-tab-spells(ng-switch-when='spells')
-                .l-app-content.l-filters.l-filters-spells(ng-controller='SearchSpellController')
-                    h2. Spells
-                    .l-section.sidebar-nav.l-shadow
-                        include _spell-filters
-                    .l-section.result-list.l-shadow(pending="refreshingSpells")
-                        include _spell-list
-            .l-tab-content.l-tab-spells(ng-switch-when='feats')
-                .l-app-content.l-filters.l-filters-spells(ng-controller='SearchFeatController')
-                    h2. Feats
-                    .l-section.sidebar-nav.l-shadow
-                        include _feat-filters
-                    .l-section.result-list.l-shadow(pending="refreshingFeats")
-                        include _feat-list
+            .database(ng-switch="selectedTab")
+                .l-tab-content.l-tab-monsters(ng-switch-when='monsters')
+                    .l-app-content.l-filters.l-filters-monsters(ng-controller='SearchMonsterController')
+                        h2. Monsters
+                        .l-section.sidebar-nav.l-shadow
+                            include _monster-filters
+                        .l-section.result-list.l-shadow(pending="refreshingMonsters")
+                            include _monster-list
+                .l-tab-content.l-tab-npcs(ng-switch-when='npcs')
+                    .l-app-content.l-filters.l-filters-monsters(ng-controller='SearchNpcController')
+                        h2. NPC's
+                        .l-section.sidebar-nav.l-shadow
+                            include _npc-filters
+                        .l-section.result-list.l-shadow(pending="refreshingNpcs")
+                            include _npc-list
+                .l-tab-content.l-tab-npcs(ng-switch-when='items')
+                    .l-app-content.l-filters.l-filters-items(ng-controller='SearchItemController')
+                        h2. Items
+                        .l-section.sidebar-nav.l-shadow
+                            include _item-filters
+                        .l-section.result-list.l-shadow(pending="refreshingItems")
+                            include _item-list
+                .l-tab-content.l-tab-spells(ng-switch-when='spells')
+                    .l-app-content.l-filters.l-filters-spells(ng-controller='SearchSpellController')
+                        h2. Spells
+                        .l-section.sidebar-nav.l-shadow
+                            include _spell-filters
+                        .l-section.result-list.l-shadow(pending="refreshingSpells")
+                            include _spell-list
+                .l-tab-content.l-tab-spells(ng-switch-when='feats')
+                    .l-app-content.l-filters.l-filters-spells(ng-controller='SearchFeatController')
+                        h2. Feats
+                        .l-section.sidebar-nav.l-shadow
+                            include _feat-filters
+                        .l-section.result-list.l-shadow(pending="refreshingFeats")
+                            include _feat-list

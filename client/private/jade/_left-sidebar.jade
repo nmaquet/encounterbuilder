@@ -1,7 +1,7 @@
 section.sp-menu.sp-menu-vertical.sp-menu-left(slide-menu)
     div(ng-controller='SidebarController')
         div(ng-controller='LeftSidebarTabController')
-            header.sp-menu-header
+            .sp-menu-content
                 ul.nav.nav-tabs.text-center#search-tabs.l-search-tabs
                     li.col-fourth.tab-1
                         a#campaignsTab.is-pointer(ng-click="selectTab('campaigns')", data-toggle="tab")
@@ -19,7 +19,6 @@ section.sp-menu.sp-menu-vertical.sp-menu-left(slide-menu)
                         a#databaseTab.is-pointer(ng-click="selectTab('database')", data-toggle="tab")
                             i.icon.fa.fa-book
                             // span.tab-name Databae
-            .sp-menu-content
                 div(ng-show="selectedTab === 'campaigns'")
                     h2. Campaigns
                     .dropdown.encounter-dropdown-container.is-pointer
