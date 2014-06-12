@@ -15,13 +15,14 @@
 .t-uppercase { text-transform: uppercase; }
 
 //FONT SIZE
-.h2, .t-title-result {
+.container { @include font-size(16); }
+h2, .h2, .t-title-result {
   @include font-size(20);
   @media (min-width: $screen-xs-min) {   @include font-size(24); }
   @media (min-width: $screen-md-min) {   @include font-size(26); }
   @media (min-width: $screen-lg-min) {   @include font-size(30); }
 }
-.h3, .t-encounter-title, .t-binder-title {
+h3, .h3, .t-encounter-title, .t-binder-title {
   @include font-size(18);
 }
 //UNDERLINE
