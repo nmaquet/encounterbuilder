@@ -33,6 +33,9 @@ function main(db) {
     var collections = require('./collections')(db);
     app.configure(function () {
         //app.use(express.compress());
+        if (process.env['DO_NOT_UGLIFY']) {
+            app.use("/client", express.static(__dirname + '/../client'));
+        }
         app.use("/css", express.static(__dirname + '/../client/public/css'));
         app.use("/img", express.static(__dirname + '/../client/public/img'));
         app.use("/js", express.static(__dirname + '/../client/public/js'));

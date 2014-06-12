@@ -101,13 +101,14 @@ function makeJS() {
     }
     process.chdir("client/public/js/");
     var result = uglify_js.minify(relativeJsFiles, { outSourceMap: "encounterbuilder.min.js", compress: false, mangle: mangle });
-    fs.writeFileSync('encounterbuilder.min.js', result.code, FILE_ENCODING);
     if (fs.existsSync('encounterbuilder.min.js.map')) {
         fs.unlinkSync('encounterbuilder.min.js.map');
     }
     if (process.env['DO_NOT_UGLIFY']) {
         fs.writeFileSync('encounterbuilder.min.js.map', result.map, FILE_ENCODING);
+        result.code += "\n//# sourceMappingURL=encounterbuilder.min.js.map";
     }
+    fs.writeFileSync('encounterbuilder.min.js', result.code, FILE_ENCODING);
     process.chdir("../../../");
 }
 
