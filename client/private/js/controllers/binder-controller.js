@@ -7,25 +7,17 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
             $scope.removeBinderMessage = "Are you sure ?";
 
             $scope.pending = true;
+            contentTreeService.getBinderChildrenByKey($routeParams.binderId, function (children) {
+                $scope.leaves = children;
+                //binder is initialized inside the callback to limit flickering
+                // (angular renders binder empty then when the children are loaded re render again with the children)
+                $scope.binder = contentTreeService.getBinderByKey($routeParams.binderId);
+                //FIXME this only works for the parent binder, not for the children ones.
+                $scope.removeBinderMessage = "This binder contains " + $scope.binder.descendantCount + " elements. Are you sure ?";
 
-            function getBinderAndChildren() {
-                contentTreeService.getBinderChildrenByKey($routeParams.binderId, function (children) {
-                    $scope.leaves = children;
-                    //binder is initialized inside the callback to limit flickering
-                    // (angular renders binder empty then when the children are loaded re render again with the children)
-                    $scope.binder = contentTreeService.getBinderByKey($routeParams.binderId);
-                    //FIXME this only works for the parent binder, not for the children ones.
-                    $scope.removeBinderMessage = "This binder contains " + $scope.binder.descendantCount + " elements. Are you sure ?";
-                    $scope.pending = false;
-                });
-            }
+                $scope.pending = false;
+            });
 
-
-            try {
-                getBinderAndChildren();
-            } catch(error) {
-                console.log("could not get binder and children : " + error);
-            }
 
             $scope.encounterChanged = function (encounter) {
                 if (encounter) {
