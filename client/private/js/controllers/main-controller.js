@@ -12,6 +12,9 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
             } else {
                 $window.history.back();
             }
+            if (!$rootScope.tabletWidthOrLarger) {
+                sidebarService.closeSidebars();
+            }
         };
 
         $rootScope.go = function (type, id) {
@@ -43,6 +46,10 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
             }
             else {
                 $location.path("/" + type + "/" + id);
+            }
+
+            if (!$rootScope.tabletWidthOrLarger) {
+                sidebarService.closeSidebars();
             }
         };
 

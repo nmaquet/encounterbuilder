@@ -9,6 +9,9 @@ DEMONSQUID.encounterBuilderServices.factory('sidebarService', [
 
         return {
             selectedTab: selectedTab,
+            closeSidebars: function() {
+                leftSidebarOpened = rightSidebarOpened = false;
+            },
             leftSidebarOpened: {
                 get: function() {
                     return leftSidebarOpened;
