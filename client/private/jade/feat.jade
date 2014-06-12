@@ -1,7 +1,4 @@
 .l-xs-nopadding
     .row
         .col-md-6.col-xs-10.l-app-content.l-section.l-shadow.search-result(ng-controller='FeatDetailsController', pending="pending")
-            div(ng-if="feat")
-                include _feat-details
-            div(ng-if="!feat")
-                span Could not find feat.
+            include _feat-details
