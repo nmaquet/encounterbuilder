@@ -11,14 +11,5 @@ DEMONSQUID.encounterBuilderControllers.controller('NavbarController', ['$scope',
             sidebarService.rightSidebarOpened.toggle();
         };
 
-        function updateNotHome() {
-            $scope.notHome = $location.path() !== '/';
-        }
-
-        $rootScope.$on('$locationChangeSuccess', function() {
-            updateNotHome();
-        });
-
-        updateNotHome();
     }
 ]);

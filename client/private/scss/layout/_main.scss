@@ -64,42 +64,6 @@ html, body { height: 100%; min-height: 100%; }
   }
 }
 
-@media (min-width: 767px) {
-
-  #wrapper {
-    padding-left: 350px;
-    transition: all 0.4s ease 0s;
-  }
-
-  #sidebar-wrapper {
-    margin-top:50px;
-    margin-left: -300px;
-    left: 300px;
-    width: 300px;
-    position: fixed;
-    height: 100%;
-    overflow-y: auto;
-    z-index: 1000;
-    transition: all 0.4s ease 0s;
-  }
-
-  #page-content-wrapper {
-    width: 100%;
-  }
-
-}
-
-@media (max-width: 768px) {
-
-  #wrapper {
-  }
-
-  #sidebar-wrapper {
-    display: none;
-  }
-
-}
-
 .home {
   background-color: $brown-dark;
   @include box-shadow(0,0,0,rgba(0,0,0,0.175));

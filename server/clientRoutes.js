@@ -41,12 +41,6 @@ module.exports = function () {
         feat: function (request, response) {
             response.render('../client/private/jade/feat.jade');
         },
-        leftSidebar: function (request, response) {
-            response.render('../client/private/jade/left-sidebar.jade');
-        },
-        rightSidebar: function (request, response) {
-            response.render('../client/private/jade/right-sidebar.jade');
-        },
         feedbackPopover: function (request, response) {
             response.render('../client/private/jade/feedback-popover.jade');
         },

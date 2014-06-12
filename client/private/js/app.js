@@ -3,7 +3,6 @@ var DEMONSQUID = {};
 
 DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
     'ngRoute',
-    'ngAnimate',
     'ngTouch',
     'encounterBuilderControllers',
     'encounterBuilderFilters',
