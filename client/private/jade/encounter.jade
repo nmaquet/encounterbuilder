@@ -1,5 +1,4 @@
-.container.l-xs-nopadding
-    .row
-        .col-xxs-12.col-xs-12.col-sm-6.col-lg-6.l-app-content(ng-controller='EncounterController', pending="pending")
-            .l-section.col-sm-12.encounter-well.gradient.l-shadow(fade-in-fade-out="startFade")
-                include _encounter
+.row
+    .col-xxs-12.col-xs-12.col-sm-6.col-lg-6(ng-controller='EncounterController', pending="pending")
+        .l-section.col-sm-12.encounter-well.gradient.l-shadow(fade-in-fade-out="startFade")
+            include _encounter

@@ -4,6 +4,10 @@
 }
 .encounter-well {
   background-color: $brown-dark;
+  @media (max-width: $screen-xs) {
+    margin-left:-15px;
+    margin-right:-15px;
+  }
 }
 .encounter, .encounter-no-encounter, .encounter-binder {
   padding-bottom: ($grid-gutter-width/2);
