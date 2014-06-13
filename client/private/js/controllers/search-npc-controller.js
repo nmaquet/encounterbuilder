@@ -75,7 +75,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             };
 
             $scope.selectNpc = function (id) {
-                $scope.go('npc', id);
+                $scope.go('/npc/' + id);
             };
 
             function addNpcToEditedEncounter(npc) {

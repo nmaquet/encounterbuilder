@@ -11,9 +11,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     $timeout(function () {
                         var node = data.node;
                         if (node.data.encounterId) {
-                            scope.go("encounter", node.data.encounterId);
+                            scope.go("/encounter/" + node.data.encounterId);
                         } else if (node.folder) {
-                            scope.go("binder", node.key);
+                            scope.go("/binder/" + node.key);
                         }
                     });
                 }
