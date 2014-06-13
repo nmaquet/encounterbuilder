@@ -21,6 +21,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
 
             $scope.selectedMonsterId = $routeParams.monsterId;
 
+            $rootScope.$on('$routeChangeSuccess', function () {
+                $scope.selectedMonsterId = $routeParams.monsterId;
+            });
+
             $scope.$watchCollection("[orderProp, type, currentPage]", function () {
                 if ($scope.currentPage < 9) {
                     $scope.maxSize = 5;
