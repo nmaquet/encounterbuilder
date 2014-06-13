@@ -65,6 +65,13 @@ html, body {font-size: 62.5%; height: 100%; min-height: 100%; }
   }
 }
 
+#inner-wrapper {
+  padding-left: 0px;
+  @media (min-width: $screen-sm-min) {
+    padding-left: 300px + ($grid-gutter-width/2);
+  }
+}
+
 .home {
   background-color: $brown-dark;
   @include box-shadow(0,0,0,rgba(0,0,0,0.175));

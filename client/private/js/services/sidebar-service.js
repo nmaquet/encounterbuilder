@@ -1,12 +1,24 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('sidebarService', [
+DEMONSQUID.encounterBuilderServices.factory('sidebarService', [ 'viewportService',
     
-    function () {
+    function (viewportService) {
 
-        var leftSidebarOpened = true;
-        var rightSidebarOpened = false;
+        var viewport = viewportService.viewport;
+
+        var leftSidebarOpened = !viewport.xs;
+        var rightSidebarOpened = viewport.lg;
         var selectedTab = "monsters";
+
+        function viewportOverride() {
+            if (!viewport.xs) {
+                leftSidebarOpened = true;
+            }
+        }
+
+        viewportService.register(function(){
+            viewportOverride();
+        });
 
         return {
             selectedTab: selectedTab,
@@ -19,6 +31,7 @@ DEMONSQUID.encounterBuilderServices.factory('sidebarService', [
                 },
                 toggle: function() {
                     leftSidebarOpened = !leftSidebarOpened;
+                    viewportOverride();
                 }
             },
             rightSidebarOpened: {
@@ -27,6 +40,7 @@ DEMONSQUID.encounterBuilderServices.factory('sidebarService', [
                 },
                 toggle: function() {
                     rightSidebarOpened = !rightSidebarOpened
+                    viewportOverride();
                 }
             }
         };

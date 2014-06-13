@@ -1,7 +1,7 @@
 .navbar.navbar-default.navbar-red.no-radius.navbar-fixed-top(role='navigation')
     .navbar-container
 
-        ul.nav.navbar-nav.navbar-left.sp-menu-toggle-container(ng-hide='viewport.xs && rightSidebarIsOpened()')
+        ul.nav.navbar-nav.navbar-left.sp-menu-toggle-container(ng-hide='!viewport.xs || rightSidebarIsOpened()')
             li
                 a.t-title.is-pointer.sp-menu-toggle(ng-click='toggleLeftSidebar()')
                     i.fa.fa-angle-left
@@ -10,7 +10,7 @@
                     | &nbsp;
                     span.sp-menu-left-toggle-text.hidden-xs Open
 
-        ul.nav.navbar-nav.navbar-right.sp-menu-toggle-container(ng-hide='viewport.xs && leftSidebarIsOpened()')
+        ul.nav.navbar-nav.navbar-right.sp-menu-toggle-container(ng-hide='viniewport.xs && leftSidebarIsOpened()')
             li
                 a.t-title.is-pointer.sp-menu-toggle(ng-click='toggleRightSidebar()')
                     i.fa.fa-angle-right

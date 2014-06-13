@@ -1,6 +1,8 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('viewportService', [ function () {
+DEMONSQUID.encounterBuilderServices.factory('viewportService', [ '$rootScope', function ($rootScope) {
+
+    var VIEWPORT_CHANGED = 'ViewportChanged';
 
     var service = {
         viewport: {
@@ -8,6 +10,10 @@ DEMONSQUID.encounterBuilderServices.factory('viewportService', [ function () {
             sm: false,
             md: false,
             lg: false
+        },
+        register: function(callback) {
+            callback();
+            $rootScope.$on(VIEWPORT_CHANGED, callback);
         }
     };
 
@@ -26,6 +32,8 @@ DEMONSQUID.encounterBuilderServices.factory('viewportService', [ function () {
         } else {
             service.viewport.lg = true;
         }
+        $rootScope.$emit(VIEWPORT_CHANGED);
+        $rootScope.$apply();
     }
 
     $(window).resize(function () {
