@@ -27,4 +27,4 @@
         .row
             label(for='spellLevelSlider') <strong>Level</strong> {{minLevel | number}} - {{maxLevel| number }}
     .col-xxs-8.col-xs-8
-        nouislider(min="minLevel", max="maxLevel")
+        nouislider(min="minLevel", max="maxLevel",range-min="0",range-max="9")

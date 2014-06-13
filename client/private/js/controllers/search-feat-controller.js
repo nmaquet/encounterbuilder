@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
-    ['$scope', '$timeout', '$routeParams', 'featService',
-        function ($scope, $timeout, $routeParams, featService) {
+    ['$scope', '$rootScope', '$timeout', '$routeParams', 'featService',
+        function ($scope, $rootScope, $timeout, $routeParams, featService) {
 
             var lastSearchParam = featService.lastSearchParam();
 

@@ -41,4 +41,4 @@
         .row
             label(for='npcCRSlider') <strong>CR</strong> {{minCR | number}} - {{(maxCR < 20) ? (maxCR | number) : "20+"}}
     .col-xxs-8.col-xs-8
-        nouislider(min="minCR", max="maxCR")
+        nouislider(min="minCR", max="maxCR",range-min="0",range-max="20")

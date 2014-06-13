@@ -7,7 +7,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('nouislider', function () {
         replace: true,
         scope: {
             min: "=",
-            max: "="
+            max: "=",
+            rangeMin: "@",
+            rangeMax: "@"
         },
         link: function (scope, element) {
             element.noUiSlider({
@@ -15,8 +17,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('nouislider', function () {
                 connect: true,
                 step: 1,
                 range: {
-                    'min': scope.min,
-                    'max': scope.max
+                    'min': Number(scope.rangeMin),
+                    'max': Number(scope.rangeMax)
                 }
             });
             element.on('slide', function () {

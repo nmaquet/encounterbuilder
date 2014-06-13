@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
-    ['$scope', '$timeout', '$routeParams', 'npcService', 'encounterService', 'encounterEditorService',
-        function ($scope, $timeout, $routeParams, npcService, encounterService, encounterEditorService) {
+    ['$scope','$rootScope', '$timeout', '$routeParams', 'npcService', 'encounterService', 'encounterEditorService',
+        function ($scope,$rootScope, $timeout, $routeParams, npcService, encounterService, encounterEditorService) {
 
             var lastSearchParam = npcService.lastSearchParam();
             $scope.nameSubstring = lastSearchParam ? lastSearchParam.nameSubstring : '';
