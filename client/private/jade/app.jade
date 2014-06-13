@@ -27,14 +27,14 @@ html(class="no-js gte-ie9", lang='en', ng-app='encounterBuilderApp')
         // HTML5 shim, for IE6-8 support of HTML5 elements
         //if lt IE 9
           script(src='../assets/js/html5shiv.js')
-    body.teal
+    body.teal(ng-controller='MainController', ng-swipe-right="swipeRight()", ng-swipe-left="swipeLeft()", ng-swipe-disable-mouse)
         // ClickTale Block 1
         script.
             var WRInitTime=(new Date()).getTime();
-        #wrapper(ng-controller='MainController', ng-swipe-right="swipeRight()", ng-swipe-left="swipeLeft()", ng-swipe-disable-mouse)
+        #wrapper
             include _left-sidebar
             include _right-sidebar
-            #inner-wrapper(ng-class="{'is-dimmed': viewport.xs && anySidebarIsOpened()}")
+            #inner-wrapper(ng-class="{'is-dimmed': viewport.xs && anySidebarIsOpened(), 'prevent-scrolling': viewport.xs && anySidebarIsOpened()}")
                 header.l-header
                     include _header
                 .l-app-content(ng-view='ng-view')
