@@ -1,8 +1,8 @@
 section.row(ng-controller='ContentController')
-    .col-sm-4.col-lg-4(ng-controller='EncounterController', pending="pending")
+    .col-sm-5.col-lg-4(ng-controller='EncounterController', pending="pending")
         .l-section.col-sm-12.encounter-well.gradient.l-shadow(fade-in-fade-out="startFade")
             include _encounter
-    .detail-pane.col-sm-8.col-lg-8(ng-switch='contentType')
+    .detail-pane.col-sm-7.col-lg-8(ng-switch='contentType')
         .col-xs-12.l-section.l-shadow.search-result(ng-controller='MonsterDetailController', pending="pending", ng-switch-when='monster')
             include _monster-details
         .col-xs-12.l-section.l-shadow.search-result(ng-controller='NpcDetailController', pending="pending", ng-switch-when='npc')
