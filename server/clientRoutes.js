@@ -23,9 +23,6 @@ module.exports = function () {
         encounter: function (request, response) {
             response.render('../client/private/jade/encounter.jade');
         },
-        encounterAndDetails: function (request, response) {
-            response.render('../client/private/jade/encounter-and-details.jade');
-        },
         monster: function (request, response) {
             response.render('../client/private/jade/monster.jade');
         },

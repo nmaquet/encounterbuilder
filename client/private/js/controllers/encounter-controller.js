@@ -23,15 +23,15 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             });
 
             $scope.selectMonsterById = function (id) {
-                $scope.go('/monster/' + id);
+                $scope.go('/encounter/' + $routeParams.encounterId + '/monster/' + id);
             };
 
             $scope.selectNpcById = function (id) {
-                $scope.go('/npc/' + id);
+                $scope.go('/encounter/' + $routeParams.encounterId + '/npc/' + id);
             };
 
             $scope.selectItemById = function (id) {
-                $scope.go('/item/' + id);
+                $scope.go('/encounter/' + $routeParams.encounterId + '/item/' + id);
             };
 
             $scope.removeEncounter = function () {

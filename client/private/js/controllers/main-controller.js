@@ -5,9 +5,9 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
 
         var viewport = $rootScope.viewport = viewportService.viewport;
 
-        $rootScope.back = function (path) {
-            if (path) {
-                $location.url(path);
+        $rootScope.back = function (url) {
+            if (url) {
+                $location.url(url);
             } else {
                 $window.history.back();
             }
@@ -16,8 +16,8 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
             }
         };
 
-        $rootScope.go = function (path) {
-            $location.path(path);
+        $rootScope.go = function (url) {
+            $location.url(url);
             if (viewport.xs) {
                 sidebarService.closeSidebars();
             }
