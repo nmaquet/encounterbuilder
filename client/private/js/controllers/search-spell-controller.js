@@ -60,7 +60,11 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
             });
 
             $scope.selectSpellById = function (id) {
-                $scope.go('/spell/' + id);
+                if ($routeParams.encounterId) {
+                    $scope.go('/encounter/' + $routeParams.encounterId + '/spell/' + id);
+                } else {
+                    $scope.go('/spell/' + id);
+                }
             }
 
             $scope.$watch('spellNameSubstring', function (spellNameSubstring) {

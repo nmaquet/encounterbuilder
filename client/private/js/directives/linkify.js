@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('linkify',
-    ['$rootScope', '$compile', '$timeout', 'spellService', 'featService',
-        function ($rootScope, $compile, $timeout, spellService, featService) {
+    ['$rootScope', '$compile', '$timeout', '$routeParams', 'spellService', 'featService',
+        function ($rootScope, $compile, $timeout, $routeParams, spellService, featService) {
 
             function processMythicSuperscript(string) {
                 return string.replace(/([a-z])(M|B|UM|APG|UC)/g, "$1<sup>$2</sup>")
@@ -28,16 +28,22 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify',
                 replace: true,
                 scope: {watchedExpression: "&linkify", type: "@linkifyType", mythic: "@mythic"},
                 link: function compile(scope, element) {
-                    scope.selectSpell = function (spellId) {
+                    scope.selectSpell = function (id) {
                         $timeout(function () {
-                            $rootScope.go('/spell/' + spellId);
-                            $('#spellsTab').click();
+                            if ($routeParams.encounterId) {
+                                $rootScope.go('/encounter/' + $routeParams.encounterId + '/spell/' + id);
+                            } else {
+                                $rootScope.go('/spell/' + id);
+                            }
                         });
                     };
-                    scope.selectFeat = function (featId) {
+                    scope.selectFeat = function (id) {
                         $timeout(function () {
-                            $rootScope.go('/feat/' + featId);
-                            $('#featsTab').click();
+                            if ($routeParams.encounterId) {
+                                $rootScope.go('/encounter/' + $routeParams.encounterId + '/feat/' + id);
+                            } else {
+                                $rootScope.go('/feat/' + id);
+                            }
                         });
                     };
                     scope.$watch(scope.watchedExpression, function (value) {

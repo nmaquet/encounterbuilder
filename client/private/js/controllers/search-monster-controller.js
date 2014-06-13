@@ -77,7 +77,11 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             };
 
             $scope.selectMonster = function (id) {
-                $scope.go('/monster/' + id);
+                if ($routeParams.encounterId) {
+                    $scope.go('/encounter/' + $routeParams.encounterId + '/monster/' + id);
+                } else {
+                    $scope.go('/monster/' + id);
+                }
             };
 
             function addMonsterToEditedEncounter(monster) {

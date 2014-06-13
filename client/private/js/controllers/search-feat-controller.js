@@ -54,7 +54,11 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
             });
 
             $scope.selectFeatById = function (id) {
-                $scope.go('/feat/' + id);
+                if ($routeParams.encounterId) {
+                    $scope.go('/encounter/' + $routeParams.encounterId + '/feat/' + id);
+                } else {
+                    $scope.go('/feat/' + id);
+                }
             };
 
             $scope.$watch('featNameSubstring', function (featNameSubstring) {
