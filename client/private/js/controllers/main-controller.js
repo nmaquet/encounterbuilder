@@ -1,15 +1,9 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '$rootScope', '$window', '$location', 'sidebarService',
-    function ($scope, $rootScope, $window, $location, sidebarService) {
+DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '$rootScope', '$window', '$location', 'sidebarService', 'viewportService',
+    function ($scope, $rootScope, $window, $location, sidebarService, viewportService) {
 
-        $scope.tabletWidthOrLarger = $(window).width() > 767;
-        $rootScope.tabletWidthOrLarger = $scope.tabletWidthOrLarger;
-
-        $(window).resize(function () {
-            $scope.tabletWidthOrLarger = $(window).width() > 767;
-            $rootScope.tabletWidthOrLarger = $scope.tabletWidthOrLarger;
-        });
+        var viewport = $rootScope.viewport = viewportService.viewport;
 
         $rootScope.back = function (path) {
             if (path) {
@@ -17,7 +11,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
             } else {
                 $window.history.back();
             }
-            if (!$rootScope.tabletWidthOrLarger) {
+            if (viewport.xs) {
                 sidebarService.closeSidebars();
             }
         };
@@ -26,7 +20,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
 
             //FIXME This feels like a completely stupid way of doing this, but right now it's all my brain seems to be able to do...
 
-            if ($scope.tabletWidthOrLarger && $location.path() !== "/") {
+            if (!viewport.xs && $location.path() !== "/") {
                 if (type === 'binder') {
                     $location.path("/" + type + "/" + id);
                 }
@@ -53,7 +47,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
                 $location.path("/" + type + "/" + id);
             }
 
-            if (!$rootScope.tabletWidthOrLarger) {
+            if (viewport.xs) {
                 sidebarService.closeSidebars();
             }
         };

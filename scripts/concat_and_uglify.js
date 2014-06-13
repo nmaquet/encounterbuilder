@@ -71,6 +71,7 @@ var jsFiles = [
     "client/private/js/services/cr-service.js",
     "client/private/js/services/loot-service.js",
     "client/private/js/services/http-interceptor-service.js",
+    "client/private/js/services/viewport-service.js",
 ];
 
 var cssFiles = [

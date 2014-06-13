@@ -21,7 +21,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('confirmClick', ['$rootScope', f
 
             var self = $(element);
             var placement = 'left';
-            if ($rootScope.tabletWidthOrLarger) {
+            if (!$rootScope.viewport.xs) {
                 placement = 'right';
             }
 

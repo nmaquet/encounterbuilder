@@ -38,7 +38,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', '$roo
                         } else if (element.hasClass("sp-menu-right")) {
                             body.addClass("spm-open-right"); // FIXME this shouldnt be here
                         }
-                        if (!$rootScope.tabletWidthOrLarger) {
+                        if ($rootScope.viewport.xs) {
                             innerWrapper.addClass("is-dimmed");
                         }
                         element.addClass("sp-menu-open");
@@ -48,7 +48,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', '$roo
                         } else if (element.hasClass("sp-menu-right")) {
                             body.removeClass("spm-open-right"); // FIXME this shouldnt be here
                         }
-                        if (!$rootScope.tabletWidthOrLarger) {
+                        if ($rootScope.viewport.xs) {
                             innerWrapper.removeClass("is-dimmed");
                         }
                         element.removeClass("sp-menu-open");
