@@ -34,7 +34,7 @@ html(class="no-js gte-ie9", lang='en', ng-app='encounterBuilderApp')
         #wrapper(ng-controller='MainController', ng-swipe-right="swipeRight()", ng-swipe-left="swipeLeft()", ng-swipe-disable-mouse)
             include _left-sidebar
             include _right-sidebar
-            #inner-wrapper
+            #inner-wrapper(ng-class="{'is-dimmed': viewport.xs && anySidebarIsOpened()}")
                 header.l-header
                     include _header
                 .l-app-content(ng-view='ng-view')
