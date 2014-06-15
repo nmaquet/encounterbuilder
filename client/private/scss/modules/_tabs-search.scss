@@ -46,7 +46,6 @@
       span { display: none; }
     }
     @media (max-width: $screen-sm-max) {
-
         .icon {
           font-size: 1.5em;
           margin: 0 auto;
@@ -71,3 +70,4 @@
     }
   }
 }
+.icon-tabs li .icon { margin-right: 0; }
