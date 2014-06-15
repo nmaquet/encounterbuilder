@@ -31,7 +31,7 @@ $fancytree-disabled-font-color: gray;
 $fancytree-active-bg-color: $grey-light;
 $fancytree-active-font-color: $grey-dark;
 //Selected
-$fancytree-selected-bg-color: $red;
+$fancytree-selected-bg-color: $teal;
 $fancytree-selected-font-color: white;
 //Focused
 $fancytree-focused-bg-color: $red-light;
@@ -381,9 +381,6 @@ $fancytree-grid-unit: 16px;
     color: $fancytree-hover-font-color;
     //@include box-shadow(0, 0, 5px, $brown-transparent, $inset: true);
   }
-}
-.fancytree-leaf {
-  overflow: hidden;
 }
 .fancytree-title {
   display: inline-block;

@@ -4,10 +4,12 @@
 // Variables
 //
 //Layout
-$searchtabs-border-top-color: $brown-transparent;
-$searchtabs-border-bottom-color: $coal-transparent;
-$searchtabs-border-left-color: $brown-transparent;
-$searchtabs-border-right-color: $coal-transparent;
+$searchtabs-border-color: $coal-transparent;
+$searchtabs-border-color2: $brown-transparent;
+//$searchtabs-border-top-color: $brown-transparent;
+//$searchtabs-border-bottom-color: $coal-transparent;
+//$searchtabs-border-left-color: $brown-transparent;
+//$searchtabs-border-right-color: $coal-transparent;
 //Default
 $searchtabs-font-color: $grey-light;
 $searchtabs-bg-color: $red-medium;
@@ -24,7 +26,7 @@ $searchtabs-bg-color-active: $red;
   margin-bottom: 0px;
   li {
     margin-bottom: 0px;
-    border-style: 1px solid $coal-transparent;
+    border-style: 1px solid $searchtabs-border-color;
 
     .sp-menu-left & { border-right-width: 0; border-left-width: 1px; }
     .sp-menu-right & { border-left-width: 0; border-right-width: 1px; }
@@ -53,10 +55,10 @@ $searchtabs-bg-color-active: $red;
     &:hover {
       color: $searchtabs-font-color-hover;
       background-color: $searchtabs-bg-color-hover;
-      border-top-color: $searchtabs-border-top-color;
-      border-bottom-color: $searchtabs-border-bottom-color;
-      border-left-color: $searchtabs-border-left-color;
-      border-right-color: $searchtabs-border-right-color;
+      border-top-color: $searchtabs-border-color2;
+      border-bottom-color: $searchtabs-border-color;
+      border-left-color: $searchtabs-border-color2;
+      border-right-color: $searchtabs-border-color;
     }
     &.active {
       color: $searchtabs-font-color-active;
@@ -100,3 +102,56 @@ $searchtabs-bg-color-active: $red;
   }
 }
 .icon-tabs li .icon { margin-right: 0; }
+
+// Alternative Theming
+// Variables
+//
+//Layout
+$searchtabs-light-border-color: $coal-transparent;
+$searchtabs-light-border-color2: $brown-transparent;
+//$searchtabs-light-border-top-color: $brown-transparent;
+//$searchtabs-light-border-bottom-color: $coal-transparent;
+//$searchtabs-light-border-left-color: $brown-transparent;
+//$searchtabs-light-border-right-color: $coal-transparent;
+//Default
+$searchtabs-light-font-color: $grey-dark;
+$searchtabs-light-bg-color: $grey;
+//Hover
+$searchtabs-light-font-color-hover: white;
+$searchtabs-light-bg-color-hover: $grey-dark;
+//Active
+$searchtabs-light-font-color-active: $red;
+$searchtabs-light-bg-color-active: $grey-light-2;
+.search-tabs.tabs-light {
+  li {
+    border-color: $searchtabs-light-border-color;
+
+    background-color: $searchtabs-light-bg-color;
+    a {
+      color: $searchtabs-light-font-color;
+      &:hover {
+        color: $searchtabs-light-font-color-hover;
+        background-color: $searchtabs-light-bg-color-hover;
+        border-color: transparent;
+      }
+    }
+    &:hover {
+      color: $searchtabs-light-font-color-hover;
+      background-color: $searchtabs-light-bg-color-hover;
+      border-top-color: $searchtabs-light-border-color2;
+      border-bottom-color: $searchtabs-light-border-color;
+      border-left-color: $searchtabs-light-border-color2;
+      border-right-color: $searchtabs-light-border-color;
+    }
+    &.active {
+      color: $searchtabs-light-font-color-active;
+      background-color: $searchtabs-light-bg-color-active;
+      border-bottom-color: transparent;
+      a, a:hover {
+        color: $searchtabs-light-font-color-active;
+        background-color: transparent;
+        border-color: transparent;
+      }
+    }
+  }
+}

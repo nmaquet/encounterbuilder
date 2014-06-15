@@ -17,10 +17,9 @@ $sp-menu-coal-light : $grey;
 $sp-menu-coal-dark : $coal;
 $sp-menu-coal-medium : $brown;
 
-$sp-menu-coal : $brown-dark;
-$sp-menu-coal-light : $grey;
-$sp-menu-coal-dark : $coal;
-$sp-menu-coal-medium : $brown;
+$sp-menu-grey : $grey;
+$sp-menu-grey-light : $grey-light-2;
+$sp-menu-grey-dark : $grey-dark;
 
 $sp-menu-text-color : white;
 $sp-menu-bg : $grey-2;
@@ -112,6 +111,10 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
     margin: 0;
     font-weight: 300;
     background: $sp-menu-text-bg $img-texture-1 repeat left top;
+  }
+  .t-title-light {
+    color: $sp-menu-grey-dark;
+    background: $sp-menu-grey-light $img-texture-1 repeat left top;
   }
 
   a {
