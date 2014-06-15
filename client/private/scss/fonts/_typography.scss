@@ -15,7 +15,7 @@
 .t-uppercase { text-transform: uppercase; }
 
 //FONT SIZE
-body * { @include font-size(16); }
+body > * { @include font-size(16); }
 h2, .h2, .t-title-result {
   @include font-size(20);
   @media (min-width: $screen-xs-min) {   @include font-size(24); }
