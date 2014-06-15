@@ -9,6 +9,7 @@ var jsFiles = [
     // Dependencies
     "client/private/bower_components/jquery/jquery.js",
     "client/private/bower_components/jquery-ui/ui/jquery-ui.js",
+    "client/private/bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.js",
     "client/private/bower_components/jquery-cookie/jquery.cookie.js",
     "client/private/bower_components/angular/angular.js",
     "client/private/bower_components/angular-route/angular-route.js",
@@ -90,11 +91,11 @@ function concat(fileList, distPath) {
 }
 
 function makeJS() {
-    var relativeJsFiles = jsFiles.map(function(path){
-       return "../../../" + path;
+    var relativeJsFiles = jsFiles.map(function (path) {
+        return "../../../" + path;
     });
     var mangle;
-    if(process.env['DO_NOT_UGLIFY']) {
+    if (process.env['DO_NOT_UGLIFY']) {
         mangle = false;
     } else {
         mangle = true;
@@ -117,12 +118,12 @@ function makeCSS() {
     sass.renderFile({
         file: sassRootFile,
         outFile: tempfile,
-        success: function() {
+        success: function () {
             cssFiles.push(tempfile);
             concat(cssFiles, "client/public/css/encounterbuilder.min.css");
             fs.unlinkSync(tempfile);
         },
-        error: function(error) {
+        error: function (error) {
             console.log(error);
         }
     });
