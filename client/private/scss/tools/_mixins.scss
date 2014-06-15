@@ -282,6 +282,11 @@ $filter-10: false) {
   $prefix-for-spec: $original-prefix-for-spec;
 }
 
+@-webkit-keyframes rotating {
+  from { @include prefixer(transform, rotate(0deg), webkit moz ms o spec); }
+  to   { @include prefixer(transform, rotate(360deg), webkit moz ms o spec); }
+}
+
 // = Calc
 // -----------------------------
 @mixin calc($property, $expression) {
