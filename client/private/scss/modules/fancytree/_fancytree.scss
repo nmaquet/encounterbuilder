@@ -17,7 +17,7 @@
 // ----------------------------------------------------------------------------
 //Default
 $fancytree-bg-color: transparent;
-$fancytree-border-color: gray;
+$fancytree-border-color: $grey-light;
 $fancytree-font-color1: $grey-dark;
 //Source
 $fancytree-source-bg-color: $grey-light-3;
@@ -374,7 +374,7 @@ $fancytree-grid-unit: 16px;
     vertical-align: middle;
   }
   @include transition();
-  border-bottom: 1px solid $grey-light-transparent-2;
+  border-bottom: 1px solid $fancytree-border-color;
   //@include box-shadow(0, 0, 0, $brown-transparent, $inset: true);
   &:hover {
     background-color: $fancytree-hover-bg-color;
