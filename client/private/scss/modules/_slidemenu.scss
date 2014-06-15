@@ -17,10 +17,16 @@ $sp-menu-coal-light : $grey;
 $sp-menu-coal-dark : $coal;
 $sp-menu-coal-medium : $brown;
 
+$sp-menu-coal : $brown-dark;
+$sp-menu-coal-light : $grey;
+$sp-menu-coal-dark : $coal;
+$sp-menu-coal-medium : $brown;
+
 $sp-menu-text-color : white;
-$sp-menu-bg : $sp-menu-coal;
+$sp-menu-bg : $grey-2;
+$sp-menu-bg-dark : $sp-menu-coal;
 $sp-menu-title : white;
-$sp-menu-text-bg : $sp-menu-coal-dark;
+$sp-menu-text-bg : $sp-menu-red;
 $sp-menu-hover-bg : $sp-menu-coal-medium;
 $sp-menu-shadow : rgba(0,0,0,0.175);
 
@@ -94,6 +100,7 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
   @include font-size(16);
   margin-top: 50px;
   background-color: $sp-menu-bg;
+  &.sp-menu-dark{background-color: $sp-menu-bg-dark;}
   position: fixed;
   @include box-shadow(0,0,0,$sp-menu-shadow);
   &.sp-menu-open { @include box-shadow(0,6px,24px,$sp-menu-shadow); }
@@ -104,7 +111,7 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
     padding: ($grid-gutter-width/2);
     margin: 0;
     font-weight: 300;
-    background-color: $sp-menu-text-bg;
+    background: $sp-menu-text-bg $img-texture-1 repeat left top;
   }
 
   a {

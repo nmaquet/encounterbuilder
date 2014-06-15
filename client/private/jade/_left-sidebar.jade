@@ -19,8 +19,8 @@ section.sp-menu.sp-menu-vertical.sp-menu-left(slide-menu)
                         a#databaseTab.is-pointer(ng-click="selectTab('database')", data-toggle="tab")
                             i.icon.fa.fa-book
                             // span.tab-name Databae
-                div(ng-show="selectedTab === 'campaigns'")
-                    h2. Campaigns
+                header.sp-menu-heading(ng-show="selectedTab === 'campaigns'")
+                    h2.t-title Campaigns
                     .dropdown.encounter-dropdown-container.is-pointer
                         a.encounter-dropdown.dropdown-toggle.col-xxs-12.col-xs-12(role='button', data-toggle='dropdown')
                             span.encounter-dropdown-name Create
@@ -34,13 +34,14 @@ section.sp-menu.sp-menu-vertical.sp-menu-left(slide-menu)
                                 a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createBinder()')
                                     i.icon.fa.fa-folder
                                     strong &nbsp;Create new binder
-                div(ng-switch="selectedTab")
+                .sp-menu-result(ng-switch="selectedTab")
                     .database(ng-switch-when="campaigns")
-                        content-tree.clearfix
+                        .clearfix
+                        content-tree
                     div(ng-switch-when="favourites")
-                        h2. Favourites
+                        h2.t-title Favourites
                     div(ng-switch-when="creations")
-                        h2. Creations
+                        h2.t-title Creations
                     .database(ng-switch-when="database")
-                        h2. Database
+                        h2.t-title Database
                         include _database

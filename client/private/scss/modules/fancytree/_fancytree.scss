@@ -16,19 +16,22 @@
 // Variables
 // ----------------------------------------------------------------------------
 //Default
-$fancytree-bg-color: white;
+$fancytree-bg-color: transparent;
 $fancytree-border-color: gray;
-$fancytree-font-color1: black;
+$fancytree-font-color1: $grey-dark;
 //Source
-$fancytree-source-bg-color: #e0e0e0;
+$fancytree-source-bg-color: $grey-light-3;
+//Hover
+$fancytree-hover-bg-color: $brown;
+$fancytree-hover-font-color: white;
 //Disabled
-$fancytree-disabled-bg-color: silver;
+$fancytree-disabled-bg-color: $grey-light;
 $fancytree-disabled-font-color: gray;
 //Active
-$fancytree-active-bg-color: #D4D4D4;
-$fancytree-active-font-color: black;
+$fancytree-active-bg-color: $grey-light;
+$fancytree-active-font-color: $grey-dark;
 //Selected
-$fancytree-selected-bg-color: $teal-light;
+$fancytree-selected-bg-color: $red;
 $fancytree-selected-font-color: white;
 //Focused
 $fancytree-focused-bg-color: $red-light;
@@ -370,7 +373,14 @@ $fancytree-grid-unit: 16px;
     display: table-cell;
     vertical-align: middle;
   }
-  @include box-shadow(0, 1px, 0, $brown-transparent, $inset: true);
+  @include transition();
+  border-bottom: 1px solid $grey-light-transparent-2;
+  //@include box-shadow(0, 0, 0, $brown-transparent, $inset: true);
+  &:hover {
+    background-color: $fancytree-hover-bg-color;
+    color: $fancytree-hover-font-color;
+    //@include box-shadow(0, 0, 5px, $brown-transparent, $inset: true);
+  }
 }
 .fancytree-leaf {
   overflow: hidden;
@@ -576,7 +586,7 @@ table.fancytree-ext-columnview .fancytree-has-children .fancytree-cv-right {
 }
 .fancytree-treefocus .fancytree-selected ,
 .fancytree-treefocus .fancytree-active {
-  color: $fancytree-bg-color;
+  color: $fancytree-selected-font-color;
   background-color: $fancytree-selected-bg-color;
 }
 // *************************************

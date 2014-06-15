@@ -1,12 +1,38 @@
+// -----------------------------
+// Modules / Search Tabs
+// -----------------------------
+// Variables
+//
+//Layout
+$searchtabs-border-top-color: $brown-transparent;
+$searchtabs-border-bottom-color: $coal-transparent;
+$searchtabs-border-left-color: $brown-transparent;
+$searchtabs-border-right-color: $coal-transparent;
+//Default
+$searchtabs-font-color: $grey-light;
+$searchtabs-bg-color: $red-medium;
+$searchtabs-bg-color2: $brown-transparent;
+//Hover
+$searchtabs-font-color-hover: white;
+$searchtabs-bg-color-hover: $brown-dark;
+//Active
+$searchtabs-font-color-active: white;
+$searchtabs-bg-color-active: $red;
+
 .search-tabs {
   border-bottom: 0px solid transparent;
   margin-bottom: 0px;
   li {
-    border-right: 1px solid $coal-transparent;
-    margin-bottom: 0;
-    &:last-child, &.last { a { margin-right: 0; border-right-width: 0;} }
+    margin-bottom: 0px;
+    border-style: 1px solid $coal-transparent;
 
-    background: $red repeat-x left top;
+    .sp-menu-left & { border-right-width: 0; border-left-width: 1px; }
+    .sp-menu-right & { border-left-width: 0; border-right-width: 1px; }
+
+    &:last-child, &.last { a { margin-right: 0; border-right-width: 0;} }
+    &:first-child, &.first { a { margin-left: 0; border-left-width: 0;} }
+
+    background: $searchtabs-bg-color repeat-x left top;
     &:nth-child(1), &.tab-1 { background-position: 0 0; }
     &:nth-child(2), &.tab-2 { background-position: -20% 0; }
     &:nth-child(3), &.tab-3 { background-position: -40% 0; }
@@ -16,27 +42,30 @@
       @include border-radius($radius : 0px);
       font-family: $font-metamorphous;
       margin-right: 0;
-      color: $grey-light;
+      color: $searchtabs-font-color;
       padding: 10px;
       background: transparent $img-texture-1 repeat left top;
       &:hover {
-        color: white;
+        color: $searchtabs-font-color-hover;
         border-color: transparent;
       }
     }
     &:hover {
-      color: white;
-      background-color: $red-light;
+      color: $searchtabs-font-color-hover;
+      background-color: $searchtabs-bg-color-hover;
+      border-top-color: $searchtabs-border-top-color;
+      border-bottom-color: $searchtabs-border-bottom-color;
+      border-left-color: $searchtabs-border-left-color;
+      border-right-color: $searchtabs-border-right-color;
     }
     &.active {
-      background-color: $brown-dark;
+      color: $searchtabs-font-color-active;
+      background-color: $searchtabs-bg-color-active;
+      border-bottom-color: transparent;
       a, a:hover {
-        color: white;
+        color: $searchtabs-font-color-hover;
         background-color: transparent;
-        border-top-color: $brown-transparent;
-        border-bottom-color: $coal-transparent;
-        border-left-color: $brown-transparent;
-        border-right-color: $coal-transparent;
+        border-color: transparent;
       }
     }
     .icon { margin-right: 0.5em; }
