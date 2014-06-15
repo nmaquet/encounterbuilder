@@ -3,4 +3,27 @@
    ========================= */
 
 .l-home {
+  color: white;
+  background-color: $brown-dark;
+  @include box-shadow(0,0,0,rgba(0,0,0,0.175));
+
+  h1, h2, h3, .t-title {
+    color: white;
+    font-size: 1.5em;
+    padding: ($grid-gutter-width/2);
+    margin: 0;
+    font-weight: 300;
+    background-color: $brown-dark;
+  }
+
+  a {
+    display: block;
+    color: white;
+    font-size: 1em;
+    font-weight: 300;
+    &:hover {
+      background-color: $brown-dark;
+      text-decoration: none;
+    }
+  }
 }
