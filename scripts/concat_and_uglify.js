@@ -24,6 +24,7 @@ var jsFiles = [
     "client/private/angular-ui/ui-bootstrap-tpls-0.10.0.js",
     // App files
     "client/private/js/app.js", /* app.js MUST be the first app file ! */
+    "client/private/js/services/exception-handling-service.js", /* leave this one second */
     "client/private/js/extra/utils.js",
     "client/private/js/controllers/main-controller.js",
     "client/private/js/controllers/encounter-controller.js",
@@ -72,7 +73,7 @@ var jsFiles = [
     "client/private/js/services/cr-service.js",
     "client/private/js/services/loot-service.js",
     "client/private/js/services/http-interceptor-service.js",
-    "client/private/js/services/viewport-service.js",
+    "client/private/js/services/viewport-service.js"
 ];
 
 var cssFiles = [
@@ -101,7 +102,12 @@ function makeJS() {
         mangle = true;
     }
     process.chdir("client/public/js/");
-    var result = uglify_js.minify(relativeJsFiles, { outSourceMap: "encounterbuilder.min.js", compress: false, mangle: mangle });
+    var options = {
+        outSourceMap: "encounterbuilder.min.js",
+        compress: false, mangle: mangle,
+        sourceRoot: "http://localhost:3000"
+    };
+    var result = uglify_js.minify(relativeJsFiles, options);
     if (fs.existsSync('encounterbuilder.min.js.map')) {
         fs.unlinkSync('encounterbuilder.min.js.map');
     }

@@ -22,7 +22,6 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             .success(function (userData) {
                 if (userData.contentTree) {
                     contentTree = userData.contentTree;
-                    console.log(contentTree);
                 }
                 $rootScope.$emit(LOAD_SUCCESS);
             })
