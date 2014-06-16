@@ -1,9 +1,11 @@
 "use strict";
 
-module.exports = function (userMonsterCollection) {
+module.exports = function (userMonsterCollection, ObjectID) {
     return {
         findOne: function (request, response) {
-            userMonsterCollection.findOne({id: request.params.id}, function (error, userMonster) {
+            var username = request.session.user.username;
+            var userMonserId = request.params.id;
+            userMonsterCollection.findOne({_id: ObjectID(userMonserId), Username: username}, function (error, userMonster) {
                 if (error) {
                     response.json({error: error});
                 }

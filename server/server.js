@@ -62,7 +62,7 @@ function main(db) {
     var searchSpellsRoute = require('./searchSpellsRoute')(collections.spells, FIND_LIMIT);
     var searchFeatsRoute = require('./searchFeatsRoute')(collections.feats, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(collections.monsters);
-    var userMonsterRoute = require('./userMonsterRoute')(collections.userMonsters);
+    var userMonsterRoute = require('./userMonsterRoute')(collections.userMonsters, ObjectID);
     var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
     var npcRoute = require('./npcRoute')(collections.npcs);
     var spellRoute = require('./spellRoute')(collections.spells);

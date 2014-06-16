@@ -8,8 +8,8 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
         get: function (id, callback) {
             callback = callback || nop;
             $http.get('/api/user-monster/' + id)
-                .success(function (data) {
-                    callback(data.error, data.encounter);
+                .success(function (response) {
+                    callback(response.error, response.userMonster);
                 })
                 .error(function (error) {
                     callback(error);
