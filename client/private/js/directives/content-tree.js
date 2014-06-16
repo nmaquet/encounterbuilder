@@ -7,7 +7,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
             function link(scope, element) {
 
                 function onActivate(event, data) {
-                    contentTreeService.treeChanged(tree.toDict());
+                    contentTreeService.treeChanged(tree.toDict(removeExtraClasses));
                     $timeout(function () {
                         var node = data.node;
                         if (node.data.encounterId) {
@@ -21,11 +21,23 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 }
 
                 function onExpandOrCollapse(event, data) {
-                    contentTreeService.treeChanged(tree.toDict());
+                    contentTreeService.treeChanged(tree.toDict(removeExtraClasses));
                 }
 
 
                 var tree;
+
+                function removeExtraClasses(dict) {
+                    if (dict.extraClasses) {
+                        delete dict.extraClasses;
+                    }
+                }
+
+                function handleExtraClasses(node) {
+                    if (node.data.userMonsterId) {
+                        node.extraClasses = "fancytree-monster";
+                    }
+                }
 
                 function initTree() {
 
@@ -59,7 +71,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                                 // hitMode is 'before', 'after', or 'over'.
                                 // We could for example move the source to the new target:
                                 data.otherNode.moveTo(node, data.hitMode);
-                                contentTreeService.treeChanged(tree.toDict());
+                                contentTreeService.treeChanged(tree.toDict(removeExtraClasses));
                             },
                             draggable: {
                                 zIndex: 1000,
@@ -70,6 +82,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
                     tree = element.fancytree("getTree");
                     contentTreeService.setTree(tree);
+                    tree.visit(handleExtraClasses);
                     if ($routeParams.encounterId) {
                         tree.visit(function (node) {
                             if (node.data.encounterId && node.data.encounterId === $routeParams.encounterId) {

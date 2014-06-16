@@ -18,6 +18,12 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             return "" + nodeKey;
         }
 
+        function removeExtraClasses(dict) {
+            if (dict.extraClasses) {
+                delete dict.extraClasses;
+            }
+        }
+        
         function addNode(node) {
             var activeNode = fancyTree.getActiveNode();
             if (activeNode === null) {
@@ -59,7 +65,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
 
         service.createBinder = function () {
             addNode({title: "newBinder", folder: true, key: getNextNodeKey()})
-            service.treeChanged(fancyTree.toDict());
+            service.treeChanged(fancyTree.toDict(removeExtraClasses));
         };
 
 
@@ -78,7 +84,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                         node.setTitle(binder.Name);
                     }
                 });
-                service.treeChanged(fancyTree.toDict());
+                service.treeChanged(fancyTree.toDict(removeExtraClasses));
             }
         };
 
@@ -90,7 +96,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                 }
             });
             toRemove.remove();
-            service.treeChanged(fancyTree.toDict());
+            service.treeChanged(fancyTree.toDict(removeExtraClasses));
             var newActiveNode = fancyTree.rootNode.getFirstChild();
             if (newActiveNode.folder === true) {
                 $rootScope.go("/binder/" + newActiveNode.nodeKey);
@@ -104,7 +110,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
         service.createEncounter = function () {
             encounterService.createEncounter(function (encounter) {
                 addNode({title: encounter.Name, encounterId: encounter._id, key: getNextNodeKey()});
-                service.treeChanged(fancyTree.toDict());
+                service.treeChanged(fancyTree.toDict(removeExtraClasses));
             });
         };
 
@@ -113,8 +119,8 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                 if (error) {
                     console.log(error);
                 } else {
-                    addNode({title: userMonster.Name, userMonsterId: userMonster._id, key: getNextNodeKey()});
-                    service.treeChanged(fancyTree.toDict());
+                    addNode({title: userMonster.Name, userMonsterId: userMonster._id, key: getNextNodeKey(),extraClasses:"fancytree-monster"});
+                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 }
             });
         };
@@ -127,7 +133,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                 }
             });
             toRemove.remove();
-            service.treeChanged(fancyTree.toDict());
+            service.treeChanged(fancyTree.toDict(removeExtraClasses));
         };
 
         service.changeEncounter = function (encounter) {
@@ -138,7 +144,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                         return false;
                     }
                     //FIXME this saves every ecounter change to the fancyTree (including monsters and stuffs)
-                    service.treeChanged(fancyTree.toDict());
+                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 }
             });
         };
@@ -151,7 +157,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                         return false;
                     }
                     //FIXME this saves every ecounter change to the fancyTree (including monsters and stuffs)
-                    service.treeChanged(fancyTree.toDict());
+                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 }
             });
         };
