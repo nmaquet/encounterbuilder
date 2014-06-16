@@ -141,7 +141,19 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                     service.treeChanged(fancyTree.toDict());
                 }
             });
+        };
 
+        service.userMonsterChanged = function (userMonster) {
+            fancyTree.visit(function (node) {
+                if (node.data.userMonsterId && node.data.userMonsterId === userMonster._id) {
+                    if (node.title !== userMonster.Name) {
+                        node.setTitle(userMonster.Name);
+                        return false;
+                    }
+                    //FIXME this saves every ecounter change to the fancyTree (including monsters and stuffs)
+                    service.treeChanged(fancyTree.toDict());
+                }
+            });
         };
 
         service.treeChanged = function (tree) {
