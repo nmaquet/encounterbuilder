@@ -2,6 +2,7 @@
 module.exports = function (db) {
     return {
         monsters: db.collection('monsters'),
+        userMonsters: db.collection('usermonsters'),
         npcs: db.collection('npcs'),
         magicitems: db.collection('magicitems'),
         encounters: db.collection('encounters'),

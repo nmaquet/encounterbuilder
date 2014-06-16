@@ -1,7 +1,7 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope', '$timeout', '$http', 'encounterService',
-    function ($rootScope, $timeout, $http, encounterService) {
+DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope', '$timeout', '$http', 'encounterService', 'userMonsterService',
+    function ($rootScope, $timeout, $http, encounterService, userMonsterService) {
 
         var LOAD_SUCCESS = "contentTreeLoaded";
 
@@ -16,6 +16,22 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             while (fancyTree.getNodeByKey("" + ++nodeKey) !== null) {
             }
             return "" + nodeKey;
+        }
+
+        function addNode(node) {
+            var activeNode = fancyTree.getActiveNode();
+            if (activeNode === null) {
+                activeNode = fancyTree.rootNode;
+                activeNode.addNode(node).setActive(true);
+            }
+            else if (activeNode.folder === true) {
+                var newNode = activeNode.addNode(node);
+                newNode.setActive(true);
+                newNode.makeVisible();
+            }
+            else {
+                activeNode.appendSibling(node).setActive(true);
+            }
         }
 
         $http.post('/api/user-data')
@@ -42,19 +58,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
         };
 
         service.createBinder = function () {
-            var activeNode = fancyTree.getActiveNode();
-            if (activeNode === null) {
-                activeNode = fancyTree.rootNode;
-                activeNode.addNode({title: "newBinder", folder: true, key: getNextNodeKey()});
-            }
-            else if (activeNode.folder === true) {
-                var newNode = activeNode.addNode({title: "newBinder", folder: true, key: getNextNodeKey()});
-                newNode.setActive(true);
-                newNode.makeVisible();
-            }
-            else {
-                activeNode.appendSibling({title: "newBinder", folder: true, key: getNextNodeKey()}).setActive(true);
-            }
+            addNode({title: "newBinder", folder: true, key: getNextNodeKey()})
             service.treeChanged(fancyTree.toDict());
         };
 
@@ -99,20 +103,19 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
 
         service.createEncounter = function () {
             encounterService.createEncounter(function (encounter) {
-                var activeNode = fancyTree.getActiveNode();
-                if (activeNode === null) {
-                    activeNode = fancyTree.rootNode;
-                    activeNode.addNode({title: encounter.Name, encounterId: encounter._id, key: getNextNodeKey()}).setActive(true);
-                }
-                else if (activeNode.folder === true) {
-                    var newNode = activeNode.addNode({title: encounter.Name, encounterId: encounter._id, key: getNextNodeKey()});
-                    newNode.setActive(true);
-                    newNode.makeVisible();
-                }
-                else {
-                    activeNode.appendSibling({title: encounter.Name, encounterId: encounter._id, key: getNextNodeKey()}).setActive(true);
-                }
+                addNode({title: encounter.Name, encounterId: encounter._id, key: getNextNodeKey()});
                 service.treeChanged(fancyTree.toDict());
+            });
+        };
+
+        service.createUserMonster = function() {
+            userMonsterService.create(function(error, userMonster) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    addNode({title: userMonster.Name, userMonsterId: userMonster._id, key: getNextNodeKey()});
+                    service.treeChanged(fancyTree.toDict());
+                }
             });
         };
 

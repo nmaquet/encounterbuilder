@@ -47,6 +47,7 @@ var jsFiles = [
     "client/private/js/controllers/spell-details-controller.js",
     "client/private/js/controllers/feat-details-controller.js",
     "client/private/js/controllers/binder-controller.js",
+    "client/private/js/controllers/user-monster-controller.js",
     "client/private/js/directives/click-to-edit.js",
     "client/private/js/directives/confirm-click.js",
     "client/private/js/directives/head.js",
@@ -73,7 +74,8 @@ var jsFiles = [
     "client/private/js/services/cr-service.js",
     "client/private/js/services/loot-service.js",
     "client/private/js/services/http-interceptor-service.js",
-    "client/private/js/services/viewport-service.js"
+    "client/private/js/services/viewport-service.js",
+    "client/private/js/services/user-monster-service.js"
 ];
 
 var cssFiles = [

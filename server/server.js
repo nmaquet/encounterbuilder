@@ -62,6 +62,7 @@ function main(db) {
     var searchSpellsRoute = require('./searchSpellsRoute')(collections.spells, FIND_LIMIT);
     var searchFeatsRoute = require('./searchFeatsRoute')(collections.feats, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(collections.monsters);
+    var userMonsterRoute = require('./userMonsterRoute')(collections.userMonsters);
     var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
     var npcRoute = require('./npcRoute')(collections.npcs);
     var spellRoute = require('./spellRoute')(collections.spells);
@@ -86,6 +87,8 @@ function main(db) {
     app.get('/api/spell/:id', authentication.check, metrics.logSelectSpell, spellRoute);
     app.get('/api/feat/:id', authentication.check, metrics.logSelectFeat, featRoute);
     app.get('/api/encounter/:id', authentication.check, metrics.logSelectEncounter, encounterRoute.findOne);
+    app.get('/api/user-monster/:id', authentication.check, /* TODO METRICS */ userMonsterRoute.findOne);
+
     app.post('/api/user-data', userDataRoute);
     app.post('/logout', metrics.logLogout, logoutRoute);
     app.post("/login", metrics.logLogin, loginRoute);
@@ -97,12 +100,17 @@ function main(db) {
     app.post("/api/change-user-data", authentication.check, changeUserDataRoute);
     app.post("/api/save-content-tree", authentication.check, contentTreeRoute.updateContentTree);
 
+    app.post("/api/create-user-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.create);
+    app.post("/api/update-user-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.update);
+    app.post("/api/delete-user-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.delete);
+
     app.get('/feedback-popover.html', authentication.check, clientRoutes.feedbackPopover);
     app.get('/login.html', clientRoutes.login);
     app.get('/home.html', authentication.check, clientRoutes.home);
     app.get('/binder.html', authentication.check, clientRoutes.binder);
     app.get('/encounter.html', authentication.check, clientRoutes.encounter);
     app.get('/monster.html', authentication.check, clientRoutes.monster);
+    app.get('/user-monster.html', authentication.check, clientRoutes.userMonster);
     app.get('/npc.html', authentication.check, clientRoutes.npc);
     app.get('/item.html', authentication.check, clientRoutes.item);
     app.get('/spell.html', authentication.check, clientRoutes.spell);

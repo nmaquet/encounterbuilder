@@ -1,4 +1,5 @@
 'use strict';
+
 var DEMONSQUID = {};
 
 DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
@@ -17,6 +18,7 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
             .when('/', { templateUrl: 'home.html' })
             .when('/encounter/:encounterId/:type/:detailsId', { templateUrl: 'encounter.html' })
             .when('/encounter/:encounterId', { templateUrl: 'encounter.html' })
+            .when('/user-monster/:userMonsterId', { templateUrl: 'user-monster.html' })
             /* .when('/print-encounter', { templateUrl: 'printable-encounter.html' }) */
             .when('/binder/:binderId', { templateUrl: 'binder.html' })
             .when('/monster/:monsterId', { templateUrl: 'monster.html'})

@@ -12,6 +12,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         var node = data.node;
                         if (node.data.encounterId) {
                             scope.go("/encounter/" + node.data.encounterId);
+                        } else if (node.data.userMonsterId) {
+                            scope.go("/user-monster/" + node.data.userMonsterId);
                         } else if (node.folder) {
                             scope.go("/binder/" + node.key);
                         }

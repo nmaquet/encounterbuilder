@@ -34,6 +34,10 @@ section.sp-menu.sp-menu-vertical.sp-menu-left(slide-menu)
                                 a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createBinder()')
                                     i.icon.fa.fa-folder
                                     strong &nbsp;Create new binder
+                            li
+                                a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserMonster()')
+                                    i.icon.fa.fa-bug
+                                    strong &nbsp;Create new monster
                 .sp-menu-result(ng-switch="selectedTab")
                     .database(ng-switch-when="campaigns")
                         .clearfix

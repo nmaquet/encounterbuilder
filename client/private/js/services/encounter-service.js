@@ -70,7 +70,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 .error(function (response) {
                     console.log("remove of encounter failed !");
                 });
-        }
+        };
 
         service.createEncounter = function (onSuccess) {
             $http.post('/api/create-encounter')

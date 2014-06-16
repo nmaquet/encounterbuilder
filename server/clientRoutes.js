@@ -26,6 +26,9 @@ module.exports = function () {
         monster: function (request, response) {
             response.render('../client/private/jade/monster.jade');
         },
+        userMonster: function (request, response) {
+            response.render('../client/private/jade/user-monster.jade');
+        },
         npc: function (request, response) {
             response.render('../client/private/jade/npc.jade');
         },
