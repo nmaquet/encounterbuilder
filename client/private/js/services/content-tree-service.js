@@ -17,14 +17,21 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             }
             return "" + nodeKey;
         }
-
+        //FIXME removeExtraClasses and handleExtraClasses are both here and in content-tree.js
         function removeExtraClasses(dict) {
             if (dict.extraClasses) {
                 delete dict.extraClasses;
             }
         }
-        
+        function handleExtraClasses(newNode) {
+            if (newNode.userMonsterId) {
+                newNode.extraClasses = "fancytree-monster";
+            }
+        }
+
+
         function addNode(node) {
+            handleExtraClasses(node);
             var activeNode = fancyTree.getActiveNode();
             if (activeNode === null) {
                 activeNode = fancyTree.rootNode;
@@ -114,12 +121,23 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             });
         };
 
-        service.createUserMonster = function() {
-            userMonsterService.create(function(error, userMonster) {
+        service.createUserMonster = function () {
+            userMonsterService.create(function (error, userMonster) {
                 if (error) {
                     console.log(error);
                 } else {
-                    addNode({title: userMonster.Name, userMonsterId: userMonster._id, key: getNextNodeKey(),extraClasses:"fancytree-monster"});
+                    addNode({title: userMonster.Name, userMonsterId: userMonster._id, key: getNextNodeKey()});
+                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
+                }
+            });
+        };
+
+        service.copyUserMonster = function (monsterId) {
+            userMonsterService.copy(monsterId, function (error, userMonster) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    addNode({title: userMonster.Name, userMonsterId: userMonster._id, key: getNextNodeKey()});
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 }
             });

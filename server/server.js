@@ -62,7 +62,7 @@ function main(db) {
     var searchSpellsRoute = require('./searchSpellsRoute')(collections.spells, FIND_LIMIT);
     var searchFeatsRoute = require('./searchFeatsRoute')(collections.feats, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(collections.monsters);
-    var userMonsterRoute = require('./userMonsterRoute')(collections.userMonsters, ObjectID);
+    var userMonsterRoute = require('./userMonsterRoute')(collections.userMonsters,collections.monsters, ObjectID);
     var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
     var npcRoute = require('./npcRoute')(collections.npcs);
     var spellRoute = require('./spellRoute')(collections.spells);
@@ -101,6 +101,7 @@ function main(db) {
     app.post("/api/save-content-tree", authentication.check, contentTreeRoute.updateContentTree);
 
     app.post("/api/create-user-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.create);
+    app.post("/api/copy-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.copy);
     app.post("/api/update-user-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.update);
     app.post("/api/delete-user-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.delete);
 

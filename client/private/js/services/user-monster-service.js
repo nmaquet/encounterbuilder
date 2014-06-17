@@ -2,7 +2,8 @@
 
 DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', function ($http) {
 
-    function nop() {}
+    function nop() {
+    }
 
     return {
         get: function (id, callback) {
@@ -18,6 +19,20 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
         create: function (callback) {
             callback = callback || nop;
             $http.post('/api/create-user-monster')
+                .success(function (response) {
+                    if (response.error) {
+                        console.log(error);
+                    }
+                    callback(response.error, response.userMonster);
+                })
+                .error(function (response) {
+                    console.log("post of monster failed !");
+                    callback(response.error);
+                });
+        },
+        copy: function (id, callback) {
+            callback = callback || nop;
+            $http.post('/api/copy-monster', {id: id})
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);

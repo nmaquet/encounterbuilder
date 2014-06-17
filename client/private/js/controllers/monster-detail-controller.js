@@ -1,7 +1,7 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$sce', '$routeParams', 'monsterService',
-    function ($scope, $sce, $routeParams, monsterService) {
+DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController', ['$scope', '$sce', '$routeParams', 'monsterService','contentTreeService',
+    function ($scope, $sce, $routeParams, monsterService,contentTreeService) {
         $scope.pending = true;
         monsterService.get($routeParams.monsterId || $routeParams.detailsId, function (error, monster) {
             $scope.pending = false;
@@ -16,5 +16,8 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController', ['$
                 }
             }
         });
+        $scope.copyMonster = function(){
+            contentTreeService.copyUserMonster($scope.monster.id);
+        }
     }
 ]);

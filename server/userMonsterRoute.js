@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function (userMonsterCollection, ObjectID) {
+module.exports = function (userMonsterCollection, monstersCollection, ObjectID) {
     return {
         findOne: function (request, response) {
             var username = request.session.user.username;
@@ -33,7 +33,7 @@ module.exports = function (userMonsterCollection, ObjectID) {
         create: function (request, response) {
             var username = request.session.user.username;
             var i = 0;
-            var userMonster = { Name: "Untitled #" + i};
+            var userMonster = { Name: "new Monster #" + i};
             userMonster.Username = username;
             userMonsterCollection.insert(userMonster, function (error, newUserMonster) {
                 if (error) {
@@ -42,6 +42,29 @@ module.exports = function (userMonsterCollection, ObjectID) {
                 }
                 else {
                     response.json({userMonster: newUserMonster[0]});
+                }
+            });
+        },
+        copy: function (request, response) {
+            var username = request.session.user.username;
+
+            monstersCollection.findOne({id: request.body.id}, {id: 0, _id: 0}, function (error, monster) {
+                if (error) {
+                    return response.json({error: error});
+                }
+                else {
+                    var userMonster = monster;
+                    userMonster.Name = "copy of " + userMonster.Name;
+                    userMonster.Username = username;
+                    userMonsterCollection.insert(userMonster, function (error, newUserMonster) {
+                        if (error) {
+                            console.log(error);
+                            response.json({error: "could not insert userMonster"});
+                        }
+                        else {
+                            response.json({userMonster: newUserMonster[0]});
+                        }
+                    });
                 }
             });
         },

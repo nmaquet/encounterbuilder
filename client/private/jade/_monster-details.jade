@@ -7,14 +7,14 @@
             | &nbsp;{{monster.CR | numberToFractionString}}
         strong XP
         | &nbsp;{{monster.XP}}
-        //.row.btn-container
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy')
+        .row.btn-container
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copyMonster()')
                 i.icon.fa.fa-copy
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Settings')
+            //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Settings')
                 i.icon.fa.fa-cogs
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Zap')
+            //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Zap')
                 i.icon.fa.fa-flash
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Delete')
+            //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Delete')
                 i.icon.fa.fa-times
 
 .row.l-section.result-content

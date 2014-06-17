@@ -16,6 +16,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                             scope.go("/user-monster/" + node.data.userMonsterId);
                         } else if (node.folder) {
                             scope.go("/binder/" + node.key);
+                            node.setExpanded(true);
                         }
                     });
                 }
