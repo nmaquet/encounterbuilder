@@ -57,6 +57,7 @@ var jsFiles = [
     "client/private/js/directives/pending.js",
     "client/private/js/directives/nouislider.js",
     "client/private/js/directives/content-tree.js",
+    "client/private/js/directives/favourite-tree.js",
     "client/private/js/directives/fade-in-fade-out.js",
     "client/private/js/directives/slide-menu.js",
     "client/private/js/filters/abbreviate-source.js",
@@ -75,7 +76,8 @@ var jsFiles = [
     "client/private/js/services/loot-service.js",
     "client/private/js/services/http-interceptor-service.js",
     "client/private/js/services/viewport-service.js",
-    "client/private/js/services/user-monster-service.js"
+    "client/private/js/services/user-monster-service.js",
+    "client/private/js/services/favourite-service.js"
 ];
 
 var cssFiles = [

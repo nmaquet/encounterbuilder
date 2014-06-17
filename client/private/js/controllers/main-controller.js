@@ -17,6 +17,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController', ['$scope', '
         };
 
         $rootScope.go = function (url) {
+            alert("rootscope.go" + url);
             $location.url(url);
             if (viewport.xs) {
                 sidebarService.closeSidebars();

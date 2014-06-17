@@ -1,7 +1,18 @@
 .row.heading.result-heading
-    .col-xxs-12.col-xs-12.col-lg-12.name-container
+    .col-xxs-8.col-xs-8.col-lg-8.name-container
         h2.t-title.t-title-result {{spell.name}}
         small Source: {{spell.source}}
+    .col-xxs-4.col-xs-4.col-lg-3.cr-container
+        .row.btn-container
+            //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy')
+            //    i.icon.fa.fa-copy
+            //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Settings')
+            //    i.icon.fa.fa-cogs
+            //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Zap')
+            //    i.icon.fa.fa-flash
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Favourite',ng-click='toggleFavourite()')
+                i(ng-show="favourite").icon.fa.fa-star
+                i(ng-hide="favourite").icon.fa.fa-star-o
 .row.l-section.result-content
     .col-xxs-12.col-xs-12.cat
         ul.list-unstyled

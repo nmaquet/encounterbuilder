@@ -42,8 +42,10 @@ section.sp-menu.sp-menu-vertical.sp-menu-left(slide-menu)
                     .database(ng-switch-when="campaigns")
                         .clearfix
                         content-tree
-                    div(ng-switch-when="favourites")
+                    div(ng-show="selectedTab==='favourites'")
                         h2.t-title Favourites
+                            .clearfix
+                            favourite-tree
                     div(ng-switch-when="creations")
                         h2.t-title Creations
                     .database(ng-switch-when="database")
