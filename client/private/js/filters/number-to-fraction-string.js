@@ -2,6 +2,9 @@
 
 DEMONSQUID.encounterBuilderFilters.filter('numberToFractionString', function () {
     return function (value) {
+        if (value === undefined) {
+            return '';
+        }
         if (value == 0) {
             return '0';
         }

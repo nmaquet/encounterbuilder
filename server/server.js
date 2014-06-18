@@ -72,7 +72,6 @@ function main(db) {
     var changeUserDataRoute = require('./changeUserDataRoute')(collections.users, collections.encounters, authentication);
     var logoutRoute = require('./logoutRoute')();
     var userDataRoute = require('./userDataRoute')(collections.contentTrees, collections.users);
-    var clientRoutes = require('./clientRoutes')();
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
     var contentTreeRoute = require('./contentTreeRoute')(collections.contentTrees);
 
@@ -105,21 +104,40 @@ function main(db) {
     app.post("/api/update-user-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.update);
     app.post("/api/delete-user-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.delete);
 
-    app.get('/feedback-popover.html', authentication.check, clientRoutes.feedbackPopover);
-    app.get('/login.html', clientRoutes.login);
-    app.get('/home.html', authentication.check, clientRoutes.home);
-    app.get('/binder.html', authentication.check, clientRoutes.binder);
-    app.get('/encounter.html', authentication.check, clientRoutes.encounter);
-    app.get('/monster.html', authentication.check, clientRoutes.monster);
-    app.get('/user-monster.html', authentication.check, clientRoutes.userMonster);
-    app.get('/npc.html', authentication.check, clientRoutes.npc);
-    app.get('/item.html', authentication.check, clientRoutes.item);
-    app.get('/spell.html', authentication.check, clientRoutes.spell);
-    app.get('/feat.html', authentication.check, clientRoutes.feat);
-    app.get('/printable-encounter.html', authentication.check, metrics.logPrintEncounter, clientRoutes.printableEncounter);
-    app.get('/app', clientRoutes.app);
-    app.get('/blog', clientRoutes.blog);
-    app.get('/', clientRoutes.default);
+    var APP_JADE_FILES = [
+        'feedback-popover',
+        'login',
+        'home',
+        'binder',
+        'encounter',
+        'monster',
+        'user-monster',
+        'edit-user-monster',
+        'npc',
+        'item',
+        'spell',
+        'feat'
+    ];
+
+    for (var i in APP_JADE_FILES) {
+        (function (appJadeFile) {
+            app.get('/' + appJadeFile + '.html', function (request, response) {
+                response.render('../client/private/jade/' + appJadeFile + '.jade');
+            });
+        })(APP_JADE_FILES[i]);
+    }
+
+    app.get('/app', function (request, response) {
+        response.render('../client/private/jade/app.jade');
+    });
+
+    app.get('/blog', function (request, response) {
+        response.render('../website/blog.jade');
+    });
+
+    app.get('/', function (request, response) {
+        response.render('../website/index.jade');
+    });
 
     var port = process.env.PORT || 3000;
 

@@ -19,6 +19,7 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
             .when('/encounter/:encounterId/:type/:detailsId', { templateUrl: 'encounter.html' })
             .when('/encounter/:encounterId', { templateUrl: 'encounter.html' })
             .when('/user-monster/:userMonsterId', { templateUrl: 'user-monster.html' })
+            .when('/edit-user-monster/:userMonsterId', { templateUrl: 'edit-user-monster.html' })
             /* .when('/print-encounter', { templateUrl: 'printable-encounter.html' }) */
             .when('/binder/:binderId', { templateUrl: 'binder.html' })
             .when('/monster/:monsterId', { templateUrl: 'monster.html'})

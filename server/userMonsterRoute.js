@@ -1,6 +1,14 @@
 "use strict";
 
-module.exports = function (userMonsterCollection, monstersCollection, ObjectID) {
+module.exports = function (userMonsterCollection, ObjectID) {
+
+    function newUserMonster(username) {
+        return {
+            Username: username,
+            Name: "Unnamed Monster"
+        }
+    }
+
     return {
         findOne: function (request, response) {
             var username = request.session.user.username;
@@ -32,39 +40,13 @@ module.exports = function (userMonsterCollection, monstersCollection, ObjectID) 
         },
         create: function (request, response) {
             var username = request.session.user.username;
-            var i = 0;
-            var userMonster = { Name: "new Monster #" + i};
-            userMonster.Username = username;
-            userMonsterCollection.insert(userMonster, function (error, newUserMonster) {
+            userMonsterCollection.insert(newUserMonster(username), function (error, newUserMonster) {
                 if (error) {
                     console.log(error);
                     response.json({error: "could not insert userMonster"});
                 }
                 else {
                     response.json({userMonster: newUserMonster[0]});
-                }
-            });
-        },
-        copy: function (request, response) {
-            var username = request.session.user.username;
-
-            monstersCollection.findOne({id: request.body.id}, {id: 0, _id: 0}, function (error, monster) {
-                if (error) {
-                    return response.json({error: error});
-                }
-                else {
-                    var userMonster = monster;
-                    userMonster.Name = "copy of " + userMonster.Name;
-                    userMonster.Username = username;
-                    userMonsterCollection.insert(userMonster, function (error, newUserMonster) {
-                        if (error) {
-                            console.log(error);
-                            response.json({error: "could not insert userMonster"});
-                        }
-                        else {
-                            response.json({userMonster: newUserMonster[0]});
-                        }
-                    });
                 }
             });
         },

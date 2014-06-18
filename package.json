@@ -5,7 +5,7 @@
     "main"         : "server/server.js",
     "scripts": {
         "start"       : "node server/server.js",
-        "dev"         : "nodemon -w client/private/ -w server -e js,scss,css,jade",
+        "dev"         : "nodemon -w client/private/ -w server -e js,scss,css",
         "test-client" : "karma start test/conf/karma-client-unit.conf --single-run",
         "test-e2e"    : "karma start test/conf/karma-e2e.conf --single-run",
         "test-server" : "mocha --reporter mocha-jenkins-reporter --recursive test/server-unit",

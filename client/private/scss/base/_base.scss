@@ -30,6 +30,10 @@
     margin-left: 0;
   }
 }
+.l-no-padding {
+  padding-right: 0;
+  padding-left: 0;
+}
 .col-sixth {
   width: 16.6%;
 }
@@ -48,6 +52,10 @@
 .no-radius { @include border-radius(0); }
 
 .l-shadow { @include box-shadow(0,5px,15px,rgba(0,0,0,.5)); }
+
+.user-monster {
+  max-width: 600px;
+}
 
 .overflow-y {
   overflow-y: auto;

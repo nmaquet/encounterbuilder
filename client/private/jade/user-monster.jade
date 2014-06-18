@@ -1,26 +1,24 @@
 .row
-    .col-md-6.col-xs-10.l-section.l-shadow.search-result(ng-controller="UserMonsterController")
-        div.user-monster
+    .col-md-6.col-xs-10.l-section.l-shadow.search-result(ng-controller='UserMonsterController', fade-in-fade-out="startFade")
+        div(pending="pending")
             .row.heading.result-heading
                 .col-xxs-8.col-xs-8.col-lg-9.name-container
-                    h2.t-title.t-title-result.is-pointer(click-to-edit='userMonster.Name', on-save="userMonsterChanged()")
-                    br
+                    h2.t-title.t-title-result {{userMonster.Name}}
                     small Source: {{userMonster.Source}}
                 .col-xxs-4.col-xs-4.col-lg-3.cr-container
                     h3.t-title CR
                         | &nbsp;{{userMonster.CR | numberToFractionString}}
                     strong XP
                     | &nbsp;{{userMonster.XP}}
-                    //.row.btn-container
+                    .row.btn-container
                         a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy')
                             i.icon.fa.fa-copy
-                        a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Settings')
+                        a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit', ng-click="editUserMonster()")
                             i.icon.fa.fa-cogs
                         a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Zap')
                             i.icon.fa.fa-flash
-                        a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Delete')
+                        a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Delete', on-confirm="deleteUserMonster()", confirm-click="Are you sure ?", confirm-title="Delete monster")
                             i.icon.fa.fa-times
-                            .row.l-section.result-content
             .row.l-section.result-content
                 .col-xxs-12.col-xs-12.cat
                     p.intro.underlined {{userMonster.Description_Visual}}
@@ -119,7 +117,7 @@
                                     span
                                         strong SR
                                         | &nbsp;{{userMonster.SR}}
-                                .col-xxs-12.col-xs-12
+                        .col-xxs-12.col-xs-12
                     .row
                         .col-lg-6.cat.decor
                             legend.t-legend.t-title Statistics
@@ -197,4 +195,3 @@
                 .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.Description')
                     legend.t-legend.t-title Description
                     div(ng-bind-html='userMonster.DescriptionSafe')
-
