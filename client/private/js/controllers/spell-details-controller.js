@@ -17,8 +17,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SpellDetailsController',
                 if (error) {
                     console.log(error);
                 } else {
-                    $scope.spell = spell;
                     $scope.favourite = favouriteService.isFavourite(spell.id);
+                    $scope.spell = spell;
                     if ($scope.spell) {
                         $scope.spell.descriptionSafe = $sce.trustAsHtml($scope.spell.description_formated);
                     }

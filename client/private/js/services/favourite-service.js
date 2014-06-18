@@ -3,6 +3,12 @@
 DEMONSQUID.encounterBuilderServices.factory('favouriteService', ['$http', function ($http) {
     var favourites = [];
     var fancyTree = null;
+    var typeBinderKeys = {spell: "defaultSpellBinder", monster: "defaultMonsterBinder", npc: "defaultNpcBinder", item: "defaultItemBinder", feat: "defaultFeatBinder"};
+    var typeBinderNames = {spell: "Spells", monster: "Monsters", npc: "NPCs", item: "Items", feat: "Feats"};
+
+    function handleExtraClasses(node) {
+        node.extraClasses = "fancytree-" + node.type;
+    }
 
 //    $http.get('/api/user-favorites/', {params: {findLimit: 2000}})
 //        .success(function (data) {
@@ -37,7 +43,14 @@ DEMONSQUID.encounterBuilderServices.factory('favouriteService', ['$http', functi
         },
         addFavourite: function (name, id, type, userContent) {
             var newFavourite = {title: name, id: id, type: type, userContent: userContent};
-            fancyTree.rootNode.addNode(newFavourite);
+            handleExtraClasses(newFavourite);
+            var node = fancyTree.getNodeByKey(typeBinderKeys[type]);
+            if (node === null) {
+                var defaultFolder = {title: typeBinderNames[type], folder: true, key: typeBinderKeys[type], acceptedType: type, expanded: true};
+                fancyTree.rootNode.addNode(defaultFolder);
+                node = fancyTree.getNodeByKey(typeBinderKeys[type]);
+            }
+            node.addNode(newFavourite);
             favourites = fancyTree.toDict();
         },
         removeFavourite: function (id) {

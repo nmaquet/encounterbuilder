@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('FeatDetailsController',
-    ['$scope', '$http', '$sce', '$routeParams', 'featService',
-        function ($scope, $http, $sce, $routeParams, featService) {
+    ['$scope', '$http', '$sce', '$routeParams', 'featService','favouriteService',
+        function ($scope, $http, $sce, $routeParams, featService,favouriteService) {
             var TYPE_FLAGS = {
                 "teamwork": "Teamwork",
                 "critical": "Critical",
@@ -13,12 +13,21 @@ DEMONSQUID.encounterBuilderControllers.controller('FeatDetailsController',
                 "companion_familiar": "Companion / Familiar"
             };
             $scope.pending = true;
+            $scope.toggleFavourite = function () {
+                if ($scope.favourite) {
+                    favouriteService.removeFavourite($scope.feat.id);
+                } else {
+                    favouriteService.addFavourite($scope.feat.name, $scope.feat.id, 'feat', false);
+                }
+                $scope.favourite = !$scope.favourite;
+            };
             featService.get($routeParams.featId || $routeParams.detailsId, function (error, feat) {
                 $scope.pending = false;
                 if (error) {
                     console.log(error);
                 } else {
                     $scope.feat = feat;
+                    $scope.favourite = favouriteService.isFavourite(feat.id);
                     var typeFlags = [];
                     if (feat.type !== "General") {
                         typeFlags.push(feat.type);

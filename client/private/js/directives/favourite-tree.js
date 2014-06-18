@@ -7,16 +7,21 @@ DEMONSQUID.encounterBuilderDirectives.directive('favouriteTree',
             function link(scope, element) {
 
                 function onClick(event, data) {
-                    $timeout(function () {
-                        var node = data.node;
-                        var url = "/" + node.data.type + "/" + node.data.id;
-                        scope.go(url);
-                    });
+                    if (data.node.folder) {
+                        data.node.setExpanded(!data.node.isExpanded());
+                    }
+                    else {
+                        $timeout(function () {
+                            var node = data.node;
+                            var url = "/" + node.data.type + "/" + node.data.id;
+                            scope.go(url);
+                        });
+                    }
 
                 }
 
                 function onExpandOrCollapse(event, data) {
-                    favouriteService.treeChanged(tree.toDict(removeExtraClasses));
+//                    favouriteService.treeChanged(tree.toDict(removeExtraClasses));
                 }
 
 
@@ -64,7 +69,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('favouriteTree',
                                 // hitMode is 'before', 'after', or 'over'.
                                 // We could for example move the source to the new target:
                                 data.otherNode.moveTo(node, data.hitMode);
-                                favouriteService.treeChanged(tree.toDict(removeExtraClasses));
+                                //FIXME
+                                //favouriteService.treeChanged(tree.toDict(removeExtraClasses));
                             },
                             draggable: {
                                 zIndex: 1000,
