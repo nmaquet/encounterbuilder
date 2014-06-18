@@ -1,207 +1,223 @@
 .row
-    .col-md-6.col-xs-10.l-section.l-shadow.search-result(ng-controller="UserMonsterController", fade-in-fade-out="startFade")
-        div.user-monster.form-group
-            .row.heading.result-heading
-                .col-xxs-8.col-xs-8.col-lg-9.name-container
-                    label Name:
-                    input.form-control(type='text', name='Name', placeholder='Name', ng-model='userMonster.Name')
-                    br
-                    label Source:
-                    input.form-control(type='text', name='Source', placeholder='Source', ng-model='userMonster.Source')
-                .col-xxs-4.col-xs-4.col-lg-3.cr-container
-                    label CR:
-                    input.form-control(type='text', name='CR', placeholder='1', ng-model='userMonster.CR')
-                    br
-                    label XP:
-                    input.form-control(type='text', name='XP', placeholder='400', ng-model='userMonster.XP')
-                    a.is-pointer.remove-encounter(on-confirm="deleteUserMonster()", confirm-click="Are you sure ?", confirm-title="Delete monster")
-                        i.icon.icon-remove
-                            | &#10008;
-                    //.row.btn-container
-                        a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy')
-                            i.icon.fa.fa-copy
-                        a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Settings')
-                            i.icon.fa.fa-cogs
-                        a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Zap')
-                            i.icon.fa.fa-flash
-                        a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Delete')
-                            i.icon.fa.fa-times
-                            .row.l-section.result-content
-            .row.l-section.result-content
-                .col-xxs-12.col-xs-12.cat
-                    label Visual Description
-                    textarea.form-control(type='text', rows=5, name='Visual Description', placeholder='A visual description of the monster.', ng-model='userMonster.Description_Visual')
-                    ul.list-inline
-                        li
-                            span
-                                strong XP
-                                | &nbsp;{{userMonster.XP}}
-                        li(ng-if="userMonster.Gender||userMonster.Race||userMonster.Classes")
-                            span {{userMonster.Gender}} {{userMonster.Race}} {{userMonster.Classes|classesToString}}
-                        li
-                            span
-                                strong {{userMonster.Alignment}}
-                                | &nbsp;{{userMonster.Size}} {{userMonster.Type}} {{userMonster.SubType}}
-                        li
-                            span
-                                strong Init
-                                | &nbsp;{{userMonster.Init}}
-                        li
-                            span
-                                strong Senses
-                                | &nbsp;{{userMonster.Senses}}
-                .col-xxs-12.col-xs-12
-                    .row
-                        .col-lg-6.cat.decor
-                            legend.t-legend.t-title Offense
+    .col-xs-10.l-section.l-shadow.search-result.user-monster(ng-controller="UserMonsterController", fade-in-fade-out="startFade")
+        .row.heading.result-heading
+            .col-xs-8.name-container
+                form.form-horizontal(role="form")
+                    .form-group
+                        label.col-xs-2.control-label Name:
+                        .col-xs-10
+                            input.form-control(type='text', name='Name', placeholder='Name', ng-model='userMonster.Name')
+                    .form-group
+                        label.col-xs-2.control-label Source:
+                        .col-xs-10
+                            input.form-control(type='text', name='Source', placeholder='Source', ng-model='userMonster.Source')
+            .col-xs-4.cr-container
+                .row
+                    .col-xs-12
+                        form.form-horizontal(role="form")
+                            .form-group
+                                label.col-xs-2.control-label CR:
+                                .col-xs-10
+                                    input.form-control(type='text', name='CR', placeholder='1', ng-model='userMonster.CR')
+                            .form-group
+                                label.col-xs-2.control-label XP:
+                                .col-xs-10
+                                    input.form-control(type='text', name='XP', placeholder='400', ng-model='userMonster.XP')
+                .row
+                    .col-xs-12.l-no-padding
+                        .btn-container
+                            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy')
+                                i.icon.fa.fa-copy
+                            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Settings')
+                                i.icon.fa.fa-cogs
+                            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Zap')
+                                i.icon.fa.fa-flash
+                            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Delete monster', on-confirm="deleteUserMonster()", confirm-click="Are you sure ?", confirm-title="Delete monster")
+                                i.icon.fa.fa-times
+        .row.l-section.result-content
+            .col-xs-12
+                form.form-horizontal(role="form")
+                    .form-group
+                        label.control-label Visual Description
+                        textarea.form-control(type='text', rows=5, name='Visual Description', placeholder='e.g. This slimy vermin has green eyes.', ng-model='userMonster.Description_Visual')
+            .col-xs-12
+                form.form-inline(role="form")
+                    .form-group
+                        label.control-label Gender:
+                        input.form-control(type='text', name='Gender', placeholder='e.g. male', ng-model='userMonster.Gender')
+                    .form-group
+                        label.control-label Race:
+                        input.form-control(type='text', name='Race', placeholder='e.g. half-elf', ng-model='userMonster.Race')
+                    .form-group
+                        label.control-label Classes:
+                        input.form-control(type='text', name='Classes', placeholder='e.g. Cleric of Urgathoa 3', ng-model='userMonster.Race')
+                //ul.list-inline
+                    li(ng-if="userMonster.Gender||userMonster.Race||userMonster.Classes")
+                        span {{userMonster.Gender}} {{userMonster.Race}} {{userMonster.Classes|classesToString}}
+                    li
+                        span
+                            strong {{userMonster.Alignment}}
+                            | &nbsp;{{userMonster.Size}} {{userMonster.Type}} {{userMonster.SubType}}
+                    li
+                        span
+                            strong Init
+                            | &nbsp;{{userMonster.Init}}
+                    li
+                        span
+                            strong Senses
+                            | &nbsp;{{userMonster.Senses}}
+            .col-xxs-12.col-xs-12
+                .row
+                    .col-lg-6.cat.decor
+                        legend.t-legend.t-title Offense
+                        ul.list-unstyled
+                            li
+                                span
+                                    strong SPD
+                                    | &nbsp;{{userMonster.Speed}}
+                            li
+                                span
+                                    strong Melee
+                                    | &nbsp;{{userMonster.Melee}}
+                            li
+                                span
+                                    strong Space
+                                    | &nbsp;{{userMonster.Space}}
+                                    | &nbsp;
+                                span
+                                    strong Reach
+                                    | &nbsp;{{userMonster.Reach}}
+                            li(ng-if='userMonster.SpecialAttacks')
+                                span
+                                    strong Special Attacks
+                                    | &nbsp;{{userMonster.SpecialAttacks}};
+                            li(ng-if='userMonster.SpellsKnown')
+                                spell-list(spell-string="{{userMonster.SpellsKnown}}")
+                            li(ng-if='userMonster.Bloodline')
+                                span
+                                    strong Bloodline
+                                    | &nbsp;{{userMonster.Bloodline}}
+                            li(ng-if='userMonster.SpellsPrepared')
+                                spell-list(spell-string="{{userMonster.SpellsPrepared}}" )
+                            li(ng-bind-html='userMonster.SLASafe' ,linkify='userMonster.SLASafe',linkify-type="spell", mythic="userMonster.Mythic")
+                    .col-lg-6.cat.decor
+                        legend.t-legend.t-title Defense
+                        ul.list-unstyled
+                            li
+                                span
+                                    strong
+                                        abbr(title='Armor Class') AC
+                                    | &nbsp;{{userMonster.AC}}
+                            li
+                                span
+                                    strong HP
+                                    | &nbsp;{{userMonster.HP}} {{userMonster.HD}}
+                            li
+                                span
+                                    strong Fort
+                                    | &nbsp;{{userMonster.Fort}},
+                                span
+                                    strong Ref
+                                    | &nbsp;{{userMonster.Ref}},
+                                span
+                                    strong Will
+                                    | &nbsp;{{userMonster.Will}}
+                            li(ng-if='userMonster.DR')
+                                span
+                                    strong DR
+                                    | &nbsp;{{userMonster.DR}};
+                            li(ng-if='userMonster.Immune')
+                                span
+                                    strong Immune
+                                    | &nbsp;{{userMonster.Immune}};
+                            li(ng-if='userMonster.Resist')
+                                span
+                                    strong Resist
+                                    | &nbsp;{{userMonster.Resist}};
+                            li(ng-if='userMonster.Weaknesses')
+                                span
+                                    strong Weaknesses
+                                    | &nbsp;{{userMonster.Weaknesses}};
+                            li(ng-if='userMonster.SR')
+                                span
+                                    strong SR
+                                    | &nbsp;{{userMonster.SR}}
+                            .col-xxs-12.col-xs-12
+                .row
+                    .col-lg-6.cat.decor
+                        legend.t-legend.t-title Statistics
+                        ul.list-unstyled
+                            li
+                                span
+                                    strong Str
+                                    | &nbsp;{{userMonster.Str}},
+                                span
+                                    strong Dex
+                                    | &nbsp;{{userMonster.Dex}},
+                                span
+                                    strong Con
+                                    | &nbsp;{{userMonster.Con}},
+                                span
+                                    strong Int
+                                    | &nbsp;{{userMonster.Int}},
+                                span
+                                    strong Wis
+                                    | &nbsp;{{userMonster.Wis}},
+                                span
+                                    strong Cha
+                                    | &nbsp;{{userMonster.Cha}}
+                            li
+                                span
+                                    strong Base Atk
+                                    | &nbsp;{{userMonster.BaseAtk}};
+                                span
+                                    strong CMB
+                                    | &nbsp;{{userMonster.CMB}};
+                                span
+                                    strong CMD
+                                    | &nbsp;{{userMonster.CMD}}
+                            li(ng-if='userMonster.Feats')
+                                span
+                                    strong Feats&nbsp;
+                                    span(linkify="userMonster.Feats",linkify-type="feat", mythic="userMonster.Mythic")
+                            li(ng-if='userMonster.Skills || userMonster.RacialMods')
+                                span(ng-if='userMonster.Skills')
+                                    strong Skills
+                                    | &nbsp;{{userMonster.Skills}}
+                                span(ng-if='userMonster.RacialMods')
+                                    strong Racial Modifiers
+                                    | &nbsp;{{userMonster.RacialMods}}
+                            li(ng-if='userMonster.Languages')
+                                span
+                                    strong Languages
+                                    | &nbsp;{{userMonster.Languages}}
+                            li(ng-if='userMonster.SQ')
+                                span
+                                    strong SQ
+                                    | &nbsp;{{userMonster.SQ}}
+                    .col-lg-6.cat.decor(ng-if='userMonster.Environment || userMonster.Organization || userMonster.Treasure')
+                        div
+                            legend.t-legend.t-title Ecology
+                        div
                             ul.list-unstyled
-                                li
+                                li(ng-if='userMonster.Environment')
                                     span
-                                        strong SPD
-                                        | &nbsp;{{userMonster.Speed}}
-                                li
+                                        strong Environment
+                                        | &nbsp;{{userMonster.Environment}}
+                                li(ng-if='userMonster.Organization')
                                     span
-                                        strong Melee
-                                        | &nbsp;{{userMonster.Melee}}
-                                li
+                                        strong Organization
+                                        | &nbsp;{{userMonster.Organization}}
+                                li(ng-if='userMonster.Treasure')
                                     span
-                                        strong Space
-                                        | &nbsp;{{userMonster.Space}}
-                                        | &nbsp;
-                                    span
-                                        strong Reach
-                                        | &nbsp;{{userMonster.Reach}}
-                                li(ng-if='userMonster.SpecialAttacks')
-                                    span
-                                        strong Special Attacks
-                                        | &nbsp;{{userMonster.SpecialAttacks}};
-                                li(ng-if='userMonster.SpellsKnown')
-                                    spell-list(spell-string="{{userMonster.SpellsKnown}}")
-                                li(ng-if='userMonster.Bloodline')
-                                    span
-                                        strong Bloodline
-                                        | &nbsp;{{userMonster.Bloodline}}
-                                li(ng-if='userMonster.SpellsPrepared')
-                                    spell-list(spell-string="{{userMonster.SpellsPrepared}}" )
-                                li(ng-bind-html='userMonster.SLASafe' ,linkify='userMonster.SLASafe',linkify-type="spell", mythic="userMonster.Mythic")
-                        .col-lg-6.cat.decor
-                            legend.t-legend.t-title Defense
-                            ul.list-unstyled
-                                li
-                                    span
-                                        strong
-                                            abbr(title='Armor Class') AC
-                                        | &nbsp;{{userMonster.AC}}
-                                li
-                                    span
-                                        strong HP
-                                        | &nbsp;{{userMonster.HP}} {{userMonster.HD}}
-                                li
-                                    span
-                                        strong Fort
-                                        | &nbsp;{{userMonster.Fort}},
-                                    span
-                                        strong Ref
-                                        | &nbsp;{{userMonster.Ref}},
-                                    span
-                                        strong Will
-                                        | &nbsp;{{userMonster.Will}}
-                                li(ng-if='userMonster.DR')
-                                    span
-                                        strong DR
-                                        | &nbsp;{{userMonster.DR}};
-                                li(ng-if='userMonster.Immune')
-                                    span
-                                        strong Immune
-                                        | &nbsp;{{userMonster.Immune}};
-                                li(ng-if='userMonster.Resist')
-                                    span
-                                        strong Resist
-                                        | &nbsp;{{userMonster.Resist}};
-                                li(ng-if='userMonster.Weaknesses')
-                                    span
-                                        strong Weaknesses
-                                        | &nbsp;{{userMonster.Weaknesses}};
-                                li(ng-if='userMonster.SR')
-                                    span
-                                        strong SR
-                                        | &nbsp;{{userMonster.SR}}
-                                .col-xxs-12.col-xs-12
-                    .row
-                        .col-lg-6.cat.decor
-                            legend.t-legend.t-title Statistics
-                            ul.list-unstyled
-                                li
-                                    span
-                                        strong Str
-                                        | &nbsp;{{userMonster.Str}},
-                                    span
-                                        strong Dex
-                                        | &nbsp;{{userMonster.Dex}},
-                                    span
-                                        strong Con
-                                        | &nbsp;{{userMonster.Con}},
-                                    span
-                                        strong Int
-                                        | &nbsp;{{userMonster.Int}},
-                                    span
-                                        strong Wis
-                                        | &nbsp;{{userMonster.Wis}},
-                                    span
-                                        strong Cha
-                                        | &nbsp;{{userMonster.Cha}}
-                                li
-                                    span
-                                        strong Base Atk
-                                        | &nbsp;{{userMonster.BaseAtk}};
-                                    span
-                                        strong CMB
-                                        | &nbsp;{{userMonster.CMB}};
-                                    span
-                                        strong CMD
-                                        | &nbsp;{{userMonster.CMD}}
-                                li(ng-if='userMonster.Feats')
-                                    span
-                                        strong Feats&nbsp;
-                                        span(linkify="userMonster.Feats",linkify-type="feat", mythic="userMonster.Mythic")
-                                li(ng-if='userMonster.Skills || userMonster.RacialMods')
-                                    span(ng-if='userMonster.Skills')
-                                        strong Skills
-                                        | &nbsp;{{userMonster.Skills}}
-                                    span(ng-if='userMonster.RacialMods')
-                                        strong Racial Modifiers
-                                        | &nbsp;{{userMonster.RacialMods}}
-                                li(ng-if='userMonster.Languages')
-                                    span
-                                        strong Languages
-                                        | &nbsp;{{userMonster.Languages}}
-                                li(ng-if='userMonster.SQ')
-                                    span
-                                        strong SQ
-                                        | &nbsp;{{userMonster.SQ}}
-                        .col-lg-6.cat.decor(ng-if='userMonster.Environment || userMonster.Organization || userMonster.Treasure')
-                            div
-                                legend.t-legend.t-title Ecology
-                            div
-                                ul.list-unstyled
-                                    li(ng-if='userMonster.Environment')
-                                        span
-                                            strong Environment
-                                            | &nbsp;{{userMonster.Environment}}
-                                    li(ng-if='userMonster.Organization')
-                                        span
-                                            strong Organization
-                                            | &nbsp;{{userMonster.Organization}}
-                                    li(ng-if='userMonster.Treasure')
-                                        span
-                                            strong Treasure
-                                            | &nbsp;{{userMonster.Treasure}}
-                .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.SpecialAbilitiesSafe')
-                    span
-                        legend.t-legend.t-title Special Abilities
-                        // FIXME Use jQuery to change the <h5> tags into <p> or <div>
-                        div(ng-bind-html='userMonster.SpecialAbilitiesSafe')
-                .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.Description')
-                    legend.t-legend.t-title Description
-                    div(ng-bind-html='userMonster.DescriptionSafe')
+                                        strong Treasure
+                                        | &nbsp;{{userMonster.Treasure}}
+            .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.SpecialAbilitiesSafe')
+                span
+                    legend.t-legend.t-title Special Abilities
+                    // FIXME Use jQuery to change the <h5> tags into <p> or <div>
+                    div(ng-bind-html='userMonster.SpecialAbilitiesSafe')
+            .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.Description')
+                legend.t-legend.t-title Description
+                div(ng-bind-html='userMonster.DescriptionSafe')
 
