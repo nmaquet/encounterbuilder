@@ -10,7 +10,8 @@ module.exports = function (db) {
         metrics: db.collection('metrics'),
         spells: db.collection('spells'),
         feats: db.collection('feats'),
-        contentTrees: db.collection('contenttrees')
+        contentTrees: db.collection('contenttrees'),
+        favourites: db.collection('favourites')
     }
 };
 

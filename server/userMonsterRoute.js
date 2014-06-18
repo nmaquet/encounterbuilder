@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function (userMonsterCollection, ObjectID) {
+module.exports = function (userMonsterCollection,monstersCollection, ObjectID) {
 
     function newUserMonster(username) {
         return {
@@ -47,6 +47,29 @@ module.exports = function (userMonsterCollection, ObjectID) {
                 }
                 else {
                     response.json({userMonster: newUserMonster[0]});
+                }
+            });
+        },
+        copy: function (request, response) {
+            var username = request.session.user.username;
+
+            monstersCollection.findOne({id: request.body.id}, {id: 0, _id: 0}, function (error, monster) {
+                if (error) {
+                    return response.json({error: error});
+                }
+                else {
+                    var userMonster = monster;
+                    userMonster.Name = "copy of " + userMonster.Name;
+                    userMonster.Username = username;
+                    userMonsterCollection.insert(userMonster, function (error, newUserMonster) {
+                        if (error) {
+                            console.log(error);
+                            response.json({error: "could not insert userMonster"});
+                        }
+                        else {
+                            response.json({userMonster: newUserMonster[0]});
+                        }
+                    });
                 }
             });
         },

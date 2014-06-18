@@ -62,7 +62,7 @@ function main(db) {
     var searchSpellsRoute = require('./searchSpellsRoute')(collections.spells, FIND_LIMIT);
     var searchFeatsRoute = require('./searchFeatsRoute')(collections.feats, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(collections.monsters);
-    var userMonsterRoute = require('./userMonsterRoute')(collections.userMonsters,collections.monsters, ObjectID);
+    var userMonsterRoute = require('./userMonsterRoute')(collections.userMonsters, collections.monsters, ObjectID);
     var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
     var npcRoute = require('./npcRoute')(collections.npcs);
     var spellRoute = require('./spellRoute')(collections.spells);
@@ -74,6 +74,7 @@ function main(db) {
     var userDataRoute = require('./userDataRoute')(collections.contentTrees, collections.users);
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
     var contentTreeRoute = require('./contentTreeRoute')(collections.contentTrees);
+    var favouritesRoute = require('./favouritesRoute')(collections.favourites);
 
     app.get('/api/search-monsters', authentication.check, metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', authentication.check, metrics.logSearchNpc, searchNpcsRoute);
@@ -87,6 +88,7 @@ function main(db) {
     app.get('/api/feat/:id', authentication.check, metrics.logSelectFeat, featRoute);
     app.get('/api/encounter/:id', authentication.check, metrics.logSelectEncounter, encounterRoute.findOne);
     app.get('/api/user-monster/:id', authentication.check, /* TODO METRICS */ userMonsterRoute.findOne);
+    app.get("/api/favourites", authentication.check, favouritesRoute.fetch);
 
     app.post('/api/user-data', userDataRoute);
     app.post('/logout', metrics.logLogout, logoutRoute);
@@ -98,6 +100,7 @@ function main(db) {
     app.post("/api/change-password", authentication.check, changePasswordRoute);
     app.post("/api/change-user-data", authentication.check, changeUserDataRoute);
     app.post("/api/save-content-tree", authentication.check, contentTreeRoute.updateContentTree);
+    app.post("/api/save-favourites", authentication.check, favouritesRoute.update);
 
     app.post("/api/create-user-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.create);
     app.post("/api/copy-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.copy);

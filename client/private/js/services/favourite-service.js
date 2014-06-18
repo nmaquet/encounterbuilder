@@ -1,14 +1,33 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('favouriteService', ['$http', function ($http) {
-    var favourites = [];
+DEMONSQUID.encounterBuilderServices.factory('favouriteService', ['$http', '$rootScope', function ($http, $rootScope) {
+    var favourites = null;
     var fancyTree = null;
     var typeBinderKeys = {spell: "defaultSpellBinder", monster: "defaultMonsterBinder", npc: "defaultNpcBinder", item: "defaultItemBinder", feat: "defaultFeatBinder"};
     var typeBinderNames = {spell: "Spells", monster: "Monsters", npc: "NPCs", item: "Items", feat: "Feats"};
+    var LOAD_SUCCESS = "favouritesLoaded";
 
     function handleExtraClasses(node) {
         node.extraClasses = "fancytree-" + node.type;
     }
+
+    function removeExtraClasses(dict) {
+        if (dict.extraClasses) {
+            delete dict.extraClasses;
+        }
+    }
+
+    $http.get('/api/favourites')
+        .success(function (data) {
+            if (data.favourites) {
+                favourites = data.favourites;
+            }
+            $rootScope.$emit(LOAD_SUCCESS);
+        })
+        .error(function (error) {
+            console.log(error);
+            $window.location.href = '/';
+        });
 
 //    $http.get('/api/user-favorites/', {params: {findLimit: 2000}})
 //        .success(function (data) {
@@ -51,7 +70,7 @@ DEMONSQUID.encounterBuilderServices.factory('favouriteService', ['$http', functi
                 node = fancyTree.getNodeByKey(typeBinderKeys[type]);
             }
             node.addNode(newFavourite);
-            favourites = fancyTree.toDict();
+            this.treeChanged();
         },
         removeFavourite: function (id) {
             var toRemove;
@@ -65,8 +84,21 @@ DEMONSQUID.encounterBuilderServices.factory('favouriteService', ['$http', functi
             if (defaultFolder && !defaultFolder.hasChildren()) {
                 defaultFolder.remove();
             }
-            favourites = fancyTree.toDict();
+            this.treeChanged();
+        },
+        treeChanged: function () {
+            favourites = fancyTree.toDict(removeExtraClasses);
+            $http.post('/api/save-favourites', { favourites: favourites })
+                .success(function (data) {
+                })
+                .error(function (error) {
+                    console.log(error);
+                });
+        },
+        onLoadSuccess: function (callback) {
+            $rootScope.$on(LOAD_SUCCESS, callback);
         }
+
     };
 }])
 ;
