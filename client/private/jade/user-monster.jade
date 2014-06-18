@@ -1,16 +1,19 @@
 .row
     .col-md-6.col-xs-10.l-section.l-shadow.search-result(ng-controller="UserMonsterController")
-        div.user-monster
+        div.user-monster.form-group
             .row.heading.result-heading
                 .col-xxs-8.col-xs-8.col-lg-9.name-container
-                    h2.t-title.t-title-result.is-pointer(click-to-edit='userMonster.Name', on-save="userMonsterChanged()")
+                    label Name:
+                    input.form-control(type='text', name='Name', placeholder='Name', ng-model='userMonster.Name')
                     br
-                    small Source: {{userMonster.Source}}
+                    label Source:
+                    input.form-control(type='text', name='Source', placeholder='Source', ng-model='userMonster.Source')
                 .col-xxs-4.col-xs-4.col-lg-3.cr-container
-                    h3.t-title CR
-                        | &nbsp;{{userMonster.CR | numberToFractionString}}
-                    strong XP
-                    | &nbsp;{{userMonster.XP}}
+                    label CR:
+                    input.form-control(type='text', name='CR', placeholder='1', ng-model='userMonster.CR')
+                    br
+                    label XP:
+                    input.form-control(type='text', name='XP', placeholder='400', ng-model='userMonster.XP')
                     //.row.btn-container
                         a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy')
                             i.icon.fa.fa-copy
@@ -23,7 +26,8 @@
                             .row.l-section.result-content
             .row.l-section.result-content
                 .col-xxs-12.col-xs-12.cat
-                    p.intro.underlined {{userMonster.Description_Visual}}
+                    label Visual Description
+                    textarea.form-control(type='text', rows=5, name='Visual Description', placeholder='A visual description of the monster.', ng-model='userMonster.Description_Visual')
                     ul.list-inline
                         li
                             span
