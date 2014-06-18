@@ -19,8 +19,7 @@ mixin fullWidthTextArea(model, rows, placeholder)
     .col-xs-10.l-section.l-shadow.search-result.user-monster(ng-controller="UserMonsterController", fade-in-fade-out="startFade")
         .row.l-section.result-content
             .col-xs-12
-                a.pull-right.is-pointer(title='Delete monster', on-confirm="deleteUserMonster()", confirm-click="Are you sure ?", confirm-title="Delete monster")
-                    i.icon.fa.fa-times
+                button.btn.btn-primary.pull-right(type="submit" ng-click="viewUserMonster()") Done
             .col-xs-12
                 .row
                     .col-xs-12.cat.decor

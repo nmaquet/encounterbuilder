@@ -1,99 +1,197 @@
-
-mixin labeledInput(name, model, placeholder)
-    .form-group
-        label.col-xs-2.control-label= name + ':'
-        .col-xs-10
-            input.form-control(type=text, name=name, placeholder=placeholder, ng-model=model)
-
-mixin labeledTextArea(name, model, rows, placeholder)
-    .form-group
-        label.col-xs-2.control-label= name + ':'
-        .col-xs-10
-            textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model)
-
-mixin fullWidthTextArea(model, rows, placeholder)
-    .form-group
-        textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model)
-
 .row
-    .col-xs-10.l-section.l-shadow.search-result.user-monster(ng-controller="UserMonsterController", fade-in-fade-out="startFade")
-        .row.l-section.result-content
-            .col-xs-12
-                a.pull-right.is-pointer(title='Delete monster', on-confirm="deleteUserMonster()", confirm-click="Are you sure ?", confirm-title="Delete monster")
-                    i.icon.fa.fa-times
-            .col-xs-12
-                .row
-                    .col-xs-12.cat.decor
-                        legend.t-legend.t-title General
-                        form.form-horizontal(role="form")
-                            +labeledInput('Name', 'userMonster.Name', 'e.g. Doombringer')
-                            +labeledInput('Source', 'userMonster.Source', 'e.g. The Slayers of the Winter Witch')
-                            +labeledInput('CR', 'userMonster.CR', 'e.g. 3')
-                            +labeledInput('XP', 'userMonster.XP', 'e.g. 1200')
-                            +labeledTextArea("Description", "userMonster.VisualDescription", 5, "e.g. With eyes blazing red and magical runes glowing on its horns, this mighty beast has the body of a man and the head of a bull.")
-                            +labeledInput("Gender", "userMonster.Gender", "e.g. male")
-                            +labeledInput("Race", "userMonster.Race", "e.g. minotaur")
-                            // FIXME: parse ClassString -> Classes
-                            +labeledInput("Classes", "userMonster.ClassesString", "e.g. Cleric of Urgathoa 3")
-                            +labeledInput("Alignment", "userMonster.Alignment", "e.g. CE")
-                            +labeledInput("Size", "userMonster.Size", "e.g. Large")
-                            +labeledInput("Type", "userMonster.Type", "e.g. Outsider")
-                            +labeledInput("SubType", "userMonster.SubType", "e.g. (native)")
-                            +labeledInput("Init", "userMonster.Init", "e.g. +4")
-                            +labeledInput("Senses", "userMonster.Senses", "e.g. darkvision 60 ft.; Perception +14")
-                    .col-xs-12.cat.decor
-                        legend.t-legend.t-title Offense
-                        form.form-horizontal(role="form")
-                            +labeledInput("Speed", "userMonster.Speed", "e.g. 30 ft., fly 60 ft. (good)")
-                            +labeledTextArea("Melee", "userMonster.Melee", 3, "e.g. greataxe +9/+4 (3d6+6/x3) and gore +4 (1d6+2)")
-                            +labeledInput("Space", "userMonster.Space", "e.g. 10 ft.")
-                            +labeledInput("Reach", "userMonster.Reach", "e.g. 10 ft.")
-                            +labeledTextArea("Special Attacks", "userMonster.SpecialAttacks", 3, "e.g. breath weapon (30-ft. cone, 6d6 fire damage plus fumes, Reflex DC 19 half, usable every 1d4 rounds)")
-                            +labeledTextArea("Spells Known", "userMonster.SpellsKnown", 3, "e.g. (CL 3rd; concentration +5); 1st (5/day)-enlarge person, hypnotism (DC 14), magic missile, obscuring mist; 0 (at will)-arcane mark, detect magic, mage hand, mending, read magic")
-                            +labeledInput("Bloodline", "userMonster.Bloodline", "e.g. draconic (green)")
-                            +labeledTextArea("Spells Prepared", "userMonster.SpellsPrepared", 3, "e.g. (CL 3rd; concentration +6); 2nd-mirror image, scorching ray; 1st-magic missile, shield, shocking grasp; 0-(at will)-daze (DC 13), detect magic, light, resistance")
-                            // FIXME: this must be sanitized
-                            +labeledTextArea("Spells-Like Abilities", "userMonster.SpellLikeAbilities", 3, "e.g. (CL 5th; concentration +6); 3/day—cause fear (DC 12), shatter (DC 13); 1/day—summon (level 1, 1 abrikandilu 50%) 0-(at will)-daze (DC 13), detect magic, light, resistance")
-                    .col-xs-12.decor
-                        legend.t-legend.t-title Defense
-                        form.form-horizontal(role="form")
-                            +labeledInput("AC", "userMonster.AC", "e.g. AC 13, touch 13, flat-footed 12")
-                            +labeledInput("HP", "userMonster.HP", "e.g. 52")
-                            +labeledInput("HD", "userMonster.HD", "e.g. (3d8+15)")
-                            +labeledInput("Fort", "userMonster.Fort", "e.g. 4")
-                            +labeledInput("Ref", "userMonster.Ref", "e.g. 2")
-                            +labeledInput("Will", "userMonster.Will", "e.g. 3")
-                            +labeledInput("DR", "userMonster.DR", "e.g. 5/cold iron")
-                            +labeledInput("Immune", "userMonster.Immune", "e.g. construct traits, magic")
-                            +labeledInput("Resist", "userMonster.Resist", "e.g. cold 10")
-                            +labeledInput("Weaknesses", "userMonster.Weaknesses", "e.g. vulnerability to fire")
-                            +labeledInput("SR", "userMonster.SR", "e.g. 11")
-                    .col-xs-12.decor
-                        legend.t-legend.t-title Statistics
-                        form.form-horizontal(role="form")
-                            +labeledInput("Str", "userMonster.Str", "e.g. 16")
-                            +labeledInput("Dex", "userMonster.Dex", "e.g. 12")
-                            +labeledInput("Con", "userMonster.Con", "e.g. 11")
-                            +labeledInput("Int", "userMonster.Int", "e.g. 8")
-                            +labeledInput("Wis", "userMonster.Wis", "e.g. 11")
-                            +labeledInput("Cha", "userMonster.Cha", "e.g. 13")
-                            +labeledInput("Base Atk", "userMonster.BaseAtk", "e.g. +7")
-                            +labeledInput("CMB", "userMonster.CMB", "e.g. +5")
-                            +labeledInput("CMD", "userMonster.CMD", "e.g. 14")
-                            +labeledTextArea("Feats", "userMonster.Feats", 3, "e.g. Double Slice, Endurance, Toughness, Two-Weapon Defense, Two-Weapon Fighting, Weapon Focus (scimitar)")
-                            +labeledTextArea("Skills", "userMonster.Skills", 3, "e.g. Intimidate +11, Perception +9, Survival +9")
-                            +labeledTextArea("Racial Modifiers", "userMonster.RacialMods", 3, "e.g. +2 Perception and Sense Motive vs. half-fiends and tieflings")
-                            +labeledInput("Languages", "userMonster.Languages", "e.g. common, draconic, abyssal")
-                            +labeledInput("SQ", "userMonster.SQ", "e.g. Hold Breath (Ex), Change Shape (Su)")
-                    .col-xs-12.decor
-                        legend.t-legend.t-title Ecology
-                        form.form-horizontal(role="form")
-                            +labeledInput("Environment", "userMonster.Environment", "e.g. the Abyss")
-                            +labeledInput("Organization", "userMonster.Organization", "e.g. mob (4-7), brood (8-17)")
-                            +labeledInput("Treasure", "userMonster.Treasure", "e.g. standard")
-                    .col-xs-12.decor
+    .col-md-6.col-xs-10.l-section.l-shadow.search-result(ng-controller='UserMonsterController', fade-in-fade-out="startFade")
+        div(pending="pending")
+            .row.heading.result-heading
+                .col-xxs-8.col-xs-8.col-lg-9.name-container
+                    h2.t-title.t-title-result {{userMonster.Name}}
+                    small Source: {{userMonster.Source}}
+                .col-xxs-4.col-xs-4.col-lg-3.cr-container
+                    h3.t-title CR
+                        | &nbsp;{{userMonster.CR | numberToFractionString}}
+                    strong XP
+                    | &nbsp;{{userMonster.XP}}
+                    .row.btn-container
+                        a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy')
+                            i.icon.fa.fa-copy
+                        a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit', ng-click="editUserMonster()")
+                            i.icon.fa.fa-cogs
+                        a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Zap')
+                            i.icon.fa.fa-flash
+                        a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Delete', on-confirm="deleteUserMonster()", confirm-click="Are you sure ?", confirm-title="Delete monster")
+                            i.icon.fa.fa-times
+            .row.l-section.result-content
+                .col-xxs-12.col-xs-12.cat
+                    p.intro.underlined {{userMonster.Description_Visual}}
+                    ul.list-inline
+                        li
+                            span
+                                strong XP
+                                | &nbsp;{{userMonster.XP}}
+                        li(ng-if="userMonster.Gender||userMonster.Race||userMonster.Classes")
+                            span {{userMonster.Gender}} {{userMonster.Race}} {{userMonster.Classes|classesToString}}
+                        li
+                            span
+                                strong {{userMonster.Alignment}}
+                                | &nbsp;{{userMonster.Size}} {{userMonster.Type}} {{userMonster.SubType}}
+                        li
+                            span
+                                strong Init
+                                | &nbsp;{{userMonster.Init}}
+                        li
+                            span
+                                strong Senses
+                                | &nbsp;{{userMonster.Senses}}
+                .col-xxs-12.col-xs-12
+                    .row
+                        .col-lg-6.cat.decor
+                            legend.t-legend.t-title Offense
+                            ul.list-unstyled
+                                li
+                                    span
+                                        strong SPD
+                                        | &nbsp;{{userMonster.Speed}}
+                                li
+                                    span
+                                        strong Melee
+                                        | &nbsp;{{userMonster.Melee}}
+                                li
+                                    span
+                                        strong Space
+                                        | &nbsp;{{userMonster.Space}}
+                                        | &nbsp;
+                                    span
+                                        strong Reach
+                                        | &nbsp;{{userMonster.Reach}}
+                                li(ng-if='userMonster.SpecialAttacks')
+                                    span
+                                        strong Special Attacks
+                                        | &nbsp;{{userMonster.SpecialAttacks}};
+                                li(ng-if='userMonster.SpellsKnown')
+                                    spell-list(spell-string="{{userMonster.SpellsKnown}}")
+                                li(ng-if='userMonster.Bloodline')
+                                    span
+                                        strong Bloodline
+                                        | &nbsp;{{userMonster.Bloodline}}
+                                li(ng-if='userMonster.SpellsPrepared')
+                                    spell-list(spell-string="{{userMonster.SpellsPrepared}}" )
+                                li(ng-bind-html='userMonster.SLASafe' ,linkify='userMonster.SLASafe',linkify-type="spell", mythic="userMonster.Mythic")
+                        .col-lg-6.cat.decor
+                            legend.t-legend.t-title Defense
+                            ul.list-unstyled
+                                li
+                                    span
+                                        strong
+                                            abbr(title='Armor Class') AC
+                                        | &nbsp;{{userMonster.AC}}
+                                li
+                                    span
+                                        strong HP
+                                        | &nbsp;{{userMonster.HP}} {{userMonster.HD}}
+                                li
+                                    span
+                                        strong Fort
+                                        | &nbsp;{{userMonster.Fort}},
+                                    span
+                                        strong Ref
+                                        | &nbsp;{{userMonster.Ref}},
+                                    span
+                                        strong Will
+                                        | &nbsp;{{userMonster.Will}}
+                                li(ng-if='userMonster.DR')
+                                    span
+                                        strong DR
+                                        | &nbsp;{{userMonster.DR}};
+                                li(ng-if='userMonster.Immune')
+                                    span
+                                        strong Immune
+                                        | &nbsp;{{userMonster.Immune}};
+                                li(ng-if='userMonster.Resist')
+                                    span
+                                        strong Resist
+                                        | &nbsp;{{userMonster.Resist}};
+                                li(ng-if='userMonster.Weaknesses')
+                                    span
+                                        strong Weaknesses
+                                        | &nbsp;{{userMonster.Weaknesses}};
+                                li(ng-if='userMonster.SR')
+                                    span
+                                        strong SR
+                                        | &nbsp;{{userMonster.SR}}
+                        .col-xxs-12.col-xs-12
+                    .row
+                        .col-lg-6.cat.decor
+                            legend.t-legend.t-title Statistics
+                            ul.list-unstyled
+                                li
+                                    span
+                                        strong Str
+                                        | &nbsp;{{userMonster.Str}},
+                                    span
+                                        strong Dex
+                                        | &nbsp;{{userMonster.Dex}},
+                                    span
+                                        strong Con
+                                        | &nbsp;{{userMonster.Con}},
+                                    span
+                                        strong Int
+                                        | &nbsp;{{userMonster.Int}},
+                                    span
+                                        strong Wis
+                                        | &nbsp;{{userMonster.Wis}},
+                                    span
+                                        strong Cha
+                                        | &nbsp;{{userMonster.Cha}}
+                                li
+                                    span
+                                        strong Base Atk
+                                        | &nbsp;{{userMonster.BaseAtk}};
+                                    span
+                                        strong CMB
+                                        | &nbsp;{{userMonster.CMB}};
+                                    span
+                                        strong CMD
+                                        | &nbsp;{{userMonster.CMD}}
+                                li(ng-if='userMonster.Feats')
+                                    span
+                                        strong Feats&nbsp;
+                                        span(linkify="userMonster.Feats",linkify-type="feat", mythic="userMonster.Mythic")
+                                li(ng-if='userMonster.Skills || userMonster.RacialMods')
+                                    span(ng-if='userMonster.Skills')
+                                        strong Skills
+                                        | &nbsp;{{userMonster.Skills}}
+                                    span(ng-if='userMonster.RacialMods')
+                                        strong Racial Modifiers
+                                        | &nbsp;{{userMonster.RacialMods}}
+                                li(ng-if='userMonster.Languages')
+                                    span
+                                        strong Languages
+                                        | &nbsp;{{userMonster.Languages}}
+                                li(ng-if='userMonster.SQ')
+                                    span
+                                        strong SQ
+                                        | &nbsp;{{userMonster.SQ}}
+                        .col-lg-6.cat.decor(ng-if='userMonster.Environment || userMonster.Organization || userMonster.Treasure')
+                            div
+                                legend.t-legend.t-title Ecology
+                            div
+                                ul.list-unstyled
+                                    li(ng-if='userMonster.Environment')
+                                        span
+                                            strong Environment
+                                            | &nbsp;{{userMonster.Environment}}
+                                    li(ng-if='userMonster.Organization')
+                                        span
+                                            strong Organization
+                                            | &nbsp;{{userMonster.Organization}}
+                                    li(ng-if='userMonster.Treasure')
+                                        span
+                                            strong Treasure
+                                            | &nbsp;{{userMonster.Treasure}}
+                .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.SpecialAbilitiesSafe')
+                    span
                         legend.t-legend.t-title Special Abilities
-                        +fullWidthTextArea("userMonster.SpecialAbilities", 20, "e.g. Deflective Wings (Ex) As a standard action, an angelic guardian can spread its wings and protect a single adjacent creature from the next ranged attack. The next time the protected creature would normally be hit with an attack from a ranged attack, the attack is instead deflected and the protected creature takes no damage. An angelic guardian can only deflect one ranged attack per turn in this way. This effect lasts until the angelic guardian's next turn or until the protected creature leaves its square, whichever comes first; Metallic Feathers (Ex) An angelic guardian's wings are honed to razor-sharp edges, and attacks with them deal slashing damage instead of bludgeoning damage.")
-                    .col-xs-12.decor
-                        legend.t-legend.t-title Description
-                        +fullWidthTextArea("userMonster.Description", 20, "e.g. Nothing holds a grudge like a minotaur. Scorned by the civilized races centuries ago and born from a deif ic curse, minotaurs have hunted, slain, and devoured lesser humanoids in retribution for real or imagined slights for as long as anyone can remember. Many cultures have legends of how the first minotaurs were created by vengeful or slighted gods who punished humans by twisting their forms, robbing them of their intellects and beauty, and giving them the heads of bulls. Yet most modern minotaurs hold these legends in contempt and believe that they are not divine mockeries but divine paragons created by a potent and cruel demon lord named Baphomet. The traditional minotaur's lair is a maze, be it a legitimate labyrinth constructed to baff le and confuse, an accidental one such as a city sewer system, or a naturally occurring one such as a tangle of caverns and other underground passageways. Employing their innate cunning, minotaurs use their maze lairs to vex unwary foes who seek them out or who simply stumble into the lairs and become lost, slowly hunting the intruders as they try in vain to find a way out.")
+                        // FIXME Use jQuery to change the <h5> tags into <p> or <div>
+                        div(ng-bind-html='userMonster.SpecialAbilitiesSafe')
+                .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.Description')
+                    legend.t-legend.t-title Description
+                    div(ng-bind-html='userMonster.DescriptionSafe')

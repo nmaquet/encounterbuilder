@@ -18,6 +18,18 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                 }
             };
 
+            $scope.editUserMonster = function(){
+                if ($scope.userMonster) {
+                    $scope.go("/edit-user-monster/" + $routeParams.userMonsterId);
+                }
+            };
+
+            $scope.viewUserMonster = function() {
+                if ($scope.userMonster) {
+                    $scope.go("/user-monster/" + $routeParams.userMonsterId);
+                }
+            };
+
             function updateUserMonster() {
                 if ($scope.userMonster) {
                     userMonsterService.update($scope.userMonster, function(error) {
