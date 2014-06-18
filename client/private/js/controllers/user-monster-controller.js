@@ -4,13 +4,25 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
     ['$scope', '$timeout', '$routeParams', '$rootScope', 'userMonsterService', 'contentTreeService',
         function ($scope, $timeout, $routeParams, $rootScope, userMonsterService, contentTreeService) {
 
+            $scope.deleteUserMonster = function() {
+                if ($scope.userMonster) {
+                    userMonsterService.delete($scope.userMonster, function(error) {
+                        if(error) {
+                            console.log(error);
+                        } else {
+                            contentTreeService.userMonsterDeleted($scope.userMonster);
+                        }
+                    });
+                }
+            };
+
             function updateUserMonster() {
                 if ($scope.userMonster) {
                     userMonsterService.update($scope.userMonster, function(error) {
                         if(error) {
                             console.log(error);
                         } else {
-                            contentTreeService.userMonsterChanged($scope.userMonster);
+                            contentTreeService.userMonsterUpdated($scope.userMonster);
                         }
                     });
                 }

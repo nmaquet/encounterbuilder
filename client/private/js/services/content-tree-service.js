@@ -143,7 +143,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             });
         };
 
-        service.userMonsterChanged = function (userMonster) {
+        service.userMonsterUpdated = function (userMonster) {
             fancyTree.visit(function (node) {
                 if (node.data.userMonsterId && node.data.userMonsterId === userMonster._id) {
                     if (node.title !== userMonster.Name) {
@@ -154,6 +154,21 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                     service.treeChanged(fancyTree.toDict());
                 }
             });
+        };
+
+        service.userMonsterDeleted = function (userMonster) {
+            var toRemove;
+            fancyTree.visit(function (node) {
+                if (node.data.userMonsterId && node.data.userMonsterId === userMonster._id) {
+                    toRemove = node;
+                }
+            });
+            if (toRemove) {
+                toRemove.remove();
+                service.treeChanged(fancyTree.toDict());
+            } else {
+                console.log("could not remove content tree userMonster");
+            }
         };
 
         service.treeChanged = function (tree) {

@@ -14,6 +14,9 @@
                     br
                     label XP:
                     input.form-control(type='text', name='XP', placeholder='400', ng-model='userMonster.XP')
+                    a.is-pointer.remove-encounter(on-confirm="deleteUserMonster()", confirm-click="Are you sure ?", confirm-title="Delete monster")
+                        i.icon.icon-remove
+                            | &#10008;
                     //.row.btn-container
                         a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy')
                             i.icon.fa.fa-copy
