@@ -34,6 +34,22 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             }
         }
 
+        function removeNode(node) {
+            var parent = node.getParent();
+            var nextSibling = node.getNextSibling();
+            var prevSibling = node.getPrevSibling();
+            node.remove();
+            if (parent) {
+                parent.setActive(true);
+            } else if (nextSibling) {
+                nextSibling.setActive(true);
+            } else if (prevSibling) {
+                prevSibling.setActive(true);
+            } else {
+                $rootScope.go("/"); /* no node is active -> go to home */
+            }
+        }
+
         $http.post('/api/user-data')
             .success(function (userData) {
                 if (userData.contentTree) {
@@ -54,14 +70,12 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
         service.getBinderByKey = function (key) {
             var node = fancyTree.getNodeByKey(key);
             return {Name: node.title, nodeKey: node.key, descendantCount: node.countChildren(true)};
-
         };
 
         service.createBinder = function () {
             addNode({title: "newBinder", folder: true, key: getNextNodeKey()})
             service.treeChanged(fancyTree.toDict());
         };
-
 
         service.onLoadSuccess = function (callback) {
             $rootScope.$on(LOAD_SUCCESS, callback);
@@ -89,15 +103,11 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                     toRemove = node;
                 }
             });
-            toRemove.remove();
-            service.treeChanged(fancyTree.toDict());
-            var newActiveNode = fancyTree.rootNode.getFirstChild();
-            if (newActiveNode.folder === true) {
-                $rootScope.go("/binder/" + newActiveNode.nodeKey);
-                newActiveNode.setActive(true);
-            } else if (newActiveNode.encounter !== undefined) {
-                $rootScope.go("/encounter/" + newActiveNode.data.encounterId);
-                newActiveNode.setActive(true);
+            if (toRemove) {
+                removeNode(toRemove);
+                service.treeChanged(fancyTree.toDict());
+            } else {
+                console.log("could not remove content tree binder");
             }
         };
 
@@ -126,8 +136,12 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                     toRemove = node;
                 }
             });
-            toRemove.remove();
-            service.treeChanged(fancyTree.toDict());
+            if (toRemove) {
+                removeNode(toRemove);
+                service.treeChanged(fancyTree.toDict());
+            } else {
+                console.log("could not remove content tree encounter");
+            }
         };
 
         service.changeEncounter = function (encounter) {
@@ -164,7 +178,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                 }
             });
             if (toRemove) {
-                toRemove.remove();
+                removeNode(toRemove);
                 service.treeChanged(fancyTree.toDict());
             } else {
                 console.log("could not remove content tree userMonster");
