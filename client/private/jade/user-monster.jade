@@ -11,52 +11,36 @@ mixin labeledTextArea(name, model, rows, placeholder)
         .col-xs-10
             textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model)
 
+mixin fullWidthTextArea(model, rows, placeholder)
+    .form-group
+        textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model)
+
 .row
     .col-xs-10.l-section.l-shadow.search-result.user-monster(ng-controller="UserMonsterController", fade-in-fade-out="startFade")
-        .row.heading.result-heading
-            .col-xs-8.name-container
-                form.form-horizontal(role="form")
-                    +labeledInput('Name', 'userMonster.Name', 'e.g. Doombringer')
-                    +labeledInput('Source', 'userMonster.Source', 'e.g. The Slayers of the Winter Witch')
-            .col-xs-4.cr-container
-                .row
-                    .col-xs-12
-                        form.form-horizontal(role="form")
-                            .form-group
-                                label.col-xs-2.control-label CR:
-                                .col-xs-10
-                                    input.form-control(type='text', name='CR', placeholder='1', ng-model='userMonster.CR')
-                            .form-group
-                                label.col-xs-2.control-label XP:
-                                .col-xs-10
-                                    input.form-control(type='text', name='XP', placeholder='400', ng-model='userMonster.XP')
-                .row
-                    .col-xs-12.l-no-padding
-                        .btn-container
-                            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy')
-                                i.icon.fa.fa-copy
-                            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Settings')
-                                i.icon.fa.fa-cogs
-                            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Zap')
-                                i.icon.fa.fa-flash
-                            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Delete monster', on-confirm="deleteUserMonster()", confirm-click="Are you sure ?", confirm-title="Delete monster")
-                                i.icon.fa.fa-times
         .row.l-section.result-content
             .col-xs-12
-                form.form-horizontal(role="form")
-                    +labeledTextArea("Description", "userMonster.VisualDescription", 5, "e.g. With eyes blazing red and magical runes glowing on its horns, this mighty beast has the body of a man and the head of a bull.")
-                    +labeledInput("Gender", "userMonster.Gender", "e.g. male")
-                    +labeledInput("Race", "userMonster.Race", "e.g. minotaur")
-                    // FIXME: parse ClassString -> Classes
-                    +labeledInput("Classes", "userMonster.ClassesString", "e.g. Cleric of Urgathoa 3")
-                    +labeledInput("Alignment", "userMonster.Alignment", "e.g. CE")
-                    +labeledInput("Size", "userMonster.Size", "e.g. Large")
-                    +labeledInput("Type", "userMonster.Type", "e.g. Outsider")
-                    +labeledInput("SubType", "userMonster.SubType", "e.g. (native)")
-                    +labeledInput("Init", "userMonster.Init", "e.g. +4")
-                    +labeledInput("Senses", "userMonster.Senses", "e.g. darkvision 60 ft.; Perception +14")
+                a.pull-right.is-pointer(title='Delete monster', on-confirm="deleteUserMonster()", confirm-click="Are you sure ?", confirm-title="Delete monster")
+                    i.icon.fa.fa-times
             .col-xs-12
                 .row
+                    .col-xs-12.cat.decor
+                        legend.t-legend.t-title General
+                        form.form-horizontal(role="form")
+                            +labeledInput('Name', 'userMonster.Name', 'e.g. Doombringer')
+                            +labeledInput('Source', 'userMonster.Source', 'e.g. The Slayers of the Winter Witch')
+                            +labeledInput('CR', 'userMonster.CR', 'e.g. 3')
+                            +labeledInput('XP', 'userMonster.XP', 'e.g. 1200')
+                            +labeledTextArea("Description", "userMonster.VisualDescription", 5, "e.g. With eyes blazing red and magical runes glowing on its horns, this mighty beast has the body of a man and the head of a bull.")
+                            +labeledInput("Gender", "userMonster.Gender", "e.g. male")
+                            +labeledInput("Race", "userMonster.Race", "e.g. minotaur")
+                            // FIXME: parse ClassString -> Classes
+                            +labeledInput("Classes", "userMonster.ClassesString", "e.g. Cleric of Urgathoa 3")
+                            +labeledInput("Alignment", "userMonster.Alignment", "e.g. CE")
+                            +labeledInput("Size", "userMonster.Size", "e.g. Large")
+                            +labeledInput("Type", "userMonster.Type", "e.g. Outsider")
+                            +labeledInput("SubType", "userMonster.SubType", "e.g. (native)")
+                            +labeledInput("Init", "userMonster.Init", "e.g. +4")
+                            +labeledInput("Senses", "userMonster.Senses", "e.g. darkvision 60 ft.; Perception +14")
                     .col-xs-12.cat.decor
                         legend.t-legend.t-title Offense
                         form.form-horizontal(role="form")
@@ -84,80 +68,32 @@ mixin labeledTextArea(name, model, rows, placeholder)
                             +labeledInput("Resist", "userMonster.Resist", "e.g. cold 10")
                             +labeledInput("Weaknesses", "userMonster.Weaknesses", "e.g. vulnerability to fire")
                             +labeledInput("SR", "userMonster.SR", "e.g. 11")
-                .row
-                    .col-lg-6.cat.decor
+                    .col-xs-12.decor
                         legend.t-legend.t-title Statistics
-                        ul.list-unstyled
-                            li
-                                span
-                                    strong Str
-                                    | &nbsp;{{userMonster.Str}},
-                                span
-                                    strong Dex
-                                    | &nbsp;{{userMonster.Dex}},
-                                span
-                                    strong Con
-                                    | &nbsp;{{userMonster.Con}},
-                                span
-                                    strong Int
-                                    | &nbsp;{{userMonster.Int}},
-                                span
-                                    strong Wis
-                                    | &nbsp;{{userMonster.Wis}},
-                                span
-                                    strong Cha
-                                    | &nbsp;{{userMonster.Cha}}
-                            li
-                                span
-                                    strong Base Atk
-                                    | &nbsp;{{userMonster.BaseAtk}};
-                                span
-                                    strong CMB
-                                    | &nbsp;{{userMonster.CMB}};
-                                span
-                                    strong CMD
-                                    | &nbsp;{{userMonster.CMD}}
-                            li(ng-if='userMonster.Feats')
-                                span
-                                    strong Feats&nbsp;
-                                    span(linkify="userMonster.Feats",linkify-type="feat", mythic="userMonster.Mythic")
-                            li(ng-if='userMonster.Skills || userMonster.RacialMods')
-                                span(ng-if='userMonster.Skills')
-                                    strong Skills
-                                    | &nbsp;{{userMonster.Skills}}
-                                span(ng-if='userMonster.RacialMods')
-                                    strong Racial Modifiers
-                                    | &nbsp;{{userMonster.RacialMods}}
-                            li(ng-if='userMonster.Languages')
-                                span
-                                    strong Languages
-                                    | &nbsp;{{userMonster.Languages}}
-                            li(ng-if='userMonster.SQ')
-                                span
-                                    strong SQ
-                                    | &nbsp;{{userMonster.SQ}}
-                    .col-lg-6.cat.decor(ng-if='userMonster.Environment || userMonster.Organization || userMonster.Treasure')
-                        div
-                            legend.t-legend.t-title Ecology
-                        div
-                            ul.list-unstyled
-                                li(ng-if='userMonster.Environment')
-                                    span
-                                        strong Environment
-                                        | &nbsp;{{userMonster.Environment}}
-                                li(ng-if='userMonster.Organization')
-                                    span
-                                        strong Organization
-                                        | &nbsp;{{userMonster.Organization}}
-                                li(ng-if='userMonster.Treasure')
-                                    span
-                                        strong Treasure
-                                        | &nbsp;{{userMonster.Treasure}}
-            .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.SpecialAbilitiesSafe')
-                span
-                    legend.t-legend.t-title Special Abilities
-                    // FIXME Use jQuery to change the <h5> tags into <p> or <div>
-                    div(ng-bind-html='userMonster.SpecialAbilitiesSafe')
-            .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.Description')
-                legend.t-legend.t-title Description
-                div(ng-bind-html='userMonster.DescriptionSafe')
+                        form.form-horizontal(role="form")
+                            +labeledInput("Str", "userMonster.Str", "e.g. 16")
+                            +labeledInput("Dex", "userMonster.Dex", "e.g. 12")
+                            +labeledInput("Con", "userMonster.Con", "e.g. 11")
+                            +labeledInput("Int", "userMonster.Int", "e.g. 8")
+                            +labeledInput("Wis", "userMonster.Wis", "e.g. 11")
+                            +labeledInput("Cha", "userMonster.Cha", "e.g. 13")
+                            +labeledInput("Base Atk", "userMonster.BaseAtk", "e.g. +7")
+                            +labeledInput("CMB", "userMonster.CMB", "e.g. +5")
+                            +labeledInput("CMD", "userMonster.CMD", "e.g. 14")
+                            +labeledTextArea("Feats", "userMonster.Feats", 3, "e.g. Double Slice, Endurance, Toughness, Two-Weapon Defense, Two-Weapon Fighting, Weapon Focus (scimitar)")
+                            +labeledTextArea("Skills", "userMonster.Skills", 3, "e.g. Intimidate +11, Perception +9, Survival +9")
+                            +labeledTextArea("Racial Modifiers", "userMonster.RacialMods", 3, "e.g. +2 Perception and Sense Motive vs. half-fiends and tieflings")
+                            +labeledInput("Languages", "userMonster.Languages", "e.g. common, draconic, abyssal")
+                            +labeledInput("SQ", "userMonster.SQ", "e.g. Hold Breath (Ex), Change Shape (Su)")
+                    .col-xs-12.decor
+                        legend.t-legend.t-title Ecology
+                        form.form-horizontal(role="form")
+                            +labeledInput("Environment", "userMonster.Environment", "e.g. the Abyss")
+                            +labeledInput("Organization", "userMonster.Organization", "e.g. mob (4-7), brood (8-17)")
+                            +labeledInput("Treasure", "userMonster.Treasure", "e.g. standard")
+                    .col-xs-12.decor
+                        legend.t-legend.t-title Special Abilities
+                        +fullWidthTextArea("userMonster.SpecialAbilities", 20, "e.g. Deflective Wings (Ex) As a standard action, an angelic guardian can spread its wings and protect a single adjacent creature from the next ranged attack. The next time the protected creature would normally be hit with an attack from a ranged attack, the attack is instead deflected and the protected creature takes no damage. An angelic guardian can only deflect one ranged attack per turn in this way. This effect lasts until the angelic guardian's next turn or until the protected creature leaves its square, whichever comes first; Metallic Feathers (Ex) An angelic guardian's wings are honed to razor-sharp edges, and attacks with them deal slashing damage instead of bludgeoning damage.")
+                    .col-xs-12.decor
+                        legend.t-legend.t-title Description
+                        +fullWidthTextArea("userMonster.Description", 20, "e.g. Nothing holds a grudge like a minotaur. Scorned by the civilized races centuries ago and born from a deif ic curse, minotaurs have hunted, slain, and devoured lesser humanoids in retribution for real or imagined slights for as long as anyone can remember. Many cultures have legends of how the first minotaurs were created by vengeful or slighted gods who punished humans by twisting their forms, robbing them of their intellects and beauty, and giving them the heads of bulls. Yet most modern minotaurs hold these legends in contempt and believe that they are not divine mockeries but divine paragons created by a potent and cruel demon lord named Baphomet. The traditional minotaur's lair is a maze, be it a legitimate labyrinth constructed to baff le and confuse, an accidental one such as a city sewer system, or a naturally occurring one such as a tangle of caverns and other underground passageways. Employing their innate cunning, minotaurs use their maze lairs to vex unwary foes who seek them out or who simply stumble into the lairs and become lost, slowly hunting the intruders as they try in vain to find a way out.")
