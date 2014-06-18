@@ -60,7 +60,11 @@ DEMONSQUID.encounterBuilderServices.factory('favouriteService', ['$http', functi
                     toRemove = node;
                 }
             });
+            var defaultFolder = fancyTree.getNodeByKey(typeBinderKeys[toRemove.data.type]);
             toRemove.remove();
+            if (defaultFolder && !defaultFolder.hasChildren()) {
+                defaultFolder.remove();
+            }
             favourites = fancyTree.toDict();
         }
     };
