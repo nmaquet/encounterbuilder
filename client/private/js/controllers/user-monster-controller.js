@@ -6,13 +6,15 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
 
             $scope.deleteUserMonster = function() {
                 if ($scope.userMonster) {
-                    userMonsterService.delete($scope.userMonster, function(error) {
-                        if(error) {
-                            console.log(error);
-                        } else {
-                            contentTreeService.userMonsterDeleted($scope.userMonster);
-                        }
-                    });
+                    $scope.startFade = function () {
+                        userMonsterService.delete($scope.userMonster, function (error) {
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                contentTreeService.userMonsterDeleted($scope.userMonster);
+                            }
+                        });
+                    }
                 }
             };
 
