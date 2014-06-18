@@ -1,16 +1,23 @@
+
+mixin labeledInput(name, model, placeholder)
+    .form-group
+        label.col-xs-2.control-label= name + ':'
+        .col-xs-10
+            input.form-control(type=text, name=name, placeholder=placeholder, ng-model=model)
+
+mixin labeledTextArea(name, model, rows, placeholder)
+    .form-group
+        label.col-xs-2.control-label= name + ':'
+        .col-xs-10
+            textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model)
+
 .row
     .col-xs-10.l-section.l-shadow.search-result.user-monster(ng-controller="UserMonsterController", fade-in-fade-out="startFade")
         .row.heading.result-heading
             .col-xs-8.name-container
                 form.form-horizontal(role="form")
-                    .form-group
-                        label.col-xs-2.control-label Name:
-                        .col-xs-10
-                            input.form-control(type='text', name='Name', placeholder='Name', ng-model='userMonster.Name')
-                    .form-group
-                        label.col-xs-2.control-label Source:
-                        .col-xs-10
-                            input.form-control(type='text', name='Source', placeholder='Source', ng-model='userMonster.Source')
+                    +labeledInput('Name', 'e.g. Doombringer', 'userMonster.Name')
+                    +labeledInput('Source', 'e.g. The Slayers of the Winter Witch', 'userMonster.Source')
             .col-xs-4.cr-container
                 .row
                     .col-xs-12
@@ -37,70 +44,33 @@
         .row.l-section.result-content
             .col-xs-12
                 form.form-horizontal(role="form")
-                    .form-group
-                        label.control-label Visual Description
-                        textarea.form-control(type='text', rows=5, name='Visual Description', placeholder='e.g. This slimy vermin has green eyes.', ng-model='userMonster.Description_Visual')
+                    +labeledTextArea("Description", "e.g. With eyes blazing red and magical runes glowing on its horns, this mighty beast has the body of a man and the head of a bull.", "userMonster.VisualDescription", 5)
+                    +labeledInput("Gender", "e.g. male", "userMonster.Gender")
+                    +labeledInput("Race", "e.g. minotaur", "userMonster.Race")
+                    // FIXME: parse ClassString -> Classes
+                    +labeledInput("Classes", "e.g. Cleric of Urgathoa 3", "userMonster.ClassesString")
+                    +labeledInput("Alignment", "e.g. CE", "userMonster.Alignment")
+                    +labeledInput("Size", "e.g. Large", "userMonster.Size")
+                    +labeledInput("Type", "e.g. Outsider", "userMonster.Type")
+                    +labeledInput("SubType", "e.g. (native)", "userMonster.SubType")
+                    +labeledInput("Init", "e.g. +4", "userMonster.Init")
+                    +labeledInput("Senses", "e.g. darkvision 60 ft.; Perception +14", "userMonster.Senses")
             .col-xs-12
-                form.form-inline(role="form")
-                    .form-group
-                        label.control-label Gender:
-                        input.form-control(type='text', name='Gender', placeholder='e.g. male', ng-model='userMonster.Gender')
-                    .form-group
-                        label.control-label Race:
-                        input.form-control(type='text', name='Race', placeholder='e.g. half-elf', ng-model='userMonster.Race')
-                    .form-group
-                        label.control-label Classes:
-                        input.form-control(type='text', name='Classes', placeholder='e.g. Cleric of Urgathoa 3', ng-model='userMonster.Race')
-                //ul.list-inline
-                    li(ng-if="userMonster.Gender||userMonster.Race||userMonster.Classes")
-                        span {{userMonster.Gender}} {{userMonster.Race}} {{userMonster.Classes|classesToString}}
-                    li
-                        span
-                            strong {{userMonster.Alignment}}
-                            | &nbsp;{{userMonster.Size}} {{userMonster.Type}} {{userMonster.SubType}}
-                    li
-                        span
-                            strong Init
-                            | &nbsp;{{userMonster.Init}}
-                    li
-                        span
-                            strong Senses
-                            | &nbsp;{{userMonster.Senses}}
-            .col-xxs-12.col-xs-12
                 .row
-                    .col-lg-6.cat.decor
+                    .col-xs-12.cat.decor
                         legend.t-legend.t-title Offense
-                        ul.list-unstyled
-                            li
-                                span
-                                    strong SPD
-                                    | &nbsp;{{userMonster.Speed}}
-                            li
-                                span
-                                    strong Melee
-                                    | &nbsp;{{userMonster.Melee}}
-                            li
-                                span
-                                    strong Space
-                                    | &nbsp;{{userMonster.Space}}
-                                    | &nbsp;
-                                span
-                                    strong Reach
-                                    | &nbsp;{{userMonster.Reach}}
-                            li(ng-if='userMonster.SpecialAttacks')
-                                span
-                                    strong Special Attacks
-                                    | &nbsp;{{userMonster.SpecialAttacks}};
-                            li(ng-if='userMonster.SpellsKnown')
-                                spell-list(spell-string="{{userMonster.SpellsKnown}}")
-                            li(ng-if='userMonster.Bloodline')
-                                span
-                                    strong Bloodline
-                                    | &nbsp;{{userMonster.Bloodline}}
-                            li(ng-if='userMonster.SpellsPrepared')
-                                spell-list(spell-string="{{userMonster.SpellsPrepared}}" )
-                            li(ng-bind-html='userMonster.SLASafe' ,linkify='userMonster.SLASafe',linkify-type="spell", mythic="userMonster.Mythic")
-                    .col-lg-6.cat.decor
+                        form.form-horizontal(role="form")
+                            +labeledInput("Speed", "e.g. 30 ft., fly 60 ft. (good)", "userMonster.Speed")
+                            +labeledTextArea("Melee", "e.g. greataxe +9/+4 (3d6+6/x3) and gore +4 (1d6+2)", "userMonster.Melee", 3)
+                            +labeledInput("Space", "e.g. 10 ft.", "userMonster.Space")
+                            +labeledInput("Reach", "e.g. 10 ft.", "userMonster.Reach")
+                            +labeledTextArea("Special Attacks", "e.g. breath weapon (30-ft. cone, 6d6 fire damage plus fumes, Reflex DC 19 half, usable every 1d4 rounds)", "userMonster.SpecialAttacks", 3)
+                            +labeledTextArea("Spells Known", "e.g. (CL 3rd; concentration +5); 1st (5/day)-enlarge person, hypnotism (DC 14), magic missile, obscuring mist; 0 (at will)-arcane mark, detect magic, mage hand, mending, read magic", "userMonster.SpellsKnown", 3)
+                            +labeledInput("Bloodline", "e.g. draconic (green)", "userMonster.Bloodline")
+                            +labeledTextArea("Spells Prepared", "e.g. (CL 3rd; concentration +6); 2nd-mirror image, scorching ray; 1st-magic missile, shield, shocking grasp; 0-(at will)-daze (DC 13), detect magic, light, resistance", "userMonster.SpellsPrepared", 3)
+                            // FIXME: this must be sanitized
+                            +labeledTextArea("Spells-Like Abilities", "e.g. (CL 5th; concentration +6); 3/day—cause fear (DC 12), shatter (DC 13); 1/day—summon (level 1, 1 abrikandilu 50%) 0-(at will)-daze (DC 13), detect magic, light, resistance", "userMonster.SpellLikeAbilities", 3)
+                    .col-xs-12.decor
                         legend.t-legend.t-title Defense
                         ul.list-unstyled
                             li
@@ -220,4 +190,3 @@
             .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.Description')
                 legend.t-legend.t-title Description
                 div(ng-bind-html='userMonster.DescriptionSafe')
-
