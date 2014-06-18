@@ -16,8 +16,8 @@ mixin labeledTextArea(name, model, rows, placeholder)
         .row.heading.result-heading
             .col-xs-8.name-container
                 form.form-horizontal(role="form")
-                    +labeledInput('Name', 'e.g. Doombringer', 'userMonster.Name')
-                    +labeledInput('Source', 'e.g. The Slayers of the Winter Witch', 'userMonster.Source')
+                    +labeledInput('Name', 'userMonster.Name', 'e.g. Doombringer')
+                    +labeledInput('Source', 'userMonster.Source', 'e.g. The Slayers of the Winter Witch')
             .col-xs-4.cr-container
                 .row
                     .col-xs-12
@@ -44,75 +44,46 @@ mixin labeledTextArea(name, model, rows, placeholder)
         .row.l-section.result-content
             .col-xs-12
                 form.form-horizontal(role="form")
-                    +labeledTextArea("Description", "e.g. With eyes blazing red and magical runes glowing on its horns, this mighty beast has the body of a man and the head of a bull.", "userMonster.VisualDescription", 5)
-                    +labeledInput("Gender", "e.g. male", "userMonster.Gender")
-                    +labeledInput("Race", "e.g. minotaur", "userMonster.Race")
+                    +labeledTextArea("Description", "userMonster.VisualDescription", 5, "e.g. With eyes blazing red and magical runes glowing on its horns, this mighty beast has the body of a man and the head of a bull.")
+                    +labeledInput("Gender", "userMonster.Gender", "e.g. male")
+                    +labeledInput("Race", "userMonster.Race", "e.g. minotaur")
                     // FIXME: parse ClassString -> Classes
-                    +labeledInput("Classes", "e.g. Cleric of Urgathoa 3", "userMonster.ClassesString")
-                    +labeledInput("Alignment", "e.g. CE", "userMonster.Alignment")
-                    +labeledInput("Size", "e.g. Large", "userMonster.Size")
-                    +labeledInput("Type", "e.g. Outsider", "userMonster.Type")
-                    +labeledInput("SubType", "e.g. (native)", "userMonster.SubType")
-                    +labeledInput("Init", "e.g. +4", "userMonster.Init")
-                    +labeledInput("Senses", "e.g. darkvision 60 ft.; Perception +14", "userMonster.Senses")
+                    +labeledInput("Classes", "userMonster.ClassesString", "e.g. Cleric of Urgathoa 3")
+                    +labeledInput("Alignment", "userMonster.Alignment", "e.g. CE")
+                    +labeledInput("Size", "userMonster.Size", "e.g. Large")
+                    +labeledInput("Type", "userMonster.Type", "e.g. Outsider")
+                    +labeledInput("SubType", "userMonster.SubType", "e.g. (native)")
+                    +labeledInput("Init", "userMonster.Init", "e.g. +4")
+                    +labeledInput("Senses", "userMonster.Senses", "e.g. darkvision 60 ft.; Perception +14")
             .col-xs-12
                 .row
                     .col-xs-12.cat.decor
                         legend.t-legend.t-title Offense
                         form.form-horizontal(role="form")
-                            +labeledInput("Speed", "e.g. 30 ft., fly 60 ft. (good)", "userMonster.Speed")
-                            +labeledTextArea("Melee", "e.g. greataxe +9/+4 (3d6+6/x3) and gore +4 (1d6+2)", "userMonster.Melee", 3)
-                            +labeledInput("Space", "e.g. 10 ft.", "userMonster.Space")
-                            +labeledInput("Reach", "e.g. 10 ft.", "userMonster.Reach")
-                            +labeledTextArea("Special Attacks", "e.g. breath weapon (30-ft. cone, 6d6 fire damage plus fumes, Reflex DC 19 half, usable every 1d4 rounds)", "userMonster.SpecialAttacks", 3)
-                            +labeledTextArea("Spells Known", "e.g. (CL 3rd; concentration +5); 1st (5/day)-enlarge person, hypnotism (DC 14), magic missile, obscuring mist; 0 (at will)-arcane mark, detect magic, mage hand, mending, read magic", "userMonster.SpellsKnown", 3)
-                            +labeledInput("Bloodline", "e.g. draconic (green)", "userMonster.Bloodline")
-                            +labeledTextArea("Spells Prepared", "e.g. (CL 3rd; concentration +6); 2nd-mirror image, scorching ray; 1st-magic missile, shield, shocking grasp; 0-(at will)-daze (DC 13), detect magic, light, resistance", "userMonster.SpellsPrepared", 3)
+                            +labeledInput("Speed", "userMonster.Speed", "e.g. 30 ft., fly 60 ft. (good)")
+                            +labeledTextArea("Melee", "userMonster.Melee", 3, "e.g. greataxe +9/+4 (3d6+6/x3) and gore +4 (1d6+2)")
+                            +labeledInput("Space", "userMonster.Space", "e.g. 10 ft.")
+                            +labeledInput("Reach", "userMonster.Reach", "e.g. 10 ft.")
+                            +labeledTextArea("Special Attacks", "userMonster.SpecialAttacks", 3, "e.g. breath weapon (30-ft. cone, 6d6 fire damage plus fumes, Reflex DC 19 half, usable every 1d4 rounds)")
+                            +labeledTextArea("Spells Known", "userMonster.SpellsKnown", 3, "e.g. (CL 3rd; concentration +5); 1st (5/day)-enlarge person, hypnotism (DC 14), magic missile, obscuring mist; 0 (at will)-arcane mark, detect magic, mage hand, mending, read magic")
+                            +labeledInput("Bloodline", "userMonster.Bloodline", "e.g. draconic (green)")
+                            +labeledTextArea("Spells Prepared", "userMonster.SpellsPrepared", 3, "e.g. (CL 3rd; concentration +6); 2nd-mirror image, scorching ray; 1st-magic missile, shield, shocking grasp; 0-(at will)-daze (DC 13), detect magic, light, resistance")
                             // FIXME: this must be sanitized
-                            +labeledTextArea("Spells-Like Abilities", "e.g. (CL 5th; concentration +6); 3/day—cause fear (DC 12), shatter (DC 13); 1/day—summon (level 1, 1 abrikandilu 50%) 0-(at will)-daze (DC 13), detect magic, light, resistance", "userMonster.SpellLikeAbilities", 3)
+                            +labeledTextArea("Spells-Like Abilities", "userMonster.SpellLikeAbilities", 3, "e.g. (CL 5th; concentration +6); 3/day—cause fear (DC 12), shatter (DC 13); 1/day—summon (level 1, 1 abrikandilu 50%) 0-(at will)-daze (DC 13), detect magic, light, resistance")
                     .col-xs-12.decor
                         legend.t-legend.t-title Defense
-                        ul.list-unstyled
-                            li
-                                span
-                                    strong
-                                        abbr(title='Armor Class') AC
-                                    | &nbsp;{{userMonster.AC}}
-                            li
-                                span
-                                    strong HP
-                                    | &nbsp;{{userMonster.HP}} {{userMonster.HD}}
-                            li
-                                span
-                                    strong Fort
-                                    | &nbsp;{{userMonster.Fort}},
-                                span
-                                    strong Ref
-                                    | &nbsp;{{userMonster.Ref}},
-                                span
-                                    strong Will
-                                    | &nbsp;{{userMonster.Will}}
-                            li(ng-if='userMonster.DR')
-                                span
-                                    strong DR
-                                    | &nbsp;{{userMonster.DR}};
-                            li(ng-if='userMonster.Immune')
-                                span
-                                    strong Immune
-                                    | &nbsp;{{userMonster.Immune}};
-                            li(ng-if='userMonster.Resist')
-                                span
-                                    strong Resist
-                                    | &nbsp;{{userMonster.Resist}};
-                            li(ng-if='userMonster.Weaknesses')
-                                span
-                                    strong Weaknesses
-                                    | &nbsp;{{userMonster.Weaknesses}};
-                            li(ng-if='userMonster.SR')
-                                span
-                                    strong SR
-                                    | &nbsp;{{userMonster.SR}}
-                            .col-xxs-12.col-xs-12
+                        form.form-horizontal(role="form")
+                            +labeledInput("AC", "userMonster.AC", "e.g. AC 13, touch 13, flat-footed 12")
+                            +labeledInput("HP", "userMonster.HP", "e.g. 52")
+                            +labeledInput("HD", "userMonster.HD", "e.g. (3d8+15)")
+                            +labeledInput("Fort", "userMonster.Fort", "e.g. 4")
+                            +labeledInput("Ref", "userMonster.Ref", "e.g. 2")
+                            +labeledInput("Will", "userMonster.Will", "e.g. 3")
+                            +labeledInput("DR", "userMonster.DR", "e.g. 5/cold iron")
+                            +labeledInput("Immune", "userMonster.Immune", "e.g. construct traits, magic")
+                            +labeledInput("Resist", "userMonster.Resist", "e.g. cold 10")
+                            +labeledInput("Weaknesses", "userMonster.Weaknesses", "e.g. vulnerability to fire")
+                            +labeledInput("SR", "userMonster.SR", "e.g. 11")
                 .row
                     .col-lg-6.cat.decor
                         legend.t-legend.t-title Statistics
