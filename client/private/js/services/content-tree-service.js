@@ -53,7 +53,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             var nextSibling = node.getNextSibling();
             var prevSibling = node.getPrevSibling();
             node.remove();
-            if (parent) {
+            if (parent && !parent.isRoot()) { /* a child of the root node is effectively parentless */
                 parent.setActive(true);
             } else if (nextSibling) {
                 nextSibling.setActive(true);
