@@ -45,7 +45,6 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
             $scope.pending = true;
 
             userMonsterService.get($routeParams.userMonsterId, function (error, userMonster) {
-                $scope.pending = false;
                 if (error) {
                     console.log(error);
                 }
@@ -60,15 +59,21 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                         userMonster.SpellLikeAbilitiesHTML = $sce.trustAsHtml(userMonster.SpellLikeAbilities.replace(/\n/gm, "<br>"));
                     }
                     $scope.userMonster = userMonster;
+                    $scope.pending = false;
                 }
             });
 
-            $scope.$watch('userMonster', function(userMonster){
+            var lastWatchTime;
+
+            $scope.$watch('userMonster', function(userMonster) {
+                var thisWatchTime = new Date().getTime();
+                lastWatchTime = thisWatchTime;
                 $timeout(function () {
-                    if (angular.equals(userMonster, $scope.userMonster)) {
+                    if (angular.equals(userMonster, $scope.userMonster) && thisWatchTime === lastWatchTime) {
                         updateUserMonster();
+                    } else {
                     }
-                }, 500);
+                }, 2000);
             }, true /* deep equality */);
 
             $rootScope.$on('$locationChangeStart', function (e) {
