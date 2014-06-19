@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('favouriteTree',
-    ['$rootScope', '$timeout', '$routeParams', 'favouriteService',
-        function ($rootScope, $timeout, $routeParams, favouriteService) {
+    ['$rootScope', '$timeout', '$routeParams', 'favouriteService', 'locationService',
+        function ($rootScope, $timeout, $routeParams, favouriteService, locationService) {
 
             function link(scope, element) {
 
@@ -12,9 +12,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('favouriteTree',
                     }
                     else {
                         $timeout(function () {
-                            var node = data.node;
-                            var url = "/" + node.data.type + "/" + node.data.id;
-                            scope.go(url);
+                            locationService.goToDetails(data.node.data.type, data.node.data.id);
                         });
                     }
 

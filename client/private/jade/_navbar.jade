@@ -32,7 +32,9 @@
             li.dropdown(ng-controller='LogoutController')
                 a#user-dropdown.dropdown-toggle.is-pointer(role='button', data-toggle='dropdown')
                     i.icon.fa.fa-user
-                    | &nbsp;{{user.username}}&nbsp;
+                    | &nbsp;
+                    span(ng-bind="user.username")
+                    | &nbsp;
                     b.caret
                 ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
                     li

@@ -1,0 +1,12 @@
+div(ng-switch='contentType')
+    .col-xs-12.l-section.l-shadow.search-result(ng-controller='MonsterDetailController', pending="pending", ng-switch-when='monster')
+        include _monster-details
+    .col-xs-12.l-section.l-shadow.search-result(ng-controller='NpcDetailController', pending="pending", ng-switch-when='npc')
+        include _npc-details
+    .col-xs-12.l-section.l-shadow.search-result(ng-controller='ItemDetailsController', pending="pending", ng-switch-when='item')
+        include _item-details
+    .col-xs-12.l-section.l-shadow.search-result(ng-controller='SpellDetailsController', pending="pending", ng-switch-when='spell')
+        include _spell-details
+    .col-xs-12.l-section.l-shadow.search-result(ng-controller='FeatDetailsController', pending="pending", ng-switch-when='feat')
+        include _feat-details
+

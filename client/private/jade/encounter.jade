@@ -2,14 +2,5 @@ section.row(ng-controller='ContentController')
     .col-sm-5.col-lg-4(ng-controller='EncounterController', pending="pending", ng-hide="contentType && (viewport.xs || viewport.sm)")
         .l-section.col-sm-12.encounter-well.gradient.l-shadow(fade-in-fade-out="startFade")
             include _encounter
-    div(ng-switch='contentType', ng-class="{'col-sm-7': !viewport.xs, 'col-lg-8': !viewport.xs}")
-        .col-xs-12.l-section.l-shadow.search-result(ng-controller='MonsterDetailController', pending="pending", ng-switch-when='monster')
-            include _monster-details
-        .col-xs-12.l-section.l-shadow.search-result(ng-controller='NpcDetailController', pending="pending", ng-switch-when='npc')
-            include _npc-details
-        .col-xs-12.l-section.l-shadow.search-result(ng-controller='ItemDetailsController', pending="pending", ng-switch-when='item')
-            include _item-details
-        .col-xs-12.l-section.l-shadow.search-result(ng-controller='SpellDetailsController', pending="pending", ng-switch-when='spell')
-            include _spell-details
-        .col-xs-12.l-section.l-shadow.search-result(ng-controller='FeatDetailsController', pending="pending", ng-switch-when='feat')
-            include _feat-details
+    div(ng-class="{'col-sm-7': !viewport.xs, 'col-lg-5': !viewport.xs}")
+        include _right-details-pane

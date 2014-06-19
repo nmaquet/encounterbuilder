@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
-    ['$scope', '$rootScope', '$timeout', '$routeParams', 'featService',
-        function ($scope, $rootScope, $timeout, $routeParams, featService) {
+    ['$scope', '$rootScope', '$timeout', '$routeParams', 'locationService', 'featService',
+        function ($scope, $rootScope, $timeout, $routeParams, locationService, featService) {
 
             var lastSearchParam = featService.lastSearchParam();
 
@@ -57,11 +57,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
             });
 
             $scope.selectFeatById = function (id) {
-                if ($routeParams.encounterId) {
-                    $scope.go('/encounter/' + $routeParams.encounterId + '/feat/' + id);
-                } else {
-                    $scope.go('/feat/' + id);
-                }
+                locationService.goToDetails('feat', id);
             };
 
             $scope.$watch('featNameSubstring', function (featNameSubstring) {

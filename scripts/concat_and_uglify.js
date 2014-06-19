@@ -77,7 +77,8 @@ var jsFiles = [
     "client/private/js/services/http-interceptor-service.js",
     "client/private/js/services/viewport-service.js",
     "client/private/js/services/user-monster-service.js",
-    "client/private/js/services/favourite-service.js"
+    "client/private/js/services/favourite-service.js",
+    "client/private/js/services/location-service.js"
 ];
 
 var cssFiles = [
