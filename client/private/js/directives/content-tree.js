@@ -7,7 +7,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
             function link(scope, element) {
 
                 function onActivate(event, data) {
-                    contentTreeService.treeChanged(tree.toDict(removeExtraClasses));
                     $timeout(function () {
                         var node = data.node;
                         if (node.data.encounterId) {
@@ -21,11 +20,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     });
                 }
 
-                function onExpandOrCollapse(event, data) {
-                    contentTreeService.treeChanged(tree.toDict(removeExtraClasses));
-                }
-
-
                 var tree;
 
                 function removeExtraClasses(dict) {
@@ -34,7 +28,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     }
                 }
 
-                function handleExtraClasses(node) {
+                function addExtraClasses(node) {
                     if (node.data.userMonsterId) {
                         node.extraClasses = "fancytree-monster";
                     }
@@ -46,8 +40,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         extensions: ["dnd"],
                         source: contentTreeService.contentTree(),
                         activate: onActivate,
-                        expand: onExpandOrCollapse,
-                        collapse: onExpandOrCollapse,
                         dnd: {
                             preventVoidMoves: true, // Prevent dropping nodes 'before self', etc.
                             preventRecursiveMoves: true, // Prevent dropping nodes on own descendants
@@ -83,7 +75,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
                     tree = element.fancytree("getTree");
                     contentTreeService.setTree(tree);
-                    tree.visit(handleExtraClasses);
+                    tree.visit(addExtraClasses);
                     if ($routeParams.encounterId) {
                         tree.visit(function (node) {
                             if (node.data.encounterId && node.data.encounterId === $routeParams.encounterId) {

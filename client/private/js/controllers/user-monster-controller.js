@@ -46,38 +46,39 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
 
             userMonsterService.get($routeParams.userMonsterId, function (error, userMonster) {
                 if (error) {
-                    console.log(error);
+                    return console.log(error);
                 }
-                else {
-                    if (userMonster.Description) {
-                        userMonster.DescriptionHTML = $sce.trustAsHtml(userMonster.Description.replace(/\n/gm, "<br>"));
-                    }
-                    if (userMonster.SpecialAbilities) {
-                        userMonster.SpecialAbilitiesHTML = $sce.trustAsHtml(userMonster.SpecialAbilities.replace(/\n/gm, "<br>"));
-                    }
-                    if (userMonster.SpellLikeAbilities) {
-                        userMonster.SpellLikeAbilitiesHTML = $sce.trustAsHtml(userMonster.SpellLikeAbilities.replace(/\n/gm, "<br>"));
-                    }
-                    $scope.userMonster = userMonster;
-                    $scope.pending = false;
+
+                if (userMonster.Description) {
+                    userMonster.DescriptionHTML = $sce.trustAsHtml(userMonster.Description.replace(/\n/gm, "<br>"));
                 }
+                if (userMonster.SpecialAbilities) {
+                    userMonster.SpecialAbilitiesHTML = $sce.trustAsHtml(userMonster.SpecialAbilities.replace(/\n/gm, "<br>"));
+                }
+                if (userMonster.SpellLikeAbilities) {
+                    userMonster.SpellLikeAbilitiesHTML = $sce.trustAsHtml(userMonster.SpellLikeAbilities.replace(/\n/gm, "<br>"));
+                }
+
+                $scope.userMonster = userMonster;
+                $scope.pending = false;
+
+                var lastWatchTime;
+
+                $scope.$watch('userMonster', function(userMonster) {
+                    var thisWatchTime = new Date().getTime();
+                    lastWatchTime = thisWatchTime;
+                    $timeout(function () {
+                        if (angular.equals(userMonster, $scope.userMonster) && thisWatchTime === lastWatchTime) {
+                            updateUserMonster();
+                        } else {
+                        }
+                    }, 2000);
+                }, true /* deep equality */);
+
+                $rootScope.$on('$locationChangeStart', function (e) {
+                    updateUserMonster();
+                });
             });
 
-            var lastWatchTime;
-
-            $scope.$watch('userMonster', function(userMonster) {
-                var thisWatchTime = new Date().getTime();
-                lastWatchTime = thisWatchTime;
-                $timeout(function () {
-                    if (angular.equals(userMonster, $scope.userMonster) && thisWatchTime === lastWatchTime) {
-                        updateUserMonster();
-                    } else {
-                    }
-                }, 2000);
-            }, true /* deep equality */);
-
-            $rootScope.$on('$locationChangeStart', function (e) {
-                updateUserMonster();
-            });
         }
     ]);

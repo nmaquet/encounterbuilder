@@ -7,19 +7,17 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
 
         var service = {};
         var contentTree = null;
-
         var fancyTree = null;
-
         var nodeKey = null;
 
-        //FIXME removeExtraClasses and handleExtraClasses are both here and in content-tree.js
+        //FIXME removeExtraClasses and addExtraClasses are both here and in content-tree.js
         function removeExtraClasses(dict) {
             if (dict.extraClasses) {
                 delete dict.extraClasses;
             }
         }
 
-        function handleExtraClasses(newNode) {
+        function addExtraClasses(newNode) {
             if (newNode.userMonsterId) {
                 newNode.extraClasses = "fancytree-monster";
             }
@@ -32,7 +30,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
         }
 
         function addNode(node) {
-            handleExtraClasses(node);
+            addExtraClasses(node);
             var activeNode = fancyTree.getActiveNode();
             if (activeNode === null) {
                 activeNode = fancyTree.rootNode;
@@ -187,10 +185,8 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                 if (node.data.userMonsterId && node.data.userMonsterId === userMonster._id) {
                     if (node.title !== userMonster.Name) {
                         node.setTitle(userMonster.Name);
-                        return false;
+                        service.treeChanged(fancyTree.toDict(removeExtraClasses));
                     }
-                    //FIXME this saves every ecounter change to the fancyTree (including monsters and stuffs)
-                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 }
             });
         };

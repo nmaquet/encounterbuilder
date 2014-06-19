@@ -23,9 +23,9 @@ mixin fullWidthTextArea(name, model, rows, placeholder)
 .row
     .col-md-6.col-xs-10.l-section.l-shadow.search-result.user-monster(ng-controller="UserMonsterController", fade-in-fade-out="startFade")
         .row.l-section.result-content
-            .col-xs-12
-                button.btn.btn-primary.pull-right(type="submit" ng-click="viewUserMonster()") Done
-            .col-xs-12
+            .col-xxs-12.col-xs-12
+                button.btn.btn-primary.pull-right(type="submit" ng-click="viewUserMonster()" ng-class="{'btn-small' : viewport.xs}") Done
+            .col-xxs-12.col-xs-12
                 .row
                     .col-xs-12.cat.decor
                         legend.t-legend.t-title General
