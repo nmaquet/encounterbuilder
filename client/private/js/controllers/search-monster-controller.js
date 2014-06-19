@@ -21,7 +21,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
 
             $scope.selectedMonsterId = $routeParams.monsterId;
 
-            $rootScope.$on('$routeChangeSuccess', function () {
+            $scope.$on('$routeChangeSuccess', function () {
                 $scope.selectedMonsterId = $routeParams.monsterId;
             });
 

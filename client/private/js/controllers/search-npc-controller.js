@@ -18,7 +18,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             $scope.refreshingNpcs = false;
 
             $scope.selectedNpcId = $routeParams.npcId;
-            $rootScope.$on('$routeChangeSuccess', function () {
+            $scope.$on('$routeChangeSuccess', function () {
                 $scope.selectedNpcId = $routeParams.npcId;
             });
 

@@ -24,7 +24,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
             $scope.refreshingItems = false;
 
             $scope.selectedItemId = $routeParams.itemId;
-            $rootScope.$on('$routeChangeSuccess', function () {
+            $scope.$on('$routeChangeSuccess', function () {
                 $scope.selectedItemId = $routeParams.itemId;
             });
 

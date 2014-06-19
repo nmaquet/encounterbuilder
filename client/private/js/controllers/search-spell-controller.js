@@ -21,7 +21,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
             $scope.refreshingSpells = false;
 
             $scope.selectedSpellId = $routeParams.spellId;
-            $rootScope.$on('$routeChangeSuccess', function () {
+            $scope.$on('$routeChangeSuccess', function () {
                 $scope.selectedSpellId = $routeParams.spellId;
             });
 

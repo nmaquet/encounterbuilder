@@ -18,7 +18,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
             $scope.refreshingFeats = false;
 
             $scope.selectedFeatId = $routeParams.featId;
-            $rootScope.$on('$routeChangeSuccess', function () {
+            $scope.$on('$routeChangeSuccess', function () {
                 $scope.selectedFeatId = $routeParams.featId;
             });
 

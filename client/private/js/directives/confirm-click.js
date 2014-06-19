@@ -47,7 +47,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('confirmClick', ['$rootScope', f
                 $('#' + noId).bind('click', function (e) {
                     self.popover('destroy');
                 });
-                $rootScope.$on('$locationChangeStart', function (e) {
+                scope.$on('$locationChangeStart', function (e) {
                     self.popover('destroy');
                 });
             });
