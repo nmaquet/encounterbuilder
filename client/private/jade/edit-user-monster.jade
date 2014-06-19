@@ -5,6 +5,11 @@ mixin labeledInput(name, model, placeholder)
         .col-xs-10
             input.form-control(type=text, name=name, placeholder=placeholder, ng-model=model)
 
+mixin labeledInputInline(name, model, placeholder)
+    .form-group
+        label= name + ':'
+        input.form-control(type=text, name=name, placeholder=placeholder, ng-model=model)
+
 mixin labeledTextArea(name, model, rows, placeholder)
     .form-group
         label.col-xs-2.control-label= name + ':'
@@ -27,9 +32,14 @@ mixin fullWidthTextArea(name, model, rows, placeholder)
                         form.form-horizontal(role="form")
                             +labeledInput('Name', 'userMonster.Name', 'e.g. Doombringer')
                             +labeledInput('Source', 'userMonster.Source', 'e.g. The Slayers of the Winter Witch')
-                            +labeledInput('CR', 'userMonster.CR', 'e.g. 3')
-                            +labeledInput('XP', 'userMonster.XP', 'e.g. 1200')
-                            +labeledTextArea("Description", "userMonster.VisualDescription", 5, "e.g. With eyes blazing red and magical runes glowing on its horns, this mighty beast has the body of a man and the head of a bull.")
+                        form.form-horizontal(role="form")
+                            .row
+                                .col-xs-12.col-sm-6
+                                    +labeledInput('CR', 'userMonster.CR', 'e.g. 3')
+                                .col-xs-12.col-sm-6
+                                    +labeledInput('XP', 'userMonster.XP', 'e.g. 1200')
+                        form.form-horizontal(role="form")
+                            +labeledTextArea("Visual Description", "userMonster.Description_Visual", 5, "e.g. With eyes blazing red and magical runes glowing on its horns, this mighty beast has the body of a man and the head of a bull.")
                             +labeledInput("Gender", "userMonster.Gender", "e.g. male")
                             +labeledInput("Race", "userMonster.Race", "e.g. minotaur")
                             // FIXME: parse ClassString -> Classes
@@ -45,42 +55,75 @@ mixin fullWidthTextArea(name, model, rows, placeholder)
                         form.form-horizontal(role="form")
                             +labeledInput("Speed", "userMonster.Speed", "e.g. 30 ft., fly 60 ft. (good)")
                             +labeledTextArea("Melee", "userMonster.Melee", 3, "e.g. greataxe +9/+4 (3d6+6/x3) and gore +4 (1d6+2)")
-                            +labeledInput("Space", "userMonster.Space", "e.g. 10 ft.")
-                            +labeledInput("Reach", "userMonster.Reach", "e.g. 10 ft.")
+                        form.form-horizontal(role="form")
+                            .row
+                                .col-xs-12.col-sm-6
+                                    +labeledInput("Space", "userMonster.Space", "e.g. 10 ft.")
+                                .col-xs-12.col-sm-6
+                                    +labeledInput("Reach", "userMonster.Reach", "e.g. 10 ft.")
+                        form.form-horizontal(role="form")
                             +labeledTextArea("Special Attacks", "userMonster.SpecialAttacks", 3, "e.g. breath weapon (30-ft. cone, 6d6 fire damage plus fumes, Reflex DC 19 half, usable every 1d4 rounds)")
-                            +labeledTextArea("Spells Known", "userMonster.SpellsKnown", 3, "e.g. (CL 3rd; concentration +5); 1st (5/day)-enlarge person, hypnotism (DC 14), magic missile, obscuring mist; 0 (at will)-arcane mark, detect magic, mage hand, mending, read magic")
+                            +labeledTextArea("Spells Known", "userMonster.SpellsKnown", 6, "e.g. (CL 3rd; concentration +5); 1st (5/day)-enlarge person, hypnotism (DC 14), magic missile, obscuring mist; 0 (at will)-arcane mark, detect magic, mage hand, mending, read magic")
                             +labeledInput("Bloodline", "userMonster.Bloodline", "e.g. draconic (green)")
-                            +labeledTextArea("Spells Prepared", "userMonster.SpellsPrepared", 3, "e.g. (CL 3rd; concentration +6); 2nd-mirror image, scorching ray; 1st-magic missile, shield, shocking grasp; 0-(at will)-daze (DC 13), detect magic, light, resistance")
+                            +labeledTextArea("Spells Prepared", "userMonster.SpellsPrepared", 6, "e.g. (CL 3rd; concentration +6); 2nd-mirror image, scorching ray; 1st-magic missile, shield, shocking grasp; 0-(at will)-daze (DC 13), detect magic, light, resistance")
                             // FIXME: this must be sanitized
-                            +labeledTextArea("Spells-Like Abilities", "userMonster.SpellLikeAbilities", 3, "e.g. (CL 5th; concentration +6); 3/day—cause fear (DC 12), shatter (DC 13); 1/day—summon (level 1, 1 abrikandilu 50%) 0-(at will)-daze (DC 13), detect magic, light, resistance")
+                            +labeledTextArea("Spells-Like Abilities", "userMonster.SpellLikeAbilities", 6, "e.g. (CL 5th; concentration +6); 3/day—cause fear (DC 12), shatter (DC 13); 1/day—summon (level 1, 1 abrikandilu 50%) 0-(at will)-daze (DC 13), detect magic, light, resistance")
                     .col-xs-12.decor
                         legend.t-legend.t-title Defense
                         form.form-horizontal(role="form")
                             +labeledInput("AC", "userMonster.AC", "e.g. AC 13, touch 13, flat-footed 12")
-                            +labeledInput("HP", "userMonster.HP", "e.g. 52")
-                            +labeledInput("HD", "userMonster.HD", "e.g. (3d8+15)")
-                            +labeledInput("Fort", "userMonster.Fort", "e.g. 4")
-                            +labeledInput("Ref", "userMonster.Ref", "e.g. 2")
-                            +labeledInput("Will", "userMonster.Will", "e.g. 3")
-                            +labeledInput("DR", "userMonster.DR", "e.g. 5/cold iron")
+                        form.form-horizontal(role="form")
+                            .row
+                                .col-xs-12.col-sm-4
+                                    +labeledInput("HP", "userMonster.HP", "e.g. 52")
+                                .col-xs-12.col-sm-4
+                                    +labeledInput("HD", "userMonster.HD", "e.g. (3d8+15)")
+                                .col-xs-12.col-sm-4
+                                    +labeledInput("DR", "userMonster.DR", "e.g. 5/cold iron")
+                            .row
+                                .col-xs-12.col-sm-4
+                                    +labeledInput("Fort", "userMonster.Fort", "e.g. 4")
+                                .col-xs-12.col-sm-4
+                                    +labeledInput("Ref", "userMonster.Ref", "e.g. 2")
+                                .col-xs-12.col-sm-4
+                                    +labeledInput("Will", "userMonster.Will", "e.g. 3")
+                        form.form-horizontal(role="form")
                             +labeledInput("Immune", "userMonster.Immune", "e.g. construct traits, magic")
                             +labeledInput("Resist", "userMonster.Resist", "e.g. cold 10")
-                            +labeledInput("Weaknesses", "userMonster.Weaknesses", "e.g. vulnerability to fire")
-                            +labeledInput("SR", "userMonster.SR", "e.g. 11")
+                        form.form-horizontal(role="form")
+                            .row
+                                .col-xs-12.col-sm-9
+                                    +labeledInput("Weaknesses", "userMonster.Weaknesses", "e.g. vulnerability to fire")
+                                .col-xs-12.col-sm-3
+                                    +labeledInput("SR", "userMonster.SR", "e.g. 11")
                     .col-xs-12.decor
                         legend.t-legend.t-title Statistics
                         form.form-horizontal(role="form")
-                            +labeledInput("Str", "userMonster.Str", "e.g. 16")
-                            +labeledInput("Dex", "userMonster.Dex", "e.g. 12")
-                            +labeledInput("Con", "userMonster.Con", "e.g. 11")
-                            +labeledInput("Int", "userMonster.Int", "e.g. 8")
-                            +labeledInput("Wis", "userMonster.Wis", "e.g. 11")
-                            +labeledInput("Cha", "userMonster.Cha", "e.g. 13")
-                            +labeledInput("Base Atk", "userMonster.BaseAtk", "e.g. +7")
-                            +labeledInput("CMB", "userMonster.CMB", "e.g. +5")
-                            +labeledInput("CMD", "userMonster.CMD", "e.g. 14")
-                            +labeledTextArea("Feats", "userMonster.Feats", 3, "e.g. Double Slice, Endurance, Toughness, Two-Weapon Defense, Two-Weapon Fighting, Weapon Focus (scimitar)")
-                            +labeledTextArea("Skills", "userMonster.Skills", 3, "e.g. Intimidate +11, Perception +9, Survival +9")
+                            .row
+                                .col-xs-12.col-sm-4
+                                    +labeledInput("Str", "userMonster.Str", "e.g. 16")
+                                .col-xs-12.col-sm-4
+                                    +labeledInput("Dex", "userMonster.Dex", "e.g. 12")
+                                .col-xs-12.col-sm-4
+                                    +labeledInput("Con", "userMonster.Con", "e.g. 11")
+                                .col-xs-12.col-sm-4
+                                    +labeledInput("Int", "userMonster.Int", "e.g. 8")
+                                .col-xs-12.col-sm-4
+                                    +labeledInput("Wis", "userMonster.Wis", "e.g. 11")
+                                .col-xs-12.col-sm-4
+                                    +labeledInput("Cha", "userMonster.Cha", "e.g. 13")
+
+                        form.form-horizontal(role="form")
+                            .row
+                                .col-xs-12.col-sm-4
+                                    +labeledInput("BAB", "userMonster.BaseAtk", "e.g. +7")
+                                .col-xs-12.col-sm-4
+                                    +labeledInput("CMB", "userMonster.CMB", "e.g. +5")
+                                .col-xs-12.col-sm-4
+                                    +labeledInput("CMD", "userMonster.CMD", "e.g. 14")
+                        form.form-horizontal(role="form")
+                            +labeledTextArea("Feats", "userMonster.Feats", 6, "e.g. Double Slice, Endurance, Toughness, Two-Weapon Defense, Two-Weapon Fighting, Weapon Focus (scimitar)")
+                            +labeledTextArea("Skills", "userMonster.Skills", 6, "e.g. Intimidate +11, Perception +9, Survival +9")
                             +labeledTextArea("Racial Modifiers", "userMonster.RacialMods", 3, "e.g. +2 Perception and Sense Motive vs. half-fiends and tieflings")
                             +labeledInput("Languages", "userMonster.Languages", "e.g. common, draconic, abyssal")
                             +labeledInput("SQ", "userMonster.SQ", "e.g. Hold Breath (Ex), Change Shape (Su)")
