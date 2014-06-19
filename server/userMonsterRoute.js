@@ -69,6 +69,7 @@ module.exports = function (userMonsterCollection, monstersCollection, ObjectID) 
                 else {
                     var userMonster = monster;
                     userMonster.Name = "copy of " + userMonster.Name;
+                    userMonster.Source = "originally from " + (userMonster.Source || "???") + " and modified by " + username;
                     userMonster.Username = username;
                     if (userMonster.Description) {
                         userMonster.Description = fromHTMLToString(monster.Description);
