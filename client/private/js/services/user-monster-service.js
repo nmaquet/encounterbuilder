@@ -5,11 +5,24 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
     function nop() {
     }
 
+    var lastUserMonster = null;
+    var lastUserMonsterId = null;
+
     return {
         get: function (id, callback) {
             callback = callback || nop;
+            if (lastUserMonsterId && lastUserMonsterId === id) {
+                return callback(null, lastUserMonster);;
+            }
             $http.get('/api/user-monster/' + id)
                 .success(function (response) {
+                    if (response.error) {
+                        console.log(error);
+                        lastUserMonsterId = lastUserMonster = null;
+                    } else {
+                        lastUserMonsterId = response.userMonster._id;
+                        lastUserMonster = response.userMonster;
+                    }
                     callback(response.error, response.userMonster);
                 })
                 .error(function (error) {
@@ -22,6 +35,10 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
+                        lastUserMonsterId = lastUserMonster = null;
+                    } else {
+                        lastUserMonsterId = response.userMonster._id;
+                        lastUserMonster = response.userMonster;
                     }
                     callback(response.error, response.userMonster);
                 })
@@ -36,6 +53,10 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
+                        lastUserMonsterId = lastUserMonster = null;
+                    } else {
+                        lastUserMonsterId = response.userMonster._id;
+                        lastUserMonster = response.userMonster;
                     }
                     callback(response.error, response.userMonster);
                 })
@@ -50,6 +71,10 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
+                        lastUserMonsterId = lastUserMonster = null;
+                    } else {
+                        lastUserMonsterId = response.userMonster._id;
+                        lastUserMonster = response.userMonster;
                     }
                     callback(response.error);
                 })
@@ -65,6 +90,7 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
                     if (response.error) {
                         console.log(response.error);
                     }
+                    lastUserMonsterId = lastUserMonster = null;
                     callback(response.error);
                 })
                 .error(function (response) {
