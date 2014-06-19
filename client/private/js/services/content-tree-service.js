@@ -143,6 +143,17 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             });
         };
 
+        service.copyUserMonster = function (monsterId) {
+            userMonsterService.copy(monsterId, function (error, userMonster) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    addNode({title: userMonster.Name, userMonsterId: userMonster._id, key: getNextNodeKey()});
+                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
+                }
+            });
+        };
+
         service.removeEncounter = function (encounter) {
             var toRemove;
             fancyTree.visit(function (node) {
