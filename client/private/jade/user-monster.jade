@@ -187,11 +187,9 @@
                                         span
                                             strong Treasure
                                             | &nbsp;{{userMonster.Treasure}}
-                .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.SpecialAbilitiesSafe')
-                    span
-                        legend.t-legend.t-title Special Abilities
-                        // FIXME Use jQuery to change the <h5> tags into <p> or <div>
-                        div(ng-bind-html='userMonster.SpecialAbilitiesSafe')
+                .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.SpecialAbilities')
+                    legend.t-legend.t-title Special Abilities
+                    span {{userMonster.SpecialAbilities}}
                 .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.Description')
                     legend.t-legend.t-title Description
-                    div(ng-bind-html='userMonster.DescriptionSafe')
+                    span {{userMonster.Description}}
