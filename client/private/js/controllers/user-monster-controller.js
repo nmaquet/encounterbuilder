@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
-    ['$scope', '$timeout', '$routeParams', '$rootScope', '$sce', 'userMonsterService', 'contentTreeService',
-        function ($scope, $timeout, $routeParams, $rootScope, $sce, userMonsterService, contentTreeService) {
+    ['$scope', '$timeout', '$routeParams', '$location', '$sce', 'userMonsterService', 'contentTreeService',
+        function ($scope, $timeout, $routeParams, $location, $sce, userMonsterService, contentTreeService) {
 
             $scope.deleteUserMonster = function() {
                 if ($scope.userMonster) {
@@ -75,8 +75,11 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                     }, 2000);
                 }, true /* deep equality */);
 
-                $rootScope.$on('$locationChangeStart', function (e) {
-                    updateUserMonster();
+                $scope.$on('$locationChangeStart', function (e) {
+                    /* update if leaving editor view */
+                    if ($location.path().indexOf("/edit-user-monster/") === -1) {
+                        updateUserMonster();
+                    }
                 });
             });
 
