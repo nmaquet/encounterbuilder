@@ -12,23 +12,24 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
 
         var nodeKey = null;
 
-        function getNextNodeKey() {
-            while (fancyTree.getNodeByKey("" + ++nodeKey) !== null) {
-            }
-            return "" + nodeKey;
-        }
         //FIXME removeExtraClasses and handleExtraClasses are both here and in content-tree.js
         function removeExtraClasses(dict) {
             if (dict.extraClasses) {
                 delete dict.extraClasses;
             }
         }
+
         function handleExtraClasses(newNode) {
             if (newNode.userMonsterId) {
                 newNode.extraClasses = "fancytree-monster";
             }
         }
 
+        function getNextNodeKey() {
+            while (fancyTree.getNodeByKey("" + ++nodeKey) !== null) {
+            }
+            return "" + nodeKey;
+        }
 
         function addNode(node) {
             handleExtraClasses(node);
@@ -44,6 +45,22 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             }
             else {
                 activeNode.appendSibling(node).setActive(true);
+            }
+        }
+
+        function removeNode(node) {
+            var parent = node.getParent();
+            var nextSibling = node.getNextSibling();
+            var prevSibling = node.getPrevSibling();
+            node.remove();
+            if (parent) {
+                parent.setActive(true);
+            } else if (nextSibling) {
+                nextSibling.setActive(true);
+            } else if (prevSibling) {
+                prevSibling.setActive(true);
+            } else {
+                $rootScope.go("/"); /* no node is active -> go to home */
             }
         }
 
@@ -67,14 +84,12 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
         service.getBinderByKey = function (key) {
             var node = fancyTree.getNodeByKey(key);
             return {Name: node.title, nodeKey: node.key, descendantCount: node.countChildren(true)};
-
         };
 
         service.createBinder = function () {
-            addNode({title: "newBinder", folder: true, key: getNextNodeKey()});
+            addNode({title: "newBinder", folder: true, key: getNextNodeKey()})
             service.treeChanged(fancyTree.toDict(removeExtraClasses));
         };
-
 
         service.onLoadSuccess = function (callback) {
             $rootScope.$on(LOAD_SUCCESS, callback);
@@ -102,15 +117,11 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                     toRemove = node;
                 }
             });
-            toRemove.remove();
-            service.treeChanged(fancyTree.toDict(removeExtraClasses));
-            var newActiveNode = fancyTree.rootNode.getFirstChild();
-            if (newActiveNode.folder === true) {
-                $rootScope.go("/binder/" + newActiveNode.nodeKey);
-                newActiveNode.setActive(true);
-            } else if (newActiveNode.encounter !== undefined) {
-                $rootScope.go("/encounter/" + newActiveNode.data.encounterId);
-                newActiveNode.setActive(true);
+            if (toRemove) {
+                removeNode(toRemove);
+                service.treeChanged(fancyTree.toDict(removeExtraClasses));
+            } else {
+                console.log("could not remove content tree binder");
             }
         };
 
@@ -121,19 +132,8 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             });
         };
 
-        service.createUserMonster = function () {
-            userMonsterService.create(function (error, userMonster) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    addNode({title: userMonster.Name, userMonsterId: userMonster._id, key: getNextNodeKey()});
-                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                }
-            });
-        };
-
-        service.copyUserMonster = function (monsterId) {
-            userMonsterService.copy(monsterId, function (error, userMonster) {
+        service.createUserMonster = function() {
+            userMonsterService.create(function(error, userMonster) {
                 if (error) {
                     console.log(error);
                 } else {
@@ -150,8 +150,12 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                     toRemove = node;
                 }
             });
-            toRemove.remove();
-            service.treeChanged(fancyTree.toDict(removeExtraClasses));
+            if (toRemove) {
+                removeNode(toRemove);
+                service.treeChanged(fancyTree.toDict(removeExtraClasses));
+            } else {
+                console.log("could not remove content tree encounter");
+            }
         };
 
         service.changeEncounter = function (encounter) {
@@ -167,7 +171,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             });
         };
 
-        service.userMonsterChanged = function (userMonster) {
+        service.userMonsterUpdated = function (userMonster) {
             fancyTree.visit(function (node) {
                 if (node.data.userMonsterId && node.data.userMonsterId === userMonster._id) {
                     if (node.title !== userMonster.Name) {
@@ -178,6 +182,21 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 }
             });
+        };
+
+        service.userMonsterDeleted = function (userMonster) {
+            var toRemove;
+            fancyTree.visit(function (node) {
+                if (node.data.userMonsterId && node.data.userMonsterId === userMonster._id) {
+                    toRemove = node;
+                }
+            });
+            if (toRemove) {
+                removeNode(toRemove);
+                service.treeChanged(fancyTree.toDict(removeExtraClasses));
+            } else {
+                console.log("could not remove content tree userMonster");
+            }
         };
 
         service.treeChanged = function (tree) {
