@@ -16,7 +16,7 @@ mixin fullWidthTextArea(name, model, rows, placeholder)
         textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model)
 
 .row
-    .col-xs-10.l-section.l-shadow.search-result.user-monster(ng-controller="UserMonsterController", fade-in-fade-out="startFade")
+    .col-md-6.col-xs-10.l-section.l-shadow.search-result.user-monster(ng-controller="UserMonsterController", fade-in-fade-out="startFade")
         .row.l-section.result-content
             .col-xs-12
                 button.btn.btn-primary.pull-right(type="submit" ng-click="viewUserMonster()") Done
