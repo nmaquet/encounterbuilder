@@ -73,8 +73,8 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
                         console.log(error);
                         lastUserMonsterId = lastUserMonster = null;
                     } else {
-                        lastUserMonsterId = response.userMonster._id;
-                        lastUserMonster = response.userMonster;
+                        lastUserMonsterId = userMonster._id;
+                        lastUserMonster = userMonster;
                     }
                     callback(response.error);
                 })
