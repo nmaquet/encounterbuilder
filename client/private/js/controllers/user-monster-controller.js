@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
-    ['$scope', '$timeout', '$routeParams', '$rootScope', 'userMonsterService', 'contentTreeService',
-        function ($scope, $timeout, $routeParams, $rootScope, userMonsterService, contentTreeService) {
+    ['$scope', '$timeout', '$routeParams', '$rootScope', '$sce', 'userMonsterService', 'contentTreeService',
+        function ($scope, $timeout, $routeParams, $rootScope, $sce, userMonsterService, contentTreeService) {
 
             $scope.deleteUserMonster = function() {
                 if ($scope.userMonster) {
@@ -50,6 +50,15 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                     console.log(error);
                 }
                 else {
+                    if (userMonster.Description) {
+                        userMonster.DescriptionHTML = $sce.trustAsHtml(userMonster.Description.replace(/\n/gm, "<br>"));
+                    }
+                    if (userMonster.SpecialAbilities) {
+                        userMonster.SpecialAbilitiesHTML = $sce.trustAsHtml(userMonster.SpecialAbilities.replace(/\n/gm, "<br>"));
+                    }
+                    if (userMonster.SpellLikeAbilities) {
+                        userMonster.SpellLikeAbilitiesHTML = $sce.trustAsHtml(userMonster.SpellLikeAbilities.replace(/\n/gm, "<br>"));
+                    }
                     $scope.userMonster = userMonster;
                 }
             });

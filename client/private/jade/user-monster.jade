@@ -189,7 +189,7 @@
                                             | &nbsp;{{userMonster.Treasure}}
                 .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.SpecialAbilities')
                     legend.t-legend.t-title Special Abilities
-                    span {{userMonster.SpecialAbilities}}
+                    span(ng-bind-html='userMonster.SpecialAbilitiesHTML')
                 .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.Description')
                     legend.t-legend.t-title Description
-                    span {{userMonster.Description}}
+                    span(ng-bind-html='userMonster.DescriptionHTML')
