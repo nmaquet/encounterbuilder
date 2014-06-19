@@ -35,7 +35,7 @@ div.encounter
                             span(click-to-edit='monster.amount', on-save="encounterChanged()", display-class="badge red pointer monster-amount", edit-class="badge red pointer monster-amount badge-editing", icon-class="hide", numeric="true")
                         td.name-container
                             span.monster-name
-                                a.is-pointer(ng-click='selectMonsterById(id)') {{monster.Name}}
+                                a.is-pointer(ng-click='selectMonsterById(id,monster.userCreated)') {{monster.Name}}
                         td.cr-container
                             span.monster-cr
                                 strong

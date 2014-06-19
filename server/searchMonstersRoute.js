@@ -25,7 +25,7 @@ function getSortOption(request) {
     }
 }
 
-module.exports = function (monsterCollection, defaultFindLimit) {
+module.exports = function (monsterCollection, userMonsterCollection, defaultFindLimit) {
     return function (request, response) {
         var query = getQuery(request);
         var monsters;
@@ -36,9 +36,10 @@ module.exports = function (monsterCollection, defaultFindLimit) {
             limit: Number(request.query.findLimit || defaultFindLimit),
             skip: Number(request.query.skip || 0),
             sort: getSortOption(request)
-        }
+        };
+        var collection = (request.query.userCreated === "true") ? userMonsterCollection : monsterCollection;
 
-        monsterCollection.find(query, options).toArray(function (error, data) {
+        collection.find(query, options).toArray(function (error, data) {
             monsters = data;
             if (error) {
                 response.json({error: error});
@@ -48,7 +49,7 @@ module.exports = function (monsterCollection, defaultFindLimit) {
             }
         });
 
-        monsterCollection.count(query, function (error, value) {
+        collection.count(query, function (error, value) {
             count = value;
             if (error) {
                 response.json({error: error});

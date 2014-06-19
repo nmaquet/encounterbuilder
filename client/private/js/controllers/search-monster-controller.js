@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
-    ['$scope', '$rootScope', '$timeout', '$routeParams', 'monsterService', 'encounterService', 'encounterEditorService','locationService',
-        function ($scope, $rootScope, $timeout, $routeParams, monsterService, encounterService, encounterEditorService,locationService) {
+    ['$scope', '$rootScope', '$timeout', '$routeParams', 'monsterService', 'encounterService', 'encounterEditorService', 'locationService',
+        function ($scope, $rootScope, $timeout, $routeParams, monsterService, encounterService, encounterEditorService, locationService) {
 
             var lastSearchParam = monsterService.lastSearchParam();
 
@@ -20,6 +20,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             $scope.maxCR = lastSearchParam ? lastSearchParam.maxCR : 40;
 
             $scope.selectedMonsterId = $routeParams.monsterId;
+
+            $scope.userCreated = false;
 
             $scope.$on('$routeChangeSuccess', function () {
                 $scope.selectedMonsterId = $routeParams.monsterId;
@@ -45,6 +47,13 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     }
                 }, 300);
             });
+            $scope.$watch('userCreated', function (value) {
+                $timeout(function () {
+                    if (value === $scope.userCreated) {
+                        $scope.refreshMonsters();
+                    }
+                }, 300);
+            });
 
             $scope.$watchCollection("[minCR, maxCR]", function (crRange) {
                 $timeout(function () {
@@ -63,7 +72,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     currentPage: $scope.currentPage,
                     findLimit: $scope.itemsPerPage,
                     minCR: $scope.minCR,
-                    maxCR: $scope.maxCR
+                    maxCR: $scope.maxCR,
+                    userCreated: $scope.userCreated
                 };
                 $scope.refreshingMonsters = true;
                 monsterService.search(params, function (error, data) {
@@ -81,7 +91,11 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             };
 
             $scope.selectMonster = function (id) {
-                locationService.goToDetails('monster', id);
+                if ($scope.userCreated) {
+                    locationService.goToDetails('user-monster', id);
+                } else {
+                    locationService.goToDetails('monster', id);
+                }
             };
 
             function addMonsterToEditedEncounter(monster) {
@@ -92,9 +106,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                 if (!encounter.Monsters) {
                     encounter.Monsters = {};
                 }
-                if (!encounter.Monsters[monster.id]) {
+                var id = monster.id || monster._id;
+                if (!encounter.Monsters[ id]) {
                     //FIXME use DEMONSQUID.clone
-                    encounter.Monsters[monster.id] = {
+                    encounter.Monsters[id] = {
                         amount: Number(monster.amountToAdd),
                         Name: monster.Name,
                         XP: monster.XP,
@@ -104,9 +119,12 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                         Heroic: monster.Heroic,
                         Level: monster.Level
                     };
+                    if (monster.id === undefined) {
+                        encounter.Monsters[id].userCreated = true;
+                    }
                 }
                 else {
-                    encounter.Monsters[monster.id].amount += Number(monster.amountToAdd) || 1;
+                    encounter.Monsters[id].amount += Number(monster.amountToAdd) || 1;
                 }
                 delete monster.amountToAdd;
                 encounterService.encounterChanged(encounter);

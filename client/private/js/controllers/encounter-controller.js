@@ -22,8 +22,13 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                 }
             });
 
-            $scope.selectMonsterById = function (id) {
-                locationService.goToDetails('monster', id);
+            $scope.selectMonsterById = function (id, userCreated) {
+                if (userCreated) {
+                    locationService.goToDetails('user-monster', id);
+                } else {
+                    locationService.goToDetails('monster', id);
+                }
+
             };
 
             $scope.selectNpcById = function (id) {

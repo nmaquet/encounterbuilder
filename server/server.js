@@ -56,7 +56,7 @@ function main(db) {
     var knapsackService = require('./knapsackService')();
     var lootService = require('./loot/lootService')(diceService, knapsackService);
 
-    var searchMonstersRoute = require('./searchMonstersRoute')(collections.monsters, FIND_LIMIT);
+    var searchMonstersRoute = require('./searchMonstersRoute')(collections.monsters,collections.userMonsters, FIND_LIMIT);
     var searchNpcsRoute = require('./searchNpcsRoute')(collections.npcs, FIND_LIMIT);
     var searchMagicItemsRoute = require('./searchMagicItemsRoute')(collections.magicitems, FIND_LIMIT);
     var searchSpellsRoute = require('./searchSpellsRoute')(collections.spells, FIND_LIMIT);
