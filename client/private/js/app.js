@@ -21,7 +21,7 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
             .when('/user-monster/:userMonsterId', { templateUrl: 'user-monster.html' })
             .when('/edit-user-monster/:userMonsterId/:type/:detailsId', { templateUrl: 'edit-user-monster.html' })
             .when('/edit-user-monster/:userMonsterId', { templateUrl: 'edit-user-monster.html' })
-            /* .when('/print-encounter', { templateUrl: 'printable-encounter.html' }) */
+            .when('/print-encounter/:encounterId', { templateUrl: 'printable-encounter.html' })
             .when('/binder/:binderId', { templateUrl: 'binder.html' })
             .when('/monster/:monsterId', { templateUrl: 'monster.html'})
             .when('/npc/:npcId', { templateUrl: 'npc.html'})

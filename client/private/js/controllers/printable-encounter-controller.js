@@ -36,7 +36,6 @@ DEMONSQUID.encounterBuilderControllers.controller('PrintableEncounterController'
                         }
                         npcService.getMultiple(Object.keys($scope.encounter.Npcs), function (error, npcs) {
                             $scope.npcs = npcs;
-
                             $timeout(function () {
                                 window.print();
                             }, 0);

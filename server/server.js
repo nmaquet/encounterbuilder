@@ -119,7 +119,8 @@ function main(db) {
         'npc',
         'item',
         'spell',
-        'feat'
+        'feat',
+        'printable-encounter'
     ];
 
     for (var i in APP_JADE_FILES) {
