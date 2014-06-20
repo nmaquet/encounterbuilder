@@ -44,7 +44,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
 
             $scope.pending = true;
 
-            userMonsterService.get($routeParams.userMonsterId, function (error, userMonster) {
+            userMonsterService.get($routeParams.userMonsterId || $routeParams.detailsId, function (error, userMonster) {
                 if (error) {
                     return console.log(error);
                 }
