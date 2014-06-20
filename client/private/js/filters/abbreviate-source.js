@@ -212,7 +212,7 @@ DEMONSQUID.SOURCE_ABBREVIATIONS =
 
 DEMONSQUID.encounterBuilderFilters.filter('abbreviateSource', function () {
     return function (source) {
-        if (source.length <= 5) {
+        if (source && source.length <= 5) {
             return source;
         }
         return DEMONSQUID.SOURCE_ABBREVIATIONS[source] || "?";
