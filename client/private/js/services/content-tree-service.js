@@ -20,6 +20,8 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
         function addExtraClasses(newNode) {
             if (newNode.userMonsterId) {
                 newNode.extraClasses = "fancytree-monster";
+            } else if (newNode.encounterId) {
+                newNode.extraClasses = "fancytree-encounter";
             }
         }
 
