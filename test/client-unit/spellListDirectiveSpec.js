@@ -20,11 +20,11 @@
         beforeEach(inject(function (_$compile_, _$rootScope_) {
             $rootScope = _$rootScope_;
             $compile = _$compile_;
-        }))
+        }));
 
         function createElement(spellString) {
             var element = angular.element("<spell-list spell-string=\"" + spellString + "\"></spell-list>");
-            $compile(element)($rootScope)
+            $compile(element)($rootScope);
             $rootScope.$digest();
             return element;
         }
