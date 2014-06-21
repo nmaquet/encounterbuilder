@@ -221,7 +221,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 10, value: 10, n: 16});
             diceService.prepareDice({die: 8, value: 8, n: 4});
             diceService.prepareDice({die: 4, value: 4, n: 2});
-            var loot = service.generateNPCLoot({ TreasureBudget: "npc gear", Level: 8, amount: 1}, 'medium');
+            var loot = service.generateNPCLoot({ TreasureBudget: "npc gear", Level: 8, amount: 1, Type: "humanoid"}, 'medium');
             expect(loot).to.deep.equal({coins: {pp: 700, gp: 4000, sp: 0, cp: 0}, items: []});
         });
 
@@ -229,7 +229,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 10, value: 10, n: 32});
             diceService.prepareDice({die: 8, value: 8, n: 8});
             diceService.prepareDice({die: 4, value: 4, n: 4});
-            var loot = service.generateNPCLoot({ TreasureBudget: "npc gear", Level: 8, amount: 2}, 'medium');
+            var loot = service.generateNPCLoot({ TreasureBudget: "npc gear", Level: 8, amount: 2, Type: "humanoid"}, 'medium');
             expect(loot).to.deep.equal({coins: {pp: 1400, gp: 8000, sp: 0, cp: 0}, items: []});
         });
     });
@@ -242,7 +242,7 @@ describe("lootService", function () {
             diceService.prepareDice({die: 4, value: 4, n: 2});
 
             var encounter = { CR: 7, Monsters: {
-                a: { TreasureBudget: "npc gear", Level: 8}
+                a: { TreasureBudget: "npc gear", Level: 8, Type: "humanoid"}
             }};
 
             var loot = service.generateEncounterNPCLoot(encounter, 'medium');
@@ -255,8 +255,8 @@ describe("lootService", function () {
             diceService.prepareDice({die: 4, value: 4, n: 4});
 
             var encounter = { CR: 7, Monsters: {
-                a: { TreasureBudget: "npc gear", Level: 8},
-                b: { TreasureBudget: "npc gear", Level: 8}
+                a: { TreasureBudget: "npc gear", Level: 8, Type: "humanoid"},
+                b: { TreasureBudget: "npc gear", Level: 8, Type: "humanoid"}
             }};
 
             var loot = service.generateEncounterNPCLoot(encounter, 'medium');
