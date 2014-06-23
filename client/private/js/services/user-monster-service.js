@@ -12,7 +12,7 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
         get: function (id, callback) {
             callback = callback || nop;
             if (lastUserMonsterId && lastUserMonsterId === id) {
-                return callback(null, lastUserMonster);;
+                return callback(null, lastUserMonster);
             }
             $http.get('/api/user-monster/' + id)
                 .success(function (response) {
@@ -73,8 +73,8 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
                         console.log(error);
                         lastUserMonsterId = lastUserMonster = null;
                     } else {
-                        lastUserMonsterId = userMonster._id;
-                        lastUserMonster = userMonster;
+//                        lastUserMonsterId = userMonster._id;
+//                        lastUserMonster = userMonster;
                     }
                     callback(response.error);
                 })

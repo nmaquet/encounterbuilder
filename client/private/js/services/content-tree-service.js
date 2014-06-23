@@ -52,15 +52,19 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             var parent = node.getParent();
             var nextSibling = node.getNextSibling();
             var prevSibling = node.getPrevSibling();
+            var active = node.isActive();
             node.remove();
-            if (parent && !parent.isRoot()) { /* a child of the root node is effectively parentless */
-                parent.setActive(true);
-            } else if (nextSibling) {
-                nextSibling.setActive(true);
-            } else if (prevSibling) {
-                prevSibling.setActive(true);
-            } else {
-                $rootScope.go("/"); /* no node is active -> go to home */
+            if (active) {
+                if (parent && !parent.isRoot()) { /* a child of the root node is effectively parentless */
+                    parent.setActive(true);
+                } else if (nextSibling) {
+                    nextSibling.setActive(true);
+                } else if (prevSibling) {
+                    prevSibling.setActive(true);
+                } else {
+                    $rootScope.go("/");
+                    /* no node is active -> go to home */
+                }
             }
         }
 
@@ -132,8 +136,8 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', ['$rootScope',
             });
         };
 
-        service.createUserMonster = function() {
-            userMonsterService.create(function(error, userMonster) {
+        service.createUserMonster = function () {
+            userMonsterService.create(function (error, userMonster) {
                 if (error) {
                     console.log(error);
                 } else {

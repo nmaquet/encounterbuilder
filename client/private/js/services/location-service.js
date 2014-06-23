@@ -31,6 +31,17 @@ DEMONSQUID.encounterBuilderServices.factory('locationService',
 
                         this.go(typePrefix + id);
                     }
+                },
+                closeDetails: function () {
+                    if ($routeParams.encounterId) {
+                        this.go('/encounter/' + $routeParams.encounterId);
+                    }
+                    else if ($routeParams.userMonsterId) {
+                        this.go('/edit-user-monster/' + $routeParams.userMonsterId);
+                    }
+                    else {
+                        this.go('/');
+                    }
                 }
             };
         }]);

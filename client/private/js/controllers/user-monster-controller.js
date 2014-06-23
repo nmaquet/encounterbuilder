@@ -1,10 +1,10 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
-    ['$scope', '$timeout', '$routeParams', '$location', '$sce', 'userMonsterService', 'contentTreeService',
-        function ($scope, $timeout, $routeParams, $location, $sce, userMonsterService, contentTreeService) {
+    ['$scope', '$timeout', '$routeParams', '$location', '$sce', 'userMonsterService', 'contentTreeService', 'locationService',
+        function ($scope, $timeout, $routeParams, $location, $sce, userMonsterService, contentTreeService, locationService) {
 
-            $scope.deleteUserMonster = function() {
+            $scope.deleteUserMonster = function () {
                 if ($scope.userMonster) {
                     $scope.startFade = function () {
                         userMonsterService.delete($scope.userMonster, function (error) {
@@ -12,19 +12,22 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                                 console.log(error);
                             } else {
                                 contentTreeService.userMonsterDeleted($scope.userMonster);
+                                if ($routeParams.detailsId) {
+                                    locationService.closeDetails();
+                                }
                             }
                         });
                     }
                 }
             };
 
-            $scope.editUserMonster = function(){
+            $scope.editUserMonster = function () {
                 if ($scope.userMonster) {
-                    $scope.go("/edit-user-monster/" + $routeParams.userMonsterId);
+                    $scope.go("/edit-user-monster/" + ($routeParams.userMonsterId || $routeParams.detailsId));
                 }
             };
 
-            $scope.viewUserMonster = function() {
+            $scope.viewUserMonster = function () {
                 if ($scope.userMonster) {
                     $scope.go("/user-monster/" + $routeParams.userMonsterId);
                 }
@@ -32,8 +35,8 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
 
             function updateUserMonster() {
                 if ($scope.userMonster) {
-                    userMonsterService.update($scope.userMonster, function(error) {
-                        if(error) {
+                    userMonsterService.update($scope.userMonster, function (error) {
+                        if (error) {
                             console.log(error);
                         } else {
                             contentTreeService.userMonsterUpdated($scope.userMonster);
@@ -64,7 +67,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
 
                 var lastWatchTime;
 
-                $scope.$watch('userMonster', function(userMonster) {
+                $scope.$watch('userMonster', function (userMonster) {
                     var thisWatchTime = new Date().getTime();
                     lastWatchTime = thisWatchTime;
                     $timeout(function () {

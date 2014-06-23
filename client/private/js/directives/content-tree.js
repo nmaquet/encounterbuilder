@@ -31,6 +31,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 function addExtraClasses(node) {
                     if (node.data.userMonsterId) {
                         node.extraClasses = "fancytree-monster";
+                    } else if (node.data.encounterId) {
+                        node.extraClasses = "fancytree-encounter";
                     }
                 }
 
