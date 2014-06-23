@@ -172,6 +172,17 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
+            service.copyUserNpc = function (npcId, userCreated) {
+                userNpcService.copy(npcId, userCreated, function (error, userNpc) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        addNode({title: userNpc.Name, userNpcId: userNpc._id, key: getNextNodeKey()});
+                        service.treeChanged(fancyTree.toDict(removeExtraClasses));
+                    }
+                });
+            };
+
             service.removeEncounter = function (encounter) {
                 var toRemove;
                 fancyTree.visit(function (node) {
