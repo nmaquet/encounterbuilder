@@ -108,7 +108,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             }
 
             $scope.addNpc = function (npc) {
-                if ($routeParams.npcId) {
+                if ($routeParams.encounterId) {
                     addNpcToEditedEncounter(npc);
                 }
                 // FIXME: also allow adding to binder
