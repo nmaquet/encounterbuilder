@@ -19,12 +19,12 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             $scope.minCR = lastSearchParam ? lastSearchParam.minCR : 0;
             $scope.maxCR = lastSearchParam ? lastSearchParam.maxCR : 40;
 
-            $scope.selectedMonsterId = $routeParams.monsterId;
+            $scope.selectedMonsterId = $routeParams.monsterId || $routeParams.userMonsterId || $routeParams.detailsId;
 
             $scope.userCreated = false;
 
             $scope.$on('$routeChangeSuccess', function () {
-                $scope.selectedMonsterId = $routeParams.monsterId;
+                $scope.selectedMonsterId = $routeParams.monsterId || $routeParams.userMonsterId || $routeParams.detailsId;
             });
 
             $scope.$watchCollection("[orderProp, type, currentPage]", function () {

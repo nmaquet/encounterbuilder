@@ -17,9 +17,12 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             $scope.listTimestamp = 0;
             $scope.refreshingNpcs = false;
 
-            $scope.selectedNpcId = $routeParams.npcId;
+            $scope.selectedNpcId = $routeParams.npcId || $routeParams.userNpcId || $routeParams.detailsId;
+
+            $scope.userCreated = false;
+
             $scope.$on('$routeChangeSuccess', function () {
-                $scope.selectedNpcId = $routeParams.npcId;
+                $scope.selectedNpcId = $routeParams.npcId|| $routeParams.userNpcId || $routeParams.detailsId;
             });
 
             $scope.$watchCollection("[sortBy, currentPage, class]", function () {
@@ -34,7 +37,13 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 }
                 $scope.refreshNpcs();
             });
-
+            $scope.$watch('userCreated', function (value) {
+                $timeout(function () {
+                    if (value === $scope.userCreated) {
+                        $scope.refreshNpcs();
+                    }
+                }, 300);
+            });
             $scope.$watch('nameSubstring', function (search_string) {
                 $timeout(function () {
                     if (search_string === $scope.nameSubstring) {
@@ -61,7 +70,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                     currentPage: $scope.currentPage,
                     findLimit: $scope.itemsPerPage,
                     minCR: $scope.minCR,
-                    maxCR: $scope.maxCR
+                    maxCR: $scope.maxCR,
+                    userCreated: $scope.userCreated
                 };
                 npcService.search(params, function (error, data) {
                     if (error) {
@@ -78,7 +88,11 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             };
 
             $scope.selectNpc = function (id) {
-                locationService.goToDetails('npc', id);
+                if ($scope.userCreated) {
+                    locationService.goToDetails('user-npc', id);
+                } else {
+                    locationService.goToDetails('npc', id);
+                }
             };
 
             function addNpcToEditedEncounter(npc) {
@@ -89,8 +103,9 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 if (!encounter.Npcs) {
                     encounter.Npcs = {};
                 }
-                if (!encounter.Npcs[npc.id]) {
-                    encounter.Npcs[npc.id] = {
+                var id = npc.id || npc._id;
+                if (!encounter.Npcs[ id]) {
+                    encounter.Npcs[id] = {
                         amount: Number(npc.amountToAdd),
                         Name: npc.Name,
                         XP: npc.XP,
@@ -101,7 +116,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                     };
                 }
                 else {
-                    encounter.Npcs[npc.id].amount += Number(npc.amountToAdd) || 1;
+                    encounter.Npcs[id].amount += Number(npc.amountToAdd) || 1;
                 }
                 delete npc.amountToAdd;
                 encounterService.encounterChanged(encounter);
