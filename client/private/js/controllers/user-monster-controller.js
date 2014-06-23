@@ -35,7 +35,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
 
             $scope.copyMonster = function () {
                 contentTreeService.copyUserMonster($scope.userMonster._id, true);
-            }
+            };
 
             function updateUserMonster() {
                 if ($scope.userMonster) {

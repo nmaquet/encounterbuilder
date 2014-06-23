@@ -55,33 +55,46 @@ module.exports = function (userNpcCollection, npcsCollection, ObjectID) {
         copy: function (request, response) {
             var username = request.session.user.username;
 
-            npcsCollection.findOne({id: request.body.id}, {id: 0, _id: 0}, function (error, npc) {
+            var userCreated = request.body.userCreated;
+            var originCollection = (userCreated) ? userNpcCollection : npcsCollection;
+
+            var query = (userCreated) ? {_id: ObjectID(request.body.id), Username: username} : {id: request.body.id};
+
+
+            originCollection.findOne(query, {id: 0, _id: 0}, function (error, npc) {
                 if (error) {
                     return response.json({error: error});
                 }
                 else {
                     var userNpc = npc;
-                    userNpc.Name = "copy of " + userNpc.Name;
-                    userNpc.Source = "originally from " + (userNpc.Source || "???") + " and modified by " + username;
-                    userNpc.Username = username;
-                    if (userNpc.Description) {
-                        userNpc.Description = fromHTMLToString(npc.Description);
-                    }
-                    if (userNpc.SpecialAbilities) {
-                        userNpc.SpecialAbilities = fromHTMLToString(npc.SpecialAbilities);
-                    }
-                    if (userNpc.SpellLikeAbilities) {
-                        userNpc.SpellLikeAbilities = fromHTMLToString(npc.SpellLikeAbilities);
-                    }
-                    userNpcCollection.insert(userNpc, function (error, newUserNpc) {
-                        if (error) {
-                            console.log(error);
-                            response.json({error: "could not insert userNpc"});
+                    if (userNpc) {
+                        if (!userCreated) {
+                            //FIXME this kinda works now but will be messy when user will copy content from other users.
+                            userNpc.Name = "copy of " + userNpc.Name;
+                            userNpc.Source = "originally from " + (userNpc.Source || "???") + " and modified by " + username;
                         }
-                        else {
-                            response.json({userNpc: newUserNpc[0]});
+                        userNpc.Username = username;
+                        if (userNpc.Description) {
+                            userNpc.Description = fromHTMLToString(npc.Description);
                         }
-                    });
+                        if (userNpc.SpecialAbilities) {
+                            userNpc.SpecialAbilities = fromHTMLToString(npc.SpecialAbilities);
+                        }
+                        if (userNpc.SpellLikeAbilities) {
+                            userNpc.SpellLikeAbilities = fromHTMLToString(npc.SpellLikeAbilities);
+                        }
+                        userNpcCollection.insert(userNpc, function (error, newUserNpc) {
+                            if (error) {
+                                console.log(error);
+                                response.json({error: "could not insert userNpc"});
+                            }
+                            else {
+                                response.json({userNpc: newUserNpc[0]});
+                            }
+                        });
+                    } else {
+                        response.json({error: "could not find source Npc to copy"});
+                    }
                 }
             });
         },

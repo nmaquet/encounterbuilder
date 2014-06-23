@@ -33,6 +33,10 @@ DEMONSQUID.encounterBuilderControllers.controller('UserNpcController',
                 }
             };
 
+            $scope.copyNpc = function () {
+                contentTreeService.copyUserNpc($scope.userNpc._id, true);
+            };
+
             function updateUserNpc() {
                 if ($scope.userNpc) {
                     userNpcService.update($scope.userNpc, function (error) {

@@ -8,7 +8,7 @@
         strong XP
         | &nbsp;{{userNpc.XP}}
         .row.btn-container
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy')
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copyNpc()')
                 i.icon.fa.fa-copy
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit', ng-click="editUserNpc()")
                 i.icon.fa.fa-cogs
