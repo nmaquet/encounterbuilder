@@ -13,7 +13,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                             scope.go("/encounter/" + node.data.encounterId);
                         } else if (node.data.userMonsterId) {
                             scope.go("/user-monster/" + node.data.userMonsterId);
-                        } else if (node.folder) {
+                        } else if (node.data.userNpcId) {
+                            scope.go("/user-npc/" + node.data.userNpcId);
+                        }
+                        else if (node.folder) {
                             scope.go("/binder/" + node.key);
                             node.setExpanded(true);
                         }
@@ -33,6 +36,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         node.extraClasses = "fancytree-monster";
                     } else if (node.data.encounterId) {
                         node.extraClasses = "fancytree-encounter";
+                    } else if (node.data.userNpcId) {
+                        node.extraClasses = "fancytree-npc";
                     }
                 }
 

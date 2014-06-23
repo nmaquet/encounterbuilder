@@ -2,20 +2,13 @@
 
 module.exports = function (userMonsterCollection, monstersCollection, ObjectID) {
 
+    var fromHTMLToString = require('./utils').fromHTMLToString;
+
     function newUserMonster(username) {
         return {
             Username: username,
             Name: "Unnamed Monster"
         }
-    }
-
-    function fromHTMLToString(html) {
-        var result = html;
-        result = result.replace(/<\/p>/gim, '\n\n');
-        result = result.replace(/<\/h5>/gim, '\n\n');
-        result = result.replace(/<br>/gim, '\n\n');
-        result = result.replace(/<(?:.|\n)*?>/gim, '');
-        return result.trim();
     }
 
     return {

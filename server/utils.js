@@ -46,6 +46,14 @@ module.exports = function () {
                 }
             }
             return clone;
+        },
+        fromHTMLToString: function (html) {
+            var result = html;
+            result = result.replace(/<\/p>/gim, '\n\n');
+            result = result.replace(/<\/h5>/gim, '\n\n');
+            result = result.replace(/<br>/gim, '\n\n');
+            result = result.replace(/<(?:.|\n)*?>/gim, '');
+            return result.trim();
         }
     };
 };

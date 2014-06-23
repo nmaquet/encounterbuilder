@@ -38,6 +38,10 @@ section.sp-menu.sp-menu-vertical.sp-menu-left.no-print(slide-menu)
                                 a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserMonster()')
                                     i.icon.fa.fa-bug
                                     strong &nbsp;Create new monster
+                            li
+                                a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserNpc()')
+                                    i.icon.fa.fa-user
+                                    strong &nbsp;Create new npc
                 .sp-menu-result(ng-switch="selectedTab")
                     .database(ng-switch-when="campaigns")
                         .clearfix

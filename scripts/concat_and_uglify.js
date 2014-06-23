@@ -48,6 +48,7 @@ var jsFiles = [
     "client/private/js/controllers/feat-details-controller.js",
     "client/private/js/controllers/binder-controller.js",
     "client/private/js/controllers/user-monster-controller.js",
+    "client/private/js/controllers/user-npc-controller.js",
     "client/private/js/directives/click-to-edit.js",
     "client/private/js/directives/confirm-click.js",
     "client/private/js/directives/head.js",
@@ -77,6 +78,7 @@ var jsFiles = [
     "client/private/js/services/http-interceptor-service.js",
     "client/private/js/services/viewport-service.js",
     "client/private/js/services/user-monster-service.js",
+    "client/private/js/services/user-npc-service.js",
     "client/private/js/services/favourite-service.js",
     "client/private/js/services/location-service.js"
 ];

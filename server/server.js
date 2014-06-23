@@ -63,6 +63,7 @@ function main(db) {
     var searchFeatsRoute = require('./searchFeatsRoute')(collections.feats, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(collections.monsters);
     var userMonsterRoute = require('./userMonsterRoute')(collections.userMonsters, collections.monsters, ObjectID);
+    var userNpcRoute = require('./userNpcRoute')(collections.userNpcs, collections.npcs, ObjectID);
     var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
     var npcRoute = require('./npcRoute')(collections.npcs);
     var spellRoute = require('./spellRoute')(collections.spells);
@@ -88,6 +89,7 @@ function main(db) {
     app.get('/api/feat/:id', authentication.check, metrics.logSelectFeat, featRoute);
     app.get('/api/encounter/:id', authentication.check, metrics.logSelectEncounter, encounterRoute.findOne);
     app.get('/api/user-monster/:id', authentication.check, /* TODO METRICS */ userMonsterRoute.findOne);
+    app.get('/api/user-npc/:id', authentication.check, /* TODO METRICS */ userNpcRoute.findOne);
     app.get("/api/favourites", authentication.check, favouritesRoute.fetch);
 
     app.post('/api/user-data', userDataRoute);
@@ -107,6 +109,11 @@ function main(db) {
     app.post("/api/update-user-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.update);
     app.post("/api/delete-user-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.delete);
 
+    app.post("/api/create-user-npc", authentication.check, /* TODO METRICS */ userNpcRoute.create);
+    app.post("/api/copy-npc", authentication.check, /* TODO METRICS */ userNpcRoute.copy);
+    app.post("/api/update-user-npc", authentication.check, /* TODO METRICS */ userNpcRoute.update);
+    app.post("/api/delete-user-npc", authentication.check, /* TODO METRICS */ userNpcRoute.delete);
+
     var APP_JADE_FILES = [
         'feedback-popover',
         'login',
@@ -116,6 +123,8 @@ function main(db) {
         'monster',
         'user-monster',
         'edit-user-monster',
+        'user-npc',
+        'edit-user-npc',
         'npc',
         'item',
         'spell',

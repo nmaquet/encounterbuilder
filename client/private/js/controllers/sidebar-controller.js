@@ -19,5 +19,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SidebarController',
             $scope.createUserMonster = function () {
                 contentTreeService.createUserMonster();
             };
+            $scope.createUserNpc = function () {
+                contentTreeService.createUserNpc();
+            };
         }
     ]);
