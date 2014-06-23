@@ -2,7 +2,7 @@
 
 module.exports = function (userMonsterCollection, monstersCollection, ObjectID) {
 
-    var fromHTMLToString = require('./utils').fromHTMLToString;
+    var fromHTMLToString = require('./utils')().fromHTMLToString;
 
     function newUserMonster(username) {
         return {
@@ -55,33 +55,45 @@ module.exports = function (userMonsterCollection, monstersCollection, ObjectID) 
         copy: function (request, response) {
             var username = request.session.user.username;
 
-            monstersCollection.findOne({id: request.body.id}, {id: 0, _id: 0}, function (error, monster) {
+            var userCreated = request.body.userCreated;
+            var originCollection = (userCreated) ? userMonsterCollection : monstersCollection;
+
+            var query = (userCreated) ? {_id: ObjectID(request.body.id), Username: username} : {id: request.body.id};
+
+            originCollection.findOne(query, {id: 0, _id: 0}, function (error, monster) {
                 if (error) {
                     return response.json({error: error});
                 }
                 else {
                     var userMonster = monster;
-                    userMonster.Name = "copy of " + userMonster.Name;
-                    userMonster.Source = "originally from " + (userMonster.Source || "???") + " and modified by " + username;
-                    userMonster.Username = username;
-                    if (userMonster.Description) {
-                        userMonster.Description = fromHTMLToString(monster.Description);
-                    }
-                    if (userMonster.SpecialAbilities) {
-                        userMonster.SpecialAbilities = fromHTMLToString(monster.SpecialAbilities);
-                    }
-                    if (userMonster.SpellLikeAbilities) {
-                        userMonster.SpellLikeAbilities = fromHTMLToString(monster.SpellLikeAbilities);
-                    }
-                    userMonsterCollection.insert(userMonster, function (error, newUserMonster) {
-                        if (error) {
-                            console.log(error);
-                            response.json({error: "could not insert userMonster"});
+                    if (userMonster) {
+                        if (!userCreated) {
+                            //FIXME this kinda works now but will be messy when user will copy content from other users.
+                            userMonster.Name = "copy of " + userMonster.Name;
+                            userMonster.Source = "originally from " + (userMonster.Source || "???") + " and modified by " + username;
                         }
-                        else {
-                            response.json({userMonster: newUserMonster[0]});
+                        userMonster.Username = username;
+                        if (userMonster.Description) {
+                            userMonster.Description = fromHTMLToString(monster.Description);
                         }
-                    });
+                        if (userMonster.SpecialAbilities) {
+                            userMonster.SpecialAbilities = fromHTMLToString(monster.SpecialAbilities);
+                        }
+                        if (userMonster.SpellLikeAbilities) {
+                            userMonster.SpellLikeAbilities = fromHTMLToString(monster.SpellLikeAbilities);
+                        }
+                        userMonsterCollection.insert(userMonster, function (error, newUserMonster) {
+                            if (error) {
+                                console.log(error);
+                                response.json({error: "could not insert userMonster"});
+                            }
+                            else {
+                                response.json({userMonster: newUserMonster[0]});
+                            }
+                        });
+                    } else {
+                        response.json({error: "could not find source Monster to copy"});
+                    }
                 }
             });
         },

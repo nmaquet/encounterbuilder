@@ -2,7 +2,7 @@
 
 module.exports = function (userNpcCollection, npcsCollection, ObjectID) {
 
-    var fromHTMLToString = require('./utils').fromHTMLToString;
+    var fromHTMLToString = require('./utils')().fromHTMLToString;
 
     function newUserNpc(username) {
         return {

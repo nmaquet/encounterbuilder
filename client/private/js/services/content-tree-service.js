@@ -161,8 +161,8 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
-            service.copyUserMonster = function (monsterId) {
-                userMonsterService.copy(monsterId, function (error, userMonster) {
+            service.copyUserMonster = function (monsterId, userCreated) {
+                userMonsterService.copy(monsterId, userCreated, function (error, userMonster) {
                     if (error) {
                         console.log(error);
                     } else {

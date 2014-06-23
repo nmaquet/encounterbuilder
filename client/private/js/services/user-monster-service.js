@@ -47,9 +47,9 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
                     callback(response.error);
                 });
         },
-        copy: function (id, callback) {
+        copy: function (id, userCreated, callback) {
             callback = callback || nop;
-            $http.post('/api/copy-monster', {id: id})
+            $http.post('/api/copy-monster', {id: id, userCreated: userCreated})
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
