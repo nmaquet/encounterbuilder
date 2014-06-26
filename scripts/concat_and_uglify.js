@@ -9,7 +9,6 @@ var jsFiles = [
     // Dependencies
     "client/private/bower_components/jquery/jquery.js",
     "client/private/bower_components/jquery-ui/ui/jquery-ui.js",
-//    "client/private/bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.js",
     "client/private/bower_components/jquery-cookie/jquery.cookie.js",
     "client/private/bower_components/angular/angular.js",
     "client/private/bower_components/angular-route/angular-route.js",
@@ -26,6 +25,7 @@ var jsFiles = [
     "client/private/js/app.js", /* app.js MUST be the first app file ! */
     "client/private/js/services/exception-handling-service.js", /* leave this one second */
     "client/private/js/extra/utils.js",
+    "client/private/js/extra/fancy-tree-touch.js",
     "client/private/js/controllers/main-controller.js",
     "client/private/js/controllers/encounter-controller.js",
     "client/private/js/controllers/search-monster-controller.js",
