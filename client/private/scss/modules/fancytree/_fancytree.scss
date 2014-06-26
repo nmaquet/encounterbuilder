@@ -360,10 +360,12 @@ $fancytree-grid-unit: 16px;
   //background-position: -80px 0px;
   &:before { content: "\f005"; }
 }
+
 /* Folders */
-.fancytree-ico-cf, .fancytree-ico-ef {
-  padding-left: 0.5em;
-}
+//.fancytree-ico-cf, .fancytree-ico-ef {
+//  padding-left: 0.5em;
+//}
+
 .fancytree-ico-cf .fancytree-icon {
   //background-position: 0px -16px;
   &:before { content: "\f114"; }
@@ -409,6 +411,7 @@ $fancytree-grid-unit: 16px;
   //display: inherit;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+  padding-left: 0.5em;
   width: 100%;
   display: table;
   > span {
@@ -438,6 +441,15 @@ $fancytree-grid-unit: 16px;
 //------------------------------------------------------------------------------
 // Drag'n'drop support
 //----------------------------------------------------------------------------*/
+
+// move drag & drop helper away from user's finger
+@media (max-width: $screen-sm-max) {
+  .fancytree-drag-helper {
+    margin-top: -15px;
+    margin-left: 75px;
+  }
+}
+
 .fancytree-drag-helper a {
   border: 1px solid $fancytree-disabled-font-color;
   background-color: $fancytree-bg-color;
