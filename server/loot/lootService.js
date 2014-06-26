@@ -109,17 +109,22 @@ function accumulateLoot(loot1, loot2) {
     }
 }
 
-function mostGenerousBudgetMultiplierAmongNonNPC(encounter) {
+function mostGenerousBudgetMultiplierAmongNonNPC(encounter, options) {
     var multiplier = 0;
-    for (var property in encounter.Monsters) {
-        if (encounter.Monsters.hasOwnProperty(property)) {
-            var monster = encounter.Monsters[property];
-            if (monster.TreasureBudget !== "npc gear") {
-                if (budgetMultipliers[monster.TreasureBudget] > multiplier) {
-                    multiplier = budgetMultipliers[monster.TreasureBudget];
+    if (options.budget === 'default') {
+        for (var property in encounter.Monsters) {
+            if (encounter.Monsters.hasOwnProperty(property)) {
+                var monster = encounter.Monsters[property];
+                if (monster.TreasureBudget !== "npc gear") {
+                    if (budgetMultipliers[monster.TreasureBudget] > multiplier) {
+                        multiplier = budgetMultipliers[monster.TreasureBudget];
+                    }
                 }
             }
         }
+    }
+    else {
+        multiplier = budgetMultipliers[options.budget];
     }
     return multiplier;
 }
@@ -149,8 +154,8 @@ function calculateEncounterNPCBudget(encounter, speed) {
     return budget;
 };
 
-function calculateNonNPCLootValue(encounter, speed) {
-    var multiplier = mostGenerousBudgetMultiplierAmongNonNPC(encounter);
+function calculateNonNPCLootValue(encounter, speed, options) {
+    var multiplier = mostGenerousBudgetMultiplierAmongNonNPC(encounter, options);
     var cr = Math.max(1, Math.min(20, encounter.CR));
     var baseBudget = crToLootValue[cr][speed] * multiplier;
     var npcBudget = calculateEncounterNPCBudget(encounter, speed);
@@ -231,11 +236,15 @@ function generateEncounterNPCLoot(encounter, speed) {
     return loot
 };
 
-function generateEncounterLoot(encounter, speed) {
-    var nonNPCBudget = calculateNonNPCLootValue(encounter, speed);
-    var nonNPCBudgetTypes = getAllowedLootTypeForEncounter(nonNPCBudget, encounter);
+function generateEncounterLoot(encounter, speed, options) {
+
+    console.log(options);
+
+    var nonNPCBudget = calculateNonNPCLootValue(encounter, speed, options);
+    var nonNPCBudgetTypes = (options.lootType === 'default') ? getAllowedLootTypeForEncounter(nonNPCBudget, encounter) : [options.lootType];
+
     if (nonNPCBudgetTypes.length > 0) {
-        var loot = generateEncounterNonNPCLoot(nonNPCBudget,  diceService.chooseOne(nonNPCBudgetTypes));
+        var loot = generateEncounterNonNPCLoot(nonNPCBudget, diceService.chooseOne(nonNPCBudgetTypes));
         var npcLoot = generateEncounterNPCLoot(encounter, speed);
         accumulateLoot(loot, npcLoot);
         return loot

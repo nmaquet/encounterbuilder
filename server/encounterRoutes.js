@@ -65,7 +65,7 @@ module.exports = function (encounterCollection, ObjectID, lootService) {
         generateLoot: function (request, response) {
             var username = request.session.user.username;
             var encounter = request.body.encounter;
-            var loot = lootService.generateEncounterLoot(encounter, "medium");
+            var loot = lootService.generateEncounterLoot(encounter, "medium", request.body.options);
             encounter.coins = loot.coins;
             encounter.items = {};
             for (var i in loot.items) {
