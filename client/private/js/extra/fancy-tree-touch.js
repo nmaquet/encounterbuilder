@@ -1,17 +1,20 @@
 "use strict";
 
-(function(){
+(function () {
 
     /* simulates mouse events from touch events on fancy tree drag & drop elements */
     /* based on: http://stackoverflow.com/questions/5186441/javascript-drag-and-drop-for-touch-devices */
 
-    function fancyTreeTouchHandler(event) {
-        var touch = event.changedTouches[0];
-        if (!$(touch.target).is(".fancytree-node, .fancytree-title, .fancytree-icon")) {
-            return;
-        }
-        var simulatedEvent = document.createEvent("MouseEvent");
-        simulatedEvent.initMouseEvent({
+    /* STATE MACHINE */
+    /* IDLE -> touchstart -> WAIT */
+    /* WAIT -> any event -> IDLE */
+    /* WAIT -> 300ms pass -> SIMULATE */
+    /* SIMULATE -> touchend / touchcancel -> IDLE */
+
+    function simulateMouseEvent(touchEvent) {
+        var touch = touchEvent.changedTouches[0];
+        var mouseEvent = document.createEvent("MouseEvent");
+        mouseEvent.initMouseEvent({
                 touchstart: "mousedown",
                 touchmove: "mousemove",
                 touchend: "mouseup"
@@ -19,22 +22,90 @@
             touch.screenX, touch.screenY,
             touch.clientX, touch.clientY, false,
             false, false, false, 0, null);
-
         if (event.type === "touchmove" || event.type === "touchend") {
-            /* TRICKY PART 1: the *target* element for MOUSEMOVE and MOUSEUP are different from TOUCHMOVE and TOUCHEND */
+            /* TRICKY PART: the *target* element for MOUSEMOVE and MOUSEUP are different from TOUCHMOVE and TOUCHEND */
             /* for MOUSEMOVE and MOUSEUP the *target* is the element currently under the mouse */
             /* for TOUCHMOVE and TOUCHEND the *target is the element under the finger at the *start* of the move */
             /* to simulate mouse events properly, we must use elementFromPoint to get the target */
-            document.elementFromPoint(touch.clientX, touch.clientY).dispatchEvent(simulatedEvent);
+            document.elementFromPoint(touch.clientX, touch.clientY).dispatchEvent(mouseEvent);
         } else {
-            touch.target.dispatchEvent(simulatedEvent);
+            touch.target.dispatchEvent(mouseEvent);
         }
+    }
 
-        if (event.type === "touchstart" || event.type === "touchend") {
-            /* TRICKY PART 2: ngTouch uses touchstart and touchend events to tranform them into clicks */
-            /* so we must let those events go through */
-        } else {
-            event.preventDefault();
+    function simulateMouseMove(touchEvent, yOffset) {
+        var touch = touchEvent.changedTouches[0];
+        var mouseEvent = document.createEvent("MouseEvent");
+        mouseEvent.initMouseEvent("mousemove", true, true, window, 1,
+            touch.screenX, touch.screenY, touch.clientX, touch.clientY-yOffset,
+            false, false, false, false, 0, null);
+        document.elementFromPoint(touch.clientX, touch.clientY+yOffset).dispatchEvent(mouseEvent);
+    }
+
+    function simulateMouseMoveAroundEvent(event) {
+        var i;
+        for (i = -5; i <= 0; ++i) {
+            (function (j) {
+                setTimeout(function () {
+                    simulateMouseMove(event, j);
+                }, j * 20);
+            })(i);
+        }
+    }
+
+    var stateMachine = {
+        IDLE: {
+            touchstart: {
+                handler: function (event) {
+                    simulateMouseEvent(event);
+                    gotoState("WAIT");
+                    setTimeout(function () {
+                        if (state === "WAIT") {
+                            gotoState("SIMULATE");
+                            simulateMouseMoveAroundEvent(event);
+                        }
+                    }, 1000)
+                }
+            }
+        },
+        WAIT: {
+            touchmove: {
+                handler: function (event) {
+                    gotoState("IDLE");
+                }
+            }
+        },
+        SIMULATE: {
+            touchmove: {
+                handler: function (event) {
+                    simulateMouseEvent(event);
+                    event.preventDefault();
+                }
+            },
+            touchend: {
+                handler: function (event) {
+                    simulateMouseEvent(event);
+                    gotoState("IDLE")      ;
+                    event.preventDefault();
+                }
+            }
+        }
+    };
+
+    var state = "IDLE";
+
+    function gotoState(newState) {
+        state = newState;
+        $("#console").text("new state: " + newState);
+    }
+
+    function fancyTreeTouchHandler(event) {
+        var touch = event.changedTouches[0];
+        if (!$(touch.target).is(".fancytree-node, .fancytree-title, .fancytree-icon")) {
+            return;
+        }
+        if (stateMachine[state][event.type]) {
+            stateMachine[state][event.type].handler(event);
         }
     }
 
