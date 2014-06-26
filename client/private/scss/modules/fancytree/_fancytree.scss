@@ -442,9 +442,12 @@ $fancytree-grid-unit: 16px;
 // Drag'n'drop support
 //----------------------------------------------------------------------------*/
 
-.fancytree-drag-helper {
-  margin-top:-15px;
-  margin-left:75px;
+// move drag & drop helper away from user's finger
+@media (max-width: $screen-sm-max) {
+  .fancytree-drag-helper {
+    margin-top: -15px;
+    margin-left: 75px;
+  }
 }
 
 .fancytree-drag-helper a {
