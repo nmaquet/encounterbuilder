@@ -19,6 +19,9 @@ var jsFiles = [
     "client/private/bower_components/async/lib/async.js",
     "client/private/bower_components/nouislider/jquery.nouislider.js",
     "client/private/bower_components/fancytree/dist/jquery.fancytree-all.js",
+    "client/private/bower_components/tinymce/tinymce.min.js",
+    "client/private/bower_components/tinymce/themes/modern/theme.min.js",
+    "client/private/bower_components/angular-ui-tinymce/src/tinymce.js",
     "client/private/angular-ui/ui-bootstrap-0.10.0.js",
     "client/private/angular-ui/ui-bootstrap-tpls-0.10.0.js",
     // App files
@@ -86,7 +89,9 @@ var jsFiles = [
 
 var cssFiles = [
     "client/private/css/app.css",
-    "client/private/css/animate.css"
+    "client/private/css/animate.css",
+    "client/private/bower_components/tinymce/skins/lightgray/content.min.css",
+    "client/private/bower_components/tinymce/skins/lightgray/skin.min.css",
 ];
 
 var sassRootFile = "client/private/scss/encounter-builder.scss";

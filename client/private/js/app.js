@@ -9,7 +9,8 @@ DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
     'encounterBuilderFilters',
     'encounterBuilderServices',
     'encounterBuilderDirectives',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ui.tinymce'
 ]);
 
 DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',

@@ -14,7 +14,7 @@ mixin labeledTextArea(name, model, rows, placeholder)
             textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model)
 mixin fullWidthTextArea(name, model, rows, placeholder)
     .form-group
-        textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model)
+        textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model, ui-tinymce="tinymceOptions")
 
 .row.l-section.result-content
     .col-xxs-12.col-xs-12
