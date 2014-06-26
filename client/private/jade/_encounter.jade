@@ -74,7 +74,9 @@ div.encounter
             legend.t-legend
                 span Treasure
                 i.icon.fa.fa-flask.pull-left
-                a.is-pointer.randomize-loot.pull-right(title='Randomize', on-confirm="randomizeLoot(encounter)" , confirm-click="Are you sure ?", confirm-title="Randomize treasure")
+                a.is-pointer(tabindex='-1',data-target='#loot-generator-modal', role='button', data-toggle='modal')
+                    i.icon.fa.fa-random
+                //a.is-pointer.randomize-loot.pull-right(title='Randomize', on-confirm="randomizeLoot(encounter)" , confirm-click="Are you sure ?", confirm-title="Randomize treasure")
                     i.icon.fa.fa-random
             table.table.encounter-list#encounter-items
                 tbody
@@ -122,3 +124,4 @@ div.encounter
                             .col-xxs-4.col-xs-4
                                 .text-right
                                     span#encounter-loot-value {{encounter.lootValue | number}}
+include _loot-generation-modal
