@@ -17,7 +17,8 @@
         mouseEvent.initMouseEvent({
                 touchstart: "mousedown",
                 touchmove: "mousemove",
-                touchend: "mouseup"
+                touchend: "mouseup",
+                touchcancel: "touchcancel"
             }[event.type], true, true, window, 1,
             touch.screenX, touch.screenY,
             touch.clientX, touch.clientY, false,
@@ -55,39 +56,36 @@
 
     var stateMachine = {
         IDLE: {
-            touchstart: {
-                handler: function (event) {
-                    simulateMouseEvent(event);
-                    gotoState("WAIT");
-                    setTimeout(function () {
-                        if (state === "WAIT") {
-                            gotoState("SIMULATE");
-                            simulateMouseMoveAroundEvent(event);
-                        }
-                    }, 1000)
-                }
+            touchstart: function (event) {
+                simulateMouseEvent(event);
+                gotoState("WAIT");
+                setTimeout(function () {
+                    if (state === "WAIT") {
+                        gotoState("SIMULATE");
+                        simulateMouseMoveAroundEvent(event);
+                    }
+                }, 1000);
             }
         },
         WAIT: {
-            touchmove: {
-                handler: function (event) {
-                    gotoState("IDLE");
-                }
+            touchmove:  function (event) {
+                gotoState("IDLE");
             }
         },
         SIMULATE: {
-            touchmove: {
-                handler: function (event) {
-                    simulateMouseEvent(event);
-                    event.preventDefault();
-                }
+            touchmove: function (event) {
+                simulateMouseEvent(event);
+                event.preventDefault();
             },
-            touchend: {
-                handler: function (event) {
-                    simulateMouseEvent(event);
-                    gotoState("IDLE")      ;
-                    event.preventDefault();
-                }
+            touchend: function (event) {
+                simulateMouseEvent(event);
+                gotoState("IDLE")      ;
+                event.preventDefault();
+            },
+            touchcancel: function (event) {
+                simulateMouseEvent(event);
+                gotoState("IDLE")      ;
+                event.preventDefault();
             }
         }
     };
@@ -105,7 +103,7 @@
             return;
         }
         if (stateMachine[state][event.type]) {
-            stateMachine[state][event.type].handler(event);
+            stateMachine[state][event.type](event);
         }
     }
 
