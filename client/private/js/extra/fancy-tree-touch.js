@@ -21,7 +21,7 @@
             false, false, false, 0, null);
 
         if (event.type === "touchmove" || event.type === "touchend") {
-            /* TRICKY PART: the *target* element for MOUSEMOVE and MOUSEUP are different from TOUCHMOVE and TOUCHEND */
+            /* TRICKY PART 1: the *target* element for MOUSEMOVE and MOUSEUP are different from TOUCHMOVE and TOUCHEND */
             /* for MOUSEMOVE and MOUSEUP the *target* is the element currently under the mouse */
             /* for TOUCHMOVE and TOUCHEND the *target is the element under the finger at the *start* of the move */
             /* to simulate mouse events properly, we must use elementFromPoint to get the target */
@@ -29,7 +29,13 @@
         } else {
             touch.target.dispatchEvent(simulatedEvent);
         }
-        event.preventDefault();
+
+        if (event.type === "touchstart" || event.type === "touchend") {
+            /* TRICKY PART 2: ngTouch uses touchstart and touchend events to tranform them into clicks */
+            /* so we must let those events go through */
+        } else {
+            event.preventDefault();
+        }
     }
 
     $(document).ready(function () {
