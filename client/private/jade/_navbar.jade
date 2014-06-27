@@ -1,14 +1,23 @@
 .navbar.navbar-default.navbar-red.no-radius.navbar-fixed-top(role='navigation')
     .navbar-container
 
-        ul.nav.navbar-nav.navbar-left.sp-menu-toggle-container(ng-hide='!viewport.xs || rightSidebarIsOpened()')
-            li
+        ul.nav.nav-tabs.navbar-left.sp-menu-toggle-container(ng-hide='!viewport.xs || rightSidebarIsOpened()')
+            li(ng-show='leftSidebarIsOpened()')
                 a.t-title.is-pointer.sp-menu-toggle(ng-click='toggleLeftSidebar()')
                     i.fa.fa-angle-left
                     | &nbsp;
                     i.fa.fa-folder-open
                     | &nbsp;
                     span.sp-menu-left-toggle-text.hidden-xs Open
+            li
+                a.t-title.is-pointer.sp-menu-toggle(ng-click='openLeftSidebarAndSelectTab("campaigns")')
+                    i.icon.icon-lg.fa.fa-folder
+            li
+                a.t-title.is-pointer.sp-menu-toggle(ng-click='openLeftSidebarAndSelectTab("favourites")')
+                    i.icon.icon-lg.fa.fa-heart
+            li
+                a.t-title.is-pointer.sp-menu-toggle(ng-click='openLeftSidebarAndSelectTab("database")')
+                    i.icon.icon-lg.fa.fa-book
 
         ul.nav.navbar-nav.navbar-right.sp-menu-toggle-container(ng-hide='viewport.xs && leftSidebarIsOpened()')
             li

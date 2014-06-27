@@ -11,6 +11,12 @@ DEMONSQUID.encounterBuilderControllers.controller('LeftSidebarTabController', ['
 
         $scope.selectedTab = model.selectedTab;
 
+        $scope.$watch(function () {
+            return model.selectedTab
+        }, function () {
+            $scope.selectedTab = model.selectedTab;
+        });
+
         $('#' + $scope.selectedTab + 'Tab').tab('show');
 
         $scope.selectTab = function (tab) {

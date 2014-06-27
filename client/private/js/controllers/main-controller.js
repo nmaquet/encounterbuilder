@@ -14,6 +14,10 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController',
                 sidebarService.leftSidebarOpened.toggle();
             };
 
+            $scope.openLeftSidebarAndSelectTab = function (tab) {
+                sidebarService.leftSidebarOpened.openAndSelectTab(tab);
+            };
+
             $scope.toggleRightSidebar = function () {
                 sidebarService.rightSidebarOpened.toggle();
             };

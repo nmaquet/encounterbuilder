@@ -1,8 +1,8 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('sidebarService', [ 'viewportService',
-    
-    function (viewportService) {
+DEMONSQUID.encounterBuilderServices.factory('sidebarService', [ 'viewportService', 'LeftSidebarTabModel',
+
+    function (viewportService, LeftSidebarTabModel) {
 
         var viewport = viewportService.viewport;
 
@@ -19,30 +19,39 @@ DEMONSQUID.encounterBuilderServices.factory('sidebarService', [ 'viewportService
             }
         }
 
-        viewportService.register(function(){
+        viewportService.register(function () {
             viewportOverride();
         });
 
         return {
             selectedTab: selectedTab,
-            closeSidebars: function() {
+            closeSidebars: function () {
                 leftSidebarOpened = rightSidebarOpened = false;
             },
             leftSidebarOpened: {
-                get: function() {
+                get: function () {
                     return leftSidebarOpened;
                 },
-                toggle: function() {
+                toggle: function () {
                     leftSidebarOpened = !leftSidebarOpened;
                     viewportOverride();
+                }, openAndSelectTab: function (tab) {
+                    LeftSidebarTabModel.selectedTab = tab;
+
+                    if (!leftSidebarOpened) {
+                        leftSidebarOpened = true;
+                        viewportOverride();
+                    }
+
                 }
             },
             rightSidebarOpened: {
-                get: function() {
+                get: function () {
                     return rightSidebarOpened;
                 },
-                toggle: function() {
-                    rightSidebarOpened = !rightSidebarOpened
+                toggle: function () {
+
+                    rightSidebarOpened = !rightSidebarOpened;
                     viewportOverride();
                 }
             }

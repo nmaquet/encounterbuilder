@@ -30,7 +30,6 @@ DEMONSQUID.encounterBuilderServices.factory('locationService',
                     } else if ($route.current.templateUrl === 'edit-user-npc.html') {
                         this.go('/edit-user-npc/' + $routeParams.userNpcId + typePrefix + id);
                     } else {
-
                         this.go(typePrefix + id);
                     }
                 },
