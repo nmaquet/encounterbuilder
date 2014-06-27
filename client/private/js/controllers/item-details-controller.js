@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('ItemDetailsController',
-    ['$scope', '$http', '$routeParams', 'itemService','favouriteService',
-        function ($scope, $http, $routeParams, itemService,favouriteService) {
+    ['$rootScope','$scope', '$http', '$routeParams', 'itemService','favouriteService',
+        function ($rootScope, $scope, $http, $routeParams, itemService,favouriteService) {
             $scope.pending = true;
             $scope.toggleFavourite = function () {
                 if ($scope.favourite) {
@@ -18,6 +18,9 @@ DEMONSQUID.encounterBuilderControllers.controller('ItemDetailsController',
                     console.log(error);
                 } else {
                     $scope.item = item;
+                    if ($routeParams.itemId) {
+                        $rootScope.globalTitle = "Encounter Builder - " + $scope.item.Name;
+                    }
                     $scope.favourite = favouriteService.isFavourite(item.id);
                     if ($scope.item.Derived) {
                         $scope.item.Cost = Number(item.Price) / 2;

@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('UserNpcController',
-    ['$scope', '$timeout', '$routeParams', '$location', '$sce', 'userNpcService', 'contentTreeService', 'locationService',
-        function ($scope, $timeout, $routeParams, $location, $sce, userNpcService, contentTreeService, locationService) {
+    ['$rootScope','$scope', '$timeout', '$routeParams', '$location', '$sce', 'userNpcService', 'contentTreeService', 'locationService',
+        function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userNpcService, contentTreeService, locationService) {
 
             $scope.deleteUserNpc = function () {
                 if ($scope.userNpc) {
@@ -67,6 +67,9 @@ DEMONSQUID.encounterBuilderControllers.controller('UserNpcController',
                 }
 
                 $scope.userNpc = userNpc;
+                if ($routeParams.userNpcId) {
+                    $rootScope.globalTitle = "Encounter Builder - " + $scope.userNpc.Name;
+                }
                 $scope.pending = false;
 
                 var lastWatchTime;

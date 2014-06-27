@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('BinderController',
-    ['$scope', '$routeParams', 'contentTreeService', 'encounterService',
-        function ($scope, $routeParams, contentTreeService, encounterService) {
+    ['$rootScope', '$scope', '$routeParams', 'contentTreeService', 'encounterService',
+        function ($rootScope, $scope, $routeParams, contentTreeService, encounterService) {
 
             $scope.removeBinderMessage = "Are you sure ?";
 
@@ -12,6 +12,7 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
                 //binder is initialized inside the callback to limit flickering
                 // (angular renders binder empty then when the children are loaded re render again with the children)
                 $scope.binder = contentTreeService.getBinderByKey($routeParams.binderId);
+                $rootScope.globalTitle = "Encounter Builder - " + $scope.binder.Name;
                 //FIXME this only works for the parent binder, not for the children ones.
                 $scope.removeBinderMessage = "This binder contains " + $scope.binder.descendantCount + " elements. Are you sure ?";
 

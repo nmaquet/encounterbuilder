@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('FeatDetailsController',
-    ['$scope', '$http', '$sce', '$routeParams', 'featService','favouriteService',
-        function ($scope, $http, $sce, $routeParams, featService,favouriteService) {
+    ['$rootScope','$scope', '$http', '$sce', '$routeParams', 'featService', 'favouriteService',
+        function ($rootScope,$scope, $http, $sce, $routeParams, featService, favouriteService) {
             var TYPE_FLAGS = {
                 "teamwork": "Teamwork",
                 "critical": "Critical",
@@ -27,6 +27,9 @@ DEMONSQUID.encounterBuilderControllers.controller('FeatDetailsController',
                     console.log(error);
                 } else {
                     $scope.feat = feat;
+                    if ($routeParams.featId) {
+                        $rootScope.globalTitle = "Encounter Builder - " + $scope.feat.name;
+                    }
                     $scope.favourite = favouriteService.isFavourite(feat.id);
                     var typeFlags = [];
                     if (feat.type !== "General") {

@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
-    ['$scope', '$timeout', '$routeParams', '$location', '$sce', 'userMonsterService', 'contentTreeService', 'locationService',
-        function ($scope, $timeout, $routeParams, $location, $sce, userMonsterService, contentTreeService, locationService) {
+    ['$rootScope', '$scope', '$timeout', '$routeParams', '$location', '$sce', 'userMonsterService', 'contentTreeService', 'locationService',
+        function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userMonsterService, contentTreeService, locationService) {
 
             $scope.deleteUserMonster = function () {
                 if ($scope.userMonster) {
@@ -67,6 +67,9 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                 }
 
                 $scope.userMonster = userMonster;
+                if ($routeParams.userMonsterId) {
+                    $rootScope.globalTitle = "Encounter Builder - " + $scope.userMonster.Name;
+                }
                 $scope.pending = false;
 
                 var lastWatchTime;

@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController',
-    ['$scope', '$sce', '$routeParams', 'monsterService', 'contentTreeService', 'favouriteService',
-        function ($scope, $sce, $routeParams, monsterService, contentTreeService,favouriteService) {
+    ['$rootScope','$scope', '$sce', '$routeParams', 'monsterService', 'contentTreeService', 'favouriteService',
+        function ($rootScope,$scope, $sce, $routeParams, monsterService, contentTreeService,favouriteService) {
             $scope.pending = true;
             $scope.toggleFavourite = function () {
                 if ($scope.favourite) {
@@ -18,6 +18,9 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController',
                     console.log(error);
                 } else {
                     $scope.monster = monster;
+                    if ($routeParams.monsterId) {
+                        $rootScope.globalTitle = "Encounter Builder - " + $scope.monster.Name;
+                    }
                     $scope.favourite = favouriteService.isFavourite(monster.id);
                     if ($scope.monster) {
                         $scope.monster.DescriptionSafe = $sce.trustAsHtml($scope.monster.Description);

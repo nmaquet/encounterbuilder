@@ -1,7 +1,7 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SpellDetailsController',
-    ['$scope', '$http', '$sce', '$routeParams', 'spellService', 'favouriteService',
+    ['$rootScope','$scope', '$http', '$sce', '$routeParams', 'spellService', 'favouriteService',
         function ($scope, $http, $sce, $routeParams, spellService, favouriteService) {
             $scope.pending = true;
             $scope.toggleFavourite = function () {
@@ -19,6 +19,9 @@ DEMONSQUID.encounterBuilderControllers.controller('SpellDetailsController',
                 } else {
                     $scope.favourite = favouriteService.isFavourite(spell.id);
                     $scope.spell = spell;
+                    if ($routeParams.spellId) {
+                        $rootScope.globalTitle = "Encounter Builder - " + $scope.spell.name;
+                    }
                     if ($scope.spell) {
                         $scope.spell.descriptionSafe = $sce.trustAsHtml($scope.spell.description_formated);
                     }

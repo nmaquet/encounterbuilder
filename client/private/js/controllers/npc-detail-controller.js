@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('NpcDetailController',
-    ['$scope', '$sce', '$routeParams', 'npcService', 'favouriteService','contentTreeService',
-        function ($scope, $sce, $routeParams, npcService, favouriteService,contentTreeService) {
+    ['$rootScope','$scope', '$sce', '$routeParams', 'npcService', 'favouriteService','contentTreeService',
+        function ($rootScope,$scope, $sce, $routeParams, npcService, favouriteService,contentTreeService) {
             $scope.pending = true;
             $scope.toggleFavourite = function () {
                 if ($scope.favourite) {
@@ -22,6 +22,9 @@ DEMONSQUID.encounterBuilderControllers.controller('NpcDetailController',
                     console.log(error);
                 } else {
                     $scope.npc = npc;
+                    if ($routeParams.npcId) {
+                        $rootScope.globalTitle = "Encounter Builder - " + $scope.npc.Name;
+                    }
                     $scope.favourite = favouriteService.isFavourite(npc.id);
                     if ($scope.npc) {
                         $scope.npc.DescriptionSafe = $sce.trustAsHtml($scope.npc.Description);

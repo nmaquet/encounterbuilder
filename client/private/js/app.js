@@ -39,6 +39,7 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
 
 DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$window',
     function ($rootScope, $http, $window) {
+        $rootScope.globalTitle = "Encounter Builder - Home";
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
             if ($rootScope.user === undefined) {
                 $http.post('/api/user-data')
