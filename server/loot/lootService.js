@@ -111,6 +111,7 @@ function accumulateLoot(loot1, loot2) {
 
 function mostGenerousBudgetMultiplierAmongNonNPC(encounter, options) {
     var multiplier = 0;
+    options = options || { budget: 'default'};
     if (options.budget === 'default') {
         for (var property in encounter.Monsters) {
             if (encounter.Monsters.hasOwnProperty(property)) {
