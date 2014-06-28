@@ -17,7 +17,8 @@
         mouseEvent.initMouseEvent({
                 touchstart: "mousedown",
                 touchmove: "mousemove",
-                touchend: "mouseup"
+                touchend: "mouseup",
+                touchcancel: "mouseup"
             }[touchEvent.type], true, true, window, 1,
             touch.screenX, touch.screenY,
             touch.clientX, touch.clientY, false,
@@ -67,9 +68,12 @@
                         simulateMouseMoveAroundEvent(event);
                     }
                 }, 1000);
-                event.preventDefault();
             },
             touchend:  function (event) {
+                simulateMouseEvent(event);
+                gotoState("IDLE");
+            },
+            touchcancel:  function (event) {
                 simulateMouseEvent(event);
                 gotoState("IDLE");
             }
@@ -79,6 +83,10 @@
                 gotoState("IDLE");
             },
             touchend:  function (event) {
+                simulateMouseEvent(event);
+                gotoState("IDLE");
+            },
+            touchcancel:  function (event) {
                 simulateMouseEvent(event);
                 gotoState("IDLE");
             }
