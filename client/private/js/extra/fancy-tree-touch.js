@@ -57,13 +57,16 @@
         }
     }
 
+    var touchStartCounter = 0;
+
     var stateMachine = {
         IDLE: {
             touchstart: function (event) {
+                var myTouchStartCounter = ++touchStartCounter;
                 simulateMouseEvent(event);
                 gotoState("WAIT");
                 setTimeout(function () {
-                    if (state === "WAIT") {
+                    if (state === "WAIT" && touchStartCounter === myTouchStartCounter) {
                         gotoState("SIMULATE");
                         simulateMouseMoveAroundEvent(event);
                     }
