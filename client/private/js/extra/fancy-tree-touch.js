@@ -27,7 +27,10 @@
             /* for MOUSEMOVE and MOUSEUP the *target* is the element currently under the mouse */
             /* for TOUCHMOVE and TOUCHEND the *target is the element under the finger at the *start* of the move */
             /* to simulate mouse events properly, we must use elementFromPoint to get the target */
-            document.elementFromPoint(touch.clientX, touch.clientY).dispatchEvent(mouseEvent);
+            var htmlElement = document.elementFromPoint(touch.clientX, touch.clientY);
+            if (htmlElement) {
+                htmlElement.dispatchEvent(mouseEvent);
+            }
         } else {
             touch.target.dispatchEvent(mouseEvent);
         }
@@ -61,8 +64,6 @@
                 setTimeout(function () {
                     if (state === "WAIT") {
                         gotoState("SIMULATE");
-                        event.type = "touchstart";
-                        simulateMouseEvent(event);
 //                        simulateMouseMoveAroundEvent(event);
                     }
                 }, 1000);
