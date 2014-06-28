@@ -64,14 +64,22 @@
                 setTimeout(function () {
                     if (state === "WAIT") {
                         gotoState("SIMULATE");
-//                        simulateMouseMoveAroundEvent(event);
+                        simulateMouseMoveAroundEvent(event);
                     }
                 }, 1000);
                 event.preventDefault();
+            },
+            touchend:  function (event) {
+                simulateMouseEvent(event);
+                gotoState("IDLE");
             }
         },
         WAIT: {
             touchmove:  function (event) {
+                gotoState("IDLE");
+            },
+            touchend:  function (event) {
+                simulateMouseEvent(event);
                 gotoState("IDLE");
             }
         },
