@@ -9,7 +9,7 @@
     /* IDLE -> touchstart -> WAIT */
     /* WAIT -> any event -> IDLE */
     /* WAIT -> 300ms pass -> SIMULATE */
-    /* SIMULATE -> touchend / touchcancel -> IDLE */
+    /* SIMULATE -> touchend -> IDLE */
 
     function simulateMouseEvent(touchEvent) {
         var touch = touchEvent.changedTouches[0];
@@ -17,13 +17,12 @@
         mouseEvent.initMouseEvent({
                 touchstart: "mousedown",
                 touchmove: "mousemove",
-                touchend: "mouseup",
-                touchcancel: "touchcancel"
-            }[event.type], true, true, window, 1,
+                touchend: "mouseup"
+            }[touchEvent.type], true, true, window, 1,
             touch.screenX, touch.screenY,
             touch.clientX, touch.clientY, false,
             false, false, false, 0, null);
-        if (event.type === "touchmove" || event.type === "touchend") {
+        if (touchEvent.type === "touchmove" || touchEvent.type === "touchend") {
             /* TRICKY PART: the *target* element for MOUSEMOVE and MOUSEUP are different from TOUCHMOVE and TOUCHEND */
             /* for MOUSEMOVE and MOUSEUP the *target* is the element currently under the mouse */
             /* for TOUCHMOVE and TOUCHEND the *target is the element under the finger at the *start* of the move */
@@ -62,9 +61,12 @@
                 setTimeout(function () {
                     if (state === "WAIT") {
                         gotoState("SIMULATE");
-                        simulateMouseMoveAroundEvent(event);
+                        event.type = "touchstart";
+                        simulateMouseEvent(event);
+//                        simulateMouseMoveAroundEvent(event);
                     }
                 }, 1000);
+                event.preventDefault();
             }
         },
         WAIT: {
@@ -94,12 +96,12 @@
 
     function gotoState(newState) {
         state = newState;
-        $("#console").text("new state: " + newState);
     }
 
     function fancyTreeTouchHandler(event) {
         var touch = event.changedTouches[0];
         if (!$(touch.target).is(".fancytree-node, .fancytree-title, .fancytree-icon")) {
+            gotoState("IDLE");
             return;
         }
         if (stateMachine[state][event.type]) {
