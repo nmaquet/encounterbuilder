@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SpellDetailsController',
-    ['$rootScope','$scope', '$http', '$sce', '$routeParams', 'spellService', 'favouriteService',
-        function ($scope, $http, $sce, $routeParams, spellService, favouriteService) {
+    ['$rootScope', '$scope', '$http', '$sce', '$routeParams', 'spellService', 'favouriteService',
+        function ($rootScope, $scope, $http, $sce, $routeParams, spellService, favouriteService) {
             $scope.pending = true;
             $scope.toggleFavourite = function () {
                 if ($scope.favourite) {
