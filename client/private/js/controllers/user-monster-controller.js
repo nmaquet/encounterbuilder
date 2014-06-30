@@ -1,8 +1,11 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
-    ['$rootScope', '$scope', '$timeout', '$routeParams', '$location', '$sce', 'userMonsterService', 'contentTreeService', 'locationService',
-        function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userMonsterService, contentTreeService, locationService) {
+    ['$scope', '$timeout', '$routeParams', '$location', '$sce', 'userMonsterService', 'contentTreeService', 'locationService',
+        function ($scope, $timeout, $routeParams, $location, $sce, userMonsterService, contentTreeService, locationService) {
+            $scope.tinymceOptions = {
+                resize: false
+            };
 
             $scope.deleteUserMonster = function () {
                 if ($scope.userMonster) {
