@@ -1,9 +1,12 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('UserNpcController',
-    ['$rootScope','$scope', '$timeout', '$routeParams', '$location', '$sce', 'userNpcService', 'contentTreeService', 'locationService',
+    ['$rootScope', '$scope', '$timeout', '$routeParams', '$location', '$sce', 'userNpcService', 'contentTreeService', 'locationService',
         function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userNpcService, contentTreeService, locationService) {
-
+            $scope.tinymceOptions = {
+                resize: false,
+                menubar: "edit format"
+            };
             $scope.deleteUserNpc = function () {
                 if ($scope.userNpc) {
                     $scope.startFade = function () {
@@ -57,13 +60,13 @@ DEMONSQUID.encounterBuilderControllers.controller('UserNpcController',
                 }
 
                 if (userNpc.Description) {
-                    userNpc.DescriptionHTML = $sce.trustAsHtml(userNpc.Description.replace(/\n/gm, "<br>"));
+                    userNpc.DescriptionHTML = $sce.trustAsHtml(userNpc.Description);
                 }
                 if (userNpc.SpecialAbilities) {
-                    userNpc.SpecialAbilitiesHTML = $sce.trustAsHtml(userNpc.SpecialAbilities.replace(/\n/gm, "<br>"));
+                    userNpc.SpecialAbilitiesHTML = $sce.trustAsHtml(userNpc.SpecialAbilities);
                 }
                 if (userNpc.SpellLikeAbilities) {
-                    userNpc.SpellLikeAbilitiesHTML = $sce.trustAsHtml(userNpc.SpellLikeAbilities.replace(/\n/gm, "<br>"));
+                    userNpc.SpellLikeAbilitiesHTML = $sce.trustAsHtml(userNpc.SpellLikeAbilities);
                 }
 
                 $scope.userNpc = userNpc;

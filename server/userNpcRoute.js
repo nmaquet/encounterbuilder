@@ -2,8 +2,6 @@
 
 module.exports = function (userNpcCollection, npcsCollection, ObjectID) {
 
-    var fromHTMLToString = require('./utils')().fromHTMLToString;
-
     function newUserNpc(username) {
         return {
             Username: username,
@@ -74,15 +72,6 @@ module.exports = function (userNpcCollection, npcsCollection, ObjectID) {
                             userNpc.Source = "originally from " + (userNpc.Source || "???") + " and modified by " + username;
                         }
                         userNpc.Username = username;
-                        if (userNpc.Description) {
-                            userNpc.Description = fromHTMLToString(npc.Description);
-                        }
-                        if (userNpc.SpecialAbilities) {
-                            userNpc.SpecialAbilities = fromHTMLToString(npc.SpecialAbilities);
-                        }
-                        if (userNpc.SpellLikeAbilities) {
-                            userNpc.SpellLikeAbilities = fromHTMLToString(npc.SpellLikeAbilities);
-                        }
                         userNpcCollection.insert(userNpc, function (error, newUserNpc) {
                             if (error) {
                                 console.log(error);

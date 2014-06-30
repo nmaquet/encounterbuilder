@@ -2,8 +2,6 @@
 
 module.exports = function (userMonsterCollection, monstersCollection, ObjectID) {
 
-    var fromHTMLToString = require('./utils')().fromHTMLToString;
-
     function newUserMonster(username) {
         return {
             Username: username,
