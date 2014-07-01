@@ -54,8 +54,8 @@ function getURL(callback) {
 function connect(callback) {
     getURL(function(url) {
         MongoClient.connect(url, function (error, db) {
-            var Users = require("../../server/users")(db);
-            callback(Users, db);
+            var userService = require("../../server/userService")(db);
+            callback(userService, db);
         });
     });
 }
@@ -65,8 +65,8 @@ function command(command, description, callback) {
         .command(command)
         .description(description)
         .action(function (arg1, arg2, arg3) {
-            connect(function (Users, db) {
-                callback(Users, db, arg1, arg2, arg3);
+            connect(function (userService, db) {
+                callback(userService, db, arg1, arg2, arg3);
             });
         });
 }
@@ -78,8 +78,8 @@ program
     .usage('<command> [options]')
 
 
-command("list", "list all users", function (Users, db) {
-    Users.toArray(function (error, userArray) {
+command("list", "list all users", function (userService, db) {
+    userService.toArray(function (error, userArray) {
         if (error) {
             console.log("error listing users : " + error.message);
         } else {
@@ -93,8 +93,8 @@ command("list", "list all users", function (Users, db) {
 });
 
 
-command("show <username>", "show a user's info", function (Users, db, username) {
-    Users.get(username, function (error, user) {
+command("show <username>", "show a user's info", function (userService, db, username) {
+    userService.get(username, function (error, user) {
         if (error) {
             console.log("error showing user : " + error.message);
         } else {
@@ -105,9 +105,9 @@ command("show <username>", "show a user's info", function (Users, db, username) 
 });
 
 
-command("auth <username>", "test the authentication of a user", function (Users, db, username) {
+command("auth <username>", "test the authentication of a user", function (userService, db, username) {
     read({ prompt: 'Password: ', silent: true }, function (error, password) {
-        Users.authenticate(username, password, function (error, user) {
+        userService.authenticate(username, password, function (error, user) {
             if (error) {
                 console.log("error authenticating user : " + error.message);
             } else {
@@ -118,7 +118,7 @@ command("auth <username>", "test the authentication of a user", function (Users,
     });
 });
 
-command("register", "register a new user", function (Users, db) {
+command("register", "register a new user", function (userService, db) {
     async.series([
         read.bind(null, { prompt: 'Username: ' }),
         read.bind(null, { prompt: 'Password (leave blank to generate): ' }),
@@ -141,7 +141,7 @@ command("register", "register a new user", function (Users, db) {
         if (results[2][0]) {
             user.email = results[2][0];
         }
-        Users.register(user, function (error, user) {
+        userService.register(user, function (error, user) {
             if (error) {
                 console.log("error registering user : " + error.message);
                 return db.close();
@@ -152,7 +152,7 @@ command("register", "register a new user", function (Users, db) {
     });
 });
 
-command("update <username>", "update a user's info", function (Users, db, username) {
+command("update <username>", "update a user's info", function (userService, db, username) {
     async.series([
         read.bind(null, { prompt: 'New username (leave blank if unchanged): ' }),
         read.bind(null, { prompt: 'New email (leave blank if unchanged): ' })
@@ -172,7 +172,7 @@ command("update <username>", "update a user's info", function (Users, db, userna
             console.log("all fields blank... aborting");
             return db.close();
         }
-        Users.update(username, fields, function (error, user) {
+        userService.update(username, fields, function (error, user) {
             if (error) {
                 console.log("error updating user : " + error.message);
                 return db.close();
@@ -183,7 +183,7 @@ command("update <username>", "update a user's info", function (Users, db, userna
     });
 });
 
-command("passwd <username>", "change a user's password", function (Users, db, username) {
+command("passwd <username>", "change a user's password", function (userService, db, username) {
     read({ prompt: 'New password (leave blank to generate): ', silent: true}, function (error, password) {
         if (error) {
             console.log("aborted");
@@ -193,7 +193,7 @@ command("passwd <username>", "change a user's password", function (Users, db, us
             password = randomPassword();
             console.log("Generated password : " + password);
         }
-        Users.updatePassword(username, password, function (error) {
+        userService.updatePassword(username, password, function (error) {
             if (error) {
                 console.log("error updating user password : " + error.message);
                 return db.close();
@@ -204,8 +204,8 @@ command("passwd <username>", "change a user's password", function (Users, db, us
     });
 });
 
-command("remove <username>", "remove a user", function (Users, db, username) {
-    Users.remove(username, function (error) {
+command("remove <username>", "remove a user", function (userService, db, username) {
+    userService.remove(username, function (error) {
         if (error) {
             console.log("error removing user: " + error.message);
             return db.close();

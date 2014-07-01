@@ -8,22 +8,22 @@ var ObjectID = require('mongodb').ObjectID;
 var MONGODB_URL = "mongodb://nicolas:password@localhost:27017/local";
 
 var db = null;
-var Users = null;
+var userService = null;
 
 MongoClient.connect(MONGODB_URL, function (error, db) {
     expect(error).to.equal(null);
-    Users = require("../../server/users")(db);
-    describe("Users", function () {
+    userService = require("../../server/userService")(db);
+    describe("userService", function () {
         describeUsers(db)
     });
 });
 
 function registerBob(callback) {
-    Users.register({username: "Bob", password: "password", email: "bob@bob.com", age: 31}, callback);
+    userService.register({username: "Bob", password: "password", email: "bob@bob.com", age: 31}, callback);
 }
 
 function registerAlice(callback) {
-    Users.register({username: "Alice", password: "password", email: "alice@alice.com", age: 22}, callback);
+    userService.register({username: "Alice", password: "password", email: "alice@alice.com", age: 22}, callback);
 }
 
 function describeUsers(db) {
@@ -33,7 +33,7 @@ function describeUsers(db) {
     });
 
     it("should detect non existing users", function (done) {
-        Users.exists({username: "Foo"}, function (error, userExists) {
+        userService.exists({username: "Foo"}, function (error, userExists) {
             expect(error).to.equal(null);
             expect(userExists).to.equal(false);
             done();
@@ -42,9 +42,9 @@ function describeUsers(db) {
 
     it("should allow the registration of a user", function (done) {
         async.series([
-            Users.exists.bind(null, "Bob"),
+            userService.exists.bind(null, "Bob"),
             registerBob,
-            Users.exists.bind(null, "Bob")
+            userService.exists.bind(null, "Bob")
         ], function (error, results) {
             expect(error).to.equal(null);
             expect(results[0]).to.equal(false);
@@ -54,21 +54,21 @@ function describeUsers(db) {
     });
 
     it("should prevent the registration of a user without password", function (done) {
-        Users.register({username: "Bob"}, function (error) {
+        userService.register({username: "Bob"}, function (error) {
             expect(error.message).to.equal("missing password");
             done();
         });
     });
 
     it("should prevent the registration of a user without email", function (done) {
-        Users.register({username: "Bob", password: "password"}, function (error) {
+        userService.register({username: "Bob", password: "password"}, function (error) {
             expect(error.message).to.equal("missing email");
             done();
         });
     });
 
     it("should prevent the registration of a user without username", function (done) {
-        Users.register({}, function (error) {
+        userService.register({}, function (error) {
             expect(error.message).to.equal("missing username");
             done();
         });
@@ -77,7 +77,7 @@ function describeUsers(db) {
     it("should prevent the registration of users with an existing (case insensitive) username", function (done) {
         async.series([
             registerBob,
-            Users.register.bind(null, {username: "BOB", password: "password", email: "bob@bob.com"})
+            userService.register.bind(null, {username: "BOB", password: "password", email: "bob@bob.com"})
         ], function (error) {
             expect(error.message).to.equal("username exists");
             done();
@@ -87,7 +87,7 @@ function describeUsers(db) {
     it("should prevent the registering of users with an existing (case insensitive) email", function (done) {
         async.series([
             registerBob,
-            Users.register.bind(null, {username: "OtherBob", password: "password", email: "BOB@bob.com"})
+            userService.register.bind(null, {username: "OtherBob", password: "password", email: "BOB@bob.com"})
         ], function (error, results) {
             expect(error.message).to.equal("email exists");
             done();
@@ -104,9 +104,9 @@ function describeUsers(db) {
     it("should allow updating of username", function (done) {
         async.series([
             registerBob,
-            Users.get.bind(null, "Bob"),
-            Users.update.bind(null, "Bob", {username: "Alice"}),
-            Users.get.bind(null, "Alice")
+            userService.get.bind(null, "Bob"),
+            userService.update.bind(null, "Bob", {username: "Alice"}),
+            userService.get.bind(null, "Alice")
         ], function (error, results) {
             expect(error).to.equal(null);
             expect(results[1].username).to.equal("Bob");
@@ -118,9 +118,9 @@ function describeUsers(db) {
     it("should allow updating of email", function (done) {
         async.series([
             registerBob,
-            Users.get.bind(null, "Bob"),
-            Users.update.bind(null, "Bob", {email: "bob@yada.com"}),
-            Users.get.bind(null,"Bob")
+            userService.get.bind(null, "Bob"),
+            userService.update.bind(null, "Bob", {email: "bob@yada.com"}),
+            userService.get.bind(null,"Bob")
         ], function (error, results) {
             expect(error).to.equal(null);
             expect(results[1].email).to.equal("bob@bob.com");
@@ -132,9 +132,9 @@ function describeUsers(db) {
     it("should allow updating of metadata", function (done) {
         async.series([
             registerBob,
-            Users.get.bind(null, "Bob"),
-            Users.update.bind(null, "Bob", {age: 32}),
-            Users.get.bind(null,"Bob")
+            userService.get.bind(null, "Bob"),
+            userService.update.bind(null, "Bob", {age: 32}),
+            userService.get.bind(null,"Bob")
         ], function (error, results) {
             expect(error).to.equal(null);
             expect(results[1].age).to.equal(31);
@@ -147,7 +147,7 @@ function describeUsers(db) {
         async.series([
             registerBob,
             registerAlice,
-            Users.update.bind(null, "Bob", {username: "ALICE"}),
+            userService.update.bind(null, "Bob", {username: "ALICE"}),
         ], function (error, results) {
             expect(error.message).to.equal("username exists");
             done();
@@ -158,7 +158,7 @@ function describeUsers(db) {
         async.series([
             registerBob,
             registerAlice,
-            Users.update.bind(null, "Bob", {email: "ALICE@alice.com"}),
+            userService.update.bind(null, "Bob", {email: "ALICE@alice.com"}),
         ], function (error, results) {
             expect(error.message).to.equal("email exists");
             done();
@@ -168,7 +168,7 @@ function describeUsers(db) {
     it("should prevent updating users that don't exist", function (done) {
         async.series([
             registerBob,
-            Users.update.bind(null, "Alice", {email: "alice@alice.com"}),
+            userService.update.bind(null, "Alice", {email: "alice@alice.com"}),
         ], function (error, results) {
             expect(error.message).to.equal("user does not exist");
             done();
@@ -178,7 +178,7 @@ function describeUsers(db) {
     it("should get users and not store the password but have a salt and hash !", function (done) {
         async.series([
             registerBob,
-            Users.get.bind(null, "Bob")
+            userService.get.bind(null, "Bob")
         ], function (error, results) {
             expect(error).to.equal(null);
             expect(results[1].username).to.equal("Bob");
@@ -193,7 +193,7 @@ function describeUsers(db) {
     it("should allow authentication (failure case)", function(done){
         async.series([
             registerBob,
-            Users.authenticate.bind(null, "Bob", "wrongpassword")
+            userService.authenticate.bind(null, "Bob", "wrongpassword")
         ], function (error, results) {
             expect(error.message).to.equal("authentication failure");
             expect(results[1]).to.equal(null);
@@ -204,7 +204,7 @@ function describeUsers(db) {
     it("should allow authentication (success case)", function(done){
         async.series([
             registerBob,
-            Users.authenticate.bind(null, "Bob", "password")
+            userService.authenticate.bind(null, "Bob", "password")
         ], function (error, results) {
             expect(error).to.equal(null);
             expect(results[1].username).to.equal("Bob");
@@ -215,7 +215,7 @@ function describeUsers(db) {
     it("should allow case insensitive login", function(done){
         async.series([
             registerBob,
-            Users.authenticate.bind(null, "BOB", "password")
+            userService.authenticate.bind(null, "BOB", "password")
         ], function (error, results) {
             expect(error).to.equal(null);
             expect(results[1].username).to.equal("Bob");
@@ -226,7 +226,7 @@ function describeUsers(db) {
     it("should prevent from updating the password directly", function(done){
         async.series([
             registerBob,
-            Users.update.bind(null, "Bob", {password: "newpassword"}),
+            userService.update.bind(null, "Bob", {password: "newpassword"}),
         ], function (error, results) {
             expect(error.message).to.equal("use updatePassword() to update password");
             done();
@@ -236,7 +236,7 @@ function describeUsers(db) {
     it("should prevent from updating the hash directly", function(done){
         async.series([
             registerBob,
-            Users.update.bind(null, "Bob", {hash: "XYZ"}),
+            userService.update.bind(null, "Bob", {hash: "XYZ"}),
         ], function (error, results) {
             expect(error.message).to.equal("cannot update hash or salt fields");
             done();
@@ -246,7 +246,7 @@ function describeUsers(db) {
     it("should prevent from updating the salt directly", function(done){
         async.series([
             registerBob,
-            Users.update.bind(null, "Bob", {salt: "XYZ"}),
+            userService.update.bind(null, "Bob", {salt: "XYZ"}),
         ], function (error, results) {
             expect(error.message).to.equal("cannot update hash or salt fields");
             done();
@@ -256,7 +256,7 @@ function describeUsers(db) {
     it("should allow to get users (success case)", function(done){
         async.series([
             registerBob,
-            Users.get.bind(null, "Bob")
+            userService.get.bind(null, "Bob")
         ], function (error, results) {
             expect(error).to.equal(null);
             expect(results[1].username).to.equal("Bob");
@@ -269,7 +269,7 @@ function describeUsers(db) {
         async.series([
             registerBob,
             registerAlice,
-            Users.toArray.bind(null)
+            userService.toArray.bind(null)
         ], function (error, results) {
             expect(error).to.equal(null);
             expect(results[2][0].username).to.equal("Bob");
@@ -281,8 +281,8 @@ function describeUsers(db) {
     it("should allow to update the password (successul authenticate)", function(done){
         async.series([
             registerBob,
-            Users.updatePassword.bind(null, "Bob", "newpassword"),
-            Users.authenticate.bind(null, "Bob", "newpassword")
+            userService.updatePassword.bind(null, "Bob", "newpassword"),
+            userService.authenticate.bind(null, "Bob", "newpassword")
         ], function (error, results) {
             expect(error).to.equal(null);
             done();
@@ -293,9 +293,9 @@ function describeUsers(db) {
         async.series([
             registerBob,
             registerAlice,
-            Users.remove.bind(null, "Bob"),
-            Users.exists.bind(null, "Bob"),
-            Users.exists.bind(null, "Alice")
+            userService.remove.bind(null, "Bob"),
+            userService.exists.bind(null, "Bob"),
+            userService.exists.bind(null, "Alice")
         ], function (error, results) {
             expect(error).to.equal(null);
             expect(results[3]).to.equal(false);
@@ -307,7 +307,7 @@ function describeUsers(db) {
     it("should fail silently when removing non-existing user", function(done){
         async.series([
             registerBob,
-            Users.remove.bind(null, "Alice"),
+            userService.remove.bind(null, "Alice"),
         ], function (error, results) {
             expect(error).to.equal(null);
             done();
@@ -317,8 +317,8 @@ function describeUsers(db) {
     it("should allow to update the password (unsuccessul authenticate)", function(done){
         async.series([
             registerBob,
-            Users.updatePassword.bind(null, "Bob", "newpassword"),
-            Users.authenticate.bind(null, "Bob", "wrongpassword")
+            userService.updatePassword.bind(null, "Bob", "newpassword"),
+            userService.authenticate.bind(null, "Bob", "wrongpassword")
         ], function (error, results) {
             expect(error.message).to.equal("authentication failure");
             done();
