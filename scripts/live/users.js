@@ -6,7 +6,6 @@ var fs = require('fs');
 var async = require('async');
 var crypto = require('crypto');
 var MongoClient = require('mongodb').MongoClient;
-var mongodbUrls = JSON.parse(fs.readFileSync("./mongodb_urls.json", 'utf8'));
 
 function randomPassword() {
     var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
@@ -32,7 +31,7 @@ function getURL(callback) {
             if (error) {
                 return console.log("aborted");
             }
-            var ciphertext = mongodbUrls["live"];
+            var ciphertext = process.env["MONGODB_LIVE_URL"];
             try {
                 var decipher = crypto.createDecipher("aes-128-cbc", password);
                 var cleartext = "";
@@ -45,10 +44,10 @@ function getURL(callback) {
         });
     } else if (program["test"]) {
         console.log("* using TEST db *");
-        callback(mongodbUrls["test"]);
+        callback(process.env["MONGODB_TEST_URL"]);
     } else {
         console.log("* using STAGING db *");
-        callback(mongodbUrls["staging"]);
+        callback(process.env["MONGODB_URL"]);
     }
 }
 
