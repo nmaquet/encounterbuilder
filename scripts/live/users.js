@@ -33,10 +33,14 @@ function getURL(callback) {
                 return console.log("aborted");
             }
             var ciphertext = mongodbUrls["live"];
-            var decipher = crypto.createDecipher("aes-128-cbc", password);
-            var cleartext = "";
-            cleartext += decipher.update(ciphertext, 'base64');
-            cleartext += decipher.final('utf8');
+            try {
+                var decipher = crypto.createDecipher("aes-128-cbc", password);
+                var cleartext = "";
+                cleartext += decipher.update(ciphertext, 'base64');
+                cleartext += decipher.final('utf8');
+            } catch(TypeError) {
+                return console.log("wrong password !");
+            }
             callback(cleartext);
         });
     } else if (program["test"]) {
