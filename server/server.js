@@ -50,6 +50,14 @@ function main(db) {
         }));
     });
 
+    function authenticationCheck(request, response, next) {
+        if (request.session && request.session.user) {
+            next();
+        } else {
+            response.send(401, 'access denied');
+        }
+    }
+
     var authentication = require('./authentication')();
     var metrics = require('./usageMetrics')(collections.metrics);
     var diceService = require('./diceService')();
@@ -77,42 +85,42 @@ function main(db) {
     var contentTreeRoute = require('./contentTreeRoute')(collections.contentTrees);
     var favouritesRoute = require('./favouritesRoute')(collections.favourites);
 
-    app.get('/api/search-monsters', authentication.check, metrics.logSearchMonster, searchMonstersRoute);
-    app.get('/api/search-npcs', authentication.check, metrics.logSearchNpc, searchNpcsRoute);
-    app.get('/api/search-spells', authentication.check, metrics.logSearchSpell, searchSpellsRoute);
-    app.get('/api/search-feats', authentication.check, metrics.logSearchFeat, searchFeatsRoute);
-    app.get('/api/search-magic-items', authentication.check, metrics.logSearchItem, searchMagicItemsRoute);
-    app.get('/api/monster/:id', authentication.check, metrics.logSelectMonster, monsterRoute);
-    app.get('/api/magic-item/:id', authentication.check, metrics.logSelectItem, magicItemRoute);
-    app.get('/api/npc/:id', authentication.check, metrics.logSelectNpc, npcRoute);
-    app.get('/api/spell/:id', authentication.check, metrics.logSelectSpell, spellRoute);
-    app.get('/api/feat/:id', authentication.check, metrics.logSelectFeat, featRoute);
-    app.get('/api/encounter/:id', authentication.check, metrics.logSelectEncounter, encounterRoute.findOne);
-    app.get('/api/user-monster/:id', authentication.check, /* TODO METRICS */ userMonsterRoute.findOne);
-    app.get('/api/user-npc/:id', authentication.check, /* TODO METRICS */ userNpcRoute.findOne);
-    app.get("/api/favourites", authentication.check, favouritesRoute.fetch);
+    app.get('/api/search-monsters', authenticationCheck, metrics.logSearchMonster, searchMonstersRoute);
+    app.get('/api/search-npcs', authenticationCheck, metrics.logSearchNpc, searchNpcsRoute);
+    app.get('/api/search-spells', authenticationCheck, metrics.logSearchSpell, searchSpellsRoute);
+    app.get('/api/search-feats', authenticationCheck, metrics.logSearchFeat, searchFeatsRoute);
+    app.get('/api/search-magic-items', authenticationCheck, metrics.logSearchItem, searchMagicItemsRoute);
+    app.get('/api/monster/:id', authenticationCheck, metrics.logSelectMonster, monsterRoute);
+    app.get('/api/magic-item/:id', authenticationCheck, metrics.logSelectItem, magicItemRoute);
+    app.get('/api/npc/:id', authenticationCheck, metrics.logSelectNpc, npcRoute);
+    app.get('/api/spell/:id', authenticationCheck, metrics.logSelectSpell, spellRoute);
+    app.get('/api/feat/:id', authenticationCheck, metrics.logSelectFeat, featRoute);
+    app.get('/api/encounter/:id', authenticationCheck, metrics.logSelectEncounter, encounterRoute.findOne);
+    app.get('/api/user-monster/:id', authenticationCheck, /* TODO METRICS */ userMonsterRoute.findOne);
+    app.get('/api/user-npc/:id', authenticationCheck, /* TODO METRICS */ userNpcRoute.findOne);
+    app.get("/api/favourites", authenticationCheck, favouritesRoute.fetch);
 
-    app.post('/api/user-data', userDataRoute);
-    app.post('/logout', metrics.logLogout, logoutRoute);
+    app.post('/api/user-data', /* FIXME authenticationCheck ? */ userDataRoute);
+    app.post('/logout', /* FIXME authenticationCheck ? */ metrics.logLogout, logoutRoute);
     app.post("/login", metrics.logLogin, loginRoute);
-    app.post("/api/update-encounter", authentication.check, metrics.logUpdateEncounter, encounterRoute.update);
-    app.post("/api/create-encounter", authentication.check, metrics.logCreateEncounter, encounterRoute.create);
-    app.post("/api/remove-encounter", authentication.check, metrics.logRemoveEncounter, encounterRoute.delete);
-    app.post("/api/generate-encounter-loot", authentication.check, metrics.logGenerateEncounterLoot, encounterRoute.generateLoot);
-    app.post("/api/change-password", authentication.check, changePasswordRoute);
-    app.post("/api/change-user-data", authentication.check, changeUserDataRoute);
-    app.post("/api/save-content-tree", authentication.check, contentTreeRoute.updateContentTree);
-    app.post("/api/save-favourites", authentication.check, favouritesRoute.update);
+    app.post("/api/update-encounter", authenticationCheck, metrics.logUpdateEncounter, encounterRoute.update);
+    app.post("/api/create-encounter", authenticationCheck, metrics.logCreateEncounter, encounterRoute.create);
+    app.post("/api/remove-encounter", authenticationCheck, metrics.logRemoveEncounter, encounterRoute.delete);
+    app.post("/api/generate-encounter-loot", authenticationCheck, metrics.logGenerateEncounterLoot, encounterRoute.generateLoot);
+    app.post("/api/change-password", authenticationCheck, changePasswordRoute);
+    app.post("/api/change-user-data", authenticationCheck, changeUserDataRoute);
+    app.post("/api/save-content-tree", authenticationCheck, contentTreeRoute.updateContentTree);
+    app.post("/api/save-favourites", authenticationCheck, favouritesRoute.update);
 
-    app.post("/api/create-user-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.create);
-    app.post("/api/copy-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.copy);
-    app.post("/api/update-user-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.update);
-    app.post("/api/delete-user-monster", authentication.check, /* TODO METRICS */ userMonsterRoute.delete);
+    app.post("/api/create-user-monster", authenticationCheck, /* TODO METRICS */ userMonsterRoute.create);
+    app.post("/api/copy-monster", authenticationCheck, /* TODO METRICS */ userMonsterRoute.copy);
+    app.post("/api/update-user-monster", authenticationCheck, /* TODO METRICS */ userMonsterRoute.update);
+    app.post("/api/delete-user-monster", authenticationCheck, /* TODO METRICS */ userMonsterRoute.delete);
 
-    app.post("/api/create-user-npc", authentication.check, /* TODO METRICS */ userNpcRoute.create);
-    app.post("/api/copy-npc", authentication.check, /* TODO METRICS */ userNpcRoute.copy);
-    app.post("/api/update-user-npc", authentication.check, /* TODO METRICS */ userNpcRoute.update);
-    app.post("/api/delete-user-npc", authentication.check, /* TODO METRICS */ userNpcRoute.delete);
+    app.post("/api/create-user-npc", authenticationCheck, /* TODO METRICS */ userNpcRoute.create);
+    app.post("/api/copy-npc", authenticationCheck, /* TODO METRICS */ userNpcRoute.copy);
+    app.post("/api/update-user-npc", authenticationCheck, /* TODO METRICS */ userNpcRoute.update);
+    app.post("/api/delete-user-npc", authenticationCheck, /* TODO METRICS */ userNpcRoute.delete);
 
     var APP_JADE_FILES = [
         'feedback-popover',
