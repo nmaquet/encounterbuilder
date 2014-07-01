@@ -4,6 +4,7 @@ var program = require('commander');
 var read = require('read');
 var fs = require('fs');
 var async = require('async');
+var crypto = require('crypto');
 var MongoClient = require('mongodb').MongoClient;
 var mongodbUrls = JSON.parse(fs.readFileSync("./mongodb_urls.json", 'utf8'));
 
@@ -24,21 +25,35 @@ function printUser(user) {
     console.log(JSON.stringify(user, null, 4));
 }
 
-function connect(callback) {
-    var url;
+function getURL(callback) {
     if (program["live"]){
         console.log("* using LIVE db *");
-        url = mongodbUrls["live"];
+        read({ prompt: 'Password: ', silent: true }, function (error, password) {
+            if (error) {
+                return console.log("aborted");
+            }
+            var ciphertext = mongodbUrls["live"];
+            var decipher = crypto.createDecipher("aes-128-cbc", password);
+            var cleartext = "";
+            cleartext += decipher.update(ciphertext, 'base64');
+            cleartext += decipher.final('utf8');
+            callback(cleartext);
+        });
     } else if (program["test"]) {
         console.log("* using TEST db *");
-        url = mongodbUrls["test"];
+        callback(mongodbUrls["test"]);
     } else {
         console.log("* using STAGING db *");
-        url = mongodbUrls["staging"];
+        callback(mongodbUrls["staging"]);
     }
-    MongoClient.connect(url, function (error, db) {
-        var Users = require("../../server/users")(db);
-        callback(Users, db);
+}
+
+function connect(callback) {
+    getURL(function(url) {
+        MongoClient.connect(url, function (error, db) {
+            var Users = require("../../server/users")(db);
+            callback(Users, db);
+        });
     });
 }
 
