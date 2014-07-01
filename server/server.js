@@ -63,6 +63,7 @@ function main(db) {
     var diceService = require('./diceService')();
     var knapsackService = require('./knapsackService')();
     var lootService = require('./loot/lootService')(diceService, knapsackService);
+    var userService = require('./userService')(db);
 
     var searchMonstersRoute = require('./searchMonstersRoute')(collections.monsters,collections.userMonsters, FIND_LIMIT);
     var searchNpcsRoute = require('./searchNpcsRoute')(collections.npcs,collections.userNpcs, FIND_LIMIT);
@@ -76,7 +77,7 @@ function main(db) {
     var npcRoute = require('./npcRoute')(collections.npcs);
     var spellRoute = require('./spellRoute')(collections.spells);
     var featRoute = require('./featRoute')(collections.feats);
-    var loginRoute = require('./loginRoute')(collections.users, authentication.authenticate);
+    var loginRoute = require('./loginRoute')(userService);
     var changePasswordRoute = require('./changePasswordRoute')(collections.users, authentication);
     var changeUserDataRoute = require('./changeUserDataRoute')(collections.users, collections.encounters, authentication);
     var logoutRoute = require('./logoutRoute')();
