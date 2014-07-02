@@ -55,21 +55,21 @@ function describeUsers(db) {
 
     it("should prevent the registration of a user without password", function (done) {
         userService.register({username: "Bob"}, function (error) {
-            expect(error.message).to.equal("missing password");
+            expect(error.message).to.equal("MISSING_PASSWORD");
             done();
         });
     });
 
     it("should prevent the registration of a user without email", function (done) {
         userService.register({username: "Bob", password: "password"}, function (error) {
-            expect(error.message).to.equal("missing email");
+            expect(error.message).to.equal("MISSING_EMAIL");
             done();
         });
     });
 
     it("should prevent the registration of a user without username", function (done) {
         userService.register({}, function (error) {
-            expect(error.message).to.equal("missing username");
+            expect(error.message).to.equal("MISSING_USERNAME");
             done();
         });
     });
@@ -79,7 +79,7 @@ function describeUsers(db) {
             registerBob,
             userService.register.bind(null, {username: "BOB", password: "password", email: "bob@bob.com"})
         ], function (error) {
-            expect(error.message).to.equal("username exists");
+            expect(error.message).to.equal("USERNAME_ALREADY_EXISTS");
             done();
         });
     });
@@ -89,7 +89,7 @@ function describeUsers(db) {
             registerBob,
             userService.register.bind(null, {username: "OtherBob", password: "password", email: "BOB@bob.com"})
         ], function (error, results) {
-            expect(error.message).to.equal("email exists");
+            expect(error.message).to.equal("EMAIL_ALREADY_EXISTS");
             done();
         });
     });
@@ -149,7 +149,7 @@ function describeUsers(db) {
             registerAlice,
             userService.update.bind(null, "Bob", {username: "ALICE"}),
         ], function (error, results) {
-            expect(error.message).to.equal("username exists");
+            expect(error.message).to.equal("USERNAME_ALREADY_EXISTS");
             done();
         });
     });
@@ -160,7 +160,7 @@ function describeUsers(db) {
             registerAlice,
             userService.update.bind(null, "Bob", {email: "ALICE@alice.com"}),
         ], function (error, results) {
-            expect(error.message).to.equal("email exists");
+            expect(error.message).to.equal("EMAIL_ALREADY_EXISTS");
             done();
         });
     });
@@ -170,7 +170,7 @@ function describeUsers(db) {
             registerBob,
             userService.update.bind(null, "Alice", {email: "alice@alice.com"}),
         ], function (error, results) {
-            expect(error.message).to.equal("user does not exist");
+            expect(error.message).to.equal("USER_DOES_NOT_EXIST");
             done();
         });
     });
@@ -195,7 +195,7 @@ function describeUsers(db) {
             registerBob,
             userService.authenticate.bind(null, "Bob", "wrongpassword")
         ], function (error, results) {
-            expect(error.message).to.equal("authentication failure");
+            expect(error.message).to.equal("WRONG_PASSWORD");
             expect(results[1]).to.equal(null);
             done();
         });
@@ -228,7 +228,7 @@ function describeUsers(db) {
             registerBob,
             userService.update.bind(null, "Bob", {password: "newpassword"}),
         ], function (error, results) {
-            expect(error.message).to.equal("use updatePassword() to update password");
+            expect(error.message).to.equal("USE_UPDATEPASSWORD_TO_UPDATE_PASSWORD");
             done();
         });
     });
@@ -238,7 +238,7 @@ function describeUsers(db) {
             registerBob,
             userService.update.bind(null, "Bob", {hash: "XYZ"}),
         ], function (error, results) {
-            expect(error.message).to.equal("cannot update hash or salt fields");
+            expect(error.message).to.equal("CANNOT_UPDATE_HASH_OR_SALT_FIELDS");
             done();
         });
     });
@@ -248,7 +248,7 @@ function describeUsers(db) {
             registerBob,
             userService.update.bind(null, "Bob", {salt: "XYZ"}),
         ], function (error, results) {
-            expect(error.message).to.equal("cannot update hash or salt fields");
+            expect(error.message).to.equal("CANNOT_UPDATE_HASH_OR_SALT_FIELDS");
             done();
         });
     });
@@ -320,7 +320,7 @@ function describeUsers(db) {
             userService.updatePassword.bind(null, "Bob", "newpassword"),
             userService.authenticate.bind(null, "Bob", "wrongpassword")
         ], function (error, results) {
-            expect(error.message).to.equal("authentication failure");
+            expect(error.message).to.equal("WRONG_PASSWORD");
             done();
         });
     });
