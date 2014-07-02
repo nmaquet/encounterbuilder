@@ -136,7 +136,12 @@ function update(username, fields, callback) {
             if (!result) {
                 return callback(new Error("USER_DOES_NOT_EXIST"));
             }
-            callback(null);
+            if (!fields.username) {
+                return callback(null);
+            }
+            contentTreeCollection.update({username: username}, {$set: {username: fields.username} }, function(error) {
+                callback(error);
+            });
         });
     });
 }

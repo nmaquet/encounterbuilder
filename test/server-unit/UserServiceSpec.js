@@ -379,5 +379,17 @@ function describeUsers(db) {
             done();
         });
     });
+
+    it("should update the contenttree username if the username changes", function (done) {
+        async.series([
+            registerBob,
+            userService.update.bind(null, "Bob", {username: "William"}),
+            getContentTree.bind(null, db, "William")
+        ], function (error, results) {
+            expect(error).to.equal(null);
+            expect(results[2].username).to.equal("William");
+            done();
+        });
+    });
 }
 
