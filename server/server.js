@@ -58,7 +58,6 @@ function main(db) {
         }
     }
 
-    var authentication = require('./authentication')();
     var metrics = require('./usageMetrics')(collections.metrics);
     var diceService = require('./diceService')();
     var knapsackService = require('./knapsackService')();
