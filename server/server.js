@@ -80,7 +80,7 @@ function main(db) {
     var changePasswordRoute = require('./changePasswordRoute')(userService);
     var changeUserDataRoute = require('./changeUserDataRoute')(userService, collections.encounters);
     var logoutRoute = require('./logoutRoute')();
-    var userDataRoute = require('./userDataRoute')(collections.contentTrees, collections.users);
+    var userDataRoute = require('./userDataRoute')(collections.contentTrees, userService);
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
     var contentTreeRoute = require('./contentTreeRoute')(collections.contentTrees);
     var favouritesRoute = require('./favouritesRoute')(collections.favourites);

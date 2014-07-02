@@ -2,14 +2,13 @@
 
 var async = require("async");
 
-module.exports = function (contentTreesCollection, userCollection) {
+module.exports = function (contentTreesCollection, userService) {
     return function (request, response) {
         if (request.session && request.session.user) {
             var username = request.session.user.username;
             async.parallel([
                 function (callback) {
-                    var options = {fields: {username: 1, email: 1, fullname: 1, _id: 0}};
-                    userCollection.findOne({username: username}, options, function (error, user) {
+                    userService.get(username, function (error, user) {
                         callback(error, user);
                     });
                 },
@@ -25,7 +24,11 @@ module.exports = function (contentTreesCollection, userCollection) {
                 }
                 else {
                     var userData = {
-                        user: results[0],
+                        user: {
+                            username: results[0].username,
+                            email: results[0].email,
+                            fullname : results[0].fullname
+                        },
                         contentTree: results[1]
                     };
                     response.json(userData);
