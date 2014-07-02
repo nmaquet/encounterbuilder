@@ -79,7 +79,7 @@ function main(db) {
     var featRoute = require('./featRoute')(collections.feats);
     var loginRoute = require('./loginRoute')(userService);
     var changePasswordRoute = require('./changePasswordRoute')(userService);
-    var changeUserDataRoute = require('./changeUserDataRoute')(collections.users, collections.encounters, authentication);
+    var changeUserDataRoute = require('./changeUserDataRoute')(userService, collections.encounters);
     var logoutRoute = require('./logoutRoute')();
     var userDataRoute = require('./userDataRoute')(collections.contentTrees, collections.users);
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
