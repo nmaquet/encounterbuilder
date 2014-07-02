@@ -8,6 +8,7 @@ var crypto = require('crypto');
 
 var userCollection = null;
 var contentTreeCollection = null;
+var encounterCollection = null;
 
 var escapeRegExp = require('./utils')().escapeRegExp;
 
@@ -140,7 +141,12 @@ function update(username, fields, callback) {
                 return callback(null);
             }
             contentTreeCollection.update({username: username}, {$set: {username: fields.username} }, function(error) {
-                callback(error);
+                if (error) {
+                    return callback(error);
+                }
+                encounterCollection.update({username: username}, {$set: {username: fields.username} }, {multi : 1}, function(error) {
+                    return callback(error);
+                });
             });
         });
     });
@@ -177,6 +183,7 @@ function remove(username, callback) {
 module.exports = function (database) {
     userCollection = database.collection("users");
     contentTreeCollection = database.collection("contenttrees");
+    encounterCollection = database.collection("encounters");
     return {
         exists: exists,
         register: register,

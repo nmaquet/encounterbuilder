@@ -30,6 +30,14 @@ function getContentTree(db, username, callback) {
     db.collection("contenttrees").findOne({username:username}, callback);
 }
 
+function createEncounter(db, username, callback) {
+    db.collection("encounters").insert({username:username}, callback);
+}
+
+function getEncounters(db, username, callback) {
+    db.collection("encounters").find({username:username}).toArray(callback);
+}
+
 function describeUsers(db) {
 
     beforeEach(function (done) {
@@ -37,7 +45,12 @@ function describeUsers(db) {
             if (error) {
                 return done(error);
             }
-            db.collection("contenttrees").remove({}, done);
+            db.collection("contenttrees").remove({}, function(error){
+                if (error) {
+                    return done(error);
+                }
+                db.collection("encounters").remove({}, done);
+            });
         });
     });
 
@@ -388,6 +401,22 @@ function describeUsers(db) {
         ], function (error, results) {
             expect(error).to.equal(null);
             expect(results[2].username).to.equal("William");
+            done();
+        });
+    });
+
+    it("should update the encounters username if the username changes", function (done) {
+        async.series([
+            registerBob,
+            createEncounter.bind(null, db, "Bob"),
+            createEncounter.bind(null, db, "Bob"),
+            userService.update.bind(null, "Bob", {username: "William"}),
+            getEncounters.bind(null, db, "William")
+        ], function (error, results) {
+            expect(error).to.equal(null);
+            expect(results[4].length).to.equal(2);
+            expect(results[4][0].username).to.equal("William");
+            expect(results[4][1].username).to.equal("William");
             done();
         });
     });
