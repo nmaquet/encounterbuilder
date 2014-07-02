@@ -43,7 +43,7 @@
         mouseEvent.initMouseEvent("mousemove", true, true, window, 1,
             touch.screenX, touch.screenY, touch.clientX, touch.clientY-yOffset,
             false, false, false, false, 0, null);
-        document.elementFromPoint(touch.clientX, touch.clientY+yOffset).dispatchEvent(mouseEvent);
+        document.elementFromPoint(touch.clientX, touch.clientY-yOffset).dispatchEvent(mouseEvent);
     }
 
     function simulateMouseMoveAroundEvent(event) {
@@ -57,13 +57,27 @@
         }
     }
 
+    function focusFancyTreeNodeUnderEvent(event) {
+        var touch = event.changedTouches[0];
+        var htmlElement = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (htmlElement) {
+            var node = $.ui.fancytree.getNode(htmlElement);
+            if (node) {
+                node.setFocus(true);
+            }
+        }
+    }
+
+    var touchEventCounter = 0;
+
     var stateMachine = {
         IDLE: {
             touchstart: function (event) {
+                var myTouchEventCounter = touchEventCounter;
                 simulateMouseEvent(event);
                 gotoState("WAIT");
                 setTimeout(function () {
-                    if (state === "WAIT") {
+                    if (state === "WAIT" && touchEventCounter === myTouchEventCounter) {
                         gotoState("SIMULATE");
                         simulateMouseMoveAroundEvent(event);
                     }
@@ -100,11 +114,13 @@
                 simulateMouseEvent(event);
                 gotoState("IDLE")      ;
                 event.preventDefault();
+                focusFancyTreeNodeUnderEvent(event);
             },
             touchcancel: function (event) {
                 simulateMouseEvent(event);
                 gotoState("IDLE")      ;
                 event.preventDefault();
+                focusFancyTreeNodeUnderEvent(event);
             }
         }
     };
@@ -121,6 +137,7 @@
             gotoState("IDLE");
             return;
         }
+        ++touchEventCounter;
         if (stateMachine[state][event.type]) {
             stateMachine[state][event.type](event);
         }

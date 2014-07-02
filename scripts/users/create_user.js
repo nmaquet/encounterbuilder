@@ -43,7 +43,7 @@ function main(db) {
             email: email,
             salt: salt,
             hash: hash
-        }
+        };
         console.log(JSON.stringify({username: username, email: email, password: password}));
         User.create(user, function (error) {
             if (error) {
