@@ -7,6 +7,7 @@ var async = require("async");
 var crypto = require('crypto');
 
 var userCollection = null;
+var contentTreeCollection = null;
 
 var escapeRegExp = require('./utils')().escapeRegExp;
 
@@ -93,7 +94,9 @@ function register(fields, callback) {
                 user[property] = fields[property];
             }
             userCollection.insert(user, function (error, result) {
-                callback(error, result[0]);
+                contentTreeCollection.insert({ username:user.username, tree: [] }, function(error) {
+                    callback(error, result[0]);
+                });
             });
         });
     });
@@ -168,6 +171,7 @@ function remove(username, callback) {
 
 module.exports = function (database) {
     userCollection = database.collection("users");
+    contentTreeCollection = database.collection("contenttrees");
     return {
         exists: exists,
         register: register,

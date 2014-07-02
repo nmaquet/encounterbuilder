@@ -26,10 +26,19 @@ function registerAlice(callback) {
     userService.register({username: "Alice", password: "password", email: "alice@alice.com", age: 22}, callback);
 }
 
+function getContentTree(db, username, callback) {
+    db.collection("contenttrees").findOne({username:username}, callback);
+}
+
 function describeUsers(db) {
 
     beforeEach(function (done) {
-        db.collection("users").remove({}, done);
+        db.collection("users").remove({}, function (error) {
+            if (error) {
+                return done(error);
+            }
+            db.collection("contenttrees").remove({}, done);
+        });
     });
 
     it("should detect non existing users", function (done) {
@@ -355,6 +364,18 @@ function describeUsers(db) {
             userService.authenticate.bind(null, "Bob", "wrongpassword")
         ], function (error, results) {
             expect(error.message).to.equal("WRONG_PASSWORD");
+            done();
+        });
+    });
+
+    it("should create an empty contenttree after registering", function (done) {
+        async.series([
+            registerBob,
+            getContentTree.bind(null, db, "Bob")
+        ], function (error, results) {
+            expect(error).to.equal(null);
+            expect(results[1].username).to.equal("Bob");
+            expect(results[1].tree).to.deep.equal([]);
             done();
         });
     });
