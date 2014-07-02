@@ -144,7 +144,7 @@ function update(username, fields, callback) {
                 if (error) {
                     return callback(error);
                 }
-                encounterCollection.update({username: username}, {$set: {username: fields.username} }, {multi : 1}, function(error) {
+                encounterCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi : true}, function(error) {
                     return callback(error);
                 });
             });

@@ -31,11 +31,11 @@ function getContentTree(db, username, callback) {
 }
 
 function createEncounter(db, username, callback) {
-    db.collection("encounters").insert({username:username}, callback);
+    db.collection("encounters").insert({Username:username}, callback);
 }
 
 function getEncounters(db, username, callback) {
-    db.collection("encounters").find({username:username}).toArray(callback);
+    db.collection("encounters").find({Username:username}).toArray(callback);
 }
 
 function describeUsers(db) {
@@ -415,8 +415,8 @@ function describeUsers(db) {
         ], function (error, results) {
             expect(error).to.equal(null);
             expect(results[4].length).to.equal(2);
-            expect(results[4][0].username).to.equal("William");
-            expect(results[4][1].username).to.equal("William");
+            expect(results[4][0].Username).to.equal("William");
+            expect(results[4][1].Username).to.equal("William");
             done();
         });
     });
