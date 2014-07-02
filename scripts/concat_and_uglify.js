@@ -21,6 +21,7 @@ var jsFiles = [
     "client/private/bower_components/fancytree/dist/jquery.fancytree-all.js",
     "client/private/bower_components/tinymce/tinymce.min.js",
     "client/private/bower_components/tinymce/themes/modern/theme.min.js",
+    "client/private/bower_components/tinymce/plugins/fullscreen/plugin.js",
     "client/private/bower_components/angular-ui-tinymce/src/tinymce.js",
     "client/private/angular-ui/ui-bootstrap-0.10.0.js",
     "client/private/angular-ui/ui-bootstrap-tpls-0.10.0.js",
@@ -52,6 +53,7 @@ var jsFiles = [
     "client/private/js/controllers/binder-controller.js",
     "client/private/js/controllers/user-monster-controller.js",
     "client/private/js/controllers/user-npc-controller.js",
+    "client/private/js/controllers/user-text-controller.js",
     "client/private/js/controllers/loot-generator-controller.js",
     "client/private/js/directives/click-to-edit.js",
     "client/private/js/directives/confirm-click.js",
@@ -83,6 +85,7 @@ var jsFiles = [
     "client/private/js/services/viewport-service.js",
     "client/private/js/services/user-monster-service.js",
     "client/private/js/services/user-npc-service.js",
+    "client/private/js/services/user-text-service.js",
     "client/private/js/services/favourite-service.js",
     "client/private/js/services/location-service.js"
 ];

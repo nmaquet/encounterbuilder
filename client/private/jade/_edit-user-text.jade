@@ -1,0 +1,32 @@
+mixin labeledInput(name, model, placeholder)
+    .form-group
+        label.col-xs-2.control-label= name + ':'
+        .col-xs-10
+            input.form-control(type=text, name=name, placeholder=placeholder, ng-model=model)
+mixin labeledInputInline(name, model, placeholder)
+    .form-group
+        label= name + ':'
+        input.form-control(type=text, name=name, placeholder=placeholder, ng-model=model)
+mixin labeledTextArea(name, model, rows, placeholder)
+    .form-group
+        label.col-xs-2.control-label= name + ':'
+        .col-xs-10
+            textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model)
+mixin fullWidthTextArea(name, model, rows, placeholder)
+    .form-group
+        textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model, ui-tinymce="tinymceOptions")
+
+.row.l-section.result-content
+    .col-xxs-12.col-xs-12
+        button.btn.btn-danger.pull-right(type="submit" ng-click="viewUserMonster()" ng-class="{'btn-small' : viewport.xs}") Done
+    .col-xxs-12.col-xs-12
+        .row
+            .col-xs-12.cat.decor
+                legend.t-legend.t-title General
+                form.form-horizontal(role="form")
+                    +labeledInput('Title', 'userText.title', 'e.g. The goblin covenant')
+                    +labeledTextArea('Synopsis', 'userText.synopsis', 'e.g. In this scene our anti-heroes must accomplish the impossible, unify the goblin tribes to strike against Sandpoint...')
+            .col-xs-12.cat.decor
+                legend.t-legend.t-title Content
+                form.form-horizontal(role="form")
+                +fullWidthTextArea("Content", "userText.Content", 20, "")

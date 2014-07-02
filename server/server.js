@@ -56,8 +56,8 @@ function main(db) {
     var knapsackService = require('./knapsackService')();
     var lootService = require('./loot/lootService')(diceService, knapsackService);
 
-    var searchMonstersRoute = require('./searchMonstersRoute')(collections.monsters,collections.userMonsters, FIND_LIMIT);
-    var searchNpcsRoute = require('./searchNpcsRoute')(collections.npcs,collections.userNpcs, FIND_LIMIT);
+    var searchMonstersRoute = require('./searchMonstersRoute')(collections.monsters, collections.userMonsters, FIND_LIMIT);
+    var searchNpcsRoute = require('./searchNpcsRoute')(collections.npcs, collections.userNpcs, FIND_LIMIT);
     var searchMagicItemsRoute = require('./searchMagicItemsRoute')(collections.magicitems, FIND_LIMIT);
     var searchSpellsRoute = require('./searchSpellsRoute')(collections.spells, FIND_LIMIT);
     var searchFeatsRoute = require('./searchFeatsRoute')(collections.feats, FIND_LIMIT);
@@ -125,6 +125,8 @@ function main(db) {
         'edit-user-monster',
         'user-npc',
         'edit-user-npc',
+        'user-text',
+        'edit-user-text',
         'npc',
         'item',
         'spell',

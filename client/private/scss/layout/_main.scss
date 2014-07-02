@@ -5,7 +5,20 @@
 .l-main {
 }
 
-html, body {font-size: 62.5%; height: 100%; min-height: 100%; }
+div.mce-fullscreen {
+  position: fixed;
+  top: 50px;
+  left: 300px;
+  right: 50px;
+  bottom: 50px;
+}
+
+html, body {
+  font-size: 62.5%;
+  height: 100%;
+  min-height: 100%;
+}
+
 #wrapper {
   height: 100%;
   min-height: 100%;
@@ -24,12 +37,13 @@ html, body {font-size: 62.5%; height: 100%; min-height: 100%; }
   padding-left: 0;
   @media (min-width: $screen-sm-min) { padding-left: ($grid-gutter-width/2); }
 }*/
-.l-tab-content{
+.l-tab-content {
   &:before, &:after {
     content: " ";
     display: table;
   }
 }
+
 .l-app-content {
   margin-bottom: $grid-gutter-width;
   @include font-size(14);
@@ -37,10 +51,15 @@ html, body {font-size: 62.5%; height: 100%; min-height: 100%; }
   @media (min-width: $screen-sm-min) {
     padding-left: $grid-gutter-width;
     padding-right: $grid-gutter-width;
-    &.no-padding-left { padding-left: 0; }
-    &.no-padding-right { padding-right: 0; }
+    &.no-padding-left {
+      padding-left: 0;
+    }
+    &.no-padding-right {
+      padding-right: 0;
+    }
   }
 }
+
 .l-encounter-well-container, .l-filters {
   @media (max-width: $screen-xs-max) {
     //max-width: 320px;
@@ -51,16 +70,22 @@ html, body {font-size: 62.5%; height: 100%; min-height: 100%; }
     position: relative;
   }*/
 }
+
 .l-tabs-container {
-  @media (min-width: $screen-sm-min) { padding-left: 0; }
+  @media (min-width: $screen-sm-min) {
+    padding-left: 0;
+  }
 }
+
 .l-section {
   overflow: hidden;
   background-color: $grey-light;
   &.sidebar-nav, &.result-list {
     padding-top: ($grid-gutter-width/2);
     padding-bottom: ($grid-gutter-width/2);
-    @media (min-width: $screen-sm-min) { margin-right: 0; }
+    @media (min-width: $screen-sm-min) {
+      margin-right: 0;
+    }
   }
 }
 
@@ -75,7 +100,7 @@ html, body {font-size: 62.5%; height: 100%; min-height: 100%; }
 }
 
 .prevent-scrolling {
-  max-width:100% !important;
-  max-height:100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
   overflow: hidden !important;
 }
