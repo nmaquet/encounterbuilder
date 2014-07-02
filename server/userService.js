@@ -113,7 +113,7 @@ function update(username, fields, callback) {
         return callback(new Error("CANNOT_UPDATE_HASH_OR_SALT_FIELDS"));
     }
     var query = { $or: [] };
-    if (fields.username) {
+    if (fields.username && !caseInsensitive(fields.username).test(username)) {
         query.$or.push({username: caseInsensitive(fields.username)});
     }
     if (fields.email) {

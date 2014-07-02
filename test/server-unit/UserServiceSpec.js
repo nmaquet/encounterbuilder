@@ -129,6 +129,28 @@ function describeUsers(db) {
         });
     });
 
+    it("should allow updating of username to same username", function (done) {
+        async.series([
+            registerBob,
+            userService.update.bind(null, "Bob", {username: "Bob"})
+        ], function (error, results) {
+            expect(error).to.equal(null);
+            done();
+        });
+    });
+
+    it("should allow updating of username to same username with different case", function (done) {
+        async.series([
+            registerBob,
+            userService.update.bind(null, "Bob", {username: "BOB"}),
+            userService.get.bind(null,"BOB")
+        ], function (error, results) {
+            expect(error).to.equal(null);
+            expect(results[2].username).to.equal("BOB");
+            done();
+        });
+    });
+
     it("should allow updating of metadata", function (done) {
         async.series([
             registerBob,
