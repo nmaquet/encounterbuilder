@@ -112,12 +112,13 @@ function update(username, fields, callback) {
     if (fields.hash || fields.salt) {
         return callback(new Error("CANNOT_UPDATE_HASH_OR_SALT_FIELDS"));
     }
-    var query = { $or: [] };
-    if (fields.username && !caseInsensitive(fields.username).test(username)) {
-        query.$or.push({username: caseInsensitive(fields.username)});
+    var disjunction = [];
+    var query = { $and : [ { username: { $ne: username } }, { $or: disjunction } ] };
+    if (fields.username) {
+        disjunction.push({username: caseInsensitive(fields.username)});
     }
     if (fields.email) {
-        query.$or.push({email: caseInsensitive(fields.email)});
+        disjunction.push({email: caseInsensitive(fields.email)});
     }
     userCollection.findOne(query, function(error, result) {
         if (result && caseInsensitive(result.username).test(fields.username)) {

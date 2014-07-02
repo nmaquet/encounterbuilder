@@ -151,6 +151,18 @@ function describeUsers(db) {
         });
     });
 
+    it("should allow updating of email to same email with different case", function (done) {
+        async.series([
+            registerBob,
+            userService.update.bind(null, "Bob", {email: "BOB@bob.com"}),
+            userService.get.bind(null,"Bob")
+        ], function (error, results) {
+            expect(error).to.equal(null);
+            expect(results[2].email).to.equal("BOB@bob.com");
+            done();
+        });
+    });
+
     it("should allow updating of metadata", function (done) {
         async.series([
             registerBob,
