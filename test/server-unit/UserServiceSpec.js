@@ -441,25 +441,5 @@ function describeUsers(db) {
             done();
         });
     });
-
-    it("should create an empty favourite tree at registering", function (done) {
-        registerBob(function(error, bob){
-            expect(error).to.equal(null);
-            expect(bob.favouriteTree).to.deep.equal([]);
-            done();
-        });
-    });
-
-    it("should update the favouriteTree", function (done) {
-        async.series([
-            registerBob,
-            userService.updateFavouriteTree.bind(null, "Bob", ["yada1", "yada2"]),
-            userService.get.bind(null, "Bob")
-        ], function (error, results) {
-            expect(error).to.equal(null);
-            expect(results[2].favouriteTree).to.deep.equal(["yada1", "yada2"]);
-            done();
-        });
-    });
 }
 

@@ -175,7 +175,6 @@ function generateEncounterNonNPCLoot(budget, lootType) {
         H: generateTypeHLoot,
         I: generateTypeILoot
     };
-    console.log(lootType);
     return generateLoot[lootType](budget);
 };
 
