@@ -8,7 +8,7 @@
             span.binder-name.is-pointer(click-to-edit='binder.Name', on-save="binderChanged()")
 
     .encounter-dropdown-container( pending="pending")
-        article.col-sm-6.col-md-4.col-lg-3.leaf(ng-repeat='leaf in leaves')
+        article.col-sm-6.col-md-4.col-lg-4.leaf(ng-repeat='leaf in leaves')
             .l-section.encounter-well.gradient.l-shadow(ng-show="'encounter' === leaf.type")
                 include _encounter-ro
             .l-section.encounter-well.gradient.l-shadow(ng-show="'binder' === leaf.type")
@@ -21,10 +21,10 @@
                         h3.t-title.t-binder-title
                             a.binder-name.is-pointer(ng-click="selectLeaf(leaf)")
                                 | {{leaf.Name}}
-            .l-section.encounter-well.gradient.l-shadow(ng-show="'text' === leaf.type")
-                .row.heading.result-heading
-                    .col-xxs-8.col-xs-8.col-lg-9.name-container
-                        h2.t-title.t-title-result {{leaf.title}}
-                .row.l-section.result-content
-                    .col-xxs-12.col-xs-12.cat
-                        p.intro.underlined {{leaf.synopsis}}
+            .l-section.encounter-well.gradient.l-shadow(ng-show="'userText' === leaf.type")
+                header.heading.col-sm-12
+                    h4.t-title.t-binder-title
+                        a.binder-name.is-pointer(ng-click="selectLeaf(leaf)")
+                            | {{leaf.title}}
+                .content
+                    p.underlined {{leaf.synopsis}}
