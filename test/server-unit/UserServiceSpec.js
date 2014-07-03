@@ -454,5 +454,23 @@ function describeUsers(db) {
         });
     });
 
+    it("should remove encounters when removing the user", function (done) {
+        async.series([
+            registerBob,
+            createEncounter.bind(null, db, "Bob"),
+            createEncounter.bind(null, db, "Bob"),
+            userService.remove.bind(null, "Bob"),
+            getEncounters.bind(null, db, "Bob")
+        ], function (error, results) {
+            expect(error).to.equal(null);
+            expect(results[4].length).to.equal(0);
+            done();
+        });
+    });
+
+    /* remove favourites */
+    
+    /* remove contenttree */
+
 }
 

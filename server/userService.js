@@ -186,7 +186,14 @@ function updatePassword(username, password, callback) {
 }
 
 function remove(username, callback) {
-    userCollection.remove({username: username}, callback);
+    userCollection.remove({username: username}, function (error) {
+        if (error) {
+            return callback(error);
+        }
+        encounterCollection.remove({Username: username}, function (error) {
+            callback(error);
+        });
+    });
 }
 
 module.exports = function (database) {
