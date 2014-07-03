@@ -38,6 +38,10 @@ function getEncounters(db, username, callback) {
     db.collection("encounters").find({Username:username}).toArray(callback);
 }
 
+function getFavourites(db, username, callback) {
+    db.collection("favourites").findOne({username:username}, callback);
+}
+
 function describeUsers(db) {
 
     beforeEach(function (done) {
@@ -49,7 +53,12 @@ function describeUsers(db) {
                 if (error) {
                     return done(error);
                 }
-                db.collection("encounters").remove({}, done);
+                db.collection("favourites").remove({}, function(error){
+                    if (error) {
+                        return done(error);
+                    }
+                    db.collection("encounters").remove({}, done);
+                });
             });
         });
     });
@@ -389,6 +398,18 @@ function describeUsers(db) {
             expect(error).to.equal(null);
             expect(results[1].username).to.equal("Bob");
             expect(results[1].tree).to.deep.equal([]);
+            done();
+        });
+    });
+
+    it("should create an empty favourite tree after registering", function (done) {
+        async.series([
+            registerBob,
+            getFavourites.bind(null, db, "Bob")
+        ], function (error, results) {
+            expect(error).to.equal(null);
+            expect(results[1].username).to.equal("Bob");
+            expect(results[1].favourites).to.deep.equal([]);
             done();
         });
     });

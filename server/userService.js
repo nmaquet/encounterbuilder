@@ -9,6 +9,7 @@ var crypto = require('crypto');
 var userCollection = null;
 var contentTreeCollection = null;
 var encounterCollection = null;
+var favouritesCollection = null;
 
 var escapeRegExp = require('./utils')().escapeRegExp;
 
@@ -96,8 +97,16 @@ function register(fields, callback) {
                 user[property] = fields[property];
             }
             userCollection.insert(user, function (error, result) {
+                if (error) {
+                    return callback(error);
+                }
                 contentTreeCollection.insert({ username:user.username, tree: [] }, function(error) {
-                    callback(error, result[0]);
+                    if (error) {
+                        return callback(error);
+                    }
+                    favouritesCollection.insert({ username:user.username, favourites: [] }, function(error) {
+                        callback(error, result[0]);
+                    });
                 });
             });
         });
@@ -183,6 +192,7 @@ function remove(username, callback) {
 module.exports = function (database) {
     userCollection = database.collection("users");
     contentTreeCollection = database.collection("contenttrees");
+    favouritesCollection = database.collection("favourites");
     encounterCollection = database.collection("encounters");
     return {
         exists: exists,
