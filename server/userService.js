@@ -158,22 +158,17 @@ function toArray(callback) {
 }
 
 function updatePassword(username, password, callback) {
-    userCollection.findOne({username: username}, function(error, result) {
-        if (error || !result) {
+    hashPassword(password, function (error, salt, hash) {
+        if (error) {
             return callback(new Error("UPDATE_PASSWORD_FAILED"));
         }
-        hashPassword(password, function (error, salt, hash) {
-            if (error) {
-                return callback(new Error("UPDATE_PASSWORD_FAILED"));
+        var update = {
+            $set: {
+                hash: "" + hash,
+                salt: "" + salt
             }
-            var update = {
-                $set: {
-                    hash: "" + hash,
-                    salt: "" + salt
-                }
-            };
-            userCollection.update(result, update, callback);
-        });
+        };
+        userCollection.update({username: username}, update, callback);
     });
 }
 
