@@ -153,8 +153,13 @@ function update(username, fields, callback) {
                 if (error) {
                     return callback(error);
                 }
-                encounterCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi : true}, function(error) {
-                    return callback(error);
+                favouritesCollection.update({username: username}, {$set: {username: fields.username} }, function(error) {
+                    if (error) {
+                        return callback(error);
+                    }
+                    encounterCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi : true}, function(error) {
+                        return callback(error);
+                    });
                 });
             });
         });
