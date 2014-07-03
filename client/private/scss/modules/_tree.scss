@@ -10,7 +10,7 @@
     margin-left: auto;
     margin-right: auto;
     @media (min-width: $screen-sm) {
-      min-height: 310px;
+      //min-height: 310px;
       max-width: 100%;
     }
   }
@@ -19,4 +19,5 @@
 .leaf {
   overflow: hidden;
   margin-bottom: ($grid-gutter-width/2);
+  .content { @include font-size(16); }
 }

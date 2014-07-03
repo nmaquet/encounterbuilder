@@ -35,6 +35,9 @@
       line-height: 0;
     }
   }
+  .binder-heading {
+    background-color: $red-transparent;
+  }
   .content {
     padding-top: ($grid-gutter-width/4);
     padding-bottom: ($grid-gutter-width/4);
