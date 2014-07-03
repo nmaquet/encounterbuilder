@@ -86,7 +86,8 @@ function register(fields, callback) {
                 username: "" + fields.username,
                 email: "" + fields.email,
                 hash: "" + hash,
-                salt: "" + salt
+                salt: "" + salt,
+                favouriteTree: []
             };
             delete fields.password;
             for (var property in fields) {

@@ -420,5 +420,13 @@ function describeUsers(db) {
             done();
         });
     });
+
+    it("should create an empty favourite tree at registering", function (done) {
+        registerBob(function(error, bob){
+            expect(error).to.equal(null);
+            expect(bob.favouriteTree).to.deep.equal([]);
+            done();
+        });
+    });
 }
 
