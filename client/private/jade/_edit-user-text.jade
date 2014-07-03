@@ -21,12 +21,15 @@ mixin fullWidthTextArea(name, model, rows, placeholder)
         button.btn.btn-danger.pull-right(type="submit" ng-click="viewUserText()" ng-class="{'btn-small' : viewport.xs}") Done
     .col-xxs-12.col-xs-12
         .row
-            .col-xs-12.cat.decor
+            .col-xs-12.cat.decor(ng-hide="expanded")
                 legend.t-legend.t-title General
                 form.form-horizontal(role="form")
                     +labeledInput('Title', 'userText.title', 'e.g. The goblin covenant')
                     +labeledTextArea('Synopsis', 'userText.synopsis',5, 'e.g. In this scene our anti-heroes must accomplish the impossible, unify the goblin tribes to strike against Sandpoint...')
             .col-xs-12.cat.decor
+                .pull-right
+                    a.is-pointer(ng-click="toggleExpanded()")
+                        i.fa.fa-expand
                 legend.t-legend.t-title Content
                 form.form-horizontal(role="form")
                 +fullWidthTextArea("Content", "userText.content", 20, "")

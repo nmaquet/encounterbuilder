@@ -5,11 +5,11 @@ DEMONSQUID.encounterBuilderControllers.controller('UserTextController',
         function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userTextService, contentTreeService, locationService) {
             $scope.tinymceOptions = {
                 resize: "false",
-                menubar: "edit format"
-//                ,
-//                plugins: "fullscreen",
-//                toolbar: "fullscreen"
+                menubar: "edit format",
+                plugins: "autoresize",
+                autoresize_min_height:400
             };
+            $scope.expanded = false;
 
             $scope.deleteUserText = function () {
                 if ($scope.userText) {
@@ -26,6 +26,10 @@ DEMONSQUID.encounterBuilderControllers.controller('UserTextController',
                         });
                     }
                 }
+            };
+
+            $scope.toggleExpanded = function () {
+                $scope.expanded = !$scope.expanded;
             };
 
             $scope.editUserText = function () {
