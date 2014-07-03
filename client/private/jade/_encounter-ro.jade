@@ -1,6 +1,6 @@
 div.encounter
     header.heading.col-sm-12
-        .ect-remove.pull-right
+        //.ect-remove.pull-right
             a.is-pointer.remove-encounter(on-confirm="removeEncounter(leaf)", confirm-click="Are you sure ?", confirm-title="Delete encounter")
                 i.icon.icon-remove
                     | &#10008;
@@ -8,10 +8,10 @@ div.encounter
             a.encounter-name.is-pointer(ng-click="selectLeaf(leaf)")
                 | {{leaf.Name}}
         .ect-xp
-            span#encounter-cr.pull-right
+            span.encounter-cr.pull-right
                 strong CR&nbsp;
                 | {{leaf.CR | numberToFractionString}}
-            span#encounter-xp.pull-left
+            span.encounter-xp.pull-left
                 strong XP&nbsp;
                 | {{leaf.xp | number}}
 

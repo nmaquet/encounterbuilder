@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
-    ['$rootScope', '$timeout', '$http', 'encounterService', 'userMonsterService', 'userNpcService',
-        function ($rootScope, $timeout, $http, encounterService, userMonsterService, userNpcService) {
+    ['$rootScope', '$timeout', '$http', 'encounterService', 'userMonsterService', 'userNpcService', 'userTextService',
+        function ($rootScope, $timeout, $http, encounterService, userMonsterService, userNpcService, userTextService) {
 
             var LOAD_SUCCESS = "contentTreeLoaded";
 
@@ -26,6 +26,9 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 }
                 else if (newNode.userNpcId) {
                     newNode.extraClasses = "fancytree-npc";
+                }
+                else if (newNode.userTextId) {
+                    newNode.extraClasses = "fancytree-text";
                 }
             }
 
@@ -161,12 +164,34 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
+            service.createUserText = function () {
+                userTextService.create(function (error, userText) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        addNode({title: userText.title, userTextId: userText._id, key: getNextNodeKey()});
+                        service.treeChanged(fancyTree.toDict(removeExtraClasses));
+                    }
+                });
+            };
+
             service.copyUserMonster = function (monsterId, userCreated) {
                 userMonsterService.copy(monsterId, userCreated, function (error, userMonster) {
                     if (error) {
                         console.log(error);
                     } else {
                         addNode({title: userMonster.Name, userMonsterId: userMonster._id, key: getNextNodeKey()});
+                        service.treeChanged(fancyTree.toDict(removeExtraClasses));
+                    }
+                });
+            };
+
+            service.copyUserText = function (userTextId) {
+                userTextService.copy(userTextId, function (error, userText) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        addNode({title: userText.title, userTextId: userText._id, key: getNextNodeKey()});
                         service.treeChanged(fancyTree.toDict(removeExtraClasses));
                     }
                 });
@@ -233,6 +258,18 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
+            service.userTextUpdated = function (userText) {
+                fancyTree.visit(function (node) {
+                    if (node.data.userTextId && node.data.userTextId === userText._id) {
+                        if (node.title !== userText.title) {
+                            node.setTitle(userText.title);
+                            service.treeChanged(fancyTree.toDict(removeExtraClasses));
+                        }
+                    }
+                });
+            };
+
+
             service.userMonsterDeleted = function (userMonster) {
                 var toRemove;
                 fancyTree.visit(function (node) {
@@ -263,6 +300,21 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 }
             };
 
+            service.userTextDeleted = function (userText) {
+                var toRemove;
+                fancyTree.visit(function (node) {
+                    if (node.data.userTextId && node.data.userTextId === userText._id) {
+                        toRemove = node;
+                    }
+                });
+                if (toRemove) {
+                    removeNode(toRemove);
+                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
+                } else {
+                    console.log("could not remove content tree userText");
+                }
+            };
+
             service.treeChanged = function (tree) {
                 contentTree = tree;
                 $http.post('/api/save-content-tree', { contentTree: tree })
@@ -275,18 +327,55 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
 
             service.getBinderChildrenByKey = function (key, callback) {
                 var children = fancyTree.getNodeByKey(key).getChildren();
-                var ids = [];
+                var encounterIds = [];
+                var userMonsterIds = [];
+                var userNpcsIds = [];
+                var userTextIds = [];
                 for (var i in children) {
                     if (children[i].data.encounterId) {
-                        ids.push(children[i].data.encounterId);
+                        encounterIds.push(children[i].data.encounterId);
+                    } else if (children[i].data.userTextId) {
+                        userTextIds.push(children[i].data.userTextId);
+                    }
+                    else if (children[i].data.userMonsterId) {
+                        userMonsterIds.push(children[i].data.userMonsterId);
+                    }
+                    else if (children[i].data.userNpcId) {
+                        userNpcsIds.push(children[i].data.userNpcId);
                     }
                 }
-                encounterService.getMultiple(ids, function (error, encounters) {
+                var tasks = [];
+                tasks.push(function (taskCallback) {
+                    encounterService.getMultiple(encounterIds, function (error, encounters) {
+                        taskCallback(error, encounters);
+                    });
+                });
+                tasks.push(function (taskCallback) {
+                    userTextService.getMultiple(userTextIds, function (error, userTexts) {
+                        taskCallback(error, userTexts);
+                    });
+                });
+                tasks.push(function (taskCallback) {
+                    userMonsterService.getMultiple(userMonsterIds, function (error, monsters) {
+                        taskCallback(error, monsters);
+                    });
+                });
+                tasks.push(function (taskCallback) {
+                    userNpcService.getMultiple(userNpcsIds, function (error, npcs) {
+                        taskCallback(error, npcs);
+                    });
+                });
+                window.async.parallel(tasks, function (error, results) {
                     if (error) {
                         console.log(error);
                     }
                     else {
                         var enrichedLeaves = [];
+                        var encounters = results[0];
+                        var userTexts = results[1];
+                        var monsters = results[2];
+                        var npcs = results[3];
+
                         for (var j in children) {
                             if (children[j].folder) {
                                 enrichedLeaves.push({Name: children[j].title, nodeKey: children[j].key, descendantCount: children[j].countChildren(true), type: "binder"})
@@ -294,17 +383,45 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                             else if (children[j].data.encounterId) {
                                 for (var k in encounters) {
                                     if (encounters[k]._id === children[j].data.encounterId) {
+                                        encounters[k].type = "encounter";
                                         enrichedLeaves.push(encounters[k]);
                                         break;
                                     }
                                 }
-
+                            }
+                            else if (children[j].data.userTextId) {
+                                for (var l in userTexts) {
+                                    if (userTexts[l]._id === children[j].data.userTextId) {
+                                        userTexts[l].type = "userText";
+                                        enrichedLeaves.push(userTexts[l]);
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (children[j].data.userMonsterId) {
+                                for (var m in monsters) {
+                                    if (monsters[m]._id === children[j].data.userMonsterId) {
+                                        monsters[m].type = "monster";
+                                        enrichedLeaves.push(monsters[m]);
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (children[j].data.userNpcId) {
+                                for (var n in npcs) {
+                                    if (npcs[n]._id === children[j].data.userNpcId) {
+                                        npcs[n].type = "npc";
+                                        enrichedLeaves.push(npcs[n]);
+                                        break;
+                                    }
+                                }
                             }
                         }
                         callback(enrichedLeaves);
                     }
                 });
             };
-
             return service;
-        }]);
+        }
+    ]);
+

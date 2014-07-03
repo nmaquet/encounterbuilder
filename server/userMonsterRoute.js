@@ -2,8 +2,6 @@
 
 module.exports = function (userMonsterCollection, monstersCollection, ObjectID) {
 
-    var fromHTMLToString = require('./utils')().fromHTMLToString;
-
     function newUserMonster(username) {
         return {
             Username: username,
@@ -74,13 +72,13 @@ module.exports = function (userMonsterCollection, monstersCollection, ObjectID) 
                         }
                         userMonster.Username = username;
                         if (userMonster.Description) {
-                            userMonster.Description = fromHTMLToString(monster.Description);
+                            userMonster.Description = monster.Description;
                         }
                         if (userMonster.SpecialAbilities) {
-                            userMonster.SpecialAbilities = fromHTMLToString(monster.SpecialAbilities);
+                            userMonster.SpecialAbilities = monster.SpecialAbilities;
                         }
                         if (userMonster.SpellLikeAbilities) {
-                            userMonster.SpellLikeAbilities = fromHTMLToString(monster.SpellLikeAbilities);
+                            userMonster.SpellLikeAbilities = monster.SpellLikeAbilities;
                         }
                         userMonsterCollection.insert(userMonster, function (error, newUserMonster) {
                             if (error) {

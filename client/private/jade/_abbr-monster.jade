@@ -1,0 +1,31 @@
+div.monster
+    header.heading.col-sm-12
+        h3.ect-title.t-title.t-encounter-title
+            a.monster-name.is-pointer(ng-click="selectLeaf(leaf)")
+                i.icon.fa.fa-bug
+                | &nbsp;
+                | {{leaf.Name}}
+
+        .ect-xp
+            span.encounter-cr.pull-right
+                strong CR&nbsp;
+                | {{leaf.CR | numberToFractionString}}
+            span.encounter-xp.pull-left
+                strong XP&nbsp;
+                | {{leaf.XP | number}}
+    .content.content-monsters.col-sm-12
+        ul.list-inline
+            li(ng-if="leaf.Gender||leaf.Race||leaf.ClassesString")
+                span {{leaf.Gender}} {{leaf.Race}} {{leaf.ClassesString}}
+            li
+                span
+                    strong {{leaf.Alignment}}
+                    | &nbsp;{{leaf.Size}} {{leaf.Type}} {{leaf.SubType}}
+            //li
+            //    span
+            //        strong Init
+            //        | &nbsp;{{leaf.Init}}
+            //li
+            //    span
+            //        strong Senses
+            //        | &nbsp;{{leaf.Senses}}

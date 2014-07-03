@@ -7,9 +7,13 @@ module.exports = function (encounterCollection, ObjectID, lootService) {
             var encounterId = request.params.id;
             encounterCollection.findOne({_id: ObjectID(encounterId), Username: username}, function (error, encounter) {
                 if (error) {
+
+
+
                     response.json({error: error});
                 }
                 else {
+                    console.log(encounter);
                     response.json({encounter: encounter});
                 }
             });

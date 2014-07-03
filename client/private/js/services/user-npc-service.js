@@ -97,6 +97,28 @@ DEMONSQUID.encounterBuilderServices.factory('userNpcService', ['$http', function
                     console.log("delete of userNpc failed !");
                     callback(response.error);
                 });
+        },
+        getMultiple: function (ids, callback) {
+            function pushTask(id) {
+                tasks.push(function (taskCallback) {
+                        $http.get('/api/user-npc/' + id)
+                            .success(function (data) {
+                                taskCallback(null, data.userNpc);
+                            })
+                            .error(function (error) {
+                                taskCallback(error, null);
+                            });
+                    }
+                );
+            }
+
+            var tasks = [];
+            for (var i in ids) {
+                pushTask(ids[i]);
+            }
+            window.async.parallel(tasks, function (error, results) {
+                callback(error, results);
+            });
         }
     };
 }]);

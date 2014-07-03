@@ -30,8 +30,17 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
                 if (leaf.type === 'binder') {
                     $scope.go("/binder/" + leaf.nodeKey);
                 }
-                else {
+                else if (leaf.type === 'encounter') {
                     $scope.go("/encounter/" + leaf._id);
+                }
+                else if (leaf.type === 'userText') {
+                    $scope.go("/user-text/" + leaf._id);
+                }
+                else if (leaf.type === 'monster') {
+                    $scope.go("/user-monster/" + leaf._id);
+                }
+                else if (leaf.type === 'npc') {
+                    $scope.go("/user-npc/" + leaf._id);
                 }
             };
 

@@ -1,0 +1,5 @@
+.row(ng-controller='ContentController')
+    .col-xs-10.l-section.l-shadow.search-result.user-monster(ng-controller="UserTextController", ng-class="{'col-md-5': !expanded,'col-md-10':expanded}",fade-in-fade-out="startFade", ng-hide="contentType && (viewport.xs || viewport.sm)")
+        include _edit-user-text
+    div(ng-class="{'col-sm-7': !viewport.xs, 'col-lg-5': !viewport.xs}")
+        include _right-details-pane

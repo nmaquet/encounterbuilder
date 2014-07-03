@@ -64,14 +64,15 @@ function main(db) {
     var lootService = require('./loot/lootService')(diceService, knapsackService);
     var userService = require('./userService')(db);
 
-    var searchMonstersRoute = require('./searchMonstersRoute')(collections.monsters,collections.userMonsters, FIND_LIMIT);
-    var searchNpcsRoute = require('./searchNpcsRoute')(collections.npcs,collections.userNpcs, FIND_LIMIT);
+    var searchMonstersRoute = require('./searchMonstersRoute')(collections.monsters, collections.userMonsters, FIND_LIMIT);
+    var searchNpcsRoute = require('./searchNpcsRoute')(collections.npcs, collections.userNpcs, FIND_LIMIT);
     var searchMagicItemsRoute = require('./searchMagicItemsRoute')(collections.magicitems, FIND_LIMIT);
     var searchSpellsRoute = require('./searchSpellsRoute')(collections.spells, FIND_LIMIT);
     var searchFeatsRoute = require('./searchFeatsRoute')(collections.feats, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(collections.monsters);
     var userMonsterRoute = require('./userMonsterRoute')(collections.userMonsters, collections.monsters, ObjectID);
     var userNpcRoute = require('./userNpcRoute')(collections.userNpcs, collections.npcs, ObjectID);
+    var userTextRoute = require('./userTextRoute')(collections.userTexts,  ObjectID);
     var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
     var npcRoute = require('./npcRoute')(collections.npcs);
     var spellRoute = require('./spellRoute')(collections.spells);
@@ -85,23 +86,24 @@ function main(db) {
     var contentTreeRoute = require('./contentTreeRoute')(collections.contentTrees);
     var favouritesRoute = require('./favouritesRoute')(collections.favourites);
 
-    app.get('/api/search-monsters', authenticationCheck, metrics.logSearchMonster, searchMonstersRoute);
-    app.get('/api/search-npcs', authenticationCheck, metrics.logSearchNpc, searchNpcsRoute);
-    app.get('/api/search-spells', authenticationCheck, metrics.logSearchSpell, searchSpellsRoute);
-    app.get('/api/search-feats', authenticationCheck, metrics.logSearchFeat, searchFeatsRoute);
-    app.get('/api/search-magic-items', authenticationCheck, metrics.logSearchItem, searchMagicItemsRoute);
-    app.get('/api/monster/:id', authenticationCheck, metrics.logSelectMonster, monsterRoute);
-    app.get('/api/magic-item/:id', authenticationCheck, metrics.logSelectItem, magicItemRoute);
-    app.get('/api/npc/:id', authenticationCheck, metrics.logSelectNpc, npcRoute);
-    app.get('/api/spell/:id', authenticationCheck, metrics.logSelectSpell, spellRoute);
-    app.get('/api/feat/:id', authenticationCheck, metrics.logSelectFeat, featRoute);
-    app.get('/api/encounter/:id', authenticationCheck, metrics.logSelectEncounter, encounterRoute.findOne);
-    app.get('/api/user-monster/:id', authenticationCheck, /* TODO METRICS */ userMonsterRoute.findOne);
-    app.get('/api/user-npc/:id', authenticationCheck, /* TODO METRICS */ userNpcRoute.findOne);
-    app.get("/api/favourites", authenticationCheck, favouritesRoute.fetch);
+    app.get('/api/search-monsters', authentication.check, metrics.logSearchMonster, searchMonstersRoute);
+    app.get('/api/search-npcs', authentication.check, metrics.logSearchNpc, searchNpcsRoute);
+    app.get('/api/search-spells', authentication.check, metrics.logSearchSpell, searchSpellsRoute);
+    app.get('/api/search-feats', authentication.check, metrics.logSearchFeat, searchFeatsRoute);
+    app.get('/api/search-magic-items', authentication.check, metrics.logSearchItem, searchMagicItemsRoute);
+    app.get('/api/monster/:id', authentication.check, metrics.logSelectMonster, monsterRoute);
+    app.get('/api/magic-item/:id', authentication.check, metrics.logSelectItem, magicItemRoute);
+    app.get('/api/npc/:id', authentication.check, metrics.logSelectNpc, npcRoute);
+    app.get('/api/spell/:id', authentication.check, metrics.logSelectSpell, spellRoute);
+    app.get('/api/feat/:id', authentication.check, metrics.logSelectFeat, featRoute);
+    app.get('/api/encounter/:id', authentication.check, metrics.logSelectEncounter, encounterRoute.findOne);
+    app.get('/api/user-monster/:id', authentication.check, /* TODO METRICS */ userMonsterRoute.findOne);
+    app.get('/api/user-npc/:id', authentication.check, /* TODO METRICS */ userNpcRoute.findOne);
+    app.get('/api/user-text/:id', authentication.check, /* TODO METRICS */ userTextRoute.findOne);
+    app.get("/api/favourites", authentication.check, favouritesRoute.fetch);
 
-    app.post('/api/user-data', /* FIXME authenticationCheck ? */ userDataRoute);
-    app.post('/logout', /* FIXME authenticationCheck ? */ metrics.logLogout, logoutRoute);
+    app.post('/api/user-data', userDataRoute);
+    app.post('/logout', metrics.logLogout, logoutRoute);
     app.post("/login", metrics.logLogin, loginRoute);
     app.post("/api/update-encounter", authenticationCheck, metrics.logUpdateEncounter, encounterRoute.update);
     app.post("/api/create-encounter", authenticationCheck, metrics.logCreateEncounter, encounterRoute.create);
@@ -122,6 +124,11 @@ function main(db) {
     app.post("/api/update-user-npc", authenticationCheck, /* TODO METRICS */ userNpcRoute.update);
     app.post("/api/delete-user-npc", authenticationCheck, /* TODO METRICS */ userNpcRoute.delete);
 
+    app.post("/api/create-user-text", authentication.check, /* TODO METRICS */ userTextRoute.create);
+    app.post("/api/copy-text", authentication.check, /* TODO METRICS */ userTextRoute.copy);
+    app.post("/api/update-user-text", authentication.check, /* TODO METRICS */ userTextRoute.update);
+    app.post("/api/delete-user-text", authentication.check, /* TODO METRICS */ userTextRoute.delete);
+
     var APP_JADE_FILES = [
         'feedback-popover',
         'login',
@@ -133,6 +140,8 @@ function main(db) {
         'edit-user-monster',
         'user-npc',
         'edit-user-npc',
+        'user-text',
+        'edit-user-text',
         'npc',
         'item',
         'spell',

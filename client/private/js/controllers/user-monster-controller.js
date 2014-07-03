@@ -3,6 +3,10 @@
 DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
     ['$rootScope', '$scope', '$timeout', '$routeParams', '$location', '$sce', 'userMonsterService', 'contentTreeService', 'locationService',
         function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userMonsterService, contentTreeService, locationService) {
+            $scope.tinymceOptions = {
+                resize: false,
+                menubar: "edit format"
+            };
 
             $scope.deleteUserMonster = function () {
                 if ($scope.userMonster) {
@@ -57,13 +61,13 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                 }
 
                 if (userMonster.Description) {
-                    userMonster.DescriptionHTML = $sce.trustAsHtml(userMonster.Description.replace(/\n/gm, "<br>"));
+                    userMonster.DescriptionHTML = $sce.trustAsHtml(userMonster.Description);
                 }
                 if (userMonster.SpecialAbilities) {
-                    userMonster.SpecialAbilitiesHTML = $sce.trustAsHtml(userMonster.SpecialAbilities.replace(/\n/gm, "<br>"));
+                    userMonster.SpecialAbilitiesHTML = $sce.trustAsHtml(userMonster.SpecialAbilities);
                 }
                 if (userMonster.SpellLikeAbilities) {
-                    userMonster.SpellLikeAbilitiesHTML = $sce.trustAsHtml(userMonster.SpellLikeAbilities.replace(/\n/gm, "<br>"));
+                    userMonster.SpellLikeAbilitiesHTML = $sce.trustAsHtml(userMonster.SpellLikeAbilities);
                 }
 
                 $scope.userMonster = userMonster;

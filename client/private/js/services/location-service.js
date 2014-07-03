@@ -29,7 +29,10 @@ DEMONSQUID.encounterBuilderServices.factory('locationService',
                         this.go('/edit-user-monster/' + $routeParams.userMonsterId + typePrefix + id);
                     } else if ($route.current.templateUrl === 'edit-user-npc.html') {
                         this.go('/edit-user-npc/' + $routeParams.userNpcId + typePrefix + id);
-                    } else {
+                    }else if ($route.current.templateUrl === 'edit-user-text.html') {
+                        this.go('/edit-user-text/' + $routeParams.userTextId + typePrefix + id);
+                    }
+                    else {
                         this.go(typePrefix + id);
                     }
                 },

@@ -19,6 +19,10 @@ var jsFiles = [
     "client/private/bower_components/async/lib/async.js",
     "client/private/bower_components/nouislider/jquery.nouislider.js",
     "client/private/bower_components/fancytree/dist/jquery.fancytree-all.js",
+    "client/private/bower_components/tinymce/tinymce.min.js",
+    "client/private/bower_components/tinymce/themes/modern/theme.min.js",
+    "client/private/bower_components/tinymce/plugins/autoresize/plugin.min.js",
+    "client/private/bower_components/angular-ui-tinymce/src/tinymce.js",
     "client/private/angular-ui/ui-bootstrap-0.10.0.js",
     "client/private/angular-ui/ui-bootstrap-tpls-0.10.0.js",
     // App files
@@ -49,6 +53,7 @@ var jsFiles = [
     "client/private/js/controllers/binder-controller.js",
     "client/private/js/controllers/user-monster-controller.js",
     "client/private/js/controllers/user-npc-controller.js",
+    "client/private/js/controllers/user-text-controller.js",
     "client/private/js/controllers/loot-generator-controller.js",
     "client/private/js/directives/click-to-edit.js",
     "client/private/js/directives/confirm-click.js",
@@ -65,6 +70,7 @@ var jsFiles = [
     "client/private/js/filters/abbreviate-source.js",
     "client/private/js/filters/number-to-fraction-string.js",
     "client/private/js/filters/classes-to-string.js",
+    "client/private/js/filters/to-trusted-html.js",
     "client/private/js/services/content-tree-service.js",
     "client/private/js/services/monster-service.js",
     "client/private/js/services/npc-service.js",
@@ -80,13 +86,16 @@ var jsFiles = [
     "client/private/js/services/viewport-service.js",
     "client/private/js/services/user-monster-service.js",
     "client/private/js/services/user-npc-service.js",
+    "client/private/js/services/user-text-service.js",
     "client/private/js/services/favourite-service.js",
     "client/private/js/services/location-service.js"
 ];
 
 var cssFiles = [
     "client/private/css/app.css",
-    "client/private/css/animate.css"
+    "client/private/css/animate.css",
+    "client/private/bower_components/tinymce/skins/lightgray/content.min.css",
+    "client/private/bower_components/tinymce/skins/lightgray/skin.min.css",
 ];
 
 var sassRootFile = "client/private/scss/encounter-builder.scss";

@@ -43,6 +43,10 @@ section.sp-menu.sp-menu-vertical.sp-menu-left.no-print(slide-menu)
                                 a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserNpc()')
                                     i.icon.fa.fa-user
                                     strong &nbsp;Create new npc
+                            li
+                                a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserText()')
+                                    i.icon.fa.fa-pencil
+                                    strong &nbsp;Create new Text
                 .sp-menu-result(ng-switch="selectedTab")
                     .database(ng-switch-when="campaigns")
                         .clearfix
