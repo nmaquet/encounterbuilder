@@ -314,7 +314,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     console.log("could not remove content tree userText");
                 }
             };
-            
+
             service.treeChanged = function (tree) {
                 contentTree = tree;
                 $http.post('/api/save-content-tree', { contentTree: tree })
@@ -333,12 +333,20 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                         ids.push(children[i].data.encounterId);
                     }
                 }
-                encounterService.getMultiple(ids, function (error, encounters) {
+                var tasks = [];
+                tasks.push(function (taskCallback) {
+                    encounterService.getMultiple(ids, function (error, encounters) {
+                        taskCallback(error, encounters);
+                    });
+                });
+
+                window.async.parallel(tasks, function (error, results) {
                     if (error) {
                         console.log(error);
                     }
                     else {
                         var enrichedLeaves = [];
+                        var encounters = results[0];
                         for (var j in children) {
                             if (children[j].folder) {
                                 enrichedLeaves.push({Name: children[j].title, nodeKey: children[j].key, descendantCount: children[j].countChildren(true), type: "binder"})
@@ -346,6 +354,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                             else if (children[j].data.encounterId) {
                                 for (var k in encounters) {
                                     if (encounters[k]._id === children[j].data.encounterId) {
+                                        encounters[k].type = "encounter";
                                         enrichedLeaves.push(encounters[k]);
                                         break;
                                     }
@@ -357,6 +366,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     }
                 });
             };
-
             return service;
-        }]);
+        }
+    ]);
+
