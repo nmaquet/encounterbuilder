@@ -4,7 +4,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserTextController',
     ['$rootScope', '$scope', '$timeout', '$routeParams', '$location', '$sce', 'userTextService', 'contentTreeService', 'locationService',
         function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userTextService, contentTreeService, locationService) {
             $scope.tinymceOptions = {
-                resize: "false",
+                resize: false,
                 menubar: "edit format",
                 plugins: "autoresize",
                 autoresize_min_height:400

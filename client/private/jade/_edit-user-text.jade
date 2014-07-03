@@ -29,7 +29,8 @@ mixin fullWidthTextArea(name, model, rows, placeholder)
             .col-xs-12.cat.decor
                 .pull-right
                     a.is-pointer(ng-click="toggleExpanded()")
-                        i.fa.fa-expand
-                legend.t-legend.t-title Content
+                        i.fa(ng-class="{'fa-compress':expanded,'fa-expand':!expanded}")
+                legend.t-legend.t-title(ng-hide="expanded") Content
+                legend.t-legend.t-title(ng-show="expanded") {{userText.title}}
                 form.form-horizontal(role="form")
                 +fullWidthTextArea("Content", "userText.content", 20, "")
