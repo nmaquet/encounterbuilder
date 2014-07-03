@@ -27,10 +27,9 @@ mixin fullWidthTextArea(name, model, rows, placeholder)
                     +labeledInput('Title', 'userText.title', 'e.g. The goblin covenant')
                     +labeledTextArea('Synopsis', 'userText.synopsis',5, 'e.g. In this scene our anti-heroes must accomplish the impossible, unify the goblin tribes to strike against Sandpoint...')
             .col-xs-12.cat.decor
-                .pull-right
-                    a.is-pointer(ng-click="toggleExpanded()")
-                        i.fa(ng-class="{'fa-compress':expanded,'fa-expand':!expanded}")
                 legend.t-legend.t-title(ng-hide="expanded") Content
+                    a.is-pointer.pull-right(ng-click="toggleExpanded()")
+                        i.icon.fa(ng-class="{'fa-compress':expanded,'fa-expand':!expanded}")
                 legend.t-legend.t-title(ng-show="expanded") {{userText.title}}
                 form.form-horizontal(role="form")
                 +fullWidthTextArea("Content", "userText.content", 20, "")
