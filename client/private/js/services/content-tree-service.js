@@ -329,6 +329,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 var children = fancyTree.getNodeByKey(key).getChildren();
                 var encounterIds = [];
                 var userMonsterIds = [];
+                var userNpcsIds = [];
                 var userTextIds = [];
                 for (var i in children) {
                     if (children[i].data.encounterId) {
@@ -338,6 +339,9 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     }
                     else if (children[i].data.userMonsterId) {
                         userMonsterIds.push(children[i].data.userMonsterId);
+                    }
+                    else if (children[i].data.userNpcId) {
+                        userNpcsIds.push(children[i].data.userNpcId);
                     }
                 }
                 var tasks = [];
@@ -356,6 +360,11 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                         taskCallback(error, monsters);
                     });
                 });
+                tasks.push(function (taskCallback) {
+                    userNpcService.getMultiple(userNpcsIds, function (error, npcs) {
+                        taskCallback(error, npcs);
+                    });
+                });
                 window.async.parallel(tasks, function (error, results) {
                     if (error) {
                         console.log(error);
@@ -365,6 +374,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                         var encounters = results[0];
                         var userTexts = results[1];
                         var monsters = results[2];
+                        var npcs = results[3];
 
                         for (var j in children) {
                             if (children[j].folder) {
@@ -393,6 +403,15 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                                     if (monsters[m]._id === children[j].data.userMonsterId) {
                                         monsters[m].type = "monster";
                                         enrichedLeaves.push(monsters[m]);
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (children[j].data.userNpcId) {
+                                for (var n in npcs) {
+                                    if (npcs[n]._id === children[j].data.userNpcId) {
+                                        npcs[n].type = "npc";
+                                        enrichedLeaves.push(npcs[n]);
                                         break;
                                     }
                                 }
