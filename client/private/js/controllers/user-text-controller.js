@@ -40,8 +40,8 @@ DEMONSQUID.encounterBuilderControllers.controller('UserTextController',
                 }
             };
 
-            $scope.copyText = function () {
-                contentTreeService.copyUserText($scope.userText._id, true);
+            $scope.copyUserText = function () {
+                contentTreeService.copyUserText($scope.userText._id);
             };
 
             function updateUserText() {

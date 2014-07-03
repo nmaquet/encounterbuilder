@@ -10,7 +10,7 @@
             //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Favourite',ng-click='toggleFavourite()')
                 i(ng-show="favourite").icon.fa.fa-heart
                 i(ng-hide="favourite").icon.fa.fa-heart-o
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Delete',ng-click='deleteUserText()')
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Delete',on-confirm="deleteUserText()", confirm-click="Are you sure ?", confirm-title="Delete Text")
                 i.icon.fa.fa-times
 .row.l-section.result-content
     .col-xxs-12.col-xs-12.cat

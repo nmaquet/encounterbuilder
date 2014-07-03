@@ -48,10 +48,11 @@ DEMONSQUID.encounterBuilderServices.factory('userTextService', ['$http', functio
                     callback(response.error);
                 });
         },
-        copy: function (id, userCreated, callback) {
+        copy: function (id, callback) {
             callback = callback || nop;
-            $http.post('/api/copy-text', {id: id, userCreated: userCreated})
+            $http.post('/api/copy-text', {id: id})
                 .success(function (response) {
+                    console.log("userservice.success");
                     if (response.error) {
                         console.log(error);
                         lastUserTextId = lastUserText = null;
@@ -85,7 +86,6 @@ DEMONSQUID.encounterBuilderServices.factory('userTextService', ['$http', functio
                 });
         },
         delete: function (userText, callback) {
-            text = null;
             callback = callback || nop;
             $http.post('/api/delete-user-text', { userText: userText })
                 .success(function (response) {

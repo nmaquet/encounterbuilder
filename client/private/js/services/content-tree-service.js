@@ -186,12 +186,12 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
-            service.copyUserText = function (monsterId) {
-                userTextService.copy(monsterId, function (error, userText) {
+            service.copyUserText = function (userTextId) {
+                userTextService.copy(userTextId, function (error, userText) {
                     if (error) {
                         console.log(error);
                     } else {
-                        addNode({title: userText.Name, userTextId: userText._id, key: getNextNodeKey()});
+                        addNode({title: userText.title, userTextId: userText._id, key: getNextNodeKey()});
                         service.treeChanged(fancyTree.toDict(removeExtraClasses));
                     }
                 });
@@ -261,8 +261,8 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             service.userTextUpdated = function (userText) {
                 fancyTree.visit(function (node) {
                     if (node.data.userTextId && node.data.userTextId === userText._id) {
-                        if (node.title !== userText.Name) {
-                            node.setTitle(userText.Name);
+                        if (node.title !== userText.title) {
+                            node.setTitle(userText.title);
                             service.treeChanged(fancyTree.toDict(removeExtraClasses));
                         }
                     }
