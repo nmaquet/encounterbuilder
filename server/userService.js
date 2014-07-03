@@ -177,6 +177,10 @@ function updatePassword(username, password, callback) {
     });
 }
 
+function updateFavouriteTree(username, favouriteTree, callback) {
+    userCollection.update({username: username}, {$set: {favouriteTree: favouriteTree}}, callback);
+}
+
 function remove(username, callback) {
     userCollection.remove({username: username}, callback);
 }
@@ -193,6 +197,7 @@ module.exports = function (database) {
         authenticate: authenticate,
         toArray: toArray,
         updatePassword: updatePassword,
+        updateFavouriteTree: updateFavouriteTree,
         remove: remove
     }
 };
