@@ -18,7 +18,7 @@ mixin fullWidthTextArea(name, model, rows, placeholder)
 
 .row.l-section.result-content
     .col-xxs-12.col-xs-12
-        button.btn.btn-danger.pull-right(type="submit" ng-click="viewUserMonster()" ng-class="{'btn-small' : viewport.xs}") Done
+        button.btn.btn-danger.pull-right(type="submit" ng-click="viewUserText()" ng-class="{'btn-small' : viewport.xs}") Done
     .col-xxs-12.col-xs-12
         .row
             .col-xs-12.cat.decor
@@ -29,4 +29,4 @@ mixin fullWidthTextArea(name, model, rows, placeholder)
             .col-xs-12.cat.decor
                 legend.t-legend.t-title Content
                 form.form-horizontal(role="form")
-                +fullWidthTextArea("Content", "userText.Content", 20, "")
+                +fullWidthTextArea("Content", "userText.content", 20, "")

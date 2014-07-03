@@ -5,9 +5,10 @@ DEMONSQUID.encounterBuilderControllers.controller('UserTextController',
         function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userTextService, contentTreeService, locationService) {
             $scope.tinymceOptions = {
                 resize: "false",
-                menubar: "edit format",
-                plugins: "fullscreen",
-                toolbar: "fullscreen"
+                menubar: "edit format"
+//                ,
+//                plugins: "fullscreen",
+//                toolbar: "fullscreen"
             };
 
             $scope.deleteUserText = function () {

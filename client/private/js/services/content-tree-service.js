@@ -186,6 +186,17 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
+            service.copyUserText = function (monsterId) {
+                userTextService.copy(monsterId, function (error, userText) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        addNode({title: userText.Name, userTextId: userText._id, key: getNextNodeKey()});
+                        service.treeChanged(fancyTree.toDict(removeExtraClasses));
+                    }
+                });
+            };
+
             service.copyUserNpc = function (npcId, userCreated) {
                 userNpcService.copy(npcId, userCreated, function (error, userNpc) {
                     if (error) {
@@ -247,6 +258,18 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
+            service.userTextUpdated = function (userText) {
+                fancyTree.visit(function (node) {
+                    if (node.data.userTextId && node.data.userTextId === userText._id) {
+                        if (node.title !== userText.Name) {
+                            node.setTitle(userText.Name);
+                            service.treeChanged(fancyTree.toDict(removeExtraClasses));
+                        }
+                    }
+                });
+            };
+
+
             service.userMonsterDeleted = function (userMonster) {
                 var toRemove;
                 fancyTree.visit(function (node) {
@@ -277,6 +300,21 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 }
             };
 
+            service.userTextDeleted = function (userText) {
+                var toRemove;
+                fancyTree.visit(function (node) {
+                    if (node.data.userTextId && node.data.userTextId === userText._id) {
+                        toRemove = node;
+                    }
+                });
+                if (toRemove) {
+                    removeNode(toRemove);
+                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
+                } else {
+                    console.log("could not remove content tree userText");
+                }
+            };
+            
             service.treeChanged = function (tree) {
                 contentTree = tree;
                 $http.post('/api/save-content-tree', { contentTree: tree })
