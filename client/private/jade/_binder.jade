@@ -28,3 +28,5 @@
                             | {{leaf.title}}
                 .content
                     p.underlined {{leaf.synopsis}}
+            .l-section(ng-show="'monster' === leaf.type")
+                include _abbr-monster

@@ -1,0 +1,26 @@
+.row.heading.result-heading
+    .col-xxs-8.col-xs-8.col-lg-9.name-container
+        h2.t-title.t-title-result {{leaf.Name}}
+        small Source: {{leaf.Source}}
+    .col-xxs-4.col-xs-4.col-lg-3.cr-container
+        h3.t-title CR
+            | &nbsp;{{leaf.CR | numberToFractionString}}
+        strong XP
+        | &nbsp;{{leaf.XP}}
+.row.l-section.result-content
+.col-xxs-12.col-xs-12.cat
+    ul.list-inline
+        li(ng-if="leaf.Gender||leaf.Race||leaf.ClassesString")
+            span {{leaf.Gender}} {{leaf.Race}} {{leaf.ClassesString}}
+        li
+            span
+                strong {{leaf.Alignment}}
+                | &nbsp;{{leaf.Size}} {{leaf.Type}} {{leaf.SubType}}
+        li
+            span
+                strong Init
+                | &nbsp;{{leaf.Init}}
+        li
+            span
+                strong Senses
+                | &nbsp;{{leaf.Senses}}

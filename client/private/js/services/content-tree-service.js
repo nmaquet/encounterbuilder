@@ -328,12 +328,16 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             service.getBinderChildrenByKey = function (key, callback) {
                 var children = fancyTree.getNodeByKey(key).getChildren();
                 var encounterIds = [];
+                var userMonsterIds = [];
                 var userTextIds = [];
                 for (var i in children) {
                     if (children[i].data.encounterId) {
                         encounterIds.push(children[i].data.encounterId);
                     } else if (children[i].data.userTextId) {
                         userTextIds.push(children[i].data.userTextId);
+                    }
+                    else if (children[i].data.userMonsterId) {
+                        userMonsterIds.push(children[i].data.userMonsterId);
                     }
                 }
                 var tasks = [];
@@ -347,6 +351,11 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                         taskCallback(error, userTexts);
                     });
                 });
+                tasks.push(function (taskCallback) {
+                    userMonsterService.getMultiple(userMonsterIds, function (error, monsters) {
+                        taskCallback(error, monsters);
+                    });
+                });
                 window.async.parallel(tasks, function (error, results) {
                     if (error) {
                         console.log(error);
@@ -355,6 +364,8 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                         var enrichedLeaves = [];
                         var encounters = results[0];
                         var userTexts = results[1];
+                        var monsters = results[2];
+
                         for (var j in children) {
                             if (children[j].folder) {
                                 enrichedLeaves.push({Name: children[j].title, nodeKey: children[j].key, descendantCount: children[j].countChildren(true), type: "binder"})
@@ -373,6 +384,15 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                                     if (userTexts[l]._id === children[j].data.userTextId) {
                                         userTexts[l].type = "userText";
                                         enrichedLeaves.push(userTexts[l]);
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (children[j].data.userMonsterId) {
+                                for (var m in monsters) {
+                                    if (monsters[m]._id === children[j].data.userMonsterId) {
+                                        monsters[m].type = "monster";
+                                        enrichedLeaves.push(monsters[m]);
                                         break;
                                     }
                                 }
