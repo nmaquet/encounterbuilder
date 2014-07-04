@@ -6,7 +6,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserNpcController',
             $scope.tinymceOptions = {
                 resize: false,
                 menubar: false,
-                toolbar: "bold italic underline strikethrough alignleft aligncenter alignright alignjustify bullist numlist outdent indent blockquote formatselect undo redo removeformat subscript superscript",
+                toolbar: "bold italic underline strikethrough alignleft aligncenter alignright alignjustify bullist numlist outdent indent blockquote formatselect undo redo removeformat subscript superscript"
             };
             $scope.deleteUserNpc = function () {
                 if ($scope.userNpc) {

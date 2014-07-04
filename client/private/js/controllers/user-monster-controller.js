@@ -6,7 +6,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
             $scope.tinymceOptions = {
                 resize: false,
                 menubar: false,
-                toolbar: "bold italic underline strikethrough alignleft aligncenter alignright alignjustify bullist numlist outdent indent blockquote formatselect undo redo removeformat subscript superscript",
+                toolbar: "bold italic underline strikethrough alignleft aligncenter alignright alignjustify bullist numlist outdent indent blockquote formatselect undo redo removeformat subscript superscript"
             };
 
             $scope.deleteUserMonster = function () {
