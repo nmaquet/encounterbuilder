@@ -21,7 +21,7 @@
                 td.src-container(ng-hide="userCreated", ng-class='{selected: selectedMonsterId && (selectedMonsterId === monster.id|| selectedMonsterId === monster._id)}', ng-click='selectMonster(monster.id||monster._id)')
                     abbr(title='{{monster.Source}}')
                         small {{monster.Source | abbreviateSource}}
-                td.input-container(ng-class='{selected: selectedMonsterId && (selectedMonsterId === monster.id|| selectedMonsterId === monster._id)}')
+                //td.input-container(ng-class='{selected: selectedMonsterId && (selectedMonsterId === monster.id|| selectedMonsterId === monster._id)}')
                     input(type='text', placeholder='1', ng-model='monster.amountToAdd')
                 td.btn-container(ng-class='{selected: selectedMonsterId && (selectedMonsterId === monster.id|| selectedMonsterId === monster._id)}')
                     // FIXME should be disabled sometimes

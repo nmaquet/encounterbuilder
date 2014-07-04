@@ -22,7 +22,7 @@
                 td.src-container(ng-class='{selected: selectedNpcId && (selectedNpcId === npc.id|| selectedNpcId === npc._id)}', ng-click='selectNpc((npc.id||npc._id))')
                     abbr(title='{{npc.Source}}')
                         small {{npc.Source | abbreviateSource}}
-                td.input-container(ng-class='{selected: selectedNpcId && (selectedNpcId === npc.id|| selectedNpcId === npc._id)}')
+                //td.input-container(ng-class='{selected: selectedNpcId && (selectedNpcId === npc.id|| selectedNpcId === npc._id)}')
                     input(type='text', placeholder='1', ng-model='npc.amountToAdd')
                 td.btn-container(ng-class='{selected: selectedNpcId && (selectedNpcId === npc.id|| selectedNpcId === npc._id)}')
                     // FIXME should be disabled sometimes
