@@ -59,6 +59,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
         /* FIXME: don't we need a user callback ? */
         /* FIXME: The client of this function has no way to know whether this succeeds or not. */
         service.remove = function (encounter) {
+            $cacheFactory.get('$http').remove('/api/encounter/' + encounter._id);
             $http.post('/api/remove-encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response.error) {
