@@ -186,24 +186,12 @@ function updatePassword(username, password, callback) {
 }
 
 function remove(username, callback) {
-    userCollection.remove({username: username}, function (error) {
-        if (error) {
-            return callback(error);
-        }
-        favouritesCollection.remove({username: username}, function (error) {
-            if (error) {
-                return callback(error);
-            }
-            contentTreeCollection.remove({username: username}, function (error) {
-                if (error) {
-                    return callback(error);
-                }
-                encounterCollection.remove({Username: username}, function (error) {
-                    callback(error);
-                });
-            });
-        });
-    });
+    async.series([
+        userCollection.remove.bind(userCollection, {username: username}),
+        favouritesCollection.remove.bind(favouritesCollection, {username: username}),
+        contentTreeCollection.remove.bind(contentTreeCollection, {username: username}),
+        encounterCollection.remove.bind(encounterCollection, {Username: username})
+    ], callback);
 }
 
 module.exports = function (database) {
