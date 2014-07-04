@@ -480,7 +480,16 @@ function describeUsers(db) {
         });
     });
 
-    /* remove contenttree */
-
+    it("should remove the contenttree when removing the user", function (done) {
+        async.series([
+            registerBob,
+            userService.remove.bind(null, "Bob"),
+            getContentTree.bind(null, db, "Bob")
+        ], function (error, results) {
+            expect(error).to.equal(null);
+            expect(results[2]).to.equal(null);
+            done();
+        });
+    });
 }
 

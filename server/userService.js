@@ -194,8 +194,13 @@ function remove(username, callback) {
             if (error) {
                 return callback(error);
             }
-            encounterCollection.remove({Username: username}, function (error) {
-                callback(error);
+            contentTreeCollection.remove({username: username}, function (error) {
+                if (error) {
+                    return callback(error);
+                }
+                encounterCollection.remove({Username: username}, function (error) {
+                    callback(error);
+                });
             });
         });
     });
