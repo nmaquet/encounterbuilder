@@ -20,7 +20,7 @@
                     span {{item.Price}}&nbsp;{{item.PriceUnit}}
                 td.src-container(ng-class='{selected: selectedItemId == item.id}', ng-click='selectItemById(item.id)')
                     abbr(title='{{item.Source}}') {{item.Source | abbreviateSource}}
-                td.input-container(ng-class='{selected: selectedItemId == item.id}')
+                //td.input-container(ng-class='{selected: selectedItemId == item.id}')
                     input(type='text', placeholder='1', ng-model='item.amountToAdd')
                 td.btn-container(ng-class='{selected: selectedItemId == item.id}')
                     // FIXME should be disabled sometimes
