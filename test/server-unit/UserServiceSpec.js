@@ -5,18 +5,10 @@ var async = require("async");
 var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 
-var MONGODB_URL = "mongodb://nicolas:password@localhost:27017/local";
+var MONGODB_URL = process.env["MONGODB_TEST_URL"];
 
 var db = null;
 var userService = null;
-
-MongoClient.connect(MONGODB_URL, function (error, db) {
-    expect(error).to.equal(null);
-    userService = require("../../server/userService")(db);
-    describe("userService", function () {
-        describeUsers(db)
-    });
-});
 
 function registerBob(callback) {
     userService.register({username: "Bob", password: "password", email: "bob@bob.com", age: 31}, callback);
@@ -42,7 +34,17 @@ function getFavourites(db, username, callback) {
     db.collection("favourites").findOne({username:username}, callback);
 }
 
-function describeUsers(db) {
+before(function(done) {
+    MongoClient.connect(MONGODB_URL, function (error, database) {
+        console.log("connecting to db");
+        expect(error).to.equal(null);
+        userService = require("../../server/userService")(database);
+        db = database;
+        done();
+    });
+});
+
+describe("userService", function() {
 
     beforeEach(function (done) {
         db.collection("users").remove({}, function (error) {
@@ -491,5 +493,5 @@ function describeUsers(db) {
             done();
         });
     });
-}
+});
 
