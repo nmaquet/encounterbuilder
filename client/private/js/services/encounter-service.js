@@ -1,7 +1,7 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', '$rootScope', 'crService',
-    function ($timeout, $http, $rootScope, crService) {
+DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', '$rootScope', '$cacheFactory', 'crService',
+    function ($timeout, $http, $rootScope, $cacheFactory, crService) {
 
         function calculateXp(encounter) {
             var xp = 0;
@@ -91,6 +91,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
             encounter.lootValue = calculateLootValue(encounter);
             encounter.CR = crService.calculateCR(encounter);
             removeItemsWithZeroAmount(encounter);
+            $cacheFactory.get('$http').put('/api/encounter/' + encounter._id, {encounter: encounter});
             $http.post('/api/update-encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response._id) {

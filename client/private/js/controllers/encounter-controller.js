@@ -109,7 +109,6 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                 encounterService.encounterChanged(encounter);
             };
 
-
             $scope.$watch(function () {
                 return lootService.generatedLoot
             }, function () {
