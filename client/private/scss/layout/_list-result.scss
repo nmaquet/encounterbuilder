@@ -29,7 +29,12 @@
     }
     .add-item-btn{
       font-size: 1.2em;
-      background-color: white;
+      background-color: $grey-dark;
+      color:white;
+      &:hover{
+        background-color: $grey-light;
+        color:black;
+      }
     }
   }
   .table > tbody > tr > td:first-child {
