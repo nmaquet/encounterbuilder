@@ -7,6 +7,9 @@ var async = require("async");
 var crypto = require('crypto');
 
 var userCollection = null;
+var contentTreeCollection = null;
+var encounterCollection = null;
+var favouritesCollection = null;
 
 var escapeRegExp = require('./utils')().escapeRegExp;
 
@@ -33,14 +36,14 @@ function hashPassword(pwd, salt, fn) {
 function authenticate(username, password, callback) {
     userCollection.findOne({username: caseInsensitive(username)}, function (error, user) {
         if (error || !user || !password) {
-            return callback(new Error('authentication failure'), null);
+            return callback(new Error('WRONG_PASSWORD'), null);
         }
         hashPassword(password, user.salt, function (error, computedHash) {
             if (error || computedHash != user.hash) {
                 if (error) {
                     console.log(error);
                 }
-                callback(new Error('authentication failure'), null);
+                callback(new Error('WRONG_PASSWORD'), null);
             } else {
                 callback(null, user);
             }
@@ -56,13 +59,13 @@ function exists(username, callback) {
 
 function register(fields, callback) {
     if (!fields.username) {
-        return callback(new Error("missing username"));
+        return callback(new Error("MISSING_USERNAME"));
     }
     if (!fields.password) {
-        return callback(new Error("missing password"));
+        return callback(new Error("MISSING_PASSWORD"));
     }
     if (!fields.email) {
-        return callback(new Error("missing email"));
+        return callback(new Error("MISSING_EMAIL"));
     }
     var query = {
         $or: [
@@ -72,9 +75,9 @@ function register(fields, callback) {
     };
     userCollection.findOne(query, function(error, result) {
         if (result && caseInsensitive(result.username).test(fields.username)) {
-            return callback(new Error("username exists"));
+            return callback(new Error("USERNAME_ALREADY_EXISTS"));
         } else if (result) {
-            return callback(new Error("email exists"));
+            return callback(new Error("EMAIL_ALREADY_EXISTS"));
         }
         hashPassword(fields.password, function(error, salt, hash) {
             if (error) {
@@ -93,7 +96,17 @@ function register(fields, callback) {
                 user[property] = fields[property];
             }
             userCollection.insert(user, function (error, result) {
-                callback(error, result[0]);
+                if (error) {
+                    return callback(error);
+                }
+                contentTreeCollection.insert({ username:user.username, contentTree: [] }, function(error) {
+                    if (error) {
+                        return callback(error);
+                    }
+                    favouritesCollection.insert({ username:user.username, favourites: [] }, function(error) {
+                        callback(error, result[0]);
+                    });
+                });
             });
         });
     });
@@ -107,32 +120,48 @@ function get(username, callback) {
 
 function update(username, fields, callback) {
     if (fields.password) {
-        return callback(new Error("use updatePassword() to update password"));
+        return callback(new Error("USE_UPDATEPASSWORD_TO_UPDATE_PASSWORD"));
     }
     if (fields.hash || fields.salt) {
-        return callback(new Error("cannot update hash or salt fields"));
+        return callback(new Error("CANNOT_UPDATE_HASH_OR_SALT_FIELDS"));
     }
-    var query = { $or: [] };
+    var disjunction = [];
+    var query = { $and : [ { username: { $ne: username } }, { $or: disjunction } ] };
     if (fields.username) {
-        query.$or.push({username: caseInsensitive(fields.username)});
+        disjunction.push({username: caseInsensitive(fields.username)});
     }
     if (fields.email) {
-        query.$or.push({email: caseInsensitive(fields.email)});
+        disjunction.push({email: caseInsensitive(fields.email)});
     }
     userCollection.findOne(query, function(error, result) {
         if (result && caseInsensitive(result.username).test(fields.username)) {
-            return callback(new Error("username exists"));
+            return callback(new Error("USERNAME_ALREADY_EXISTS"));
         } else if (result) {
-            return callback(new Error("email exists"));
+            return callback(new Error("EMAIL_ALREADY_EXISTS"));
         }
         userCollection.update({username: username}, {$set: fields}, function(error, result) {
             if (error) {
                 return callback(error);
             }
             if (!result) {
-                return callback(new Error("user does not exist"));
+                return callback(new Error("USER_DOES_NOT_EXIST"));
             }
-            callback(null);
+            if (!fields.username) {
+                return callback(null);
+            }
+            contentTreeCollection.update({username: username}, {$set: {username: fields.username} }, function(error) {
+                if (error) {
+                    return callback(error);
+                }
+                favouritesCollection.update({username: username}, {$set: {username: fields.username} }, function(error) {
+                    if (error) {
+                        return callback(error);
+                    }
+                    encounterCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi : true}, function(error) {
+                        return callback(error);
+                    });
+                });
+            });
         });
     });
 }
@@ -142,31 +171,34 @@ function toArray(callback) {
 }
 
 function updatePassword(username, password, callback) {
-    userCollection.findOne({username: username}, function(error, result) {
-        if (error || !result) {
-            return callback(new Error("update password failed"));
+    hashPassword(password, function (error, salt, hash) {
+        if (error) {
+            return callback(new Error("UPDATE_PASSWORD_FAILED"));
         }
-        hashPassword(password, function (error, salt, hash) {
-            if (error) {
-                return callback(new Error("update password failed"));
+        var update = {
+            $set: {
+                hash: "" + hash,
+                salt: "" + salt
             }
-            var update = {
-                $set: {
-                    hash: "" + hash,
-                    salt: "" + salt
-                }
-            };
-            userCollection.update(result, update, callback);
-        });
+        };
+        userCollection.update({username: username}, update, callback);
     });
 }
 
 function remove(username, callback) {
-    userCollection.remove({username: username}, callback);
+    async.series([
+        userCollection.remove.bind(userCollection, {username: username}),
+        favouritesCollection.remove.bind(favouritesCollection, {username: username}),
+        contentTreeCollection.remove.bind(contentTreeCollection, {username: username}),
+        encounterCollection.remove.bind(encounterCollection, {Username: username})
+    ], callback);
 }
 
 module.exports = function (database) {
     userCollection = database.collection("users");
+    contentTreeCollection = database.collection("contenttrees");
+    favouritesCollection = database.collection("favourites");
+    encounterCollection = database.collection("encounters");
     return {
         exists: exists,
         register: register,

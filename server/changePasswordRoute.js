@@ -1,37 +1,18 @@
 "use strict";
 
-module.exports = function (userCollection, authentication) {
+module.exports = function (userService) {
     return function (request, response) {
-        if (request.session && request.session.user) {
-
-            var username = request.session.user.username;
-
-            authentication.authenticate(userCollection, username, request.body.oldPassword, function (error, user) {
-                if (user) {
-                    var newPassword = request.body.newPassword;
-                    authentication.hash(newPassword, function (error, salt, hash) {
-                        userCollection.update(
-                            {username: user.username},
-                            {$set: {
-                                hash: new String(hash).toString(),
-                                salt: new String(salt).toString()}
-                            },
-                            function (error) {
-                                if (error) {
-                                    console.log(error);
-                                    response.send(500);
-                                }
-                                response.send(200);
-                            });
-                    });
-                } else {
-                    response.json({error : "wrong password"});
+        var username = request.session.user.username;
+        userService.authenticate(username, request.body.oldPassword, function (error) {
+            if (error) {
+                return response.json({error: "wrong password"});
+            }
+            userService.updatePassword(username, request.body.newPassword, function (error) {
+                if (error) {
+                    return response.send(500);
                 }
+                response.send(200);
             });
-        }
-        else {
-            response.send(401, 'access denied');
-        }
+        });
     }
-
 };
