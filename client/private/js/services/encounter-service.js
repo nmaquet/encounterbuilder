@@ -52,8 +52,6 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
             return Math.round(lootValue / 100);
         }
 
-        var lastId = null;
-        var lastEncounter = null;
         var service = {};
 
         service.encounters = [];
@@ -108,14 +106,8 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
         };
 
         service.get = function (id, callback) {
-            if (lastId && lastId === id) {
-                callback(null, lastEncounter);
-                return;
-            }
-            $http.get('/api/encounter/' + id)
+            $http.get('/api/encounter/' + id, {cache: true})
                 .success(function (data) {
-                    lastId = id;
-                    lastEncounter = data.encounter;
                     callback(data.error, data.encounter);
                 })
                 .error(function (error) {
@@ -126,7 +118,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
         service.getMultiple = function (ids, callback) {
             function pushTask(id) {
                 tasks.push(function (taskCallback) {
-                        $http.get('/api/encounter/' + id)
+                        $http.get('/api/encounter/' + id, {cache: true})
                             .success(function (data) {
                                 taskCallback(null, data.encounter);
                             })

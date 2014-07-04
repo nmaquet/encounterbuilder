@@ -113,13 +113,13 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             $scope.$watch(function () {
                 return lootService.generatedLoot
             }, function () {
-                if ($scope.encounter) {
+                if ($scope.encounter && lootService.generatedLoot) {
                     $scope.encounter.coins = lootService.generatedLoot.coins;
                     $scope.encounter.items = lootService.generatedLoot.items;
                     encounterService.encounterChanged($scope.encounter);
                 }
             });
-            
+
 //            $scope.randomizeLoot = function (encounter) {
 //                lootService.generateEncounterLoot(encounter, 'medium', function (coins, items) {
 //                    encounter.coins = coins;
