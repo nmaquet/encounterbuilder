@@ -1,27 +1,19 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', function ($http) {
+DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', '$cacheFactory', function ($http, $cacheFactory) {
+
+    var httpCache = $cacheFactory.get('$http');
 
     function nop() {
     }
 
-    var lastUserMonster = null;
-    var lastUserMonsterId = null;
-
     return {
         get: function (id, callback) {
             callback = callback || nop;
-            if (lastUserMonsterId && lastUserMonsterId === id) {
-                return callback(null, lastUserMonster);
-            }
-            $http.get('/api/user-monster/' + id)
+            $http.get('/api/user-monster/' + id, {cache:true})
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
-                        lastUserMonsterId = lastUserMonster = null;
-                    } else {
-                        lastUserMonsterId = response.userMonster._id;
-                        lastUserMonster = response.userMonster;
                     }
                     callback(response.error, response.userMonster);
                 })
@@ -35,10 +27,6 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
-                        lastUserMonsterId = lastUserMonster = null;
-                    } else {
-                        lastUserMonsterId = response.userMonster._id;
-                        lastUserMonster = response.userMonster;
                     }
                     callback(response.error, response.userMonster);
                 })
@@ -53,10 +41,6 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
-                        lastUserMonsterId = lastUserMonster = null;
-                    } else {
-                        lastUserMonsterId = response.userMonster._id;
-                        lastUserMonster = response.userMonster;
                     }
                     callback(response.error, response.userMonster);
                 })
@@ -67,14 +51,11 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
         },
         update: function (userMonster, callback) {
             callback = callback || nop;
+            httpCache.put('/api/user-monster/' + userMonster._id, { userMonster: userMonster });
             $http.post('/api/update-user-monster', { userMonster: userMonster })
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
-                        lastUserMonsterId = lastUserMonster = null;
-                    } else {
-//                        lastUserMonsterId = userMonster._id;
-//                        lastUserMonster = userMonster;
                     }
                     callback(response.error);
                 })
@@ -85,12 +66,12 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
         },
         delete: function (userMonster, callback) {
             callback = callback || nop;
+            httpCache.remove('/api/user-monster/' + userMonster._id);
             $http.post('/api/delete-user-monster', { userMonster: userMonster })
                 .success(function (response) {
                     if (response.error) {
                         console.log(response.error);
                     }
-                    lastUserMonsterId = lastUserMonster = null;
                     callback(response.error);
                 })
                 .error(function (response) {
@@ -101,7 +82,7 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
         getMultiple: function (ids, callback) {
             function pushTask(id) {
                 tasks.push(function (taskCallback) {
-                        $http.get('/api/user-monster/' + id)
+                        $http.get('/api/user-monster/' + id, {cache:true})
                             .success(function (data) {
                                 taskCallback(null, data.userMonster);
                             })
@@ -111,7 +92,6 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', func
                     }
                 );
             }
-
             var tasks = [];
             for (var i in ids) {
                 pushTask(ids[i]);
