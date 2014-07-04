@@ -10,6 +10,9 @@ var userCollection = null;
 var contentTreeCollection = null;
 var encounterCollection = null;
 var favouritesCollection = null;
+var userTextCollection = null;
+var userMonsterCollection = null;
+var userNpcCollection = null;
 
 var escapeRegExp = require('./utils')().escapeRegExp;
 
@@ -52,7 +55,7 @@ function authenticate(username, password, callback) {
 }
 
 function exists(username, callback) {
-    userCollection.findOne({username: username}, function(error, result) {
+    userCollection.findOne({username: username}, function (error, result) {
         callback(error, !!result);
     });
 }
@@ -73,13 +76,13 @@ function register(fields, callback) {
             {email: caseInsensitive(fields.email)}
         ]
     };
-    userCollection.findOne(query, function(error, result) {
+    userCollection.findOne(query, function (error, result) {
         if (result && caseInsensitive(result.username).test(fields.username)) {
             return callback(new Error("USERNAME_ALREADY_EXISTS"));
         } else if (result) {
             return callback(new Error("EMAIL_ALREADY_EXISTS"));
         }
-        hashPassword(fields.password, function(error, salt, hash) {
+        hashPassword(fields.password, function (error, salt, hash) {
             if (error) {
                 return callback(error);
             }
@@ -99,11 +102,11 @@ function register(fields, callback) {
                 if (error) {
                     return callback(error);
                 }
-                contentTreeCollection.insert({ username:user.username, contentTree: [] }, function(error) {
+                contentTreeCollection.insert({ username: user.username, contentTree: [] }, function (error) {
                     if (error) {
                         return callback(error);
                     }
-                    favouritesCollection.insert({ username:user.username, favourites: [] }, function(error) {
+                    favouritesCollection.insert({ username: user.username, favourites: [] }, function (error) {
                         callback(error, result[0]);
                     });
                 });
@@ -113,7 +116,7 @@ function register(fields, callback) {
 }
 
 function get(username, callback) {
-    userCollection.findOne({username: username}, function(error, result) {
+    userCollection.findOne({username: username}, function (error, result) {
         callback(error, result);
     });
 }
@@ -126,20 +129,23 @@ function update(username, fields, callback) {
         return callback(new Error("CANNOT_UPDATE_HASH_OR_SALT_FIELDS"));
     }
     var disjunction = [];
-    var query = { $and : [ { username: { $ne: username } }, { $or: disjunction } ] };
+    var query = { $and: [
+        { username: { $ne: username } },
+        { $or: disjunction }
+    ] };
     if (fields.username) {
         disjunction.push({username: caseInsensitive(fields.username)});
     }
     if (fields.email) {
         disjunction.push({email: caseInsensitive(fields.email)});
     }
-    userCollection.findOne(query, function(error, result) {
+    userCollection.findOne(query, function (error, result) {
         if (result && caseInsensitive(result.username).test(fields.username)) {
             return callback(new Error("USERNAME_ALREADY_EXISTS"));
         } else if (result) {
             return callback(new Error("EMAIL_ALREADY_EXISTS"));
         }
-        userCollection.update({username: username}, {$set: fields}, function(error, result) {
+        userCollection.update({username: username}, {$set: fields}, function (error, result) {
             if (error) {
                 return callback(error);
             }
@@ -149,16 +155,31 @@ function update(username, fields, callback) {
             if (!fields.username) {
                 return callback(null);
             }
-            contentTreeCollection.update({username: username}, {$set: {username: fields.username} }, function(error) {
+            contentTreeCollection.update({username: username}, {$set: {username: fields.username} }, function (error) {
                 if (error) {
                     return callback(error);
                 }
-                favouritesCollection.update({username: username}, {$set: {username: fields.username} }, function(error) {
+                favouritesCollection.update({username: username}, {$set: {username: fields.username} }, function (error) {
                     if (error) {
                         return callback(error);
                     }
-                    encounterCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi : true}, function(error) {
-                        return callback(error);
+                    encounterCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi: true}, function (error) {
+                        if (error) {
+                            return callback(error);
+                        }
+                        userTextCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi: true}, function (error) {
+                            if (error) {
+                                return callback(error);
+                            }
+                            userMonsterCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi: true}, function (error) {
+                                if (error) {
+                                    return callback(error);
+                                }
+                                userNpcCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi: true}, function (error) {
+                                    return callback(error);
+                                })
+                            })
+                        })
                     });
                 });
             });
@@ -190,7 +211,10 @@ function remove(username, callback) {
         userCollection.remove.bind(userCollection, {username: username}),
         favouritesCollection.remove.bind(favouritesCollection, {username: username}),
         contentTreeCollection.remove.bind(contentTreeCollection, {username: username}),
-        encounterCollection.remove.bind(encounterCollection, {Username: username})
+        encounterCollection.remove.bind(encounterCollection, {Username: username}),
+        userTextCollection.remove.bind(userTextCollection, {Username: username}),
+        userMonsterCollection.remove.bind(userMonsterCollection, {Username: username}),
+        userNpcCollection.remove.bind(userNpcCollection, {Username: username})
     ], callback);
 }
 
@@ -199,6 +223,10 @@ module.exports = function (database) {
     contentTreeCollection = database.collection("contenttrees");
     favouritesCollection = database.collection("favourites");
     encounterCollection = database.collection("encounters");
+    userMonsterCollection = database.collection("usermonsters");
+    userTextCollection = database.collection("usertexts");
+    userNpcCollection = database.collection("usernpcs");
+
     return {
         exists: exists,
         register: register,
