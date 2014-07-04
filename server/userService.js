@@ -145,11 +145,11 @@ function update(username, fields, callback) {
         } else if (result) {
             return callback(new Error("EMAIL_ALREADY_EXISTS"));
         }
-        userCollection.update({username: username}, {$set: fields}, function (error, result) {
+        userCollection.findAndModify({username: username}, [], {$set: fields}, function (error, modifiedUser) {
             if (error) {
                 return callback(error);
             }
-            if (!result) {
+            if (!modifiedUser) {
                 return callback(new Error("USER_DOES_NOT_EXIST"));
             }
             if (!fields.username) {
@@ -167,7 +167,7 @@ function update(username, fields, callback) {
                         if (error) {
                             return callback(error);
                         }
-                        userTextCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi: true}, function (error) {
+                        userTextCollection.update({username: username}, {$set: {username: fields.username} }, {multi: true}, function (error) {
                             if (error) {
                                 return callback(error);
                             }
@@ -176,7 +176,7 @@ function update(username, fields, callback) {
                                     return callback(error);
                                 }
                                 userNpcCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi: true}, function (error) {
-                                    return callback(error);
+                                    return callback(error, modifiedUser);
                                 })
                             })
                         })
