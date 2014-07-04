@@ -468,8 +468,18 @@ function describeUsers(db) {
         });
     });
 
-    /* remove favourites */
-    
+    it("should remove favourites when removing the user", function (done) {
+        async.series([
+            registerBob,
+            userService.remove.bind(null, "Bob"),
+            getFavourites.bind(null, db, "Bob")
+        ], function (error, results) {
+            expect(error).to.equal(null);
+            expect(results[2]).to.equal(null);
+            done();
+        });
+    });
+
     /* remove contenttree */
 
 }
