@@ -13,12 +13,12 @@ module.exports = function (contentTreesCollection, userService) {
                     });
                 },
                 function (callback) {
-                    contentTreesCollection.find({username: username}, {fields: {username: 1, contentTree: 1, _id: 0}}).toArray(function (error, contentTree) {
-                        callback(error, contentTree[0].contentTree);
+                    contentTreesCollection.findOne({username: username}, {fields: {username: 1, contentTree: 1, _id: 0}}, function (error, contentTree) {
+                        callback(error, contentTree);
                     });
                 }
             ], function (error, results) {
-                if (error) {
+                if (error || !results[0] || !results[1]) {
                     console.log(error);
                     response.send(500);
                 }
