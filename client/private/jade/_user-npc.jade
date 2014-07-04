@@ -11,11 +11,9 @@
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copyNpc()')
                 i.icon.fa.fa-copy
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit', ng-click="editUserNpc()")
-                i.icon.fa.fa-cogs
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Zap')
-                i.icon.fa.fa-flash
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Delete', on-confirm="deleteUserNpc()", confirm-click="Are you sure ?", confirm-title="Delete npc")
-                i.icon.fa.fa-times
+                i.icon.fa.fa-edit
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete', on-confirm="deleteUserNpc()", confirm-click="Are you sure ?", confirm-title="Delete npc")
+                i.icon.fa.fa-trash-o
 .row.l-section.result-content
     .col-xxs-12.col-xs-12.cat
         p.intro.underlined {{userNpc.Description_Visual}}
