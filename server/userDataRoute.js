@@ -29,7 +29,7 @@ module.exports = function (contentTreesCollection, userService) {
                             email: results[0].email,
                             fullname : results[0].fullname
                         },
-                        contentTree: results[1]
+                        contentTree: results[1].contentTree
                     };
                     response.json(userData);
                 }

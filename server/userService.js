@@ -99,7 +99,7 @@ function register(fields, callback) {
                 if (error) {
                     return callback(error);
                 }
-                contentTreeCollection.insert({ username:user.username, tree: [] }, function(error) {
+                contentTreeCollection.insert({ username:user.username, contentTree: [] }, function(error) {
                     if (error) {
                         return callback(error);
                     }

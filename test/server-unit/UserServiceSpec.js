@@ -397,7 +397,7 @@ function describeUsers(db) {
         ], function (error, results) {
             expect(error).to.equal(null);
             expect(results[1].username).to.equal("Bob");
-            expect(results[1].tree).to.deep.equal([]);
+            expect(results[1].contentTree).to.deep.equal([]);
             done();
         });
     });
