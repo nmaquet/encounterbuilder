@@ -14,7 +14,6 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
                     // (angular renders binder empty then when the children are loaded re render again with the children)
                     $scope.binder = contentTreeService.getBinderByKey($routeParams.binderId);
                     $rootScope.globalTitle = "Encounter Builder - " + $scope.binder.Name;
-                    //FIXME this only works for the parent binder, not for the children ones.
                     $scope.removeBinderMessage = "This binder contains " + $scope.binder.descendantCount + " elements. Are you sure ?";
 
                     $scope.pending = false;

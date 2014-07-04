@@ -8,20 +8,21 @@
 }
 
 // Slide Menu Dropdown
-.encounter-dropdown-container {
+.create-dropdown-container {
   float: left;
   width: 100%;
   @include font-size(18);
 }
-.encounter-dropdown.dropdown-toggle {
-  background-color: $red;
+.create-dropdown.dropdown-toggle {
+  color: $sp-menu-grey-dark;
+  background: $sp-menu-grey-light $img-texture-1 repeat left top;
   line-height: 18px;
   //padding-top: 0;
   //padding-bottom: 0;
   padding-top: 12px;
   padding-bottom: 12px;
   overflow: hidden;
-  .encounter-dropdown-name {float: left;
+  .create-dropdown-name {float: left;
     max-width: 84%;
     overflow: hidden;
     display: inline-block;

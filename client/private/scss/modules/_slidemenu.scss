@@ -123,7 +123,8 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
     font-size: 1em;
     font-weight: 300;
     &:hover {
-      background-color: $sp-menu-text-bg;
+      color: white;
+      background-color: $sp-menu-grey-dark;
       text-decoration: none;
     }
   }

@@ -3,48 +3,44 @@ section.sp-menu.sp-menu-vertical.sp-menu-left.no-print(slide-menu)
         div(ng-controller='LeftSidebarTabController')
             .sp-menu-content
                 ul.nav.nav-tabs.text-center#search-tabs.search-tabs.icon-tabs.hidden-xs
-                    li.col-fourth.tab-1
+                    li.col-third.tab-1
                         a#campaignsTab.is-pointer(ng-click="selectTab('campaigns')", data-toggle="tab")
                             i.icon.fa.fa-folder
                             // span.tab-name Campaigns
-                    li.col-fourth.tab-2
+                    li.col-third.tab-2
                         a#favouritesTab.is-pointer(ng-click="selectTab('favourites')", data-toggle="tab")
                             i.icon.fa.fa-heart
                             // span.tab-name NPCs
-                    li.col-fourth.tab-3
-                        a#creationsTab.is-pointer(ng-click="selectTab('creations')", data-toggle="tab")
-                            i.icon.fa.fa-edit
-                            // span.tab-name Creations
-                    li.col-fourth.tab-4
+                    li.col-third.tab-3
                         a#databaseTab.is-pointer(ng-click="selectTab('database')", data-toggle="tab")
                             i.icon.fa.fa-book
                             // span.tab-name Databae
                 header.sp-menu-heading(ng-show="selectedTab === 'campaigns'")
-                    h2.t-title Campaigns
+                    h2.t-title Library
                     span#console
-                    .dropdown.encounter-dropdown-container.is-pointer
-                        a.encounter-dropdown.dropdown-toggle.col-xxs-12.col-xs-12(role='button', data-toggle='dropdown')
-                            span.encounter-dropdown-name Create
+                    .dropdown.create-dropdown-container.is-pointer
+                        a.create-dropdown.dropdown-toggle.col-xxs-12.col-xs-12(role='button', data-toggle='dropdown')
+                            span.create-dropdown-name Create
                             i.icon.fa.fa-angle-down.square.white.pull-right
                         ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
                             li
-                                a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createEncounter()')
+                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createEncounter()')
                                     i.icon.fa.fa-list-alt
                                     strong &nbsp;Create new encounter
                             li
-                                a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createBinder()')
+                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createBinder()')
                                     i.icon.fa.fa-folder
                                     strong &nbsp;Create new binder
                             li
-                                a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserMonster()')
+                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserMonster()')
                                     i.icon.fa.fa-bug
                                     strong &nbsp;Create new monster
                             li
-                                a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserNpc()')
+                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserNpc()')
                                     i.icon.fa.fa-user
                                     strong &nbsp;Create new npc
                             li
-                                a.encounter-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserText()')
+                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserText()')
                                     i.icon.fa.fa-pencil
                                     strong &nbsp;Create new Text
                 .sp-menu-result(ng-switch="selectedTab")
