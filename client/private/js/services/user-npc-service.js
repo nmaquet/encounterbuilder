@@ -1,27 +1,19 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('userNpcService', ['$http', function ($http) {
+DEMONSQUID.encounterBuilderServices.factory('userNpcService', ['$http', '$cacheFactory', function ($http, $cacheFactory) {
+
+    var httpCache = $cacheFactory.get('$http');
 
     function nop() {
     }
 
-    var lastUserNpc = null;
-    var lastUserNpcId = null;
-
     return {
         get: function (id, callback) {
             callback = callback || nop;
-            if (lastUserNpcId && lastUserNpcId === id) {
-                return callback(null, lastUserNpc);
-            }
-            $http.get('/api/user-npc/' + id)
+            $http.get('/api/user-npc/' + id, {cache: true})
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
-                        lastUserNpcId = lastUserNpc = null;
-                    } else {
-                        lastUserNpcId = response.userNpc._id;
-                        lastUserNpc = response.userNpc;
                     }
                     callback(response.error, response.userNpc);
                 })
@@ -35,10 +27,6 @@ DEMONSQUID.encounterBuilderServices.factory('userNpcService', ['$http', function
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
-                        lastUserNpcId = lastUserNpc = null;
-                    } else {
-                        lastUserNpcId = response.userNpc._id;
-                        lastUserNpc = response.userNpc;
                     }
                     callback(response.error, response.userNpc);
                 })
@@ -53,10 +41,6 @@ DEMONSQUID.encounterBuilderServices.factory('userNpcService', ['$http', function
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
-                        lastUserNpcId = lastUserNpc = null;
-                    } else {
-                        lastUserNpcId = response.userNpc._id;
-                        lastUserNpc = response.userNpc;
                     }
                     callback(response.error, response.userNpc);
                 })
@@ -67,14 +51,11 @@ DEMONSQUID.encounterBuilderServices.factory('userNpcService', ['$http', function
         },
         update: function (userNpc, callback) {
             callback = callback || nop;
+            httpCache.put('/api/user-npc/' + userNpc._id, { userNpc: userNpc });
             $http.post('/api/update-user-npc', { userNpc: userNpc })
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
-                        lastUserNpcId = lastUserNpc = null;
-                    } else {
-//                        lastUserNpcId = userNpc._id;
-//                        lastUserNpc = userNpc;
                     }
                     callback(response.error);
                 })
@@ -85,12 +66,12 @@ DEMONSQUID.encounterBuilderServices.factory('userNpcService', ['$http', function
         },
         delete: function (userNpc, callback) {
             callback = callback || nop;
+            httpCache.remove('/api/user-npc/' + userNpc._id);
             $http.post('/api/delete-user-npc', { userNpc: userNpc })
                 .success(function (response) {
                     if (response.error) {
                         console.log(response.error);
                     }
-                    lastUserNpcId = lastUserNpc = null;
                     callback(response.error);
                 })
                 .error(function (response) {
@@ -101,17 +82,16 @@ DEMONSQUID.encounterBuilderServices.factory('userNpcService', ['$http', function
         getMultiple: function (ids, callback) {
             function pushTask(id) {
                 tasks.push(function (taskCallback) {
-                        $http.get('/api/user-npc/' + id)
-                            .success(function (data) {
-                                taskCallback(null, data.userNpc);
-                            })
-                            .error(function (error) {
-                                taskCallback(error, null);
-                            });
+                    $http.get('/api/user-npc/' + id, {cache: true})
+                        .success(function (data) {
+                            taskCallback(null, data.userNpc);
+                        })
+                        .error(function (error) {
+                            taskCallback(error, null);
+                        });
                     }
                 );
             }
-
             var tasks = [];
             for (var i in ids) {
                 pushTask(ids[i]);
