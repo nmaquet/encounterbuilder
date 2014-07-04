@@ -5,9 +5,10 @@ DEMONSQUID.encounterBuilderControllers.controller('UserTextController',
         function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userTextService, contentTreeService, locationService) {
             $scope.tinymceOptions = {
                 resize: false,
-                menubar: "edit format",
+                menubar: false,
+                toolbar: "bold italic underline strikethrough alignleft aligncenter alignright alignjustify bullist numlist outdent indent blockquote formatselect undo redo removeformat subscript superscript",
                 plugins: "autoresize",
-                autoresize_min_height:400
+                autoresize_min_height: 400
             };
             $scope.expanded = false;
 
@@ -95,4 +96,5 @@ DEMONSQUID.encounterBuilderControllers.controller('UserTextController',
             });
 
         }
-    ]);
+    ])
+;

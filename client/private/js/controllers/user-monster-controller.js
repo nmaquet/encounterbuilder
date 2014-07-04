@@ -5,7 +5,8 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
         function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userMonsterService, contentTreeService, locationService) {
             $scope.tinymceOptions = {
                 resize: false,
-                menubar: "edit format"
+                menubar: false,
+                toolbar: "bold italic underline strikethrough alignleft aligncenter alignright alignjustify bullist numlist outdent indent blockquote formatselect undo redo removeformat subscript superscript",
             };
 
             $scope.deleteUserMonster = function () {

@@ -5,7 +5,8 @@ DEMONSQUID.encounterBuilderControllers.controller('UserNpcController',
         function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userNpcService, contentTreeService, locationService) {
             $scope.tinymceOptions = {
                 resize: false,
-                menubar: "edit format"
+                menubar: false,
+                toolbar: "bold italic underline strikethrough alignleft aligncenter alignright alignjustify bullist numlist outdent indent blockquote formatselect undo redo removeformat subscript superscript",
             };
             $scope.deleteUserNpc = function () {
                 if ($scope.userNpc) {
