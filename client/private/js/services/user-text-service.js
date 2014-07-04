@@ -1,28 +1,19 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('userTextService', ['$http', function ($http) {
+DEMONSQUID.encounterBuilderServices.factory('userTextService', ['$http', '$cacheFactory', function ($http, $cacheFactory) {
+
+    var httpCache = $cacheFactory.get('$http');
 
     function nop() {
     }
 
-    var lastUserText = null;
-    var lastUserTextId = null;
-
-
     return {
         get: function (id, callback) {
             callback = callback || nop;
-            if (lastUserTextId && lastUserTextId === id) {
-                return callback(null, lastUserText);
-            }
-            $http.get('/api/user-text/' + id)
+            $http.get('/api/user-text/' + id, {cache: true})
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
-                        lastUserTextId = lastUserText = null;
-                    } else {
-                        lastUserTextId = response.userText._id;
-                        lastUserText = response.userText;
                     }
                     callback(response.error, response.userText);
                 })
@@ -36,10 +27,6 @@ DEMONSQUID.encounterBuilderServices.factory('userTextService', ['$http', functio
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
-                        lastUserTextId = lastUserText = null;
-                    } else {
-                        lastUserTextId = response.userText._id;
-                        lastUserText = response.userText;
                     }
                     callback(response.error, response.userText);
                 })
@@ -55,10 +42,6 @@ DEMONSQUID.encounterBuilderServices.factory('userTextService', ['$http', functio
                     console.log("userservice.success");
                     if (response.error) {
                         console.log(error);
-                        lastUserTextId = lastUserText = null;
-                    } else {
-                        lastUserTextId = response.userText._id;
-                        lastUserText = response.userText;
                     }
                     callback(response.error, response.userText);
                 })
@@ -69,14 +52,11 @@ DEMONSQUID.encounterBuilderServices.factory('userTextService', ['$http', functio
         },
         update: function (userText, callback) {
             callback = callback || nop;
+            httpCache.put('/api/user-text/' + userText._id, { userText: userText });
             $http.post('/api/update-user-text', { userText: userText })
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
-                        lastUserTextId = lastUserText = null;
-                    } else {
-//                        lastUserTextId = userText._id;
-//                        lastUserText = userText;
                     }
                     callback(response.error);
                 })
@@ -87,12 +67,12 @@ DEMONSQUID.encounterBuilderServices.factory('userTextService', ['$http', functio
         },
         delete: function (userText, callback) {
             callback = callback || nop;
+            httpCache.remove('/api/user-text/' + user-text._id);
             $http.post('/api/delete-user-text', { userText: userText })
                 .success(function (response) {
                     if (response.error) {
                         console.log(response.error);
                     }
-                    lastUserTextId = lastUserText = null;
                     callback(response.error);
                 })
                 .error(function (response) {
@@ -103,7 +83,7 @@ DEMONSQUID.encounterBuilderServices.factory('userTextService', ['$http', functio
         getMultiple: function (ids, callback) {
             function pushTask(id) {
                 tasks.push(function (taskCallback) {
-                        $http.get('/api/user-text/' + id)
+                        $http.get('/api/user-text/' + id, {cache: true})
                             .success(function (data) {
                                 taskCallback(null, data.userText);
                             })
@@ -113,7 +93,6 @@ DEMONSQUID.encounterBuilderServices.factory('userTextService', ['$http', functio
                     }
                 );
             }
-
             var tasks = [];
             for (var i in ids) {
                 pushTask(ids[i]);
