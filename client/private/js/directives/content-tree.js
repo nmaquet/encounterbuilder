@@ -1,10 +1,62 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
-    ['$rootScope', '$timeout', '$routeParams', 'contentTreeService', 'encounterService',
-        function ($rootScope, $timeout, $routeParams, contentTreeService, encounterService) {
+    ['$timeout', '$routeParams', 'contentTreeService',
+        function ($timeout, $routeParams, contentTreeService) {
 
             function link(scope, element) {
+
+                function activateNodeBasedOnRouteParams() {
+                    if (!tree) {
+                        return;
+                    }
+                    if ($routeParams.encounterId) {
+                        tree.visit(function (node) {
+                            if (node.data.encounterId && node.data.encounterId === $routeParams.encounterId) {
+                                node.setActive(true);
+                                return false;
+                            }
+                        });
+                    }
+                    else if ($routeParams.binderId) {
+                        tree.visit(function (node) {
+                            if (node.folder && node.key === $routeParams.binderId) {
+                                node.setActive(true);
+                                return false;
+                            }
+                        });
+                    }
+                    else if ($routeParams.userMonsterId) {
+                        tree.visit(function (node) {
+                            if (node.data.userMonsterId && node.key === $routeParams.userMonsterId) {
+                                node.setActive(true);
+                                return false;
+                            }
+                        });
+                    }
+                    else if ($routeParams.userNpcId) {
+                        tree.visit(function (node) {
+                            if (node.data.userNpcId && node.key === $routeParams.userNpcId) {
+                                node.setActive(true);
+                                return false;
+                            }
+                        });
+                    }
+                    else if ($routeParams.userTextId) {
+                        tree.visit(function (node) {
+                            if (node.data.userTextId && node.key === $routeParams.userTextId) {
+                                node.setActive(true);
+                                return false;
+                            }
+                        });
+                    } else if (tree.getActiveNode()) {
+                        tree.getActiveNode().setActive(false);
+                    }
+                }
+
+                scope.$on("$routeChangeSuccess", function () {
+                    activateNodeBasedOnRouteParams();
+                });
 
                 function onActivate(event, data) {
                     $timeout(function () {
@@ -86,28 +138,17 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     tree = element.fancytree("getTree");
                     contentTreeService.setTree(tree);
                     tree.visit(addExtraClasses);
-                    if ($routeParams.encounterId) {
-                        tree.visit(function (node) {
-                            if (node.data.encounterId && node.data.encounterId === $routeParams.encounterId) {
-                                node.setActive(true);
-                                return false;
-                            }
-                        });
-                    } else if ($routeParams.binderId) {
-                        tree.visit(function (node) {
-                            if (node.folder && node.key === $routeParams.binderId) {
-                                node.setActive(true);
-                                return false;
-                            }
-                        });
-                    }
                 }
 
                 if (contentTreeService.contentTree()) {
                     initTree();
+                    activateNodeBasedOnRouteParams();
                 }
                 else {
-                    contentTreeService.onLoadSuccess(initTree);
+                    contentTreeService.onLoadSuccess(function() {
+                        initTree();
+                        activateNodeBasedOnRouteParams();
+                    });
                 }
             }
 

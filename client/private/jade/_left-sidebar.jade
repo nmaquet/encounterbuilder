@@ -24,13 +24,13 @@ section.sp-menu.sp-menu-vertical.sp-menu-left.no-print(slide-menu)
                             i.icon.fa.fa-angle-down.square.white.pull-right
                         ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
                             li
-                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createEncounter()')
-                                    i.icon.fa.fa-list-alt
-                                    strong &nbsp;Create new encounter
-                            li
                                 a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createBinder()')
                                     i.icon.fa.fa-folder
                                     strong &nbsp;Create new binder
+                            li
+                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createEncounter()')
+                                    i.icon.fa.fa-list-alt
+                                    strong &nbsp;Create new encounter
                             li
                                 a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserMonster()')
                                     i.icon.fa.fa-bug
@@ -38,11 +38,11 @@ section.sp-menu.sp-menu-vertical.sp-menu-left.no-print(slide-menu)
                             li
                                 a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserNpc()')
                                     i.icon.fa.fa-user
-                                    strong &nbsp;Create new npc
+                                    strong &nbsp;Create new NPC
                             li
                                 a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserText()')
                                     i.icon.fa.fa-pencil
-                                    strong &nbsp;Create new Text
+                                    strong &nbsp;Create new text
                 .sp-menu-result(ng-switch="selectedTab")
                     .database(ng-switch-when="campaigns")
                         .clearfix

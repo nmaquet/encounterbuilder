@@ -630,10 +630,10 @@ table.fancytree-ext-columnview .fancytree-has-children .fancytree-cv-right {
 //  color: $fancytree-bg-color;
 //  background-color: $fancytree-selected-bg-color;
 //}
-.fancytree-focused {
-  outline: 1px solid $brown-transparent;
-  @include box-shadow(0,0,0,transparent);
-}
+//.fancytree-focused {
+//  outline: 1px solid $brown-transparent;
+//  @include box-shadow(0,0,0,transparent);
+//}
 .fancytree-selected,
 .fancytree-active {
   background-color: $fancytree-active-bg-color;
@@ -641,8 +641,10 @@ table.fancytree-ext-columnview .fancytree-has-children .fancytree-cv-right {
 .fancytree-selected {
   font-style: italic;
 }
-.fancytree-treefocus .fancytree-selected ,
-.fancytree-treefocus .fancytree-active {
+//.fancytree-treefocus
+.fancytree-selected ,
+//.fancytree-treefocus
+.fancytree-active {
   color: $fancytree-selected-font-color;
   background-color: $fancytree-selected-bg-color;
 }
@@ -652,9 +654,9 @@ table.fancytree-ext-columnview .fancytree-has-children .fancytree-cv-right {
 table.fancytree-ext-table {
   border-collapse: collapse;
 }
-table.fancytree-ext-table tbody tr.fancytree-focused {
-  background-color: $fancytree-focused-bg-color;
-}
+//table.fancytree-ext-table tbody tr.fancytree-focused {
+//  background-color: $fancytree-focused-bg-color;
+//}
 table.fancytree-ext-table tbody tr.fancytree-active {
   background-color: $fancytree-selected-bg-color;
 }
