@@ -29,7 +29,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', '$roo
 
                 // Substract the Header height from the Slide-Push Menu
                 var $spMenuContent = element.find(".sp-menu-content");
-                var spMenuHeight = $(window).height() - $(".navbar-wrapper").height();
+                var spMenuHeight = $(window).height() - $(".navbar").height();
 
                 scope.$watch(sidebarOpened.get, function (opened) {
                     if (opened) {
@@ -51,7 +51,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('slideMenu', ['$document', '$roo
                     // so that it's scrollable indenpendently of the rest of the body
                     $spMenuContent.height(spMenuHeight);
                     $(window).resize(function() {
-                        spMenuHeight = $(window).height() - $(".navbar-wrapper").height();
+                        spMenuHeight = $(window).height() - $(".navbar").height();
                         $spMenuContent.height(spMenuHeight);
                     });
                 });
