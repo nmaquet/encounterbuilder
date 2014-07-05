@@ -30,18 +30,37 @@ $navbar-red-toggle-hover-bg:            $red !default;
 $navbar-red-toggle-icon-bar-bg:         #fff !default;
 $navbar-red-toggle-border-color:        transparent !default;
 
+//== Pills
+$nav-pills-red-border-radius:                   0 !default;
+$nav-pills-red-active-link-hover-bg:            $red !default;
+$nav-pills-red-active-link-hover-color:         #fff !default;
+
 // Alternate navbars
 // --------------------------------------------------
 
-.l-header .nav > li > a {
-  display: inline-block;
-  padding-top: ($grid-gutter-width/2);
-  padding-bottom: ($grid-gutter-width/2);
-}
-// Default navbar
 .navbar-red {
   background-color: $navbar-red-bg;
   border-color: $navbar-red-border;
+  a {
+    color: $navbar-red-link-color;
+    background-color: transparent;
+  }
+
+  .nav {
+    & > li > a {
+      &:hover, &:focus {
+        background-color: $navbar-red-link-hover-bg;
+      }
+    }
+    .open > a {
+      &, &:hover, &:focus {
+        background-color: $navbar-red-toggle-icon-bar-bg;
+        color: $navbar-red-link-hover-bg;
+        border-color: $navbar-red-link-hover-bg;
+
+      }
+    }
+  }
 
   .navbar-brand {
     color: $navbar-red-brand-color;
@@ -56,91 +75,25 @@ $navbar-red-toggle-border-color:        transparent !default;
     color: $navbar-red-color;
   }
 
-  .navbar-nav {
-    > li > a {
-      color: $navbar-red-link-color;
 
-      &:hover,
-      &:focus {
-        color: $navbar-red-link-hover-color;
-        background-color: $navbar-red-link-hover-bg;
+  // Pills
+  // -------------------------
+  .nav-pills {
+    > li {
+      // Links rendered as pills
+      > a {
+        border-radius: $nav-pills-red-border-radius;
+      }
+      // Active state
+      &.active > a {
+        &,
+        &:hover,
+        &:focus {
+          color: $nav-pills-red-active-link-hover-color;
+          background-color: $nav-pills-red-active-link-hover-bg;
+        }
       }
     }
-    > .active > a {
-      &,
-      &:hover,
-      &:focus {
-        color: $navbar-red-link-active-color;
-        background-color: $navbar-red-link-active-bg;
-      }
-    }
-    > .disabled > a {
-      &,
-      &:hover,
-      &:focus {
-        color: $navbar-red-link-disabled-color;
-        background-color: $navbar-red-link-disabled-bg;
-      }
-    }
-  }
-
-  .navbar-toggle {
-    border-color: $navbar-red-toggle-border-color;
-    &:hover,
-    &:focus {
-      background-color: $navbar-red-toggle-hover-bg;
-    }
-    .icon-bar {
-      background-color: $navbar-red-toggle-icon-bar-bg;
-    }
-  }
-
-  .navbar-collapse,
-  .navbar-form {
-    border-color: $navbar-red-border;
-  }
-
-  // Dropdown menu items
-  .navbar-nav {
-    // Remove background color from open dropdown
-    > .open > a {
-      &,
-      &:hover,
-      &:focus {
-        background-color: $navbar-red-link-active-bg;
-        color: $navbar-red-link-active-color;
-      }
-    }
-
-//    @media (max-width: $grid-float-breakpoint-max) {
-//      // Dropdowns get custom display when collapsed
-//      .open .dropdown-menu {
-//        > li > a {
-//          color: $navbar-red-link-color;
-//          &:hover,
-//          &:focus {
-//            color: $navbar-red-link-hover-color;
-//            background-color: $navbar-red-link-hover-bg;
-//          }
-//        }
-//        > .active > a {
-//          &,
-//          &:hover,
-//          &:focus {
-//            color: $navbar-red-link-active-color;
-//            background-color: $navbar-red-link-active-bg;
-//          }
-//        }
-//        > .disabled > a {
-//          &,
-//          &:hover,
-//          &:focus {
-//            color: $navbar-red-link-disabled-color;
-//            background-color: $navbar-red-link-disabled-bg;
-//          }
-//        }
-//      }
-//    }
   }
 
   // Links in navbars
@@ -152,47 +105,39 @@ $navbar-red-toggle-border-color:        transparent !default;
     }
   }
 }
+a.feedback-btn {
+  background-color: $red;
+  color: white;
+  &:hover {
+    background-color: $red-light;
+  }
+}
 // ---------------------------
 //  Overwrite Boostrap Values
 // ---------------------------
-.navbar {
-  @include font-size(12);
-  @media (min-width: $screen-lg) {
-    @include font-size(14);
-  }
-  min-height: 50px;
-  //height: 50px;
-  border-width: 0;
-  &, a { color: white; }
-  &.navbar-red {
-    background-color: $red-transparent;
-  }
-}
-
-.nav-list-item {
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  font-weight: normal;
-  line-height: 1.42857;
-  color: $coal;
-  white-space: nowrap;
-}
-.nav > li > a:hover,
-.nav > li > a:focus {
-  background-color: $red-light;
-  border-color: $red-light;
-}
-.nav .open > a,
-.nav .open > a:hover,
-.nav .open > a:focus {
-  background-color: $red-light;
-  border-color: $red-light;
-}
-
-//.navbar .dropdown {
-//  min-width: 160px;
-//  a {
-//    width: 100%;
-//  }
+//.nav-pills > li > a {
+//  @include border-radius(0);
 //}
+// Main navbar
+.l-header {
+  .navbar { height: $navbar-height; }
+  .nav {
+    display: inline-block;
+    @include font-size(12);
+    @media (min-width: $screen-lg) {
+      @include font-size(14);
+    }
+    &  > li > a {
+      @include border-radius(0);
+      //display: inline-block;
+      padding-top: ($grid-gutter-width/2);
+      padding-bottom: ($grid-gutter-width/2);
+
+      display: table !important;
+      height: $navbar-height;
+      max-height: $navbar-height;
+      > * { display: table-cell; vertical-align: middle; }
+    }
+    .caret { display: inline-block !important; }
+  }
+}

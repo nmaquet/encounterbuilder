@@ -7,10 +7,10 @@
 
 div.mce-fullscreen {
   position: fixed;
-  top: 50px;
-  left: 300px;
-  right: 50px;
-  bottom: 50px;
+  left: $sp-menu-width;
+  top: $navbar-height;
+  right: $navbar-height;
+  bottom: $navbar-height;
 }
 
 html, body {
@@ -24,7 +24,7 @@ html, body {
   min-height: 100%;
   //overflow-x: hidden;
   position: relative;
-  padding-top: 50px; //header height
+  padding-top: $navbar-height; //header height
 }
 
 /*[class*="col-"].no-padding-left {

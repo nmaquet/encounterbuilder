@@ -40,7 +40,7 @@ a {
   &.is-pointer {
     @include transition(all 0.2s ease-in-out);
   }
-  color: $teal;
+  color: $red;
   &:hover { color: $red-light; }
   .l-section & {
     color: $red;

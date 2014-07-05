@@ -29,75 +29,10 @@ $sp-menu-text-bg : $sp-menu-red;
 $sp-menu-hover-bg : $sp-menu-coal-medium;
 $sp-menu-shadow : rgba(0,0,0,0.175);
 
-/* Trigger button */
-.navbar-container {
-  // @include transition(all .3s ease);
-  // .spm-open-left & { padding-left: $sp-menu-width; }
-  // .spm-open-right & { padding-right: $sp-menu-width; }
-}
-// Align icons and text vertically in the header
-.sp-menu-toggle-container {
-  display: inline-block;
-}
-.sp-menu-toggle {
-  display: table !important;
-  height: 50px;
-  max-height: 50px;
-  > * { display: table-cell; vertical-align: middle; }
-}
-.sp-menu-toggle-text {
-  @include transition(all .3s ease);
-  @include opacity(1);
-  overflow: hidden;
-  width: auto;
-  height: auto;
-  display: inline-block;
-  line-height: 1;
-//  .spm-open & {
-//    @include opacity(0);
-//    width: 0;
-//    height: 0;
-//  }
-}
-
-.sp-menu-left-toggle-text {
-  @include transition(all .3s ease);
-  @include opacity(1);
-  overflow: hidden;
-  width: auto;
-  height: auto;
-  display: inline-block;
-  line-height: 1;
-//  .spm-open-left & {
-//    @include opacity(0);
-//    width: 0;
-//    height: 0;
-//  }
-}
-
-.sp-menu-right-toggle-text {
-  @include transition(all .3s ease);
-  @include opacity(1);
-  overflow: hidden;
-  width: auto;
-  height: auto;
-  display: inline-block;
-  line-height: 1;
-//  .spm-open-right & {
-//    @include opacity(0);
-//    width: 0;
-//    height: 0;
-//  }
-}
-
-.sp-menu-header {
-  min-height: 50px;
-}
-
 /* General styles for all menus */
 .sp-menu {
   @include font-size(16);
-  margin-top: 50px;
+  margin-top: $navbar-height;
   background-color: $sp-menu-bg;
   &.sp-menu-dark{background-color: $sp-menu-bg-dark;}
   position: fixed;

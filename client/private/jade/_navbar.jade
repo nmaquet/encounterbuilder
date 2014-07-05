@@ -1,31 +1,24 @@
-.navbar.navbar-default.navbar-red.no-radius.navbar-fixed-top(role='navigation')
+.navbar.navbar-red.no-radius.navbar-fixed-top(role='navigation')
     .navbar-container
-
-        ul.nav.navbar-nav.navbar-left.sp-menu-toggle-container(ng-hide='!viewport.xs || rightSidebarIsOpened()')
+        ul.nav.nav-pills.sp-menu-toggle-container(ng-hide='!viewport.xs || rightSidebarIsOpened()')
             li(ng-show='leftSidebarIsOpened()')
-                a.t-title.is-pointer.sp-menu-toggle(ng-click='toggleLeftSidebar()')
+                a.is-pointer.sp-menu-toggle(ng-click='toggleLeftSidebar()')
                     i.fa.fa-angle-left
                     | &nbsp;
                     i.fa.fa-folder-open
                     | &nbsp;
                     span.sp-menu-left-toggle-text.hidden-xs Open
-
-        ul.nav.navbar-nav.navbar-left.sp-menu-toggle-container(ng-hide='!viewport.xs || rightSidebarIsOpened()')
             li
-                a.t-title.is-pointer.sp-menu-toggle(ng-click='openLeftSidebarAndSelectTab("campaigns")')
+                a.is-pointer.sp-menu-toggle(ng-click='openLeftSidebarAndSelectTab("campaigns")')
                     i.icon.icon-lg.fa.fa-folder
-
-        ul.nav.navbar-nav.navbar-left.sp-menu-toggle-container(ng-hide='!viewport.xs || rightSidebarIsOpened()')
             li
-                a.t-title.is-pointer.sp-menu-toggle(ng-click='openLeftSidebarAndSelectTab("favourites")')
+                a.is-pointer.sp-menu-toggle(ng-click='openLeftSidebarAndSelectTab("favourites")')
                     i.icon.icon-lg.fa.fa-heart
-
-        ul.nav.navbar-nav.navbar-left.sp-menu-toggle-container(ng-hide='!viewport.xs || rightSidebarIsOpened()')
             li
-                a.t-title.is-pointer.sp-menu-toggle(ng-click='openLeftSidebarAndSelectTab("database")')
+                a.is-pointer.sp-menu-toggle(ng-click='openLeftSidebarAndSelectTab("database")')
                     i.icon.icon-lg.fa.fa-book
 
-        ul.nav.navbar-nav.navbar-right.sp-menu-toggle-container(ng-hide='viewport.xs && leftSidebarIsOpened()')
+        ul.nav.nav-pills.sp-menu-toggle-container.pull-right(ng-hide='viewport.xs && leftSidebarIsOpened()')
             li
                 a.t-title.is-pointer.sp-menu-toggle(ng-click='toggleRightSidebar()')
                     i.fa.fa-angle-right
@@ -34,16 +27,7 @@
                     | &nbsp;
                     span.sp-menu-right-toggle-text.hidden-xs Database
 
-        ul.nav.navbar-nav.navbar-right(ng-hide='viewport.xs && anySidebarIsOpened()')
-            li.l-nav-social.visible-lg
-                a(href='https://www.facebook.com/EncounterBuilder', target='_blank', title='Like us on Facebook')
-                    i.icon.square.fa.fa-facebook
-                a(href='https://twitter.com/buildEncounters', target='_blank', title='Follow us on Twitter')
-                    i.icon.square.fa.fa-twitter
-                a(href='https://plus.google.com/100708201261690131120', target='_blank', title='Join us on Google+')
-                    i.icon.square.fa.fa-google-plus
-            li.l-nav-feedback.visible-lg
-                a.is-pointer#feedback(href="http://forums.encounterbuilder.com" target="_blank" data-toggle='popover', ng-controller='FeedbackController') Got any feedback? Head to our forums!
+        ul.nav.nav-pills.l-nav-user.pull-right
             li.dropdown(ng-controller='LogoutController')
                 a#user-dropdown.dropdown-toggle.is-pointer(role='button', data-toggle='dropdown')
                     i.icon.fa.fa-user
@@ -59,5 +43,19 @@
                     li
                         a#user-dropdown-logout.is-pointer(tabindex='-1', ng-click='logout()')
                             | Log out
+
+        ul.nav.nav-pills.l-nav-social.visible-lg.pull-right(ng-hide='viewport.xs && anySidebarIsOpened()')
+            li
+                a(href='https://www.facebook.com/EncounterBuilder', target='_blank', title='Like us on Facebook')
+                    i.icon.square.fa.fa-facebook
+            li
+                a(href='https://twitter.com/buildEncounters', target='_blank', title='Follow us on Twitter')
+                    i.icon.square.fa.fa-twitter
+            li
+                a(href='https://plus.google.com/100708201261690131120', target='_blank', title='Join us on Google+')
+                    i.icon.square.fa.fa-google-plus
+            li
+                a.feedback-btn.is-pointer#feedback(href="http://forums.encounterbuilder.com" target="_blank" data-toggle='popover', ng-controller='FeedbackController') Got any feedback? Head to our forums!
+
 
 include _edit_profile
