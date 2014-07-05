@@ -3,14 +3,6 @@
 DEMONSQUID.encounterBuilderControllers.controller('UserTextController',
     ['$rootScope', '$scope', '$timeout', '$routeParams', '$location', '$sce', 'userTextService', 'contentTreeService', 'locationService',
         function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userTextService, contentTreeService, locationService) {
-            $scope.tinymceOptions = {
-                resize: false,
-                menubar: false,
-                toolbar: "bold italic underline strikethrough alignleft aligncenter alignright alignjustify bullist numlist outdent indent blockquote formatselect undo redo removeformat subscript superscript",
-                plugins: "autoresize",
-                autoresize_min_height: 400
-            };
-            $scope.expanded = false;
 
             $scope.deleteUserText = function () {
                 if ($scope.userText) {
@@ -29,37 +21,15 @@ DEMONSQUID.encounterBuilderControllers.controller('UserTextController',
                 }
             };
 
-            $scope.toggleExpanded = function () {
-                $scope.expanded = !$scope.expanded;
-            };
-
             $scope.editUserText = function () {
                 if ($scope.userText) {
                     $scope.go("/edit-user-text/" + ($routeParams.userTextId || $routeParams.detailsId));
                 }
             };
 
-            $scope.viewUserText = function () {
-                if ($scope.userText) {
-                    $scope.go("/user-text/" + $routeParams.userTextId);
-                }
-            };
-
             $scope.copyUserText = function () {
                 contentTreeService.copyUserText($scope.userText._id);
             };
-
-            function updateUserText() {
-                if ($scope.userText) {
-                    userTextService.update($scope.userText, function (error) {
-                        if (error) {
-                            console.log(error);
-                        } else {
-                            contentTreeService.userTextUpdated($scope.userText);
-                        }
-                    });
-                }
-            }
 
             $scope.pending = true;
 
@@ -73,28 +43,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserTextController',
                     $rootScope.globalTitle = "Encounter Builder - " + $scope.userText.title;
                 }
                 $scope.pending = false;
-
-                var lastWatchTime;
-
-                $scope.$watch('userText', function (userText) {
-                    var thisWatchTime = new Date().getTime();
-                    lastWatchTime = thisWatchTime;
-                    $timeout(function () {
-                        if (angular.equals(userText, $scope.userText) && thisWatchTime === lastWatchTime) {
-                            updateUserText();
-                        } else {
-                        }
-                    }, 2000);
-                }, true /* deep equality */);
-
-                $scope.$on('$locationChangeStart', function (e) {
-                    /* update if leaving editor view */
-                    if ($location.path().indexOf("/edit-user-text/") === -1) {
-                        updateUserText();
-                    }
-                });
             });
-
         }
     ])
 ;
