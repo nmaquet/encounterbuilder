@@ -106,8 +106,8 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
 
   h1, h2, h3, .t-title {
     color: $sp-menu-title;
-    font-size: 1.5em;
-    padding: ($grid-gutter-width/2);
+    font-size: 1.25em;
+    padding: ($grid-gutter-width/3) ($grid-gutter-width/2);
     margin: 0;
     font-weight: 300;
     background: $sp-menu-text-bg $img-texture-1 repeat left top;

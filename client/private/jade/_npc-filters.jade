@@ -36,13 +36,13 @@
             option(value='warrior') Warrior
         optgroup(label="Other")
             option(value='animal companion') Animal Companion
-.form-group.col-xxs-12.col-xs-12
+.col-xxs-12.col-xs-12
     .col-xxs-4.col-xs-4
         .row
             label(for='npcCRSlider') <strong>CR</strong> {{minCR | number}} - {{(maxCR < 20) ? (maxCR | number) : "20+"}}
     .col-xxs-8.col-xs-8
         nouislider(min="minCR", max="maxCR",range-min="0",range-max="20")
-.form-group.col-xxs-12.col-xs-12
+.col-xxs-12.col-xs-12
     .checkbox
         label(for='usercreated-checkbox')
             input#usercreated-checkbox(type='checkbox',ng-model='userCreated')
