@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
-    ['$rootScope', '$timeout', '$routeParams', 'contentTreeService', 'encounterService',
-        function ($rootScope, $timeout, $routeParams, contentTreeService, encounterService) {
+    ['$timeout', '$routeParams', 'contentTreeService',
+        function ($timeout, $routeParams, contentTreeService) {
 
             function link(scope, element) {
 
@@ -54,7 +54,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     }
                 }
 
-                $rootScope.$on("$routeChangeSuccess", function () {
+                scope.$on("$routeChangeSuccess", function () {
                     activateNodeBasedOnRouteParams();
                 });
 
