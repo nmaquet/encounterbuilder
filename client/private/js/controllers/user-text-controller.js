@@ -23,7 +23,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserTextController',
 
             $scope.editUserText = function () {
                 if ($scope.userText) {
-                    $scope.go("/edit-user-text/" + ($routeParams.userTextId || $routeParams.detailsId));
+                    locationService.go("/edit-user-text/" + ($routeParams.userTextId || $routeParams.detailsId));
                 }
             };
 
