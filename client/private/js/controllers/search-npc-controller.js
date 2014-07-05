@@ -104,7 +104,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                     encounter.Npcs = {};
                 }
                 var id = npc.id || npc._id;
-                if (!encounter.Npcs[ id]) {
+                if (!encounter.Npcs[id]) {
                     encounter.Npcs[id] = {
                         amount: Number(npc.amountToAdd),
                         Name: npc.Name,
@@ -114,6 +114,9 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                         Heroic: npc.Heroic,
                         Level: npc.Level
                     };
+                    if (npc.id === undefined) {
+                        encounter.Npcs[id].userCreated = true;
+                    }
                 }
                 else {
                     encounter.Npcs[id].amount += Number(npc.amountToAdd) || 1;

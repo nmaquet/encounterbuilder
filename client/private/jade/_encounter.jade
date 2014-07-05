@@ -58,7 +58,7 @@ div.encounter
                             span(click-to-edit='npc.amount', on-save="encounterChanged()", display-class="badge red pointer npc-amount", edit-class="badge red pointer npc-amount badge-editing", icon-class="hide", numeric="true")
                         td.name-container
                             span.npc-name
-                                a.is-pointer(ng-click='selectNpcById(id)') {{npc.Name}}
+                                a.is-pointer(ng-click='selectNpcById(id,npc.userCreated)') {{npc.Name}}
                         td.cr-container
                             span.npc-cr
                                 strong

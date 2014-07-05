@@ -19,6 +19,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                 }
                 else {
                     $scope.encounter = encounterEditorService.encounter = encounter;
+                    encounterService.updateUserContent($scope.encounter);
                     $rootScope.globalTitle = "Encounter Builder - " + $scope.encounter.Name;
                 }
             });
@@ -32,8 +33,12 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
 
             };
 
-            $scope.selectNpcById = function (id) {
-                locationService.goToDetails('npc', id);
+            $scope.selectNpcById = function (id, userCreated) {
+                if (userCreated) {
+                    locationService.goToDetails('user-npc', id);
+                } else {
+                    locationService.goToDetails('npc', id);
+                }
             };
 
             $scope.selectItemById = function (id) {
