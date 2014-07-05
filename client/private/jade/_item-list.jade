@@ -5,8 +5,7 @@
             option(value='name') Name
             option(value='price') Price
             option(value='cl') Caster Level
-.col-xxs-12.col-xs-12
-    table.items.table.table-striped.table-condensed
+    table.items.table.table-striped
         thead
             tr.result-row
                 th Name
@@ -22,9 +21,10 @@
                     abbr(title='{{item.Source}}') {{item.Source | abbreviateSource}}
                 //td.input-container(ng-class='{selected: selectedItemId == item.id}')
                     input(type='text', placeholder='1', ng-model='item.amountToAdd')
-                td.btn-container(ng-class='{selected: selectedItemId == item.id}')
+                td.btn-container.text-right(ng-class='{selected: selectedItemId == item.id}')
                     // FIXME should be disabled sometimes
-                    button.item-btn.add-item-btn(  ng-click='addItem(item)')
+                    button.add-item-btn(  ng-click='addItem(item)')
                         i.icon.icon-plus
                             | +
+.text-center
     pagination.pagination-sm.page.is-pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')

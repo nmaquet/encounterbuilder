@@ -1,5 +1,5 @@
 .sidebar-nav, .result-list {
-  background: $grey-light-2 repeat-x center top;
+  //background: $grey-light-2 repeat-x center top;
   label {
     @include font-size(13);
   }
@@ -12,33 +12,40 @@
   }
 }
 .result-list {
-
-  .table th { color: $grey-dark; }
+  .table th {
+    color: $grey-dark
+  ; }
   .table {
     input {
       max-width: 25px;
       text-align: center;
     }
     vertical-align: middle;
-    @include font-size(12);
+    @include font-size(14);
     .price-container, .src-container {
       font-size: 0.925em;
     }
+    .src-container {
+      min-width: 45px;
+    }
     .price-container {
       text-align: right;
-    }
-    .add-item-btn{
-      font-size: 1.2em;
-      background-color: $grey-dark;
-      color:white;
-      &:hover{
-        background-color: $grey-light;
-        color:black;
-      }
     }
   }
   .table > tbody > tr > td:first-child {
     max-width: 30%;
     overflow: hidden;
+  }
+  .table {
+    th, td { vertical-align: middle; }
+  }
+  .table {
+    & > thead, & > tbody, & > tfoot {
+      & > tr {
+        & > th, & > td {
+          &:first-child { padding-left: 10px; }
+        }
+      }
+    }
   }
 }

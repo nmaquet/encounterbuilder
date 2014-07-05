@@ -129,6 +129,15 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
     }
   }
 }
+.sp-menu-light {
+  //color: $sp-menu-grey-dark;
+  background: $sp-menu-grey-light $img-texture-1 repeat left top;
+
+  h1, h2, h3, .t-title {
+    background: transparent;
+    color: inherit;
+  }
+}
 .sp-menu-title {
   color: $sp-menu-title;
   font-size: 1.9em;
@@ -289,4 +298,9 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
   .sp-menu-push-toright {
     left: 190px;
   }
+}
+
+// Exception for the filters
+.l-filters {
+  > .t-title { padding-bottom: 0; }
 }

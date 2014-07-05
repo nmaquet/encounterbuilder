@@ -29,15 +29,23 @@ body.teal {
   //  background: rgba(255,255,255,0.1);
   //}
   .search-tabs li { background-image: $img-texture-2; }
-  .sidebar-nav {
-    background-image: $img-texture-2;
-  }
+//  .sidebar-nav {
+//    background-image: $img-texture-2;
+//  }
   .result-list {
     @include gradient-grey-light();
-    .table td {
-      &.selected {
-        background-color: $teal-light;
-        color: white;
+    .table > tbody > tr {
+      > td,
+      > th {
+        &.selected {
+          background-color: $teal-light;
+          color: white;
+          .add-item-btn {
+            background-color: white;
+            color: $teal;
+            &:hover {  background-color: $grey-light;  }
+          }
+        }
       }
     }
   }
@@ -56,7 +64,6 @@ body.teal {
       .no-multiplebgs & { background: $red $img-texture-2 repeat-x top center; }
     }
     .result-content {
-      @include gradient-grey-light;
       .t-legend { color:$teal; }
     }
   }

@@ -3,16 +3,16 @@
         label(for='sort') Sort by:&nbsp;
         select.form-control#spell-sort(ng-model='sortBy')
             option(value='name') Name
-.col-xxs-12.col-xs-12
-    table.spells.table.table-striped.table-condensed
-        thead
-            tr.result-row
-                th Name
-                th(colspan='3') Source
-        tbody
-            tr.is-pointer.spell-row(ng-repeat='spell in spells')
-                td.name-container(ng-class='{selected: selectedSpellId == spell.id}', ng-click='selectSpellById(spell.id)')
-                    span {{spell.name}}
-                td.src-container(ng-class='{selected: selectedSpellId == spell.id}', ng-click='selectSpellById(spell.id)')
-                    abbr(title='{{spell.source}}') {{spell.source | abbreviateSource}}
+table.spells.table.table-striped
+    thead
+        tr.result-row
+            th Name
+            th(colspan='3') Source
+    tbody
+        tr.is-pointer.spell-row(ng-repeat='spell in spells')
+            td.name-container(ng-class='{selected: selectedSpellId == spell.id}', ng-click='selectSpellById(spell.id)')
+                span {{spell.name}}
+            td.src-container(ng-class='{selected: selectedSpellId == spell.id}', ng-click='selectSpellById(spell.id)')
+                abbr(title='{{spell.source}}') {{spell.source | abbreviateSource}}
+.text-center
     pagination.pagination-sm.page.is-pointer(boundary-links='true', total-items='totalSpells', page='currentPage', items-per-page='spellsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
