@@ -67,7 +67,7 @@ DEMONSQUID.encounterBuilderServices.factory('userTextService', ['$http', '$cache
         },
         delete: function (userText, callback) {
             callback = callback || nop;
-            httpCache.remove('/api/user-text/' + user-text._id);
+            httpCache.remove('/api/user-text/' + userText._id);
             $http.post('/api/delete-user-text', { userText: userText })
                 .success(function (response) {
                     if (response.error) {
