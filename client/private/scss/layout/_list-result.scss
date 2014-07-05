@@ -16,12 +16,12 @@
     color: $grey-dark
   ; }
   .table {
+    @include font-size(14);
+    vertical-align: middle;
     input {
       max-width: 25px;
       text-align: center;
     }
-    vertical-align: middle;
-    @include font-size(14);
     .price-container, .src-container {
       font-size: 0.925em;
     }

@@ -45,8 +45,8 @@ html, body {
 }
 
 .l-app-content {
-  margin-bottom: $grid-gutter-width;
-  @include font-size(14);
+  @include font-size(15);
+  margin-bottom: 80px;
   padding: 5px 20px 5px 20px;
   @media (min-width: $screen-sm-min) {
     padding-left: $grid-gutter-width;
