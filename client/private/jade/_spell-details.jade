@@ -15,7 +15,7 @@
                 i.icon.fa.fa-times
 .row.l-section.result-content
     .col-xxs-12.col-xs-12.cat
-        ul.list-unstyled
+        ul.cat-content.list-unstyled
             li
                 span
                     strong School&nbsp;
@@ -58,11 +58,11 @@
                         strong Spell Resistance&nbsp;
                         | {{spell.spell_resistence}}
     .col-xxs-12.col-xs-12.cat.decor
-        legend.t-legend.t-title Description
-        div(ng-bind-html='spell.descriptionSafe')
+        legend.cat-heading.t-legend.t-title Description
+        .cat-content(ng-bind-html='spell.descriptionSafe')
     .col-xxs-12.col-xs-12.cat.decor(ng-if="spell.mythic")
-        legend.t-legend.t-title Mythic
-        div
+        legend.cat-heading.t-legend.t-title Mythic
+        .cat-content
             | {{spell.mythic_text}}
-        div
+        .cat-content
             | {{spell.augmented}}

@@ -20,7 +20,7 @@
                 i.icon.fa.fa-times
 .row.l-section.result-content
     .col-lg-6.cat
-        ul.list-unstyled
+        ul.cat-content.list-unstyled
             li(ng-if="item.Aura")
                 span
                     strong Aura&nbsp;
@@ -56,8 +56,8 @@
                     strong Added Value&nbsp;
                     | {{item.AddedValue}}
     .col-xs-12.cat.decor(ng-if="item.Requirements || item.Cost")
-        legend.t-legend.t-title Construction
-        ul.list-unstyled
+        legend.cat-heading.t-legend.t-title Construction
+        ul.cat-content.list-unstyled
             li(ng-if="item.Requirements")
                 span
                     strong Requirements&nbsp;
@@ -67,8 +67,8 @@
                     strong Cost&nbsp;
                     | {{item.Cost}}&nbsp;{{item.CostUnit}}
     .col-xs-12.cat.decor
-        legend.t-legend.t-title Description
-        div(ng-show="item.Derived || item.Group === 'Art Object'")
+        legend.cat-heading.t-legend.t-title Description
+        .cat-content(ng-show="item.Derived || item.Group === 'Art Object'")
             div(ng-show="item.Group === 'Potion' || item.Group === 'Oil'")
                 p.
                     A potion is a magic liquid that produces its effect when imbibed. Potions vary incredibly in appearance.
@@ -115,5 +115,5 @@
                     and pay a higher price for it. In this way, an art object may easily be used as a plot hook.
                 p.
                     Art objects can usually be bought or sold for their base price, and are sometimes used as currency.
-        div(ng-hide="item.Derived")
+        .cat-content(ng-hide="item.Derived")
             p {{item.Description}}

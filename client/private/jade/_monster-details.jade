@@ -43,8 +43,8 @@
     .col-xxs-12.col-xs-12
         .row
             .col-lg-6.cat.decor
-                legend.t-legend.t-title Offense
-                ul.list-unstyled
+                legend.cat-heading.t-legend.t-title Offense
+                ul.cat-content.list-unstyled
                     li
                         span
                             strong SPD
@@ -75,8 +75,8 @@
                         spell-list(spell-string="{{monster.SpellsPrepared}}" )
                     li(ng-bind-html='monster.SLASafe' ,linkify='monster.SLASafe',linkify-type="spell", mythic="monster.Mythic")
             .col-lg-6.cat.decor
-                legend.t-legend.t-title Defense
-                ul.list-unstyled
+                legend.cat-heading.t-legend.t-title Defense
+                ul.cat-content.list-unstyled
                     li
                         span
                             strong
@@ -120,8 +120,8 @@
     .col-xxs-12.col-xs-12
         .row
             .col-lg-6.cat.decor
-                legend.t-legend.t-title Statistics
-                ul.list-unstyled
+                legend.cat-heading.t-legend.t-title Statistics
+                ul.cat-content.list-unstyled
                     li
                         span
                             strong Str
@@ -172,9 +172,9 @@
                             | &nbsp;{{monster.SQ}}
             .col-lg-6.cat.decor(ng-if='monster.Environment || monster.Organization || monster.Treasure')
                 div
-                    legend.t-legend.t-title Ecology
+                    legend.cat-heading.t-legend.t-title Ecology
                 div
-                    ul.list-unstyled
+                    ul.cat-content.list-unstyled
                         li(ng-if='monster.Environment')
                             span
                                 strong Environment
@@ -189,9 +189,9 @@
                                 | &nbsp;{{monster.Treasure}}
     .col-xxs-12.col-xs-12.cat.decor(ng-if='monster.SpecialAbilitiesSafe')
         span
-            legend.t-legend.t-title Special Abilities
+            legend.cat-heading.t-legend.t-title Special Abilities
             // FIXME Use jQuery to change the <h5> tags into <p> or <div>
-            div(ng-bind-html='monster.SpecialAbilitiesSafe')
+            .cat-content(ng-bind-html='monster.SpecialAbilitiesSafe')
     .col-xxs-12.col-xs-12.cat.decor(ng-if='monster.Description')
-        legend.t-legend.t-title Description
-        div(ng-bind-html='monster.DescriptionSafe')
+        legend.cat-heading.t-legend.t-title Description
+        .cat-content(ng-bind-html='monster.DescriptionSafe')

@@ -44,7 +44,7 @@ a {
   &:hover { color: $red-light; }
   .l-section & {
     color: $red;
-    &:hover {  color: white; }
+    &:hover {  color: darken($red, 20%); text-decoration: underline; }
   }
 }
 .quote {
@@ -75,13 +75,16 @@ a {
 .intro {
   position: relative;
   overflow: hidden;
-  font-size: 1.125em;
+  font-size: 1.5em;
+  font-style: italic;
   text-indent: 1.75em !important;
-  color: $brown;
+  color: $grey-dark;
+  //color: $brown;
 
   &:before, &:after {
     position: absolute;
     font-size: 1.5em;
+    font-style: normal;
     color: $grey-light-transparent;
     text-shadow: 1px 1px 0 $brown-dark-transparent;
   }
