@@ -1,5 +1,5 @@
 .row(ng-controller='ContentController')
-    .col-md-5.col-xs-10.l-section.l-shadow.search-result.user-monster(ng-controller="UserMonsterController", fade-in-fade-out="startFade", ng-hide="contentType && (viewport.xs || viewport.sm)")
+    .col-md-5.col-xs-10.l-section.l-shadow.search-result.user-monster(ng-controller="EditUserMonsterController", fade-in-fade-out="startFade", ng-hide="contentType && (viewport.xs || viewport.sm)")
         include _edit-user-monster
     div(ng-class="{'col-sm-7': !viewport.xs, 'col-lg-5': !viewport.xs}")
         include _right-details-pane
