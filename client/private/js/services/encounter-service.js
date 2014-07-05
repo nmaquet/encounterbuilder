@@ -148,19 +148,24 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 if (!encounter.Monsters[id].userCreated) {
                     continue;
                 }
-                (function(monster) {
-                    userMonsterService.get(id, function(error, newMonster) {
-                        monster.Name = newMonster.Name;
-                        monster.XP = newMonster.XP;
-                        monster.CR = newMonster.CR;
-                        monster.Type = newMonster.Type;
-                        monster.TreasureBudget = newMonster.TreasureBudget;
-                        monster.Heroic = newMonster.Heroic;
-                        monster.Level= newMonster.Level;
+                (function(monster, monsterId) {
+                    userMonsterService.get(monsterId, function(error, newMonster) {
+                        if (newMonster) {
+                            monster.Name = newMonster.Name;
+                            monster.XP = newMonster.XP;
+                            monster.CR = newMonster.CR;
+                            monster.Type = newMonster.Type;
+                            monster.TreasureBudget = newMonster.TreasureBudget;
+                            monster.Heroic = newMonster.Heroic;
+                            monster.Level= newMonster.Level;
+                        } else {
+                            delete encounter.Monsters[monsterId]; /* monster is no longer found -> remove it */
+                            service.encounterChanged(encounter);
+                        }
                         encounter.xp = calculateXp(encounter);
                         encounter.CR = crService.calculateCR(encounter);
                     });
-                })(encounter.Monsters[id]);
+                })(encounter.Monsters[id], id);
             }
             for (id in encounter.Npcs) {
                 if (!encounter.Npcs.hasOwnProperty(id)) {
@@ -169,19 +174,24 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 if (!encounter.Npcs[id].userCreated) {
                     continue;
                 }
-                (function(npc) {
-                    userNpcService.get(id, function (error, newNpc) {
-                        npc.Name = newNpc.Name;
-                        npc.XP = newNpc.XP;
-                        npc.CR = newNpc.CR;
-                        npc.Type = newNpc.Type;
-                        npc.TreasureBudget = newNpc.TreasureBudget;
-                        npc.Heroic = newNpc.Heroic;
-                        npc.Level= newNpc.Level;
+                (function(npc, npcId) {
+                    userNpcService.get(npcId, function (error, newNpc) {
+                        if (newNpc) {
+                            npc.Name = newNpc.Name;
+                            npc.XP = newNpc.XP;
+                            npc.CR = newNpc.CR;
+                            npc.Type = newNpc.Type;
+                            npc.TreasureBudget = newNpc.TreasureBudget;
+                            npc.Heroic = newNpc.Heroic;
+                            npc.Level= newNpc.Level;
+                        } else {
+                            delete encounter.Npcs[npcId]; /* npc is no longer found -> remove it */
+                            service.encounterChanged(encounter);
+                        }
                         encounter.xp = calculateXp(encounter);
                         encounter.CR = crService.calculateCR(encounter);
                     });
-                })(encounter.Npcs[id]);
+                })(encounter.Npcs[id], id);
             }
         };
 
