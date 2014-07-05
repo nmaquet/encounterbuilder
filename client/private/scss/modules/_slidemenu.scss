@@ -32,8 +32,8 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
 /* Trigger button */
 .navbar-container {
   // @include transition(all .3s ease);
-  // .spm-open-left & { padding-left: 300px; }
-  // .spm-open-right & { padding-right: 300px; }
+  // .spm-open-left & { padding-left: $sp-menu-width; }
+  // .spm-open-right & { padding-right: $sp-menu-width; }
 }
 // Align icons and text vertically in the header
 .sp-menu-toggle-container {
@@ -158,7 +158,7 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
 
 // Orientation-dependent styles for the content of the menu
 .sp-menu-vertical {
-  width: 300px;
+  width: $sp-menu-width;
   height: 100%;
   top: 0;
   //top: 60px;
@@ -175,7 +175,7 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
 }
 
 .sp-menu-vertical.sp-menu-right {
-  width: 300px;
+  width: $sp-menu-width;
 }
 
 .sp-menu-horizontal {
@@ -204,11 +204,11 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
 // Vertical menu that slides from the left or right
 
 .sp-menu-left {
-  left: -300px;
+  left: -$sp-menu-width;
 }
 
 .sp-menu-right {
-  right: -300px;
+  right: -$sp-menu-width;
 }
 
 .sp-menu-left.sp-menu-open {
@@ -246,11 +246,11 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
 }
 
 .sp-menu-push-toright {
-  left: 300px;
+  left: $sp-menu-width;
 }
 
 .sp-menu-push-toleft {
-  left: -300px;
+  left: -$sp-menu-width;
 }
 
 // Transitions

@@ -90,13 +90,15 @@ html, body {
   }
 }
 
-#inner-wrapper {
+.inner-wrapper {
   min-height: 100%;
   position: relative;
   overflow: hidden;
   padding-left: 0px;
   @media (min-width: $screen-sm-min) {
-    padding-left: 300px;
+    padding-left: $sp-menu-width;
+    .spm-open-left & { padding-left: $sp-menu-width; }
+    .spm-open-right & { padding-right: $sp-menu-width; }
   }
 }
 

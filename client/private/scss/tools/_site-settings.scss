@@ -30,6 +30,10 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 // $width-mobile: 48em; // 768/16
 //
 
+// = Slide Menu
+// -----------------------------
+$sp-menu-width : 300px;
+
 // Fonts
 @import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css");
 @import url("http://fonts.googleapis.com/css?family=Metamorphous");

@@ -34,10 +34,10 @@ html(class="no-js gte-ie9", lang='en', ng-app='encounterBuilderApp')
         #wrapper
             include _left-sidebar
             include _right-sidebar
-            #inner-wrapper(ng-class="{'is-dimmed': viewport.xs && anySidebarIsOpened(), 'prevent-scrolling': viewport.xs && anySidebarIsOpened()}")
+            .inner-wrapper#inner-wrapper(ng-class="{'is-dimmed': viewport.xs && anySidebarIsOpened(), 'prevent-scrolling': viewport.xs && anySidebarIsOpened()}")
                 header.l-header.no-print
                     include _header
-                .l-app-content(ng-view='ng-view')
+                main.l-app-content(ng-view='ng-view')
                 footer.l-footer.no-print
                     include _footer
         // ClickTale Block 2
