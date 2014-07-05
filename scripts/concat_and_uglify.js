@@ -93,9 +93,7 @@ var jsFiles = [
 
 var cssFiles = [
     "client/private/css/app.css",
-    "client/private/css/animate.css",
-    "client/private/bower_components/tinymce/skins/lightgray/content.min.css",
-    "client/private/bower_components/tinymce/skins/lightgray/skin.min.css",
+    "client/private/css/animate.css"
 ];
 
 var sassRootFile = "client/private/scss/encounter-builder.scss";

@@ -1,5 +1,6 @@
 ///* Compass */
 //@import "compass/css3/images";
+@charset "UTF-8";
 
 /* Tools */
 @import "base/bootstrap-overwrite";
@@ -13,6 +14,7 @@
 @import "base/base";
 
 /* Fonts */
+@import "fonts/font-face";
 @import "fonts/typography";
 @import "fonts/icons";
 

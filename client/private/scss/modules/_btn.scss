@@ -94,3 +94,25 @@
   max-width:20px !important;
   max-height:17px !important;
 }
+
+//app.css
+.btn-xmini {
+  padding: 0px 3px;
+  font-size: 2px;
+  line-height: normal;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+.encounter-monsters-buttons {
+  visibility: hidden;
+}
+.encounter-monster-row:hover .encounter-monsters-buttons {
+  visibility: visible;
+}
+.encounter-items-buttons {
+  visibility: hidden;
+}
+.encounter-item-row:hover .encounter-items-buttons {
+  visibility: visible;
+}// end app.css
