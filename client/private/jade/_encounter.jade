@@ -36,12 +36,12 @@ div.encounter
                         td.name-container
                             span.monster-name
                                 a.is-pointer(ng-click='selectMonsterById(id,monster.userCreated)') {{monster.Name}}
-                        td.cr-container
+                        td.encounter-cr-container
                             span.monster-cr
                                 strong
                                     small CR&nbsp;
                                     | {{monster.CR | numberToFractionString}}
-                        td.btn-container
+                        td.encounter-btn-container
                             span.encounter-monsters-buttons.is-pointer.pull-right
                                 button.item-btn.remove-monster-btn(ng-click='removeMonsterById(id)')
                                     i.icon.icon-remove
@@ -59,12 +59,12 @@ div.encounter
                         td.name-container
                             span.npc-name
                                 a.is-pointer(ng-click='selectNpcById(id,npc.userCreated)') {{npc.Name}}
-                        td.cr-container
+                        td.encounter-cr-container
                             span.npc-cr
                                 strong
                                     small CR&nbsp;
                                     | {{npc.CR | numberToFractionString}}
-                        td.btn-container
+                        td.encounter-btn-container
                             span.encounter-npcs-buttons.is-pointer.pull-right
                                 button.item-btn.remove-npc-btn(ng-click='removeNpcById(id)')
                                     i.icon.icon-remove

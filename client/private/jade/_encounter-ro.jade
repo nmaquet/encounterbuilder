@@ -24,10 +24,10 @@ div.encounter
                 tr.encounter-row.encounter-monster-row(ng-repeat='(id,monster) in leaf.Monsters')
                     td.badge-container
                         span.badge.red.monster-amount {{monster.amount}}
-                    td.name-container
+                    td.encounter-name-container
                         span.monster-name
                             a.is-pointer(ng-click='selectMonsterById(id)') {{monster.Name}}
-                    td.cr-container
+                    td.encounter-cr-container
                         span.monster-cr
                             strong
                                 small CR&nbsp;
@@ -41,10 +41,10 @@ div.encounter
                 tr.encounter-row.encounter-npc-row(ng-repeat='(id,npc) in leaf.Npcs')
                     td.badge-container
                         span.badge.red.npc-amount {{npc.amount}}
-                    td.name-container
+                    td.encounter-name-container
                         span.npc-name
                             | {{npc.Name}}
-                    td.cr-container
+                    td.encounter-cr-container
                         span.npc-cr
                             strong
                                 small CR&nbsp;
