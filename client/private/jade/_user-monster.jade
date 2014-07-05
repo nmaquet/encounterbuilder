@@ -183,8 +183,8 @@
                                 strong Treasure
                                 | &nbsp;{{userMonster.Treasure}}
     .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.SpecialAbilities')
-        legend.t-legend.t-title Special Abilities
-        span(ng-bind-html='userMonster.SpecialAbilitiesHTML')
+        legend.cat-heading.t-legend.t-title Special Abilities
+        span.cat-content(ng-bind-html='userMonster.SpecialAbilitiesHTML')
     .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.Description')
-        legend.t-legend.t-title Description
-        span(ng-bind-html='userMonster.DescriptionHTML')
+        legend.cat-heading.t-legend.t-title Description
+        span.cat-content(ng-bind-html='userMonster.DescriptionHTML')
