@@ -2,31 +2,34 @@
 
 var async = require("async");
 
-module.exports = function (encounterCollection, userCollection) {
+module.exports = function (contentTreesCollection, userService) {
     return function (request, response) {
         if (request.session && request.session.user) {
             var username = request.session.user.username;
             async.parallel([
                 function (callback) {
-                    var options = {fields: {username: 1, email: 1, fullname: 1, _id: 0}};
-                    userCollection.findOne({username: username}, options, function (error, user) {
+                    userService.get(username, function (error, user) {
                         callback(error, user);
                     });
                 },
                 function (callback) {
-                    encounterCollection.find({Username: username}).toArray(function (error, Encounters) {
-                        callback(error, Encounters);
+                    contentTreesCollection.findOne({username: username}, {fields: {username: 1, contentTree: 1, _id: 0}}, function (error, contentTree) {
+                        callback(error, contentTree);
                     });
                 }
             ], function (error, results) {
-                if (error) {
+                if (error || !results[0] || !results[1]) {
                     console.log(error);
                     response.send(500);
                 }
                 else {
                     var userData = {
-                        user: results[0],
-                        Encounters: results[1]
+                        user: {
+                            username: results[0].username,
+                            email: results[0].email,
+                            fullname : results[0].fullname
+                        },
+                        contentTree: results[1].contentTree
                     };
                     response.json(userData);
                 }

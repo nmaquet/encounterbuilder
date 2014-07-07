@@ -1,0 +1,106 @@
+.encounter-no-encounter {
+  padding-top: ($grid-gutter-width/2);
+  padding-bottom: ($grid-gutter-width/2);
+}
+.encounter-well {
+  background-color: $brown-dark;
+  @media (max-width: $screen-xs) {
+    margin-left:-15px;
+    margin-right:-15px;
+  }
+}
+.encounter, .encounter-no-encounter, .encounter-binder {
+  padding-bottom: ($grid-gutter-width/2);
+  color: white;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  a { @include no-underline(); }
+  .heading {
+    padding-top: ($grid-gutter-width/2);
+    padding-bottom: ($grid-gutter-width/2);
+    margin-bottom: ($grid-gutter-width/4);
+    background-color: $coal-transparent;
+    .encounter-name {
+      display: inline-block;
+      width: 90%;
+    }
+    .icon-edit {
+      color: $grey;
+      @include font-size(14);
+      &:hover {
+        color: $grey-light;
+      }
+    }
+    .icon-remove {
+      @include font-size(18);
+      line-height: 0;
+    }
+  }
+  .binder-heading {
+    background-color: $red-transparent;
+  }
+  .content {
+    padding-top: ($grid-gutter-width/4);
+    padding-bottom: ($grid-gutter-width/4);
+  }
+  .t-encounter-title, .t-binder-title {
+    margin-top: 0;
+  }
+ .t-legend {
+   border-bottom: 0px solid transparent;
+   @include font-size(16);
+     color: white;
+   .icon {
+     color: $grey-light;
+     line-height: 22px;
+   }
+ }
+  .coin-list{
+    display:inline;
+  }
+  .coins {
+    .icon-edit {
+      font-size: 0.875em;
+      margin-left: 0.5em;
+      margin-top: 0.250em;
+      vertical-align: middle;
+      color: $grey;
+    }
+  }
+}
+.encounter-list {
+  //margin-left: -4px;
+  //margin-right: -4px;
+  .encounter-row {
+    overflow: hidden;
+    @include font-size(12);
+    a {
+      color: white;
+    }
+    .badge {
+      @include font-size(11);
+    }
+    .item-btn {
+      color: $grey;
+      background-color: transparent;
+      @include box-shadow(0,0,5px,rgba(0,0,0,0.5), $inset: true);
+      &:hover {
+        color: white;
+        background-color: $white-transparent-2;
+      }
+    }
+    .price-container {
+      @include font-size(11);
+    }
+    th, td {
+      padding: 8px 6px;
+      border-color: $brown-transparent;
+    }
+  }
+  tbody .encounter-row {
+    @include transition(all 0.2s ease-in-out);
+    &:hover { background-color: $grey-light-transparent-2; }
+  }
+}
+.encounter-items-buttons {
+  @include is-pointer();
+}

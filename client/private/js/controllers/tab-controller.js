@@ -1,65 +1,51 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('TabController', ['$scope', '$location', '$timeout', '$routeParams', 'selectedMonsterService', 'selectedNpcService', 'selectedItemService', 'selectedSpellService', 'selectedFeatService',
-    function ($scope, $location, $timeout, $routeParams, selectedMonsterService, selectedNpcService, selectedItemService, selectedSpellService, selectedFeatService) {
+DEMONSQUID.encounterBuilderControllers.controller('TabController', ['$scope', '$timeout', 'sidebarService',
+    function ($scope, $timeout, sidebarService) {
+
         var tabs = {
-            monster: $('#monstersTab'),
-            item: $('#itemsTab'),
-            npc: $('#npcTab'),
-            spell: $('#spellsTab'),
-            feat: $('#featsTab')
+            monsters: $('#monstersTab'),
+            items: $('#itemsTab'),
+            npcs: $('#npcTab'),
+            spells: $('#spellsTab'),
+            feats: $('#featsTab')
         }
 
-        $scope.$on("$locationChangeStart", function (event, nextLocation, currentLocation) {
+        $scope.selectedTab = sidebarService.selectedTab;
+        tabs[$scope.selectedTab].tab('show');
 
-            var match = /\/(.*)\//.exec($location.path());
-            if (match) {
-                var requestedTab = match[1];
-                if ($scope.selectedTab.indexOf(requestedTab) === -1) {
-                    if (tabs[requestedTab]) {
-                        $timeout(function () {
-                            tabs[requestedTab].click();
-                        });
-                    }
-                }
-            }
-        });
-
-        $scope.selectedTab = 'monsters';
-        $('#monstersTab').tab('show');
         $scope.showTab = function (tab) {
             $scope.selectedTab = tab;
-        }
+            sidebarService.selectedTab = tab;
+        };
+
         $('#monstersTab').click(function (e) {
             e.preventDefault();
             $(this).tab('show');
             $scope.showTab("monsters");
-            selectedMonsterService.updateUrl();
         });
+
         $('#itemsTab').click(function (e) {
             e.preventDefault();
             $(this).tab('show');
             $scope.showTab("items");
-            selectedItemService.updateUrl();
         });
+
         $('#npcTab').click(function (e) {
             e.preventDefault();
             $(this).tab('show');
             $scope.showTab("npcs");
-            selectedNpcService.updateUrl();
         });
         $('#spellsTab').click(function (e) {
             e.preventDefault();
             $(this).tab('show');
             $scope.showTab("spells");
-            selectedSpellService.updateUrl();
         });
+
         $('#featsTab').click(function (e) {
             e.preventDefault();
             $(this).tab('show');
             $scope.showTab("feats");
-            selectedFeatService.updateUrl();
         });
     }
-])
-;
+]);

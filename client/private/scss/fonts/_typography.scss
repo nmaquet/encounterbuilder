@@ -1,0 +1,104 @@
+/* ==|====================
+   Fonts/Typography
+   ======================= */
+
+//FONT FAMILY
+.t-sansserif { font-family: $font-family-sans-serif; }
+.t-serif { font-family: $font-family-serif; }
+.t-title { font-family: $font-metamorphous; }
+//.t-title { font-family: $font-baskerville }
+
+//FONT WEIGHT & +
+.t-light { font-weight: 300; }
+.t-bold { font-weight: 800; }
+.t-italic { font-style: italic; }
+.t-uppercase { text-transform: uppercase; }
+
+//FONT SIZE
+body > * { @include font-size(16); }
+h2, .h2, .t-title-result {
+  @include font-size(20);
+  @media (min-width: $screen-xs-min) {   @include font-size(24); }
+  @media (min-width: $screen-md-min) {   @include font-size(26); }
+  @media (min-width: $screen-lg-min) {   @include font-size(30); }
+}
+h3, .h3, .t-encounter-title, .t-binder-title {
+  @include font-size(18);
+}
+//UNDERLINE
+.t-nounderline { @include no-underline; }
+.t-underline-dotted {
+  border-bottom: 1px dotted $grey-light-transparent;
+  &:focus, &:hover {
+      outline: none !important;
+      border-color: $red;
+  }
+}
+
+body { color: $coal; }
+a {
+  &.is-pointer {
+    @include transition(all 0.2s ease-in-out);
+  }
+  color: $red;
+  &:hover { color: $red-light; }
+  .l-section & {
+    color: $red;
+    &:hover {  color: darken($red, 20%); text-decoration: underline; }
+  }
+}
+.quote {
+  position: relative;
+  overflow: hidden;
+  p:first-child {
+    text-indent: 2em;
+  }
+  &:before, &:after {
+    position: absolute;
+    font-size: 2em;
+    @include opacity(0.5);
+    line-height: 1;
+  }
+  &:before {
+    content: '“';
+    top: 0;
+    left: 0;
+    text-indent: 0;
+  }
+  &:after {
+    content: '”';
+    text-indent: 0.25em;
+    bottom: 0.05em;
+    //right: 0;
+  }
+}
+.intro {
+  position: relative;
+  overflow: hidden;
+  font-size: 1.275em;
+  text-indent: 1.75em !important;
+  font-style: italic;
+  color: $grey-dark;
+  //color: $brown;
+
+  &:before, &:after {
+    position: absolute;
+    font-size: 1.5em;
+    font-style: normal;
+    color: $grey-light-transparent;
+    text-shadow: 1px 1px 0 $brown-dark-transparent;
+  }
+  &:before {
+    content: '❖';
+    top: 0;
+    left: 0;
+    line-height: 1;
+    text-indent: 0;
+  }
+}
+
+//TEXT-COLORS
+.platinum { color: $platinum; }
+.gold { color: $gold-2; }
+.silver { color: $silver; }
+.copper { color: $copper; }

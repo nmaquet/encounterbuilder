@@ -1,0 +1,135 @@
+mixin labeledInput(name, model, placeholder)
+    .form-group
+        label.col-xs-2.control-label= name + ':'
+        .col-xs-10
+            input.form-control(type=text, name=name, placeholder=placeholder, ng-model=model)
+mixin labeledInputInline(name, model, placeholder)
+    .form-group
+        label= name + ':'
+        input.form-control(type=text, name=name, placeholder=placeholder, ng-model=model)
+mixin labeledTextArea(name, model, rows, placeholder)
+    .form-group
+        label.col-xs-2.control-label= name + ':'
+        .col-xs-10
+            textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model)
+mixin fullWidthTextArea(name, model, rows, placeholder)
+    .form-group
+        textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model, ui-tinymce="tinymceOptions")
+
+.row.l-section.result-content
+    .col-xxs-12.col-xs-12
+        button.btn.btn-danger.pull-right(type="submit" ng-click="viewUserNpc()" ng-class="{'btn-small' : viewport.xs}") Done
+    .col-xxs-12.col-xs-12
+        .row
+            .col-xs-12.cat.decor
+                legend.t-legend.t-title General
+                form.form-horizontal(role="form")
+                    +labeledInput('Name', 'userNpc.Name', 'e.g. Doombringer')
+                    +labeledInput('Source', 'userNpc.Source', 'e.g. The Slayers of the Winter Witch')
+                form.form-horizontal(role="form")
+                    .row
+                        .col-xs-12.col-sm-6
+                            +labeledInput('CR', 'userNpc.CR', 'e.g. 3')
+                        .col-xs-12.col-sm-6
+                            +labeledInput('XP', 'userNpc.XP', 'e.g. 1200')
+                form.form-horizontal(role="form")
+                    +labeledTextArea("Visual Description", "userNpc.Description_Visual", 5, "e.g. With eyes blazing red and magical runes glowing on its horns, this mighty beast has the body of a man and the head of a bull.")
+                    +labeledInput("Gender", "userNpc.Gender", "e.g. male")
+                    +labeledInput("Race", "userNpc.Race", "e.g. minotaur")
+                    // FIXME: parse ClassString -> Classes
+                    +labeledInput("Classes", "userNpc.ClassesString", "e.g. Cleric of Urgathoa 3")
+                    +labeledInput("Alignment", "userNpc.Alignment", "e.g. CE")
+                    +labeledInput("Size", "userNpc.Size", "e.g. Large")
+                    +labeledInput("Type", "userNpc.Type", "e.g. Outsider")
+                    +labeledInput("SubType", "userNpc.SubType", "e.g. (native)")
+                    +labeledInput("Init", "userNpc.Init", "e.g. +4")
+                    +labeledInput("Senses", "userNpc.Senses", "e.g. darkvision 60 ft.; Perception +14")
+            .col-xs-12.cat.decor
+                legend.t-legend.t-title Offense
+                form.form-horizontal(role="form")
+                    +labeledInput("Speed", "userNpc.Speed", "e.g. 30 ft., fly 60 ft. (good)")
+                    +labeledTextArea("Melee", "userNpc.Melee", 3, "e.g. greataxe +9/+4 (3d6+6/x3) and gore +4 (1d6+2)")
+                form.form-horizontal(role="form")
+                    .row
+                        .col-xs-12.col-sm-6
+                            +labeledInput("Space", "userNpc.Space", "e.g. 10 ft.")
+                        .col-xs-12.col-sm-6
+                            +labeledInput("Reach", "userNpc.Reach", "e.g. 10 ft.")
+                form.form-horizontal(role="form")
+                    +labeledTextArea("Special Attacks", "userNpc.SpecialAttacks", 3, "e.g. breath weapon (30-ft. cone, 6d6 fire damage plus fumes, Reflex DC 19 half, usable every 1d4 rounds)")
+                    +labeledTextArea("Spells Known", "userNpc.SpellsKnown", 6, "e.g. (CL 3rd; concentration +5); 1st (5/day)-enlarge person, hypnotism (DC 14), magic missile, obscuring mist; 0 (at will)-arcane mark, detect magic, mage hand, mending, read magic")
+                    +labeledInput("Bloodline", "userNpc.Bloodline", "e.g. draconic (green)")
+                    +labeledTextArea("Spells Prepared", "userNpc.SpellsPrepared", 6, "e.g. (CL 3rd; concentration +6); 2nd-mirror image, scorching ray; 1st-magic missile, shield, shocking grasp; 0-(at will)-daze (DC 13), detect magic, light, resistance")
+                    +labeledTextArea("Spells-Like Abilities", "userNpc.SpellLikeAbilities", 6, "e.g. (CL 5th; concentration +6); 3/day—cause fear (DC 12), shatter (DC 13); 1/day—summon (level 1, 1 abrikandilu 50%) 0-(at will)-daze (DC 13), detect magic, light, resistance")
+            .col-xs-12.decor
+                legend.t-legend.t-title Defense
+                form.form-horizontal(role="form")
+                    +labeledInput("AC", "userNpc.AC", "e.g. AC 13, touch 13, flat-footed 12")
+                form.form-horizontal(role="form")
+                    .row
+                        .col-xs-12.col-sm-4
+                            +labeledInput("HP", "userNpc.HP", "e.g. 52")
+                        .col-xs-12.col-sm-4
+                            +labeledInput("HD", "userNpc.HD", "e.g. (3d8+15)")
+                        .col-xs-12.col-sm-4
+                            +labeledInput("DR", "userNpc.DR", "e.g. 5/cold iron")
+                    .row
+                        .col-xs-12.col-sm-4
+                            +labeledInput("Fort", "userNpc.Fort", "e.g. 4")
+                        .col-xs-12.col-sm-4
+                            +labeledInput("Ref", "userNpc.Ref", "e.g. 2")
+                        .col-xs-12.col-sm-4
+                            +labeledInput("Will", "userNpc.Will", "e.g. 3")
+                form.form-horizontal(role="form")
+                    +labeledInput("Immune", "userNpc.Immune", "e.g. construct traits, magic")
+                    +labeledInput("Resist", "userNpc.Resist", "e.g. cold 10")
+                form.form-horizontal(role="form")
+                    .row
+                        .col-xs-12.col-sm-9
+                            +labeledInput("Weaknesses", "userNpc.Weaknesses", "e.g. vulnerability to fire")
+                        .col-xs-12.col-sm-3
+                            +labeledInput("SR", "userNpc.SR", "e.g. 11")
+            .col-xs-12.decor
+                legend.t-legend.t-title Statistics
+                form.form-horizontal(role="form")
+                    .row
+                        .col-xs-12.col-sm-4
+                            +labeledInput("Str", "userNpc.Str", "e.g. 16")
+                        .col-xs-12.col-sm-4
+                            +labeledInput("Dex", "userNpc.Dex", "e.g. 12")
+                        .col-xs-12.col-sm-4
+                            +labeledInput("Con", "userNpc.Con", "e.g. 11")
+                        .col-xs-12.col-sm-4
+                            +labeledInput("Int", "userNpc.Int", "e.g. 8")
+                        .col-xs-12.col-sm-4
+                            +labeledInput("Wis", "userNpc.Wis", "e.g. 11")
+                        .col-xs-12.col-sm-4
+                            +labeledInput("Cha", "userNpc.Cha", "e.g. 13")
+
+                form.form-horizontal(role="form")
+                    .row
+                        .col-xs-12.col-sm-4
+                            +labeledInput("BAB", "userNpc.BaseAtk", "e.g. +7")
+                        .col-xs-12.col-sm-4
+                            +labeledInput("CMB", "userNpc.CMB", "e.g. +5")
+                        .col-xs-12.col-sm-4
+                            +labeledInput("CMD", "userNpc.CMD", "e.g. 14")
+                form.form-horizontal(role="form")
+                    +labeledTextArea("Feats", "userNpc.Feats", 6, "e.g. Double Slice, Endurance, Toughness, Two-Weapon Defense, Two-Weapon Fighting, Weapon Focus (scimitar)")
+                    +labeledTextArea("Skills", "userNpc.Skills", 6, "e.g. Intimidate +11, Perception +9, Survival +9")
+                    +labeledTextArea("Racial Modifiers", "userNpc.RacialMods", 3, "e.g. +2 Perception and Sense Motive vs. half-fiends and tieflings")
+                    +labeledInput("Languages", "userNpc.Languages", "e.g. common, draconic, abyssal")
+                    +labeledInput("SQ", "userNpc.SQ", "e.g. Hold Breath (Ex), Change Shape (Su)")
+            .col-xs-12.decor
+                legend.t-legend.t-title Ecology
+                form.form-horizontal(role="form")
+                    +labeledInput("Environment", "userNpc.Environment", "e.g. the Abyss")
+                    +labeledInput("Organization", "userNpc.Organization", "e.g. mob (4-7), brood (8-17)")
+                    +labeledInput("Treasure", "userNpc.Treasure", "e.g. standard")
+            .col-xs-12.decor
+                legend.t-legend.t-title Special Abilities
+                +fullWidthTextArea("Special Abilities", "userNpc.SpecialAbilities", 20, "e.g. Deflective Wings (Ex) As a standard action, an angelic guardian can spread its wings and protect a single adjacent creature from the next ranged attack. The next time the protected creature would normally be hit with an attack from a ranged attack, the attack is instead deflected and the protected creature takes no damage. An angelic guardian can only deflect one ranged attack per turn in this way. This effect lasts until the angelic guardian's next turn or until the protected creature leaves its square, whichever comes first; Metallic Feathers (Ex) An angelic guardian's wings are honed to razor-sharp edges, and attacks with them deal slashing damage instead of bludgeoning damage.")
+            .col-xs-12.decor
+                legend.t-legend.t-title Description
+                +fullWidthTextArea("Description", "userNpc.Description", 20, "e.g. Nothing holds a grudge like a minotaur. Scorned by the civilized races centuries ago and born from a deif ic curse, minotaurs have hunted, slain, and devoured lesser humanoids in retribution for real or imagined slights for as long as anyone can remember. Many cultures have legends of how the first minotaurs were created by vengeful or slighted gods who punished humans by twisting their forms, robbing them of their intellects and beauty, and giving them the heads of bulls. Yet most modern minotaurs hold these legends in contempt and believe that they are not divine mockeries but divine paragons created by a potent and cruel demon lord named Baphomet. The traditional minotaur's lair is a maze, be it a legitimate labyrinth constructed to baff le and confuse, an accidental one such as a city sewer system, or a naturally occurring one such as a tangle of caverns and other underground passageways. Employing their innate cunning, minotaurs use their maze lairs to vex unwary foes who seek them out or who simply stumble into the lairs and become lost, slowly hunting the intruders as they try in vain to find a way out.")
+

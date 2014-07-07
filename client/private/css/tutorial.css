@@ -1,0 +1,23 @@
+.popover.tutorial-popover {
+    background-color: #D1F0DB;
+}
+
+.popover.tutorial-popover.right > .arrow:after {
+    border-right-color: #D1F0DB;
+}
+
+.popover.tutorial-popover.left > .arrow:after {
+    border-left-color: #D1F0DB;
+}
+
+.popover.tutorial-popover.bottom > .arrow:after {
+    border-bottom-color: #D1F0DB;
+}
+
+.popover.tutorial-popover.top > .arrow:after {
+    border-top-color: #D1F0DB;
+}
+
+.popover.tutorial-popover {
+    min-width: 10px !important;
+}

@@ -2,34 +2,52 @@
 
 module.exports = function (encounterCollection, ObjectID, lootService) {
     return {
-        upsert: function (request, response) {
+        findOne: function (request, response) {
+            var username = request.session.user.username;
+            var encounterId = request.params.id;
+            encounterCollection.findOne({_id: ObjectID(encounterId), Username: username}, function (error, encounter) {
+                if (error) {
+
+
+
+                    response.json({error: error});
+                }
+                else {
+                    console.log(encounter);
+                    response.json({encounter: encounter});
+                }
+            });
+        },
+        update: function (request, response) {
             var username = request.session.user.username;
             var encounter = request.body.encounter;
             encounter.Username = username;
-            if (encounter._id) {
-                var selector = {_id: ObjectID(encounter._id), Username: username};
-                delete encounter._id;
-                encounterCollection.update(selector, encounter, {}, function (error, result) {
-                    if (error) {
-                        console.log(error);
-                        response.json({error: "could not update encounter"});
-                    }
-                    else {
-                        response.json({_id: selector._id});
-                    }
-                });
-            }
-            else {
-                encounterCollection.insert(encounter, function (error, newEncounter) {
-                    if (error) {
-                        console.log(error);
-                        response.json({error: "could not insert encounter"});
-                    }
-                    else {
-                        response.json({_id: newEncounter[0]._id});
-                    }
-                });
-            }
+            var selector = {_id: ObjectID(encounter._id), Username: username};
+            delete encounter._id;
+            encounterCollection.update(selector, encounter, {}, function (error, result) {
+                if (error) {
+                    console.log(error);
+                    response.json({error: "could not update encounter"});
+                }
+                else {
+                    response.json({_id: selector._id});
+                }
+            });
+        },
+        create: function (request, response) {
+            var username = request.session.user.username;
+            var i = 0;
+            var encounter = { Name: "Untitled #" + i, CR: "0", Monsters: {}, coins: {pp: 0, gp: 0, sp: 0, cp: 0}};
+            encounter.Username = username;
+            encounterCollection.insert(encounter, function (error, newEncounter) {
+                if (error) {
+                    console.log(error);
+                    response.json({error: "could not insert encounter"});
+                }
+                else {
+                    response.json({encounter: newEncounter[0]});
+                }
+            });
         },
         delete: function (request, response) {
             var username = request.session.user.username;
@@ -51,7 +69,7 @@ module.exports = function (encounterCollection, ObjectID, lootService) {
         generateLoot: function (request, response) {
             var username = request.session.user.username;
             var encounter = request.body.encounter;
-            var loot = lootService.generateEncounterLoot(encounter, "medium");
+            var loot = lootService.generateEncounterLoot(encounter, "medium", request.body.options);
             encounter.coins = loot.coins;
             encounter.items = {};
             for (var i in loot.items) {

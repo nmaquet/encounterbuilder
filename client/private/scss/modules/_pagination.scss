@@ -1,0 +1,18 @@
+// =======================
+// Modules/Paginaton
+// =======================
+.pagination {
+  margin-left: auto;
+  margin-right: auto;
+}
+.pagination-sm > li {
+  > a, > span {
+    padding: 4px 9px;
+    color: $grey-dark;
+  }
+  &.active > a, &.active > span {
+    color: white;
+    background-color: $red;
+    border-color: $red;
+  }
+}

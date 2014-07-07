@@ -1,0 +1,143 @@
+/* ==|====================
+   Layout/Nav
+   ======================= */
+
+.l-nav {
+}
+
+// Red navbar
+// Reset inverted navbar basics
+$navbar-red-color:                      #fff !default;
+$navbar-red-bg:                         $red-transparent !default;
+$navbar-red-border:                     darken($navbar-red-bg, 10%) !default;
+
+// Inverted navbar links
+$navbar-red-link-color:                 #fff !default;
+$navbar-red-link-hover-color:           #fff !default;
+$navbar-red-link-hover-bg:              $red !default;
+$navbar-red-link-active-color:          $navbar-red-link-hover-color !default;
+$navbar-red-link-active-bg:             darken($navbar-red-bg, 10%) !default;
+$navbar-red-link-disabled-color:        $red-dark !default;
+$navbar-red-link-disabled-bg:           transparent !default;
+
+// Inverted navbar brand label
+$navbar-red-brand-color:                $navbar-red-link-color !default;
+$navbar-red-brand-hover-color:          #fff !default;
+$navbar-red-brand-hover-bg:             transparent !default;
+
+// Inverted navbar toggle
+$navbar-red-toggle-hover-bg:            $red !default;
+$navbar-red-toggle-icon-bar-bg:         #fff !default;
+$navbar-red-toggle-border-color:        transparent !default;
+
+//== Pills
+$nav-pills-red-border-radius:                   0 !default;
+$nav-pills-red-active-link-hover-bg:            $red !default;
+$nav-pills-red-active-link-hover-color:         #fff !default;
+
+// Alternate navbars
+// --------------------------------------------------
+
+.navbar-red {
+  background-color: $navbar-red-bg;
+  border-color: $navbar-red-border;
+  a {
+    color: $navbar-red-link-color;
+    background-color: transparent;
+  }
+
+  .nav {
+    & > li > a {
+      &:hover, &:focus {
+        background-color: $navbar-red-link-hover-bg;
+      }
+    }
+    .open > a {
+      &, &:hover, &:focus {
+        background-color: $navbar-red-toggle-icon-bar-bg;
+        color: $navbar-red-link-hover-bg;
+        border-color: $navbar-red-link-hover-bg;
+
+      }
+    }
+  }
+
+  .navbar-brand {
+    color: $navbar-red-brand-color;
+    &:hover,
+    &:focus {
+      color: $navbar-red-brand-hover-color;
+      background-color: $navbar-red-brand-hover-bg;
+    }
+  }
+
+  .navbar-text {
+    color: $navbar-red-color;
+  }
+
+
+  // Pills
+  // -------------------------
+  .nav-pills {
+    > li {
+      // Links rendered as pills
+      > a {
+        border-radius: $nav-pills-red-border-radius;
+      }
+      // Active state
+      &.active > a {
+        &,
+        &:hover,
+        &:focus {
+          color: $nav-pills-red-active-link-hover-color;
+          background-color: $nav-pills-red-active-link-hover-bg;
+        }
+      }
+    }
+  }
+
+  // Links in navbars
+  // Add a class to ensure links outside the navbar nav are colored correctly.
+  .navbar-link {
+    color: $navbar-red-link-color;
+    &:hover {
+      color: $navbar-red-link-hover-color;
+    }
+  }
+}
+a.feedback-btn {
+  background-color: $red;
+  color: white;
+  &:hover {
+    background-color: $red-light;
+  }
+}
+// ---------------------------
+//  Overwrite Boostrap Values
+// ---------------------------
+//.nav-pills > li > a {
+//  @include border-radius(0);
+//}
+// Main navbar
+.l-header {
+  .navbar { height: $navbar-height; }
+  .nav {
+    display: inline-block;
+    @include font-size(12);
+    @media (min-width: $screen-lg) {
+      @include font-size(14);
+    }
+    &  > li > a {
+      @include border-radius(0);
+      //display: inline-block;
+      padding-top: ($grid-gutter-width/2);
+      padding-bottom: ($grid-gutter-width/2);
+
+      display: table !important;
+      height: $navbar-height;
+      max-height: $navbar-height;
+      > * { display: table-cell; vertical-align: middle; }
+    }
+    .caret { display: inline-block !important; }
+  }
+}

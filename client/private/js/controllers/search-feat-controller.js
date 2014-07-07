@@ -1,31 +1,34 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
-    ['$scope', '$timeout','$routeParams', 'featService', 'selectedFeatService',
-        function ($scope, $timeout,$routeParams, featService, selectedFeatService) {
+    ['$scope', '$rootScope', '$timeout', '$routeParams', 'locationService', 'featService',
+        function ($scope, $rootScope, $timeout, $routeParams, locationService, featService) {
 
-            $scope.featNameSubstring = '';
-            $scope.type = 'any';
+            var lastSearchParam = featService.lastSearchParam();
+
+            $scope.featNameSubstring = lastSearchParam ? lastSearchParam.nameSubstring : '';
+            $scope.type = lastSearchParam ? lastSearchParam.type : 'any';
 
             $scope.totalItems = 0;
-            $scope.currentPage = 1;
+            $scope.currentPage = lastSearchParam ? lastSearchParam.currentPage : 1;
             $scope.itemsPerPage = 15;
             $scope.maxSize = 5;
 
             $scope.feats = [];
+            $scope.refreshingFeats = false;
 
-            if ($routeParams.featId) {
-                $timeout(function () {
-                    selectedFeatService.selectedFeatId($routeParams.featId);
-                    $('#featsTab').click();
-                });
-            }
+            $scope.selectedFeatId = $routeParams.featId;
+            $scope.$on('$routeChangeSuccess', function () {
+                $scope.selectedFeatId = $routeParams.featId;
+            });
 
             function refreshFeats() {
+                $scope.refreshingFeats = true;
                 var params = {
                     nameSubstring: $scope.featNameSubstring,
                     type: $scope.type,
                     skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
+                    currentPage: $scope.currentPage,
                     findLimit: $scope.itemsPerPage
                 };
                 featService.search(params, function (error, data) {
@@ -36,6 +39,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
                         $scope.feats = data.feats;
                         $scope.totalItems = data.count;
                     }
+                    $scope.refreshingFeats = false;
                 });
             }
 
@@ -53,12 +57,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
             });
 
             $scope.selectFeatById = function (id) {
-                selectedFeatService.selectedFeatId(id);
-            }
-
-            selectedFeatService.register(function () {
-                $scope.selectedFeatId = selectedFeatService.selectedFeatId();
-            });
+                locationService.goToDetails('feat', id);
+            };
 
             $scope.$watch('featNameSubstring', function (featNameSubstring) {
                 $timeout(function () {

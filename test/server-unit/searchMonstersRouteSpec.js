@@ -8,7 +8,7 @@ describe("searchMonstersRoute", function () {
 
     beforeEach(function () {
         mock = require("./mock")();
-        searchMonstersRoute = require("../../server/searchMonstersRoute")(mock.monsterCollection, mock.FIND_LIMIT);
+        searchMonstersRoute = require("../../server/searchMonstersRoute")(mock.monsterCollection, mock.userMonsterCollection, mock.FIND_LIMIT);
     });
 
     it("should find the monster using the nameSubstring", function () {

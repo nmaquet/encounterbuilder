@@ -1,0 +1,190 @@
+.row.heading.result-heading
+    .col-xxs-8.col-xs-8.col-lg-9.name-container
+        h2.t-title.t-title-result {{userNpc.Name}}
+        small Source: {{userNpc.Source}}
+    .col-xxs-4.col-xs-4.col-lg-3.cr-container
+        h3.t-title CR
+            | &nbsp;{{userNpc.CR | numberToFractionString}}
+        strong XP
+        | &nbsp;{{userNpc.XP}}
+        .row.btn-container
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copyNpc()')
+                i.icon.fa.fa-copy
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit', ng-click="editUserNpc()")
+                i.icon.fa.fa-edit
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete', on-confirm="deleteUserNpc()", confirm-click="Are you sure ?", confirm-title="Delete npc")
+                i.icon.fa.fa-trash-o
+.row.l-section.result-content
+    .col-xxs-12.col-xs-12.cat
+        p.intro.underlined {{userNpc.Description_Visual}}
+        ul.list-inline
+            li
+                span
+                    strong XP
+                    | &nbsp;{{userNpc.XP}}
+            li(ng-if="userNpc.Gender||userNpc.Race||userNpc.ClassesString")
+                span {{userNpc.Gender}} {{userNpc.Race}} {{userNpc.ClassesString}}
+            li
+                span
+                    strong {{userNpc.Alignment}}
+                    | &nbsp;{{userNpc.Size}} {{userNpc.Type}} {{userNpc.SubType}}
+            li
+                span
+                    strong Init
+                    | &nbsp;{{userNpc.Init}}
+            li
+                span
+                    strong Senses
+                    | &nbsp;{{userNpc.Senses}}
+    .col-xxs-12.col-xs-12
+        .row
+            .col-lg-6.cat.decor
+                legend.t-legend.t-title Offense
+                ul.list-unstyled
+                    li
+                        span
+                            strong SPD
+                            | &nbsp;{{userNpc.Speed}}
+                    li
+                        span
+                            strong Melee
+                            | &nbsp;{{userNpc.Melee}}
+                    li
+                        span
+                            strong Space
+                            | &nbsp;{{userNpc.Space}}
+                            | &nbsp;
+                        span
+                            strong Reach
+                            | &nbsp;{{userNpc.Reach}}
+                    li(ng-if='userNpc.SpecialAttacks')
+                        span
+                            strong Special Attacks
+                            | &nbsp;{{userNpc.SpecialAttacks}};
+                    li(ng-if='userNpc.SpellsKnown')
+                        spell-list(spell-string="{{userNpc.SpellsKnown}}")
+                    li(ng-if='userNpc.Bloodline')
+                        span
+                            strong Bloodline
+                            | &nbsp;{{userNpc.Bloodline}}
+                    li(ng-if='userNpc.SpellsPrepared')
+                        spell-list(spell-string="{{userNpc.SpellsPrepared}}" )
+                    li(ng-bind-html='userNpc.SLASafe' ,linkify='userNpc.SLASafe',linkify-type="spell", mythic="userNpc.Mythic")
+            .col-lg-6.cat.decor
+                legend.t-legend.t-title Defense
+                ul.list-unstyled
+                    li
+                        span
+                            strong
+                                abbr(title='Armor Class') AC
+                            | &nbsp;{{userNpc.AC}}
+                    li
+                        span
+                            strong HP
+                            | &nbsp;{{userNpc.HP}} {{userNpc.HD}}
+                    li
+                        span
+                            strong Fort
+                            | &nbsp;{{userNpc.Fort}},
+                        span
+                            strong Ref
+                            | &nbsp;{{userNpc.Ref}},
+                        span
+                            strong Will
+                            | &nbsp;{{userNpc.Will}}
+                    li(ng-if='userNpc.DR')
+                        span
+                            strong DR
+                            | &nbsp;{{userNpc.DR}};
+                    li(ng-if='userNpc.Immune')
+                        span
+                            strong Immune
+                            | &nbsp;{{userNpc.Immune}};
+                    li(ng-if='userNpc.Resist')
+                        span
+                            strong Resist
+                            | &nbsp;{{userNpc.Resist}};
+                    li(ng-if='userNpc.Weaknesses')
+                        span
+                            strong Weaknesses
+                            | &nbsp;{{userNpc.Weaknesses}};
+                    li(ng-if='userNpc.SR')
+                        span
+                            strong SR
+                            | &nbsp;{{userNpc.SR}}
+            .col-xxs-12.col-xs-12
+        .row
+            .col-lg-6.cat.decor
+                legend.t-legend.t-title Statistics
+                ul.list-unstyled
+                    li
+                        span
+                            strong Str
+                            | &nbsp;{{userNpc.Str}},
+                        span
+                            strong Dex
+                            | &nbsp;{{userNpc.Dex}},
+                        span
+                            strong Con
+                            | &nbsp;{{userNpc.Con}},
+                        span
+                            strong Int
+                            | &nbsp;{{userNpc.Int}},
+                        span
+                            strong Wis
+                            | &nbsp;{{userNpc.Wis}},
+                        span
+                            strong Cha
+                            | &nbsp;{{userNpc.Cha}}
+                    li
+                        span
+                            strong Base Atk
+                            | &nbsp;{{userNpc.BaseAtk}};
+                        span
+                            strong CMB
+                            | &nbsp;{{userNpc.CMB}};
+                        span
+                            strong CMD
+                            | &nbsp;{{userNpc.CMD}}
+                    li(ng-if='userNpc.Feats')
+                        span
+                            strong Feats&nbsp;
+                            span(linkify="userNpc.Feats",linkify-type="feat", mythic="userNpc.Mythic")
+                    li(ng-if='userNpc.Skills || userNpc.RacialMods')
+                        span(ng-if='userNpc.Skills')
+                            strong Skills
+                            | &nbsp;{{userNpc.Skills}}
+                        span(ng-if='userNpc.RacialMods')
+                            strong Racial Modifiers
+                            | &nbsp;{{userNpc.RacialMods}}
+                    li(ng-if='userNpc.Languages')
+                        span
+                            strong Languages
+                            | &nbsp;{{userNpc.Languages}}
+                    li(ng-if='userNpc.SQ')
+                        span
+                            strong SQ
+                            | &nbsp;{{userNpc.SQ}}
+            .col-lg-6.cat.decor(ng-if='userNpc.Environment || userNpc.Organization || userNpc.Treasure')
+                div
+                    legend.t-legend.t-title Ecology
+                div
+                    ul.list-unstyled
+                        li(ng-if='userNpc.Environment')
+                            span
+                                strong Environment
+                                | &nbsp;{{userNpc.Environment}}
+                        li(ng-if='userNpc.Organization')
+                            span
+                                strong Organization
+                                | &nbsp;{{userNpc.Organization}}
+                        li(ng-if='userNpc.Treasure')
+                            span
+                                strong Treasure
+                                | &nbsp;{{userNpc.Treasure}}
+    .col-xxs-12.col-xs-12.cat.decor(ng-if='userNpc.SpecialAbilities')
+        legend.cat-heading.t-legend.t-title Special Abilities
+        span.cat-content(ng-bind-html='userNpc.SpecialAbilitiesHTML')
+    .col-xxs-12.col-xs-12.cat.decor(ng-if='userNpc.Description')
+        legend.cat-heading.t-legend.t-title Description
+        span.cat-content(ng-bind-html='userNpc.DescriptionHTML')

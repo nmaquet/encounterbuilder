@@ -1,6 +1,6 @@
-.form-group.col-xs-12
+.form-group.col-xxs-12.col-xs-12
     input.form-control#monster-search(type='text', name='search', placeholder='Search something…', ng-model='nameSubstring')
-.form-group.col-xs-12
+.form-group.col-xxs-12.col-xs-12
     select.form-control#type(ng-model='type')
         // FIXME: this is weird
         option(value='any') Any type
@@ -17,9 +17,14 @@
         option(value='plant') Plant
         option(value='undead') Undead
         option(value='vermin') Vermin
-.form-group.col-xs-12
-    .col-xs-4
+.col-xxs-12.col-xs-12
+    .col-xxs-4.col-xs-4
         .row
             label(for='monsterCRSlider') <strong>CR</strong> {{minCR | number}} - {{maxCR | number }}
-    .col-xs-8
-        #monsterCRSlider
+    .col-xxs-8.col-xs-8
+        nouislider(min="minCR", max="maxCR",range-min="0",range-max="40")
+.col-xxs-12.col-xs-12
+    .checkbox
+        label(for='usercreated-checkbox')
+            input#usercreated-checkbox(type='checkbox',ng-model='userCreated')
+            | Search my custom Monsters

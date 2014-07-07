@@ -9,6 +9,62 @@ var service = require('../../server/loot/lootService')(diceService, knapsackServ
 
 describe("lootService", function () {
 
+    describe("service.generateTypeILoot", function () {
+
+        for (var budgetLowerBound = 0; budgetLowerBound < 1000000; budgetLowerBound += 1000) {
+
+            it("should generate type I loot for budgets " + budgetLowerBound + " to " + (budgetLowerBound + 950), function () {
+
+                for (var budget = budgetLowerBound; budget <= budgetLowerBound + 950; budget += 50) {
+                    var loot = service.generateTypeILoot(budget);
+
+                    expect(loot.coins.pp).to.be.at.least(0);
+                    expect(loot.coins.gp).to.be.at.least(0);
+                    expect(loot.coins.sp).to.be.at.least(0);
+                    expect(loot.coins.cp).to.be.at.least(0);
+
+                    for (var i in loot.items) {
+                        var item = loot.items[i];
+                        expect(typeof item.Price).to.equal('number');
+                        expect(item.PriceUnit).to.equal('gp');
+                        expect(typeof item.Name).to.equal('string');
+                        expect(typeof item.id).to.equal('string');
+                        expect(typeof item.amount).to.equal('number');
+                        expect(item.amount).to.be.at.least(1);
+                    }
+                }
+            });
+        }
+    });
+
+    describe("service.generateTypeHLoot", function () {
+
+        for (var budgetLowerBound = 0; budgetLowerBound < 1000000; budgetLowerBound += 1000) {
+
+            it("should generate type H loot for budgets " + budgetLowerBound + " to " + (budgetLowerBound + 950), function () {
+
+                for (var budget = budgetLowerBound; budget <= budgetLowerBound + 950; budget += 50) {
+                    var loot = service.generateTypeHLoot(budget);
+
+                    expect(loot.coins.pp).to.be.at.least(0);
+                    expect(loot.coins.gp).to.be.at.least(0);
+                    expect(loot.coins.sp).to.be.at.least(0);
+                    expect(loot.coins.cp).to.be.at.least(0);
+
+                    for (var i in loot.items) {
+                        var item = loot.items[i];
+                        expect(typeof item.Price).to.equal('number');
+                        expect(item.PriceUnit).to.equal('gp');
+                        expect(typeof item.Name).to.equal('string');
+                        expect(typeof item.id).to.equal('string');
+                        expect(typeof item.amount).to.equal('number');
+                        expect(item.amount).to.be.at.least(1);
+                    }
+                }
+            });
+        }
+    });
+
     describe("service.generateTypeCLoot", function () {
 
         for (var budgetLowerBound = 0; budgetLowerBound < 100000; budgetLowerBound += 1000) {

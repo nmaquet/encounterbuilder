@@ -1,11 +1,20 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('monsterService', ['$http', function ($http) {
+    var lastSearchParam = null;
+    var lastSearchResults = null;
     return {
+        lastSearchParam: function(){return lastSearchParam;},
         search: function (params, callback) {
+            if (lastSearchResults && JSON.stringify(params) === JSON.stringify(lastSearchParam)) {
+                callback(null, lastSearchResults);
+                return;
+            }
             var now = new Date().getTime();
             $http.get('/api/search-monsters/', {params: params})
                 .success(function (data) {
+                    lastSearchParam = params;
+                    lastSearchResults = data;
                     data["timestamp"] = now;
                     callback(data.error, data);
                 })
@@ -14,7 +23,7 @@ DEMONSQUID.encounterBuilderServices.factory('monsterService', ['$http', function
                 });
         },
         get: function (id, callback) {
-            $http.get('/api/monster/' + id)
+            $http.get('/api/monster/' + id, {cache: true})
                 .success(function (data) {
                     callback(data.error, data.monster);
                 })
@@ -25,7 +34,7 @@ DEMONSQUID.encounterBuilderServices.factory('monsterService', ['$http', function
         getMultiple: function (ids, callback) {
             function pushTask(id) {
                 tasks.push(function (taskCallback) {
-                        $http.get('/api/monster/' + id)
+                        $http.get('/api/monster/' + id, {cache: true})
                             .success(function (data) {
                                 taskCallback(null, data.monster);
                             })
@@ -35,6 +44,7 @@ DEMONSQUID.encounterBuilderServices.factory('monsterService', ['$http', function
                     }
                 );
             }
+
             var tasks = [];
             for (var i in ids) {
                 pushTask(ids[i]);

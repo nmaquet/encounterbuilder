@@ -18,13 +18,13 @@ function insertEvent(username, event, metadata) {
     });
 }
 
-function logUpsertEncounter(request, response, next) {
-    if (request.body.encounter._id === undefined) {
-        insertEvent(request.session.user.username, "CREATE_ENCOUNTER");
-    }
-    else {
-        insertEvent(request.session.user.username, "UPDATE_ENCOUNTER");
-    }
+function logUpdateEncounter(request, response, next) {
+    insertEvent(request.session.user.username, "CREATE_ENCOUNTER");
+    next();
+}
+
+function logCreateEncounter(request, response, next) {
+    insertEvent(request.session.user.username, "UPDATE_ENCOUNTER");
     next();
 }
 
@@ -34,59 +34,63 @@ function logRemoveEncounter(request, response, next) {
 }
 
 function logGenerateEncounterLoot(request, response, next) {
-    insertEvent(request.session.user.username, "GENERATE_ENCOUNTER_LOOT", {CR : request.body.encounter.CR});
+    insertEvent(request.session.user.username, "GENERATE_ENCOUNTER_LOOT", {CR: request.body.encounter.CR});
     next();
 }
 
 function logSearchMonster(request, response, next) {
-    insertEvent(request.session.user.username, "SEARCH_MONSTER", {query : request.query});
+    insertEvent(request.session.user.username, "SEARCH_MONSTER", {query: request.query});
     next();
 }
 
 function logSearchItem(request, response, next) {
-    insertEvent(request.session.user.username, "SEARCH_ITEM", {query : request.query});
+    insertEvent(request.session.user.username, "SEARCH_ITEM", {query: request.query});
     next();
 }
 
 function logSearchSpell(request, response, next) {
-    insertEvent(request.session.user.username, "SEARCH_SPELL", {query : request.query});
+    insertEvent(request.session.user.username, "SEARCH_SPELL", {query: request.query});
     next();
 }
 
 function logSearchFeat(request, response, next) {
-    insertEvent(request.session.user.username, "SEARCH_FEAT", {query : request.query});
+    insertEvent(request.session.user.username, "SEARCH_FEAT", {query: request.query});
     next();
 }
 
 function logSelectMonster(request, response, next) {
-    insertEvent(request.session.user.username, "SELECT_MONSTER", {monsterId : request.params.id});
+    insertEvent(request.session.user.username, "SELECT_MONSTER", {monsterId: request.params.id});
     next();
 }
 
 function logSearchNPC(request, response, next) {
-    insertEvent(request.session.user.username, "SEARCH_NPC", {query : request.query});
+    insertEvent(request.session.user.username, "SEARCH_NPC", {query: request.query});
     next();
 }
 
 
 function logSelectNPC(request, response, next) {
-    insertEvent(request.session.user.username, "SELECT_NPC", {npcId : request.params.id});
+    insertEvent(request.session.user.username, "SELECT_NPC", {npcId: request.params.id});
     next();
 }
 
 
 function logSelectItem(request, response, next) {
-    insertEvent(request.session.user.username, "SELECT_ITEM", {itemId : request.params.id});
+    insertEvent(request.session.user.username, "SELECT_ITEM", {itemId: request.params.id});
     next();
 }
 
 function logSelectSpell(request, response, next) {
-    insertEvent(request.session.user.username, "SELECT_SPELL", {spellId : request.params.id});
+    insertEvent(request.session.user.username, "SELECT_SPELL", {spellId: request.params.id});
     next();
 }
 
 function logSelectFeat(request, response, next) {
-    insertEvent(request.session.user.username, "SELECT_FEAT", {featId : request.params.id});
+    insertEvent(request.session.user.username, "SELECT_FEAT", {featId: request.params.id});
+    next();
+}
+function logSelectEncounter(request, response, next) {
+    insertEvent(request.session.user.username, "SELECT_ENCOUNTER", {encounterId: request.params.id});
     next();
 }
 
@@ -107,21 +111,23 @@ function logLogout(request, response, next) {
 module.exports = function (collection) {
     metricsCollection = collection;
     return {
-        logUpsertEncounter: logUpsertEncounter,
+        logUpdateEncounter: logUpdateEncounter,
+        logCreateEncounter: logCreateEncounter,
         logRemoveEncounter: logRemoveEncounter,
         logGenerateEncounterLoot: logGenerateEncounterLoot,
-        logSearchMonster : logSearchMonster,
-        logSearchItem : logSearchItem,
-        logSelectMonster : logSelectMonster,
-        logSelectItem : logSelectItem,
-        logSearchNpc : logSearchNPC,
-        logSelectNpc : logSelectNPC,
-        logSearchSpell : logSearchSpell,
-        logSearchFeat : logSearchFeat,
-        logSelectSpell : logSelectSpell,
-        logSelectFeat : logSelectFeat,
-        logPrintEncounter : logPrintEncounter,
-        logLogin : logLogin,
-        logLogout : logLogout
+        logSearchMonster: logSearchMonster,
+        logSearchItem: logSearchItem,
+        logSelectMonster: logSelectMonster,
+        logSelectItem: logSelectItem,
+        logSearchNpc: logSearchNPC,
+        logSelectNpc: logSelectNPC,
+        logSearchSpell: logSearchSpell,
+        logSearchFeat: logSearchFeat,
+        logSelectSpell: logSelectSpell,
+        logSelectFeat: logSelectFeat,
+        logSelectEncounter: logSelectEncounter,
+        logPrintEncounter: logPrintEncounter,
+        logLogin: logLogin,
+        logLogout: logLogout
     }
 };

@@ -27,19 +27,19 @@
             }
         }
     .row
-        .col-xs-12.col-lg-12
+        .col-xxs-12.col-xs-12.col-lg-12
             include _printable-encounter-summary
     .page-break
     .printed-parent(ng-repeat="monster_row in monsters_rows")
         .row
-            .col-xs-6(ng-if="monster_row.length === 2", ng-repeat="monster in monster_row")
+            .col-xxs-6.col-xs-6(ng-if="monster_row.length === 2", ng-repeat="monster in monster_row")
                 include _printable-monster-details
-            .col-xs-12(ng-if="monster_row.length === 1", ng-repeat="monster in monster_row")
+            .col-xxs-12.col-xs-12(ng-if="monster_row.length === 1", ng-repeat="monster in monster_row")
                 include _printable-monster-details
         .page-break
     .printed-parent(ng-repeat="npc in npcs")
         .row
-            .col-xs-12
+            .col-xxs-12.col-xs-12
                 include _printable-npc-details
         .page-break
 span#footer

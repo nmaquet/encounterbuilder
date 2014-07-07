@@ -1,31 +1,32 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
-    ['$scope', '$timeout','$routeParams', 'spellService', 'selectedSpellService',
-        function ($scope, $timeout,$routeParams, spellService, selectedSpellService) {
+    ['$scope', '$rootScope', '$timeout', '$routeParams', 'spellService','locationService',
+        function ($scope, $rootScope, $timeout, $routeParams, spellService,locationService) {
 
-            $scope.spellNameSubstring = '';
-            $scope.class = 'any';
-            $scope.sortBy = 'name';
-            $scope.minLevel = 0;
-            $scope.maxLevel = 9;
+            var lastSearchParam = spellService.lastSearchParam();
+
+            $scope.spellNameSubstring = lastSearchParam ? lastSearchParam.nameSubstring : '';
+            $scope.class = lastSearchParam ? lastSearchParam.class : 'any';
+            $scope.sortBy = lastSearchParam ? lastSearchParam.sortBy : 'name';
+            $scope.minLevel = lastSearchParam ? lastSearchParam.minLevel : 0;
+            $scope.maxLevel = lastSearchParam ? lastSearchParam.maxLevel : 9;
 
             $scope.totalSpells = 0;
-            $scope.currentPage = 1;
+            $scope.currentPage = lastSearchParam ? lastSearchParam.currentPage : 1;
             $scope.spellsPerPage = 15;
             $scope.maxSize = 5;
 
             $scope.spells = [];
+            $scope.refreshingSpells = false;
 
-            if ($routeParams.spellId) {
-                $timeout(function () {
-                    selectedSpellService.selectedSpellId($routeParams.spellId);
-                    $('#spellsTab').click();
-                });
-            }
-
+            $scope.selectedSpellId = $routeParams.spellId;
+            $scope.$on('$routeChangeSuccess', function () {
+                $scope.selectedSpellId = $routeParams.spellId;
+            });
 
             function refreshSpells() {
+                $scope.refreshingSpells = true;
                 var params = {
                     nameSubstring: $scope.spellNameSubstring,
                     class: $scope.class,
@@ -33,6 +34,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
                     maxLevel: $scope.maxLevel,
                     sortBy: $scope.sortBy,
                     skip: ($scope.currentPage - 1) * $scope.spellsPerPage,
+                    currentPage: $scope.currentPage,
                     findLimit: $scope.spellsPerPage
                 };
                 spellService.search(params, function (error, data) {
@@ -43,6 +45,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
                         $scope.spells = data.spells;
                         $scope.totalSpells = data.count;
                     }
+                    $scope.refreshingSpells = false;
                 });
             }
 
@@ -60,12 +63,9 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
             });
 
             $scope.selectSpellById = function (id) {
-                selectedSpellService.selectedSpellId(id);
-            }
+                locationService.goToDetails('spell', id);
 
-            selectedSpellService.register(function () {
-                $scope.selectedSpellId = selectedSpellService.selectedSpellId();
-            });
+            };
 
             $scope.$watch('spellNameSubstring', function (spellNameSubstring) {
                 $timeout(function () {
@@ -81,22 +81,6 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
                         refreshSpells();
                     }
                 }, 300);
-            });
-
-            $("#spellLevelSlider").noUiSlider({
-                start: [0, 9],
-                connect: true,
-                step: 1,
-                range: {
-                    'min': 0,
-                    'max': 9
-                }
-            });
-
-            $("#spellLevelSlider").on('slide', function () {
-                $scope.minLevel = $("#spellLevelSlider").val()[0];
-                $scope.maxLevel = $("#spellLevelSlider").val()[1];
-                $scope.$apply();
             });
         }
     ]);

@@ -1,0 +1,113 @@
+/* ==|====================
+   Layout/Main
+   ======================= */
+
+.l-main {
+}
+
+div.mce-fullscreen {
+  position: fixed;
+  left: $sp-menu-width;
+  top: $navbar-height;
+  right: $navbar-height;
+  bottom: $navbar-height;
+}
+
+html, body {
+  font-size: 62.5%;
+  height: 100%;
+  min-height: 100%;
+}
+
+#wrapper {
+  height: 100%;
+  min-height: 100%;
+  //overflow-x: hidden;
+  position: relative;
+  padding-top: $navbar-height; //header height
+}
+
+/*[class*="col-"].no-padding-left {
+  padding-left: 0;
+  padding-right: 0;
+  @media (min-width: $screen-sm-min) { padding-right: ($grid-gutter-width/2); }
+}
+[class*="col-"].no-padding-right {
+  padding-right: 0;
+  padding-left: 0;
+  @media (min-width: $screen-sm-min) { padding-left: ($grid-gutter-width/2); }
+}*/
+.l-tab-content {
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+}
+
+.l-app-content {
+  @include font-size(15);
+  margin-bottom: 80px;
+  padding: 5px 20px 5px 20px;
+  @media (min-width: $screen-sm-min) {
+    padding-left: $grid-gutter-width;
+    padding-right: $grid-gutter-width;
+    &.no-padding-left {
+      padding-left: 0;
+    }
+    &.no-padding-right {
+      padding-right: 0;
+    }
+  }
+}
+.l-filters {
+
+}
+.l-encounter-well-container, .l-filters {
+  @media (max-width: $screen-xs-max) {
+    //max-width: 320px;
+    //position: absolute;
+  }
+  /*position: absolute;
+  @media (min-width: $screen-sm-min) {
+    position: relative;
+  }*/
+}
+
+.l-tabs-container {
+  @media (min-width: $screen-sm-min) {
+    padding-left: 0;
+  }
+}
+
+.l-section {
+  overflow: hidden;
+  &.sidebar-nav, &.result-list {
+    padding-top: ($grid-gutter-width/2);
+    padding-bottom: ($grid-gutter-width/2);
+//    @media (min-width: $screen-sm-min) {
+//      margin-right: 0;
+//    }
+  }
+}
+
+.inner-wrapper {
+  min-height: 100%;
+  position: relative;
+  overflow: hidden;
+  padding-left: 0px;
+  @media (min-width: $screen-sm-min) {
+    padding-left: $sp-menu-width;
+    .spm-open-left & { padding-left: $sp-menu-width; }
+    .spm-open-right & { padding-right: $sp-menu-width; }
+  }
+}
+
+.prevent-scrolling {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+}
+
+.max-width-720 {
+  max-width: 720px;
+}

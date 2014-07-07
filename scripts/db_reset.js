@@ -194,31 +194,9 @@ function resetMagicItems(callback) {
         console.log(count + " magic items removed");
 
         var filenames = [
-                __dirname + '/../data/items/magic-items.json',
-                __dirname + '/../data/items/scrolls.json',
-                __dirname + '/../data/items/potions_and_oils.json',
-                __dirname + '/../data/items/wands.json',
-                __dirname + '/../data/items/weapons.json',
+                __dirname + '/../data/items/merged-items.json',
                 __dirname + '/../data/items/enchanted_weapons.json',
-                __dirname + '/../data/items/armors_and_shields.json',
                 __dirname + '/../data/items/enchanted_armors_and_shields.json',
-                __dirname + '/../data/items/rings.json',
-                __dirname + '/../data/items/rods.json',
-                __dirname + '/../data/items/staves.json',
-                __dirname + '/../data/items/belts.json',
-                __dirname + '/../data/items/body.json',
-                __dirname + '/../data/items/chests.json',
-                __dirname + '/../data/items/eyes.json',
-                __dirname + '/../data/items/feet.json',
-                __dirname + '/../data/items/hands.json',
-                __dirname + '/../data/items/head.json',
-                __dirname + '/../data/items/headbands.json',
-                __dirname + '/../data/items/necks.json',
-                __dirname + '/../data/items/shoulders.json',
-                __dirname + '/../data/items/slotless.json',
-                __dirname + '/../data/items/wrists.json',
-                __dirname + '/../data/items/gems.json',
-                __dirname + '/../data/items/art-objects.json'
         ];
 
         var itemsToInsert = [];

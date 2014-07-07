@@ -1,0 +1,6 @@
+section.row(ng-controller='ContentController')
+    .col-md-5(ng-controller='EncounterController', pending="pending", ng-hide="contentType && (viewport.xs || viewport.sm)")
+        .l-section.col-sm-12.encounter-well.gradient.l-shadow(fade-out="startFade")
+            include _encounter
+    .col-md-7
+        include _right-details-pane

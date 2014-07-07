@@ -1,31 +1,33 @@
 // TODO: adapt this
 .form-inline.form-group
-    .col-xs-12
+    .col-xxs-12.col-xs-12
         label(for='npc-sort') Sort by:&nbsp;
         select.form-control#npc-sort(ng-model='sortBy')
             option(value='name') Name
             option(value='cr') Challenge Rating
 
-.col-xs-12
-    table.npcs.table.table-striped.table-condensed
-        thead
-            tr.result-row
-                th Name
-                th CR
-                th(colspan='3') Source
-        tbody
-            tr.pointer.npc-row(ng-repeat='npc in npcs')
-                td.name-container(ng-class='{selected: selectedNpcId == npc.id}', ng-click='selectNpc(npc.id)')
-                    span {{npc.Name}}
-                td.price-container(ng-class='{selected: selectedNpcId == npc.id}', ng-click='selectNpc(npc.id)')
-                    span {{npc.CR | numberToFractionString}}
-                td.source-container(ng-class='{selected: selectedNpcId == npc.id}', ng-click='selectNpc(npc.id)')
-                    abbr(title='{{npc.Source}}')
-                        small {{npc.Source | abbreviateSource}}
-                td.input-container(ng-class='{selected: selectedNpcId == npc.id}')
-                    input(type='text', placeholder='1', ng-model='npc.amountToAdd')
-                td.btn-container(ng-class='{selected: selectedNpcId == npc.id}')
-                    button.item-btn.add-item-btn(ng-class="{disabled: !selectedEncounter}", ng-disabled="!selectedEncounter", ng-click='addNpc(npc)')
-                        i.icon.icon-plus
-                            | +
-    pagination.pagination-sm.page.pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
+
+table.npcs.table.table-striped
+    thead
+        tr.result-row
+            th Name
+            th CR
+            th(colspan='3') Source
+    tbody
+        tr.is-pointer.npc-row(ng-repeat='npc in npcs')
+            td.name-container(ng-class='{selected: selectedNpcId && (selectedNpcId === npc.id|| selectedNpcId === npc._id)}', ng-click='selectNpc((npc.id||npc._id))')
+                span {{npc.Name}}
+            td.price-container(ng-class='{selected: selectedNpcId && (selectedNpcId === npc.id|| selectedNpcId === npc._id)}', ng-click='selectNpc((npc.id||npc._id))')
+                span {{npc.CR | numberToFractionString}}
+            td.src-container(ng-class='{selected: selectedNpcId && (selectedNpcId === npc.id|| selectedNpcId === npc._id)}', ng-click='selectNpc((npc.id||npc._id))')
+                abbr(title='{{npc.Source}}')
+                    small {{npc.Source | abbreviateSource}}
+            //td.input-container(ng-class='{selected: selectedNpcId && (selectedNpcId === npc.id|| selectedNpcId === npc._id)}')
+                input(type='text', placeholder='1', ng-model='npc.amountToAdd')
+            td.btn-container.text-right(ng-class='{selected: selectedNpcId && (selectedNpcId === npc.id|| selectedNpcId === npc._id)}')
+                // FIXME should be disabled sometimes
+                button.add-item-btn(ng-click='addNpc(npc)')
+                    i.icon.icon-plus
+                        | +
+.text-center
+    pagination.pagination-sm.page.is-pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')

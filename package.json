@@ -5,7 +5,7 @@
     "main"         : "server/server.js",
     "scripts": {
         "start"       : "node server/server.js",
-        "dev"         : "nodemon -w client/private/ -w server",
+        "dev"         : "nodemon -w client/private/ -w server -e js,scss,css",
         "test-client" : "karma start test/conf/karma-client-unit.conf --single-run",
         "test-e2e"    : "karma start test/conf/karma-e2e.conf --single-run",
         "test-server" : "mocha --reporter mocha-jenkins-reporter --recursive test/server-unit",
@@ -19,7 +19,8 @@
         "uglify-js"   : "~2.4",
         "jade"        : "~1.1.5",
         "async"        : "0.2.10",
-        "connect-mongo": "~0.3"
+        "connect-mongo": "~0.3",
+        "node-sass" : "0.8.6"
     },
     "devDependencies" : {
         "mongoose"    : "~3.6.2",
@@ -38,6 +39,7 @@
         "csvtojson"   : "*",
         "cheerio" :"*",
         "request":"*",
-        "fast-levenshtein" : "*"
+        "fast-levenshtein" : "*",
+        "commander": "~2.2"
       }
 }

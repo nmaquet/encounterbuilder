@@ -1,24 +1,25 @@
 .row.heading.result-heading
-    .col-xs-8.col-lg-9.name-container
-        h2.title.font-title {{monster.Name}}
+    .col-xxs-8.col-xs-8.col-lg-9.name-container
+        h2.t-title.t-title-result {{monster.Name}}
         small Source: {{monster.Source}}
-    .col-xs-4.col-lg-3.cr-container
-        h3.title.font-title CR
+    .col-xxs-4.col-xs-4.col-lg-3.cr-container
+        h3.t-title CR
             | &nbsp;{{monster.CR | numberToFractionString}}
         strong XP
         | &nbsp;{{monster.XP}}
-        //.row.btn-container
-            a.col-xs-3.no-padding.action-btn.btn-1.pointer(title='Copy')
+        .row.btn-container
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copyMonster()')
                 i.icon.fa.fa-copy
-            a.col-xs-3.no-padding.action-btn.btn-2.pointer(title='Settings')
+            //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Settings')
                 i.icon.fa.fa-cogs
-            a.col-xs-3.no-padding.action-btn.btn-3.pointer(title='Zap')
-                i.icon.fa.fa-flash
-            a.col-xs-3.no-padding.action-btn.btn-4.pointer(title='Delete')
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Favourite',ng-click='toggleFavourite()')
+                i(ng-show="favourite").icon.fa.fa-heart
+                i(ng-hide="favourite").icon.fa.fa-heart-o
+            //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Delete')
                 i.icon.fa.fa-times
 
-.row.section.result-content
-    .col-xs-12.cat
+.row.l-section.result-content
+    .col-xxs-12.col-xs-12.cat
         p.intro.underlined {{monster.Description_Visual}}
         ul.list-inline
             li
@@ -39,11 +40,11 @@
                 span
                     strong Senses
                     | &nbsp;{{monster.Senses}}
-    .col-xs-12
+    .col-xxs-12.col-xs-12
         .row
             .col-lg-6.cat.decor
-                legend.legend.font-title Offense
-                ul.list-unstyled
+                legend.cat-heading.t-legend.t-title Offense
+                ul.cat-content.list-unstyled
                     li
                         span
                             strong SPD
@@ -74,8 +75,8 @@
                         spell-list(spell-string="{{monster.SpellsPrepared}}" )
                     li(ng-bind-html='monster.SLASafe' ,linkify='monster.SLASafe',linkify-type="spell", mythic="monster.Mythic")
             .col-lg-6.cat.decor
-                legend.legend.font-title Defense
-                ul.list-unstyled
+                legend.cat-heading.t-legend.t-title Defense
+                ul.cat-content.list-unstyled
                     li
                         span
                             strong
@@ -116,11 +117,11 @@
                             strong SR
                             | &nbsp;{{monster.SR}}
 
-    .col-xs-12
+    .col-xxs-12.col-xs-12
         .row
             .col-lg-6.cat.decor
-                legend.legend.font-title Statistics
-                ul.list-unstyled
+                legend.cat-heading.t-legend.t-title Statistics
+                ul.cat-content.list-unstyled
                     li
                         span
                             strong Str
@@ -171,9 +172,9 @@
                             | &nbsp;{{monster.SQ}}
             .col-lg-6.cat.decor(ng-if='monster.Environment || monster.Organization || monster.Treasure')
                 div
-                    legend.legend.font-title Ecology
+                    legend.cat-heading.t-legend.t-title Ecology
                 div
-                    ul.list-unstyled
+                    ul.cat-content.list-unstyled
                         li(ng-if='monster.Environment')
                             span
                                 strong Environment
@@ -186,11 +187,11 @@
                             span
                                 strong Treasure
                                 | &nbsp;{{monster.Treasure}}
-    .col-xs-12.cat.decor(ng-if='monster.SpecialAbilitiesSafe')
+    .col-xxs-12.col-xs-12.cat.decor(ng-if='monster.SpecialAbilitiesSafe')
         span
-            legend.legend.font-title Special Abilities
+            legend.cat-heading.t-legend.t-title Special Abilities
             // FIXME Use jQuery to change the <h5> tags into <p> or <div>
-            div(ng-bind-html='monster.SpecialAbilitiesSafe')
-    .col-xs-12.cat.decor(ng-if='monster.Description')
-        legend.legend.font-title Description
-        div(ng-bind-html='monster.DescriptionSafe')
+            .cat-content(ng-bind-html='monster.SpecialAbilitiesSafe')
+    .col-xxs-12.col-xs-12.cat.decor(ng-if='monster.Description')
+        legend.cat-heading.t-legend.t-title Description
+        .cat-content(ng-bind-html='monster.DescriptionSafe')

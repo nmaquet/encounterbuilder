@@ -1,0 +1,93 @@
+#loot-generator-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='loot_modal-label',aria-hidden='true',ng-controller="LootGeneratorController")
+    .modal-dialog.modal-lg
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h3#profile_modal-label Loot Generator
+            .modal-body
+                #error-alert.alert.alert-danger.hidden {{errorMessage}}
+                #success-alert.alert.alert-success.hidden {{successMessage}}
+                form
+                    .row
+                        .col-xxs-12.col-xs-12.col-md-12
+                            legend Treasure Budget
+                                .form-group.col-xxs-12.col-xs-12
+                                    select.form-control#type(ng-model='budgetOverride')
+                                        option(value='default') Automatic
+                                        option(value='none') None
+                                        option(value='incidental') Incidental
+                                        option(value='standard') Standard
+                                        option(value='double') Double
+                                        option(value='triple') Triple
+                                    br.visible-xs
+                    .row
+                        .col-xxs-12.col-xs-12.col-md-12
+                            legend Loot Type
+                                //.row
+                                    .form-group.col-xxs-12.col-xs-12
+                                        .checkbox
+                                            label(for='override-loot-type')
+                                                input#override-loot-type(type='checkbox',ng-model='overrideLootType')
+                                                | Override default Loot Type
+                                .form-group.col-xxs-12.col-xs-12
+                                    select.form-control#type(ng-model='lootTypeOverride')
+                                        option(value='default') Automatic
+                                        option(value='A') Coins
+                                        option(value='B') Coins and Gems
+                                        option(value='C') Art Objects
+                                        option(value='D') Coins and Small Objects
+                                        option(value='E') Armor and Weapons
+                                        option(value='F') Combatant Gear
+                                        option(value='G') Spellcaster Gear
+                                        option(value='H') Lair Treasure
+                                        option(value='I') Treasure Hoard
+                                     br.visible-xs
+                                    //.form-group.col-xxs-12.col-xs-12
+                                        .checkbox
+                                            label(for='loot-type-A')
+                                                input#loot-type-A(type='checkbox',ng-model='lootTypeOverride.typeA', ng-disabled='!overrideLootType',title='Treasure of this type consists entirely of coins.')
+                                                strong(title='Treasure of this type consists entirely of coins.')
+                                                    | Coins
+                                        .checkbox
+                                            label(for='loot-type-B')
+                                                input#loot-type-B(type='checkbox',ng-model='lootTypeOverride.typeB', ng-disabled='!overrideLootType',title='This type includes coins and gemstones, some of which can be quite valuable.')
+                                                strong(title='This type includes coins and gemstones, some of which can be quite valuable.')
+                                                    | Coins and Gems
+                                        .checkbox
+                                            label(for='loot-type-C')
+                                                input#loot-type-C(type='checkbox',ng-model='lootTypeOverride.typeC', ng-disabled='!overrideLootType',title='Often overlooked, these items are valuable for their beauty and craftsmanship and are made with precious metals, gems, and other fine materials.')
+                                                strong(title='Often overlooked, these items are valuable for their beauty and craftsmanship and are made with precious metals, gems, and other fine materials.')
+                                                    | Art Objects
+                                        .checkbox
+                                            label(for='loot-type-D')
+                                                input#loot-type-D(type='checkbox',ng-model='lootTypeOverride.typeD', ng-disabled='!overrideLootType',title='This category consists of coins and small magic items, such as potions, rings, scrolls, and wands.')
+                                                strong(title='This category consists of coins and small magic items, such as potions, rings, scrolls, and wands.')
+                                                    | Coins and Small Objects
+                                        .checkbox
+                                            label(for='loot-type-E')
+                                                input#loot-type-E(type='checkbox',ng-model='lootTypeOverride.typeE', ng-disabled='!overrideLootType',title='Consisting solely of weapons and armor, treasure of this type can be found in armories, stored in a den, or even in use by a monster.')
+                                                strong(title='Consisting solely of weapons and armor, treasure of this type can be found in armories, stored in a den, or even in use by a monster.')
+                                                    | Armor and Weapons
+                                        .checkbox
+                                            label(for='loot-type-F')
+                                                input#loot-type-F(type='checkbox',ng-model='lootTypeOverride.typeF', ng-disabled='!overrideLootType',title='This treasure type is made up of items that would typically be carried by a monster that relies on melee or ranged combat. It includes armor, coins, potions, weapons, and wondrous items.')
+                                                strong(title='This treasure type is made up of items that would typically be carried by a monster that relies on melee or ranged combat. It includes armor, coins, potions, weapons, and wondrous items.')
+                                                    | Combatant Gear
+                                        .checkbox
+                                            label(for='loot-type-G')
+                                                input#loot-type-G(type='checkbox',ng-model='lootTypeOverride.typeG', ng-disabled='!overrideLootType',title='This treasure type is carried by creatures with spellcasting abilities, and includes coins, potions, scrolls, staves, wands, and wondrous items.')
+                                                strong(title='This treasure type is carried by creatures with spellcasting abilities, and includes coins, potions, scrolls, staves, wands, and wondrous items.')
+                                                    | Spellcaster Gear
+                                        .checkbox
+                                            label(for='loot-type-H')
+                                                input#loot-type-H(type='checkbox',ng-model='lootTypeOverride.typeH', ng-disabled='!overrideLootType',title='This treasure type can contain items of nearly any variety, but it focuses primarily on treasure of lesser individual value.')
+                                                strong(title='This treasure type can contain items of nearly any variety, but it focuses primarily on treasure of lesser individual value.')
+                                                    | Lair Treasure
+                                        .checkbox
+                                            label(for='loot-type-I')
+                                                input#loot-type-I(type='checkbox',ng-model='lootTypeOverride.typeI', ng-disabled='!overrideLootType',title='Truly the greatest of the treasure types, this can contain virtually any type of item. It usually serves as the reward for many challenging encounters, saved up and placed in one location.')
+                                                strong(title='Truly the greatest of the treasure types, this can contain virtually any type of item. It usually serves as the reward for many challenging encounters, saved up and placed in one location.')
+                                                    | Treasure Hoard
+            .modal-footer
+                button.btn.btn-primary(type="submit", ng-click="generateLoot()", data-dismiss='modal', aria-hidden='true') Randomize!
+                button.btn(href='#', data-dismiss='modal', aria-hidden='true') Close

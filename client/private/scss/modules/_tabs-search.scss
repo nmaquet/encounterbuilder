@@ -1,0 +1,162 @@
+// -----------------------------
+// Modules / Search Tabs
+// -----------------------------
+// Variables
+//
+//Layout
+$searchtabs-border-color: $coal-transparent;
+$searchtabs-border-color2: $brown-transparent;
+//$searchtabs-border-top-color: $brown-transparent;
+//$searchtabs-border-bottom-color: $coal-transparent;
+//$searchtabs-border-left-color: $brown-transparent;
+//$searchtabs-border-right-color: $coal-transparent;
+//Default
+$searchtabs-font-color: $grey-light;
+$searchtabs-bg-color: $red-medium;
+$searchtabs-bg-color2: $brown-transparent;
+//Hover
+$searchtabs-font-color-hover: white;
+$searchtabs-bg-color-hover: $brown-dark;
+//Active
+$searchtabs-font-color-active: white;
+$searchtabs-bg-color-active: $red;
+
+.search-tabs {
+  border-bottom: 0px solid transparent;
+  margin-bottom: 0px;
+  li {
+    margin-bottom: 0px;
+    border-style: 1px solid $searchtabs-border-color;
+
+    .sp-menu-left & { border-right-width: 0; border-left-width: 1px; }
+    .sp-menu-right & { border-left-width: 0; border-right-width: 1px; }
+
+    &:last-child, &.last { a { margin-right: 0; border-right-width: 0;} }
+    &:first-child, &.first { a { margin-left: 0; border-left-width: 0;} }
+
+    background: $searchtabs-bg-color repeat-x left top;
+    &:nth-child(1), &.tab-1 { background-position: 0 0; }
+    &:nth-child(2), &.tab-2 { background-position: -20% 0; }
+    &:nth-child(3), &.tab-3 { background-position: -40% 0; }
+    &:nth-child(4), &.tab-4 { background-position: -60% 0; }
+    &:nth-child(5), &.tab-5 { background-position: -80% 0; }
+    a {
+      @include border-radius($radius : 0px);
+      font-family: $font-metamorphous;
+      margin-right: 0;
+      color: $searchtabs-font-color;
+      padding: 6px 10px;
+      background: transparent $img-texture-1 repeat left top;
+      &:hover {
+        color: $searchtabs-font-color-hover;
+        border-color: transparent;
+      }
+    }
+    &:hover {
+      color: $searchtabs-font-color-hover;
+      background-color: $searchtabs-bg-color-hover;
+      border-top-color: $searchtabs-border-color2;
+      border-bottom-color: $searchtabs-border-color;
+      border-left-color: $searchtabs-border-color2;
+      border-right-color: $searchtabs-border-color;
+    }
+    &.active {
+      color: $searchtabs-font-color-active;
+      background-color: $searchtabs-bg-color-active;
+      border-bottom-color: transparent;
+      a, a:hover {
+        color: $searchtabs-font-color-hover;
+        background-color: transparent;
+        border-color: transparent;
+      }
+    }
+    .icon {
+      display: block;
+      @include font-size(20);
+      //margin-right: 0.5em;
+    }
+
+    @media (max-width: $screen-xxs-max) {
+      @include font-size(20);
+      span { display: none; }
+    }
+//    @media (max-width: $screen-sm-max) {
+//        .icon {
+//          font-size: 1.5em;
+//          margin: 0 auto;
+//          display: block;
+//      }
+//    }
+    @media (min-width: $screen-xs-min) {
+      @include font-size(18);
+//      span { font-size: 0.75em; }
+    }
+    @media (min-width: $screen-sm-min) {
+      @include font-size(16);
+    }
+    @media (min-width: $screen-md-min) {
+      @include font-size(18);
+//      span { font-size: 0.9575em; }
+    }
+    @media (min-width: $screen-lg-min) {
+      @include font-size(20);
+      a { padding: 10px 14px; }
+    }
+  }
+}
+.icon-tabs li .icon {
+  margin: 0 auto;
+}
+
+// Alternative Theming
+// Variables
+//
+//Layout
+$searchtabs-light-border-color: $coal-transparent;
+$searchtabs-light-border-color2: $brown-transparent;
+//$searchtabs-light-border-top-color: $brown-transparent;
+//$searchtabs-light-border-bottom-color: $coal-transparent;
+//$searchtabs-light-border-left-color: $brown-transparent;
+//$searchtabs-light-border-right-color: $coal-transparent;
+//Default
+$searchtabs-light-font-color: $grey-dark;
+$searchtabs-light-bg-color: $grey;
+//Hover
+$searchtabs-light-font-color-hover: white;
+$searchtabs-light-bg-color-hover: $grey-dark;
+//Active
+$searchtabs-light-font-color-active: $red;
+$searchtabs-light-bg-color-active: $grey-light-2;
+.search-tabs.tabs-light {
+  li {
+    border-color: $searchtabs-light-border-color;
+
+    background-color: $searchtabs-light-bg-color;
+    a {
+      color: $searchtabs-light-font-color;
+      &:hover {
+        color: $searchtabs-light-font-color-hover;
+        background-color: $searchtabs-light-bg-color-hover;
+        border-color: transparent;
+      }
+    }
+    &:hover {
+      color: $searchtabs-light-font-color-hover;
+      background-color: $searchtabs-light-bg-color-hover;
+      border-top-color: $searchtabs-light-border-color2;
+      border-bottom-color: $searchtabs-light-border-color;
+      border-left-color: $searchtabs-light-border-color2;
+      border-right-color: $searchtabs-light-border-color;
+    }
+    &.active {
+      color: $searchtabs-light-font-color-active;
+      background-color: $searchtabs-light-bg-color-active;
+      border-bottom-color: transparent;
+      a, a:hover {
+        color: $searchtabs-light-font-color-active;
+        background-color: transparent;
+        border-color: transparent;
+      }
+    }
+  }
+}

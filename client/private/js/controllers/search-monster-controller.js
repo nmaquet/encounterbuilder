@@ -1,24 +1,31 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
-    ['$scope', '$timeout', '$location', '$routeParams', 'monsterService', 'selectedMonsterService', 'encounterService', 'selectedEncounterService', 'doNotReloadCurrentTemplate',
-        function ($scope, $timeout, $location, $routeParams, monsterService, selectedMonsterService, encounterService, selectedEncounterService, doNotReloadCurrentTemplate) {
-            doNotReloadCurrentTemplate($scope);
+    ['$scope', '$rootScope', '$timeout', '$routeParams', 'monsterService', 'encounterService', 'encounterEditorService', 'locationService',
+        function ($scope, $rootScope, $timeout, $routeParams, monsterService, encounterService, encounterEditorService, locationService) {
 
-            if ($routeParams.monsterId) {
-                $timeout(function () {
-                    if (selectedMonsterService.selectedMonsterId() === $routeParams.monsterId) {
-                        selectedMonsterService.updateUrl()
-                    } else {
-                        selectedMonsterService.selectedMonsterId($routeParams.monsterId);
-                    }
-                    $('#monstersTab').click();
-                });
-            }
+            var lastSearchParam = monsterService.lastSearchParam();
 
-            $scope.nameSubstring = '';
-            $scope.orderProp = 'name';
-            $scope.type = 'any';
+            $scope.nameSubstring = lastSearchParam ? lastSearchParam.nameSubstring : '';
+            $scope.orderProp = lastSearchParam ? lastSearchParam.order : 'name';
+            $scope.type = lastSearchParam ? lastSearchParam.type : 'any';
+            $scope.refreshingMonsters = false;
+
+            $scope.totalItems = 0;
+            $scope.currentPage = lastSearchParam ? lastSearchParam.currentPage : 1;
+            $scope.itemsPerPage = 15;
+            $scope.maxSize = 4;
+            $scope.listTimestamp = 0;
+            $scope.minCR = lastSearchParam ? lastSearchParam.minCR : 0;
+            $scope.maxCR = lastSearchParam ? lastSearchParam.maxCR : 40;
+
+            $scope.selectedMonsterId = $routeParams.monsterId || $routeParams.userMonsterId || $routeParams.detailsId;
+
+            $scope.userCreated = false;
+
+            $scope.$on('$routeChangeSuccess', function () {
+                $scope.selectedMonsterId = $routeParams.monsterId || $routeParams.userMonsterId || $routeParams.detailsId;
+            });
 
             $scope.$watchCollection("[orderProp, type, currentPage]", function () {
                 if ($scope.currentPage < 9) {
@@ -40,6 +47,13 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     }
                 }, 300);
             });
+            $scope.$watch('userCreated', function (value) {
+                $timeout(function () {
+                    if (value === $scope.userCreated) {
+                        $scope.refreshMonsters();
+                    }
+                }, 300);
+            });
 
             $scope.$watchCollection("[minCR, maxCR]", function (crRange) {
                 $timeout(function () {
@@ -55,10 +69,13 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     order: $scope.orderProp,
                     type: $scope.type,
                     skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
+                    currentPage: $scope.currentPage,
                     findLimit: $scope.itemsPerPage,
                     minCR: $scope.minCR,
-                    maxCR: $scope.maxCR
+                    maxCR: $scope.maxCR,
+                    userCreated: $scope.userCreated
                 };
+                $scope.refreshingMonsters = true;
                 monsterService.search(params, function (error, data) {
                     if (error) {
                         console.log('Error in your face: ' + error);
@@ -69,24 +86,30 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                             $scope.listTimestamp = data.timestamp;
                         }
                     }
+                    $scope.refreshingMonsters = false;
                 });
             };
 
             $scope.selectMonster = function (id) {
-                selectedMonsterService.selectedMonsterId(id);
+                if ($scope.userCreated) {
+                    locationService.goToDetails('user-monster', id);
+                } else {
+                    locationService.goToDetails('monster', id);
+                }
             };
 
-            $scope.addMonster = function (monster) {
+            function addMonsterToEditedEncounter(monster) {
                 if (!/^(\d+)$/.exec(monster.amountToAdd)) {
                     monster.amountToAdd = 1;
                 }
-                var encounter = selectedEncounterService.selectedEncounter();
+                var encounter = encounterEditorService.encounter;
                 if (!encounter.Monsters) {
                     encounter.Monsters = {};
                 }
-                if (!encounter.Monsters[monster.id]) {
+                var id = monster.id || monster._id;
+                if (!encounter.Monsters[id]) {
                     //FIXME use DEMONSQUID.clone
-                    encounter.Monsters[monster.id] = {
+                    encounter.Monsters[id] = {
                         amount: Number(monster.amountToAdd),
                         Name: monster.Name,
                         XP: monster.XP,
@@ -96,44 +119,23 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                         Heroic: monster.Heroic,
                         Level: monster.Level
                     };
+                    if (monster.id === undefined) {
+                        encounter.Monsters[id].userCreated = true;
+                    }
                 }
                 else {
-                    encounter.Monsters[monster.id].amount += Number(monster.amountToAdd) || 1;
+                    encounter.Monsters[id].amount += Number(monster.amountToAdd) || 1;
                 }
                 delete monster.amountToAdd;
                 encounterService.encounterChanged(encounter);
+            }
+
+            $scope.addMonster = function (monster) {
+                if ($routeParams.encounterId) {
+                    addMonsterToEditedEncounter(monster);
+                }
+                // FIXME: binder
             };
 
-            $scope.totalItems = 0;
-            $scope.currentPage = 1;
-            $scope.itemsPerPage = 15;
-            $scope.maxSize = 4;
-            $scope.listTimestamp = 0;
-            $scope.minCR = 0;
-            $scope.maxCR = 40;
-
-            $("#monsterCRSlider").noUiSlider({
-                start: [0, 40],
-                connect: true,
-                step: 1,
-                range: {
-                    'min': 0,
-                    'max': 40
-                }
-            });
-
-            $("#monsterCRSlider").on('slide', function () {
-                $scope.minCR = $("#monsterCRSlider").val()[0];
-                $scope.maxCR = $("#monsterCRSlider").val()[1];
-                $scope.$apply();
-            });
-
-            selectedMonsterService.register(function () {
-                $scope.selectedMonsterId = selectedMonsterService.selectedMonsterId();
-            });
-
-            selectedEncounterService.register(function () {
-                $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
-            });
         }
     ]);

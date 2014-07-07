@@ -1,0 +1,43 @@
+{
+  "name": "jquery.fancytree",
+  "version": "2.0.0-10",
+  "keywords": [
+    "ajax",
+    "jquery",
+    "table",
+    "tabletree",
+    "tree",
+    "treegrid"
+  ],
+  "ignore": [
+    "**/.*",
+    "3rd-party",
+    "archive",
+    "bin",
+    "build",
+    "demo",
+    "doc",
+    "lib",
+    "src",
+    "test",
+    "CONTRIBUTING.md",
+    "fancytree.jquery.json",
+    "Gruntfile.coffee",
+    "index.html"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7",
+    "jquery-ui": ">=1.8.6"
+  },
+  "devDependencies": {},
+  "homepage": "https://github.com/mar10/fancytree",
+  "_release": "2.0.0-10",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.0-10",
+    "commit": "e1a82e46b865ad67c31f819898ceb166a72ebfc0"
+  },
+  "_source": "git://github.com/mar10/fancytree.git",
+  "_target": "2.0.0-10",
+  "_originalSource": "fancytree"
+}

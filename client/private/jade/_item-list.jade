@@ -1,29 +1,30 @@
 .form-inline.form-group
-    .col-xs-12
+    .col-xxs-12.col-xs-12
         label(for='sort') Sort by:&nbsp;
         select.form-control#item-sort(ng-model='sortOrder')
             option(value='name') Name
             option(value='price') Price
             option(value='cl') Caster Level
-.col-xs-12
-    table.items.table.table-striped.table-condensed
+    table.items.table.table-striped
         thead
             tr.result-row
                 th Name
                 th Price
                 th(colspan='3') Source
         tbody
-            tr.pointer.item-row(ng-repeat='item in items')
+            tr.is-pointer.item-row(ng-repeat='item in items')
                 td.name-container(ng-class='{selected: selectedItemId == item.id}', ng-click='selectItemById(item.id)')
                     span {{item.Name}}
                 td.price-container(ng-class='{selected: selectedItemId == item.id}', ng-click='selectItemById(item.id)')
                     span {{item.Price}}&nbsp;{{item.PriceUnit}}
-                td.source-container(ng-class='{selected: selectedItemId == item.id}', ng-click='selectItemById(item.id)')
+                td.src-container(ng-class='{selected: selectedItemId == item.id}', ng-click='selectItemById(item.id)')
                     abbr(title='{{item.Source}}') {{item.Source | abbreviateSource}}
-                td.input-container(ng-class='{selected: selectedItemId == item.id}')
+                //td.input-container(ng-class='{selected: selectedItemId == item.id}')
                     input(type='text', placeholder='1', ng-model='item.amountToAdd')
-                td.btn-container(ng-class='{selected: selectedItemId == item.id}')
-                    button.item-btn.add-item-btn(ng-class="{disabled: !selectedEncounter}", ng-disabled="!selectedEncounter", ng-click='addItem(item)')
+                td.btn-container.text-right(ng-class='{selected: selectedItemId == item.id}')
+                    // FIXME should be disabled sometimes
+                    button.add-item-btn(  ng-click='addItem(item)')
                         i.icon.icon-plus
                             | +
-    pagination.pagination-sm.page.pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
+.text-center
+    pagination.pagination-sm.page.is-pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')

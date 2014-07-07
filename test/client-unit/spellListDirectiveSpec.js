@@ -17,14 +17,15 @@
 
         beforeEach(module("encounterBuilderApp"));
 
-        beforeEach(inject(function (_$compile_, _$rootScope_) {
+        beforeEach(inject(function (_$compile_, _$rootScope_, spellService) {
             $rootScope = _$rootScope_;
             $compile = _$compile_;
-        }))
+            spellService.spells = {names: []}; /* this prevents the linkify directive from crashing and blocking the tests */
+        }));
 
         function createElement(spellString) {
             var element = angular.element("<spell-list spell-string=\"" + spellString + "\"></spell-list>");
-            $compile(element)($rootScope)
+            $compile(element)($rootScope);
             $rootScope.$digest();
             return element;
         }

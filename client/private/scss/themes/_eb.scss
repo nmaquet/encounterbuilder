@@ -1,0 +1,78 @@
+//DEFAULT THEME
+@include selection(white, $teal-transparent);
+
+//THEME TEAL
+body.teal {
+  //select
+  @include selection(white, $teal-transparent);
+
+  //bg
+  background: $teal-dark-2 url('../img/bg/bg_forest_teal.png') no-repeat center center fixed;
+  @include background-size-cover();
+
+  // Layout
+  .l-section {
+    &.encounter-well {
+      background-color: $brown-dark;
+      @include gradient-grey-dark();
+    }
+    // Binder
+    &.encounter-binder-container {
+      background-color: transparent;
+      //background: rgba(255,255,255,0.1);
+      //border: 1px solid rgba(255,255,255,0.1);
+      max-width: 800px; // FIXME
+    }
+  }
+  //.encounter-binder, .encounter-binder-container .encounter-well {
+  //  @include gradient-transparent-white;
+  //  background: rgba(255,255,255,0.1);
+  //}
+  .search-tabs li { background-image: $img-texture-2; }
+//  .sidebar-nav {
+//    background-image: $img-texture-2;
+//  }
+  .result-list {
+    @include gradient-grey-light();
+    .table > tbody > tr {
+      > td,
+      > th {
+        &.selected {
+          background-color: $teal-light;
+          color: white;
+          .add-item-btn {
+            background-color: white;
+            color: $teal;
+            &:hover {  background-color: $grey-light;  }
+          }
+        }
+      }
+    }
+  }
+  .search-result {
+    .result-heading, .cr-container {
+      background-image: $img-texture-1, $img-texture-2;
+      background-repeat: repeat, repeat-x;
+      background-position: center center, top center;
+    }
+    .result-heading {
+      background-color: $teal;
+      .no-multiplebgs & { background: $teal $img-texture-2 repeat-x top center; }
+    }
+    .cr-container {
+      background-color: $red;
+      .no-multiplebgs & { background: $red $img-texture-2 repeat-x top center; }
+    }
+    .result-content {
+      .t-legend { color:$teal; }
+    }
+  }
+  // Modules
+  .pagination > li {
+    &.active > a, &.active > span {
+      background-color: $teal-light;
+      border-color: $teal-light;
+    }
+  }
+  .noUi-connect { background: $teal;}
+}

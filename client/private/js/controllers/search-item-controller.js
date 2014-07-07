@@ -1,127 +1,116 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
-    ['$scope', '$http', '$timeout','$routeParams', 'selectedItemService', 'itemService','selectedEncounterService','encounterService',
-    function ($scope, $http, $timeout,$routeParams, selectedItemService, itemService,selectedEncounterService,encounterService) {
+    ['$scope', '$rootScope', '$http', '$timeout', '$routeParams', 'itemService', 'encounterService', 'encounterEditorService','locationService',
+        function ($scope, $rootScope, $http, $timeout, $routeParams, itemService, encounterService, encounterEditorService,locationService) {
 
-        $scope.itemNameSubstring = '';
-        $scope.sortOrder = 'name';
-        $scope.group = 'any';
-        $scope.slot = 'any';
-        $scope.includeEnchanted = false;
+            var lastSearchParam = itemService.lastSearchParam();
 
-        $scope.totalItems = 0;
-        $scope.currentPage = 1;
-        $scope.itemsPerPage = 15;
-        $scope.maxSize = 5;
+            $scope.itemNameSubstring = lastSearchParam ? lastSearchParam.nameSubstring : '';
+            $scope.sortOrder = lastSearchParam ? lastSearchParam.sortOrder : 'name';
+            $scope.group = lastSearchParam ? lastSearchParam.group : 'any';
+            $scope.slot = lastSearchParam ? lastSearchParam.slot : 'any';
+            $scope.includeEnchanted = lastSearchParam ? lastSearchParam.enchanted : false;
 
-        $scope.items = [];
-        if ($routeParams.itemId) {
-            $timeout(function () {
-                selectedItemService.selectedItemId($routeParams.itemId);
-                $('#itemsTab').click();
+            $scope.totalItems = 0;
+            $scope.currentPage = lastSearchParam ? lastSearchParam.currentPage : 1;
+            $scope.itemsPerPage = 15;
+            $scope.maxSize = 5;
+
+            $scope.minCL = lastSearchParam ? lastSearchParam.minCL : 0;
+            $scope.maxCL = lastSearchParam ? lastSearchParam.maxCL : 20;
+
+            $scope.items = [];
+            $scope.refreshingItems = false;
+
+            $scope.selectedItemId = $routeParams.itemId;
+            $scope.$on('$routeChangeSuccess', function () {
+                $scope.selectedItemId = $routeParams.itemId;
             });
-        }
-        function refreshItems() {
-            var params = {
-                nameSubstring: $scope.itemNameSubstring,
-                sortOrder: $scope.sortOrder,
-                group: $scope.group,
-                slot: $scope.slot,
-                skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
-                findLimit: $scope.itemsPerPage,
-                minCL: $scope.minCL,
-                maxCL: $scope.maxCL,
-                enchanted: $scope.includeEnchanted
-            };
-            itemService.search(params, function (error, data) {
-                if (error) {
-                    console.log(error);
+
+            function refreshItems() {
+                $scope.refreshingItems = true;
+                var params = {
+                    nameSubstring: $scope.itemNameSubstring,
+                    sortOrder: $scope.sortOrder,
+                    group: $scope.group,
+                    slot: $scope.slot,
+                    skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
+                    currentPage: $scope.currentPage,
+                    findLimit: $scope.itemsPerPage,
+                    minCL: $scope.minCL,
+                    maxCL: $scope.maxCL,
+                    enchanted: $scope.includeEnchanted
+                };
+                itemService.search(params, function (error, data) {
+                    if (error) {
+                        console.log(error);
+                    }
+                    else {
+                        $scope.items = data.magicItems;
+                        $scope.totalItems = data.count;
+                    }
+                    $scope.refreshingItems = false;
+                });
+            }
+
+            $scope.$watchCollection("[sortOrder, group, slot, currentPage, includeEnchanted]", function () {
+                if ($scope.currentPage < 9) {
+                    $scope.maxSize = 5;
+                }
+                else if ($scope.currentPage < 99) {
+                    $scope.maxSize = 4;
                 }
                 else {
-                    $scope.items = data.magicItems;
-                    $scope.totalItems = data.count;
+                    $scope.maxSize = 3;
                 }
+                refreshItems();
             });
-        }
 
-        $scope.$watchCollection("[sortOrder, group, slot, currentPage, includeEnchanted]", function () {
-            if ($scope.currentPage < 9) {
-                $scope.maxSize = 5;
-            }
-            else if ($scope.currentPage < 99) {
-                $scope.maxSize = 4;
-            }
-            else {
-                $scope.maxSize = 3;
-            }
-            refreshItems();
-        });
+            $scope.$watch('itemNameSubstring', function (itemNameSubstring) {
+                $timeout(function () {
+                    if (itemNameSubstring === $scope.itemNameSubstring) {
+                        refreshItems();
+                    }
+                }, 300);
+            });
 
-        $scope.$watch('itemNameSubstring', function (itemNameSubstring) {
-            $timeout(function () {
-                if (itemNameSubstring === $scope.itemNameSubstring) {
-                    refreshItems();
+            $scope.$watchCollection("[minCL, maxCL]", function (clRange) {
+                $timeout(function () {
+                    if (clRange[0] === $scope.minCL && clRange[1] === $scope.maxCL) {
+                        refreshItems();
+                    }
+                }, 300);
+            });
+
+
+            $scope.selectItemById = function (id) {
+                locationService.goToDetails('item', id);
+            };
+
+            function addItemToEditedEncounter(item) {
+                if (!/^(\d+)$/.exec(item.amountToAdd)) {
+                    item.amountToAdd = 1;
                 }
-            }, 300);
-        });
-
-        $scope.$watchCollection("[minCL, maxCL]", function (clRange) {
-            $timeout(function () {
-                if (clRange[0] === $scope.minCL && clRange[1] === $scope.maxCL) {
-                    refreshItems();
+                var encounter = encounterEditorService.encounter;
+                if (!encounter.items) {
+                    encounter.items = {};
                 }
-            }, 300);
-        });
+                if (!encounter.items[item.id]) {
+                    encounter.items[item.id] = {Name: item.Name, Price: item.Price, PriceUnit: item.PriceUnit, amount: Number(item.amountToAdd)};
+                }
+                else {
+                    encounter.items[item.id].amount += Number(item.amountToAdd) || 1;
+                }
+                delete item.amountToAdd;
+                encounterService.encounterChanged(encounter);
+            }
 
-
-        $scope.selectItemById = function (id) {
-            selectedItemService.selectedItemId(id);
+            $scope.addItem = function (item) {
+                if ($routeParams.encounterId) {
+                    addItemToEditedEncounter(item);
+                }
+                // FIXME: allow to add an item to a binder if a binderId is in routeParams
+            };
         }
-
-        selectedItemService.register(function(){
-           $scope.selectedItemId = selectedItemService.selectedItemId();
-        });
-
-        $scope.addItem = function (item) {
-            if (!/^(\d+)$/.exec(item.amountToAdd)) {
-                item.amountToAdd = 1;
-            }
-            var encounter = selectedEncounterService.selectedEncounter();
-            if (!encounter.items) {
-                encounter.items = {};
-            }
-            if (!encounter.items[item.id]) {
-                encounter.items[item.id] = {Name: item.Name, Price: item.Price,PriceUnit: item.PriceUnit, amount: Number(item.amountToAdd)};
-            }
-            else {
-                encounter.items[item.id].amount += Number(item.amountToAdd) || 1;
-            }
-            delete item.amountToAdd;
-            encounterService.encounterChanged(encounter);
-        }
-
-        selectedEncounterService.register(function() {
-            $scope.selectedEncounter = selectedEncounterService.selectedEncounter();
-        })
-
-        $scope.minCL = 0;
-        $scope.maxCL = 20;
-        $("#itemCLSlider").noUiSlider({
-            start: [0, 20],
-            connect: true,
-            step: 1,
-            range: {
-                'min': 0,
-                'max': 20
-            }
-        });
-
-        $("#itemCLSlider").on('slide', function () {
-            $scope.minCL = $("#itemCLSlider").val()[0];
-            $scope.maxCL = $("#itemCLSlider").val()[1];
-            $scope.$apply();
-        });
-
-    }
-]);
+    ]);

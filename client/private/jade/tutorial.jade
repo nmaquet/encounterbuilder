@@ -1,0 +1,85 @@
+#left-tutorial-popover-anchor(style="position: absolute; top:45%; left:0%")
+#right-tutorial-popover-anchor(style="position: absolute; top:60%; left:100%;")
+#tutorial(ng-controller="TutorialController")
+    .row
+        .col-xs-12.max-width-720.l-section.l-shadow.search-result
+            .row.heading.result-heading
+                .col-xxs-8.col-xs-8.col-lg-9.name-container
+                    h2.t-title.t-title-result Example Monster
+                    small Source: PFRPG Bestiary
+                .col-xxs-4.col-xs-4.col-lg-3.cr-container
+                    h3.t-title
+                        | CR&nbsp;
+                        | 1/3
+                    strong XP&nbsp;
+                    | 135
+                    .row.btn-container
+                        a#example-monster-copy-btn.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer
+                            i.icon.fa.fa-copy
+                        a#example-monster-edit-btn.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer
+                            i.icon.fa.fa-edit
+                        a#example-monster-favourite-btn.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer
+                            i.icon.fa.fa-heart-o
+                        a#example-monster-delete-btn.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer
+                            i.icon.fa.fa-trash-o
+            .row.l-section.result-content
+                .col-xxs-12.col-xs-12.cat
+                    ul.list-inline
+                        li
+                            span
+                                strong XP&nbsp;
+                                | 135
+                        li
+                            span
+                                strong NE&nbsp;
+                                | Small humanoid (goblinoid)
+                        li
+                            span
+                                strong Init&nbsp;
+                                | +6
+                        li
+                            span
+                                strong Senses&nbsp;
+                                | darkvision 60 ft.; Perception -1
+                .col-xxs-12.col-xs-12
+                    .row
+                        .col-lg-6.cat.decor
+                            legend.cat-heading.t-legend.t-title Offense
+                            ul.cat-content.list-unstyled
+                                li
+                                    span
+                                        strong SPD&nbsp;
+                                        | 30 ft.
+                                li
+                                    span
+                                        strong Melee&nbsp;
+                                        | short sword +2 (1d4/19-20)
+                                li
+                                    span
+                                        strong Space&nbsp;
+                                        | 5 ft.
+                                    span
+                                        strong Reach&nbsp;
+                                        | 5 ft.
+                        .col-lg-6.cat.decor
+                            legend.cat-heading.t-legend.t-title Defense
+                            ul.cat-content.list-unstyled
+                                li
+                                    span
+                                        strong
+                                            abbr(title='Armor Class') AC&nbsp;
+                                        | 16, touch 13, flat-footed 14
+                                li
+                                    span
+                                        strong HP&nbsp;
+                                        | 6 (1d10+1)
+                                li
+                                    span
+                                        strong Fort&nbsp;
+                                        | 3,
+                                    span
+                                        strong Ref&nbsp;
+                                        | 2,
+                                    span
+                                        strong Will&nbsp;
+                                        | -1

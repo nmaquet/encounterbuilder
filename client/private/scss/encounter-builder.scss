@@ -1,4 +1,54 @@
-@import "bootstrap";
-@import "bootstrap-overwrite";
-@import "eb";
-@import "nouislider/_jquery.nouislider";
+///* Compass */
+//@import "compass/css3/images";
+@charset "UTF-8";
+
+/* Tools */
+@import "base/bootstrap-overwrite";
+@import "tools/site-settings";
+@import "tools/mixins";
+//to delete
+@import "tools/functions";
+//@import "tools/helpers"; //to check and comment
+
+/* Base */
+@import "base/base";
+
+/* Fonts */
+@import "fonts/font-face";
+@import "fonts/typography";
+@import "fonts/icons";
+
+/* Layout */
+//@import "layout/constrained";
+@import "layout/main";
+@import "layout/header";
+@import "layout/nav";
+@import "layout/footer";
+@import "layout/home";
+@import "layout/list-encounter";
+@import "layout/list-result";
+@import "layout/result";
+
+/* Modules */
+//@import "modules/animations";
+@import "modules/btn";
+@import "modules/icons";
+@import "modules/medias";
+@import "modules/forms";
+@import "modules/form-search";
+@import "modules/table";
+@import "modules/slider";
+@import "modules/pagination";
+@import "modules/tabs-search";
+@import "modules/nouislider/jquery.nouislider";
+@import "modules/fancytree/fancytree";
+@import "modules/slidemenu";
+@import "modules/dropdown";
+@import "modules/scrollbar";
+@import "modules/tree";
+
+/* States */
+@import "states/pending";
+
+/* Theme */
+@import "themes/eb";

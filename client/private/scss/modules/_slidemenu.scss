@@ -1,0 +1,241 @@
+//------------------------------------------------------------------------------
+// Modules/Slide & Push Menu
+//------------------------------------------------------------------------------
+
+$sp-menu-blue : #47a3da;
+$sp-menu-blue-light : #afdefa;
+$sp-menu-blue-dark : #0d77b6;
+$sp-menu-blue-medium : #258ecd;
+
+$sp-menu-red : $red;
+$sp-menu-red-light : $red-light;
+$sp-menu-red-dark : $red-dark;
+$sp-menu-red-medium : $red-transparent;
+
+$sp-menu-coal : $brown-dark;
+$sp-menu-coal-light : $grey;
+$sp-menu-coal-dark : $coal;
+$sp-menu-coal-medium : $brown;
+
+$sp-menu-grey : $grey;
+$sp-menu-grey-light : $grey-light-2;
+$sp-menu-grey-dark : $grey-dark;
+
+$sp-menu-text-color : white;
+$sp-menu-bg : $grey-2;
+$sp-menu-bg-dark : $sp-menu-coal;
+$sp-menu-title : white;
+$sp-menu-text-bg : $sp-menu-red;
+$sp-menu-hover-bg : $sp-menu-coal-medium;
+$sp-menu-shadow : rgba(0,0,0,0.175);
+
+/* General styles for all menus */
+.sp-menu {
+  @include font-size(16);
+  margin-top: $navbar-height;
+  background-color: $sp-menu-bg;
+  &.sp-menu-dark{background-color: $sp-menu-bg-dark;}
+  position: fixed;
+  @include box-shadow(0,0,0,$sp-menu-shadow);
+  &.sp-menu-open { @include box-shadow(0,6px,24px,$sp-menu-shadow); }
+
+  h1, h2, h3, .t-title {
+    color: $sp-menu-title;
+    font-size: 1.25em;
+    padding: ($grid-gutter-width/3) ($grid-gutter-width/2);
+    margin: 0;
+    font-weight: 300;
+    background: $sp-menu-text-bg $img-texture-1 repeat left top;
+  }
+  .t-title-light {
+    color: $sp-menu-grey-dark;
+    background: $sp-menu-grey-light $img-texture-1 repeat left top;
+  }
+
+  a {
+    display: block;
+    color: white;
+    font-size: 1.1em;
+    font-weight: 300;
+    &:hover {
+      color: white;
+      background-color: $sp-menu-grey-dark;
+      text-decoration: none;
+    }
+  }
+}
+.sp-menu-light {
+  //color: $sp-menu-grey-dark;
+  background: $sp-menu-grey-light $img-texture-1 repeat left top;
+
+  h1, h2, h3, .t-title {
+    background: transparent;
+    color: inherit;
+  }
+}
+.sp-menu-title {
+  color: $sp-menu-title;
+  font-size: 1.9em;
+  padding: 20px;
+  margin: 0;
+  font-weight: 300;
+  background-color: $sp-menu-text-bg;
+}
+.sp-menu-link {
+  display: block;
+  color: white;
+  font-size: 1.1em;
+  font-weight: 300;
+  &:hover {
+    background-color: $sp-menu-hover-bg;
+  }
+}
+
+// Orientation-dependent styles for the content of the menu
+.sp-menu-vertical {
+  width: $sp-menu-width;
+  height: 100%;
+  top: 0;
+  //top: 60px;
+  z-index: $zindex-slide-menu;
+  .sp-menu-content {
+    overflow-y: auto;
+  }
+  .sp-menu-list {
+    a {
+      border-bottom: 1px solid $sp-menu-text-bg;
+      padding: 1em;
+    }
+  }
+}
+
+.sp-menu-vertical.sp-menu-right {
+  width: $sp-menu-width;
+}
+
+.sp-menu-horizontal {
+  width: 100%;
+  height: 150px;
+  left: 0;
+  z-index: 1000;
+  overflow: hidden;
+
+  h3 {
+    height: 100%;
+    width: 20%;
+    float: left;
+  }
+
+  .sp-menu-list {
+    a {
+      float: left;
+      width: 20%;
+      padding: 0.8em;
+      border-left: 1px solid $sp-menu-text-bg;
+    }
+  }
+}
+
+// Vertical menu that slides from the left or right
+
+.sp-menu-left {
+  left: -$sp-menu-width;
+}
+
+.sp-menu-right {
+  right: -$sp-menu-width;
+}
+
+.sp-menu-left.sp-menu-open {
+  left: 0px;
+}
+
+.sp-menu-right.sp-menu-open {
+  right: 0px;
+}
+
+// Horizontal menu that slides from the top or bottom
+
+.sp-menu-top {
+  top: -150px;
+}
+
+.sp-menu-bottom {
+  bottom: -150px;
+}
+
+.sp-menu-top.sp-menu-open {
+  top: 0px;
+}
+
+.sp-menu-bottom.sp-menu-open {
+  bottom: 0px;
+}
+
+// Push classes applied to the body
+
+.sp-menu-push {
+  overflow-x: hidden;
+  position: relative;
+  left: 0;
+}
+
+.sp-menu-push-toright {
+  left: $sp-menu-width;
+}
+
+.sp-menu-push-toleft {
+  left: -$sp-menu-width;
+}
+
+// Transitions
+
+.sp-menu,
+.sp-menu-push {
+  @include transition(all .3s ease);
+}
+
+// Media queries
+
+@media screen and (max-width: 55.1875em){
+
+  .sp-menu-horizontal {
+    font-size: 75%;
+    height: 110px;
+  }
+
+  .sp-menu-top {
+    top: -110px;
+  }
+
+  .sp-menu-bottom {
+    bottom: -110px;
+  }
+
+}
+
+@media screen and (max-height: 26.375em){
+
+  .sp-menu-vertical {
+    font-size: 90%;
+    width: 190px;
+  }
+
+  .sp-menu-left,
+  .sp-menu-push-toleft {
+    left: -190px;
+  }
+
+  .sp-menu-right {
+    right: -190px;
+  }
+
+  .sp-menu-push-toright {
+    left: 190px;
+  }
+}
+
+// Exception for the filters
+.l-filters {
+  > .t-title { padding-bottom: 0; }
+}

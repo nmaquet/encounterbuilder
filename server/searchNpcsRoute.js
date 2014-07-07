@@ -70,7 +70,7 @@ function getSortOption(request) {
     }
 }
 
-module.exports = function (npcsCollection, defaultFindLimit) {
+module.exports = function (npcsCollection, userNpcsCollection, defaultFindLimit) {
     return function (request, response) {
         var query = getQuery(request);
         var npcs;
@@ -81,11 +81,11 @@ module.exports = function (npcsCollection, defaultFindLimit) {
             limit: Number(request.query.findLimit || defaultFindLimit),
             skip: Number(request.query.skip || 0),
             sort: getSortOption(request)
-        }
-
+        };
+        var collection = (request.query.userCreated === "true") ? userNpcsCollection : npcsCollection;
         async.parallel([
                 function (callback) {
-                    npcsCollection.find(query, options).toArray(function (error, npcs) {
+                    collection.find(query, options).toArray(function (error, npcs) {
                         if (error) {
                             callback(error, null);
                         }
@@ -95,7 +95,7 @@ module.exports = function (npcsCollection, defaultFindLimit) {
                     });
                 },
                 function (callback) {
-                    npcsCollection.count(query, function (error, count) {
+                    collection.count(query, function (error, count) {
                         if (error) {
                             callback(error, null);
                         }

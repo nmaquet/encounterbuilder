@@ -38,6 +38,8 @@ module.exports = function () {
             }
         },
 
+        userMonsterCollection: {},
+
         request: {
             params: {
 

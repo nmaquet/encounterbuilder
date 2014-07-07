@@ -1,7 +1,7 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', 'crService',
-    function ($timeout, $http, crService) {
+DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', '$rootScope', '$cacheFactory', 'crService', 'userMonsterService', 'userNpcService',
+    function ($timeout, $http, $rootScope, $cacheFactory, crService, userMonsterService, userNpcService) {
 
         function calculateXp(encounter) {
             var xp = 0;
@@ -59,6 +59,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
         /* FIXME: don't we need a user callback ? */
         /* FIXME: The client of this function has no way to know whether this succeeds or not. */
         service.remove = function (encounter) {
+            $cacheFactory.get('$http').remove('/api/encounter/' + encounter._id);
             $http.post('/api/remove-encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response.error) {
@@ -68,7 +69,21 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 .error(function (response) {
                     console.log("remove of encounter failed !");
                 });
-        }
+        };
+
+        service.createEncounter = function (onSuccess) {
+            $http.post('/api/create-encounter')
+                .success(function (response) {
+                    if (response.error) {
+                        console.log(error);
+                    }
+                    onSuccess(response.encounter);
+
+                })
+                .error(function (response) {
+                    console.log("post of encounter failed !");
+                });
+        };
 
         /* FIXME: don't we need a user callback ? */
         /* FIXME: The client of this function has no way to know whether this succeeds or not. */
@@ -77,7 +92,8 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
             encounter.lootValue = calculateLootValue(encounter);
             encounter.CR = crService.calculateCR(encounter);
             removeItemsWithZeroAmount(encounter);
-            $http.post('/api/upsert-encounter', { encounter: encounter })
+            $cacheFactory.get('$http').put('/api/encounter/' + encounter._id, {encounter: encounter});
+            $http.post('/api/update-encounter', { encounter: encounter })
                 .success(function (response) {
                     if (response._id) {
                         encounter._id = response._id;
@@ -89,7 +105,95 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 .error(function (response) {
                     console.log("post of encounter failed !");
                 });
-        }
+        };
+
+        service.get = function (id, callback) {
+            $http.get('/api/encounter/' + id, {cache: true})
+                .success(function (data) {
+                    callback(data.error, data.encounter);
+                })
+                .error(function (error) {
+                    callback(error, null);
+                });
+        };
+
+        service.getMultiple = function (ids, callback) {
+            function pushTask(id) {
+                tasks.push(function (taskCallback) {
+                        $http.get('/api/encounter/' + id, {cache: true})
+                            .success(function (data) {
+                                taskCallback(null, data.encounter);
+                            })
+                            .error(function (error) {
+                                taskCallback(error, null);
+                            });
+                    }
+                );
+            }
+            var tasks = [];
+            for (var i in ids) {
+                pushTask(ids[i]);
+            }
+            window.async.parallel(tasks, function (error, results) {
+                callback(error, results);
+            });
+        };
+
+        service.updateUserContent = function(encounter) {
+            var id;
+            for (id in encounter.Monsters) {
+                if (!encounter.Monsters.hasOwnProperty(id)) {
+                    continue;
+                }
+                if (!encounter.Monsters[id].userCreated) {
+                    continue;
+                }
+                (function(monster, monsterId) {
+                    userMonsterService.get(monsterId, function(error, newMonster) {
+                        if (newMonster) {
+                            monster.Name = newMonster.Name;
+                            monster.XP = newMonster.XP;
+                            monster.CR = newMonster.CR;
+                            monster.Type = newMonster.Type;
+                            monster.TreasureBudget = newMonster.TreasureBudget;
+                            monster.Heroic = newMonster.Heroic;
+                            monster.Level= newMonster.Level;
+                        } else {
+                            delete encounter.Monsters[monsterId]; /* monster is no longer found -> remove it */
+                            service.encounterChanged(encounter);
+                        }
+                        encounter.xp = calculateXp(encounter);
+                        encounter.CR = crService.calculateCR(encounter);
+                    });
+                })(encounter.Monsters[id], id);
+            }
+            for (id in encounter.Npcs) {
+                if (!encounter.Npcs.hasOwnProperty(id)) {
+                    continue;
+                }
+                if (!encounter.Npcs[id].userCreated) {
+                    continue;
+                }
+                (function(npc, npcId) {
+                    userNpcService.get(npcId, function (error, newNpc) {
+                        if (newNpc) {
+                            npc.Name = newNpc.Name;
+                            npc.XP = newNpc.XP;
+                            npc.CR = newNpc.CR;
+                            npc.Type = newNpc.Type;
+                            npc.TreasureBudget = newNpc.TreasureBudget;
+                            npc.Heroic = newNpc.Heroic;
+                            npc.Level= newNpc.Level;
+                        } else {
+                            delete encounter.Npcs[npcId]; /* npc is no longer found -> remove it */
+                            service.encounterChanged(encounter);
+                        }
+                        encounter.xp = calculateXp(encounter);
+                        encounter.CR = crService.calculateCR(encounter);
+                    });
+                })(encounter.Npcs[id], id);
+            }
+        };
 
         return service;
     }]);

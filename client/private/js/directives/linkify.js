@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('linkify',
-    ['$compile', '$timeout', 'spellService', 'selectedSpellService', 'featService', 'selectedFeatService',
-        function ($compile, $timeout, spellService, selectedSpellService, featService, selectedFeatService) {
+    ['$rootScope', '$compile', '$timeout', '$routeParams', 'spellService', 'featService',
+        function ($rootScope, $compile, $timeout, $routeParams, spellService, featService) {
 
             function processMythicSuperscript(string) {
                 return string.replace(/([a-z])(M|B|UM|APG|UC)/g, "$1<sup>$2</sup>")
@@ -28,16 +28,22 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify',
                 replace: true,
                 scope: {watchedExpression: "&linkify", type: "@linkifyType", mythic: "@mythic"},
                 link: function compile(scope, element) {
-                    scope.selectSpell = function (spellId) {
+                    scope.selectSpell = function (id) {
                         $timeout(function () {
-                            selectedSpellService.selectedSpellId(spellId);
-                            $('#spellsTab').click();
+                            if ($routeParams.encounterId) {
+                                $rootScope.go('/encounter/' + $routeParams.encounterId + '/spell/' + id);
+                            } else {
+                                $rootScope.go('/spell/' + id);
+                            }
                         });
                     };
-                    scope.selectFeat = function (featId) {
+                    scope.selectFeat = function (id) {
                         $timeout(function () {
-                            selectedFeatService.selectedFeatId(featId);
-                            $('#featsTab').click();
+                            if ($routeParams.encounterId) {
+                                $rootScope.go('/encounter/' + $routeParams.encounterId + '/feat/' + id);
+                            } else {
+                                $rootScope.go('/feat/' + id);
+                            }
                         });
                     };
                     scope.$watch(scope.watchedExpression, function (value) {
@@ -70,7 +76,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify',
                                     id += "-mythic";
                                 }
                                 var clickHandler = types[typesArray[i]].selectFunctionName + '(\'' + id + '\')';
-                                parts.push('<a class="pointer" ng-click="' + clickHandler + '">' + match[0] + '</a>');
+                                parts.push('<a class="is-pointer" ng-click="' + clickHandler + '">' + match[0] + '</a>');
                             }
                             parts.push(value.slice(position));
                             value = parts.join("");

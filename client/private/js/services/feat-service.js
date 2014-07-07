@@ -1,6 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('featService', ['$http', function ($http) {
+    var lastSearchParam = null;
+    var lastSearchResults = null;
     var feats = null;
     $http.get('/api/search-feats/', {params: {findLimit: 2000}})
         .success(function (data) {
@@ -31,13 +33,20 @@ DEMONSQUID.encounterBuilderServices.factory('featService', ['$http', function ($
             feats.names.reverse();
         });
     return {
+        lastSearchParam: function(){return lastSearchParam;},
         feats: function () {
             return feats;
         },
         search: function (params, callback) {
+            if (lastSearchResults && JSON.stringify(params) === JSON.stringify(lastSearchParam)) {
+                callback(null, lastSearchResults);
+                return;
+            }
             var now = new Date().getTime();
             $http.get('/api/search-feats/', {params: params})
                 .success(function (data) {
+                    lastSearchParam = params;
+                    lastSearchResults = data;
                     data["timestamp"] = now;
                     callback(data.error, data);
                 })
@@ -46,7 +55,7 @@ DEMONSQUID.encounterBuilderServices.factory('featService', ['$http', function ($
                 });
         },
         get: function (id, callback) {
-            $http.get('/api/feat/' + id)
+            $http.get('/api/feat/' + id, {cache: true})
                 .success(function (data) {
                     callback(data.error, data.feat);
                 })

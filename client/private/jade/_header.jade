@@ -1,18 +1,11 @@
-section#top(name='top')
-.nav-top-wrapper.hidden-xs
-    .container
-        .nav-top
-            a.font-title.navbar-brand(href='/', title='Go to home page')
-                | Encounter Builder
-            .nav-social.pull-right
-                a(href='https://www.facebook.com/EncounterBuilder', target='_blank', title='Like us on Facebook')
-                    i.icon.icon-lg.square.fa.fa-facebook
-                a(href='https://twitter.com/buildEncounters', target='_blank', title='Follow us on Twitter')
-                    i.icon.icon-lg.square.fa.fa-twitter
-                a(href='https://plus.google.com/100708201261690131120', target='_blank', title='Join us on Google+')
-                    i.icon.icon-lg.square.fa.fa-google-plus
+section#top.top(name='top')
 .navbar-wrapper
-    .container
-        .row
-            .col-sm-12
-                include _navbar
+    include _navbar
+.nav-top-wrapper.hidden-xs
+    .l-nav-top
+        a#main-title.t-title.navbar-brand(href='/', title='Go to home page')
+            | Encounter Builder
+
+//.navbar-wrapper
+    .container.l-xs-nopadding
+        include _navbar

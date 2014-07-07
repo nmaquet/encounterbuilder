@@ -24,14 +24,14 @@ MongoClient.connect(MONGODB_URL, function (error, db) {
 
 function main(db) {
     var jobs = [];
-    var collections = ["feats", "spells", "magicitems", "monsters", "npcs"];
+    var collections = ["users"];
     var sources = [];
     for (var i in collections) {
         (function (collection) {
             jobs.push(function (next) {
-                db.collection(collection).find({}, {fields: {source: 1, Source: 1}}).toArray(function (error, docs) {
+                db.collection(collection).find({}, {fields: {username: 1, email: 1}}).toArray(function (error, docs) {
                     for (var i in docs) {
-                        console.log(docs[i].Source || docs[i].source);
+                        console.log(docs[i]);
                     }
                     next();
                 });
