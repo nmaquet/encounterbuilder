@@ -41,8 +41,8 @@ function main(db) {
         app.use("/js", express.static(__dirname + '/../client/public/js'));
         app.use("//skins/lightgray", express.static(__dirname + '/../client/public/skins/lightgray'));
         app.use("//skins/lightgray/fonts", express.static(__dirname + '/../client/public/skins/lightgray/fonts'));
-        app.use("///skins/lightgray", express.static(__dirname + '/../client/public/skins/lightgray'));
-        app.use("///skins/lightgray/fonts", express.static(__dirname + '/../client/public/skins/lightgray/fonts'));
+        app.use("/skins/lightgray", express.static(__dirname + '/../client/public/skins/lightgray'));
+        app.use("/skins/lightgray/fonts", express.static(__dirname + '/../client/public/skins/lightgray/fonts'));
         app.use("/", express.static(__dirname + '/../website/'));
         app.use(express.logger('dev'));
         app.use(express.bodyParser());
