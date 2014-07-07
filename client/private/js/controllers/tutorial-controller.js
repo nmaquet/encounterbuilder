@@ -24,6 +24,11 @@ DEMONSQUID.encounterBuilderControllers.controller('TutorialController', ['$scope
         }
 
         $timeout(function() {
+            $("#campaignsTab").click();
+            $("#monstersTab").click();
+        });
+
+        $timeout(function() {
             createPopover($('#create-dropdown'), "right", "Use this dropdown to create new content.");
             createPopover($('#left-sidebar'), "right", "Organize your content here using binders. Drag & drop to move things around.");
             createPopover($('#search-tabs'), "right", "Use these tabs to switch between your Library, Favourites, and Database.");
@@ -35,6 +40,7 @@ DEMONSQUID.encounterBuilderControllers.controller('TutorialController', ['$scope
 
         $scope.$on("$locationChangeStart", function() {
             $(popovers).popover('destroy');
+            $('.popover.tutorial-popover').remove();
         });
 
         viewportService.register(function() {
