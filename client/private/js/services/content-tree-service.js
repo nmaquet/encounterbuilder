@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
-    ['$rootScope', '$timeout', '$http', 'encounterService', 'userMonsterService', 'userNpcService', 'userTextService','locationService',
-        function ($rootScope, $timeout, $http, encounterService, userMonsterService, userNpcService, userTextService,locationService) {
+    ['$rootScope', '$timeout', '$http', 'encounterService', 'userMonsterService', 'userNpcService', 'userTextService', 'locationService',
+        function ($rootScope, $timeout, $http, encounterService, userMonsterService, userNpcService, userTextService, locationService) {
 
             var LOAD_SUCCESS = "contentTreeLoaded";
 
@@ -43,15 +43,20 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 var activeNode = fancyTree.getActiveNode();
                 if (activeNode === null) {
                     activeNode = fancyTree.rootNode;
-                    activeNode.addNode(node).setActive(true);
+                    var newNode = activeNode.addNode(node);
+                    newNode.setActive(true);
+                    service.goToNode(newNode);
                 }
                 else if (activeNode.folder === true) {
                     var newNode = activeNode.addNode(node);
                     newNode.setActive(true);
                     newNode.makeVisible();
+                    service.goToNode(newNode);
                 }
                 else {
-                    activeNode.appendSibling(node).setActive(true);
+                    var newNode = activeNode.appendSibling(node);
+                    newNode.setActive(true);
+                    service.goToNode(newNode);
                 }
             }
 
@@ -64,10 +69,13 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 if (active) {
                     if (parent && !parent.isRoot()) { /* a child of the root node is effectively parentless */
                         parent.setActive(true);
+                        service.goToNode(parent);
                     } else if (nextSibling) {
                         nextSibling.setActive(true);
+                        service.goToNode(nextSibling);
                     } else if (prevSibling) {
                         prevSibling.setActive(true);
+                        service.goToNode(prevSibling);
                     } else {
                         $rootScope.go("/");
                         /* no node is active -> go to home */
@@ -87,7 +95,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     $window.location.href = '/';
                 });
 
-            service.goToNode = function(node)   {
+            service.goToNode = function (node) {
                 if (node.data.encounterId) {
                     locationService.go("/encounter/" + node.data.encounterId);
                 } else if (node.data.userMonsterId) {
