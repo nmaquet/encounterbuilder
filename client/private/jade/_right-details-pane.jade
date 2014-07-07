@@ -1,4 +1,4 @@
-div(ng-switch='contentType')
+div(ng-switch='contentType', ng-class="{row: (viewport.xs || viewport.sm)}")
     .col-xs-12.max-width-720.l-section.l-shadow.search-result(ng-controller='MonsterDetailController', pending="pending", ng-switch-when='monster')
         include _monster-details
     .col-xs-12.max-width-720.l-section.l-shadow.search-result(ng-controller='UserMonsterController', pending="pending", ng-switch-when='user-monster')
