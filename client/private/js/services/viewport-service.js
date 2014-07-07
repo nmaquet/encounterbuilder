@@ -17,6 +17,8 @@ DEMONSQUID.encounterBuilderServices.factory('viewportService', [ '$rootScope', '
         }
     };
 
+    window.viewport = service.viewport;
+
     function onResize() {
         var viewportWidth = $(window).width();
         service.viewport.xs = false;
