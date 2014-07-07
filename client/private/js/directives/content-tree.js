@@ -93,7 +93,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         node.extraClasses = "fancytree-encounter";
                     } else if (node.data.userNpcId) {
                         node.extraClasses = "fancytree-npc";
+                    }else if (node.data.userTextId) {
+                        node.extraClasses = "fancytree-text";
                     }
+                    node.render();
                 }
 
                 function initTree() {
