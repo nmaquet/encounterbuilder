@@ -6,7 +6,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('favouriteTree',
 
             function link(scope, element) {
 
-                function onActivate(event, data) {
+                function onClick(event, data) {
                     $timeout(function () {
                         locationService.goToDetails(data.node.data.type, data.node.data.id);
                     });
@@ -25,7 +25,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('favouriteTree',
                 function initTree() {
                     element.fancytree({
                         source: favouriteService.favourites(),
-                        activate: onActivate,
+                        click: onClick,
                         expand: onExpandOrCollapse,
                         collapse: onExpandOrCollapse,
                         clickFolderMode: 2 /* expand folder on click */
