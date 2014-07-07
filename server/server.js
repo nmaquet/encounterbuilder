@@ -135,6 +135,7 @@ function main(db) {
         'feedback-popover',
         'login',
         'home',
+        'tutorial',
         'binder',
         'encounter',
         'monster',
