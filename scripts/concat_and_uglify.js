@@ -98,7 +98,8 @@ var jsFiles = [
 
 var cssFiles = [
     "client/private/css/app.css",
-    "client/private/css/animate.css"
+    "client/private/css/animate.css",
+    "client/private/css/tutorial.css"
 ];
 
 var sassRootFile = "client/private/scss/encounter-builder.scss";

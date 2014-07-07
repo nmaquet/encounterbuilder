@@ -1,0 +1,11 @@
+.popover.tutorial-popover {
+    background-color: #D1F0DB;
+}
+
+.popover.tutorial-popover.right > .arrow:after {
+    border-right-color: #D1F0DB;
+}
+
+.popover.tutorial-popover.left > .arrow:after {
+    border-left-color: #D1F0DB;
+}
