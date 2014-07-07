@@ -41,7 +41,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit',
 
                 input.keyup(function (e) {
                     if (e.keyCode == 13 /* ENTER */) {
-                        $scope.save();
+                        $scope.isEditing = false;
+                        $scope.$apply();
                     }
                 });
 
@@ -56,12 +57,14 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit',
                 };
 
                 $scope.save = function () {
-                    if ($scope.numeric && Number($scope.editedValue) >= 0) {
-                        $scope.value = Number($scope.editedValue);
-                    } else if (!$scope.numeric && $scope.editedValue.length>0 ) {
-                        $scope.value = $scope.editedValue;
-                    }
-                    $scope.isEditing = false;
+                    $scope.$apply(function() {
+                        if ($scope.numeric && Number($scope.editedValue) >= 0) {
+                            $scope.value = Number($scope.editedValue);
+                        } else if (!$scope.numeric && $scope.editedValue.length > 0 ) {
+                            $scope.value = $scope.editedValue;
+                        }
+                        $scope.isEditing = false;
+                    });
                     $scope.$apply($scope.onSave);
                 };
             }]
