@@ -18,7 +18,7 @@
                 a.is-pointer.sp-menu-toggle(ng-click='openLeftSidebarAndSelectTab("database")')
                     i.icon.icon-lg.fa.fa-book
 
-        ul.nav.nav-pills.sp-menu-toggle-container.pull-right(ng-hide='(viewport.xs || viewport.md) && leftSidebarIsOpened()')
+        ul.nav.nav-pills.sp-menu-toggle-container.pull-right(ng-hide='!viewport.lg && leftSidebarIsOpened()')
             li
                 a.t-title.is-pointer.sp-menu-toggle(ng-click='toggleRightSidebar()')
                     i.fa.fa-angle-right
