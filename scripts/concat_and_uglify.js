@@ -58,6 +58,7 @@ var jsFiles = [
     "client/private/js/controllers/user-text-controller.js",
     "client/private/js/controllers/edit-user-text-controller.js",
     "client/private/js/controllers/loot-generator-controller.js",
+    "client/private/js/controllers/tutorial-controller.js",
     "client/private/js/directives/click-to-edit.js",
     "client/private/js/directives/confirm-click.js",
     "client/private/js/directives/head.js",
