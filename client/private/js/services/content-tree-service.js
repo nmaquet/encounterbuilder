@@ -342,12 +342,17 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
 
             service.treeChanged = function (tree) {
                 contentTree = tree;
-                $http.post('/api/save-content-tree', { contentTree: tree })
-                    .success(function (data) {
-                    })
-                    .error(function (error) {
-                        console.log(error);
-                    });
+                if (contentTree && fancyTree) {
+                    if (fancyTree.count() === 0) {
+                        contentTree = [];
+                    }
+                    $http.post('/api/save-content-tree', { contentTree: contentTree })
+                        .success(function (data) {
+                        })
+                        .error(function (error) {
+                            console.log(error);
+                        });
+                }
             };
 
             service.getBinderChildrenByKey = function (key, callback) {
