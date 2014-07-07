@@ -12,4 +12,4 @@
 .row.l-section.result-content
     .col-xxs-12.col-xs-12.cat
         p.intro.underlined {{userText.synopsis}}
-        .cat-content(ng-bind-html="userText.content | toTrustedHtml")
+        div(ng-bind-html="userText.content | toTrustedHtml")
