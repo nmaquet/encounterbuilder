@@ -15,7 +15,7 @@
                 a.is-pointer.sp-menu-toggle(ng-click='openLeftSidebarAndSelectTab("favourites")')
                     i.icon.icon-lg.fa.fa-heart
             li
-                a.is-pointer.sp-menu-toggle(ng-click='openLeftSidebarAndSelectTab("database")')
+                a#open-sidebar-and-select-db-tab.is-pointer.sp-menu-toggle(ng-click='openLeftSidebarAndSelectTab("database")')
                     i.icon.icon-lg.fa.fa-book
 
         ul.nav.nav-pills.sp-menu-toggle-container.pull-right(ng-hide='!viewport.lg && leftSidebarIsOpened()')
