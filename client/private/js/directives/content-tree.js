@@ -28,7 +28,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     }
                     else if ($routeParams.userMonsterId) {
                         tree.visit(function (node) {
-                            if (node.data.userMonsterId && node.key === $routeParams.userMonsterId) {
+                            if (node.data.userMonsterId && node.data.userMonsterId === $routeParams.userMonsterId) {
                                 node.setActive(true);
                                 return false;
                             }
@@ -36,7 +36,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     }
                     else if ($routeParams.userNpcId) {
                         tree.visit(function (node) {
-                            if (node.data.userNpcId && node.key === $routeParams.userNpcId) {
+                            if (node.data.userNpcId && node.data.userNpcId === $routeParams.userNpcId) {
                                 node.setActive(true);
                                 return false;
                             }
@@ -44,7 +44,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     }
                     else if ($routeParams.userTextId) {
                         tree.visit(function (node) {
-                            if (node.data.userTextId && node.key === $routeParams.userTextId) {
+                            if (node.data.userTextId && node.data.userTextId === $routeParams.userTextId) {
                                 node.setActive(true);
                                 return false;
                             }
@@ -58,7 +58,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     activateNodeBasedOnRouteParams();
                 });
 
-                function onActivate(event, data) {
+                function onClick(event, data) {
                     $timeout(function () {
                         var node = data.node;
                         if (node.data.encounterId) {
@@ -101,7 +101,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     element.fancytree({
                         extensions: ["dnd"],
                         source: contentTreeService.contentTree(),
-                        activate: onActivate,
+                        click: onClick,
                         dnd: {
                             preventVoidMoves: true, // Prevent dropping nodes 'before self', etc.
                             preventRecursiveMoves: true, // Prevent dropping nodes on own descendants
