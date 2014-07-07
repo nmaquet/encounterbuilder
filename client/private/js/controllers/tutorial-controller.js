@@ -35,6 +35,10 @@ DEMONSQUID.encounterBuilderControllers.controller('TutorialController', ['$scope
             createPopover($('#right-sidebar'), "left", "Access the database from anywhere using this sidebar.");
             createPopover($('.icon-plus').first(), "left", "Use these buttons to add monsters, NPC's, and items to encounters.");
             createPopover($('#database-tabs'), "left", "Use these tabs to switch between Monsters, NPC's, Items, Spells and Feats.");
+            createPopover($('#example-monster-copy-btn'), "left", "Copy");
+            createPopover($('#example-monster-favourite-btn'), "bottom", "Favourite");
+            createPopover($('#example-monster-edit-btn'), "top", "Edit");
+            createPopover($('#example-monster-delete-btn'), "right", "Delete");
             $(popovers).popover('toggle');
             $('.popover.tutorial-popover').click(function (event) {
                 $(event.currentTarget).remove();
