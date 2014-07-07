@@ -8,7 +8,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('favouriteTree',
 
                 function onClick(event, data) {
                     $timeout(function () {
-                        locationService.goToDetails(data.node.data.type, data.node.data.id);
+                        if (!data.node.folder) {
+                            locationService.goToDetails(data.node.data.type, data.node.data.id);
+                        }
                     });
                 }
 
