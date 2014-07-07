@@ -60,21 +60,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
                 function onClick(event, data) {
                     $timeout(function () {
-                        var node = data.node;
-                        if (node.data.encounterId) {
-                            scope.go("/encounter/" + node.data.encounterId);
-                        } else if (node.data.userMonsterId) {
-                            scope.go("/user-monster/" + node.data.userMonsterId);
-                        } else if (node.data.userNpcId) {
-                            scope.go("/user-npc/" + node.data.userNpcId);
-                        }
-                        else if (node.data.userTextId) {
-                            scope.go("/user-text/" + node.data.userTextId);
-                        }
-                        else if (node.folder) {
-                            scope.go("/binder/" + node.key);
-                            node.setExpanded(true);
-                        }
+                        contentTreeService.goToNode(data.node);
                     });
                 }
 
@@ -93,7 +79,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         node.extraClasses = "fancytree-encounter";
                     } else if (node.data.userNpcId) {
                         node.extraClasses = "fancytree-npc";
-                    }else if (node.data.userTextId) {
+                    } else if (node.data.userTextId) {
                         node.extraClasses = "fancytree-text";
                     }
                     node.render();
@@ -148,7 +134,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     activateNodeBasedOnRouteParams();
                 }
                 else {
-                    contentTreeService.onLoadSuccess(function() {
+                    contentTreeService.onLoadSuccess(function () {
                         initTree();
                         activateNodeBasedOnRouteParams();
                     });

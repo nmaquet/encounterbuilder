@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
-    ['$rootScope', '$timeout', '$http', 'encounterService', 'userMonsterService', 'userNpcService', 'userTextService',
-        function ($rootScope, $timeout, $http, encounterService, userMonsterService, userNpcService, userTextService) {
+    ['$rootScope', '$timeout', '$http', 'encounterService', 'userMonsterService', 'userNpcService', 'userTextService','locationService',
+        function ($rootScope, $timeout, $http, encounterService, userMonsterService, userNpcService, userTextService,locationService) {
 
             var LOAD_SUCCESS = "contentTreeLoaded";
 
@@ -86,6 +86,23 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     console.log(error);
                     $window.location.href = '/';
                 });
+
+            service.goToNode = function(node)   {
+                if (node.data.encounterId) {
+                    locationService.go("/encounter/" + node.data.encounterId);
+                } else if (node.data.userMonsterId) {
+                    locationService.go("/user-monster/" + node.data.userMonsterId);
+                } else if (node.data.userNpcId) {
+                    locationService.go("/user-npc/" + node.data.userNpcId);
+                }
+                else if (node.data.userTextId) {
+                    locationService.go("/user-text/" + node.data.userTextId);
+                }
+                else if (node.folder) {
+                    locationService.go("/binder/" + node.key);
+                    node.setExpanded(true);
+                }
+            };
 
             service.setTree = function (tree) {
                 fancyTree = tree;
