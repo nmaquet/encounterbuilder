@@ -1,6 +1,6 @@
 {
     "name"         : "encounter-builder",
-    "version"      : "0.0.1",
+    "version"      : "0.1.0",
     "description"  : "Most Amazing Useful App",
     "main"         : "server/server.js",
     "scripts": {
