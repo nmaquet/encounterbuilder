@@ -20,13 +20,9 @@ DEMONSQUID.encounterBuilderControllers.controller('TutorialController', ['$scope
         container: 'body'
     }));
 
-    for (var i in popovers) {
-        popovers[i].popover('toggle');
-    }
+    $(popovers).popover('toggle');
 
     $scope.$on("$locationChangeStart", function() {
-        for (var i in popovers) {
-            popovers[i].popover('destroy');
-        }
+        $(popovers).popover('destroy');
     });
 }]);
