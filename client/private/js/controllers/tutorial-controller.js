@@ -2,7 +2,7 @@
 
 DEMONSQUID.encounterBuilderControllers.controller('TutorialController', ['$scope', '$timeout', 'viewportService',
     function($scope, $timeout, viewportService) {
-        var TEMPLATE = '<div class="popover tutorial-popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>';
+        var TEMPLATE = '<div class="popover tutorial-popover is-pointer" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>';
 
         if (!viewportService.viewport.lg) {
             return;
@@ -36,6 +36,9 @@ DEMONSQUID.encounterBuilderControllers.controller('TutorialController', ['$scope
             createPopover($('.icon-plus').first(), "left", "Use these buttons to add monsters, NPC's, and items to encounters.");
             createPopover($('#database-tabs'), "left", "Use these tabs to switch between Monsters, NPC's, Items, Spells and Feats.");
             $(popovers).popover('toggle');
+            $('.popover.tutorial-popover').click(function (event) {
+                $(event.currentTarget).remove();
+            });
         }, 1000);
 
         $scope.$on("$locationChangeStart", function() {
