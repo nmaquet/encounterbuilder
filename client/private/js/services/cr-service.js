@@ -2,9 +2,12 @@
 
 DEMONSQUID.encounterBuilderServices.factory('crService', [
     function () {
+        var crToXp = null;
+        var xpToCr = null;
+
         function buildXpToCRTable() {
-            var crToXp = {1: 400};
-            var xpToCr = {50: 0.125, 65: 1 / 6, 100: 1 / 4, 135: 1 / 3, 200: 0.5, 400: 1};
+            crToXp = {1: 400};
+            xpToCr = {50: 0.125, 65: 1 / 6, 100: 1 / 4, 135: 1 / 3, 200: 0.5, 400: 1};
             for (var i = 2; i <= 100; i++) {
                 var xp = null;
                 if (i % 2 === 0) {
@@ -16,10 +19,9 @@ DEMONSQUID.encounterBuilderServices.factory('crService', [
                 crToXp[i] = xp;
                 xpToCr[xp] = i;
             }
-            return xpToCr;
         }
 
-        var xpToCr = buildXpToCRTable();
+        buildXpToCRTable();
 
         var service = {};
 
@@ -50,7 +52,12 @@ DEMONSQUID.encounterBuilderServices.factory('crService', [
                 }
                 return xpToCr[closestXP];
             }
-        }
+        };
+
+        service.calculateXp = function (cr) {
+
+            return crToXp[Math.floor(cr)];
+        };
 
         return service;
     }]);

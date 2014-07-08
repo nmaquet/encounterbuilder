@@ -93,7 +93,8 @@ var jsFiles = [
     "client/private/js/services/user-npc-service.js",
     "client/private/js/services/user-text-service.js",
     "client/private/js/services/favourite-service.js",
-    "client/private/js/services/location-service.js"
+    "client/private/js/services/location-service.js",
+    "client/private/js/services/template-service.js"
 ];
 
 var cssFiles = [
