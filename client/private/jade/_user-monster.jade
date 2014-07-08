@@ -71,7 +71,7 @@
                             | &nbsp;{{userMonster.Bloodline}}
                     li(ng-if='userMonster.SpellsPrepared')
                         spell-list(spell-string="{{userMonster.SpellsPrepared}}" )
-                    li(ng-bind-html='userMonster.SLASafe' ,linkify='userMonster.SLASafe',linkify-type="spell", mythic="userMonster.Mythic")
+                    li(ng-bind-html='userMonster.SpecialAbilities|toTrustedHtml' ,linkify='userMonster.SLASafe|toTrustedHtml',linkify-type="spell", mythic="userMonster.Mythic")
             .col-lg-6.cat.decor
                 legend.t-legend.t-title Defense
                 ul.list-unstyled
@@ -186,7 +186,7 @@
                                 | &nbsp;{{userMonster.Treasure}}
     .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.SpecialAbilities')
         legend.cat-heading.t-legend.t-title Special Abilities
-        span.cat-content(ng-bind-html='userMonster.SpecialAbilitiesHTML')
+        span.cat-content(ng-bind-html='userMonster.SpecialAbilities | toTrustedHtml')
     .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.Description')
         legend.cat-heading.t-legend.t-title Description
-        span.cat-content(ng-bind-html='userMonster.DescriptionHTML')
+        span.cat-content(ng-bind-html='userMonster.Description | toTrustedHtml')

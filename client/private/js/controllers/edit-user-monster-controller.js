@@ -33,17 +33,6 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserMonsterController',
                 if (error) {
                     return console.log(error);
                 }
-
-                if (userMonster.Description) {
-                    userMonster.DescriptionHTML = $sce.trustAsHtml(userMonster.Description);
-                }
-                if (userMonster.SpecialAbilities) {
-                    userMonster.SpecialAbilitiesHTML = $sce.trustAsHtml(userMonster.SpecialAbilities);
-                }
-                if (userMonster.SpellLikeAbilities) {
-                    userMonster.SpellLikeAbilitiesHTML = $sce.trustAsHtml(userMonster.SpellLikeAbilities);
-                }
-
                 $scope.userMonster = userMonster;
                 if ($routeParams.userMonsterId) {
                     $rootScope.globalTitle = "Encounter Builder - " + $scope.userMonster.Name;

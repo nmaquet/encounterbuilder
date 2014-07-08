@@ -47,21 +47,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
 
                     baseMonster = userMonster;
                     console.log(baseMonster);
-                    var userMonster = $scope.userMonster = templateService.handleTemplates(userMonster);
-                    // FIXME: use filter
-                    if (userMonster.Description) {
-                        userMonster.DescriptionHTML = $sce.trustAsHtml(userMonster.Description);
-                    }
-                    // FIXME: use filter
-                    if (userMonster.SpecialAbilities) {
-                        userMonster.SpecialAbilitiesHTML = $sce.trustAsHtml(userMonster.SpecialAbilities);
-                    }
-                    // FIXME: use filter
-                    if (userMonster.SpellLikeAbilities) {
-                        userMonster.SpellLikeAbilitiesHTML = $sce.trustAsHtml(userMonster.SpellLikeAbilities);
-                    }
-
-                    $scope.userMonster = userMonster;
+                    $scope.userMonster = templateService.handleTemplates(userMonster);
 
                     if ($routeParams.userMonsterId) {
                         $rootScope.globalTitle = "Encounter Builder - " + $scope.userMonster.Name;
