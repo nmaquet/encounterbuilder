@@ -26,6 +26,9 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
 
         service.handleTemplates = function (monster) {
 
+
+            //FIXME this is seriously hackish,
+            //FIXME DEMONSQUID.clone should be updated to either accept arrays or accept a list of fields to ignore when cloning
             var templates = monster.templates;
             delete monster.templates;
             var templatedMonster = DEMONSQUID.clone(monster);
@@ -44,7 +47,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
                             templatedMonster.Int = Number(templatedMonster.Int) + 4;
                         }
                         templatedMonster.Wis = Number(templatedMonster.Wis) + 4;
-                        templatedMonster.Wis = Number(templatedMonster.Wis) + 4;
+                        templatedMonster.Cha = Number(templatedMonster.Cha) + 4;
 
                         templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
                         templatedMonster.XP = crService.calculateXp(templatedMonster.CR);
