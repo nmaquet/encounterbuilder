@@ -24,6 +24,19 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             });
         };
 
+        function modifyAC(string, modifier) {
+            var regex = /(\d+)\s*,\s*touch\s*(\d+)\s*,\s*flat-footed\s*(\d+)/;
+            var matches = regex.exec(string);
+            if (!matches) {
+                console.log("failed to modify AC :( (did not recognize : '" + string + "'");
+                return string;
+            }
+            var AC = modifier + Number(matches[1]);
+            var touch = modifier + Number(matches[2]);
+            var flatFooted = modifier + Number(matches[3]);
+            return AC + ", touch " + touch + ", flat-footed " + flatFooted
+        }
+
         service.handleTemplates = function (monster) {
 
 
@@ -53,6 +66,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
                         templatedMonster.Will = Number(templatedMonster.Will) + 2;
 
                         templatedMonster.CMD = Number(templatedMonster.CMD) + 4;
+                        templatedMonster.AC = modifyAC(templatedMonster.AC, +4);
 
                         templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
                         templatedMonster.XP = crService.calculateXp(templatedMonster.CR);

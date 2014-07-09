@@ -134,7 +134,15 @@ describe("templateService", function () {
         expect(templatedMonster.Fort).to.equal(25+2);
         expect(templatedMonster.Ref).to.equal(14+2);
         expect(templatedMonster.Will).to.equal(23+2);
-    })
+    });
+
+    it("should adjust the AC", function () {
+        baseMonster.templates = [
+            {template: "advanced"}
+        ];
+        var templatedMonster = service.handleTemplates(baseMonster);
+        expect(templatedMonster.AC).to.equal("48, touch 15, flat-footed 46");
+    });
 
     it("should adjust the CMD", function () {
         baseMonster.templates = [
