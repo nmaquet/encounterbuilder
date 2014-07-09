@@ -112,4 +112,10 @@ describe("parserService", function () {
         expect(parsedMonster.hitPointBonus).to.equal(242);
         expect(parsedMonster.HP).to.equal(363);
     });
+
+    it("should parse the skills", function () {
+        baseMonster.Skills = "Craft (any one) +31, Diplomacy +32";
+        var parsedMonster = service.parseMonster(baseMonster);
+        expect(parsedMonster.Skills).to.deep.equal({"Craft (any one)": 31, "Diplomacy": 32});
+    });
 });

@@ -9,6 +9,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             var parsedMonster = {};
             parseAC(monster, parsedMonster);
             parseHD(monster, parsedMonster);
+            parseSkills(monster, parsedMonster);
 
             parsedMonster.Str = Number(monster.Str);
             parsedMonster.Dex = Number(monster.Dex);
@@ -65,6 +66,17 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                 parsedMonster.numberOfHD = Number(matches[1]);
                 parsedMonster.typeOfHD = Number(matches[2]);
                 parsedMonster.hitPointBonus = Number(matches[3]);
+            }
+        }
+
+        function parseSkills(monster, parsedMonster) {
+            var string = monster.Skills;
+            var skills = string.split(",");
+            var regex = /([^\+,\-]*)(\+?\-?\d+)/;
+            parsedMonster.Skills = {};
+            for (var i in skills) {
+                var matches = regex.exec(skills[i]);
+                parsedMonster.Skills[matches[1].trim()] = Number(matches[2]);
             }
         }
 
