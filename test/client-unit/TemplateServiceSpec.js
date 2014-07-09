@@ -191,4 +191,12 @@ describe("templateService", function () {
         expect(templatedMonster.Wis).to.equal(31);
         expect(templatedMonster.Cha).to.equal(29);
     });
+
+    it("should  add 44 HP ", function () {
+        baseMonster.templates = [
+            {template: "advanced"}
+        ];
+        var templatedMonster = service.createTemplatedMonster(baseMonster);
+        expect(templatedMonster.HP).to.equal(407);
+    });
 });

@@ -37,12 +37,16 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             var regex = /(\d+)\s*,\s*touch\s*(\d+)\s*,\s*flat-footed\s*(\d+)/;
             var matches = regex.exec(string);
             if (!matches) {
-                throw new Error("failed to parse AC :( (did not recognize : '" + string + "'");
+                console.log("failed to parse AC :( (did not recognize : '" + string + "'");
+                parsedMonster.normalAC = NaN;
+                parsedMonster.touchAC = NaN;
+                parsedMonster.flatFootedAC = NaN;
             }
-
-            parsedMonster.normalAC = Number(matches[1]);
-            parsedMonster.touchAC = Number(matches[2]);
-            parsedMonster.flatFootedAC = Number(matches[3]);
+            else {
+                parsedMonster.normalAC = Number(matches[1]);
+                parsedMonster.touchAC = Number(matches[2]);
+                parsedMonster.flatFootedAC = Number(matches[3]);
+            }
         }
 
         function parseHD(monster, parsedMonster) {
@@ -50,11 +54,16 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             var regex = /\(\s*(\d+)\s*[d,D](\d+)\s*\+?\s*(\d*)\)/;
             var matches = regex.exec(string);
             if (!matches) {
-                throw new Error("failed to parse HD :( (did not recognize : '" + string + "'");
+                console.log("failed to parse HD :( (did not recognize : '" + string + "'");
+                parsedMonster.numberOfHD = NaN;
+                parsedMonster.typeOfHD = NaN;
+                parsedMonster.hitPointBonus = NaN;
             }
-            parsedMonster.numberOfHD = Number(matches[1]);
-            parsedMonster.typeOfHD = Number(matches[2]);
-            parsedMonster.hitPointBonus = Number(matches[3]);
+            else {
+                parsedMonster.numberOfHD = Number(matches[1]);
+                parsedMonster.typeOfHD = Number(matches[2]);
+                parsedMonster.hitPointBonus = Number(matches[3]);
+            }
         }
 
         return service;

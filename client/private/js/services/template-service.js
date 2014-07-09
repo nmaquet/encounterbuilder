@@ -42,6 +42,8 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
                     if ("advanced" === monster.templates[i].template) {
                         templatedMonster.Name = templatedMonster.Name + " (Advanced)";
 
+                        if (!isNaN(parsedMonster.HP) && !isNaN(parsedMonster.numberOfHD))
+                            templatedMonster.HP = parsedMonster.HP + ( 2 * parsedMonster.numberOfHD);
                         if (!isNaN(parsedMonster.Str))
                             templatedMonster.Str = parsedMonster.Str + 4;
                         if (!isNaN(parsedMonster.Dex))
