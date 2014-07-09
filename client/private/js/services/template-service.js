@@ -49,6 +49,10 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             parsedMonster.CMD += 4;
             parsedMonster.Init += 2;
 
+            for (var i in parsedMonster.Skills) {
+                parsedMonster.Skills[i].mod += 2;
+            }
+
         }
 
         service.createTemplatedMonster = function (monster) {
@@ -77,7 +81,10 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
                         templatedMonster.CMB = parsedMonster.CMB || templatedMonster.CMB;
                         templatedMonster.CMD = parsedMonster.CMD || templatedMonster.CMD;
                         templatedMonster.Init = parsedMonster.Init || templatedMonster.Init;
-
+                        templatedMonster.Skills = parsedMonster.Skills.map(function (value) {
+                            var sign = (value.mod >= 0) ? "+" : "-";
+                            return (value.name + " " + sign + value.mod);
+                        }).join(", ");
                         templatedMonster.AC = buildModifiedAC(parsedMonster, +4);
                         templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
                         templatedMonster.XP = crService.calculateXp(templatedMonster.CR);

@@ -10,6 +10,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             parseAC(monster, parsedMonster);
             parseHD(monster, parsedMonster);
             parseSkills(monster, parsedMonster);
+            parseMeleeAttacks(monster, parsedMonster);
 
             parsedMonster.Str = Number(monster.Str);
             parsedMonster.Dex = Number(monster.Dex);
@@ -28,6 +29,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             parsedMonster.HP = Number(monster.HP);
 
             parsedMonster.Init = Number(monster.Init);
+
 
             return parsedMonster;
 
@@ -73,11 +75,37 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             var string = monster.Skills;
             var skills = string.split(",");
             var regex = /([^\+,\-]*)(\+?\-?\d+)/;
-            parsedMonster.Skills = {};
+            parsedMonster.Skills = [];
             for (var i in skills) {
                 var matches = regex.exec(skills[i]);
-                parsedMonster.Skills[matches[1].trim()] = Number(matches[2]);
+                parsedMonster.Skills.push({name: matches[1].trim(), mod: Number(matches[2])});
             }
+        }
+
+        function parseMeleeAttacks(monster, parsedMonster) {
+            // "+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)"
+            var attacksGroup = monster.Melee.split(" or ");
+            var regex = /(\+?\d?\s*[^\+\-]*)\s*(\+?\-?\d+\/?\+?\d*\/?\+?\d*\/?\+?\d*)\s*\(([^\)]*)\)/;
+            var damageRegex = /(\dd\d+)\+?\-?(\d*)/;
+
+            var parsedAttackGroups = [];
+            for (var i in attacksGroup) {
+                var attacks = attacksGroup[i].split(',');
+                var parsedAttacks = [];
+                for (var j in attacks) {
+                    var matches = regex.exec(attacks[j]);
+                    if (matches) {
+                        var attackDescription = matches[1];
+                        var attackBonuses = matches[2].split("/");
+
+                        var damageMatches = damageRegex.exec(matches[3]);
+
+                        parsedAttacks.push({attackDescription: attackDescription, attackBonuses: attackBonuses, damageDice: damageMatches[1], damageMod: damageMatches[2]});
+                    }
+                }
+                parsedAttackGroups.push(parsedAttacks);
+            }
+            parsedMonster.Melee = parsedAttackGroups;
         }
 
         return service;

@@ -207,4 +207,12 @@ describe("templateService", function () {
         var templatedMonster = service.createTemplatedMonster(baseMonster);
         expect(templatedMonster.Init).to.equal(11);
     });
+    it("should  add 2 to Skills ", function () {
+        baseMonster.templates = [
+            {template: "advanced"}
+        ];
+        baseMonster.Skills = "Craft (any one) +31, Diplomacy +32";
+        var templatedMonster = service.createTemplatedMonster(baseMonster);
+        expect(templatedMonster.Skills).to.equal("Craft (any one) +33, Diplomacy +34");
+    });
 });
