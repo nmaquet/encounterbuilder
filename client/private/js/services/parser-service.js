@@ -26,6 +26,8 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
 
             parsedMonster.HP = Number(monster.HP);
 
+            parsedMonster.Init = Number(monster.Init);
+
             return parsedMonster;
 
         };

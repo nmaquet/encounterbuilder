@@ -19,7 +19,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
                     console.log(error);
                 }
                 else {
-                    callback(service.handleTemplates(monster));
+                    callback(service.createTemplatedMonster(monster));
                 }
             });
         };
@@ -31,43 +31,54 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             return AC + ", touch " + touch + ", flat-footed " + flatFooted
         }
 
+        function advanceParsedMonster(parsedMonster) {
+            parsedMonster.HP += ( 2 * parsedMonster.numberOfHD);
+            parsedMonster.Str += 4;
+            parsedMonster.Dex += 4;
+            parsedMonster.Con += 4;
+            if (parsedMonster.Int > 2)
+                parsedMonster.Int += 4;
+            parsedMonster.Wis += 4;
+            parsedMonster.Cha += 4;
+
+            parsedMonster.Fort += +2;
+            parsedMonster.Ref += +2;
+            parsedMonster.Will += +2;
+
+            parsedMonster.CMB += 2;
+            parsedMonster.CMD += 4;
+            parsedMonster.Init += 2;
+
+        }
+
         service.createTemplatedMonster = function (monster) {
-
-
             var templatedMonster = angular.copy(monster);
-
             if (monster.templates && monster.templates.length > 0) {
                 var parsedMonster = parserService.parseMonster(templatedMonster);
+
                 for (var i in monster.templates) {
                     if ("advanced" === monster.templates[i].template) {
+                        advanceParsedMonster(parsedMonster);
+
                         templatedMonster.Name = templatedMonster.Name + " (Advanced)";
 
-                        if (!isNaN(parsedMonster.HP) && !isNaN(parsedMonster.numberOfHD))
-                            templatedMonster.HP = parsedMonster.HP + ( 2 * parsedMonster.numberOfHD);
-                        if (!isNaN(parsedMonster.Str))
-                            templatedMonster.Str = parsedMonster.Str + 4;
-                        if (!isNaN(parsedMonster.Dex))
-                            templatedMonster.Dex = parsedMonster.Dex + 4;
-                        if (!isNaN(parsedMonster.Con))
-                            templatedMonster.Con = parsedMonster.Con + 4;
-                        if (!isNaN(parsedMonster.Int) && parsedMonster.Int > 2)
-                            templatedMonster.Int = parsedMonster.Int + 4;
-                        if (!isNaN(parsedMonster.Wis))
-                            templatedMonster.Wis = parsedMonster.Wis + 4;
-                        if (!isNaN(parsedMonster.Cha))
-                            templatedMonster.Cha = parsedMonster.Cha + 4;
+                        templatedMonster.HP = parsedMonster.HP || templatedMonster.HP;
+                        templatedMonster.Str = parsedMonster.Str || templatedMonster.Str;
+                        templatedMonster.Dex = parsedMonster.Dex || templatedMonster.Dex;
+                        templatedMonster.Con = parsedMonster.Con || templatedMonster.Con;
+                        templatedMonster.Int = parsedMonster.Int || templatedMonster.Int;
+                        templatedMonster.Wis = parsedMonster.Wis || templatedMonster.Wis;
+                        templatedMonster.Cha = parsedMonster.Cha || templatedMonster.Cha;
 
-                        templatedMonster.Fort = parsedMonster.Fort + 2;
-                        templatedMonster.Ref = parsedMonster.Ref + 2;
-                        templatedMonster.Will = parsedMonster.Will + 2;
+                        templatedMonster.Fort = parsedMonster.Fort || templatedMonster.Fort;
+                        templatedMonster.Ref = parsedMonster.Ref || templatedMonster.Ref;
+                        templatedMonster.Will = parsedMonster.Will || templatedMonster.Will;
 
-                        if (!isNaN(parsedMonster.CMB))
-                            templatedMonster.CMB = parsedMonster.CMB + 2;
-                        if (!isNaN(parsedMonster.CMD))
-                            templatedMonster.CMD = parsedMonster.CMD + 4;
+                        templatedMonster.CMB = parsedMonster.CMB || templatedMonster.CMB;
+                        templatedMonster.CMD = parsedMonster.CMD || templatedMonster.CMD;
+                        templatedMonster.Init = parsedMonster.Init || templatedMonster.Init;
 
                         templatedMonster.AC = buildModifiedAC(parsedMonster, +4);
-
                         templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
                         templatedMonster.XP = crService.calculateXp(templatedMonster.CR);
                     }

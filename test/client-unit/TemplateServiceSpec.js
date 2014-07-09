@@ -199,4 +199,12 @@ describe("templateService", function () {
         var templatedMonster = service.createTemplatedMonster(baseMonster);
         expect(templatedMonster.HP).to.equal(407);
     });
+
+    it("should  add 2 to Init ", function () {
+        baseMonster.templates = [
+            {template: "advanced"}
+        ];
+        var templatedMonster = service.createTemplatedMonster(baseMonster);
+        expect(templatedMonster.Init).to.equal(11);
+    });
 });
