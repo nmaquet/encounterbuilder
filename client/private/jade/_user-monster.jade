@@ -71,7 +71,7 @@
                             | &nbsp;{{userMonster.Bloodline}}
                     li(ng-if='userMonster.SpellsPrepared')
                         spell-list(spell-string="{{userMonster.SpellsPrepared}}" )
-                    li(ng-bind-html='userMonster.SpecialAbilities|toTrustedHtml' ,linkify='userMonster.SLASafe|toTrustedHtml',linkify-type="spell", mythic="userMonster.Mythic")
+                    li(ng-bind-html='userMonster.SpellLikeAbilities|toTrustedHtml' ,linkify='userMonster.SpellLikeAbilities|toTrustedHtml',linkify-type="spell", mythic="userMonster.Mythic")
             .col-lg-6.cat.decor
                 legend.t-legend.t-title Defense
                 ul.list-unstyled
