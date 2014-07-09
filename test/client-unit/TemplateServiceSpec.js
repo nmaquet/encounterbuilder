@@ -131,9 +131,9 @@ describe("templateService", function () {
             {template: "advanced"}
         ];
         var templatedMonster = service.handleTemplates(baseMonster);
-        expect(templatedMonster.Fort).to.equal(25+2);
-        expect(templatedMonster.Ref).to.equal(14+2);
-        expect(templatedMonster.Will).to.equal(23+2);
+        expect(templatedMonster.Fort).to.equal(25 + 2);
+        expect(templatedMonster.Ref).to.equal(14 + 2);
+        expect(templatedMonster.Will).to.equal(23 + 2);
     });
 
     it("should adjust the AC", function () {
@@ -149,7 +149,34 @@ describe("templateService", function () {
             {template: "advanced"}
         ];
         var templatedMonster = service.handleTemplates(baseMonster);
-        expect(templatedMonster.CMD).to.equal(47+4);
+        expect(templatedMonster.CMD).to.equal(47 + 4);
+    });
+
+    it("should adjust the CMB", function () {
+        baseMonster.templates = [
+            {template: "advanced"}
+        ];
+        baseMonster.CMB = "-1";
+        var templatedMonster = service.handleTemplates(baseMonster);
+        expect(templatedMonster.CMB).to.equal(-1 + 2);
+    });
+    it("should adjust the CMB even if it's negative", function () {
+        baseMonster.templates = [
+            {template: "advanced"}
+        ];
+        var templatedMonster = service.handleTemplates(baseMonster);
+        expect(templatedMonster.CMB).to.equal(32 + 2);
+    });
+
+    it("should still work if the CMB or CMD isn't a Number", function () {
+        baseMonster.templates = [
+            {template: "advanced"}
+        ];
+        baseMonster.CMB = "-";
+        baseMonster.CMD = "-";
+        var templatedMonster = service.handleTemplates(baseMonster);
+        expect(templatedMonster.CMB).to.equal("-");
+        expect(templatedMonster.CMD).to.equal("-");
     });
 
     it("should  not adjust int if base creature has less than 3", function () {

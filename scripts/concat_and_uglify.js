@@ -94,7 +94,8 @@ var jsFiles = [
     "client/private/js/services/user-text-service.js",
     "client/private/js/services/favourite-service.js",
     "client/private/js/services/location-service.js",
-    "client/private/js/services/template-service.js"
+    "client/private/js/services/template-service.js",
+    "client/private/js/services/parser-service.js",
 ];
 
 var cssFiles = [
