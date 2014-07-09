@@ -104,4 +104,12 @@ describe("parserService", function () {
         expect(parsedMonster.touchAC).to.equal(11);
         expect(parsedMonster.flatFootedAC).to.equal(42);
     });
+
+    it("should parse the HD", function () {
+        var parsedMonster = service.parseMonster(baseMonster);
+        expect(parsedMonster.numberOfHD).to.equal(22);
+        expect(parsedMonster.typeOfHD).to.equal(10);
+        expect(parsedMonster.hitPointBonus).to.equal(242);
+        expect(parsedMonster.HP).to.equal(363);
+    });
 });

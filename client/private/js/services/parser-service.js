@@ -8,6 +8,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
         service.parseMonster = function (monster) {
             var parsedMonster = {};
             parseAC(monster, parsedMonster);
+            parseHD(monster, parsedMonster);
 
             parsedMonster.Str = Number(monster.Str);
             parsedMonster.Dex = Number(monster.Dex);
@@ -23,6 +24,8 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             parsedMonster.CMB = Number(monster.CMB);
             parsedMonster.CMD = Number(monster.CMD);
 
+            parsedMonster.HP = Number(monster.HP);
+
             return parsedMonster;
 
         };
@@ -34,13 +37,24 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             var regex = /(\d+)\s*,\s*touch\s*(\d+)\s*,\s*flat-footed\s*(\d+)/;
             var matches = regex.exec(string);
             if (!matches) {
-                console.log("failed to modify AC :( (did not recognize : '" + string + "'");
-                return string;
+                throw new Error("failed to parse AC :( (did not recognize : '" + string + "'");
             }
 
             parsedMonster.normalAC = Number(matches[1]);
             parsedMonster.touchAC = Number(matches[2]);
             parsedMonster.flatFootedAC = Number(matches[3]);
+        }
+
+        function parseHD(monster, parsedMonster) {
+            var string = monster.HD;
+            var regex = /\(\s*(\d+)\s*[d,D](\d+)\s*\+?\s*(\d*)\)/;
+            var matches = regex.exec(string);
+            if (!matches) {
+                throw new Error("failed to parse HD :( (did not recognize : '" + string + "'");
+            }
+            parsedMonster.numberOfHD = Number(matches[1]);
+            parsedMonster.typeOfHD = Number(matches[2]);
+            parsedMonster.hitPointBonus = Number(matches[3]);
         }
 
         return service;
