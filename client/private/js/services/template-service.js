@@ -25,6 +25,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
         };
 
         function modifyAC(string, modifier) {
+            // FIXME: handle right part with parentheses 
             var regex = /(\d+)\s*,\s*touch\s*(\d+)\s*,\s*flat-footed\s*(\d+)/;
             var matches = regex.exec(string);
             if (!matches) {
