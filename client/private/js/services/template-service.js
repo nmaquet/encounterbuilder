@@ -52,6 +52,8 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
                         templatedMonster.Ref = Number(templatedMonster.Ref) + 2;
                         templatedMonster.Will = Number(templatedMonster.Will) + 2;
 
+                        templatedMonster.CMD = Number(templatedMonster.CMD) + 4;
+
                         templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
                         templatedMonster.XP = crService.calculateXp(templatedMonster.CR);
                     }

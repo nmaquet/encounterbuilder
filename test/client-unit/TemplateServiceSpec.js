@@ -131,9 +131,17 @@ describe("templateService", function () {
             {template: "advanced"}
         ];
         var templatedMonster = service.handleTemplates(baseMonster);
-        expect(templatedMonster.Fort).to.equal(27);
-        expect(templatedMonster.Ref).to.equal(16);
-        expect(templatedMonster.Will).to.equal(25);
+        expect(templatedMonster.Fort).to.equal(25+2);
+        expect(templatedMonster.Ref).to.equal(14+2);
+        expect(templatedMonster.Will).to.equal(23+2);
+    })
+
+    it("should adjust the CMD", function () {
+        baseMonster.templates = [
+            {template: "advanced"}
+        ];
+        var templatedMonster = service.handleTemplates(baseMonster);
+        expect(templatedMonster.CMD).to.equal(47+4);
     });
 
     it("should  not adjust int if base creature has less than 3", function () {
