@@ -24,22 +24,17 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             });
         };
 
-        function modifyAC(parsedMonster, modifier) {
-            var AC = modifier + parsedMonster.AC;
-            var touch = modifier + parsedMonster.touch;
-            var flatFooted = modifier + parsedMonster.flatFooted;
+        function buildModifiedAC(parsedMonster, modifier) {
+            var AC = modifier + parsedMonster.normalAC;
+            var touch = modifier + parsedMonster.touchAC;
+            var flatFooted = modifier + parsedMonster.flatFootedAC;
             return AC + ", touch " + touch + ", flat-footed " + flatFooted
         }
 
-        service.handleTemplates = function (monster) {
+        service.createTemplatedMonster = function (monster) {
 
 
-            //FIXME this is seriously hackish,
-            var templates = monster.templates;
-            delete monster.templates;
             var templatedMonster = angular.copy(monster);
-            monster.templates = templates;
-            delete templatedMonster.templates;
 
             if (monster.templates && monster.templates.length > 0) {
                 var parsedMonster = parserService.parseMonster(templatedMonster);
@@ -69,7 +64,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
                         if (!isNaN(parsedMonster.CMD))
                             templatedMonster.CMD = parsedMonster.CMD + 4;
 
-                        templatedMonster.AC = modifyAC(parsedMonster, +4);
+                        templatedMonster.AC = buildModifiedAC(parsedMonster, +4);
 
                         templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
                         templatedMonster.XP = crService.calculateXp(templatedMonster.CR);

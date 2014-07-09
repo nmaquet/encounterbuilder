@@ -4,13 +4,13 @@ var expect = chai.expect;
 
 var service;
 
-describe("templateService", function () {
+describe("parserService", function () {
 
     var baseMonster = null;
     beforeEach(module("encounterBuilderApp"));
 
-    beforeEach(inject(function (_templateService_) {
-        service = _templateService_;
+    beforeEach(inject(function (_parserService_) {
+        service = _parserService_;
     }));
 
     beforeEach(function () {
@@ -83,112 +83,25 @@ describe("templateService", function () {
         };
     });
 
-    it("shouldn't do anything if no templates are selected", function () {
-        baseMonster.templates = [];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-
-        expect(templatedMonster).to.deep.equal(baseMonster);
+    it("should  parse the ability scores to numbers", function () {
+        var parsedMonster = service.parseMonster(baseMonster);
+        expect(parsedMonster.Str).to.equal(28);
+        expect(parsedMonster.Dex).to.equal(20);
+        expect(parsedMonster.Con).to.equal(30);
+        expect(parsedMonster.Int).to.equal(23);
+        expect(parsedMonster.Wis).to.equal(27);
+        expect(parsedMonster.Cha).to.equal(25);
+        expect(parsedMonster.Fort).to.equal(25);
+        expect(parsedMonster.Ref).to.equal(14);
+        expect(parsedMonster.Will).to.equal(23);
+        expect(parsedMonster.CMD).to.equal(47);
+        expect(parsedMonster.CMB).to.equal(32);
     });
 
-    it("should  add '(Advanced)' to the Name for advanced template", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        expect(service.createTemplatedMonster(baseMonster).Name).to.equal("Solar (Advanced)");
-    });
-
-
-    it("should  add 1 to the CR for advanced template", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        expect(service.createTemplatedMonster(baseMonster).CR).to.equal(24);
-    });
-
-    it("should  adjust the xp according to the new  CR", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        expect(service.createTemplatedMonster(baseMonster).XP).to.equal(1228800);
-    });
-
-    it("should  adjust the ability scores", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Str).to.equal(32);
-        expect(templatedMonster.Dex).to.equal(24);
-        expect(templatedMonster.Con).to.equal(34);
-        expect(templatedMonster.Int).to.equal(27);
-        expect(templatedMonster.Wis).to.equal(31);
-        expect(templatedMonster.Cha).to.equal(29);
-    });
-
-    it("should adjust the saves", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Fort).to.equal(25 + 2);
-        expect(templatedMonster.Ref).to.equal(14 + 2);
-        expect(templatedMonster.Will).to.equal(23 + 2);
-    });
-
-    it("should adjust the AC", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.AC).to.equal("48, touch 15, flat-footed 46");
-    });
-
-    it("should adjust the CMD", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.CMD).to.equal(47 + 4);
-    });
-
-    it("should adjust the CMB", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.CMB = "-1";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.CMB).to.equal(-1 + 2);
-    });
-    it("should adjust the CMB even if it's negative", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.CMB).to.equal(32 + 2);
-    });
-
-    it("should still work if the CMB or CMD isn't a Number", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.CMB = "-";
-        baseMonster.CMD = "-";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.CMB).to.equal("-");
-        expect(templatedMonster.CMD).to.equal("-");
-    });
-
-    it("should  not adjust int if base creature has less than 3", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.Int = 2;
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Str).to.equal(32);
-        expect(templatedMonster.Dex).to.equal(24);
-        expect(templatedMonster.Con).to.equal(34);
-        expect(templatedMonster.Int).to.equal(2);
-        expect(templatedMonster.Wis).to.equal(31);
-        expect(templatedMonster.Cha).to.equal(29);
+    it("should parse the AC", function () {
+        var parsedMonster = service.parseMonster(baseMonster);
+        expect(parsedMonster.normalAC).to.equal(44);
+        expect(parsedMonster.touchAC).to.equal(11);
+        expect(parsedMonster.flatFootedAC).to.equal(42);
     });
 });

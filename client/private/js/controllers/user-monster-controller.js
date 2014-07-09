@@ -49,7 +49,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
 
                     baseMonster = userMonster;
                     console.log(baseMonster);
-                    $scope.userMonster = templateService.handleTemplates(userMonster);
+                    $scope.userMonster = templateService.createTemplatedMonster(userMonster);
 
                     if ($routeParams.userMonsterId) {
                         $rootScope.globalTitle = "Encounter Builder - " + $scope.userMonster.Name;

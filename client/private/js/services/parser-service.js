@@ -38,9 +38,9 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                 return string;
             }
 
-            parsedMonster.AC = Number(matches[1]);
-            parsedMonster.touch = Number(matches[2]);
-            parsedMonster.flatFooted = Number(matches[3]);
+            parsedMonster.normalAC = Number(matches[1]);
+            parsedMonster.touchAC = Number(matches[2]);
+            parsedMonster.flatFootedAC = Number(matches[3]);
         }
 
         return service;
