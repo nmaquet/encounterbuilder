@@ -28,11 +28,9 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
 
 
             //FIXME this is seriously hackish,
-            //FIXME DEMONSQUID.clone should be updated to either clone arrays or accept a list of fields to ignore when cloning
-            //FIXME btw this also breaks all monsters with classes...
             var templates = monster.templates;
             delete monster.templates;
-            var templatedMonster = DEMONSQUID.clone(monster);
+            var templatedMonster = angular.copy(monster);
             monster.templates = templates;
 
             delete templatedMonster.templates;

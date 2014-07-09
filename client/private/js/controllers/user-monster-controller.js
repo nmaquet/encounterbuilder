@@ -3,7 +3,9 @@
 DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
     ['$rootScope', '$scope', '$timeout', '$routeParams', '$location', '$sce', 'userMonsterService', 'contentTreeService', 'locationService', 'templateService',
         function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userMonsterService, contentTreeService, locationService, templateService) {
+
             var baseMonster = null;
+
             $scope.deleteUserMonster = function () {
                 if ($scope.userMonster) {
                     $scope.startFade = function () {
