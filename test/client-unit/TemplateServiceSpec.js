@@ -125,6 +125,17 @@ describe("templateService", function () {
         expect(templatedMonster.Wis).to.equal(31);
         expect(templatedMonster.Cha).to.equal(29);
     });
+
+    it("should adjust the saves", function () {
+        baseMonster.templates = [
+            {template: "advanced"}
+        ];
+        var templatedMonster = service.handleTemplates(baseMonster);
+        expect(templatedMonster.Fort).to.equal(27);
+        expect(templatedMonster.Ref).to.equal(16);
+        expect(templatedMonster.Will).to.equal(25);
+    });
+
     it("should  not adjust int if base creature has less than 3", function () {
         baseMonster.templates = [
             {template: "advanced"}
