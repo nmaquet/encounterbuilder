@@ -125,9 +125,10 @@ describe("parserService", function () {
     it("should parse Melee", function () {
         baseMonster.Melee = "+5 dancing greatsword +35/+30/+25/+20 (3d6+18)";
         var parsedMonster = service.parseMonster(baseMonster);
+        console.log(JSON.stringify(parsedMonster.Melee));
         expect(parsedMonster.Melee).to.deep.equal([
             [
-                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": "18"}
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18}
             ]
         ]);
     });
@@ -137,20 +138,21 @@ describe("parserService", function () {
         var parsedMonster = service.parseMonster(baseMonster);
         expect(parsedMonster.Melee).to.deep.equal([
             [
-                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": "18"},
-                {"attackDescription": "2 wings", "attackBonuses": [30], "damageDice": "2d6", "damageMod": "12"}
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18},
+                {"attackDescription": "2 wings", "attackBonuses": [30], "damageDice": "2d6", "damageMod": 12}
             ]
         ]);
     });
+
     it("should parse strings with multiple attacks groups", function () {
         //"+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)",
         var parsedMonster = service.parseMonster(baseMonster);
         expect(parsedMonster.Melee).to.deep.equal([
             [
-                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": "18"}
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18}
             ],
             [
-                {"attackDescription": "slam", "attackBonuses": [30], "damageDice": "2d8", "damageMod": "13"}
+                {"attackDescription": "slam", "attackBonuses": [30], "damageDice": "2d8", "damageMod": 13}
             ]
         ]);
     });

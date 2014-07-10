@@ -95,10 +95,10 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                     if (matches) {
                         var attackDescription = matches[1].trim();
                         var attackBonuses = matches[2].split("/").map(Number);
-
                         var damageMatches = damageRegex.exec(matches[3]);
-
-                        parsedAttacks.push({attackDescription: attackDescription, attackBonuses: attackBonuses, damageDice: damageMatches[1], damageMod: damageMatches[2]});
+                        var damageDice = damageMatches[1];
+                        var damageMod = Number(damageMatches[2]);
+                        parsedAttacks.push({attackDescription: attackDescription, attackBonuses: attackBonuses, damageDice: damageDice, damageMod: damageMod});
                     }
                 }
                 parsedAttackGroups.push(parsedAttacks);
