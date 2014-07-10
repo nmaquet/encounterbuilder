@@ -11,6 +11,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             parseHD(monster, parsedMonster);
             parseSkills(monster, parsedMonster);
             parseMeleeAttacks(monster, parsedMonster);
+            parseRangedAttacks(monster, parsedMonster);
 
             parsedMonster.Str = Number(monster.Str);
             parsedMonster.Dex = Number(monster.Dex);
@@ -104,8 +105,16 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
         }
 
         function parseMeleeAttacks(monster, parsedMonster) {
+            parseAttacks(monster, parsedMonster, "Melee");
+        }
+
+        function parseRangedAttacks(monster, parsedMonster) {
+            parseAttacks(monster, parsedMonster, "Ranged");
+        }
+
+        function parseAttacks(monster, parsedMonster, attribute) {
             // "+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)"
-            var attacksGroup = replaceAndIfNotInsideParens(monster.Melee).split(" or ");
+            var attacksGroup = replaceAndIfNotInsideParens(monster[attribute]).split(" or ");
             var regex = /(\+?\d?\s*[^\+\-]*)\s*(\+?\-?\d+\/?\+?\d*\/?\+?\d*\/?\+?\d*)\s*\(([^\)]*)\)/;
             var damageRegex = /(\dd\d+)(\+?\-?\d*)\s*(.*)/;
 
@@ -127,7 +136,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                 }
                 parsedAttackGroups.push(parsedAttacks);
             }
-            parsedMonster.Melee = parsedAttackGroups;
+            parsedMonster[attribute] = parsedAttackGroups;
         }
 
         return service;

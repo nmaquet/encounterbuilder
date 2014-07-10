@@ -54,12 +54,12 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             }
         }
 
-        function formatMelee(monster, parsedMonster, attribute, failures) {
+        function formatAttack(monster, parsedMonster, attribute, failures) {
             function formatAttackBonus(bonus) {
                 if (!isNaN(bonus)) {
                     return (bonus >= 0 ? "+" : "-") + bonus;
                 } else {
-                    failures["Melee"] = "Melee attack bonuses must be signed numbers";
+                    failures[attribute] = attribute + " attack bonuses must be signed numbers";
                 }
             }
 
@@ -73,10 +73,10 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
                 return attackList.map(formatAttack).join(", ");
             }
 
-            if (parsedMonster.Melee instanceof Array) {
-                monster.Melee = parsedMonster.Melee.map(formatAttackList).join(" or ");
+            if (parsedMonster[attribute] instanceof Array) {
+                monster[attribute] = parsedMonster[attribute].map(formatAttackList).join(" or ");
             } else {
-                failures["Melee"] = "Melee must be of the form '+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)'";
+                failures[attribute] = attribute + " must be of the form '+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)'";
             }
         }
 
@@ -97,7 +97,8 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             Skill: formatSkills,
             HP: formatUnsignedNumber,
             HD: formatHitDice,
-            Melee: formatMelee
+            Melee: formatAttack,
+            Ranged: formatAttack
         };
 
         var service = {};

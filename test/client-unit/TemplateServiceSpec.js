@@ -236,6 +236,15 @@ describe("templateService", function () {
         expect(templatedMonster.Melee).to.equal("+5 dancing greatsword +37/+32/+27/+22 (3d6+20), 2 wings +32 (2d6+14)");
     });
 
+    it("should adjust the ranged attack rolls", function () {
+        baseMonster.templates = [
+            {template: "advanced"}
+        ];
+        baseMonster.Ranged = "+5 longbow +31/+26/+21/+16 (2d6+14 plus slaying arrow)";
+        var templatedMonster = service.createTemplatedMonster(baseMonster);
+        expect(templatedMonster.Ranged).to.equal("+5 longbow +33/+28/+23/+18 (2d6+16 plus slaying arrow)");
+    });
+
     it("should  add 2 to SpecialAbilities DC", function () {
         baseMonster.templates = [
             {template: "advanced"}
