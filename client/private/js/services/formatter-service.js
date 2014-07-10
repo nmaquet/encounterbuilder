@@ -54,6 +54,20 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             }
         }
 
+        function formatMelee(monster, parsedMonster, attribute, failures) {
+            function formatAttack(attack) {
+                return attack.attackDescription + " " + attack.attackBonuses.join("/") + " (" + attack.damageDice + "+" + attack.damageMod;
+            }
+            function formatAttackList(attackList) {
+                return attackList.map(formatAttack).join(", ");
+            }
+            if (parsedMonster.Melee instanceof Array) {
+                monster.Melee = parsedMonster.Melee.map(formatAttackList).join(" or ");
+            } else {
+                failures["Melee"] = "Melee must be of the form '+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)'";
+            }
+        }
+
         var formatters = {
             Str: formatUnsignedNumber,
             Dex: formatUnsignedNumber,
@@ -70,12 +84,13 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             Init: formatSignedNumber,
             Skill: formatSkills,
             HP: formatUnsignedNumber,
-            HD: formatHitDice
+            HD: formatHitDice,
+            Melee: formatMelee
         };
 
         var service = {};
 
-        service.formatMonster = function(monster, parsedMonster) {
+        service.formatMonster = function (monster, parsedMonster) {
             var failures = {};
             for (var attribute in formatters) {
                 if (!formatters.hasOwnProperty(attribute))
