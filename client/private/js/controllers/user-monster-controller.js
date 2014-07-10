@@ -35,7 +35,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
 
             $scope.advanceMonster = function () {
                 templateService.advanceMonster(baseMonster, function (templatedMonster) {
-                    $scope.userMonster = templatedMonster
+                    $scope.userMonster = templatedMonster;
                 });
             };
 
@@ -48,7 +48,6 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                     }
 
                     baseMonster = userMonster;
-                    console.log(baseMonster);
                     $scope.userMonster = templateService.createTemplatedMonster(userMonster);
 
                     if ($routeParams.userMonsterId) {

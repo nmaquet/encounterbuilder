@@ -66,7 +66,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             function formatAttack(attack) {
                 var formattedAttackBonuses = attack.attackBonuses.map(formatAttackBonus).join("/");
                 var specialAttacks = (attack.specialAttacks !== '') ? " " + attack.specialAttacks : attack.specialAttacks;
-                return attack.attackDescription + " " + formattedAttackBonuses + " (" + attack.damageDice + "+" + attack.damageMod + attack.specialAttacks + ")";
+                return attack.attackDescription + " " + formattedAttackBonuses + " (" + attack.damageDice + "+" + attack.damageMod +specialAttacks + ")";
             }
 
             function formatAttackList(attackList) {
