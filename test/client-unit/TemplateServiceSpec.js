@@ -235,4 +235,13 @@ describe("templateService", function () {
         var templatedMonster = service.createTemplatedMonster(baseMonster);
         expect(templatedMonster.Melee).to.equal("+5 dancing greatsword +37/+32/+27/+22 (3d6+20), 2 wings +32 (2d6+14)");
     });
+
+    it("should  add 2 to SpecialAbilities DC", function () {
+        baseMonster.templates = [
+            {template: "advanced"}
+        ];
+        baseMonster.SpecialAbilities = "<h5><b>Gaze (Ex)</b> Turn to stone permanently (as flesh to stone), range 30 feet, Fortitude DC 15 negates. A creature petrified in this matter that is then coated (not just splashed) with fresh basilisk blood (taken from a basilisk no more than 1 hour dead) is instantly restored to flesh. A single basilisk contains enough blood to coat 1d3 Medium creatures in this manner. The save DC is Constitution-based.</h5>";
+        var templatedMonster = service.createTemplatedMonster(baseMonster);
+        expect(templatedMonster.SpecialAbilities).to.equal("<h5><b>Gaze (Ex)</b> Turn to stone permanently (as flesh to stone), range 30 feet, Fortitude DC 17 negates. A creature petrified in this matter that is then coated (not just splashed) with fresh basilisk blood (taken from a basilisk no more than 1 hour dead) is instantly restored to flesh. A single basilisk contains enough blood to coat 1d3 Medium creatures in this manner. The save DC is Constitution-based.</h5>");
+    });
 });

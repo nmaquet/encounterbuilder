@@ -28,14 +28,17 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             function addTwo(value) {
                 return value + 2;
             }
+
             function advanceAttack(attack) {
                 attack.attackBonuses = attack.attackBonuses.map(addTwo);
                 attack.damageMod += 2;
                 return attack;
             }
+
             function advanceAttackList(attackList) {
                 return attackList.map(advanceAttack);
             }
+
             return parsedMonster.Melee.map(advanceAttackList);
         }
 
@@ -72,6 +75,18 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             }
         }
 
+        function advanceDCs(monster) {
+            var regex = /DC\s*(\d\d?)/g;
+            var attributes = ["SpecialAbilities", "SpellLikeAbilities", "SpecialAttacks", "Description", "SpellsKnown", "SpellsPrepared"];
+            for (var i in attributes) {
+                if (monster[attributes[i]]) {
+                    monster[attributes[i]] = monster[attributes[i]].replace(regex, function (match, DC) {
+                        return "DC " + (Number(DC) + 2);
+                    });
+                }
+            }
+        }
+
         service.createTemplatedMonster = function (monster) {
             var templatedMonster = angular.copy(monster);
             if (monster.templates && monster.templates.length > 0) {
@@ -79,6 +94,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
                 for (var i in monster.templates) {
                     if ("advanced" === monster.templates[i].template) {
                         advanceParsedMonster(parsedMonster);
+                        advanceDCs(templatedMonster);
                         formatterService.formatMonster(templatedMonster, parsedMonster);
                         templatedMonster.Name = templatedMonster.Name + " (Advanced)";
                         templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
@@ -91,4 +107,6 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
 
         return service;
     }
-]);
+
+])
+;
