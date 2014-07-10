@@ -127,7 +127,7 @@ describe("parserService", function () {
         var parsedMonster = service.parseMonster(baseMonster);
         expect(parsedMonster.Melee).to.deep.equal([
             [
-                {"attackDescription": "+5 dancing greatsword ", "attackBonuses": ["+35", "+30", "+25", "+20"], "damageDice": "3d6", "damageMod": "18"}
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": ["+35", "+30", "+25", "+20"], "damageDice": "3d6", "damageMod": "18"}
             ]
         ]);
     });
@@ -137,8 +137,8 @@ describe("parserService", function () {
         var parsedMonster = service.parseMonster(baseMonster);
         expect(parsedMonster.Melee).to.deep.equal([
             [
-                {"attackDescription": "+5 dancing greatsword ", "attackBonuses": ["+35", "+30", "+25", "+20"], "damageDice": "3d6", "damageMod": "18"},
-                {"attackDescription": " 2 wings ", "attackBonuses": ["+30"], "damageDice": "2d6", "damageMod": "12"}
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": ["+35", "+30", "+25", "+20"], "damageDice": "3d6", "damageMod": "18"},
+                {"attackDescription": "2 wings", "attackBonuses": ["+30"], "damageDice": "2d6", "damageMod": "12"}
             ]
         ]);
     });
@@ -147,10 +147,10 @@ describe("parserService", function () {
         var parsedMonster = service.parseMonster(baseMonster);
         expect(parsedMonster.Melee).to.deep.equal([
             [
-                {"attackDescription": "+5 dancing greatsword ", "attackBonuses": ["+35", "+30", "+25", "+20"], "damageDice": "3d6", "damageMod": "18"}
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": ["+35", "+30", "+25", "+20"], "damageDice": "3d6", "damageMod": "18"}
             ],
             [
-                {"attackDescription": "slam ", "attackBonuses": ["+30"], "damageDice": "2d8", "damageMod": "13"}
+                {"attackDescription": "slam", "attackBonuses": ["+30"], "damageDice": "2d8", "damageMod": "13"}
             ]
         ]);
     });
