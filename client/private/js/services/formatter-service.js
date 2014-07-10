@@ -14,7 +14,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
 
         function formatSignedNumber(monster, parsedMonster, attribute, failures) {
             if (!isNaN(parsedMonster[attribute])) {
-                var sign = parsedMonster[attribute] >= 0 ? "+" : "-";
+                var sign = parsedMonster[attribute] >= 0 ? "+" : "";
                 monster[attribute] = sign + parsedMonster[attribute];
             } else {
                 failures[attribute] = attribute + " must be a number";

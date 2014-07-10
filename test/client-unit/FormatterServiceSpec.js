@@ -104,4 +104,11 @@ describe("formatterService", function () {
         formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
         expect(monster.Melee).to.equal(baseMonster.Melee);
     });
+
+    it("should handle negative ability bonuses", function () {
+        baseMonster.CMB = "-2";
+        var monster = angular.copy(baseMonster);
+        formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        expect(monster.CMB).to.equal(baseMonster.CMB);
+    });
 });
