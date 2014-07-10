@@ -35,7 +35,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
         function formatSkills(monster, parsedMonster, attribute, failures) {
             if (parsedMonster.Skills instanceof Array) {
                 monster.Skills = parsedMonster.Skills.map(function (value) {
-                    var sign = (value.mod >= 0) ? "+" : "-";
+                    var sign = (value.mod >= 0) ? "+" : "";
                     return (value.name + " " + sign + value.mod);
                 }).join(", ");
             } else {

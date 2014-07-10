@@ -111,4 +111,11 @@ describe("formatterService", function () {
         formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
         expect(monster.CMB).to.equal(baseMonster.CMB);
     });
+
+    it("should handle positive, null, and negative Skill bonuses", function () {
+        baseMonster.Skills = "cook +2, fish +0, break things -3";
+        var monster = angular.copy(baseMonster);
+        formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        expect(monster.Skills).to.equal(baseMonster.Skills);
+    });
 });
