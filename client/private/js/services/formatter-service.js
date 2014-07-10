@@ -7,6 +7,8 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
         function formatUnsignedNumber(monster, parsedMonster, attribute, failures) {
             if (!isNaN(parsedMonster[attribute])) {
                 monster[attribute] = parsedMonster[attribute];
+            } else {
+                failures[attribute] = attribute + " must be a number";
             }
         }
 
@@ -14,6 +16,8 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             if (!isNaN(parsedMonster[attribute])) {
                 var sign = parsedMonster[attribute] >= 0 ? "+" : "-";
                 monster[attribute] = sign + parsedMonster[attribute];
+            } else {
+                failures[attribute] = attribute + " must be a number";
             }
         }
 
@@ -21,14 +25,22 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             var normal = parsedMonster.normalAC;
             var touch = parsedMonster.touchAC;
             var flatFooted = parsedMonster.flatFootedAC;
-            monster.AC = normal + ", touch " + touch + ", flat-footed " + flatFooted;
+            if (normal && touch && flatFooted) {
+                monster.AC = normal + ", touch " + touch + ", flat-footed " + flatFooted;
+            } else {
+                failures["AC"] = "AC must be of the form 'AC X, touch Y, flat-footed Z'";
+            }
         }
 
         function formatSkills(monster, parsedMonster, attribute, failures) {
-            monster.Skills = parsedMonster.Skills.map(function (value) {
-                var sign = (value.mod >= 0) ? "+" : "-";
-                return (value.name + " " + sign + value.mod);
-            }).join(", ");
+            if (parsedMonster.Skills instanceof Array) {
+                monster.Skills = parsedMonster.Skills.map(function (value) {
+                    var sign = (value.mod >= 0) ? "+" : "-";
+                    return (value.name + " " + sign + value.mod);
+                }).join(", ");
+            } else {
+                failures["Skills"] = "Skills must be a comma-separated list of entries of the form 'skill name +X'";
+            }
         }
 
         function formatHitDice(monster, parsedMonster, attribute, failures) {
@@ -37,6 +49,8 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
                 var dieType = parsedMonster.typeOfHD;
                 var bonus = parsedMonster.hitPointBonus;
                 monster.HD = "(" + hitDice + "d" + dieType + "+" + bonus + ")";
+            } else {
+                failures["HD"] = "HD must be of the form '(XdY+Z)'";
             }
         }
 
