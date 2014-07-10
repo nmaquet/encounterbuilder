@@ -1,7 +1,23 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('formatterService', [
+
     function () {
+
+        function numberize(monster, parsedMonster, attribute) {
+            if (!isNaN(parsedMonster[attribute])) {
+                monster[attribute] = parsedMonster[attribute];
+            }
+        }
+
+        var formatter = {
+            Str: numberize,
+            Dex: numberize,
+            Con: numberize,
+            Int: numberize,
+            Wis: numberize,
+            Cha: numberize
+        };
 
         var service = {};
 
@@ -15,12 +31,11 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
                 monster.HD = "(" + x + "d" + y + "+" + z + ")";
             }
 
-            monster.Str = parsedMonster.Str || monster.Str;
-            monster.Dex = parsedMonster.Dex || monster.Dex;
-            monster.Con = parsedMonster.Con || monster.Con;
-            monster.Int = parsedMonster.Int || monster.Int;
-            monster.Wis = parsedMonster.Wis || monster.Wis;
-            monster.Cha = parsedMonster.Cha || monster.Cha;
+            for (var attribute in formatter) {
+                if (!formatter.hasOwnProperty(attribute))
+                    continue;
+                formatter[attribute](monster, parsedMonster, attribute);
+            }
 
             monster.Fort = parsedMonster.Fort || monster.Fort;
             monster.Ref = parsedMonster.Ref || monster.Ref;
