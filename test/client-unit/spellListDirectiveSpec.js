@@ -17,10 +17,25 @@
 
         beforeEach(module("encounterBuilderApp"));
 
-        beforeEach(inject(function (_$compile_, _$rootScope_, spellService) {
+        beforeEach(function () {
+            /* this prevents the linkify directive from crashing and blocking the tests */
+            module(function ($provide) {
+                $provide.factory('spellService', function () {
+                    return { spells: function () {
+                        return { names: [] };
+                    }};
+                });
+                $provide.factory('featService', function () {
+                    return { feats: function () {
+                        return { names: [] };
+                    }};
+                });
+            });
+        });
+
+        beforeEach(inject(function (_$compile_, _$rootScope_) {
             $rootScope = _$rootScope_;
             $compile = _$compile_;
-            spellService.spells = {names: []}; /* this prevents the linkify directive from crashing and blocking the tests */
         }));
 
         function createElement(spellString) {
