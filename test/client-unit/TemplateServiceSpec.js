@@ -201,6 +201,15 @@ describe("templateService", function () {
         expect(templatedMonster.HD).to.equal("(22d10+286)");
     });
 
+    it("should be resilient to erroneous HD", function () {
+        baseMonster.templates = [
+            {template: "advanced"}
+        ];
+        baseMonster.HD = "(22+6)";
+        var templatedMonster = service.createTemplatedMonster(baseMonster);
+        expect(templatedMonster.HD).to.equal("(22+6)");
+    });
+
     it("should  add 2 to Init ", function () {
         baseMonster.templates = [
             {template: "advanced"}

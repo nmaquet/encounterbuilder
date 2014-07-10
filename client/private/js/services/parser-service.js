@@ -42,7 +42,6 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             var regex = /(\d+)\s*,\s*touch\s*(\d+)\s*,\s*flat-footed\s*(\d+)/;
             var matches = regex.exec(string);
             if (!matches) {
-                console.log("failed to parse AC :( (did not recognize : '" + string + "'");
                 parsedMonster.normalAC = NaN;
                 parsedMonster.touchAC = NaN;
                 parsedMonster.flatFootedAC = NaN;
@@ -59,7 +58,6 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             var regex = /\(\s*(\d+)\s*[d,D](\d+)\s*\+?\s*(\d*)\)/;
             var matches = regex.exec(string);
             if (!matches) {
-                console.log("failed to parse HD :( (did not recognize : '" + string + "'");
                 parsedMonster.numberOfHD = NaN;
                 parsedMonster.typeOfHD = NaN;
                 parsedMonster.hitPointBonus = NaN;

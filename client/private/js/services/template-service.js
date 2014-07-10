@@ -69,7 +69,13 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
                         templatedMonster.Name = templatedMonster.Name + " (Advanced)";
 
                         templatedMonster.HP = parsedMonster.HP || templatedMonster.HP;
-                        templatedMonster.HD = "(" + parsedMonster.numberOfHD + "d" + parsedMonster.typeOfHD + "+" + parsedMonster.hitPointBonus + ")";
+
+                        if (parsedMonster.numberOfHD && parsedMonster.typeOfHD && parsedMonster.hitPointBonus) {
+                            var x = parsedMonster.numberOfHD;
+                            var y = parsedMonster.typeOfHD;
+                            var z = parsedMonster.hitPointBonus;
+                            templatedMonster.HD = "(" + x + "d" + y + "+" + z + ")";
+                        }
 
                         templatedMonster.Str = parsedMonster.Str || templatedMonster.Str;
                         templatedMonster.Dex = parsedMonster.Dex || templatedMonster.Dex;
