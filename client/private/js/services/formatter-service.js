@@ -31,6 +31,15 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             }).join(", ");
         }
 
+        function hitDice(monster, parsedMonster, attribute) {
+            if (parsedMonster.numberOfHD && parsedMonster.typeOfHD && parsedMonster.hitPointBonus) {
+                var hitDice = parsedMonster.numberOfHD;
+                var dieType = parsedMonster.typeOfHD;
+                var bonus = parsedMonster.hitPointBonus;
+                monster.HD = "(" + hitDice + "d" + dieType + "+" + bonus + ")";
+            }
+        }
+
         var formatter = {
             Str: unsignedNumber,
             Dex: unsignedNumber,
@@ -45,21 +54,14 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             CMB: signedNumber,
             CMD: unsignedNumber,
             Init: signedNumber,
-            Skill: skills
+            Skill: skills,
+            HD: hitDice
         };
 
         var service = {};
 
         service.formatMonster = function(monster, parsedMonster) {
             monster.HP = parsedMonster.HP || monster.HP;
-
-            if (parsedMonster.numberOfHD && parsedMonster.typeOfHD && parsedMonster.hitPointBonus) {
-                var x = parsedMonster.numberOfHD;
-                var y = parsedMonster.typeOfHD;
-                var z = parsedMonster.hitPointBonus;
-                monster.HD = "(" + x + "d" + y + "+" + z + ")";
-            }
-
             for (var attribute in formatter) {
                 if (!formatter.hasOwnProperty(attribute))
                     continue;
