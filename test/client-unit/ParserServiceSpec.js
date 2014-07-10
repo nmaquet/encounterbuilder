@@ -6,7 +6,7 @@ var service;
 
 describe("parserService", function () {
 
-    var baseMonster = null;
+    var baseMonster = '';
     beforeEach(module("encounterBuilderApp"));
 
     beforeEach(inject(function (_parserService_) {
@@ -54,7 +54,7 @@ describe("parserService", function () {
             "Land": "0",
             "AgeCategory": "adult",
             "DontUseRacialHD": "0",
-            "CompanionFamiliarLink": "NULL",
+            "CompanionFamiliarLink": "''",
             "UniqueMonster": "0",
             "MR": "0",
             "Mythic": false,
@@ -127,7 +127,7 @@ describe("parserService", function () {
         var parsedMonster = service.parseMonster(baseMonster);
         expect(parsedMonster.Melee).to.deep.equal([
             [
-                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18}
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18,specialAttacks:''}
             ]
         ]);
     });
@@ -137,8 +137,8 @@ describe("parserService", function () {
         var parsedMonster = service.parseMonster(baseMonster);
         expect(parsedMonster.Melee).to.deep.equal([
             [
-                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18},
-                {"attackDescription": "2 wings", "attackBonuses": [30], "damageDice": "2d6", "damageMod": 12}
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18,specialAttacks:''},
+                {"attackDescription": "2 wings", "attackBonuses": [30], "damageDice": "2d6", "damageMod": 12,specialAttacks:''}
             ]
         ]);
     });
@@ -148,11 +148,22 @@ describe("parserService", function () {
         var parsedMonster = service.parseMonster(baseMonster);
         expect(parsedMonster.Melee).to.deep.equal([
             [
-                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18}
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18,specialAttacks:''}
             ],
             [
-                {"attackDescription": "slam", "attackBonuses": [30], "damageDice": "2d8", "damageMod": 13}
+                {"attackDescription": "slam", "attackBonuses": [30], "damageDice": "2d8", "damageMod": 13,specialAttacks:''}
             ]
         ]);
     });
+    it("should parse special attacks ", function () {
+        baseMonster.Melee = "+5 dancing greatsword +35/+30/+25/+20 (3d6+18 plus grab)";
+        var parsedMonster = service.parseMonster(baseMonster);
+
+        expect(parsedMonster.Melee).to.deep.equal([
+            [
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18,specialAttacks:'plus grab'}
+            ]
+        ]);
+    });
+
 });

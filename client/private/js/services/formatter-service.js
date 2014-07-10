@@ -55,20 +55,24 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
         }
 
         function formatMelee(monster, parsedMonster, attribute, failures) {
-            function formatAttackBonus(bonus){
+            function formatAttackBonus(bonus) {
                 if (!isNaN(bonus)) {
                     return (bonus >= 0 ? "+" : "-") + bonus;
                 } else {
                     failures["Melee"] = "Melee attack bonuses must be signed numbers";
                 }
             }
+
             function formatAttack(attack) {
                 var formattedAttackBonuses = attack.attackBonuses.map(formatAttackBonus).join("/");
-                return attack.attackDescription + " " + formattedAttackBonuses + " (" + attack.damageDice + "+" + attack.damageMod + ")";
+                var specialAttacks = (attack.specialAttacks !== '') ? " " + attack.specialAttacks : attack.specialAttacks;
+                return attack.attackDescription + " " + formattedAttackBonuses + " (" + attack.damageDice + "+" + attack.damageMod + attack.specialAttacks + ")";
             }
+
             function formatAttackList(attackList) {
                 return attackList.map(formatAttack).join(", ");
             }
+
             if (parsedMonster.Melee instanceof Array) {
                 monster.Melee = parsedMonster.Melee.map(formatAttackList).join(" or ");
             } else {

@@ -84,7 +84,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             // "+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)"
             var attacksGroup = monster.Melee.split(" or ");
             var regex = /(\+?\d?\s*[^\+\-]*)\s*(\+?\-?\d+\/?\+?\d*\/?\+?\d*\/?\+?\d*)\s*\(([^\)]*)\)/;
-            var damageRegex = /(\dd\d+)\+?\-?(\d*)/;
+            var damageRegex = /(\dd\d+)(\+?\-?\d*)\s*(.*)/;
 
             var parsedAttackGroups = [];
             for (var i in attacksGroup) {
@@ -98,7 +98,8 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                         var damageMatches = damageRegex.exec(matches[3]);
                         var damageDice = damageMatches[1];
                         var damageMod = Number(damageMatches[2]);
-                        parsedAttacks.push({attackDescription: attackDescription, attackBonuses: attackBonuses, damageDice: damageDice, damageMod: damageMod});
+                        var specialAttacks = damageMatches[3];
+                        parsedAttacks.push({attackDescription: attackDescription, attackBonuses: attackBonuses, damageDice: damageDice, damageMod: damageMod,specialAttacks:specialAttacks});
                     }
                 }
                 parsedAttackGroups.push(parsedAttacks);
