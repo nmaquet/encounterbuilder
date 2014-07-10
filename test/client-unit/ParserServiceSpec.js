@@ -125,7 +125,6 @@ describe("parserService", function () {
     it("should parse Melee", function () {
         baseMonster.Melee = "+5 dancing greatsword +35/+30/+25/+20 (3d6+18)";
         var parsedMonster = service.parseMonster(baseMonster);
-        console.log(JSON.stringify(parsedMonster.Melee));
         expect(parsedMonster.Melee).to.deep.equal([
             [
                 {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18}
