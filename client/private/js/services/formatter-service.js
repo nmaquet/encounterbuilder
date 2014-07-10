@@ -17,6 +17,13 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             }
         }
 
+        function armorClass(monster, parsedMonster, attribute) {
+            var normal = parsedMonster.normalAC;
+            var touch = parsedMonster.touchAC;
+            var flatFooted = parsedMonster.flatFootedAC;
+            monster.AC = normal + ", touch " + touch + ", flat-footed " + flatFooted;
+        }
+
         var formatter = {
             Str: unsignedNumber,
             Dex: unsignedNumber,
@@ -26,7 +33,8 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             Cha: unsignedNumber,
             Fort: unsignedNumber,
             Ref: unsignedNumber,
-            Will: unsignedNumber
+            Will: unsignedNumber,
+            AC: armorClass
         };
 
         var service = {};
@@ -46,8 +54,6 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
                     continue;
                 formatter[attribute](monster, parsedMonster, attribute);
             }
-
-            monster.AC = parsedMonster.normalAC + ", touch " + parsedMonster.touchAC + ", flat-footed " + parsedMonster.flatFootedAC;
 
             monster.CMB = parsedMonster.CMB || monster.CMB;
             monster.CMD = parsedMonster.CMD || monster.CMD;
