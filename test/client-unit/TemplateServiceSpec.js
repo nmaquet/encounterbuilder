@@ -242,7 +242,16 @@ describe("templateService", function () {
         ];
         baseMonster.Ranged = "+5 longbow +31/+26/+21/+16 (2d6+14 plus slaying arrow)";
         var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Ranged).to.equal("+5 longbow +33/+28/+23/+18 (2d6+16 plus slaying arrow)");
+        expect(templatedMonster.Ranged).to.equal("+5 longbow +33/+28/+23/+18 (2d6+14 plus slaying arrow)");
+    });
+
+    it("should adjust the ranged attack rolls, event for FREAKING COMPOSITE LONGBOWS", function () {
+        baseMonster.templates = [
+            {template: "advanced"}
+        ];
+        baseMonster.Ranged = "+5 composite longbow (+9 Str bonus) +31/+26/+21/+16 (2d6+14 plus slaying arrow)";
+        var templatedMonster = service.createTemplatedMonster(baseMonster);
+        expect(templatedMonster.Ranged).to.equal("+5 composite longbow (+11 Str bonus) +33/+28/+23/+18 (2d6+16 plus slaying arrow)");
     });
 
     it("should  add 2 to SpecialAbilities DC", function () {
