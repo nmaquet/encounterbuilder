@@ -157,14 +157,14 @@ describe("templateService", function () {
         ];
         baseMonster.CMB = "-1";
         var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.CMB).to.equal(-1 + 2);
+        expect(templatedMonster.CMB).to.equal("+1");
     });
     it("should adjust the CMB even if it's negative", function () {
         baseMonster.templates = [
             {template: "advanced"}
         ];
         var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.CMB).to.equal(32 + 2);
+        expect(templatedMonster.CMB).to.equal("+34");
     });
 
     it("should still work if the CMB or CMD isn't a Number", function () {
@@ -215,7 +215,7 @@ describe("templateService", function () {
             {template: "advanced"}
         ];
         var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Init).to.equal(11);
+        expect(templatedMonster.Init).to.equal("+11");
     });
     it("should  add 2 to Skills ", function () {
         baseMonster.templates = [

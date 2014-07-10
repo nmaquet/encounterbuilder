@@ -34,7 +34,10 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             Fort: unsignedNumber,
             Ref: unsignedNumber,
             Will: unsignedNumber,
-            AC: armorClass
+            AC: armorClass,
+            CMB: signedNumber,
+            CMD: unsignedNumber,
+            Init: signedNumber
         };
 
         var service = {};
@@ -55,9 +58,6 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
                 formatter[attribute](monster, parsedMonster, attribute);
             }
 
-            monster.CMB = parsedMonster.CMB || monster.CMB;
-            monster.CMD = parsedMonster.CMD || monster.CMD;
-            monster.Init = parsedMonster.Init || monster.Init;
             monster.Skills = parsedMonster.Skills.map(function (value) {
                 var sign = (value.mod >= 0) ? "+" : "-";
                 return (value.name + " " + sign + value.mod);
