@@ -2,15 +2,16 @@
 
 var expect = chai.expect;
 
-var service;
+var parserService, formatterService;
 
-describe("templateService", function () {
+describe("formatterService", function () {
 
-    var baseMonster = null;
+    var baseMonster = '';
     beforeEach(module("encounterBuilderApp"));
 
-    beforeEach(inject(function (_templateService_) {
-        service = _templateService_;
+    beforeEach(inject(function (_parserService_, _formatterService_) {
+        parserService = _parserService_;
+        formatterService = _formatterService_;
     }));
 
     beforeEach(function () {
@@ -54,7 +55,7 @@ describe("templateService", function () {
             "Land": "0",
             "AgeCategory": "adult",
             "DontUseRacialHD": "0",
-            "CompanionFamiliarLink": "NULL",
+            "CompanionFamiliarLink": "''",
             "UniqueMonster": "0",
             "MR": "0",
             "Mythic": false,
@@ -83,183 +84,75 @@ describe("templateService", function () {
         };
     });
 
-    it("shouldn't do anything if no templates are selected", function () {
-        baseMonster.templates = [];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
+   it("should format the melee attacks", function () {
+        baseMonster.Melee = "+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)";
+        var monster = angular.copy(baseMonster);
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        expect(monster.Melee).to.equal(baseMonster.Melee);
+        expect(failures).to.deep.equal({});
+   });
 
-        expect(templatedMonster).to.deep.equal(baseMonster);
+    it("should handle zero attack bonuses", function () {
+        baseMonster.Melee = "broken scimitar +0 (1d6+3)";
+        var monster = angular.copy(baseMonster);
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        expect(monster.Melee).to.equal(baseMonster.Melee);
+        expect(failures).to.deep.equal({});
     });
 
-    it("should  add '(Advanced)' to the Name for advanced template", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        expect(service.createTemplatedMonster(baseMonster).Name).to.equal("Solar (Advanced)");
+    it("should handle negative attack bonuses", function () {
+        baseMonster.Melee = "broken scimitar -5 (1d6+3)";
+        var monster = angular.copy(baseMonster);
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        expect(monster.Melee).to.equal(baseMonster.Melee);
+        expect(failures).to.deep.equal({});
     });
 
-
-    it("should  add 1 to the CR for advanced template", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        expect(service.createTemplatedMonster(baseMonster).CR).to.equal(24);
+    it("should handle null damage bonuses", function () {
+        baseMonster.Melee = "broken scimitar -5 (1d6)";
+        var monster = angular.copy(baseMonster);
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        expect(monster.Melee).to.equal(baseMonster.Melee);
+        expect(failures).to.deep.equal({});
     });
 
-    it("should  adjust the xp according to the new  CR", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        expect(service.createTemplatedMonster(baseMonster).XP).to.equal(1228800);
+    it("should handle negative damage bonuses", function () {
+        baseMonster.Melee = "broken scimitar -5 (1d6-3)";
+        var monster = angular.copy(baseMonster);
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        expect(monster.Melee).to.equal(baseMonster.Melee);
+        expect(failures).to.deep.equal({});
     });
 
-    it("should  adjust the ability scores", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Str).to.equal(32);
-        expect(templatedMonster.Dex).to.equal(24);
-        expect(templatedMonster.Con).to.equal(34);
-        expect(templatedMonster.Int).to.equal(27);
-        expect(templatedMonster.Wis).to.equal(31);
-        expect(templatedMonster.Cha).to.equal(29);
+    it("should handle negative ability bonuses", function () {
+        baseMonster.CMB = "-2";
+        var monster = angular.copy(baseMonster);
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        expect(monster.CMB).to.equal(baseMonster.CMB);
+        expect(failures).to.deep.equal({});
     });
 
-    it("should adjust the saves", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Fort).to.equal(25 + 2);
-        expect(templatedMonster.Ref).to.equal(14 + 2);
-        expect(templatedMonster.Will).to.equal(23 + 2);
+    it("should handle positive, null, and negative Skill bonuses", function () {
+        baseMonster.Skills = "cook +2, fish +0, break things -3";
+        var monster = angular.copy(baseMonster);
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        expect(monster.Skills).to.equal(baseMonster.Skills);
+        expect(failures).to.deep.equal({});
     });
 
-    it("should adjust the AC", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.AC).to.equal("48, touch 15, flat-footed 46");
+    it("should handle null bonus to Hit Dice", function () {
+        baseMonster.HD = "(3d10)";
+        var monster = angular.copy(baseMonster);
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        expect(monster.HD).to.equal(baseMonster.HD);
+        expect(failures).to.deep.equal({});
     });
 
-    it("should adjust the CMD", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.CMD).to.equal(47 + 4);
-    });
-
-    it("should adjust the CMB", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.CMB = "-1";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.CMB).to.equal("+1");
-    });
-    it("should adjust the CMB even if it's negative", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.CMB).to.equal("+34");
-    });
-
-    it("should still work if the CMB or CMD isn't a Number", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.CMB = "-";
-        baseMonster.CMD = "-";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.CMB).to.equal("-");
-        expect(templatedMonster.CMD).to.equal("-");
-    });
-
-    it("should  not adjust int if base creature has less than 3", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.Int = 2;
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Str).to.equal(32);
-        expect(templatedMonster.Dex).to.equal(24);
-        expect(templatedMonster.Con).to.equal(34);
-        expect(templatedMonster.Int).to.equal(2);
-        expect(templatedMonster.Wis).to.equal(31);
-        expect(templatedMonster.Cha).to.equal(29);
-    });
-
-    it("should  add 44 HP ", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.HP).to.equal(407);
-        expect(templatedMonster.HD).to.equal("(22d10+286)");
-    });
-
-    it("should be resilient to erroneous HD", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.HD = "(22+6)";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.HD).to.equal("(22+6)");
-    });
-
-    it("should  add 2 to Init ", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Init).to.equal("+11");
-    });
-
-    it("should  add 2 to Skills ", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.Skills = "Craft (any one) +31, Diplomacy +32";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Skills).to.equal("Craft (any one) +33, Diplomacy +34");
-    });
-
-    it("should adjust the melee attack rolls", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.Melee = "+5 dancing greatsword +35/+30/+25/+20 (3d6+18), 2 wings +30 (2d6+12)";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Melee).to.equal("+5 dancing greatsword +37/+32/+27/+22 (3d6+20), 2 wings +32 (2d6+14)");
-    });
-
-    it("should adjust the ranged attack rolls", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.Ranged = "+5 longbow +31/+26/+21/+16 (2d6+14 plus slaying arrow)";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Ranged).to.equal("+5 longbow +33/+28/+23/+18 (2d6+14 plus slaying arrow)");
-    });
-
-    it("should adjust the ranged attack rolls, event for FREAKING COMPOSITE LONGBOWS", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.Ranged = "+5 composite longbow (+9 Str bonus) +31/+26/+21/+16 (2d6+14 plus slaying arrow)";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Ranged).to.equal("+5 composite longbow (+11 Str bonus) +33/+28/+23/+18 (2d6+16 plus slaying arrow)");
-    });
-
-    it("should  add 2 to SpecialAbilities DC", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.SpecialAbilities = "<h5><b>Gaze (Ex)</b> Turn to stone permanently (as flesh to stone), range 30 feet, Fortitude DC 15 negates. A creature petrified in this matter that is then coated (not just splashed) with fresh basilisk blood (taken from a basilisk no more than 1 hour dead) is instantly restored to flesh. A single basilisk contains enough blood to coat 1d3 Medium creatures in this manner. The save DC is Constitution-based.</h5>";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.SpecialAbilities).to.equal("<h5><b>Gaze (Ex)</b> Turn to stone permanently (as flesh to stone), range 30 feet, Fortitude DC 17 negates. A creature petrified in this matter that is then coated (not just splashed) with fresh basilisk blood (taken from a basilisk no more than 1 hour dead) is instantly restored to flesh. A single basilisk contains enough blood to coat 1d3 Medium creatures in this manner. The save DC is Constitution-based.</h5>");
+    it("should handle negative bonus to Hit Dice", function () {
+        baseMonster.HD = "(3d10-5)";
+        var monster = angular.copy(baseMonster);
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        expect(monster.HD).to.equal(baseMonster.HD);
+        expect(failures).to.deep.equal({});
     });
 });

@@ -18,28 +18,40 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
                 if (error) {
                     console.log(error);
                 }
-                else {
-                    callback(service.createTemplatedMonster(monster));
-                }
+                callback(error);
             });
+            return service.createTemplatedMonster(monster);
         };
 
-        function advanceMelee(parsedMonster) {
+        function advanceAttacks(parsedMonster, attribute) {
             function addTwo(value) {
                 return value + 2;
             }
-
             function advanceAttack(attack) {
                 attack.attackBonuses = attack.attackBonuses.map(addTwo);
-                attack.damageMod += 2;
+                if (attribute === "Ranged" && /composite/i.test(attack.attackDescription)) {
+                    attack.attackDescription = attack.attackDescription.replace(/\(\s*\+(\d+)\s*str\s+bonus\s*\)/i, function(match, bonus){
+                       return "(+" + (Number(bonus) + 2) + " Str bonus)";
+                    });
+                    attack.damageMod += 2;
+                }
+                else if (attribute === "Melee") {
+                    attack.damageMod += 2;
+                }
                 return attack;
             }
-
             function advanceAttackList(attackList) {
                 return attackList.map(advanceAttack);
             }
+            return parsedMonster[attribute].map(advanceAttackList);
+        }
 
-            return parsedMonster.Melee.map(advanceAttackList);
+        function advanceMelee(parsedMonster) {
+            return advanceAttacks(parsedMonster, "Melee");
+        }
+
+        function advanceRanged(parsedMonster) {
+            return advanceAttacks(parsedMonster, "Ranged");
         }
 
         function advanceParsedMonster(parsedMonster) {
@@ -68,6 +80,10 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
 
             if (parsedMonster.Melee instanceof Array) {
                 parsedMonster.Melee = advanceMelee(parsedMonster);
+            }
+
+            if (parsedMonster.Ranged instanceof Array) {
+                parsedMonster.Ranged = advanceRanged(parsedMonster);
             }
 
             for (var i in parsedMonster.Skills) {

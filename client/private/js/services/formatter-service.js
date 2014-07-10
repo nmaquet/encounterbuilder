@@ -4,6 +4,10 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
 
     function () {
 
+        function isNumber(x) {
+            return !isNaN(x) && x !== null && x !== undefined;
+        }
+
         function formatUnsignedNumber(monster, parsedMonster, attribute, failures) {
             if (!isNaN(parsedMonster[attribute])) {
                 monster[attribute] = parsedMonster[attribute];
@@ -14,7 +18,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
 
         function formatSignedNumber(monster, parsedMonster, attribute, failures) {
             if (!isNaN(parsedMonster[attribute])) {
-                var sign = parsedMonster[attribute] >= 0 ? "+" : "-";
+                var sign = parsedMonster[attribute] >= 0 ? "+" : "";
                 monster[attribute] = sign + parsedMonster[attribute];
             } else {
                 failures[attribute] = attribute + " must be a number";
@@ -25,7 +29,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             var normal = parsedMonster.normalAC;
             var touch = parsedMonster.touchAC;
             var flatFooted = parsedMonster.flatFootedAC;
-            if (normal && touch && flatFooted) {
+            if (isNumber(normal) && isNumber(touch) && isNumber(flatFooted)) {
                 monster.AC = normal + ", touch " + touch + ", flat-footed " + flatFooted;
             } else {
                 failures["AC"] = "AC must be of the form 'AC X, touch Y, flat-footed Z'";
@@ -35,7 +39,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
         function formatSkills(monster, parsedMonster, attribute, failures) {
             if (parsedMonster.Skills instanceof Array) {
                 monster.Skills = parsedMonster.Skills.map(function (value) {
-                    var sign = (value.mod >= 0) ? "+" : "-";
+                    var sign = (value.mod >= 0) ? "+" : "";
                     return (value.name + " " + sign + value.mod);
                 }).join(", ");
             } else {
@@ -44,39 +48,43 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
         }
 
         function formatHitDice(monster, parsedMonster, attribute, failures) {
-            if (parsedMonster.numberOfHD && parsedMonster.typeOfHD && parsedMonster.hitPointBonus) {
-                var hitDice = parsedMonster.numberOfHD;
-                var dieType = parsedMonster.typeOfHD;
-                var bonus = parsedMonster.hitPointBonus;
-                monster.HD = "(" + hitDice + "d" + dieType + "+" + bonus + ")";
+            var hitDice = parsedMonster.numberOfHD;
+            var dieType = parsedMonster.typeOfHD;
+            var bonus = parsedMonster.hitPointBonus;
+            if (isNumber(hitDice) && isNumber(dieType) && isNumber(bonus)) {
+                var sign = bonus > 0 ? "+": "";
+                bonus = bonus === 0 ? "" : bonus;
+                monster.HD = "(" + hitDice + "d" + dieType + sign + bonus + ")";
             } else {
                 failures["HD"] = "HD must be of the form '(XdY+Z)'";
             }
         }
 
-        function formatMelee(monster, parsedMonster, attribute, failures) {
+        function formatAttack(monster, parsedMonster, attribute, failures) {
             function formatAttackBonus(bonus) {
                 if (!isNaN(bonus)) {
-                    return (bonus >= 0 ? "+" : "-") + bonus;
+                    return (bonus >= 0 ? "+" : "") + bonus;
                 } else {
-                    failures["Melee"] = "Melee attack bonuses must be signed numbers";
+                    failures[attribute] = attribute + " attack bonuses must be signed numbers";
                 }
             }
 
             function formatAttack(attack) {
                 var formattedAttackBonuses = attack.attackBonuses.map(formatAttackBonus).join("/");
                 var specialAttacks = (attack.specialAttacks !== '') ? " " + attack.specialAttacks : attack.specialAttacks;
-                return attack.attackDescription + " " + formattedAttackBonuses + " (" + attack.damageDice + "+" + attack.damageMod +specialAttacks + ")";
+                var sign = attack.damageMod > 0 ? "+": "";
+                var damageMod = attack.damageMod === 0 ? "" : attack.damageMod;
+                return attack.attackDescription + " " + formattedAttackBonuses + " (" + attack.damageDice + sign + damageMod + specialAttacks + ")";
             }
 
             function formatAttackList(attackList) {
                 return attackList.map(formatAttack).join(", ");
             }
 
-            if (parsedMonster.Melee instanceof Array) {
-                monster.Melee = parsedMonster.Melee.map(formatAttackList).join(" or ");
+            if (parsedMonster[attribute] instanceof Array) {
+                monster[attribute] = parsedMonster[attribute].map(formatAttackList).join(" or ");
             } else {
-                failures["Melee"] = "Melee must be of the form '+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)'";
+                failures[attribute] = attribute + " must be of the form '+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)'";
             }
         }
 
@@ -97,7 +105,8 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             Skill: formatSkills,
             HP: formatUnsignedNumber,
             HD: formatHitDice,
-            Melee: formatMelee
+            Melee: formatAttack,
+            Ranged: formatAttack
         };
 
         var service = {};

@@ -175,4 +175,24 @@ describe("parserService", function () {
             ]
         ]);
     });
+
+    it("should parse ranged attacks ", function () {
+        baseMonster.Ranged = "+5 longbow +31/+26/+21/+16 (2d6+14 plus slaying arrow)";
+        var parsedMonster = service.parseMonster(baseMonster);
+        expect(parsedMonster.Ranged).to.deep.equal([
+            [
+                {"attackDescription": "+5 longbow", "attackBonuses": [31, 26, 21, 16], "damageDice": "2d6", "damageMod": 14,specialAttacks:'plus slaying arrow'}
+            ]
+        ]);
+    });
+
+    it("should parse ranged attacks ", function () {
+        baseMonster.Ranged = "+5 composite longbow (+9 Str bonus) +31/+26/+21/+16 (2d6+14 plus slaying arrow)";
+        var parsedMonster = service.parseMonster(baseMonster);
+        expect(parsedMonster.Ranged).to.deep.equal([
+            [
+                {"attackDescription": "+5 composite longbow (+9 Str bonus)", "attackBonuses": [31, 26, 21, 16], "damageDice": "2d6", "damageMod": 14, specialAttacks:'plus slaying arrow'}
+            ]
+        ]);
+    });
 });

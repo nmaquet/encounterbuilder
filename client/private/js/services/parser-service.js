@@ -11,6 +11,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             parseHD(monster, parsedMonster);
             parseSkills(monster, parsedMonster);
             parseMeleeAttacks(monster, parsedMonster);
+            parseRangedAttacks(monster, parsedMonster);
 
             parsedMonster.Str = Number(monster.Str);
             parsedMonster.Dex = Number(monster.Dex);
@@ -55,7 +56,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
 
         function parseHD(monster, parsedMonster) {
             var string = monster.HD;
-            var regex = /\(\s*(\d+)\s*[d,D](\d+)\s*\+?\s*(\d*)\)/;
+            var regex = /\(\s*(\d+)\s*[d,D](\d+)\s*(\+?\-?\d*)\)/;
             var matches = regex.exec(string);
             if (!matches) {
                 parsedMonster.numberOfHD = NaN;
@@ -80,10 +81,42 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             }
         }
 
+        function insideParens(position, string) {
+            var left = 0, right = 0, i;
+            for (i = 0; i < position; ++i) {
+                if (string[i] === "(") {
+                    left++;
+                }
+                else if (string[i] === ")") {
+                    right++;
+                }
+            }
+            return right !== left;
+        }
+
+        function replaceAndIfNotInsideParens(string) {
+            return string.replace(/and/g, function(match, offset) {
+                if (!insideParens(offset, string)) {
+                    return ", ";
+                } else {
+                    return "and"
+                }
+            });
+        }
+
         function parseMeleeAttacks(monster, parsedMonster) {
+            parseAttacks(monster, parsedMonster, "Melee");
+        }
+
+        function parseRangedAttacks(monster, parsedMonster) {
+            parseAttacks(monster, parsedMonster, "Ranged");
+        }
+
+        function parseAttacks(monster, parsedMonster, attribute) {
             // "+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)"
-            var attacksGroup = monster.Melee.split(" or ");
-            var regex = /(\+?\d?\s*[^\+\-]*)\s*(\+?\-?\d+\/?\+?\d*\/?\+?\d*\/?\+?\d*)\s*\(([^\)]*)\)/;
+            // "+5 dancing greatsword (+9 Str bonus) +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)"
+            var attacksGroup = replaceAndIfNotInsideParens(monster[attribute]).split(" or ");
+            var regex = /^\s*(\+?\d?\s*[^\+\-]*(?:\s*\([^\)]*\)\s*)?[^\+\-]*)\s*(\+?\-?\d+\/?\+?\d*\/?\+?\d*\/?\+?\d*)\s*\(([^\)]*)\)\s*$/;
             var damageRegex = /(\dd\d+)(\+?\-?\d*)\s*(.*)/;
 
             var parsedAttackGroups = [];
@@ -104,7 +137,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                 }
                 parsedAttackGroups.push(parsedAttacks);
             }
-            parsedMonster.Melee = parsedAttackGroups;
+            parsedMonster[attribute] = parsedAttackGroups;
         }
 
         return service;

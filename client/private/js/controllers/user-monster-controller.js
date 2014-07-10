@@ -34,9 +34,10 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
             };
 
             $scope.advanceMonster = function () {
-                templateService.advanceMonster(baseMonster, function (templatedMonster) {
-                    $scope.userMonster = templatedMonster;
+                $scope.userMonster = templateService.advanceMonster(baseMonster, function (error) {
+                    console.log(error);
                 });
+                contentTreeService.userMonsterUpdated($scope.userMonster);
             };
 
             $scope.pending = true;
