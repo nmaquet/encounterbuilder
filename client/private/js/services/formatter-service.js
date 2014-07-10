@@ -72,7 +72,9 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             function formatAttack(attack) {
                 var formattedAttackBonuses = attack.attackBonuses.map(formatAttackBonus).join("/");
                 var specialAttacks = (attack.specialAttacks !== '') ? " " + attack.specialAttacks : attack.specialAttacks;
-                return attack.attackDescription + " " + formattedAttackBonuses + " (" + attack.damageDice + "+" + attack.damageMod +specialAttacks + ")";
+                var sign = attack.damageMod > 0 ? "+": "";
+                var damageMod = attack.damageMod === 0 ? "" : attack.damageMod;
+                return attack.attackDescription + " " + formattedAttackBonuses + " (" + attack.damageDice + sign + damageMod + specialAttacks + ")";
             }
 
             function formatAttackList(attackList) {

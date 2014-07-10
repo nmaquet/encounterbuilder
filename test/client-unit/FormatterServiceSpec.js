@@ -108,6 +108,22 @@ describe("formatterService", function () {
         expect(failures).to.deep.equal({});
     });
 
+    it("should handle null damage bonuses", function () {
+        baseMonster.Melee = "broken scimitar -5 (1d6)";
+        var monster = angular.copy(baseMonster);
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        expect(monster.Melee).to.equal(baseMonster.Melee);
+        expect(failures).to.deep.equal({});
+    });
+
+    it("should handle negative damage bonuses", function () {
+        baseMonster.Melee = "broken scimitar -5 (1d6-3)";
+        var monster = angular.copy(baseMonster);
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        expect(monster.Melee).to.equal(baseMonster.Melee);
+        expect(failures).to.deep.equal({});
+    });
+
     it("should handle negative ability bonuses", function () {
         baseMonster.CMB = "-2";
         var monster = angular.copy(baseMonster);
