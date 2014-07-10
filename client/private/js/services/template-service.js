@@ -61,40 +61,11 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             var templatedMonster = angular.copy(monster);
             if (monster.templates && monster.templates.length > 0) {
                 var parsedMonster = parserService.parseMonster(templatedMonster);
-
                 for (var i in monster.templates) {
                     if ("advanced" === monster.templates[i].template) {
                         advanceParsedMonster(parsedMonster);
-
+                        formatterService.formatMonster(templatedMonster, parsedMonster);
                         templatedMonster.Name = templatedMonster.Name + " (Advanced)";
-
-                        templatedMonster.HP = parsedMonster.HP || templatedMonster.HP;
-
-                        if (parsedMonster.numberOfHD && parsedMonster.typeOfHD && parsedMonster.hitPointBonus) {
-                            var x = parsedMonster.numberOfHD;
-                            var y = parsedMonster.typeOfHD;
-                            var z = parsedMonster.hitPointBonus;
-                            templatedMonster.HD = "(" + x + "d" + y + "+" + z + ")";
-                        }
-
-                        templatedMonster.Str = parsedMonster.Str || templatedMonster.Str;
-                        templatedMonster.Dex = parsedMonster.Dex || templatedMonster.Dex;
-                        templatedMonster.Con = parsedMonster.Con || templatedMonster.Con;
-                        templatedMonster.Int = parsedMonster.Int || templatedMonster.Int;
-                        templatedMonster.Wis = parsedMonster.Wis || templatedMonster.Wis;
-                        templatedMonster.Cha = parsedMonster.Cha || templatedMonster.Cha;
-
-                        templatedMonster.Fort = parsedMonster.Fort || templatedMonster.Fort;
-                        templatedMonster.Ref = parsedMonster.Ref || templatedMonster.Ref;
-                        templatedMonster.Will = parsedMonster.Will || templatedMonster.Will;
-
-                        templatedMonster.CMB = parsedMonster.CMB || templatedMonster.CMB;
-                        templatedMonster.CMD = parsedMonster.CMD || templatedMonster.CMD;
-                        templatedMonster.Init = parsedMonster.Init || templatedMonster.Init;
-                        templatedMonster.Skills = parsedMonster.Skills.map(function (value) {
-                            var sign = (value.mod >= 0) ? "+" : "-";
-                            return (value.name + " " + sign + value.mod);
-                        }).join(", ");
                         templatedMonster.AC = buildModifiedAC(parsedMonster, +4);
                         templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
                         templatedMonster.XP = crService.calculateXp(templatedMonster.CR);
