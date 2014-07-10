@@ -55,13 +55,13 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             CMD: unsignedNumber,
             Init: signedNumber,
             Skill: skills,
+            HP: unsignedNumber,
             HD: hitDice
         };
 
         var service = {};
 
         service.formatMonster = function(monster, parsedMonster) {
-            monster.HP = parsedMonster.HP || monster.HP;
             for (var attribute in formatter) {
                 if (!formatter.hasOwnProperty(attribute))
                     continue;
