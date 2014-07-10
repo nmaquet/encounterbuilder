@@ -29,7 +29,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             var normal = parsedMonster.normalAC;
             var touch = parsedMonster.touchAC;
             var flatFooted = parsedMonster.flatFootedAC;
-            if (normal && touch && flatFooted) {
+            if (isNumber(normal) && isNumber(touch) && isNumber(flatFooted)) {
                 monster.AC = normal + ", touch " + touch + ", flat-footed " + flatFooted;
             } else {
                 failures["AC"] = "AC must be of the form 'AC X, touch Y, flat-footed Z'";
