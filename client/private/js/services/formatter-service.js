@@ -57,7 +57,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
         function formatAttack(monster, parsedMonster, attribute, failures) {
             function formatAttackBonus(bonus) {
                 if (!isNaN(bonus)) {
-                    return (bonus >= 0 ? "+" : "-") + bonus;
+                    return (bonus >= 0 ? "+" : "") + bonus;
                 } else {
                     failures[attribute] = attribute + " attack bonuses must be signed numbers";
                 }
