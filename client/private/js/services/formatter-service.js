@@ -4,19 +4,29 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
 
     function () {
 
-        function numberize(monster, parsedMonster, attribute) {
+        function unsignedNumber(monster, parsedMonster, attribute) {
             if (!isNaN(parsedMonster[attribute])) {
                 monster[attribute] = parsedMonster[attribute];
             }
         }
 
+        function signedNumber(monster, parsedMonster, attribute) {
+            if (!isNaN(parsedMonster[attribute])) {
+                var sign = parsedMonster[attribute] >= 0 ? "+" : "-";
+                monster[attribute] = sign + parsedMonster[attribute];
+            }
+        }
+
         var formatter = {
-            Str: numberize,
-            Dex: numberize,
-            Con: numberize,
-            Int: numberize,
-            Wis: numberize,
-            Cha: numberize
+            Str: unsignedNumber,
+            Dex: unsignedNumber,
+            Con: unsignedNumber,
+            Int: unsignedNumber,
+            Wis: unsignedNumber,
+            Cha: unsignedNumber,
+            Fort: unsignedNumber,
+            Ref: unsignedNumber,
+            Will: unsignedNumber
         };
 
         var service = {};
@@ -36,10 +46,6 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
                     continue;
                 formatter[attribute](monster, parsedMonster, attribute);
             }
-
-            monster.Fort = parsedMonster.Fort || monster.Fort;
-            monster.Ref = parsedMonster.Ref || monster.Ref;
-            monster.Will = parsedMonster.Will || monster.Will;
 
             monster.AC = parsedMonster.normalAC + ", touch " + parsedMonster.touchAC + ", flat-footed " + parsedMonster.flatFootedAC;
 
