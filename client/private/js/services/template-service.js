@@ -30,7 +30,9 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             }
             function advanceAttack(attack) {
                 attack.attackBonuses = attack.attackBonuses.map(addTwo);
-                attack.damageMod += 2;
+                if (attribute === "Melee" || /"composite"/i.test(attack.attackDescription)) {
+                    attack.damageMod += 2;
+                }
                 return attack;
             }
             function advanceAttackList(attackList) {
