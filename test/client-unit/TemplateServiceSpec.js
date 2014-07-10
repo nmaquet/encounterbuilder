@@ -217,6 +217,7 @@ describe("templateService", function () {
         var templatedMonster = service.createTemplatedMonster(baseMonster);
         expect(templatedMonster.Init).to.equal("+11");
     });
+
     it("should  add 2 to Skills ", function () {
         baseMonster.templates = [
             {template: "advanced"}
@@ -225,4 +226,13 @@ describe("templateService", function () {
         var templatedMonster = service.createTemplatedMonster(baseMonster);
         expect(templatedMonster.Skills).to.equal("Craft (any one) +33, Diplomacy +34");
     });
+
+//    it("should adjust the melee attack rolls", function () {
+//        baseMonster.templates = [
+//            {template: "advanced"}
+//        ];
+//        baseMonster.Melee = "+5 dancing greatsword +35/+30/+25/+20 (3d6+18), 2 wings +30 (2d6+12)";
+//        var templatedMonster = service.createTemplatedMonster(baseMonster);
+//        expect(templatedMonster.Melee).to.equal("+5 dancing greatsword +37/+32/+27/+22 (3d6+20), 2 wings +32 (2d6+14)");
+//    });
 });
