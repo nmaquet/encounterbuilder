@@ -165,5 +165,14 @@ describe("parserService", function () {
             ]
         ]);
     });
-
+    it("should parse attacks when they are separated with 'and' instead of ','", function () {
+        baseMonster.Melee = "+5 dancing greatsword +35/+30/+25/+20 (3d6+18) and 2 wings +30 (2d6+12)";
+        var parsedMonster = service.parseMonster(baseMonster);
+        expect(parsedMonster.Melee).to.deep.equal([
+            [
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18,specialAttacks:''},
+                {"attackDescription": "2 wings", "attackBonuses": [30], "damageDice": "2d6", "damageMod": 12,specialAttacks:''}
+            ]
+        ]);
+    });
 });
