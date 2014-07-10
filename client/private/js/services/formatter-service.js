@@ -24,6 +24,13 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             monster.AC = normal + ", touch " + touch + ", flat-footed " + flatFooted;
         }
 
+        function skills(monster, parsedMonster, attribute) {
+            monster.Skills = parsedMonster.Skills.map(function (value) {
+                var sign = (value.mod >= 0) ? "+" : "-";
+                return (value.name + " " + sign + value.mod);
+            }).join(", ");
+        }
+
         var formatter = {
             Str: unsignedNumber,
             Dex: unsignedNumber,
@@ -37,7 +44,8 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             AC: armorClass,
             CMB: signedNumber,
             CMD: unsignedNumber,
-            Init: signedNumber
+            Init: signedNumber,
+            Skill: skills
         };
 
         var service = {};
@@ -57,11 +65,6 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
                     continue;
                 formatter[attribute](monster, parsedMonster, attribute);
             }
-
-            monster.Skills = parsedMonster.Skills.map(function (value) {
-                var sign = (value.mod >= 0) ? "+" : "-";
-                return (value.name + " " + sign + value.mod);
-            }).join(", ");
         };
 
         return service;
