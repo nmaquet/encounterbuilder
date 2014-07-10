@@ -30,6 +30,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             }
             function advanceAttack(attack) {
                 attack.attackBonuses = attack.attackBonuses.map(addTwo);
+                return attack;
             }
             function advanceAttackList(attackList) {
                 return attackList.map(advanceAttack);
@@ -61,9 +62,9 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             parsedMonster.touchAC += 4;
             parsedMonster.flatFootedAC += 4;
 
-//            if (parsedMonster.Melee instanceof Array) {
-//                parsedMonster.Melee = advanceMelee(parsedMonster);
-//            }
+            if (parsedMonster.Melee instanceof Array) {
+                parsedMonster.Melee = advanceMelee(parsedMonster);
+            }
 
             for (var i in parsedMonster.Skills) {
                 parsedMonster.Skills[i].mod += 2;
