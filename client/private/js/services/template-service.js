@@ -1,7 +1,7 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterService', 'crService', 'parserService',
-    function (userMonsterService, crService, parserService) {
+DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterService', 'crService', 'parserService', 'formatterService',
+    function (userMonsterService, crService, parserService, formatterService) {
 
         var service = {};
 
