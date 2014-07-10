@@ -24,6 +24,19 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             });
         };
 
+        function advanceMelee(parsedMonster) {
+            function addTwo(value) {
+                return value + 2;
+            }
+            function advanceAttack(attack) {
+                attack.attackBonuses = attack.attackBonuses.map(addTwo);
+            }
+            function advanceAttackList(attackList) {
+                return attackList.map(advanceAttack);
+            }
+            return parsedMonster.Melee.map(advanceAttackList);
+        }
+
         function advanceParsedMonster(parsedMonster) {
             parsedMonster.HP += ( 2 * parsedMonster.numberOfHD);
             parsedMonster.hitPointBonus += ( 2 * parsedMonster.numberOfHD);
@@ -47,6 +60,10 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             parsedMonster.normalAC += 4;
             parsedMonster.touchAC += 4;
             parsedMonster.flatFootedAC += 4;
+
+//            if (parsedMonster.Melee instanceof Array) {
+//                parsedMonster.Melee = advanceMelee(parsedMonster);
+//            }
 
             for (var i in parsedMonster.Skills) {
                 parsedMonster.Skills[i].mod += 2;

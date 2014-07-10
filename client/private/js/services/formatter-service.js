@@ -59,9 +59,11 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
                 return attack.attackDescription + " " + attack.attackBonuses.join("/") + " (" + attack.damageDice + "+" + attack.damageMod + ")";
             }
             function formatAttackList(attackList) {
+                console.log(attackList);
                 return attackList.map(formatAttack).join(", ");
             }
             if (parsedMonster.Melee instanceof Array) {
+                console.log(parsedMonster.Melee);
                 monster.Melee = parsedMonster.Melee.map(formatAttackList).join(" or ");
             } else {
                 failures["Melee"] = "Melee must be of the form '+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)'";
