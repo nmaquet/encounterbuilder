@@ -26,6 +26,8 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             monster.Ref = parsedMonster.Ref || monster.Ref;
             monster.Will = parsedMonster.Will || monster.Will;
 
+            monster.AC = parsedMonster.normalAC + ", touch " + parsedMonster.touchAC + ", flat-footed " + parsedMonster.flatFootedAC;
+
             monster.CMB = parsedMonster.CMB || monster.CMB;
             monster.CMD = parsedMonster.CMD || monster.CMD;
             monster.Init = parsedMonster.Init || monster.Init;

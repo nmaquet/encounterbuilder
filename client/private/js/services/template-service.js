@@ -24,13 +24,6 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             });
         };
 
-        function buildModifiedAC(parsedMonster, modifier) {
-            var AC = modifier + parsedMonster.normalAC;
-            var touch = modifier + parsedMonster.touchAC;
-            var flatFooted = modifier + parsedMonster.flatFootedAC;
-            return AC + ", touch " + touch + ", flat-footed " + flatFooted
-        }
-
         function advanceParsedMonster(parsedMonster) {
             parsedMonster.HP += ( 2 * parsedMonster.numberOfHD);
             parsedMonster.hitPointBonus += ( 2 * parsedMonster.numberOfHD);
@@ -51,6 +44,10 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             parsedMonster.CMD += 4;
             parsedMonster.Init += 2;
 
+            parsedMonster.normalAC += 4;
+            parsedMonster.touchAC += 4;
+            parsedMonster.flatFootedAC += 4;
+
             for (var i in parsedMonster.Skills) {
                 parsedMonster.Skills[i].mod += 2;
             }
@@ -66,7 +63,6 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
                         advanceParsedMonster(parsedMonster);
                         formatterService.formatMonster(templatedMonster, parsedMonster);
                         templatedMonster.Name = templatedMonster.Name + " (Advanced)";
-                        templatedMonster.AC = buildModifiedAC(parsedMonster, +4);
                         templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
                         templatedMonster.XP = crService.calculateXp(templatedMonster.CR);
                     }
