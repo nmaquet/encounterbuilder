@@ -198,6 +198,7 @@ describe("templateService", function () {
         ];
         var templatedMonster = service.createTemplatedMonster(baseMonster);
         expect(templatedMonster.HP).to.equal(407);
+        expect(templatedMonster.HD).to.equal("(22d10+286)");
     });
 
     it("should  add 2 to Init ", function () {

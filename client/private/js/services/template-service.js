@@ -33,6 +33,8 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
 
         function advanceParsedMonster(parsedMonster) {
             parsedMonster.HP += ( 2 * parsedMonster.numberOfHD);
+            parsedMonster.hitPointBonus += ( 2 * parsedMonster.numberOfHD);
+
             parsedMonster.Str += 4;
             parsedMonster.Dex += 4;
             parsedMonster.Con += 4;
@@ -67,6 +69,8 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
                         templatedMonster.Name = templatedMonster.Name + " (Advanced)";
 
                         templatedMonster.HP = parsedMonster.HP || templatedMonster.HP;
+                        templatedMonster.HD = "(" + parsedMonster.numberOfHD + "d" + parsedMonster.typeOfHD + "+" + parsedMonster.hitPointBonus + ")";
+
                         templatedMonster.Str = parsedMonster.Str || templatedMonster.Str;
                         templatedMonster.Dex = parsedMonster.Dex || templatedMonster.Dex;
                         templatedMonster.Con = parsedMonster.Con || templatedMonster.Con;
