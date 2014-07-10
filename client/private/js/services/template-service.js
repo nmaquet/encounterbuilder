@@ -18,10 +18,9 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
                 if (error) {
                     console.log(error);
                 }
-                else {
-                    callback(service.createTemplatedMonster(monster));
-                }
+                callback(error);
             });
+            return service.createTemplatedMonster(monster);
         };
 
         function advanceAttacks(parsedMonster, attribute) {
