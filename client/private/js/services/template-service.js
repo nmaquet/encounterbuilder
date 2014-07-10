@@ -30,7 +30,13 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             }
             function advanceAttack(attack) {
                 attack.attackBonuses = attack.attackBonuses.map(addTwo);
-                if (attribute === "Melee" || /"composite"/i.test(attack.attackDescription)) {
+                if (attribute === "Ranged" && /composite/i.test(attack.attackDescription)) {
+                    attack.attackDescription = attack.attackDescription.replace(/\(\s*\+(\d+)\s*str\s+bonus\s*\)/i, function(match, bonus){
+                       return "(+" + (Number(bonus) + 2) + " Str bonus)";
+                    });
+                    attack.damageMod += 2;
+                }
+                else if (attribute === "Melee") {
                     attack.damageMod += 2;
                 }
                 return attack;
