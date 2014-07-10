@@ -125,7 +125,6 @@ describe("parserService", function () {
     it("should parse Melee", function () {
         baseMonster.Melee = "+5 dancing greatsword +35/+30/+25/+20 (3d6+18)";
         var parsedMonster = service.parseMonster(baseMonster);
-        console.log(JSON.stringify(parsedMonster.Melee[0][0]));
         expect(parsedMonster.Melee).to.deep.equal([
             [
                 {"attackDescription": "+5 dancing greatsword ", "attackBonuses": ["+35", "+30", "+25", "+20"], "damageDice": "3d6", "damageMod": "18"}
@@ -136,8 +135,6 @@ describe("parserService", function () {
     it("should parse strings with multiple attacks", function () {
         baseMonster.Melee = "+5 dancing greatsword +35/+30/+25/+20 (3d6+18), 2 wings +30 (2d6+12)";
         var parsedMonster = service.parseMonster(baseMonster);
-        console.log(JSON.stringify(parsedMonster.Melee[0][0]));
-        console.log(JSON.stringify(parsedMonster.Melee[0][1]));
         expect(parsedMonster.Melee).to.deep.equal([
             [
                 {"attackDescription": "+5 dancing greatsword ", "attackBonuses": ["+35", "+30", "+25", "+20"], "damageDice": "3d6", "damageMod": "18"},
@@ -148,8 +145,6 @@ describe("parserService", function () {
     it("should parse strings with multiple attacks groups", function () {
         //"+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)",
         var parsedMonster = service.parseMonster(baseMonster);
-        console.log(JSON.stringify(parsedMonster.Melee[0][0]));
-        console.log(JSON.stringify(parsedMonster.Melee[1][0]));
         expect(parsedMonster.Melee).to.deep.equal([
             [
                 {"attackDescription": "+5 dancing greatsword ", "attackBonuses": ["+35", "+30", "+25", "+20"], "damageDice": "3d6", "damageMod": "18"}
