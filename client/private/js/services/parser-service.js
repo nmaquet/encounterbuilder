@@ -94,7 +94,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                     var matches = regex.exec(attacks[j]);
                     if (matches) {
                         var attackDescription = matches[1].trim();
-                        var attackBonuses = matches[2].split("/");
+                        var attackBonuses = matches[2].split("/").map(Number);
 
                         var damageMatches = damageRegex.exec(matches[3]);
 
