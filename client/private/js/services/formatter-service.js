@@ -56,7 +56,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
 
         function formatMelee(monster, parsedMonster, attribute, failures) {
             function formatAttack(attack) {
-                return attack.attackDescription + " " + attack.attackBonuses.join("/") + " (" + attack.damageDice + "+" + attack.damageMod;
+                return attack.attackDescription + " " + attack.attackBonuses.join("/") + " (" + attack.damageDice + "+" + attack.damageMod + ")";
             }
             function formatAttackList(attackList) {
                 return attackList.map(formatAttack).join(", ");
