@@ -80,9 +80,32 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             }
         }
 
+        function insideParens(position, string) {
+            var left = 0, right = 0, i;
+            for (i = 0; i < position; ++i) {
+                if (string[i] === "(") {
+                    left++;
+                }
+                else if (string[i] === ")") {
+                    right++;
+                }
+            }
+            return right !== left;
+        }
+
+        function replaceAndIfNotInsideParens(string) {
+            return string.replace(/and/g, function(match, offset) {
+                if (!insideParens(offset, string)) {
+                    return ", ";
+                } else {
+                    return "and"
+                }
+            });
+        }
+
         function parseMeleeAttacks(monster, parsedMonster) {
             // "+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)"
-            var attacksGroup = monster.Melee.split(" or ");
+            var attacksGroup = replaceAndIfNotInsideParens(monster.Melee).split(" or ");
             var regex = /(\+?\d?\s*[^\+\-]*)\s*(\+?\-?\d+\/?\+?\d*\/?\+?\d*\/?\+?\d*)\s*\(([^\)]*)\)/;
             var damageRegex = /(\dd\d+)(\+?\-?\d*)\s*(.*)/;
 
