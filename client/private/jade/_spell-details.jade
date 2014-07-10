@@ -37,6 +37,10 @@
                 span
                     strong Range&nbsp;
                     | {{spell.range}}.
+            li(ng-if="spell.area")
+                span
+                    strong Area&nbsp;
+                    | {{spell.area}}.
             li(ng-if="spell.effect")
                 span
                     strong Effect&nbsp;
