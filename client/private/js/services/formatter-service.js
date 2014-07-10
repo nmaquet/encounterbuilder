@@ -4,6 +4,10 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
 
     function () {
 
+        function isNumber(x) {
+            return !isNaN(x) && x !== null && x !== undefined;
+        }
+
         function formatUnsignedNumber(monster, parsedMonster, attribute, failures) {
             if (!isNaN(parsedMonster[attribute])) {
                 monster[attribute] = parsedMonster[attribute];
@@ -44,11 +48,13 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
         }
 
         function formatHitDice(monster, parsedMonster, attribute, failures) {
-            if (parsedMonster.numberOfHD && parsedMonster.typeOfHD && parsedMonster.hitPointBonus) {
-                var hitDice = parsedMonster.numberOfHD;
-                var dieType = parsedMonster.typeOfHD;
-                var bonus = parsedMonster.hitPointBonus;
-                monster.HD = "(" + hitDice + "d" + dieType + "+" + bonus + ")";
+            var hitDice = parsedMonster.numberOfHD;
+            var dieType = parsedMonster.typeOfHD;
+            var bonus = parsedMonster.hitPointBonus;
+            if (isNumber(hitDice) && isNumber(dieType) && isNumber(bonus)) {
+                var sign = bonus > 0 ? "+": "";
+                bonus = bonus === 0 ? "" : bonus;
+                monster.HD = "(" + hitDice + "d" + dieType + sign + bonus + ")";
             } else {
                 failures["HD"] = "HD must be of the form '(XdY+Z)'";
             }

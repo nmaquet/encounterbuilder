@@ -56,7 +56,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
 
         function parseHD(monster, parsedMonster) {
             var string = monster.HD;
-            var regex = /\(\s*(\d+)\s*[d,D](\d+)\s*\+?\s*(\d*)\)/;
+            var regex = /\(\s*(\d+)\s*[d,D](\d+)\s*(\+?\-?\d*)\)/;
             var matches = regex.exec(string);
             if (!matches) {
                 parsedMonster.numberOfHD = NaN;

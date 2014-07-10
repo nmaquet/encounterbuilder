@@ -87,35 +87,56 @@ describe("formatterService", function () {
    it("should format the melee attacks", function () {
         baseMonster.Melee = "+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)";
         var monster = angular.copy(baseMonster);
-        formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
         expect(monster.Melee).to.equal(baseMonster.Melee);
+        expect(failures).to.deep.equal({});
    });
 
     it("should handle zero attack bonuses", function () {
         baseMonster.Melee = "broken scimitar +0 (1d6+3)";
         var monster = angular.copy(baseMonster);
-        formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
         expect(monster.Melee).to.equal(baseMonster.Melee);
+        expect(failures).to.deep.equal({});
     });
 
     it("should handle negative attack bonuses", function () {
         baseMonster.Melee = "broken scimitar -5 (1d6+3)";
         var monster = angular.copy(baseMonster);
-        formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
         expect(monster.Melee).to.equal(baseMonster.Melee);
+        expect(failures).to.deep.equal({});
     });
 
     it("should handle negative ability bonuses", function () {
         baseMonster.CMB = "-2";
         var monster = angular.copy(baseMonster);
-        formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
         expect(monster.CMB).to.equal(baseMonster.CMB);
+        expect(failures).to.deep.equal({});
     });
 
     it("should handle positive, null, and negative Skill bonuses", function () {
         baseMonster.Skills = "cook +2, fish +0, break things -3";
         var monster = angular.copy(baseMonster);
-        formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
         expect(monster.Skills).to.equal(baseMonster.Skills);
+        expect(failures).to.deep.equal({});
+    });
+
+    it("should handle null bonus to Hit Dice", function () {
+        baseMonster.HD = "(3d10)";
+        var monster = angular.copy(baseMonster);
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        expect(monster.HD).to.equal(baseMonster.HD);
+        expect(failures).to.deep.equal({});
+    });
+
+    it("should handle negative bonus to Hit Dice", function () {
+        baseMonster.HD = "(3d10-5)";
+        var monster = angular.copy(baseMonster);
+        var failures = formatterService.formatMonster(monster, parserService.parseMonster(baseMonster));
+        expect(monster.HD).to.equal(baseMonster.HD);
+        expect(failures).to.deep.equal({});
     });
 });
