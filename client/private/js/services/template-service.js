@@ -30,6 +30,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             }
             function advanceAttack(attack) {
                 attack.attackBonuses = attack.attackBonuses.map(addTwo);
+                attack.damageMod += 2;
                 return attack;
             }
             function advanceAttackList(attackList) {
@@ -69,7 +70,6 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'userMonsterSer
             for (var i in parsedMonster.Skills) {
                 parsedMonster.Skills[i].mod += 2;
             }
-
         }
 
         service.createTemplatedMonster = function (monster) {
