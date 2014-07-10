@@ -114,8 +114,9 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
 
         function parseAttacks(monster, parsedMonster, attribute) {
             // "+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)"
+            // "+5 dancing greatsword (+9 Str bonus) +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)"
             var attacksGroup = replaceAndIfNotInsideParens(monster[attribute]).split(" or ");
-            var regex = /(\+?\d?\s*[^\+\-]*)\s*(\+?\-?\d+\/?\+?\d*\/?\+?\d*\/?\+?\d*)\s*\(([^\)]*)\)/;
+            var regex = /^\s*(\+?\d?\s*[^\+\-]*(?:\s*\([^\)]*\)\s*)?[^\+\-]*)\s*(\+?\-?\d+\/?\+?\d*\/?\+?\d*\/?\+?\d*)\s*\(([^\)]*)\)\s*$/;
             var damageRegex = /(\dd\d+)(\+?\-?\d*)\s*(.*)/;
 
             var parsedAttackGroups = [];
