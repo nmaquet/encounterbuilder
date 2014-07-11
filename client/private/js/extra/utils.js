@@ -39,10 +39,11 @@ DEMONSQUID.encounterBuilderApp.factory('throttle', ['$timeout',
             var lastCallTime = 0;
             return function () {
                 var thisCallTime = lastCallTime = new Date().getTime();
+                var self = this;
                 var args = arguments;
                 $timeout(function () {
                     if (lastCallTime === thisCallTime) {
-                        callback.call(args);
+                        callback.apply(self, args);
                     }
                 }, delay);
             }
