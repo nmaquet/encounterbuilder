@@ -26,14 +26,10 @@ DEMONSQUID.encounterBuilderControllers.controller('UserFeatController',
                 contentTreeService.copyUserFeat($scope.userFeat._id);
             };
 
-            $scope.pending = true;
-            console.log("GETTING /api/user-feat/" + ( $routeParams.userFeatId || $routeParams.detailsId));
-            UserFeatResource.get({id: $routeParams.userFeatId || $routeParams.detailsId}, function (userFeat) {
-                $scope.userFeat = userFeat;
+            $scope.userFeat = UserFeatResource.get({id: $routeParams.userFeatId || $routeParams.detailsId}, function () {
                 if ($routeParams.userFeatId) {
                     $rootScope.globalTitle = "Encounter Builder - " + $scope.userFeat.title;
                 }
-                $scope.pending = false;
             });
         }
     ])
