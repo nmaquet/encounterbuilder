@@ -317,7 +317,6 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
-
             service.userMonsterDeleted = function (userMonster) {
                 var toRemove;
                 fancyTree.visit(function (node) {
@@ -330,6 +329,21 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 } else {
                     console.log("could not remove content tree userMonster");
+                }
+            };
+
+            service.userFeatDeleted = function (userFeat) {
+                var toRemove;
+                fancyTree.visit(function (node) {
+                    if (node.data.userFeatId && node.data.userFeatId === userFeat._id) {
+                        toRemove = node;
+                    }
+                });
+                if (toRemove) {
+                    removeNode(toRemove);
+                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
+                } else {
+                    console.log("could not remove content tree userFeat");
                 }
             };
 
