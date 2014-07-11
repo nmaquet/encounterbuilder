@@ -154,6 +154,7 @@ function main(db) {
         'edit-user-npc',
         'user-text',
         'edit-user-text',
+        'user-feat',
         'npc',
         'item',
         'spell',
