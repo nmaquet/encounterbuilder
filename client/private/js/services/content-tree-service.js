@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
-    ['$rootScope', '$timeout', '$http', 'encounterService', 'userMonsterService', 'userNpcService', 'userTextService', 'locationService',
-        function ($rootScope, $timeout, $http, encounterService, userMonsterService, userNpcService, userTextService, locationService) {
+    ['$rootScope', '$timeout', '$http', 'encounterService', 'userMonsterService', 'userNpcService', 'userTextService', 'locationService', 'UserFeatResource',
+        function ($rootScope, $timeout, $http, encounterService, userMonsterService, userNpcService, userTextService, locationService, UserFeatResource) {
 
             var LOAD_SUCCESS = "contentTreeLoaded";
 
@@ -178,6 +178,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     }
                 });
             };
+
             service.createUserNpc = function () {
                 userNpcService.create(function (error, userNpc) {
                     if (error) {
@@ -230,6 +231,14 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                         addNode({title: userNpc.Name, userNpcId: userNpc._id, key: getNextNodeKey()});
                         service.treeChanged(fancyTree.toDict(removeExtraClasses));
                     }
+                });
+            };
+
+            service.copyFeat = function (featId) {
+                var userFeat = UserFeatResource.copyFeat(featId);
+                userFeat.then(function() {
+                    addNode({title: userFeat.name, userFeatId: userFeat._id, key: getNextNodeKey()});
+                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 });
             };
 

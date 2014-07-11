@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('MainController',
-    ['$scope', '$rootScope', '$window', '$location', 'sidebarService', 'viewportService', 'locationService', 'UserFeatResource',    /* FIXME */
-        function ($scope, $rootScope, $window, $location, sidebarService, viewportService, locationService, UserFeatResource) {
+    ['$scope', '$rootScope', '$window', '$location', 'sidebarService', 'viewportService', 'locationService',    /* FIXME */
+        function ($scope, $rootScope, $window, $location, sidebarService, viewportService, locationService) {
 
             var viewport = $rootScope.viewport = viewportService.viewport;
 

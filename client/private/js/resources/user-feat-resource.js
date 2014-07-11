@@ -2,12 +2,7 @@
 
 DEMONSQUID.encounterBuilderServices.factory('UserFeatResource', ['$resource',
     function ($resource) {
-        function copy(id, idAttributeName) {
-            var userFeat = new UserFeatResource();
-            var query = {};
-            query[idAttributeName] = id;
-            userFeat.$save(query);
-            return userFeat;
+        function nop() {
         }
         var actions = {
             'get': {method: 'GET'},
@@ -15,13 +10,21 @@ DEMONSQUID.encounterBuilderServices.factory('UserFeatResource', ['$resource',
             'remove': {method: 'DELETE'},
             'delete': {method: 'DELETE'}
         };
-        var resource = window.U = $resource("/api/user-feat/:id", {id: '@_id'}, actions);
-        resource.copyFeat = function(id) {
-            return copy(id, "featId");
+        var UserFeatResource = $resource("/api/user-feat/:id", {id: '@_id'}, actions);
+        function copy(id, idAttributeName, callback) {
+            callback = callback || nop;
+            var userFeat = new UserFeatResource();
+            var query = {};
+            query[idAttributeName] = id;
+            userFeat.$save(query).then(callback);
+            return userFeat;
+        }
+        UserFeatResource.copyFeat = function(id, callback) {
+            return copy(id, "featId", callback);
         };
-        resource.copyUserFeat = function(id) {
-            return copy(id, "userFeatId");
+        UserFeatResource.copyUserFeat = function(id) {
+            return copy(id, "userFeatId", callback);
         };
-        return resource;
+        return UserFeatResource;
     }
 ]);
