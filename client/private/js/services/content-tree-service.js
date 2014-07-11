@@ -98,13 +98,18 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             service.goToNode = function (node) {
                 if (node.data.encounterId) {
                     locationService.go("/encounter/" + node.data.encounterId);
-                } else if (node.data.userMonsterId) {
+                }
+                else if (node.data.userMonsterId) {
                     locationService.go("/user-monster/" + node.data.userMonsterId);
-                } else if (node.data.userNpcId) {
+                }
+                else if (node.data.userNpcId) {
                     locationService.go("/user-npc/" + node.data.userNpcId);
                 }
                 else if (node.data.userTextId) {
                     locationService.go("/user-text/" + node.data.userTextId);
+                }
+                else if (node.data.userFeatId) {
+                    locationService.go("/user-feat/" + node.data.userFeatId);
                 }
                 else if (node.folder) {
                     locationService.go("/binder/" + node.key);
