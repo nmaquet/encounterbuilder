@@ -7,12 +7,11 @@ DEMONSQUID.encounterBuilderControllers.controller('UserFeatController',
             $scope.deleteUserFeat = function () {
                 if ($scope.userFeat) {
                     $scope.startFade = function () {
-                        $scope.userFeat.$delete().then(function(){
-                            contentTreeService.userFeatDeleted($scope.userFeat);
-                            if ($routeParams.detailsId) {
-                                locationService.closeDetails();
-                            }
-                        });
+                        contentTreeService.userFeatDeleted($scope.userFeat);
+                        if ($routeParams.detailsId) {
+                            locationService.closeDetails();
+                        }
+                        $scope.userFeat.$delete();
                     }
                 }
             };
