@@ -81,6 +81,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         node.extraClasses = "fancytree-npc";
                     } else if (node.data.userTextId) {
                         node.extraClasses = "fancytree-text";
+                    } else if (node.data.userFeatId) {
+                        node.extraClasses = "fancytree-feat";
                     }
                     node.render();
                 }
