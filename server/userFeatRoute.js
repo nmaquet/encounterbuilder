@@ -4,8 +4,8 @@ module.exports = function (userFeatCollection, featCollection, ObjectID) {
     var userFeatRoute = require("./userResourceRoute")(userFeatCollection, ObjectID);
     var createEmptyResource = userFeatRoute.createResource;
     userFeatRoute.createResource = function (request, response) {
-        var featId = request.query.featId;
-        var userFeatId = request.query.userFeatId;
+        var featId = request.body.featId;
+        var userFeatId = request.body.userFeatId;
         if (!featId && !userFeatId) {
             return createEmptyResource(request, response);
         }
