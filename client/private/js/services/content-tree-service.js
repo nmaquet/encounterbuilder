@@ -241,7 +241,13 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
 
             service.copyFeat = function (featId) {
                 UserFeatResource.save({featId: featId}, function (userFeat) {
-                    console.log(userFeat);
+                    addNode({title: userFeat.name, userFeatId: userFeat._id, key: getNextNodeKey()});
+                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
+                });
+            };
+
+            service.copyUserFeat = function (userFeatId) {
+                UserFeatResource.save({userFeatId: userFeatId}, function (userFeat) {
                     addNode({title: userFeat.name, userFeatId: userFeat._id, key: getNextNodeKey()});
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 });

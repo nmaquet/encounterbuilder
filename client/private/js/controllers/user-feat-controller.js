@@ -23,9 +23,9 @@ DEMONSQUID.encounterBuilderControllers.controller('UserFeatController',
 //                }
 //            };
 
-//            $scope.copyUserText = function () {
-//                contentTreeService.copyUserText($scope.userFeat._id);
-//            };
+            $scope.copyUserFeat = function () {
+                contentTreeService.copyUserFeat($scope.userFeat._id);
+            };
 
             $scope.pending = true;
             UserFeatResource.get({id: $routeParams.userFeatId || $routeParams.detailsId}, function (userFeat) {
