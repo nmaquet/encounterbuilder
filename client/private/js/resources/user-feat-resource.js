@@ -3,7 +3,7 @@
 DEMONSQUID.encounterBuilderServices.factory('UserFeatResource', ['$resource',
     function ($resource) {
         var actions = {
-            'get': {method: 'GET', cache: true},
+            'get': {method: 'GET'},
             'save': {method: 'POST'},
             'remove': {method: 'DELETE'},
             'delete': {method: 'DELETE'}

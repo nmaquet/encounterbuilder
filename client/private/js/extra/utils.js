@@ -37,11 +37,8 @@ DEMONSQUID.encounterBuilderApp.factory('throttle', ['$timeout',
     function ($timeout) {
         return function throttle(callback, delay) {
             var lastCallTime = 0;
-            var thisCallTime = 0;
             return function () {
-                var now = new Date().getTime();
-                lastCallTime = thisCallTime || now;
-                thisCallTime = now;
+                var thisCallTime = lastCallTime = new Date().getTime();
                 var args = arguments;
                 $timeout(function () {
                     if (lastCallTime === thisCallTime) {
