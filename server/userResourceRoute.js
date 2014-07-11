@@ -53,7 +53,7 @@ module.exports = function (collection, ObjectID) {
                     response.send(500)
                 }
                 else {
-                    response.send(200);
+                    response.json({});
                 }
             });
         }
