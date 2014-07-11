@@ -89,7 +89,7 @@ function main(db) {
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
     var contentTreeRoute = require('./contentTreeRoute')(collections.contentTrees);
     var favouritesRoute = require('./favouritesRoute')(collections.favourites);
-    var userFeatRoute = require('./userFeatRoute')(collections.userFeats, ObjectID);
+    var userFeatRoute = require('./userFeatRoute')(collections.userFeats, collections.feats, ObjectID);
 
     app.get('/api/search-monsters', authenticationCheck, metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', authenticationCheck, metrics.logSearchNpc, searchNpcsRoute);
