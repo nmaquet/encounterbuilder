@@ -27,6 +27,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserFeatController',
             };
 
             $scope.pending = true;
+            console.log("GETTING /api/user-feat/" + ( $routeParams.userFeatId || $routeParams.detailsId));
             UserFeatResource.get({id: $routeParams.userFeatId || $routeParams.detailsId}, function (userFeat) {
                 $scope.userFeat = userFeat;
                 if ($routeParams.userFeatId) {

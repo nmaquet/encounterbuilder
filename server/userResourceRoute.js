@@ -22,7 +22,7 @@ module.exports = function (collection, ObjectID) {
             delete resource._id;
             resource.userId = ObjectID(sessionUserId);
             var selector = {_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)};
-            collection.findAndModify(selector, [], resource, function (error, modifiedResource) {
+            collection.findAndModify(selector, [], resource, {new:true}, function (error, modifiedResource) {
                 if (error) {
                     response.send(500);
                 }

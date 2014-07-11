@@ -6,6 +6,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserFeatController',
 
             $scope.viewUserFeat = function () {
                 if ($scope.userFeat) {
+                    $scope.userFeat.$save();
                     locationService.go("/user-feat/" + $routeParams.userFeatId);
                 }
             };
