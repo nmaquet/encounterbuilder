@@ -49,7 +49,16 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                                 return false;
                             }
                         });
-                    } else if (tree.getActiveNode()) {
+                    }
+                    else if ($routeParams.userFeatId) {
+                        tree.visit(function (node) {
+                            if (node.data.userFeatId && node.data.userFeatId === $routeParams.userFeatId) {
+                                node.setActive(true);
+                                return false;
+                            }
+                        });
+                    }
+                    else if (tree.getActiveNode()) {
                         tree.getActiveNode().setActive(false);
                     }
                 }
