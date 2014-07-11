@@ -27,7 +27,7 @@ module.exports = function (userFeatCollection, featCollection, ObjectID) {
                 feat.name = "copy of " + feat.name;
                 feat.source = "originally from " + (feat.source || "???") + " and modified by " + request.session.user.username;
             }
-            feat.userId = sessionUserId;
+            feat.userId = ObjectID(sessionUserId);
             userFeatCollection.insert(feat, function (error, newFeatArray) {
                 if (error) {
                     response.send(500);
