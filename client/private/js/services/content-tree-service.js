@@ -326,6 +326,17 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
+            service.userFeatUpdated = function (userFeat) {
+                fancyTree.visit(function (node) {
+                    if (node.data.userFeatId && node.data.userFeatId === userFeat._id) {
+                        if (node.title !== userFeat.name) {
+                            node.setTitle(userFeat.name);
+                            service.treeChanged(fancyTree.toDict(removeExtraClasses));
+                        }
+                    }
+                });
+            };
+
             service.userMonsterDeleted = function (userMonster) {
                 var toRemove;
                 fancyTree.visit(function (node) {

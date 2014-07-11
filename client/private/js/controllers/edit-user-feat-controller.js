@@ -5,17 +5,13 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserFeatController',
         function ($rootScope, $scope, $timeout, $routeParams, $location, throttle, UserFeatResource, contentTreeService, locationService) {
 
             $scope.viewUserFeat = function () {
-                if ($scope.userFeat) {
-                    $scope.userFeat.$save();
-                    locationService.go("/user-feat/" + $routeParams.userFeatId);
-                }
+                locationService.go("/user-feat/" + $routeParams.userFeatId);
             };
 
             function updateUserFeat() {
                 if ($scope.userFeat) {
-                    $scope.userFeat.$save(function() {
-//                        contentTreeService.userFeatUpdated($scope.userFeat)
-                    });
+                    $scope.userFeat.$save();
+                    contentTreeService.userFeatUpdated($scope.userFeat);
                 }
             }
 
