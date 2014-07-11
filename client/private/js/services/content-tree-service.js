@@ -240,7 +240,8 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             };
 
             service.copyFeat = function (featId) {
-                UserFeatResource.copyFeat(featId, function(userFeat) {
+                UserFeatResource.save({featId: featId}, function (userFeat) {
+                    console.log(userFeat);
                     addNode({title: userFeat.name, userFeatId: userFeat._id, key: getNextNodeKey()});
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 });
