@@ -30,3 +30,25 @@ DEMONSQUID.escapeRegExp = function (str) {
 DEMONSQUID.dump = function(object) {
     console.log(JSON.stringify(object, null, 4));
 };
+
+var origin = new Date().getTime();
+
+DEMONSQUID.encounterBuilderApp.factory('throttle', ['$timeout',
+    function ($timeout) {
+        return function throttle(callback, delay) {
+            var lastCallTime = 0;
+            var thisCallTime = 0;
+            return function () {
+                var now = new Date().getTime();
+                lastCallTime = thisCallTime || now;
+                thisCallTime = now;
+                var args = arguments;
+                $timeout(function () {
+                    if (lastCallTime === thisCallTime) {
+                        callback.call(args);
+                    }
+                }, delay);
+            }
+        }
+    }
+]);
