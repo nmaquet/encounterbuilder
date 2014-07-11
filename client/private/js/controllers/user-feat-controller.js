@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('UserFeatController',
-    ['$rootScope', '$scope', '$timeout', '$routeParams', '$location', '$sce', 'UserFeatResource', 'contentTreeService', 'locationService',
-        function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, UserFeatResource, contentTreeService, locationService) {
+    ['$rootScope', '$scope', '$routeParams', 'UserFeatResource', 'contentTreeService', 'locationService',
+        function ($rootScope, $scope, $routeParams, UserFeatResource, contentTreeService, locationService) {
 
             $scope.deleteUserFeat = function () {
                 if ($scope.userFeat) {
@@ -16,11 +16,11 @@ DEMONSQUID.encounterBuilderControllers.controller('UserFeatController',
                 }
             };
 
-//            $scope.editUserText = function () {
-//                if ($scope.userFeat) {
-//                    locationService.go("/edit-user-text/" + ($routeParams.userFeatId || $routeParams.detailsId));
-//                }
-//            };
+            $scope.editUserFeat = function () {
+                if ($scope.userFeat) {
+                    locationService.go("/edit-user-feat/" + ($routeParams.userFeatId || $routeParams.detailsId));
+                }
+            };
 
             $scope.copyUserFeat = function () {
                 contentTreeService.copyUserFeat($scope.userFeat._id);
