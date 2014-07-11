@@ -209,6 +209,15 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
+            service.createUserFeat = function () {
+                var userFeat = new UserFeatResource();
+                userFeat.name = "Untitled feat";
+                userFeat.$save(function() {
+                    addNode({title: userFeat.name, userFeatId: userFeat._id, key: getNextNodeKey()});
+                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
+                });
+            };
+
             service.copyUserMonster = function (monsterId, userCreated) {
                 userMonsterService.copy(monsterId, userCreated, function (error, userMonster) {
                     if (error) {
