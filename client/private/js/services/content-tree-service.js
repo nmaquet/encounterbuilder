@@ -30,6 +30,9 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 else if (newNode.userTextId) {
                     newNode.extraClasses = "fancytree-text";
                 }
+                else if (newNode.userFeatId) {
+                    newNode.extraClasses = "fancytree-feat";
+                }
             }
 
             function getNextNodeKey() {
