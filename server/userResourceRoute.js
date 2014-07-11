@@ -22,9 +22,6 @@ module.exports = function (collection, ObjectID) {
             delete resource._id;
             resource.userId = ObjectID(sessionUserId);
             var selector = {_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)};
-            console.log("updating with");
-            console.log(resource);
-            console.log(request.body);
             collection.update(selector, resource, {}, function (error) {
                 if (error) {
                     response.send(500);
