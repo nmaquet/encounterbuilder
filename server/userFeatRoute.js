@@ -12,13 +12,10 @@ module.exports = function (userFeatCollection, featCollection, ObjectID) {
         if (featId && userFeatId) {
             return response.send(401);
         }
-        console.log("COPYING");
         var sessionUserId = request.session.user._id;
         var originCollection = (featId) ? featCollection : userFeatCollection;
         var query = (featId) ? {id: featId} : {_id: ObjectID(userFeatId), userId: sessionUserId} ;
         originCollection.findOne(query, {id: 0, _id: 0}, function (error, feat) {
-            console.log("source is");
-            console.log(feat);
             if (error) {
                 return response.send(500);
             }
