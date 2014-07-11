@@ -235,8 +235,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             };
 
             service.copyFeat = function (featId) {
-                var userFeat = UserFeatResource.copyFeat(featId);
-                userFeat.then(function() {
+                UserFeatResource.copyFeat(featId, function(userFeat) {
                     addNode({title: userFeat.name, userFeatId: userFeat._id, key: getNextNodeKey()});
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 });

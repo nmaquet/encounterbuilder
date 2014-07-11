@@ -16,7 +16,9 @@ DEMONSQUID.encounterBuilderServices.factory('UserFeatResource', ['$resource',
             var userFeat = new UserFeatResource();
             var query = {};
             query[idAttributeName] = id;
-            userFeat.$save(query).then(callback);
+            userFeat.$save(query).then(function(){
+                callback(userFeat);
+            });
             return userFeat;
         }
         UserFeatResource.copyFeat = function(id, callback) {
