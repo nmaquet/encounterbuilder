@@ -12,6 +12,7 @@ module.exports = function (db) {
         metrics: db.collection('metrics'),
         spells: db.collection('spells'),
         feats: db.collection('feats'),
+        userFeats: db.collection('userfeats'),
         contentTrees: db.collection('contenttrees'),
         favourites: db.collection('favourites')
     }

@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('FeatDetailsController',
-    ['$rootScope','$scope', '$http', '$sce', '$routeParams', 'featService', 'favouriteService',
-        function ($rootScope,$scope, $http, $sce, $routeParams, featService, favouriteService) {
+    ['$rootScope','$scope', '$http', '$sce', '$routeParams', 'featService', 'favouriteService', 'contentTreeService',
+        function ($rootScope,$scope, $http, $sce, $routeParams, featService, favouriteService, contentTreeService) {
             var TYPE_FLAGS = {
                 "teamwork": "Teamwork",
                 "critical": "Critical",
@@ -48,5 +48,8 @@ DEMONSQUID.encounterBuilderControllers.controller('FeatDetailsController',
                     }
                 }
             });
+            $scope.copyFeat = function () {
+                contentTreeService.copyFeat($scope.feat.id);
+            }
         }
     ]);

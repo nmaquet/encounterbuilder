@@ -45,7 +45,7 @@ function main(db) {
         app.use("/skins/lightgray/fonts", express.static(__dirname + '/../client/public/skins/lightgray/fonts'));
         app.use("/", express.static(__dirname + '/../website/'));
         app.use(express.logger('dev'));
-        app.use(express.bodyParser());
+        app.use(express.json());
         app.use(express.methodOverride());
         app.use(express.cookieParser());
         app.use(express.session({
@@ -89,6 +89,7 @@ function main(db) {
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
     var contentTreeRoute = require('./contentTreeRoute')(collections.contentTrees);
     var favouritesRoute = require('./favouritesRoute')(collections.favourites);
+    var userFeatRoute = require('./userFeatRoute')(collections.userFeats, collections.feats, ObjectID);
 
     app.get('/api/search-monsters', authenticationCheck, metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', authenticationCheck, metrics.logSearchNpc, searchNpcsRoute);
@@ -133,6 +134,12 @@ function main(db) {
     app.post("/api/update-user-text", authenticationCheck, /* TODO METRICS */ userTextRoute.update);
     app.post("/api/delete-user-text", authenticationCheck, /* TODO METRICS */ userTextRoute.delete);
 
+    /* User Feat */
+    app.get("/api/user-feat/:id", authenticationCheck, userFeatRoute.getResource);
+    app.post("/api/user-feat", authenticationCheck, userFeatRoute.createResource);
+    app.post("/api/user-feat/:id", authenticationCheck, userFeatRoute.updateResource);
+    app.delete("/api/user-feat/:id", authenticationCheck, userFeatRoute.deleteResource);
+
     var APP_JADE_FILES = [
         'feedback-popover',
         'login',
@@ -147,6 +154,7 @@ function main(db) {
         'edit-user-npc',
         'user-text',
         'edit-user-text',
+        'user-feat',
         'npc',
         'item',
         'spell',

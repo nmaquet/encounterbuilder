@@ -1,0 +1,34 @@
+.row.heading.result-heading
+    .col-xxs-8.col-xs-8.col-lg-9.name-container
+        h2.t-title.t-title-result {{userFeat.name}}
+        small Source: {{userFeat.source}}
+    .col-xxs-4.col-xs-4.col-lg-3.cr-container
+        .row.btn-container
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copyUserFeat()')
+                i.icon.fa.fa-copy
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit',ng-click='editUserFeat()')
+                i.icon.fa.fa-edit
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete',on-confirm="deleteUserFeat()", confirm-click="Are you sure ?", confirm-title="Delete Feat")
+                i.icon.fa.fa-trash-o
+.row.l-section.result-content
+    .col-xxs-12.col-xs-12.cat
+        span.cat-content {{userFeat.description}}
+    .col-xxs-12.col-xs-12.cat
+        ul.cat-content.list-unstyled
+            li(ng-if="userFeat.prerequisites")
+                span
+                    strong Prerequisites
+                    | :&nbsp;
+                    span(linkify='userFeat.prerequisites',linkify-type="feat", mythic="false")
+            li(ng-if="userFeat.benefit")
+                span
+                    strong Benefit
+                    | : {{userFeat.benefit}}
+            li(ng-if="userFeat.normal")
+                span
+                    strong Normal
+                    | : {{userFeat.normal}}
+            li(ng-if="userFeat.special")
+                span
+                    strong Special
+                    | : {{userFeat.special}}

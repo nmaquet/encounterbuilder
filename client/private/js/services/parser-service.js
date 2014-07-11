@@ -10,8 +10,14 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             parseAC(monster, parsedMonster);
             parseHD(monster, parsedMonster);
             parseSkills(monster, parsedMonster);
-            parseMeleeAttacks(monster, parsedMonster);
-            parseRangedAttacks(monster, parsedMonster);
+
+            if (monster.Melee) {
+                parseMeleeAttacks(monster, parsedMonster);
+            }
+
+            if (monster.Ranged) {
+                parseRangedAttacks(monster, parsedMonster);
+            }
 
             parsedMonster.Str = Number(monster.Str);
             parsedMonster.Dex = Number(monster.Dex);

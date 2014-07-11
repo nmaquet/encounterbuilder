@@ -195,4 +195,14 @@ describe("parserService", function () {
             ]
         ]);
     });
+
+    it("should not throw an exception if Melee is missing", function () {
+        baseMonster.Melee = undefined;
+        service.parseMonster(baseMonster);
+    });
+
+    it("should not throw an exception if Ranged is missing", function () {
+        baseMonster.Ranged = undefined;
+        service.parseMonster(baseMonster);
+    });
 });

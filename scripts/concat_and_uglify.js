@@ -57,6 +57,7 @@ var jsFiles = [
     "client/private/js/controllers/edit-user-npc-controller.js",
     "client/private/js/controllers/user-text-controller.js",
     "client/private/js/controllers/edit-user-text-controller.js",
+    "client/private/js/controllers/user-feat-controller.js",
     "client/private/js/controllers/loot-generator-controller.js",
     "client/private/js/controllers/tutorial-controller.js",
     "client/private/js/directives/click-to-edit.js",
@@ -96,7 +97,8 @@ var jsFiles = [
     "client/private/js/services/location-service.js",
     "client/private/js/services/template-service.js",
     "client/private/js/services/parser-service.js",
-    "client/private/js/services/formatter-service.js"
+    "client/private/js/services/formatter-service.js",
+    "client/private/js/resources/user-feat-resource.js"
 ];
 
 var cssFiles = [
