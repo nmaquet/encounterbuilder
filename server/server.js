@@ -137,7 +137,7 @@ function main(db) {
     /* User Feat */
     app.get("/api/user-feat/:id", authenticationCheck, userFeatRoute.getResource);
     app.post("/api/user-feat", authenticationCheck, userFeatRoute.createResource);
-    app.put("/api/user-feat/:id", authenticationCheck, userFeatRoute.updateResource);
+    app.post("/api/user-feat/:id", authenticationCheck, userFeatRoute.updateResource);
     app.delete("/api/user-feat/:id", authenticationCheck, userFeatRoute.deleteResource);
 
     var APP_JADE_FILES = [

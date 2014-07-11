@@ -22,12 +22,12 @@ module.exports = function (collection, ObjectID) {
             delete resource._id;
             resource.userId = ObjectID(sessionUserId);
             var selector = {_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)};
-            collection.update(selector, resource, {}, function (error) {
+            collection.findAndModify(selector, [], resource, function (error, modifiedResource) {
                 if (error) {
                     response.send(500);
                 }
                 else {
-                    response.send(200);
+                    response.json(modifiedResource);
                 }
             });
         },
@@ -36,12 +36,12 @@ module.exports = function (collection, ObjectID) {
             var resource = request.body || {};
             delete resource._id;
             resource.userId = ObjectID(sessionUserId);
-            collection.insert(resource, function (error, newResource) {
+            collection.insert(resource, function (error, newResourceArray) {
                 if (error) {
                     response.json(500);
                 }
                 else {
-                    response.json(newResource);
+                    response.json(newResourceArray[0]);
                 }
             });
         },
