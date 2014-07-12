@@ -1,8 +1,10 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
-    ['$rootScope', '$scope', '$timeout', '$routeParams', '$location', '$sce', 'userMonsterService', 'contentTreeService', 'locationService',
-        function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userMonsterService, contentTreeService, locationService) {
+    ['$rootScope', '$scope', '$timeout', '$routeParams', '$location', '$sce', 'userMonsterService', 'contentTreeService', 'locationService', 'templateService',
+        function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userMonsterService, contentTreeService, locationService, templateService) {
+
+            var baseMonster = null;
 
             $scope.deleteUserMonster = function () {
                 if ($scope.userMonster) {
@@ -31,30 +33,31 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                 contentTreeService.copyUserMonster($scope.userMonster._id, true);
             };
 
+            $scope.advanceMonster = function () {
+                $scope.userMonster = templateService.advanceMonster(baseMonster, function (error) {
+                    console.log(error);
+                });
+                contentTreeService.userMonsterUpdated($scope.userMonster);
+            };
+
             $scope.pending = true;
 
-            userMonsterService.get($routeParams.userMonsterId || $routeParams.detailsId, function (error, userMonster) {
-                if (error) {
-                    return console.log(error);
-                }
-                // FIXME: use filter
-                if (userMonster.Description) {
-                    userMonster.DescriptionHTML = $sce.trustAsHtml(userMonster.Description);
-                }
-                // FIXME: use filter
-                if (userMonster.SpecialAbilities) {
-                    userMonster.SpecialAbilitiesHTML = $sce.trustAsHtml(userMonster.SpecialAbilities);
-                }
-                // FIXME: use filter
-                if (userMonster.SpellLikeAbilities) {
-                    userMonster.SpellLikeAbilitiesHTML = $sce.trustAsHtml(userMonster.SpellLikeAbilities);
-                }
+            function loadMonster() {
+                userMonsterService.get($routeParams.userMonsterId || $routeParams.detailsId, function (error, userMonster) {
+                    if (error) {
+                        return console.log(error);
+                    }
 
-                $scope.userMonster = userMonster;
-                if ($routeParams.userMonsterId) {
-                    $rootScope.globalTitle = "Encounter Builder - " + $scope.userMonster.Name;
-                }
-                $scope.pending = false;
-            });
+                    baseMonster = userMonster;
+                    $scope.userMonster = templateService.createTemplatedMonster(userMonster);
+
+                    if ($routeParams.userMonsterId) {
+                        $rootScope.globalTitle = "Encounter Builder - " + $scope.userMonster.Name;
+                    }
+                    $scope.pending = false;
+                });
+            }
+
+            loadMonster();
         }
     ]);

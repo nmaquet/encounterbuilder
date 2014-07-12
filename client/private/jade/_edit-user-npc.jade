@@ -49,6 +49,7 @@ mixin fullWidthTextArea(name, model, rows, placeholder)
                 form.form-horizontal(role="form")
                     +labeledInput("Speed", "userNpc.Speed", "e.g. 30 ft., fly 60 ft. (good)")
                     +labeledTextArea("Melee", "userNpc.Melee", 3, "e.g. greataxe +9/+4 (3d6+6/x3) and gore +4 (1d6+2)")
+                    +labeledTextArea("Ranged", "userNpc.Ranged", 3, "e.g. 4 spikes +8 (1d6+5)")
                 form.form-horizontal(role="form")
                     .row
                         .col-xs-12.col-sm-6

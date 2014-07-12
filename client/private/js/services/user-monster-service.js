@@ -10,7 +10,7 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', '$ca
     return {
         get: function (id, callback) {
             callback = callback || nop;
-            $http.get('/api/user-monster/' + id, {cache:true})
+            $http.get('/api/user-monster/' + id, {cache: true})
                 .success(function (response) {
                     if (response.error) {
                         console.log(error);
@@ -82,7 +82,7 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', '$ca
         getMultiple: function (ids, callback) {
             function pushTask(id) {
                 tasks.push(function (taskCallback) {
-                        $http.get('/api/user-monster/' + id, {cache:true})
+                        $http.get('/api/user-monster/' + id, {cache: true})
                             .success(function (data) {
                                 taskCallback(null, data.userMonster);
                             })
@@ -92,6 +92,7 @@ DEMONSQUID.encounterBuilderServices.factory('userMonsterService', ['$http', '$ca
                     }
                 );
             }
+
             var tasks = [];
             for (var i in ids) {
                 pushTask(ids[i]);

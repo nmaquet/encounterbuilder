@@ -17,10 +17,25 @@
 
         beforeEach(module("encounterBuilderApp"));
 
-        beforeEach(inject(function (_$compile_, _$rootScope_, spellService) {
+        beforeEach(function () {
+            /* this prevents the linkify directive from crashing and blocking the tests */
+            module(function ($provide) {
+                $provide.factory('spellService', function () {
+                    return { spells: function () {
+                        return { names: ["foo"] };
+                    }};
+                });
+                $provide.factory('featService', function () {
+                    return { feats: function () {
+                        return { names: ["foo"] };
+                    }};
+                });
+            });
+        });
+
+        beforeEach(inject(function (_$compile_, _$rootScope_) {
             $rootScope = _$rootScope_;
             $compile = _$compile_;
-            spellService.spells = {names: []}; /* this prevents the linkify directive from crashing and blocking the tests */
         }));
 
         function createElement(spellString) {
@@ -68,13 +83,13 @@
 
         it("should produce HTML for Clerics with Domain Spells", function () {
             var element = createElement(SPELLS_KNOWN_CLERIC_NOOB_1);
-            expect(element.find("li:nth-child(1)").html()).to.equal("0 (at will)—blight<sup>D</sup>, false life<sup>D</sup>");
+            expect(element.find("li:nth-child(1)").html()).to.equal('<span class="ng-scope">0 (at will)—blight</span><sup class="ng-scope">D</sup><span class="ng-scope">, false life</span><sup class="ng-scope">D</sup>');
         });
 
         it("should produce HTML for nOOb spellcaster 3 missing the (at will) part", function () {
             var element = createElement(SPELLS_KNOWN_NOOB_3_NO_AT_WILL);
-            expect(element.find("li:nth-child(1)").html()).to.equal("1st (7/day)—alarm");
-            expect(element.find("li:nth-child(2)").html()).to.equal("0 (at will)—ghost sounds");
+            expect(element.find("li:nth-child(1)").text()).to.equal("1st (7/day)—alarm");
+            expect(element.find("li:nth-child(2)").text()).to.equal("0 (at will)—ghost sounds");
         });
     });
 })();

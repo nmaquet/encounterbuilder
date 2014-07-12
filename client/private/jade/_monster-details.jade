@@ -49,10 +49,14 @@
                         span
                             strong SPD
                             | &nbsp;{{monster.Speed}}
-                    li
+                    li(ng-if="monster.Melee")
                         span
                             strong Melee
                             | &nbsp;{{monster.Melee}}
+                    li(ng-if="monster.Ranged")
+                        span
+                            strong Ranged
+                            | &nbsp;{{monster.Ranged}}
                     li
                         span
                             strong Space
