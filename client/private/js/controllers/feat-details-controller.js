@@ -49,7 +49,7 @@ DEMONSQUID.encounterBuilderControllers.controller('FeatDetailsController',
                 }
             });
             $scope.copyFeat = function () {
-                contentTreeService.copyFeat($scope.feat.id);
+                contentTreeService.copyResource($scope.feat.id, "user-feat");
             }
         }
     ]);
