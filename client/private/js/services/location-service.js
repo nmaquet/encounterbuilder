@@ -46,6 +46,10 @@ DEMONSQUID.encounterBuilderServices.factory('locationService',
                     else {
                         this.go('/');
                     }
+                },
+                getResourceType: function() {
+                    var match = /^\/(?:edit-)?((?:user-)npc|monster|feat|spell|item)\//.exec($location.path());
+                    return match && match[1];
                 }
             };
         }]);
