@@ -335,8 +335,9 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             service.userResourceUpdated = function (userResource) {
                 fancyTree.visit(function (node) {
                     if (node.data.userResourceId && node.data.userResourceId === userResource._id) {
-                        if (node.title !== userResource.name) {
-                            node.setTitle(userResource.name);
+                        var name = userResource.name || userResource.Name;
+                        if (node.title !== name) {
+                            node.setTitle(name);
                             service.treeChanged(fancyTree.toDict(removeExtraClasses));
                         }
                     }
