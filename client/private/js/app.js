@@ -24,15 +24,26 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
             .when('/user-monster/:userMonsterId', { templateUrl: 'user-monster.html' })
             .when('/user-npc/:userNpcId', { templateUrl: 'user-npc.html' })
             .when('/user-text/:userTextId', { templateUrl: 'user-text.html' })
+
+            /* user-feat */
             .when('/user-feat/:userFeatId', { templateUrl: 'user-feat.html' })
+            .when('/edit-user-feat/:userFeatId', { templateUrl: 'edit-user-feat.html' })
+            .when('/edit-user-feat/:userFeatId/:type/:detailsId', { templateUrl: 'edit-user-feat.html' })
+            /* user-spell */
+            .when('/user-spell/:userSpellId', { templateUrl: 'user-spell.html' })
+            .when('/edit-user-spell/:userSpellId', { templateUrl: 'edit-user-spell.html' })
+            .when('/edit-user-spell/:userSpellId/:type/:detailsId', { templateUrl: 'edit-user-spell.html' })
+            /* user-item */
+            .when('/user-item/:userItemId', { templateUrl: 'user-item.html' })
+            .when('/edit-user-item/:userItemId', { templateUrl: 'edit-user-item.html' })
+            .when('/edit-user-item/:userItemId/:type/:detailsId', { templateUrl: 'edit-user-item.html' })
+
             .when('/edit-user-monster/:userMonsterId/:type/:detailsId', { templateUrl: 'edit-user-monster.html' })
             .when('/edit-user-npc/:userNpcId/:type/:detailsId', { templateUrl: 'edit-user-npc.html' })
             .when('/edit-user-text/:userTextId/:type/:detailsId', { templateUrl: 'edit-user-text.html' })
             .when('/edit-user-monster/:userMonsterId', { templateUrl: 'edit-user-monster.html' })
             .when('/edit-user-npc/:userNpcId', { templateUrl: 'edit-user-npc.html' })
             .when('/edit-user-text/:userTextId', { templateUrl: 'edit-user-text.html' })
-            .when('/edit-user-feat/:userFeatId', { templateUrl: 'edit-user-feat.html' })
-            .when('/edit-user-feat/:userFeatId/:type/:detailsId', { templateUrl: 'edit-user-feat.html' })
             .when('/print-encounter/:encounterId', { templateUrl: 'printable-encounter.html' })
             .when('/binder/:binderId', { templateUrl: 'binder.html' })
             .when('/monster/:monsterId', { templateUrl: 'monster.html'})
