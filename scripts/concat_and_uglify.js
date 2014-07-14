@@ -99,6 +99,7 @@ var jsFiles = [
     "client/private/js/services/template-service.js",
     "client/private/js/services/parser-service.js",
     "client/private/js/services/formatter-service.js",
+    "client/private/js/services/user-resource-service.js",
     "client/private/js/resources/user-resources.js"
 ];
 
