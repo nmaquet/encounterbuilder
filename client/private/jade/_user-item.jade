@@ -1,0 +1,34 @@
+.row.heading.result-heading
+    .col-xxs-8.col-xs-8.col-lg-9.name-container
+        h2.t-title.t-title-result {{userResource.name}}
+        small Source: {{userResource.source}}
+    .col-xxs-4.col-xs-4.col-lg-3.cr-container
+        .row.btn-container
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copy()')
+                i.icon.fa.fa-copy
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit',ng-click='edit()')
+                i.icon.fa.fa-edit
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete',on-confirm="delete()", confirm-click="Are you sure ?", confirm-title="Delete Feat")
+                i.icon.fa.fa-trash-o
+.row.l-section.result-content
+    .col-xxs-12.col-xs-12.cat
+        span.cat-content {{userResource.description}}
+    .col-xxs-12.col-xs-12.cat
+        ul.cat-content.list-unstyled
+            li(ng-if="userResource.prerequisites")
+                span
+                    strong Prerequisites
+                    | :&nbsp;
+                    span(linkify='userResource.prerequisites',linkify-type="feat", mythic="false")
+            li(ng-if="userResource.benefit")
+                span
+                    strong Benefit
+                    | : {{userResource.benefit}}
+            li(ng-if="userResource.normal")
+                span
+                    strong Normal
+                    | : {{userResource.normal}}
+            li(ng-if="userResource.special")
+                span
+                    strong Special
+                    | : {{userResource.special}}

@@ -1,0 +1,36 @@
+mixin labeledInput(name, model, placeholder)
+    .form-group
+        label.col-xs-2.control-label= name + ':'
+        .col-xs-10
+            input.form-control(type=text, name=name, placeholder=placeholder, ng-model=model)
+
+mixin labeledInputInline(name, model, placeholder)
+    .form-group
+        label= name + ':'
+        input.form-control(type=text, name=name, placeholder=placeholder, ng-model=model)
+
+mixin labeledTextArea(name, model, rows, placeholder)
+    .form-group
+        label.col-xs-2.control-label= name + ':'
+        .col-xs-10
+            textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model)
+
+mixin fullWidthTextArea(name, model, rows, placeholder)
+    .form-group
+        textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model, ui-tinymce="tinymceOptions")
+
+.row.l-section.result-content(pending="!userResource.$resolved")
+    .col-xxs-12.col-xs-12
+        button.btn.btn-danger.pull-right(type="submit" ng-click="view()" ng-class="{'btn-small' : viewport.xs}") Done
+    .col-xxs-12.col-xs-12
+        br
+    .col-xxs-12.col-xs-12
+        .row
+            .col-xs-12.cat.decor
+                form.form-horizontal(role="form")
+                    +labeledInput('Name', 'userResource.name', 'e.g. Combat Reflexes')
+                    +labeledTextArea('Description', 'userResource.description', 3, 'e.g. You can make additional attacks of opportunity.')
+                    +labeledTextArea('Prerequisites', 'userResource.prerequisites', 3, 'e.g. Dex 12')
+                    +labeledTextArea('Benefit', 'userResource.benefit', 7, 'e.g. You may make a number of additional attacks of opportunity per round equal to your Dexterity bonus. With this feat, you may also make attacks of opportunity while flat-footed.')
+                    +labeledTextArea('Normal', 'userResource.normal', 3, "e.g. A character without this feat can make only one attack of opportunity per round and can't make attacks of opportunity while flat-footed.")
+                    +labeledTextArea('Special', 'userResource.special', 3, 'e.g. The Combat Reflexes feat does not allow a rogue to use her opportunist ability more than once per round.')
