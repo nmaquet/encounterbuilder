@@ -16,7 +16,8 @@ module.exports = function (db) {
         userSpells: db.collection('userspells'),
         userItems: db.collection('useritems'),
         contentTrees: db.collection('contenttrees'),
-        favourites: db.collection('favourites')
+        favourites: db.collection('favourites'),
+        userIllustrations: db.collection('userillustrations')
     }
 };
 

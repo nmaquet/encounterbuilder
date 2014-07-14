@@ -76,7 +76,7 @@ function main(db) {
     var monsterRoute = require('./monsterRoute')(collections.monsters);
     var userMonsterRoute = require('./userMonsterRoute')(collections.userMonsters, collections.monsters, ObjectID);
     var userNpcRoute = require('./userNpcRoute')(collections.userNpcs, collections.npcs, ObjectID);
-    var userTextRoute = require('./userTextRoute')(collections.userTexts,  ObjectID);
+    var userTextRoute = require('./userTextRoute')(collections.userTexts, ObjectID);
     var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
     var npcRoute = require('./npcRoute')(collections.npcs);
     var spellRoute = require('./spellRoute')(collections.spells);
@@ -92,6 +92,7 @@ function main(db) {
     var userFeatRoute = require('./userResourceRoute')(collections.userFeats, collections.feats, ObjectID);
     var userSpellRoute = require('./userResourceRoute')(collections.userSpells, collections.spells, ObjectID);
     var userItemRoute = require('./userResourceRoute')(collections.userItems, collections.magicitems, ObjectID);
+    var userIllustrationRoute = require('./userIllustrationRoute')(collections.userIllustrations, ObjectID);
 
     app.get('/api/search-monsters', authenticationCheck, metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', authenticationCheck, metrics.logSearchNpc, searchNpcsRoute);
@@ -154,6 +155,13 @@ function main(db) {
     app.post("/api/user-item/:id", authenticationCheck, userItemRoute.updateResource);
     app.delete("/api/user-item/:id", authenticationCheck, userItemRoute.deleteResource);
 
+    /* User illustration */
+    app.get("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.getResource);
+    app.post("/api/user-illustration", authenticationCheck, userIllustrationRoute.createResource);
+    app.post("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.updateResource);
+    app.delete("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.deleteResource);
+    app.post("/api/upload-user-illustration-image/:id", authenticationCheck, userIllustrationRoute.uploadImage);
+    app.get("/api/user-illustration-image/:id", authenticationCheck, userIllustrationRoute.getImage);
 
     var APP_JADE_FILES = [
         'feedback-popover',
@@ -179,7 +187,8 @@ function main(db) {
         'item',
         'spell',
         'feat',
-        'printable-encounter'
+        'printable-encounter',
+        'user-illustration'
     ];
 
     for (var i in APP_JADE_FILES) {

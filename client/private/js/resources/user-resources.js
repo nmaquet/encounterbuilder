@@ -53,5 +53,11 @@
         }
     ]);
 
+    DEMONSQUID.encounterBuilderServices.factory('UserIllustrationResource', ['$resource', '$cacheFactory',
+        function ($resource, $cacheFactory) {
+            return makeUserResource("user-illustration", $resource, $cacheFactory);
+        }
+    ]);
+
 })();
 
