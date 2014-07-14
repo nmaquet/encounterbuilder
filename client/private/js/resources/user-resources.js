@@ -37,7 +37,7 @@
 
     DEMONSQUID.encounterBuilderServices.factory('UserFeatResource', ['$resource', '$cacheFactory',
         function ($resource, $cacheFactory) {
-            return  window.U = makeUserResource("user-feat", $resource, $cacheFactory);
+            return makeUserResource("user-feat", $resource, $cacheFactory);
         }
     ]);
 
