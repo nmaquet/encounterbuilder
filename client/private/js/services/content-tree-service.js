@@ -259,14 +259,14 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
 
             service.copyResource = function (resourceId, resourceType) {
                 userResourceService[resourceType].save({baseResourceId: resourceId}, function (userResource) {
-                    addNode({title: userResource.name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey()});
+                    addNode({title: userResource.name || userResource.Name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey()});
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 });
             };
 
             service.copyUserResource = function (resourceId, resourceType) {
                 userResourceService[resourceType].save({userResourceId: resourceId}, function (userResource) {
-                    addNode({title: userResource.name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey()});
+                    addNode({title: userResource.name || userResource.Name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey()});
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 });
             };
