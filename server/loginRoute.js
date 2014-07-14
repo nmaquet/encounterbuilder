@@ -2,6 +2,7 @@
 
 module.exports = function (userService) {
     return function (request, response) {
+        console.log(request.body);
         userService.authenticate(request.body.username, request.body.password, function (error, user) {
             if (user) {
                 request.session.regenerate(function () {

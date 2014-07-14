@@ -23,6 +23,7 @@ var jsFiles = [
     "client/private/bower_components/tinymce/themes/modern/theme.min.js",
     "client/private/bower_components/tinymce/plugins/autoresize/plugin.min.js",
     "client/private/bower_components/angular-ui-tinymce/src/tinymce.js",
+    "client/private/bower_components/angular-file-upload/angular-file-upload.js",
     "client/private/angular-ui/ui-bootstrap-0.10.0.js",
     "client/private/angular-ui/ui-bootstrap-tpls-0.10.0.js",
     // App files
@@ -60,6 +61,7 @@ var jsFiles = [
     "client/private/js/controllers/user-feat-controller.js",
     "client/private/js/controllers/loot-generator-controller.js",
     "client/private/js/controllers/tutorial-controller.js",
+    "client/private/js/controllers/upload-controller.js",
     "client/private/js/directives/click-to-edit.js",
     "client/private/js/directives/confirm-click.js",
     "client/private/js/directives/head.js",
@@ -73,6 +75,7 @@ var jsFiles = [
     "client/private/js/directives/fade-in-fade-out.js",
     "client/private/js/directives/fade-out.js",
     "client/private/js/directives/slide-menu.js",
+    "client/private/js/directives/thumbnail.js",
     "client/private/js/filters/abbreviate-source.js",
     "client/private/js/filters/number-to-fraction-string.js",
     "client/private/js/filters/classes-to-string.js",

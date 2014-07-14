@@ -1,0 +1,126 @@
+#image-upload-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='image-upload-modal-label',aria-hidden='true',ng-controller="UploadController")
+    .modal-dialog.modal-lg
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h3#image-upload-modal-label Upload image
+            .modal-body
+                .container
+                    .row
+                        .col-md-3
+                            h3 Select files
+                            div(ng-show='uploader.isHTML5')
+                                //
+                                   3. ng-file-over | ng-file-over="className"
+                                .well.my-drop-zone(ng-file-over='ng-file-over')
+                                    | Base drop zone
+                                //
+                                   Example: ng-file-drop | ng-file-drop="options"
+                                .well.my-drop-zone(ng-file-drop, ng-file-over='another-file-over-class')
+                                    | Another drop zone with its own settings
+                            //
+                               2. ng-file-select | ng-file-select="options"
+                            input(ng-file-select='ng-file-select', type='file')
+                        .col-md-9(style='margin-bottom: 40px;')
+                            h2 Uploads only images (with canvas preview)
+                            h3 The queue
+                            p Queue length: {{ uploader.queue.length }}
+                            table.table
+                                thead
+                                    tr
+                                        th(width='50%') Name
+                                        th(ng-show='uploader.isHTML5') Size
+                                        th(ng-show='uploader.isHTML5') Progress
+                                        th Status
+                                        th Actions
+                                tbody
+                                    tr(ng-repeat='item in uploader.queue')
+                                        td
+                                            strong {{ item.file.name }}
+                                            //
+                                               Image preview
+                                            //
+                                              auto height
+                                            //
+                                              <div ng-thumb="{ file: item.file, width: 100 }"></div>
+                                            //
+                                              auto width
+                                            div(ng-show='uploader.isHTML5', thumbnail='{ file: item.file, height: 100 }')
+                                            //
+                                              fixed width and height
+                                            //
+                                              <div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>
+                                        td(ng-show='uploader.isHTML5', nowrap='nowrap') {{ item.file.size/1024/1024|number:2 }} MB
+                                        td(ng-show='uploader.isHTML5')
+                                            .progress(style='margin-bottom: 0;')
+                                                .progress-bar(role='progressbar', ng-style='{ \'width\': item.progress + \'%\' }')
+                                        td.text-center
+                                            span(ng-show='item.isSuccess')
+                                                i.glyphicon.glyphicon-ok
+                                            span(ng-show='item.isCancel')
+                                                i.glyphicon.glyphicon-ban-circle
+                                            span(ng-show='item.isError')
+                                                i.glyphicon.glyphicon-remove
+                                        td(nowrap='nowrap')
+                                            button.btn.btn-success.btn-xs(type='button', ng-click='item.upload()', ng-disabled='item.isReady || item.isUploading || item.isSuccess')
+                                                span.glyphicon.glyphicon-upload
+                                                | Upload
+                                            button.btn.btn-warning.btn-xs(type='button', ng-click='item.cancel()', ng-disabled='!item.isUploading')
+                                                span.glyphicon.glyphicon-ban-circle
+                                                | Cancel
+                                            button.btn.btn-danger.btn-xs(type='button', ng-click='item.remove()')
+                                                span.glyphicon.glyphicon-trash
+                                                | Remove
+                            div
+                                p
+                                    | Queue progress:
+                                    .progress(style='')
+                                        .progress-bar(role='progressbar', ng-style='{ \'width\': uploader.progress + \'%\' }')
+                                button.btn.btn-success.btn-s(type='button', ng-click='uploader.uploadAll()', ng-disabled='!uploader.getNotUploadedItems().length')
+                                    span.glyphicon.glyphicon-upload
+                                    | Upload all
+                                button.btn.btn-warning.btn-s(type='button', ng-click='uploader.cancelAll()', ng-disabled='!uploader.isUploading')
+                                    span.glyphicon.glyphicon-ban-circle
+                                    | Cancel all
+                                button.btn.btn-danger.btn-s(type='button', ng-click='uploader.clearQueue()', ng-disabled='!uploader.queue.length')
+                                    span.glyphicon.glyphicon-trash
+                                    | Remove all
+
+
+                        //#error-alert.alert.alert-danger.hidden {{errorMessage}}
+                //#success-alert.alert.alert-success.hidden {{successMessage}}
+                //.row
+                    //.col-xxs-12.col-xs-12.col-md-6
+                        legend Edit user details
+                        form
+                            .form-group
+                                label.control-label(for='current_password') User Name
+                                input.form-control.input-md(type='text', ng-model="username", name='username',required='')
+                            .form-group
+                                label.control-label(for='new_password') Email
+                                input#email.form-control.input-md(type='email', name='email',required='', ng-model="email")
+                            .form-group
+                                label.control-label(for='confirm_password') Full Name
+                                input.form-control.input-md(type='text', name='fullname', ng-model="fullname")
+                            .form-group
+                                label.control-label(for='confirm_password') Confirm your password
+                                input.form-control.input-md(type='password', name='password', ng-model="confirmedPassword")
+                            .form-group
+                                button.btn.btn-primary.pull-left(type="submit", ng-click="changeUserData()", ng-disabled="!confirmedPassword || !username || !email") Save changes
+                    br.visible-xs
+                    //.col-xxs-12.col-xs-12.col-md-6
+                        legend Change password
+                        form
+                            .form-group
+                                label.control-label(for='current_password') Current Password
+                                input.form-control.input-md(type='password',ng-model="oldPassword", name='current_password')
+                            .form-group
+                                label.control-label(for='new_password') New Password
+                                input.form-control.input-md(type='password', name='new_password', ng-model="newPassword1")
+                            .form-group
+                                label.control-label(for='confirm_password') Confirm Password
+                                input.form-control.input-md(type='password', name='confirm_password', ng-model="newPassword2")
+                            .form-group
+                                button.btn.btn-primary.pull-left(type="submit", ng-click="changePassword()", ng-disabled="!oldPassword || !newPassword1 || !newPassword2") Change Password
+            .modal-footer
+                button.btn(href='#', data-dismiss='modal', aria-hidden='true') Close

@@ -25,8 +25,5 @@ DEMONSQUID.encounterBuilderControllers.controller('SidebarController',
             $scope.createUserText = function () {
                 contentTreeService.createUserText();
             };
-            $scope.createUserFeat = function () {
-                contentTreeService.createUserFeat();
-            };
         }
     ]);
