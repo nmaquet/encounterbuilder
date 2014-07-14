@@ -1,0 +1,5 @@
+.row(ng-controller='ContentController')
+    .l-section.l-shadow.search-result.user-monster(ng-controller="EditUserResourceController", ng-class="{'col-lg-6': !expanded,'col-lg-12':expanded}",fade-out="startFade", ng-hide="contentType && !viewport.lg")
+        include _edit-user-spell
+    .col-lg-6
+        include _right-details-pane

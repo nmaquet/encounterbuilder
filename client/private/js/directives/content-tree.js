@@ -50,9 +50,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                             }
                         });
                     }
-                    else if ($routeParams.userFeatId) {
+                    else if ($routeParams.userResourceId) {
                         tree.visit(function (node) {
-                            if (node.data.userFeatId && node.data.userFeatId === $routeParams.userFeatId) {
+                            if (node.data.userResourceId && node.data.userResourceId === $routeParams.userResourceId) {
                                 node.setActive(true);
                                 return false;
                             }

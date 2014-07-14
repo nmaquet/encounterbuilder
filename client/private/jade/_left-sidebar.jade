@@ -32,6 +32,14 @@ section#left-sidebar.sp-menu.sp-menu-vertical.sp-menu-left.no-print(slide-menu)
                                     i.icon.fa.fa-list-alt
                                     strong &nbsp;Create new encounter
                             li
+                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserText()')
+                                    i.icon.fa.fa-pencil
+                                    strong &nbsp;Create new text
+                            li
+                                a.create-dropdown-create.is-pointer(tabindex='-1', data-target='#image-upload-modal', role='button', data-toggle='modal')
+                                    i.icon.fa.fa-picture-o
+                                    strong &nbsp;Create an image
+                            li
                                 a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserMonster()')
                                     i.icon.fa.fa-bug
                                     strong &nbsp;Create new monster
@@ -40,17 +48,17 @@ section#left-sidebar.sp-menu.sp-menu-vertical.sp-menu-left.no-print(slide-menu)
                                     i.icon.fa.fa-user
                                     strong &nbsp;Create new NPC
                             li
-                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserText()')
-                                    i.icon.fa.fa-pencil
-                                    strong &nbsp;Create new text
+                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserItem()')
+                                    i.icon.fa.fa-flask
+                                    strong &nbsp;Create new item
+                            li
+                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserSpell()')
+                                    i.icon.fa.fa-magic
+                                    strong &nbsp;Create new spell
                             li
                                 a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserFeat()')
                                     i.icon.fa.fa-star
                                     strong &nbsp;Create new feat
-                            li
-                                a.create-dropdown-create.is-pointer(tabindex='-1', data-target='#image-upload-modal', role='button', data-toggle='modal')
-                                    i.icon.fa.fa-picture-o
-                                    strong &nbsp;Add an image
                 .sp-menu-result(ng-switch="selectedTab")
                     .database(ng-switch-when="campaigns")
                         .clearfix

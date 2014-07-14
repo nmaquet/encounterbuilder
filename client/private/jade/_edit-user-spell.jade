@@ -1,0 +1,45 @@
+mixin labeledInput(name, model, placeholder)
+    .form-group
+        label.col-xs-2.control-label= name + ':'
+        .col-xs-10
+            input.form-control(type=text, name=name, placeholder=placeholder, ng-model=model)
+
+mixin labeledInputInline(name, model, placeholder)
+    .form-group
+        label= name + ':'
+        input.form-control(type=text, name=name, placeholder=placeholder, ng-model=model)
+
+mixin labeledTextArea(name, model, rows, placeholder)
+    .form-group
+        label.col-xs-2.control-label= name + ':'
+        .col-xs-10
+            textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model)
+
+mixin fullWidthTextArea(name, model, rows, placeholder)
+    .form-group
+        textarea.form-control(type='text', rows=rows, name=name, placeholder=placeholder, ng-model=model, ui-tinymce="tinymceOptions")
+
+.row.l-section.result-content(pending="!userResource.$resolved")
+    .col-xxs-12.col-xs-12
+        button.btn.btn-danger.pull-right(type="submit" ng-click="view()" ng-class="{'btn-small' : viewport.xs}") Done
+    .col-xxs-12.col-xs-12
+        br
+    .col-xxs-12.col-xs-12
+        .row
+            .col-xs-12.cat.decor
+                form.form-horizontal(role="form")
+                    +labeledInput('Name', 'userResource.name', 'e.g. Create Pit')
+                    +labeledInput('Source', 'userResource.source', "e.g. Advanced Player's Guide")
+                    +labeledInput('School', 'userResource.school', "e.g. conjuration")
+                    +labeledInput('Subschool', 'userResource.subschool', "e.g. creation")
+                    +labeledInput('Descriptor', 'userResource.descriptor', "e.g. fire, good")
+                    +labeledInput('Level', 'userResource.spell_level', "e.g. sorcerer/wizard 2, summoner 2")
+                    +labeledInput('Casting Time', 'userResource.casting_time', "e.g. 1 standard action")
+                    +labeledInput('Components', 'userResource.components', "e.g. miniature shovel costing 10 gp")
+                    +labeledInput('Range', 'userResource.range', "e.g. medium (100ft. + 10ft. / level)")
+                    +labeledInput('Effect', 'userResource.effect', "e.g. 10-ft.-by-10-ft. hole, 10 ft. deep/2 levels")
+                    +labeledInput('Target', 'userResource.targets', "e.g. one living creature")
+                    +labeledInput('Duration', 'userResource.duration', "e.g. instantaneous")
+                    +labeledInput('Saving Throw', 'userResource.saving_throw', "e.g. Will negates")
+                    +labeledInput('Spell Resistance', 'userResource.spell_resistence', "e.g. Yes")
+                    +fullWidthTextArea('Description', 'userResource.description', 20, "")

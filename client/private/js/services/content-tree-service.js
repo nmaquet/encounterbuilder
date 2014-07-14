@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
-    ['$rootScope', '$timeout', '$http', 'encounterService', 'userMonsterService', 'userNpcService', 'userTextService', 'locationService', 'UserFeatResource',
-        function ($rootScope, $timeout, $http, encounterService, userMonsterService, userNpcService, userTextService, locationService, UserFeatResource) {
+    ['$rootScope', '$timeout', '$http', 'encounterService', 'userMonsterService', 'userNpcService', 'userTextService', 'locationService', 'userResourceService',
+        function ($rootScope, $timeout, $http, encounterService, userMonsterService, userNpcService, userTextService, locationService, userResourceService) {
 
             var LOAD_SUCCESS = "contentTreeLoaded";
 
@@ -30,8 +30,14 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 else if (newNode.userTextId) {
                     newNode.extraClasses = "fancytree-text";
                 }
-                else if (newNode.userFeatId) {
+                else if (newNode.userResourceId && newNode.resourceType === "user-feat") {
                     newNode.extraClasses = "fancytree-feat";
+                }
+                else if (newNode.userResourceId && newNode.resourceType === "user-spell") {
+                    newNode.extraClasses = "fancytree-spell";
+                }
+                else if (newNode.userResourceId && newNode.resourceType === "user-item") {
+                    newNode.extraClasses = "fancytree-item";
                 }
             }
 
@@ -111,8 +117,8 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 else if (node.data.userTextId) {
                     locationService.go("/user-text/" + node.data.userTextId);
                 }
-                else if (node.data.userFeatId) {
-                    locationService.go("/user-feat/" + node.data.userFeatId);
+                else if (node.data.userResourceId) {
+                    locationService.go("/" + node.data.resourceType  + "/" + node.data.userResourceId);
                 }
                 else if (node.folder) {
                     locationService.go("/binder/" + node.key);
@@ -209,11 +215,11 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
-            service.createUserFeat = function () {
-                var userFeat = new UserFeatResource();
-                userFeat.name = "Untitled feat";
-                userFeat.$save(function() {
-                    addNode({title: userFeat.name, userFeatId: userFeat._id, key: getNextNodeKey()});
+            service.createUserResource = function (resourceType) {
+                var userResource = new userResourceService[resourceType]();
+                userResource.name = "Untitled";
+                userResource.$save(function() {
+                    addNode({title: userResource.name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey()});
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 });
             };
@@ -251,16 +257,16 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
-            service.copyFeat = function (featId) {
-                UserFeatResource.save({featId: featId}, function (userFeat) {
-                    addNode({title: userFeat.name, userFeatId: userFeat._id, key: getNextNodeKey()});
+            service.copyResource = function (resourceId, resourceType) {
+                userResourceService[resourceType].save({baseResourceId: resourceId}, function (userResource) {
+                    addNode({title: userResource.name || userResource.Name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey()});
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 });
             };
 
-            service.copyUserFeat = function (userFeatId) {
-                UserFeatResource.save({userFeatId: userFeatId}, function (userFeat) {
-                    addNode({title: userFeat.name, userFeatId: userFeat._id, key: getNextNodeKey()});
+            service.copyUserResource = function (resourceId, resourceType) {
+                userResourceService[resourceType].save({userResourceId: resourceId}, function (userResource) {
+                    addNode({title: userResource.name || userResource.Name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey()});
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 });
             };
@@ -326,6 +332,18 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
+            service.userResourceUpdated = function (userResource) {
+                fancyTree.visit(function (node) {
+                    if (node.data.userResourceId && node.data.userResourceId === userResource._id) {
+                        var name = userResource.name || userResource.Name;
+                        if (node.title !== name) {
+                            node.setTitle(name);
+                            service.treeChanged(fancyTree.toDict(removeExtraClasses));
+                        }
+                    }
+                });
+            };
+
             service.userMonsterDeleted = function (userMonster) {
                 var toRemove;
                 fancyTree.visit(function (node) {
@@ -341,10 +359,10 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 }
             };
 
-            service.userFeatDeleted = function (userFeat) {
+            service.userResourceDeleted = function (userResource) {
                 var toRemove;
                 fancyTree.visit(function (node) {
-                    if (node.data.userFeatId && node.data.userFeatId === userFeat._id) {
+                    if (node.data.userResourceId && node.data.userResourceId === userResource._id) {
                         toRemove = node;
                     }
                 });
@@ -352,7 +370,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     removeNode(toRemove);
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 } else {
-                    console.log("could not remove content tree userFeat");
+                    console.log("could not remove content tree userResource");
                 }
             };
 

@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('ItemDetailsController',
-    ['$rootScope','$scope', '$http', '$routeParams', 'itemService','favouriteService',
-        function ($rootScope, $scope, $http, $routeParams, itemService,favouriteService) {
+    ['$rootScope','$scope', '$http', '$routeParams', 'itemService','favouriteService', 'contentTreeService',
+        function ($rootScope, $scope, $http, $routeParams, itemService,favouriteService, contentTreeService) {
             $scope.pending = true;
             $scope.toggleFavourite = function () {
                 if ($scope.favourite) {
@@ -38,5 +38,8 @@ DEMONSQUID.encounterBuilderControllers.controller('ItemDetailsController',
                     }
                 }
             });
+            $scope.copyItem = function () {
+                contentTreeService.copyResource($scope.item.id, "user-item");
+            }
         }
     ]);
