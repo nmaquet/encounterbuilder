@@ -89,7 +89,9 @@ function main(db) {
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
     var contentTreeRoute = require('./contentTreeRoute')(collections.contentTrees);
     var favouritesRoute = require('./favouritesRoute')(collections.favourites);
-    var userFeatRoute = require('./userFeatRoute')(collections.userFeats, collections.feats, ObjectID);
+    var userFeatRoute = require('./userResourceRoute')(collections.userFeats, collections.feats, ObjectID);
+    var userSpellRoute = require('./userResourceRoute')(collections.userSpells, collections.spells, ObjectID);
+    var userItemRoute = require('./userResourceRoute')(collections.userItems, collections.magicitems, ObjectID);
 
     app.get('/api/search-monsters', authenticationCheck, metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', authenticationCheck, metrics.logSearchNpc, searchNpcsRoute);
@@ -134,11 +136,24 @@ function main(db) {
     app.post("/api/update-user-text", authenticationCheck, /* TODO METRICS */ userTextRoute.update);
     app.post("/api/delete-user-text", authenticationCheck, /* TODO METRICS */ userTextRoute.delete);
 
-    /* User Feat */
+    /* User Item */
     app.get("/api/user-feat/:id", authenticationCheck, userFeatRoute.getResource);
     app.post("/api/user-feat", authenticationCheck, userFeatRoute.createResource);
     app.post("/api/user-feat/:id", authenticationCheck, userFeatRoute.updateResource);
     app.delete("/api/user-feat/:id", authenticationCheck, userFeatRoute.deleteResource);
+
+    /* User Spell */
+    app.get("/api/user-spell/:id", authenticationCheck, userSpellRoute.getResource);
+    app.post("/api/user-spell", authenticationCheck, userSpellRoute.createResource);
+    app.post("/api/user-spell/:id", authenticationCheck, userSpellRoute.updateResource);
+    app.delete("/api/user-spell/:id", authenticationCheck, userSpellRoute.deleteResource);
+
+    /* User Item */
+    app.get("/api/user-item/:id", authenticationCheck, userItemRoute.getResource);
+    app.post("/api/user-item", authenticationCheck, userItemRoute.createResource);
+    app.post("/api/user-item/:id", authenticationCheck, userItemRoute.updateResource);
+    app.delete("/api/user-item/:id", authenticationCheck, userItemRoute.deleteResource);
+
 
     var APP_JADE_FILES = [
         'feedback-popover',

@@ -41,5 +41,17 @@
         }
     ]);
 
+    DEMONSQUID.encounterBuilderServices.factory('UserSpellResource', ['$resource', '$cacheFactory',
+        function ($resource, $cacheFactory) {
+            return makeUserResource("user-spell", $resource, $cacheFactory);
+        }
+    ]);
+
+    DEMONSQUID.encounterBuilderServices.factory('UserItemResource', ['$resource', '$cacheFactory',
+        function ($resource, $cacheFactory) {
+            return makeUserResource("user-item", $resource, $cacheFactory);
+        }
+    ]);
+
 })();
 
