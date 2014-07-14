@@ -27,8 +27,7 @@ module.exports = function (collection, ObjectID) {
                     response.send(500);
                 }
                 else {
-//                    response.json(modifiedResource);
-                    response.send(200);
+                    response.json(modifiedResource);
                 }
             });
         },
