@@ -53,7 +53,6 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                     $scope.pending = false;
 
                     $scope.$watch("userMonster.templates", function(value) {
-                        console.log(value);
                         $scope.userMonster = templateService.createTemplatedMonster(baseMonster);
                         baseMonster.templates = $scope.userMonster.templates;
                         userMonsterService.update(baseMonster, function() {

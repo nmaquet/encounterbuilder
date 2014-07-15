@@ -45,7 +45,6 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
 
             if (monster.AC_Mods) {
                 var mods = monster.AC_Mods.substring(1, monster.AC_Mods.length - 1);
-                console.log(mods);
                 var AC_ModsRegex = /(\+?\-?\d+)\s*([^,\+\-]*)/g;
                 var match = null;
                 var parsedMods = {};
@@ -54,7 +53,6 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                         parsedMods[match[2].trim()] = Number(match[1]);
                     }
                     else {
-
                         parsedMods.miscellaneous = (parsedMods.miscellaneous || "") + ( match[1] + " " + match[2]);
                     }
                 }
