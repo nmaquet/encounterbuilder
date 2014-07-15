@@ -12,9 +12,9 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             "Small": {"Space": "5 ft.", "Reach": "5 ft."},
             "Medium": {"Space": "5 ft.", "Reach": "5 ft."},
             "Large": {"Space": "10 ft.", "Reach": "10 ft."},
-            "Huge": {"Space": "10 ft.", "Reach": "10 ft."},
-            "Gargantuan": {"Space": "10 ft.", "Reach": "10 ft."},
-            "Colossal": {"Space": "10 ft.", "Reach": "10 ft."}};
+            "Huge": {"Space": "15 ft.", "Reach": "15 ft."},
+            "Gargantuan": {"Space": "20 ft.", "Reach": "20 ft."},
+            "Colossal": {"Space": "30 ft.", "Reach": "30 ft."}};
 
         var damageDicesA = ["1", "1d2", "1d3", "1d4", "1d6", "1d8", "2d6", "3d6", "4d6", "6d6", "8d6", "12d6"];
         var damageDicesB = ["1d10", "2d8", "3d8", "4d8", "6d8", "8d8", "12d8"];
