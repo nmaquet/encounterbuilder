@@ -52,7 +52,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             var dieType = parsedMonster.typeOfHD;
             var bonus = parsedMonster.hitPointBonus;
             if (isNumber(hitDice) && isNumber(dieType) && isNumber(bonus)) {
-                var sign = bonus > 0 ? "+": "";
+                var sign = bonus > 0 ? "+" : "";
                 bonus = bonus === 0 ? "" : bonus;
                 monster.HD = "(" + hitDice + "d" + dieType + sign + bonus + ")";
             } else {
@@ -72,7 +72,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             function formatAttack(attack) {
                 var formattedAttackBonuses = attack.attackBonuses.map(formatAttackBonus).join("/");
                 var specialAttacks = (attack.specialAttacks !== '') ? " " + attack.specialAttacks : attack.specialAttacks;
-                var sign = attack.damageMod > 0 ? "+": "";
+                var sign = attack.damageMod > 0 ? "+" : "";
                 var damageMod = attack.damageMod === 0 ? "" : attack.damageMod;
                 return attack.attackDescription + " " + formattedAttackBonuses + " (" + attack.damageDice + sign + damageMod + specialAttacks + ")";
             }
@@ -107,6 +107,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             HD: formatHitDice,
             Melee: formatAttack,
             Ranged: formatAttack
+            //FIXME rebuild AC_Mods from parsed AC_Mods
         };
 
         var service = {};

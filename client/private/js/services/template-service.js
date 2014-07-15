@@ -133,8 +133,8 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
                 parsedMonster.normalAC -= naturalArmorReduction;
                 parsedMonster.flatFootedAC -= naturalArmorReduction;
             }
-            adjustDamageForSize(parsedMonster, "Melee", -1, -2, -2);
-            adjustDamageForSize(parsedMonster, "Ranged", -1, +2, -2);
+            adjustDamage(parsedMonster, "Melee", -1, -2, -2);
+            adjustDamage(parsedMonster, "Ranged", -1, +2, -2);
             monster.Size = sizes[Math.max(sizes.indexOf(monster.Size) - 1, 0)];
             monster.Reach = sizesAndModifier[monster.Size].Reach;
             monster.Space = sizesAndModifier[monster.Size].Space;
@@ -162,18 +162,39 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
 
             if (parsedMonster.AC_Mods && parsedMonster.AC_Mods.natural) {
 
-                parsedMonster.AC_Mods.natural +=3;
+                parsedMonster.AC_Mods.natural += 3;
                 parsedMonster.normalAC += 2;
                 parsedMonster.flatFootedAC += 2;
             }
-            adjustDamageForSize(parsedMonster, "Melee", +1, +2, +2);
-            adjustDamageForSize(parsedMonster, "Ranged", +1, -1, +2);
+            adjustDamage(parsedMonster, "Melee", +1, +2, +2);
+            adjustDamage(parsedMonster, "Ranged", +1, -1, +2);
             monster.Size = sizes[Math.max(sizes.indexOf(monster.Size) + 1, 0)];
             monster.Reach = sizesAndModifier[monster.Size].Reach;
             monster.Space = sizesAndModifier[monster.Size].Space;
         }
 
-        function adjustDamageForSize(parsedMonster, attribute, dicesAdjustment, attackModifier, damageModifier) {
+        function applyAugmentedTemplate(parsedMonster) {
+            parsedMonster.HP += (2 * parsedMonster.numberOfHD);
+            parsedMonster.hitPointBonus += (2 * parsedMonster.numberOfHD);
+            parsedMonster.Str += 4;
+            parsedMonster.Con += 4;
+
+            parsedMonster.Fort += 2;
+
+            if (parsedMonster.AC_Mods) {
+                if (!parsedMonster.AC_Mods.Dex) {
+                    parsedMonster.AC_Mods.Dex = 0;
+                }
+                parsedMonster.AC_Mods.Dex += 2;
+            }
+
+            parsedMonster.normalAC += 2;
+
+            adjustDamage(parsedMonster, "Melee", 0, +2, +2);
+            adjustDamage(parsedMonster, "Ranged", 0, 0, +2);
+        }
+
+        function adjustDamage(parsedMonster, attribute, dicesAdjustment, attackModifier, damageModifier) {
             for (var i in parsedMonster[attribute]) {
                 var groups = parsedMonster[attribute][i];
                 for (var j in groups) {
@@ -242,6 +263,10 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
                         applyGiantTemplate(templatedMonster, parsedMonster);
                         formatterService.formatMonster(templatedMonster, parsedMonster);
                         templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
+                    }
+                    else if (template === "augmented") {
+                        applyAugmentedTemplate(parsedMonster);
+                        formatterService.formatMonster(templatedMonster, parsedMonster);
                     }
                 }
                 templatedMonster.Name += templateNameSuffix(templatedMonster.templates);
