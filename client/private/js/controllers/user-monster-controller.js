@@ -6,6 +6,8 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
 
             var baseMonster = null;
 
+            $scope.templateControlsCollapsed = true;
+
             $scope.deleteUserMonster = function () {
                 if ($scope.userMonster) {
                     $scope.startFade = function () {

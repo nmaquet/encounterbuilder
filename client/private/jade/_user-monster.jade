@@ -10,12 +10,47 @@
         .row.btn-container
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copyMonster()')
                 i.icon.fa.fa-copy
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Advance',ng-click='toggleAdvancedTemplate()')
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Advance',ng-click='templateControlsCollapsed = !templateControlsCollapsed')
                 i.icon.fa.fa-flash
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit', ng-click="editUserMonster()")
                 i.icon.fa.fa-edit
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete', on-confirm="deleteUserMonster()", confirm-click="Are you sure ?", confirm-title="Delete monster")
                 i.icon.fa.fa-trash-o
+.row.template-controls(collapse="templateControlsCollapsed")
+    .col-xs-12.col-sm-6
+        form(class="form-horizontal")
+            fieldset
+                div(class="control-group")
+                    div(class="controls")
+                        label.is-pointer(class="checkbox")
+                            input(type="checkbox" ng-model="selectedTemplates.advanced")
+                            | Advanced (CR +1)
+                        label.is-pointer(class="checkbox")
+                            input(type="checkbox" ng-model="selectedTemplates.young")
+                            | Young (CR -1)
+                        label.is-pointer(class="checkbox" style="color: grey;")
+                            input(type="checkbox" ng-model="selectedTemplates.giant" disabled)
+                            | Giant (CR +1)
+                        label.is-pointer(class="checkbox" style="color: grey;")
+                            input(type="checkbox" ng-model="selectedTemplates.augmented" disabled)
+                            | Augmented (CR +1)
+    .col-xs-12.col-sm-6
+        form(class="form-horizontal")
+            fieldset
+                div(class="control-group")
+                    div(class="controls")
+                        label.is-pointer(class="checkbox" style="color: grey;")
+                            input(type="checkbox" ng-model="selectedTemplates.celestial" disabled)
+                            | Celestial (CR +0 +1)
+                        label.is-pointer(class="checkbox" style="color: grey;")
+                            input(type="checkbox" ng-model="selectedTemplates.fiendish" disabled)
+                            | Fiendish (CR +0 or +1)
+                        label.is-pointer(class="checkbox" style="color: grey;")
+                            input(type="checkbox" ng-model="selectedTemplates.resolute" disabled)
+                            | Entropic (CR +0 +1)
+                        label.is-pointer(class="checkbox" style="color: grey;")
+                            input(type="checkbox" ng-model="selectedTemplates.entropic" disabled)
+                            | Resolute (CR +0 or +1)
 .row.l-section.result-content
     .col-xxs-12.col-xs-12.cat
         p.intro.underlined {{userMonster.Description_Visual}}
