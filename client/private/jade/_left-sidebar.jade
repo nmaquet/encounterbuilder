@@ -36,7 +36,7 @@ section#left-sidebar.sp-menu.sp-menu-vertical.sp-menu-left.no-print(slide-menu)
                                     i.icon.fa.fa-pencil
                                     strong &nbsp;Create new text
                             li
-                                a.create-dropdown-create.is-pointer(tabindex='-1', data-target='#image-upload-modal', role='button', data-toggle='modal')
+                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserIllustration()')
                                     i.icon.fa.fa-picture-o
                                     strong &nbsp;Create an image
                             li
@@ -72,4 +72,3 @@ section#left-sidebar.sp-menu.sp-menu-vertical.sp-menu-left.no-print(slide-menu)
                     .database(ng-switch-when="database")
                         h2.t-title Database
                         include _database
-include _upload-file-modal

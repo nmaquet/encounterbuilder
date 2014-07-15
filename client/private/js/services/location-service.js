@@ -1,10 +1,16 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('locationService',
-    ['$routeParams', '$route', '$location', 'sidebarService', 'viewportService',
-        function ($routeParams, $route, $location, sidebarService, viewportService) {
+    ['$routeParams', '$route', '$location', '$timeout', 'sidebarService', 'viewportService',
+        function ($routeParams, $route, $location, $timeout, sidebarService, viewportService) {
             var viewport = viewportService.viewport;
             return {
+                refresh: function (delay) {
+                    delay = delay || 0;
+                    $timeout(function () {
+                        $route.reload();
+                    }, delay);
+                },
                 go: function (url) {
                     $location.url(url);
                     if (viewport.xs) {
@@ -29,7 +35,7 @@ DEMONSQUID.encounterBuilderServices.factory('locationService',
                         this.go('/edit-user-monster/' + $routeParams.userMonsterId + typePrefix + id);
                     } else if ($route.current.templateUrl === 'edit-user-npc.html') {
                         this.go('/edit-user-npc/' + $routeParams.userNpcId + typePrefix + id);
-                    }else if ($route.current.templateUrl === 'edit-user-text.html') {
+                    } else if ($route.current.templateUrl === 'edit-user-text.html') {
                         this.go('/edit-user-text/' + $routeParams.userTextId + typePrefix + id);
                     }
                     else {
@@ -47,7 +53,7 @@ DEMONSQUID.encounterBuilderServices.factory('locationService',
                         this.go('/');
                     }
                 },
-                getResourceType: function() {
+                getResourceType: function () {
                     var match = /^\/(?:edit-)?(user-)?(npc|monster|feat|spell|item|illustration)\//.exec($location.path());
                     return match && ((match[1] || "") + match[2]);
                 }

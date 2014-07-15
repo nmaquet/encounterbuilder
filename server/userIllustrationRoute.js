@@ -27,21 +27,21 @@ module.exports = function (collection, ObjectID) {
         var file = request.files.file;
         var selector = {_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)};
 
-            var fields = {
-                imagePath: file.path,
-                fileType: file.type,
-                fileName: file.originalFilename,
-                url: "/api/user-illustration-image/" + paramsResourceId
-            };
-            collection.findAndModify(selector, [], {$set: fields}, {new: true}, function (error, modifiedResource) {
-                if (error) {
-                    return  response.send(500);
-                }
-                else {
-                    delete modifiedResource.image;
-                    response.json(modifiedResource);
-                }
-            });
+        var fields = {
+            imagePath: file.path,
+            fileType: file.type,
+            fileName: file.originalFilename,
+            url: "/api/user-illustration-image/" + paramsResourceId
+        };
+        collection.findAndModify(selector, [], {$set: fields}, {new: true}, function (error, modifiedResource) {
+            if (error) {
+                return  response.send(500);
+            }
+            else {
+                delete modifiedResource.image;
+                response.json(modifiedResource);
+            }
+        });
     };
 
     route.getImage = function (request, response) {
@@ -53,6 +53,7 @@ module.exports = function (collection, ObjectID) {
                 return response.send(500);
             }
             response.header("Content-Type", data.fileType);
+            response.header("Content-Disposition", "attachment; filename=\"" + data.fileName + "\"");
             return response.sendfile(data.imagePath);
         });
     };

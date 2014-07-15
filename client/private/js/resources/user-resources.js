@@ -1,6 +1,6 @@
 'use strict';
 
-(function(){
+(function () {
 
     /* a client resource contains methods starting with '$' that we need to remove before putting in the cache */
     function clientToServerResource(clientResource) {
@@ -24,13 +24,16 @@
         var resource = $resource("/api/" + resourceSlug + "/:id", {id: '@_id'}, actions);
         var wrappedSave = resource.prototype.$save;
         var wrappedDelete = resource.prototype.$delete;
-        resource.prototype.$save = function() {
+        resource.prototype.$save = function () {
             cache.put("/api/" + resourceSlug + "/" + this._id, clientToServerResource(this));
             wrappedSave.apply(this, arguments);
         };
-        resource.prototype.$delete = function() {
+        resource.prototype.$delete = function () {
             cache.remove("/api/" + resourceSlug + "/" + this._id);
             wrappedDelete.apply(this, arguments);
+        };
+        resource.prototype.removeFromCache = function () {
+            cache.remove("/api/" + resourceSlug + "/" + this._id);
         };
         return  resource;
     }

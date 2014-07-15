@@ -23,6 +23,8 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
                 contentTreeService.userResourceUpdated($scope.userResource);
             }
 
+            $scope.updateUserResource = updateUserResource;
+
             $scope.userResource = userResourceService[resourceType].get({id: $routeParams.userResourceId});
 
             $scope.$on('$locationChangeStart', function () {

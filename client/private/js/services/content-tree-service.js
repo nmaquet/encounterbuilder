@@ -39,6 +39,9 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 else if (newNode.userResourceId && newNode.resourceType === "user-item") {
                     newNode.extraClasses = "fancytree-item";
                 }
+                else if (newNode.userResourceId && newNode.resourceType === "user-illustration") {
+                    newNode.extraClasses = "fancytree-image";
+                }
             }
 
             function getNextNodeKey() {

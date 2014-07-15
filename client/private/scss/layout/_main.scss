@@ -59,9 +59,11 @@ html, body {
     }
   }
 }
+
 .l-filters {
 
 }
+
 .l-encounter-well-container, .l-filters {
   @media (max-width: $screen-xs-max) {
     //max-width: 320px;
@@ -84,9 +86,9 @@ html, body {
   &.sidebar-nav, &.result-list {
     padding-top: ($grid-gutter-width/2);
     padding-bottom: ($grid-gutter-width/2);
-//    @media (min-width: $screen-sm-min) {
-//      margin-right: 0;
-//    }
+    //    @media (min-width: $screen-sm-min) {
+    //      margin-right: 0;
+    //    }
   }
 }
 
@@ -97,8 +99,12 @@ html, body {
   padding-left: 0px;
   @media (min-width: $screen-sm-min) {
     padding-left: $sp-menu-width;
-    .spm-open-left & { padding-left: $sp-menu-width; }
-    .spm-open-right & { padding-right: $sp-menu-width; }
+    .spm-open-left & {
+      padding-left: $sp-menu-width;
+    }
+    .spm-open-right & {
+      padding-right: $sp-menu-width;
+    }
   }
 }
 
@@ -110,4 +116,8 @@ html, body {
 
 .max-width-720 {
   max-width: 720px;
+}
+
+img {
+  max-width: 100%;
 }
