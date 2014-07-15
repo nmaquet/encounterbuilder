@@ -267,16 +267,16 @@ describe("templateService", function () {
 
     });
 
-//    describe("Young template", function() {
-//
-//        it("should remove 44 HP ", function () {
-//            baseMonster.templates = [
-//                {template: "young"}
-//            ];
-//            var templatedMonster = service.createTemplatedMonster(baseMonster);
-//            expect(templatedMonster.HP).to.equal(363-44);
-//            expect(templatedMonster.HD).to.equal("(22d10+198)");
-//        });
-//
-//    });
+    describe("Young template", function() {
+
+        it("should remove 44 HP ", function () {
+            baseMonster.templates = [
+                {template: "young"}
+            ];
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.HP).to.equal(363-44);
+            expect(templatedMonster.HD).to.equal("(22d10+198)");
+        });
+
+    });
 });
