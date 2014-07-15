@@ -95,8 +95,14 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             function capitalize(string) {
                 return (string.charAt(0).toUpperCase() + string.slice(1));
             }
-            if (Object.keys(templates).length > 0) {
-                return " (" + Object.keys(templates).map(capitalize).sort().join(", ") + ")";
+            var names = [];
+            for (var template in templates) {
+                if (!templates.hasOwnProperty(template) || !templates[template])
+                    continue;
+                names.push(capitalize(template));
+            }
+            if (names.length > 0) {
+                return " (" + names.join(", ") + ")";
             } else {
                 return "";
             }
