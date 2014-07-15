@@ -99,6 +99,9 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             parsedMonster.Fort -= 2;
             parsedMonster.Ref += 2;
             parsedMonster.Will -= 2;
+
+            parsedMonster.normalAC += 2;
+            parsedMonster.touchAC += 2;
         }
 
         function templateNameSuffix(templates) {
