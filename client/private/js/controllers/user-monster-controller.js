@@ -35,18 +35,6 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                 contentTreeService.copyUserMonster($scope.userMonster._id, true);
             };
 
-            $scope.toggleAdvancedTemplate = function () {
-                if (baseMonster.templates && baseMonster.templates.length > 0) {
-                    baseMonster.templates = [];
-                } else {
-                    baseMonster.templates = [{template: "advanced"}];
-                }
-                $scope.userMonster = templateService.createTemplatedMonster(baseMonster);
-                userMonsterService.update(baseMonster, function() {
-                    contentTreeService.userMonsterUpdated(baseMonster);
-                });
-            };
-
             $scope.pending = true;
 
             function loadMonster() {
@@ -63,6 +51,14 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                         $rootScope.globalTitle = "Encounter Builder - " + $scope.userMonster.Name;
                     }
                     $scope.pending = false;
+
+                    $scope.$watch("userMonster.templates", function() {
+                        $scope.userMonster = templateService.createTemplatedMonster(baseMonster);
+                        baseMonster.templates = $scope.userMonster.templates;
+                        userMonsterService.update(baseMonster, function() {
+                            contentTreeService.userMonsterUpdated(baseMonster);
+                        });
+                    }, true /* deep equality */);
                 });
             }
 
