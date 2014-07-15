@@ -21,6 +21,7 @@ module.exports = function (config) {
             "client/private/bower_components/angular-ui-tinymce/src/tinymce.js",
             "client/private/angular-ui/ui-bootstrap-0.10.0.js",
             "client/private/angular-ui/ui-bootstrap-tpls-0.10.0.js",
+            "client/private/bower_components/angular-file-upload/angular-file-upload.js",
             /* ------------------------------------------------------------------------------------------------------ */
             'client/private/bower_components/angular-mocks/angular-mocks.js',
             /* ------------------------------------------------------------------------------------------------------ */

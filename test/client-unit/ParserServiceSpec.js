@@ -127,7 +127,7 @@ describe("parserService", function () {
         var parsedMonster = service.parseMonster(baseMonster);
         expect(parsedMonster.Melee).to.deep.equal([
             [
-                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18,specialAttacks:''}
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18, specialAttacks: ''}
             ]
         ]);
     });
@@ -137,8 +137,8 @@ describe("parserService", function () {
         var parsedMonster = service.parseMonster(baseMonster);
         expect(parsedMonster.Melee).to.deep.equal([
             [
-                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18,specialAttacks:''},
-                {"attackDescription": "2 wings", "attackBonuses": [30], "damageDice": "2d6", "damageMod": 12,specialAttacks:''}
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18, specialAttacks: ''},
+                {"attackDescription": "2 wings", "attackBonuses": [30], "damageDice": "2d6", "damageMod": 12, specialAttacks: ''}
             ]
         ]);
     });
@@ -148,10 +148,10 @@ describe("parserService", function () {
         var parsedMonster = service.parseMonster(baseMonster);
         expect(parsedMonster.Melee).to.deep.equal([
             [
-                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18,specialAttacks:''}
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18, specialAttacks: ''}
             ],
             [
-                {"attackDescription": "slam", "attackBonuses": [30], "damageDice": "2d8", "damageMod": 13,specialAttacks:''}
+                {"attackDescription": "slam", "attackBonuses": [30], "damageDice": "2d8", "damageMod": 13, specialAttacks: ''}
             ]
         ]);
     });
@@ -161,7 +161,7 @@ describe("parserService", function () {
 
         expect(parsedMonster.Melee).to.deep.equal([
             [
-                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18,specialAttacks:'plus grab'}
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18, specialAttacks: 'plus grab'}
             ]
         ]);
     });
@@ -170,8 +170,8 @@ describe("parserService", function () {
         var parsedMonster = service.parseMonster(baseMonster);
         expect(parsedMonster.Melee).to.deep.equal([
             [
-                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18,specialAttacks:''},
-                {"attackDescription": "2 wings", "attackBonuses": [30], "damageDice": "2d6", "damageMod": 12,specialAttacks:''}
+                {"attackDescription": "+5 dancing greatsword", "attackBonuses": [35, 30, 25, 20], "damageDice": "3d6", "damageMod": 18, specialAttacks: ''},
+                {"attackDescription": "2 wings", "attackBonuses": [30], "damageDice": "2d6", "damageMod": 12, specialAttacks: ''}
             ]
         ]);
     });
@@ -181,7 +181,7 @@ describe("parserService", function () {
         var parsedMonster = service.parseMonster(baseMonster);
         expect(parsedMonster.Ranged).to.deep.equal([
             [
-                {"attackDescription": "+5 longbow", "attackBonuses": [31, 26, 21, 16], "damageDice": "2d6", "damageMod": 14,specialAttacks:'plus slaying arrow'}
+                {"attackDescription": "+5 longbow", "attackBonuses": [31, 26, 21, 16], "damageDice": "2d6", "damageMod": 14, specialAttacks: 'plus slaying arrow'}
             ]
         ]);
     });
@@ -191,7 +191,7 @@ describe("parserService", function () {
         var parsedMonster = service.parseMonster(baseMonster);
         expect(parsedMonster.Ranged).to.deep.equal([
             [
-                {"attackDescription": "+5 composite longbow (+9 Str bonus)", "attackBonuses": [31, 26, 21, 16], "damageDice": "2d6", "damageMod": 14, specialAttacks:'plus slaying arrow'}
+                {"attackDescription": "+5 composite longbow (+9 Str bonus)", "attackBonuses": [31, 26, 21, 16], "damageDice": "2d6", "damageMod": 14, specialAttacks: 'plus slaying arrow'}
             ]
         ]);
     });
@@ -206,16 +206,16 @@ describe("parserService", function () {
         service.parseMonster(baseMonster);
     });
 
-    it("should try to guess the natural armor (monster with armor in treasure)", function () {
-        baseMonster.Treasure = "Some armor.";
-        var parsedMonster = service.parseMonster(baseMonster);
-        expect(parsedMonster.naturalArmor).to.equal(0);
-    });
 
-    it("should try to guess the natural armor (monster with armor in treasure)", function () {
-        baseMonster.Treasure = "Nothing.";
-        baseMonster.AC = "44, touch 11, flat-footed 42";
+    it("should parse the AC_Mods fields", function () {
+        baseMonster.AC_Mods = "(+14 armor, +1 Dex, +1 dodge, +19 natural, -1 size +4 deflection vs. evil)";
         var parsedMonster = service.parseMonster(baseMonster);
-        expect(parsedMonster.naturalArmor).to.equal(44-11);
+        expect(parsedMonster.AC_Mods.natural).to.equal(19);
+        expect(parsedMonster.AC_Mods.armor).to.equal(14);
+        expect(parsedMonster.AC_Mods.Dex).to.equal(1);
+        expect(parsedMonster.AC_Mods.dodge).to.equal(1);
+        expect(parsedMonster.AC_Mods.size).to.equal(-1);
+        expect(parsedMonster.AC_Mods.miscellaneous).to.equal("+4 deflection vs. evil");
+
     });
 });

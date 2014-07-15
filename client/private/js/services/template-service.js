@@ -5,6 +5,11 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
 
         var service = {};
 
+        var sizesAndModifier = {};
+
+        var damageDicesA = ["1", "1d2", "1d3", "1d4", "1d6", "1d8", "2d6", "3d6", "4d6", "6d6", "8d6", "12d6"];
+        var damageDicesB = ["1d10", "2d8", "3d8", "4d8", "6d8", "8d8", "12d8"];
+
         function applyAdvancedTemplate(parsedMonster) {
 
             function advanceMelee(parsedMonster) {
@@ -19,10 +24,11 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
                 function addTwo(value) {
                     return value + 2;
                 }
+
                 function advanceAttack(attack) {
                     attack.attackBonuses = attack.attackBonuses.map(addTwo);
                     if (attribute === "Ranged" && /composite/i.test(attack.attackDescription)) {
-                        attack.attackDescription = attack.attackDescription.replace(/\(\s*\+(\d+)\s*str\s+bonus\s*\)/i, function(match, bonus){
+                        attack.attackDescription = attack.attackDescription.replace(/\(\s*\+(\d+)\s*str\s+bonus\s*\)/i, function (match, bonus) {
                             return "(+" + (Number(bonus) + 2) + " Str bonus)";
                         });
                         attack.damageMod += 2;
@@ -32,9 +38,11 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
                     }
                     return attack;
                 }
+
                 function advanceAttackList(attackList) {
                     return attackList.map(advanceAttack);
                 }
+
                 return parsedMonster[attribute].map(advanceAttackList);
             }
 
@@ -103,10 +111,41 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             parsedMonster.normalAC += 2;
             parsedMonster.touchAC += 2;
 
-            if (parsedMonster.naturalArmor) {
-                var naturalArmorReduction = Math.min(parsedMonster.naturalArmor, 2);
+            if (parsedMonster.AC_Mods && parsedMonster.AC_Mods.natural) {
+                var naturalArmorReduction = Math.min(parsedMonster.AC_Mods.natural, 2);
                 parsedMonster.normalAC -= naturalArmorReduction;
                 parsedMonster.flatFootedAC -= naturalArmorReduction;
+            }
+            adjustDamageForSize(parsedMonster, "Melee", -1, -2, -2);
+            adjustDamageForSize(parsedMonster, "Ranged", -1, +2, -2);
+        }
+
+        function adjustDamageForSize(parsedMonster, attribute, dicesAdjustment, attackModifier, damageModifier) {
+            for (var i in parsedMonster[attribute]) {
+                var groups = parsedMonster[attribute][i];
+                for (var j in groups) {
+                    var attack = groups[j];
+                    attack.attackBonuses = attack.attackBonuses.map(function (value) {
+                        return value + attackModifier
+                    });
+
+                    if (attribute === "Ranged" && /composite/i.test(attack.attackDescription)) {
+                        attack.attackDescription = attack.attackDescription.replace(/\(\s*\+(\d+)\s*str\s+bonus\s*\)/i, function (match, bonus) {
+                            return "(+" + (Number(bonus) + damageModifier) + " Str bonus)";
+                        });
+                        attack.damageMod += damageModifier;
+                    }
+                    else if (attribute = "Melee") {
+                        attack.damageMod += damageModifier;
+                    }
+
+                    if (damageDicesA.indexOf(attack.damageDice) !== -1) {
+                        attack.damageDice = damageDicesA[damageDicesA.indexOf(attack.damageDice) + dicesAdjustment] || damageDicesA[(dicesAdjustment < 0) ? 0 : damageDicesA.length - 1];
+                    }
+                    else {
+                        attack.damageDice = damageDicesB[damageDicesB.indexOf(attack.damageDice) + dicesAdjustment] || damageDicesB[(dicesAdjustment < 0) ? 0 : damageDicesA.length - 1];
+                    }
+                }
             }
         }
 
@@ -114,6 +153,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             function capitalize(string) {
                 return (string.charAt(0).toUpperCase() + string.slice(1));
             }
+
             var names = [];
             for (var template in templates) {
                 if (!templates.hasOwnProperty(template) || !templates[template])

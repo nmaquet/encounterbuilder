@@ -273,6 +273,7 @@ describe("templateService", function () {
                 advanced: true,
                 young: true
             };
+
             var templatedMonster = service.createTemplatedMonster(baseMonster);
             expect(templatedMonster.Name).to.equal("Solar (Advanced, Young)");
         });
@@ -344,7 +345,7 @@ describe("templateService", function () {
                 young: true
             };
             baseMonster.AC = "25, touch 24, flat-footed 11";
-            baseMonster.Treasure = "";
+            baseMonster.AC_Mods="(+8 armor, +1 natural)";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
             expect(templatedMonster.AC).to.equal("26, touch 26, flat-footed 10");
         });
@@ -354,9 +355,19 @@ describe("templateService", function () {
                 young: true
             };
             baseMonster.AC = "27, touch 24, flat-footed 11";
+            baseMonster.AC_Mods="(+8 armor, +3 natural)";
             baseMonster.Treasure = "";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
             expect(templatedMonster.AC).to.equal("27, touch 26, flat-footed 9");
+        });
+
+        it("should change the damage dices", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Melee).to.equal("+5 dancing greatsword +33/+28/+23/+18 (2d6+16) or slam +28 (1d10+11)");
+            expect(templatedMonster.Ranged).to.equal("+5 composite longbow (+7 Str bonus) +33/+28/+23/+18 (1d8+12 plus slaying arrow)");
         });
 
     });
