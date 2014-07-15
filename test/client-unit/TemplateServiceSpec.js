@@ -319,6 +319,16 @@ describe("templateService", function () {
             expect(templatedMonster.Con).to.equal(3);
         });
 
+        it("should reduce the Will and Fort saves by 2 and increase the Ref save by 2", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Fort).to.equal(25-2);
+            expect(templatedMonster.Ref).to.equal(14+2);
+            expect(templatedMonster.Will).to.equal(23-2);
+        });
+
     });
 
 });

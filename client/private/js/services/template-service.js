@@ -95,6 +95,10 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
 
             parsedMonster.Str = Math.max(3, parsedMonster.Str);
             parsedMonster.Con = Math.max(3, parsedMonster.Con);
+
+            parsedMonster.Fort -= 2;
+            parsedMonster.Ref += 2;
+            parsedMonster.Will -= 2;
         }
 
         function templateNameSuffix(templates) {
