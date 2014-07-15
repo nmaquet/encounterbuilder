@@ -84,182 +84,281 @@ describe("templateService", function () {
     });
 
     it("shouldn't do anything if no templates are selected", function () {
-        baseMonster.templates = [];
+        baseMonster.templates = {};
         var templatedMonster = service.createTemplatedMonster(baseMonster);
-
         expect(templatedMonster).to.deep.equal(baseMonster);
     });
 
-    it("should  add '(Advanced)' to the Name for advanced template", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        expect(service.createTemplatedMonster(baseMonster).Name).to.equal("Solar (Advanced)");
-    });
+    describe("Advanced Template", function() {
+
+        it("should  add '(Advanced)' to the Name for advanced template", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            expect(service.createTemplatedMonster(baseMonster).Name).to.equal("Solar (Advanced)");
+        });
 
 
-    it("should  add 1 to the CR for advanced template", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        expect(service.createTemplatedMonster(baseMonster).CR).to.equal(24);
+        it("should  add 1 to the CR for advanced template", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            expect(service.createTemplatedMonster(baseMonster).CR).to.equal(24);
+        });
+
+        it("should  adjust the xp according to the new  CR", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            expect(service.createTemplatedMonster(baseMonster).XP).to.equal(1228800);
+        });
+
+        it("should  adjust the ability scores", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Str).to.equal(32);
+            expect(templatedMonster.Dex).to.equal(24);
+            expect(templatedMonster.Con).to.equal(34);
+            expect(templatedMonster.Int).to.equal(27);
+            expect(templatedMonster.Wis).to.equal(31);
+            expect(templatedMonster.Cha).to.equal(29);
+        });
+
+        it("should adjust the saves", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Fort).to.equal(25 + 2);
+            expect(templatedMonster.Ref).to.equal(14 + 2);
+            expect(templatedMonster.Will).to.equal(23 + 2);
+        });
+
+        it("should adjust the AC", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.AC).to.equal("48, touch 15, flat-footed 46");
+        });
+
+        it("should adjust the CMD", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.CMD).to.equal(47 + 4);
+        });
+
+        it("should adjust the CMB", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            baseMonster.CMB = "-1";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.CMB).to.equal("+1");
+        });
+        it("should adjust the CMB even if it's negative", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.CMB).to.equal("+34");
+        });
+
+        it("should still work if the CMB or CMD isn't a Number", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            baseMonster.CMB = "-";
+            baseMonster.CMD = "-";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.CMB).to.equal("-");
+            expect(templatedMonster.CMD).to.equal("-");
+        });
+
+        it("should  not adjust int if base creature has less than 3", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            baseMonster.Int = 2;
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Str).to.equal(32);
+            expect(templatedMonster.Dex).to.equal(24);
+            expect(templatedMonster.Con).to.equal(34);
+            expect(templatedMonster.Int).to.equal(2);
+            expect(templatedMonster.Wis).to.equal(31);
+            expect(templatedMonster.Cha).to.equal(29);
+        });
+
+        it("should  add 44 HP ", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.HP).to.equal(407);
+            expect(templatedMonster.HD).to.equal("(22d10+286)");
+        });
+
+        it("should be resilient to erroneous HD", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            baseMonster.HD = "(22+6)";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.HD).to.equal("(22+6)");
+        });
+
+        it("should  add 2 to Init ", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Init).to.equal("+11");
+        });
+
+        it("should  add 2 to Skills ", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            baseMonster.Skills = "Craft (any one) +31, Diplomacy +32";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Skills).to.equal("Craft (any one) +33, Diplomacy +34");
+        });
+
+        it("should adjust the melee attack rolls", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            baseMonster.Melee = "+5 dancing greatsword +35/+30/+25/+20 (3d6+18), 2 wings +30 (2d6+12)";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Melee).to.equal("+5 dancing greatsword +37/+32/+27/+22 (3d6+20), 2 wings +32 (2d6+14)");
+        });
+
+        it("should adjust the ranged attack rolls", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            baseMonster.Ranged = "+5 longbow +31/+26/+21/+16 (2d6+14 plus slaying arrow)";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Ranged).to.equal("+5 longbow +33/+28/+23/+18 (2d6+14 plus slaying arrow)");
+        });
+
+        it("should adjust the ranged attack rolls, event for FREAKING COMPOSITE LONGBOWS", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            baseMonster.Ranged = "+5 composite longbow (+9 Str bonus) +31/+26/+21/+16 (2d6+14 plus slaying arrow)";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Ranged).to.equal("+5 composite longbow (+11 Str bonus) +33/+28/+23/+18 (2d6+16 plus slaying arrow)");
+        });
+
+        it("should  add 2 to SpecialAbilities DC", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            baseMonster.SpecialAbilities = "<h5><b>Gaze (Ex)</b> Turn to stone permanently (as flesh to stone), range 30 feet, Fortitude DC 15 negates. A creature petrified in this matter that is then coated (not just splashed) with fresh basilisk blood (taken from a basilisk no more than 1 hour dead) is instantly restored to flesh. A single basilisk contains enough blood to coat 1d3 Medium creatures in this manner. The save DC is Constitution-based.</h5>";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.SpecialAbilities).to.equal("<h5><b>Gaze (Ex)</b> Turn to stone permanently (as flesh to stone), range 30 feet, Fortitude DC 17 negates. A creature petrified in this matter that is then coated (not just splashed) with fresh basilisk blood (taken from a basilisk no more than 1 hour dead) is instantly restored to flesh. A single basilisk contains enough blood to coat 1d3 Medium creatures in this manner. The save DC is Constitution-based.</h5>");
+        });
+
     });
 
-    it("should  adjust the xp according to the new  CR", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        expect(service.createTemplatedMonster(baseMonster).XP).to.equal(1228800);
+    describe("Multiple templates", function() {
+
+        it("should have all the template names, sorted alphabetically", function () {
+            baseMonster.templates = {
+                advanced: true,
+                young: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Name).to.equal("Solar (Advanced, Young)");
+        });
+
     });
 
-    it("should  adjust the ability scores", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Str).to.equal(32);
-        expect(templatedMonster.Dex).to.equal(24);
-        expect(templatedMonster.Con).to.equal(34);
-        expect(templatedMonster.Int).to.equal(27);
-        expect(templatedMonster.Wis).to.equal(31);
-        expect(templatedMonster.Cha).to.equal(29);
+    describe("Young template", function() {
+
+        it("should remove 44 HP ", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.HP).to.equal(363-44);
+            expect(templatedMonster.HD).to.equal("(22d10+198)");
+        });
+
+        it("should modify the name", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Name).to.equal("Solar (Young)");
+        });
+
+        it("should augment Dex and reduce Str and Con by four", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Str).to.equal(28-4);
+            expect(templatedMonster.Dex).to.equal(20+4);
+            expect(templatedMonster.Con).to.equal(30-4);
+        });
+
+        it("should not reduce abilities below 3", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            baseMonster.Str = 4;
+            baseMonster.Con = 6;
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Str).to.equal(3);
+            expect(templatedMonster.Con).to.equal(3);
+        });
+
+        it("should reduce the Will and Fort saves by 2 and increase the Ref save by 2", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Fort).to.equal(25-2);
+            expect(templatedMonster.Ref).to.equal(14+2);
+            expect(templatedMonster.Will).to.equal(23-2);
+        });
+
+        it("should increase the Dex modifier to AC by 2, and reduce natural amor by 2 (no natural armor)", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            baseMonster.AC = "25, touch 10, flat-footed 20";
+            baseMonster.Treasure = "Some armor";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.AC).to.equal("27, touch 12, flat-footed 20");
+        });
+
+        it("should increase the Dex modifier to AC by 2, and reduce natural amor by 2 (with natural armor 1)", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            baseMonster.AC = "25, touch 24, flat-footed 11";
+            baseMonster.Treasure = "";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.AC).to.equal("26, touch 26, flat-footed 10");
+        });
+
+        it("should increase the Dex modifier to AC by 2, and reduce natural amor by 2 (with natural armor 3)", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            baseMonster.AC = "27, touch 24, flat-footed 11";
+            baseMonster.Treasure = "";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.AC).to.equal("27, touch 26, flat-footed 9");
+        });
+
     });
 
-    it("should adjust the saves", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Fort).to.equal(25 + 2);
-        expect(templatedMonster.Ref).to.equal(14 + 2);
-        expect(templatedMonster.Will).to.equal(23 + 2);
-    });
-
-    it("should adjust the AC", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.AC).to.equal("48, touch 15, flat-footed 46");
-    });
-
-    it("should adjust the CMD", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.CMD).to.equal(47 + 4);
-    });
-
-    it("should adjust the CMB", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.CMB = "-1";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.CMB).to.equal("+1");
-    });
-    it("should adjust the CMB even if it's negative", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.CMB).to.equal("+34");
-    });
-
-    it("should still work if the CMB or CMD isn't a Number", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.CMB = "-";
-        baseMonster.CMD = "-";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.CMB).to.equal("-");
-        expect(templatedMonster.CMD).to.equal("-");
-    });
-
-    it("should  not adjust int if base creature has less than 3", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.Int = 2;
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Str).to.equal(32);
-        expect(templatedMonster.Dex).to.equal(24);
-        expect(templatedMonster.Con).to.equal(34);
-        expect(templatedMonster.Int).to.equal(2);
-        expect(templatedMonster.Wis).to.equal(31);
-        expect(templatedMonster.Cha).to.equal(29);
-    });
-
-    it("should  add 44 HP ", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.HP).to.equal(407);
-        expect(templatedMonster.HD).to.equal("(22d10+286)");
-    });
-
-    it("should be resilient to erroneous HD", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.HD = "(22+6)";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.HD).to.equal("(22+6)");
-    });
-
-    it("should  add 2 to Init ", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Init).to.equal("+11");
-    });
-
-    it("should  add 2 to Skills ", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.Skills = "Craft (any one) +31, Diplomacy +32";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Skills).to.equal("Craft (any one) +33, Diplomacy +34");
-    });
-
-    it("should adjust the melee attack rolls", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.Melee = "+5 dancing greatsword +35/+30/+25/+20 (3d6+18), 2 wings +30 (2d6+12)";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Melee).to.equal("+5 dancing greatsword +37/+32/+27/+22 (3d6+20), 2 wings +32 (2d6+14)");
-    });
-
-    it("should adjust the ranged attack rolls", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.Ranged = "+5 longbow +31/+26/+21/+16 (2d6+14 plus slaying arrow)";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Ranged).to.equal("+5 longbow +33/+28/+23/+18 (2d6+14 plus slaying arrow)");
-    });
-
-    it("should adjust the ranged attack rolls, event for FREAKING COMPOSITE LONGBOWS", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.Ranged = "+5 composite longbow (+9 Str bonus) +31/+26/+21/+16 (2d6+14 plus slaying arrow)";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.Ranged).to.equal("+5 composite longbow (+11 Str bonus) +33/+28/+23/+18 (2d6+16 plus slaying arrow)");
-    });
-
-    it("should  add 2 to SpecialAbilities DC", function () {
-        baseMonster.templates = [
-            {template: "advanced"}
-        ];
-        baseMonster.SpecialAbilities = "<h5><b>Gaze (Ex)</b> Turn to stone permanently (as flesh to stone), range 30 feet, Fortitude DC 15 negates. A creature petrified in this matter that is then coated (not just splashed) with fresh basilisk blood (taken from a basilisk no more than 1 hour dead) is instantly restored to flesh. A single basilisk contains enough blood to coat 1d3 Medium creatures in this manner. The save DC is Constitution-based.</h5>";
-        var templatedMonster = service.createTemplatedMonster(baseMonster);
-        expect(templatedMonster.SpecialAbilities).to.equal("<h5><b>Gaze (Ex)</b> Turn to stone permanently (as flesh to stone), range 30 feet, Fortitude DC 17 negates. A creature petrified in this matter that is then coated (not just splashed) with fresh basilisk blood (taken from a basilisk no more than 1 hour dead) is instantly restored to flesh. A single basilisk contains enough blood to coat 1d3 Medium creatures in this manner. The save DC is Constitution-based.</h5>");
-    });
 });

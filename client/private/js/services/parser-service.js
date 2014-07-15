@@ -5,6 +5,10 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
 
         var service = {};
 
+        function abilityModifier(ability) {
+            return Math.round((ability - 10.5) / 2);
+        }
+
         service.parseMonster = function (monster) {
             var parsedMonster = {};
             parseAC(monster, parsedMonster);
@@ -37,6 +41,16 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
 
             parsedMonster.Init = Number(monster.Init);
 
+            /* AC = amor + shield + dex + size + natural + deflection + misc */
+            /* touch = AC - armor - shield - natural */
+            /* flatFooted = AC - dex */
+            /* (assuming armor + shield = 0) natural = AC - touch
+            /* FIXME: what about monsters with both armor and natural armor ? */
+            if (/armor/i.test(monster.Treasure)) {
+                parsedMonster.naturalArmor = 0;
+            } else {
+                parsedMonster.naturalArmor = parsedMonster.normalAC - parsedMonster.touchAC;
+            }
 
             return parsedMonster;
 
@@ -101,7 +115,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
         }
 
         function replaceAndIfNotInsideParens(string) {
-            return string.replace(/and/g, function(match, offset) {
+            return string.replace(/and/g, function (match, offset) {
                 if (!insideParens(offset, string)) {
                     return ", ";
                 } else {
@@ -138,7 +152,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                         var damageDice = damageMatches[1];
                         var damageMod = Number(damageMatches[2]);
                         var specialAttacks = damageMatches[3];
-                        parsedAttacks.push({attackDescription: attackDescription, attackBonuses: attackBonuses, damageDice: damageDice, damageMod: damageMod,specialAttacks:specialAttacks});
+                        parsedAttacks.push({attackDescription: attackDescription, attackBonuses: attackBonuses, damageDice: damageDice, damageMod: damageMod, specialAttacks: specialAttacks});
                     }
                 }
                 parsedAttackGroups.push(parsedAttacks);

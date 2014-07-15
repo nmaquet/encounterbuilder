@@ -6,6 +6,8 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
 
             var baseMonster = null;
 
+            $scope.templateControlsCollapsed = true;
+
             $scope.deleteUserMonster = function () {
                 if ($scope.userMonster) {
                     $scope.startFade = function () {
@@ -33,13 +35,6 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                 contentTreeService.copyUserMonster($scope.userMonster._id, true);
             };
 
-            $scope.advanceMonster = function () {
-                $scope.userMonster = templateService.advanceMonster(baseMonster, function (error) {
-                    console.log(error);
-                });
-                contentTreeService.userMonsterUpdated($scope.userMonster);
-            };
-
             $scope.pending = true;
 
             function loadMonster() {
@@ -48,6 +43,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                         return console.log(error);
                     }
 
+                    userMonster.templates = userMonster.templates || {};
                     baseMonster = userMonster;
                     $scope.userMonster = templateService.createTemplatedMonster(userMonster);
 
@@ -55,6 +51,14 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                         $rootScope.globalTitle = "Encounter Builder - " + $scope.userMonster.Name;
                     }
                     $scope.pending = false;
+
+                    $scope.$watch("userMonster.templates", function() {
+                        $scope.userMonster = templateService.createTemplatedMonster(baseMonster);
+                        baseMonster.templates = $scope.userMonster.templates;
+                        userMonsterService.update(baseMonster, function() {
+                            contentTreeService.userMonsterUpdated(baseMonster);
+                        });
+                    }, true /* deep equality */);
                 });
             }
 

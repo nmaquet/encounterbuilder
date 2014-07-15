@@ -76,3 +76,12 @@ body.teal {
   }
   .noUi-connect { background: $teal;}
 }
+
+.template-controls {
+  background-image: $img-texture-1, $img-texture-2;
+  background-repeat: repeat, repeat-x;
+  background-position: center center, top center;
+  background-color: rgb(189, 184, 180);
+  color: rgb(30, 26, 13);
+  padding: 15px;
+}
