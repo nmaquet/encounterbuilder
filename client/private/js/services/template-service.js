@@ -102,6 +102,12 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
 
             parsedMonster.normalAC += 2;
             parsedMonster.touchAC += 2;
+
+            if (parsedMonster.naturalArmor) {
+                var naturalArmorReduction = Math.min(parsedMonster.naturalArmor, 2);
+                parsedMonster.normalAC -= naturalArmorReduction;
+                parsedMonster.flatFootedAC -= naturalArmorReduction;
+            }
         }
 
         function templateNameSuffix(templates) {

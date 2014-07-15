@@ -216,6 +216,6 @@ describe("parserService", function () {
         baseMonster.Treasure = "Nothing.";
         baseMonster.AC = "44, touch 11, flat-footed 42";
         var parsedMonster = service.parseMonster(baseMonster);
-        expect(parsedMonster.naturalArmor).to.equal(42-11);
+        expect(parsedMonster.naturalArmor).to.equal(44-11);
     });
 });

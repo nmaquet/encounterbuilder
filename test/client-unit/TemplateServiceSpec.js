@@ -339,6 +339,25 @@ describe("templateService", function () {
             expect(templatedMonster.AC).to.equal("27, touch 12, flat-footed 20");
         });
 
+        it("should increase the Dex modifier to AC by 2, and reduce natural amor by 2 (with natural armor 1)", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            baseMonster.AC = "25, touch 24, flat-footed 11";
+            baseMonster.Treasure = "";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.AC).to.equal("26, touch 26, flat-footed 10");
+        });
+
+        it("should increase the Dex modifier to AC by 2, and reduce natural amor by 2 (with natural armor 3)", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            baseMonster.AC = "27, touch 24, flat-footed 11";
+            baseMonster.Treasure = "";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.AC).to.equal("27, touch 26, flat-footed 9");
+        });
 
     });
 
