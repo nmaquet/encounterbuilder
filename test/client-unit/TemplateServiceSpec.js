@@ -320,14 +320,14 @@ describe("templateService", function () {
             expect(templatedMonster.Con).to.equal(3);
         });
 
-        it("should reduce the Will and Fort saves by 2 and increase the Ref save by 2", function () {
+        it("should reduce theFort saves by 2 and increase the Ref save by 2", function () {
             baseMonster.templates = {
                 young: true
             };
             var templatedMonster = service.createTemplatedMonster(baseMonster);
             expect(templatedMonster.Fort).to.equal(25-2);
             expect(templatedMonster.Ref).to.equal(14+2);
-            expect(templatedMonster.Will).to.equal(23-2);
+            expect(templatedMonster.Will).to.equal(23);
         });
 
         it("should increase the Dex modifier to AC by 2, and reduce natural amor by 2 (no natural armor)", function () {
@@ -368,6 +368,14 @@ describe("templateService", function () {
             var templatedMonster = service.createTemplatedMonster(baseMonster);
             expect(templatedMonster.Melee).to.equal("+5 dancing greatsword +33/+28/+23/+18 (2d6+16) or slam +28 (1d10+11)");
             expect(templatedMonster.Ranged).to.equal("+5 composite longbow (+7 Str bonus) +33/+28/+23/+18 (1d8+12 plus slaying arrow)");
+        });
+
+        it("should change the size", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Size).to.equal("Medium");
         });
 
     });

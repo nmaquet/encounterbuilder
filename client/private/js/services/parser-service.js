@@ -50,7 +50,6 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                 var match = null;
                 var parsedMods = {};
                 while (null !== (match = AC_ModsRegex.exec(mods))) {
-                    console.log(match);
                     if (validACMods.indexOf(match[2].trim()) !== -1) {
                         parsedMods[match[2].trim()] = Number(match[1]);
                     }

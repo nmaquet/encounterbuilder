@@ -5,10 +5,20 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
 
         var service = {};
 
-        var sizesAndModifier = {};
+        var sizesAndModifier = {
+            "Fine": {Reach: "0", "Space": "1/2 ft."},
+            "Diminutive": {"Space": "1 ft.", "Reach": "0"},
+            "Tiny": {"Space": "2-1/2 ft.", "Reach": "0"},
+            "Small": {"Space": "5 ft.", "Reach": "5 ft."},
+            "Medium": {"Space": "5 ft.", "Reach": "5 ft."},
+            "Large": {"Space": "10 ft.", "Reach": "10 ft."},
+            "Huge": {"Space": "10 ft.", "Reach": "10 ft."},
+            "Gargantuan": {"Space": "10 ft.", "Reach": "10 ft."},
+            "Colossal": {"Space": "10 ft.", "Reach": "10 ft."}};
 
         var damageDicesA = ["1", "1d2", "1d3", "1d4", "1d6", "1d8", "2d6", "3d6", "4d6", "6d6", "8d6", "12d6"];
         var damageDicesB = ["1d10", "2d8", "3d8", "4d8", "6d8", "8d8", "12d8"];
+        var sizes = ["Fine", "Diminutive", "Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan", "Colossal"];
 
         function applyAdvancedTemplate(parsedMonster) {
 
@@ -94,7 +104,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             }
         }
 
-        function applyYoungTemplate(parsedMonster) {
+        function applyYoungTemplate(monster, parsedMonster) {
             parsedMonster.HP -= (2 * parsedMonster.numberOfHD);
             parsedMonster.hitPointBonus -= (2 * parsedMonster.numberOfHD);
             parsedMonster.Str -= 4;
@@ -106,18 +116,61 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
 
             parsedMonster.Fort -= 2;
             parsedMonster.Ref += 2;
-            parsedMonster.Will -= 2;
 
             parsedMonster.normalAC += 2;
             parsedMonster.touchAC += 2;
+            if (parsedMonster.AC_Mods) {
+                if (!parsedMonster.AC_Mods.Dex) {
+                    parsedMonster.AC_Mods.Dex = 0;
+                }
+                parsedMonster.AC_Mods.Dex += 2;
+            }
 
             if (parsedMonster.AC_Mods && parsedMonster.AC_Mods.natural) {
+
                 var naturalArmorReduction = Math.min(parsedMonster.AC_Mods.natural, 2);
+                parsedMonster.AC_Mods.natural = Math.max(parsedMonster.AC_Mods.natural - 2, 0);
                 parsedMonster.normalAC -= naturalArmorReduction;
                 parsedMonster.flatFootedAC -= naturalArmorReduction;
             }
             adjustDamageForSize(parsedMonster, "Melee", -1, -2, -2);
             adjustDamageForSize(parsedMonster, "Ranged", -1, +2, -2);
+            monster.Size = sizes[Math.max(sizes.indexOf(monster.Size) - 1, 0)];
+            monster.Reach = sizesAndModifier[monster.Size].Reach;
+            monster.Space = sizesAndModifier[monster.Size].Space;
+        }
+
+        function applyGiantTemplate(monster, parsedMonster) {
+            parsedMonster.HP += (2 * parsedMonster.numberOfHD);
+            parsedMonster.hitPointBonus += (2 * parsedMonster.numberOfHD);
+            parsedMonster.Str += 4;
+            parsedMonster.Dex -= 2;
+            parsedMonster.Con += 4;
+
+            parsedMonster.Dex = Math.max(3, parsedMonster.Dex);
+
+            parsedMonster.Fort += 2;
+            parsedMonster.Ref -= 1;
+
+            parsedMonster.touchAC -= 2;
+            if (parsedMonster.AC_Mods) {
+                if (!parsedMonster.AC_Mods.Dex) {
+                    parsedMonster.AC_Mods.Dex = 0;
+                }
+                parsedMonster.AC_Mods.Dex -= 1;
+            }
+
+            if (parsedMonster.AC_Mods && parsedMonster.AC_Mods.natural) {
+
+                parsedMonster.AC_Mods.natural +=3;
+                parsedMonster.normalAC += 2;
+                parsedMonster.flatFootedAC += 2;
+            }
+            adjustDamageForSize(parsedMonster, "Melee", +1, +2, +2);
+            adjustDamageForSize(parsedMonster, "Ranged", +1, -1, +2);
+            monster.Size = sizes[Math.max(sizes.indexOf(monster.Size) + 1, 0)];
+            monster.Reach = sizesAndModifier[monster.Size].Reach;
+            monster.Space = sizesAndModifier[monster.Size].Space;
         }
 
         function adjustDamageForSize(parsedMonster, attribute, dicesAdjustment, attackModifier, damageModifier) {
@@ -181,9 +234,14 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
                         templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
                     }
                     else if (template === "young") {
-                        applyYoungTemplate(parsedMonster);
+                        applyYoungTemplate(templatedMonster, parsedMonster);
                         formatterService.formatMonster(templatedMonster, parsedMonster);
                         templatedMonster.CR = Math.floor(templatedMonster.CR - 1);
+                    }
+                    else if (template === "giant") {
+                        applyGiantTemplate(templatedMonster, parsedMonster);
+                        formatterService.formatMonster(templatedMonster, parsedMonster);
+                        templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
                     }
                 }
                 templatedMonster.Name += templateNameSuffix(templatedMonster.templates);
