@@ -113,8 +113,8 @@ var ATTRIBUTE_FILTERS = {
     CMD: function (srdMonster, $) {
         return parseAttributeFromSrdMonster($("b:contains(CMD)"), /.*CMD\s*(.*)/);
     },
-    ACDetails: function (srdMonster, $) {
-        return parseAttributeFromSrdMonster($("h5 b:contains(AC)"), /.*AC\s*[^\(]*\(([^\)]*)\)/);
+    AC_Mods: function (srdMonster, $) {
+        return parseAttributeFromSrdMonster($("h5 b:contains(AC)"), /.*AC\s*[^\(]*(\([^\)]*\))/);
     },
     SpecialAbilities: function (srdMonster, $) {
         return getSRDMonsterSpecialAbilities(srdMonster, $);
@@ -285,9 +285,11 @@ function getSRDMonsterDescription(monster, $) {
         return element.html();
     }
 
-    var kyleDescription = getKyleMonsterByID(monster.id).Description;
+    var kyleMonster = getKyleMonsterByID(monster.id);
+    var kyleDescription = (kyleMonster) ? getKyleMonsterByID(monster.id).Description : undefined;
     if (kyleDescription == undefined) {
         console.log("[WARNING] no Kyle Monster '" + monster.Name + "' => guessing description at div 14 !");
+        noKyleMonsters.push(monster.Name);
         return get(14);
     }
     var div = [14, 12, 16];
@@ -360,25 +362,24 @@ function cleanupSRDMonster(srdMonster, $) {
 
 var monsters = [];
 var monsterNameCount = {};
+var noKyleMonsters =[];
 
 for (var i in srd_monsters) {
     console.log(i + " / " + srd_monsters.length);
 
-    var kyleMonster = getKyleMonsterByID(srd_monsters[i].id)
-    if (kyleMonster == undefined) {
-        continue; //FIXME remove this
-    }
     var $ = cheerio.load(srd_monsters[i].FullText);
-
     var cleanedUpMonster = cleanupSRDMonster(srd_monsters[i], $);
-
-    try {
-        compareMonsters(cleanedUpMonster, kyleMonster);
-    } catch (e) {
-        console.log(e.stack);
-        continue;
+    var kyleMonster = getKyleMonsterByID(srd_monsters[i].id)
+    if (kyleMonster !== undefined) {
+        try {
+            compareMonsters(cleanedUpMonster, kyleMonster);
+        } catch (e) {
+            console.log(e.stack);
+            continue;
+        }
     }
-    console.log(cleanedUpMonster.ACDetails);
+
+    console.log(cleanedUpMonster.AC_Mods);
     monsters.push(cleanedUpMonster);
     if (monsterNameCount[cleanedUpMonster.Name.toLowerCase()] !== undefined) {
         monsterNameCount[cleanedUpMonster.Name.toLowerCase()]++;
@@ -398,5 +399,6 @@ for (var name in monsterNameCount) {
 }
 
 fs.writeFileSync('../data/monsters/monsters.json', JSON.stringify(monsters, null, 4));
+fs.writeFileSync('../data/monsters/monsters-to-check.json', JSON.stringify(noKyleMonsters, null, 4));
 
 console.log("done");
