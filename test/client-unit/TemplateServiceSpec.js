@@ -278,5 +278,13 @@ describe("templateService", function () {
             expect(templatedMonster.HD).to.equal("(22d10+198)");
         });
 
+        it("should modify the name", function () {
+            baseMonster.templates = [
+                {template: "young"}
+            ];
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Name).to.equal("Solar (Young)");
+        });
+
     });
 });
