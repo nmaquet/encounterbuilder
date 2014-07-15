@@ -93,17 +93,19 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
 
         service.createTemplatedMonster = function (monster) {
             var templatedMonster = angular.copy(monster);
-            if (monster.templates && monster.templates.length > 0) {
+            if (monster.templates) {
                 var parsedMonster = parserService.parseMonster(templatedMonster);
-                for (var i in monster.templates) {
-                    if ("advanced" === monster.templates[i].template) {
+                for (var template in monster.templates) {
+                    if (!monster.templates.hasOwnProperty(template) || !monster.templates[template])
+                        continue;
+                    if (template === "advanced") {
                         applyAdvancedTemplate(parsedMonster);
                         modifyMonsterDCs(templatedMonster, +2);
                         formatterService.formatMonster(templatedMonster, parsedMonster);
                         templatedMonster.Name = templatedMonster.Name + " (Advanced)";
                         templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
                     }
-                    else if ("young" === monster.templates[i].template) {
+                    else if (template === "young") {
                         applyYoungTemplate(parsedMonster);
                         formatterService.formatMonster(templatedMonster, parsedMonster);
                         templatedMonster.Name = templatedMonster.Name + " (Young)";

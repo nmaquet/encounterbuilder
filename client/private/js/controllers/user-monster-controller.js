@@ -55,6 +55,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                         return console.log(error);
                     }
 
+                    userMonster.templates = userMonster.templates || {};
                     baseMonster = userMonster;
                     $scope.userMonster = templateService.createTemplatedMonster(userMonster);
 
