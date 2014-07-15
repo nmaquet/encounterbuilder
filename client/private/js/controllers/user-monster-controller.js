@@ -33,11 +33,16 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                 contentTreeService.copyUserMonster($scope.userMonster._id, true);
             };
 
-            $scope.advanceMonster = function () {
-                $scope.userMonster = templateService.advanceMonster(baseMonster, function (error) {
-                    console.log(error);
+            $scope.toggleAdvancedTemplate = function () {
+                if (baseMonster.templates && baseMonster.templates.length > 0) {
+                    baseMonster.templates = [];
+                } else {
+                    baseMonster.templates = [{template: "advanced"}];
+                }
+                $scope.userMonster = templateService.createTemplatedMonster(baseMonster);
+                userMonsterService.update(baseMonster, function() {
+                    contentTreeService.userMonsterUpdated(baseMonster);
                 });
-                contentTreeService.userMonsterUpdated($scope.userMonster);
             };
 
             $scope.pending = true;
