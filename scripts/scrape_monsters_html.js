@@ -113,6 +113,9 @@ var ATTRIBUTE_FILTERS = {
     CMD: function (srdMonster, $) {
         return parseAttributeFromSrdMonster($("b:contains(CMD)"), /.*CMD\s*(.*)/);
     },
+    ACDetails: function (srdMonster, $) {
+        return parseAttributeFromSrdMonster($("h5 b:contains(AC)"), /.*AC\s*[^\(]*\(([^\)]*)\)/);
+    },
     SpecialAbilities: function (srdMonster, $) {
         return getSRDMonsterSpecialAbilities(srdMonster, $);
     },
@@ -310,7 +313,7 @@ function compareMonsters(srdMonster, kyleMonster) {
     var MIN_LENGTH_RATIO = 0.3;
     var MAX_LENGTH_RATIO = 3.0;
     for (var i in MONSTER_ATTRIBUTES) {
-        if (MONSTER_ATTRIBUTES[i] !== "Resist"){
+        if (MONSTER_ATTRIBUTES[i] !== "Resist") {
             continue;
         }
         var max_distance = DEFAULT_MAX_DISTANCE;
@@ -369,13 +372,13 @@ for (var i in srd_monsters) {
 
     var cleanedUpMonster = cleanupSRDMonster(srd_monsters[i], $);
 
-     try {
-     compareMonsters(cleanedUpMonster, kyleMonster);
-     } catch (e) {
-     console.log(e.stack);
-     continue;
-     }
-
+    try {
+        compareMonsters(cleanedUpMonster, kyleMonster);
+    } catch (e) {
+        console.log(e.stack);
+        continue;
+    }
+    console.log(cleanedUpMonster.ACDetails);
     monsters.push(cleanedUpMonster);
     if (monsterNameCount[cleanedUpMonster.Name.toLowerCase()] !== undefined) {
         monsterNameCount[cleanedUpMonster.Name.toLowerCase()]++;
