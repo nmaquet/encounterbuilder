@@ -266,6 +266,19 @@ describe("templateService", function () {
 
     });
 
+    describe("Multiple templates", function() {
+
+        it("should have all the template names, sorted alphabetically", function () {
+            baseMonster.templates = {
+                advanced: true,
+                young: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Name).to.equal("Solar (Advanced, Young)");
+        });
+
+    });
+
     describe("Young template", function() {
 
         it("should remove 44 HP ", function () {
@@ -285,18 +298,27 @@ describe("templateService", function () {
             expect(templatedMonster.Name).to.equal("Solar (Young)");
         });
 
-    });
-
-    describe("Multiple templates", function() {
-
-        it("should have all the template names, sorted alphabetically", function () {
+        it("should augment Dex and reduce Str and Con by four", function () {
             baseMonster.templates = {
-                advanced: true,
                 young: true
             };
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.Name).to.equal("Solar (Advanced, Young)");
+            expect(templatedMonster.Str).to.equal(28-4);
+            expect(templatedMonster.Dex).to.equal(20+4);
+            expect(templatedMonster.Con).to.equal(30-4);
+        });
+
+        it("should not reduce abilities below 3", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            baseMonster.Str = 4;
+            baseMonster.Con = 6;
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Str).to.equal(3);
+            expect(templatedMonster.Con).to.equal(3);
         });
 
     });
+
 });

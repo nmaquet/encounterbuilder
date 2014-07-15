@@ -89,6 +89,12 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
         function applyYoungTemplate(parsedMonster) {
             parsedMonster.HP -= (2 * parsedMonster.numberOfHD);
             parsedMonster.hitPointBonus -= (2 * parsedMonster.numberOfHD);
+            parsedMonster.Str -= 4;
+            parsedMonster.Dex += 4;
+            parsedMonster.Con -= 4;
+
+            parsedMonster.Str = Math.max(3, parsedMonster.Str);
+            parsedMonster.Con = Math.max(3, parsedMonster.Con);
         }
 
         function templateNameSuffix(templates) {
