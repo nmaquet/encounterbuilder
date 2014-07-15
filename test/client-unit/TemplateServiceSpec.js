@@ -286,4 +286,17 @@ describe("templateService", function () {
         });
 
     });
+
+    describe("Multiple templates", function() {
+
+        it("should have all the template names, sorted alphabetically", function () {
+            baseMonster.templates = {
+                advanced: true,
+                young: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Name).to.equal("Solar (Advanced, Young)");
+        });
+
+    });
 });

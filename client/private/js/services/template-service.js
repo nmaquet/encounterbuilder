@@ -91,6 +91,17 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             parsedMonster.hitPointBonus -= (2 * parsedMonster.numberOfHD);
         }
 
+        function templateNameSuffix(templates) {
+            function capitalize(string) {
+                return (string.charAt(0).toUpperCase() + string.slice(1));
+            }
+            if (Object.keys(templates).length > 0) {
+                return " (" + Object.keys(templates).map(capitalize).sort().join(", ") + ")";
+            } else {
+                return "";
+            }
+        }
+
         service.createTemplatedMonster = function (monster) {
             var templatedMonster = angular.copy(monster);
             if (monster.templates) {
@@ -102,17 +113,16 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
                         applyAdvancedTemplate(parsedMonster);
                         modifyMonsterDCs(templatedMonster, +2);
                         formatterService.formatMonster(templatedMonster, parsedMonster);
-                        templatedMonster.Name = templatedMonster.Name + " (Advanced)";
                         templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
                     }
                     else if (template === "young") {
                         applyYoungTemplate(parsedMonster);
                         formatterService.formatMonster(templatedMonster, parsedMonster);
-                        templatedMonster.Name = templatedMonster.Name + " (Young)";
                         templatedMonster.CR = Math.floor(templatedMonster.CR - 1);
                     }
-                    templatedMonster.XP = crService.calculateXp(templatedMonster.CR);
                 }
+                templatedMonster.Name += templateNameSuffix(templatedMonster.templates);
+                templatedMonster.XP = crService.calculateXp(templatedMonster.CR);
             }
             return templatedMonster;
         };
