@@ -37,6 +37,12 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
 
             parsedMonster.Init = Number(monster.Init);
 
+            /* FIXME: what about monsters with both armor and natural armor ? */
+            if (/armor/i.test(monster.Treasure)) {
+                parsedMonster.naturalArmor = 0;
+            } else {
+                parsedMonster.naturalArmor = parsedMonster.flatFootedAC - parsedMonster.touchAC;
+            }
 
             return parsedMonster;
 

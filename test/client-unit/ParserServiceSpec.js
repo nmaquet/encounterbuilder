@@ -205,4 +205,17 @@ describe("parserService", function () {
         baseMonster.Ranged = undefined;
         service.parseMonster(baseMonster);
     });
+
+    it("should try to guess the natural armor (monster with armor in treasure)", function () {
+        baseMonster.Treasure = "Some armor.";
+        var parsedMonster = service.parseMonster(baseMonster);
+        expect(parsedMonster.naturalArmor).to.equal(0);
+    });
+
+    it("should try to guess the natural armor (monster with armor in treasure)", function () {
+        baseMonster.Treasure = "Nothing.";
+        baseMonster.AC = "44, touch 11, flat-footed 42";
+        var parsedMonster = service.parseMonster(baseMonster);
+        expect(parsedMonster.naturalArmor).to.equal(42-11);
+    });
 });
