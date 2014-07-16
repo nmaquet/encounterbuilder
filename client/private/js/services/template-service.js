@@ -337,7 +337,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
                     else if (template === "young") {
                         applyYoungTemplate(templatedMonster, parsedMonster);
                         formatterService.formatMonster(templatedMonster, parsedMonster);
-                        templatedMonster.CR = Math.floor(templatedMonster.CR - 1);
+                        templatedMonster.CR = Math.max(1/3, Math.floor(templatedMonster.CR - 1));
                     }
                     else if (template === "giant") {
                         applyGiantTemplate(templatedMonster, parsedMonster);

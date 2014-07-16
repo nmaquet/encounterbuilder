@@ -451,6 +451,16 @@ describe("templateService", function () {
             expect(templatedMonster.AC_Mods).to.equal("(-4 size, +2 Dex)");
         });
 
+        it("should not reduce the CR below 1/3", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            baseMonster.CR = 1/3;
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.CR).to.equal(1/3);
+        });
+
+
     });
 
     describe("Giant template", function() {
