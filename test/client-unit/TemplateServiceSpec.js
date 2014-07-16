@@ -418,6 +418,16 @@ describe("templateService", function () {
             expect(templatedMonster.Skills).to.equal("Stealth +8");
         });
 
+        it("should have +4 to Fly", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            baseMonster.Skills = "Fly +2";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Skills).to.equal("Fly +6");
+        });
+
+
     });
 
 });
