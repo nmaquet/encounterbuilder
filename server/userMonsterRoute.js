@@ -69,19 +69,9 @@ module.exports = function (userMonsterCollection, monstersCollection, ObjectID) 
                     if (userMonster) {
                         if (!userCreated) {
                             //FIXME this kinda works now but will be messy when user will copy content from other users.
-                            userMonster.Name = "copy of " + userMonster.Name;
                             userMonster.Source = "originally from " + (userMonster.Source || "???") + " and modified by " + username;
                         }
                         userMonster.Username = username;
-                        if (userMonster.Description) {
-                            userMonster.Description = monster.Description;
-                        }
-                        if (userMonster.SpecialAbilities) {
-                            userMonster.SpecialAbilities = monster.SpecialAbilities;
-                        }
-                        if (userMonster.SpellLikeAbilities) {
-                            userMonster.SpellLikeAbilities = monster.SpellLikeAbilities;
-                        }
                         userMonsterCollection.insert(userMonster, function (error, newUserMonster) {
                             if (error) {
                                 console.log(error);
