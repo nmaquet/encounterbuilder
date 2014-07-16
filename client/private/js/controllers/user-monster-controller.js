@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
-    ['$rootScope', '$scope', '$timeout', '$routeParams', '$location', '$sce', 'userMonsterService', 'contentTreeService', 'locationService', 'templateService',
-        function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userMonsterService, contentTreeService, locationService, templateService) {
+    ['$rootScope', '$scope', '$timeout', '$routeParams', '$location', '$sce', 'userMonsterService', 'contentTreeService', 'locationService', 'templateService', 'throttle',
+        function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userMonsterService, contentTreeService, locationService, templateService, throttle) {
 
             var baseMonster = null;
 
@@ -52,11 +52,14 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                     }
                     $scope.pending = false;
 
+                    var update = throttle(userMonsterService.update, 1000);
+                    var userMonsterUpdated = throttle(contentTreeService.userMonsterUpdated, 1000);
+
                     $scope.$watch("userMonster.templates", function(value) {
                         $scope.userMonster = templateService.createTemplatedMonster(baseMonster);
                         baseMonster.templates = $scope.userMonster.templates;
-                        userMonsterService.update(baseMonster);
-                        contentTreeService.userMonsterUpdated($scope.userMonster);
+                        update(baseMonster);
+                        userMonsterUpdated($scope.userMonster);
                     }, true /* deep equality */);
                 });
             }
