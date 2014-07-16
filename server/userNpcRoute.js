@@ -8,7 +8,6 @@ module.exports = function (userNpcCollection, npcsCollection, ObjectID) {
             Name: "Unnamed Npc",
             CR:0,
             XP:0
-
         }
     }
 
@@ -71,7 +70,6 @@ module.exports = function (userNpcCollection, npcsCollection, ObjectID) {
                     if (userNpc) {
                         if (!userCreated) {
                             //FIXME this kinda works now but will be messy when user will copy content from other users.
-                            userNpc.Name = "copy of " + userNpc.Name;
                             userNpc.Source = "originally from " + (userNpc.Source || "???") + " and modified by " + username;
                         }
                         userNpc.Username = username;

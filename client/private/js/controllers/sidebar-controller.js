@@ -26,7 +26,16 @@ DEMONSQUID.encounterBuilderControllers.controller('SidebarController',
                 contentTreeService.createUserText();
             };
             $scope.createUserFeat = function () {
-                contentTreeService.createUserFeat();
+                contentTreeService.createUserResource("user-feat");
+            };
+            $scope.createUserItem = function () {
+                contentTreeService.createUserResource("user-item");
+            };
+            $scope.createUserSpell = function () {
+                contentTreeService.createUserResource("user-spell");
+            };
+            $scope.createUserIllustration = function () {
+                contentTreeService.createUserResource("user-illustration");
             };
         }
     ]);

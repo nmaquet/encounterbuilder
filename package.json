@@ -20,9 +20,11 @@
         "jade"        : "~1.1.5",
         "async"        : "0.2.10",
         "connect-mongo": "~0.3",
-        "node-sass" : "0.8.6"
+        "node-sass" : "0.8.6",
+        "aws-sdk": ">= 1.5.0"
     },
     "devDependencies" : {
+        "bson"        : "*",
         "mongoose"    : "~3.6.2",
         "chai"        : "1.8.1",
         "mocha"       : "~1.16",

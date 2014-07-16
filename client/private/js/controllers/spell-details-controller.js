@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SpellDetailsController',
-    ['$rootScope', '$scope', '$http', '$sce', '$routeParams', 'spellService', 'favouriteService',
-        function ($rootScope, $scope, $http, $sce, $routeParams, spellService, favouriteService) {
+    ['$rootScope', '$scope', '$http', '$sce', '$routeParams', 'spellService', 'favouriteService', 'contentTreeService',
+        function ($rootScope, $scope, $http, $sce, $routeParams, spellService, favouriteService, contentTreeService) {
             $scope.pending = true;
             $scope.toggleFavourite = function () {
                 if ($scope.favourite) {
@@ -27,5 +27,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SpellDetailsController',
                     }
                 }
             });
+            $scope.copySpell = function () {
+                contentTreeService.copyResource($scope.spell.id, "user-spell");
+            }
         }
     ]);

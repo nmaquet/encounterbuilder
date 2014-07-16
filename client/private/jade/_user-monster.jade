@@ -10,12 +10,50 @@
         .row.btn-container
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copyMonster()')
                 i.icon.fa.fa-copy
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Advance',ng-click='advanceMonster()')
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Advance', ng-click='templateControlsCollapsed = !templateControlsCollapsed')
                 i.icon.fa.fa-flash
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit', ng-click="editUserMonster()")
                 i.icon.fa.fa-edit
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete', on-confirm="deleteUserMonster()", confirm-click="Are you sure ?", confirm-title="Delete monster")
                 i.icon.fa.fa-trash-o
+.row.template-controls(collapse="templateControlsCollapsed")
+    .col-xs-12.col-sm-6
+        form(class="form-horizontal")
+            fieldset
+                div(class="control-group")
+                    div(class="controls")
+                        label.is-pointer(class="checkbox")
+                            input(type="checkbox", ng-model="userMonster.templates.advanced")
+                            | Advanced (CR +1)
+                        label.is-pointer(class="checkbox", ng-class='{"t-disabled": userMonster.templates.giant}')
+                            input(type="checkbox", ng-model="userMonster.templates.young", ng-disabled="userMonster.templates.giant")
+                            | Young (CR -1)
+                        label.is-pointer(class="checkbox", ng-class='{"t-disabled": userMonster.templates.young}')
+                            input(type="checkbox", ng-model="userMonster.templates.giant", ng-disabled="userMonster.templates.young")
+                            | Giant (CR +1)
+                        label.is-pointer(class="checkbox")
+                            input(type="checkbox", ng-model="userMonster.templates.augmented")
+                            | Augmented
+    .col-xs-12.col-sm-6
+        .pull-right
+            a.is-pointer.template-controls-close-btn(ng-click='templateControlsCollapsed = !templateControlsCollapsed')
+                i.icon.fa.fa-lg.fa-times
+        form(class="form-horizontal")
+            fieldset
+                div(class="control-group")
+                    div(class="controls")
+                        label.is-pointer.t-disabled(class="checkbox")
+                            input(type="checkbox" ng-model="userMonster.templates.celestial" disabled)
+                            | Celestial (CR +0 +1)
+                        label.is-pointer.t-disabled(class="checkbox")
+                            input(type="checkbox" ng-model="userMonster.templates.fiendish" disabled)
+                            | Fiendish (CR +0 or +1)
+                        label.is-pointer.t-disabled(class="checkbox")
+                            input(type="checkbox" ng-model="userMonster.templates.resolute" disabled)
+                            | Entropic (CR +0 +1)
+                        label.is-.t-disabled(class="checkbox")
+                            input(type="checkbox" ng-model="userMonster.templates.entropic" disabled)
+                            | Resolute (CR +0 or +1)
 .row.l-section.result-content
     .col-xxs-12.col-xs-12.cat
         p.intro.underlined {{userMonster.Description_Visual}}
@@ -83,7 +121,7 @@
                         span
                             strong
                                 abbr(title='Armor Class') AC
-                            | &nbsp;{{userMonster.AC}}
+                            | &nbsp;{{userMonster.AC}}; {{userMonster.AC_Mods}}
                     li
                         span
                             strong HP

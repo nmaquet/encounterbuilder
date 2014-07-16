@@ -1,0 +1,111 @@
+.row.heading.result-heading
+    .col-xxs-8.col-xs-8.col-lg-9.name-container
+        h2.t-title.t-title-result {{userResource.Name}}
+        small Source: {{userResource.Source}}
+    .col-xxs-4.col-xs-4.col-lg-3.cr-container
+        .row.btn-container
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copy()')
+                i.icon.fa.fa-copy
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit',ng-click='edit()')
+                i.icon.fa.fa-edit
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete',on-confirm="delete()", confirm-click="Are you sure ?", confirm-title="Delete Feat")
+                i.icon.fa.fa-trash-o
+.row.l-section.result-content
+    .col-lg-6.cat
+        ul.cat-content.list-unstyled
+            li(ng-if="userResource.Aura")
+                span
+                    strong Aura&nbsp;
+                    | {{userResource.Aura}}
+            li(ng-if="userResource.Group")
+                span
+                    strong Group&nbsp;
+                    | {{userResource.Group}}
+            li(ng-if="userResource.SpellName")
+                span
+                    strong Spell&nbsp;
+                    span(linkify="userResource.SpellName",linkify-type="spell", mythic="false")
+            li(ng-if="userResource.Slot")
+                span
+                    strong Slot&nbsp;
+                    | {{userResource.Slot}}
+            li(ng-if="userResource.Weight")
+                span
+                    strong Weight&nbsp;
+                    | {{userResource.Weight}}
+            li(ng-if="userResource.Price")
+                span
+                    strong Price&nbsp;
+                    | {{userResource.Price}}&nbsp;{{userResource.PriceUnit}}
+                    span(ng-if="userResource.Group === 'Gem'")
+                        em &nbsp;(average)
+            li(ng-if="userResource.BaseValue")
+                span
+                    strong Base Value&nbsp;
+                    | {{userResource.BaseValue}}&nbsp;{{userResource.PriceUnit}}
+            li(ng-if="userResource.AddedValue")
+                span
+                    strong Added Value&nbsp;
+                    | {{userResource.AddedValue}}
+    .col-xs-12.cat.decor(ng-if="userResource.Requirements || userResource.Cost")
+        legend.cat-heading.t-legend.t-title Construction
+        ul.cat-content.list-unstyled
+            li(ng-if="userResource.Requirements")
+                span
+                    strong Requirements&nbsp;
+                    span(linkify="userResource.Requirements",linkify-type="feat,spell", mythic="false")
+            li(ng-if="userResource.Cost")
+                span
+                    strong Cost&nbsp;
+                    | {{userResource.Cost}}&nbsp;{{userResource.CostUnit}}
+    .col-xs-12.cat.decor
+        legend.cat-heading.t-legend.t-title Description
+        .cat-content(ng-show="userResource.Derived || userResource.Group === 'Art Object'")
+            div(ng-show="userResource.Group === 'Potion' || userResource.Group === 'Oil'")
+                p.
+                    A potion is a magic liquid that produces its effect when imbibed. Potions vary incredibly in appearance.
+                    Magic oils are similar to potions, except that oils are applied externally rather than imbibed.
+                    A potion or oil can be used only once. It can duplicate the effect of a spell of up to 3rd level that
+                    has a casting time of less than 1 minute and targets one or more creatures or objects.
+                    The price of a potion is equal to the level of the spell × the creator's caster level × 50 gp.
+                    If the potion has a material component cost, it is added to the base price and cost to create.
+                    Note that some spells appear at different levels for different casters. The level of such spells depends on the caster brewing the potion.
+                p.
+                    Potions are like spells cast upon the imbiber. The character taking the potion doesn't get to make any
+                    decisions about the effect—the caster who brewed the potion has already done so.
+                    The drinker of a potion is both the effective target and the caster of the effect
+                    (though the potion indicates the caster level, the drinker still controls the effect).
+                p.
+                    The person applying an oil is the effective caster, but the object is the target.
+            div(ng-show="userResource.Group === 'Scroll'")
+                p.
+                    A scroll is a spell (or collection of spells) that has been stored in written form.
+                    A spell on a scroll can be used only once. The writing vanishes from the scroll when the spell is activated.
+                    Using a scroll is basically like casting a spell.
+                    The price of a scroll is equal to the level of the spell × the creator's caster level × 25 gp.
+                    If the scroll has a material component cost, it is added to the base price and cost to create.
+                    Note that some spells appear at different levels for different casters. The level of such spells depends on the caster scribing the scroll.
+            div(ng-show="userResource.Group === 'Wand'")
+                p.
+                    A wand is a thin baton that contains a single spell of 4th level or lower.
+                    A wand has 50 charges when created—each charge allows the use of the wand's spell one time.
+                    A wand that runs out of charges is just a stick.
+                    The price of a wand is equal to the level of the spell × the creator's caster level × 750 gp.
+                    If the wand has a material component cost, it is added to the base price and cost to create once for each charge (50 × material component cost).
+                    Note that some spells appear at different levels for different casters. The level of such spells depends on the caster crafting the wand.
+            div(ng-show="userResource.Group === 'Art Object'")
+                p.
+                    An art object is an userResource that has value not because of its function, but because of its aesthetics or the historical,
+                    religious, or sentimental value placed upon it by a particular culture.
+                    The following tables list art objects of value in a traditional fantasy campaign.
+                    In some cases, the listed price represents only the typical value of an userResource;
+                    it may have a higher value to a buyer who knows its origin or is descended from the original owner.
+                    For example, a painting of a historical queen may fetch a decent price in her home country,
+                    but it sells for much more if brought to an agent of the royal family.
+                    Likewise, a silver baby rattle is worth a certain amount as a curiosity or plaything for a wealthy merchant's son,
+                    but a historian might recognize markings on it that indicate it belonged to an infant prince who was killed in a succession war,
+                    and pay a higher price for it. In this way, an art object may easily be used as a plot hook.
+                p.
+                    Art objects can usually be bought or sold for their base price, and are sometimes used as currency.
+        .cat-content(ng-hide="userResource.Derived")
+            p {{userResource.Description}}

@@ -10,7 +10,8 @@ DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
     'encounterBuilderServices',
     'encounterBuilderDirectives',
     'ui.bootstrap',
-    'ui.tinymce'
+    'ui.tinymce',
+    'angularFileUpload'
 ]);
 
 DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
@@ -24,7 +25,22 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
             .when('/user-monster/:userMonsterId', { templateUrl: 'user-monster.html' })
             .when('/user-npc/:userNpcId', { templateUrl: 'user-npc.html' })
             .when('/user-text/:userTextId', { templateUrl: 'user-text.html' })
-            .when('/user-feat/:userFeatId', { templateUrl: 'user-feat.html' })
+
+            /* user-feat */
+            .when('/user-feat/:userResourceId', { templateUrl: 'user-feat.html' })
+            .when('/edit-user-feat/:userResourceId', { templateUrl: 'edit-user-feat.html' })
+            .when('/edit-user-feat/:userResourceId/:type/:detailsId', { templateUrl: 'edit-user-feat.html' })
+            /* user-spell */
+            .when('/user-spell/:userResourceId', { templateUrl: 'user-spell.html' })
+            .when('/edit-user-spell/:userResourceId', { templateUrl: 'edit-user-spell.html' })
+            .when('/edit-user-spell/:userResourceId/:type/:detailsId', { templateUrl: 'edit-user-spell.html' })
+            /* user-item */
+            .when('/user-item/:userResourceId', { templateUrl: 'user-item.html' })
+            .when('/edit-user-item/:userResourceId', { templateUrl: 'edit-user-item.html' })
+            .when('/edit-user-item/:userResourceId/:type/:detailsId', { templateUrl: 'edit-user-item.html' })
+            /* user-illustration */
+            .when('/user-illustration/:userResourceId', { templateUrl: 'user-illustration.html' })
+
             .when('/edit-user-monster/:userMonsterId/:type/:detailsId', { templateUrl: 'edit-user-monster.html' })
             .when('/edit-user-npc/:userNpcId/:type/:detailsId', { templateUrl: 'edit-user-npc.html' })
             .when('/edit-user-text/:userTextId/:type/:detailsId', { templateUrl: 'edit-user-text.html' })

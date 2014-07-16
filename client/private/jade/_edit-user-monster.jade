@@ -66,6 +66,7 @@ mixin fullWidthTextArea(name, model, rows, placeholder)
                 legend.t-legend.t-title Defense
                 form.form-horizontal(role="form")
                     +labeledInput("AC", "userMonster.AC", "e.g. AC 13, touch 13, flat-footed 12")
+                    +labeledInput("AC Modifiers", "userMonster.AC_Mods", "e.g. (+26 natural, -4 size)")
                 form.form-horizontal(role="form")
                     .row
                         .col-xs-12.col-sm-4

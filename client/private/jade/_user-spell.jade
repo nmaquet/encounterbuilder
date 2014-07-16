@@ -1,0 +1,65 @@
+.row.heading.result-heading
+    .col-xxs-8.col-xs-8.col-lg-9.name-container
+        h2.t-title.t-title-result {{userResource.name}}
+        small Source: {{userResource.source}}
+    .col-xxs-4.col-xs-4.col-lg-3.cr-container
+        .row.btn-container
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copy()')
+                i.icon.fa.fa-copy
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit',ng-click='edit()')
+                i.icon.fa.fa-edit
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete',on-confirm="delete()", confirm-click="Are you sure ?", confirm-title="Delete Feat")
+                i.icon.fa.fa-trash-o
+.row.l-section.result-content
+    .col-xxs-12.col-xs-12.cat
+        ul.cat-content.list-unstyled
+            li
+                span
+                    strong School&nbsp;
+                    | {{userResource.school}}
+                    span(ng-if="userResource.subschool") &nbsp;({{userResource.subschool}})
+                    span(ng-if="userResource.descriptor") &nbsp;[{{userResource.descriptor}}]
+                    | ;&nbsp;
+                    strong Level&nbsp;
+                    | {{userResource.spell_level}}
+            li(ng-if="userResource.casting_time")
+                span
+                    strong Casting Time&nbsp;
+                    | {{userResource.casting_time}}
+            li(ng-if="userResource.components")
+                span
+                    strong Components&nbsp;
+                    | {{userResource.components}}
+            li(ng-if="userResource.range")
+                span
+                    strong Range&nbsp;
+                    | {{userResource.range}}.
+            li(ng-if="userResource.effect")
+                span
+                    strong Effect&nbsp;
+                    | {{userResource.effect}}
+            li(ng-if="userResource.targets")
+                span
+                    strong Target&nbsp;
+                    | {{userResource.targets}}
+            li(ng-if="userResource.duration")
+                span
+                    strong Duration&nbsp;
+                    | {{userResource.duration}}
+            li(ng-if="userResource.saving_throw||!!userResource.spell_resistence")
+                span
+                    strong Saving Throw&nbsp;
+                    | {{userResource.saving_throw}}
+                    span(ng-if="!!userResource.spell_resistence")
+                        | ;&nbsp;
+                        strong Spell Resistance&nbsp;
+                        | {{userResource.spell_resistence}}
+    .col-xxs-12.col-xs-12.cat.decor
+        legend.cat-heading.t-legend.t-title Description
+        .cat-content(ng-bind-html='userResource.description | toTrustedHtml')
+    .col-xxs-12.col-xs-12.cat.decor(ng-if="userResource.mythic")
+        legend.cat-heading.t-legend.t-title Mythic
+        .cat-content
+            | {{userResource.mythic_text}}
+        .cat-content
+            | {{userResource.augmented}}

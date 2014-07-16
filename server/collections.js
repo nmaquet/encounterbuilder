@@ -13,8 +13,11 @@ module.exports = function (db) {
         spells: db.collection('spells'),
         feats: db.collection('feats'),
         userFeats: db.collection('userfeats'),
+        userSpells: db.collection('userspells'),
+        userItems: db.collection('useritems'),
         contentTrees: db.collection('contenttrees'),
-        favourites: db.collection('favourites')
+        favourites: db.collection('favourites'),
+        userIllustrations: db.collection('userillustrations')
     }
 };
 

@@ -10,7 +10,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
 
         function formatUnsignedNumber(monster, parsedMonster, attribute, failures) {
             if (!isNaN(parsedMonster[attribute])) {
-                monster[attribute] = parsedMonster[attribute];
+                monster[attribute] =parsedMonster[attribute];
             } else {
                 failures[attribute] = attribute + " must be a number";
             }
@@ -36,6 +36,21 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             }
         }
 
+        function formatArmorClassModifiers(monster, parsedMonster, attribute, failures) {
+            var mods = [];
+            for (var property in parsedMonster.AC_Mods) {
+                if (!parsedMonster.AC_Mods.hasOwnProperty(property))
+                    continue
+                var sign = (parsedMonster.AC_Mods[property] >= 0) ? "+" : "";
+                mods.push(sign + parsedMonster.AC_Mods[property] + " " + property);
+            }
+            if (mods.length > 0) {
+                monster.AC_Mods = "(" + mods.join(", ") + ")"
+            } else {
+                monster.AC_Mods = ""
+            }
+        }
+
         function formatSkills(monster, parsedMonster, attribute, failures) {
             if (parsedMonster.Skills instanceof Array) {
                 monster.Skills = parsedMonster.Skills.map(function (value) {
@@ -52,7 +67,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             var dieType = parsedMonster.typeOfHD;
             var bonus = parsedMonster.hitPointBonus;
             if (isNumber(hitDice) && isNumber(dieType) && isNumber(bonus)) {
-                var sign = bonus > 0 ? "+": "";
+                var sign = bonus > 0 ? "+" : "";
                 bonus = bonus === 0 ? "" : bonus;
                 monster.HD = "(" + hitDice + "d" + dieType + sign + bonus + ")";
             } else {
@@ -72,7 +87,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             function formatAttack(attack) {
                 var formattedAttackBonuses = attack.attackBonuses.map(formatAttackBonus).join("/");
                 var specialAttacks = (attack.specialAttacks !== '') ? " " + attack.specialAttacks : attack.specialAttacks;
-                var sign = attack.damageMod > 0 ? "+": "";
+                var sign = attack.damageMod > 0 ? "+" : "";
                 var damageMod = attack.damageMod === 0 ? "" : attack.damageMod;
                 return attack.attackDescription + " " + formattedAttackBonuses + " (" + attack.damageDice + sign + damageMod + specialAttacks + ")";
             }
@@ -99,6 +114,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             Ref: formatUnsignedNumber,
             Will: formatUnsignedNumber,
             AC: formatArmorClass,
+            AC_Mods: formatArmorClassModifiers,
             CMB: formatSignedNumber,
             CMD: formatUnsignedNumber,
             Init: formatSignedNumber,

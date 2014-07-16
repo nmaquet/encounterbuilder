@@ -5,6 +5,12 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
 
         var service = {};
 
+        var validACMods = ["armor", "Dex", "dodge", "deflection", "natural", "shield", "size"];
+
+        function abilityModifier(ability) {
+            return Math.round((ability - 10.5) / 2);
+        }
+
         service.parseMonster = function (monster) {
             var parsedMonster = {};
             parseAC(monster, parsedMonster);
@@ -37,14 +43,26 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
 
             parsedMonster.Init = Number(monster.Init);
 
-
+            if (monster.AC_Mods) {
+                var mods = monster.AC_Mods.substring(1, monster.AC_Mods.length - 1);
+                var AC_ModsRegex = /(\+?\-?\d+)\s*([^,\+\-]*)/g;
+                var match = null;
+                var parsedMods = {};
+                while (null !== (match = AC_ModsRegex.exec(mods))) {
+                    if (validACMods.indexOf(match[2].trim()) !== -1) {
+                        parsedMods[match[2].trim()] = Number(match[1]);
+                    }
+                    else {
+                        parsedMods.miscellaneous = (parsedMods.miscellaneous || "") + ( match[1] + " " + match[2]);
+                    }
+                }
+                parsedMonster.AC_Mods = parsedMods;
+            }
             return parsedMonster;
 
         };
 
-
         function parseAC(monster, parsedMonster) {
-            // FIXME: handle right part with parentheses
             var string = monster.AC;
             var regex = /(\d+)\s*,\s*touch\s*(\d+)\s*,\s*flat-footed\s*(\d+)/;
             var matches = regex.exec(string);
@@ -78,6 +96,9 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
 
         function parseSkills(monster, parsedMonster) {
             var string = monster.Skills;
+            if (!string) {
+                return;
+            }
             var skills = string.split(",");
             var regex = /([^\+,\-]*)(\+?\-?\d+)/;
             parsedMonster.Skills = [];
@@ -101,7 +122,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
         }
 
         function replaceAndIfNotInsideParens(string) {
-            return string.replace(/and/g, function(match, offset) {
+            return string.replace(/and/g, function (match, offset) {
                 if (!insideParens(offset, string)) {
                     return ", ";
                 } else {
@@ -138,7 +159,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                         var damageDice = damageMatches[1];
                         var damageMod = Number(damageMatches[2]);
                         var specialAttacks = damageMatches[3];
-                        parsedAttacks.push({attackDescription: attackDescription, attackBonuses: attackBonuses, damageDice: damageDice, damageMod: damageMod,specialAttacks:specialAttacks});
+                        parsedAttacks.push({attackDescription: attackDescription, attackBonuses: attackBonuses, damageDice: damageDice, damageMod: damageMod, specialAttacks: specialAttacks});
                     }
                 }
                 parsedAttackGroups.push(parsedAttacks);
