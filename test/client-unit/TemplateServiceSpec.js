@@ -453,4 +453,172 @@ describe("templateService", function () {
 
     });
 
+    describe("Giant template", function() {
+
+        it("should add 44 HP ", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.HP).to.equal(363 + 44);
+            expect(templatedMonster.HD).to.equal("(22d10+286)");
+        });
+
+        it("should modify the name", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Name).to.equal("Solar (Giant)");
+        });
+
+        it("should reduce Dex and augment Str and Con by four", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Str).to.equal(28 + 4);
+            expect(templatedMonster.Dex).to.equal(20 - 2);
+            expect(templatedMonster.Con).to.equal(30 + 4);
+        });
+
+        it("should not reduce abilities below 3", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            baseMonster.Dex = 4;
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Dex).to.equal(3);
+        });
+
+        it("should reduce theFort saves by 2 and increase the Ref save by 2", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Fort).to.equal(25 + 2);
+            expect(templatedMonster.Ref).to.equal(14 - 1);
+            expect(templatedMonster.Will).to.equal(23);
+        });
+
+        it("should reduce the Dex modifier to AC by 1, and increase natural amor by 3 (no natural armor)", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            baseMonster.AC = "25, touch 10, flat-footed 20";
+            baseMonster.AC_Mods = "(+8 armor)";
+            baseMonster.Treasure = "Some armor";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.AC).to.equal("24, touch 7, flat-footed 19");
+            expect(templatedMonster.AC_Mods).to.equal("(+8 armor, -1 Dex, -2 size)");
+        });
+
+        it("should reduce the Dex modifier to AC by 1, and increase natural amor by 3 (with natural armor 1)", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            baseMonster.AC = "25, touch 24, flat-footed 11";
+            baseMonster.AC_Mods = "(+8 armor, +1 natural, -1 size)";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.AC).to.equal("26, touch 21, flat-footed 12");
+            expect(templatedMonster.AC_Mods).to.equal("(+8 armor, +4 natural, -2 size, -1 Dex)");
+        });
+
+        it("should reduce the Dex modifier to AC by 1, and increase natural amor by 3 (with natural armor 3)", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            baseMonster.AC = "27, touch 24, flat-footed 11";
+            baseMonster.AC_Mods = "(+8 armor, +3 natural, -1 size)";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.AC).to.equal("28, touch 21, flat-footed 12");
+            expect(templatedMonster.AC_Mods).to.equal("(+8 armor, +6 natural, -2 size, -1 Dex)");
+        });
+
+        it("should change the damage dices", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Melee).to.equal("+5 dancing greatsword +36/+31/+26/+21 (4d6+20) or slam +31 (3d8+15)");
+            expect(templatedMonster.Ranged).to.equal("+5 composite longbow (+11 Str bonus) +29/+24/+19/+14 (3d6+16 plus slaying arrow)");
+        });
+
+        it("should change the size", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Size).to.equal("Huge");
+        });
+
+        it("should have -1 initiative", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            baseMonster.Init = "+4";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Init).to.equal("+3");
+        });
+
+        it("should have -1 to Dex based skills", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            baseMonster.Skills = "Acrobatics +0, Intimidate +2";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Skills).to.equal("Acrobatics -1, Intimidate +2");
+        });
+
+        it("should have +2 to Str-based skills", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            baseMonster.Skills = "Climb +0, Swim +2, Ride +3";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Skills).to.equal("Climb +2, Swim +4, Ride +2");
+        });
+
+        it("should have -5 to Stealth", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            baseMonster.Skills = "Stealth +2";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Skills).to.equal("Stealth -3");
+        });
+
+        it("should have -3 to Fly", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            baseMonster.Skills = "Fly +2";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Skills).to.equal("Fly -1");
+        });
+
+        it("takes the size difference into account in AC mods, even in extreme cases (Fine)", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            baseMonster.Size = "Fine";
+            baseMonster.AC = "AC 10, touch 10, flat-footed 10";
+            baseMonster.AC_Mods = "(+8 size)";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.AC).to.equal("6, touch 4, flat-footed 6");
+            expect(templatedMonster.AC_Mods).to.equal("(+4 size, -1 Dex)");
+        });
+
+        it("takes the size difference into account in AC mods, even in extreme cases (Gargantuan)", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            baseMonster.Size = "Gargantuan";
+            baseMonster.AC = "AC 10, touch 10, flat-footed 10";
+            baseMonster.AC_Mods = "(-4 size)";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.AC).to.equal("6, touch 4, flat-footed 6");
+            expect(templatedMonster.AC_Mods).to.equal("(-8 size, -1 Dex)");
+        });
+    });
 });

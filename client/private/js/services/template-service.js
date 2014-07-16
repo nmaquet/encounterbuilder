@@ -233,6 +233,24 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
 
             monster.Reach = sizesAndModifier[monster.Size].Reach;
             monster.Space = sizesAndModifier[monster.Size].Space;
+
+            parsedMonster.Init -= 1;
+
+            for (var i in parsedMonster.Skills) {
+                var skill = parsedMonster.Skills[i];
+                if (dexBasedSkills.indexOf(skill.name) >= 0) {
+                    skill.mod -= 1;
+                }
+                if (strBasedSkills.indexOf(skill.name) >= 0) {
+                    skill.mod += 2;
+                }
+                if (skill.name === "Stealth") {
+                    skill.mod -= 4;
+                }
+                if (skill.name === "Fly") {
+                    skill.mod -= 2;
+                }
+            }
         }
 
         function applyAugmentedTemplate(parsedMonster) {
