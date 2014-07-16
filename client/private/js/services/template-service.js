@@ -217,9 +217,14 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
                 parsedMonster.normalAC += 2;
                 parsedMonster.flatFootedAC += 2;
             }
-            adjustDamage(parsedMonster, "Melee", +1, +2, +2);
-            adjustDamage(parsedMonster, "Ranged", +1, -1, +2);
+
+            var previousSize = monster.Size;
             monster.Size = sizes[Math.max(sizes.indexOf(monster.Size) + 1, 0)];
+            var attackSizeAdjustment = AtkAndAcSizeAdjustment[monster.Size] - AtkAndAcSizeAdjustment[previousSize];
+
+            adjustDamage(parsedMonster, "Melee", +1, +2 + attackSizeAdjustment, +2);
+            adjustDamage(parsedMonster, "Ranged", +1, -1 + attackSizeAdjustment, +2);
+
             monster.Reach = sizesAndModifier[monster.Size].Reach;
             monster.Space = sizesAndModifier[monster.Size].Space;
         }
