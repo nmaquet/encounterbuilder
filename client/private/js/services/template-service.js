@@ -23,6 +23,30 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
         var dexBasedSkills = ["Acrobatics", "Disable Device", "Escape Artist", "Fly", "Ride", "Sleight of Hand", "Stealth"];
         var strBasedSkills = ["Climb", "Swim"];
 
+        var AtkAndAcSizeAdjustment = {
+            "Fine" : +8,
+            "Diminutive" : +4,
+            "Tiny" : +2,
+            "Small" : +1,
+            "Medium" : +0,
+            "Large" : -1,
+            "Huge" : -2,
+            "Gargantuan" : -4,
+            "Colossal" : -8
+        };
+
+        var CombatManoeuvreSizeAdjustment = {
+            "Fine" : -8,
+            "Diminutive" : -4,
+            "Tiny" : -2,
+            "Small" : -1,
+            "Medium" : +0,
+            "Large" : +1,
+            "Huge" : +2,
+            "Gargantuan" : +4,
+            "Colossal" : +8
+        };
+
         function applyAdvancedTemplate(parsedMonster) {
 
             function advanceMelee(parsedMonster) {
@@ -122,6 +146,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
 
             parsedMonster.normalAC += 2;
             parsedMonster.touchAC += 2;
+
             if (parsedMonster.AC_Mods) {
                 if (!parsedMonster.AC_Mods.Dex) {
                     parsedMonster.AC_Mods.Dex = 0;
@@ -135,9 +160,15 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
                 parsedMonster.normalAC -= naturalArmorReduction;
                 parsedMonster.flatFootedAC -= naturalArmorReduction;
             }
-            adjustDamage(parsedMonster, "Melee", -1, -2, -2);
-            adjustDamage(parsedMonster, "Ranged", -1, +2, -2);
+
+            var previousSize = monster.Size;
             monster.Size = sizes[Math.max(sizes.indexOf(monster.Size) - 1, 0)];
+
+            var attackSizeAdjustment = AtkAndAcSizeAdjustment[monster.Size] - AtkAndAcSizeAdjustment[previousSize];
+
+            adjustDamage(parsedMonster, "Melee", -1, -2 + attackSizeAdjustment, -2);
+            adjustDamage(parsedMonster, "Ranged", -1, +2 + attackSizeAdjustment, -2);
+
             monster.Reach = sizesAndModifier[monster.Size].Reach;
             monster.Space = sizesAndModifier[monster.Size].Space;
 

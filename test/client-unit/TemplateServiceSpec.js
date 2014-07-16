@@ -370,8 +370,8 @@ describe("templateService", function () {
                 young: true
             };
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.Melee).to.equal("+5 dancing greatsword +33/+28/+23/+18 (2d6+16) or slam +28 (1d10+11)");
-            expect(templatedMonster.Ranged).to.equal("+5 composite longbow (+7 Str bonus) +33/+28/+23/+18 (1d8+12 plus slaying arrow)");
+            expect(templatedMonster.Melee).to.equal("+5 dancing greatsword +34/+29/+24/+19 (2d6+16) or slam +29 (1d10+11)");
+            expect(templatedMonster.Ranged).to.equal("+5 composite longbow (+7 Str bonus) +34/+29/+24/+19 (1d8+12 plus slaying arrow)");
         });
 
         it("should change the size", function () {
