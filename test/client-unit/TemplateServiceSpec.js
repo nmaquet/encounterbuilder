@@ -338,8 +338,8 @@ describe("templateService", function () {
             baseMonster.AC_Mods="(+8 armor)";
             baseMonster.Treasure = "Some armor";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.AC).to.equal("27, touch 12, flat-footed 20");
-            expect(templatedMonster.AC_Mods).to.equal("(+8 armor, +2 Dex)");
+            expect(templatedMonster.AC).to.equal("28, touch 13, flat-footed 21");
+            expect(templatedMonster.AC_Mods).to.equal("(+8 armor, +2 Dex, +0 size)");
         });
 
         it("should increase the Dex modifier to AC by 2, and reduce natural amor by 2 (with natural armor 1)", function () {
@@ -347,10 +347,10 @@ describe("templateService", function () {
                 young: true
             };
             baseMonster.AC = "25, touch 24, flat-footed 11";
-            baseMonster.AC_Mods="(+8 armor, +1 natural)";
+            baseMonster.AC_Mods="(+8 armor, +1 natural, -1 size)";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.AC).to.equal("26, touch 26, flat-footed 10");
-            expect(templatedMonster.AC_Mods).to.equal("(+8 armor, +0 natural, +2 Dex)");
+            expect(templatedMonster.AC).to.equal("27, touch 27, flat-footed 11");
+            expect(templatedMonster.AC_Mods).to.equal("(+8 armor, +0 natural, +0 size, +2 Dex)");
         });
 
         it("should increase the Dex modifier to AC by 2, and reduce natural amor by 2 (with natural armor 3)", function () {
@@ -358,11 +358,11 @@ describe("templateService", function () {
                 young: true
             };
             baseMonster.AC = "27, touch 24, flat-footed 11";
-            baseMonster.AC_Mods="(+8 armor, +3 natural)";
+            baseMonster.AC_Mods="(+8 armor, +3 natural, -1 size)";
             baseMonster.Treasure = "";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.AC).to.equal("27, touch 26, flat-footed 9");
-            expect(templatedMonster.AC_Mods).to.equal("(+8 armor, +1 natural, +2 Dex)");
+            expect(templatedMonster.AC).to.equal("28, touch 27, flat-footed 10");
+            expect(templatedMonster.AC_Mods).to.equal("(+8 armor, +1 natural, +0 size, +2 Dex)");
         });
 
         it("should change the damage dices", function () {

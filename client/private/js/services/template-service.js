@@ -144,13 +144,19 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             parsedMonster.Fort -= 2;
             parsedMonster.Ref += 2;
 
-            parsedMonster.normalAC += 2;
-            parsedMonster.touchAC += 2;
+            var previousSize = monster.Size;
+            monster.Size = sizes[Math.max(sizes.indexOf(monster.Size) - 1, 0)];
+            var atkAndAcSizeAdjustment = AtkAndAcSizeAdjustment[monster.Size] - AtkAndAcSizeAdjustment[previousSize];
+
+            parsedMonster.normalAC += +2 + atkAndAcSizeAdjustment;
+            parsedMonster.touchAC += +2 + atkAndAcSizeAdjustment;
+            parsedMonster.flatFootedAC += atkAndAcSizeAdjustment;
 
             if (parsedMonster.AC_Mods) {
                 if (!parsedMonster.AC_Mods.Dex) {
                     parsedMonster.AC_Mods.Dex = 0;
                 }
+                parsedMonster.AC_Mods.size = AtkAndAcSizeAdjustment[monster.Size];
                 parsedMonster.AC_Mods.Dex += 2;
             }
 
@@ -160,9 +166,6 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
                 parsedMonster.normalAC -= naturalArmorReduction;
                 parsedMonster.flatFootedAC -= naturalArmorReduction;
             }
-
-            var previousSize = monster.Size;
-            monster.Size = sizes[Math.max(sizes.indexOf(monster.Size) - 1, 0)];
 
             var attackSizeAdjustment = AtkAndAcSizeAdjustment[monster.Size] - AtkAndAcSizeAdjustment[previousSize];
 
@@ -203,27 +206,30 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             parsedMonster.Fort += 2;
             parsedMonster.Ref -= 1;
 
-            parsedMonster.touchAC -= 2;
+            var previousSize = monster.Size;
+            monster.Size = sizes[Math.max(sizes.indexOf(monster.Size) + 1, 0)];
+            var atkAndAcSizeAdjustment = AtkAndAcSizeAdjustment[monster.Size] - AtkAndAcSizeAdjustment[previousSize];
+
+            parsedMonster.normalAC += atkAndAcSizeAdjustment;
+            parsedMonster.touchAC += -2 + atkAndAcSizeAdjustment;
+            parsedMonster.flatFootedAC += atkAndAcSizeAdjustment;
+
             if (parsedMonster.AC_Mods) {
                 if (!parsedMonster.AC_Mods.Dex) {
                     parsedMonster.AC_Mods.Dex = 0;
                 }
+                parsedMonster.AC_Mods.size = AtkAndAcSizeAdjustment[monster.Size];
                 parsedMonster.AC_Mods.Dex -= 1;
             }
 
             if (parsedMonster.AC_Mods && parsedMonster.AC_Mods.natural) {
-
                 parsedMonster.AC_Mods.natural += 3;
                 parsedMonster.normalAC += 2;
                 parsedMonster.flatFootedAC += 2;
             }
 
-            var previousSize = monster.Size;
-            monster.Size = sizes[Math.max(sizes.indexOf(monster.Size) + 1, 0)];
-            var attackSizeAdjustment = AtkAndAcSizeAdjustment[monster.Size] - AtkAndAcSizeAdjustment[previousSize];
-
-            adjustDamage(parsedMonster, "Melee", +1, +2 + attackSizeAdjustment, +2);
-            adjustDamage(parsedMonster, "Ranged", +1, -1 + attackSizeAdjustment, +2);
+            adjustDamage(parsedMonster, "Melee", +1, +2 + atkAndAcSizeAdjustment, +2);
+            adjustDamage(parsedMonster, "Ranged", +1, -1 + atkAndAcSizeAdjustment, +2);
 
             monster.Reach = sizesAndModifier[monster.Size].Reach;
             monster.Space = sizesAndModifier[monster.Size].Space;
