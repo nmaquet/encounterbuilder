@@ -509,7 +509,7 @@ describe("templateService", function () {
             baseMonster.AC_Mods = "(+8 armor)";
             baseMonster.Treasure = "Some armor";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.AC).to.equal("24, touch 7, flat-footed 19");
+            expect(templatedMonster.AC).to.equal("23, touch 8, flat-footed 19");
             expect(templatedMonster.AC_Mods).to.equal("(+8 armor, -1 Dex, -2 size)");
         });
 
@@ -520,7 +520,7 @@ describe("templateService", function () {
             baseMonster.AC = "25, touch 24, flat-footed 11";
             baseMonster.AC_Mods = "(+8 armor, +1 natural, -1 size)";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.AC).to.equal("26, touch 21, flat-footed 12");
+            expect(templatedMonster.AC).to.equal("25, touch 22, flat-footed 12");
             expect(templatedMonster.AC_Mods).to.equal("(+8 armor, +4 natural, -2 size, -1 Dex)");
         });
 
@@ -531,7 +531,7 @@ describe("templateService", function () {
             baseMonster.AC = "27, touch 24, flat-footed 11";
             baseMonster.AC_Mods = "(+8 armor, +3 natural, -1 size)";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.AC).to.equal("28, touch 21, flat-footed 12");
+            expect(templatedMonster.AC).to.equal("27, touch 22, flat-footed 12");
             expect(templatedMonster.AC_Mods).to.equal("(+8 armor, +6 natural, -2 size, -1 Dex)");
         });
 
@@ -605,7 +605,7 @@ describe("templateService", function () {
             baseMonster.AC = "AC 10, touch 10, flat-footed 10";
             baseMonster.AC_Mods = "(+8 size)";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.AC).to.equal("6, touch 4, flat-footed 6");
+            expect(templatedMonster.AC).to.equal("5, touch 5, flat-footed 6");
             expect(templatedMonster.AC_Mods).to.equal("(+4 size, -1 Dex)");
         });
 
@@ -617,7 +617,7 @@ describe("templateService", function () {
             baseMonster.AC = "AC 10, touch 10, flat-footed 10";
             baseMonster.AC_Mods = "(-4 size)";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.AC).to.equal("6, touch 4, flat-footed 6");
+            expect(templatedMonster.AC).to.equal("5, touch 5, flat-footed 6");
             expect(templatedMonster.AC_Mods).to.equal("(-8 size, -1 Dex)");
         });
     });

@@ -210,8 +210,8 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             monster.Size = sizes[Math.max(sizes.indexOf(monster.Size) + 1, 0)];
             var atkAndAcSizeAdjustment = AtkAndAcSizeAdjustment[monster.Size] - AtkAndAcSizeAdjustment[previousSize];
 
-            parsedMonster.normalAC += atkAndAcSizeAdjustment;
-            parsedMonster.touchAC += -2 + atkAndAcSizeAdjustment;
+            parsedMonster.normalAC += -1 + atkAndAcSizeAdjustment;
+            parsedMonster.touchAC += -1 + atkAndAcSizeAdjustment;
             parsedMonster.flatFootedAC += atkAndAcSizeAdjustment;
 
             if (parsedMonster.AC_Mods) {
