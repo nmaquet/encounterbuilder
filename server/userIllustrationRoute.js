@@ -1,25 +1,35 @@
 "use strict";
 var fs = require('fs');
 var Binary = require('mongodb').Binary;
+var s3Service = require('./s3Service')();
 
 module.exports = function (collection, ObjectID) {
 
-    function update(request, response) {
+    var route = require('./userResourceRoute')(collection, null, ObjectID);
+
+
+    route.deleteResource = function (request, response) {
         var sessionUserId = request.session.user._id;
-        var resource = request.body || {};
-        delete resource._id;
-        resource.userId = ObjectID(sessionUserId);
-        userCollection.insert(resource, function (error, newResourceArray) {
+        var paramsResourceId = request.params.id;
+        collection.remove({_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)}, function (error, numberOfRemovedDocs) {
             if (error) {
-                response.json(500);
+                return response.send(500)
             }
             else {
-                response.json(newResourceArray[0]);
+                if (numberOfRemovedDocs === 0) {
+                    return response.json({});
+                }
+                s3Service.removeFromS3(paramsResourceId, function (error) {
+                    if (error) {
+                        console.log("ERROR object:" + paramsResourceId + " wasn't deleted from S3");
+                        return response.send(500);
+                    }
+                    return response.json({});
+                });
+
             }
         });
-    }
-
-    var route = require('./userResourceRoute')(collection, null, ObjectID);
+    };
 
     route.uploadImage = function (request, response) {
         var sessionUserId = request.session.user._id;
@@ -27,35 +37,29 @@ module.exports = function (collection, ObjectID) {
         var file = request.files.file;
         var selector = {_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)};
 
-        var fields = {
-            imagePath: file.path,
-            fileType: file.type,
-            fileName: file.originalFilename,
-            url: "/api/user-illustration-image/" + paramsResourceId
-        };
-        collection.findAndModify(selector, [], {$set: fields}, {new: true}, function (error, modifiedResource) {
+        s3Service.uploadToS3(paramsResourceId, file.type, file.path, function (error, data, url) {
             if (error) {
+                console.log(error);
                 return  response.send(500);
             }
-            else {
-                delete modifiedResource.image;
-                response.json(modifiedResource);
-            }
+            //FIXME? compare data.ETag with file md5 to ensure data transfer is successful
+            var fields = {
+                imagePath: file.path,
+                fileType: file.type,
+                fileName: file.originalFilename,
+                url: url
+            };
+            collection.findAndModify(selector, [], {$set: fields}, {new: true}, function (error, modifiedResource) {
+                if (error) {
+                    return  response.send(500);
+                }
+                else {
+                    response.json(modifiedResource);
+                }
+            });
         });
-    };
 
-    route.getImage = function (request, response) {
-        var sessionUserId = request.session.user._id;
-        var paramsResourceId = request.params.id;
 
-        collection.findOne({_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)}, {imagePath: 1, fileType: 1, fileName: 1}, function (error, data) {
-            if (error) {
-                return response.send(500);
-            }
-            response.header("Content-Type", data.fileType);
-            response.header("Content-Disposition", "attachment; filename=\"" + data.fileName + "\"");
-            return response.sendfile(data.imagePath);
-        });
     };
 
     return route;
