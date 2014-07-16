@@ -149,7 +149,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
                     skill.mod += 2;
                 }
                 if (skill.name === "Stealth") {
-                    skill.mod += 2;
+                    skill.mod += 4;
                 }
                 if (strBasedSkills.indexOf(skill.name) >= 0) {
                     skill.mod -= 2;

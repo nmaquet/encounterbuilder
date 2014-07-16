@@ -395,9 +395,9 @@ describe("templateService", function () {
             baseMonster.templates = {
                 young: true
             };
-            baseMonster.Skills = "Acrobatics +0, Intimidate +2, Stealth +3";
+            baseMonster.Skills = "Acrobatics +0, Intimidate +2";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.Skills).to.equal("Acrobatics +2, Intimidate +2, Stealth +7");
+            expect(templatedMonster.Skills).to.equal("Acrobatics +2, Intimidate +2");
         });
 
         it("should have -2 to Str-based skills", function () {
@@ -409,13 +409,13 @@ describe("templateService", function () {
             expect(templatedMonster.Skills).to.equal("Climb -2, Swim +0, Ride +5");
         });
 
-        it("should have +4 to Stealth", function () {
+        it("should have +6 to Stealth", function () {
             baseMonster.templates = {
                 young: true
             };
             baseMonster.Skills = "Stealth +2";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.Skills).to.equal("Stealth +6");
+            expect(templatedMonster.Skills).to.equal("Stealth +8");
         });
 
     });
