@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
-    ['$scope', '$routeParams', 'userResourceService', 'contentTreeService', 'locationService',
-        function ($scope, $routeParams, userResourceService, contentTreeService, locationService) {
+    ['$scope', '$routeParams', 'userResourceService', 'contentTreeService', 'locationService', 'throttle',
+        function ($scope, $routeParams, userResourceService, contentTreeService, locationService, throttle) {
 
             $scope.tinymceOptions = {
                 resize: false,
@@ -25,7 +25,12 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
 
             $scope.updateUserResource = updateUserResource;
 
-            $scope.userResource = userResourceService[resourceType].get({id: $routeParams.userResourceId});
+            $scope.userResource = userResourceService[resourceType].get({id: $routeParams.userResourceId}, function() {
+                var save = throttle(userResourceService[resourceType].save, 1000);
+                $scope.$watch('userResource', function (userResource) {
+                    save(userResource);
+                }, true /* deep equality */);
+            });
 
             $scope.$on('$locationChangeStart', function () {
                 updateUserResource($scope.userResource);
