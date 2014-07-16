@@ -220,13 +220,14 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
                 }
                 parsedMonster.AC_Mods.size = AtkAndAcSizeAdjustment[monster.Size];
                 parsedMonster.AC_Mods.Dex -= 1;
+                if (!parsedMonster.AC_Mods.natural) {
+                    parsedMonster.AC_Mods.natural = 0;
+                }
+                parsedMonster.AC_Mods.natural += 3;
+                parsedMonster.normalAC += 3;
+                parsedMonster.flatFootedAC += 3;
             }
 
-            if (parsedMonster.AC_Mods && parsedMonster.AC_Mods.natural) {
-                parsedMonster.AC_Mods.natural += 3;
-                parsedMonster.normalAC += 2;
-                parsedMonster.flatFootedAC += 2;
-            }
 
             adjustDamage(parsedMonster, "Melee", +1, +2 + atkAndAcSizeAdjustment, +2);
             adjustDamage(parsedMonster, "Ranged", +1, -1 + atkAndAcSizeAdjustment, +2);

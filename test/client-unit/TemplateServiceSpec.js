@@ -519,8 +519,8 @@ describe("templateService", function () {
             baseMonster.AC_Mods = "(+8 armor)";
             baseMonster.Treasure = "Some armor";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.AC).to.equal("23, touch 8, flat-footed 19");
-            expect(templatedMonster.AC_Mods).to.equal("(+8 armor, -1 Dex, -2 size)");
+            expect(templatedMonster.AC).to.equal("26, touch 8, flat-footed 22");
+            expect(templatedMonster.AC_Mods).to.equal("(+8 armor, -1 Dex, -2 size, +3 natural)");
         });
 
         it("should reduce the Dex modifier to AC by 1, and increase natural amor by 3 (with natural armor 1)", function () {
@@ -530,7 +530,7 @@ describe("templateService", function () {
             baseMonster.AC = "25, touch 24, flat-footed 11";
             baseMonster.AC_Mods = "(+8 armor, +1 natural, -1 size)";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.AC).to.equal("25, touch 22, flat-footed 12");
+            expect(templatedMonster.AC).to.equal("26, touch 22, flat-footed 13");
             expect(templatedMonster.AC_Mods).to.equal("(+8 armor, +4 natural, -2 size, -1 Dex)");
         });
 
@@ -541,7 +541,7 @@ describe("templateService", function () {
             baseMonster.AC = "27, touch 24, flat-footed 11";
             baseMonster.AC_Mods = "(+8 armor, +3 natural, -1 size)";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.AC).to.equal("27, touch 22, flat-footed 12");
+            expect(templatedMonster.AC).to.equal("28, touch 22, flat-footed 13");
             expect(templatedMonster.AC_Mods).to.equal("(+8 armor, +6 natural, -2 size, -1 Dex)");
         });
 
@@ -612,11 +612,11 @@ describe("templateService", function () {
                 giant: true
             };
             baseMonster.Size = "Fine";
-            baseMonster.AC = "AC 10, touch 10, flat-footed 10";
+            baseMonster.AC = "10, touch 10, flat-footed 10";
             baseMonster.AC_Mods = "(+8 size)";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.AC).to.equal("5, touch 5, flat-footed 6");
-            expect(templatedMonster.AC_Mods).to.equal("(+4 size, -1 Dex)");
+            expect(templatedMonster.AC).to.equal("8, touch 5, flat-footed 9");
+            expect(templatedMonster.AC_Mods).to.equal("(+4 size, -1 Dex, +3 natural)");
         });
 
         it("takes the size difference into account in AC mods, even in extreme cases (Gargantuan)", function () {
@@ -624,11 +624,22 @@ describe("templateService", function () {
                 giant: true
             };
             baseMonster.Size = "Gargantuan";
-            baseMonster.AC = "AC 10, touch 10, flat-footed 10";
+            baseMonster.AC = "10, touch 10, flat-footed 10";
             baseMonster.AC_Mods = "(-4 size)";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.AC).to.equal("5, touch 5, flat-footed 6");
-            expect(templatedMonster.AC_Mods).to.equal("(-8 size, -1 Dex)");
+            expect(templatedMonster.AC).to.equal("8, touch 5, flat-footed 9");
+            expect(templatedMonster.AC_Mods).to.equal("(-8 size, -1 Dex, +3 natural)");
+        });
+        it("should have correct AC for Giant Chimera", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            baseMonster.Size = "Large";
+            baseMonster.AC = "AC 19, touch 10, flat-footed 18";
+            baseMonster.AC_Mods = "(+1 Dex, +9 natural, -1 size)";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.AC).to.equal("20, touch 8, flat-footed 20");
+            expect(templatedMonster.AC_Mods).to.equal("(+0 Dex, +12 natural, -2 size)");
         });
     });
 });
