@@ -6,7 +6,7 @@ DEMONSQUID.encounterBuilderServices.factory('crService', [
         var xpToCr = null;
 
         function buildXpToCRTable() {
-            crToXp = {1: 400};
+            crToXp = {"1": 400, "0.5" : 200, "0.33" : 135, "0.25" : 100, "0.16" : 65, "0.12" : 50};
             xpToCr = {50: 0.125, 65: 1 / 6, 100: 1 / 4, 135: 1 / 3, 200: 0.5, 400: 1};
             for (var i = 2; i <= 100; i++) {
                 var xp = null;
@@ -55,8 +55,12 @@ DEMONSQUID.encounterBuilderServices.factory('crService', [
         };
 
         service.calculateXp = function (cr) {
-
-            return crToXp[Math.floor(cr)];
+            if (cr < 1) {
+                cr = Math.floor(cr*100)/100;
+            } else {
+                cr = Math.floor(cr);
+            }
+            return crToXp[cr];
         };
 
         return service;
