@@ -10,7 +10,7 @@
         .row.btn-container
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copyMonster()')
                 i.icon.fa.fa-copy
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Advance',ng-click='templateControlsCollapsed = !templateControlsCollapsed')
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Advance', ng-click='templateControlsCollapsed = !templateControlsCollapsed')
                 i.icon.fa.fa-flash
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit', ng-click="editUserMonster()")
                 i.icon.fa.fa-edit
@@ -35,6 +35,9 @@
                             input(type="checkbox", ng-model="userMonster.templates.augmented")
                             | Augmented
     .col-xs-12.col-sm-6
+        .pull-right
+            a.is-pointer.template-controls-close-btn(ng-click='templateControlsCollapsed = !templateControlsCollapsed')
+                i.icon.fa.fa-lg.fa-times
         form(class="form-horizontal")
             fieldset
                 div(class="control-group")
