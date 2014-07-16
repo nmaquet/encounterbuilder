@@ -62,7 +62,6 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
 
         };
 
-
         function parseAC(monster, parsedMonster) {
             var string = monster.AC;
             var regex = /(\d+)\s*,\s*touch\s*(\d+)\s*,\s*flat-footed\s*(\d+)/;
