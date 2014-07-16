@@ -378,6 +378,15 @@ describe("templateService", function () {
             expect(templatedMonster.Size).to.equal("Medium");
         });
 
+        it("should have +2 initiative", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            baseMonster.Init = "+4";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Init).to.equal("+6");
+        });
+
     });
 
 });

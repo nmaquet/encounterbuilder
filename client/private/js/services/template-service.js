@@ -138,6 +138,8 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             monster.Size = sizes[Math.max(sizes.indexOf(monster.Size) - 1, 0)];
             monster.Reach = sizesAndModifier[monster.Size].Reach;
             monster.Space = sizesAndModifier[monster.Size].Space;
+
+            parsedMonster.Init += 2;
         }
 
         function applyGiantTemplate(monster, parsedMonster) {
