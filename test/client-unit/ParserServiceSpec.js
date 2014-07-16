@@ -218,4 +218,8 @@ describe("parserService", function () {
         expect(parsedMonster.AC_Mods.miscellaneous).to.equal("+4 deflection vs. evil");
 
     });
+
+    it("should not crash if any field is undefined", function () {
+        service.parseMonster({});
+    });
 });

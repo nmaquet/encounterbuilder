@@ -96,6 +96,9 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
 
         function parseSkills(monster, parsedMonster) {
             var string = monster.Skills;
+            if (!string) {
+                return;
+            }
             var skills = string.split(",");
             var regex = /([^\+,\-]*)(\+?\-?\d+)/;
             parsedMonster.Skills = [];
