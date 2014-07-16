@@ -396,6 +396,15 @@ describe("templateService", function () {
             expect(templatedMonster.Skills).to.equal("Acrobatics +2, Intimidate +2, Stealth +5");
         });
 
+        it("should have -2 to Str-based skills", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            baseMonster.Skills = "Climb +0, Swim +2, Ride +3";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Skills).to.equal("Climb -2, Swim +0, Ride +5");
+        });
+
     });
 
 });

@@ -21,6 +21,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
         var sizes = ["Fine", "Diminutive", "Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan", "Colossal"];
 
         var dexBasedSkills = ["Acrobatics", "Disable Device", "Escape Artist", "Fly", "Ride", "Sleight of Hand", "Stealth"];
+        var strBasedSkills = ["Climb", "Swim"];
 
         function applyAdvancedTemplate(parsedMonster) {
 
@@ -147,6 +148,9 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
                 var skill = parsedMonster.Skills[i];
                 if (dexBasedSkills.indexOf(skill.name) >= 0) {
                     skill.mod += 2;
+                }
+                if (strBasedSkills.indexOf(skill.name) >= 0) {
+                    skill.mod -= 2;
                 }
             }
         }
