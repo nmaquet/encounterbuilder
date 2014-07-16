@@ -36,6 +36,21 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             }
         }
 
+        function formatArmorClassModifiers(monster, parsedMonster, attribute, failures) {
+            var mods = [];
+            for (var property in parsedMonster.AC_Mods) {
+                if (!parsedMonster.AC_Mods.hasOwnProperty(property))
+                    continue
+                var sign = (parsedMonster.AC_Mods[property] >= 0) ? "+" : "";
+                mods.push(sign + parsedMonster.AC_Mods[property] + " " + property);
+            }
+            if (mods.length > 0) {
+                monster.AC_Mods = "(" + mods.join(", ") + ")"
+            } else {
+                monster.AC_Mods = ""
+            }
+        }
+
         function formatSkills(monster, parsedMonster, attribute, failures) {
             if (parsedMonster.Skills instanceof Array) {
                 monster.Skills = parsedMonster.Skills.map(function (value) {
@@ -99,6 +114,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             Ref: formatUnsignedNumber,
             Will: formatUnsignedNumber,
             AC: formatArmorClass,
+            AC_Mods: formatArmorClassModifiers,
             CMB: formatSignedNumber,
             CMD: formatUnsignedNumber,
             Init: formatSignedNumber,
@@ -107,7 +123,6 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             HD: formatHitDice,
             Melee: formatAttack,
             Ranged: formatAttack
-            //FIXME rebuild AC_Mods from parsed AC_Mods
         };
 
         var service = {};

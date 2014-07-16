@@ -130,7 +130,6 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             }
 
             if (parsedMonster.AC_Mods && parsedMonster.AC_Mods.natural) {
-
                 var naturalArmorReduction = Math.min(parsedMonster.AC_Mods.natural, 2);
                 parsedMonster.AC_Mods.natural = Math.max(parsedMonster.AC_Mods.natural - 2, 0);
                 parsedMonster.normalAC -= naturalArmorReduction;
