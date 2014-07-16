@@ -45,7 +45,8 @@ function main(db) {
         app.use("/skins/lightgray/fonts", express.static(__dirname + '/../client/public/skins/lightgray/fonts'));
         app.use("/", express.static(__dirname + '/../website/'));
         app.use(express.logger('dev'));
-        app.use(express.bodyParser());
+        app.use(express.json());
+        app.use(express.urlencoded());
         app.use(express.methodOverride());
         app.use(express.cookieParser());
         app.use(express.session({
@@ -160,7 +161,7 @@ function main(db) {
     app.post("/api/user-illustration", authenticationCheck, userIllustrationRoute.createResource);
     app.post("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.updateResource);
     app.delete("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.deleteResource);
-    app.post("/api/upload-user-illustration-image/:id", authenticationCheck, userIllustrationRoute.uploadImage);
+    app.post("/api/upload-user-illustration-image/:id", authenticationCheck, express.multipart({limit: '5mb'}), userIllustrationRoute.uploadImage);
 
     var APP_JADE_FILES = [
         'feedback-popover',

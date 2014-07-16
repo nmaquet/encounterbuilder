@@ -7,7 +7,6 @@ module.exports = function (collection, ObjectID) {
 
     var route = require('./userResourceRoute')(collection, null, ObjectID);
 
-
     route.deleteResource = function (request, response) {
         var sessionUserId = request.session.user._id;
         var paramsResourceId = request.params.id;
@@ -26,7 +25,6 @@ module.exports = function (collection, ObjectID) {
                     }
                     return response.json({});
                 });
-
             }
         });
     };
@@ -36,13 +34,12 @@ module.exports = function (collection, ObjectID) {
         var paramsResourceId = request.params.id;
         var file = request.files.file;
         var selector = {_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)};
-
         s3Service.uploadToS3(paramsResourceId, file.type, file.path, function (error, data, url) {
+            fs.unlink(file.path);
             if (error) {
                 console.log(error);
-                return  response.send(500);
+                return response.send(500);
             }
-            //FIXME? compare data.ETag with file md5 to ensure data transfer is successful
             var fields = {
                 imagePath: file.path,
                 fileType: file.type,
@@ -58,8 +55,6 @@ module.exports = function (collection, ObjectID) {
                 }
             });
         });
-
-
     };
 
     return route;
