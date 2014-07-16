@@ -55,9 +55,8 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                     $scope.$watch("userMonster.templates", function(value) {
                         $scope.userMonster = templateService.createTemplatedMonster(baseMonster);
                         baseMonster.templates = $scope.userMonster.templates;
-                        userMonsterService.update(baseMonster, function() {
-                            contentTreeService.userMonsterUpdated(baseMonster);
-                        });
+                        userMonsterService.update(baseMonster);
+                        contentTreeService.userMonsterUpdated($scope.userMonster);
                     }, true /* deep equality */);
                 });
             }
