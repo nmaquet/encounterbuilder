@@ -387,6 +387,15 @@ describe("templateService", function () {
             expect(templatedMonster.Init).to.equal("+6");
         });
 
+        it("should have +2 to Dex based skills", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            baseMonster.Skills = "Acrobatics +0, Intimidate +2, Stealth +3";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Skills).to.equal("Acrobatics +2, Intimidate +2, Stealth +5");
+        });
+
     });
 
 });

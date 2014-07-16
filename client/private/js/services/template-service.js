@@ -20,6 +20,8 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
         var damageDicesB = ["1d10", "2d8", "3d8", "4d8", "6d8", "8d8", "12d8"];
         var sizes = ["Fine", "Diminutive", "Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan", "Colossal"];
 
+        var dexBasedSkills = ["Acrobatics", "Disable Device", "Escape Artist", "Fly", "Ride", "Sleight of Hand", "Stealth"];
+
         function applyAdvancedTemplate(parsedMonster) {
 
             function advanceMelee(parsedMonster) {
@@ -140,6 +142,13 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             monster.Space = sizesAndModifier[monster.Size].Space;
 
             parsedMonster.Init += 2;
+
+            for (var i in parsedMonster.Skills) {
+                var skill = parsedMonster.Skills[i];
+                if (dexBasedSkills.indexOf(skill.name) >= 0) {
+                    skill.mod += 2;
+                }
+            }
         }
 
         function applyGiantTemplate(monster, parsedMonster) {
