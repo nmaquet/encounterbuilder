@@ -26,9 +26,9 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
             $scope.updateUserResource = updateUserResource;
 
             $scope.userResource = userResourceService[resourceType].get({id: $routeParams.userResourceId}, function() {
-                var save = throttle(userResourceService[resourceType].save, 1000);
+                var throttledSave = throttle(userResourceService[resourceType].save, 1000);
                 $scope.$watch('userResource', function (userResource) {
-                    save(userResource);
+                    throttledSave(userResource);
                 }, true /* deep equality */);
             });
 
