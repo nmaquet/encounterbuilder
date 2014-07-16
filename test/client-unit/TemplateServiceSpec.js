@@ -427,6 +427,29 @@ describe("templateService", function () {
             expect(templatedMonster.Skills).to.equal("Fly +6");
         });
 
+        it("takes the size difference into account in AC mods, even in extreme cases (Diminutive)", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            baseMonster.Size = "Diminutive";
+            baseMonster.AC = "AC 10, touch 10, flat-footed 10";
+            baseMonster.AC_Mods = "(+4 size)";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.AC).to.equal("16, touch 16, flat-footed 14");
+            expect(templatedMonster.AC_Mods).to.equal("(+8 size, +2 Dex)");
+        });
+
+        it("takes the size difference into account in AC mods, even in extreme cases (Colossal)", function () {
+            baseMonster.templates = {
+                young: true
+            };
+            baseMonster.Size = "Colossal";
+            baseMonster.AC = "AC 10, touch 10, flat-footed 10";
+            baseMonster.AC_Mods = "(-8 size)";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.AC).to.equal("16, touch 16, flat-footed 14");
+            expect(templatedMonster.AC_Mods).to.equal("(-4 size, +2 Dex)");
+        });
 
     });
 
