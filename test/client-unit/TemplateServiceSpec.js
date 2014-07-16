@@ -641,5 +641,16 @@ describe("templateService", function () {
             expect(templatedMonster.AC).to.equal("20, touch 8, flat-footed 20");
             expect(templatedMonster.AC_Mods).to.equal("(+0 Dex, +12 natural, -2 size)");
         });
+        it("takes the size difference into account in CMB and CMD", function () {
+            baseMonster.templates = {
+                giant: true
+            };
+            baseMonster.Size = "Gargantuan";
+            baseMonster.CMB = "+26";
+            baseMonster.CMD = "26";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.CMB).to.equal("+28");
+            expect(templatedMonster.CMD).to.equal(31);
+        });
     });
 });

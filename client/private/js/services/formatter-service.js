@@ -10,7 +10,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
 
         function formatUnsignedNumber(monster, parsedMonster, attribute, failures) {
             if (!isNaN(parsedMonster[attribute])) {
-                monster[attribute] = parsedMonster[attribute];
+                monster[attribute] =parsedMonster[attribute];
             } else {
                 failures[attribute] = attribute + " must be a number";
             }

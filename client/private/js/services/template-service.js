@@ -24,27 +24,27 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
         var strBasedSkills = ["Climb", "Swim"];
 
         var AtkAndAcSizeAdjustment = {
-            "Fine" : +8,
-            "Diminutive" : +4,
-            "Tiny" : +2,
-            "Small" : +1,
-            "Medium" : +0,
-            "Large" : -1,
-            "Huge" : -2,
-            "Gargantuan" : -4,
-            "Colossal" : -8
+            "Fine": +8,
+            "Diminutive": +4,
+            "Tiny": +2,
+            "Small": +1,
+            "Medium": +0,
+            "Large": -1,
+            "Huge": -2,
+            "Gargantuan": -4,
+            "Colossal": -8
         };
 
         var CombatManoeuvreSizeAdjustment = {
-            "Fine" : -8,
-            "Diminutive" : -4,
-            "Tiny" : -2,
-            "Small" : -1,
-            "Medium" : +0,
-            "Large" : +1,
-            "Huge" : +2,
-            "Gargantuan" : +4,
-            "Colossal" : +8
+            "Fine": -8,
+            "Diminutive": -4,
+            "Tiny": -2,
+            "Small": -1,
+            "Medium": +0,
+            "Large": +1,
+            "Huge": +2,
+            "Gargantuan": +4,
+            "Colossal": +8
         };
 
         function applyAdvancedTemplate(parsedMonster) {
@@ -148,6 +148,11 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             monster.Size = sizes[Math.max(sizes.indexOf(monster.Size) - 1, 0)];
             var atkAndAcSizeAdjustment = AtkAndAcSizeAdjustment[monster.Size] - AtkAndAcSizeAdjustment[previousSize];
 
+            var cmbAndCmdSizeAdjustment = CombatManoeuvreSizeAdjustment[monster.Size] - CombatManoeuvreSizeAdjustment[previousSize];
+            parsedMonster.CMB += cmbAndCmdSizeAdjustment + atkAndAcSizeAdjustment -2/*Str*/;
+            parsedMonster.CMD += cmbAndCmdSizeAdjustment -2/*Str*/ +2/*Dex*/ ;
+
+
             parsedMonster.normalAC += +2 + atkAndAcSizeAdjustment;
             parsedMonster.touchAC += +2 + atkAndAcSizeAdjustment;
             parsedMonster.flatFootedAC += atkAndAcSizeAdjustment;
@@ -208,7 +213,13 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
 
             var previousSize = monster.Size;
             monster.Size = sizes[Math.max(sizes.indexOf(monster.Size) + 1, 0)];
+
+            var cmbAndCmdSizeAdjustment = CombatManoeuvreSizeAdjustment[monster.Size] - CombatManoeuvreSizeAdjustment[previousSize];
+
+
             var atkAndAcSizeAdjustment = AtkAndAcSizeAdjustment[monster.Size] - AtkAndAcSizeAdjustment[previousSize];
+            parsedMonster.CMB += cmbAndCmdSizeAdjustment + atkAndAcSizeAdjustment +2/*Str*/;
+            parsedMonster.CMD += cmbAndCmdSizeAdjustment +2/*Str*/ -1/*Dex*/ ;
 
             parsedMonster.normalAC += -1 + atkAndAcSizeAdjustment;
             parsedMonster.touchAC += -1 + atkAndAcSizeAdjustment;
@@ -262,14 +273,8 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
 
             parsedMonster.Fort += 2;
 
-            if (parsedMonster.AC_Mods) {
-                if (!parsedMonster.AC_Mods.Dex) {
-                    parsedMonster.AC_Mods.Dex = 0;
-                }
-                parsedMonster.AC_Mods.Dex += 2;
-            }
-
-            parsedMonster.normalAC += 2;
+            parsedMonster.CMB += 2/*Str*/;
+            parsedMonster.CMD += 2/*Str*/;
 
             adjustDamage(parsedMonster, "Melee", 0, +2, +2);
             adjustDamage(parsedMonster, "Ranged", 0, 0, +2);
@@ -338,7 +343,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
                     else if (template === "young") {
                         applyYoungTemplate(templatedMonster, parsedMonster);
                         formatterService.formatMonster(templatedMonster, parsedMonster);
-                        templatedMonster.CR = Math.max(1/3, Math.floor(templatedMonster.CR - 1));
+                        templatedMonster.CR = Math.max(1 / 3, Math.floor(templatedMonster.CR - 1));
                     }
                     else if (template === "giant") {
                         applyGiantTemplate(templatedMonster, parsedMonster);
