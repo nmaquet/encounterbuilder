@@ -23,6 +23,7 @@
         "node-sass" : "0.8.6"
     },
     "devDependencies" : {
+        "bson"        : "*",
         "mongoose"    : "~3.6.2",
         "chai"        : "1.8.1",
         "mocha"       : "~1.16",
