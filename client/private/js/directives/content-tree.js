@@ -1,79 +1,11 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
-    ['$timeout', '$routeParams', 'contentTreeService', 'userMonsterService', 'userNpcService', 'encounterEditorService', 'encounterService', 'templateService',
-        function ($timeout, $routeParams, contentTreeService, userMonsterService, userNpcService, encounterEditorService, encounterService, templateService) {
+    ['$timeout', '$routeParams', 'contentTreeService', 'userMonsterService', 'userNpcService', 'encounterEditorService',
+        function ($timeout, $routeParams, contentTreeService, userMonsterService, userNpcService, encounterEditorService) {
 
             function link(scope, element) {
 
-                function addNpcOrMonster(type, id) {
-                    if ($routeParams.encounterId) {
-                        if (type === "monster") {
-                            userMonsterService.get(id, function (error, monster) {
-                                if (error) {
-                                    return console.log(error);
-                                }
-                                monster = templateService.createTemplatedMonster(monster);
-                                var encounter = encounterEditorService.encounter;
-                                if (!encounter.Monsters) {
-                                    encounter.Monsters = {};
-                                }
-                                var id = monster.id || monster._id;
-                                if (!encounter.Monsters[id]) {
-                                    encounter.Monsters[id] = {
-                                        amount: 1,
-                                        Name: monster.Name,
-                                        XP: monster.XP,
-                                        CR: monster.CR,
-                                        Type: monster.Type,
-                                        TreasureBudget: monster.TreasureBudget,
-                                        Heroic: monster.Heroic,
-                                        Level: monster.Level
-                                    };
-                                    if (monster.id === undefined) {
-                                        encounter.Monsters[id].userCreated = true;
-                                    }
-                                }
-                                else {
-                                    encounter.Monsters[id].amount += 1;
-                                }
-                                encounterService.encounterChanged(encounter);
-                            });
-
-                        }
-                        else {
-                            userNpcService.get(id, function (error, npc) {
-                                if (error) {
-                                    return console.log(error);
-                                }
-                                var encounter = encounterEditorService.encounter;
-                                if (!encounter.Npcs) {
-                                    encounter.Npcs = {};
-                                }
-                                var id = npc.id || npc._id;
-                                if (!encounter.Npcs[id]) {
-                                    encounter.Npcs[id] = {
-                                        amount: 1,
-                                        Name: npc.Name,
-                                        XP: npc.XP,
-                                        CR: npc.CR,
-                                        Type: npc.Type,
-                                        Heroic: npc.Heroic,
-                                        Level: npc.Level
-                                    };
-                                    if (npc.id === undefined) {
-                                        encounter.Npcs[id].userCreated = true;
-                                    }
-                                }
-                                else {
-                                    encounter.Npcs[id].amount += 1;
-                                }
-                                encounterService.encounterChanged(encounter);
-                            });
-
-                        }
-                    }
-                }
 
                 function activateNodeBasedOnRouteParams() {
                     if (!tree) {
@@ -141,7 +73,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         var node = data.node;
                         var type = (node.data.userMonsterId) ? "monster" : "npc";
                         var id = node.data.userMonsterId || node.data.userNpcId;
-                        addNpcOrMonster(type, id);
+                        encounterEditorService.addUserNpcOrMonster(type, id);
                     }
                     else {
                         $timeout(function () {
