@@ -10,7 +10,7 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
 
         function formatUnsignedNumber(monster, parsedMonster, attribute, failures) {
             if (!isNaN(parsedMonster[attribute])) {
-                monster[attribute] =parsedMonster[attribute];
+                monster[attribute] = parsedMonster[attribute];
             } else {
                 failures[attribute] = attribute + " must be a number";
             }
@@ -59,6 +59,19 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
                 }).join(", ");
             } else {
                 failures["Skills"] = "Skills must be a comma-separated list of entries of the form 'skill name +X'";
+            }
+        }
+
+        function formatResist(monster, parsedMonster, attribute, failures) {
+            if (parsedMonster.Resist) {
+                var resists = ["acid", "cold", "fire", "electricity"];
+                var array = [];
+                for (var i in resists) {
+                    if (parsedMonster.Resist[resists[i]]) {
+                        array.push(resists[i] + " " + parsedMonster.Resist[resists[i]]);
+                    }
+                }
+                monster.Resist = array.join(", ");
             }
         }
 
@@ -122,7 +135,9 @@ DEMONSQUID.encounterBuilderServices.factory('formatterService', [
             HP: formatUnsignedNumber,
             HD: formatHitDice,
             Melee: formatAttack,
-            Ranged: formatAttack
+            Ranged: formatAttack,
+            Resist: formatResist,
+            SR: formatUnsignedNumber
         };
 
         var service = {};

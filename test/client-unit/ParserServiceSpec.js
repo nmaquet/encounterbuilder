@@ -219,6 +219,15 @@ describe("parserService", function () {
 
     });
 
+    it("should parse the Resist field into distinct resistances by energy type", function () {
+        baseMonster.Resist = "acid 10, cold 10, fire 10";
+        var parsedMonster = service.parseMonster(baseMonster);
+        expect(parsedMonster.Resist.acid).to.equal(10);
+        expect(parsedMonster.Resist.cold).to.equal(10);
+        expect(parsedMonster.Resist.fire).to.equal(10);
+
+    });
+
     it("should not crash if any field is undefined", function () {
         service.parseMonster({});
     });

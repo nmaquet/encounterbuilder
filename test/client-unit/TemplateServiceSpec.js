@@ -89,7 +89,7 @@ describe("templateService", function () {
         expect(templatedMonster).to.deep.equal(baseMonster);
     });
 
-    describe("Advanced Template", function() {
+    describe("Advanced Template", function () {
 
         it("should  add '(Advanced)' to the Name for advanced template", function () {
             baseMonster.templates = {
@@ -266,7 +266,7 @@ describe("templateService", function () {
 
     });
 
-    describe("Multiple templates", function() {
+    describe("Multiple templates", function () {
 
         it("should have all the template names, sorted alphabetically", function () {
             baseMonster.templates = {
@@ -280,14 +280,14 @@ describe("templateService", function () {
 
     });
 
-    describe("Young template", function() {
+    describe("Young template", function () {
 
         it("should remove 44 HP ", function () {
             baseMonster.templates = {
                 young: true
             };
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.HP).to.equal(363-44);
+            expect(templatedMonster.HP).to.equal(363 - 44);
             expect(templatedMonster.HD).to.equal("(22d10+198)");
         });
 
@@ -304,9 +304,9 @@ describe("templateService", function () {
                 young: true
             };
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.Str).to.equal(28-4);
-            expect(templatedMonster.Dex).to.equal(20+4);
-            expect(templatedMonster.Con).to.equal(30-4);
+            expect(templatedMonster.Str).to.equal(28 - 4);
+            expect(templatedMonster.Dex).to.equal(20 + 4);
+            expect(templatedMonster.Con).to.equal(30 - 4);
         });
 
         it("should not reduce abilities below 3", function () {
@@ -325,8 +325,8 @@ describe("templateService", function () {
                 young: true
             };
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.Fort).to.equal(25-2);
-            expect(templatedMonster.Ref).to.equal(14+2);
+            expect(templatedMonster.Fort).to.equal(25 - 2);
+            expect(templatedMonster.Ref).to.equal(14 + 2);
             expect(templatedMonster.Will).to.equal(23);
         });
 
@@ -335,7 +335,7 @@ describe("templateService", function () {
                 young: true
             };
             baseMonster.AC = "25, touch 10, flat-footed 20";
-            baseMonster.AC_Mods="(+8 armor)";
+            baseMonster.AC_Mods = "(+8 armor)";
             baseMonster.Treasure = "Some armor";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
             expect(templatedMonster.AC).to.equal("28, touch 13, flat-footed 21");
@@ -347,7 +347,7 @@ describe("templateService", function () {
                 young: true
             };
             baseMonster.AC = "25, touch 24, flat-footed 11";
-            baseMonster.AC_Mods="(+8 armor, +1 natural, -1 size)";
+            baseMonster.AC_Mods = "(+8 armor, +1 natural, -1 size)";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
             expect(templatedMonster.AC).to.equal("27, touch 27, flat-footed 11");
             expect(templatedMonster.AC_Mods).to.equal("(+8 armor, +0 natural, +0 size, +2 Dex)");
@@ -358,7 +358,7 @@ describe("templateService", function () {
                 young: true
             };
             baseMonster.AC = "27, touch 24, flat-footed 11";
-            baseMonster.AC_Mods="(+8 armor, +3 natural, -1 size)";
+            baseMonster.AC_Mods = "(+8 armor, +3 natural, -1 size)";
             baseMonster.Treasure = "";
             var templatedMonster = service.createTemplatedMonster(baseMonster);
             expect(templatedMonster.AC).to.equal("28, touch 27, flat-footed 10");
@@ -455,15 +455,15 @@ describe("templateService", function () {
             baseMonster.templates = {
                 young: true
             };
-            baseMonster.CR = 1/3;
+            baseMonster.CR = 1 / 3;
             var templatedMonster = service.createTemplatedMonster(baseMonster);
-            expect(templatedMonster.CR).to.equal(1/3);
+            expect(templatedMonster.CR).to.equal(1 / 3);
         });
 
 
     });
 
-    describe("Giant template", function() {
+    describe("Giant template", function () {
 
         it("should add 44 HP ", function () {
             baseMonster.templates = {
@@ -651,6 +651,102 @@ describe("templateService", function () {
             var templatedMonster = service.createTemplatedMonster(baseMonster);
             expect(templatedMonster.CMB).to.equal("+28");
             expect(templatedMonster.CMD).to.equal(31);
+        });
+    });
+    describe("Fiendish template", function () {
+
+        it("should add resistance according to number of hit dice 22HD", function () {
+            baseMonster.templates = {
+                fiendish: true
+            };
+            delete baseMonster.Resist;
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Resist).to.equal("cold 15, fire 15");
+        });
+        it("should add resistance according to number of hit dice 1HD", function () {
+            baseMonster.templates = {
+                fiendish: true
+            };
+            delete baseMonster.Resist;
+            baseMonster.HD = "(1d10+242)";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Resist).to.equal("cold 5, fire 5");
+        });
+        it("should add resistance according to number of hit dice 6HD", function () {
+            baseMonster.templates = {
+                fiendish: true
+            };
+            delete baseMonster.Resist;
+            baseMonster.HD = "(6d10+242)";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Resist).to.equal("cold 10, fire 10");
+        });
+        it("should not change resist if base monster already has higher resistance", function () {
+            baseMonster.templates = {
+                fiendish: true
+            };
+            baseMonster.Resist = "cold 15, fire 15";
+            baseMonster.HD = "(1d10+242)";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Resist).to.equal("cold 15, fire 15");
+        });
+        it("should add Darkvision if the monster doesn't already have it", function () {
+            baseMonster.templates = {
+                fiendish: true
+            };
+            baseMonster.Senses = "low- light vision, detect evil, detect snares and pits, true seeing; Perception +33";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.Senses).to.equal("darkvision 60 ft., low- light vision, detect evil, detect snares and pits, true seeing; Perception +33");
+        });
+        it("should add SR according to the new CR", function () {
+            baseMonster.templates = {
+                fiendish: true
+            };
+            delete baseMonster.SR;
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.SR).to.equal(29);
+        });
+        it("should not change SR when base monster has higher SR than template", function () {
+            baseMonster.templates = {
+                fiendish: true
+            };
+            baseMonster.SR = "34";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.SR).to.equal(34);
+        });
+        it("should add  dr/good according to number of HD", function () {
+            baseMonster.templates = {
+                fiendish: true
+            };
+            baseMonster.HD = "(5d10+242)";
+            delete baseMonster.DR;
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.DR).to.equal("5/good");
+        });
+        it("should add  dr/good according to number of HD", function () {
+            baseMonster.templates = {
+                fiendish: true
+            };
+            baseMonster.HD = "(11d10+242)";
+            delete baseMonster.DR;
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.DR).to.equal("10/good");
+        });
+        it("should add  dr/good according to number of HD", function () {
+            baseMonster.templates = {
+                fiendish: true
+            };
+            baseMonster.HD = "(11d10+242)";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.DR).to.equal("15/epic and evil, 10/good");
+        });
+        it("should add  smite good to the special attacks", function () {
+            baseMonster.templates = {
+                fiendish: true
+            };
+            baseMonster.SpecialAttacks = "fire breath";
+            var templatedMonster = service.createTemplatedMonster(baseMonster);
+            expect(templatedMonster.SpecialAttacks).to.equal("fire breath, smite good (1/day)");
         });
     });
 });

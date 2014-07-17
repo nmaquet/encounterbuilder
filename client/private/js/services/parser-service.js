@@ -16,6 +16,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             parseAC(monster, parsedMonster);
             parseHD(monster, parsedMonster);
             parseSkills(monster, parsedMonster);
+            parseResit(monster, parsedMonster);
 
             if (monster.Melee) {
                 parseMeleeAttacks(monster, parsedMonster);
@@ -38,6 +39,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
 
             parsedMonster.CMB = Number(monster.CMB);
             parsedMonster.CMD = Number(monster.CMD);
+            parsedMonster.SR = Number(monster.SR);
 
             parsedMonster.HP = Number(monster.HP);
 
@@ -91,6 +93,19 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                 parsedMonster.numberOfHD = Number(matches[1]);
                 parsedMonster.typeOfHD = Number(matches[2]);
                 parsedMonster.hitPointBonus = Number(matches[3]);
+            }
+        }
+
+        function parseResit(monster, parsedMonster) {
+            if (monster.Resist) {
+                parsedMonster.Resist = {};
+                var string = monster.Resist;
+                var resists = string.split(",");
+                var regex = /(acid|cold|fire|electricity)\s(\d+)/i;
+                for (var i in resists) {
+                    var matches = regex.exec(resists[i]);
+                    parsedMonster.Resist[matches[1]] = Number(matches[2]);
+                }
             }
         }
 

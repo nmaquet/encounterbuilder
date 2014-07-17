@@ -149,8 +149,8 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             var atkAndAcSizeAdjustment = AtkAndAcSizeAdjustment[monster.Size] - AtkAndAcSizeAdjustment[previousSize];
 
             var cmbAndCmdSizeAdjustment = CombatManoeuvreSizeAdjustment[monster.Size] - CombatManoeuvreSizeAdjustment[previousSize];
-            parsedMonster.CMB += cmbAndCmdSizeAdjustment + atkAndAcSizeAdjustment -2/*Str*/;
-            parsedMonster.CMD += cmbAndCmdSizeAdjustment -2/*Str*/ +2/*Dex*/ ;
+            parsedMonster.CMB += cmbAndCmdSizeAdjustment + atkAndAcSizeAdjustment - 2/*Str*/;
+            parsedMonster.CMD += cmbAndCmdSizeAdjustment - 2/*Str*/ + 2/*Dex*/;
 
 
             parsedMonster.normalAC += +2 + atkAndAcSizeAdjustment;
@@ -218,8 +218,8 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
 
 
             var atkAndAcSizeAdjustment = AtkAndAcSizeAdjustment[monster.Size] - AtkAndAcSizeAdjustment[previousSize];
-            parsedMonster.CMB += cmbAndCmdSizeAdjustment + atkAndAcSizeAdjustment +2/*Str*/;
-            parsedMonster.CMD += cmbAndCmdSizeAdjustment +2/*Str*/ -1/*Dex*/ ;
+            parsedMonster.CMB += cmbAndCmdSizeAdjustment + atkAndAcSizeAdjustment + 2/*Str*/;
+            parsedMonster.CMD += cmbAndCmdSizeAdjustment + 2/*Str*/ - 1/*Dex*/;
 
             parsedMonster.normalAC += -1 + atkAndAcSizeAdjustment;
             parsedMonster.touchAC += -1 + atkAndAcSizeAdjustment;
@@ -278,6 +278,65 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
 
             adjustDamage(parsedMonster, "Melee", 0, +2, +2);
             adjustDamage(parsedMonster, "Ranged", 0, 0, +2);
+        }
+
+        function applyOutsiderishTemplate(monster, parsedMonster, DRType, smiteType, resists) {
+            if (monster.Senses.indexOf("darkvision") === -1) {
+                monster.Senses = "darkvision 60 ft., " + monster.Senses;
+            }
+            var SR = Math.floor(monster.CR + 5);
+            if (!parsedMonster.SR || parsedMonster.SR < SR) {
+                parsedMonster.SR = SR;
+            }
+            var resistMod = null;
+            var DR = null;
+            if (parsedMonster.numberOfHD <= 4) {
+                resistMod = 5;
+            }
+            else if (parsedMonster.numberOfHD <= 10) {
+                resistMod = 10;
+                DR = "5/" + DRType;
+            }
+            else {
+                resistMod = 15;
+                DR = "10/" + DRType;
+            }
+            if (DR !== null && (!monster.DR || monster.DR.indexOf(DR) === -1)) {
+                if (monster.DR)
+                    monster.DR += ", ";
+                monster.DR = (monster.DR || "") + DR;
+            }
+            if (!monster.SpecialAttacks || monster.SpecialAttacks.indexOf("smite " + smiteType) === -1) {
+                if (monster.SpecialAttacks)
+                    monster.SpecialAttacks += ", ";
+                monster.SpecialAttacks = (monster.SpecialAttacks || "") + "smite " + smiteType + " (1/day)";
+            }
+            if (!parsedMonster.Resist) {
+                parsedMonster.Resist = {};
+            }
+
+            for (var i in resists) {
+                if (!parsedMonster.Resist[resists[i]] || parsedMonster.Resist[resists[i]] < resistMod) {
+                    parsedMonster.Resist[resists[i]] = resistMod;
+                }
+            }
+
+        }
+
+        function applyFiendishTemplate(monster, parsedMonster) {
+            applyOutsiderishTemplate(monster, parsedMonster, "good", "good", ["cold", "fire"]);
+        }
+
+        function applyCelestialTemplate(monster, parsedMonster) {
+            applyOutsiderishTemplate(monster, parsedMonster, "evil", "evil", ["cold", "acid", "electricity"]);
+        }
+
+        function applyResoluteTemplate(monster, parsedMonster) {
+            applyOutsiderishTemplate(monster, parsedMonster, "chaotic", "chaos", ["acid", "cold", "fire"]);
+        }
+
+        function applyEntropicTemplate(monster, parsedMonster) {
+            applyOutsiderishTemplate(monster, parsedMonster, "lawful", "law", ["acid", "fire"]);
         }
 
         function adjustDamage(parsedMonster, attribute, dicesAdjustment, attackModifier, damageModifier) {
@@ -352,6 +411,34 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
                     }
                     else if (template === "augmented") {
                         applyAugmentedTemplate(parsedMonster);
+                        formatterService.formatMonster(templatedMonster, parsedMonster);
+                    }
+                    else if (template === "fiendish") {
+                        if (parsedMonster.numberOfHD >= 5) {
+                            templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
+                        }
+                        applyFiendishTemplate(templatedMonster, parsedMonster);
+                        formatterService.formatMonster(templatedMonster, parsedMonster);
+                    }
+                    else if (template === "celestial") {
+                        if (parsedMonster.numberOfHD >= 5) {
+                            templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
+                        }
+                        applyCelestialTemplate(templatedMonster, parsedMonster);
+                        formatterService.formatMonster(templatedMonster, parsedMonster);
+                    }
+                    else if (template === "resolute") {
+                        if (parsedMonster.numberOfHD >= 5) {
+                            templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
+                        }
+                        applyResoluteTemplate(templatedMonster, parsedMonster);
+                        formatterService.formatMonster(templatedMonster, parsedMonster);
+                    }
+                    else if (template === "entropic") {
+                        if (parsedMonster.numberOfHD >= 5) {
+                            templatedMonster.CR = Math.floor(templatedMonster.CR + 1);
+                        }
+                        applyEntropicTemplate(templatedMonster, parsedMonster);
                         formatterService.formatMonster(templatedMonster, parsedMonster);
                     }
                 }
