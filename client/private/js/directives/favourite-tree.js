@@ -12,12 +12,21 @@ DEMONSQUID.encounterBuilderDirectives.directive('favouriteTree',
                             var node = data.node;
                             var type = node.data.type;
                             var userCreated = node.data.userCreated;
-                            var id = node.data.id
-                            if (userCreated) {
-                                encounterEditorService.addUserNpcOrMonster(type, id);
+                            var id = node.data.id;
+                            if (type !== "item") {
+                                if (userCreated) {
+                                    encounterEditorService.addUserNpcOrMonster(type, id);
+                                }
+                                else {
+                                    encounterEditorService.addNpcOrMonster(type, id);
+                                }
                             }
-                            else{
-                                encounterEditorService.addNpcOrMonster(type, id);
+                            else {
+                                if (userCreated) {
+                                    encounterEditorService.addUserItem(id);
+                                } else {
+                                    encounterEditorService.addItem(id);
+                                }
                             }
                         }
                         else if (!data.node.folder) {

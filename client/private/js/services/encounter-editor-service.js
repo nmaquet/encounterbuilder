@@ -68,6 +68,31 @@ DEMONSQUID.encounterBuilderServices.factory('encounterEditorService',
                 }
             }
 
+            function addItem(id) {
+                if ($routeParams.encounterId) {
+                    itemService.get(id, function (error, item) {
+                        if (error) {
+                            return console.log(error);
+                        }
+                        if (!item) {
+                            return console.log("item not found");
+                        }
+                        var encounter = service.encounter;
+                        if (!encounter.items) {
+                            encounter.items = {};
+                        }
+                        if (!encounter.items[item.id]) {
+                            encounter.items[item.id] = {Name: item.Name, Price: item.Price, PriceUnit: item.PriceUnit, amount: 1};
+                        }
+                        else {
+                            encounter.items[item.id].amount += 1;
+                        }
+                        encounterService.encounterChanged(encounter);
+                    });
+
+                }
+            }
+
             function addNpcOrMonster(type, id) {
                 if ($routeParams.encounterId) {
                     if (type === "monster") {
@@ -85,6 +110,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterEditorService',
             service.addUserNpcOrMonster = addUserNpcOrMonster;
             service.addNpcOrMonster = addNpcOrMonster;
             service.addUserItem = addUserItem;
+            service.addItem = addItem;
             return service;
         }
     ]
