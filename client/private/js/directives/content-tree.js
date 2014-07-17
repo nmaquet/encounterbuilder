@@ -71,9 +71,24 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 function onClick(event, data) {
                     if ($(event.toElement).text() === "+") {
                         var node = data.node;
-                        var type = (node.data.userMonsterId) ? "monster" : "npc";
-                        var id = node.data.userMonsterId || node.data.userNpcId;
-                        encounterEditorService.addUserNpcOrMonster(type, id);
+//                        var type = (node.data.userMonsterId) ? "monster" : "npc";
+                        var type = null;
+                        if (node.data.userMonsterId) {
+                            type = "monster"
+                        }
+                        else if (node.data.userNpcId) {
+                            type = "npc"
+                        }
+                        else {
+                            type = "item";
+                        }
+
+                        var id = node.data.userMonsterId || node.data.userNpcId || node.data.userResourceId;
+                        if (type === "item") {
+                            encounterEditorService.addUserItem(id);
+                        } else {
+                            encounterEditorService.addUserNpcOrMonster(type, id);
+                        }
                     }
                     else {
                         $timeout(function () {

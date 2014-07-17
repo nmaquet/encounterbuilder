@@ -27,7 +27,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserResourceController',
             $scope.copy = function () {
                 contentTreeService.copyUserResource($scope.userResource._id, resourceType);
             };
-
+            console.log(resourceType);
             $scope.userResource = userResourceService[resourceType].get({id: $routeParams.userResourceId || $routeParams.detailsId});
 
             // FIXME: change title !

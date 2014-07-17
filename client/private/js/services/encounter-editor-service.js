@@ -1,8 +1,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('encounterEditorService',
-    ['$routeParams', 'monsterService', 'npcService', 'userMonsterService', 'userNpcService', 'encounterService', 'templateService',
-        function ($routeParams, monsterService, npcService, userMonsterService, userNpcService, encounterService, templateService) {
+    ['$routeParams', 'monsterService', 'npcService', 'userMonsterService', 'userNpcService', 'encounterService', 'templateService', 'userResourceService', 'itemService',
+        function ($routeParams, monsterService, npcService, userMonsterService, userNpcService, encounterService, templateService, userResourceService, itemService) {
             function addToEncounter(dbService, id, encounterListName, templated) {
                 dbService.get(id, function (error, toAdd) {
                     if (error) {
@@ -49,6 +49,25 @@ DEMONSQUID.encounterBuilderServices.factory('encounterEditorService',
                 }
             }
 
+            function addUserItem(id) {
+                if ($routeParams.encounterId) {
+                    userResourceService["user-item"].get({id: id}, function (item) {
+                        var encounter = service.encounter;
+                        if (!encounter.items) {
+                            encounter.items = {};
+                        }
+                        if (!encounter.items[item._id]) {
+                            encounter.items[item._id] = {Name: item.Name, Price: item.Price, PriceUnit: item.PriceUnit, amount: 1, userCreated: true};
+                        }
+                        else {
+                            encounter.items[item._id].amount += 1;
+                        }
+                        encounterService.encounterChanged(encounter);
+                    });
+
+                }
+            }
+
             function addNpcOrMonster(type, id) {
                 if ($routeParams.encounterId) {
                     if (type === "monster") {
@@ -65,6 +84,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterEditorService',
             };
             service.addUserNpcOrMonster = addUserNpcOrMonster;
             service.addNpcOrMonster = addNpcOrMonster;
+            service.addUserItem = addUserItem;
             return service;
         }
     ]

@@ -85,7 +85,7 @@ div.encounter
                             span(click-to-edit='item.amount', on-save="encounterChanged()", display-class="badge red pointer item-amount", edit-class="badge red pointer item-amount badge-editing", icon-class="hide", numeric="true")
                         td.name-container
                             span.item-name
-                                a.is-pointer(ng-click='selectItemById(id)') {{item.Name}}
+                                a.is-pointer(ng-click='selectItemById(id,item.userCreated)') {{item.Name}}
                         td.price-container
                             span.item-price
                                 | {{item.Price}}&nbsp;{{item.PriceUnit}}
