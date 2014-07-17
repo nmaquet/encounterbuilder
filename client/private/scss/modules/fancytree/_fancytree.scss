@@ -450,6 +450,9 @@ $fancytree-grid-unit: 16px;
   margin: -0.25em 0px -0.25em ($fancytree-grid-unit/5); //3px
   //margin-left: ($fancytree-grid-unit/5); //3px
   cursor: pointer;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 //------------------------------------------------------------------------------
 // Drag'n'drop support

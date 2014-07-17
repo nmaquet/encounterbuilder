@@ -38,4 +38,5 @@ DEMONSQUID.encounterBuilderControllers.controller('SidebarController',
                 contentTreeService.createUserResource("user-illustration");
             };
         }
-    ]);
+    ])
+;

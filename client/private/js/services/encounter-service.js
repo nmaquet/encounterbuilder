@@ -1,7 +1,7 @@
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', '$rootScope', '$cacheFactory', 'crService', 'userMonsterService', 'userNpcService',
-    function ($timeout, $http, $rootScope, $cacheFactory, crService, userMonsterService, userNpcService) {
+DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', '$rootScope', '$cacheFactory', 'crService', 'userMonsterService', 'userNpcService', 'templateService',
+    function ($timeout, $http, $rootScope, $cacheFactory, crService, userMonsterService, userNpcService, templateService) {
 
         function calculateXp(encounter) {
             var xp = 0;
@@ -130,6 +130,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                     }
                 );
             }
+
             var tasks = [];
             for (var i in ids) {
                 pushTask(ids[i]);
@@ -139,7 +140,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
             });
         };
 
-        service.updateUserContent = function(encounter) {
+        service.updateUserContent = function (encounter) {
             var id;
             for (id in encounter.Monsters) {
                 if (!encounter.Monsters.hasOwnProperty(id)) {
@@ -148,8 +149,9 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 if (!encounter.Monsters[id].userCreated) {
                     continue;
                 }
-                (function(monster, monsterId) {
-                    userMonsterService.get(monsterId, function(error, newMonster) {
+                (function (monster, monsterId) {
+                    userMonsterService.get(monsterId, function (error, newMonster) {
+                        newMonster = templateService.createTemplatedMonster(newMonster);
                         if (newMonster) {
                             monster.Name = newMonster.Name;
                             monster.XP = newMonster.XP;
@@ -157,9 +159,10 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                             monster.Type = newMonster.Type;
                             monster.TreasureBudget = newMonster.TreasureBudget;
                             monster.Heroic = newMonster.Heroic;
-                            monster.Level= newMonster.Level;
+                            monster.Level = newMonster.Level;
                         } else {
-                            delete encounter.Monsters[monsterId]; /* monster is no longer found -> remove it */
+                            delete encounter.Monsters[monsterId];
+                            /* monster is no longer found -> remove it */
                             service.encounterChanged(encounter);
                         }
                         encounter.xp = calculateXp(encounter);
@@ -174,7 +177,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 if (!encounter.Npcs[id].userCreated) {
                     continue;
                 }
-                (function(npc, npcId) {
+                (function (npc, npcId) {
                     userNpcService.get(npcId, function (error, newNpc) {
                         if (newNpc) {
                             npc.Name = newNpc.Name;
@@ -183,9 +186,10 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                             npc.Type = newNpc.Type;
                             npc.TreasureBudget = newNpc.TreasureBudget;
                             npc.Heroic = newNpc.Heroic;
-                            npc.Level= newNpc.Level;
+                            npc.Level = newNpc.Level;
                         } else {
-                            delete encounter.Npcs[npcId]; /* npc is no longer found -> remove it */
+                            delete encounter.Npcs[npcId];
+                            /* npc is no longer found -> remove it */
                             service.encounterChanged(encounter);
                         }
                         encounter.xp = calculateXp(encounter);

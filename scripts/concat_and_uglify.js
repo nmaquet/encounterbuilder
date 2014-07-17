@@ -31,6 +31,7 @@ var jsFiles = [
     "client/private/js/services/exception-handling-service.js", /* leave this one second */
     "client/private/js/extra/utils.js",
     "client/private/js/extra/fancy-tree-touch.js",
+    "client/private/js/extra/fancytree-add-to-encounter.js",
     "client/private/js/controllers/main-controller.js",
     "client/private/js/controllers/encounter-controller.js",
     "client/private/js/controllers/search-monster-controller.js",
