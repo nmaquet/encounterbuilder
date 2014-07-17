@@ -422,9 +422,7 @@ $fancytree-grid-unit: 16px;
 .fancytree-node {
   /* See #117 */
   //display: inherit;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  padding-left: 0.5em;
+  padding: 0.5em;
   width: 100%;
   display: table;
   > span {

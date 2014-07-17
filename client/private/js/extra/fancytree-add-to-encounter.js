@@ -16,7 +16,7 @@
             this._super(ctx, title);
             // Append a button if node is a monster or npc
             if (node.data.userMonsterId || node.data.userNpcId || node.data.type === "monster" || node.data.type === "npc" || node.data.resourceType === "user-item" || node.data.type === "item") {
-                $("span.fancytree-title", node.span).append($('<button class="add-item-btn pull-right"><i class="icon icon-plus">+</i></button>'));
+                $(node.span).append($('<button class="add-item-btn pull-right"><i class="icon icon-plus">+</i></button>'));
             }
         }
     });
