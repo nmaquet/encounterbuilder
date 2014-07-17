@@ -15,7 +15,7 @@
             // Let the base implementation render the title
             this._super(ctx, title);
             // Append a button if node is a monster or npc
-            if (node.data.userMonsterId || node.data.userNpcId) {
+            if (node.data.userMonsterId || node.data.userNpcId || node.data.type === "monster" || node.data.type === "npc") {
                 $("span.fancytree-title", node.span).append($('<button class="add-item-btn pull-right"><i class="icon icon-plus">+</i></button>'));
             }
         }

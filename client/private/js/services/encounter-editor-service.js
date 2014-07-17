@@ -1,73 +1,61 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('encounterEditorService',
-    ['$routeParams', 'userMonsterService', 'userNpcService', 'encounterService', 'templateService',
-        function ($routeParams, userMonsterService, userNpcService, encounterService, templateService) {
+    ['$routeParams', 'monsterService', 'npcService', 'userMonsterService', 'userNpcService', 'encounterService', 'templateService',
+        function ($routeParams, monsterService, npcService, userMonsterService, userNpcService, encounterService, templateService) {
+            function addToEncounter(dbService, id, encounterListName, templated) {
+                dbService.get(id, function (error, toAdd) {
+                    if (error) {
+                        return console.log(error);
+                    }
+                    if (templated) {
+                        toAdd = templateService.createTemplatedMonster(toAdd);
+                    }
+                    var encounter = service.encounter;
+                    if (!encounter[encounterListName]) {
+                        encounter[encounterListName] = {};
+                    }
+                    var id = toAdd.id || toAdd._id;
+                    if (!encounter[encounterListName][id]) {
+                        encounter[encounterListName][id] = {
+                            amount: 1,
+                            Name: toAdd.Name,
+                            XP: toAdd.XP,
+                            CR: toAdd.CR,
+                            Type: toAdd.Type,
+                            TreasureBudget: toAdd.TreasureBudget,
+                            Heroic: toAdd.Heroic,
+                            Level: toAdd.Level
+                        };
+                        if (toAdd.id === undefined) {
+                            encounter[encounterListName][id].userCreated = true;
+                        }
+                    }
+                    else {
+                        encounter[encounterListName][id].amount += 1;
+                    }
+                    encounterService.encounterChanged(encounter);
+                });
+            }
+
             function addUserNpcOrMonster(type, id) {
                 if ($routeParams.encounterId) {
                     if (type === "monster") {
-                        userMonsterService.get(id, function (error, monster) {
-                            if (error) {
-                                return console.log(error);
-                            }
-                            monster = templateService.createTemplatedMonster(monster);
-                            var encounter = service.encounter;
-                            if (!encounter.Monsters) {
-                                encounter.Monsters = {};
-                            }
-                            var id = monster.id || monster._id;
-                            if (!encounter.Monsters[id]) {
-                                encounter.Monsters[id] = {
-                                    amount: 1,
-                                    Name: monster.Name,
-                                    XP: monster.XP,
-                                    CR: monster.CR,
-                                    Type: monster.Type,
-                                    TreasureBudget: monster.TreasureBudget,
-                                    Heroic: monster.Heroic,
-                                    Level: monster.Level
-                                };
-                                if (monster.id === undefined) {
-                                    encounter.Monsters[id].userCreated = true;
-                                }
-                            }
-                            else {
-                                encounter.Monsters[id].amount += 1;
-                            }
-                            encounterService.encounterChanged(encounter);
-                        });
-
+                        addToEncounter(userMonsterService, id, "Monsters", true);
                     }
                     else {
-                        userNpcService.get(id, function (error, npc) {
-                            if (error) {
-                                return console.log(error);
-                            }
-                            var encounter = service.encounter;
-                            if (!encounter.Npcs) {
-                                encounter.Npcs = {};
-                            }
-                            var id = npc.id || npc._id;
-                            if (!encounter.Npcs[id]) {
-                                encounter.Npcs[id] = {
-                                    amount: 1,
-                                    Name: npc.Name,
-                                    XP: npc.XP,
-                                    CR: npc.CR,
-                                    Type: npc.Type,
-                                    Heroic: npc.Heroic,
-                                    Level: npc.Level
-                                };
-                                if (npc.id === undefined) {
-                                    encounter.Npcs[id].userCreated = true;
-                                }
-                            }
-                            else {
-                                encounter.Npcs[id].amount += 1;
-                            }
-                            encounterService.encounterChanged(encounter);
-                        });
+                        addToEncounter(userNpcService, id, "Npcs", false);
+                    }
+                }
+            }
 
+            function addNpcOrMonster(type, id) {
+                if ($routeParams.encounterId) {
+                    if (type === "monster") {
+                        addToEncounter(monsterService, id, "Monsters", false);
+                    }
+                    else {
+                        addToEncounter(npcService, id, "Npcs", false);
                     }
                 }
             }
@@ -76,6 +64,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterEditorService',
                 encounter: null
             };
             service.addUserNpcOrMonster = addUserNpcOrMonster;
+            service.addNpcOrMonster = addNpcOrMonster;
             return service;
         }
     ]

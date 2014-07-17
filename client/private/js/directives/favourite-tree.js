@@ -1,14 +1,26 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('favouriteTree',
-    ['$rootScope', '$timeout', '$routeParams', 'favouriteService', 'locationService',
-        function ($rootScope, $timeout, $routeParams, favouriteService, locationService) {
+    ['$rootScope', '$timeout', '$routeParams', 'favouriteService', 'locationService', 'encounterEditorService',
+        function ($rootScope, $timeout, $routeParams, favouriteService, locationService, encounterEditorService) {
 
             function link(scope, element) {
 
                 function onClick(event, data) {
                     $timeout(function () {
-                        if (!data.node.folder) {
+                        if ($(event.toElement).text() === "+") {
+                            var node = data.node;
+                            var type = node.data.type;
+                            var userCreated = node.data.userCreated;
+                            var id = node.data.id
+                            if (userCreated) {
+                                encounterEditorService.addUserNpcOrMonster(type, id);
+                            }
+                            else{
+                                encounterEditorService.addNpcOrMonster(type, id);
+                            }
+                        }
+                        else if (!data.node.folder) {
                             locationService.goToDetails(data.node.data.type, data.node.data.id);
                         }
                     });
@@ -26,6 +38,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('favouriteTree',
 
                 function initTree() {
                     element.fancytree({
+                        extensions: ["add-to-encounter"],
                         source: favouriteService.favourites(),
                         click: onClick,
                         expand: onExpandOrCollapse,
