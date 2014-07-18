@@ -16,5 +16,6 @@
             | Progress:
             .progress(ng-if="uploader.isUploading")
                 .progress-bar(role='progressbar', ng-style="{ 'width': uploader.progress + '%' }")
-        img(ng-src="{{userResource.url}}")
+        div(pending="uploadInProgress")
+            img(ng-src="{{userResource.url}}")
         input#hidden-file-select.hidden(ng-file-select='ng-file-select', type='file')
