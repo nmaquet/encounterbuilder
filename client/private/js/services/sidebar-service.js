@@ -17,6 +17,9 @@ DEMONSQUID.encounterBuilderServices.factory('sidebarService', [ 'viewportService
             if (viewport.xs && leftSidebarOpened && rightSidebarOpened) {
                 rightSidebarOpened = false;
             }
+            if (viewport.md || viewport.sm) {
+                rightSidebarOpened = false;
+            }
         }
 
         viewportService.register(function () {
