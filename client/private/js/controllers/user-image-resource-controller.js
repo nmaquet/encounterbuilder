@@ -60,6 +60,13 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                     var url = "/api/upload-user-illustration-image-smart/" + id;
                     $http.post(url, {fileName: name, fileType:type}).success(function(response){
                         credentials = response;
+                        var item = uploader.getNotUploadedItems()[0];
+                        item.formData = [{}];
+                        item.formData[0].key = ($routeParams.userResourceId || $routeParams.detailsId);
+                        item.formData[0].redirect = credentials.s3Redirect;
+                        item.formData[0].AWSAccessKeyId = credentials.s3KeyId;
+                        item.formData[0].Policy = credentials.s3PolicyBase64;
+                        item.formData[0].Signature = credentials.s3Signature;
                         uploader.uploadAll();
                     });
                     errorMessage = null;
@@ -68,13 +75,6 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
 
             uploader.bind('beforeupload', function (event, item) {
                 if (credentials) {
-                    item.formData.key = ($routeParams.userResourceId || $routeParams.detailsId);
-                    item.formData.redirect = credentials.s3Redirect;
-                    item.formData.AWSAccessKeyId = credentials.s3KeyId;
-                    item.formData.Policy = credentials.s3PolicyBase64;
-                    item.formData.Signature = credentials.s3Signature;
-//                    item.headers['Access-Control-Request-Method'] = "POST";
-//                    item.headers['Access-Control-Request-Headers'] = "*";
                     item.withCredentials = true;
                     item.url = credentials.url;
                     credentials = null;
