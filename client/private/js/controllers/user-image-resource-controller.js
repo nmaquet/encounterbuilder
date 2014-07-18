@@ -33,7 +33,6 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
             // FIXME: change title !
 
             var errorMessage = null;
-            var credentials = null;
 
             var uploader = $scope.uploader = $fileUploader.create({
                 scope: $scope,
@@ -58,19 +57,18 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                     var name = item.file.name;
                     var id = ($routeParams.userResourceId || $routeParams.detailsId);
                     var url = "/api/upload-user-illustration-image/" + id;
-                    $http.post(url, {fileName: name, fileType: type}).success(function (response) {
-                        credentials = response;
+                    $http.post(url, {fileName: name, fileType: type}).success(function (credentials) {
                         var item = uploader.getNotUploadedItems()[0];
-                        item.formData = [{}];
-                        item.formData[0].key = ($routeParams.userResourceId || $routeParams.detailsId);
-                        item.formData[0].acl = "public-read";
-                        item.formData[0]["Content-Type"] = credentials["Content-Type"];
-                        item.formData[0].AWSAccessKeyId = credentials.AWSAccessKeyId;
-                        item.formData[0].policy = credentials.policy;
-                        item.formData[0].signature = credentials.signature;
+                        var s3FormData = {};
+                        s3FormData.key = ($routeParams.userResourceId || $routeParams.detailsId);
+                        s3FormData.acl = "public-read";
+                        s3FormData["Content-Type"] = credentials["Content-Type"];
+                        s3FormData.AWSAccessKeyId = credentials.AWSAccessKeyId;
+                        s3FormData.policy = credentials.policy;
+                        s3FormData.signature = credentials.signature;
+                        item.formData.push(s3FormData);
                         item.withCredentials = true;
                         item.url = credentials.url;
-                        credentials = null;
                         uploader.uploadAll();
                     });
                     errorMessage = null;
