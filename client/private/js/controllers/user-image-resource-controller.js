@@ -54,19 +54,17 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
 
             uploader.bind('afteraddingfile', function (event, item) {
                 $scope.$apply(function () {
-                    var type = uploader.isHTML5 ? item.type : 'image/' + item.value.slice(item.value.lastIndexOf('.') + 1);
-                    var name = uploader.isHTML5 ? item.name : item.value;
+                    var type = item.file.type;
+                    var name = item.file.name;
                     var id = ($routeParams.userResourceId || $routeParams.detailsId);
                     var url = "/api/upload-user-illustration-image-smart/" + id;
                     $http.post(url, {fileName: name, fileType: type}).success(function (response) {
                         credentials = response;
                         var item = uploader.getNotUploadedItems()[0];
-                        item.formData = [
-                            {}
-                        ];
+                        item.formData = [{}];
                         item.formData[0].key = ($routeParams.userResourceId || $routeParams.detailsId);
                         item.formData[0].acl = "public-read";
-//                        item.formData[0].redirect = credentials.s3Redirect;
+                        item.formData[0]["Content-Type"]= credentials.contentType;
                         item.formData[0].AWSAccessKeyId = credentials.s3KeyId;
                         item.formData[0].policy = credentials.s3PolicyBase64;
                         item.formData[0].signature = credentials.s3Signature;

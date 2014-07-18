@@ -58,6 +58,9 @@ module.exports = function (collection, ObjectID) {
     };
 
     route.uploadImageSmart = function (request, response) {
+        if (!request.body.fileType || !request.body.fileName) {
+            return response.send(400);
+        }
         var sessionUserId = request.session.user._id;
         var paramsResourceId = request.params.id;
         var selector = {_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)};
