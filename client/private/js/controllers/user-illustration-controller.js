@@ -1,10 +1,36 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('UploadController',
-    ['$fileUploader', '$scope', '$routeParams', 'locationService', 'userResourceService',
-        function ($fileUploader, $scope, $routeParams, locationService, userResourceService) {
-            var userResource = userResourceService[locationService.getResourceType()].get({id: $routeParams.userResourceId || $routeParams.detailsId});
+DEMONSQUID.encounterBuilderControllers.controller('UserIllustrationController',
+    ['$rootScope', '$scope', '$routeParams', '$fileUploader', 'userResourceService', 'contentTreeService', 'locationService',
+        function ($rootScope, $scope, $routeParams, $fileUploader, userResourceService, contentTreeService, locationService) {
 
+            var resourceType = locationService.getResourceType();
+
+            $scope.delete = function () {
+                if ($scope.userResource) {
+                    $scope.startFade = function () {
+                        contentTreeService.userResourceDeleted($scope.userResource);
+                        if ($routeParams.detailsId) {
+                            locationService.closeDetails();
+                        }
+                        $scope.userResource.$delete();
+                    }
+                }
+            };
+
+            $scope.edit = function () {
+                if ($scope.userResource) {
+                    locationService.go("/edit-" + resourceType + "/" + ($routeParams.userResourceId || $routeParams.detailsId));
+                }
+            };
+
+            $scope.copy = function () {
+                contentTreeService.copyUserResource($scope.userResource._id, resourceType);
+            };
+
+            $scope.userResource = userResourceService[resourceType].get({id: $routeParams.userResourceId || $routeParams.detailsId});
+
+            // FIXME: change title !
 
             // Creates a uploader
             var uploader = $scope.uploader = $fileUploader.create({
@@ -34,7 +60,6 @@ DEMONSQUID.encounterBuilderControllers.controller('UploadController',
                 return filtered;
             });
 
-
             // REGISTER HANDLERS
 
             uploader.bind('afteraddingfile', function (event, item) {
@@ -61,10 +86,8 @@ DEMONSQUID.encounterBuilderControllers.controller('UploadController',
             });
 
             uploader.bind('complete', function (event, xhr, item, response) {
-                locationService.refresh(500); // a delay is needed before refreshing the page because if it reloads while the modal is still displayed bad things happens. (dimmed background stays in place)
-                $('#close-upload-modal').click();
+                // TODO:
             });
-
         }
-    ])
-;
+    ]
+);

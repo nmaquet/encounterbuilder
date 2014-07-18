@@ -3,49 +3,18 @@
         h2.t-title.t-title-result.is-pointer(ng-controller="EditUserResourceController",click-to-edit='userResource.name', on-save="updateUserResource()")
     .col-xxs-4.col-xs-4.col-lg-3.cr-container
         .row.btn-container
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copy()')
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy', ng-click='copy()')
                 i.icon.fa.fa-copy
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Upload',data-target='#image-upload-modal', role='button', data-toggle='modal')
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Upload', onclick='$("#hidden-file-select").click();')
                 i.icon.fa.fa-upload
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete',on-confirm="delete()", confirm-click="Are you sure ?", confirm-title="Delete Illustration")
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete', on-confirm="delete()", confirm-click="Are you sure ?", confirm-title="Delete Illustration")
                 i.icon.fa.fa-trash-o
 .row.l-section.result-content
-    .col-xxs-12.col-xs-12.cat(ng-controller="UploadController")
+    .col-xxs-12.col-xs-12.cat
         #error-alert.alert.alert-danger(ng-show="errorMessage") {{errorMessage}}
+        p(ng-if="uploader.isUploading")
+            | Progress:
+            .progress(ng-if="uploader.isUploading")
+                .progress-bar(role='progressbar', ng-style="{ 'width': uploader.progress + '%' }")
         img(ng-src="{{userResource.url}}")
-        .container-fluid
-            .row
-                .col-md-3
-                    h3 Select files
-                    div(ng-show='uploader.isHTML5')
-                        .well.my-drop-zone(ng-file-drop, ng-file-over='another-file-over-class')
-                            | Drop the image here.
-                    input(ng-file-select='ng-file-select', type='file')
-                .col-md-9
-                    .row
-                        table.table.col-md-12
-                            thead
-                                tr
-                                    th(width='50%') Name
-                                    th(ng-show='uploader.isHTML5') Size
-                            tbody
-                                tr(ng-repeat='item in uploader.queue')
-                                    td
-                                        strong {{ item.file.name }}
-                                        div(ng-show='uploader.isHTML5', thumbnail='{ file: item.file, height: 100 }')
-                                    td(ng-show='uploader.isHTML5', nowrap='nowrap') {{ item.file.size/1024/1024|number:2 }} MB
-                    .row
-                        .col-md-12
-                            p
-                                | Progress:
-                                .progress
-                                    .progress-bar(role='progressbar', ng-style="{ 'width': uploader.progress + '%' }")
-                            button.btn.btn-success.btn-s(type='button', ng-click='uploader.uploadAll()', ng-disabled='!uploader.getNotUploadedItems().length')
-                                span.glyphicon.glyphicon-upload
-                                | Upload
-                            button.btn.btn-warning.btn-s(type='button', ng-click='uploader.cancelAll()', ng-disabled='!uploader.isUploading')
-                                span.glyphicon.glyphicon-ban-circle
-                                | Cancel
-                            button.btn.btn-danger.btn-s(type='button', ng-click='uploader.clearQueue()', ng-disabled='!uploader.queue.length')
-                                span.glyphicon.glyphicon-trash
-                                | Remove
+        input#hidden-file-select.hidden(ng-file-select='ng-file-select', type='file')
