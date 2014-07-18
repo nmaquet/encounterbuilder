@@ -161,7 +161,7 @@ function main(db) {
     app.post("/api/user-illustration", authenticationCheck, userIllustrationRoute.createResource);
     app.post("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.updateResource);
     app.delete("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.deleteResource);
-    app.post("/api/upload-user-illustration-image/:id", authenticationCheck, userIllustrationRoute.uploadImageSmart);
+    app.post("/api/upload-user-illustration-image/:id", authenticationCheck, userIllustrationRoute.uploadImage);
 
     var APP_JADE_FILES = [
         'feedback-popover',

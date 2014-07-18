@@ -68,20 +68,23 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                         item.formData[0].AWSAccessKeyId = credentials.AWSAccessKeyId;
                         item.formData[0].policy = credentials.policy;
                         item.formData[0].signature = credentials.signature;
+                        item.withCredentials = true;
+                        item.url = credentials.url;
+                        credentials = null;
                         uploader.uploadAll();
                     });
                     errorMessage = null;
                 });
             });
-
-            uploader.bind('beforeupload', function (event, item) {
-                if (credentials) {
-                    item.withCredentials = true;
-                    item.url = credentials.url;
-                    credentials = null;
-                    console.log(item.formData);
-                }
-            });
+//
+//            uploader.bind('beforeupload', function (event, item) {
+//                if (credentials) {
+//                    item.withCredentials = true;
+//                    item.url = credentials.url;
+//                    credentials = null;
+//                    console.log(item.formData);
+//                }
+//            });
 
             uploader.bind('whenaddingfilefailed', function (event, item) {
                 $scope.$apply(function () {
