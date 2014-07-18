@@ -51,7 +51,6 @@ DEMONSQUID.encounterBuilderControllers.controller('UserIllustrationController',
                 if (!filtered) {
                     errorMessage = "Invalid file type: " + type + " only 'jpg', 'png', 'jpeg', 'bmp', 'gif' extensions are accepted";
                 }
-                console.log(errorMessage);
                 return filtered;
             });
 
