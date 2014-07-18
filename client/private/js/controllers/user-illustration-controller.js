@@ -6,8 +6,6 @@ DEMONSQUID.encounterBuilderControllers.controller('UserIllustrationController',
 
             var resourceType = locationService.getResourceType();
 
-            $scope.uploadInProgress = false;
-
             $scope.delete = function () {
                 if ($scope.userResource) {
                     $scope.startFade = function () {
@@ -57,35 +55,30 @@ DEMONSQUID.encounterBuilderControllers.controller('UserIllustrationController',
             uploader.bind('afteraddingfile', function (event, item) {
                 $scope.$apply(function () {
                     errorMessage = null;
-                    $scope.uploadInProgress = true;
                 });
             });
 
             uploader.bind('whenaddingfilefailed', function (event, item) {
                 $scope.$apply(function () {
                     $scope.errorMessage = errorMessage || "The file could not be added.";
-                    $scope.uploadInProgress = false;
                 });
             });
 
             uploader.bind('success', function (event, xhr, item, response) {
                 $scope.$apply(function () {
                     errorMessage = null;
-                    $scope.userResource.removeFromCache();
                 });
             });
 
             uploader.bind('error', function (event, xhr, item, response) {
                 $scope.$apply(function () {
                     $scope.errorMessage = errorMessage || "An error occured.";
-                    $scope.uploadInProgress = false;
                 });
             });
 
             uploader.bind('complete', function (event, xhr, item, response) {
                 $scope.$apply(function () {
                     $scope.userResource = userResourceService[resourceType].get({id: $routeParams.userResourceId || $routeParams.detailsId});
-                    $scope.uploadInProgress = false;
                 });
             });
         }
