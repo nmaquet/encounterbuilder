@@ -12,8 +12,15 @@
 .row.l-section.result-content
     .col-xxs-12.col-xs-12.cat
         #error-alert.alert.alert-danger(ng-show="errorMessage") {{errorMessage}}
-        .progress(ng-if="uploader.isUploading")
-            .progress-bar(role='progressbar', ng-style="{ 'width': uploader.progress + '%' }")
+        .upload(ng-if="uploader.isUploading")
+            small {{uploadedFileName}}
+            .row
+                .col-xs-10
+                    .progress
+                        .progress-bar(role='progressbar', ng-style="{ 'width': uploader.progress + '%' }")
+                .col-xs-2
+                    button.btn.btn-s(type="button" ng-click="uploader.cancelAll()")
+                        span.glyphicon.glyphicon-ban-circle Cancel
         div(pending="uploader.isUploading")
             img(ng-src="{{userResource.url}}")
         input#hidden-file-select.hidden(ng-file-select='ng-file-select', type='file')

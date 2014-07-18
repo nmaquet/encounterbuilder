@@ -55,6 +55,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                 $scope.$apply(function () {
                     var type = item.file.type;
                     var name = item.file.name;
+                    $scope.uploadedFileName = name;
                     var id = ($routeParams.userResourceId || $routeParams.detailsId);
                     var url = "/api/upload-user-illustration-image/" + id;
                     $http.post(url, {fileName: name, fileType: type}).success(function (credentials) {
