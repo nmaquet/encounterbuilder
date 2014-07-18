@@ -34,6 +34,10 @@
                 span
                     strong Range&nbsp;
                     | {{userResource.range}}.
+            li(ng-if="userResource.area")
+                span
+                    strong Area&nbsp;
+                    | {{userResource.area}}.
             li(ng-if="userResource.effect")
                 span
                     strong Effect&nbsp;

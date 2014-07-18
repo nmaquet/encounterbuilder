@@ -3,6 +3,11 @@
         h2.t-title.t-title-result {{userResource.Name}}
         small Source: {{userResource.Source}}
     .col-xxs-4.col-xs-4.col-lg-3.cr-container
+        h3.t-title CL
+            | {{userResource.CL || '0'}}
+        strong {{userResource.Price}}&nbsp;{{userResource.PriceUnit}}
+        strong(ng-if="userResource.Group === 'Gem'")
+            em &nbsp;(average)
         .row.btn-container
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copy()')
                 i.icon.fa.fa-copy
