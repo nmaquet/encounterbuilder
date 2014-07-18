@@ -33,9 +33,10 @@ function getResourceURL(id) {
 
 function createS3Credentials(keyPrefix, contentType) {
 
-    var date = new Date();
+    var now = new Date();
+    var expiration = new Date(now.getTime() + 5 * 60000 /* 5 minutes */);
     var s3Policy = {
-        "expiration": "2016-01-01T00:00:00Z",
+        "expiration": expiration.toISOString(),
         "conditions": [
             { "bucket": bucketName },
             ["starts-with", "$key", keyPrefix],
