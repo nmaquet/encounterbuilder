@@ -1,7 +1,8 @@
 "use strict";
-// Load the SDK and UUID
+
 var AWS = require('aws-sdk');
 var fs = require('fs');
+var crypto = require("crypto");
 
 AWS.config.accessKeyId = process.env["AWS_ACCESS_KEY_ID"];
 AWS.config.secretAccessKey = process.env["AWS_SECRET_ACCESS_KEY"];
@@ -18,15 +19,50 @@ function uploadToS3(id, contentType, filePath, callback) {
         callback(error, data, urlPrefix + id);
     });
 }
+
 function removeFromS3(id, callback) {
     var params = {Bucket: bucketName, Key: id};
     s3.deleteObject(params, function (error) {
         callback(error);
     });
 }
+
+function getResourceURL(id) {
+    return urlPrefix + id;
+}
+
+function createS3Credentials(keyPrefix, contentType) {
+
+    var date = new Date();
+    var s3Policy = {
+        "expiration": "" + (date.getFullYear()) + "-" + (date.getMonth() + 1) + "-" + (date.getDate()) + "T" + (date.getHours() + 1) + ":" + (date.getMinutes()) + ":" + (date.getSeconds()) + "Z",
+        "conditions": [
+            { "bucket": bucketName },
+            ["starts-with", "$Content-Disposition", ""],
+            ["starts-with", "$key", keyPrefix],
+            { "acl": "public-read" },
+            { "success_action_redirect": "http://example.com/uploadsuccess" },
+            ["content-length-range", 0, 2147483648],
+            ["eq", "$Content-Type", contentType]
+        ]
+    };
+
+    var s3Credentials = {
+        s3PolicyBase64: new Buffer(JSON.stringify(s3Policy)).toString('base64'),
+        s3Signature: crypto.createHmac("sha1", AWS.config.secretAccessKey).update(s3Policy).digest("base64"),
+        s3KeyId: AWS.config.accessKeyId,
+        s3Redirect: "http://example.com/uploadsuccess",
+        s3Policy: s3Policy
+    };
+
+    return s3Credentials;
+}
+
 module.exports = function () {
     return {
         uploadToS3: uploadToS3,
-        removeFromS3: removeFromS3
+        removeFromS3: removeFromS3,
+        createS3Credentials: createS3Credentials,
+        getResourceURL: getResourceURL
     }
 };

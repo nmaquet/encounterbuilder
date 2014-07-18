@@ -162,6 +162,7 @@ function main(db) {
     app.post("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.updateResource);
     app.delete("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.deleteResource);
     app.post("/api/upload-user-illustration-image/:id", authenticationCheck, express.multipart({limit: '5mb'}), userIllustrationRoute.uploadImage);
+    app.post("/api/upload-user-illustration-image-smart/:id", authenticationCheck, userIllustrationRoute.uploadImageSmart);
 
     var APP_JADE_FILES = [
         'feedback-popover',
