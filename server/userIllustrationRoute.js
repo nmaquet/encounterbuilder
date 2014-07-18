@@ -30,34 +30,6 @@ module.exports = function (collection, ObjectID) {
     };
 
     route.uploadImage = function (request, response) {
-        var sessionUserId = request.session.user._id;
-        var paramsResourceId = request.params.id;
-        var file = request.files.file;
-        var selector = {_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)};
-        s3Service.uploadToS3(paramsResourceId, file.type, file.path, function (error, data, url) {
-            fs.unlink(file.path);
-            if (error) {
-                console.log(error);
-                return response.send(500);
-            }
-            var fields = {
-                imagePath: file.path,
-                fileType: file.type,
-                fileName: file.originalFilename,
-                url: url + "?" + new Date().getTime()
-            };
-            collection.findAndModify(selector, [], {$set: fields}, {new: true}, function (error, modifiedResource) {
-                if (error) {
-                    return  response.send(500);
-                }
-                else {
-                    response.json(modifiedResource);
-                }
-            });
-        });
-    };
-
-    route.uploadImageSmart = function (request, response) {
         if (!request.body.fileType || !request.body.fileName) {
             return response.send(400);
         }
