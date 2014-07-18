@@ -44,7 +44,7 @@ module.exports = function (collection, ObjectID) {
                 imagePath: file.path,
                 fileType: file.type,
                 fileName: file.originalFilename,
-                url: url
+                url: url + "?" + new Date().getTime()
             };
             collection.findAndModify(selector, [], {$set: fields}, {new: true}, function (error, modifiedResource) {
                 if (error) {
