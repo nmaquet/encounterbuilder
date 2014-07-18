@@ -105,6 +105,17 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
             parsedMonster.normalAC += 4;
             parsedMonster.touchAC += 4;
             parsedMonster.flatFootedAC += 4;
+            if (parsedMonster.AC_Mods) {
+                if (!parsedMonster.AC_Mods.Dex) {
+                    parsedMonster.AC_Mods.Dex = 0;
+                }
+                parsedMonster.AC_Mods.Dex += 2;
+                if (!parsedMonster.AC_Mods.natural) {
+                    parsedMonster.AC_Mods.natural = 0;
+                }
+                parsedMonster.AC_Mods.natural += 2;
+            }
+
 
             if (parsedMonster.Melee instanceof Array) {
                 parsedMonster.Melee = advanceMelee(parsedMonster);
