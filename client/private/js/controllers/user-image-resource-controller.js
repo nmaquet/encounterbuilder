@@ -1,6 +1,6 @@
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('UserIllustrationController',
+DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
     ['$rootScope', '$scope', '$routeParams', '$fileUploader', 'userResourceService', 'contentTreeService', 'locationService',
         function ($rootScope, $scope, $routeParams, $fileUploader, userResourceService, contentTreeService, locationService) {
 
