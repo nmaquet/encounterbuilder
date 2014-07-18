@@ -58,12 +58,15 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                     var name = uploader.isHTML5 ? item.name : item.value;
                     var id = ($routeParams.userResourceId || $routeParams.detailsId);
                     var url = "/api/upload-user-illustration-image-smart/" + id;
-                    $http.post(url, {fileName: name, fileType:type}).success(function(response){
+                    $http.post(url, {fileName: name, fileType: type}).success(function (response) {
                         credentials = response;
                         var item = uploader.getNotUploadedItems()[0];
-                        item.formData = [{}];
+                        item.formData = [
+                            {}
+                        ];
                         item.formData[0].key = ($routeParams.userResourceId || $routeParams.detailsId);
-                        item.formData[0].redirect = credentials.s3Redirect;
+                        item.formData[0].acl = "public-read";
+//                        item.formData[0].redirect = credentials.s3Redirect;
                         item.formData[0].AWSAccessKeyId = credentials.s3KeyId;
                         item.formData[0].policy = credentials.s3PolicyBase64;
                         item.formData[0].signature = credentials.s3Signature;
@@ -109,3 +112,49 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
         }
     ]
 );
+
+var x = { "expiration": "2013-08-07T12:00:00.000Z",
+    "conditions": [
+        {"bucket": "examplebucket"},
+        ["starts-with", "$key", "user/user1/"],
+        {"acl": "public-read"},
+        {"success_action_redirect": "http://examplebucket.s3.amazonaws.com/successful_upload.html"},
+        ["starts-with", "$Content-Type", "image/"],
+        {"x-amz-meta-uuid": "14365123651274"},
+        ["starts-with", "$x-amz-meta-tag", ""],
+
+        {"x-amz-credential": "AKIAIOSFODNN7EXAMPLE/20130806/us-east-1/s3/aws4_request"},
+        {"x-amz-algorithm": "AWS4-HMAC-SHA256"},
+        {"x-amz-date": "20130806T000000Z" }
+    ]
+};
+
+var y = {"expiration": "2014-7-18T20:38:40Z", "conditions": [
+    {"bucket": "dscf-test"},
+    ["starts-with", "$Content-Disposition", ""],
+    ["starts-with", "$key", "53c89b0e2a681a006ac10539"],
+    {"acl": "public-read"},
+    {"success_action_redirect": "http://example.com/uploadsuccess"},
+    ["content-length-range", 0, 2147483648],
+    ["eq", "$Content-Type", null]
+]};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

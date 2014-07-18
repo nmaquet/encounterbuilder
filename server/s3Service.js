@@ -35,22 +35,22 @@ function createS3Credentials(keyPrefix, contentType) {
 
     var date = new Date();
     var s3Policy = {
-        "expiration": "" + (date.getFullYear()) + "-" + (date.getMonth() + 1) + "-" + (date.getDate()) + "T" + (date.getHours() + 1) + ":" + (date.getMinutes()) + ":" + (date.getSeconds()) + "Z",
+        "expiration": "2016-01-01T00:00:00Z",
         "conditions": [
             { "bucket": bucketName },
-            ["starts-with", "$Content-Disposition", ""],
+//            ["starts-with", "$Content-Disposition", ""],
             ["starts-with", "$key", keyPrefix],
-            { "acl": "public-read" },
-            { "success_action_redirect": "http://example.com/uploadsuccess" },
-            ["content-length-range", 0, 2147483648],
-            ["eq", "$Content-Type", contentType]
+            { "acl": "public-read" }
+//            { "success_action_redirect": "http://example.com/uploadsuccess" },
+//            ["content-length-range", 0, 2147483648],
+//            ["eq", "$Content-Type", contentType]
         ]
     };
 
     var s3PolicyBase64 = new Buffer(JSON.stringify(s3Policy)).toString('base64');
 
     var s3Credentials = {
-        s3PolicyBase64: new Buffer(JSON.stringify(s3Policy)).toString('base64'),
+        s3PolicyBase64: s3PolicyBase64,
         s3Signature: crypto.createHmac("sha1", AWS.config.secretAccessKey).update(s3PolicyBase64).digest("base64"),
         s3KeyId: AWS.config.accessKeyId,
         s3Redirect: "http://example.com/uploadsuccess",
