@@ -34,66 +34,61 @@ DEMONSQUID.encounterBuilderControllers.controller('UserIllustrationController',
 
             // FIXME: change title !
 
-            function initializeUploader() {
+            var errorMessage = null;
 
-                var errorMessage = null;
+            var uploader = $scope.uploader = $fileUploader.create({
+                scope: $scope,
+                queueLimit: 1,
+                autoUpload: true,
+                removeAfterUpload: true,
+                url: 'api/upload-user-illustration-image/' + $routeParams.userResourceId
+            });
 
-                var uploader = $scope.uploader = $fileUploader.create({
-                    scope: $scope,
-                    queueLimit: 1,
-                    autoUpload: true,
-                    url: 'api/upload-user-illustration-image/' + $routeParams.userResourceId
+            uploader.filters.push(function (fileOrInputElement) {
+                var type = uploader.isHTML5 ? fileOrInputElement.type : '/' + fileOrInputElement.value.slice(fileOrInputElement.value.lastIndexOf('.') + 1);
+                type = '|' + type.toLowerCase().slice(type.lastIndexOf('/') + 1) + '|';
+                var filtered = '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+                if (!filtered) {
+                    errorMessage = "Invalid file type: " + type + " only 'jpg', 'png', 'jpeg', 'bmp', 'gif' extensions are accepted";
+                }
+                console.log(errorMessage);
+                return filtered;
+            });
+
+            uploader.bind('afteraddingfile', function (event, item) {
+                $scope.$apply(function () {
+                    errorMessage = null;
+                    $scope.uploadInProgress = true;
                 });
+            });
 
-                uploader.filters.push(function (fileOrInputElement) {
-                    var type = uploader.isHTML5 ? fileOrInputElement.type : '/' + fileOrInputElement.value.slice(fileOrInputElement.value.lastIndexOf('.') + 1);
-                    type = '|' + type.toLowerCase().slice(type.lastIndexOf('/') + 1) + '|';
-                    var filtered = '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
-                    if (!filtered) {
-                        errorMessage = "Invalid file type: " + type + " only 'jpg', 'png', 'jpeg', 'bmp', 'gif' extensions are accepted";
-                    }
-                    console.log(errorMessage);
-                    return filtered;
+            uploader.bind('whenaddingfilefailed', function (event, item) {
+                $scope.$apply(function () {
+                    $scope.errorMessage = errorMessage || "The file could not be added.";
+                    $scope.uploadInProgress = false;
                 });
+            });
 
-                uploader.bind('afteraddingfile', function (event, item) {
-                    $scope.$apply(function () {
-                        errorMessage = null;
-                        $scope.uploadInProgress = true;
-                    });
+            uploader.bind('success', function (event, xhr, item, response) {
+                $scope.$apply(function () {
+                    errorMessage = null;
+                    $scope.userResource.removeFromCache();
                 });
+            });
 
-                uploader.bind('whenaddingfilefailed', function (event, item) {
-                    $scope.$apply(function () {
-                        $scope.errorMessage = errorMessage || "The file could not be added.";
-                        $scope.uploadInProgress = false;
-                    });
+            uploader.bind('error', function (event, xhr, item, response) {
+                $scope.$apply(function () {
+                    $scope.errorMessage = errorMessage || "An error occured.";
+                    $scope.uploadInProgress = false;
                 });
+            });
 
-                uploader.bind('success', function (event, xhr, item, response) {
-                    $scope.$apply(function () {
-                        errorMessage = null;
-                        $scope.userResource.removeFromCache();
-                    });
+            uploader.bind('complete', function (event, xhr, item, response) {
+                $scope.$apply(function () {
+                    $scope.userResource = userResourceService[resourceType].get({id: $routeParams.userResourceId || $routeParams.detailsId});
+                    $scope.uploadInProgress = false;
                 });
-
-                uploader.bind('error', function (event, xhr, item, response) {
-                    $scope.$apply(function () {
-                        $scope.errorMessage = errorMessage || "An error occured.";
-                        $scope.uploadInProgress = false;
-                    });
-                });
-
-                uploader.bind('complete', function (event, xhr, item, response) {
-                    $scope.$apply(function () {
-                        $scope.userResource = userResourceService[resourceType].get({id: $routeParams.userResourceId || $routeParams.detailsId});
-                        $scope.uploadInProgress = false;
-                        initializeUploader();
-                    });
-                });
-            }
-
-            initializeUploader();
+            });
         }
     ]
 );
