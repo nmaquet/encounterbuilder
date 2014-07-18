@@ -111,38 +111,6 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
     ]
 );
 
-var x = { "expiration": "2013-08-07T12:00:00.000Z",
-    "conditions": [
-        {"bucket": "examplebucket"},
-        ["starts-with", "$key", "user/user1/"],
-        {"acl": "public-read"},
-        {"success_action_redirect": "http://examplebucket.s3.amazonaws.com/successful_upload.html"},
-        ["starts-with", "$Content-Type", "image/"],
-        {"x-amz-meta-uuid": "14365123651274"},
-        ["starts-with", "$x-amz-meta-tag", ""],
-
-        {"x-amz-credential": "AKIAIOSFODNN7EXAMPLE/20130806/us-east-1/s3/aws4_request"},
-        {"x-amz-algorithm": "AWS4-HMAC-SHA256"},
-        {"x-amz-date": "20130806T000000Z" }
-    ]
-};
-
-var y = {"expiration": "2014-7-18T20:38:40Z", "conditions": [
-    {"bucket": "dscf-test"},
-    ["starts-with", "$Content-Disposition", ""],
-    ["starts-with", "$key", "53c89b0e2a681a006ac10539"],
-    {"acl": "public-read"},
-    {"success_action_redirect": "http://example.com/uploadsuccess"},
-    ["content-length-range", 0, 2147483648],
-    ["eq", "$Content-Type", null]
-]};
-
-
-
-
-
-
-
 
 
 
