@@ -54,7 +54,8 @@ function createS3Credentials(keyPrefix, contentType) {
         s3Signature: crypto.createHmac("sha1", AWS.config.secretAccessKey).update(s3PolicyString).digest("base64"),
         s3KeyId: AWS.config.accessKeyId,
         s3Redirect: "http://example.com/uploadsuccess",
-        s3PolicyString: s3PolicyString
+        s3PolicyString: s3PolicyString,
+        url: urlPrefix
     };
 
     return s3Credentials;

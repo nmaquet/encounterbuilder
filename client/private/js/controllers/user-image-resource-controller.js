@@ -33,13 +33,13 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
             // FIXME: change title !
 
             var errorMessage = null;
+            var credentials = null;
 
             var uploader = $scope.uploader = $fileUploader.create({
                 scope: $scope,
                 queueLimit: 1,
                 autoUpload: false,
-                removeAfterUpload: true,
-                url: 'api/upload-user-illustration-image/' + $routeParams.userResourceId
+                removeAfterUpload: true
             });
 
             uploader.filters.push(function (fileOrInputElement) {
@@ -59,10 +59,26 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                     var id = ($routeParams.userResourceId || $routeParams.detailsId);
                     var url = "/api/upload-user-illustration-image-smart/" + id;
                     $http.post(url, {fileName: name, fileType:type}).success(function(response){
-                        console.log(response);
+                        credentials = response;
+                        uploader.uploadAll();
                     });
                     errorMessage = null;
                 });
+            });
+
+            uploader.bind('beforeupload', function (event, item) {
+                if (credentials) {
+                    item.formData.redirect = credentials.s3Redirect;
+                    item.formData.AWSAccessKeyId = credentials.s3KeyId;
+                    item.formData.Policy = credentials.s3PolicyBase64;
+                    item.formData.Signature = credentials.s3Signature;
+//                    item.headers['Access-Control-Request-Method'] = "POST";
+//                    item.headers['Access-Control-Request-Headers'] = "*";
+                    item.withCredentials = true;
+                    item.url = credentials.url;
+                    credentials = null;
+                    console.log(item.formData);
+                }
             });
 
             uploader.bind('whenaddingfilefailed', function (event, item) {
