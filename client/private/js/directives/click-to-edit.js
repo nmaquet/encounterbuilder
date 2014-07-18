@@ -36,13 +36,14 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit',
                 var input = $($element.find("input"));
 
                 input.blur(function () {
-                    $scope.save();
+                    if ($scope.isEditing) {
+                        $scope.save();
+                    }
                 });
 
                 input.keyup(function (e) {
                     if (e.keyCode == 13 /* ENTER */) {
-                        $scope.isEditing = false;
-                        $scope.$apply();
+                        $scope.save();
                     }
                 });
 
@@ -52,15 +53,15 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit',
                     $scope.editedValue = $scope.value;
                     $scope.isEditing = true;
                     setTimeout(function () {
-                        input.select();
+                        input.focus();
                     })
                 };
 
                 $scope.save = function () {
-                    $scope.$apply(function() {
+                    $scope.$apply(function () {
                         if ($scope.numeric && Number($scope.editedValue) >= 0) {
                             $scope.value = Number($scope.editedValue);
-                        } else if (!$scope.numeric && $scope.editedValue.length > 0 ) {
+                        } else if (!$scope.numeric && $scope.editedValue.length > 0) {
                             $scope.value = $scope.editedValue;
                         }
                         $scope.isEditing = false;
