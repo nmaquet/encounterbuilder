@@ -40,8 +40,7 @@ function createS3Credentials(keyPrefix, contentType) {
             { "bucket": bucketName },
             ["starts-with", "$key", keyPrefix],
             { "acl": "public-read" },
-//            { "success_action_redirect": "http://example.com/uploadsuccess" },
-//            ["content-length-range", 0, 2147483648],
+            ["content-length-range", 0, 3*1024*1024],
             ["eq", "$Content-Type", contentType]
         ]
     };
@@ -52,7 +51,6 @@ function createS3Credentials(keyPrefix, contentType) {
         s3PolicyBase64: s3PolicyBase64,
         s3Signature: crypto.createHmac("sha1", AWS.config.secretAccessKey).update(s3PolicyBase64).digest("base64"),
         s3KeyId: AWS.config.accessKeyId,
-        s3Redirect: "http://example.com/uploadsuccess",
         url: urlPrefix,
         contentType: contentType
     };
