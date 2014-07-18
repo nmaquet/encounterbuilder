@@ -72,7 +72,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                         item.url = credentials.url;
                         uploader.uploadAll();
                     });
-                    errorMessage = null;
+                    $scope.errorMessage = errorMessage = null;
                 });
             });
 
