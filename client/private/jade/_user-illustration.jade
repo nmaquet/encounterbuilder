@@ -12,10 +12,8 @@
 .row.l-section.result-content
     .col-xxs-12.col-xs-12.cat
         #error-alert.alert.alert-danger(ng-show="errorMessage") {{errorMessage}}
-        p(ng-if="uploader.isUploading")
-            | Progress:
-            .progress(ng-if="uploader.isUploading")
-                .progress-bar(role='progressbar', ng-style="{ 'width': uploader.progress + '%' }")
-        div(pending="uploadInProgress")
+        .progress(ng-if="uploader.isUploading")
+            .progress-bar(role='progressbar', ng-style="{ 'width': uploader.progress + '%' }")
+        div(pending="uploader.isUploading")
             img(ng-src="{{userResource.url}}")
         input#hidden-file-select.hidden(ng-file-select='ng-file-select', type='file')
