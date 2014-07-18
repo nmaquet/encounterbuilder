@@ -4,10 +4,11 @@ DEMONSQUID.encounterBuilderServices.factory('lootService', [ '$http',
     function ($http) {
 
         var service = {};
-
+        service.encounterId = null;
         service.generatedLoot = null;
 
         service.generateEncounterLoot = function (encounter, speed, options) {
+            service.encounterId = encounter._id;
             $http.post('/api/generate-encounter-loot', { encounter: encounter, options: options })
                 .success(function (response) {
                     if (response.error) {

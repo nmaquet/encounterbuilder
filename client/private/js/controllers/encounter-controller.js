@@ -120,12 +120,16 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             };
 
             $scope.$watch(function () {
-                return lootService.generatedLoot
+                return lootService.generatedLoot;
             }, function () {
-                if ($scope.encounter && lootService.generatedLoot) {
+                if ($scope.encounter && $scope.encounter._id === lootService.encounterId && lootService.generatedLoot) {
                     $scope.encounter.coins = lootService.generatedLoot.coins;
                     $scope.encounter.items = lootService.generatedLoot.items;
                     encounterService.encounterChanged($scope.encounter);
+                }
+                else {
+                    lootService.generatedLoot = null;
+                    lootService.encounterId = null;
                 }
             });
 
