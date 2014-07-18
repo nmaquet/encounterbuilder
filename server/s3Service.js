@@ -47,14 +47,13 @@ function createS3Credentials(keyPrefix, contentType) {
         ]
     };
 
-    var s3PolicyString = JSON.stringify(s3Policy, null, 4);
+    var s3PolicyBase64 = new Buffer(JSON.stringify(s3Policy)).toString('base64');
 
     var s3Credentials = {
         s3PolicyBase64: new Buffer(JSON.stringify(s3Policy)).toString('base64'),
-        s3Signature: crypto.createHmac("sha1", AWS.config.secretAccessKey).update(s3PolicyString).digest("base64"),
+        s3Signature: crypto.createHmac("sha1", AWS.config.secretAccessKey).update(s3PolicyBase64).digest("base64"),
         s3KeyId: AWS.config.accessKeyId,
         s3Redirect: "http://example.com/uploadsuccess",
-        s3PolicyString: s3PolicyString,
         url: urlPrefix
     };
 

@@ -65,8 +65,8 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                         item.formData[0].key = ($routeParams.userResourceId || $routeParams.detailsId);
                         item.formData[0].redirect = credentials.s3Redirect;
                         item.formData[0].AWSAccessKeyId = credentials.s3KeyId;
-                        item.formData[0].Policy = credentials.s3PolicyBase64;
-                        item.formData[0].Signature = credentials.s3Signature;
+                        item.formData[0].policy = credentials.s3PolicyBase64;
+                        item.formData[0].signature = credentials.s3Signature;
                         uploader.uploadAll();
                     });
                     errorMessage = null;
