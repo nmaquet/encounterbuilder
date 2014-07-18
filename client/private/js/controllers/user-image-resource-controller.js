@@ -1,8 +1,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
-    ['$rootScope', '$scope', '$routeParams', '$fileUploader', 'userResourceService', 'contentTreeService', 'locationService',
-        function ($rootScope, $scope, $routeParams, $fileUploader, userResourceService, contentTreeService, locationService) {
+    ['$rootScope', '$scope', '$routeParams', '$fileUploader', 'userResourceService', 'contentTreeService', 'locationService', '$http',
+        function ($rootScope, $scope, $routeParams, $fileUploader, userResourceService, contentTreeService, locationService, $http) {
 
             var resourceType = locationService.getResourceType();
 
@@ -37,7 +37,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
             var uploader = $scope.uploader = $fileUploader.create({
                 scope: $scope,
                 queueLimit: 1,
-                autoUpload: true,
+                autoUpload: false,
                 removeAfterUpload: true,
                 url: 'api/upload-user-illustration-image/' + $routeParams.userResourceId
             });
@@ -54,6 +54,13 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
 
             uploader.bind('afteraddingfile', function (event, item) {
                 $scope.$apply(function () {
+                    var type = uploader.isHTML5 ? item.type : 'image/' + item.value.slice(item.value.lastIndexOf('.') + 1);
+                    var name = uploader.isHTML5 ? item.name : item.value;
+                    var id = ($routeParams.userResourceId || $routeParams.detailsId);
+                    var url = "/api/upload-user-illustration-image-smart/" + id;
+                    $http.post(url, {fileName: name, fileType:type}).success(function(response){
+                        console.log(response);
+                    });
                     errorMessage = null;
                 });
             });
