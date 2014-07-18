@@ -46,11 +46,13 @@ module.exports = function (collection, ObjectID) {
                 fileName: file.originalFilename,
                 url: url + "?" + new Date().getTime()
             };
+            console.log("new URL : " + fields.url);
             collection.findAndModify(selector, [], {$set: fields}, {new: true}, function (error, modifiedResource) {
                 if (error) {
                     return  response.send(500);
                 }
                 else {
+                    console.log("new URL sent : " + modifiedResource.url);
                     response.json(modifiedResource);
                 }
             });
