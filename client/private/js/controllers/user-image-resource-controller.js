@@ -68,6 +68,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
 
             uploader.bind('beforeupload', function (event, item) {
                 if (credentials) {
+                    item.formData.key = ($routeParams.userResourceId || $routeParams.detailsId);
                     item.formData.redirect = credentials.s3Redirect;
                     item.formData.AWSAccessKeyId = credentials.s3KeyId;
                     item.formData.Policy = credentials.s3PolicyBase64;
