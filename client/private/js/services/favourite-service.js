@@ -88,12 +88,17 @@ DEMONSQUID.encounterBuilderServices.factory('favouriteService', ['$http', '$root
         },
         treeChanged: function () {
             favourites = fancyTree.toDict(removeExtraClasses);
-            $http.post('/api/save-favourites', { favourites: favourites })
-                .success(function (data) {
-                })
-                .error(function (error) {
-                    console.log(error);
-                });
+            if (favourites && fancyTree) {
+                if (fancyTree.count() === 0) {
+                    favourites = [];
+                }
+                $http.post('/api/save-favourites', { favourites: favourites })
+                    .success(function (data) {
+                    })
+                    .error(function (error) {
+                        console.log(error);
+                    });
+            }
         },
         onLoadSuccess: function (callback) {
             $rootScope.$on(LOAD_SUCCESS, callback);
