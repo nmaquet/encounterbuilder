@@ -6,6 +6,13 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
 
             var resourceType = locationService.getResourceType();
 
+            function updateUserResource(userResource) {
+                userResource.$save();
+                contentTreeService.userResourceUpdated(userResource);
+            }
+
+            $scope.updateUserResource = updateUserResource;
+
             $scope.delete = function () {
                 if ($scope.userResource) {
                     $scope.startFade = function () {
