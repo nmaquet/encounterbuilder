@@ -49,11 +49,11 @@ function createS3Credentials(keyPrefix, contentType) {
     var s3PolicyBase64 = new Buffer(JSON.stringify(s3Policy)).toString('base64');
 
     var s3Credentials = {
-        s3PolicyBase64: s3PolicyBase64,
-        s3Signature: crypto.createHmac("sha1", AWS.config.secretAccessKey).update(s3PolicyBase64).digest("base64"),
-        s3KeyId: AWS.config.accessKeyId,
+        policy: s3PolicyBase64,
+        signature: crypto.createHmac("sha1", AWS.config.secretAccessKey).update(s3PolicyBase64).digest("base64"),
+        AWSAccessKeyId: AWS.config.accessKeyId,
         url: urlPrefix,
-        contentType: contentType
+        "Content-Type": contentType
     };
 
     return s3Credentials;

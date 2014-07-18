@@ -64,10 +64,10 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                         item.formData = [{}];
                         item.formData[0].key = ($routeParams.userResourceId || $routeParams.detailsId);
                         item.formData[0].acl = "public-read";
-                        item.formData[0]["Content-Type"]= credentials.contentType;
-                        item.formData[0].AWSAccessKeyId = credentials.s3KeyId;
-                        item.formData[0].policy = credentials.s3PolicyBase64;
-                        item.formData[0].signature = credentials.s3Signature;
+                        item.formData[0]["Content-Type"] = credentials["Content-Type"];
+                        item.formData[0].AWSAccessKeyId = credentials.AWSAccessKeyId;
+                        item.formData[0].policy = credentials.policy;
+                        item.formData[0].signature = credentials.signature;
                         uploader.uploadAll();
                     });
                     errorMessage = null;
