@@ -76,15 +76,6 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                     errorMessage = null;
                 });
             });
-//
-//            uploader.bind('beforeupload', function (event, item) {
-//                if (credentials) {
-//                    item.withCredentials = true;
-//                    item.url = credentials.url;
-//                    credentials = null;
-//                    console.log(item.formData);
-//                }
-//            });
 
             uploader.bind('whenaddingfilefailed', function (event, item) {
                 $scope.$apply(function () {
