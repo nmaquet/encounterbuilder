@@ -18,22 +18,23 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
                 locationService.go("/" + resourceType + "/" + $routeParams.userResourceId);
             };
 
-            function updateUserResource() {
-                $scope.userResource.$save();
-                contentTreeService.userResourceUpdated($scope.userResource);
+            function updateUserResource(userResource) {
+                userResourceService[resourceType].save(userResource);
+                contentTreeService.userResourceUpdated(userResource);
             }
 
             $scope.updateUserResource = updateUserResource;
 
-            $scope.userResource = userResourceService[resourceType].get({id: $routeParams.userResourceId}, function() {
-                var throttledSave = throttle(userResourceService[resourceType].save, 1000);
+            $scope.userResource = userResourceService[resourceType].get({id: $routeParams.userResourceId}, function () {
+                var throttledSave = throttle(updateUserResource, 1000);
                 $scope.$watch('userResource', function (userResource) {
                     throttledSave(userResource);
                 }, true /* deep equality */);
             });
 
             $scope.$on('$locationChangeStart', function () {
-                updateUserResource($scope.userResource);
+                contentTreeService.userResourceUpdated($scope.userResource);
+                $scope.userResource.$save();
             });
 
             // FIXME: change title !

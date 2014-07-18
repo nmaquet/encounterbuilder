@@ -121,7 +121,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     locationService.go("/user-text/" + node.data.userTextId);
                 }
                 else if (node.data.userResourceId) {
-                    locationService.go("/" + node.data.resourceType  + "/" + node.data.userResourceId);
+                    locationService.go("/" + node.data.resourceType + "/" + node.data.userResourceId);
                 }
                 else if (node.folder) {
                     locationService.go("/binder/" + node.key);
@@ -220,9 +220,13 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
 
             service.createUserResource = function (resourceType) {
                 var userResource = new userResourceService[resourceType]();
-                userResource.name = "Untitled";
-                userResource.$save(function() {
-                    addNode({title: userResource.name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey()});
+                if (resourceType === "user-item") {
+                    userResource.Name = "Untitled";
+                } else {
+                    userResource.name = "Untitled";
+                }
+                userResource.$save(function () {
+                    addNode({title: userResource.name||userResource.Name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey()});
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 });
             };
