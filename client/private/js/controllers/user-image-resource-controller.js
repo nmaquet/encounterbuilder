@@ -57,7 +57,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                     var type = item.file.type;
                     var name = item.file.name;
                     var id = ($routeParams.userResourceId || $routeParams.detailsId);
-                    var url = "/api/upload-user-illustration-image-smart/" + id;
+                    var url = "/api/upload-user-illustration-image/" + id;
                     $http.post(url, {fileName: name, fileType: type}).success(function (response) {
                         credentials = response;
                         var item = uploader.getNotUploadedItems()[0];
