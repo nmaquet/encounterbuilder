@@ -29,19 +29,27 @@ DEMONSQUID.encounterBuilderDirectives.directive('spellList', [ '$sce',
                 mythic: "@mythic"
             },
             link: function (scope) {
-                scope.$watch("spellString", function () {
-                    var titleAndCLEnd = scope.spellString.indexOf(")") + 1;
-                    var titleAndCL = scope.spellString.slice(0, titleAndCLEnd);
-                    var spellList = processMissingAtWill(processDomainSpells(scope.spellString.slice(titleAndCLEnd)));
+                function cleanString(string) {
+                    return string.replace(/\r?\n|\r/g, ' ').replace(/\s+/g, ' ');
+                }
 
-                    scope.title = /([^\(]*) \(CL ([^\)]+)\)/.exec(titleAndCL)[1].trim();
+                scope.$watch("spellString", function () {
+                    var cleanedString = cleanString(scope.spellString);
+                    var titleAndCLEnd = cleanedString.indexOf(")") + 1;
+                    var titleAndCL = cleanedString.slice(0, titleAndCLEnd);
+                    var spellList = processMissingAtWill(processDomainSpells(cleanedString.slice(titleAndCLEnd)));
+                    scope.title = "Spells";
+                    var titleMatch = /([^\(]*) \(CL ([^\)]+)\)/.exec(titleAndCL);
+                    if (titleMatch && titleMatch.length > 0) {
+                        scope.title = titleMatch[1].trim();
+                    }
                     scope.CL = /\(CL ([^\)]+)\)/.exec(titleAndCL)[1].trim();
                     scope.spellListItems = [];
 
                     var match;
                     var nextMatch;
                     var matches = [];
-                    var spellLevelRegex = /(0 \(at will\)|1st|2nd|3rd|4th|5th|6th|7th|8th|9th)([^-]*)-/g;
+                    var spellLevelRegex = /(0 \(at will\)|1st|2nd|3rd|4th|5th|6th|7th|8th|9th)([^-—]*)-?—?/g;
                     while (null !== (match = spellLevelRegex.exec(spellList))) {
                         matches.push(match);
                     }

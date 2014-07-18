@@ -38,39 +38,7 @@
                     | &nbsp;{{userNpc.Senses}}
     .col-xxs-12.col-xs-12
         .row
-            .col-lg-6.cat.decor
-                legend.t-legend.t-title Offense
-                ul.list-unstyled
-                    li
-                        span
-                            strong SPD
-                            | &nbsp;{{userNpc.Speed}}
-                    li
-                        span
-                            strong Melee
-                            | &nbsp;{{userNpc.Melee}}
-                    li
-                        span
-                            strong Space
-                            | &nbsp;{{userNpc.Space}}
-                            | &nbsp;
-                        span
-                            strong Reach
-                            | &nbsp;{{userNpc.Reach}}
-                    li(ng-if='userNpc.SpecialAttacks')
-                        span
-                            strong Special Attacks
-                            | &nbsp;{{userNpc.SpecialAttacks}};
-                    li(ng-if='userNpc.SpellsKnown')
-                        spell-list(spell-string="{{userNpc.SpellsKnown}}")
-                    li(ng-if='userNpc.Bloodline')
-                        span
-                            strong Bloodline
-                            | &nbsp;{{userNpc.Bloodline}}
-                    li(ng-if='userNpc.SpellsPrepared')
-                        spell-list(spell-string="{{userNpc.SpellsPrepared}}" )
-                    li(ng-bind-html='userNpc.SLASafe' ,linkify='userNpc.SLASafe',linkify-type="spell", mythic="userNpc.Mythic")
-            .col-lg-6.cat.decor
+            .col-xxs-12.col-xs-12.cat.decor
                 legend.t-legend.t-title Defense
                 ul.list-unstyled
                     li
@@ -112,6 +80,38 @@
                         span
                             strong SR
                             | &nbsp;{{userNpc.SR}}
+            .col-xxs-12.col-xs-12.cat.decor
+                legend.t-legend.t-title Offense
+                ul.list-unstyled
+                    li
+                        span
+                            strong SPD
+                            | &nbsp;{{userNpc.Speed}}
+                    li
+                        span
+                            strong Melee
+                            | &nbsp;{{userNpc.Melee}}
+                    li
+                        span
+                            strong Space
+                            | &nbsp;{{userNpc.Space}}
+                            | &nbsp;
+                        span
+                            strong Reach
+                            | &nbsp;{{userNpc.Reach}}
+                    li(ng-if='userNpc.SpecialAttacks')
+                        span
+                            strong Special Attacks
+                            | &nbsp;{{userNpc.SpecialAttacks}};
+                    li(ng-if='userNpc.SpellsKnown')
+                        spell-list(spell-string="{{userNpc.SpellsKnown}}")
+                    li(ng-if='userNpc.Bloodline')
+                        span
+                            strong Bloodline
+                            | &nbsp;{{userNpc.Bloodline}}
+                    li(ng-if='userNpc.SpellsPrepared')
+                        spell-list(spell-string="{{userNpc.SpellsPrepared}}" )
+                    li(ng-bind-html='userNpc.SLASafe' ,linkify='userNpc.SLASafe',linkify-type="spell", mythic="userNpc.Mythic")
             .col-xxs-12.col-xs-12
         .row
             .col-lg-6.cat.decor
