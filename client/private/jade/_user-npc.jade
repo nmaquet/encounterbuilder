@@ -91,6 +91,10 @@
                         span
                             strong Melee
                             | &nbsp;{{userNpc.Melee}}
+                    li(ng-if="userNpc.Ranged")
+                        span
+                            strong Ranged
+                            | &nbsp;{{userNpc.Ranged}}
                     li
                         span
                             strong Space
