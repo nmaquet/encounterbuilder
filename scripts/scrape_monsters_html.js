@@ -119,6 +119,12 @@ var ATTRIBUTE_FILTERS = {
     AC_Mods: function (srdMonster, $) {
         return parseAttributeFromSrdMonster($("h5 b:contains(AC)"), /.*AC\s*[^\(]*(\([^\)]*\))/);
     },
+    SpellsKnown: function (srdMonster, $) {
+        return getSRDMonsterSpellsKnown(srdMonster, $);
+    },
+    SpellsPrepared: function (srdMonster, $) {
+        return getSRDMonsterSpellsPrepared(srdMonster, $);
+    },
     SpecialAbilities: function (srdMonster, $) {
         return getSRDMonsterSpecialAbilities(srdMonster, $);
     },
@@ -277,6 +283,16 @@ function getSRDMonsterVisualDescription(monster, $) {
     return element.text();
 }
 
+function getSRDMonsterSpellsKnown(monster, $) {
+    var element = $("h5:contains(Spells Known)");
+    return element.text();
+}
+
+function getSRDMonsterSpellsPrepared(monster, $) {
+    var element = $("h5:contains(Spells Prepared)");
+    return element.text();
+}
+
 function getSRDMonsterSpecialAbilities(monster, $) {
     var element = $("div:contains(SPECIAL ABILITIES)");
     return element.next().next().html();
@@ -365,7 +381,7 @@ function cleanupSRDMonster(srdMonster, $) {
 
 var monsters = [];
 var monsterNameCount = {};
-var noKyleMonsters =[];
+var noKyleMonsters = [];
 
 for (var i in srd_monsters) {
     console.log(i + " / " + srd_monsters.length);
@@ -381,8 +397,8 @@ for (var i in srd_monsters) {
             continue;
         }
     }
-
-    console.log(cleanedUpMonster.Aura);
+    console.log(cleanedUpMonster.SpellsKnown);
+    console.log(cleanedUpMonster.SpellsPrepared);
     monsters.push(cleanedUpMonster);
     if (monsterNameCount[cleanedUpMonster.Name.toLowerCase()] !== undefined) {
         monsterNameCount[cleanedUpMonster.Name.toLowerCase()]++;

@@ -80,13 +80,15 @@ var MONSTER_MODEL = {
     "Classes": [
         {"Class": String, "Level": Number}
     ],
-    "AC_Mods":String,
-    "Aura": String
+    "AC_Mods": String,
+    "Aura": String,
+    SpellsKnown: String,
+    SpellsPrepared: String
 };
 
 module.exports = function (mongoose) {
     return {
-        MONSTER_ATTRIBUTES : Object.keys(MONSTER_MODEL),
-        Monster :  mongoose.model('Monster', MONSTER_MODEL)
+        MONSTER_ATTRIBUTES: Object.keys(MONSTER_MODEL),
+        Monster: mongoose.model('Monster', MONSTER_MODEL)
     }
 };

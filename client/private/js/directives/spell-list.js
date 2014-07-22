@@ -8,7 +8,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('spellList', [ '$sce',
         }
 
         function processMissingAtWill(spellList) {
-            return spellList.replace(/0-/g, "0 (at will)-")
+            return spellList.replace(/0[-|—]/g, "0 (at will)-")
         }
 
         var templateLines = [
