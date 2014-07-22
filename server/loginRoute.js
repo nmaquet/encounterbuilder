@@ -6,6 +6,11 @@ module.exports = function (userService) {
             if (request.host !== "localhost" && request.protocol !== "https") {
                 return response.send(400, "login must done over a secure connection")
             }
+            if (request.host === "staging.encounterbuilder.com") {
+                allowedOrigin = "encounterbuilder-staging.herokuapp.com";
+            } else {
+                allowedOrigin = "encounterbuilder-live.herokuapp.com";
+            }
             response.header('Access-Control-Allow-Origin', allowedOrigin);
             response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
             response.header('Access-Control-Allow-Headers', 'Content-Type');
