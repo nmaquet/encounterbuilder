@@ -109,6 +109,11 @@ describe("templateService", function () {
         expect(failures.Resist).to.equal("unknown energy: sarcasm");
     });
 
+    it("should work with knowledge skills", function () {
+        baseMonster.Skills = "Knowledge (arcana) +31, Knowledge (history) +32";
+        expect(service.createTemplatedMonster(baseMonster).Skills).to.equal("Knowledge (arcana) +31, Knowledge (history) +32");
+    });
+
     describe("Advanced Template", function () {
 
         it("should  add '(Advanced)' to the Name for advanced template", function () {
