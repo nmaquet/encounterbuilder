@@ -7,7 +7,7 @@ $('.carousel').carousel({
 $("#login-form").submit(function () {
     var url;
     var crossdomain = true;
-    if (window.location.host === "localhost:3000" || window.location.host === "localhost.encounterbuilder.com") {
+    if (window.location.host === "localhost:3000" || window.location.host === "localhost.encounterbuilder.com:3000") {
         url = "http://localhost:3000/login";
         crossdomain = false;
     } else if (window.location.host === "staging.encounterbuilder.com") {

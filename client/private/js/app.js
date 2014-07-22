@@ -61,8 +61,7 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
     }]);
 
 DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$window','spellService','featService',
-    function ($rootScope, $http, $window,spellService,featService) {
-        //FIXME spellService and featService are injected here to fix the initialization problem in linkify. We need to solve the initialization problem more consistently.
+    function ($rootScope, $http, $window) {
         $rootScope.globalTitle = "Encounter Builder - Home";
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
             if ($rootScope.user === undefined) {
