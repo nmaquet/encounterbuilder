@@ -36,6 +36,9 @@
                 span
                     strong Senses
                     | &nbsp;{{userNpc.Senses}}
+        ul.list-inline(ng-if="userNpc.Aura")
+            li
+                span {{userNpc.Aura}}
     .col-xxs-12.col-xs-12
         .row
             .col-xxs-12.col-xs-12.cat.decor

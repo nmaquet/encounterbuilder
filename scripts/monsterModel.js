@@ -80,7 +80,8 @@ var MONSTER_MODEL = {
     "Classes": [
         {"Class": String, "Level": Number}
     ],
-    "AC_Mods":String
+    "AC_Mods":String,
+    "Aura": String
 };
 
 module.exports = function (mongoose) {

@@ -59,6 +59,9 @@ var ATTRIBUTE_FILTERS = {
     DR: function (srdMonster, $) {
         return parseAttributeFromSrdMonster($("b:contains(DR)"), /.*DR\s*([^;]*)/);
     },
+    Aura: function (srdMonster, $) {
+        return parseAttributeFromSrdMonster($("b:contains(Aura)"), /.*Aura\s*([^;]*)/);
+    },
     Immune: function (srdMonster, $) {
         var immune = parseAttributeFromSrdMonster($("b:contains(Immune)"), /.*Immune\s*([^;]*)/);
         var weakness = immune.indexOf("Weaknesses");
@@ -379,7 +382,7 @@ for (var i in srd_monsters) {
         }
     }
 
-    console.log(cleanedUpMonster.AC_Mods);
+    console.log(cleanedUpMonster.Aura);
     monsters.push(cleanedUpMonster);
     if (monsterNameCount[cleanedUpMonster.Name.toLowerCase()] !== undefined) {
         monsterNameCount[cleanedUpMonster.Name.toLowerCase()]++;
