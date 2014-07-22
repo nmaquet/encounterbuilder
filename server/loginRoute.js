@@ -20,9 +20,9 @@ module.exports = function (userService) {
         options: function (request, response) {
             var allowedOrigin;
             if (request.host === "encounterbuilder-staging.herokuapp.com") {
-                allowedOrigin = "staging.encounterbuilder.com";
+                allowedOrigin = "http://staging.encounterbuilder.com";
             } else {
-                allowedOrigin = "encounterbuilder.com";
+                allowedOrigin = "http://www.encounterbuilder.com";
             }
             response.header('Access-Control-Allow-Origin', allowedOrigin);
             response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
