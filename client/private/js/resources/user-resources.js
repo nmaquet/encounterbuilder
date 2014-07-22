@@ -3,13 +3,11 @@
 (function () {
 
     function makeUserResource(resourceSlug, $resource) {
-        var actions = {
+        return $resource("/api/" + resourceSlug + "/:id", {id: '@_id'}, {
             'get': {method: 'GET'},
             'save': {method: 'POST'},
             'delete': {method: 'DELETE'}
-        };
-        var resource = $resource("/api/" + resourceSlug + "/:id", {id: '@_id'}, actions);
-        return resource;
+        });
     }
 
     DEMONSQUID.encounterBuilderServices.factory('UserFeatResource', ['$resource',
