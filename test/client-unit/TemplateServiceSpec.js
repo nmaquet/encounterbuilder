@@ -95,6 +95,12 @@ describe("templateService", function () {
         service.createTemplatedMonster(baseMonster);
     });
 
+    it("shouldn't crash on a monster with a undentified resistance", function () {
+        baseMonster.templates = {};
+        baseMonster.Resist = "Sarcasm 30";
+        service.createTemplatedMonster(baseMonster);
+    });
+
     describe("Advanced Template", function () {
 
         it("should  add '(Advanced)' to the Name for advanced template", function () {
