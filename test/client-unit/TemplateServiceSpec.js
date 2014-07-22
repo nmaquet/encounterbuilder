@@ -89,6 +89,12 @@ describe("templateService", function () {
         expect(templatedMonster).to.deep.equal(baseMonster);
     });
 
+    it("shouldn't crash on a monster with Resist sonic 30", function () {
+        baseMonster.templates = {};
+        baseMonster.Resist = "Sonic 30";
+        service.createTemplatedMonster(baseMonster);
+    });
+
     describe("Advanced Template", function () {
 
         it("should  add '(Advanced)' to the Name for advanced template", function () {

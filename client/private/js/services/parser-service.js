@@ -101,7 +101,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                 parsedMonster.Resist = {};
                 var string = monster.Resist;
                 var resists = string.split(",");
-                var regex = /(acid|cold|fire|electricity)\s(\d+)/i;
+                var regex = /(acid|cold|fire|electricity|sonic)\s(\d+)/i;
                 for (var i in resists) {
                     var matches = regex.exec(resists[i]);
                     parsedMonster.Resist[matches[1]] = Number(matches[2]);
