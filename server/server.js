@@ -65,8 +65,8 @@ function main(db) {
     }
 
     function disableCaching(request, response, next) {
-        response["Cache-control"] = "no-cache, no-store, max-age=0";
-        response["Expires"] = "Sat, 1 Jan 2000 00:00:00 GMT";
+        response.setHeader("Cache-control", "no-cache, no-store, max-age=0");
+        response.setHeader("Expires", "Sat, 1 Jan 2000 00:00:00 GMT");
         next();
     }
 
