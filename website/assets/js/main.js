@@ -6,8 +6,10 @@ $('.carousel').carousel({
 
 $("#login-form").submit(function () {
     var url;
+    var crossdomain = true;
     if (window.location.host === "localhost:3000" || window.location.host === "localhost.encounterbuilder.com") {
         url = "http://localhost:3000/login";
+        crossdomain = false;
     } else if (window.location.host === "staging.encounterbuilder.com") {
         url = "https://encounterbuilder-staging.herokuapp.com/login";
     } else {
@@ -16,6 +18,7 @@ $("#login-form").submit(function () {
     $.ajax({
         type: "POST",
         url: url,
+        crossDomain: crossdomain,
         data: $("#login-form").serialize(),
         success: function (data) {
             window.location.href = "/app";
