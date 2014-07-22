@@ -22,7 +22,7 @@ $("#login-form").submit(function () {
     $.ajax({
         type: "POST",
         url: url,
-        contentType: "json",
+        contentType: "application/json",
         crossDomain: crossdomain,
         xhrFields: {
             withCredentials: true
