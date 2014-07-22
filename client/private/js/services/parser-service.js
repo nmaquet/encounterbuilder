@@ -134,17 +134,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             });
         }
 
-        function parseMeleeAttacks(monster, parsedMonster) {
-            parseAttacks(monster, parsedMonster, "Melee");
-        }
-
-        function parseRangedAttacks(monster, parsedMonster) {
-            parseAttacks(monster, parsedMonster, "Ranged");
-        }
-
-        function parseAttacks(monster, parsedMonster, attribute) {
-
-        }
+/**********************************************************************************************************************/
 
         function parseNumber(monster, parsedMonster, attribute, failures) {
             parsedMonster[attribute] = Number(monster[attribute]);
@@ -185,7 +175,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             }
             parsedMonster.AC_Mods = parsedMods;
         }
-        
+
         function parseAttacks(monster, parsedMonster, attribute, failures) {
             // "+5 dancing greatsword +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)"
             // "+5 dancing greatsword (+9 Str bonus) +35/+30/+25/+20 (3d6+18) or slam +30 (2d8+13)"
