@@ -224,7 +224,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             CMD: parseNumber,
             Init: parseNumber,
             Skill: parseSkills,
-//            HP: formatUnsignedNumber,
+            HP: parseNumber,
 //            HD: formatHitDice,
             Melee: parseAttacks,
             Ranged: parseAttacks,
