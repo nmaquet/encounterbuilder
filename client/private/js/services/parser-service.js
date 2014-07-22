@@ -5,68 +5,14 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
 
         var service = {};
 
-        var validACMods = ["armor", "Dex", "dodge", "deflection", "natural", "shield", "size"];
-
-        function abilityModifier(ability) {
-            return Math.round((ability - 10.5) / 2);
-        }
-
         service.parseMonster = function (monster) {
             var parsedMonster = {};
-            parseAC(monster, parsedMonster);
             parseHD(monster, parsedMonster);
-            parseSkills(monster, parsedMonster);
             parseResit(monster, parsedMonster);
 
-            if (monster.Melee) {
-                parseMeleeAttacks(monster, parsedMonster);
-            }
-
-            if (monster.Ranged) {
-                parseRangedAttacks(monster, parsedMonster);
-            }
-
-            parsedMonster.Str = Number(monster.Str);
-            parsedMonster.Dex = Number(monster.Dex);
-            parsedMonster.Con = Number(monster.Con);
-            parsedMonster.Int = Number(monster.Int);
-            parsedMonster.Wis = Number(monster.Wis);
-            parsedMonster.Cha = Number(monster.Cha);
-
-            parsedMonster.Fort = Number(monster.Fort);
-            parsedMonster.Ref = Number(monster.Ref);
-            parsedMonster.Will = Number(monster.Will);
-
-            parsedMonster.CMB = Number(monster.CMB);
-            parsedMonster.CMD = Number(monster.CMD);
             parsedMonster.SR = Number(monster.SR);
 
-            parsedMonster.HP = Number(monster.HP);
-
-            parsedMonster.Init = Number(monster.Init);
-
-            if (monster.AC_Mods) {
-                var mods = monster.AC_Mods.substring(1, monster.AC_Mods.length - 1);
-                var AC_ModsRegex = /(\+?\-?\d+)\s*([^,\+\-]*)/g;
-                var match = null;
-                var parsedMods = {};
-                while (null !== (match = AC_ModsRegex.exec(mods))) {
-                    if (validACMods.indexOf(match[2].trim()) !== -1) {
-                        parsedMods[match[2].trim()] = Number(match[1]);
-                    }
-                    else {
-                        parsedMods.miscellaneous = (parsedMods.miscellaneous || "") + ( match[1] + " " + match[2]);
-                    }
-                }
-                parsedMonster.AC_Mods = parsedMods;
-            }
-            return parsedMonster;
-
         };
-
-        function parseAC(monster, parsedMonster) {
-
-        }
 
         function parseHD(monster, parsedMonster) {
             var string = monster.HD;
@@ -95,10 +41,6 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                     parsedMonster.Resist[matches[1]] = Number(matches[2]);
                 }
             }
-        }
-
-        function parseSkills(monster, parsedMonster) {
-
         }
 
         function insideParens(position, string) {
@@ -149,6 +91,8 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                 parsedMonster.flatFootedAC = Number(matches[3]);
             }
         }
+
+        var validACMods = ["armor", "Dex", "dodge", "deflection", "natural", "shield", "size"];
 
         function parseArmorClassModifiers(monster, parsedMonster, attribute, failures) {
             var mods = monster.AC_Mods.substring(1, monster.AC_Mods.length - 1);
