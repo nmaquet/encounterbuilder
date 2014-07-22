@@ -70,6 +70,14 @@ function main(db) {
         next();
     }
 
+    function enableCaching(request, response, next) {
+        var minutes = 10;
+        var seconds = minutes * 60;
+        response.setHeader("Cache-Control", "public, max-age=" + seconds);
+        response.setHeader("Expires", new Date(Date.now() + (seconds * 1000)).toUTCString());
+        next();
+    }
+
     var metrics = require('./usageMetrics')(collections.metrics);
     var diceService = require('./diceService')();
     var knapsackService = require('./knapsackService')();
@@ -147,25 +155,25 @@ function main(db) {
     app.post("/api/delete-user-text", authenticationCheck, /* TODO METRICS */ userTextRoute.delete);
 
     /* User Item */
-    app.get("/api/user-feat/:id", authenticationCheck, userFeatRoute.getResource);
+    app.get("/api/user-feat/:id", enableCaching, authenticationCheck, userFeatRoute.getResource);
     app.post("/api/user-feat", authenticationCheck, userFeatRoute.createResource);
     app.post("/api/user-feat/:id", authenticationCheck, userFeatRoute.updateResource);
     app.delete("/api/user-feat/:id", authenticationCheck, userFeatRoute.deleteResource);
 
     /* User Spell */
-    app.get("/api/user-spell/:id", authenticationCheck, userSpellRoute.getResource);
+    app.get("/api/user-spell/:id", enableCaching, authenticationCheck, userSpellRoute.getResource);
     app.post("/api/user-spell", authenticationCheck, userSpellRoute.createResource);
     app.post("/api/user-spell/:id", authenticationCheck, userSpellRoute.updateResource);
     app.delete("/api/user-spell/:id", authenticationCheck, userSpellRoute.deleteResource);
 
     /* User Item */
-    app.get("/api/user-item/:id", authenticationCheck, userItemRoute.getResource);
+    app.get("/api/user-item/:id", enableCaching, authenticationCheck, userItemRoute.getResource);
     app.post("/api/user-item", authenticationCheck, userItemRoute.createResource);
     app.post("/api/user-item/:id", authenticationCheck, userItemRoute.updateResource);
     app.delete("/api/user-item/:id", authenticationCheck, userItemRoute.deleteResource);
 
     /* User illustration */
-    app.get("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.getResource);
+    app.get("/api/user-illustration/:id", enableCaching, authenticationCheck, userIllustrationRoute.getResource);
     app.post("/api/user-illustration", authenticationCheck, userIllustrationRoute.createResource);
     app.post("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.updateResource);
     app.delete("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.deleteResource);

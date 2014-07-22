@@ -92,7 +92,6 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
             uploader.bind('success', function (event, xhr, item, response) {
                 $scope.$apply(function () {
                     errorMessage = null;
-                    $scope.userResource.removeFromCache();
                 });
             });
 
