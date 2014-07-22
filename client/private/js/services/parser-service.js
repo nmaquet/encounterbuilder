@@ -65,19 +65,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
         };
 
         function parseAC(monster, parsedMonster) {
-            var string = monster.AC;
-            var regex = /(\d+)\s*,\s*touch\s*(\d+)\s*,\s*flat-footed\s*(\d+)/;
-            var matches = regex.exec(string);
-            if (!matches) {
-                parsedMonster.normalAC = NaN;
-                parsedMonster.touchAC = NaN;
-                parsedMonster.flatFootedAC = NaN;
-            }
-            else {
-                parsedMonster.normalAC = Number(matches[1]);
-                parsedMonster.touchAC = Number(matches[2]);
-                parsedMonster.flatFootedAC = Number(matches[3]);
-            }
+
         }
 
         function parseHD(monster, parsedMonster) {
@@ -181,6 +169,85 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             }
             parsedMonster[attribute] = parsedAttackGroups;
         }
+
+        function parseNumber(monster, parsedMonster, attribute, failures) {
+            parsedMonster[attribute] = Number(monster[attribute]);
+            if (isNaN(parsedMonster[attribute])) {
+                failures[attribute] = attribute + "must be a number";
+            }
+        }
+
+        function parseArmorClass(monster, parsedMonster, attribute, failures) {
+            var string = monster.AC;
+            var regex = /(\d+)\s*,\s*touch\s*(\d+)\s*,\s*flat-footed\s*(\d+)/;
+            var matches = regex.exec(string);
+            if (!matches) {
+                parsedMonster.normalAC = NaN;
+                parsedMonster.touchAC = NaN;
+                parsedMonster.flatFootedAC = NaN;
+                failures["AC"] = "AC must be of the form 'X, touch Y, flat-footed Z";
+            }
+            else {
+                parsedMonster.normalAC = Number(matches[1]);
+                parsedMonster.touchAC = Number(matches[2]);
+                parsedMonster.flatFootedAC = Number(matches[3]);
+            }
+        }
+        function parseArmorClassModifiers(monster, parsedMonster, attribute, failures) {
+            var mods = monster.AC_Mods.substring(1, monster.AC_Mods.length - 1);
+            var AC_ModsRegex = /(\+?\-?\d+)\s*([^,\+\-]*)/g;
+            var match;
+            var parsedMods = {};
+            while (null !== (match = AC_ModsRegex.exec(mods))) {
+                if (validACMods.indexOf(match[2].trim()) !== -1) {
+                    parsedMods[match[2].trim()] = Number(match[1]);
+                }
+                else {
+                    parsedMods.miscellaneous = (parsedMods.miscellaneous || "") + ( match[1] + " " + match[2]);
+                }
+            }
+            parsedMonster.AC_Mods = parsedMods;
+        }
+
+        var parsers = {
+            Str: parseNumber,
+            Dex: parseNumber,
+            Con: parseNumber,
+            Int: parseNumber,
+            Wis: parseNumber,
+            Cha: parseNumber,
+            Fort: parseNumber,
+            Ref: parseNumber,
+            Will: parseNumber,
+            AC: parseArmorClass,
+            AC_Mods: parseArmorClassModifiers,
+            CMB: parseNumber,
+            CMD: parseNumber,
+            Init: parseNumber,
+//            Skill: formatSkills,
+//            HP: formatUnsignedNumber,
+//            HD: formatHitDice,
+//            Melee: formatAttack,
+//            Ranged: formatAttack,
+//            Resist: formatResist,
+            SR: parseNumber
+        };
+
+        service.parseMonster = function (monster, optionalFailures) {
+            var failures = optionalFailures || {};
+            var parsedMonster = {};
+            for (var attribute in parsers) {
+                if (!parsers.hasOwnProperty(attribute))
+                    continue;
+                try {
+                    parsers[attribute](monster, parsedMonster, attribute, failures);
+                } catch (e) {
+                    failures[attribute] = "parse error on attribute " + attribute + " (" + e + ")";
+                }
+
+            }
+            return parsedMonster;
+        };
 
         return service;
     }
