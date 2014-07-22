@@ -178,6 +178,7 @@ function main(db) {
     app.post("/api/user-illustration", authenticationCheck, userIllustrationRoute.createResource);
     app.post("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.updateResource);
     app.delete("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.deleteResource);
+    /* FIXME: this api call is not REST-ful and will create problems with HTTP caching */
     app.post("/api/upload-user-illustration-image/:id", authenticationCheck, userIllustrationRoute.uploadImage);
 
     var APP_JADE_FILES = [
