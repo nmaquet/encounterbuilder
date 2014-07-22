@@ -98,17 +98,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
         }
 
         function parseSkills(monster, parsedMonster) {
-            var string = monster.Skills;
-            if (!string) {
-                return;
-            }
-            var skills = string.split(",");
-            var regex = /([^\+,\-]*)(\+?\-?\d+)/;
-            parsedMonster.Skills = [];
-            for (var i in skills) {
-                var matches = regex.exec(skills[i]);
-                parsedMonster.Skills.push({name: matches[1].trim(), mod: Number(matches[2])});
-            }
+
         }
 
         function insideParens(position, string) {
@@ -204,6 +194,20 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             parsedMonster[attribute] = parsedAttackGroups;
         }
 
+        function parseSkills(monster, parsedMonster, attribute, failures) {
+            var string = monster.Skills;
+            if (!string) {
+                return;
+            }
+            var skills = string.split(",");
+            var regex = /([^\+,\-]*)(\+?\-?\d+)/;
+            parsedMonster.Skills = [];
+            for (var i in skills) {
+                var matches = regex.exec(skills[i]);
+                parsedMonster.Skills.push({name: matches[1].trim(), mod: Number(matches[2])});
+            }
+        }
+
         var parsers = {
             Str: parseNumber,
             Dex: parseNumber,
@@ -219,7 +223,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             CMB: parseNumber,
             CMD: parseNumber,
             Init: parseNumber,
-//            Skill: formatSkills,
+            Skill: parseSkills,
 //            HP: formatUnsignedNumber,
 //            HD: formatHitDice,
             Melee: parseAttacks,
