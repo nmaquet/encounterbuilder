@@ -42,7 +42,9 @@
                     | &nbsp;{{monster.Senses}}
         ul.list-inline(ng-if="monster.Aura")
             li
-                span {{monster.Aura}}
+                span
+                    strong Aura
+                    | &nbsp;{{monster.Aura}}
     .col-xxs-12.col-xs-12
         .row
             .col-lg-6.cat.decor
