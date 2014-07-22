@@ -53,6 +53,7 @@ function main(db) {
             store: SESSION_STORE,
             secret: process.env['SESSION_SECRET']
         }));
+        app.disable("etag");
     });
 
     function authenticationCheck(request, response, next) {
@@ -61,6 +62,12 @@ function main(db) {
         } else {
             response.send(401, 'access denied');
         }
+    }
+
+    function disableCaching(request, response, next) {
+        response["Cache-control"] = "no-cache, no-store, max-age=0";
+        response["Expires"] = "Sat, 1 Jan 2000 00:00:00 GMT";
+        next();
     }
 
     var metrics = require('./usageMetrics')(collections.metrics);
@@ -106,12 +113,13 @@ function main(db) {
     app.get('/api/spell/:id', authenticationCheck, metrics.logSelectSpell, spellRoute);
     app.get('/api/feat/:id', authenticationCheck, metrics.logSelectFeat, featRoute);
     app.get('/api/encounter/:id', authenticationCheck, metrics.logSelectEncounter, encounterRoute.findOne);
-    app.get('/api/user-monster/:id', authenticationCheck, /* TODO METRICS */ userMonsterRoute.findOne);
-    app.get('/api/user-npc/:id', authenticationCheck, /* TODO METRICS */ userNpcRoute.findOne);
-    app.get('/api/user-text/:id', authenticationCheck, /* TODO METRICS */ userTextRoute.findOne);
-    app.get("/api/favourites", authenticationCheck, favouritesRoute.fetch);
 
-    app.post('/api/user-data', userDataRoute);
+    app.get('/api/user-monster/:id', disableCaching, authenticationCheck, /* TODO METRICS */ userMonsterRoute.findOne);
+    app.get('/api/user-npc/:id', disableCaching, authenticationCheck, /* TODO METRICS */ userNpcRoute.findOne);
+    app.get('/api/user-text/:id', disableCaching, authenticationCheck, /* TODO METRICS */ userTextRoute.findOne);
+    app.get("/api/favourites", disableCaching, authenticationCheck, favouritesRoute.fetch);
+
+    app.post('/api/user-data', userDataRoute); /* FIXME: should be a GET with no caching ! */
     app.post('/logout', metrics.logLogout, logoutRoute);
     app.post("/login", metrics.logLogin, loginRoute);
     app.post("/api/update-encounter", authenticationCheck, metrics.logUpdateEncounter, encounterRoute.update);
