@@ -3,43 +3,10 @@
 DEMONSQUID.encounterBuilderServices.factory('parserService', [
     function () {
 
-        var service = {};
-
-        service.parseMonster = function (monster) {
-            var parsedMonster = {};
-            parseHD(monster, parsedMonster);
-            parseResit(monster, parsedMonster);
-
-            parsedMonster.SR = Number(monster.SR);
-
-        };
-
-        function parseHD(monster, parsedMonster) {
-            var string = monster.HD;
-            var regex = /\(\s*(\d+)\s*[d,D](\d+)\s*(\+?\-?\d*)\)/;
-            var matches = regex.exec(string);
-            if (!matches) {
-                parsedMonster.numberOfHD = NaN;
-                parsedMonster.typeOfHD = NaN;
-                parsedMonster.hitPointBonus = NaN;
-            }
-            else {
-                parsedMonster.numberOfHD = Number(matches[1]);
-                parsedMonster.typeOfHD = Number(matches[2]);
-                parsedMonster.hitPointBonus = Number(matches[3]);
-            }
-        }
-
-        function parseResit(monster, parsedMonster) {
-            if (monster.Resist) {
-                parsedMonster.Resist = {};
-                var string = monster.Resist;
-                var resists = string.split(",");
-                var regex = /(acid|cold|fire|electricity|sonic)\s(\d+)/i;
-                for (var i in resists) {
-                    var matches = regex.exec(resists[i]);
-                    parsedMonster.Resist[matches[1]] = Number(matches[2]);
-                }
+        function parseNumber(monster, parsedMonster, attribute, failures) {
+            parsedMonster[attribute] = Number(monster[attribute]);
+            if (isNaN(parsedMonster[attribute])) {
+                failures[attribute] = attribute + "must be a number";
             }
         }
 
@@ -64,15 +31,6 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                     return "and"
                 }
             });
-        }
-
-/**********************************************************************************************************************/
-
-        function parseNumber(monster, parsedMonster, attribute, failures) {
-            parsedMonster[attribute] = Number(monster[attribute]);
-            if (isNaN(parsedMonster[attribute])) {
-                failures[attribute] = attribute + "must be a number";
-            }
         }
 
         function parseArmorClass(monster, parsedMonster, attribute, failures) {
@@ -152,6 +110,35 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             }
         }
 
+        function parseHitDice(monster, parsedMonster, attribute, failures) {
+            var string = monster.HD;
+            var regex = /\(\s*(\d+)\s*[d,D](\d+)\s*(\+?\-?\d*)\)/;
+            var matches = regex.exec(string);
+            if (!matches) {
+                parsedMonster.numberOfHD = NaN;
+                parsedMonster.typeOfHD = NaN;
+                parsedMonster.hitPointBonus = NaN;
+            }
+            else {
+                parsedMonster.numberOfHD = Number(matches[1]);
+                parsedMonster.typeOfHD = Number(matches[2]);
+                parsedMonster.hitPointBonus = Number(matches[3]);
+            }
+        }
+
+        function parseResist(monster, parsedMonster, attribute, failures) {
+            if (monster.Resist) {
+                parsedMonster.Resist = {};
+                var string = monster.Resist;
+                var resists = string.split(",");
+                var regex = /(acid|cold|fire|electricity|sonic)\s(\d+)/i;
+                for (var i in resists) {
+                    var matches = regex.exec(resists[i]);
+                    parsedMonster.Resist[matches[1]] = Number(matches[2]);
+                }
+            }
+        }
+
         var parsers = {
             Str: parseNumber,
             Dex: parseNumber,
@@ -169,12 +156,14 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             Init: parseNumber,
             Skill: parseSkills,
             HP: parseNumber,
-//            HD: formatHitDice,
+            HD: parseHitDice,
             Melee: parseAttacks,
             Ranged: parseAttacks,
-//            Resist: formatResist,
+            Resist: parseResist,
             SR: parseNumber
         };
+
+        var service = {};
 
         service.parseMonster = function (monster, optionalFailures) {
             var failures = optionalFailures || {};
