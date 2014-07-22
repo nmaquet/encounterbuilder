@@ -131,6 +131,14 @@ describe("parserService", function () {
         ]);
     });
 
+    it("should parse the knowledge skills (continued)", function () {
+        baseMonster.Skills = "Knowledge (arcana, history, local) +31";
+        var parsedMonster = service.parseMonster(baseMonster);
+        expect(parsedMonster.Skills).to.deep.equal([
+            {name: "Knowledge (arcana, history, local)", mod: 31},
+        ]);
+    });
+
     it("should parse Melee", function () {
         baseMonster.Melee = "+5 dancing greatsword +35/+30/+25/+20 (3d6+18)";
         var parsedMonster = service.parseMonster(baseMonster);

@@ -96,17 +96,29 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             parsedMonster[attribute] = parsedAttackGroups;
         }
 
+        function replaceCommaWithSemicolonIfInsideParens(string) {
+            return string.replace(/,/g, function (match, offset) {
+                if (insideParens(offset, string)) {
+                    return ";";
+                } else {
+                    return ","
+                }
+            });
+        }
+
         function parseSkills(monster, parsedMonster, attribute, failures) {
+            // "Knowledge (arcana) +31, Knowledge (history) +32"
+            // "Knowledge (arcana, history) +31"
             var string = monster.Skills;
             if (!string) {
                 return;
             }
-            var skills = string.split(",");
+            var skills = replaceCommaWithSemicolonIfInsideParens(string).split(",");
             var regex = /([^\+,\-]*)(\+?\-?\d+)/;
             parsedMonster.Skills = [];
             for (var i in skills) {
                 var matches = regex.exec(skills[i]);
-                parsedMonster.Skills.push({name: matches[1].trim(), mod: Number(matches[2])});
+                parsedMonster.Skills.push({name: matches[1].replace(/;/g, ",").trim(), mod: Number(matches[2])});
             }
         }
 
