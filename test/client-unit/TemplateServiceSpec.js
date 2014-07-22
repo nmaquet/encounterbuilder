@@ -101,6 +101,14 @@ describe("templateService", function () {
         service.createTemplatedMonster(baseMonster);
     });
 
+    it("should identify a failure on a monster with a undentified resistance", function () {
+        baseMonster.templates = {};
+        baseMonster.Resist = "Sarcasm 30";
+        var failures = {};
+        service.createTemplatedMonster(baseMonster, failures);
+        expect(failures.Resist).to.equal("unknown energy: sarcasm");
+    });
+
     describe("Advanced Template", function () {
 
         it("should  add '(Advanced)' to the Name for advanced template", function () {

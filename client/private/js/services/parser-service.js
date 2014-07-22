@@ -126,15 +126,22 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
             }
         }
 
+        var validEnergies = ["acid", "cold", "fire", "electricity", "sonic"];
+
         function parseResist(monster, parsedMonster, attribute, failures) {
             if (monster.Resist) {
                 parsedMonster.Resist = {};
                 var string = monster.Resist;
                 var resists = string.split(",");
-                var regex = /(acid|cold|fire|electricity|sonic)\s(\d+)/i;
+                var regex = /([a-z]*)\s(\d+)/i;
                 for (var i in resists) {
                     var matches = regex.exec(resists[i]);
-                    parsedMonster.Resist[matches[1]] = Number(matches[2]);
+                    matches[1] = matches[1].toLowerCase().trim();
+                    if (validEnergies.indexOf(matches[1]) !== -1) {
+                        parsedMonster.Resist[matches[1]] = Number(matches[2]);
+                    } else {
+                        failures.Resist = "unknown energy: " + matches[1];
+                    }
                 }
             }
         }
@@ -174,7 +181,7 @@ DEMONSQUID.encounterBuilderServices.factory('parserService', [
                 try {
                     parsers[attribute](monster, parsedMonster, attribute, failures);
                 } catch (e) {
-                    failures[attribute] = "parse error on attribute " + attribute + " (" + e + ")";
+                    failures[attribute] = "parse error on attribute " + attribute;
                 }
 
             }
