@@ -19,6 +19,9 @@ $("#login-form").submit(function () {
         type: "POST",
         url: url,
         crossDomain: crossdomain,
+        xhrFields: {
+            withCredentials: true
+        },
         data: $("#login-form").serialize(),
         success: function (data) {
             window.location.href = "/app";
