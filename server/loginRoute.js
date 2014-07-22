@@ -6,6 +6,7 @@ module.exports = function (userService) {
             if (request.host !== "localhost" && request.protocol !== "https") {
                 return response.send(400, "login must done over a secure connection")
             }
+            var allowedOrigin;
             if (request.host === "staging.encounterbuilder.com") {
                 allowedOrigin = "encounterbuilder-staging.herokuapp.com";
             } else {
