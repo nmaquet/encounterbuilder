@@ -51,7 +51,8 @@ function main(db) {
         app.use(express.cookieParser());
         app.use(express.session({
             store: SESSION_STORE,
-            secret: process.env['SESSION_SECRET']
+            secret: process.env['SESSION_SECRET'],
+            cookie: {domain: process.env["COOKIE_DOMAIN"]}
         }));
         app.disable("etag");
     });
