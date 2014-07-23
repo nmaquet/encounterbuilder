@@ -28,7 +28,7 @@ $("#login-form").submit(function () {
         xhrFields: {
             withCredentials: true
         },
-        data: JSON.stringify(formData),
+        data: formData,
         success: function (data) {
             window.location.href = "/app";
         },
