@@ -12,6 +12,8 @@ module.exports = function (userService) {
             userService.authenticate(request.body.username, request.body.password, function (error, user) {
                 if (user) {
                     request.session.regenerate(function () {
+                        request.session.cookie.domain = process.env["COOKIE_DOMAIN"];
+                        request.session.cookie.path = "";
                         request.session.user = user;
                         response.send(200);
                     });

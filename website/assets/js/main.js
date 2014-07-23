@@ -24,6 +24,9 @@ $("#login-form").submit(function () {
         url: url,
         contentType: "application/json",
         crossDomain: crossdomain,
+        xhrFields: {
+            withCredentials: true
+        },
         data: JSON.stringify(formData),
         success: function (data) {
             window.location.href = "/app";
