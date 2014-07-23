@@ -3,9 +3,9 @@
 module.exports = function (userService) {
     return {
         post: function (request, response) {
-            if (request.host !== "localhost" && request.protocol !== "https") {
-                return response.send(400, "login must done over a secure connection")
-            }
+//            if (request.host !== "localhost" && request.protocol !== "https") {
+//                return response.send(400, "login must done over a secure connection")
+//            }
             response.header('Access-Control-Allow-Origin', '*');
             response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
             response.header('Access-Control-Allow-Headers', 'Content-Type');
