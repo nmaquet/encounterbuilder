@@ -15,14 +15,15 @@ $("#login-form").submit(function () {
     } else {
         url = "https://encounterbuilder-live.herokuapp.com/login";
     }
-    var formData = $("#login-form").serializeArray().reduce(function(obj, item) {
-        obj[item.name] = item.value;
-        return obj;
-    }, {});
+//    var formData = $("#login-form").serializeArray().reduce(function(obj, item) {
+//        obj[item.name] = item.value;
+//        return obj;
+//    }, {});
+    var formData = $("#login-form").serialize();
     $.ajax({
         type: "POST",
         url: url,
-        contentType: "application/json",
+//        contentType: "application/json",
         crossDomain: crossdomain,
         xhrFields: {
             withCredentials: true

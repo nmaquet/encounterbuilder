@@ -22,19 +22,19 @@ module.exports = function (userService) {
                     response.send(401, "login failed");
                 }
             });
-        },
-        options: function (request, response) {
+        }//,
+//        options: function (request, response) {
 //            var allowedOrigin;
 //            if (request.host === "encounterbuilder-staging.herokuapp.com") {
 //                allowedOrigin = "http://staging.encounterbuilder.com";
 //            } else {
 //                allowedOrigin = "http://www.encounterbuilder.com";
 //            }
-            response.header('Access-Control-Allow-Origin', 'http://staging.encounterbuilder.com');
-            response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-            response.header('Access-Control-Allow-Headers', 'Content-Type');
-            response.header('Access-Control-Allow-Credentials', 'true');
-            response.send(200);
-        }
+//            response.header('Access-Control-Allow-Origin', 'http://staging.encounterbuilder.com');
+//            response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//            response.header('Access-Control-Allow-Headers', 'Content-Type');
+//            response.header('Access-Control-Allow-Credentials', 'true');
+//            response.send(200);
+//        }
     };
 };
