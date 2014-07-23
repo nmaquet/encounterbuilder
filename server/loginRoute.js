@@ -9,6 +9,7 @@ module.exports = function (userService) {
             response.header('Access-Control-Allow-Origin', 'http://staging.encounterbuilder.com');
             response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
             response.header('Access-Control-Allow-Headers', 'Content-Type');
+            response.header('Access-Control-Allow-Credentials', 'true');
             userService.authenticate(request.body.username, request.body.password, function (error, user) {
                 if (user) {
                     request.session.regenerate(function () {
@@ -32,6 +33,7 @@ module.exports = function (userService) {
             response.header('Access-Control-Allow-Origin', 'http://staging.encounterbuilder.com');
             response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
             response.header('Access-Control-Allow-Headers', 'Content-Type');
+            response.header('Access-Control-Allow-Credentials', 'true');
             response.send(200);
         }
     };
