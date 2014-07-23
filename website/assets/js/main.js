@@ -21,6 +21,7 @@
             data: $("#login-form").serialize(),
             success: function (data) {
                 // TODO: store the JWT into session storage
+                $("#login-failed-alert").addClass("hidden");
                 window.location.href = "/app";
             },
             error: function (data) {
