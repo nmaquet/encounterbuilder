@@ -32,6 +32,7 @@
     });
 
     $('#login').on('shown.bs.modal', function () {
+        $("#login-failed-alert").addClass("hidden");
         $('#username').focus();
     });
 
