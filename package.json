@@ -21,7 +21,9 @@
         "async"        : "0.2.10",
         "connect-mongo": "~0.3",
         "node-sass" : "0.8.6",
-        "aws-sdk": ">= 1.5.0"
+        "aws-sdk": ">= 1.5.0",
+        "express-jwt": "~0.3",
+        "jsonwebtoken": "~0.4"
     },
     "devDependencies" : {
         "bson"        : "*",
