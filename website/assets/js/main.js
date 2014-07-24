@@ -25,6 +25,7 @@
                 window.location.href = "/app";
             },
             error: function (data) {
+                window.sessionStorage.setItem("token", undefined);
                 $("#login-failed-alert").removeClass("hidden");
             }
         });
