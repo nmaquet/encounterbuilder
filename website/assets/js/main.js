@@ -47,7 +47,7 @@
                     "Authorization": "Bearer " + token
                 },
                 error: function () {
-                    window.sessionStorage.setItem("token", undefined);
+                    window.sessionStorage.removeItem("token");
                 }
             });
             $('#login-link').addClass('hide');
