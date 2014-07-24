@@ -281,11 +281,11 @@ var priceModifiers = {
 var enchantedWeapons = []
 
 function ammunitionName(weapon) {
-    var match = /([^\(]*)\((\d*)\)/.exec(weapon.Name);
+    var match = /([^\(]*)\((.*)\)/.exec(weapon.Name);
     if (match) {
         return match[1].trim();
     } else {
-        throw Error("no ammunition quantity");
+        return weapon.Name
     }
 }
 
@@ -294,7 +294,7 @@ function ammunitionQuantity(weapon) {
     if (match) {
         return Number(match[2].trim());
     } else {
-        throw Error("no ammunition quantity");
+        return 1;
     }
 }
 

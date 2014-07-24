@@ -306,10 +306,12 @@ def weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,sourc
         "DamageType":type,
         "Special":special,
         "Source":source,
-        "Mwk":mwk,
-        "Misfire":misfire,
-        "Capacity":capacity
+        "Mwk":mwk
     }
+    if misfire is not None:
+        result.Mifire = misfire
+    if capacity is not None:
+            result.Capacity = capacity
     return result
 
 def parseTable(text,proficiency,weapontype):
