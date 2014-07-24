@@ -39,7 +39,7 @@ module.exports = function (collection, ObjectID) {
             delete request.body.s3Credentials;
         } else {
             request.body.s3Credentials = s3Service.createS3Credentials(id, fileType);
-            delete request.body.url;
+            request.body.url = "/img/transparent.png";
         }
         return wrappedUpdateResource(request, response);
     };
