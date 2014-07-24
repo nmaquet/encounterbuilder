@@ -32,9 +32,48 @@
         return false; // avoid to execute the actual submit of the form.
     });
 
+    $("#register-form").submit(function () {
+        $.ajax({
+            type: "POST",
+            url: '/register',
+            data: $("#register-form").serialize(),
+            success: function (data) {
+                if (data.error) {
+                    if (data.error === 'USERNAME_ALREADY_EXISTS'){
+                        $("#register-failed-user").removeClass("hidden");
+                    }
+                    else if (data.error === 'EMAIL_ALREADY_EXISTS'){
+                        $("#register-failed-email").removeClass("hidden");
+                    }
+                    else{
+                        $("#register-failed-alert").removeClass("hidden");
+                    }
+
+                }
+                else {
+                    $("#register-failed-alert").addClass("hidden");
+                    $("#register-failed-user").addClass("hidden");
+                    $("#register-failed-email").addClass("hidden");
+                    $('#register').modal('hide');
+                    $('#register-success').modal('show');
+                }
+            },
+            error: function (data) {
+                $("#register-failed-alert").removeClass("hidden");
+            }
+        });
+        return false; // avoid to execute the actual submit of the form.
+    });
+
     $('#login').on('shown.bs.modal', function () {
         $("#login-failed-alert").addClass("hidden");
         $('#username').focus();
+    });
+
+    $('#register').on('shown.bs.modal', function () {
+        $("#register-failed-alert").addClass("hidden");
+        $("#register-failed-user").addClass("hidden");
+        $("#register-failed-email").addClass("hidden");
     });
 
     $(function () {

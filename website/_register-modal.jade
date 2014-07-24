@@ -11,7 +11,14 @@
                         var s="=b!isfg>#nbjmup;cfubAfodpvoufscvjmefs/dpn@tvckfdu>Qmfbtf&31tjho&31nf&31vq&31up&31uif&31qsjwbuf&31Cfub#?cfubAfodpvoufscvjmefs/dpn=0b?";
                         m=""; for (i=0; i<s.length; i++) m+=String.fromCharCode(s.charCodeAt(i)-1); document.write(m);
                     span &nbsp;and we'll be in touch.
-                form
+                #register-failed-user.alert.alert-danger.hidden Username already exists.
+                #register-failed-email.alert.alert-danger.hidden Email already in use.
+                #register-failed-alert.alert.alert-danger.hidden
+                    span Sign up Failed, Sorry. If the problem persists contact us in <a href="http://forums.encounterbuilder.com/">our forums</a> or by email at&nbsp;
+                    script.
+                        var s="=b!isfg>#nbjmup;cfubAfodpvoufscvjmefs/dpn@tvckfdu>Qmfbtf&31tjho&31nf&31vq&31up&31uif&31qsjwbuf&31Cfub#?cfubAfodpvoufscvjmefs/dpn=0b?";
+                        m=""; for (i=0; i<s.length; i++) m+=String.fromCharCode(s.charCodeAt(i)-1); document.write(m);
+                form#register-form
                     .form-group
                         label.control-label(for='fullname') Full Name
                         input.form-control.input-md(type='text', name='fullname')
@@ -23,7 +30,8 @@
                         input.form-control.input-md(type='text', name='username',required='')
                     .form-group
                         label.control-label(for='confirm_password') Choose your password
-                        input.form-control.input-md(type='password', name='password')
-            .modal-footer
-                button.btn.btn-default(type='button', data-dismiss='modal') Cancel
-                button.btn.btn-theme(type="submit") Submit
+                        input.form-control.input-md(type='password', name='password',required='')
+                    .modal-footer
+                        button.btn.btn-default(type='button', data-dismiss='modal') Cancel
+                        //button.btn.btn-default(type='button', data-dismiss='modal') Ok
+                        button.btn.btn-theme(type="submit") Submit

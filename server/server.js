@@ -120,7 +120,7 @@ function main(db) {
 
     app.post('/api/user-data', userDataRoute); /* FIXME: should be a GET with no caching ! */
     app.post("/login", metrics.logLogin, loginRoute.post);
-    app.post("/register", metrics.logLogin, registerRoute.post);
+    app.post("/register", /* TODO METRICS */ registerRoute);
     app.post("/api/update-encounter", metrics.logUpdateEncounter, encounterRoute.update);
     app.post("/api/create-encounter", metrics.logCreateEncounter, encounterRoute.create);
     app.post("/api/remove-encounter", metrics.logRemoveEncounter, encounterRoute.delete);
