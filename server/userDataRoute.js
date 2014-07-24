@@ -4,8 +4,8 @@ var async = require("async");
 
 module.exports = function (contentTreesCollection, userService) {
     return function (request, response) {
-        if (request.session && request.session.user) {
-            var username = request.session.user.username;
+        if (request.session && request.user) {
+            var username = request.user.username;
             async.parallel([
                 function (callback) {
                     userService.get(username, function (error, user) {

@@ -5,7 +5,7 @@ var escapeRegExp = require('./utils')().escapeRegExp;
 
 module.exports = function (userService) {
     return function (request, response) {
-        var username = request.session.user.username;
+        var username = request.user.username;
         var fields = {
             username: request.body.username,
             email: request.body.email,
@@ -19,7 +19,7 @@ module.exports = function (userService) {
                 if (error) {
                     return response.json({error: error.message});
                 }
-                request.session.user = newUser;
+                request.user = newUser;
                 response.send(200);
             });
         });

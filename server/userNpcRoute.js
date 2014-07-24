@@ -13,7 +13,7 @@ module.exports = function (userNpcCollection, npcsCollection, ObjectID) {
 
     return {
         findOne: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             var userNpcId = request.params.id;
             userNpcCollection.findOne({_id: ObjectID(userNpcId), Username: username}, function (error, userNpc) {
                 if (error) {
@@ -25,7 +25,7 @@ module.exports = function (userNpcCollection, npcsCollection, ObjectID) {
             });
         },
         update: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             var userNpc = request.body.userNpc;
             userNpc.Username = username;
             var selector = {_id: ObjectID(userNpc._id), Username: username};
@@ -41,7 +41,7 @@ module.exports = function (userNpcCollection, npcsCollection, ObjectID) {
             });
         },
         create: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             userNpcCollection.insert(newUserNpc(username), function (error, newUserNpc) {
                 if (error) {
                     console.log(error);
@@ -53,7 +53,7 @@ module.exports = function (userNpcCollection, npcsCollection, ObjectID) {
             });
         },
         copy: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
 
             var userCreated = request.body.userCreated;
             var originCollection = (userCreated) ? userNpcCollection : npcsCollection;
@@ -89,7 +89,7 @@ module.exports = function (userNpcCollection, npcsCollection, ObjectID) {
             });
         },
         delete: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             var userNpc = request.body.userNpc;
             if (userNpc._id && username) {
                 userNpcCollection.remove({_id: ObjectID(userNpc._id), Username: username}, function (error) {

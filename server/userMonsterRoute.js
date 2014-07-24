@@ -13,7 +13,7 @@ module.exports = function (userMonsterCollection, monstersCollection, ObjectID) 
 
     return {
         findOne: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             var userMonserId = request.params.id;
             userMonsterCollection.findOne({_id: ObjectID(userMonserId), Username: username}, function (error, userMonster) {
                 if (error) {
@@ -25,7 +25,7 @@ module.exports = function (userMonsterCollection, monstersCollection, ObjectID) 
             });
         },
         update: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             var userMonster = request.body.userMonster;
             userMonster.Username = username;
             var selector = {_id: ObjectID(userMonster._id), Username: username};
@@ -41,7 +41,7 @@ module.exports = function (userMonsterCollection, monstersCollection, ObjectID) 
             });
         },
         create: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             userMonsterCollection.insert(newUserMonster(username), function (error, newUserMonster) {
                 if (error) {
                     console.log(error);
@@ -53,7 +53,7 @@ module.exports = function (userMonsterCollection, monstersCollection, ObjectID) 
             });
         },
         copy: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
 
             var userCreated = request.body.userCreated;
             var originCollection = (userCreated) ? userMonsterCollection : monstersCollection;
@@ -88,7 +88,7 @@ module.exports = function (userMonsterCollection, monstersCollection, ObjectID) 
             });
         },
         delete: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             var userMonster = request.body.userMonster;
             if (userMonster._id && username) {
                 userMonsterCollection.remove({_id: ObjectID(userMonster._id), Username: username}, function (error) {

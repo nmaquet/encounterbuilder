@@ -8,7 +8,7 @@ module.exports = function (collection, ObjectID) {
     var route = require('./userResourceRoute')(collection, null, ObjectID);
 
     route.deleteResource = function (request, response) {
-        var sessionUserId = request.session.user._id;
+        var sessionUserId = request.user._id;
         var paramsResourceId = request.params.id;
         collection.remove({_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)}, function (error, numberOfRemovedDocs) {
             if (error) {
@@ -33,7 +33,7 @@ module.exports = function (collection, ObjectID) {
         if (!request.body.fileType || !request.body.fileName) {
             return response.send(400);
         }
-        var sessionUserId = request.session.user._id;
+        var sessionUserId = request.user._id;
         var paramsResourceId = request.params.id;
         var selector = {_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)};
         var fields = {

@@ -2,7 +2,7 @@
 module.exports = function (favouriteCollection) {
     return {
         fetch: function (request, response) {
-            favouriteCollection.find({username: request.session.user.username}, {fields: {username: 1, favourites: 1, _id: 0}}).toArray(function (error, data) {
+            favouriteCollection.find({username: request.user.username}, {fields: {username: 1, favourites: 1, _id: 0}}).toArray(function (error, data) {
                 if (error) {
                     response.json({error: error});
                 }
@@ -14,7 +14,7 @@ module.exports = function (favouriteCollection) {
             });
         },
         update: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             favouriteCollection.update(
                 {username: username},
                 {$set: {favourites: request.body.favourites}},

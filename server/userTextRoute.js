@@ -11,7 +11,7 @@ module.exports = function (userTextCollection, ObjectID) {
 
     return {
         findOne: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             var userTextId = request.params.id;
             userTextCollection.findOne({_id: ObjectID(userTextId), username: username}, function (error, userText) {
                 if (error) {
@@ -23,7 +23,7 @@ module.exports = function (userTextCollection, ObjectID) {
             });
         },
         update: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             var userText = request.body.userText;
             var selector = {_id: ObjectID(userText._id), username: username};
             delete userText._id;
@@ -38,7 +38,7 @@ module.exports = function (userTextCollection, ObjectID) {
             });
         },
         create: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             userTextCollection.insert(newUserText(username), function (error, newUserText) {
                 if (error) {
                     console.log(error);
@@ -50,7 +50,7 @@ module.exports = function (userTextCollection, ObjectID) {
             });
         },
         copy: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
 
             var userCreated = request.body.userCreated;
 
@@ -81,7 +81,7 @@ module.exports = function (userTextCollection, ObjectID) {
             });
         },
         delete: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             var userText = request.body.userText;
             if (userText._id && username) {
                 userTextCollection.remove({_id: ObjectID(userText._id), username: username}, function (error) {

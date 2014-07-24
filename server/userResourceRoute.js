@@ -3,7 +3,7 @@
 module.exports = function (userCollection, baseCollection, ObjectID) {
 
     function createEmptyResource (request, response) {
-        var sessionUserId = request.session.user._id;
+        var sessionUserId = request.user._id;
         var resource = request.body || {};
         delete resource._id;
         resource.userId = ObjectID(sessionUserId);
@@ -20,7 +20,7 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
     function createCopyResource(request, response) {
         var baseResourceId = request.body.baseResourceId;
         var userResourceId = request.body.userResourceId;
-        var sessionUserId = request.session.user._id;
+        var sessionUserId = request.user._id;
         var sourceCollection, query;
         if (baseResourceId) {
             sourceCollection = baseCollection;
@@ -51,7 +51,7 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
 
     return {
         getResource: function (request, response) {
-            var sessionUserId = request.session.user._id;
+            var sessionUserId = request.user._id;
             var paramsResourceId = request.params.id;
             userCollection.findOne({_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)}, function (error, resource) {
                 if (error) {
@@ -63,7 +63,7 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
             });
         },
         updateResource: function (request, response) {
-            var sessionUserId = request.session.user._id;
+            var sessionUserId = request.user._id;
             var paramsResourceId = request.params.id;
             var resource = request.body;
             delete resource._id;
@@ -92,7 +92,7 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
             }
         },
         deleteResource: function (request, response) {
-            var sessionUserId = request.session.user._id;
+            var sessionUserId = request.user._id;
             var paramsResourceId = request.params.id;
             userCollection.remove({_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)}, function (error) {
                 if (error) {

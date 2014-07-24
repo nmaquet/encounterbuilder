@@ -3,7 +3,7 @@
 module.exports = function (encounterCollection, ObjectID, lootService) {
     return {
         findOne: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             var encounterId = request.params.id;
             encounterCollection.findOne({_id: ObjectID(encounterId), Username: username}, function (error, encounter) {
                 if (error) {
@@ -19,7 +19,7 @@ module.exports = function (encounterCollection, ObjectID, lootService) {
             });
         },
         update: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             var encounter = request.body.encounter;
             encounter.Username = username;
             var selector = {_id: ObjectID(encounter._id), Username: username};
@@ -35,7 +35,7 @@ module.exports = function (encounterCollection, ObjectID, lootService) {
             });
         },
         create: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             var i = 0;
             var encounter = { Name: "Untitled #" + i, CR: "0", Monsters: {}, coins: {pp: 0, gp: 0, sp: 0, cp: 0}};
             encounter.Username = username;
@@ -50,7 +50,7 @@ module.exports = function (encounterCollection, ObjectID, lootService) {
             });
         },
         delete: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             var encounter = request.body.encounter;
             if (encounter._id && username) {
                 encounterCollection.remove({_id: ObjectID(encounter._id), Username: username}, function (error) {
@@ -67,7 +67,7 @@ module.exports = function (encounterCollection, ObjectID, lootService) {
             }
         },
         generateLoot: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             var encounter = request.body.encounter;
             var loot = lootService.generateEncounterLoot(encounter, "medium", request.body.options);
             encounter.coins = loot.coins;
