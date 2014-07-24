@@ -74,6 +74,7 @@ function main(db) {
     var knapsackService = require('./knapsackService')();
     var lootService = require('./loot/lootService')(diceService, knapsackService);
     var userService = require('./userService')(db);
+    var sesService = require('./sesService')();
 
     var searchMonstersRoute = require('./searchMonstersRoute')(collections.monsters, collections.userMonsters, FIND_LIMIT);
     var searchNpcsRoute = require('./searchNpcsRoute')(collections.npcs, collections.userNpcs, FIND_LIMIT);
@@ -91,7 +92,8 @@ function main(db) {
     var loginRoute = require('./loginRoute')(jwt, userService);
     var changePasswordRoute = require('./changePasswordRoute')(userService);
     var changeUserDataRoute = require('./changeUserDataRoute')(userService);
-    var registerRoute = require('./registerRoute')(userService);
+    var registerRoute = require('./registerRoute')(userService, sesService);
+    var validateEmailRoute = require('./validateEmailRoute')(userService);
     var userDataRoute = require('./userDataRoute')(collections.contentTrees, userService);
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
     var contentTreeRoute = require('./contentTreeRoute')(collections.contentTrees);
@@ -118,9 +120,11 @@ function main(db) {
     app.get('/api/user-text/:id', disableCaching, /* TODO METRICS */ userTextRoute.findOne);
     app.get("/api/favourites", disableCaching, favouritesRoute.fetch);
 
-    app.post('/api/user-data', userDataRoute); /* FIXME: should be a GET with no caching ! */
+    app.post('/api/user-data', userDataRoute);
+    /* FIXME: should be a GET with no caching ! */
     app.post("/login", metrics.logLogin, loginRoute.post);
     app.post("/register", /* TODO METRICS */ registerRoute);
+    app.get("/validate-email", disableCaching, /* TODO METRICS */ validateEmailRoute);
     app.post("/api/update-encounter", metrics.logUpdateEncounter, encounterRoute.update);
     app.post("/api/create-encounter", metrics.logCreateEncounter, encounterRoute.create);
     app.post("/api/remove-encounter", metrics.logRemoveEncounter, encounterRoute.delete);

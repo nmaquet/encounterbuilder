@@ -5,6 +5,8 @@ var PBKDF2_ITERATIONS = 12000;
 
 var async = require("async");
 var crypto = require('crypto');
+var uuid = require('node-uuid');
+var ObjectID = require('mongodb').ObjectID;
 
 var userCollection = null;
 var contentTreeCollection = null;
@@ -90,7 +92,9 @@ function register(fields, callback) {
                 username: "" + fields.username,
                 email: "" + fields.email,
                 hash: "" + hash,
-                salt: "" + salt
+                salt: "" + salt,
+                emailValidated: false,
+                validationUuid: uuid.v4()
             };
             delete fields.password;
             for (var property in fields) {
@@ -117,6 +121,11 @@ function register(fields, callback) {
 
 function get(username, callback) {
     userCollection.findOne({username: username}, function (error, result) {
+        callback(error, result);
+    });
+}
+function getById(id, callback) {
+    userCollection.findOne({_id: ObjectID(id)}, function (error, result) {
         callback(error, result);
     });
 }
@@ -219,6 +228,7 @@ function remove(username, callback) {
 }
 
 module.exports = function (database) {
+
     userCollection = database.collection("users");
     contentTreeCollection = database.collection("contenttrees");
     favouritesCollection = database.collection("favourites");
@@ -231,6 +241,7 @@ module.exports = function (database) {
         exists: exists,
         register: register,
         get: get,
+        getById: getById,
         update: update,
         authenticate: authenticate,
         toArray: toArray,

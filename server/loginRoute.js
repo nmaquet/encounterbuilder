@@ -15,10 +15,14 @@ module.exports = function (jwt, userService) {
             response.header('Access-Control-Allow-Methods', 'POST');
             response.header('Access-Control-Allow-Headers', 'Content-Type');
             userService.authenticate(request.body.username, request.body.password, function (error, user) {
-                if (user) {
-                    var token = jwt.sign(user, process.env["SESSION_SECRET"], { expiresInMinutes: 60*5 });
+                if (user && user.emailValidated) {
+                    var token = jwt.sign(user, process.env["SESSION_SECRET"], { expiresInMinutes: 30 * 24 * 60 });
                     response.json({token: token});
-                } else {
+                }
+                else if (user) {
+                    response.send(403, "account email has not been validated");
+                }
+                else {
                     response.send(401, "login failed");
                 }
             });

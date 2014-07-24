@@ -5,7 +5,9 @@
                 button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
                 h4#login.modal-title Login
             .modal-body
+                #login-failed-email-notvalidated.alert.alert-danger.hidden Please validate your email to activate your account.
                 #login-failed-alert.alert.alert-danger.hidden Login Failed
+                #login-email-validated.alert.alert-info.hidden Your email has been successfully validated. You can now login using your username and password.
                 form#login-form.form-horizontal(method='post')
                     .form-group
                         label.col-md-4.control-label(for='username') Username

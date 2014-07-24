@@ -14,7 +14,6 @@
     };
 
 
-
     $("#login-form").submit(function () {
         $.ajax({
             type: "POST",
@@ -26,9 +25,15 @@
                 $("#login-failed-alert").addClass("hidden");
                 window.location.href = "/app";
             },
-            error: function (data) {
-                window.sessionStorage.setItem("token", undefined);
-                $("#login-failed-alert").removeClass("hidden");
+            error: function (error) {
+                if (error.status === 403) {
+                    window.sessionStorage.removeItem("token");
+                    $("#login-failed-email-notvalidated").removeClass("hidden");
+                }
+                else {
+                    window.sessionStorage.removeItem("token");
+                    $("#login-failed-alert").removeClass("hidden");
+                }
             }
         });
         return false; // avoid to execute the actual submit of the form.
@@ -42,13 +47,13 @@
             data: $("#register-form").serialize(),
             success: function (data) {
                 if (data.error) {
-                    if (data.error === 'USERNAME_ALREADY_EXISTS'){
+                    if (data.error === 'USERNAME_ALREADY_EXISTS') {
                         $("#register-failed-user").removeClass("hidden");
                     }
-                    else if (data.error === 'EMAIL_ALREADY_EXISTS'){
+                    else if (data.error === 'EMAIL_ALREADY_EXISTS') {
                         $("#register-failed-email").removeClass("hidden");
                     }
-                    else{
+                    else {
                         $("#register-failed-alert").removeClass("hidden");
                     }
 
@@ -106,6 +111,10 @@
         var queryStrings = getQueryStrings();
         if (queryStrings['promptLogin'] === 'true') {
             $('#login').modal('show');
+        }
+        else if (queryStrings['emailValidated'] === 'true') {
+            $('#login').modal('show');
+            $('#login-email-validated').removeClass('hidden');
         }
         if ($('#monthlyRadio').prop('checked')) {
             monthlyRadioClicked();

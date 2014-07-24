@@ -9,7 +9,7 @@ var HOST_TO_ALLOWED_ORIGIN = {
     "encounterbuilder-live.herokuapp.com": "http://www.encounterbuilder.com"
 };
 
-module.exports = function (userService) {
+module.exports = function (userService, sesService) {
     return function (request, response) {
         response.header('Access-Control-Allow-Origin', HOST_TO_ALLOWED_ORIGIN[request.headers.host]);
         response.header('Access-Control-Allow-Methods', 'POST');
@@ -20,11 +20,17 @@ module.exports = function (userService) {
             fullname: request.body.fullname,
             password: request.body.password
         };
-        userService.register(fields, function (error) {
+        userService.register(fields, function (error, newUser) {
             if (error) {
-                return response.json({error:error.message});
+                return response.json({error: error.message});
             }
-            return response.send(200);
+            sesService.sendConfirmationEmail(newUser, request.headers.host, function (error) {
+                if (error) {
+                    return response.json({error: error.message});
+                }
+                return response.send(200);
+            });
+
         });
     }
 };
