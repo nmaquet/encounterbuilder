@@ -21,7 +21,7 @@
                 .col-xs-2
                     button.btn.btn-s(type="button" ng-click="uploader.cancelAll()")
                         span.glyphicon.glyphicon-ban-circle Cancel
-        div(pending="uploader.isUploading")
+        div(ng-if="userResource.url")
             a.is-pointer(ng-href="{{userResource.url}}")
                 img(ng-src="{{userResource.url}}")
         input#hidden-file-select.hidden(ng-file-select='ng-file-select', type='file')
