@@ -59,51 +59,48 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
             });
 
             uploader.bind('afteraddingfile', function (event, item) {
-                $scope.$apply(function () {
-                    $scope.uploadedFileName = item.file.name;
-                    $scope.userResource.fileType = item.file.type;
-                    $scope.userResource.fileName = item.file.name;
-                    $scope.userResource.$save(function() {
-                        var credentials = $scope.userResource.s3Credentials;
-                        var item = uploader.getNotUploadedItems()[0];
-                        var s3FormData = {};
-                        s3FormData.key = ($routeParams.userResourceId || $routeParams.detailsId);
-                        s3FormData.acl = "public-read";
-                        s3FormData["Content-Type"] = credentials["Content-Type"];
-                        s3FormData.AWSAccessKeyId = credentials.AWSAccessKeyId;
-                        s3FormData.policy = credentials.policy;
-                        s3FormData.signature = credentials.signature;
-                        item.formData.push(s3FormData);
-                        item.withCredentials = true;
-                        item.url = credentials.url;
-                        uploader.uploadAll();
-                    });
-                    $scope.errorMessage = errorMessage = null;
+                $scope.uploadedFileName = item.file.name;
+                $scope.userResource.fileType = item.file.type;
+                $scope.userResource.fileName = item.file.name;
+                delete $scope.userResource.s3Credentials;
+                $scope.userResource.$save(function() {
+                    var credentials = $scope.userResource.s3Credentials;
+                    var item = uploader.getNotUploadedItems()[0];
+                    var s3FormData = {};
+                    s3FormData.key = ($routeParams.userResourceId || $routeParams.detailsId);
+                    s3FormData.acl = "public-read";
+                    s3FormData["Content-Type"] = credentials["Content-Type"];
+                    s3FormData.AWSAccessKeyId = credentials.AWSAccessKeyId;
+                    s3FormData.policy = credentials.policy;
+                    s3FormData.signature = credentials.signature;
+                    item.formData.push(s3FormData);
+                    item.withCredentials = true;
+                    item.url = credentials.url;
+                    uploader.uploadAll();
                 });
+                $scope.errorMessage = errorMessage = null;
             });
 
             uploader.bind('whenaddingfilefailed', function (event, item) {
-                $scope.$apply(function () {
-                    $scope.errorMessage = errorMessage || "The file could not be added.";
-                });
+                $scope.errorMessage = errorMessage || "The file could not be added.";
+                delete $scope.userResource.s3Credentials;
+                $scope.userResource.$save();
+                uploader.clearQueue();
             });
 
             uploader.bind('success', function (event, xhr, item, response) {
-                $scope.$apply(function () {
-                    errorMessage = null;
-                });
+                errorMessage = null;
             });
 
             uploader.bind('error', function (event, xhr, item, response) {
-                $scope.$apply(function () {
-                    $scope.errorMessage = errorMessage || "An error occured.";
-                });
+                $scope.errorMessage = errorMessage || "An error occured.";
+                delete $scope.userResource.s3Credentials;
+                $scope.userResource.$save();
+                uploader.clearQueue();
             });
 
             uploader.bind('complete', function (event, xhr, item, response) {
-                $scope.$apply(function () {
-                    $scope.userResource.$save();
-                });
+                $scope.userResource.$save();
             });
         }
     ]
