@@ -4,7 +4,7 @@ var fs = require('fs');
 
 var weapons = require(__dirname + "/../data/items/weapons.json");
 var clone = require(__dirname + "/../server/clone.js")().clone;
-var idify = require(__dirname + "/../server/idify.js")().idify;
+var idify = require(__dirname + "/../server/utils.js")().idify;
 
 var ONLY_NON_LETHAL = function (weapon) {
     if (weapon.Special.toLowerCase().indexOf("nonlethal") === -1) {
@@ -281,11 +281,11 @@ var priceModifiers = {
 var enchantedWeapons = []
 
 function ammunitionName(weapon) {
-    var match = /([^\(]*)\((\d*)\)/.exec(weapon.Name);
+    var match = /([^\(]*)\((.*)\)/.exec(weapon.Name);
     if (match) {
         return match[1].trim();
     } else {
-        throw Error("no ammunition quantity");
+        return weapon.Name
     }
 }
 
@@ -294,7 +294,7 @@ function ammunitionQuantity(weapon) {
     if (match) {
         return Number(match[2].trim());
     } else {
-        throw Error("no ammunition quantity");
+        return 1;
     }
 }
 
@@ -374,10 +374,10 @@ function main() {
         if (weapon.Name == "Unarmed strike") {
             continue;
         }
-        if (weapon.WeaponType !== 'ranged' && weapon.WeaponType !== 'ammunition') {
+        if (weapon.WeaponType !== 'ranged' && weapon.WeaponType !== 'ammunition' && weapon.WeaponType !== 'firearm') {
             var abilityTable = meleeSpecialAbilities;
         }
-        else if (weapon.WeaponType === 'ranged') {
+        else if (weapon.WeaponType === 'ranged' || weapon.WeaponType === 'firearm') {
             var abilityTable = rangedSpecialAbilities;
         }
         else if (weapon.WeaponType === 'ammunition') {

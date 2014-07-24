@@ -222,12 +222,56 @@ Sling glove ;5 gp  ;  1d3 ;1d4; X2 ; 50 ft.;  2 lbs. ; B ;  - ;  AA
 Halfling sling staff; 20 gp ;  1d6 ;1d8; x3;  80 ft. ; 3 lbs. ; B ;  -;   CRB
 Stitched sling; - ;  1d4 ;1d6 ;X2 ; -  ; 1 lb. ;  B  ; disarm, trip ;   HoG
 """
+
 exotic_ammunition="""Repeating crossbow bolt (5) ;   1 gp  ;  -  ; - ;  -  ; -  ; 1 lb.  ; - ;  - ;  CRB
 Little starstones (10) ;5 cp ;   1 ;  1  ; - ;  -  ; 2 lbs. ; B;   nonlethal;   HoG
 Sharpstones (10)  ; 1 gp  ;  1d3 ;1d4 ;- ;  - ;  5 lbs. ; P or S ; - ;  HoG
 Softstones (10); 1 sp ;   -;   -  ; - ;  - ;  4 lbs.;  B ;  nonlethal ;  HoG
 Spongestones (10) ;  10 gp;   -;   -  ; -  ; -  ; 2 lbs.;  P  ; -;   HoG
 Thorn (20) ;1 gp ;   - ;  - ;  -  ; - ;  1 lb. ;  - ;  - ;  W1"""
+
+early_one_handed_firearms = """Buckler gun ; 750 gp ; 1d4 ; 1d6 ; x4 ; 10 ft. ; 1 (5 ft.) ; 2 ; 6 lbs. ; B and P ; - ; UC
+Pepperbox ; 3000 gp ; 1d6 ; 1d8 ; x4 ; 20 ft. ; 1-2 (5 ft.) ; 6 ; 5 lbs. ; B and P ; - ; UC
+Pistol ; 1000 gp ; 1d6 ; 1d8 ; x4 ; 20 ft. ; 1 (5 ft.) ; 1 ; 4 lbs. ; B and P ; - ; UC
+Pistol, coat ; 750 gp ; 1d3 ; 1d4 ; x3 ; 10 ft. ; 1 (5 ft.) ; 1 ; 1 lb. ; B and P ; - ; UC
+Pistol, dagger ; 740 gp ; 1d3 ; 1d4 ; x3 ; 10 ft. ; 1 (5 ft.) ; 1 ; 1 lb. ; B and P ; - ; UC
+Pistol, double-barreled ; 1750 gp ; 1d6 ; 1d8 ; x4 ; 20 ft. ; 1-2 (5 ft.) ; 2 ; 5 lbs. ; B and P ; - ; UC
+Pistol, dragon ; 1000 gp ; 1d4 ; 1d6 ; x4 ; 20 ft. ; 1-2 (5 ft.) ; 1 ; 3 lbs. ; B and P ; scatter ; UC
+Pistol, sword cane ; 775 gp ; 1d3 ; 1d4 ; x3 ; 10 ft. ; 1 (5 ft.) ; 1 ; 1 lb. ; B and P ; - ; UC"""
+
+early_two_handed_firearms = """Blunderbuss ; 2000 gp ; 1d6 ; 1d8 ; x2 ; special ; 1-2 (10 ft.) ; 1 ; 8 lbs. ; B and P ; scatter ; UC
+Culverin ; 4000 gp ; 2d6 ; 2d8 ; x4 ; 30 ft. ; 1 (10 ft.) ; 1 ; 40 lbs. ; B and P ; scatter ; UC
+Double hackbut ; 4000 gp ; 2d10 ; 2d12 ; x4 ; 50 ft. ; 1-2 (5 ft.) ; 2 ; 18 lbs. ; B and P ; - ; UC
+Fire lance ; 25 gp ; 1d4 ; 1d6 ; x4 ; 10 ft. ; 1-4 (5 ft.) ; 1 ; 4 lbs. ; P ; - ; UC
+Musket ; 1500 gp ; 1d10 ; 1d12 ; x4 ; 40 ft. ; 1-2 (5 ft.) ; 1 ; 9 lbs. ; B and P ; - ; UC
+Musket, axe ; 1600 gp ; 1d6 ; 1d8 ; x4 ; 30 ft. ; 1-2 (5 ft.) ; 1 ; 6 lbs. ; B and P ; - ; UC
+Musket, double-barreled ; 2500 gp ; 1d10 ; 1d12 ; x4 ; 40 ft. ; 1-3 (5 ft.) ; 2 ; 11 lbs. ; B and P ; - ; UC
+Musket, warhammer ; 1600 gp ; 1d6 ; 1d8 ; x4 ; 30 ft. ; 1-2 (5 ft.) ; 1 ; 6 lbs. ; B and P ; - ; UC"""
+
+advanced_one_handed_firearms = """Revolver ; 4000 gp ; 1d6 ; 1d8 ; x4 ; 20 ft. ; 1 ; 6 ; 4 lbs. ; B and P ; - ; UC"""
+
+advanced_two_handed_firearms = """Rifle ; 5000 gp ; 1d8 ; 1d10 ; x4 ; 80 ft. ; 1 ; 1 ; 12 lbs. ; B and P ; - ; UC
+Rifle, pepperbox ; 7000 gp ; 1d8 ; 1d10 ; x4 ; 80 ft. ; 1-2 ; 4 ; 15 lbs. ; B and P ; - ; UC
+Shotgun ; 5000 gp ; 1d6 ; 1d8 ; x2 ; 20 ft. ; 1-2 ; 1 ; 12 lbs. ; B and P ; scatter ; UC
+Shotgun, double-barreled ; 7000 gp ; 1d6 ; 1d8 ; x2 ; 20 ft. ; 1-2 ; 2 ; 15 lbs. ; B and P ; scatter ; UC"""
+
+firearm_gear = """Alchemical cartridge, dragon’s breath ; 40 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
+Alchemical cartridge, entangling shot ; 40 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
+Alchemical cartridge, flare ; 10 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
+Alchemical cartridge, paper (bullet or pellet) ; 12 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
+Alchemical cartridge, salt shot ; 12 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
+Black powder (dose) ; 10 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
+Black powder (keg) ; 1000 gp ; - ; - ; - ; - ; 5 lbs.; - ; - ; - ; - ; UC
+Firearm bullet (1) ; 1 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
+Firearm bullet (30) ; 30 gp ; - ; - ; - ; - ; 1/2 lb. ; - ; - ; - ; - ; UC
+Bullet, adamantine ; 61 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
+Firearm bullet, pitted ; 5 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
+Firearm bullet, silver ; 25 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
+Gunsmith’s kit ; 15 gp ; - ; - ; - ; - ; 2 lb. ; - ; - ; - ; - ; UC
+Metal cartridge ; 15 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
+Pellets (handful) ; 1 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
+Pellets (30 handfuls) ; 30 gp ; - ; - ; - ; - ; 1/2 lb. ; - ; - ; - ; - ; UC
+Powder horn ; 3 gp ; - ; - ; - ; - ; 1 lb. ; - ; - ; - ; - ; UC"""
 
 def slugify(string):
     res = []
@@ -240,7 +284,7 @@ def slugify(string):
         res.pop()
     return "".join(res)
     
-def weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype, mwk):
+def weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype, mwk, misfire, capacity):
     if cost == "-":
         cost = 0
         price_unit = "gp"
@@ -264,13 +308,17 @@ def weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,sourc
         "Source":source,
         "Mwk":mwk
     }
+    if misfire is not None:
+        result["Misfire"] = misfire
+    if capacity is not None:
+            result["Capacity"] = capacity
     return result
 
 def parseTable(text,proficiency,weapontype):
     table = []
     for line in text.splitlines():
         splitted = line.split(";")
-        if len(splitted) != 10:
+        if len(splitted) != 10 and (proficiency == "firearm" and len(splitted) != 12):
             raise ValueError("invalid line : "+ line)
         name = splitted[0].strip()
         price = splitted[1].split()
@@ -283,18 +331,27 @@ def parseTable(text,proficiency,weapontype):
         dmg_m = splitted[3].strip()
         crit = splitted[4].strip()
         range = splitted[5].strip()
-        weight =  splitted[6].strip()
-        type = splitted[7].strip()
-        special = splitted[8].strip()
-        source = splitted[9].strip()
+        if proficiency == "firearm":
+            misfire = splitted[6].strip()
+            capacity = splitted[7].strip()
+            weight =  splitted[8].strip()
+            type = splitted[9].strip()
+            special = splitted[10].strip()
+            source = splitted[11].strip()
+        else:
+            misfire = None;
+            capacity = None;
+            weight =  splitted[6].strip()
+            type = splitted[7].strip()
+            special = splitted[8].strip()
+            source = splitted[9].strip()
         if weapontype != 'ammunition':
-            table.append(weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype, mwk=True))
+            table.append(weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype, True, misfire, capacity))
             print table[-1]["Name"]
-        table.append(weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype, mwk=False))
+        table.append(weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype, False, misfire, capacity))
         print table[-1]["Name"]
     return table
-        
-    
+
 if __name__ == "__main__":
     table=[] 
     table += parseTable(simple_light,"simple","light")
@@ -312,6 +369,11 @@ if __name__ == "__main__":
     table += parseTable(exotic_two_handed,"exotic","two-handed")
     table += parseTable(exotic_ranged,"exotic","ranged")
     table += parseTable(exotic_ammunition,"exotic","ammunition")
+    table += parseTable(early_one_handed_firearms,"firearm","firearm")
+    table += parseTable(early_two_handed_firearms,"firearm","firearm")
+    table += parseTable(advanced_one_handed_firearms,"firearm","firearm")
+    table += parseTable(advanced_two_handed_firearms,"firearm","firearm")
+    table += parseTable(firearm_gear,"firearm","ammunition")
     string = json.dumps(table, indent=4, sort_keys=True)
     with open("../data/items/weapons.json", "w") as f:
         f.write(string)
