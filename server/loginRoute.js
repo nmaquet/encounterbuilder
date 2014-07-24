@@ -12,12 +12,8 @@ module.exports = function (userService) {
             response.header('Access-Control-Allow-Credentials', 'true');
             userService.authenticate(request.body.username, request.body.password, function (error, user) {
                 if (user) {
-                    request.session.regenerate(function () {
-                        request.session.cookie.domain = process.env["COOKIE_DOMAIN"];
-                        request.session.cookie.path = "";
-                        request.session.user = user;
-                        response.send(200);
-                    });
+                    var token = jwt.sign(user, process.env["SESSION_SECRET"], { expiresInMinutes: 60*5 });
+                    response.json(token);
                 } else {
                     response.send(401, "login failed");
                 }
