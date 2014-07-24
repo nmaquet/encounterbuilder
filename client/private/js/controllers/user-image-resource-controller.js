@@ -60,12 +60,11 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
 
             uploader.bind('afteraddingfile', function (event, item) {
                 $scope.$apply(function () {
-                    var type = item.file.type;
-                    var name = item.file.name;
-                    $scope.uploadedFileName = name;
-                    var id = ($routeParams.userResourceId || $routeParams.detailsId);
-                    var url = "/api/upload-user-illustration-image/" + id;
-                    $http.post(url, {fileName: name, fileType: type}).success(function (credentials) {
+                    $scope.uploadedFileName = item.file.name;
+                    $scope.userResource.fileType = item.file.type;
+                    $scope.userResource.fileName = item.file.name;
+                    $scope.userResource.$save(function() {
+                        var credentials = $scope.userResource.s3Credentials;
                         var item = uploader.getNotUploadedItems()[0];
                         var s3FormData = {};
                         s3FormData.key = ($routeParams.userResourceId || $routeParams.detailsId);
