@@ -102,7 +102,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
 
             uploader.bind('complete', function (event, xhr, item, response) {
                 $scope.$apply(function () {
-                    $scope.userResource = userResourceService[resourceType].get({id: $routeParams.userResourceId || $routeParams.detailsId});
+                    $scope.userResource.$save();
                 });
             });
         }

@@ -32,10 +32,14 @@ module.exports = function (collection, ObjectID) {
     var wrappedUpdateResource = route.updateResource;
 
     route.updateResource = function (request, response) {
-        var paramsResourceId = request.params.id;
-        if (paramsResourceId && request.body.fileType) {
-            request.body.s3Credentials = s3Service.createS3Credentials(paramsResourceId, request.body.fileType);
-            request.body.url = s3Service.getResourceURL(paramsResourceId) + "?" + new Date().getTime();
+        var id = request.params.id;
+        var fileType = request.body.fileType;
+        if (request.body.s3Credentials) {
+            request.body.url = s3Service.getResourceURL(id) + "?" + new Date().getTime();
+            delete request.body.s3Credentials;
+        } else {
+            request.body.s3Credentials = s3Service.createS3Credentials(id, fileType);
+            delete request.body.url;
         }
         return wrappedUpdateResource(request, response);
     };
