@@ -4,7 +4,7 @@ var fs = require('fs');
 
 var weapons = require(__dirname + "/../data/items/weapons.json");
 var clone = require(__dirname + "/../server/clone.js")().clone;
-var idify = require(__dirname + "/../server/idify.js")().idify;
+var idify = require(__dirname + "/../server/utils.js")().idify;
 
 var ONLY_NON_LETHAL = function (weapon) {
     if (weapon.Special.toLowerCase().indexOf("nonlethal") === -1) {
