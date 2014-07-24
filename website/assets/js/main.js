@@ -8,7 +8,7 @@
 
     var HOST_TO_LOGIN_URL = {
         "localhost:3000": "http://localhost:3000/login",
-        "localhost.encounterbuilder.com": "http://localhost:3000/login",
+        "localhost.encounterbuilder.com": "http://localhost.encounterbuilder.com/login",
         "staging.encounterbuilder.com": "https://encounterbuilder-staging.herokuapp.com/login",
         "www.encounterbuilder.com": "https://encounterbuilder-live.herokuapp.com/login"
     };

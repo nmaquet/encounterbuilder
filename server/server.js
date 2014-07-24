@@ -88,7 +88,7 @@ function main(db) {
     var npcRoute = require('./npcRoute')(collections.npcs);
     var spellRoute = require('./spellRoute')(collections.spells);
     var featRoute = require('./featRoute')(collections.feats);
-    var loginRoute = require('./loginRoute')(userService);
+    var loginRoute = require('./loginRoute')(jwt, userService);
     var changePasswordRoute = require('./changePasswordRoute')(userService);
     var changeUserDataRoute = require('./changeUserDataRoute')(userService);
     var logoutRoute = require('./logoutRoute')();
