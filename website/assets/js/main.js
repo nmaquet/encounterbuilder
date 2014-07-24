@@ -6,17 +6,19 @@
         interval: 6000
     });
 
-    var HOST_TO_LOGIN_URL = {
-        "localhost:3000": "http://localhost:3000/login",
-        "localhost.encounterbuilder.com": "http://localhost.encounterbuilder.com/login",
-        "staging.encounterbuilder.com": "https://encounterbuilder-staging.herokuapp.com/login",
-        "www.encounterbuilder.com": "https://encounterbuilder-live.herokuapp.com/login"
+    var HOST_URL = {
+        "localhost:3000": "http://localhost:3000/",
+        "localhost.encounterbuilder.com": "http://localhost.encounterbuilder.com/",
+        "staging.encounterbuilder.com": "https://encounterbuilder-staging.herokuapp.com/",
+        "www.encounterbuilder.com": "https://encounterbuilder-live.herokuapp.com/"
     };
+
+
 
     $("#login-form").submit(function () {
         $.ajax({
             type: "POST",
-            url: HOST_TO_LOGIN_URL[window.location.host],
+            url: HOST_URL[window.location.host] + "login",
             crossDomain: true,
             data: $("#login-form").serialize(),
             success: function (data) {
@@ -35,7 +37,8 @@
     $("#register-form").submit(function () {
         $.ajax({
             type: "POST",
-            url: '/register',
+            url: HOST_URL[window.location.host] + "register",
+            crossDomain: true,
             data: $("#register-form").serialize(),
             success: function (data) {
                 if (data.error) {
