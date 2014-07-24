@@ -3,7 +3,7 @@
         .modal-content
             .modal-header
                 button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-                h4#register.modal-title Sign up
+                h4#register.modal-title Create an Account
             .modal-body
                 //p
                     span We are  currently in private Beta. If you would like to participate send us an email at&nbsp;
@@ -20,9 +20,6 @@
                         m=""; for (i=0; i<s.length; i++) m+=String.fromCharCode(s.charCodeAt(i)-1); document.write(m);
                 form#register-form
                     .form-group
-                        label.control-label(for='fullname') Full Name
-                        input.form-control.input-md(type='text', name='fullname')
-                    .form-group
                         label.control-label(for='email') Email
                         input#email.form-control.input-md(type='email', name='email',required='')
                     .form-group
@@ -34,4 +31,4 @@
                     .modal-footer
                         button.btn.btn-default(type='button', data-dismiss='modal') Cancel
                         //button.btn.btn-default(type='button', data-dismiss='modal') Ok
-                        button.btn.btn-theme(type="submit") Submit
+                        button.btn.btn-theme(type="submit") Create an account
