@@ -47,11 +47,11 @@ function main(db) {
         app.use("/skins/lightgray/fonts", express.static(__dirname + '/../client/public/skins/lightgray/fonts'));
         app.use("/", express.static(__dirname + '/../website/'));
         app.use(express.logger('dev'));
+        app.use('/api', expressJwt({secret: process.env['SESSION_SECRET']}));
         app.use(express.json());
         app.use(express.urlencoded());
         app.use(express.methodOverride());
         app.use(express.cookieParser());
-        app.use('/api', expressJwt({secret: process.env['SESSION_SECRET']}));
         app.disable("etag");
     });
 
