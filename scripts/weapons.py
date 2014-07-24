@@ -309,9 +309,9 @@ def weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,sourc
         "Mwk":mwk
     }
     if misfire is not None:
-        result.Mifire = misfire
+        result["Misfire"] = misfire
     if capacity is not None:
-            result.Capacity = capacity
+            result["Capacity"] = capacity
     return result
 
 def parseTable(text,proficiency,weapontype):
