@@ -37,6 +37,13 @@ $('#login').on('shown.bs.modal', function () {
     $('#username').focus();
 });
 
+$(function () {
+    $('a.register-btn').click(function () {
+        $('#login .close').click();
+        $('#register').modal('show');
+    });
+});
+
 $(window).load(function () {
     $.ajax({
         type: "post",
