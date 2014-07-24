@@ -17,6 +17,10 @@
                         label.col-md-4.control-label(for='passwordinput') Password
                         .col-md-5
                             input#password.form-control.input-md(name='password', type='password', placeholder='Password', required='')
+                    .form-group
+                        label.pointer.col-md-5.col-md-offset-4
+                            input#rememberme(type="checkbox", checked='checked')
+                            | &nbsp;Remember Me
                     .modal-footer
                         a.register-btn.pull-left.pointer Create an Account
                         button.btn.btn-default(type='button', data-dismiss='modal') Cancel

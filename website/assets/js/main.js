@@ -15,23 +15,31 @@
 
 
     $("#login-form").submit(function () {
+        var rememberme = $('#rememberme').is(':checked');
         $.ajax({
             type: "POST",
             url: HOST_URL[window.location.host] + "login",
             crossDomain: true,
             data: $("#login-form").serialize(),
             success: function (data) {
-                window.sessionStorage.setItem("token", data.token);
+                if (rememberme){
+                    window.localStorage.setItem("token", data.token);
+                }
+                else {
+                    window.sessionStorage.setItem("token", data.token);
+                }
                 $("#login-failed-alert").addClass("hidden");
                 window.location.href = "/app";
             },
             error: function (error) {
                 if (error.status === 403) {
                     window.sessionStorage.removeItem("token");
+                    window.localStorage.removeItem("token");
                     $("#login-failed-email-notvalidated").removeClass("hidden");
                 }
                 else {
                     window.sessionStorage.removeItem("token");
+                    window.localStorage.removeItem("token");
                     $("#login-failed-alert").removeClass("hidden");
                 }
             }
@@ -94,7 +102,7 @@
     });
 
     $(window).load(function () {
-        var token = window.sessionStorage.getItem("token");
+        var token = window.sessionStorage.getItem("token")||window.localStorage.getItem("token");
         if (token) {
             $.ajax({
                 type: "post",

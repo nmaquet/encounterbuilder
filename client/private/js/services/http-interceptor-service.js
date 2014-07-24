@@ -5,8 +5,9 @@ DEMONSQUID.encounterBuilderServices.factory('httpInterceptorService', ['$q', '$w
         return {
             request: function (config) {
                 config.headers = config.headers || {};
-                if ($window.sessionStorage.token) {
-                    config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+                var token = $window.sessionStorage.token || $window.localStorage.token;
+                if (token) {
+                    config.headers.Authorization = 'Bearer ' + token;
                 }
                 return config;
             },
