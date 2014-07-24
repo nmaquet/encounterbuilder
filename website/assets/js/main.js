@@ -38,17 +38,22 @@
     });
 
     $(window).load(function () {
-        $.ajax({
-            type: "post",
-            url: '/api/user-data',
-            success: function (userData) {
-                if (userData.user !== undefined) {
-                    $('#login-link').addClass('hide');
-                    $('#register-link').addClass('hide');
-                    $('#logged-in').removeClass('hide');
+        var token = window.sessionStorage.getItem("token");
+        if (token) {
+            $.ajax({
+                type: "post",
+                url: '/api/user-data',
+                headers: {
+                    "Authorization": "Bearer " + token
+                },
+                error: function () {
+                    window.sessionStorage.setItem("token", undefined);
                 }
-            }
-        });
+            });
+            $('#login-link').addClass('hide');
+            $('#register-link').addClass('hide');
+            $('#logged-in').removeClass('hide');
+        }
         var queryStrings = getQueryStrings();
         if (queryStrings['promptLogin'] === 'true') {
             $('#login').modal('show');
