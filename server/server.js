@@ -91,7 +91,6 @@ function main(db) {
     var loginRoute = require('./loginRoute')(jwt, userService);
     var changePasswordRoute = require('./changePasswordRoute')(userService);
     var changeUserDataRoute = require('./changeUserDataRoute')(userService);
-    var logoutRoute = require('./logoutRoute')();
     var userDataRoute = require('./userDataRoute')(collections.contentTrees, userService);
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
     var contentTreeRoute = require('./contentTreeRoute')(collections.contentTrees);
@@ -119,7 +118,6 @@ function main(db) {
     app.get("/api/favourites", disableCaching, favouritesRoute.fetch);
 
     app.post('/api/user-data', userDataRoute); /* FIXME: should be a GET with no caching ! */
-    app.post('/logout', metrics.logLogout, logoutRoute);
     app.post("/login", metrics.logLogin, loginRoute.post);
     app.post("/api/update-encounter", metrics.logUpdateEncounter, encounterRoute.update);
     app.post("/api/create-encounter", metrics.logCreateEncounter, encounterRoute.create);
