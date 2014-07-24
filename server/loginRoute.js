@@ -11,9 +11,6 @@ module.exports = function (jwt, userService) {
 
     return {
         post: function (request, response) {
-            if (!/^localhost/.test(request.headers.host) && request.protocol !== "https") {
-                return response.send(403, "login must done over a secure connection")
-            }
             response.header('Access-Control-Allow-Origin', HOST_TO_ALLOWED_ORIGIN[request.headers.host]);
             response.header('Access-Control-Allow-Methods', 'POST');
             response.header('Access-Control-Allow-Headers', 'Content-Type');
