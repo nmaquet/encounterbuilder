@@ -20,7 +20,7 @@ module.exports = function (jwt, userService) {
             userService.authenticate(request.body.username, request.body.password, function (error, user) {
                 if (user) {
                     var token = jwt.sign(user, process.env["SESSION_SECRET"], { expiresInMinutes: 60*5 });
-                    response.json(token);
+                    response.json({token: token});
                 } else {
                     response.send(401, "login failed");
                 }
