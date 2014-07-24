@@ -2,7 +2,7 @@
 
 module.exports = function (userService) {
     return function (request, response) {
-        var username = request.session.user.username;
+        var username = request.user.username;
         userService.authenticate(username, request.body.oldPassword, function (error) {
             if (error) {
                 return response.json({error: "wrong password"});

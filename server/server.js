@@ -10,6 +10,8 @@ var app = express();
 var MongoClient = require('mongodb').MongoClient;
 var MongoStore = require('connect-mongo')(express);
 var ObjectID = require('mongodb').ObjectID;
+var expressJwt = require('express-jwt');
+var jwt = require('jsonwebtoken');
 
 if (process.env['USE_TEST_DB']) {
     var MONGODB_URL = process.env['MONGODB_TEST_URL'];
@@ -45,24 +47,13 @@ function main(db) {
         app.use("/skins/lightgray/fonts", express.static(__dirname + '/../client/public/skins/lightgray/fonts'));
         app.use("/", express.static(__dirname + '/../website/'));
         app.use(express.logger('dev'));
+        app.use('/api', expressJwt({secret: process.env['SESSION_SECRET']}));
         app.use(express.json());
         app.use(express.urlencoded());
         app.use(express.methodOverride());
         app.use(express.cookieParser());
-        app.use(express.session({
-            store: SESSION_STORE,
-            secret: process.env['SESSION_SECRET']
-        }));
         app.disable("etag");
     });
-
-    function authenticationCheck(request, response, next) {
-        if (request.session && request.session.user) {
-            next();
-        } else {
-            response.send(401, 'access denied');
-        }
-    }
 
     function disableCaching(request, response, next) {
         response.setHeader("Cache-control", "no-cache, no-store, max-age=0");
@@ -97,10 +88,10 @@ function main(db) {
     var npcRoute = require('./npcRoute')(collections.npcs);
     var spellRoute = require('./spellRoute')(collections.spells);
     var featRoute = require('./featRoute')(collections.feats);
-    var loginRoute = require('./loginRoute')(userService);
+    var loginRoute = require('./loginRoute')(jwt, userService);
     var changePasswordRoute = require('./changePasswordRoute')(userService);
     var changeUserDataRoute = require('./changeUserDataRoute')(userService);
-    var logoutRoute = require('./logoutRoute')();
+    var registerRoute = require('./registerRoute')(userService);
     var userDataRoute = require('./userDataRoute')(collections.contentTrees, userService);
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
     var contentTreeRoute = require('./contentTreeRoute')(collections.contentTrees);
@@ -110,76 +101,73 @@ function main(db) {
     var userItemRoute = require('./userResourceRoute')(collections.userItems, collections.magicitems, ObjectID);
     var userIllustrationRoute = require('./userIllustrationRoute')(collections.userIllustrations, ObjectID);
 
-    app.get('/api/search-monsters', authenticationCheck, metrics.logSearchMonster, searchMonstersRoute);
-    app.get('/api/search-npcs', authenticationCheck, metrics.logSearchNpc, searchNpcsRoute);
-    app.get('/api/search-spells', authenticationCheck, metrics.logSearchSpell, searchSpellsRoute);
-    app.get('/api/search-feats', authenticationCheck, metrics.logSearchFeat, searchFeatsRoute);
-    app.get('/api/search-magic-items', authenticationCheck, metrics.logSearchItem, searchMagicItemsRoute);
-    app.get('/api/monster/:id', authenticationCheck, metrics.logSelectMonster, monsterRoute);
-    app.get('/api/magic-item/:id', authenticationCheck, metrics.logSelectItem, magicItemRoute);
-    app.get('/api/npc/:id', authenticationCheck, metrics.logSelectNpc, npcRoute);
-    app.get('/api/spell/:id', authenticationCheck, metrics.logSelectSpell, spellRoute);
-    app.get('/api/feat/:id', authenticationCheck, metrics.logSelectFeat, featRoute);
-    app.get('/api/encounter/:id', authenticationCheck, metrics.logSelectEncounter, encounterRoute.findOne);
+    app.get('/api/search-monsters', metrics.logSearchMonster, searchMonstersRoute);
+    app.get('/api/search-npcs', metrics.logSearchNpc, searchNpcsRoute);
+    app.get('/api/search-spells', metrics.logSearchSpell, searchSpellsRoute);
+    app.get('/api/search-feats', metrics.logSearchFeat, searchFeatsRoute);
+    app.get('/api/search-magic-items', metrics.logSearchItem, searchMagicItemsRoute);
+    app.get('/api/monster/:id', metrics.logSelectMonster, monsterRoute);
+    app.get('/api/magic-item/:id', metrics.logSelectItem, magicItemRoute);
+    app.get('/api/npc/:id', metrics.logSelectNpc, npcRoute);
+    app.get('/api/spell/:id', metrics.logSelectSpell, spellRoute);
+    app.get('/api/feat/:id', metrics.logSelectFeat, featRoute);
+    app.get('/api/encounter/:id', metrics.logSelectEncounter, encounterRoute.findOne);
 
-    app.get('/api/user-monster/:id', disableCaching, authenticationCheck, /* TODO METRICS */ userMonsterRoute.findOne);
-    app.get('/api/user-npc/:id', disableCaching, authenticationCheck, /* TODO METRICS */ userNpcRoute.findOne);
-    app.get('/api/user-text/:id', disableCaching, authenticationCheck, /* TODO METRICS */ userTextRoute.findOne);
-    app.get("/api/favourites", disableCaching, authenticationCheck, favouritesRoute.fetch);
+    app.get('/api/user-monster/:id', disableCaching, /* TODO METRICS */ userMonsterRoute.findOne);
+    app.get('/api/user-npc/:id', disableCaching, /* TODO METRICS */ userNpcRoute.findOne);
+    app.get('/api/user-text/:id', disableCaching, /* TODO METRICS */ userTextRoute.findOne);
+    app.get("/api/favourites", disableCaching, favouritesRoute.fetch);
 
     app.post('/api/user-data', userDataRoute); /* FIXME: should be a GET with no caching ! */
-    app.post('/logout', metrics.logLogout, logoutRoute);
     app.post("/login", metrics.logLogin, loginRoute.post);
-    app.options("/login", loginRoute.options);
-    app.post("/api/update-encounter", authenticationCheck, metrics.logUpdateEncounter, encounterRoute.update);
-    app.post("/api/create-encounter", authenticationCheck, metrics.logCreateEncounter, encounterRoute.create);
-    app.post("/api/remove-encounter", authenticationCheck, metrics.logRemoveEncounter, encounterRoute.delete);
-    app.post("/api/generate-encounter-loot", authenticationCheck, metrics.logGenerateEncounterLoot, encounterRoute.generateLoot);
-    app.post("/api/change-password", authenticationCheck, changePasswordRoute);
-    app.post("/api/change-user-data", authenticationCheck, changeUserDataRoute);
-    app.post("/api/save-content-tree", authenticationCheck, contentTreeRoute.updateContentTree);
-    app.post("/api/save-favourites", authenticationCheck, favouritesRoute.update);
+    app.post("/register", metrics.logLogin, registerRoute.post);
+    app.post("/api/update-encounter", metrics.logUpdateEncounter, encounterRoute.update);
+    app.post("/api/create-encounter", metrics.logCreateEncounter, encounterRoute.create);
+    app.post("/api/remove-encounter", metrics.logRemoveEncounter, encounterRoute.delete);
+    app.post("/api/generate-encounter-loot", metrics.logGenerateEncounterLoot, encounterRoute.generateLoot);
+    app.post("/api/change-password", changePasswordRoute);
+    app.post("/api/change-user-data", changeUserDataRoute);
+    app.post("/api/save-content-tree", contentTreeRoute.updateContentTree);
+    app.post("/api/save-favourites", favouritesRoute.update);
 
-    app.post("/api/create-user-monster", authenticationCheck, /* TODO METRICS */ userMonsterRoute.create);
-    app.post("/api/copy-monster", authenticationCheck, /* TODO METRICS */ userMonsterRoute.copy);
-    app.post("/api/update-user-monster", authenticationCheck, /* TODO METRICS */ userMonsterRoute.update);
-    app.post("/api/delete-user-monster", authenticationCheck, /* TODO METRICS */ userMonsterRoute.delete);
+    app.post("/api/create-user-monster", /* TODO METRICS */ userMonsterRoute.create);
+    app.post("/api/copy-monster", /* TODO METRICS */ userMonsterRoute.copy);
+    app.post("/api/update-user-monster", /* TODO METRICS */ userMonsterRoute.update);
+    app.post("/api/delete-user-monster", /* TODO METRICS */ userMonsterRoute.delete);
 
-    app.post("/api/create-user-npc", authenticationCheck, /* TODO METRICS */ userNpcRoute.create);
-    app.post("/api/copy-npc", authenticationCheck, /* TODO METRICS */ userNpcRoute.copy);
-    app.post("/api/update-user-npc", authenticationCheck, /* TODO METRICS */ userNpcRoute.update);
-    app.post("/api/delete-user-npc", authenticationCheck, /* TODO METRICS */ userNpcRoute.delete);
+    app.post("/api/create-user-npc", /* TODO METRICS */ userNpcRoute.create);
+    app.post("/api/copy-npc", /* TODO METRICS */ userNpcRoute.copy);
+    app.post("/api/update-user-npc", /* TODO METRICS */ userNpcRoute.update);
+    app.post("/api/delete-user-npc", /* TODO METRICS */ userNpcRoute.delete);
 
-    app.post("/api/create-user-text", authenticationCheck, /* TODO METRICS */ userTextRoute.create);
-    app.post("/api/copy-text", authenticationCheck, /* TODO METRICS */ userTextRoute.copy);
-    app.post("/api/update-user-text", authenticationCheck, /* TODO METRICS */ userTextRoute.update);
-    app.post("/api/delete-user-text", authenticationCheck, /* TODO METRICS */ userTextRoute.delete);
+    app.post("/api/create-user-text", /* TODO METRICS */ userTextRoute.create);
+    app.post("/api/copy-text", /* TODO METRICS */ userTextRoute.copy);
+    app.post("/api/update-user-text", /* TODO METRICS */ userTextRoute.update);
+    app.post("/api/delete-user-text", /* TODO METRICS */ userTextRoute.delete);
 
     /* User Item */
-    app.get("/api/user-feat/:id", enableCaching, authenticationCheck, userFeatRoute.getResource);
-    app.post("/api/user-feat", authenticationCheck, userFeatRoute.createResource);
-    app.post("/api/user-feat/:id", authenticationCheck, userFeatRoute.updateResource);
-    app.delete("/api/user-feat/:id", authenticationCheck, userFeatRoute.deleteResource);
+    app.get("/api/user-feat/:id", enableCaching, userFeatRoute.getResource);
+    app.post("/api/user-feat", userFeatRoute.createResource);
+    app.post("/api/user-feat/:id", userFeatRoute.updateResource);
+    app.delete("/api/user-feat/:id", userFeatRoute.deleteResource);
 
     /* User Spell */
-    app.get("/api/user-spell/:id", enableCaching, authenticationCheck, userSpellRoute.getResource);
-    app.post("/api/user-spell", authenticationCheck, userSpellRoute.createResource);
-    app.post("/api/user-spell/:id", authenticationCheck, userSpellRoute.updateResource);
-    app.delete("/api/user-spell/:id", authenticationCheck, userSpellRoute.deleteResource);
+    app.get("/api/user-spell/:id", enableCaching, userSpellRoute.getResource);
+    app.post("/api/user-spell", userSpellRoute.createResource);
+    app.post("/api/user-spell/:id", userSpellRoute.updateResource);
+    app.delete("/api/user-spell/:id", userSpellRoute.deleteResource);
 
     /* User Item */
-    app.get("/api/user-item/:id", enableCaching, authenticationCheck, userItemRoute.getResource);
-    app.post("/api/user-item", authenticationCheck, userItemRoute.createResource);
-    app.post("/api/user-item/:id", authenticationCheck, userItemRoute.updateResource);
-    app.delete("/api/user-item/:id", authenticationCheck, userItemRoute.deleteResource);
+    app.get("/api/user-item/:id", enableCaching, userItemRoute.getResource);
+    app.post("/api/user-item", userItemRoute.createResource);
+    app.post("/api/user-item/:id", userItemRoute.updateResource);
+    app.delete("/api/user-item/:id", userItemRoute.deleteResource);
 
     /* User illustration */
-    app.get("/api/user-illustration/:id", enableCaching, authenticationCheck, userIllustrationRoute.getResource);
-    app.post("/api/user-illustration", authenticationCheck, userIllustrationRoute.createResource);
-    app.post("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.updateResource);
-    app.delete("/api/user-illustration/:id", authenticationCheck, userIllustrationRoute.deleteResource);
-    /* FIXME: this api call is not REST-ful and will create problems with HTTP caching */
-    app.post("/api/upload-user-illustration-image/:id", authenticationCheck, userIllustrationRoute.uploadImage);
+    app.get("/api/user-illustration/:id", enableCaching, userIllustrationRoute.getResource);
+    app.post("/api/user-illustration", userIllustrationRoute.createResource);
+    app.post("/api/user-illustration/:id", userIllustrationRoute.updateResource);
+    app.delete("/api/user-illustration/:id", userIllustrationRoute.deleteResource);
 
     var APP_JADE_FILES = [
         'feedback-popover',

@@ -1,33 +1,27 @@
 "use strict";
 
-module.exports = function (userService) {
+module.exports = function (jwt, userService) {
+
+    var HOST_TO_ALLOWED_ORIGIN = {
+        "localhost:3000": "http://localhost:3000",
+        "localhost.encounterbuilder.com": "http://localhost.encounterbuilder.com",
+        "encounterbuilder-staging.herokuapp.com": "http://staging.encounterbuilder.com",
+        "encounterbuilder-live.herokuapp.com": "http://www.encounterbuilder.com"
+    };
+
     return {
         post: function (request, response) {
-            if (request.host !== "localhost" && request.protocol !== "https") {
-                return response.send(400, "login must done over a secure connection")
-            }
+            response.header('Access-Control-Allow-Origin', HOST_TO_ALLOWED_ORIGIN[request.headers.host]);
+            response.header('Access-Control-Allow-Methods', 'POST');
+            response.header('Access-Control-Allow-Headers', 'Content-Type');
             userService.authenticate(request.body.username, request.body.password, function (error, user) {
                 if (user) {
-                    request.session.regenerate(function () {
-                        request.session.user = user;
-                        response.send(200);
-                    });
+                    var token = jwt.sign(user, process.env["SESSION_SECRET"], { expiresInMinutes: 60*5 });
+                    response.json({token: token});
                 } else {
                     response.send(401, "login failed");
                 }
             });
-        },
-        options: function (request, response) {
-            var allowedOrigin;
-            if (request.host === "encounterbuilder-staging.herokuapp.com") {
-                allowedOrigin = "staging.encounterbuilder.com";
-            } else {
-                allowedOrigin = "encounterbuilder.com";
-            }
-            response.header('Access-Control-Allow-Origin', allowedOrigin);
-            response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-            response.header('Access-Control-Allow-Headers', 'Content-Type');
-            response.send(200);
         }
     };
 };

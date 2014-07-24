@@ -2,7 +2,7 @@
 module.exports = function (contentTreeCollection) {
     return {
         updateContentTree: function (request, response) {
-            var username = request.session.user.username;
+            var username = request.user.username;
             contentTreeCollection.update(
                 {username: username},
                 {$set: {contentTree: request.body.contentTree}},
