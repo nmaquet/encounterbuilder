@@ -75,6 +75,8 @@
 
     $('#login').on('shown.bs.modal', function () {
         $("#login-failed-alert").addClass("hidden");
+        $("#login-failed-email-notvalidated").addClass("hidden");
+        $("#login-email-validated").addClass("hidden");
         $('#username').focus();
     });
 
