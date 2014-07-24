@@ -374,10 +374,10 @@ function main() {
         if (weapon.Name == "Unarmed strike") {
             continue;
         }
-        if (weapon.WeaponType !== 'ranged' && weapon.WeaponType !== 'ammunition') {
+        if (weapon.WeaponType !== 'ranged' && weapon.WeaponType !== 'ammunition' && weapon.WeaponType !== 'firearm') {
             var abilityTable = meleeSpecialAbilities;
         }
-        else if (weapon.WeaponType === 'ranged') {
+        else if (weapon.WeaponType === 'ranged' || weapon.WeaponType === 'firearm') {
             var abilityTable = rangedSpecialAbilities;
         }
         else if (weapon.WeaponType === 'ammunition') {
