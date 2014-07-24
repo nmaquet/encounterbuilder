@@ -3,7 +3,7 @@
 module.exports = function (jwt, userService) {
 
     var HOST_TO_ALLOWED_ORIGIN = {
-        "localhost:3000": "localhost:3000",
+        "localhost:3000": "localhost",
         "localhost.encounterbuilder.com": "localhost.encounterbuilder.com",
         "encounterbuilder-staging.herokuapp.com": "staging.encounterbuilder.com",
         "encounterbuilder-live.herokuapp.com": "www.encounterbuilder.com"
