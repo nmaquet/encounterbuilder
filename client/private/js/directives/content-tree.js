@@ -69,31 +69,27 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 });
 
                 function onClick(event, data) {
-                    if ($(event.toElement).text() === "+") {
-                        var node = data.node;
-//                        var type = (node.data.userMonsterId) ? "monster" : "npc";
-                        var type = null;
-                        if (node.data.userMonsterId) {
-                            type = "monster"
-                        }
-                        else if (node.data.userNpcId) {
-                            type = "npc"
-                        }
-                        else {
-                            type = "item";
-                        }
+                    $timeout(function () {
+                        contentTreeService.goToNode(data.node);
+                    });
+                }
 
-                        var id = node.data.userMonsterId || node.data.userNpcId || node.data.userResourceId;
-                        if (type === "item") {
-                            encounterEditorService.addUserItem(id);
-                        } else {
-                            encounterEditorService.addUserNpcOrMonster(type, id);
-                        }
+                function onPlusButtonClick(node) {
+                    var type = null;
+                    if (node.data.userMonsterId) {
+                        type = "monster"
+                    }
+                    else if (node.data.userNpcId) {
+                        type = "npc"
                     }
                     else {
-                        $timeout(function () {
-                            contentTreeService.goToNode(data.node);
-                        });
+                        type = "item";
+                    }
+                    var id = node.data.userMonsterId || node.data.userNpcId || node.data.userResourceId;
+                    if (type === "item") {
+                        encounterEditorService.addUserItem(id);
+                    } else {
+                        encounterEditorService.addUserNpcOrMonster(type, id);
                     }
                 }
 
@@ -126,6 +122,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         extensions: ["dnd", "add-to-encounter"],
                         source: contentTreeService.contentTree(),
                         click: onClick,
+                        addToEncounter: {
+                            onPlusButtonClick: onPlusButtonClick
+                        },
                         dnd: {
                             preventVoidMoves: true, // Prevent dropping nodes 'before self', etc.
                             preventRecursiveMoves: true, // Prevent dropping nodes on own descendants
