@@ -11,7 +11,7 @@
         "Cost": 7000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, daylight, invisibility",
-        "Description": "This shining white cloak is trimmed with golden sunbursts and continuously radiates light (as per the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/light.html#_light\">light</a> </i>spell, but only in a 10-foot radius). Twice per day, the wearer can command the cape to erupt in a burst of light, blinding all creatures other than the wearer within 20 feet for 1d4 rounds (Reflex DC 14 negates). After triggering this burst, the wearer becomes invisible (as the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/invisibility.html#_invisibility\">invisibility</a></i> spell, with a duration of 1 minute) and the cape's light is extinguished as long as the wearer is invisible.",
+        "Description": "This shining white cloak is trimmed with golden sunbursts and continuously radiates light (as per the light spell, but only in a 10-foot radius). Twice per day, the wearer can command the cape to erupt in a burst of light, blinding all creatures other than the wearer within 20 feet for 1d4 rounds (Reflex DC 14 negates). After triggering this burst, the wearer becomes invisible (as the invisibility spell, with a duration of 1 minute) and the cape's light is extinguished as long as the wearer is invisible.",
         "Source": "Ultimate Equipment",
         "id": "cape-of-effulgent-escape"
     },
@@ -27,7 +27,7 @@
         "Cost": 5400,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, dimension door",
-        "Description": "Once per day on command, this bright red and gold cape allows the wearer to use the magic of the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/dimensionDoor.html#_dimension-door\">dimension door</a></i> spell. When he disappears, he leaves behind a cloud of harmless gray smoke, appearing in a similar dramatic fashion at his destination.",
+        "Description": "Once per day on command, this bright red and gold cape allows the wearer to use the magic of the dimension door spell. When he disappears, he leaves behind a cloud of harmless gray smoke, appearing in a similar dramatic fashion at his destination.",
         "Source": "Ultimate Equipment",
         "id": "cape-of-the-mountebank"
     },
@@ -59,7 +59,7 @@
         "Cost": 22500,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, dimension door, ethereal jaunt",
-        "Description": "This garish cloak of red velvet is embroidered with gold-threaded patterns, typically in shapes of sinisterly masked harlequins or other imagery of sinister revelry. The cloak acts like a <i>cloak of the mountebank</i>, but its <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/dimensionDoor.html#_dimension-door\">dimension door</a></i> power can be used three times per day. Furthermore, once per day the wearer of the cloak can use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/etherealJaunt.html#_ethereal-jaunt\">ethereal jaunt</a></i>, as per the spell.",
+        "Description": "This garish cloak of red velvet is embroidered with gold-threaded patterns, typically in shapes of sinisterly masked harlequins or other imagery of sinister revelry. The cloak acts like a cloak of the mountebank, but its dimension door power can be used three times per day. Furthermore, once per day the wearer of the cloak can use ethereal jaunt, as per the spell.",
         "Source": "Ultimate Equipment",
         "id": "charlatan-s-cape"
     },
@@ -75,7 +75,7 @@
         "Cost": 7000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, spider climb, web",
-        "Description": "This red and violet silk garment, delicately embroidered with a barely perceptible web-like pattern, gives the wearer the ability to climb as if a <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/spiderClimb.html#_spider-climb\">spider climb</a></i> spell had been placed upon her. In addition, the cloak grants her immunity to entrapment by <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/web.html#_web\">web</a></i> spells or webs of any sort; she can move in webs at half her normal speed. Once per day, the wearer of this cloak can cast <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/web.html#_web\">web</a></i>. She also gains a +2 luck bonus on all Fortitude saves against poison from spiders.",
+        "Description": "This red and violet silk garment, delicately embroidered with a barely perceptible web-like pattern, gives the wearer the ability to climb as if a spider climb spell had been placed upon her. In addition, the cloak grants her immunity to entrapment by web spells or webs of any sort; she can move in webs at half her normal speed. Once per day, the wearer of this cloak can cast web. She also gains a +2 luck bonus on all Fortitude saves against poison from spiders.",
         "Source": "Ultimate Equipment",
         "id": "cloak-of-arachnida"
     },
@@ -91,7 +91,7 @@
         "Cost": 25000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, Extend Spell, displacement",
-        "Description": "Embroidered with images of falling stars and pale moons, this item appears to be a normal cloak, but on command its magical properties distort and warp light waves. This displacement works just like the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/displacement.html#_displacement\">displacement</a></i> spell and lasts for a total of 15 rounds per day, which the wearer can divide up as she sees fit.",
+        "Description": "Embroidered with images of falling stars and pale moons, this item appears to be a normal cloak, but on command its magical properties distort and warp light waves. This displacement works just like the displacement spell and lasts for a total of 15 rounds per day, which the wearer can divide up as she sees fit.",
         "Source": "Ultimate Equipment",
         "id": "cloak-of-displacement-major"
     },
@@ -107,7 +107,7 @@
         "Cost": 12000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, blur",
-        "Description": "This item appears to be a normal cloak, with a pattern very similar to a <i>major cloak of <a href=\"http://paizo.com/pathfinderRPG/prd/spells/displacement.html#_displacement\">displacement</a> </i>nocturnal designs, but when worn its magical properties distort and warp light waves. This displacement works similar to the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/blur.html#_blur\">blur</a></i> spell, granting a 20% miss chance on attacks against the wearer. It functions continually.",
+        "Description": "This item appears to be a normal cloak, with a pattern very similar to a major cloak of displacement nocturnal designs, but when worn its magical properties distort and warp light waves. This displacement works similar to the blur spell, granting a 20% miss chance on attacks against the wearer. It functions continually.",
         "Source": "Ultimate Equipment",
         "id": "cloak-of-displacement-minor"
     },
@@ -123,7 +123,7 @@
         "Cost": 1250,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, invisibility, creator must be an elf",
-        "Description": "These cloaks of famed elven design are enhanced to reflect the wearer's surroundings, aiding him in blending in with any terrain. When this plain gray cloak is worn with the hood drawn up around the head, the wearer gains a +5 competence bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/stealth.html#_stealth\">Stealth</a> checks.",
+        "Description": "These cloaks of famed elven design are enhanced to reflect the wearer's surroundings, aiding him in blending in with any terrain. When this plain gray cloak is worn with the hood drawn up around the head, the wearer gains a +5 competence bonus on Stealth checks.",
         "Source": "Ultimate Equipment",
         "id": "cloak-of-elvenkind"
     },
@@ -139,7 +139,7 @@
         "Cost": 27500,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, ethereal jaunt",
-        "Description": "This silvery gray cloak seems to absorb light rather than be illuminated by it. On command, the cloak makes its wearer ethereal (as the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/etherealJaunt.html#_ethereal-jaunt\">ethereal jaunt</a></i> spell). The effect is dismissible. The cloak works for a total of up to 10 minutes per day. This duration need not be continuous, but it must be used in 1 minute increments.",
+        "Description": "This silvery gray cloak seems to absorb light rather than be illuminated by it. On command, the cloak makes its wearer ethereal (as the ethereal jaunt spell). The effect is dismissible. The cloak works for a total of up to 10 minutes per day. This duration need not be continuous, but it must be used in 1 minute increments.",
         "Source": "Ultimate Equipment",
         "id": "cloak-of-etherealness"
     },
@@ -155,7 +155,7 @@
         "Cost": 1400,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, alter self, resistance",
-        "Description": "Wearing this animal-hair cloak grants a +1 resistance bonus on saving throws. Furthermore, the wearer can force its teeth to grow rapidly up to five times per day as a swift action. The oversized teeth last for 1 round, during which time the wearer can make a bite attack. Treat this attack as a primary natural attack that deals 1d6 points of damage (or 1d4 if the wearer is Small). If the wearer already has a bite attack, the damage of that bite attack increases by one step (<i>Bestiary </i>302).",
+        "Description": "Wearing this animal-hair cloak grants a +1 resistance bonus on saving throws. Furthermore, the wearer can force its teeth to grow rapidly up to five times per day as a swift action. The oversized teeth last for 1 round, during which time the wearer can make a bite attack. Treat this attack as a primary natural attack that deals 1d6 points of damage (or 1d4 if the wearer is Small). If the wearer already has a bite attack, the damage of that bite attack increases by one step (Bestiary 302).",
         "Source": "Ultimate Equipment",
         "id": "cloak-of-fangs"
     },
@@ -187,7 +187,7 @@
         "Cost": 450,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, disguise self",
-        "Description": "This plain cloak only has any effect when worn by a member of a half-human race, such as a half-orc or half-elf. It alters the wearer's appearance similarly to a <i>hat of disguise</i>, but only to the extent that it conceals or alters the wearer's non-human physical traits so the creature appears fully human. Any feature that is plausibly human remains. For example, a half-orc wearing the cloak loses his green or gray skin color and pointed ears, has no visible tusks, and is otherwise completely able to pass as a human version of his normal self. Likewise, a half-elf wearing the cloak has round ears, humanlike eyes, and no other traits indicating elven ancestry. The wearer has no control over the specific guise, and those familiar with his normal appearance can recognize him in his human guise.",
+        "Description": "This plain cloak only has any effect when worn by a member of a half-human race, such as a half-orc or half-elf. It alters the wearer's appearance similarly to a hat of disguise, but only to the extent that it conceals or alters the wearer's non-human physical traits so the creature appears fully human. Any feature that is plausibly human remains. For example, a half-orc wearing the cloak loses his green or gray skin color and pointed ears, has no visible tusks, and is otherwise completely able to pass as a human version of his normal self. Likewise, a half-elf wearing the cloak has round ears, humanlike eyes, and no other traits indicating elven ancestry. The wearer has no control over the specific guise, and those familiar with his normal appearance can recognize him in his human guise.",
         "Source": "Ultimate Equipment",
         "id": "cloak-of-human-guise"
     },
@@ -283,7 +283,7 @@
         "Cost": 13000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, beast shape III, fly",
-        "Description": "Fashioned of dark brown or black cloth, this cloak bestows a +5 competence bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/stealth.html#_stealth\">Stealth</a> checks. The wearer is also able to hang upside down from the ceiling like a bat.By holding the edges of the garment, the wearer is able to fly as per the spell (including a +7 bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/fly.html#_fly\">Fly</a> skill checks). If he desires, the wearer can actually polymorph himself into an ordinary bat and fly accordingly (as <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/beastShape.html#_beast-shape-iii\">beast shape III</a></i>). All possessions worn or carried are part of the transformation. Flying, either with the cloak or in bat form, can be accomplished only in darkness (either under the night sky or in a lightless or near-lightless environment underground). Either of the flying powers is usable for up to 7 minutes at a time, but after a flight of any duration the cloak cannot bestow any flying power for a like period of time.",
+        "Description": "Fashioned of dark brown or black cloth, this cloak bestows a +5 competence bonus on Stealth checks. The wearer is also able to hang upside down from the ceiling like a bat.By holding the edges of the garment, the wearer is able to fly as per the spell (including a +7 bonus on Fly skill checks). If he desires, the wearer can actually polymorph himself into an ordinary bat and fly accordingly (as beast shape III). All possessions worn or carried are part of the transformation. Flying, either with the cloak or in bat form, can be accomplished only in darkness (either under the night sky or in a lightless or near-lightless environment underground). Either of the flying powers is usable for up to 7 minutes at a time, but after a flight of any duration the cloak cannot bestow any flying power for a like period of time.",
         "Source": "Ultimate Equipment",
         "id": "cloak-of-the-bat"
     },
@@ -299,7 +299,7 @@
         "Cost": 10000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, charm person, creator must have 5 ranks in Diplomacy and Sense Motive",
-        "Description": "The forest-green cloak grants a +5 competence bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/diplomacy.html#_diplomacy\">Diplomacy</a> and <a href=\"http://paizo.com/pathfinderRPG/prd/skills/senseMotive.html#_sense-motive\">Sense Motive</a> checks. In addition, once per day, before making a <a href=\"http://paizo.com/pathfinderRPG/prd/skills/diplomacy.html#_diplomacy\">Diplomacy</a> or <a href=\"http://paizo.com/pathfinderRPG/prd/skills/senseMotive.html#_sense-motive\">Sense Motive</a> check, the wearer can decide to call upon the powers of the cloak to roll twice and take the better result. Finally, the wearer of this cloak can adjust a creature's attitude up to three steps when using <a href=\"http://paizo.com/pathfinderRPG/prd/skills/diplomacy.html#_diplomacy\">Diplomacy</a>, instead of the normal limit of two steps. However, the cloak's power does have one drawback. Should the wearer ever fail a <a href=\"http://paizo.com/pathfinderRPG/prd/skills/diplomacy.html#_diplomacy\">Diplomacy</a> checks made to adjust a creature's attitude by 5 or more, the creature's attitude is reduced by two steps instead of one.",
+        "Description": "The forest-green cloak grants a +5 competence bonus on Diplomacy and Sense Motive checks. In addition, once per day, before making a Diplomacy or Sense Motive check, the wearer can decide to call upon the powers of the cloak to roll twice and take the better result. Finally, the wearer of this cloak can adjust a creature's attitude up to three steps when using Diplomacy, instead of the normal limit of two steps. However, the cloak's power does have one drawback. Should the wearer ever fail a Diplomacy checks made to adjust a creature's attitude by 5 or more, the creature's attitude is reduced by two steps instead of one.",
         "Source": "Ultimate Equipment",
         "id": "cloak-of-the-diplomat"
     },
@@ -315,7 +315,7 @@
         "Cost": 5000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, darkness, darkvision",
-        "Description": "This dark, velvety cloak billows with a dramatic flourish in its wearer's wake. The cloak grants its wearer low-light vision. Once per day, on command, the wearer can surround herself with darkness, as the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/darkness.html#_darkness\">darkness</a></i> spell. While this darkness is active, the cloak also grants the wearer darkvision 60 feet as well as low-light vision.",
+        "Description": "This dark, velvety cloak billows with a dramatic flourish in its wearer's wake. The cloak grants its wearer low-light vision. Once per day, on command, the wearer can surround herself with darkness, as the darkness spell. While this darkness is active, the cloak also grants the wearer darkvision 60 feet as well as low-light vision.",
         "Source": "Ultimate Equipment",
         "id": "cloak-of-the-duskwalker"
     },
@@ -331,7 +331,7 @@
         "Cost": 1250,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, prestidigitation and any spell the cloak allows the caster to use; the creator must have Spell Focus in the cloak's school of magic",
-        "Description": "This cloak comes in eight varieties—one for each school of magic. The cloak grants its wearer the ability to use a certain number of spells on command (caster level 1st) based on its school of magic. It also grants the wearer the ability to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/prestidigitation.html#_prestidigitation\">prestidigitation</a></i> on command and at will.<i>Abjuration</i>: at will—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/resistance.html#_resistance\">resistance</a></i>; 1/day—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/endureElements.html#_endure-elements\">endure elements</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/shield.html#_shield\">shield</a></i><i>Conjuration</i>: at will—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/acidSplash.html#_acid-splash\">acid splash</a></i>; 1/day—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/mageArmor.html#_mage-armor\">mage armor</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/unseenServant.html#_unseen-servant\">unseen servant</a></i><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/divination.html#_divination\">Divination</a></i>: at will—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/detectMagic.html#_detect-magic\">detect magic</a></i>; 1/day—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/detectSecretDoors.html#_detect-secret-doors\">detect secret doors</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/trueStrike.html#_true-strike\">true strike</a></i><i>Enchantment</i>: at will—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/daze.html#_daze\">daze</a></i>; 1/day—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/charmPerson.html#_charm-person\">charm person</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/sleep.html#_sleep\">sleep</a></i><i>Evocation</i>: at will—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/light.html#_light\">light</a></i>; 1/day—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/floatingDisk.html#_floating-disk\">floating disk</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/magicMissile.html#_magic-missile\">magic missile</a></i><i>Illusion</i>: at will—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/ghostSound.html#_ghost-sound\">ghost sound</a></i>; 1/day—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/colorSpray.html#_color-spray\">color spray</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/silentImage.html#_silent-image\">silent image</a></i><i>Necromancy</i>: at will—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/touchOfFatigue.html#_touch-of-fatigue\">touch of fatigue</a></i>; 1/day—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/causeFear.html#_cause-fear\">cause fear</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/rayOfEnfeeblement.html#_ray-of-enfeeblement\">ray of enfeeblement</a></i><i>Transmutation</i>: at will—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/mageHand.html#_mage-hand\">mage hand</a></i>; 1/day—<i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/enlargePerson.html#_enlarge-person\">enlarge person</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/expeditiousRetreat.html#_expeditious-retreat\">expeditious retreat</a></i>",
+        "Description": "This cloak comes in eight varieties—one for each school of magic. The cloak grants its wearer the ability to use a certain number of spells on command (caster level 1st) based on its school of magic. It also grants the wearer the ability to use prestidigitation on command and at will.Abjuration: at will—resistance; 1/day—endure elements, shieldConjuration: at will—acid splash; 1/day—mage armor, unseen servantDivination: at will—detect magic; 1/day—detect secret doors, true strikeEnchantment: at will—daze; 1/day—charm person, sleepEvocation: at will—light; 1/day—floating disk, magic missileIllusion: at will—ghost sound; 1/day—color spray, silent imageNecromancy: at will—touch of fatigue; 1/day—cause fear, ray of enfeeblementTransmutation: at will—mage hand; 1/day—enlarge person, expeditious retreat",
         "Source": "Ultimate Equipment",
         "id": "cloak-of-the-hedge-wizard"
     },
@@ -347,7 +347,7 @@
         "Cost": 3600,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, beast shape II, water breathing",
-        "Description": "This cloak appears to be made of leather until the wearer enters salt water. At that time, the <i>cloak of the manta ray</i> adheres to the individual, and he appears nearly identical to a manta ray (as the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/beastShape.html#_beast-shape-ii\">beast shape II</a></i> spell, except that it allows only manta ray form). He gains a +3 natural armor bonus, the ability to breathe underwater, and a swim speed of 60 feet, like a real manta ray.The cloak also allows the wearer to attack with a sting ray's tail spine, dealing 1d6 points of damage. This attack can be used in addition to any other attack the character has, using his highest melee attack bonus. The wearer can release his arms from the cloak without sacrificing underwater movement if so desired.",
+        "Description": "This cloak appears to be made of leather until the wearer enters salt water. At that time, the cloak of the manta ray adheres to the individual, and he appears nearly identical to a manta ray (as the beast shape II spell, except that it allows only manta ray form). He gains a +3 natural armor bonus, the ability to breathe underwater, and a swim speed of 60 feet, like a real manta ray.The cloak also allows the wearer to attack with a sting ray's tail spine, dealing 1d6 points of damage. This attack can be used in addition to any other attack the character has, using his highest melee attack bonus. The wearer can release his arms from the cloak without sacrificing underwater movement if so desired.",
         "Source": "Ultimate Equipment",
         "id": "cloak-of-the-manta-ray"
     },
@@ -363,7 +363,7 @@
         "Cost": 3000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, beast shape I",
-        "Description": "This unassuming cloak initially appears to be made of plain leather. When the wearer speaks the command word, however, the <i>cloak of the scuttling rat</i> wraps itself around her, transforming her into a dire rat as if using <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/beastShape.html#_beast-shape-i\">beast shape I</a></i>. The wearer can remain in dire rat form for up to 5 minutes per day. This duration need not be consecutive, but it must be used in 1-minute increments.",
+        "Description": "This unassuming cloak initially appears to be made of plain leather. When the wearer speaks the command word, however, the cloak of the scuttling rat wraps itself around her, transforming her into a dire rat as if using beast shape I. The wearer can remain in dire rat form for up to 5 minutes per day. This duration need not be consecutive, but it must be used in 1-minute increments.",
         "Source": "Ultimate Equipment",
         "id": "cloak-of-the-scuttling-rat"
     },
@@ -379,7 +379,7 @@
         "Cost": 5000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, vermin shape I (Ultimate Magic)",
-        "Description": "This ruffled silk cloak is incredibly durable despite its soft, delicate construction. Anytime the wearer falls asleep (whether the sleep is natural or brought on by a magical effect), the cloak immediately transforms into sticky strands that envelop the wearer's body, hardening into a solid silk cocoon. While wrapped in the cocoon the wearer gains a +4 enhancement bonus to natural armor and is protected from critical hits and sneak attacks as if subject to the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/light.html#_light\">light</a> <a href=\"http://paizo.com/pathfinderRPG/prd/magicItems/armor.html#_armor-fortification\">fortification</a></i> armor ability (25% chance for normal damage on a critical hit). The cocoon opens and transforms back into a cloak once the wearer awakens.",
+        "Description": "This ruffled silk cloak is incredibly durable despite its soft, delicate construction. Anytime the wearer falls asleep (whether the sleep is natural or brought on by a magical effect), the cloak immediately transforms into sticky strands that envelop the wearer's body, hardening into a solid silk cocoon. While wrapped in the cocoon the wearer gains a +4 enhancement bonus to natural armor and is protected from critical hits and sneak attacks as if subject to the light fortification armor ability (25% chance for normal damage on a critical hit). The cocoon opens and transforms back into a cloak once the wearer awakens.",
         "Source": "Ultimate Equipment",
         "id": "cocoon-cloak"
     },
@@ -395,7 +395,7 @@
         "Cost": 7800,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, endure elements",
-        "Description": "A favored cloak of rangers, this cloak is a patchwork of hides and fur. <i>Comfort's cloak</i> grants a constant <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/endureElements.html#_endure-elements\">endure elements</a></i> effect to the wearer, and grants a +4 competence bonus to saves against disease, energy drain, effects that cause fatigue or exhaustion, and poisons. Furthermore, while the wearer is resting he regains twice his Hit Dice in hit points for 8 hours of rest instead of the typical 1 hit point per Hit Die. When taking a full 24 hours of rest, the character regains 5 times his Hit Dice in hit points instead of twice his Hit Dice in hit points.",
+        "Description": "A favored cloak of rangers, this cloak is a patchwork of hides and fur. Comfort's cloak grants a constant endure elements effect to the wearer, and grants a +4 competence bonus to saves against disease, energy drain, effects that cause fatigue or exhaustion, and poisons. Furthermore, while the wearer is resting he regains twice his Hit Dice in hit points for 8 hours of rest instead of the typical 1 hit point per Hit Die. When taking a full 24 hours of rest, the character regains 5 times his Hit Dice in hit points instead of twice his Hit Dice in hit points.",
         "Source": "Ultimate Equipment",
         "id": "comfort-s-cloak"
     },
@@ -411,7 +411,7 @@
         "Cost": 900,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, sanctuary",
-        "Description": "This nondescript gray cloak has a hood that can fit over the wearer's entire face. The wearer can, as a move action, cover his face and drop to a huddling crouch. Any creature seeking to directly attack him while he does this must make a DC 11 Will save to do so (as the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/sanctuary.html#_sanctuary\">sanctuary</a></i> spell). The wearer cannot see or take any actions while crouching. This makes him effectively blind, with all the normal penalties, but not helpless. The wearer can end his crouch simply by standing up or moving.",
+        "Description": "This nondescript gray cloak has a hood that can fit over the wearer's entire face. The wearer can, as a move action, cover his face and drop to a huddling crouch. Any creature seeking to directly attack him while he does this must make a DC 11 Will save to do so (as the sanctuary spell). The wearer cannot see or take any actions while crouching. This makes him effectively blind, with all the normal penalties, but not helpless. The wearer can end his crouch simply by standing up or moving.",
         "Source": "Ultimate Equipment",
         "id": "cowardly-crouching-cloak"
     },
@@ -427,7 +427,7 @@
         "Cost": 7175,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, Craft Magic Arms and Armor, bleed",
-        "Description": "These black iron pauldrons are studded with jagged spikes of various lengths. <i>Demonspike pauldrons</i> act as <i>+2 armor spikes</i> and also deal 1d2 bleed damage on a successful grapple attack or melee attack made with the pauldrons. If these pauldrons are worn with normal armor spikes, increase the damage done by the armor spikes to 1d6 (Small) or 1d8 (Medium), and use the greater of the two enhancement bonuses to attack and damage—either from the armor spikes (if any) or the <i>demonspike pauldrons</i>.",
+        "Description": "These black iron pauldrons are studded with jagged spikes of various lengths. Demonspike pauldrons act as +2 armor spikes and also deal 1d2 bleed damage on a successful grapple attack or melee attack made with the pauldrons. If these pauldrons are worn with normal armor spikes, increase the damage done by the armor spikes to 1d6 (Small) or 1d8 (Medium), and use the greater of the two enhancement bonuses to attack and damage—either from the armor spikes (if any) or the demonspike pauldrons.",
         "Source": "Ultimate Equipment",
         "id": "demonspike-pauldrons"
     },
@@ -443,7 +443,7 @@
         "Cost": 3500,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, beast shape I, feather fall, perceive clues ",
-        "Description": "Large eagle feathers decorate the back and arms of this magnificent cape. Should the cape's wearer fall more than 5 feet, the cape spreads out behind the wearer and she gently drifts to the ground. This acts exactly like a <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/featherFall.html#_feather-fall\">feather fall</a></i> spell for the wearer only. Once per day, if the wearer grasps the edges of the cape and spreads her arms, she transforms into an eagle (as per the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/beastShape.html#_beast-shape-i\">beast shape I</a></i> spell, except that it allows only eagle form and the wearer gains the eagle's full fly speed of 80 feet). This effect lasts for 10 minutes but can be ended prematurely as a standard action. In addition, while in eagle form, the wearer gains a +5 competence bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/perception.html#_perception\">Perception</a> checks.",
+        "Description": "Large eagle feathers decorate the back and arms of this magnificent cape. Should the cape's wearer fall more than 5 feet, the cape spreads out behind the wearer and she gently drifts to the ground. This acts exactly like a feather fall spell for the wearer only. Once per day, if the wearer grasps the edges of the cape and spreads her arms, she transforms into an eagle (as per the beast shape I spell, except that it allows only eagle form and the wearer gains the eagle's full fly speed of 80 feet). This effect lasts for 10 minutes but can be ended prematurely as a standard action. In addition, while in eagle form, the wearer gains a +5 competence bonus on Perception checks.",
         "Source": "Ultimate Equipment",
         "id": "eagle-cape"
     },
@@ -475,7 +475,7 @@
         "Cost": 16250,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, liberating command",
-        "Description": "This reversible multicolored cape marks the wearer's flamboyant audacity when turned with its bright colors outward, granting a +5 competence bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/bluff.html#_bluff\">Bluff</a> checks. Reversible as a move action, the dappled camouflage of its other side grants a +5 competence bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/stealth.html#_stealth\">Stealth</a> checks. Furthermore, the wearer is subject to a constant effect like that of the spell <i><a href=\"http://paizo.com/pathfinderRPG/prd/ultimateCombat/spells/liberatingCommand.html#_liberating-command\">liberating command</a></i> regardless of the cape's current facing.",
+        "Description": "This reversible multicolored cape marks the wearer's flamboyant audacity when turned with its bright colors outward, granting a +5 competence bonus on Bluff checks. Reversible as a move action, the dappled camouflage of its other side grants a +5 competence bonus on Stealth checks. Furthermore, the wearer is subject to a constant effect like that of the spell liberating command regardless of the cape's current facing.",
         "Source": "Ultimate Equipment",
         "id": "highwayman-s-cape"
     },
@@ -491,7 +491,7 @@
         "Cost": 3750,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, beast shape I",
-        "Description": "Usually made from the skins of giant serpents, these cloaks are designed to help rangers, hunters, and trackers blend in with and travel quickly through the areas they are most familiar with. If the wearer has the favored terrain class ability and is traveling through one of his favored terrains, once per day he can transform himself into an animal native to that environment. This works identically to the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/beastShape.html#_beast-shape-i\">beast shape I</a></i> spell, save that it is limited to creatures native to the environment (as defined in the appropriate <i>Bestiary</i> entry or per the GMs discretion). This effect lasts for 10 minutes per day. The duration need not be continuous, but it must be used in 1-minute increments.",
+        "Description": "Usually made from the skins of giant serpents, these cloaks are designed to help rangers, hunters, and trackers blend in with and travel quickly through the areas they are most familiar with. If the wearer has the favored terrain class ability and is traveling through one of his favored terrains, once per day he can transform himself into an animal native to that environment. This works identically to the beast shape I spell, save that it is limited to creatures native to the environment (as defined in the appropriate Bestiary entry or per the GMs discretion). This effect lasts for 10 minutes per day. The duration need not be continuous, but it must be used in 1-minute increments.",
         "Source": "Ultimate Equipment",
         "id": "hunter-s-cloak"
     },
@@ -523,7 +523,7 @@
         "Cost": 20000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, deadly juggernaut, enlarge person, rage",
-        "Description": "These massive pauldrons take the shape of a pair of clenched fists made of beaten bronze. They bestow a +4 bonus on CMD, and grant the wearer the ferocity ability (<i>Bestiary </i>300). On command, the wearer can increase its size, as though subject to an <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/enlargePerson.html#_enlarge-person\">enlarge person</a></i> spell, and can revert to regular size with another command. Three times per day, as an immediate action after the pauldrons' wearer kills an opponent, the wearer gains the benefit of the <i><a href=\"http://paizo.com/pathfinderRPG/prd/ultimateCombat/spells/deadlyJuggernaut.html#_deadly-juggernaut\">deadly juggernaut</a></i> spell for 1 minute.",
+        "Description": "These massive pauldrons take the shape of a pair of clenched fists made of beaten bronze. They bestow a +4 bonus on CMD, and grant the wearer the ferocity ability (Bestiary 300). On command, the wearer can increase its size, as though subject to an enlarge person spell, and can revert to regular size with another command. Three times per day, as an immediate action after the pauldrons' wearer kills an opponent, the wearer gains the benefit of the deadly juggernaut spell for 1 minute.",
         "Source": "Ultimate Equipment",
         "id": "juggernaut-s-pauldrons"
     },
@@ -539,7 +539,7 @@
         "Cost": 6000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, beast shape II",
-        "Description": "Made from a single male lion's coat with the mane surrounding its hood, the <i>lion cloak</i> is an impressive sight. A creature wearing the cloak gains a +2 resistance bonus on saving throws made against mind-affecting and fear effects and a +2 circumstance bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/intimidate.html#_intimidate\">Intimidate</a> checks. Once per day, the wearer can pull the hood over her head, assuming the form of a lion (as the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/beastShape.html#_beast-shape-ii\">beast shape II</a></i> spell, except that it allows only lion form) for up to 10 minutes. If the wearer has the smite class feature, she can use this power more than once per day by expending uses of her smite; at most she can take the lion form as many times as she has smites plus one additional time. While in this lion form the wearer cannot use its normal smite ability.",
+        "Description": "Made from a single male lion's coat with the mane surrounding its hood, the lion cloak is an impressive sight. A creature wearing the cloak gains a +2 resistance bonus on saving throws made against mind-affecting and fear effects and a +2 circumstance bonus on Intimidate checks. Once per day, the wearer can pull the hood over her head, assuming the form of a lion (as the beast shape II spell, except that it allows only lion form) for up to 10 minutes. If the wearer has the smite class feature, she can use this power more than once per day by expending uses of her smite; at most she can take the lion form as many times as she has smites plus one additional time. While in this lion form the wearer cannot use its normal smite ability.",
         "Source": "Ultimate Equipment",
         "id": "lion-cloak"
     },
@@ -555,7 +555,7 @@
         "Cost": 6700,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, contagion",
-        "Description": "This mantle grants the wearer a +4 resistance bonus on saving throws against disease. Once per day, the wearer can flourish the cape as a swift action to surround himself with a cloud of deadly spores. Creatures adjacent to the wearer take 1d6 points of damage from the spores, plus 1d3 points of damage per round for 3 rounds as the spores grow into fuzzy green mold. After these rounds the mold becomes harmless, and can be washed away with a minute of scrubbing. The spores can be destroyed by making a DC 15 <a href=\"http://paizo.com/pathfinderRPG/prd/skills/heal.html#_heal\">Heal</a> check on an affected creature, or by effects that remove diseases. The spores are a disease effect.",
+        "Description": "This mantle grants the wearer a +4 resistance bonus on saving throws against disease. Once per day, the wearer can flourish the cape as a swift action to surround himself with a cloud of deadly spores. Creatures adjacent to the wearer take 1d6 points of damage from the spores, plus 1d3 points of damage per round for 3 rounds as the spores grow into fuzzy green mold. After these rounds the mold becomes harmless, and can be washed away with a minute of scrubbing. The spores can be destroyed by making a DC 15 Heal check on an affected creature, or by effects that remove diseases. The spores are a disease effect.",
         "Source": "Ultimate Equipment",
         "id": "mantle-of-spores"
     },
@@ -619,7 +619,7 @@
         "Cost": 5400,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, Craft Magic Arms and Armor, spectral hand",
-        "Description": "These steel and brass pauldrons feature two brass lion heads, one on each shoulder. Twice a day as an immediate action when a creature successfully makes an <a href=\"http://paizo.com/pathfinderRPG/prd/skills/acrobatics.html#_acrobatics\">Acrobatics</a> check to move through the wearer's threatened area or its space without provoking an attack of opportunity, a shadowy lion can animate from one of the pauldrons and attack that creature. The attack uses the wearer's base attack bonus + Dexterity modifier and attacks the target's touch AC. On a hit, the lion deals 2d6 points of piercing damage (×2 critical).",
+        "Description": "These steel and brass pauldrons feature two brass lion heads, one on each shoulder. Twice a day as an immediate action when a creature successfully makes an Acrobatics check to move through the wearer's threatened area or its space without provoking an attack of opportunity, a shadowy lion can animate from one of the pauldrons and attack that creature. The attack uses the wearer's base attack bonus + Dexterity modifier and attacks the target's touch AC. On a hit, the lion deals 2d6 points of piercing damage (×2 critical).",
         "Source": "Ultimate Equipment",
         "id": "pauldrons-of-the-watchful-lion"
     },
@@ -651,7 +651,7 @@
         "Cost": 750,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, prestidigitation, creator must have at least 5 ranks in Disguise",
-        "Description": "One side of this reversible gray hooded cape is exquisitely embroidered and richly decorated, while the other appears shabby and worn. On command, by passing the edge of the cloak over her face, the wearer may remove a mundane disguise (one applied with the <a href=\"http://paizo.com/pathfinderRPG/prd/skills/disguise.html#_disguise\">Disguise</a> skill) and store it in the cloak. This does not change the cloak's appearance in any way. Once a disguise is stored in the cloak, it can be reapplied to the wearer who placed it within the cloak on command, using the original result of the <a href=\"http://paizo.com/pathfinderRPG/prd/skills/disguise.html#_disguise\">Disguise</a> check. The cloak can store up to three disguises at once, and any wearer of the cloak can discard any number of disguises within the cloak as a free action.",
+        "Description": "One side of this reversible gray hooded cape is exquisitely embroidered and richly decorated, while the other appears shabby and worn. On command, by passing the edge of the cloak over her face, the wearer may remove a mundane disguise (one applied with the Disguise skill) and store it in the cloak. This does not change the cloak's appearance in any way. Once a disguise is stored in the cloak, it can be reapplied to the wearer who placed it within the cloak on command, using the original result of the Disguise check. The cloak can store up to three disguises at once, and any wearer of the cloak can discard any number of disguises within the cloak as a free action.",
         "Source": "Ultimate Equipment",
         "id": "quickchange-cloak"
     },
@@ -667,7 +667,7 @@
         "Cost": 3000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, fins to feet",
-        "Description": "This shawl of delicate lace can be activated once per day to grant the benefits of the <i>fins to feet</i> spell, transforming the wearer's lower fins or appendages into feet whenever he is on dry land—unless dismissed, this effect lasts for 5 hours.",
+        "Description": "This shawl of delicate lace can be activated once per day to grant the benefits of the fins to feet spell, transforming the wearer's lower fins or appendages into feet whenever he is on dry land—unless dismissed, this effect lasts for 5 hours.",
         "Source": "Ultimate Equipment",
         "id": "seafoam-shawl"
     },
@@ -747,7 +747,7 @@
         "Cost": 9000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, zone of truth, creator must have 5 ranks of Sense Motive",
-        "Description": "This long stole of unrelenting black is marked on one end with golden scales and the other with the embroidered image of hooded justice. The wearer gains a +5 competence bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/senseMotive.html#_sense-motive\">Sense Motive</a> checks and can create a <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/zoneOfTruth.html#_zone-of-truth\">zone of truth</a></i> for up to 5 minutes per day; these rounds need not be consecutive.  When the wearer uses <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/detectChaos.html#_detect-chaos\">detect chaos</a>, <a href=\"http://paizo.com/pathfinderRPG/prd/spells/detectEvil.html#_detect-evil\">detect evil</a>, <a href=\"http://paizo.com/pathfinderRPG/prd/spells/detectGood.html#_detect-good\">detect good</a></i>, or <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/detectLaw.html#_detect-law\">detect law</a></i>, at the beginning of her next turn after casting she gains information as if she had concentrated for 3 full rounds. Finally, if the wearer is an inquisitor, when using her judgment she receives a bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/perception.html#_perception\">Perception</a> checks and her combat maneuver defense as if she were wielding a <i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/magicItems/weapons.html#_jurist\">jurist</a> </i>weapon.",
+        "Description": "This long stole of unrelenting black is marked on one end with golden scales and the other with the embroidered image of hooded justice. The wearer gains a +5 competence bonus on Sense Motive checks and can create a zone of truth for up to 5 minutes per day; these rounds need not be consecutive.  When the wearer uses detect chaos, detect evil, detect good, or detect law, at the beginning of her next turn after casting she gains information as if she had concentrated for 3 full rounds. Finally, if the wearer is an inquisitor, when using her judgment she receives a bonus on Perception checks and her combat maneuver defense as if she were wielding a jurist weapon.",
         "Source": "Ultimate Equipment",
         "id": "stole-of-justice"
     },
@@ -763,7 +763,7 @@
         "Cost": 10000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, stoneskin",
-        "Description": "This cloak is identical to the <i>stone cloak</i>, save that it provides DR 10/adamantine when activated.",
+        "Description": "This cloak is identical to the stone cloak, save that it provides DR 10/adamantine when activated.",
         "Source": "Ultimate Equipment",
         "id": "stone-cloak-major"
     },
@@ -779,7 +779,7 @@
         "Cost": 5000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, stone shape",
-        "Description": "This mottled gray cloak looks like granite or some other light gray stone. The wearer can pull a <i>minor stone cloak</i> tight around herself and freeze in place as a move action, which causes the cloak to harden like the stone it resembles. When she does this, the wearer can take no actions other than free actions and is denied her Dexterity bonus to AC but gains DR 5/adamantine. She also gains a +5 circumstance bonus to <a href=\"http://paizo.com/pathfinderRPG/prd/skills/stealth.html#_stealth\">Stealth</a> checks while protected in this manner. This effect can be dismissed as a free action.",
+        "Description": "This mottled gray cloak looks like granite or some other light gray stone. The wearer can pull a minor stone cloak tight around herself and freeze in place as a move action, which causes the cloak to harden like the stone it resembles. When she does this, the wearer can take no actions other than free actions and is denied her Dexterity bonus to AC but gains DR 5/adamantine. She also gains a +5 circumstance bonus to Stealth checks while protected in this manner. This effect can be dismissed as a free action.",
         "Source": "Ultimate Equipment",
         "id": "stone-cloak-minor"
     },
@@ -795,7 +795,7 @@
         "Cost": 1750,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, invisibility, obscuring mist",
-        "Description": "In rocky or mountainous areas, when this stone-gray cloak is worn with the hood drawn up around the head, the wearer gains a +5 competence bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/stealth.html#_stealth\">Stealth</a> checks. Once per day, the wearer can create an area of fog equivalent to <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/obscuringMist.html#_obscuring-mist\">obscuring mist</a></i>.",
+        "Description": "In rocky or mountainous areas, when this stone-gray cloak is worn with the hood drawn up around the head, the wearer gains a +5 competence bonus on Stealth checks. Once per day, the wearer can create an area of fog equivalent to obscuring mist.",
         "Source": "Ultimate Equipment",
         "id": "stonemist-cloak"
     },
@@ -811,7 +811,7 @@
         "Cost": 7000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, polymorph self",
-        "Description": "Subtle, indefinable shapes ripple and flow when this deep blue cloak moves, seemingly devouring any light falling upon it. Once per day at the wearer's command, two large gray tentacles emerge from the cloak near the shoulders. Each tentacle can make a natural attack that deals 1d6 points of bludgeoning damage, assuming the wear is Medium (the damage of the tentacles scales by size of the wearer as a tentacle natural attack; <i>Bestiary</i> 302). The tentacles have 10-foot reach and the grab monster special ability . In addition, the wearer gains a +4 competence bonus on grapple maneuver checks with the tentacles. The tentacles last for 1 minute.",
+        "Description": "Subtle, indefinable shapes ripple and flow when this deep blue cloak moves, seemingly devouring any light falling upon it. Once per day at the wearer's command, two large gray tentacles emerge from the cloak near the shoulders. Each tentacle can make a natural attack that deals 1d6 points of bludgeoning damage, assuming the wear is Medium (the damage of the tentacles scales by size of the wearer as a tentacle natural attack; Bestiary 302). The tentacles have 10-foot reach and the grab monster special ability . In addition, the wearer gains a +4 competence bonus on grapple maneuver checks with the tentacles. The tentacles last for 1 minute.",
         "Source": "Ultimate Equipment",
         "id": "tentacle-cloak"
     },
@@ -827,7 +827,7 @@
         "Cost": 3000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, goodberry, tree form; Cost 2,500 gp",
-        "Description": "This long green cloak's back features an embroidered image of an ancient oak. Once per day on command, the wearer can assume the shape of a tree, as the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/treeShape.html#_tree-shape\">tree shape</a></i> spell, but can only take the form of a living tree. Furthermore, each hour the wear spends in tree form while in direct sunlight, he heals 1d6 hit points.",
+        "Description": "This long green cloak's back features an embroidered image of an ancient oak. Once per day on command, the wearer can assume the shape of a tree, as the tree shape spell, but can only take the form of a living tree. Furthermore, each hour the wear spends in tree form while in direct sunlight, he heals 1d6 hit points.",
         "Source": "Ultimate Equipment",
         "id": "treeform-cloak"
     },
@@ -843,7 +843,7 @@
         "Cost": 27000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, fly",
-        "Description": "A pair of these wings might appear to be nothing more than a plain cloak of old, black cloth, or they could be as elegant as a long cape of blue feathers. When the wearer speaks the command word, the cloak turns into a pair of bat or bird wings that empower her to fly with a speed of 60 feet (average maneuverability), also granting a +5 competence bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/fly.html#_fly\">Fly</a> skill checks.",
+        "Description": "A pair of these wings might appear to be nothing more than a plain cloak of old, black cloth, or they could be as elegant as a long cape of blue feathers. When the wearer speaks the command word, the cloak turns into a pair of bat or bird wings that empower her to fly with a speed of 60 feet (average maneuverability), also granting a +5 competence bonus on Fly skill checks.",
         "Source": "Ultimate Equipment",
         "id": "wings-of-flying"
     },
@@ -875,7 +875,7 @@
         "Cost": 39300,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, feather fall, fly, poison, resistance, creator must be at least caster level 12",
-        "Description": "This heavy cloak is made of blue scaled leather and has a pointed hem that hangs near the ground. The cloak provides the wearer a +4 resistance bonus on Will saves, a continuous <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/featherFall.html#_feather-fall\">feather fall</a></i> effect (as the spell), and the ability to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/fly.html\">fly</a></i> once per day. At will as a swift action, the wearer can form the hem into a stinger, granting her a sting natural weapon. This sting deals 1d6 points of damage plus <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/poison.html#_poison\">poison</a></i> (as the spell; DC 16). Reverting the stinger to its normal, inconspicuous shape is a free action.",
+        "Description": "This heavy cloak is made of blue scaled leather and has a pointed hem that hangs near the ground. The cloak provides the wearer a +4 resistance bonus on Will saves, a continuous feather fall effect (as the spell), and the ability to use fly once per day. At will as a swift action, the wearer can form the hem into a stinger, granting her a sting natural weapon. This sting deals 1d6 points of damage plus poison (as the spell; DC 16). Reverting the stinger to its normal, inconspicuous shape is a free action.",
         "Source": "Ultimate Equipment",
         "id": "wyvern-cloak"
     }
