@@ -43,7 +43,12 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
                 });
             }
 
-            $scope.$watchCollection("[currentPage, type]", function () {
+            $scope.$watch("type", function () {
+                $scope.currentPage = 1;
+                refreshFeats();
+            });
+
+            $scope.$watch("currentPage", function () {
                 if ($scope.currentPage < 9) {
                     $scope.maxSize = 5;
                 }
@@ -63,6 +68,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
             $scope.$watch('featNameSubstring', function (featNameSubstring) {
                 $timeout(function () {
                     if (featNameSubstring === $scope.featNameSubstring) {
+                        $scope.currentPage = 1;
                         refreshFeats();
                     }
                 }, 300);

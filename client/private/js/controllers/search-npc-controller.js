@@ -25,7 +25,12 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 $scope.selectedNpcId = $routeParams.npcId|| $routeParams.userNpcId || $routeParams.detailsId;
             });
 
-            $scope.$watchCollection("[sortBy, currentPage, class]", function () {
+            $scope.$watchCollection("[sortBy, class]", function () {
+                $scope.currentPage = 1;
+                $scope.refreshNpcs();
+            });
+
+            $scope.$watch("currentPage", function () {
                 if ($scope.currentPage < 9) {
                     $scope.maxSize = 5;
                 }
@@ -37,16 +42,20 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 }
                 $scope.refreshNpcs();
             });
+
             $scope.$watch('userCreated', function (value) {
                 $timeout(function () {
                     if (value === $scope.userCreated) {
+                        $scope.currentPage = 1;
                         $scope.refreshNpcs();
                     }
                 }, 300);
             });
+
             $scope.$watch('nameSubstring', function (search_string) {
                 $timeout(function () {
                     if (search_string === $scope.nameSubstring) {
+                        $scope.currentPage = 1;
                         $scope.refreshNpcs();
                     }
                 }, 300);
@@ -55,6 +64,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             $scope.$watchCollection("[minCR, maxCR]", function (crRange) {
                 $timeout(function () {
                     if (crRange[0] === $scope.minCR && crRange[1] === $scope.maxCR) {
+                        $scope.currentPage = 1;
                         $scope.refreshNpcs();
                     }
                 }, 300);

@@ -54,7 +54,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
                 });
             }
 
-            $scope.$watchCollection("[sortOrder, group, slot, currentPage, includeEnchanted]", function () {
+            $scope.$watch("currentPage", function () {
                 if ($scope.currentPage < 9) {
                     $scope.maxSize = 5;
                 }
@@ -67,9 +67,15 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
                 refreshItems();
             });
 
+            $scope.$watchCollection("[sortOrder, group, slot, includeEnchanted]", function () {
+                $scope.currentPage = 1;
+                refreshItems();
+            });
+
             $scope.$watch('itemNameSubstring', function (itemNameSubstring) {
                 $timeout(function () {
                     if (itemNameSubstring === $scope.itemNameSubstring) {
+                        $scope.currentPage = 1;
                         refreshItems();
                     }
                 }, 300);
@@ -78,6 +84,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
             $scope.$watchCollection("[minCL, maxCL]", function (clRange) {
                 $timeout(function () {
                     if (clRange[0] === $scope.minCL && clRange[1] === $scope.maxCL) {
+                        $scope.currentPage = 1;
                         refreshItems();
                     }
                 }, 300);

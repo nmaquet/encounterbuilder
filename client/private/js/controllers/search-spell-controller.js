@@ -49,7 +49,12 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
                 });
             }
 
-            $scope.$watchCollection("[sortBy, currentPage,class]", function () {
+            $scope.$watchCollection("[sortBy,class]", function () {
+                $scope.currentPage = 1;
+                refreshSpells();
+            });
+
+            $scope.$watch("currentPage", function () {
                 if ($scope.currentPage < 9) {
                     $scope.maxSize = 5;
                 }
@@ -70,6 +75,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
             $scope.$watch('spellNameSubstring', function (spellNameSubstring) {
                 $timeout(function () {
                     if (spellNameSubstring === $scope.spellNameSubstring) {
+                        $scope.currentPage = 1;
                         refreshSpells();
                     }
                 }, 300);
@@ -78,6 +84,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
             $scope.$watchCollection("[minLevel, maxLevel]", function (levelRange) {
                 $timeout(function () {
                     if (levelRange[0] === $scope.minLevel && levelRange[1] === $scope.maxLevel) {
+                        $scope.currentPage = 1;
                         refreshSpells();
                     }
                 }, 300);

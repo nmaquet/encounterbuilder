@@ -27,7 +27,12 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                 $scope.selectedMonsterId = $routeParams.monsterId || $routeParams.userMonsterId || $routeParams.detailsId;
             });
 
-            $scope.$watchCollection("[orderProp, type, currentPage]", function () {
+            $scope.$watchCollection("[orderProp, type]", function () {
+                $scope.currentPage = 1;
+                $scope.refreshMonsters();
+            });
+
+            $scope.$watch("currentPage", function () {
                 if ($scope.currentPage < 9) {
                     $scope.maxSize = 5;
                 }
@@ -43,6 +48,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             $scope.$watch('nameSubstring', function (search_string) {
                 $timeout(function () {
                     if (search_string === $scope.nameSubstring) {
+                        $scope.currentPage = 1;
                         $scope.refreshMonsters();
                     }
                 }, 300);
@@ -50,6 +56,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             $scope.$watch('userCreated', function (value) {
                 $timeout(function () {
                     if (value === $scope.userCreated) {
+                        $scope.currentPage = 1;
                         $scope.refreshMonsters();
                     }
                 }, 300);
@@ -58,6 +65,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             $scope.$watchCollection("[minCR, maxCR]", function (crRange) {
                 $timeout(function () {
                     if (crRange[0] === $scope.minCR && crRange[1] === $scope.maxCR) {
+                        $scope.currentPage = 1;
                         $scope.refreshMonsters();
                     }
                 }, 300);
