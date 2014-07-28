@@ -10,18 +10,16 @@ var html = fs.readFileSync(__dirname + '/../data/prd_fixed_html/wondrous_neck_de
 var $ = cheerio.load(html);
 
 var elementWithID = function (index) {
-    return this.attr("id") !== undefined;
+    return $(this).attr("id") !== undefined;
 };
 
 var items = [];
 
-
-
 var processParagraphWithID = function (index) {
-    var name = [this.text().trim()];
+    var name = [$(this).text().trim()];
     console.log("parsing "  +name );
 
-    var firstParagraph = this.next();
+    var firstParagraph = $(this).next();
     expect(firstParagraph.hasClass("stat-block-1")).to.be.true;
     var priceAuraCLWeight = firstParagraph.text().split(";");
     var price = [/Price (.*)/.exec(priceAuraCLWeight[0])[1]];
@@ -55,7 +53,7 @@ var processParagraphWithID = function (index) {
 
     var p = firstDescriptionParagraph;
     while (!p.hasClass("stat-block-breaker")) {
-        description += p.html();
+        description += p.text();
         p = p.next();
     }
 
