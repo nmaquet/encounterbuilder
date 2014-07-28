@@ -11,7 +11,7 @@
         "Cost": 900,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, summon instrument",
-        "Description": "This well-made leather vest bears numerous shiny metal buttons, which stud a number of bulging  pockets. Once per day, as a standard action, the wearer can speak the vest's command word and order it to bring forth all the standard tools required to make checks for any one <a href=\"http://paizo.com/pathfinderRPG/prd/skills/craft.html#_craft\">Craft</a> skill. These tools appear in the countless pockets of the vest or, if too heavy, on the floor, on a nearby shelf, on a workbench, or in a toolbox or cupboard that appears nearby. Once summoned, they remain for 24 hours or until another creature touches them, whichever comes first.",
+        "Description": "This well-made leather vest bears numerous shiny metal buttons, which stud a number of bulging  pockets. Once per day, as a standard action, the wearer can speak the vest's command word and order it to bring forth all the standard tools required to make checks for any one Craft skill. These tools appear in the countless pockets of the vest or, if too heavy, on the floor, on a nearby shelf, on a workbench, or in a toolbox or cupboard that appears nearby. Once summoned, they remain for 24 hours or until another creature touches them, whichever comes first.",
         "Source": "Ultimate Equipment",
         "id": "all-tools-vest"
     },
@@ -27,7 +27,7 @@
         "Cost": 100,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, cure light wounds, lesser restoration, stabilize",
-        "Description": "These linen bandages have the same color and softness as the feathers of a dove, but their antiseptic smell suggests a less natural origin. Any creature wrapped in these bandages recovers from wounds and ability damage each day as if receiving complete bed rest, regardless of activity . A creature actually receiving long-term care (from the <a href=\"http://paizo.com/pathfinderRPG/prd/skills/heal.html#_heal\">Heal</a> skill) or complete bed rest while wearing the bandages gains a +4 bonus to its effective level or Hit Dice when determining how many hit points it recovers each day. The bandages are destroyed once removed or when the wearer recovers all hit points and ability damage, whichever comes first.",
+        "Description": "These linen bandages have the same color and softness as the feathers of a dove, but their antiseptic smell suggests a less natural origin. Any creature wrapped in these bandages recovers from wounds and ability damage each day as if receiving complete bed rest, regardless of activity . A creature actually receiving long-term care (from the Heal skill) or complete bed rest while wearing the bandages gains a +4 bonus to its effective level or Hit Dice when determining how many hit points it recovers each day. The bandages are destroyed once removed or when the wearer recovers all hit points and ability damage, whichever comes first.",
         "Source": "Ultimate Equipment",
         "id": "bandages-of-rapid-recovery"
     },
@@ -59,7 +59,7 @@
         "Cost": 3000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, hideous laughter or the cackle hex, creator must have 5 ranks in Intimidate",
-        "Description": "This loose-fitting blouse is adorned with grotesque fetishes and trophies, granting the wearer a +2 competence bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/intimidate.html#_intimidate\">Intimidate</a> checks. If the wearer is a witch, she gains the cackle hex. If the wearer already has the cackle hex, twice per day she can use her cackle ability as a swift action instead of a move action.",
+        "Description": "This loose-fitting blouse is adorned with grotesque fetishes and trophies, granting the wearer a +2 competence bonus on Intimidate checks. If the wearer is a witch, she gains the cackle hex. If the wearer already has the cackle hex, twice per day she can use her cackle ability as a swift action instead of a move action.",
         "Source": "Ultimate Equipment",
         "id": "cackling-hag-s-blouse"
     },
@@ -75,7 +75,7 @@
         "Cost": 3000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, death knell, true strike",
-        "Description": "This rough vest of black snakeskin is decorated with a fringe of rawhide tassels, each knotted around a bit of bone or a small animal skull. A gunslinger with the deadeye deed reduces the grit point cost to use that deed by 1 (minimum 1 grit).In addition, once per day when the wearer reduces a creature to 0 or fewer hit points with a firearm she can use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/deathKnell.html#_death-knell\">death knell</a></i> (Will DC 13 negates) against that target as a swift action. She does not have to touch the target to activate this ability, but her range increment penalty for shooting the target also applies to the saving throw DC of the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/deathKnell.html#_death-knell\">death knell</a></i> (for example, if the range increment penalty is –2, the DC is 11).",
+        "Description": "This rough vest of black snakeskin is decorated with a fringe of rawhide tassels, each knotted around a bit of bone or a small animal skull. A gunslinger with the deadeye deed reduces the grit point cost to use that deed by 1 (minimum 1 grit).In addition, once per day when the wearer reduces a creature to 0 or fewer hit points with a firearm she can use death knell (Will DC 13 negates) against that target as a swift action. She does not have to touch the target to activate this ability, but her range increment penalty for shooting the target also applies to the saving throw DC of the death knell (for example, if the range increment penalty is –2, the DC is 11).",
         "Source": "Ultimate Equipment",
         "id": "deadshot-vest"
     },
@@ -91,7 +91,7 @@
         "Cost": 750,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, secret chest",
-        "Description": "Small loops sewn into this bandolier look like they can hold  twenty alchemical cartridges (ammunition for a firearm, see <i>Ultimate Combat</i>), but due to a subtle bending of space can actually hold up to 60 cartridges. Additionally, the six thin pockets on the bandolier are extradimensional spaces meant to hold extra guns and gear. The four small pockets can each hold a one-handed firearm, 1 pound of ammunition, a powder horn, or a similarly sized object. The two large pockets are large enough to hold a two-handed firearm or a similarly sized object. The wearer can draw an item stored in the bandolier as easily as if from an ordinary ammunition pouch or holster. The bandolier weighs the same no matter what is placed inside it.",
+        "Description": "Small loops sewn into this bandolier look like they can hold  twenty alchemical cartridges (ammunition for a firearm, see Ultimate Combat), but due to a subtle bending of space can actually hold up to 60 cartridges. Additionally, the six thin pockets on the bandolier are extradimensional spaces meant to hold extra guns and gear. The four small pockets can each hold a one-handed firearm, 1 pound of ammunition, a powder horn, or a similarly sized object. The two large pockets are large enough to hold a two-handed firearm or a similarly sized object. The wearer can draw an item stored in the bandolier as easily as if from an ordinary ammunition pouch or holster. The bandolier weighs the same no matter what is placed inside it.",
         "Source": "Ultimate Equipment",
         "id": "endless-bandolier"
     },
@@ -171,7 +171,7 @@
         "Cost": 29000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, major creation, poison",
-        "Description": "This jacket has the abilities of a <i>lesser poisoner's jacket</i>, and once per day the wearer can create a vial that reproduces the effect of any poison in the <i>Core Rulebook</i> that costs 4,000 gp or less. The jacket's poison always looks like a murky lime fluid. This poison becomes inert after 1 hour.",
+        "Description": "This jacket has the abilities of a lesser poisoner's jacket, and once per day the wearer can create a vial that reproduces the effect of any poison in the Core Rulebook that costs 4,000 gp or less. The jacket's poison always looks like a murky lime fluid. This poison becomes inert after 1 hour.",
         "Source": "Ultimate Equipment",
         "id": "poisoner-s-jacket-greater"
     },
@@ -187,7 +187,7 @@
         "Cost": 6000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, minor creation, poison",
-        "Description": "Three times per day, the wearer of this dark jacket can create a vial containing one dose of any poison from the <i>Core Rulebook</i> that costs 300 gp or less. The jacket's poison always looks like a murky amber fluid. This poison becomes inert after 1 hour.",
+        "Description": "Three times per day, the wearer of this dark jacket can create a vial containing one dose of any poison from the Core Rulebook that costs 300 gp or less. The jacket's poison always looks like a murky amber fluid. This poison becomes inert after 1 hour.",
         "Source": "Ultimate Equipment",
         "id": "poisoner-s-jacket-lesser"
     },
@@ -203,7 +203,7 @@
         "Cost": 3000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, divination, guidance",
-        "Description": "The sacred stones, graven star-patterns, and wisdom-writings of the ancients on this chestplate increase the wearer's chance of success with <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/augury.html#_augury\">augury</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/divination.html#_divination\">divination</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/contactOtherPlane.html#_contact-other-plane\">contact other plane</a>.</i> The wearer adds 1d6 to the d% roll each time she uses such a spell. When casting <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/commune.html#_commune\">commune</a></i> or <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/communeWithNature.html#_commune-with-nature\">commune with nature</a></i>, the wearer may ask one additional question or gain one additional piece of information.",
+        "Description": "The sacred stones, graven star-patterns, and wisdom-writings of the ancients on this chestplate increase the wearer's chance of success with augury, divination, and contact other plane. The wearer adds 1d6 to the d% roll each time she uses such a spell. When casting commune or commune with nature, the wearer may ask one additional question or gain one additional piece of information.",
         "Source": "Ultimate Equipment",
         "id": "prophet-s-pectoral"
     },
@@ -299,7 +299,7 @@
         "Cost": 4000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, cat's grace, delay poison",
-        "Description": "A <i>snakeskin tunic</i> is a tight, form-fitting shirt crafted from the scales of a giant snake. When worn, it grants a +1 armor bonus to AC, a +2 enhancement bonus to Dexterity, and a +2 resistance bonus on saving throws against poison.",
+        "Description": "A snakeskin tunic is a tight, form-fitting shirt crafted from the scales of a giant snake. When worn, it grants a +1 armor bonus to AC, a +2 enhancement bonus to Dexterity, and a +2 resistance bonus on saving throws against poison.",
         "Source": "Ultimate Equipment",
         "id": "snakeskin-tunic"
     },
@@ -315,7 +315,7 @@
         "Cost": 13000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, hide from undead, see invisibility",
-        "Description": "This thin, bleached cloth covers the wearer's entire torso. Some also cover the wearer's face, but don't interfere with the wearer's vision. The morbid burial shroud grants the wearer some affinity with the spectral dead. The wearer can discern invisible or ethereal creatures as though using <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/seeInvisibility.html#_see-invisibility\">see invisibility</a></i>. Once per day, the wearer can become incorporeal for 10 rounds and gain a fly speed equal to half his base speed with perfect maneuverability. The wearer can't attack while incorporeal, but can dismiss the effect as a move action.",
+        "Description": "This thin, bleached cloth covers the wearer's entire torso. Some also cover the wearer's face, but don't interfere with the wearer's vision. The morbid burial shroud grants the wearer some affinity with the spectral dead. The wearer can discern invisible or ethereal creatures as though using see invisibility. Once per day, the wearer can become incorporeal for 10 rounds and gain a fly speed equal to half his base speed with perfect maneuverability. The wearer can't attack while incorporeal, but can dismiss the effect as a move action.",
         "Source": "Ultimate Equipment",
         "id": "spectral-shroud"
     },
@@ -347,7 +347,7 @@
         "Cost": 3000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, blindness/deafness, mage armor",
-        "Description": "This tunic is crafted from golden thread, and has silver-hemmed sleeves. The wearer gains a +2 bonus to Combat Maneuver Defense against disarm and sunder combat maneuvers. If the wearer is a samurai, twice per day as a swift action he can apply the effects of the <i><a href=\"http://paizo.com/pathfinderRPG/prd/magicItems/weapons.html#_thundering\">thundering</a></i> weapon special ability  to a successful critical hit against the target of his challenge.",
+        "Description": "This tunic is crafted from golden thread, and has silver-hemmed sleeves. The wearer gains a +2 bonus to Combat Maneuver Defense against disarm and sunder combat maneuvers. If the wearer is a samurai, twice per day as a swift action he can apply the effects of the thundering weapon special ability  to a successful critical hit against the target of his challenge.",
         "Source": "Ultimate Equipment",
         "id": "tunic-of-deadly-might"
     },
@@ -363,7 +363,7 @@
         "Cost": 5000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, cat's grace, freedom of movement",
-        "Description": "This loose, often ruffled, shirt is cut in a style designed to avoid hindering its wearer's movement.Once per day on command, the wearer can gain the benefits of <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/freedomOfMovement.html#_freedom-of-movement\">freedom of movement</a></i> for 10 minutes.",
+        "Description": "This loose, often ruffled, shirt is cut in a style designed to avoid hindering its wearer's movement.Once per day on command, the wearer can gain the benefits of freedom of movement for 10 minutes.",
         "Source": "Ultimate Equipment",
         "id": "unfettered-shirt"
     },
@@ -379,7 +379,7 @@
         "Cost": 2600,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, knock, grease",
-        "Description": "This simple silk vest looks nondescript, but is actually studded with numerous secret pockets sewn into its lining. Hidden inside these are magic lockpicks that provide a +4 competence bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/disableDevice.html#_disable-device\">Disable Device</a> checks. The vest also grants its wearer a +6 competence bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/escapeArtist.html#_escape-artist\">Escape Artist</a> checks.",
+        "Description": "This simple silk vest looks nondescript, but is actually studded with numerous secret pockets sewn into its lining. Hidden inside these are magic lockpicks that provide a +4 competence bonus on Disable Device checks. The vest also grants its wearer a +6 competence bonus on Escape Artist checks.",
         "Source": "Ultimate Equipment",
         "id": "vest-of-escape"
     },
@@ -411,7 +411,7 @@
         "Cost": 1500,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, lesser restoration, creator must have 5 ranks in Heal",
-        "Description": "This emerald vest has four prominent and bulging pockets along its front. The wearer is always treated as if using a healer's kit when making <a href=\"http://paizo.com/pathfinderRPG/prd/skills/heal.html#_heal\">Heal</a> checks . Once per day, the wearer can make a DC 20 <a href=\"http://paizo.com/pathfinderRPG/prd/skills/heal.html#_heal\">Heal</a> check as if attempting to treat deadly wounds. If the check is successful, it cures 1d4 points of ability damage instead of hit point damage.",
+        "Description": "This emerald vest has four prominent and bulging pockets along its front. The wearer is always treated as if using a healer's kit when making Heal checks . Once per day, the wearer can make a DC 20 Heal check as if attempting to treat deadly wounds. If the check is successful, it cures 1d4 points of ability damage instead of hit point damage.",
         "Source": "Ultimate Equipment",
         "id": "vest-of-surgery"
     },
