@@ -88,7 +88,7 @@ for (var i in srd_items) {
     // compareWithKyleItems(eb_item, srd_items[i].id);
 }
 
-fs.writeFileSync('../data/items/magic-items.json', JSON.stringify(eb_items));
+fs.writeFileSync('../data/items/magic-items.json', JSON.stringify(eb_items, null, 4));
 
 console.log('done');
 
