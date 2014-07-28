@@ -215,9 +215,20 @@ command("remove <username>", "remove a user", function (userService, db, usernam
     });
 });
 
+command("validate <username>", "validate a user's email address", function (userService, db, username) {
+    userService.update(username, {emailValidated: true}, function (error, user) {
+        if (error) {
+            console.log("error updating user : " + error.message);
+            return db.close();
+        }
+        console.log("validate successful");
+        db.close();
+    });
+});
+
 program.parse(process.argv);
 
-var COMMANDS = ["list", "show", "update", "passwd", "auth", "register", "remove"];
+var COMMANDS = ["list", "show", "update", "passwd", "auth", "register", "remove", "validate"];
 
 if (program.args.length === 0 || COMMANDS.indexOf(program.rawArgs[2]) < 0) {
     program.help();
