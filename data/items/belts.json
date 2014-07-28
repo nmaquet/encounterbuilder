@@ -27,7 +27,7 @@
         "Cost": 1300,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, touch of the sea",
-        "Description": "Long believed to have been gnome in origin, this stately cummerbund features a number of dancing dolphins embroidered on its deep blue material. The cummerbund grants its wearer a +4 competence bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/swim.html#_swim\">Swim</a> checks, and allows her to take 10 on such checks even if distracted or endangered.",
+        "Description": "Long believed to have been gnome in origin, this stately cummerbund features a number of dancing dolphins embroidered on its deep blue material. The cummerbund grants its wearer a +4 competence bonus on Swim checks, and allows her to take 10 on such checks even if distracted or endangered.",
         "Source": "Ultimate Equipment",
         "id": "aquatic-cummerbund"
     },
@@ -75,7 +75,7 @@
         "Cost": 10500,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, divine favor, unseen servant",
-        "Description": "This large brass belt has three panels depicting scenes of battle. Once per day on command, the wearer can summon the spirit of a hero of one of the depicted battles. This spirit acts as an <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/unseenServant.html#_unseen-servant\">unseen servant</a></i>, though unlike the force created by that spell, the summoned hero is not entirely mindless<i>.</i> While the summoned hero is active, it attempts to guide its wearer to victory via telepathic warning and advice, granting its user a +1 insight bonus on all saving throws.",
+        "Description": "This large brass belt has three panels depicting scenes of battle. Once per day on command, the wearer can summon the spirit of a hero of one of the depicted battles. This spirit acts as an unseen servant, though unlike the force created by that spell, the summoned hero is not entirely mindless. While the summoned hero is active, it attempts to guide its wearer to victory via telepathic warning and advice, granting its user a +1 insight bonus on all saving throws.",
         "Source": "Ultimate Equipment",
         "id": "belt-of-fallen-heroes"
     },
@@ -91,7 +91,7 @@
         "Cost": 3000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, detect animals and plants, creator must have 1 rank in Survival",
-        "Description": "This belt allows its wearer to easily forage while in the wilderness. As long as the wearer of this belt has at least 1 rank in <a href=\"http://paizo.com/pathfinderRPG/prd/skills/survival.html#_survival\">Survival</a>, she need not make a check to get along in the wild; she always succeeds at that <a href=\"http://paizo.com/pathfinderRPG/prd/skills/survival.html#_survival\">Survival</a> check as long as she moves at half her overland speed. She can still choose to make that check to provide food and water for one other creature for every 2 points by which her result exceeds DC 10. Furthermore, she can instead make a DC 20 <a href=\"http://paizo.com/pathfinderRPG/prd/skills/survival.html#_survival\">Survival</a> check to get along in the wild while moving at full speed instead of half speed. While doing so, she can provide food and water for one other creature for every 2 points by which his check result exceeds 20.",
+        "Description": "This belt allows its wearer to easily forage while in the wilderness. As long as the wearer of this belt has at least 1 rank in Survival, she need not make a check to get along in the wild; she always succeeds at that Survival check as long as she moves at half her overland speed. She can still choose to make that check to provide food and water for one other creature for every 2 points by which her result exceeds DC 10. Furthermore, she can instead make a DC 20 Survival check to get along in the wild while moving at full speed instead of half speed. While doing so, she can provide food and water for one other creature for every 2 points by which his check result exceeds 20.",
         "Source": "Ultimate Equipment",
         "id": "belt-of-foraging"
     },
@@ -251,7 +251,7 @@
         "Cost": 21000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, bull's strength, longshot, returning weapon",
-        "Description": "This item functions as the <i>lesser belt of mighty hurling</i>, except it grants a +4 enhancement bonus to Strength and any thrown weapons its wearer hurls are treated as though they had the <i><a href=\"http://paizo.com/pathfinderRPG/prd/magicItems/weapons.html#_weapons-returning\">returning</a></i> quality. This does not apply to improvised ranged weapons, splash weapons, or weapons the wearer lacks proficiency with. Treat the bonus to Strength as a temporary ability bonus for the first 24 hours the belt is worn.",
+        "Description": "This item functions as the lesser belt of mighty hurling, except it grants a +4 enhancement bonus to Strength and any thrown weapons its wearer hurls are treated as though they had the returning quality. This does not apply to improvised ranged weapons, splash weapons, or weapons the wearer lacks proficiency with. Treat the bonus to Strength as a temporary ability bonus for the first 24 hours the belt is worn.",
         "Source": "Ultimate Equipment",
         "id": "belt-of-mighty-hurling-greater"
     },
@@ -395,7 +395,7 @@
         "Cost": 2000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, magic fang",
-        "Description": "The brass buckle on this stout leather belt is fashioned to resemble three demonic faces. Once each round, this belt's buckle can animate, lashing out at a creature that provokes an attack of opportunity within 5 feet. This attack uses its wearer's base attack bonus and Strength modifier, with a +4 competence bonus. It deals damage as a bite attack made by a creature of its wearer's size (1d6 for a Medium wearer; see Table 3—1: Natural Attacks by Size, <i>Bestiary</i> 302) plus the wearer's Strength modifier. This belt does not add to the normal number of attacks the wearer can make in a round; it offers another way in which to make attacks of opportunity.",
+        "Description": "The brass buckle on this stout leather belt is fashioned to resemble three demonic faces. Once each round, this belt's buckle can animate, lashing out at a creature that provokes an attack of opportunity within 5 feet. This attack uses its wearer's base attack bonus and Strength modifier, with a +4 competence bonus. It deals damage as a bite attack made by a creature of its wearer's size (1d6 for a Medium wearer; see Table 3—1: Natural Attacks by Size, Bestiary 302) plus the wearer's Strength modifier. This belt does not add to the normal number of attacks the wearer can make in a round; it offers another way in which to make attacks of opportunity.",
         "Source": "Ultimate Equipment",
         "id": "belt-of-teeth"
     },
@@ -443,7 +443,7 @@
         "Cost": 400,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, cat's grace",
-        "Description": "This thin and flexible cotton cord is meant to be wrapped several times around wearer's waist. The belt's wearer gains a +4 competence bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/acrobatics.html#_acrobatics\">Acrobatics</a> checks made to move through a threatened square or through an enemy's space.",
+        "Description": "This thin and flexible cotton cord is meant to be wrapped several times around wearer's waist. The belt's wearer gains a +4 competence bonus on Acrobatics checks made to move through a threatened square or through an enemy's space.",
         "Source": "Ultimate Equipment",
         "id": "belt-of-tumbling"
     },
@@ -459,7 +459,7 @@
         "Cost": 500,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, secret chest",
-        "Description": "This bandolier is made of finely tanned leather. It has slots for up to 200 rounds of ammunition. Pellets and black powder are kept in tiny individual pouches, and bullets in small loops. The bandolier alters itself as needed to accommodate both. There are also places on the <i>beneficial bandolier</i> for a gunsmith's kit and a powder horn. Regardless of what quantities of these items are placed within the <i>beneficial bandolier</i>, its weight does not change.As a swift action, the wearer can command a single round of ammunition from the <i>beneficial bandolier</i> to teleport into a firearm of the appropriate type that he is wielding.",
+        "Description": "This bandolier is made of finely tanned leather. It has slots for up to 200 rounds of ammunition. Pellets and black powder are kept in tiny individual pouches, and bullets in small loops. The bandolier alters itself as needed to accommodate both. There are also places on the beneficial bandolier for a gunsmith's kit and a powder horn. Regardless of what quantities of these items are placed within the beneficial bandolier, its weight does not change.As a swift action, the wearer can command a single round of ammunition from the beneficial bandolier to teleport into a firearm of the appropriate type that he is wielding.",
         "Source": "Ultimate Equipment",
         "id": "beneficial-bandolier"
     },
@@ -523,7 +523,7 @@
         "Cost": 12000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, bear's endurance, elemental body III",
-        "Description": "This belt is constructed of flat pieces of slate connected with strong leather straps. This belt grants its wearer a +4 enhancement bonus to Constitution, and the wearer is immune to effects that would push, pull, or forcefully move the wearer. This offers no protection from teleportation effects. Furthermore, once per day on command, the wearer can take the form of a Large earth elemental, and though subject to the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/elementalBody.html#_elemental-body-iii\">elemental body III</a></i> spell. Treat the enhancement bonus to Constitution as a temporary ability bonus for the first 24 hours the belt is worn.",
+        "Description": "This belt is constructed of flat pieces of slate connected with strong leather straps. This belt grants its wearer a +4 enhancement bonus to Constitution, and the wearer is immune to effects that would push, pull, or forcefully move the wearer. This offers no protection from teleportation effects. Furthermore, once per day on command, the wearer can take the form of a Large earth elemental, and though subject to the elemental body III spell. Treat the enhancement bonus to Constitution as a temporary ability bonus for the first 24 hours the belt is worn.",
         "Source": "Ultimate Equipment",
         "id": "elemental-earth-belt"
     },
@@ -539,7 +539,7 @@
         "Cost": 1600,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, cat's grace",
-        "Description": "This belt is worked with images of horses stampeding across a barren, windswept plain. The belt's wearer automatically succeeds at any check to guide with the knees, stay in the saddle, fight with a combat-trained mount, control a mount in battle, or make a fast mount or dismount, as long as the belt's wearer is wearing medium, light, or no armor. Furthermore, the belt grants a +4 competence bonus on all other <a href=\"http://paizo.com/pathfinderRPG/prd/skills/ride.html#_ride\">Ride</a> checks, including ones made while the wearer is in heavy armor. ",
+        "Description": "This belt is worked with images of horses stampeding across a barren, windswept plain. The belt's wearer automatically succeeds at any check to guide with the knees, stay in the saddle, fight with a combat-trained mount, control a mount in battle, or make a fast mount or dismount, as long as the belt's wearer is wearing medium, light, or no armor. Furthermore, the belt grants a +4 competence bonus on all other Ride checks, including ones made while the wearer is in heavy armor. ",
         "Source": "Ultimate Equipment",
         "id": "equestrian-belt"
     },
@@ -571,7 +571,7 @@
         "Cost": 1000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, ant haul",
-        "Description": "This wide leather is held together with two strands of oxen skin threaded through holes on each end. The belt's wearer is affected as though subject to a permanent <i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/antHaul.html#_ant-haul-\">ant haul</a></i> spell. ",
+        "Description": "This wide leather is held together with two strands of oxen skin threaded through holes on each end. The belt's wearer is affected as though subject to a permanent ant haul spell. ",
         "Source": "Ultimate Equipment",
         "id": "heavyload-belt"
     },
@@ -603,7 +603,7 @@
         "Cost": 500,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, polymorph",
-        "Description": "This narrow cloth belt has a silver buckle in the shape of four rings. The belt allows a creature to wear a magic ring on each foot in addition to the ring on each hand, though only two rings function at any given time. As a swift action, the wearer can change which of his rings are active (both hands, both feet, left hand and right foot, and so on). For example, a creature could wear a <i><a href=\"http://paizo.com/pathfinderRPG/prd/magicItems/rings.html#_ring-of-protection\">ring of protection</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/magicItems/rings.html#_ring-of-energy-resistance\">ring of energy resistance</a></i>, <i><a href=\"http://paizo.com/pathfinderRPG/prd/magicItems/rings.html#_ring-of-swimming\">ring of swimming</a></i>, and <i><a href=\"http://paizo.com/pathfinderRPG/prd/magicItems/rings.html#_ring-of-counterspells\">ring of counterspells</a></i>, switching between any two of them as a swift action each round as it desires.The belt does not change the type of action required to activate a ring (for example, activating a <i><a href=\"http://paizo.com/pathfinderRPG/prd/magicItems/rings.html#_ring-of-invisibility\">ring of invisibility</a></i> is still a standard action), but allows the wearer to easily switch between the constant powers of several worn rings. While the belt is worn, wearing a ring on a foot counts toward the attunement process of certain rings (such as a <i><a href=\"http://paizo.com/pathfinderRPG/prd/magicItems/rings.html#_ring-of-sustenance\">ring of sustenance</a></i>) even if the belt isn't used to make that ring active during that attunement period. ",
+        "Description": "This narrow cloth belt has a silver buckle in the shape of four rings. The belt allows a creature to wear a magic ring on each foot in addition to the ring on each hand, though only two rings function at any given time. As a swift action, the wearer can change which of his rings are active (both hands, both feet, left hand and right foot, and so on). For example, a creature could wear a ring of protection, ring of energy resistance, ring of swimming, and ring of counterspells, switching between any two of them as a swift action each round as it desires.The belt does not change the type of action required to activate a ring (for example, activating a ring of invisibility is still a standard action), but allows the wearer to easily switch between the constant powers of several worn rings. While the belt is worn, wearing a ring on a foot counts toward the attunement process of certain rings (such as a ring of sustenance) even if the belt isn't used to make that ring active during that attunement period. ",
         "Source": "Ultimate Equipment",
         "id": "meridian-belt"
     },
@@ -635,7 +635,7 @@
         "Cost": 4700,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, beast shape I, cat's grace",
-        "Description": "This furry brown belt resembles the tail of a monkey. The belt grants the wearer a +2 enhancement bonus to Dexterity. Treat this as a temporary ability bonus for the first 24 hours the belt is worn. The wearer does not lose his Dexterity bonus to AC while climbing, and does not take a –5 penalty on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/climb.html#_climb\">Climb</a> checks when climbing at half his speed. As a swift action the wearer can command the belt to animate, transforming it into a prehensile tail under the wearer's control. The tail does not grant the wearer any additional attacks or actions per round, nor can it wield weapons, but it can make unarmed attacks and hold or manipulate objects about as well as the wearer's normal limbs (though any activity requiring fingers is beyond the tail's capabilities). The belt can function as a tail for 5 minutes per day. These minutes do not need to be consecutive.",
+        "Description": "This furry brown belt resembles the tail of a monkey. The belt grants the wearer a +2 enhancement bonus to Dexterity. Treat this as a temporary ability bonus for the first 24 hours the belt is worn. The wearer does not lose his Dexterity bonus to AC while climbing, and does not take a –5 penalty on Climb checks when climbing at half his speed. As a swift action the wearer can command the belt to animate, transforming it into a prehensile tail under the wearer's control. The tail does not grant the wearer any additional attacks or actions per round, nor can it wield weapons, but it can make unarmed attacks and hold or manipulate objects about as well as the wearer's normal limbs (though any activity requiring fingers is beyond the tail's capabilities). The belt can function as a tail for 5 minutes per day. These minutes do not need to be consecutive.",
         "Source": "Ultimate Equipment",
         "id": "monkey-belt"
     },
@@ -651,7 +651,7 @@
         "Cost": 9000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, beast shape I, bull's strength, cat's grace",
-        "Description": "This belt functions as a <i>monkey belt</i>, except it grants the wearer a +2 enhancement bonus to Strength and Dexterity. Treat this as a temporary ability bonus for the first 24 hours the belt is worn.When the wearer speaks the command word to transform the belt into a prehensile tail, a <i>greater monkey belt</i> also gives the wearer a +5 circumstance bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/climb.html#_climb\">Climb</a> checks.",
+        "Description": "This belt functions as a monkey belt, except it grants the wearer a +2 enhancement bonus to Strength and Dexterity. Treat this as a temporary ability bonus for the first 24 hours the belt is worn.When the wearer speaks the command word to transform the belt into a prehensile tail, a greater monkey belt also gives the wearer a +5 circumstance bonus on Climb checks.",
         "Source": "Ultimate Equipment",
         "id": "monkey-belt-greater"
     },
@@ -683,7 +683,7 @@
         "Cost": 5600,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, bear's endurance, cat's grace, neutralize poison, remove disease",
-        "Description": "This belt functions as a <i>plague rat belt</i>, except it grants the wearer a +2 enhancement bonus to Dexterity and Constitution. Treat this as a temporary ability bonus for the first 24 hours the belt is worn.",
+        "Description": "This belt functions as a plague rat belt, except it grants the wearer a +2 enhancement bonus to Dexterity and Constitution. Treat this as a temporary ability bonus for the first 24 hours the belt is worn.",
         "Source": "Ultimate Equipment",
         "id": "plague-rat-belt-greater"
     },
@@ -699,7 +699,7 @@
         "Cost": 12500,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, Combat Expertise, Improved Unarmed Strike",
-        "Description": "If this belt's wearer has at least one hand free (holding nothing), he can attempt to deflect a successful melee attack with an immediate action. To do so, he rolls an unarmed strike against the opponent, including any applicable modifiers such as a favored enemy bonus or the penalty for <a href=\"http://paizo.com/pathfinderRPG/prd/feats.html#_power-attack\">Power Attack</a>. If his attack roll is greater than the opponent's attack roll, the attack is negated without effect. The unarmed strike itself causes no damage and does not count as a successful attack against the opponent. The opponent does not need to be within the wearer's reach to use this ability. Whether the attack succeeds or not, the wearer takes a –4 penalty on attack rolls until the end of his next turn.",
+        "Description": "If this belt's wearer has at least one hand free (holding nothing), he can attempt to deflect a successful melee attack with an immediate action. To do so, he rolls an unarmed strike against the opponent, including any applicable modifiers such as a favored enemy bonus or the penalty for Power Attack. If his attack roll is greater than the opponent's attack roll, the attack is negated without effect. The unarmed strike itself causes no damage and does not count as a successful attack against the opponent. The opponent does not need to be within the wearer's reach to use this ability. Whether the attack succeeds or not, the wearer takes a –4 penalty on attack rolls until the end of his next turn.",
         "Source": "Ultimate Equipment",
         "id": "sash-of-flowing-water"
     },
@@ -715,7 +715,7 @@
         "Cost": 6250,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, magic aura, shrink item",
-        "Description": "A <i>security belt </i>increases the DC of <a href=\"http://paizo.com/pathfinderRPG/prd/skills/sleightOfHand.html#_sleight-of-hand\">Sleight of Hand</a> checks made against the wearer and checks to locate items or weapons hidden on the wearer's person by 5. The wearer also gets a +5 bonus to CMD against the steal maneuver. Once per day on command, the wearer can touch a single item of up to 10 cubic feet and shrink it into a tiny cloth duplicate as the <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/shrinkItem.html#_shrink-item\">shrink item</a> </i>spell. With a move action, the wearer can draw one of these items from one of the belt's pockets and return it to normal size<i>. </i>It is difficult to detect a <i>security belt </i>and any items in the pockets as magic. They are affected as though a constant <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/magicAura.html#_magic-aura\">magic aura</a></i> spell were making them appear nonmagical.",
+        "Description": "A security belt increases the DC of Sleight of Hand checks made against the wearer and checks to locate items or weapons hidden on the wearer's person by 5. The wearer also gets a +5 bonus to CMD against the steal maneuver. Once per day on command, the wearer can touch a single item of up to 10 cubic feet and shrink it into a tiny cloth duplicate as the shrink item spell. With a move action, the wearer can draw one of these items from one of the belt's pockets and return it to normal size. It is difficult to detect a security belt and any items in the pockets as magic. They are affected as though a constant magic aura spell were making them appear nonmagical.",
         "Source": "Ultimate Equipment",
         "id": "security-belt"
     },
@@ -731,7 +731,7 @@
         "Cost": 4500,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, beast form I, neutralize poison, summon nature's ally II",
-        "Description": "This belt's wearer gains a +4 bonus to all poisons and a +2 bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/escapeArtist.html#_escape-artist\">Escape Artist</a> checks. In addition, once per day on command, the belt can be animated as a venomous snake or constrictor snake that obeys the animator's spoken commands for up to an hour. If the animated snake is slain or moves 100 feet away from the animator, the snake reverts into belt form. ",
+        "Description": "This belt's wearer gains a +4 bonus to all poisons and a +2 bonus on Escape Artist checks. In addition, once per day on command, the belt can be animated as a venomous snake or constrictor snake that obeys the animator's spoken commands for up to an hour. If the animated snake is slain or moves 100 feet away from the animator, the snake reverts into belt form. ",
         "Source": "Ultimate Equipment",
         "id": "serpent-belt"
     },
@@ -747,7 +747,7 @@
         "Cost": 10000,
         "CostUnit": "gp",
         "Requirements": "Craft Wondrous Item, beast form I, bull's strength, cat's grace, neutralize poison, summon monster II or summon nature's ally II",
-        "Description": "This belt functions as a <i>serpent belt</i>, except it grants the wearer a +2 enhancement bonus to Strength and Dexterity. Treat this as a temporary ability bonus for the first 24 hours the belt is worn. When the wearer animates the belt as a venomous or constrictor snake, she may speak a second command word to give the snake the advanced, celestial, entropic, fiendish, or resolute simple template. Adding a planar template changes the snake's alignment to that of the corresponding planes.",
+        "Description": "This belt functions as a serpent belt, except it grants the wearer a +2 enhancement bonus to Strength and Dexterity. Treat this as a temporary ability bonus for the first 24 hours the belt is worn. When the wearer animates the belt as a venomous or constrictor snake, she may speak a second command word to give the snake the advanced, celestial, entropic, fiendish, or resolute simple template. Adding a planar template changes the snake's alignment to that of the corresponding planes.",
         "Source": "Ultimate Equipment",
         "id": "serpent-belt-greater"
     },
