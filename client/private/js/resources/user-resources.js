@@ -3,11 +3,30 @@
 (function () {
 
     function makeUserResource(resourceSlug, $resource) {
-        return $resource("/api/" + resourceSlug + "/:id", {id: '@_id'}, {
+        var resource = $resource("/api/" + resourceSlug + "/:id", {id: '@_id'}, {
             'get': {method: 'GET'},
             'save': {method: 'POST'},
             'delete': {method: 'DELETE'}
         });
+        resource.getMultiple = function (ids, callback) {
+            function pushTask(id) {
+                tasks.push(function (taskCallback) {
+                    resource.get({id: id}, function (data) {
+                        taskCallback(null, data)
+                    }, function (error) {
+                        taskCallback(error, null)
+                    });
+                });
+            }
+
+            var tasks = [];
+            for (var i in ids) {
+                pushTask(ids[i]);
+            }
+            window.async.parallel(tasks, callback);
+        };
+        return resource
+
     }
 
     DEMONSQUID.encounterBuilderServices.factory('UserFeatResource', ['$resource', function ($resource) {

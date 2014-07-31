@@ -226,7 +226,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     userResource.name = "Untitled";
                 }
                 userResource.$save(function () {
-                    addNode({title: userResource.name||userResource.Name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey()});
+                    addNode({title: userResource.name || userResource.Name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey()});
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 });
             };
@@ -432,6 +432,10 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 var userMonsterIds = [];
                 var userNpcsIds = [];
                 var userTextIds = [];
+                var userSpellIds = [];
+                var userFeatIds = [];
+                var userItemIds = [];
+                var userIllustrationIds = [];
                 for (var i in children) {
                     if (children[i].data.encounterId) {
                         encounterIds.push(children[i].data.encounterId);
@@ -443,6 +447,18 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     }
                     else if (children[i].data.userNpcId) {
                         userNpcsIds.push(children[i].data.userNpcId);
+                    }
+                    else if (children[i].data.resourceType === "user-spell") {
+                        userSpellIds.push(children[i].data.userResourceId);
+                    }
+                    else if (children[i].data.resourceType === "user-feat") {
+                        userFeatIds.push(children[i].data.userResourceId);
+                    }
+                    else if (children[i].data.resourceType === "user-item") {
+                        userItemIds.push(children[i].data.userResourceId);
+                    }
+                    else if (children[i].data.resourceType === "user-illustration") {
+                        userIllustrationIds.push(children[i].data.userResourceId);
                     }
                 }
                 var tasks = [];
@@ -466,6 +482,18 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                         taskCallback(error, npcs);
                     });
                 });
+                tasks.push(function (taskCallback) {
+                    userResourceService["user-item"].getMultiple(userItemIds, taskCallback);
+                });
+                tasks.push(function (taskCallback) {
+                    userResourceService["user-spell"].getMultiple(userSpellIds, taskCallback);
+                });
+                tasks.push(function (taskCallback) {
+                    userResourceService["user-feat"].getMultiple(userFeatIds, taskCallback);
+                });
+                tasks.push(function (taskCallback) {
+                    userResourceService["user-illustration"].getMultiple(userIllustrationIds, taskCallback);
+                });
                 window.async.parallel(tasks, function (error, results) {
                     if (error) {
                         console.log(error);
@@ -476,6 +504,10 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                         var userTexts = results[1];
                         var monsters = results[2];
                         var npcs = results[3];
+                        var items = results[4];
+                        var spells = results[5];
+                        var feats = results[6];
+                        var illustrations = results[7];
 
                         for (var j in children) {
                             if (children[j].folder) {
@@ -484,7 +516,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                             else if (children[j].data.encounterId) {
                                 for (var k in encounters) {
                                     if (encounters[k]._id === children[j].data.encounterId) {
-                                        encounters[k].type = "encounter";
+                                        encounters[k].$type = "encounter";
                                         enrichedLeaves.push(encounters[k]);
                                         break;
                                     }
@@ -493,7 +525,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                             else if (children[j].data.userTextId) {
                                 for (var l in userTexts) {
                                     if (userTexts[l]._id === children[j].data.userTextId) {
-                                        userTexts[l].type = "userText";
+                                        userTexts[l].$type = "userText";
                                         enrichedLeaves.push(userTexts[l]);
                                         break;
                                     }
@@ -502,7 +534,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                             else if (children[j].data.userMonsterId) {
                                 for (var m in monsters) {
                                     if (monsters[m]._id === children[j].data.userMonsterId) {
-                                        monsters[m].type = "monster";
+                                        monsters[m].$type = "monster";
                                         enrichedLeaves.push(monsters[m]);
                                         break;
                                     }
@@ -511,13 +543,50 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                             else if (children[j].data.userNpcId) {
                                 for (var n in npcs) {
                                     if (npcs[n]._id === children[j].data.userNpcId) {
-                                        npcs[n].type = "npc";
+                                        npcs[n].$type = "npc";
                                         enrichedLeaves.push(npcs[n]);
                                         break;
                                     }
                                 }
                             }
+                            else if (children[j].data.resourceType === "user-item") {
+                                for (var n in items) {
+                                    if (items[n]._id === children[j].data.userResourceId) {
+                                        items[n].$type = "user-item";
+                                        enrichedLeaves.push(items[n]);
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (children[j].data.resourceType === "user-spell") {
+                                for (var n in spells) {
+                                    if (spells[n]._id === children[j].data.userResourceId) {
+                                        spells[n].$type = "user-spell";
+                                        enrichedLeaves.push(spells[n]);
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (children[j].data.resourceType === "user-feat") {
+                                for (var n in feats) {
+                                    if (feats[n]._id === children[j].data.userResourceId) {
+                                        feats[n].$type = "user-feat";
+                                        enrichedLeaves.push(feats[n]);
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (children[j].data.resourceType === "user-illustration") {
+                                for (var n in illustrations) {
+                                    if (illustrations[n]._id === children[j].data.userResourceId) {
+                                        illustrations[n].$type = "user-illustration";
+                                        enrichedLeaves.push(illustrations[n]);
+                                        break;
+                                    }
+                                }
+                            }
                         }
+                        console.log(enrichedLeaves);
                         callback(enrichedLeaves);
                     }
                 });
