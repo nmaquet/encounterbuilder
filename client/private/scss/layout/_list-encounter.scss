@@ -30,13 +30,10 @@
         color: $grey-light;
       }
     }
-    .icon-remove {
-      @include font-size(18);
-      line-height: 0;
-    }
   }
-  .binder-heading {
-    background-color: $red-transparent;
+  .icon-remove {
+    @include font-size(24);
+    line-height: 0;
   }
   .content {
     padding-top: ($grid-gutter-width/4);
