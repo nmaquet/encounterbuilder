@@ -147,25 +147,16 @@ function beta1RadioClicked() {
     $('.beta1Price').removeClass('hide');
     $('.beta2Price').addClass('hide');
     $('.launchPrice').addClass('hide');
-    $('#lifetime-col').addClass('hide');
-    $('#yearly-col').addClass('hide');
-    $('#monthly-stub-col').removeClass('hide');
 }
 
 function beta2RadioClicked() {
     $('.beta1Price').addClass('hide');
     $('.beta2Price').removeClass('hide');
     $('.launchPrice').addClass('hide');
-    $('#lifetime-col').removeClass('hide');
-    $('#yearly-col').removeClass('hide');
-    $('#monthly-stub-col').addClass('hide');
 }
 
 function launchRadioClicked() {
     $('.beta1Price').addClass('hide');
     $('.beta2Price').addClass('hide');
     $('.launchPrice').removeClass('hide');
-    $('#lifetime-col').removeClass('hide');
-    $('#yearly-col').removeClass('hide');
-    $('#monthly-stub-col').addClass('hide');
 }
