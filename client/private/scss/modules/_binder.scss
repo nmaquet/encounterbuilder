@@ -1,0 +1,110 @@
+/* ==|====================
+   Module/Tree
+   ======================= */
+
+// Binder
+.encounter-binder-container {
+//  background: rgba(0,0,0,0.5);
+  border-bottom: $white-transparent-2;
+}
+.encounter-binder {
+  padding-bottom: ($grid-gutter-width/2);
+  color: white;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  a { @include no-underline(); }
+  .icon-remove {
+    @include font-size(24);
+    line-height: 0;
+  }
+}
+.t-binder-title {
+  margin-top: 0;
+}
+.binder-content {
+  padding-top: ($grid-gutter-width/4);
+  padding-bottom: ($grid-gutter-width/4);
+}
+.binder-heading {
+  padding-top: ($grid-gutter-width/2);
+  padding-bottom: ($grid-gutter-width/2);
+  margin-bottom: ($grid-gutter-width/4);
+  background-color: $red-transparent;
+  a { color: white; }
+  .icon-edit {
+    color: $grey;
+    @include font-size(14);
+    &:hover {
+      color: $grey-light;
+    }
+  }
+}
+.leaves {
+  overflow: hidden;
+}
+
+.leaf {
+  overflow: hidden;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  @media (min-width: $screen-sm) {
+    //min-height: 310px;
+    max-width: 100%;
+  }
+  margin-bottom: ($grid-gutter-width/2);
+  .content { @include font-size(16); }
+  .cr-container { padding-bottom: 15px; }
+}
+
+.leaf-name {
+  display: inline-block;
+  width: 90%;
+}
+
+.leaf-heading {
+  position: relative;
+  &, a { color: white; }
+  background: $brown-dark repeat-x top center;
+  min-height: 50px;
+  h2, h3, h4 {
+    margin-top: 0;
+  }
+  .cr-container {
+    h2, h3, h4 { margin-bottom: 0; }
+  }
+  .title {
+    @include font-size(24);
+  }
+}
+.leaf-content {
+  overflow: hidden;
+  padding-top: ($grid-gutter-width/2);
+  padding-bottom: ($grid-gutter-width/2);
+  @include gradient-grey-light;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+  *, strong, b { color: $brown-dark; }
+  hr, .t-legend { border-color: $brown-transparent; }
+
+  .t-legend {
+    color: $brown-dark;
+    font-size: 20px;
+    margin-bottom: ($grid-gutter-width/2);
+  }
+  ul.list-unstyled li {
+    border-bottom: 1px solid $teal-transparent-1;
+    padding: 3px 0;
+    &:last-child {
+      border-width: 0;
+    }
+  }
+  ul.list-inline {
+    margin-left: 0;
+    li { border-width: 0; }
+
+  }
+  li > span {
+    margin-right: 5px;
+    display: inline-block;
+  }
+  p { text-indent: 1em; }
+}

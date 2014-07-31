@@ -45,6 +45,7 @@
 }*/
 
 .item-btn, .btn, .icon, .badge {
+  text-shadow: none;
   &.white {
     color: $red;
     background-color: white;

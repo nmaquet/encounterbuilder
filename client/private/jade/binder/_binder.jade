@@ -1,5 +1,5 @@
 .binder.row.leaves
-    header.heading.binder-heading.col-sm-12
+    header.binder-heading.col-sm-12
         .pull-right
             a.is-pointer.remove-binder(on-confirm="removeBinder()", confirm-click="{{removeBinderMessage}}", confirm-title="Delete binder")
                 i.icon.icon-remove
@@ -9,32 +9,30 @@
 
     .encounter-dropdown-container( pending="pending")
         .row
-            article.col-sm-6.col-md-4.col-lg-3.leaf(ng-repeat='leaf in leaves')
-                .l-section.encounter-well.gradient.l-shadow(ng-show="'encounter' === leaf.$type")
+            .col-sm-6.col-lg-4.leaf(ng-repeat='leaf in leaves',ng-switch="leaf.$type")
+                article.l-section.l-shadow.encounter(ng-switch-when="encounter")
                     include _encounter-ro
-                .l-section.encounter-well.gradient.l-shadow(ng-show="'binder' === leaf.$type")
-                    .binder
-                        header.heading.col-sm-12
-                            h3.t-title.t-binder-title
-                                a.binder-name.is-pointer(ng-click="selectLeaf(leaf)")
-                                    | {{leaf.Name}}
-                .l-section.encounter-well.gradient.l-shadow(ng-show="'userText' === leaf.$type")
-                    .encounter
-                        header.heading.col-sm-12
-                            h4.t-title.t-binder-title
-                                a.binder-name.is-pointer(ng-click="selectLeaf(leaf)")
-                                    i.icon.fa.fa-pencil
-                                    | &nbsp;
-                                    | {{leaf.title}}
-                        .content.col-sm-12
-                            p.underlined {{leaf.synopsis}}
-                .l-section.encounter-well.gradient.l-shadow(ng-show="'monster' === leaf.$type")
+                article.l-section.l-shadow.binder(ng-switch-when="binder")
+                    header.leaf-heading.col-sm-12
+                        h3.t-title.t-leaf-title
+                            a.leaf-name.is-pointer(ng-click="selectLeaf(leaf)")
+                                | {{leaf.Name}}
+                article.l-section.l-shadow.user-text(ng-switch-when="userText")
+                    header.leaf-heading.col-sm-12
+                        h4.t-title.t-leaf-title
+                            a.leaf-name.is-pointer(ng-click="selectLeaf(leaf)")
+                                i.icon.fa.fa-pencil
+                                | &nbsp;
+                                | {{leaf.title}}
+                    .leaf-content.col-sm-12
+                        p.underlined {{leaf.synopsis}}
+                article.l-section.l-shadow.monster(ng-switch-when="monster")
                     include _abbr-monster
-                .l-section.encounter-well.gradient.l-shadow(ng-show="'npc' === leaf.$type")
+                article.l-section.l-shadow.npc(ng-switch-when="npc")
                     include _abbr-npc
-                .l-section.encounter-well.gradient.l-shadow(ng-show="'user-spell' === leaf.$type")
+                article.l-section.l-shadow.user-spell(ng-switch-when="user-spell")
                     include _abbr-spell
-                .l-section.encounter-well.gradient.l-shadow(ng-show="'user-feat' === leaf.$type")
+                article.l-section.l-shadow.user-feat(ng-switch-when="user-feat")
                     include _abbr-feat
-                .l-section.encounter-well.gradient.l-shadow(ng-show="'user-item' === leaf.$type")
+                article.l-section.l-shadow.user-item(ng-switch-when="user-item")
                     include _abbr-item

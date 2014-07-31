@@ -1,19 +1,18 @@
-div.monster
-    header.heading.col-sm-12
-        h3.ect-title.t-title.t-encounter-title
-            a.monster-name.is-pointer(ng-click="selectLeaf(leaf)")
-                i.icon.fa.fa-bug
-                | &nbsp;
-                | {{leaf.name}}
-        .row.l-section.result-content
-            .col-xxs-12.col-xs-12.cat
-                ul.cat-content.list-unstyled
-                    li
-                        span
-                            strong School&nbsp;
-                            | {{spell.school}}
-                        span(ng-if="spell.subschool") &nbsp;({{spell.subschool}})
-                            span(ng-if="spell.descriptor") &nbsp;[{{spell.descriptor}}]
-                            | ;&nbsp;
-                            strong Level&nbsp;
-                            | {{spell.spell_level}}
+header.leaf-heading.col-sm-12
+    h3.ect-title.t-title.t-leaf-title
+        a.leaf-name.is-pointer(ng-click="selectLeaf(leaf)")
+            i.icon.fa.fa-bug
+            | &nbsp;
+            | {{leaf.name}}
+    .row.l-section
+        .col-xxs-12.col-xs-12.cat
+            ul.cat-content.list-unstyled
+                li
+                    span
+                        strong School&nbsp;
+                        | {{spell.school}}
+                    span(ng-if="spell.subschool") &nbsp;({{spell.subschool}})
+                        span(ng-if="spell.descriptor") &nbsp;[{{spell.descriptor}}]
+                        | ;&nbsp;
+                        strong Level&nbsp;
+                        | {{spell.spell_level}}
