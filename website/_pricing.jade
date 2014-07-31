@@ -4,65 +4,55 @@
         h2 Our Pricing Options
         hr
         h3(style="color:red")
-            |We have not yet launched so these prices are still subject to changes.
+            | Chronicle Forge is <b>free</b> for all users until September 15th, 2014!
+        a.btn.btn-lg.btn-theme(href='#register', data-toggle='modal', data-target='#register') CREATE AN ACCOUNT
         br
-        .row
+        //.row
             .col-xs-12
-                .switch-toggle.switch-ios.switch-3.pointer#priceSwitch
+                .switch-toggle.switch-ios.pointer#priceSwitch
                     input#beta1Radio.pointer(name='view', type='radio', checked='', onclick="beta1RadioClicked();")
-                    label.pointer(for='beta1Radio', onclick='') Beta 1
+                    label.pointer(for='beta1Radio', onclick='') Beta Price
                     input#beta2Radio.pointer(name='view', type='radio', onclick="beta2RadioClicked();")
-                    label.pointer(for='beta2Radio', onclick='') Beta 2
-                    input#launchRadio.pointer(name='view', type='radio', onclick="launchRadioClicked();")
-                    label.pointer(for='launchRadio', onclick='') At Launch
+                    label.pointer(for='beta2Radio', onclick='') Launch Price
                     a.pointer
         // TEST BEGIN
-        br
         br
         .row
             .col-lg-4
                 .pricing-option
                     .pricing-top#dragon-pricing
                         span.pricing-edition.whiteTextShadow Lifetime
-                        span.price.beta1Price.whiteTextShadow
-                            span.price-amount FREE
-                        span.price.beta2Price.whiteTextShadow.hide
+                        span.price.whiteTextShadow
                             sup $
                             span.price-amount 29
-                        span.price.launchPrice.whiteTextShadow.hide
-                            sup $
-                            span.price-amount 59
-                        span.special-label.beta2Price.hide register during Beta 2 and save $30
+                        br
+                        span.price.whiteTextShadow
+                            small normal price: $59
+                        span.special-label special price valid until November 1st
                     a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Start your 30-day Free Trial
             .col-lg-4
                 .pricing-option
                     .pricing-top#lich-pricing
                         span.pricing-edition.whiteTextShadow Yearly
-                        span.price.beta1Price.whiteTextShadow
-                            span.price-amount FREE
-                        span.price.beta2Price.whiteTextShadow.hide
+                        span.price.whiteTextShadow
                             sup $
                             span.price-amount 19
                             small /year
-                        span.price.launchPrice.whiteTextShadow.hide
-                            sup $
-                            span.price-amount 39
-                            small /year
-                        span.special-label.beta2Price.hide register during Beta 2 and save $19/year
+                        br
+                        span.price.whiteTextShadow
+                            small normal price: $39 / year
+                        span.special-label special price valid until November 1st
                     a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Start your 30-day Free Trial
             .col-lg-4
                 .pricing-option
                     .pricing-top#minotaur-pricing
                         span.pricing-edition.whiteTextShadow Monthly
-                        span.price.beta1Price.whiteTextShadow
-                            span.price-amount FREE
-                        span.price.beta2Price.whiteTextShadow.hide
+                        span.price.whiteTextShadow
                             sup $
                             span.price-amount 3
                             small /month
-                        span.price.launchPrice.whiteTextShadow.hide
-                            sup $
-                            span.price-amount 5
-                            small /month
-                        span.special-label.beta2Price.hide register during Beta 2 and save $2/month
+                        br
+                        span.price.whiteTextShadow
+                            small normal price: $5 / month
+                        span.special-label special price valid until November 1st
                     a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Start your 30-day Free Trial
