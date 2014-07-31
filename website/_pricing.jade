@@ -8,11 +8,13 @@
         br
         .row
             .col-xs-12
-                .switch-toggle.switch-ios.pointer#priceSwitch
-                    input#monthlyRadio.pointer(name='view', type='radio', checked='', onclick="monthlyRadioClicked();")
-                    label.pointer(for='monthlyRadio', onclick='') Monthly
-                    input#yearlyRadio.pointer(name='view', type='radio', onclick="yearlyRadioClicked();")
-                    label.pointer(for='yearlyRadio', onclick='') Yearly
+                .switch-toggle.switch-ios.switch-3.pointer#priceSwitch
+                    input#beta1Radio.pointer(name='view', type='radio', checked='', onclick="beta1RadioClicked();")
+                    label.pointer(for='beta1Radio', onclick='') Beta 1
+                    input#beta2Radio.pointer(name='view', type='radio', onclick="beta2RadioClicked();")
+                    label.pointer(for='beta2Radio', onclick='') Beta 2
+                    input#launchRadio.pointer(name='view', type='radio', onclick="launchRadioClicked();")
+                    label.pointer(for='launchRadio', onclick='') At Launch
                     a.pointer
         // TEST BEGIN
         br
@@ -21,80 +23,46 @@
             .col-lg-4
                 .pricing-option
                     .pricing-top#dragon-pricing
-                        span.pricing-edition.whiteTextShadow Dragon
-                        span.price.monthlyPrice.whiteTextShadow
+                        span.pricing-edition.whiteTextShadow Lifetime
+                        span.price.beta1Price.whiteTextShadow
+                            span.price-amount FREE
+                        span.price.beta2Price.whiteTextShadow.hide
                             sup $
-                            span.price-amount 8
-                            small /month
-                        span.price.yearlyPrice.whiteTextShadow.hide
+                            span.price-amount 29
+                        span.price.launchPrice.whiteTextShadow.hide
                             sup $
                             span.price-amount 59
-                            small /year
-                        span.special-label.yearlyPrice.hide you save $37
-                    ul
-                        li
-                            strong Unlimited&nbsp;
-                            | encounters
-                        li
-                            strong No limit&nbsp;
-                            | on monster CR
-                        li
-                            strong No limit&nbsp;
-                            | on encounter CR
-                        li
-                            | Ideal for PC's of&nbsp;
-                            strong all levels
-                    a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Get Started
+                        span.special-label.beta2Price.hide register during Beta 2 and save $30
+                    a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Start your 30-day Free Trial
             .col-lg-4
                 .pricing-option
                     .pricing-top#lich-pricing
-                        span.pricing-edition.whiteTextShadow Lich
-                        span.price.monthlyPrice.whiteTextShadow
+                        span.pricing-edition.whiteTextShadow Yearly
+                        span.price.beta1Price.whiteTextShadow
+                            span.price-amount FREE
+                        span.price.beta2Price.whiteTextShadow.hide
                             sup $
-                            span.price-amount 5
-                            small /month
-                        span.price.yearlyPrice.whiteTextShadow.hide
-                            sup $
-                            span.price-amount 45
+                            span.price-amount 19
                             small /year
-                        span.special-label.yearlyPrice.hide you save $15
-                    ul
-                        li
-                            strong Unlimited&nbsp;
-                            | encounters
-                        li
-                            | Monsters up to&nbsp;
-                            strong CR 10
-                        li
-                            | Encounters up to&nbsp;
-                            strong CR 20
-                        li
-                            | Ideal for PC's&nbsp;
-                            strong level 1 to 14
-                    a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Get Started
+                        span.price.launchPrice.whiteTextShadow.hide
+                            sup $
+                            span.price-amount 39
+                            small /year
+                        span.special-label.beta2Price.hide register during Beta 2 and save $19/year
+                    a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Start your 30-day Free Trial
             .col-lg-4
                 .pricing-option
                     .pricing-top#minotaur-pricing
-                        span.pricing-edition.whiteTextShadow Minotaur
-                        span.price.monthlyPrice.whiteTextShadow
+                        span.pricing-edition.whiteTextShadow Monthly
+                        span.price.beta1Price.whiteTextShadow
+                            span.price-amount FREE
+                        span.price.beta2Price.whiteTextShadow.hide
                             sup $
-                            span.price-amount 0
+                            span.price-amount 3
                             small /month
-                        span.price.yearlyPrice.whiteTextShadow.hide
+                        span.price.launchPrice.whiteTextShadow.hide
                             sup $
-                            span.price-amount 0
-                            small /year
-                    ul
-                        li
-                            strong Unlimited&nbsp;
-                            | encounters
-                        li
-                            | Monsters up to&nbsp;
-                            strong CR 5
-                        li
-                            | Encounters up to&nbsp;
-                            strong CR 10
-                        li
-                            | Ideal for PC's&nbsp;
-                            strong level 1 to 7
-                    a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Get Started
+                            span.price-amount 5
+                            small /month
+                        span.special-label.beta2Price.hide register during Beta 2 and save $2/month
+                    a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Start your 30-day Free Trial
