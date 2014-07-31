@@ -1,15 +1,15 @@
 div(ng-switch='contentType', ng-class="{row: (viewport.xs || viewport.sm)}")
     .col-xs-12.max-width-720.l-section.l-shadow.search-result(ng-controller='MonsterDetailController', pending="pending", ng-switch-when='monster')
-        include ../_monster-details
+        include _monster-details
     .col-xs-12.max-width-720.l-section.l-shadow.search-result(ng-controller='UserMonsterController', pending="pending", ng-switch-when='user-monster')
         div(fade-out="startFade")
-            include ../_user-monster
+            include _user-monster
     .col-xs-12.max-width-720.l-section.l-shadow.search-result(ng-controller='UserNpcController', pending="pending", ng-switch-when='user-npc')
         div(fade-out="startFade")
-            include ../_user-npc
+            include _user-npc
     .col-xs-12.max-width-720.l-section.l-shadow.search-result(ng-controller='UserResourceController', pending="!userResource.$resolved", ng-switch-when='user-item')
         div(fade-out="startFade")
-            include ../_user-item
+            include _user-item
     .col-xs-12.max-width-720.l-section.l-shadow.search-result(ng-controller='NpcDetailController', pending="pending", ng-switch-when='npc')
         include _npc-details
     .col-xs-12.max-width-720.l-section.l-shadow.search-result(ng-controller='ItemDetailsController', pending="pending", ng-switch-when='item')

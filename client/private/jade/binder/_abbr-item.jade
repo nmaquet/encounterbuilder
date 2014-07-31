@@ -8,24 +8,17 @@ div.monster
 
         .ect-xp
             span.encounter-cr.pull-right
-                strong CR&nbsp;
-                | {{leaf.CR | numberToFractionString}}
+                strong CL&nbsp;
+                | {{leaf.CL | numberToFractionString}}
             span.encounter-xp.pull-left
-                strong XP&nbsp;
-                | {{leaf.XP | number}}
-    .content.content-monsters.col-sm-12
-        ul.list-inline
-            li(ng-if="leaf.Gender||leaf.Race||leaf.ClassesString")
-                span {{leaf.Gender}} {{leaf.Race}} {{leaf.ClassesString}}
-            li
+                strong {{item.Price}}&nbsp;{{item.PriceUnit}}
+    .row.l-section.result-content
+        .col-sm-12.cat
+            li(ng-if="item.Aura")
                 span
-                    strong {{leaf.Alignment}}
-                    | &nbsp;{{leaf.Size}} {{leaf.Type}} {{leaf.SubType}}
-            //li
-            //    span
-            //        strong Init
-            //        | &nbsp;{{leaf.Init}}
-            //li
-            //    span
-            //        strong Senses
-            //        | &nbsp;{{leaf.Senses}}
+                    strong Aura&nbsp;
+                    | {{item.Aura}}
+            li(ng-if="item.Group")
+                span
+                    strong Group&nbsp;
+                    | {{item.Group}}
