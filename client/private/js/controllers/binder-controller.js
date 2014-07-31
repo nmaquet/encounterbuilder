@@ -34,20 +34,23 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
             };
 
             $scope.selectLeaf = function (leaf) {
-                if (leaf.type === 'binder') {
+                if (leaf.$type === 'binder') {
                     $scope.go("/binder/" + leaf.nodeKey);
                 }
-                else if (leaf.type === 'encounter') {
+                else if (leaf.$type === 'encounter') {
                     $scope.go("/encounter/" + leaf._id);
                 }
-                else if (leaf.type === 'userText') {
+                else if (leaf.$type === 'userText') {
                     $scope.go("/user-text/" + leaf._id);
                 }
-                else if (leaf.type === 'monster') {
+                else if (leaf.$type === 'monster') {
                     $scope.go("/user-monster/" + leaf._id);
                 }
-                else if (leaf.type === 'npc') {
+                else if (leaf.$type === 'npc') {
                     $scope.go("/user-npc/" + leaf._id);
+                }
+                else {
+                    $scope.go("/" + leaf.$type + "/" + leaf._id);
                 }
             };
 
