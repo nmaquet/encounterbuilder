@@ -11,7 +11,7 @@ fs.readFile(inPath, {encoding:'UTF-8'}, function (error, data) {
     parseXml(data.replace("\ufeff", ""), function (error, result) {
         if (error)throw error;
 
-        fs.writeFile(outPath, JSON.stringify(result), function (error) {
+        fs.writeFile(outPath, JSON.stringify(result, null, 4), function (error) {
             if (error)throw error;
             console.log('Done');
         });
