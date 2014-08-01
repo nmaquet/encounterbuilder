@@ -16,19 +16,21 @@ var elementWithID = function (index) {
 var weapons = [];
 
 var processParagraphWithID = function (index) {
-    var name = [$(this).text().trim()];
-    console.log("parsing "  +name );
+    var name = $(this).text().trim();
 
     var firstParagraph = $(this).next();
-    expect(firstParagraph.hasClass("stat-block-1")).to.be.true;
-    var price = /Price (.*)/.exec(firstParagraph.text());
+//    expect(firstParagraph.hasClass("stat-block-1")).to.be.true;
+    var price = /Price (.*)/.exec(firstParagraph.text())[1];
 
     var secondParagraph = firstParagraph.next();
+//    expect(secondParagraph.hasClass("stat-block-1")).to.be.true;
+    var type = /Type (.*)/.exec(secondParagraph.text())[1];
 
-    expect(secondParagraph.hasClass("stat-block-1")).to.be.true;
-    var type = /Type (.*)/.exec(secondParagraph.text());
+    var thirdParagraph= secondParagraph.next();
+//    expect(thirdParagraph.hasClass("stat-block")).to.be.true;
+    var description = thirdParagraph.text();
 
-    console.log(name + " / " + price + " / " + type);
+    console.log(name + " / " + price + " / " + type + " / " + description);
 
 //    for (var i in name) {
 //        var weapon = {
