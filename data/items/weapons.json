@@ -17,7 +17,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "gauntlet"
+        "id": "mwk-gauntlet"
     }, 
     {
         "CL": 0, 
@@ -57,7 +57,7 @@
         "Special": "nonlethal", 
         "WeaponType": "light", 
         "Weight": "-", 
-        "id": "unarmed-strike"
+        "id": "mwk-unarmed-strike"
     }, 
     {
         "CL": 0, 
@@ -97,7 +97,7 @@
         "Special": "see text", 
         "WeaponType": "light", 
         "Weight": "4 lb.", 
-        "id": "battle-aspergillum"
+        "id": "mwk-battle-aspergillum"
     }, 
     {
         "CL": 0, 
@@ -137,7 +137,7 @@
         "Special": "fragile", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "brass-knife"
+        "id": "mwk-brass-knife"
     }, 
     {
         "CL": 0, 
@@ -177,7 +177,7 @@
         "Special": "monk", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "brass-knuckles"
+        "id": "mwk-brass-knuckles"
     }, 
     {
         "CL": 0, 
@@ -217,7 +217,7 @@
         "Special": "monk", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "cestus"
+        "id": "mwk-cestus"
     }, 
     {
         "CL": 0, 
@@ -257,7 +257,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "dagger"
+        "id": "mwk-dagger"
     }, 
     {
         "CL": 0, 
@@ -297,7 +297,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "punching-dagger"
+        "id": "mwk-punching-dagger"
     }, 
     {
         "CL": 0, 
@@ -337,7 +337,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "spiked-gauntlet"
+        "id": "mwk-spiked-gauntlet"
     }, 
     {
         "CL": 0, 
@@ -377,7 +377,7 @@
         "Special": "disarm", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "hook-hand"
+        "id": "mwk-hook-hand"
     }, 
     {
         "CL": 0, 
@@ -417,7 +417,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "4 lbs.", 
-        "id": "light-mace"
+        "id": "mwk-light-mace"
     }, 
     {
         "CL": 0, 
@@ -457,7 +457,7 @@
         "Special": "trip", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "sickle"
+        "id": "mwk-sickle"
     }, 
     {
         "CL": 0, 
@@ -497,7 +497,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "wooden-stake"
+        "id": "mwk-wooden-stake"
     }, 
     {
         "CL": 0, 
@@ -537,7 +537,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "3 lbs.", 
-        "id": "club"
+        "id": "mwk-club"
     }, 
     {
         "CL": 0, 
@@ -577,7 +577,7 @@
         "Special": "fragile", 
         "WeaponType": "one-handed", 
         "Weight": "2 lbs.", 
-        "id": "mere-club"
+        "id": "mwk-mere-club"
     }, 
     {
         "CL": 0, 
@@ -617,7 +617,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "8 lbs.", 
-        "id": "heavy-mace"
+        "id": "mwk-heavy-mace"
     }, 
     {
         "CL": 0, 
@@ -657,7 +657,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "6 lbs.", 
-        "id": "morningstar"
+        "id": "mwk-morningstar"
     }, 
     {
         "CL": 0, 
@@ -697,7 +697,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "3 lbs.", 
-        "id": "shortspear"
+        "id": "mwk-shortspear"
     }, 
     {
         "CL": 0, 
@@ -737,7 +737,7 @@
         "Special": "-", 
         "WeaponType": "two-handed", 
         "Weight": "1 lb.", 
-        "id": "bayonet"
+        "id": "mwk-bayonet"
     }, 
     {
         "CL": 0, 
@@ -777,7 +777,7 @@
         "Special": "brace, reach", 
         "WeaponType": "two-handed", 
         "Weight": "9 lbs.", 
-        "id": "boarding-pike"
+        "id": "mwk-boarding-pike"
     }, 
     {
         "CL": 0, 
@@ -817,7 +817,7 @@
         "Special": "brace, reach", 
         "WeaponType": "two-handed", 
         "Weight": "9 lbs.", 
-        "id": "longspear"
+        "id": "mwk-longspear"
     }, 
     {
         "CL": 0, 
@@ -857,7 +857,7 @@
         "Special": "double, monk", 
         "WeaponType": "two-handed", 
         "Weight": "4 lbs.", 
-        "id": "quarterstaff"
+        "id": "mwk-quarterstaff"
     }, 
     {
         "CL": 0, 
@@ -897,7 +897,7 @@
         "Special": "brace", 
         "WeaponType": "two-handed", 
         "Weight": "6 lbs.", 
-        "id": "spear"
+        "id": "mwk-spear"
     }, 
     {
         "CL": 0, 
@@ -937,7 +937,7 @@
         "Special": "brace, see text", 
         "WeaponType": "two-handed", 
         "Weight": "8 lb.", 
-        "id": "boar-spear"
+        "id": "mwk-boar-spear"
     }, 
     {
         "CL": 0, 
@@ -977,7 +977,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "1 lb.", 
-        "id": "blowgun"
+        "id": "mwk-blowgun"
     }, 
     {
         "CL": 0, 
@@ -1017,7 +1017,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "8 lbs.", 
-        "id": "heavy-crossbow"
+        "id": "mwk-heavy-crossbow"
     }, 
     {
         "CL": 0, 
@@ -1057,7 +1057,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "8 lbs.", 
-        "id": "heavy-crossbow-underwater"
+        "id": "mwk-heavy-crossbow-underwater"
     }, 
     {
         "CL": 0, 
@@ -1097,7 +1097,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "4 lbs.", 
-        "id": "light-crossbow"
+        "id": "mwk-light-crossbow"
     }, 
     {
         "CL": 0, 
@@ -1137,7 +1137,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "4 lbs.", 
-        "id": "light-crossbow-underwater"
+        "id": "mwk-light-crossbow-underwater"
     }, 
     {
         "CL": 0, 
@@ -1177,7 +1177,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "1/2 lb.", 
-        "id": "dart"
+        "id": "mwk-dart"
     }, 
     {
         "CL": 0, 
@@ -1217,7 +1217,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "javelin"
+        "id": "mwk-javelin"
     }, 
     {
         "CL": 0, 
@@ -1257,7 +1257,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "-", 
-        "id": "sling"
+        "id": "mwk-sling"
     }, 
     {
         "CL": 0, 
@@ -1297,7 +1297,7 @@
         "Special": "see text", 
         "WeaponType": "ranged", 
         "Weight": "9 lbs.", 
-        "id": "stingchuck"
+        "id": "mwk-stingchuck"
     }, 
     {
         "CL": 0, 
@@ -1497,7 +1497,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "3 lbs.", 
-        "id": "boarding-axe"
+        "id": "mwk-boarding-axe"
     }, 
     {
         "CL": 0, 
@@ -1537,7 +1537,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "throwing-axe"
+        "id": "mwk-throwing-axe"
     }, 
     {
         "CL": 0, 
@@ -1577,7 +1577,7 @@
         "Special": "see text", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "blade-boot"
+        "id": "mwk-blade-boot"
     }, 
     {
         "CL": 0, 
@@ -1617,7 +1617,7 @@
         "Special": "disarm, nonlethal", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "cat-o-nine-tails"
+        "id": "mwk-cat-o-nine-tails"
     }, 
     {
         "CL": 0, 
@@ -1657,7 +1657,7 @@
         "Special": "fragile", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "dogslicer"
+        "id": "mwk-dogslicer"
     }, 
     {
         "CL": 0, 
@@ -1697,7 +1697,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "light-hammer"
+        "id": "mwk-light-hammer"
     }, 
     {
         "CL": 0, 
@@ -1737,7 +1737,7 @@
         "Special": "performance", 
         "WeaponType": "light", 
         "Weight": "3 lbs.", 
-        "id": "gladius"
+        "id": "mwk-gladius"
     }, 
     {
         "CL": 0, 
@@ -1777,7 +1777,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "3 lbs.", 
-        "id": "handaxe"
+        "id": "mwk-handaxe"
     }, 
     {
         "CL": 0, 
@@ -1817,7 +1817,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "switchblade-knife"
+        "id": "mwk-switchblade-knife"
     }, 
     {
         "CL": 0, 
@@ -1857,7 +1857,7 @@
         "Special": "reach", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "long-lash-kobold-tail-attachment"
+        "id": "mwk-long-lash-kobold-tail-attachment"
     }, 
     {
         "CL": 0, 
@@ -1897,7 +1897,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "4 lbs.", 
-        "id": "pounder-kobold-tail-attachment"
+        "id": "mwk-pounder-kobold-tail-attachment"
     }, 
     {
         "CL": 0, 
@@ -1937,7 +1937,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "razored-kobold-tail-attachment"
+        "id": "mwk-razored-kobold-tail-attachment"
     }, 
     {
         "CL": 0, 
@@ -1977,7 +1977,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "spiked-kobold-tail-attachment"
+        "id": "mwk-spiked-kobold-tail-attachment"
     }, 
     {
         "CL": 0, 
@@ -2017,7 +2017,7 @@
         "Special": "trip", 
         "WeaponType": "light", 
         "Weight": "3 lbs.", 
-        "id": "sweeper-kobold-tail-attachment"
+        "id": "mwk-sweeper-kobold-tail-attachment"
     }, 
     {
         "CL": 0, 
@@ -2057,7 +2057,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "kukri"
+        "id": "mwk-kukri"
     }, 
     {
         "CL": 0, 
@@ -2097,7 +2097,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "3 lbs.", 
-        "id": "light-pick"
+        "id": "mwk-light-pick"
     }, 
     {
         "CL": 0, 
@@ -2137,7 +2137,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "1/2 lb.", 
-        "id": "ratfolk-tailblade"
+        "id": "mwk-ratfolk-tailblade"
     }, 
     {
         "CL": 0, 
@@ -2177,7 +2177,7 @@
         "Special": "nonlethal", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "sap"
+        "id": "mwk-sap"
     }, 
     {
         "CL": 0, 
@@ -2217,7 +2217,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "sea-knife"
+        "id": "mwk-sea-knife"
     }, 
     {
         "CL": 0, 
@@ -2257,7 +2257,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "special", 
-        "id": "light-wooden-shield"
+        "id": "mwk-light-wooden-shield"
     }, 
     {
         "CL": 0, 
@@ -2297,7 +2297,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "special", 
-        "id": "spiked-armor"
+        "id": "mwk-spiked-armor"
     }, 
     {
         "CL": 0, 
@@ -2337,7 +2337,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "special", 
-        "id": "light-spiked-shield"
+        "id": "mwk-light-spiked-shield"
     }, 
     {
         "CL": 0, 
@@ -2377,7 +2377,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "3 lbs.", 
-        "id": "starknife"
+        "id": "mwk-starknife"
     }, 
     {
         "CL": 0, 
@@ -2417,7 +2417,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "short-sword"
+        "id": "mwk-short-sword"
     }, 
     {
         "CL": 0, 
@@ -2457,7 +2457,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "war-razor"
+        "id": "mwk-war-razor"
     }, 
     {
         "CL": 0, 
@@ -2497,7 +2497,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "6 lbs.", 
-        "id": "battleaxe"
+        "id": "mwk-battleaxe"
     }, 
     {
         "CL": 0, 
@@ -2537,7 +2537,7 @@
         "Special": "improvised, see text", 
         "WeaponType": "one-handed", 
         "Weight": "1 lb.", 
-        "id": "combat-scabbard"
+        "id": "mwk-combat-scabbard"
     }, 
     {
         "CL": 0, 
@@ -2577,7 +2577,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "4 lbs.", 
-        "id": "cutlass"
+        "id": "mwk-cutlass"
     }, 
     {
         "CL": 0, 
@@ -2617,7 +2617,7 @@
         "Special": "disarm, trip", 
         "WeaponType": "one-handed", 
         "Weight": "5 lbs.", 
-        "id": "flail"
+        "id": "mwk-flail"
     }, 
     {
         "CL": 0, 
@@ -2657,7 +2657,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "6 lbs.", 
-        "id": "klar"
+        "id": "mwk-klar"
     }, 
     {
         "CL": 0, 
@@ -2697,7 +2697,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "4 lbs.", 
-        "id": "longsword"
+        "id": "mwk-longsword"
     }, 
     {
         "CL": 0, 
@@ -2737,7 +2737,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "6 lbs.", 
-        "id": "heavy-pick"
+        "id": "mwk-heavy-pick"
     }, 
     {
         "CL": 0, 
@@ -2777,7 +2777,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "2 lbs.", 
-        "id": "rapier"
+        "id": "mwk-rapier"
     }, 
     {
         "CL": 0, 
@@ -2817,7 +2817,7 @@
         "Special": "see text", 
         "WeaponType": "one-handed", 
         "Weight": "1 lb.", 
-        "id": "combat-scabbard-sharpened"
+        "id": "mwk-combat-scabbard-sharpened"
     }, 
     {
         "CL": 0, 
@@ -2857,7 +2857,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "4 lbs.", 
-        "id": "scimitar"
+        "id": "mwk-scimitar"
     }, 
     {
         "CL": 0, 
@@ -2897,7 +2897,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "3 lbs.", 
-        "id": "scizore"
+        "id": "mwk-scizore"
     }, 
     {
         "CL": 0, 
@@ -2937,7 +2937,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "special", 
-        "id": "heavy-wooden-shield"
+        "id": "mwk-heavy-wooden-shield"
     }, 
     {
         "CL": 0, 
@@ -2977,7 +2977,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "special", 
-        "id": "heavy-spiked-shield"
+        "id": "mwk-heavy-spiked-shield"
     }, 
     {
         "CL": 0, 
@@ -3017,7 +3017,7 @@
         "Special": "see text", 
         "WeaponType": "one-handed", 
         "Weight": "4 lbs.", 
-        "id": "sword-cane"
+        "id": "mwk-sword-cane"
     }, 
     {
         "CL": 0, 
@@ -3057,7 +3057,7 @@
         "Special": "fragile", 
         "WeaponType": "one-handed", 
         "Weight": "2 lbs.", 
-        "id": "terbutje"
+        "id": "mwk-terbutje"
     }, 
     {
         "CL": 0, 
@@ -3097,7 +3097,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "4 lbs.", 
-        "id": "steel-terbutje"
+        "id": "mwk-steel-terbutje"
     }, 
     {
         "CL": 0, 
@@ -3137,7 +3137,7 @@
         "Special": "brace", 
         "WeaponType": "one-handed", 
         "Weight": "4 lbs.", 
-        "id": "trident"
+        "id": "mwk-trident"
     }, 
     {
         "CL": 0, 
@@ -3177,7 +3177,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "5 lbs.", 
-        "id": "warhammer"
+        "id": "mwk-warhammer"
     }, 
     {
         "CL": 0, 
@@ -3217,7 +3217,7 @@
         "Special": "brace, reach, see text", 
         "WeaponType": "two-handed", 
         "Weight": "14 lbs.", 
-        "id": "bardiche"
+        "id": "mwk-bardiche"
     }, 
     {
         "CL": 0, 
@@ -3257,7 +3257,7 @@
         "Special": "brace, reach, see text", 
         "WeaponType": "two-handed", 
         "Weight": "12 lbs.", 
-        "id": "bec-de-corbin"
+        "id": "mwk-bec-de-corbin"
     }, 
     {
         "CL": 0, 
@@ -3297,7 +3297,7 @@
         "Special": "brace, disarm, reach, see text", 
         "WeaponType": "two-handed", 
         "Weight": "11 lbs.", 
-        "id": "bill"
+        "id": "mwk-bill"
     }, 
     {
         "CL": 0, 
@@ -3337,7 +3337,7 @@
         "Special": "-", 
         "WeaponType": "two-handed", 
         "Weight": "14 lbs.", 
-        "id": "earth-breaker"
+        "id": "mwk-earth-breaker"
     }, 
     {
         "CL": 0, 
@@ -3377,7 +3377,7 @@
         "Special": "-", 
         "WeaponType": "two-handed", 
         "Weight": "8 lbs.", 
-        "id": "falchion"
+        "id": "mwk-falchion"
     }, 
     {
         "CL": 0, 
@@ -3417,7 +3417,7 @@
         "Special": "disarm, trip", 
         "WeaponType": "two-handed", 
         "Weight": "10 lbs.", 
-        "id": "heavy-flail"
+        "id": "mwk-heavy-flail"
     }, 
     {
         "CL": 0, 
@@ -3457,7 +3457,7 @@
         "Special": "reach", 
         "WeaponType": "two-handed", 
         "Weight": "10 lbs.", 
-        "id": "glaive"
+        "id": "mwk-glaive"
     }, 
     {
         "CL": 0, 
@@ -3497,7 +3497,7 @@
         "Special": "brace, reach, see text", 
         "WeaponType": "two-handed", 
         "Weight": "10 lbs.", 
-        "id": "glaive-guisarme"
+        "id": "mwk-glaive-guisarme"
     }, 
     {
         "CL": 0, 
@@ -3537,7 +3537,7 @@
         "Special": "-", 
         "WeaponType": "two-handed", 
         "Weight": "12 lbs.", 
-        "id": "greataxe"
+        "id": "mwk-greataxe"
     }, 
     {
         "CL": 0, 
@@ -3577,7 +3577,7 @@
         "Special": "-", 
         "WeaponType": "two-handed", 
         "Weight": "8 lbs.", 
-        "id": "greatclub"
+        "id": "mwk-greatclub"
     }, 
     {
         "CL": 0, 
@@ -3617,7 +3617,7 @@
         "Special": "-", 
         "WeaponType": "two-handed", 
         "Weight": "8 lbs.", 
-        "id": "greatsword"
+        "id": "mwk-greatsword"
     }, 
     {
         "CL": 0, 
@@ -3657,7 +3657,7 @@
         "Special": "reach, trip", 
         "WeaponType": "two-handed", 
         "Weight": "12 lbs.", 
-        "id": "guisarme"
+        "id": "mwk-guisarme"
     }, 
     {
         "CL": 0, 
@@ -3697,7 +3697,7 @@
         "Special": "brace, trip", 
         "WeaponType": "two-handed", 
         "Weight": "12 lbs.", 
-        "id": "halberd"
+        "id": "mwk-halberd"
     }, 
     {
         "CL": 0, 
@@ -3737,7 +3737,7 @@
         "Special": "brace, reach, see text", 
         "WeaponType": "two-handed", 
         "Weight": "12 lbs.", 
-        "id": "lucerne-hammer"
+        "id": "mwk-lucerne-hammer"
     }, 
     {
         "CL": 0, 
@@ -3777,7 +3777,7 @@
         "Special": "reach, trip", 
         "WeaponType": "two-handed", 
         "Weight": "12 lbs.", 
-        "id": "horsechopper"
+        "id": "mwk-horsechopper"
     }, 
     {
         "CL": 0, 
@@ -3817,7 +3817,7 @@
         "Special": "reach", 
         "WeaponType": "two-handed", 
         "Weight": "10 lbs.", 
-        "id": "lance"
+        "id": "mwk-lance"
     }, 
     {
         "CL": 0, 
@@ -3857,7 +3857,7 @@
         "Special": "trip", 
         "WeaponType": "two-handed", 
         "Weight": "10 lbs.", 
-        "id": "ogre-hook"
+        "id": "mwk-ogre-hook"
     }, 
     {
         "CL": 0, 
@@ -3897,7 +3897,7 @@
         "Special": "-", 
         "WeaponType": "two-handed", 
         "Weight": "12 lbs.", 
-        "id": "pickaxe"
+        "id": "mwk-pickaxe"
     }, 
     {
         "CL": 0, 
@@ -3937,7 +3937,7 @@
         "Special": "disarm, reach", 
         "WeaponType": "two-handed", 
         "Weight": "12 lbs.", 
-        "id": "ranseur"
+        "id": "mwk-ranseur"
     }, 
     {
         "CL": 0, 
@@ -3977,7 +3977,7 @@
         "Special": "trip", 
         "WeaponType": "two-handed", 
         "Weight": "10 lbs.", 
-        "id": "scythe"
+        "id": "mwk-scythe"
     }, 
     {
         "CL": 0, 
@@ -4017,7 +4017,7 @@
         "Special": "brace, see text", 
         "WeaponType": "two-handed", 
         "Weight": "6 lbs.", 
-        "id": "syringe-spear"
+        "id": "mwk-syringe-spear"
     }, 
     {
         "CL": 0, 
@@ -4057,7 +4057,7 @@
         "Special": "performance", 
         "WeaponType": "ranged", 
         "Weight": "1 lb.", 
-        "id": "ammentum"
+        "id": "mwk-ammentum"
     }, 
     {
         "CL": 0, 
@@ -4097,7 +4097,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "1 lb.", 
-        "id": "chakram"
+        "id": "mwk-chakram"
     }, 
     {
         "CL": 0, 
@@ -4137,7 +4137,7 @@
         "Special": "see text", 
         "WeaponType": "ranged", 
         "Weight": "1/2 lb.", 
-        "id": "jolting-dart"
+        "id": "mwk-jolting-dart"
     }, 
     {
         "CL": 0, 
@@ -4177,7 +4177,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "3 lbs.", 
-        "id": "hunga-munga"
+        "id": "mwk-hunga-munga"
     }, 
     {
         "CL": 0, 
@@ -4217,7 +4217,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "3 lbs.", 
-        "id": "longbow"
+        "id": "mwk-longbow"
     }, 
     {
         "CL": 0, 
@@ -4257,7 +4257,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "3 lbs.", 
-        "id": "composite-longbow"
+        "id": "mwk-composite-longbow"
     }, 
     {
         "CL": 0, 
@@ -4297,7 +4297,7 @@
         "Special": "see text", 
         "WeaponType": "ranged", 
         "Weight": "4 lbs.", 
-        "id": "pilum"
+        "id": "mwk-pilum"
     }, 
     {
         "CL": 0, 
@@ -4337,7 +4337,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "shortbow"
+        "id": "mwk-shortbow"
     }, 
     {
         "CL": 0, 
@@ -4377,7 +4377,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "composite-shortbow"
+        "id": "mwk-composite-shortbow"
     }, 
     {
         "CL": 0, 
@@ -4737,7 +4737,7 @@
         "Special": "performance, trip", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "aklys"
+        "id": "mwk-aklys"
     }, 
     {
         "CL": 0, 
@@ -4777,7 +4777,7 @@
         "Special": "monk, performance", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "knuckle-axe"
+        "id": "mwk-knuckle-axe"
     }, 
     {
         "CL": 0, 
@@ -4817,7 +4817,7 @@
         "Special": "see text", 
         "WeaponType": "light", 
         "Weight": "5 lbs", 
-        "id": "barbazu-beard"
+        "id": "mwk-barbazu-beard"
     }, 
     {
         "CL": 0, 
@@ -4857,7 +4857,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "battle-poi"
+        "id": "mwk-battle-poi"
     }, 
     {
         "CL": 0, 
@@ -4897,7 +4897,7 @@
         "Special": "disarm, sunder", 
         "WeaponType": "light", 
         "Weight": "3 lbs.", 
-        "id": "swordbreaker-dagger"
+        "id": "mwk-swordbreaker-dagger"
     }, 
     {
         "CL": 0, 
@@ -4937,7 +4937,7 @@
         "Special": "disarm, trip", 
         "WeaponType": "light", 
         "Weight": "5 lbs.", 
-        "id": "flying-talon"
+        "id": "mwk-flying-talon"
     }, 
     {
         "CL": 0, 
@@ -4977,7 +4977,7 @@
         "Special": "see text", 
         "WeaponType": "light", 
         "Weight": "10 lbs.", 
-        "id": "dwarven-boulder-helmet"
+        "id": "mwk-dwarven-boulder-helmet"
     }, 
     {
         "CL": 0, 
@@ -5017,7 +5017,7 @@
         "Special": "monk, trip", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "kama"
+        "id": "mwk-kama"
     }, 
     {
         "CL": 0, 
@@ -5057,7 +5057,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "tri-bladed-katar"
+        "id": "mwk-tri-bladed-katar"
     }, 
     {
         "CL": 0, 
@@ -5097,7 +5097,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "butterfly-knife"
+        "id": "mwk-butterfly-knife"
     }, 
     {
         "CL": 0, 
@@ -5137,7 +5137,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "5 lbs.", 
-        "id": "dwarven-maulaxe"
+        "id": "mwk-dwarven-maulaxe"
     }, 
     {
         "CL": 0, 
@@ -5177,7 +5177,7 @@
         "Special": "disarm, monk", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "nunchaku"
+        "id": "mwk-nunchaku"
     }, 
     {
         "CL": 0, 
@@ -5217,7 +5217,7 @@
         "Special": "performance", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "quadrens"
+        "id": "mwk-quadrens"
     }, 
     {
         "CL": 0, 
@@ -5257,7 +5257,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "rope-gauntlet"
+        "id": "mwk-rope-gauntlet"
     }, 
     {
         "CL": 0, 
@@ -5297,7 +5297,7 @@
         "Special": "disarm, monk", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "sai"
+        "id": "mwk-sai"
     }, 
     {
         "CL": 0, 
@@ -5337,7 +5337,7 @@
         "Special": "monk", 
         "WeaponType": "light", 
         "Weight": "1 lb.", 
-        "id": "siangham"
+        "id": "mwk-siangham"
     }, 
     {
         "CL": 0, 
@@ -5377,7 +5377,7 @@
         "Special": "performance", 
         "WeaponType": "light", 
         "Weight": "2 lbs.", 
-        "id": "sica"
+        "id": "mwk-sica"
     }, 
     {
         "CL": 0, 
@@ -5417,7 +5417,7 @@
         "Special": "-", 
         "WeaponType": "light", 
         "Weight": "3 lbs.", 
-        "id": "thorn-bracer"
+        "id": "mwk-thorn-bracer"
     }, 
     {
         "CL": 0, 
@@ -5457,7 +5457,7 @@
         "Special": "disarm, performance, reach, trip", 
         "WeaponType": "light", 
         "Weight": "3 lbs.", 
-        "id": "scorpion-whip"
+        "id": "mwk-scorpion-whip"
     }, 
     {
         "CL": 0, 
@@ -5497,7 +5497,7 @@
         "Special": "disarm, performance, trip", 
         "WeaponType": "one-handed", 
         "Weight": "7 lbs.", 
-        "id": "hooked-axe"
+        "id": "mwk-hooked-axe"
     }, 
     {
         "CL": 0, 
@@ -5537,7 +5537,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "4 lbs.", 
-        "id": "falcata"
+        "id": "mwk-falcata"
     }, 
     {
         "CL": 0, 
@@ -5577,7 +5577,7 @@
         "Special": "disarm", 
         "WeaponType": "one-handed", 
         "Weight": "?", 
-        "id": "flindbar"
+        "id": "mwk-flindbar"
     }, 
     {
         "CL": 0, 
@@ -5617,7 +5617,7 @@
         "Special": "trip", 
         "WeaponType": "one-handed", 
         "Weight": "8 lbs.", 
-        "id": "khopesh"
+        "id": "mwk-khopesh"
     }, 
     {
         "CL": 0, 
@@ -5657,7 +5657,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "6 lbs.", 
-        "id": "rhoka"
+        "id": "mwk-rhoka"
     }, 
     {
         "CL": 0, 
@@ -5697,7 +5697,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "2 lbs.", 
-        "id": "sawtooth-sabre"
+        "id": "mwk-sawtooth-sabre"
     }, 
     {
         "CL": 0, 
@@ -5737,7 +5737,7 @@
         "Special": "performance", 
         "WeaponType": "one-handed", 
         "Weight": "3 lbs.", 
-        "id": "shotel"
+        "id": "mwk-shotel"
     }, 
     {
         "CL": 0, 
@@ -5777,7 +5777,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "3 lbs", 
-        "id": "dueling-sword"
+        "id": "mwk-dueling-sword"
     }, 
     {
         "CL": 0, 
@@ -5817,7 +5817,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "6 lbs.", 
-        "id": "bastard-sword"
+        "id": "mwk-bastard-sword"
     }, 
     {
         "CL": 0, 
@@ -5857,7 +5857,7 @@
         "Special": "-", 
         "WeaponType": "one-handed", 
         "Weight": "8 lbs.", 
-        "id": "dwarven-waraxe"
+        "id": "mwk-dwarven-waraxe"
     }, 
     {
         "CL": 0, 
@@ -5897,7 +5897,7 @@
         "Special": "see text", 
         "WeaponType": "one-handed", 
         "Weight": "12 lbs.", 
-        "id": "dwarven-double-waraxe"
+        "id": "mwk-dwarven-double-waraxe"
     }, 
     {
         "CL": 0, 
@@ -5937,7 +5937,7 @@
         "Special": "disarm, nonlethal, reach, trip", 
         "WeaponType": "one-handed", 
         "Weight": "2 lbs.", 
-        "id": "whip"
+        "id": "mwk-whip"
     }, 
     {
         "CL": 0, 
@@ -5977,7 +5977,7 @@
         "Special": "double", 
         "WeaponType": "two-handed", 
         "Weight": "15 lbs.", 
-        "id": "orc-double-axe"
+        "id": "mwk-orc-double-axe"
     }, 
     {
         "CL": 0, 
@@ -6017,7 +6017,7 @@
         "Special": "double, trip", 
         "WeaponType": "two-handed", 
         "Weight": "8 lbs.", 
-        "id": "battle-ladder"
+        "id": "mwk-battle-ladder"
     }, 
     {
         "CL": 0, 
@@ -6057,7 +6057,7 @@
         "Special": "double, reach, trip", 
         "WeaponType": "two-handed", 
         "Weight": "8 lbs.", 
-        "id": "boarding-gaff"
+        "id": "mwk-boarding-gaff"
     }, 
     {
         "CL": 0, 
@@ -6097,7 +6097,7 @@
         "Special": "disarm, trip", 
         "WeaponType": "two-handed", 
         "Weight": "10 lbs.", 
-        "id": "spiked-chain"
+        "id": "mwk-spiked-chain"
     }, 
     {
         "CL": 0, 
@@ -6137,7 +6137,7 @@
         "Special": "-", 
         "WeaponType": "two-handed", 
         "Weight": "7 lbs.", 
-        "id": "elven-curve-blade"
+        "id": "mwk-elven-curve-blade"
     }, 
     {
         "CL": 0, 
@@ -6177,7 +6177,7 @@
         "Special": "reach", 
         "WeaponType": "two-handed", 
         "Weight": "15 lbs.", 
-        "id": "dwarven-dorn-dergar"
+        "id": "mwk-dwarven-dorn-dergar"
     }, 
     {
         "CL": 0, 
@@ -6217,7 +6217,7 @@
         "Special": "reach, trip", 
         "WeaponType": "two-handed", 
         "Weight": "10 lbs.", 
-        "id": "fauchard"
+        "id": "mwk-fauchard"
     }, 
     {
         "CL": 0, 
@@ -6257,7 +6257,7 @@
         "Special": "disarm, double, trip", 
         "WeaponType": "two-handed", 
         "Weight": "10 lbs.", 
-        "id": "dire-flail"
+        "id": "mwk-dire-flail"
     }, 
     {
         "CL": 0, 
@@ -6297,7 +6297,7 @@
         "Special": "reach, trip", 
         "WeaponType": "two-handed", 
         "Weight": "10 lbs.", 
-        "id": "flailpole"
+        "id": "mwk-flailpole"
     }, 
     {
         "CL": 0, 
@@ -6337,7 +6337,7 @@
         "Special": "sunder", 
         "WeaponType": "two-handed", 
         "Weight": "6 lbs.", 
-        "id": "flambard"
+        "id": "mwk-flambard"
     }, 
     {
         "CL": 0, 
@@ -6377,7 +6377,7 @@
         "Special": "performance, reach", 
         "WeaponType": "two-handed", 
         "Weight": "12 lbs.", 
-        "id": "flying-blade"
+        "id": "mwk-flying-blade"
     }, 
     {
         "CL": 0, 
@@ -6417,7 +6417,7 @@
         "Special": "grapple, see text", 
         "WeaponType": "two-handed", 
         "Weight": "1 lb.", 
-        "id": "garrote"
+        "id": "mwk-garrote"
     }, 
     {
         "CL": 0, 
@@ -6457,7 +6457,7 @@
         "Special": "double, trip", 
         "WeaponType": "two-handed", 
         "Weight": "6 lbs.", 
-        "id": "gnome-hooked-hammer"
+        "id": "mwk-gnome-hooked-hammer"
     }, 
     {
         "CL": 0, 
@@ -6497,7 +6497,7 @@
         "Special": "grapple", 
         "WeaponType": "two-handed", 
         "Weight": "16 lbs.", 
-        "id": "harpoon"
+        "id": "mwk-harpoon"
     }, 
     {
         "CL": 0, 
@@ -6537,7 +6537,7 @@
         "Special": "reach", 
         "WeaponType": "two-handed", 
         "Weight": "14 lbs.", 
-        "id": "dwarven-longaxe"
+        "id": "mwk-dwarven-longaxe"
     }, 
     {
         "CL": 0, 
@@ -6577,7 +6577,7 @@
         "Special": "reach", 
         "WeaponType": "two-handed", 
         "Weight": "20 lbs.", 
-        "id": "dwarven-longhammer"
+        "id": "mwk-dwarven-longhammer"
     }, 
     {
         "CL": 0, 
@@ -6617,7 +6617,7 @@
         "Special": "grapple, reach, see text", 
         "WeaponType": "two-handed", 
         "Weight": "10 lbs.", 
-        "id": "mancatcher"
+        "id": "mwk-mancatcher"
     }, 
     {
         "CL": 0, 
@@ -6657,7 +6657,7 @@
         "Special": "trip, see text", 
         "WeaponType": "two-handed", 
         "Weight": "10 lbs.", 
-        "id": "snag-net"
+        "id": "mwk-snag-net"
     }, 
     {
         "CL": 0, 
@@ -6697,7 +6697,7 @@
         "Special": "see text", 
         "WeaponType": "two-handed", 
         "Weight": "15 lbs.", 
-        "id": "piston-maul"
+        "id": "mwk-piston-maul"
     }, 
     {
         "CL": 0, 
@@ -6737,7 +6737,7 @@
         "Special": "reach, see text", 
         "WeaponType": "two-handed", 
         "Weight": "12 lbs.", 
-        "id": "ripsaw-glaive"
+        "id": "mwk-ripsaw-glaive"
     }, 
     {
         "CL": 0, 
@@ -6777,7 +6777,7 @@
         "Special": "disarm, trip", 
         "WeaponType": "two-handed", 
         "Weight": "2 lbs.", 
-        "id": "bladed-scarf"
+        "id": "mwk-bladed-scarf"
     }, 
     {
         "CL": 0, 
@@ -6817,7 +6817,7 @@
         "Special": "see text", 
         "WeaponType": "two-handed", 
         "Weight": "6 lbs.", 
-        "id": "totem-spear"
+        "id": "mwk-totem-spear"
     }, 
     {
         "CL": 0, 
@@ -6857,7 +6857,7 @@
         "Special": "double", 
         "WeaponType": "two-handed", 
         "Weight": "10 lbs.", 
-        "id": "two-bladed-sword"
+        "id": "mwk-two-bladed-sword"
     }, 
     {
         "CL": 0, 
@@ -6897,7 +6897,7 @@
         "Special": "brace, double", 
         "WeaponType": "two-handed", 
         "Weight": "12 lbs.", 
-        "id": "dwarven-urgrosh"
+        "id": "mwk-dwarven-urgrosh"
     }, 
     {
         "CL": 0, 
@@ -6937,7 +6937,7 @@
         "Special": "nonlethal, trip", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "bola"
+        "id": "mwk-bola"
     }, 
     {
         "CL": 0, 
@@ -6977,7 +6977,7 @@
         "Special": "trip", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "brutal-bola"
+        "id": "mwk-brutal-bola"
     }, 
     {
         "CL": 0, 
@@ -7017,7 +7017,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "3 lbs.", 
-        "id": "boomerang"
+        "id": "mwk-boomerang"
     }, 
     {
         "CL": 0, 
@@ -7057,7 +7057,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "thorn-bow"
+        "id": "mwk-thorn-bow"
     }, 
     {
         "CL": 0, 
@@ -7097,7 +7097,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "18 lbs.", 
-        "id": "double-crossbow"
+        "id": "mwk-double-crossbow"
     }, 
     {
         "CL": 0, 
@@ -7137,7 +7137,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "hand-crossbow"
+        "id": "mwk-hand-crossbow"
     }, 
     {
         "CL": 0, 
@@ -7177,7 +7177,7 @@
         "Special": "see text", 
         "WeaponType": "ranged", 
         "Weight": "8 lbs.", 
-        "id": "launching-crossbow"
+        "id": "mwk-launching-crossbow"
     }, 
     {
         "CL": 0, 
@@ -7217,7 +7217,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "12 lbs.", 
-        "id": "repeating-heavy-crossbow"
+        "id": "mwk-repeating-heavy-crossbow"
     }, 
     {
         "CL": 0, 
@@ -7257,7 +7257,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "6 lbs.", 
-        "id": "repeating-crossbow"
+        "id": "mwk-repeating-crossbow"
     }, 
     {
         "CL": 0, 
@@ -7297,7 +7297,7 @@
         "Special": "see text", 
         "WeaponType": "ranged", 
         "Weight": "4 lbs.", 
-        "id": "flask-thrower"
+        "id": "mwk-flask-thrower"
     }, 
     {
         "CL": 0, 
@@ -7337,7 +7337,7 @@
         "Special": "grapple", 
         "WeaponType": "ranged", 
         "Weight": "14 lbs.", 
-        "id": "grappling-hook"
+        "id": "mwk-grappling-hook"
     }, 
     {
         "CL": 0, 
@@ -7377,7 +7377,7 @@
         "Special": "see text", 
         "WeaponType": "ranged", 
         "Weight": "5 lbs.", 
-        "id": "lasso"
+        "id": "mwk-lasso"
     }, 
     {
         "CL": 0, 
@@ -7417,7 +7417,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "6 lbs.", 
-        "id": "net"
+        "id": "mwk-net"
     }, 
     {
         "CL": 0, 
@@ -7457,7 +7457,7 @@
         "Special": "performance, trip", 
         "WeaponType": "ranged", 
         "Weight": "-", 
-        "id": "throwing-shield"
+        "id": "mwk-throwing-shield"
     }, 
     {
         "CL": 0, 
@@ -7497,7 +7497,7 @@
         "Special": "see text", 
         "WeaponType": "ranged", 
         "Weight": "3 lbs.", 
-        "id": "shrillshaft-javelin"
+        "id": "mwk-shrillshaft-javelin"
     }, 
     {
         "CL": 0, 
@@ -7537,7 +7537,7 @@
         "Special": "monk", 
         "WeaponType": "ranged", 
         "Weight": "1/2 lbs.", 
-        "id": "shuriken"
+        "id": "mwk-shuriken"
     }, 
     {
         "CL": 0, 
@@ -7577,7 +7577,7 @@
         "Special": "double, see text", 
         "WeaponType": "ranged", 
         "Weight": "1 lb.", 
-        "id": "double-sling"
+        "id": "mwk-double-sling"
     }, 
     {
         "CL": 0, 
@@ -7617,7 +7617,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "2 lbs.", 
-        "id": "sling-glove"
+        "id": "mwk-sling-glove"
     }, 
     {
         "CL": 0, 
@@ -7657,7 +7657,7 @@
         "Special": "-", 
         "WeaponType": "ranged", 
         "Weight": "3 lbs.", 
-        "id": "halfling-sling-staff"
+        "id": "mwk-halfling-sling-staff"
     }, 
     {
         "CL": 0, 
@@ -7697,7 +7697,7 @@
         "Special": "disarm, trip", 
         "WeaponType": "ranged", 
         "Weight": "1 lb.", 
-        "id": "stitched-sling"
+        "id": "mwk-stitched-sling"
     }, 
     {
         "CL": 0, 
@@ -7859,7 +7859,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "6 lbs.", 
-        "id": "buckler-gun"
+        "id": "mwk-buckler-gun"
     }, 
     {
         "CL": 0, 
@@ -7903,7 +7903,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "5 lbs.", 
-        "id": "pepperbox"
+        "id": "mwk-pepperbox"
     }, 
     {
         "CL": 0, 
@@ -7947,7 +7947,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "4 lbs.", 
-        "id": "pistol"
+        "id": "mwk-pistol"
     }, 
     {
         "CL": 0, 
@@ -7991,7 +7991,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "1 lb.", 
-        "id": "pistol-coat"
+        "id": "mwk-pistol-coat"
     }, 
     {
         "CL": 0, 
@@ -8035,7 +8035,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "1 lb.", 
-        "id": "pistol-dagger"
+        "id": "mwk-pistol-dagger"
     }, 
     {
         "CL": 0, 
@@ -8079,7 +8079,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "5 lbs.", 
-        "id": "pistol-double-barreled"
+        "id": "mwk-pistol-double-barreled"
     }, 
     {
         "CL": 0, 
@@ -8123,7 +8123,7 @@
         "Special": "scatter", 
         "WeaponType": "firearm", 
         "Weight": "3 lbs.", 
-        "id": "pistol-dragon"
+        "id": "mwk-pistol-dragon"
     }, 
     {
         "CL": 0, 
@@ -8167,7 +8167,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "1 lb.", 
-        "id": "pistol-sword-cane"
+        "id": "mwk-pistol-sword-cane"
     }, 
     {
         "CL": 0, 
@@ -8211,7 +8211,7 @@
         "Special": "scatter", 
         "WeaponType": "firearm", 
         "Weight": "8 lbs.", 
-        "id": "blunderbuss"
+        "id": "mwk-blunderbuss"
     }, 
     {
         "CL": 0, 
@@ -8255,7 +8255,7 @@
         "Special": "scatter", 
         "WeaponType": "firearm", 
         "Weight": "40 lbs.", 
-        "id": "culverin"
+        "id": "mwk-culverin"
     }, 
     {
         "CL": 0, 
@@ -8299,7 +8299,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "18 lbs.", 
-        "id": "double-hackbut"
+        "id": "mwk-double-hackbut"
     }, 
     {
         "CL": 0, 
@@ -8343,7 +8343,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "4 lbs.", 
-        "id": "fire-lance"
+        "id": "mwk-fire-lance"
     }, 
     {
         "CL": 0, 
@@ -8387,7 +8387,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "9 lbs.", 
-        "id": "musket"
+        "id": "mwk-musket"
     }, 
     {
         "CL": 0, 
@@ -8431,7 +8431,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "6 lbs.", 
-        "id": "musket-axe"
+        "id": "mwk-musket-axe"
     }, 
     {
         "CL": 0, 
@@ -8475,7 +8475,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "11 lbs.", 
-        "id": "musket-double-barreled"
+        "id": "mwk-musket-double-barreled"
     }, 
     {
         "CL": 0, 
@@ -8519,7 +8519,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "6 lbs.", 
-        "id": "musket-warhammer"
+        "id": "mwk-musket-warhammer"
     }, 
     {
         "CL": 0, 
@@ -8563,7 +8563,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "4 lbs.", 
-        "id": "revolver"
+        "id": "mwk-revolver"
     }, 
     {
         "CL": 0, 
@@ -8607,7 +8607,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "12 lbs.", 
-        "id": "rifle"
+        "id": "mwk-rifle"
     }, 
     {
         "CL": 0, 
@@ -8651,7 +8651,7 @@
         "Special": "-", 
         "WeaponType": "firearm", 
         "Weight": "15 lbs.", 
-        "id": "rifle-pepperbox"
+        "id": "mwk-rifle-pepperbox"
     }, 
     {
         "CL": 0, 
@@ -8695,7 +8695,7 @@
         "Special": "scatter", 
         "WeaponType": "firearm", 
         "Weight": "12 lbs.", 
-        "id": "shotgun"
+        "id": "mwk-shotgun"
     }, 
     {
         "CL": 0, 
@@ -8739,7 +8739,7 @@
         "Special": "scatter", 
         "WeaponType": "firearm", 
         "Weight": "15 lbs.", 
-        "id": "shotgun-double-barreled"
+        "id": "mwk-shotgun-double-barreled"
     }, 
     {
         "CL": 0, 

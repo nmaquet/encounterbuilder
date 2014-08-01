@@ -301,7 +301,7 @@ def weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,sourc
     effectiveName = ("Mwk " + name) if mwk else name
     result = {
         "Name": effectiveName,
-        "id": slugify(name),
+        "id": slugify(effectiveName),
         "Group": "Weapon",
         "WeaponType":weapontype,
         "Proficiency":proficiency,
