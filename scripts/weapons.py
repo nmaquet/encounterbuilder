@@ -9,6 +9,9 @@ with open("../data/items/weapon_descriptions.json", "r") as f:
 with open("../data/contrib/weapons_kyle.json", "r") as f:
     WEAPONS_KYLE = json.loads(f.read())
 
+with open("../data/manual/missing_weapons_manual.json", "r") as f:
+    MISSING_WEAPONS_MANUAL = json.loads(f.read())
+
 def getDescription(weaponId):
     for weapon in PRD_WEAPON_DESCRIPTIONS:
         if weapon["id"] == weaponId:
@@ -16,6 +19,9 @@ def getDescription(weaponId):
     for weapon in WEAPONS_KYLE["ArrayOfWeapon"]["Weapon"]:
         if slugify(weapon["Name"][0]) == weaponId and "Desc" in weapon:
             return weapon["Desc"][0]
+    for weapon in MISSING_WEAPONS_MANUAL:
+        if weapon["id"] == weaponId:
+            return weapon["description"]
     print "No description found for id " + weaponId
     return ""
 
