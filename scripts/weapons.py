@@ -4,12 +4,18 @@
 import json
 
 with open("../data/items/weapon_descriptions.json", "r") as f:
-    WEAPON_DESCRIPTIONS = json.loads(f.read())
+    PRD_WEAPON_DESCRIPTIONS = json.loads(f.read())
+
+with open("../data/contrib/weapons_kyle.json", "r") as f:
+    WEAPONS_KYLE = json.loads(f.read())
 
 def getDescription(weaponId):
-    for weapon in WEAPON_DESCRIPTIONS:
+    for weapon in PRD_WEAPON_DESCRIPTIONS:
         if weapon["id"] == weaponId:
             return weapon["Description"]
+    for weapon in WEAPONS_KYLE["ArrayOfWeapon"]["Weapon"]:
+        if slugify(weapon["Name"][0]) == weaponId and "Desc" in weapon:
+            return weapon["Desc"][0]
     print "No description found for id " + weaponId
     return ""
 
@@ -277,7 +283,6 @@ Firearm bullet (30) ; 30 gp ; - ; - ; - ; - ; 1/2 lb. ; - ; - ; - ; - ; UC
 Bullet, adamantine ; 61 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
 Firearm bullet, pitted ; 5 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
 Firearm bullet, silver ; 25 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
-Gunsmith’s kit ; 15 gp ; - ; - ; - ; - ; 2 lb. ; - ; - ; - ; - ; UC
 Metal cartridge ; 15 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
 Pellets (handful) ; 1 gp ; - ; - ; - ; - ; -; - ; - ; - ; - ; UC
 Pellets (30 handfuls) ; 30 gp ; - ; - ; - ; - ; 1/2 lb. ; - ; - ; - ; - ; UC
