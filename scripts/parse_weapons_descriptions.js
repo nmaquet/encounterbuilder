@@ -19,48 +19,24 @@ var processParagraphWithID = function (index) {
     var name = $(this).text().trim();
 
     var firstParagraph = $(this).next();
-//    expect(firstParagraph.hasClass("stat-block-1")).to.be.true;
     var price = /Price (.*)/.exec(firstParagraph.text())[1];
 
     var secondParagraph = firstParagraph.next();
-//    expect(secondParagraph.hasClass("stat-block-1")).to.be.true;
     var type = /Type (.*)/.exec(secondParagraph.text())[1];
 
     var thirdParagraph= secondParagraph.next();
-//    expect(thirdParagraph.hasClass("stat-block")).to.be.true;
     var description = thirdParagraph.text();
 
     console.log(name + " / " + price + " / " + type + " / " + description);
 
-//    for (var i in name) {
-//        var weapon = {
-//            "CL": Number(cl),
-//            "Group": "Wondrous Item",
-//            "Slot":"weapon",
-//            "Name": name[i],
-//            "Price": parsePrice(price[i]),
-//            "PriceUnit": "gp",
-//            Aura: aura,
-//            Weight: weight,
-//            Cost: parsePrice(price[i]) / 2 || undefined,
-//            CostUnit: "gp",
-//            Requirements: requirements,
-//            Description: description,
-//            Source:"Ultimate Equipment",
-//            "id": idify(name[i])
-//        }
-//        weapons.push(weapon);
-//    }
+    var weapon = {
+        "Name": name,
+        "Description": description,
+        "id": idify(name)
+    };
+
+    weapons.push(weapon);
 };
 
-function parsePrice(text) {
-    if (String(text).trim().toLowerCase() === "varies") {
-        return;
-    }
-    else {
-        return Number(text.split(" ")[0].replace(",", ""));
-    }
-}
-
 $("p").filter(elementWithID).each(processParagraphWithID);
-//fs.writeFileSync(__dirname + "/../data/items/weapon_descriptions.json", JSON.stringify(weapons, null, 4));
+fs.writeFileSync(__dirname + "/../data/items/weapon_descriptions.json", JSON.stringify(weapons, null, 4));
