@@ -6,7 +6,7 @@ import json
 with open("../data/items/weapon_descriptions.json", "r") as f:
     PRD_WEAPON_DESCRIPTIONS = json.loads(f.read())
 
-with open("../data/contrib/weapons_kyle.json", "r") as f:
+with open("../data/contrib/weapons_kyle_text_descriptions.json", "r") as f:
     WEAPONS_KYLE = json.loads(f.read())
 
 with open("../data/manual/missing_weapons_manual.json", "r") as f:
