@@ -3,6 +3,16 @@
 
 import json
 
+with open("../data/items/weapon_descriptions.json", "r") as f:
+    WEAPON_DESCRIPTIONS = json.loads(f.read())
+
+def getDescription(weaponId):
+    for weapon in WEAPON_DESCRIPTIONS:
+        if weapon["id"] == weaponId:
+            return weapon["Description"]
+    print "No description found for id " + weaponId
+    return ""
+
 simple_light="""Gauntlet;   2 gp;   1d2 ;1d3;   X2; -   ;1 lb.; B   ;-  ;CRB
 Unarmed strike;  0 gp;   1d2 ;1d3 ;X2 ; -  ; -  ; B ;  nonlethal  ; CRB
 Battle aspergillum ; 5 gp ;   1d4; 1d6; X2 ; -  ; 4 lb.;   B ;  see text ;   APG
@@ -283,14 +293,14 @@ def slugify(string):
     if res[-1] == "-":
         res.pop()
     return "".join(res)
-    
+
 def weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype, mwk, misfire, capacity):
     if cost == "-":
         cost = 0
         price_unit = "gp"
-    name = ("Mwk " + name) if mwk else name
+    effectiveName = ("Mwk " + name) if mwk else name
     result = {
-        "Name": name,
+        "Name": effectiveName,
         "id": slugify(name),
         "Group": "Weapon",
         "WeaponType":weapontype,
@@ -306,7 +316,8 @@ def weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,sourc
         "DamageType":type,
         "Special":special,
         "Source":source,
-        "Mwk":mwk
+        "Mwk":mwk,
+        "Description": getDescription(slugify(name))
     }
     if misfire is not None:
         result["Misfire"] = misfire
@@ -347,9 +358,9 @@ def parseTable(text,proficiency,weapontype):
             source = splitted[9].strip()
         if weapontype != 'ammunition':
             table.append(weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype, True, misfire, capacity))
-            print table[-1]["Name"]
+            # print table[-1]["Name"]
         table.append(weapon(name,cost,price_unit,dmg_s,dmg_m,crit,range,weight,type,special,source,proficiency,weapontype, False, misfire, capacity))
-        print table[-1]["Name"]
+        # print table[-1]["Name"]
     return table
 
 if __name__ == "__main__":
