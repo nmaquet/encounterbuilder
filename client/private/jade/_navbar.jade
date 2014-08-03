@@ -17,7 +17,29 @@
             li
                 a#open-sidebar-and-select-db-tab.is-pointer.sp-menu-toggle(ng-click='openLeftSidebarAndSelectTab("database")')
                     i.icon.icon-lg.fa.fa-book
-
+            li.dropdown.visible-xs
+                a.dropdown-toggle.is-pointer(role='button', data-toggle='dropdown')
+                    i.icon.icon-lg.fa.fa-bars
+                ul.dropdown-menu(role='menu')
+                    li
+                        a.is-pointer(href="#/tutorial") Need some help?
+                    li
+                        a.is-pointer(href="http://forums.encounterbuilder.com") Encounter Builder Forums
+                    li
+                        a(href='https://www.facebook.com/EncounterBuilder', target='_blank', title='Like us on Facebook')
+                            i.icon.fa.fa-facebook
+                            | &nbsp;
+                            span Like us on Facebook
+                    li
+                        a(href='https://twitter.com/buildEncounters', target='_blank', title='Follow us on Twitter')
+                            i.icon.fa.fa-twitter
+                            | &nbsp;
+                            span Follow us on Twitter
+                    li
+                        a(href='https://plus.google.com/100708201261690131120', target='_blank', title='Join us on Google+')
+                            i.icon.fa.fa-google-plus
+                            | &nbsp;
+                            span Join us on Google+
         ul.nav.nav-pills.sp-menu-toggle-container.pull-right(ng-hide='!viewport.lg && leftSidebarIsOpened()')
             li
                 a.t-title.is-pointer.sp-menu-toggle(ng-click='toggleRightSidebar()')
@@ -44,7 +66,10 @@
                         a#user-dropdown-logout.is-pointer(tabindex='-1', ng-click='logout()')
                             | Log out
 
-        ul.nav.nav-pills.l-nav-social.visible-lg.pull-right(ng-hide='viewport.xs && anySidebarIsOpened()')
+        ul.nav.nav-pills.l-nav-social.hidden-xs.pull-right(ng-hide='viewport.xs && anySidebarIsOpened()')
+            li
+                a(href="#/tutorial", title="Need some help?") Help
+                    i.icon.square.fa.fa-question
             li
                 a(href='https://www.facebook.com/EncounterBuilder', target='_blank', title='Like us on Facebook')
                     i.icon.square.fa.fa-facebook
