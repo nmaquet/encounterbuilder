@@ -100,7 +100,6 @@ def armor_or_shield(name,cost,price_unit,armor_bonus,max_dex_bonus,armor_check_p
 def parseTable(text, type):
     table = []
     for line in text.splitlines():
-        print(line)
         splitted = line.split(";")
         name = splitted[0].strip()
         price = splitted[1].split()

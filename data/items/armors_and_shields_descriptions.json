@@ -155,9 +155,9 @@
         "id": "o-yoroi"
     },
     {
-        "Name": "Padded",
+        "Name": "Padded armor",
         "Description": "More than simple clothing, padded armor combines heavy, quilted cloth and layers of densely packed stuffing to create a cheap and basic protection. It is typically worn by those not intending to face lethal combat or those who wish their maneuverability to be impacted as little as possible.",
-        "id": "padded"
+        "id": "padded-armor"
     },
     {
         "Name": "Parade",
