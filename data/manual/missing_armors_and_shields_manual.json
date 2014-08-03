@@ -1,50 +1,50 @@
 [
     {
         "id": "armored-kilt",
-        "description": ""
+        "description": "When you add an armored kilt to a suit of light armor, the set counts as medium armor. Likewise, a kilt and medium armor counts as heavy armor. Adding an armored kilt to heavy armor has no effect."
     },
     {
         "id": "breastplate-agile",
-        "description": ""
+        "description": "This breastplate is specially crafted in a manner that allows extra maneuverability for some physical activities. The armor check penalty for Climb checks and jump checks is only –1 (masterwork and mithral versions of this armor reduce this penalty as well as the normal penalty)."
     },
     {
         "id": "field-plate",
-        "description": ""
+        "description": "This heavy armor is similar to full plate but lighter in construction, sacrificing a bit of protection for greater flexibility and mobility. Field plate is effectively the same as masterwork banded mail. You can purchase masterwork field plate."
     },
     {
         "id": "half-plate-agile",
-        "description": ""
+        "description": "This style of half-plate is specially crafted in a manner that allows extra maneuverability for some physical activities. The armor check penalty for Climb checks and jump checks is only –4 (masterwork and mithral versions of this armor reduce this penalty as well as the normal penalty). In addition, unlike most heavy armors, the wearer can still run at quadruple speed instead of triple speed."
     },
     {
         "id": "hellknight-plate",
-        "description": ""
+        "description": "These distinctive suits of armor are a special type of masterwork full plate that, when worn by a character with levels in the Hell Knight Commander prestige class, grants additional effects."
     },
     {
         "id": "hide-shirt",
-        "description": ""
+        "description": "Made from animal hide and giant lizard scales over a shirt of interwoven cords, these chest and shoulder coverings protect without restricting mobility. The wearer of a hide shirt can make a DC 15 Strength check as a standard action. If he succeeds, the armor gains the broken condition and drops to the ground rather than requiring the usual 1 minute it would take to remove it. The armor must be repaired as though it had taken 8 points of damage before it can be used again; a broken hide shirt grants no bonus to Armor Class."
     },
     {
         "id": "leaf-armor",
-        "description": ""
+        "description": "Druidic elves use alchemical compounds to treat special leaves used in crafting armor for their warriors. Leaf armor is always of masterwork quality and has the same game statistics as masterwork studded leather, except it contains no metal."
     },
     {
         "id": "light-steel-shield-quickdraw",
-        "description": ""
+        "description": "This light shield is specially crafted with a series of straps to allow a character proficient in shields to ready or stow it on his or her back quickly and easily. If you have a base attack bonus of +1 or higher, you may don or put away a quickdraw shield as a swift action combined with a regular move. If you have the Two-Weapon Fighting feat, you can draw a light or one-handed weapon with one hand and a quickdraw shield with the other in the time it would normally take you to draw one weapon. If you have the Quick Draw feat, you may don or put away a quickdraw shield as a free action."
     },
     {
         "id": "light-wooden-shield-quickdraw",
-        "description": ""
+        "description": "This light shield is specially crafted with a series of straps to allow a character proficient in shields to ready or stow it on his or her back quickly and easily. If you have a base attack bonus of +1 or higher, you may don or put away a quickdraw shield as a swift action combined with a regular move. If you have the Two-Weapon Fighting feat, you can draw a light or one-handed weapon with one hand and a quickdraw shield with the other in the time it would normally take you to draw one weapon. If you have the Quick Draw feat, you may don or put away a quickdraw shield as a free action."
     },
     {
         "id": "parade-armor",
-        "description": ""
+        "description": "Most wealthy countries with standing armies have a different uniform for use in showy noncombat situations such as parades, coronation ceremonies, and so on. The appearance of this armor varies by the country of origin and the branch of the military, but still provides some protection in case the soldier needs to fight while in parade dress. If you’re wearing a country’s parade armor, you gain a +2 circumstance bonus to Diplomacy and Intimidate checks to influence a person from that country."
     },
     {
         "id": "rosewood-armor",
-        "description": ""
+        "description": "This suit of leather armor is wrapped in special rose vines. Treat this as leather armor with armor spikes. The vines must be watered with at least 1 gallon of water each day or they wither and die, turning the armor into normal leather armor."
     },
     {
         "id": "throwing-shield",
-        "description": ""
+        "description": "This shield is designed for throwing and comes with specially designed straps allowing you to unclasp and throw it. You can throw the shield as a free action. Neither a shield’s enhancement bonus to AC nor its shield spikes apply to your attack or damage rolls. Tower shields cannot be throwing shields. "
     }
 ]
