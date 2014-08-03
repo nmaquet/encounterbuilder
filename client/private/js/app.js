@@ -17,8 +17,7 @@ DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
 DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
     function ($routeProvider, $httpProvider) {
         $routeProvider
-//            .when('/', { templateUrl: 'home.html' })
-            .when('/', { redirectTo: '/tutorial' })
+            .when('/', { templateUrl: 'home.html' })
             .when('/tutorial', { templateUrl: 'tutorial.html' })
             .when('/encounter/:encounterId/:type/:detailsId', { templateUrl: 'encounter.html' })
             .when('/encounter/:encounterId', { templateUrl: 'encounter.html' })
