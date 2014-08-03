@@ -3,6 +3,16 @@
 
 import json
 
+with open("../data/items/armors_and_shields_descriptions.json", "r") as f:
+    PRD_ARMORS_AND_SHIELDS_DESCRIPTIONS = json.loads(f.read())
+
+def getDescription(armorOrShieldId):
+    for armorOrShield in PRD_ARMORS_AND_SHIELDS_DESCRIPTIONS:
+        if armorOrShield["id"] == armorOrShieldId:
+            return armorOrShield["Description"]
+    print "No description found for id " + armorOrShieldId
+    return ""
+
 light_armors = """Armored Kilt ; 20 gp ; +1 ; +6 ; 0 ; 0% ; 30 ft. ; 20 ft. ; 10 lbs. ; AA
 Padded armor; 5 gp ; +1 ; +8 ; 0 ; 5% ; 30 ft. ; 20 ft. ; 10 lbs. ; CRB
 Quilted Cloth ; 100 gp ; +1 ; +8 ; 0 ; 10% ; 30 ft. ; 20 ft. ; 15 lbs. ; APG
@@ -65,10 +75,10 @@ def armor_or_shield(name,cost,price_unit,armor_bonus,max_dex_bonus,armor_check_p
         price_unit = "gp"
     if armor_check_penalty == "-":
         armor_check_penalty = 0
-    name = ("Mwk " + name) if mwk else name
+    effectiveName = ("Mwk " + name) if mwk else name
     result = {
-        "Name": name,
-        "id": slugify(name),
+        "Name": effectiveName,
+        "id": slugify(effectiveName),
         "Group": "Armor",
         "ArmorType": type,
         "Price": float(cost.replace(",","")) + (150 if mwk else 0),
@@ -82,6 +92,7 @@ def armor_or_shield(name,cost,price_unit,armor_bonus,max_dex_bonus,armor_check_p
         "Speed20Ft" : speed_20_ft,
         "Weight":weight,
         "Source":source,
+        "Description":getDescription(slugify(name)),
         "Mwk":mwk
     }
     return result
