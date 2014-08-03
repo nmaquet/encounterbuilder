@@ -6,10 +6,16 @@ import json
 with open("../data/items/armors_and_shields_descriptions.json", "r") as f:
     PRD_ARMORS_AND_SHIELDS_DESCRIPTIONS = json.loads(f.read())
 
+with open("../data/manual/missing_armors_and_shields_manual.json", "r") as f:
+    MISSING_ARMORS_AND_SHIELDS_MANUAL = json.loads(f.read())
+
 def getDescription(armorOrShieldId):
     for armorOrShield in PRD_ARMORS_AND_SHIELDS_DESCRIPTIONS:
         if armorOrShield["id"] == armorOrShieldId:
             return armorOrShield["Description"]
+    for armorOrShield in MISSING_ARMORS_AND_SHIELDS_MANUAL:
+            if armorOrShield["id"] == armorOrShieldId:
+                return armorOrShield["description"]
     print "No description found for id " + armorOrShieldId
     return ""
 
