@@ -4,7 +4,7 @@ var fs = require('fs');
 
 var armors = require(__dirname + "/../data/items/armors_and_shields.json");
 var clone = require(__dirname + "/../server/clone.js")().clone;
-var idify = require(__dirname + "/../server/idify.js")().idify;
+var idify = require(__dirname + "/../server/utils.js")().idify;
 
 var armorSpecialAbilities = {
     1: [
