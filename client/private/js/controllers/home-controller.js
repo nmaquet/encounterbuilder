@@ -1,16 +1,23 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('HomeController',
-    ['contentTreeService', function (contentTreeService) {
-        function goToFirstNodeOrShowTutorial() {
-            contentTreeService.goToFirstNode();
+    ['$location', 'contentTreeService', function ($location, contentTreeService) {
+
+        function redirect() {
+            if (contentTreeService.hasFirstNode()) {
+                contentTreeService.goToFirstNode();
+            } else {
+                $location.path('/tutorial');
+            }
         }
+
         if (contentTreeService.contentTree()) {
-            goToFirstNodeOrShowTutorial();
+            redirect();
         }
         else {
+            console.log("expecting to redirect later");
             contentTreeService.onLoadSuccess(function () {
-                goToFirstNodeOrShowTutorial();
+                redirect();
             });
         }
     }]

@@ -129,6 +129,10 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 }
             };
 
+            service.hasFirstNode = function () {
+                return fancyTree.getFirstChild();
+            };
+
             service.goToFirstNode = function () {
                 if (fancyTree && fancyTree.getFirstChild()) {
                     service.goToNode(fancyTree.getFirstChild());
