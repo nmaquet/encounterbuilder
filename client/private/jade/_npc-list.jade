@@ -1,5 +1,5 @@
 // TODO: adapt this
-.form-inline.form-group(ng-show="npcs")
+.form-inline.form-group(ng-show="refreshingNpcs || npcs")
     .col-xxs-12.col-xs-12
         label(for='npc-sort') Sort by:&nbsp;
         select.form-control#npc-sort(ng-model='sortBy')
@@ -7,7 +7,7 @@
             option(value='cr') Challenge Rating
 
 
-table.npcs.table.table-striped(ng-show="npcs")
+table.npcs.table.table-striped(ng-show="refreshingNpcs || npcs")
     thead
         tr.result-row
             th Name
@@ -30,8 +30,8 @@ table.npcs.table.table-striped(ng-show="npcs")
                     i.icon.icon-plus
                         | +
 
-p.text-center(ng-hide="monsters || refreshingNpcs")
+p.text-center(ng-hide="refreshingNpcs || npcs")
     | No NPCs found.
 
-.text-center(ng-show="npcs")
+.text-center(ng-show="refreshingNpcs || npcs")
     pagination.pagination-sm.page.is-pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')

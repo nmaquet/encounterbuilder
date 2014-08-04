@@ -1,4 +1,4 @@
-table.feats.table.table-striped(ng-show="feats")
+table.feats.table.table-striped(ng-show="refreshingFeats || feats")
     thead
         tr.result-row
             th Name
@@ -10,8 +10,8 @@ table.feats.table.table-striped(ng-show="feats")
             td.src-container(ng-class='{selected: selectedFeatId == feat.id}', ng-click='selectFeatById(feat.id)')
                 abbr(title='{{feat.source}}') {{feat.source | abbreviateSource}}
 
-p.text-center(ng-hide="feats || refreshingFeats")
-    | No feats found.
 
-.text-center(ng-show="feats")
+p.text-center(ng-hide="refreshingFeats || feats") No feats found.
+
+.text-center(ng-show="refreshingFeats || feats")
     pagination.pagination-sm.page.is-pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
