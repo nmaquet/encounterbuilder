@@ -1,11 +1,12 @@
-.form-inline.form-group
+.form-inline.form-group(ng-show="items")
     .col-xxs-12.col-xs-12
         label(for='sort') Sort by:&nbsp;
         select.form-control#item-sort(ng-model='sortOrder')
             option(value='name') Name
             option(value='price') Price
             option(value='cl') Caster Level
-table.items.table.table-striped
+
+table.items.table.table-striped(ng-show="items")
     thead
         tr.result-row
             th Name
@@ -26,5 +27,9 @@ table.items.table.table-striped
                 button.add-item-btn(  ng-click='addItem(item)')
                     i.icon.icon-plus
                         | +
-.text-center
+
+p.text-center(ng-hide="items || refreshingItems")
+    | No items found.
+
+.text-center(ng-show="items")
     pagination.pagination-sm.page.is-pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')

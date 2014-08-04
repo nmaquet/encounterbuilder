@@ -1,5 +1,5 @@
 // TODO: adapt this
-.form-inline.form-group
+.form-inline.form-group(ng-show="npcs")
     .col-xxs-12.col-xs-12
         label(for='npc-sort') Sort by:&nbsp;
         select.form-control#npc-sort(ng-model='sortBy')
@@ -7,7 +7,7 @@
             option(value='cr') Challenge Rating
 
 
-table.npcs.table.table-striped
+table.npcs.table.table-striped(ng-show="npcs")
     thead
         tr.result-row
             th Name
@@ -29,5 +29,9 @@ table.npcs.table.table-striped
                 button.add-item-btn(ng-click='addNpc(npc)')
                     i.icon.icon-plus
                         | +
-.text-center
+
+p.text-center(ng-hide="monsters || refreshingNpcs")
+    | No NPCs found.
+
+.text-center(ng-show="npcs")
     pagination.pagination-sm.page.is-pointer(boundary-links='true', total-items='totalItems', page='currentPage', items-per-page='itemsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')

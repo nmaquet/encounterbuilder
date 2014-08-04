@@ -3,7 +3,7 @@
         label(for='sort') Sort by:&nbsp;
         select.form-control#spell-sort(ng-model='sortBy')
             option(value='name') Name
-table.spells.table.table-striped
+table.spells.table.table-striped(ng-show="spells")
     thead
         tr.result-row
             th Name
@@ -14,5 +14,9 @@ table.spells.table.table-striped
                 span {{spell.name}}
             td.src-container(ng-class='{selected: selectedSpellId == spell.id}', ng-click='selectSpellById(spell.id)')
                 abbr(title='{{spell.source}}') {{spell.source | abbreviateSource}}
-.text-center
+
+p.text-center(ng-hide="spells || refreshingSpells")
+    | No spells found.
+
+.text-center(ng-show="spells")
     pagination.pagination-sm.page.is-pointer(boundary-links='true', total-items='totalSpells', page='currentPage', items-per-page='spellsPerPage', max-size='maxSize', previous-text='‹', next-text='›', first-text='«', last-text='»')
