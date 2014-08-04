@@ -37,6 +37,9 @@ DEMONSQUID.encounterBuilderControllers.controller('SidebarController',
             $scope.createUserIllustration = function () {
                 contentTreeService.createUserResource("user-illustration");
             };
+            $scope.createUserMap = function () {
+                contentTreeService.createUserResource("user-map");
+            };
         }
     ])
 ;

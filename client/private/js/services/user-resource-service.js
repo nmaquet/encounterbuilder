@@ -1,15 +1,13 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('userResourceService',
-    [ 'UserFeatResource', 'UserSpellResource', 'UserItemResource', 'UserIllustrationResource', function (r1, r2, r3,r4)
-{
-    return {
-        "user-feat": r1,
-        "user-spell": r2,
-        "user-item": r3,
-        "user-illustration": r4
-    }
-}
-]
-)
-;
+    [ 'UserFeatResource', 'UserSpellResource', 'UserItemResource', 'UserIllustrationResource', 'UserMapResource', function () {
+        return {
+            "user-feat": arguments[0],
+            "user-spell": arguments[1],
+            "user-item": arguments[2],
+            "user-illustration": arguments[3],
+            "user-map": arguments[4]
+        }
+    }]
+);

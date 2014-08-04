@@ -38,7 +38,9 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
             .when('/edit-user-item/:userResourceId', { templateUrl: 'edit-user-item.html' })
             .when('/edit-user-item/:userResourceId/:type/:detailsId', { templateUrl: 'edit-user-item.html' })
             /* user-illustration */
-            .when('/user-illustration/:userResourceId', { templateUrl: 'user-illustration.html' })
+            .when('/user-illustration/:userResourceId', { templateUrl: 'user-image-resource.html' })
+            /* user-map */
+            .when('/user-map/:userResourceId', { templateUrl: 'user-image-resource.html' })
 
             .when('/edit-user-monster/:userMonsterId/:type/:detailsId', { templateUrl: 'edit-user-monster.html' })
             .when('/edit-user-npc/:userNpcId/:type/:detailsId', { templateUrl: 'edit-user-npc.html' })

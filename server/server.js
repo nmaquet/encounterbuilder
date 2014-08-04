@@ -101,7 +101,8 @@ function main(db) {
     var userFeatRoute = require('./userResourceRoute')(collections.userFeats, collections.feats, ObjectID);
     var userSpellRoute = require('./userResourceRoute')(collections.userSpells, collections.spells, ObjectID);
     var userItemRoute = require('./userResourceRoute')(collections.userItems, collections.magicitems, ObjectID);
-    var userIllustrationRoute = require('./userIllustrationRoute')(collections.userIllustrations, ObjectID);
+    var userIllustrationRoute = require('./userImageResourceRoute')(collections.userIllustrations, ObjectID);
+    var userMapRoute = require('./userImageResourceRoute')(collections.userMaps, ObjectID);
 
     app.get('/api/search-monsters', metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', metrics.logSearchNpc, searchNpcsRoute);
@@ -173,6 +174,12 @@ function main(db) {
     app.post("/api/user-illustration/:id", userIllustrationRoute.updateResource);
     app.delete("/api/user-illustration/:id", userIllustrationRoute.deleteResource);
 
+    /* User map */
+    app.get("/api/user-map/:id", enableCaching, userMapRoute.getResource);
+    app.post("/api/user-map", userMapRoute.createResource);
+    app.post("/api/user-map/:id", userMapRoute.updateResource);
+    app.delete("/api/user-map/:id", userMapRoute.deleteResource);
+
     var APP_JADE_FILES = [
         'feedback-popover',
         'login',
@@ -198,7 +205,7 @@ function main(db) {
         'spell',
         'feat',
         'printable-encounter',
-        'user-illustration'
+        'user-image-resource'
     ];
 
     for (var i in APP_JADE_FILES) {

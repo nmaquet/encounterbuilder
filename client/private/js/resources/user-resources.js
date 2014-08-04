@@ -26,5 +26,9 @@
         return makeUserResource("user-illustration", $resource);
     }]);
 
+    DEMONSQUID.encounterBuilderServices.factory('UserMapResource', ['$resource', function ($resource) {
+        return makeUserResource("user-map", $resource);
+    }]);
+
 })();
 
