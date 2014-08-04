@@ -1,0 +1,11 @@
+header.leaf-heading.col-sm-12
+    h3.ect-title.t-title.t-leaf-title
+        a.leaf-name.is-pointer(ng-click="selectLeaf(leaf)")
+            i.icon.fa.fa-bug
+            | &nbsp;
+            | {{leaf.name}}
+
+    .ect-xp
+        span.encounter-cr.pull-right
+            strong Type&nbsp;
+            | {{leaf.type}}

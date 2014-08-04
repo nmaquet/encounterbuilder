@@ -1,11 +1,11 @@
-div.encounter
-    header.heading.col-sm-12
+header.leaf-heading
+    .col-sm-12
         //.ect-remove.pull-right
             a.is-pointer.remove-encounter(on-confirm="removeEncounter(leaf)", confirm-click="Are you sure ?", confirm-title="Delete encounter")
                 i.icon.icon-remove
-                    | &#10008;
-        h3.ect-title.t-title.t-encounter-title
-            a.encounter-name.is-pointer(ng-click="selectLeaf(leaf)")
+                    | &#215;
+        h3.ect-title.t-title.t-leaf-title
+            a.leaf-name.is-pointer(ng-click="selectLeaf(leaf)")
                 | {{leaf.Name}}
         .ect-xp
             span.encounter-cr.pull-right
@@ -15,7 +15,8 @@ div.encounter
                 strong XP&nbsp;
                 | {{leaf.xp | number}}
 
-    .content.content-monsters.col-sm-12
+.leaf-content
+    .content-monsters.col-sm-12
         legend.t-legend
             span Monsters
             i.icon.fa.fa-bug.pull-left
@@ -32,7 +33,7 @@ div.encounter
                             strong
                                 small CR&nbsp;
                                 | {{monster.CR | numberToFractionString}}
-    .content.content-npcs.col-sm-12
+    .content-npcs.col-sm-12
         legend.t-legend
             span NPCs
             i.icon.fa.fa-user.pull-left
@@ -49,7 +50,7 @@ div.encounter
                             strong
                                 small CR&nbsp;
                                 | {{npc.CR | numberToFractionString}}
-    .content.content-treasure.col-sm-12
+    .content-treasure.col-sm-12
         legend.t-legend
             span Treasure
             i.icon.fa.fa-flask.pull-left

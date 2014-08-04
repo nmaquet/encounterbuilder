@@ -16,13 +16,6 @@ body.teal {
       background-color: $brown-dark;
       @include gradient-grey-dark();
     }
-    // Binder
-    &.encounter-binder-container {
-      background-color: transparent;
-      //background: rgba(255,255,255,0.1);
-      //border: 1px solid rgba(255,255,255,0.1);
-      max-width: 800px; // FIXME
-    }
   }
   //.encounter-binder, .encounter-binder-container .encounter-well {
   //  @include gradient-transparent-white;
@@ -55,17 +48,17 @@ body.teal {
       background-repeat: repeat, repeat-x;
       background-position: center center, top center;
     }
-    .result-heading {
-      background-color: $teal;
-      .no-multiplebgs & { background: $teal $img-texture-2 repeat-x top center; }
-    }
     .cr-container {
       background-color: $red;
       .no-multiplebgs & { background: $red $img-texture-2 repeat-x top center; }
     }
-    .result-content {
-      .t-legend { color:$teal; }
-    }
+  }
+  .result-heading, .leaf-heading {
+    background-color: $teal;
+    .no-multiplebgs & { background: $teal $img-texture-2 repeat-x top center; }
+  }
+  .result-content {
+    .t-legend { color:$teal; }
   }
   // Modules
   .pagination > li {
@@ -75,17 +68,8 @@ body.teal {
     }
   }
   .noUi-connect { background: $teal;}
-}
 
-.template-controls {
-  background-image: $img-texture-1, $img-texture-2;
-  background-repeat: repeat, repeat-x;
-  background-position: center center, top center;
-  background-color: rgb(189, 184, 180);
-  color: rgb(30, 26, 13);
-  padding: 15px;
-}
-
-.template-controls-close-btn {
-  color: #353126 !important;
+  .template-controls {
+    background-image: $img-texture-1, $img-texture-2;
+  }
 }

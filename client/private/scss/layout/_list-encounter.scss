@@ -30,27 +30,24 @@
         color: $grey-light;
       }
     }
-    .icon-remove {
-      @include font-size(18);
-      line-height: 0;
-    }
   }
-  .binder-heading {
-    background-color: $red-transparent;
+  .icon-remove {
+    @include font-size(24);
+    line-height: 0;
   }
   .content {
     padding-top: ($grid-gutter-width/4);
     padding-bottom: ($grid-gutter-width/4);
   }
-  .t-encounter-title, .t-binder-title {
+  .t-encounter-title {
     margin-top: 0;
   }
  .t-legend {
    border-bottom: 0px solid transparent;
    @include font-size(16);
-     color: white;
+     color: inherit;
    .icon {
-     color: $grey-light;
+     color: inherit;
      line-height: 22px;
    }
  }
@@ -74,7 +71,7 @@
     overflow: hidden;
     @include font-size(12);
     a {
-      color: white;
+      color: inherit;
     }
     .badge {
       @include font-size(11);

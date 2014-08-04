@@ -1,0 +1,23 @@
+header.leaf-heading.col-sm-12
+    h3.ect-title.t-title.t-leaf-title
+        a.leaf-name.is-pointer(ng-click="selectLeaf(leaf)")
+            i.icon.fa.fa-bug
+            | &nbsp;
+            | {{leaf.Name}}
+
+    .ect-xp
+        span.encounter-cr.pull-right
+            strong CL&nbsp;
+            | {{leaf.CL | numberToFractionString}}
+        span.encounter-xp.pull-left
+            strong {{item.Price}}&nbsp;{{item.PriceUnit}}
+.row.l-section
+    .col-sm-12.cat
+        li(ng-if="item.Aura")
+            span
+                strong Aura&nbsp;
+                | {{item.Aura}}
+        li(ng-if="item.Group")
+            span
+                strong Group&nbsp;
+                | {{item.Group}}

@@ -460,6 +460,7 @@ def parseTable(text, spell_level, caster_level, rarity):
 if __name__ == "__main__":
     table = []
     table += parseTable(common[0], 0, 1, "common")
+    table += parseTable(uncommon[0], 0, 1, "uncommon")
     table += parseTable(common[1], 1, 1, "common")
     table += parseTable(uncommon[1], 1, 1, "uncommon")
     table += parseTable(common[2], 2, 3, "common")

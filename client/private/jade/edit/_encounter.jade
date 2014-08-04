@@ -4,7 +4,7 @@ div.encounter
             .pull-right
                 a.is-pointer.remove-encounter(on-confirm="removeEncounter(encounter)", confirm-click="Are you sure ?", confirm-title="Delete encounter")
                     i.icon.icon-remove
-                        | &#10008;
+                        | &#215;
             h3.t-title.t-encounter-title
                 span.encounter-name.is-pointer(click-to-edit='encounter.Name', on-save="encounterChanged()")
         .col-sm-12
@@ -124,4 +124,4 @@ div.encounter
                             .col-xxs-4.col-xs-4
                                 .text-right
                                     span#encounter-loot-value {{encounter.lootValue | number}}
-include _loot-generation-modal
+include ../_loot-generation-modal
