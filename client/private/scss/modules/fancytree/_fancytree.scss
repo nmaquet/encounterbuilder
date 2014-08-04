@@ -374,6 +374,13 @@ $fancytree-grid-unit: 16px;
   //background-position: -80px 0px;
   &:before { content: "\f03e"; }
 }
+.fancytree-map .fancytree-icon{
+  &:before { content: "\f041"; }
+}
+.fancytree-map .fancytree-icon:hover {
+  //background-position: -80px 0px;
+  &:before { content: "\f041"; }
+}
 /* Folders */
 //.fancytree-ico-cf, .fancytree-ico-ef {
 //  padding-left: 0.5em;
