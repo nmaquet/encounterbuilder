@@ -1,3 +1,5 @@
+// Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
 module.exports = function (config) {
     config.set({
         basePath: '../../',

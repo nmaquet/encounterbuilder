@@ -1,3 +1,5 @@
+// Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
 var FILE_ENCODING = 'utf-8';
 var EOL = '\n';
 

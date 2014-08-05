@@ -1,3 +1,5 @@
+# Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
 import sys
 import os.path
 import json

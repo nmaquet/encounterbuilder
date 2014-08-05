@@ -1,3 +1,5 @@
+// Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
 "use strict";
 var fs = require('fs');
 var Binary = require('mongodb').Binary;

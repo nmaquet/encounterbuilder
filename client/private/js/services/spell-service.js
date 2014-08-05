@@ -1,3 +1,5 @@
+// Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('spellService', ['$http', function ($http) {
