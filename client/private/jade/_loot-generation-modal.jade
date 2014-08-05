@@ -9,9 +9,9 @@
                 #success-alert.alert.alert-success.hidden {{successMessage}}
                 form
                     .row
-                        .col-xxs-12.col-xs-12.col-md-12
+                        .col-xs-12.col-md-12
                             legend Treasure Budget
-                                .form-group.col-xxs-12.col-xs-12
+                                .form-group.col-xs-12
                                     select.form-control#type(ng-model='budgetOverride')
                                         option(value='default') Automatic
                                         option(value='none') None
@@ -21,15 +21,15 @@
                                         option(value='triple') Triple
                                     br.visible-xs
                     .row
-                        .col-xxs-12.col-xs-12.col-md-12
+                        .col-xs-12.col-md-12
                             legend Loot Type
                                 //.row
-                                    .form-group.col-xxs-12.col-xs-12
+                                    .form-group.col-xs-12
                                         .checkbox
                                             label(for='override-loot-type')
                                                 input#override-loot-type(type='checkbox',ng-model='overrideLootType')
                                                 | Override default Loot Type
-                                .form-group.col-xxs-12.col-xs-12
+                                .form-group.col-xs-12
                                     select.form-control#type(ng-model='lootTypeOverride')
                                         option(value='default') Automatic
                                         option(value='A') Coins
@@ -42,7 +42,7 @@
                                         option(value='H') Lair Treasure
                                         option(value='I') Treasure Hoard
                                      br.visible-xs
-                                    //.form-group.col-xxs-12.col-xs-12
+                                    //.form-group.col-xs-12
                                         .checkbox
                                             label(for='loot-type-A')
                                                 input#loot-type-A(type='checkbox',ng-model='lootTypeOverride.typeA', ng-disabled='!overrideLootType',title='Treasure of this type consists entirely of coins.')

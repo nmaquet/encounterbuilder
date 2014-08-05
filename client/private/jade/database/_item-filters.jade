@@ -1,7 +1,7 @@
-.form-group.col-xxs-12.col-xs-12
+.form-group.col-xs-12
     //label(for='search') Search
     input.form-control#item-search(type='text', name='search', placeholder='Search something…', ng-model='itemNameSubstring')
-.form-group.col-xxs-12.col-xs-12
+.form-group.col-xs-12
     //label(for='group') Group:
     select.form-control#type(ng-model='group')
         option(value='any') Choose group
@@ -21,7 +21,7 @@
         option(value='Wand') Wand
         option(value='Weapon') Weapon
         option(value='Wondrous Item') Wondrous Item
-.form-group.col-xxs-12.col-xs-12
+.form-group.col-xs-12
     //label(for='slot') Slot:
     select.form-control#type(ng-model='slot')
         option(value='any') Choose slot
@@ -43,12 +43,12 @@
         option(value='shoulders') Shoulders
         option(value='wrists') Wrists
         option(value='slotless') Slotless
-.col-xxs-12.col-xs-12
+.col-xs-12
     .checkbox
         label(for='enchanted-checkbox')
             input#enchanted-checkbox(type='checkbox',ng-model='includeEnchanted')
             | include enchanted items
-.col-xxs-12.col-xs-12
+.col-xs-12
     .col-xxs-4.col-xs-4
         .row
             label(for='itemCLSlider') <strong>CL</strong> {{minCL | number}} - {{maxCL | number }}

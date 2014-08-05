@@ -19,7 +19,7 @@
                 i.icon.fa.fa-times
 
 .row.l-section.result-content
-    .col-xxs-12.col-xs-12.cat
+    .col-xs-12.cat
         p.intro.underlined {{monster.Description_Visual}}
         ul.list-inline
             li
@@ -45,7 +45,7 @@
                 span
                     strong Aura
                     | &nbsp;{{monster.Aura}}
-    .col-xxs-12.col-xs-12
+    .col-xs-12
         .row
             .col-lg-6.cat.decor
                 legend.cat-heading.t-legend.t-title Offense
@@ -126,7 +126,7 @@
                             strong SR
                             | &nbsp;{{monster.SR}}
 
-    .col-xxs-12.col-xs-12
+    .col-xs-12
         .row
             .col-lg-6.cat.decor
                 legend.cat-heading.t-legend.t-title Statistics
@@ -196,11 +196,11 @@
                             span
                                 strong Treasure
                                 | &nbsp;{{monster.Treasure}}
-    .col-xxs-12.col-xs-12.cat.decor(ng-if='monster.SpecialAbilitiesSafe')
+    .col-xs-12.cat.decor(ng-if='monster.SpecialAbilitiesSafe')
         span
             legend.cat-heading.t-legend.t-title Special Abilities
             // FIXME Use jQuery to change the <h5> tags into <p> or <div>
             .cat-content(ng-bind-html='monster.SpecialAbilitiesSafe')
-    .col-xxs-12.col-xs-12.cat.decor(ng-if='monster.Description')
+    .col-xs-12.cat.decor(ng-if='monster.Description')
         legend.cat-heading.t-legend.t-title Description
         .cat-content(ng-bind-html='monster.DescriptionSafe')

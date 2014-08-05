@@ -99,6 +99,12 @@
     padding-bottom: 10px;
     border-bottom: 1px solid $brown-transparent;
   }
+  .t-underline-dotted {
+    border-color: $grey-dark;
+  }
+  [ng-show='isEditing'] input[type="text"], [ng-hide='isEditing'] input[type="text"] {
+    color: inherit;
+  }
 
   strong, b { color: $brown-dark; }
   hr, .t-legend { border-color: $brown-transparent; }
@@ -107,6 +113,7 @@
     color: $brown-dark;
     font-size: 20px;
     margin-bottom: ($grid-gutter-width/2);
+    * { line-height: inherit; }
   }
   ul.list-unstyled li {
     border-bottom: 1px solid $teal-transparent-1;

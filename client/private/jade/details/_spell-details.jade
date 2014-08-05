@@ -14,7 +14,7 @@
             //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Delete')
                 i.icon.fa.fa-times
 .row.l-section.result-content
-    .col-xxs-12.col-xs-12.cat
+    .col-xs-12.cat
         ul.cat-content.list-unstyled
             li
                 span
@@ -61,10 +61,10 @@
                         | ;&nbsp;
                         strong Spell Resistance&nbsp;
                         | {{spell.spell_resistence}}
-    .col-xxs-12.col-xs-12.cat.decor
+    .col-xs-12.cat.decor
         legend.cat-heading.t-legend.t-title Description
         .cat-content(ng-bind-html='spell.descriptionSafe')
-    .col-xxs-12.col-xs-12.cat.decor(ng-if="spell.mythic")
+    .col-xs-12.cat.decor(ng-if="spell.mythic")
         legend.cat-heading.t-legend.t-title Mythic
         .cat-content
             | {{spell.mythic_text}}

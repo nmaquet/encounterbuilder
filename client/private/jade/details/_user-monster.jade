@@ -55,7 +55,7 @@
                             input(type="checkbox" ng-model="userMonster.templates.resolute" ng-disabled="userMonster.templates.fiendish||userMonster.templates.entropic||userMonster.templates.celestial")
                             | Resolute (CR +0 or +1)
 .row.l-section.result-content
-    .col-xxs-12.col-xs-12.cat
+    .col-xs-12.cat
         p.intro.underlined {{userMonster.Description_Visual}}
         ul.list-inline
             li
@@ -81,7 +81,7 @@
                 span
                     strong Aura
                     | &nbsp;{{userMonster.Aura}}
-    .col-xxs-12.col-xs-12
+    .col-xs-12
         .row
             .col-lg-6.cat.decor
                 legend.t-legend.t-title Offense
@@ -161,7 +161,7 @@
                         span
                             strong SR
                             | &nbsp;{{userMonster.SR}}
-            .col-xxs-12.col-xs-12
+            .col-xs-12
         .row
             .col-lg-6.cat.decor
                 legend.t-legend.t-title Statistics
@@ -231,9 +231,9 @@
                             span
                                 strong Treasure
                                 | &nbsp;{{userMonster.Treasure}}
-    .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.SpecialAbilities')
+    .col-xs-12.cat.decor(ng-if='userMonster.SpecialAbilities')
         legend.cat-heading.t-legend.t-title Special Abilities
         span.cat-content(ng-bind-html='userMonster.SpecialAbilities | toTrustedHtml')
-    .col-xxs-12.col-xs-12.cat.decor(ng-if='userMonster.Description')
+    .col-xs-12.cat.decor(ng-if='userMonster.Description')
         legend.cat-heading.t-legend.t-title Description
         span.cat-content(ng-bind-html='userMonster.Description | toTrustedHtml')

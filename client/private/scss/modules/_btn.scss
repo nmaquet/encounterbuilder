@@ -55,8 +55,8 @@
     }
   }
   &.grey {
-    color: $red;
-    background-color: $grey-light;
+    color: white;
+    background-color: $grey-3;
     &:hover {
       color: $red-light;
       background-color: white;
@@ -89,7 +89,7 @@
   }
 }
 
-.add-item-btn {
+.add-item-btn, .rmv-item-btn {
   @include font-size(18);
   width: 24px;
   height: 24px;

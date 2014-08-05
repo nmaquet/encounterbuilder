@@ -10,7 +10,7 @@ div(ng-show="encounter")
                 strong XP&nbsp;
                 | {{encounter.xp | number}}
     .row
-        .col-xxs-12.col-xs-12
+        .col-xs-12
             legend.t-legend
                 span Monsters
             span.col-xxs-4.col-xs-4(ng-repeat='(id,monster) in encounter.Monsters')
@@ -20,7 +20,7 @@ div(ng-show="encounter")
                     small {{monster.Name}}&nbsp;
                 span
                     small CR&nbsp;{{monster.CR | numberToFractionString}}
-        .col-xxs-12.col-xs-12
+        .col-xs-12
             legend.t-legend
                 span NPCs
             span.col-xxs-4.col-xs-4(ng-repeat='(id,npc) in encounter.Npcs')
@@ -33,7 +33,7 @@ div(ng-show="encounter")
 
 
     .row
-        .col-xxs-12.col-xs-12
+        .col-xs-12
             legend
                 span Treasure
         div
@@ -42,7 +42,7 @@ div(ng-show="encounter")
                     small {{item.amount}}&nbsp;
                 span
                     small {{item.Name}}&nbsp;
-            .col-xxs-12.col-xs-12(style="padding-top:10px")
+            .col-xs-12(style="padding-top:10px")
                 | Coins&nbsp;
                 span {{encounter.coins.pp | number}}&nbsp;
                 | pp&nbsp;
@@ -52,6 +52,6 @@ div(ng-show="encounter")
                 | sp&nbsp;
                 span {{encounter.coins.cp | number}}&nbsp;
                 | cp&nbsp;
-            .col-xxs-12.col-xs-12
+            .col-xs-12
                 | Value&nbsp;
                 span {{encounter.lootValue | number}}&nbsp;gp

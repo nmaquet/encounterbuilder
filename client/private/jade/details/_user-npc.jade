@@ -15,7 +15,7 @@
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete', on-confirm="deleteUserNpc()", confirm-click="Are you sure ?", confirm-title="Delete npc")
                 i.icon.fa.fa-trash-o
 .row.l-section.result-content
-    .col-xxs-12.col-xs-12.cat
+    .col-xs-12.cat
         p.intro.underlined {{userNpc.Description_Visual}}
         ul.list-inline
             li
@@ -41,9 +41,9 @@
                 span
                     strong Aura
                     | &nbsp;{{userNpc.Aura}}
-    .col-xxs-12.col-xs-12
+    .col-xs-12
         .row
-            .col-xxs-12.col-xs-12.cat.decor
+            .col-xs-12.cat.decor
                 legend.t-legend.t-title Defense
                 ul.list-unstyled
                     li
@@ -85,7 +85,7 @@
                         span
                             strong SR
                             | &nbsp;{{userNpc.SR}}
-            .col-xxs-12.col-xs-12.cat.decor
+            .col-xs-12.cat.decor
                 legend.t-legend.t-title Offense
                 ul.list-unstyled
                     li
@@ -121,7 +121,7 @@
                     li(ng-if='userNpc.SpellsPrepared')
                         spell-list(spell-string="{{userNpc.SpellsPrepared}}" )
                     li(ng-bind-html='userNpc.SLASafe' ,linkify='userNpc.SLASafe',linkify-type="spell", mythic="userNpc.Mythic")
-            .col-xxs-12.col-xs-12
+            .col-xs-12
         .row
             .col-lg-6.cat.decor
                 legend.t-legend.t-title Statistics
@@ -191,9 +191,9 @@
                             span
                                 strong Treasure
                                 | &nbsp;{{userNpc.Treasure}}
-    .col-xxs-12.col-xs-12.cat.decor(ng-if='userNpc.SpecialAbilities')
+    .col-xs-12.cat.decor(ng-if='userNpc.SpecialAbilities')
         legend.cat-heading.t-legend.t-title Special Abilities
         span.cat-content(ng-bind-html='userNpc.SpecialAbilitiesHTML')
-    .col-xxs-12.col-xs-12.cat.decor(ng-if='userNpc.Description')
+    .col-xs-12.cat.decor(ng-if='userNpc.Description')
         legend.cat-heading.t-legend.t-title Description
         span.cat-content(ng-bind-html='userNpc.DescriptionHTML')

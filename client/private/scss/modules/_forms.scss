@@ -9,6 +9,7 @@ label {
     max-width: 90%;
     display: inline-block;
     color: white;
+    .l-section { color: inherit; }
     background: transparent;
     border: none;
     &:focus {

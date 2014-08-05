@@ -20,7 +20,7 @@
                 i.icon.fa.fa-times
 
 .row.l-section.result-content
-    .col-xxs-12.col-xs-12.cat
+    .col-xs-12.cat
         p(ng-if="npc.Description_Visual").intro.underlined {{npc.Description_Visual}}
         ul.cat-content.list-unstyled
             li
@@ -44,9 +44,9 @@
                 span
                     strong Aura
                     | &nbsp;{{npc.Aura}}
-    .col-xxs-12.col-xs-12
+    .col-xs-12
         .row
-            .col-xxs-12.col-xs-12.cat.decor
+            .col-xs-12.cat.decor
                 legend.cat-heading.t-legend.t-title Defense
                 ul.cat-content.list-unstyled
                     li
@@ -96,7 +96,7 @@
                             strong SR
                             | &nbsp;{{npc.SR}}
         .row
-            .col-xxs-12.col-xs-12.cat.decor
+            .col-xs-12.cat.decor
                 legend.cat-heading.t-legend.t-title Offense
                 ul.cat-content.list-unstyled
                     li
@@ -133,7 +133,7 @@
                         spell-list(spell-string="{{npc.SpellsPrepared}}" , mythic="npc.Mythic")
                     li(ng-bind-html='npc.SLASafe',linkify='npc.SLASafe',linkify-type="spell", mythic="npc.Mythic")
         .row
-            .col-xxs-12.col-xs-12.cat.decor(ng-if='npc.BeforeCombat||npc.DuringCombat||npc.Morale||npc.BaseStatistics')
+            .col-xs-12.cat.decor(ng-if='npc.BeforeCombat||npc.DuringCombat||npc.Morale||npc.BaseStatistics')
                 .cat-heading
                     legend.t-legend.t-title Tactics
                 .cat-content
@@ -157,7 +157,7 @@
                             span
                                 strong Base Statistics
                                 | &nbsp;{{npc.BaseStatistics}}
-            .col-xxs-12.col-xs-12.cat.decor
+            .col-xs-12.cat.decor
                 legend.cat-heading.t-legend.t-title Statistics
                 ul.cat-content.list-unstyled
                     li
@@ -218,11 +218,11 @@
                             span(ng-if="npc.OtherGear")
                                 strong Other Gear
                                 | &nbsp;{{npc.OtherGear}}
-    .col-xxs-12.col-xs-12.cat.decor
+    .col-xs-12.cat.decor
         span(ng-if='npc.SpecialAbilitiesSafe')
             legend.cat-heading.t-legend.t-title Special Abilities
             // FIXME Use jQuery to change the <h5> tags into <p> or <div>
             .cat-content(ng-bind-html='npc.SpecialAbilitiesSafe',linkify='npc.SpecialAbilitiesSafe',linkify-type="spell", mythic="npc.Mythic")
-    .col-xxs-12.col-xs-12.cat.decor(ng-if='npc.Description')
+    .col-xs-12.cat.decor(ng-if='npc.Description')
         legend.cat-heading.t-legend.t-title Description
         .cat-content(ng-bind-html='npc.DescriptionSafe',linkify='npc.DescriptionSafe',linkify-type="spell", mythic="npc.Mythic")

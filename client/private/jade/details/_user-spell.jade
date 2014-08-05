@@ -11,7 +11,7 @@
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete',on-confirm="delete()", confirm-click="Are you sure ?", confirm-title="Delete Feat")
                 i.icon.fa.fa-trash-o
 .row.l-section.result-content
-    .col-xxs-12.col-xs-12.cat
+    .col-xs-12.cat
         ul.cat-content.list-unstyled
             li
                 span
@@ -58,10 +58,10 @@
                         | ;&nbsp;
                         strong Spell Resistance&nbsp;
                         | {{userResource.spell_resistence}}
-    .col-xxs-12.col-xs-12.cat.decor
+    .col-xs-12.cat.decor
         legend.cat-heading.t-legend.t-title Description
         .cat-content(ng-bind-html='userResource.description | toTrustedHtml')
-    .col-xxs-12.col-xs-12.cat.decor(ng-if="userResource.mythic")
+    .col-xs-12.cat.decor(ng-if="userResource.mythic")
         legend.cat-heading.t-legend.t-title Mythic
         .cat-content
             | {{userResource.mythic_text}}

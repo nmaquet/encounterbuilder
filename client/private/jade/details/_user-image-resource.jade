@@ -10,7 +10,7 @@
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete', on-confirm="delete()", confirm-click="Are you sure ?", confirm-title="Delete Illustration")
                 i.icon.fa.fa-trash-o
 .row.l-section.result-content
-    .col-xxs-12.col-xs-12.cat
+    .col-xs-12.cat
         #error-alert.alert.alert-danger(ng-show="errorMessage") {{errorMessage}}
         .upload(ng-if="uploader.isUploading")
             small {{uploadedFileName}}
