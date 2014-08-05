@@ -51,6 +51,11 @@
     });
 
     $("#register-form").submit(function () {
+        var agree_to_tos = $('#agree_to_tos').is(':checked')
+        if (!agree_to_tos) {
+            $("#register-failed-agree-to-tos").removeClass("hidden");
+            return false;
+        }
         $.ajax({
             type: "POST",
             url: HOST_URL[window.location.host] + "register",
@@ -67,9 +72,9 @@
                     else {
                         $("#register-failed-alert").removeClass("hidden");
                     }
-
                 }
                 else {
+                    $("#register-failed-agree-to-tos").addClass("hidden");
                     $("#register-failed-alert").addClass("hidden");
                     $("#register-failed-user").addClass("hidden");
                     $("#register-failed-email").addClass("hidden");

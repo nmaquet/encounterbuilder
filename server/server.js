@@ -230,6 +230,10 @@ function main(db) {
         response.render('../website/index.jade');
     });
 
+    app.get('/terms-of-service', function (request, response) {
+        response.render('../website/terms-of-service.jade');
+    });
+
     var port = process.env.PORT || 3000;
 
     app.listen(port);

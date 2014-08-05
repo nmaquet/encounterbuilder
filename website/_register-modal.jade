@@ -15,8 +15,9 @@
                     span &nbsp;and we'll be in touch.
                 #register-failed-user.alert.alert-danger.hidden Username already exists.
                 #register-failed-email.alert.alert-danger.hidden Email already in use.
+                #register-failed-agree-to-tos.alert.alert-danger.hidden Please agree to the Terms of Service and Privacy Policy
                 #register-failed-alert.alert.alert-danger.hidden
-                    span Sign up Failed, Sorry. If the problem persists contact us in <a href="http://forums.encounterbuilder.com/">our forums</a> or by email at&nbsp;
+                    span Sign up failed, sorry. If the problem persists please contact us in <a href="http://forums.encounterbuilder.com/">our forums</a> or by email at&nbsp;
                     script.
                         var s="=b!isfg>#nbjmup;cfubAfodpvoufscvjmefs/dpn@tvckfdu>Qmfbtf&31tjho&31nf&31vq&31up&31uif&31qsjwbuf&31Cfub#?cfubAfodpvoufscvjmefs/dpn=0b?";
                         m=""; for (i=0; i<s.length; i++) m+=String.fromCharCode(s.charCodeAt(i)-1); document.write(m);
@@ -30,6 +31,12 @@
                     .form-group
                         label.control-label(for='confirm_password') Choose your password
                         input.form-control.input-md(type='password', name='password',required='')
+                    .form-group
+                        .checkbox
+                            label
+                                input#agree_to_tos(type="checkbox", checked='checked', name='agree_tos')
+                                span I agree to the&nbsp;
+                                a(href="/terms-of-service") Terms of Service and Privacy Policy
                     .modal-footer
                         button.btn.btn-default(type='button', data-dismiss='modal') Cancel
                         //button.btn.btn-default(type='button', data-dismiss='modal') Ok
