@@ -238,7 +238,7 @@ function main(db) {
 
     app.listen(port);
 
-    console.log("Encounter Builder Server listening on port " + port);
+    console.log("Chronicle Forge Server listening on port " + port);
 
     fs.writeFileSync("server.pid", process.pid);
 
