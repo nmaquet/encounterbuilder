@@ -8,9 +8,11 @@
         strong XP
         | &nbsp;{{encounter.xp | number}}
         .row.btn-container
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(ng-click="printSelectedEncounter()")
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(tabindex='-1',data-target='#loot-generator-modal', role='button', data-toggle='modal',title='Randomize')
+                i.icon.fa.fa-random
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(ng-click="printSelectedEncounter()")
                 i.icon.fa.fa-print
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(on-confirm="removeEncounter(encounter)", confirm-click="Are you sure ?", confirm-title="Delete encounter")
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(on-confirm="removeEncounter(encounter)", confirm-click="Are you sure ?", confirm-title="Delete encounter")
                 i.icon.fa.fa-trash-o
             //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy', ng-click='copyEncounter()')
                 i.icon.fa.fa-copy
@@ -76,14 +78,10 @@
             legend.cat-heading.t-legend.t-title
                 span Treasure
                 i.icon.fa.fa-flask.pull-left
-                a.is-pointer.randomize-loot.pull-right(tabindex='-1',data-target='#loot-generator-modal', role='button', data-toggle='modal',title='Randomize')
-                    i.icon.fa.fa-random
-                //a.is-pointer.randomize-loot.pull-right(title='Randomize', on-confirm="randomizeLoot(encounter)" , confirm-click="Are you sure ?", confirm-title="Randomize treasure")
-                    i.icon.fa.fa-random
             table.table.table-striped.result-table#encounter-items
                 tbody
                     tr.encounter-row.encounter-item-row(ng-repeat='(id,item) in encounter.items')
-                        td.badge-container
+                        td.badge-container.is-pointer
                             span(click-to-edit='item.amount', on-save="encounterChanged()", display-class="badge grey pointer item-amount", edit-class="badge grey pointer item-amount badge-editing", icon-class="hide", numeric="true")
                         td.name-container
                             span.item-name
