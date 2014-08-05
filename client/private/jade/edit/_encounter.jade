@@ -35,7 +35,7 @@
             table#encounter-monsters.table.table-striped.result-table
                 tbody
                     tr.encounter-row.encounter-monster-row(ng-repeat='(id,monster) in encounter.Monsters')
-                        td.badge-container
+                        td.badge-container.is-pointer
                             span(click-to-edit='monster.amount', on-save="encounterChanged()", display-class="badge grey pointer monster-amount", edit-class="badge grey pointer monster-amount badge-editing", icon-class="hide", numeric="true")
                         td.name-container
                             span.monster-name
@@ -58,7 +58,7 @@
             table#encounter-npcs.table.table-striped.result-table
                 tbody
                     tr.encounter-row.encounter-npc-row(ng-repeat='(id,npc) in encounter.Npcs')
-                        td.badge-container
+                        td.badge-container.is-pointer
                             span(click-to-edit='npc.amount', on-save="encounterChanged()", display-class="badge grey pointer npc-amount", edit-class="badge grey pointer npc-amount badge-editing", icon-class="hide", numeric="true")
                         td.name-container
                             span.npc-name
