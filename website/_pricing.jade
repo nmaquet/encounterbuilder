@@ -5,98 +5,53 @@
         br
         h2 Our Pricing Options
         hr
-        h3(style="color:red")
-            |We have not yet launched so these prices are still subject to changes.
-        br
-        .row
+        h3(style="color:#c82020")
+            | Chronicle Forge is <b>free</b> for all users until September 15th, 2014!
+        //a.btn.btn-lg.btn-theme(href='#register', data-toggle='modal', data-target='#register') CREATE AN ACCOUNT
+        brs
+        //.row
             .col-xs-12
                 .switch-toggle.switch-ios.pointer#priceSwitch
-                    input#monthlyRadio.pointer(name='view', type='radio', checked='', onclick="monthlyRadioClicked();")
-                    label.pointer(for='monthlyRadio', onclick='') Monthly
-                    input#yearlyRadio.pointer(name='view', type='radio', onclick="yearlyRadioClicked();")
-                    label.pointer(for='yearlyRadio', onclick='') Yearly
+                    input#beta1Radio.pointer(name='view', type='radio', checked='', onclick="beta1RadioClicked();")
+                    label.pointer(for='beta1Radio', onclick='') Beta Price
+                    input#beta2Radio.pointer(name='view', type='radio', onclick="beta2RadioClicked();")
+                    label.pointer(for='beta2Radio', onclick='') Launch Price
                     a.pointer
         // TEST BEGIN
         br
-        br
         .row
-            .col-lg-4
-                .pricing-option
+            .col-lg-4.col-sm-6.col-xs-12
+                .pricing-option(style="max-width:360px;")
                     .pricing-top#dragon-pricing
-                        span.pricing-edition.whiteTextShadow Dragon
-                        span.price.monthlyPrice.whiteTextShadow
+                        span.pricing-edition.whiteTextShadow Lifetime
+                        span.price.whiteTextShadow
                             sup $
-                            span.price-amount 8
-                            small /month
-                        span.price.yearlyPrice.whiteTextShadow.hide
-                            sup $
-                            span.price-amount 59
-                            small /year
-                        span.special-label.yearlyPrice.hide you save $37
-                    ul
-                        li
-                            strong Unlimited&nbsp;
-                            | encounters
-                        li
-                            strong No limit&nbsp;
-                            | on monster CR
-                        li
-                            strong No limit&nbsp;
-                            | on encounter CR
-                        li
-                            | Ideal for PC's of&nbsp;
-                            strong all levels
-                    a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Get Started
-            .col-lg-4
-                .pricing-option
+                            span.price-amount 29
+                        br
+                        small.price.whiteTextShadow(style="position:relative; top:-10px;") full price: $59
+                        span.special-label reduced price until November 1st
+                    a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') GET STARTED
+            .col-lg-4.col-sm-6.col-xs-12
+                .pricing-option(style="max-width:360px;")
                     .pricing-top#lich-pricing
-                        span.pricing-edition.whiteTextShadow Lich
-                        span.price.monthlyPrice.whiteTextShadow
+                        span.pricing-edition.whiteTextShadow Yearly
+                        span.price.whiteTextShadow
                             sup $
-                            span.price-amount 5
-                            small /month
-                        span.price.yearlyPrice.whiteTextShadow.hide
-                            sup $
-                            span.price-amount 45
+                            span.price-amount 19
                             small /year
-                        span.special-label.yearlyPrice.hide you save $15
-                    ul
-                        li
-                            strong Unlimited&nbsp;
-                            | encounters
-                        li
-                            | Monsters up to&nbsp;
-                            strong CR 10
-                        li
-                            | Encounters up to&nbsp;
-                            strong CR 20
-                        li
-                            | Ideal for PC's&nbsp;
-                            strong level 1 to 14
-                    a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Get Started
-            .col-lg-4
-                .pricing-option
+                        br
+                        small.price.whiteTextShadow(style="position:relative; top:-10px;") full price: $39 / year
+                        span.special-label reduced price until November 1st
+                    a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') GET STARTED
+            .col-lg-4.col-sm-6.col-xs-12
+                .pricing-option(style="max-width:360px;")
                     .pricing-top#minotaur-pricing
-                        span.pricing-edition.whiteTextShadow Minotaur
-                        span.price.monthlyPrice.whiteTextShadow
+                        span.pricing-edition.whiteTextShadow Monthly
+                        span.price.whiteTextShadow
                             sup $
-                            span.price-amount 0
+                            span.price-amount 3
                             small /month
-                        span.price.yearlyPrice.whiteTextShadow.hide
-                            sup $
-                            span.price-amount 0
-                            small /year
-                    ul
-                        li
-                            strong Unlimited&nbsp;
-                            | encounters
-                        li
-                            | Monsters up to&nbsp;
-                            strong CR 5
-                        li
-                            | Encounters up to&nbsp;
-                            strong CR 10
-                        li
-                            | Ideal for PC's&nbsp;
-                            strong level 1 to 7
-                    a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') Get Started
+                        br
+                        small.price.whiteTextShadow(style="position:relative; top:-10px;") full price: $5 / month
+                        span.special-label reduced price until November 1st
+                    a.pricing-signup(href='#register', data-toggle='modal', data-target='#register') GET STARTED
