@@ -5,8 +5,8 @@
 DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit',
     function () {
         var editorTemplate =
-            '<span class="click-to-edit" ng-click="edit();">' +
-            '   <span id="click-to-edit-viewer" ng-class="displayClass">' +
+            '<span class="click-to-edit" >' +
+            '   <span id="click-to-edit-viewer" ng-class="displayClass" ng-click="edit();">' +
             '       {{display || value}} ' +
             '       <i ng-class="iconClass"></i>' +
             '   </span>' +
