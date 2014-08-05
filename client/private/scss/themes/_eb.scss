@@ -53,7 +53,7 @@ body.teal {
       .no-multiplebgs & { background: $red $img-texture-2 repeat-x top center; }
     }
   }
-  .result-heading, .leaf-heading {
+  .result-heading {
     background-color: $teal;
     .no-multiplebgs & { background: $teal $img-texture-2 repeat-x top center; }
   }
@@ -61,6 +61,22 @@ body.teal {
     .t-legend { color:$teal; }
   }
   // Modules
+  .lf-cr-container {
+    background: $red $img-texture-1 repeat center center;
+    &.is-pointer:hover {
+      background-color: $coal;
+    }
+  }
+  .lf-title {
+    background: $teal $img-texture-1 repeat center center;
+  }
+  .lf-name-container {
+    background: transparent $img-texture-2 repeat-x top left;
+    &.is-pointer:hover {
+      background-color: $red;
+      color: white;
+    }
+  }
   .pagination > li {
     &.active > a, &.active > span {
       background-color: $teal-light;

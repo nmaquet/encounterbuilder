@@ -31,7 +31,7 @@ h3, .h3, .t-encounter-title, .t-binder-title {
   border-bottom: 1px dotted $grey-light-transparent;
   &:focus, &:hover {
       outline: none !important;
-      border-color: $red;
+      border-color: $grey-light;
   }
 }
 

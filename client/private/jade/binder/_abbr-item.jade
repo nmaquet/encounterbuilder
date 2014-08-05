@@ -1,23 +1,39 @@
-header.leaf-heading.col-sm-12
-    h3.ect-title.t-title.t-leaf-title
-        a.leaf-name.is-pointer(ng-click="selectLeaf(leaf)")
-            i.icon.fa.fa-bug
-            | &nbsp;
-            | {{leaf.Name}}
-
-    .ect-xp
-        span.encounter-cr.pull-right
-            strong CL&nbsp;
-            | {{leaf.CL | numberToFractionString}}
-        span.encounter-xp.pull-left
-            strong {{item.Price}}&nbsp;{{item.PriceUnit}}
-.row.l-section
-    .col-sm-12.cat
-        li(ng-if="item.Aura")
-            span
-                strong Aura&nbsp;
-                | {{item.Aura}}
-        li(ng-if="item.Group")
-            span
-                strong Group&nbsp;
-                | {{item.Group}}
+header.lf-heading.row
+    a.t-title.lf-title.is-pointer(ng-click="selectLeaf(leaf)")
+        .lf-name-container
+            h3.lf-name
+                i.icon.fa.fa-flask
+                | {{leaf.Name}}
+        .lf-cr-container
+            span.lf-cr
+                strong CL&nbsp;
+                | {{leaf.CL | numberToFractionString}}
+            //span.lf-xp
+                strong {{item.Price}}&nbsp;{{item.PriceUnit}}
+.lf-content.row
+    .col-sm-12
+        ul.cat-content.list-unstyled
+            li(ng-if="leaf.Price")
+                span
+                    strong {{leaf.Price}}
+                        | {{leaf.PriceUnit}}
+            li(ng-if="leaf.Aura")
+                span
+                    strong Aura&nbsp;
+                    | {{leaf.Aura}}
+            li(ng-if="leaf.Group")
+                span
+                    strong Group&nbsp;
+                    | {{leaf.Group}}
+            li(ng-if="item.SpellName")
+                span
+                    strong Spell&nbsp;
+                    span(linkify="item.SpellName",linkify-type="spell", mythic="false")
+            li(ng-if="item.Slot")
+                span
+                    strong Slot&nbsp;
+                    | {{item.Slot}}
+            li(ng-if="item.Weight")
+                span
+                    strong Weight&nbsp;
+                    | {{item.Weight}}

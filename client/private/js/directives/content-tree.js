@@ -121,6 +121,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     element.fancytree({
                         extensions: ["dnd", "add-to-encounter"],
                         source: contentTreeService.contentTree(),
+                        scrollParent:$('.sp-menu-content'),
                         click: onClick,
                         addToEncounter: {
                             onPlusButtonClick: onPlusButtonClick

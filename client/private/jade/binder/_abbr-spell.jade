@@ -1,18 +1,53 @@
-header.leaf-heading.col-sm-12
-    h3.ect-title.t-title.t-leaf-title
-        a.leaf-name.is-pointer(ng-click="selectLeaf(leaf)")
-            i.icon.fa.fa-bug
-            | &nbsp;
-            | {{leaf.name}}
-    .row.l-section
-        .col-xxs-12.col-xs-12.cat
-            ul.cat-content.list-unstyled
-                li
-                    span
-                        strong School&nbsp;
-                        | {{spell.school}}
-                    span(ng-if="spell.subschool") &nbsp;({{spell.subschool}})
-                        span(ng-if="spell.descriptor") &nbsp;[{{spell.descriptor}}]
+header.lf-heading.row
+    a.t-title.lf-title.is-pointer(ng-click="selectLeaf(leaf)")
+        .lf-name-container
+            h3.lf-name
+                i.icon.fa.fa-magic
+                | {{leaf.name}}
+.lf-content.row
+    .col-sm-12.cat
+        ul.cat-content.list-unstyled
+            li
+                span
+                    strong School&nbsp;
+                    | {{leaf.school}}
+                span(ng-if="leaf.subschool")  ({{leaf.subschool}})
+                    span(ng-if="leaf.descriptor")  [{{leaf.descriptor}}]
+                    strong  Level
+                    | {{leaf.spell_level}}
+            li(ng-if="leaf.casting_time")
+                span
+                    strong Casting Time&nbsp;
+                    | {{leaf.casting_time}}
+            li(ng-if="leaf.components")
+                span
+                    strong Components&nbsp;
+                    | {{leaf.components}}
+            li(ng-if="leaf.range")
+                span
+                    strong Range&nbsp;
+                    | {{leaf.range}}.
+            li(ng-if="leaf.area")
+                span
+                    strong Area&nbsp;
+                    | {{leaf.area}}.
+            li(ng-if="leaf.effect")
+                span
+                    strong Effect&nbsp;
+                    | {{leaf.effect}}
+            li(ng-if="leaf.targets")
+                span
+                    strong Target&nbsp;
+                    | {{leaf.targets}}
+            li(ng-if="leaf.duration")
+                span
+                    strong Duration&nbsp;
+                    | {{leaf.duration}}
+            li(ng-if="leaf.saving_throw||!!leaf.spell_resistence")
+                span
+                    strong Saving Throw&nbsp;
+                    | {{leaf.saving_throw}}
+                    span(ng-if="!!leaf.spell_resistence")
                         | ;&nbsp;
-                        strong Level&nbsp;
-                        | {{spell.spell_level}}
+                        strong Spell Resistance&nbsp;
+                        | {{leaf.spell_resistence}}

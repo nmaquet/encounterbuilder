@@ -69,9 +69,12 @@
   //margin-right: -4px;
   .encounter-row {
     overflow: hidden;
-    @include font-size(12);
+    @include font-size(14);
     a {
       color: inherit;
+    }
+    .badge-container {
+      width: 40px;
     }
     .badge {
       @include font-size(11);

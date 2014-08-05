@@ -1,38 +1,42 @@
-.binder.row.leaves
+.binder.row
     header.binder-heading.col-sm-12
         .pull-right
             a.is-pointer.remove-binder(on-confirm="removeBinder()", confirm-click="{{removeBinderMessage}}", confirm-title="Delete binder")
                 i.icon.icon-remove
                     | &#215;
-        h3.t-title.t-binder-title
+        h1.t-title.t-binder-title
             span.binder-name.is-pointer(click-to-edit='binder.Name', on-save="binderChanged()")
 
     .encounter-dropdown-container( pending="pending")
-        .row
+        .row.leaves
             .col-sm-6.col-lg-4.leaf(ng-repeat='leaf in leaves',ng-switch="leaf.$type")
-                article.l-section.l-shadow.encounter(ng-switch-when="encounter")
+                article.col-sm-12.l-shadow.encounter(ng-switch-when="encounter")
                     include _encounter-ro
-                article.l-section.l-shadow.binder(ng-switch-when="binder")
-                    header.leaf-heading.col-sm-12
-                        h3.t-title.t-leaf-title
-                            a.leaf-name.is-pointer(ng-click="selectLeaf(leaf)")
-                                | {{leaf.Name}}
-                article.l-section.l-shadow.user-text(ng-switch-when="userText")
-                    header.leaf-heading.col-sm-12
-                        h4.t-title.t-leaf-title
-                            a.leaf-name.is-pointer(ng-click="selectLeaf(leaf)")
-                                i.icon.fa.fa-pencil
-                                | &nbsp;
-                                | {{leaf.title}}
-                    .leaf-content.col-sm-12
-                        p.underlined {{leaf.synopsis}}
-                article.l-section.l-shadow.monster(ng-switch-when="monster")
+                article.col-sm-12.l-shadow.binder(ng-switch-when="binder")
+                    header.lf-heading.row
+                        a.t-title.lf-title.is-pointer(ng-click="selectLeaf(leaf)")
+                            .lf-name-container
+                                h3.t-title.lf-title.lf-name
+                                    | {{leaf.Name}}
+                article.col-sm-12.l-shadow.user-text(ng-switch-when="userText")
+                    header.lf-heading.row
+                        a.t-title.lf-title.is-pointer(ng-click="selectLeaf(leaf)")
+                            .lf-name-container
+                                h3.lf-name
+                                    i.icon.fa.fa-pencil
+                                    | {{leaf.title}}
+                    .lf-content.row
+                        .col-sm-12
+                            p.t-italic {{leaf.synopsis}}
+                        .col-sm-12
+                            div(ng-bind-html="leaf.content | toTrustedHtml")
+                article.col-sm-12.l-shadow.monster(ng-switch-when="monster")
                     include _abbr-monster
-                article.l-section.l-shadow.npc(ng-switch-when="npc")
+                article.col-sm-12.l-shadow.npc(ng-switch-when="npc")
                     include _abbr-npc
-                article.l-section.l-shadow.user-spell(ng-switch-when="user-spell")
+                article.col-sm-12.l-shadow.user-spell(ng-switch-when="user-spell")
                     include _abbr-spell
-                article.l-section.l-shadow.user-feat(ng-switch-when="user-feat")
+                article.col-sm-12.l-shadow.user-feat(ng-switch-when="user-feat")
                     include _abbr-feat
-                article.l-section.l-shadow.user-item(ng-switch-when="user-item")
+                article.col-sm-12.l-shadow.user-item(ng-switch-when="user-item")
                     include _abbr-item

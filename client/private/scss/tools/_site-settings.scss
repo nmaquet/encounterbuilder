@@ -141,3 +141,6 @@ $img-texture-2: url('../img/bg/bg_texture.png');
 @mixin gradient-transparent-white {
   @include gradient-radial-multiple-image($img-texture-1, center 160px, circle closest-corner, rgba(255,255,255,0.1), rgba(255,255,255,0.2), 0%, 100%);
 }
+@mixin gradient-truncate-text-vertical {
+  @include gradient-linear-with-color-stop(left, top, bottom, transparent, $grey-2, 0%, 70%, 100% 100%, $pie:"false");
+}

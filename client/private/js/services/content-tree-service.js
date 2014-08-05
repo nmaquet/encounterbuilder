@@ -65,7 +65,6 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 else if (activeNode.folder === true) {
                     var newNode = activeNode.addNode(node);
                     newNode.setActive(true);
-                    newNode.makeVisible();
                     service.goToNode(newNode);
                 }
                 else {
@@ -128,8 +127,8 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 }
                 else if (node.folder) {
                     locationService.go("/binder/" + node.key);
-                    node.setExpanded(true);
                 }
+                node.makeVisible();
             };
 
             service.hasFirstNode = function () {
