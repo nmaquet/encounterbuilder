@@ -72,6 +72,7 @@ DEMONSQUID.encounterBuilderServices.factory('favouriteService', ['$http', '$root
                 node = fancyTree.getNodeByKey(typeBinderKeys[type]);
             }
             node.addNode(newFavourite);
+            node.sortChildren();
             this.treeChanged();
         },
         removeFavourite: function (id) {
