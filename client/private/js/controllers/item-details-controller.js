@@ -21,7 +21,7 @@ DEMONSQUID.encounterBuilderControllers.controller('ItemDetailsController',
                 } else {
                     $scope.item = item;
                     if ($routeParams.itemId) {
-                        $rootScope.globalTitle = "Encounter Builder - " + $scope.item.Name;
+                        $rootScope.globalTitle = "Chronicle Forge - " + $scope.item.Name;
                     }
                     $scope.favourite = favouriteService.isFavourite(item.id);
                     if ($scope.item.Derived) {

@@ -15,7 +15,7 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
                     //binder is initialized inside the callback to limit flickering
                     // (angular renders binder empty then when the children are loaded re render again with the children)
                     $scope.binder = contentTreeService.getBinderByKey($routeParams.binderId);
-                    $rootScope.globalTitle = "Encounter Builder - " + $scope.binder.Name;
+                    $rootScope.globalTitle = "Chronicle Forge - " + $scope.binder.Name;
                     $scope.removeBinderMessage = "This binder contains " + $scope.binder.descendantCount + " elements. Are you sure ?";
 
                     $scope.pending = false;

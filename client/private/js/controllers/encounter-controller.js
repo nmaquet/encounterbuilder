@@ -22,7 +22,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                 else {
                     $scope.encounter = encounterEditorService.encounter = encounter;
                     encounterService.updateUserContent($scope.encounter);
-                    $rootScope.globalTitle = "Encounter Builder - " + $scope.encounter.Name;
+                    $rootScope.globalTitle = "Chronicle Forge - " + $scope.encounter.Name;
                 }
             });
 

@@ -54,7 +54,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserNpcController',
 
                 $scope.userNpc = userNpc;
                 if ($routeParams.userNpcId) {
-                    $rootScope.globalTitle = "Encounter Builder - " + $scope.userNpc.Name;
+                    $rootScope.globalTitle = "Chronicle Forge - " + $scope.userNpc.Name;
                 }
                 $scope.pending = false;
             });
