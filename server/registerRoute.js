@@ -7,8 +7,8 @@ var async = require("async");
 var HOST_TO_ALLOWED_ORIGIN = {
     "localhost:3000": "http://localhost:3000",
     "localhost.encounterbuilder.com": "http://localhost.encounterbuilder.com",
-    "encounterbuilder-staging.herokuapp.com": "http://staging.encounterbuilder.com",
-    "encounterbuilder-live.herokuapp.com": "http://www.encounterbuilder.com"
+    "encounterbuilder-staging.herokuapp.com": "http://staging.chronicleforge.com",
+    "encounterbuilder-live.herokuapp.com": "http://www.chronicleforge.com"
 };
 
 module.exports = function (userService, sesService) {

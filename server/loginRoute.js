@@ -8,8 +8,8 @@ module.exports = function (jwt, userService) {
         "192.168.0.5:3000": "http://168.168.0.5:3000",
         "localhost:3000": "http://localhost:3000",
         "localhost.encounterbuilder.com": "http://localhost.encounterbuilder.com",
-        "encounterbuilder-staging.herokuapp.com": "http://staging.encounterbuilder.com",
-        "encounterbuilder-live.herokuapp.com": "http://www.encounterbuilder.com"
+        "encounterbuilder-staging.herokuapp.com": "http://staging.chronicleforge.com",
+        "encounterbuilder-live.herokuapp.com": "http://www.chronicleforge.com"
     };
 
     return {

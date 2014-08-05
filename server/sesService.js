@@ -29,7 +29,7 @@ function sendConfirmationEmail(user, host, callback) {
     text += "Cheers,\n";
 
     var email = {
-        Source: "beta@encounterbuilder.com",
+        Source: "beta@chronicleforge.com",
         Destination: { ToAddresses: [user.email] },
         Message: {
             Subject: {

@@ -138,19 +138,19 @@ function makeJS() {
     }
     process.chdir("client/public/js/");
     var options = {
-        outSourceMap: "encounterbuilder.min.js",
+        outSourceMap: "chronicleforge.min.js",
         compress: false, mangle: mangle,
         sourceRoot: "http://localhost:3000"
     };
     var result = uglify_js.minify(relativeJsFiles, options);
-    if (fs.existsSync('encounterbuilder.min.js.map')) {
-        fs.unlinkSync('encounterbuilder.min.js.map');
+    if (fs.existsSync('chronicleforge.min.js.map')) {
+        fs.unlinkSync('chronicleforge.min.js.map');
     }
     if (process.env['DO_NOT_UGLIFY']) {
-        fs.writeFileSync('encounterbuilder.min.js.map', result.map, FILE_ENCODING);
-        result.code += "\n//# sourceMappingURL=encounterbuilder.min.js.map";
+        fs.writeFileSync('chronicleforge.min.js.map', result.map, FILE_ENCODING);
+        result.code += "\n//# sourceMappingURL=chronicleforge.min.js.map";
     }
-    fs.writeFileSync('encounterbuilder.min.js', result.code, FILE_ENCODING);
+    fs.writeFileSync('chronicleforge.min.js', result.code, FILE_ENCODING);
     process.chdir("../../../");
 }
 
@@ -161,7 +161,7 @@ function makeCSS() {
         outFile: tempfile,
         success: function () {
             cssFiles.push(tempfile);
-            concat(cssFiles, "client/public/css/encounterbuilder.min.css");
+            concat(cssFiles, "client/public/css/chronicleforge.min.css");
             fs.unlinkSync(tempfile);
         },
         error: function (error) {
