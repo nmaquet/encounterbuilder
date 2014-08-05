@@ -1,8 +1,9 @@
 label {
   font-weight: normal;
 }
-[ng-show='isEditing'],
-[ng-hide='isEditing'] {
+
+#click-to-edit-viewer,
+#click-to-edit-editor {
   overflow: hidden;
   max-width: 100%;
   input[type="text"] {
@@ -15,6 +16,14 @@ label {
     &:focus {
       outline: none !important;
       border-color: $red;
+    }
+    &::selection {
+      color:black !important;
+      background:white !important;
+    }
+    &::-moz-selection {
+      color:black !important;
+      background:white !important;
     }
   }
 }

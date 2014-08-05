@@ -1,3 +1,5 @@
+// Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
 "use strict";
 
 (function () {
@@ -7,6 +9,7 @@
     });
 
     var HOST_URL = {
+        "192.168.0.5:3000": "http://192.168.0.5:3000/",
         "localhost:3000": "http://localhost:3000/",
         "localhost.encounterbuilder.com": "http://localhost.encounterbuilder.com/",
         "staging.encounterbuilder.com": "https://encounterbuilder-staging.herokuapp.com/",
@@ -48,6 +51,11 @@
     });
 
     $("#register-form").submit(function () {
+        var agree_to_tos = $('#agree_to_tos').is(':checked')
+        if (!agree_to_tos) {
+            $("#register-failed-agree-to-tos").removeClass("hidden");
+            return false;
+        }
         $.ajax({
             type: "POST",
             url: HOST_URL[window.location.host] + "register",
@@ -64,9 +72,9 @@
                     else {
                         $("#register-failed-alert").removeClass("hidden");
                     }
-
                 }
                 else {
+                    $("#register-failed-agree-to-tos").addClass("hidden");
                     $("#register-failed-alert").addClass("hidden");
                     $("#register-failed-user").addClass("hidden");
                     $("#register-failed-email").addClass("hidden");

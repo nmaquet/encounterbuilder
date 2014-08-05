@@ -1,3 +1,5 @@
+// Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
 "use strict";
 var fs = require('fs');
 var Binary = require('mongodb').Binary;
@@ -35,9 +37,6 @@ module.exports = function (collection, ObjectID) {
         var fileType = request.body.fileType;
         if (!request.body.s3Credentials) {
             request.body.s3Credentials = s3Service.createS3Credentials(id, fileType);
-            delete request.body.url;
-        } else {
-            request.body.url = s3Service.getResourceURL(id) + "?" + new Date().getTime();
         }
         return wrappedUpdateResource(request, response);
     };

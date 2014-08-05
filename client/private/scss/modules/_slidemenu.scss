@@ -197,43 +197,43 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
 
 // Media queries
 
-@media screen and (max-width: 55.1875em){
+//@media screen and (max-width: 55.1875em){
+//
+//  .sp-menu-horizontal {
+//    font-size: 75%;
+//    height: 110px;
+//  }
+//
+//  .sp-menu-top {
+//    top: -110px;
+//  }
+//
+//  .sp-menu-bottom {
+//    bottom: -110px;
+//  }
+//
+//}
 
-  .sp-menu-horizontal {
-    font-size: 75%;
-    height: 110px;
-  }
-
-  .sp-menu-top {
-    top: -110px;
-  }
-
-  .sp-menu-bottom {
-    bottom: -110px;
-  }
-
-}
-
-@media screen and (max-height: 26.375em){
-
-  .sp-menu-vertical {
-    font-size: 90%;
-    width: 190px;
-  }
-
-  .sp-menu-left,
-  .sp-menu-push-toleft {
-    left: -190px;
-  }
-
-  .sp-menu-right {
-    right: -190px;
-  }
-
-  .sp-menu-push-toright {
-    left: 190px;
-  }
-}
+//@media screen and (max-height: 26.375em){
+//
+//  .sp-menu-vertical {
+//    font-size: 90%;
+//    width: 190px;
+//  }
+//
+//  .sp-menu-left,
+//  .sp-menu-push-toleft {
+//    left: -190px;
+//  }
+//
+//  .sp-menu-right {
+//    right: -190px;
+//  }
+//
+//  .sp-menu-push-toright {
+//    left: 190px;
+//  }
+//}
 
 // Exception for the filters
 .l-filters {

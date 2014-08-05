@@ -1,3 +1,5 @@
+// Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
@@ -63,6 +65,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                 $scope.userResource.fileType = item.file.type;
                 $scope.userResource.fileName = item.file.name;
                 delete $scope.userResource.s3Credentials;
+                delete $scope.userResource.url;
                 $scope.userResource.$save(function() {
                     var credentials = $scope.userResource.s3Credentials;
                     var item = uploader.getNotUploadedItems()[0];
@@ -76,6 +79,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                     item.formData.push(s3FormData);
                     item.withCredentials = true;
                     item.url = credentials.url;
+                    $scope.userResource.url = credentials.resourceURL;
                     uploader.uploadAll();
                 });
                 $scope.errorMessage = errorMessage = null;

@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+# Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
 # -*- coding: utf-8 -*-
 
 import json

@@ -1,3 +1,5 @@
+// Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
 "use strict";
 
 var random_wondrous_item = require('../server/loot/wondrousItems')().random_wondrous_item;

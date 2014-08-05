@@ -1,3 +1,5 @@
+// Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
 var fs = require("fs");
 
 var mongoose = require('mongoose');

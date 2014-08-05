@@ -1,3 +1,5 @@
+// Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
 "use strict";
 
 require('../scripts/concat_and_uglify');
@@ -226,6 +228,10 @@ function main(db) {
 
     app.get('/', function (request, response) {
         response.render('../website/index.jade');
+    });
+
+    app.get('/terms-of-service', function (request, response) {
+        response.render('../website/terms-of-service.jade');
     });
 
     var port = process.env.PORT || 3000;

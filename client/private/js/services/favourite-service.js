@@ -1,3 +1,5 @@
+// Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('favouriteService', ['$http', '$rootScope', function ($http, $rootScope) {
@@ -70,6 +72,7 @@ DEMONSQUID.encounterBuilderServices.factory('favouriteService', ['$http', '$root
                 node = fancyTree.getNodeByKey(typeBinderKeys[type]);
             }
             node.addNode(newFavourite);
+            node.sortChildren();
             this.treeChanged();
         },
         removeFavourite: function (id) {

@@ -1,3 +1,5 @@
+// Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
 "use strict";
 
 var AWS = require('aws-sdk');
@@ -31,7 +33,7 @@ function getResourceURL(id) {
     return urlPrefix + id;
 }
 
-function createS3Credentials(keyPrefix, contentType) {
+function createS3Credentials(key, contentType) {
 
     var now = new Date();
     var expiration = new Date(now.getTime() + 5 * 60000 /* 5 minutes */);
@@ -39,7 +41,7 @@ function createS3Credentials(keyPrefix, contentType) {
         "expiration": expiration.toISOString(),
         "conditions": [
             { "bucket": bucketName },
-            ["starts-with", "$key", keyPrefix],
+            ["starts-with", "$key", key],
             { "acl": "public-read" },
             ["content-length-range", 0, 3*1024*1024],
             ["eq", "$Content-Type", contentType]
@@ -53,7 +55,8 @@ function createS3Credentials(keyPrefix, contentType) {
         signature: crypto.createHmac("sha1", AWS.config.secretAccessKey).update(s3PolicyBase64).digest("base64"),
         AWSAccessKeyId: AWS.config.accessKeyId,
         url: urlPrefix,
-        "Content-Type": contentType
+        "Content-Type": contentType,
+        resourceURL: urlPrefix + key + "?" + new Date().getTime()
     };
 
     return s3Credentials;
