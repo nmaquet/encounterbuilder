@@ -80,8 +80,9 @@ function main(db) {
             "encounterbuilder-live.herokuapp.com": "http://www.chronicleforge.com"
         };
         response.header('Access-Control-Allow-Origin', HOST_TO_ALLOWED_ORIGIN[request.headers.host]);
-        response.header('Access-Control-Allow-Methods', 'GET,POST');
-        response.header('Access-Control-Allow-Headers', 'Content-Type');
+        response.header("Access-Control-Allow-Credentials: true");
+        response.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+        response.header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization");
         next();
     }
 
