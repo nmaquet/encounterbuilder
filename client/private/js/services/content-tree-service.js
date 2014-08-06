@@ -450,6 +450,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 var userFeatIds = [];
                 var userItemIds = [];
                 var userIllustrationIds = [];
+                var userMapIds=[];
                 for (var i in children) {
                     if (children[i].data.encounterId) {
                         encounterIds.push(children[i].data.encounterId);
@@ -473,6 +474,9 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     }
                     else if (children[i].data.resourceType === "user-illustration") {
                         userIllustrationIds.push(children[i].data.userResourceId);
+                    }
+                    else if (children[i].data.resourceType === "user-map") {
+                        userMapIds.push(children[i].data.userResourceId);
                     }
                 }
                 var tasks = [];
@@ -508,6 +512,9 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 tasks.push(function (taskCallback) {
                     userResourceService["user-illustration"].getMultiple(userIllustrationIds, taskCallback);
                 });
+                tasks.push(function (taskCallback) {
+                    userResourceService["user-map"].getMultiple(userMapIds, taskCallback);
+                });
                 window.async.parallel(tasks, function (error, results) {
                     if (error) {
                         console.log(error);
@@ -522,6 +529,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                         var spells = results[5];
                         var feats = results[6];
                         var illustrations = results[7];
+                        var maps = results[8];
 
                         for (var j in children) {
                             if (children[j].folder) {
@@ -599,8 +607,16 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                                     }
                                 }
                             }
+                            else if (children[j].data.resourceType === "user-map") {
+                                for (var n in maps) {
+                                    if (maps[n]._id === children[j].data.userResourceId) {
+                                        maps[n].$type = "user-map";
+                                        enrichedLeaves.push(maps[n]);
+                                        break;
+                                    }
+                                }
+                            }
                         }
-                        console.log(enrichedLeaves);
                         callback(enrichedLeaves);
                     }
                 });
