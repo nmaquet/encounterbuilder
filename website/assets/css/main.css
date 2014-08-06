@@ -272,6 +272,13 @@ body.blog-body {
 	padding: 50px 10px 50px 10px;
 }
 
+#features licon {
+    font-size: 40px;
+    color: #1abc9c;
+    padding: 20px;
+    vertical-align: middle;
+}
+
 #features .col-lg-6 img {
     display: table;
     margin: 0 auto;
@@ -281,11 +288,11 @@ body.blog-body {
 	font-size: 20px;
 }
 
-#features .col-lg-4 h4,
-#features .col-lg-4 licon {
-    font-size: 20px;
-    color: #1abc9c;
-}
+/*#features .col-lg-4 h4,*/
+/*#features .col-lg-4 licon {*/
+    /*font-size: 20px;*/
+    /*color: #1abc9c;*/
+/*}*/
 
 /* Divider Wrap */
 
@@ -344,7 +351,7 @@ body.blog-body {
     color: #fff;
     text-align: center;
     font-weight: 700;
-    padding: 40px 20px 30px; 
+    padding: 40px 20px 5px;
     -webkit-box-sizing: border-box; 
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -377,6 +384,11 @@ body.blog-body {
 .pricing-option .price {
     display: inline-block;
     position: relative;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.pricing-option .price-comment {
+    display: block;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -590,7 +602,7 @@ body.blog-body {
 
 .whiteTextShadow {
     color: #fff;
-    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.5);
 }
 
 .pricing-option {
@@ -634,6 +646,6 @@ body.blog-body {
 }
 
 #priceSwitch {
-    max-width: 200px;
+    max-width: 300px;
     margin: auto;
 }

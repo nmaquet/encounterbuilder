@@ -8,7 +8,7 @@ DEMONSQUID.encounterBuilderControllers.controller('FeedbackController', ['$http'
             $http.get('/feedback-popover.html').success(function (html) {
                 var popoverOptions = {
                     html: true,
-                    title: "Help us improve Encounter Builder",
+                    title: "Help us improve Chronicle Forge",
                     content: html,
                     trigger: 'manual',
                     placement: 'bottom'

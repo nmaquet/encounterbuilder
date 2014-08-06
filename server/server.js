@@ -20,12 +20,18 @@ if (process.env['USE_TEST_DB']) {
 }
 else {
     var MONGODB_URL = process.env['MONGODB_URL'];
-    var SESSION_STORE = new MongoStore({
-        url: process.env['SESSION_MONGODB_URL']
-    });
 }
 
-MongoClient.connect(MONGODB_URL, function (error, db) {
+var MONGO_CONNECT_OPTIONS = {
+    server: {
+        auto_reconnect: true
+    },
+    db: {
+        numberOfRetries: 60 * 60 * 24, retryMiliSeconds: 1000
+    }
+};
+
+MongoClient.connect(MONGODB_URL, MONGO_CONNECT_OPTIONS, function (error, db) {
     if (error) {
         console.log(error);
     } else {
@@ -70,6 +76,25 @@ function main(db) {
         response.setHeader("Expires", new Date(Date.now() + (seconds * 1000)).toUTCString());
         next();
     }
+
+    function enableCORS(request, response, next) {
+        var HOST_TO_ALLOWED_ORIGIN = {
+            "192.168.0.5:3000": "http://168.168.0.5:3000",
+            "localhost:3000": "http://localhost:3000",
+            "localhost.encounterbuilder.com": "http://localhost.encounterbuilder.com",
+            "encounterbuilder-staging.herokuapp.com": "http://staging.chronicleforge.com",
+            "encounterbuilder-live.herokuapp.com": "http://www.chronicleforge.com"
+        };
+        response.setHeader('Access-Control-Allow-Origin', HOST_TO_ALLOWED_ORIGIN[request.headers.host]);
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+        next();
+    }
+
+    app.options('*', enableCORS, function (request, response) {
+        response.send(200);
+    });
 
     var metrics = require('./usageMetrics')(collections.metrics);
     var diceService = require('./diceService')();
@@ -125,15 +150,15 @@ function main(db) {
 
     app.post('/api/user-data', userDataRoute);
     /* FIXME: should be a GET with no caching ! */
-    app.post("/login", metrics.logLogin, loginRoute.post);
-    app.post("/register", /* TODO METRICS */ registerRoute);
+    app.post("/login", metrics.logLogin, enableCORS, loginRoute.post);
+    app.post("/register", /* TODO METRICS */ enableCORS, registerRoute);
     app.get("/validate-email", disableCaching, /* TODO METRICS */ validateEmailRoute);
     app.post("/api/update-encounter", metrics.logUpdateEncounter, encounterRoute.update);
     app.post("/api/create-encounter", metrics.logCreateEncounter, encounterRoute.create);
     app.post("/api/remove-encounter", metrics.logRemoveEncounter, encounterRoute.delete);
     app.post("/api/generate-encounter-loot", metrics.logGenerateEncounterLoot, encounterRoute.generateLoot);
-    app.post("/api/change-password", changePasswordRoute);
-    app.post("/api/change-user-data", changeUserDataRoute);
+    app.post("/api/change-password", enableCORS, changePasswordRoute);
+    app.post("/api/change-user-data", enableCORS, changeUserDataRoute);
     app.post("/api/save-content-tree", contentTreeRoute.updateContentTree);
     app.post("/api/save-favourites", favouritesRoute.update);
 
@@ -238,7 +263,7 @@ function main(db) {
 
     app.listen(port);
 
-    console.log("Encounter Builder Server listening on port " + port);
+    console.log("Chronicle Forge Server listening on port " + port);
 
     fs.writeFileSync("server.pid", process.pid);
 

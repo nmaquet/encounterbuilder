@@ -46,7 +46,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserTextController',
 
                 $scope.userText = userText;
                 if ($routeParams.userTextId) {
-                    $rootScope.globalTitle = "Encounter Builder - " + $scope.userText.title;
+                    $rootScope.globalTitle = "Chronicle Forge - " + $scope.userText.title;
                 }
                 $scope.pending = false;
 

@@ -21,7 +21,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController',
                 } else {
                     $scope.monster = monster;
                     if ($routeParams.monsterId) {
-                        $rootScope.globalTitle = "Encounter Builder - " + $scope.monster.Name;
+                        $rootScope.globalTitle = "Chronicle Forge - " + $scope.monster.Name;
                     }
                     $scope.favourite = favouriteService.isFavourite(monster.id);
                     if ($scope.monster) {

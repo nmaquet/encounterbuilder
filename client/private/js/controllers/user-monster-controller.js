@@ -50,7 +50,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                     $scope.userMonster = templateService.createTemplatedMonster(userMonster);
 
                     if ($routeParams.userMonsterId) {
-                        $rootScope.globalTitle = "Encounter Builder - " + $scope.userMonster.Name;
+                        $rootScope.globalTitle = "Chronicle Forge - " + $scope.userMonster.Name;
                     }
                     $scope.pending = false;
 

@@ -22,7 +22,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SpellDetailsController',
                     $scope.favourite = favouriteService.isFavourite(spell.id);
                     $scope.spell = spell;
                     if ($routeParams.spellId) {
-                        $rootScope.globalTitle = "Encounter Builder - " + $scope.spell.name;
+                        $rootScope.globalTitle = "Chronicle Forge - " + $scope.spell.name;
                     }
                     if ($scope.spell) {
                         $scope.spell.descriptionSafe = $sce.trustAsHtml($scope.spell.description_formated);

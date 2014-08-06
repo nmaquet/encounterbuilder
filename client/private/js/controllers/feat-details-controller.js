@@ -30,7 +30,7 @@ DEMONSQUID.encounterBuilderControllers.controller('FeatDetailsController',
                 } else {
                     $scope.feat = feat;
                     if ($routeParams.featId) {
-                        $rootScope.globalTitle = "Encounter Builder - " + $scope.feat.name;
+                        $rootScope.globalTitle = "Chronicle Forge - " + $scope.feat.name;
                     }
                     $scope.favourite = favouriteService.isFavourite(feat.id);
                     var typeFlags = [];

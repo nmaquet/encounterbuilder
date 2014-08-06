@@ -25,7 +25,7 @@ DEMONSQUID.encounterBuilderControllers.controller('NpcDetailController',
                 } else {
                     $scope.npc = npc;
                     if ($routeParams.npcId) {
-                        $rootScope.globalTitle = "Encounter Builder - " + $scope.npc.Name;
+                        $rootScope.globalTitle = "Chronicle Forge - " + $scope.npc.Name;
                     }
                     $scope.favourite = favouriteService.isFavourite(npc.id);
                     if ($scope.npc) {
