@@ -15,7 +15,6 @@ module.exports = function (encounterCollection, ObjectID, lootService) {
                     response.json({error: error});
                 }
                 else {
-                    console.log(encounter);
                     response.json({encounter: encounter});
                 }
             });

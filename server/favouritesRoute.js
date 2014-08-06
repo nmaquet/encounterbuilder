@@ -9,7 +9,6 @@ module.exports = function (favouriteCollection) {
                     response.json({error: error});
                 }
                 else {
-                    console.log(data);
                     var favourites = (data.length > 0) ? data[0].favourites : [];
                     response.json({favourites: favourites});
                 }

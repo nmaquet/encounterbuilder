@@ -206,7 +206,6 @@ function getAllowedLootTypeForEncounter(nonNPCBudget, encounter) {
             }
         }
     }
-    console.log('allowed type:' + allowedTypes);
     return allowedTypes;
 }
 
