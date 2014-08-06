@@ -86,6 +86,10 @@ function main(db) {
         next();
     }
 
+    app.options('*', enableCORS, function (request, response) {
+        response.send(200);
+    });
+
     var metrics = require('./usageMetrics')(collections.metrics);
     var diceService = require('./diceService')();
     var knapsackService = require('./knapsackService')();
