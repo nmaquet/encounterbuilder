@@ -125,6 +125,16 @@
             $('#login-link').addClass('hide');
             $('#register-link').addClass('hide');
             $('#logged-in').removeClass('hide');
+            var logoutLink = $('#logout-link');
+            logoutLink.removeClass('hide');
+            logoutLink.on('click',function(){
+                window.sessionStorage.removeItem("token");
+                window.localStorage.removeItem("token");
+                $('#login-link').removeClass('hide');
+                $('#register-link').removeClass('hide');
+                $('#logged-in').addClass('hide');
+                logoutLink.addClass('hide');
+            });
         }
         var queryStrings = getQueryStrings();
         if (queryStrings['promptLogin'] === 'true') {
