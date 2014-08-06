@@ -99,6 +99,15 @@ $('#register').on('shown.bs.modal', function () {
     $("#register-failed-email").addClass("hidden");
 });
 
+$('#logout-link').click(function () {
+    window.sessionStorage.removeItem("token");
+    window.localStorage.removeItem("token");
+    $('#login-link').removeClass('hide');
+    $('#register-link').removeClass('hide');
+    $('#logout-link').addClass('hide');
+    $('#logged-in').addClass('hide');
+});
+
 $(function () {
     $('a.register-btn').click(function () {
         $('#login .close').click();
@@ -121,7 +130,13 @@ $(window).load(function () {
         });
         $('#login-link').addClass('hide');
         $('#register-link').addClass('hide');
+        $('#logout-link').removeClass('hide');
         $('#logged-in').removeClass('hide');
+    } else {
+        $('#login-link').removeClass('hide');
+        $('#register-link').removeClass('hide');
+        $('#logout-link').addClass('hide');
+        $('#logged-in').addClass('hide');
     }
     var queryStrings = getQueryStrings();
     if (queryStrings['promptLogin'] === 'true') {
