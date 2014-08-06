@@ -114,5 +114,38 @@
                     and pay a higher price for it. In this way, an art object may easily be used as a plot hook.
                 p.
                     Art objects can usually be bought or sold for their base price, and are sometimes used as currency.
+        .cat-content(ng-show="userResource.Group === 'Armor' && userResource.ArmorBonus")
+            table#armor-table
+                thead
+                    tr
+                        th
+                            | Armor/Shield
+                            br
+                            | Bonus
+                        th
+                            | Max
+                            br
+                            | Dex Bonus
+                        th
+                            | Armor
+                            br
+                            | Check Penalty
+                        th
+                            | Arcane Spell
+                            br
+                            | Failure Chance
+                        th(colspan='2')
+                            | Speed
+                            br
+                            span(style='float: left;') 30 ft.
+                            span(style='float: right;') 20 ft.
+                tbody
+                    tr.odd
+                        td {{userResource.ArmorBonus}}
+                        td {{userResource.MaxDexBonus}}
+                        td {{userResource.ArmorCheckPenalty}}
+                        td {{userResource.ArcaneSpellFailure}}
+                        td {{userResource.Speed30Ft}}
+                        td {{userResource.Speed20Ft}}
         .cat-content(ng-hide="userResource.Derived")
             p {{userResource.Description}}
