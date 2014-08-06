@@ -4,6 +4,15 @@
 
 DEMONSQUID.encounterBuilderControllers.controller('ProfileController', ['$scope', '$http', '$rootScope',
     function ($scope, $http, $rootScope) {
+
+        var HOST_URL = {
+            "192.168.0.5:3000": "http://192.168.0.5:3000/",
+            "localhost:3000": "http://localhost:3000/",
+            "localhost.encounterbuilder.com": "http://localhost.encounterbuilder.com/",
+            "staging.chronicleforge.com": "https://encounterbuilder-staging.herokuapp.com/",
+            "www.chronicleforge.com": "https://encounterbuilder-live.herokuapp.com/"
+        };
+
         var messages = {
             EMAIL_ALREADY_EXISTS: "Email is already used",
             USERNAME_ALREADY_EXISTS: "Username is already used",
@@ -54,7 +63,7 @@ DEMONSQUID.encounterBuilderControllers.controller('ProfileController', ['$scope'
                 var oldPassword = $scope.oldPassword;
                 var newPassword1 = $scope.newPassword1;
                 $scope.oldPassword = $scope.newPassword1 = $scope.newPassword2 = undefined;
-                $http.post('/api/change-password', { oldPassword: oldPassword, newPassword: newPassword1})
+                $http.post(HOST_URL[window.location.host] + 'api/change-password', { oldPassword: oldPassword, newPassword: newPassword1})
                     .success(function (response) {
                         if (response.error) {
                             errorAlert(response.error)
@@ -71,7 +80,7 @@ DEMONSQUID.encounterBuilderControllers.controller('ProfileController', ['$scope'
             hideAlerts();
             var confirmedPassword = $scope.confirmedPassword;
             $scope.confirmedPassword = undefined;
-            $http.post('/api/change-user-data', { username: $scope.username, email: $scope.email, fullname: $scope.fullname, password: confirmedPassword })
+            $http.post(HOST_URL[window.location.host] + 'api/change-user-data', { username: $scope.username, email: $scope.email, fullname: $scope.fullname, password: confirmedPassword })
                 .success(function (response) {
                     if (response.error) {
                         errorAlert(response.error);
