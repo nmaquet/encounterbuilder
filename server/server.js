@@ -71,6 +71,20 @@ function main(db) {
         next();
     }
 
+    function enableCORS(request, response, next) {
+        var HOST_TO_ALLOWED_ORIGIN = {
+            "192.168.0.5:3000": "http://168.168.0.5:3000",
+            "localhost:3000": "http://localhost:3000",
+            "localhost.encounterbuilder.com": "http://localhost.encounterbuilder.com",
+            "encounterbuilder-staging.herokuapp.com": "http://staging.chronicleforge.com",
+            "encounterbuilder-live.herokuapp.com": "http://www.chronicleforge.com"
+        };
+        response.header('Access-Control-Allow-Origin', HOST_TO_ALLOWED_ORIGIN[request.headers.host]);
+        response.header('Access-Control-Allow-Methods', 'GET,POST');
+        response.header('Access-Control-Allow-Headers', 'Content-Type');
+        next();
+    }
+
     var metrics = require('./usageMetrics')(collections.metrics);
     var diceService = require('./diceService')();
     var knapsackService = require('./knapsackService')();
@@ -125,15 +139,15 @@ function main(db) {
 
     app.post('/api/user-data', userDataRoute);
     /* FIXME: should be a GET with no caching ! */
-    app.post("/login", metrics.logLogin, loginRoute.post);
-    app.post("/register", /* TODO METRICS */ registerRoute);
+    app.post("/login", metrics.logLogin, enableCORS, loginRoute.post);
+    app.post("/register", /* TODO METRICS */ enableCORS, registerRoute);
     app.get("/validate-email", disableCaching, /* TODO METRICS */ validateEmailRoute);
     app.post("/api/update-encounter", metrics.logUpdateEncounter, encounterRoute.update);
     app.post("/api/create-encounter", metrics.logCreateEncounter, encounterRoute.create);
     app.post("/api/remove-encounter", metrics.logRemoveEncounter, encounterRoute.delete);
     app.post("/api/generate-encounter-loot", metrics.logGenerateEncounterLoot, encounterRoute.generateLoot);
-    app.post("/api/change-password", changePasswordRoute);
-    app.post("/api/change-user-data", changeUserDataRoute);
+    app.post("/api/change-password", enableCORS, changePasswordRoute);
+    app.post("/api/change-user-data", enableCORS, changeUserDataRoute);
     app.post("/api/save-content-tree", contentTreeRoute.updateContentTree);
     app.post("/api/save-favourites", favouritesRoute.update);
 
