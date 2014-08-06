@@ -20,12 +20,18 @@ if (process.env['USE_TEST_DB']) {
 }
 else {
     var MONGODB_URL = process.env['MONGODB_URL'];
-    var SESSION_STORE = new MongoStore({
-        url: process.env['SESSION_MONGODB_URL']
-    });
 }
 
-MongoClient.connect(MONGODB_URL, function (error, db) {
+var MONGO_CONNECT_OPTIONS = {
+    server: {
+        auto_reconnect: true
+    },
+    db: {
+        numberOfRetries: 60 * 60 * 24, retryMiliSeconds: 1000
+    }
+};
+
+MongoClient.connect(MONGODB_URL, MONGO_CONNECT_OPTIONS, function (error, db) {
     if (error) {
         console.log(error);
     } else {
