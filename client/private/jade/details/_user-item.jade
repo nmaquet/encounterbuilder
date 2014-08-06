@@ -115,7 +115,7 @@
                 p.
                     Art objects can usually be bought or sold for their base price, and are sometimes used as currency.
         .cat-content(ng-show="userResource.Group === 'Armor' && userResource.ArmorBonus")
-            table#armor-table
+            table.armor-weapon-table
                 thead
                     tr
                         th
@@ -147,5 +147,23 @@
                         td {{userResource.ArcaneSpellFailure}}
                         td {{userResource.Speed30Ft}}
                         td {{userResource.Speed20Ft}}
+        .cat-content(ng-show="userResource.Group === 'Weapon' && userResource.DmgM")
+            table.armor-weapon-table
+                thead
+                    tr
+                        th Dmg (S)
+                        th Dmg (M)
+                        th Critical
+                        th Range
+                        th Type
+                        th Special
+                tbody
+                    tr.odd
+                        td {{userResource.DmgS}}
+                        td {{userResource.DmgM}}
+                        td {{userResource.Crit}}
+                        td {{userResource.Range}}
+                        td {{userResource.DamageType}}
+                        td {{userResource.Special}}
         .cat-content(ng-hide="userResource.Derived")
             p {{userResource.Description}}

@@ -158,15 +158,15 @@
   color: $brown-dark !important;
 }
 
-table#armor-table {
+table.armor-weapon-table {
   border-collapse: collapse;
 }
 
-table#armor-table {
+table.armor-weapon-table {
   border: 1px solid black;
 
 }
-table#armor-table th{
+table.armor-weapon-table th{
   font-size: 0.75em;
   background-color: $gray-light;
   color: white;
