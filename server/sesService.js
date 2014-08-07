@@ -3,16 +3,11 @@
 "use strict";
 
 var AWS = require('aws-sdk');
-var fs = require('fs');
-
-
-var AWS = require('aws-sdk');
 AWS.config.accessKeyId = process.env["AWS_ACCESS_KEY_ID"];
 AWS.config.secretAccessKey = process.env["AWS_SECRET_ACCESS_KEY"];
 AWS.config.region = "us-west-2";
 
 var ses = new AWS.SES({apiVersion: '2010-12-01'});
-
 
 function sendConfirmationEmail(user, callback) {
     var link = "http://www.chronicleforge.com/validate-email/?id=" + user._id + "&uuid=" + user.validationUuid;
@@ -46,7 +41,6 @@ function sendConfirmationEmail(user, callback) {
             }
         }
     };
-
 
     console.log("sending email...");
     ses.sendEmail(email, function (error, data) {
