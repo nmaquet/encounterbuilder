@@ -8,10 +8,17 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
         function calculateXp(encounter) {
             var xp = 0;
             for (var id in encounter.Monsters) {
-                xp += Number(encounter.Monsters[id].XP) * encounter.Monsters[id].amount;
+                var monsterXP = Number(encounter.Monsters[id].XP) * encounter.Monsters[id].amount;
+                if (!isNaN(monsterXP)) {
+                    xp += monsterXP;
+                }
+
             }
             for (id in encounter.Npcs) {
-                xp += Number(encounter.Npcs[id].XP) * encounter.Npcs[id].amount;
+                var npcXP = Number(encounter.Npcs[id].XP) * encounter.Npcs[id].amount;
+                if (!isNaN(npcXP)) {
+                    xp += npcXP;
+                }
             }
             return xp;
         }
