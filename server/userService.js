@@ -119,7 +119,7 @@ function register(fields, callback) {
                         }
                         sesService.sendConfirmationEmail(user, function (error) {
                             if (error) {
-                                return callback(error);
+                                return callback(new Error('SENDING_EMAIL_FAILED'));
                             }
                             callback(error, result[0]);
                         });

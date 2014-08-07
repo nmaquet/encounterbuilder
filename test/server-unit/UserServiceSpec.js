@@ -147,6 +147,22 @@ describe("userService", function() {
         });
     });
 
+    it("should have sent an email after registering", function (done) {
+        expect(mockSesService.emailSent).to.equal(false);
+        registerBob(function() {
+            expect(mockSesService.emailSent).to.equal(true);
+            done();
+        });
+    });
+
+    it("should report an appropriate error if sending the confirmation email fails", function (done) {
+        mockSesService.simulateFailure = true;
+        registerBob(function(error) {
+            expect(error.message).to.equal("SENDING_EMAIL_FAILED");
+            done();
+        });
+    });
+
     it("should allow updating of username", function (done) {
         async.series([
             registerBob,
