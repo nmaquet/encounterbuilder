@@ -17,6 +17,7 @@ var favouritesCollection = null;
 var userTextCollection = null;
 var userMonsterCollection = null;
 var userNpcCollection = null;
+var sesService = null;
 
 var escapeRegExp = require('./utils')().escapeRegExp;
 
@@ -113,7 +114,15 @@ function register(fields, callback) {
                         return callback(error);
                     }
                     favouritesCollection.insert({ username: user.username, favourites: [] }, function (error) {
-                        callback(error, result[0]);
+                        if (error) {
+                            return callback(error);
+                        }
+                        sesService.sendConfirmationEmail(user, function (error) {
+                            if (error) {
+                                return callback(error);
+                            }
+                            callback(error, result[0]);
+                        });
                     });
                 });
             });
@@ -229,7 +238,7 @@ function remove(username, callback) {
     ], callback);
 }
 
-module.exports = function (database) {
+module.exports = function (database, sesService_) {
 
     userCollection = database.collection("users");
     contentTreeCollection = database.collection("contenttrees");
@@ -238,6 +247,8 @@ module.exports = function (database) {
     userMonsterCollection = database.collection("usermonsters");
     userTextCollection = database.collection("usertexts");
     userNpcCollection = database.collection("usernpcs");
+
+    sesService = sesService_;
 
     return {
         exists: exists,
