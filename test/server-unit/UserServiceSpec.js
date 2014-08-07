@@ -12,6 +12,15 @@ var MONGODB_URL = process.env["MONGODB_TEST_URL"];
 var db = null;
 var userService = null;
 
+var mockSesService = {
+    emailSent : false,
+    simulateFailure : false,
+    sendConfirmationEmail: function(user, callback) {
+        mockSesService.emailSent = true;
+        callback(mockSesService.simulateFailure ? new Error("simulated error") : null);
+    }
+};
+
 function registerBob(callback) {
     userService.register({username: "Bob", password: "password", email: "bob@bob.com", age: 31}, callback);
 }
@@ -40,7 +49,7 @@ before(function(done) {
     MongoClient.connect(MONGODB_URL, function (error, database) {
         console.log("connecting to db");
         expect(error).to.equal(null);
-        userService = require("../../server/userService")(database);
+        userService = require("../../server/userService")(database, mockSesService);
         db = database;
         done();
     });
@@ -49,6 +58,8 @@ before(function(done) {
 describe("userService", function() {
 
     beforeEach(function (done) {
+        mockSesService.emailSent = false;
+        mockSesService.simulateFailure = false;
         db.collection("users").remove({}, function (error) {
             if (error) {
                 return done(error);
