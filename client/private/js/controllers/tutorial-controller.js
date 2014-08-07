@@ -3,7 +3,7 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('TutorialController', ['$scope', '$timeout', 'viewportService', 'sidebarService',
-    function($scope, $timeout, viewportService, sidebarService) {
+    function ($scope, $timeout, viewportService, sidebarService) {
         var TEMPLATE = '<div class="popover tutorial-popover is-pointer" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>';
 
         var popovers = [];
@@ -20,7 +20,7 @@ DEMONSQUID.encounterBuilderControllers.controller('TutorialController', ['$scope
             popovers.push(p);
         }
 
-        $timeout(function() {
+        $timeout(function () {
             $("#campaignsTab").click();
             $("#monstersTab").click();
         });
@@ -37,7 +37,16 @@ DEMONSQUID.encounterBuilderControllers.controller('TutorialController', ['$scope
             createPopover($('#example-monster-edit-btn'), "top", "Edit");
             createPopover($('#example-monster-delete-btn'), "right", "Delete");
         }
-
+        function createMediumPopovers() {
+            createPopover($('#create-dropdown'), "right", "Use this dropdown to create new content.");
+            createPopover($('#left-sidebar'), "right", "Organize your content here using binders. Drag & drop to move things around.");
+            createPopover($('#search-tabs'), "right", "Use these tabs to switch between your Library, Favourites, and Database.");
+            createPopover($('.icon-plus').first(), "left", "Use these buttons to add monsters, NPC's, and items to encounters.");
+            createPopover($('#example-monster-copy-btn'), "left", "Copy");
+            createPopover($('#example-monster-favourite-btn'), "bottom", "Favourite");
+            createPopover($('#example-monster-edit-btn'), "top", "Edit");
+            createPopover($('#example-monster-delete-btn'), "top", "Delete");
+        }
         function createPhonePopovers() {
             createPopover($('#open-sidebar-and-select-db-tab'), "bottom", "Use these to access your Library, Favourites, and Database.");
             createPopover($('#example-monster-delete-btn'), "bottom", "Use these to Copy, Edit, Favourite, and Delete.");
@@ -51,9 +60,12 @@ DEMONSQUID.encounterBuilderControllers.controller('TutorialController', ['$scope
         }
 
         function createPopovers() {
-            if (viewportService.viewport.lg) {
+            if (viewportService.viewport.lg ) {
                 createDesktopPopovers();
-            } else if (viewportService.viewport.xs || viewportService.viewport.sm) {
+            }else if (viewportService.viewport.md) {
+                createMediumPopovers();
+            }
+            else if (viewportService.viewport.xs || viewportService.viewport.sm) {
                 createPhonePopovers();
             }
             $(popovers).popover('toggle');
@@ -62,11 +74,11 @@ DEMONSQUID.encounterBuilderControllers.controller('TutorialController', ['$scope
             });
         }
 
-        $timeout(function() {
+        $timeout(function () {
             createPopovers();
         }, 1000);
 
-        $scope.$on("$locationChangeStart", function() {
+        $scope.$on("$locationChangeStart", function () {
             destroyAndRemovePopovers();
         });
 
