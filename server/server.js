@@ -100,8 +100,8 @@ function main(db) {
     var diceService = require('./diceService')();
     var knapsackService = require('./knapsackService')();
     var lootService = require('./loot/lootService')(diceService, knapsackService);
-    var userService = require('./userService')(db);
     var sesService = require('./sesService')();
+    var userService = require('./userService')(db, sesService);
 
     var searchMonstersRoute = require('./searchMonstersRoute')(collections.monsters, collections.userMonsters, FIND_LIMIT);
     var searchNpcsRoute = require('./searchNpcsRoute')(collections.npcs, collections.userNpcs, FIND_LIMIT);
@@ -119,7 +119,7 @@ function main(db) {
     var loginRoute = require('./loginRoute')(jwt, userService);
     var changePasswordRoute = require('./changePasswordRoute')(userService);
     var changeUserDataRoute = require('./changeUserDataRoute')(userService);
-    var registerRoute = require('./registerRoute')(userService, sesService);
+    var registerRoute = require('./registerRoute')(userService);
     var validateEmailRoute = require('./validateEmailRoute')(userService);
     var userDataRoute = require('./userDataRoute')(collections.contentTrees, userService);
     var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
