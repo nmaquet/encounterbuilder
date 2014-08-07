@@ -20,13 +20,18 @@ function sendConfirmationEmail(user, callback) {
 
     var html = "<html><body>";
     html += "Hi " + name + ",<br><br>";
+    html += "Welcome to Chronice Forge!<br><br>";
     html += "<a href='" + link + "'>Please click here to activate your account</a><br><br>";
     html += "Cheers,<br>";
+    html += "Nick & Chris";
     html += "</body></html>";
+
     var text = "";
     text += "Hi " + name + ",\n\n";
+    text += "Welcome to Chronice Forge!\n\n";
     text += "please copy and paste this link into your browser to activate your account: " + link + "\n";
     text += "Cheers,\n";
+    text += "Nick & Chris";
 
     var email = {
         Source: "beta@chronicleforge.com",
