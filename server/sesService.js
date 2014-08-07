@@ -20,9 +20,9 @@ function sendConfirmationEmail(user, callback) {
 
     var html = "<html><body>";
     html += "Hi " + name + ",<br><br>";
-    html += "Welcome to Chronice Forge!<br><br>";
+    html += "Welcome to Chronice Forge!<br>";
     html += "<a href='" + link + "'>Please click here to activate your account</a><br><br>";
-    html += "Cheers,<br>";
+    html += "Cheers,<br><br>";
     html += "Nick & Chris";
     html += "</body></html>";
 
