@@ -125,6 +125,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         source: contentTreeService.contentTree(),
                         scrollParent:$('.sp-menu-content'),
                         click: onClick,
+                        clickFolderMode: 3,
                         addToEncounter: {
                             onPlusButtonClick: onPlusButtonClick
                         },
