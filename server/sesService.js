@@ -19,11 +19,11 @@ function sendConfirmationEmail(user, callback) {
     var name = user.fullname || user.username;
 
     var html = "<html><body>";
-    html += "Hi " + name + ",<br><br>";
-    html += "Welcome to Chronice Forge!<br>";
-    html += "<a href='" + link + "'>Please click here to activate your account</a><br><br>";
-    html += "Cheers,<br><br>";
-    html += "Nick & Chris";
+    html += "<p>Hi " + name + ",</p>";
+    html += "<p>Welcome to Chronice Forge!</p>";
+    html += "<p><a href='" + link + "'>Please click here to activate your account</a></p>";
+    html += "<p>Cheers,</p>";
+    html += "<p>Nick & Chris</p>";
     html += "</body></html>";
 
     var text = "";
