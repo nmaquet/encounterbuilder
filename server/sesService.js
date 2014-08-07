@@ -14,8 +14,8 @@ AWS.config.region = "us-west-2";
 var ses = new AWS.SES({apiVersion: '2010-12-01'});
 
 
-function sendConfirmationEmail(user, host, callback) {
-    var link = "http://"+host + "/validate-email/?id="+user._id+"&uuid=" + user.validationUuid;
+function sendConfirmationEmail(user, callback) {
+    var link = "http://www.chronicleforge.com/validate-email/?id=" + user._id + "&uuid=" + user.validationUuid;
     var name = user.fullname || user.username;
 
     var html = "<html><body>";

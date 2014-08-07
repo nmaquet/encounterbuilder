@@ -16,7 +16,7 @@ module.exports = function (userService, sesService) {
             if (error) {
                 return response.json({error: error.message});
             }
-            sesService.sendConfirmationEmail(newUser, request.headers.host, function (error) {
+            sesService.sendConfirmationEmail(newUser, function (error) {
                 if (error) {
                     return response.json({error: error.message});
                 }
