@@ -3,8 +3,7 @@
     header.binder-heading.col-sm-12
         .pull-right
             a.is-pointer.remove-binder(on-confirm="removeBinder()", confirm-click="{{removeBinderMessage}}", confirm-title="Delete binder")
-                i.icon.icon-remove
-                    | &#215;
+                i.icon.icon-remove.fa.fa-trash-o
         h1.t-title.t-binder-title
             span.binder-name.is-pointer(click-to-edit='binder.Name', on-save="binderChanged()")
 

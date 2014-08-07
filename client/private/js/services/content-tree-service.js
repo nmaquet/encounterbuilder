@@ -154,7 +154,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             };
 
             service.createBinder = function () {
-                addNode({title: "newBinder", folder: true, key: getNextNodeKey()})
+                addNode({title: "new Binder", folder: true, key: getNextNodeKey()})
                 service.treeChanged(fancyTree.toDict(removeExtraClasses));
             };
 
@@ -231,13 +231,13 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     }
                 });
             };
-
+            var resourceNewName = {"user-item": "new Item", "user-spell": "new Spell", "user-feat": "new Feat", "user-illustration": "new Illustration", "user-map": "new Map"};
             service.createUserResource = function (resourceType) {
                 var userResource = new userResourceService[resourceType]();
                 if (resourceType === "user-item") {
-                    userResource.Name = "Untitled";
+                    userResource.Name = resourceNewName[resourceType];
                 } else {
-                    userResource.name = "Untitled";
+                    userResource.name = resourceNewName[resourceType];
                 }
                 userResource.$save(function () {
                     addNode({title: userResource.name || userResource.Name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey()});
@@ -450,7 +450,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 var userFeatIds = [];
                 var userItemIds = [];
                 var userIllustrationIds = [];
-                var userMapIds=[];
+                var userMapIds = [];
                 for (var i in children) {
                     if (children[i].data.encounterId) {
                         encounterIds.push(children[i].data.encounterId);

@@ -7,7 +7,7 @@ module.exports = function (userMonsterCollection, monstersCollection, ObjectID) 
     function newUserMonster(username) {
         return {
             Username: username,
-            Name: "Unnamed Monster",
+            Name: "new Monster",
             CR:0,
             XP:0
         }

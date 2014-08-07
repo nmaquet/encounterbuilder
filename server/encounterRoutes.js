@@ -37,8 +37,7 @@ module.exports = function (encounterCollection, ObjectID, lootService) {
         },
         create: function (request, response) {
             var username = request.user.username;
-            var i = 0;
-            var encounter = { Name: "Untitled #" + i, CR: "0", Monsters: {}, coins: {pp: 0, gp: 0, sp: 0, cp: 0}};
+            var encounter = { Name: "new Encounter", CR: "0", Monsters: {}, coins: {pp: 0, gp: 0, sp: 0, cp: 0}};
             encounter.Username = username;
             encounterCollection.insert(encounter, function (error, newEncounter) {
                 if (error) {

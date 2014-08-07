@@ -7,7 +7,7 @@ module.exports = function (userTextCollection, ObjectID) {
     function newUserText(username) {
         return {
             username: username,
-            title: "Unnamed Text"
+            title: "new Text"
         }
     }
 

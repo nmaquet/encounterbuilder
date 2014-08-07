@@ -7,7 +7,7 @@ module.exports = function (userNpcCollection, npcsCollection, ObjectID) {
     function newUserNpc(username) {
         return {
             Username: username,
-            Name: "Unnamed Npc",
+            Name: "new Npc",
             CR:0,
             XP:0
         }
