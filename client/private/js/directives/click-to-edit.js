@@ -11,7 +11,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit',
             '       <i ng-class="iconClass"></i>' +
             '   </span>' +
             '   <span id="click-to-edit-editor" ng-class="editClass">' +
-            '       <input ng-model="editedValue" type="text">' +
+            '       <input ng-model="editedValue" type="text" size="{{size}}">' +
             '   </span>' +
             '</span>';
         return {
@@ -23,6 +23,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit',
                 onSave: "&onSave",
                 display: "@display",
                 numeric: "=numeric",
+                size: "@size",
                 editClass: "@editClass",
                 displayClass: "@displayClass",
                 iconClass: "@iconClass"
@@ -37,6 +38,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('clickToEdit',
                 var input = $($element.find("input"));
                 var viewer = $($element.find("#click-to-edit-viewer"));
                 var editor = $($element.find("#click-to-edit-editor"));
+
+                $scope.size = $scope.size || "20";
 
                 $scope.isEditing = false;
                 editor.addClass("hidden");

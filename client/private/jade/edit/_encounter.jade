@@ -76,7 +76,7 @@
     .content.content-treasure
         .col-xs-12.cat
             legend.cat-heading.t-legend.t-title
-                span Treasure
+                span Treasure: {{encounter.lootValue | number}} gp
                 i.icon.fa.fa-flask.pull-left
             table.table.table-striped.result-table#encounter-items
                 tbody
@@ -100,26 +100,22 @@
                                         | ×
                 tfoot
                     tr.encounter-row
-                        td
-                        td(colspan='2')
-                            strong Coins
-                            ul.list-unstyled.list-inline.coin-list
-                                li
-                                    span.coins.encounter-coins-pp.is-pointer(click-to-edit='encounter.coins.pp', display="{{encounter.coins.pp | number}}", on-save="encounterChanged()", numeric="true")
-                                    i.icon.icon-coin.fa.fa-bullseye.platinum(title='Platinum Pieces')
-                                li
-                                    span.coins.encounter-coins-gp.is-pointer(click-to-edit='encounter.coins.gp', display="{{encounter.coins.gp | number}}", on-save="encounterChanged()", numeric="true")
-                                    i.icon.icon-coin.fa.fa-bullseye.gold(title='Gold Pieces')
-                                li
-                                    span.coins.encounter-coins-sp.is-pointer(click-to-edit='encounter.coins.sp', display="{{encounter.coins.sp | number}}", on-save="encounterChanged()", numeric="true")
-                                    i.icon.icon-coin.fa.fa-bullseye.silver(title='Silver Pieces')
-                                li
-                                    span.coins.encounter-coins-cp.is-pointer(click-to-edit='encounter.coins.cp', display="{{encounter.coins.cp | number}}", on-save="encounterChanged()", numeric="true")
-                                    i.icon.icon-coin.fa.fa-bullseye.copper(title='Copper Pieces')
-                        td
-                            strong Value
-                            br
-                            span#encounter-loot-value {{encounter.lootValue | number}}
+                        ul.list-unstyled.list-inline
+                            li
+                                strong Coins: {{encounter.coins.pp * 10 + encounter.coins.gp + encounter.coins.sp / 10 + encounter.coins.cp / 100 | number}} gp
+                        ul.list-unstyled.list-inline.coin-list
+                            li
+                                span.coins.encounter-coins-pp.is-pointer(click-to-edit='encounter.coins.pp', display="{{encounter.coins.pp | number}} pp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden")
+                                i.icon.icon-coin.fa.fa-bullseye.platinum(title='Platinum Pieces')
+                            li
+                                span.coins.encounter-coins-gp.is-pointer(click-to-edit='encounter.coins.gp', display="{{encounter.coins.gp | number}} gp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden")
+                                i.icon.icon-coin.fa.fa-bullseye.gold(title='Gold Pieces')
+                            li
+                                span.coins.encounter-coins-sp.is-pointer(click-to-edit='encounter.coins.sp', display="{{encounter.coins.sp | number}} sp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden")
+                                i.icon.icon-coin.fa.fa-bullseye.silver(title='Silver Pieces')
+                            li
+                                span.coins.encounter-coins-cp.is-pointer(click-to-edit='encounter.coins.cp', display="{{encounter.coins.cp | number}} cp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden")
+                                i.icon.icon-coin.fa.fa-bullseye.copper(title='Copper Pieces')
                             //.row
                                 .col-xxs-8.col-xs-8.text-right
                                     strong Coins
