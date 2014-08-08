@@ -29,14 +29,18 @@ DEMONSQUID.encounterBuilderDirectives.directive('confirmClick', ['$rootScope', f
                     title: scope.confirmTitle || 'Confirmation',
                     html: true,
                     placement: function (context, source) {
+                        var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
                         var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
                         var left = $(source).offset().left;
-                        alert(left + " / " + viewportWidth / 2);
-                        if (left > viewportWidth / 2) {
-                            return "left";
-                        } else {
-                            return "right";
-                        }
+                        var top = $(source).offset().top;
+                        var right = viewportWidth - left;
+                        var bottom = viewportHeight - top;
+                        return {
+                            top: "top",
+                            left: "left",
+                            right: "right",
+                            bottom: "bottom"
+                        }[Math.max(top, left, right, bottom)];
                     },
                     container: '#wrapper',
                     content: scope.confirmClick + '\
