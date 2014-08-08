@@ -6,11 +6,10 @@
                 i.icon.icon-remove.fa.fa-trash-o
         h1.t-title.t-binder-title
             span.binder-name.is-pointer(click-to-edit='binder.Name', on-save="binderChanged()")
-
     .encounter-dropdown-container( pending="pending")
         .row.leaves
             .col-sm-6.col-lg-4.leaf(ng-repeat='leaf in leaves',ng-switch="leaf.$type")
-                article.col-sm-12.l-shadow.encounter(ng-switch-when="encounter")
+                article.col-sm-12.l-shadow(ng-switch-when="encounter")
                     include _encounter-ro
                 article.col-sm-12.l-shadow.binder(ng-switch-when="binder")
                     header.lf-heading.row
@@ -18,6 +17,9 @@
                             .lf-name-container
                                 h3.t-title.lf-title.lf-name
                                     | {{leaf.Name}}
+                    .lf-content.row
+                        .col-sm-12
+                            p.t-italic Preview are coming soon
                 article.col-sm-12.l-shadow.user-text(ng-switch-when="userText")
                     header.lf-heading.row
                         a.t-title.lf-title.is-pointer(ng-click="selectLeaf(leaf)")

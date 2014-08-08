@@ -533,7 +533,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
 
                         for (var j in children) {
                             if (children[j].folder) {
-                                enrichedLeaves.push({Name: children[j].title, nodeKey: children[j].key, descendantCount: children[j].countChildren(true), type: "binder"})
+                                enrichedLeaves.push({Name: children[j].title, nodeKey: children[j].key, descendantCount: children[j].countChildren(true), $type: "binder"})
                             }
                             else if (children[j].data.encounterId) {
                                 for (var k in encounters) {
