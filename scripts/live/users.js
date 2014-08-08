@@ -27,7 +27,7 @@ function printUser(user) {
 }
 
 function getURL(callback) {
-    if (program["live"]){
+    if (program["live"]) {
         console.log("* using LIVE db *");
         read({ prompt: 'Password: ', silent: true }, function (error, password) {
             if (error) {
@@ -39,7 +39,7 @@ function getURL(callback) {
                 var cleartext = "";
                 cleartext += decipher.update(ciphertext, 'base64');
                 cleartext += decipher.final('utf8');
-            } catch(TypeError) {
+            } catch (TypeError) {
                 return console.log("wrong password !");
             }
             callback(cleartext);
@@ -54,7 +54,7 @@ function getURL(callback) {
 }
 
 function connect(callback) {
-    getURL(function(url) {
+    getURL(function (url) {
         MongoClient.connect(url, function (error, db) {
             var userService = require("../../server/userService")(db);
             callback(userService, db);
@@ -228,9 +228,19 @@ command("validate <username>", "validate a user's email address", function (user
     });
 });
 
+command("validateAll", "validate all users email address", function (userService, db) {
+    db.collection('users').update({}, {$set: {emailValidated: true}},{multi:true}, function (error) {
+        if (error) {
+            console.log("error updating users : " + error.message);
+            return db.close();
+        }
+        console.log("validate successful");
+        db.close();
+    });
+});
 program.parse(process.argv);
 
-var COMMANDS = ["list", "show", "update", "passwd", "auth", "register", "remove", "validate"];
+var COMMANDS = ["list", "show", "update", "passwd", "auth", "register", "remove", "validate","validateAll"];
 
 if (program.args.length === 0 || COMMANDS.indexOf(program.rawArgs[2]) < 0) {
     program.help();
