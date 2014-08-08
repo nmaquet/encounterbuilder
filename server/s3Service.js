@@ -7,6 +7,7 @@ var crypto = require("crypto");
 
 AWS.config.accessKeyId = process.env["AWS_ACCESS_KEY_ID"];
 AWS.config.secretAccessKey = process.env["AWS_SECRET_ACCESS_KEY"];
+AWS.config.region = "us-east-1";
 
 var s3 = new AWS.S3();
 

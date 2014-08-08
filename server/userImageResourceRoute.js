@@ -22,6 +22,7 @@ module.exports = function (collection, ObjectID) {
                 }
                 s3Service.removeFromS3(paramsResourceId, function (error) {
                     if (error) {
+                        console.log(error);
                         console.log("ERROR object:" + paramsResourceId + " wasn't deleted from S3");
                     }
                     return response.json({});
