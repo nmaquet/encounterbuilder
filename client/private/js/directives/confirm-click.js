@@ -31,16 +31,20 @@ DEMONSQUID.encounterBuilderDirectives.directive('confirmClick', ['$rootScope', f
                     placement: function (context, source) {
                         var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
                         var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-                        var left = $(source).offset().left;
                         var top = $(source).offset().top;
+                        var left = $(source).offset().left;
                         var right = viewportWidth - left;
                         var bottom = viewportHeight - top;
-                        return {
-                            top: "top",
-                            left: "left",
-                            right: "right",
-                            bottom: "bottom"
-                        }[Math.max(top, left, right, bottom)];
+                        switch(Math.max(top, left, right, bottom)) {
+                            case top:
+                                return "top";
+                            case left:
+                                return "left";
+                            case right:
+                                return "right";
+                            case bottom:
+                                return "bottom";
+                        }
                     },
                     container: '#wrapper',
                     content: scope.confirmClick + '\
