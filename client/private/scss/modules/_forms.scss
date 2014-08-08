@@ -9,7 +9,6 @@ label {
   input[type="text"] {
     max-width: 90%;
     display: inline-block;
-    color: white;
     .l-section { color: inherit; }
     background: transparent;
     border: none;
@@ -17,6 +16,12 @@ label {
       outline: none !important;
       border-color: $red;
     }
+  }
+}
+
+.click-to-edit-dark-theme {
+  input[type="text"] {
+    color: white;
     &::selection {
       color:black !important;
       background:white !important;
@@ -27,6 +32,21 @@ label {
     }
   }
 }
+
+.click-to-edit-light-theme {
+  input[type="text"] {
+    color: black;
+    &::selection {
+      color:white !important;
+      background:black !important;
+    }
+    &::-moz-selection {
+      color:white !important;
+      background:black !important;
+    }
+  }
+}
+
 button, input, select {
   outline: none;
 }
