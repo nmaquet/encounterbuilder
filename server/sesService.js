@@ -5,7 +5,7 @@
 var AWS = require('aws-sdk');
 AWS.config.accessKeyId = process.env["AWS_ACCESS_KEY_ID"];
 AWS.config.secretAccessKey = process.env["AWS_SECRET_ACCESS_KEY"];
-AWS.config.region = "us-west-2";
+AWS.config.region = "eu-west-1";
 
 var ses = new AWS.SES({apiVersion: '2010-12-01'});
 

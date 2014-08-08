@@ -22,17 +22,30 @@ DEMONSQUID.encounterBuilderDirectives.directive('confirmClick', ['$rootScope', f
             var noId = "confirm-dialog-btn-no-" + id;
 
             var self = $(element);
-            var placement = 'left';
-            if (!$rootScope.viewport.xs && !$rootScope.viewport.sm) {
-                placement = 'right';
-            }
 
             self.bind('click', function (e) {
                 var popoverOptions = {
                     trigger: 'manual',
                     title: scope.confirmTitle || 'Confirmation',
                     html: true,
-                    placement: placement,
+                    placement: function (context, source) {
+                        var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+                        var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+                        var top = $(source).offset().top;
+                        var left = $(source).offset().left;
+                        var right = viewportWidth - left;
+                        var bottom = viewportHeight - top;
+                        switch(Math.max(top, left, right, bottom)) {
+                            case top:
+                                return "top";
+                            case left:
+                                return "left";
+                            case right:
+                                return "right";
+                            case bottom:
+                                return "bottom";
+                        }
+                    },
                     container: '#wrapper',
                     content: scope.confirmClick + '\
 						<p class="button-group" style="margin-top: 10px; text-align: center;">\
