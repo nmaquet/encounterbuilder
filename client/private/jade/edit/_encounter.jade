@@ -36,7 +36,7 @@
                 tbody
                     tr.encounter-row.encounter-monster-row(ng-repeat='(id,monster) in encounter.Monsters')
                         td.badge-container.is-pointer
-                            span(click-to-edit='monster.amount', on-save="encounterChanged()", display-class="badge grey pointer monster-amount", edit-class="badge grey pointer monster-amount badge-editing", icon-class="hide", numeric="true")
+                            span(click-to-edit='monster.amount', on-save="encounterChanged()", display-class="badge grey pointer monster-amount", edit-class="badge grey pointer monster-amount badge-editing click-to-edit-dark-theme", icon-class="hide", numeric="true")
                         td.name-container
                             span.monster-name
                                 a.is-pointer(ng-click='selectMonsterById(id,monster.userCreated)') {{monster.Name}}
@@ -59,7 +59,7 @@
                 tbody
                     tr.encounter-row.encounter-npc-row(ng-repeat='(id,npc) in encounter.Npcs')
                         td.badge-container.is-pointer
-                            span(click-to-edit='npc.amount', on-save="encounterChanged()", display-class="badge grey pointer npc-amount", edit-class="badge grey pointer npc-amount badge-editing", icon-class="hide", numeric="true")
+                            span(click-to-edit='npc.amount', on-save="encounterChanged()", display-class="badge grey pointer npc-amount", edit-class="badge grey pointer npc-amount badge-editing click-to-edit-dark-theme", icon-class="hide", numeric="true")
                         td.name-container
                             span.npc-name
                                 a.is-pointer(ng-click='selectNpcById(id,npc.userCreated)') {{npc.Name}}
@@ -82,7 +82,7 @@
                 tbody
                     tr.encounter-row.encounter-item-row(ng-repeat='(id,item) in encounter.items')
                         td.badge-container.is-pointer
-                            span(click-to-edit='item.amount', on-save="encounterChanged()", display-class="badge grey pointer item-amount", edit-class="badge grey pointer item-amount badge-editing", icon-class="hide", numeric="true")
+                            span(click-to-edit='item.amount', on-save="encounterChanged()", display-class="badge grey pointer item-amount", edit-class="badge grey pointer item-amount badge-editing click-to-edit-dark-theme", icon-class="hide", numeric="true")
                         td.name-container
                             span.item-name
                                 a.is-pointer(ng-click='selectItemById(id,item.userCreated)') {{item.Name}}
@@ -105,16 +105,16 @@
                                 strong Coins: {{encounter.coins.pp * 10 + encounter.coins.gp + encounter.coins.sp / 10 + encounter.coins.cp / 100 | number}} gp
                         ul.list-unstyled.list-inline.coin-list
                             li
-                                span.coins.encounter-coins-pp.is-pointer(click-to-edit='encounter.coins.pp', display="{{encounter.coins.pp | number}} pp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden")
+                                span.coins.encounter-coins-pp.is-pointer(click-to-edit='encounter.coins.pp', display="{{encounter.coins.pp | number}} pp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden", edit-class="t-underline-dotted click-to-edit-light-theme")
                                 i.icon.icon-coin.fa.fa-bullseye.platinum(title='Platinum Pieces')
                             li
-                                span.coins.encounter-coins-gp.is-pointer(click-to-edit='encounter.coins.gp', display="{{encounter.coins.gp | number}} gp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden")
+                                span.coins.encounter-coins-gp.is-pointer(click-to-edit='encounter.coins.gp', display="{{encounter.coins.gp | number}} gp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden", edit-class="t-underline-dotted click-to-edit-light-theme")
                                 i.icon.icon-coin.fa.fa-bullseye.gold(title='Gold Pieces')
                             li
-                                span.coins.encounter-coins-sp.is-pointer(click-to-edit='encounter.coins.sp', display="{{encounter.coins.sp | number}} sp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden")
+                                span.coins.encounter-coins-sp.is-pointer(click-to-edit='encounter.coins.sp', display="{{encounter.coins.sp | number}} sp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden", edit-class="t-underline-dotted click-to-edit-light-theme")
                                 i.icon.icon-coin.fa.fa-bullseye.silver(title='Silver Pieces')
                             li
-                                span.coins.encounter-coins-cp.is-pointer(click-to-edit='encounter.coins.cp', display="{{encounter.coins.cp | number}} cp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden")
+                                span.coins.encounter-coins-cp.is-pointer(click-to-edit='encounter.coins.cp', display="{{encounter.coins.cp | number}} cp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden", edit-class="t-underline-dotted click-to-edit-light-theme")
                                 i.icon.icon-coin.fa.fa-bullseye.copper(title='Copper Pieces')
                             //.row
                                 .col-xxs-8.col-xs-8.text-right
