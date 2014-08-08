@@ -54,7 +54,7 @@ var processParagraphWithID = function (index) {
 
     var p = firstDescriptionParagraph;
     while (!p.hasClass("stat-block-breaker")) {
-        description += p.html();
+        description += p.text();
         p = p.next();
     }
 

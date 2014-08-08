@@ -10,7 +10,7 @@
         "Cost": 24900,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, animate objects, make whole, mending",
-        "Description": "Created from a number of iron rods, copper gears, and silver screws, this staff constantly shifts and changes. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/makeWhole.html#_make-whole\">Make whole</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/mending.html#_mending\">Mending</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/animateObjects.html#_animate-objects\">Animate objects</a> </i>(2 charges)</li>In addition, once per day, the staff can become a Medium animated object  with the metal special ability. It can remain in this form for up to 10 minutes. If destroyed while in this form, it reverts to being a staff, but it loses all of its charges and this ability cannot be used again until it is fully recharged.",
+        "Description": "Created from a number of iron rods, copper gears, and silver screws, this staff constantly shifts and changes. The staff allows use of the following spells:Make whole (1 charge)\nMending (1 charge)\nAnimate objects (2 charges)In addition, once per day, the staff can become a Medium animated object  with the metal special ability. It can remain in this form for up to 10 minutes. If destroyed while in this form, it reverts to being a staff, but it loses all of its charges and this ability cannot be used again until it is fully recharged.",
         "Source": "Ultimate Equipment",
         "id": "animate-staff"
     },
@@ -25,7 +25,7 @@
         "Cost": 14800,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, align weapon, chaos hammer, detect evil, magic circle against law",
-        "Description": "Made up from a number of different materials, including wood, metal, and possibly pieces of flesh, this staff seems to shift in shape and form over time. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/alignWeapon.html#_align-weapon\">Align weapon</a> </i>(chaos only, 1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/detectLaw.html#_detect-law\">Detect law</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/chaosHammer.html#_chaos-hammer\">Chaos hammer</a> </i>(2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/magicCircleAgainstLaw.html#_magic-circle-against-law\">Magic circle against law</a> </i>(2 charges)</li>",
+        "Description": "Made up from a number of different materials, including wood, metal, and possibly pieces of flesh, this staff seems to shift in shape and form over time. The staff allows use of the following spells:Align weapon (chaos only, 1 charge)\nDetect law (1 charge)\nChaos hammer (2 charges)\nMagic circle against law (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "chaotic-staff"
     },
@@ -40,7 +40,7 @@
         "Cost": 40500,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, alter self, dragon's breath, fly, form of the dragon II, protection from energy",
-        "Description": "Made from a large dragon bone, wrapped in scales and topped with the fearsome image of a dragon, this staff radiates power. Each dragon staff is linked to one type of chromatic dragon: black, blue, green, red, or white. All the spells that can be cast using the staff are tied to that choice. If the wielder uses the staff to cast <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/formOfTheDragon.html#_form-of-the-dragon-ii\">form of the dragon II</a></i>, she must assume the type linked to the staff. Any energy types chosen by spells from the staff must match the type as well (black and green are linked to acid, blue is linked to electricity, red is linked to fire, and white is linked to cold). The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/skills/fly.html#_fly\">Fly</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/protectionFromEnergy.html#_protection-from-energy\">Protection from energy</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/dragonSBreath.html#_dragon&apos;s-breath\">Dragon's breath</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/formOfTheDragon.html#_form-of-the-dragon-ii\">Form of the dragon II</a> </i>(4 charges)</li>In addition to these powers, the wielder of the <i>dragon staff</i> also receives a +2 natural armor bonus to her AC and the ability to make a bite attack as a primary natural weapon. This bite deals 1d8 points of damage if the wielder is Medium. These bonuses are a polymorph effect and are replaced by those gained from casting <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/formOfTheDragon.html#_form-of-the-dragon-ii\">form of the dragon II</a></i>, or other similar spells.",
+        "Description": "Made from a large dragon bone, wrapped in scales and topped with the fearsome image of a dragon, this staff radiates power. Each dragon staff is linked to one type of chromatic dragon: black, blue, green, red, or white. All the spells that can be cast using the staff are tied to that choice. If the wielder uses the staff to cast form of the dragon II, she must assume the type linked to the staff. Any energy types chosen by spells from the staff must match the type as well (black and green are linked to acid, blue is linked to electricity, red is linked to fire, and white is linked to cold). The staff allows use of the following spells:Fly (1 charge)\nProtection from energy (1 charge)\nDragon's breath (2 charges)\nForm of the dragon II (4 charges)In addition to these powers, the wielder of the dragon staff also receives a +2 natural armor bonus to her AC and the ability to make a bite attack as a primary natural weapon. This bite deals 1d8 points of damage if the wielder is Medium. These bonuses are a polymorph effect and are replaced by those gained from casting form of the dragon II, or other similar spells.",
         "Source": "Ultimate Equipment",
         "id": "dragon-staff"
     },
@@ -55,7 +55,7 @@
         "Cost": 16000,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, castigate, command, denounce, zone of truth",
-        "Description": "This sturdy wooden staff is crowned by a holy symbol, surrounded by wicked barbs of metal. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/castigate.html#_castigate\">Castigate</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/command.html#_command\">Command</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/zoneOfTruth.html#_zone-of-truth\">Zone of truth</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/denounce.html#_denounce\">Denounce</a> </i>(2 charges)</li>",
+        "Description": "This sturdy wooden staff is crowned by a holy symbol, surrounded by wicked barbs of metal. The staff allows use of the following spells:Castigate (1 charge)\nCommand (1 charge)\nZone of truth (1 charge)\nDenounce (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "heretic-s-bane"
     },
@@ -70,7 +70,7 @@
         "Cost": 14800,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, align weapon, detect evil, holy smite, magic circle against evil",
-        "Description": "This staff is made from polished birch, inlaid with ivory, and topped with a pristine white gemstone. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/alignWeapon.html#_align-weapon\">Align weapon</a> </i>(good only, 1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/detectEvil.html#_detect-evil\">Detect evil</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/holySmite.html#_holy-smite\">Holy smite</a> </i>(2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/magicCircleAgainstEvil.html#_magic-circle-against-evil\">Magic circle against evil</a> </i>(2 charges)</li>",
+        "Description": "This staff is made from polished birch, inlaid with ivory, and topped with a pristine white gemstone. The staff allows use of the following spells:Align weapon (good only, 1 charge)\nDetect evil (1 charge)\nHoly smite (2 charges)\nMagic circle against evil (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "holy-staff"
     },
@@ -85,7 +85,7 @@
         "Cost": 14800,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, align weapon, detect chaos, magic circle against chaos, order's wrath",
-        "Description": "This staff is crafted from a perfectly smooth triangular rod of silver, and its top is crowned with a golden sphere. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/alignWeapon.html#_align-weapon\">Align weapon</a> </i>(lawful only, 1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/detectChaos.html#_detect-chaos\">Detect chaos</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/magicCircleAgainstChaos.html#_magic-circle-against-chaos\">Magic circle against chaos</a> </i>(2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/orderSWrath.html#_order-s-wrath\">Order's wrath</a> </i>(2 charges)</li>",
+        "Description": "This staff is crafted from a perfectly smooth triangular rod of silver, and its top is crowned with a golden sphere. The staff allows use of the following spells:Align weapon (lawful only, 1 charge)\nDetect chaos (1 charge)\nMagic circle against chaos (2 charges)\nOrder's wrath (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "lawful-staff"
     },
@@ -100,7 +100,7 @@
         "Cost": 16000,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, ghost sound, piercing shriek, sculpt sound, wall of sound",
-        "Description": "This staff is made from high-quality wood and festooned with brass rods and keys, looking almost like an instrument. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/ghostSound.html#_ghost-sound\">Ghost sound</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/ultimateMagic/spells/piercingShriek.html#_piercing-shriek\">Piercing shriek</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/sculptSound.html#_sculpt-sound\">Sculpt sound</a> </i>(2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/ultimateMagic/spells/wallOfSound.html#_wall-of-sound\">Wall of sound</a> </i>(2 charges)</li>In addition, as a swift action, the wielder of the <i>musical staff</i> can cause it to transform into a string or wind instrument. Any <a href=\"http://paizo.com/pathfinderRPG/prd/skills/perform.html#_perform\">Perform</a> skill checks made with the <i>musical staff</i> gain a +5 competence bonus. The staff can still be used to cast spells while it is an instrument, and it can revert back to a staff as a free action.",
+        "Description": "This staff is made from high-quality wood and festooned with brass rods and keys, looking almost like an instrument. The staff allows use of the following spells:Ghost sound (1 charge)\nPiercing shriek (1 charge)\nSculpt sound (2 charges)\nWall of sound (2 charges)In addition, as a swift action, the wielder of the musical staff can cause it to transform into a string or wind instrument. Any Perform skill checks made with the musical staff gain a +5 competence bonus. The staff can still be used to cast spells while it is an instrument, and it can revert back to a staff as a free action.",
         "Source": "Ultimate Equipment",
         "id": "musical-staff"
     },
@@ -115,7 +115,7 @@
         "Cost": 41000,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, dismissal, dispel magic, lesser globe of invulnerability, repulsion, resist energy, shield",
-        "Description": "Usually carved from the heartwood of an ancient oak, ash, sequoia, or other large tree, this staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/dispelMagic.html#_dispel-magic\">Dispel magic</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/resistEnergy.html#_resist-energy\">Resist energy</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/shield.html#_shield\">Shield</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/dismissal.html#_dismissal\">Dismissal</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/globeOfInvulnerability.html#_globe-of-invulnerability-lesser\">Lesser globe of invulnerability</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/repulsion.html#_repulsion\">Repulsion</a></i> (3 charges)</li>",
+        "Description": "Usually carved from the heartwood of an ancient oak, ash, sequoia, or other large tree, this staff allows use of the following spells:Dispel magic (1 charge)\nResist energy (1 charge)\nShield (1 charge)\nDismissal (2 charges)\nLesser globe of invulnerability (2 charges)\nRepulsion (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-abjuration"
     },
@@ -130,7 +130,7 @@
         "Cost": 7400,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, allegro, chord of shards, saving finale",
-        "Description": "This staff is adorned with musical notes. When held and used with bardic performance, it accompanies the song with the sounds of wind instruments, granting a +2 competence bonus on <a href=\"http://paizo.com/pathfinderRPG/prd/skills/perform.html#_perform\">Perform</a> checks. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/ultimateMagic/spells/chordOfShards.html#_chord-of-shards\">Chord of shards</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/savingFinale.html#_saving-finale\">Saving finale</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/ultimateMagic/spells/allegro.html#_allegro\">Allegro</a></i> (2 charges)</li>",
+        "Description": "This staff is adorned with musical notes. When held and used with bardic performance, it accompanies the song with the sounds of wind instruments, granting a +2 competence bonus on Perform checks. The staff allows use of the following spells:Chord of shards (1 charge)\nSaving finale (1 charge)\nAllegro (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-accompaniment"
     },
@@ -145,7 +145,7 @@
         "Cost": 14300,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, acid arrow, acid fog, corrosive touch",
-        "Description": "This staff is made of a rust-colored metal that has been corroded by acid, with a sickly green gem at its tip. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/ultimateMagic/spells/corrosiveTouch.html#_corrosive-touch\">Corrosive touch</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/acidArrow.html#_acid-arrow\">Acid arrow</a> </i>(2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/acidFog.html#_acid-fog\">Acid fog</a> </i>(3 charges)</li>",
+        "Description": "This staff is made of a rust-colored metal that has been corroded by acid, with a sickly green gem at its tip. The staff allows use of the following spells:Corrosive touch (1 charge)\nAcid arrow (2 charges)\nAcid fog (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-acid"
     },
@@ -160,7 +160,7 @@
         "Cost": 18800,
         "CostUnit": "gp",
         "Requirements": "Craft Magic Arms and Armor, Craft Staff, aspect of the bear, aspect of the falcon, aspect of the stag, aspect of the wolf",
-        "Description": "This stout staff is made of ash. Four faces of animals—a bear, a falcon, a stag, and a wolf—are carved at its top. The aspect staff functions as a <i>+1/+1 quarterstaff</i> and allows the use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/aspectOfTheBear.html#_aspect-of-the-bear\">Aspect of the bear</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/aspectOfTheFalcon.html#_aspect-of-the-falcon\">Aspect of the falcon</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/aspectOfTheStag.html#_aspect-of-the-stag\">Aspect of the stag</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/aspectOfTheWolf.html#_aspect-of-the-wolf\">Aspect of the wolf</a> </i>(3 charges)</li>",
+        "Description": "This stout staff is made of ash. Four faces of animals—a bear, a falcon, a stag, and a wolf—are carved at its top. The aspect staff functions as a +1/+1 quarterstaff and allows the use of the following spells:Aspect of the bear (1 charge)\nAspect of the falcon (1 charge)\nAspect of the stag (2 charges)\nAspect of the wolf (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-aspects"
     },
@@ -175,7 +175,7 @@
         "Cost": 11500,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, forced quiet, interrogation, oppressive boredom",
-        "Description": "This stout ironbound staff functions as a <i>+1/+1 quarterstaff</i>. It allows the use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/ultimateMagic/spells/forcedQuiet.html#_forced-quiet\">Forced quiet</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/ultimateMagic/spells/interrogation.html#_interrogation\">Interrogation</a></i> (1 charge) </li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/ultimateMagic/spells/oppressiveBoredom.html#_oppressive-boredom\">Oppressive boredom</a></i> (2 charges)</li>",
+        "Description": "This stout ironbound staff functions as a +1/+1 quarterstaff. It allows the use of the following spells:Forced quiet (1 charge)\nInterrogation (1 charge) \nOppressive boredom (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-authority"
     },
@@ -190,7 +190,7 @@
         "Cost": 10000,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, mass reduce person, reduce animal, reduce person, shrink item",
-        "Description": "Someone who carries this blue-and-white staff need never feel small nor weak, as the staff brings everybody and everything down to size. This staff allows the use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/reducePerson.html#_reduce-person\">Reduce person</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/reduceAnimal.html#_reduce-animal\">Reduce animal</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/shrinkItem.html#_shrink-item\">Shrink item</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/reducePerson.html#_reduce-person-mass\">Mass reduce person</a></i> (4 charges)</li>",
+        "Description": "Someone who carries this blue-and-white staff need never feel small nor weak, as the staff brings everybody and everything down to size. This staff allows the use of the following spells:Reduce person (1 charge)\nReduce animal (2 charges)\nShrink item (2 charges)\nMass reduce person (4 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-belittling"
     },
@@ -205,7 +205,7 @@
         "Cost": 3600,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, bless, create water, stabilize",
-        "Description": "This simple wooden staff is given to young clergy when they first set out into the world to spread the charity of their faith. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/createWater.html#_create-water\">Create water</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/stabilize.html#_stabilize\">Stabilize</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/bless.html#_bless\">Bless</a> </i>(2 charges)</li>",
+        "Description": "This simple wooden staff is given to young clergy when they first set out into the world to spread the charity of their faith. The staff allows use of the following spells:Create water (1 charge)\nStabilize (1 charge)\nBless (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-blessed-relief"
     },
@@ -220,7 +220,7 @@
         "Cost": 20800,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, bear's endurance, bull's strength, cat's grace, greater magic weapon",
-        "Description": "The top of this rosewood shaft narrows and then expands again, bound by a number of metal rings. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/bearSEndurance.html#_bear-s-endurance\">Bear's endurance</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/bullSStrength.html#_bull-s-strength\">Bull's strength</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/catSGrace.html#_cat-s-grace\">Cat's grace</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/magicWeapon.html#_magic-weapon-greater\">Greater magic weapon</a></i> (1 charge)</li>",
+        "Description": "The top of this rosewood shaft narrows and then expands again, bound by a number of metal rings. It allows use of the following spells:Bear's endurance (1 charge)\nBull's strength (1 charge)\nCat's grace (1 charge)\nGreater magic weapon (1 charge)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-bolstering"
     },
@@ -235,7 +235,7 @@
         "Cost": 23600,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, baleful polymorph, bestow curse, blindness/deafness, charm person, hold person, inflict moderate wounds, vampiric touch",
-        "Description": "The thorns embedded in this gnarled length of wood make it rather tricky for the unwary to grasp. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/blindnessDeafness.html#_blindness-deafness\">Blindness/deafness</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/charmPerson.html#_charm-person\">Charm person</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/holdPerson.html#_hold-person\">Hold person</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/inflictModerateWounds.html#_inflict-moderate-wounds\">Inflict moderate wounds</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/balefulPolymorph.html#_baleful-polymorph\">Baleful polymorph</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/bestowCurse.html#_bestow-curse\">Bestow curse</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/vampiricTouch.html#_vampiric-touch\">Vampiric touch</a></i> (2 charges)</li>",
+        "Description": "The thorns embedded in this gnarled length of wood make it rather tricky for the unwary to grasp. It allows use of the following spells:Blindness/deafness (1 charge)\nCharm person (1 charge)\nHold person (1 charge)\nInflict moderate wounds (1 charge)\nBaleful polymorph (2 charges)\nBestow curse (2 charges)\nVampiric touch (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-cackling-wrath"
     },
@@ -250,7 +250,7 @@
         "Cost": 8800,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, charm monster, charm person",
-        "Description": "Made of twisting wood ornately shaped and carved, this staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/charmPerson.html#_charm-person\">Charm person</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/charmMonster.html#_charm-monster\">Charm monster</a></i> (2 charges)</li>",
+        "Description": "Made of twisting wood ornately shaped and carved, this staff allows use of the following spells:Charm person (1 charge)\nCharm monster (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-charming"
     },
@@ -265,7 +265,7 @@
         "Cost": 41000,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, cloudkill, minor creation, stinking cloud, summon monster VI, summon swarm, unseen servant",
-        "Description": "This staff is usually made of ash or walnut and bears ornate carvings of many different kinds of creatures. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/stinkingCloud.html#_stinking-cloud\">Stinking cloud</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/summonSwarm.html#_summon-swarm\">Summon swarm</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/unseenServant.html#_unseen-servant\">Unseen servant</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/cloudkill.html#_cloudkill\">Cloudkill</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/minorCreation.html#_minor-creation\">Minor creation</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/summonMonster.html#_summon-monster-vi\">Summon monster VI</a></i> (3 charges)</li>",
+        "Description": "This staff is usually made of ash or walnut and bears ornate carvings of many different kinds of creatures. It allows use of the following spells:Stinking cloud (1 charge)\nSummon swarm (1 charge)\nUnseen servant (1 charge)\nCloudkill (2 charges)\nMinor creation (2 charges)\nSummon monster VI (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-conjuration"
     },
@@ -280,7 +280,7 @@
         "Cost": 9600,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, bless, prayer, remove fear, remove paralysis",
-        "Description": "This sturdy-looking hickory staff is capped with a figurine of an angel or other benevolent spirit, wings and arms outstretched as if in welcome. This staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/bless.html#_bless\">Bless</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/removeFear.html#_remove-fear\">Remove fear</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/prayer.html#_prayer\">Prayer</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/removeParalysis.html#_remove-paralysis\">Remove paralysis</a></i> (2 charges)</li>",
+        "Description": "This sturdy-looking hickory staff is capped with a figurine of an angel or other benevolent spirit, wings and arms outstretched as if in welcome. This staff allows use of the following spells:Bless (1 charge)\nRemove fear (1 charge)\nPrayer (2 charges)\nRemove paralysis (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-courage"
     },
@@ -295,7 +295,7 @@
         "Cost": 21750,
         "CostUnit": "gp",
         "Requirements": "Craft Magic Arms and Armor, Craft Staff, baleful polymorph, bestow curse, blindness/deafness, ill omen",
-        "Description": "This gnarled wooden staff is bedecked with broken charms and burnt fetishes that were once used to ward against bad luck, but now are in shambles. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/blindnessDeafness.html#_blindness-deafness\">Blindness/deafness</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/illOmen.html#_ill-omen\">Ill omen</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/balefulPolymorph.html#_baleful-polymorph\">Baleful polymorph</a> </i>(2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/bestowCurse.html#_bestow-curse\">Bestow curse</a> </i>(2 charges)</li>In addition, the <i>staff of curses</i> is a <i>+1/+1 quarterstaff</i>, and whenever the wielder strikes a creature with the staff, he can expend one charge to cause the creature to become cursed for a number of rounds equal to the number of charges remaining in the staff. While this curse persists, the creature takes a –2 penalty on saving throws from spells cast from the staff and a –2 penalty to AC against any attacks made by the staff.",
+        "Description": "This gnarled wooden staff is bedecked with broken charms and burnt fetishes that were once used to ward against bad luck, but now are in shambles. The staff allows use of the following spells:Blindness/deafness (1 charge)\nIll omen (1 charge)\nBaleful polymorph (2 charges)\nBestow curse (2 charges)In addition, the staff of curses is a +1/+1 quarterstaff, and whenever the wielder strikes a creature with the staff, he can expend one charge to cause the creature to become cursed for a number of rounds equal to the number of charges remaining in the staff. While this curse persists, the creature takes a –2 penalty on saving throws from spells cast from the staff and a –2 penalty to AC against any attacks made by the staff.",
         "Source": "Ultimate Equipment",
         "id": "staff-of-curses"
     },
@@ -310,7 +310,7 @@
         "Cost": 23500,
         "CostUnit": "gp",
         "Requirements": "Craft Magic Arms and Armor, Craft Staff, animate dead, false life, fireball, ray of enfeeblement, scorching ray",
-        "Description": "Made from bleached bones that have been fused together, the head of this staff burns with an unholy fire. This staff can be used as a <i>+1 <a href=\"http://paizo.com/pathfinderRPG/prd/magicItems/weapons.html#_weapons-flaming\">flaming</a> quarterstaff</i> (only one end of the staff bears magical enhancement), and it retains this property even if all its charges are drained. This staff can cast the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/falseLife.html#_false-life\">False life</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/rayOfEnfeeblement.html#_ray-of-enfeeblement\">Ray of enfeeblement</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/scorchingRay.html#_scorching-ray\">Scorching ray</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/fireball.html#_fireball\">Fireball</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/animateDead.html#_animate-dead\">Animate dead</a></i> (3 charges)</li>",
+        "Description": "Made from bleached bones that have been fused together, the head of this staff burns with an unholy fire. This staff can be used as a +1 flaming quarterstaff (only one end of the staff bears magical enhancement), and it retains this property even if all its charges are drained. This staff can cast the following spells:False life (1 charge)\nRay of enfeeblement (1 charge)\nScorching ray (1 charge)\nFireball (2 charges)\nAnimate dead (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-dark-flame"
     },
@@ -325,7 +325,7 @@
         "Cost": 31000,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, shield, shield of faith, shield of law, shield other, creator must be lawful",
-        "Description": "The <i>staff of defense </i>is a simple-looking polished wooden staff that throbs with power when held defensively. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/shield.html#_shield\">Shield</a></i> (1 charge)</li>\n<li><i>Shield of faith</i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/shieldOther.html#_shield-other\">Shield other</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/shieldOfLaw.html#_shield-of-law\">Shield of law</a></i> (3 charges)</li>",
+        "Description": "The staff of defense is a simple-looking polished wooden staff that throbs with power when held defensively. It allows use of the following spells:Shield (1 charge)\nShield of faith (1 charge)\nShield other (1 charge)\nShield of law (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-defense"
     },
@@ -340,7 +340,7 @@
         "Cost": 41000,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, detect secret doors, locate creature, locate object, prying eyes, tongues, true seeing",
-        "Description": "Made from a supple length of willow carefully selected to have a crooked, forked tip, a <i>staff of divination </i>allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/detectSecretDoors.html#_detect-secret-doors\">Detect secret doors</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/locateObject.html#_locate-object\">Locate object</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/tongues.html#_tongues\">Tongues</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/locateCreature.html#_locate-creature\">Locate creature</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/pryingEyes.html#_prying-eyes\">Prying eyes</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/trueSeeing.html#_true-seeing\">True seeing</a></i> (3 charges)</li>",
+        "Description": "Made from a supple length of willow carefully selected to have a crooked, forked tip, a staff of divination allows use of the following spells:Detect secret doors (1 charge)\nLocate object (1 charge)\nTongues (1 charge)\nLocate creature (2 charges)\nPrying eyes (2 charges)\nTrue seeing (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-divination"
     },
@@ -355,7 +355,7 @@
         "Cost": 42900,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, move earth, passwall",
-        "Description": "This staff is topped with a fist-sized emerald that gleams with smoldering power. It allows the use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/moveEarth.html#_move-earth\">Move earth</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/passwall.html#_passwall\">Passwall</a></i> (1 charge)</li>",
+        "Description": "This staff is topped with a fist-sized emerald that gleams with smoldering power. It allows the use of the following spells:Move earth (1 charge)\nPasswall (1 charge)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-earth-and-stone"
     },
@@ -370,7 +370,7 @@
         "Cost": 7200,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, lesser evolution surge, lesser rejuvenate eidolon, unfetter",
-        "Description": "This crooked staff is made of mahogany and decorated with the bones of eidolons that jut out of the wood. It allows the use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/rejuvenateEidolon.html#_rejuvenate-eidolon,-lesser\">Lesser rejuvenate eidolon</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/unfetter.html#_unfetter\">Unfetter</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/evolutionSurge.html#_evolution-surge,-lesser\">Lesser evolution surge</a></i> (2 charges)</li>",
+        "Description": "This crooked staff is made of mahogany and decorated with the bones of eidolons that jut out of the wood. It allows the use of the following spells:Lesser rejuvenate eidolon (1 charge)\nUnfetter (1 charge)\nLesser evolution surge (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-eidolons"
     },
@@ -385,7 +385,7 @@
         "Cost": 15950,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, chain lightning, lightning bolt, shocking grasp",
-        "Description": "This staff is made of shining silver, with a tip shaped like a lightning bolt. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/shockingGrasp.html#_shocking-grasp\">Shocking grasp</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/lightningBolt.html#_lightning-bolt\">Lightning bolt</a> </i>(2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/chainLightning.html#_chain-lightning\">Chain lightning</a> </i>(3 charges)</li>",
+        "Description": "This staff is made of shining silver, with a tip shaped like a lightning bolt. The staff allows use of the following spells:Shocking grasp (1 charge)\nLightning bolt (2 charges)\nChain lightning (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-electricity"
     },
@@ -400,7 +400,7 @@
         "Cost": 41000,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, crushing despair, hideous laughter, mass suggestion, mind fog, sleep, suggestion",
-        "Description": "Often made from applewood and topped with a clear crystal, this staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/hideousLaughter.html#_hideous-laughter\">Hideous laughter</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/sleep.html#_sleep\">Sleep</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/suggestion.html#_suggestion\">Suggestion</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/crushingDespair.html#_crushing-despair\">Crushing despair</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/mindFog.html#_mind-fog\">Mind fog</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/suggestion.html#_suggestion-mass\">Mass suggestion</a></i> (3 charges)</li>",
+        "Description": "Often made from applewood and topped with a clear crystal, this staff allows use of the following spells:Hideous laughter (1 charge)\nSleep (1 charge)\nSuggestion (1 charge)\nCrushing despair (2 charges)\nMind fog (2 charges)\nMass suggestion (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-enchantment"
     },
@@ -415,7 +415,7 @@
         "Cost": 41000,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, chain lightning, fireball, ice storm, magic missile, shatter, wall of force",
-        "Description": "This smooth staff carved from hickory or yew allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/fireball.html#_fireball\">Fireball</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/magicMissile.html#_magic-missile\">Magic missile</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/shatter.html#_shatter\">Shatter</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/iceStorm.html#_ice-storm\">Ice storm</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/wallOfForce.html#_wall-of-force\">Wall of force</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/chainLightning.html#_chain-lightning\">Chain lightning</a></i> (3 charges)</li>",
+        "Description": "This smooth staff carved from hickory or yew allows use of the following spells:Fireball (1 charge)\nMagic missile (1 charge)\nShatter (1 charge)\nIce storm (2 charges)\nWall of force (2 charges)\nChain lightning (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-evocation"
     },
@@ -430,7 +430,7 @@
         "Cost": 10400,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, create water, cup of dust, feast of ashes, goodberry, purify food and drink",
-        "Description": "Leaves sprout from this wooden staff, some green and some black. When the wielder uses the staff, he plucks one of the leaves: a green leaf to provide sustenance or a black leaf to cause hunger or thirst. The staff allows the use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/createWater.html#_create-water\">Create water</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/goodberry.html#_goodberry\">Goodberry</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/purifyFoodAndDrink.html#_purify-food-and-drink\">Purify food and drink</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/cupOfDust.html#_cup-of-dust\">Cup of dust</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/feastOfAshes.html#_feast-of-ashes\">Feast of ashes</a></i> (2 charges)</li>",
+        "Description": "Leaves sprout from this wooden staff, some green and some black. When the wielder uses the staff, he plucks one of the leaves: a green leaf to provide sustenance or a black leaf to cause hunger or thirst. The staff allows the use of the following spells:Create water (1 charge)\nGoodberry (1 charge)\nPurify food and drink (1 charge)\nCup of dust (2 charges)\nFeast of ashes (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-feast-and-famine"
     },
@@ -445,7 +445,7 @@
         "Cost": 9475,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, burning hands, fireball, wall of fire",
-        "Description": "Crafted from bronzewood with brass bindings, this staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/burningHands.html#_burning-hands\">Burning hands</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/fireball.html#_fireball\">Fireball</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/wallOfFire.html#_wall-of-fire\">Wall of fire</a></i> (3 charges)</li>",
+        "Description": "Crafted from bronzewood with brass bindings, this staff allows use of the following spells:Burning hands (1 charge)\nFireball (2 charges)\nWall of fire (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-fire"
     },
@@ -460,7 +460,7 @@
         "Cost": 20700,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, cone of cold, ice storm, wall of ice",
-        "Description": "Tipped on either end with a glistening diamond, this rune-covered staff allows use of the following spells: <li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/iceStorm.html#_ice-storm\">Ice storm</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/wallOfIce.html#_wall-of-ice\">Wall of ice</a> </i>(2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/coneOfCold.html#_cone-of-cold\">Cone of cold</a> </i>(3 charges)</li>",
+        "Description": "Tipped on either end with a glistening diamond, this rune-covered staff allows use of the following spells: Ice storm (1 charge)\nWall of ice (2 charges)\nCone of cold (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-frost"
     },
@@ -475,7 +475,7 @@
         "Cost": 14800,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, cure serious wounds, lesser restoration, remove blindness/deafness, remove disease",
-        "Description": "This white ash staff is decorated with inlaid silver runes. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/cureSeriousWounds.html#_cure-serious-wounds\">Cure serious wounds</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/restoration.html#_restoration-lesser\">Lesser restoration</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/removeBlindnessDeafness.html#_remove-blindness-deafness\">Remove blindness/deafness</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/removeDisease.html#_remove-disease\">Remove disease</a></i> (3 charges)</li>",
+        "Description": "This white ash staff is decorated with inlaid silver runes. It allows use of the following spells:Cure serious wounds (1 charge)\nLesser restoration (1 charge)\nRemove blindness/deafness (2 charges)\nRemove disease (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-healing"
     },
@@ -490,7 +490,7 @@
         "Cost": 27000,
         "CostUnit": "gp",
         "Requirements": "Craft staff, air walk, control winds, gust of wind, spike stones, stone shape",
-        "Description": "Topped by a swirling cloudy stone and wrapped with black iron filigree, this staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/gustOfWind.html#_gust-of-wind\">Gust of wind</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/stoneShape.html#_stone-shape\">Stone shape</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/airWalk.html#_air-walk\">Air walk</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/controlWinds.html#_control-winds\">Control winds</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/spikeStones.html#_spike-stones\">Spike stones</a></i> (2 charges)</li>",
+        "Description": "Topped by a swirling cloudy stone and wrapped with black iron filigree, this staff allows use of the following spells:Gust of wind (1 charge)\nStone shape (1 charge)\nAir walk (2 charges)\nControl winds (2 charges)\nSpike stones (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-heaven-and-earth"
     },
@@ -505,7 +505,7 @@
         "Cost": 27933,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, identify, legend lore, locate object, magic aura, secret chest",
-        "Description": "This gorgeous teak shaft has many gold and silver coins hammered into it. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/identify.html#_identify\">Identify</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/locateObject.html#_locate-object\">Locate object</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/magicAura.html#_magic-aura\">Magic aura</a></i> (1 charge)</li>\n<li>S<i>ecret chest</i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/legendLore.html#_legend-lore\">Legend lore</a></i> (3 charges)</li>",
+        "Description": "This gorgeous teak shaft has many gold and silver coins hammered into it. It allows use of the following spells:Identify (1 charge)\nLocate object (1 charge)\nMagic aura (1 charge)\nSecret chest (2 charges)\nLegend lore (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-hoarding"
     },
@@ -520,7 +520,7 @@
         "Cost": 34650,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, darkness, enervation, planar binding, ray of enfeeblement, summon monster V, vampiric touch",
-        "Description": "This staff is made of scorched and twisted wood and is set with a crystal sphere filled with swirling smoke. It allows the use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/darkness.html#_darkness\">Darkness</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/rayOfEnfeeblement.html#_ray-of-enfeeblement\">Ray of enfeeblement</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/vampiricTouch.html#_vampiric-touch\">Vampiric touch</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/enervation.html#_enervation\">Enervation</a></i> (2 charges)</li>\n<li>Summon shadow (as <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/summonMonster.html#_summon-monster-v\">summon monster V</a></i> but summons <br>1 shadow, 2 charges)</li>\n<li>Call devourer (as <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/planarBinding.html#_planar-binding\">planar binding</a></i> but calls 1 devourer, <br>3 charges)</li>",
+        "Description": "This staff is made of scorched and twisted wood and is set with a crystal sphere filled with swirling smoke. It allows the use of the following spells:Darkness (1 charge)\nRay of enfeeblement (1 charge)\nVampiric touch (1 charge)\nEnervation (2 charges)\nSummon shadow (as summon monster V but summons 1 shadow, 2 charges)\nCall devourer (as planar binding but calls 1 devourer, 3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-hungry-shadows"
     },
@@ -535,7 +535,7 @@
         "Cost": 25750,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, dancing lights, daylight, flare, sunburst",
-        "Description": "This staff is usually sheathed in a layer of silver and decorated with gold and amber sunbursts. A <i>staff of illumination</i> allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/dancingLights.html#_dancing-lights\">Dancing lights</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/flare.html#_flare\">Flare</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/daylight.html#_daylight\">Daylight</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/sunburst.html#_sunburst\">Sunburst</a></i> (3 charges)</li>",
+        "Description": "This staff is usually sheathed in a layer of silver and decorated with gold and amber sunbursts. A staff of illumination allows use of the following spells:Dancing lights (1 charge)\nFlare (1 charge)\nDaylight (2 charges)\nSunburst (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-illumination"
     },
@@ -550,7 +550,7 @@
         "Cost": 41000,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, disguise self, major image, mirror image, mislead, persistent image, rainbow pattern",
-        "Description": "This staff is made from ebony or other dark wood and carved into an intricately twisted, fluted, or spiral shape. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/skills/disguise.html#_disguise\">Disguise</a> self</i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/majorImage.html#_major-image\">Major image</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/mirrorImage.html#_mirror-image\">Mirror image</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/persistentImage.html#_persistent-image\">Persistent image</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/rainbowPattern.html#_rainbow-pattern\">Rainbow pattern</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/mislead.html#_mislead\">Mislead</a></i> (3 charges)</li>",
+        "Description": "This staff is made from ebony or other dark wood and carved into an intricately twisted, fluted, or spiral shape. It allows use of the following spells:Disguise self (1 charge)\nMajor image (1 charge)\nMirror image (1 charge)\nPersistent image (2 charges)\nRainbow pattern (2 charges)\nMislead (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-illusion"
     },
@@ -565,7 +565,7 @@
         "Cost": 13600,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, detect snares and pits, endure elements, freedom of movement, longstrider, pass without trace",
-        "Description": "This walking stick, which still has dark gray bark along its entire length, branches into an ornate fork at its top, decorated with wildflowers and different kinds of leaves. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/detectSnaresAndPits.html#_detect-snares-and-pits\">Detect snares and pits</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/endureElements.html#_endure-elements\">Endure elements</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/longstrider.html#_longstrider\">Longstrider</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/passWithoutTrace.html#_pass-without-trace\">Pass without trace</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/freedomOfMovement.html#_freedom-of-movement\">Freedom of movement</a></i> (2 charges)</li>",
+        "Description": "This walking stick, which still has dark gray bark along its entire length, branches into an ornate fork at its top, decorated with wildflowers and different kinds of leaves. It allows use of the following spells:Detect snares and pits (1 charge)\nEndure elements (1 charge)\nLongstrider (1 charge)\nPass without trace (1 charge)\nFreedom of movement (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-journeys"
     },
@@ -580,7 +580,7 @@
         "Cost": 54700,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, heal, raise dead",
-        "Description": "A <i>staff of life is</i> made of thick polished oak shod in gold and decorated with sinuous runes of silver or ivory, which depict various cycles of life and death according to different cultures. This staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/skills/heal.html#_heal\">Heal</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/raiseDead.html#_raise-dead\">Raise dead</a></i> (5 charges)</li>",
+        "Description": "A staff of life is made of thick polished oak shod in gold and decorated with sinuous runes of silver or ivory, which depict various cycles of life and death according to different cultures. This staff allows use of the following spells:Heal (1 charge)\nRaise dead (5 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-life"
     },
@@ -595,7 +595,7 @@
         "Cost": 28600,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, disintegrate, enervation, ray of enfeeblement, ray of exhaustion, scorching ray",
-        "Description": "The elaborate swirls and delicate flecks of shining metal adorning the head of this pale wooden shaft make it seem almost as much a long mace as a staff. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/rayOfEnfeeblement.html#_ray-of-enfeeblement\">Ray of enfeeblement</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/rayOfExhaustion.html#_ray-of-exhaustion\">Ray of exhaustion</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/scorchingRay.html#_scorching-ray\">Scorching ray</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/enervation.html#_enervation\">Enervation</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/disintegrate.html#_disintegrate\">Disintegrate</a></i> (3 charges)</li>",
+        "Description": "The elaborate swirls and delicate flecks of shining metal adorning the head of this pale wooden shaft make it seem almost as much a long mace as a staff. It allows use of the following spells:Ray of enfeeblement (1 charge)\nRay of exhaustion (1 charge)\nScorching ray (1 charge)\nEnervation (2 charges)\nDisintegrate (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-many-rays"
     },
@@ -610,7 +610,7 @@
         "Cost": 4000,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, magic missile, shield",
-        "Description": "This gleaming staff is made of polished silver and capped with a simple gemstone. It is frequently given as a gift to apprentice spellcasters upon completing their tutelage. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/shield.html#_shield\">Shield</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/magicMissile.html#_magic-missile\">Magic missile</a> </i>(2 charges)</li>",
+        "Description": "This gleaming staff is made of polished silver and capped with a simple gemstone. It is frequently given as a gift to apprentice spellcasters upon completing their tutelage. The staff allows use of the following spells:Shield (1 charge)\nMagic missile (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-minor-arcana"
     },
@@ -625,7 +625,7 @@
         "Cost": 29000,
         "CostUnit": "gp",
         "Requirements": "Craft Magic Arms and Armor, Craft Staff, bull's strength, enlarge person, flesh to stone, fox's cunning, telekinesis",
-        "Description": "This staff is made of silver, with a shimmering sphere of mithral at either end. One end features a golden snake wrapped around the staff and cradling the larger of these two mithral spheres. The staff may be used as a weapon, functioning as a <i>+2/+2 quarterstaff</i>. It also grants a +2 enhancement bonus to Intelligence to whoever possesses it. These two attributes continue to function after all the charges are expended. It allows the use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/bullSStrength.html#_bull-s-strength\">Bull's strength</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/enlargePerson.html#_enlarge-person\">Enlarge person</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/telekinesis.html#_telekinesis\">Telekinesis</a></i> (3 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/fleshToStone.html#_flesh-to-stone\">Flesh to stone</a></i> (4 charges)</li>",
+        "Description": "This staff is made of silver, with a shimmering sphere of mithral at either end. One end features a golden snake wrapped around the staff and cradling the larger of these two mithral spheres. The staff may be used as a weapon, functioning as a +2/+2 quarterstaff. It also grants a +2 enhancement bonus to Intelligence to whoever possesses it. These two attributes continue to function after all the charges are expended. It allows the use of the following spells:Bull's strength (1 charge)\nEnlarge person (1 charge)\nTelekinesis (3 charges)\nFlesh to stone (4 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-mithral-might"
     },
@@ -640,7 +640,7 @@
         "Cost": 41000,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, cause fear, circle of death, enervation, ghoul touch, halt undead, waves of fatigue",
-        "Description": "This staff is made from ebony or other dark wood and carved with images of bones and skulls mingled with strange spidery runes. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/causeFear.html#_cause-fear\">Cause fear</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/ghoulTouch.html#_ghoul-touch\">Ghoul touch</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/haltUndead.html#_halt-undead-copy\">Halt undead</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/enervation.html#_enervation\">Enervation</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/wavesOfFatigue.html#_waves-of-fatigue\">Waves of fatigue</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/circleOfDeath.html#_circle-of-death\">Circle of death</a></i> (3 charges)</li>",
+        "Description": "This staff is made from ebony or other dark wood and carved with images of bones and skulls mingled with strange spidery runes. It allows use of the following spells:Cause fear (1 charge)\nGhoul touch (1 charge)\nHalt undead (1 charge)\nEnervation (2 charges)\nWaves of fatigue (2 charges)\nCircle of death (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-necromancy"
     },
@@ -655,7 +655,7 @@
         "Cost": 25800,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, arcane lock, grease, wall of fire, wall of ice, wall of stone, wind wall",
-        "Description": "Dark and solid, this worn staff appears to be carved of rough stone, yet feels and weighs like light wood. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/arcaneLock.html#_arcane-lock\">Arcane lock</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/grease.html#_grease\">Grease</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/windWall.html#_wind-wall\">Wind wall</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/wallOfFire.html#_wall-of-fire\">Wall of fire</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/wallOfIce.html#_wall-of-ice\">Wall of ice</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/wallOfStone.html#_wall-of-stone\">Wall of stone</a></i> (3 charges)</li>",
+        "Description": "Dark and solid, this worn staff appears to be carved of rough stone, yet feels and weighs like light wood. It allows use of the following spells:Arcane lock (1 charge)\nGrease (1 charge)\nWind wall (1 charge)\nWall of fire (2 charges)\nWall of ice (2 charges)\nWall of stone (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-obstacles"
     },
@@ -670,7 +670,7 @@
         "Cost": 90100,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, clenched fist, crushing hand, forceful hand, grasping hand, interposing hand, mage hand",
-        "Description": "Sculpted into the shape of dozens of grasping, distorted hands, this staff appears to be carved entirely from one piece of clear crystal. When held, the hands that form the staff distort to resemble the gloves or hands of the person holding it. It allows the use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/forcefulHand.html#_forceful-hand\">Forceful hand</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/interposingHand.html#_interposing-hand\">Interposing hand</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/clenchedFist.html#_clenched-fist\">Clenched fist</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/graspingHand.html#_grasping-hand\">Grasping hand</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/crushingHand.html#_crushing-hand\">Crushing hand</a></i> (3 charges)</li>This staff also allows the wielder to use <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/mageHand.html#_mage-hand\">mage hand</a></i> at will.",
+        "Description": "Sculpted into the shape of dozens of grasping, distorted hands, this staff appears to be carved entirely from one piece of clear crystal. When held, the hands that form the staff distort to resemble the gloves or hands of the person holding it. It allows the use of the following spells:Forceful hand (1 charge)\nInterposing hand (1 charge)\nClenched fist (2 charges)\nGrasping hand (2 charges)\nCrushing hand (3 charges)This staff also allows the wielder to use mage hand at will.",
         "Source": "Ultimate Equipment",
         "id": "staff-of-one-hundred-hands"
     },
@@ -685,7 +685,7 @@
         "Cost": 103450,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, astral projection, dimension door, greater teleport, passwall, phase door",
-        "Description": "This potent item allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/dimensionDoor.html#_dimension-door\">Dimension door</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/passwall.html#_passwall\">Passwall</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/astralProjection.html#_astral-projection\">Astral projection</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/teleport.html#_teleport-greater\">Greater teleport</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/phaseDoor.html#_phase-door\">Phase door</a></i> (2 charges)</li>",
+        "Description": "This potent item allows use of the following spells:Dimension door (1 charge)\nPasswall (1 charge)\nAstral projection (2 charges)\nGreater teleport (2 charges)\nPhase door (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-passage"
     },
@@ -700,7 +700,7 @@
         "Cost": 24400,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, calm emotions, enthrall, glibness, hypnotic pattern, major image, pyrotechnics, sculpt sound",
-        "Description": "Soon after falling into the hands of a new owner, this piece of finely varnished cedar develops ornamental brass keys, strings, or other decorations that make it look like a stylized version of its owner's favorite type of musical instrument. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/calmEmotions.html#_calm-emotions\">Calm emotions</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/glibness.html#_glibness\">Glibness</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/hypnoticPattern.html#_hypnotic-pattern\">Hypnotic pattern</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/pyrotechnics.html#_pyrotechnics\">Pyrotechnics</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/enthrall.html#_enthrall\">Enthrall</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/majorImage.html#_major-image\">Major image</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/sculptSound.html#_sculpt-sound\">Sculpt sound</a></i> (2 charges)</li>",
+        "Description": "Soon after falling into the hands of a new owner, this piece of finely varnished cedar develops ornamental brass keys, strings, or other decorations that make it look like a stylized version of its owner's favorite type of musical instrument. It allows use of the following spells:Calm emotions (1 charge)\nGlibness (1 charge)\nHypnotic pattern (1 charge)\nPyrotechnics (1 charge)\nEnthrall (2 charges)\nMajor image (2 charges)\nSculpt sound (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-performance"
     },
@@ -715,7 +715,7 @@
         "Cost": 117500,
         "CostUnit": "gp",
         "Requirements": "Craft Magic Arms and Armor, Craft Staff, cone of cold, continual flame, heightened fireball, globe of invulnerability, hold monster, levitate, heightened lightning bolt, magic missile, heightened ray of enfeeblement, wall of force",
-        "Description": "A <i>staff of power </i>is a potent magic item with varied offensive and defensive abilities, carved from magically hardened wood. It is usually topped with a glistening gem or orb that burns from within with a flickering red light. The staff allows the use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/continualFlame.html#_continual-flame\">Continual flame</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/fireball.html#_fireball\">Fireball</a></i> (heightened to 5th level, 1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/levitate.html#_levitate\">Levitate</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/lightningBolt.html#_lightning-bolt\">Lightning bolt</a></i> (heightened to 5th level, 1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/magicMissile.html#_magic-missile\">Magic missile</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/rayOfEnfeeblement.html#_ray-of-enfeeblement\">Ray of enfeeblement</a></i> (heightened to 5th level, 1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/coneOfCold.html#_cone-of-cold\">Cone of cold</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/globeOfInvulnerability.html#_globe-of-invulnerability\">Globe of invulnerability</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/holdMonster.html#_hold-monster\">Hold monster</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/wallOfForce.html#_wall-of-force\">Wall of force</a></i> (in a 10-ft.-diameter hemisphere around the caster only, 2 charges)</li>The wielder of a <i>staff of power </i>gains a +2 luck bonus to AC and on saving throws. The staff is also a <i>+2 quarterstaff</i>, and its wielder may use it to smite opponents. If 1 charge is expended (a free action), the staff deals double damage (×3 on a critical hit) for 1 round.A <i>staff of power </i>can be used for a retributive strike, requiring it to be broken by its wielder. (If this breaking of the staff is purposeful and declared by the wielder, it can be performed as a standard action that does not require the wielder to make a Strength check.) All charges currently in the staff are instantly released in a 30-foot spread. All creatures and objects within 2 squares of the broken staff take an amount of damage equal to 20 × the number of charges in the staff, those 3 or 4 squares away take an amount of damage equal to 15 × the number of charges, and those 5 or 6 squares away take an amount of damage equal to 10 × the number of charges. All those affected can make DC 17 Reflex saves to reduce the damage by half.The character breaking the staff has a 50% chance of traveling to another plane of existence (01–50 on a d%), but if she does not, the explosive release of spell energy instantly destroys her. Only certain items, including the <i>staff of the magi</i> and the <i>staff of power</i>, are capable of being used for a retributive strike.",
+        "Description": "A staff of power is a potent magic item with varied offensive and defensive abilities, carved from magically hardened wood. It is usually topped with a glistening gem or orb that burns from within with a flickering red light. The staff allows the use of the following spells:Continual flame (1 charge)\nFireball (heightened to 5th level, 1 charge)\nLevitate (1 charge)\nLightning bolt (heightened to 5th level, 1 charge)\nMagic missile (1 charge)\nRay of enfeeblement (heightened to 5th level, 1 charge)\nCone of cold (2 charges)\nGlobe of invulnerability (2 charges)\nHold monster (2 charges)\nWall of force (in a 10-ft.-diameter hemisphere around the caster only, 2 charges)The wielder of a staff of power gains a +2 luck bonus to AC and on saving throws. The staff is also a +2 quarterstaff, and its wielder may use it to smite opponents. If 1 charge is expended (a free action), the staff deals double damage (×3 on a critical hit) for 1 round.A staff of power can be used for a retributive strike, requiring it to be broken by its wielder. (If this breaking of the staff is purposeful and declared by the wielder, it can be performed as a standard action that does not require the wielder to make a Strength check.) All charges currently in the staff are instantly released in a 30-foot spread. All creatures and objects within 2 squares of the broken staff take an amount of damage equal to 20 × the number of charges in the staff, those 3 or 4 squares away take an amount of damage equal to 15 × the number of charges, and those 5 or 6 squares away take an amount of damage equal to 10 × the number of charges. All those affected can make DC 17 Reflex saves to reduce the damage by half.The character breaking the staff has a 50% chance of traveling to another plane of existence (01–50 on a d%), but if she does not, the explosive release of spell energy instantly destroys her. Only certain items, including the staff of the magi and the staff of power, are capable of being used for a retributive strike.",
         "Source": "Ultimate Equipment",
         "id": "staff-of-power"
     },
@@ -730,7 +730,7 @@
         "Cost": 11600,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, daylight, glitterdust, light, searing light",
-        "Description": "This silver-tipped willow staff constantly emits light, as if from a <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/light.html#_light\">light</a></i> spell—the radiance is emitted from the staff's metallic end and flickers as if with flame. The staff's wielder can deactivate or activate this glowing light as a swift action. In addition, a <i>staff of radiance</i> allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/glitterdust.html#_glitterdust\">Glitterdust</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/daylight.html#_daylight\">Daylight</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/searingLight.html#_searing-light\">Searing light</a></i> (2 charges)</li>",
+        "Description": "This silver-tipped willow staff constantly emits light, as if from a light spell—the radiance is emitted from the staff's metallic end and flickers as if with flame. The staff's wielder can deactivate or activate this glowing light as a swift action. In addition, a staff of radiance allows use of the following spells:Glitterdust (1 charge)\nDaylight (2 charges)\nSearing light (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-radiance"
     },
@@ -745,7 +745,7 @@
         "Cost": 25504,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, augury, commune, divination, speak with dead",
-        "Description": "The forked top of this walnut shaft resembles a combination of a dowsing rod and the curled horns of a beast, and a delicate gemstone hovers between its enfolding arms. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/augury.html#_augury\">Augury</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/speakWithDead.html#_speak-with-dead\">Speak with dead</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/divination.html#_divination\">Divination</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/commune.html#_commune\">Commune</a></i> (3 charges)</li>",
+        "Description": "The forked top of this walnut shaft resembles a combination of a dowsing rod and the curled horns of a beast, and a delicate gemstone hovers between its enfolding arms. The staff allows use of the following spells:Augury (1 charge)\nSpeak with dead (1 charge)\nDivination (2 charges)\nCommune (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-revelations"
     },
@@ -760,7 +760,7 @@
         "Cost": 10400,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, align weapon, bane, cause fear, command, magic weapon",
-        "Description": "This iron-shod wood staff allows use of the following spells:<li><i>bane</i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/causeFear.html#_cause-fear\">Cause fear</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/command.html#_command\">Command</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/magicWeapon.html#_magic-weapon\">Magic weapon</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/alignWeapon.html#_align-weapon\">Align weapon</a></i> (2 charges)</li>",
+        "Description": "This iron-shod wood staff allows use of the following spells:bane (1 charge)\nCause fear (1 charge)\nCommand (1 charge)\nMagic weapon (1 charge)\nAlign weapon (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-rigor"
     },
@@ -775,7 +775,7 @@
         "Cost": 14400,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, shatter, shout, sound burst",
-        "Description": "Holes in this metal shaft cause it to emit an eerie moan when swung through the air. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/shatter.html#_shatter\">Shatter</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/soundBurst.html#_sound-burst\">Sound burst</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/shout.html#_shout\">Shout</a></i> (2 charges)</li>",
+        "Description": "Holes in this metal shaft cause it to emit an eerie moan when swung through the air. It allows use of the following spells:Shatter (1 charge)\nSound burst (1 charge)\nShout (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-shrieking"
     },
@@ -790,7 +790,7 @@
         "Cost": 13075,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, enlarge person, mass enlarge person, mass reduce person, reduce person, shrink item",
-        "Description": "This staff of dark wood is stouter and sturdier than most magical staves, with a gnarled and twisted knot of wood at the top end. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/enlargePerson.html#_enlarge-person\">Enlarge person</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/reducePerson.html#_reduce-person\">Reduce person</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/shrinkItem.html#_shrink-item\">Shrink item</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/enlargePerson.html#_enlarge-person-mass\">Mass enlarge person</a> </i>(3 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/reducePerson.html#_reduce-person-mass\">Mass reduce person</a></i> (3 charges)</li>",
+        "Description": "This staff of dark wood is stouter and sturdier than most magical staves, with a gnarled and twisted knot of wood at the top end. It allows use of the following spells:Enlarge person (1 charge)\nReduce person (1 charge)\nShrink item (2 charges)\nMass enlarge person (3 charges)\nMass reduce person (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-size-alteration"
     },
@@ -805,7 +805,7 @@
         "Cost": 40883,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, deep slumber, dream, nightmare, symbol of sleep, ray of exhaustion, waves of fatigue",
-        "Description": "Smoky spirals adorn the length of this staff, and have an almost hypnotic effect. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/deepSlumber.html#_deep-slumber\">Deep slumber</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/rayOfExhaustion.html#_ray-of-exhaustion\">Ray of exhaustion</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/dream.html#_dream\">Dream</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/nightmare.html#_nightmare\">Nightmare</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/wavesOfFatigue.html#_waves-of-fatigue\">Waves of fatigue</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/symbolOfSleep.html#_symbol-of-sleep\">Symbol of sleep</a></i> (3 charges)</li>",
+        "Description": "Smoky spirals adorn the length of this staff, and have an almost hypnotic effect. The staff allows use of the following spells:Deep slumber (1 charge)\nRay of exhaustion (1 charge)\nDream (2 charges)\nNightmare (2 charges)\nWaves of fatigue (2 charges)\nSymbol of sleep (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-slumber"
     },
@@ -820,7 +820,7 @@
         "Cost": 16400,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, death ward, deathwatch, detect undead, gentle repose, speak with dead",
-        "Description": "This ominous staff is made of twisting wood and topped with a small skull. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/deathwatch.html#_deathwatch\">Deathwatch</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/detectUndead.html#_detect-undead\">Detect undead</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/gentleRepose.html#_gentle-repose\">Gentle repose</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/deathWard.html#_death-ward\">Death ward</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/speakWithDead.html#_speak-with-dead\">Speak with dead</a></i> (2 charges)</li>",
+        "Description": "This ominous staff is made of twisting wood and topped with a small skull. It allows use of the following spells:Deathwatch (1 charge)\nDetect undead (1 charge)\nGentle repose (1 charge)\nDeath ward (2 charges)\nSpeak with dead (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-souls"
     },
@@ -835,7 +835,7 @@
         "Cost": 19800,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, denounce, glibness, mass suggestion, suggestion, tongues",
-        "Description": "When the wielder of this hollow wooden staff speaks or shouts, it reverberates with the sound of her voice, lending a booming insistence to her words. It allows the use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/suggestion.html#_suggestion\">Suggestion</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/tongues.html#_tongues\">Tongues</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/denounce.html#_denounce\">Denounce</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/glibness.html#_glibness\">Glibness</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/suggestion.html#_suggestion-mass\">Mass suggestion</a></i> (4 charges)</li>",
+        "Description": "When the wielder of this hollow wooden staff speaks or shouts, it reverberates with the sound of her voice, lending a booming insistence to her words. It allows the use of the following spells:Suggestion (1 charge)\nTongues (1 charge)\nDenounce (2 charges)\nGlibness (2 charges)\nMass suggestion (4 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-speaking"
     },
@@ -850,7 +850,7 @@
         "Cost": 15100,
         "CostUnit": "gp",
         "Requirements": "Craft Magic Arms and Armor, Craft Staff, spider climb, summon monster III, web",
-        "Description": "This staff is constructed from thousands of carefully prepared spiderwebs packed around a base and layered to make a shaft just as hard as oak, if not harder. A <i>staff of spiders</i> functions as a <i>+1/+1 quarterstaff</i>. It allows the use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/spiderClimb.html#_spider-climb\">Spider climb</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/web.html#_web\">Web</a></i> (1 charge)</li>\n<li>Summon spider (as <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/summonMonster.html#_summon-monster-iii\">summon monster III</a></i>, but only summons 1d3 giant spiders; 2 charges)</li>",
+        "Description": "This staff is constructed from thousands of carefully prepared spiderwebs packed around a base and layered to make a shaft just as hard as oak, if not harder. A staff of spiders functions as a +1/+1 quarterstaff. It allows the use of the following spells:Spider climb (1 charge)\nWeb (1 charge)\nSummon spider (as summon monster III, but only summons 1d3 giant spiders; 2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-spiders"
     },
@@ -865,7 +865,7 @@
         "Cost": 18400,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, disguise self, greater invisibility, invisibility, nondetection",
-        "Description": "This twisted, dark gray staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/skills/disguise.html#_disguise\">Disguise</a> self</i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/invisibility.html#_invisibility\">Invisibility</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/nondetection.html#_nondetection\">Nondetection</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/invisibility.html#_invisibility-greater\">Greater invisibility</a></i> (2 charges)</li>",
+        "Description": "This twisted, dark gray staff allows use of the following spells:Disguise self (1 charge)\nInvisibility (1 charge)\nNondetection (1 charge)\nGreater invisibility (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-stealth"
     },
@@ -880,7 +880,7 @@
         "Cost": 11400,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, insect plague, summon swarm",
-        "Description": "Made of twisted darkwood covered with knots and nodules resembling crawling insects (which occasionally seem to move), this staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/summonSwarm.html#_summon-swarm\">Summon swarm</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/insectPlague.html#_insect-plague\">Insect plague</a></i> (3 charges)</li>",
+        "Description": "Made of twisted darkwood covered with knots and nodules resembling crawling insects (which occasionally seem to move), this staff allows use of the following spells:Summon swarm (1 charge)\nInsect plague (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-swarming-insects"
     },
@@ -895,7 +895,7 @@
         "Cost": 18655,
         "CostUnit": "gp",
         "Requirements": "Craft Magic Arms and Armor, Craft Staff, bless weapon, discern lies, holy sword, shield other",
-        "Description": "This shining golden staff is topped with a radiant gemstone that emits light like a torch. As a swift action, the wielder of the staff can cause it to change into a <i>+2 lance</i>, although it retains its other abilities. It can be made to revert to its staff form as a free action. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/blessWeapon.html#_bless-weapon\">Bless weapon</a> </i>(1 charge, cast on the staff only)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/shieldOther.html#_shield-other\">Shield other</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/discernLies.html#_discern-lies\">Discern lies</a> </i>(2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/holySword.html#_holy-sword\">Holy sword</a> </i>(4 charges, cast on the staff only)</li>",
+        "Description": "This shining golden staff is topped with a radiant gemstone that emits light like a torch. As a swift action, the wielder of the staff can cause it to change into a +2 lance, although it retains its other abilities. It can be made to revert to its staff form as a free action. The staff allows use of the following spells:Bless weapon (1 charge, cast on the staff only)\nShield other (1 charge)\nDiscern lies (2 charges)\nHoly sword (4 charges, cast on the staff only)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-the-avenger"
     },
@@ -910,7 +910,7 @@
         "Cost": 110000,
         "CostUnit": "gp",
         "Requirements": "Craft Magic Arms and Armor, Craft Staff, bless, cure critical wounds, cure moderate wounds, flame strike, freedom of movement, heightened hold person, prayer, righteous might, searing light, true resurrection, true seeing",
-        "Description": "The <i>staff of the hierophant </i>is a powerful magic item with the ability to both heal and harm, which also gives its wielder a number of protections. The staff is crafted from platinum and topped with a glowing blue diamond. The staff allows the use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/bless.html#_bless\">Bless</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/cureModerateWounds.html#_cure-moderate-wounds\">Cure moderate wounds</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/freedomOfMovement.html#_freedom-of-movement\">Freedom of movement</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/holdPerson.html#_hold-person\">Hold person</a></i> (heightened to 5th level, 1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/prayer.html#_prayer\">Prayer</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/searingLight.html#_searing-light\">Searing light</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/cureCriticalWounds.html#_cure-critical-wounds\">Cure critical wounds</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/flameStrike.html#_flame-strike\">Flame strike</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/righteousMight.html#_righteous-might\">Righteous might</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/trueSeeing.html#_true-seeing\">True seeing</a></i> (2 charges)</li>The wielder of a <i>staff of the hierophant </i>gains a +2 luck bonus to AC and on saving throws. The staff is also a <i>+2/+2 quarterstaff</i>, and its wielder may use it to smite opponents. If 1 charge is expended (as a free action), the staff deals double damage (×3 on a critical hit) for 1 round.A <i>staff of the hierophant </i>can be used to restore the life of a dead creature by calling upon the wielder's deity to take the staff as a blessing. This causes the staff to vanish, but restores life to any one dead creature as if casting <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/trueResurrection.html#_true-resurrection\">true resurrection</a></i>. In addition, after using this effect, the wielder who triggered it receives a +2 luck bonus on all ability checks, attack rolls, saving throws, and skill checks for 1 day.",
+        "Description": "The staff of the hierophant is a powerful magic item with the ability to both heal and harm, which also gives its wielder a number of protections. The staff is crafted from platinum and topped with a glowing blue diamond. The staff allows the use of the following spells:Bless (1 charge)\nCure moderate wounds (1 charge)\nFreedom of movement (1 charge)\nHold person (heightened to 5th level, 1 charge)\nPrayer (1 charge)\nSearing light (1 charge)\nCure critical wounds (2 charges)\nFlame strike (2 charges)\nRighteous might (2 charges)\nTrue seeing (2 charges)The wielder of a staff of the hierophant gains a +2 luck bonus to AC and on saving throws. The staff is also a +2/+2 quarterstaff, and its wielder may use it to smite opponents. If 1 charge is expended (as a free action), the staff deals double damage (×3 on a critical hit) for 1 round.A staff of the hierophant can be used to restore the life of a dead creature by calling upon the wielder's deity to take the staff as a blessing. This causes the staff to vanish, but restores life to any one dead creature as if casting true resurrection. In addition, after using this effect, the wielder who triggered it receives a +2 luck bonus on all ability checks, attack rolls, saving throws, and skill checks for 1 day.",
         "Source": "Ultimate Equipment",
         "id": "staff-of-the-hierophant"
     },
@@ -925,7 +925,7 @@
         "Cost": 15000,
         "CostUnit": "gp",
         "Requirements": "Craft Magic Arms and Armor, Craft Staff, ray of enfeeblement, spectral hand, vampiric touch",
-        "Description": "Often given as gifts to apprentices upon reaching the rank of master, these staves come in eight different varieties, one for each school of magic. This particular staff is for the school of necromancy. Aside from acting as a <i>+1/+1 quarterstaff</i>, this staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/rayOfEnfeeblement.html#_ray-of-enfeeblement\">Ray of enfeeblement</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/spectralHand.html#_spectral-hand\">Spectral hand</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/vampiricTouch.html#_vampiric-touch\">Vampiric touch</a></i> (2 charges)</li>In addition, this staff can be used to cast spells using any metamagic feats known by the wielder without increasing the spell's level. This consumes a number of charges equal to the number of spell levels increased by the feat. No more than one feat can be applied to a spell cast by the wielder in this way. Using the staff for this purpose does not increase the casting time of the spell.",
+        "Description": "Often given as gifts to apprentices upon reaching the rank of master, these staves come in eight different varieties, one for each school of magic. This particular staff is for the school of necromancy. Aside from acting as a +1/+1 quarterstaff, this staff allows use of the following spells:Ray of enfeeblement (1 charge)\nSpectral hand (1 charge)\nVampiric touch (2 charges)In addition, this staff can be used to cast spells using any metamagic feats known by the wielder without increasing the spell's level. This consumes a number of charges equal to the number of spell levels increased by the feat. No more than one feat can be applied to a spell cast by the wielder in this way. Using the staff for this purpose does not increase the casting time of the spell.",
         "Source": "Ultimate Equipment",
         "id": "staff-of-the-master"
     },
@@ -940,7 +940,7 @@
         "Cost": 31980,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, planar adaptation, planar binding, plane shift",
-        "Description": "This obsidian staff twinkles as if reflecting the star-filled sky at night. The staff allows use of the following spells.<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/advanced/spells/planarAdaptation.html#_planar-adaptation\">Planar adaptation</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/planarBinding.html#_planar-binding\">Planar binding</a> </i>(2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/planeShift.html#_plane-shift\">Plane shift</a> </i>(5 charges)</li>If the <i>staff of the planes</i> is fully charged, the wielder can deliberately snap the staff, causing it do shatter into thousands of pieces but opening a <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/gate.html#_gate\">gate</a></i> to a plane of the wielder's choice. This can only be used for planar travel, and the connection lasts for 1 minute, without requiring the wielder's concentration. If used in this way, the staff cannot be repaired or restored.",
+        "Description": "This obsidian staff twinkles as if reflecting the star-filled sky at night. The staff allows use of the following spells.Planar adaptation (1 charge)\nPlanar binding (2 charges)\nPlane shift (5 charges)If the staff of the planes is fully charged, the wielder can deliberately snap the staff, causing it do shatter into thousands of pieces but opening a gate to a plane of the wielder's choice. This can only be used for planar travel, and the connection lasts for 1 minute, without requiring the wielder's concentration. If used in this way, the staff cannot be repaired or restored.",
         "Source": "Ultimate Equipment",
         "id": "staff-of-the-planes"
     },
@@ -955,7 +955,7 @@
         "Cost": 4800,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, know direction, pass without trace, summon nature's ally I",
-        "Description": "This staff is carefully crafted from the branches of a tree, still intertwined as they grew and crowned with living leaves. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/knowDirection.html#_know-direction\">Know direction</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/passWithoutTrace.html#_pass-without-trace\">Pass without trace</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/summonNatureSAlly.html#_summon-nature-s-ally-i\">Summon nature's ally I</a> </i>(2 charges)</li>",
+        "Description": "This staff is carefully crafted from the branches of a tree, still intertwined as they grew and crowned with living leaves. The staff allows use of the following spells:Know direction (1 charge)\nPass without trace (1 charge)\nSummon nature's ally I (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-the-scout"
     },
@@ -970,7 +970,7 @@
         "Cost": 50200,
         "CostUnit": "gp",
         "Requirements": "Craft Magic Arms and Armor, Craft Staff, animate plants, barkskin, charm animal, pass without trace, speak with animals, summon nature's ally VI, wall of thorns",
-        "Description": "Appearing to have grown naturally into its shape, this oak, ash, or yew staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/charmAnimal.html#_charm-animal\">Charm animal</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/speakWithAnimals.html#_speak-with-animals\">Speak with animals</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/barkskin.html#_barkskin\">Barkskin</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/summonNatureSAlly.html#_summon-nature-s-ally-vi\">Summon nature's ally VI</a></i> (3 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/wallOfThorns.html#_wall-of-thorns\">Wall of thorns</a></i> (3 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/animatePlants.html#_animate-plants\">Animate plants</a></i> (4 charges)</li>The staff may be used as a weapon, functioning as a <i>+2 quarterstaff</i>. The <i>staff of the woodlands</i> also allows its wielder to cast <i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/passWithoutTrace.html#_pass-without-trace\">pass without trace</a></i> at will, with no charge cost. These two attributes continue to function after all the charges are expended.",
+        "Description": "Appearing to have grown naturally into its shape, this oak, ash, or yew staff allows use of the following spells:Charm animal (1 charge)\nSpeak with animals (1 charge)\nBarkskin (2 charges)\nSummon nature's ally VI (3 charges)\nWall of thorns (3 charges)\nAnimate plants (4 charges)The staff may be used as a weapon, functioning as a +2 quarterstaff. The staff of the woodlands also allows its wielder to cast pass without trace at will, with no charge cost. These two attributes continue to function after all the charges are expended.",
         "Source": "Ultimate Equipment",
         "id": "staff-of-the-woodlands"
     },
@@ -985,7 +985,7 @@
         "Cost": 17100,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, cloudkill, stinking cloud",
-        "Description": "This length of hemlock-shrouded oak gives off the faintest whiff of rot and corruption. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/stinkingCloud.html#_stinking-cloud\">Stinking cloud</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/cloudkill.html#_cloudkill\">Cloudkill</a></i> (2 charges)</li>",
+        "Description": "This length of hemlock-shrouded oak gives off the faintest whiff of rot and corruption. It allows use of the following spells:Stinking cloud (1 charge)\nCloudkill (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-toxins"
     },
@@ -1000,7 +1000,7 @@
         "Cost": 41000,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, alter self, baleful polymorph, blink, disintegrate, expeditious retreat, polymorph",
-        "Description": "This staff is generally carved from or decorated with petrified wood or fossilized bone that has been etched with tiny but complex runes. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/alterSelf.html#_alter-self\">Alter self</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/blink.html#_blink\">Blink</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/expeditiousRetreat.html#_expeditious-retreat\">Expeditious retreat</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/balefulPolymorph.html#_baleful-polymorph\">Baleful polymorph</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/polymorph.html#_polymorph\">Polymorph</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/disintegrate.html#_disintegrate\">Disintegrate</a></i> (3 charges)</li>",
+        "Description": "This staff is generally carved from or decorated with petrified wood or fossilized bone that has been etched with tiny but complex runes. It allows use of the following spells:Alter self (1 charge)\nBlink (1 charge)\nExpeditious retreat (1 charge)\nBaleful polymorph (2 charges)\nPolymorph (2 charges)\nDisintegrate (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-transmutation"
     },
@@ -1015,7 +1015,7 @@
         "Cost": 28462.5,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, alarm, explosive runes, fire trap, magic mouth, phantom trap, sepia snake sigil",
-        "Description": "The tip of this dark wooden shaft holds a piece of hard, chalk-like stone between black, clawlike protrusions. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/alarm.html#_alarm\">Alarm</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/magicMouth.html#_magic-mouth\">Magic mouth</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/phantomTrap.html#_phantom-trap\">Phantom trap</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/explosiveRunes.html#_explosive-runes\">Explosive runes</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/fireTrap.html#_fire-trap\">Fire trap</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/sepiaSnakeSigil.html#_sepia-snake-sigil\">Sepia snake sigil</a></i> (2 charges)</li>",
+        "Description": "The tip of this dark wooden shaft holds a piece of hard, chalk-like stone between black, clawlike protrusions. The staff allows use of the following spells:Alarm (1 charge)\nMagic mouth (1 charge)\nPhantom trap (1 charge)\nExplosive runes (2 charges)\nFire trap (2 charges)\nSepia snake sigil (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-traps"
     },
@@ -1030,7 +1030,7 @@
         "Cost": 27200,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, dimension door, expeditious retreat, fly, teleport",
-        "Description": "This staff appears to be nothing more than a finely made walking stick, but closer inspection reveals that it is inlaid with a fine copper tracery that makes up an intricate and incomprehensible arcane map. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/dimensionDoor.html#_dimension-door\">Dimension door</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/skills/fly.html#_fly\">Fly</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/teleport.html#_teleport\">Teleport</a> </i>(2 charges)</li>In addition to these spells, the wielder of the <i>staff of travel</i> receives a +10-foot enhancement bonus to his base speed.",
+        "Description": "This staff appears to be nothing more than a finely made walking stick, but closer inspection reveals that it is inlaid with a fine copper tracery that makes up an intricate and incomprehensible arcane map. The staff allows use of the following spells:Dimension door (1 charge)\nFly (1 charge)\nTeleport (2 charges)In addition to these spells, the wielder of the staff of travel receives a +10-foot enhancement bonus to his base speed.",
         "Source": "Ultimate Equipment",
         "id": "staff-of-travel"
     },
@@ -1045,7 +1045,7 @@
         "Cost": 4400,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, ghost sound, mage hand, prestidigitation, silent image",
-        "Description": "This thin staff is made of stiff wood that has been wrapped in colorful bands of cloth and topped with a number of feathers, bells, and other decorative baubles. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/ghostSound.html#_ghost-sound\">Ghost sound</a> </i>(1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/mageHand.html#_mage-hand\">Mage hand</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/prestidigitation.html#_prestidigitation\">Prestidigitation</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/silentImage.html#_silent-image\">Silent image</a> </i>(2 charges)</li>",
+        "Description": "This thin staff is made of stiff wood that has been wrapped in colorful bands of cloth and topped with a number of feathers, bells, and other decorative baubles. The staff allows use of the following spells:Ghost sound (1 charge)\nMage hand (1 charge)\nPrestidigitation (1 charge)\nSilent image (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-tricks"
     },
@@ -1060,7 +1060,7 @@
         "Cost": 8000,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, comprehend languages, detect thoughts, tongues",
-        "Description": "This polished maple or oak staff is inlaid with ivory strips along its length, and runes of various languages also formed from inlaid ivory span the shaft. It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/comprehendLanguages.html#_comprehend-languages\">Comprehend languages</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/detectThoughts.html#_detect-thoughts\">Detect thoughts</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/tongues.html#_tongues\">Tongues</a></i> (2 charges)</li>",
+        "Description": "This polished maple or oak staff is inlaid with ivory strips along its length, and runes of various languages also formed from inlaid ivory span the shaft. It allows use of the following spells:Comprehend languages (1 charge)\nDetect thoughts (2 charges)\nTongues (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-understanding"
     },
@@ -1075,7 +1075,7 @@
         "Cost": 43333,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, arcane eye, arcane sight, prying eyes, scrying, see invisibility, true seeing",
-        "Description": "A clear crystal orb is affixed to the top of this length of brass and scaled skin, and a smaller, crimson orb is set into a spherical ornament near the base of the shaft. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/arcaneEye.html#_arcane-eye\">Arcane eye</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/arcaneSight.html#_arcane-sight\">Arcane sight</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/seeInvisibility.html#_see-invisibility\">See invisibility</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/pryingEyes.html#_prying-eyes\">Prying eyes</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/scrying.html#_scrying\">Scrying</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/trueSeeing.html#_true-seeing\">True seeing</a></i> (3 charges)</li>",
+        "Description": "A clear crystal orb is affixed to the top of this length of brass and scaled skin, and a smaller, crimson orb is set into a spherical ornament near the base of the shaft. The staff allows use of the following spells:Arcane eye (1 charge)\nArcane sight (1 charge)\nSee invisibility (1 charge)\nPrying eyes (2 charges)\nScrying (2 charges)\nTrue seeing (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-vision"
     },
@@ -1090,7 +1090,7 @@
         "Cost": 42033,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, control weather, fog cloud, gust of wind, ice storm, sleet storm, wind wall",
-        "Description": "The carved surface of this solid oaken beam always depicts a scene with the opposite qualities of the current weather (rainy on dry days, dry on rainy days, and so on). It allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/fogCloud.html\">Fog cloud</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/gustOfWind.html#_gust-of-wind\">Gust of wind</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/windWall.html#_wind-wall\">Wind wall</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/iceStorm.html#_ice-storm\">Ice storm</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/sleetStorm.html#_sleet-storm\">Sleet storm</a></i> (2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/controlWeather.html#_control-weather\">Control weather</a></i> (3 charges)</li>",
+        "Description": "The carved surface of this solid oaken beam always depicts a scene with the opposite qualities of the current weather (rainy on dry days, dry on rainy days, and so on). It allows use of the following spells:Fog cloud (1 charge)\nGust of wind (1 charge)\nWind wall (1 charge)\nIce storm (2 charges)\nSleet storm (2 charges)\nControl weather (3 charges)",
         "Source": "Ultimate Equipment",
         "id": "staff-of-weather"
     },
@@ -1105,7 +1105,7 @@
         "Cost": 14800,
         "CostUnit": "gp",
         "Requirements": "Craft Staff, align weapon, detect good, magic circle against good, unholy blight",
-        "Description": "This twisted iron staff bears ominous stains along its length,  and ends in a black skull with red gemstone eyes. The staff allows use of the following spells:<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/alignWeapon.html#_align-weapon\">Align weapon</a> </i>(evil only, 1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/detectGood.html#_detect-good\">Detect good</a></i> (1 charge)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/magicCircleAgainstGood.html#_magic-circle-against-good\">Magic circle against good</a> </i>(2 charges)</li>\n<li><i><a href=\"http://paizo.com/pathfinderRPG/prd/spells/unholyBlight.html#_unholy-blight\">Unholy blight</a> </i>(2 charges)</li>",
+        "Description": "This twisted iron staff bears ominous stains along its length,  and ends in a black skull with red gemstone eyes. The staff allows use of the following spells:Align weapon (evil only, 1 charge)\nDetect good (1 charge)\nMagic circle against good (2 charges)\nUnholy blight (2 charges)",
         "Source": "Ultimate Equipment",
         "id": "unholy-staff"
     }

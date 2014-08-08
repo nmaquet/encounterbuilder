@@ -1,8 +1,3 @@
-# Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
-
-﻿#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 import json
 
 common = {};
