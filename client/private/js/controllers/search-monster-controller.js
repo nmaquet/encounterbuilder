@@ -11,6 +11,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
             $scope.nameSubstring = lastSearchParam ? lastSearchParam.nameSubstring : '';
             $scope.orderProp = lastSearchParam ? lastSearchParam.order : 'name';
             $scope.type = lastSearchParam ? lastSearchParam.type : 'any';
+            $scope.terrain = lastSearchParam ? lastSearchParam.terrain : 'any';
+            $scope.climate = lastSearchParam ? lastSearchParam.climate : 'any';
             $scope.refreshingMonsters = false;
 
             $scope.totalItems = 0;
@@ -29,7 +31,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                 $scope.selectedMonsterId = $routeParams.monsterId || $routeParams.userMonsterId || $routeParams.detailsId;
             });
 
-            $scope.$watchCollection("[orderProp, type]", function () {
+            $scope.$watchCollection("[orderProp, type, climate, terrain]", function () {
                 $scope.currentPage = 1;
                 $scope.refreshMonsters();
             });
@@ -78,6 +80,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     nameSubstring: $scope.nameSubstring,
                     order: $scope.orderProp,
                     type: $scope.type,
+                    climate:$scope.climate,
+                    terrain:$scope.terrain,
                     skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
                     currentPage: $scope.currentPage,
                     findLimit: $scope.itemsPerPage,

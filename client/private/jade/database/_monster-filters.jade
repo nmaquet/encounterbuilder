@@ -18,6 +18,44 @@
         option(value='plant') Plant
         option(value='undead') Undead
         option(value='vermin') Vermin
+.form-group.col-xs-12
+    select.form-control#type(ng-model='climate')
+        option(value='any') Choose climate
+        option(value='any') Any
+        option(value='cold') Cold
+        option(value='temperate') Temperate
+        option(value='warm') Warm
+.form-group.col-xs-12
+    select.form-control#type(ng-model='terrain')
+        option(value='any') Choose terrain
+        option(value='any') Any
+        optgroup(label="Standard")
+            option(value='aquatic') Aquatic
+            option(value='coastline') Coastline
+            option(value='desert') Desert
+            option(value='forest') Forest
+            option(value='hills') Hills
+            option(value='jungle') Jungle
+            option(value='mountains') Mountains
+            option(value='ocean') Ocean/Sea
+            option(value='plains') Plains
+            option(value='river') River
+            option(value='lake') Lakes
+            option(value='swam') Swamp
+            option(value='marshes') Marsh
+        optgroup(label="Planar")
+            option(value='abaddon') Abaddon [NE]
+            option(value='abyss') Abyss [CE]
+            option(value='elysium') Elysium [CG]
+            option(value='heaven') Heaven [LG]
+            option(value='hell') Hell [LE]
+            option(value='plane of air') Plane of Air
+            option(value='plane of earth') Plane of Earth
+            option(value='plane of fire') Plane of Fire
+            option(value='plane of water') Plane of Water
+        optgroup(label="Special")
+            option(value='urban') Urban
+            option(value='underground') Underground
 .col-xs-12
     .col-xxs-4.col-xs-4
         .row

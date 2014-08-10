@@ -16,6 +16,15 @@ function getQuery(request) {
     if (minCR != 0 || maxCR != 40) {
         query.CR = { $gte: minCR, $lte: maxCR};
     }
+    if (request.query.climate && request.query.climate != 'any' && request.query.terrain && request.query.terrain != 'any') {
+        query.Environment = new RegExp("^(?=.*"+request.query.climate+")(?=.*"+request.query.terrain+").*$", "i");
+    }
+    else if (request.query.climate && request.query.climate != 'any') {
+        query.Environment = new RegExp(request.query.climate, "i");
+    }
+    else if (request.query.terrain && request.query.terrain != 'any') {
+        query.Environment = new RegExp(request.query.terrain.replace("-", "|"), "i");
+    }
     return query;
 }
 
