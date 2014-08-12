@@ -433,7 +433,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     if (fancyTree.count() === 0) {
                         contentTree = [];
                     }
-                    $http.post('/api/chronicle', { contentTree: contentTree, chronicleId: chronicleId})
+                    $http.post('/api/chronicle/' + chronicleId, { contentTree: contentTree})
                         .success(function (data) {
                         })
                         .error(function (error) {

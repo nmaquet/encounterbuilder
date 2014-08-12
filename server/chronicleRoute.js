@@ -17,7 +17,7 @@ module.exports = function (chroniclesCollection, ObjectID) {
         update: function (request, response) {
             var userId = request.user._id;
             chroniclesCollection.update(
-                {_id: ObjectID(request.body.chronicleId),userId:ObjectID(userId)},
+                {_id: ObjectID(request.params.id),userId:ObjectID(userId)},
                 {$set: {contentTree: request.body.contentTree}},
                 function (error) {
                     if (error) {

@@ -147,7 +147,6 @@ function main(db) {
     app.get('/api/user-monster/:id', disableCaching, /* TODO METRICS */ userMonsterRoute.findOne);
     app.get('/api/user-npc/:id', disableCaching, /* TODO METRICS */ userNpcRoute.findOne);
     app.get('/api/user-text/:id', disableCaching, /* TODO METRICS */ userTextRoute.findOne);
-    app.get("/api/chronicle", disableCaching, chronicleRoute.fetch);
     app.get("/api/favourites", disableCaching, favouritesRoute.fetch);
 
     app.post('/api/user-data', userDataRoute);
@@ -163,7 +162,7 @@ function main(db) {
     app.post("/api/change-user-data", enableCORS, changeUserDataRoute);
     app.post("/api/save-content-tree", contentTreeRoute.updateContentTree);
     app.post("/api/save-favourites", favouritesRoute.update);
-    app.post("/api/chronicle", disableCaching, chronicleRoute.update);
+
 
     app.post("/api/create-user-monster", /* TODO METRICS */ userMonsterRoute.create);
     app.post("/api/copy-monster", /* TODO METRICS */ userMonsterRoute.copy);
@@ -209,6 +208,10 @@ function main(db) {
     app.post("/api/user-map", userMapRoute.createResource);
     app.post("/api/user-map/:id", userMapRoute.updateResource);
     app.delete("/api/user-map/:id", userMapRoute.deleteResource);
+
+    /*Chronicles*/
+    app.get("/api/chronicle", disableCaching, chronicleRoute.fetch);
+    app.post("/api/chronicle/:id", disableCaching, chronicleRoute.update);
 
     var APP_JADE_FILES = [
         'feedback-popover',
