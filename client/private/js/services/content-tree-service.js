@@ -9,6 +9,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             var LOAD_SUCCESS = "contentTreeLoaded";
 
             var service = {};
+            var chronicleId = null;
             var contentTree = null;
             var fancyTree = null;
             var nodeKey = null;
@@ -99,10 +100,11 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 }
             }
 
-            $http.post('/api/user-data')
-                .success(function (userData) {
-                    if (userData.contentTree) {
-                        contentTree = userData.contentTree;
+            $http.get('/api/chronicle')
+                .success(function (data) {
+                    if (data.chronicle.contentTree) {
+                        contentTree = data.chronicle.contentTree;
+                        chronicleId = data.chronicle._id;
                     }
                     $rootScope.$emit(LOAD_SUCCESS);
                 })
@@ -431,7 +433,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     if (fancyTree.count() === 0) {
                         contentTree = [];
                     }
-                    $http.post('/api/save-content-tree', { contentTree: contentTree })
+                    $http.post('/api/chronicle', { contentTree: contentTree, chronicleId: chronicleId})
                         .success(function (data) {
                         })
                         .error(function (error) {
