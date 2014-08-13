@@ -8,10 +8,23 @@ DEMONSQUID.encounterBuilderServices.factory('LeftSidebarTabModel', function () {
     }
 });
 
-DEMONSQUID.encounterBuilderControllers.controller('LeftSidebarTabController', ['$scope', 'LeftSidebarTabModel',
-    function ($scope, model) {
+DEMONSQUID.encounterBuilderControllers.controller('LeftSidebarTabController', ['$scope', '$http', 'LeftSidebarTabModel', 'userResourceService',
+    function ($scope, $http, model, userResourceService) {
 
         $scope.selectedTab = model.selectedTab;
+
+//        $http.get('/api/chronicle')
+//            .success(function (data) {
+//                if (data.chronicle) {
+//                    $scope.chronicles = data.chronicle;
+//                }
+//            })
+//            .error(function (error) {
+//                console.log(error);
+//            });
+
+        $scope.chronicles = userResourceService["chronicle"].query();
+        console.log($scope.chronicles);
 
         $scope.$watch(function () {
             return model.selectedTab

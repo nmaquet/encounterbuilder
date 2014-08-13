@@ -100,18 +100,15 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 }
             }
 
-            $http.get('/api/chronicle')
-                .success(function (data) {
-                    if (data.chronicle.contentTree) {
-                        contentTree = data.chronicle.contentTree;
-                        chronicleId = data.chronicle._id;
-                    }
+            //FIXME store current chronicle in a user params object somewhere in database or cookie
+            var chronicleResource = userResourceService["chronicle"];
+            chronicleResource.query(function (chronicles) {
+                chronicleId = chronicles[0]._id;
+                chronicleResource.get({id:chronicleId},function(chronicle){
+                    contentTree = chronicle.contentTree;
                     $rootScope.$emit(LOAD_SUCCESS);
-                })
-                .error(function (error) {
-                    console.log(error);
-                    $window.location.href = '/';
                 });
+            });
 
             service.goToNode = function (node) {
                 if (node.data.encounterId) {

@@ -210,8 +210,10 @@ function main(db) {
     app.delete("/api/user-map/:id", userMapRoute.deleteResource);
 
     /*Chronicles*/
-    app.get("/api/chronicle", disableCaching, chronicleRoute.fetch);
-    app.post("/api/chronicle/:id", disableCaching, chronicleRoute.update);
+    app.get("/api/chronicle", disableCaching, chronicleRoute.fetchAll);
+    app.get("/api/chronicle/:id", enableCaching, chronicleRoute.fetch);
+    app.post("/api/chronicle/:id", chronicleRoute.update);
+    app.post("/api/chronicle", chronicleRoute.create);
 
     var APP_JADE_FILES = [
         'feedback-popover',
