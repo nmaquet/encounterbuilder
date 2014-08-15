@@ -38,7 +38,7 @@ module.exports = function (chroniclesCollection, ObjectID) {
                 });
         },
         create: function (request, response) {
-            var chronicle = {userId: ObjectID(user.userId), contentTree: [], name: "new Chronicle"};
+            var chronicle = {userId: ObjectID(request.user._id), contentTree: [], name: "new Chronicle"};
             chroniclesCollection.insert(chronicle, function (error, newChronicle) {
                 if (error) {
                     console.log(error);

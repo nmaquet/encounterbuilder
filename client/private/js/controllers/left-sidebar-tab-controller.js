@@ -8,23 +8,38 @@ DEMONSQUID.encounterBuilderServices.factory('LeftSidebarTabModel', function () {
     }
 });
 
-DEMONSQUID.encounterBuilderControllers.controller('LeftSidebarTabController', ['$scope', '$http', 'LeftSidebarTabModel', 'userResourceService',
-    function ($scope, $http, model, userResourceService) {
+DEMONSQUID.encounterBuilderControllers.controller('LeftSidebarTabController',
+    ['$scope', '$http','$timeout', 'LeftSidebarTabModel', 'userResourceService', 'contentTreeService', 'locationService',
+    function ($scope, $http,$timeout, model, userResourceService, contentTreeService, locationService) {
 
         $scope.selectedTab = model.selectedTab;
-
-//        $http.get('/api/chronicle')
-//            .success(function (data) {
-//                if (data.chronicle) {
-//                    $scope.chronicles = data.chronicle;
-//                }
-//            })
-//            .error(function (error) {
-//                console.log(error);
-//            });
-
         $scope.chronicles = userResourceService["chronicle"].query();
-        console.log($scope.chronicles);
+
+        $scope.selectChronicle = function (chronicleId) {
+            contentTreeService.reloadChronicleTree(chronicleId);
+            locationService.go("/chronicle/" + chronicleId);
+        };
+        $scope.createChronicle = function () {
+            console.log("create chronicle");
+            var newChronicle = new userResourceService["chronicle"]();
+            newChronicle.name = "new Chronicle";
+            newChronicle.contentTree = [];
+            newChronicle.$save(function (newChronicle) {
+                contentTreeService.reloadChronicleTree(newChronicle._id);
+                $scope.chronicles = userResourceService["chronicle"].query();
+                locationService.go("/chronicle/" + newChronicle._id);
+            });
+        };
+
+        $scope.$watch(contentTreeService.chronicleName, function () {
+            if ($scope.chronicleName !== contentTreeService.chronicleName()) {
+                $scope.chronicleName = contentTreeService.chronicleName();
+                $timeout(function(){
+                    $scope.chronicles = userResourceService["chronicle"].query();
+                },250);
+
+            }
+        });
 
         $scope.$watch(function () {
             return model.selectedTab

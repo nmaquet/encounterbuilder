@@ -130,7 +130,7 @@ function main(db) {
     var userItemRoute = require('./userResourceRoute')(collections.userItems, collections.magicitems, ObjectID);
     var userIllustrationRoute = require('./userImageResourceRoute')(collections.userIllustrations, ObjectID);
     var userMapRoute = require('./userImageResourceRoute')(collections.userMaps, ObjectID);
-    var chronicleRoute = require('./chronicleRoute')(collections.chronicles,ObjectID);
+    var chronicleRoute = require('./userResourceRoute')(collections.chronicles,null,ObjectID);
 
     app.get('/api/search-monsters', metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', metrics.logSearchNpc, searchNpcsRoute);
@@ -210,10 +210,10 @@ function main(db) {
     app.delete("/api/user-map/:id", userMapRoute.deleteResource);
 
     /*Chronicles*/
-    app.get("/api/chronicle", disableCaching, chronicleRoute.fetchAll);
-    app.get("/api/chronicle/:id", enableCaching, chronicleRoute.fetch);
-    app.post("/api/chronicle/:id", chronicleRoute.update);
-    app.post("/api/chronicle", chronicleRoute.create);
+    app.get("/api/chronicle", disableCaching, chronicleRoute.query);
+    app.get("/api/chronicle/:id", enableCaching, chronicleRoute.getResource);
+    app.post("/api/chronicle/:id", chronicleRoute.updateResource);
+    app.post("/api/chronicle", chronicleRoute.createResource);
 
     var APP_JADE_FILES = [
         'feedback-popover',
@@ -240,7 +240,8 @@ function main(db) {
         'spell',
         'feat',
         'printable-encounter',
-        'user-image-resource'
+        'user-image-resource',
+        'chronicle'
     ];
 
     for (var i in APP_JADE_FILES) {
