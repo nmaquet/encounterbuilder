@@ -17,6 +17,7 @@ var favouritesCollection = null;
 var userTextCollection = null;
 var userMonsterCollection = null;
 var userNpcCollection = null;
+var chroniclesCollection = null;
 var sesService = null;
 
 var escapeRegExp = require('./utils')().escapeRegExp;
@@ -226,6 +227,18 @@ function updatePassword(username, password, callback) {
     });
 }
 
+
+function listChronicles(username,callback) {
+    userCollection.findOne({username: username},
+        function (error, user) {
+            if (error) {
+                return callback(new Error("UNKNOWN_USER"));
+            }
+            chroniclesCollection.find({userId: user._id}, {fields: {_id: 1, name: 1}}).toArray(callback);
+        });
+}
+
+
 function remove(username, callback) {
     async.series([
         userCollection.remove.bind(userCollection, {username: username}),
@@ -247,7 +260,7 @@ module.exports = function (database, sesService_) {
     userMonsterCollection = database.collection("usermonsters");
     userTextCollection = database.collection("usertexts");
     userNpcCollection = database.collection("usernpcs");
-
+    chroniclesCollection = database.collection("chronicles");
     sesService = sesService_;
 
     return {
@@ -259,6 +272,7 @@ module.exports = function (database, sesService_) {
         authenticate: authenticate,
         toArray: toArray,
         updatePassword: updatePassword,
-        remove: remove
+        remove: remove,
+        listChronicles: listChronicles
     }
 };

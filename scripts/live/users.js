@@ -94,6 +94,20 @@ command("list", "list all users", function (userService, db) {
     });
 });
 
+command("listChronicles <username>", "list all chronicles for a username", function (userService, db,username) {
+    userService.listChronicles(username,function (error, chroniclesArray) {
+        if (error) {
+            console.log("error listing chronicles : " + error.message);
+        } else {
+            for (var i in chroniclesArray) {
+                var chronicle = chroniclesArray[i];
+                console.log(chronicle.name + " \t id:" + chronicle._id);
+            }
+        }
+        db.close();
+    });
+});
+
 
 command("show <username>", "show a user's info", function (userService, db, username) {
     userService.get(username, function (error, user) {
@@ -240,7 +254,7 @@ command("validateAll", "validate all users email address", function (userService
 });
 program.parse(process.argv);
 
-var COMMANDS = ["list", "show", "update", "passwd", "auth", "register", "remove", "validate","validateAll"];
+var COMMANDS = ["list", "show", "update", "passwd", "auth", "register", "remove", "validate","validateAll","listChronicles"];
 
 if (program.args.length === 0 || COMMANDS.indexOf(program.rawArgs[2]) < 0) {
     program.help();
