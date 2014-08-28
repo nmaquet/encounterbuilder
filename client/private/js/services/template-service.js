@@ -401,6 +401,7 @@ DEMONSQUID.encounterBuilderServices.factory('templateService', [ 'crService', 'p
 
         service.createTemplatedMonster = function (monster, optionalFailures) {
             var templatedMonster = angular.copy(monster);
+            templatedMonster.CR = Number(templatedMonster.CR);
             if (monster.templates) {
                 var parsedMonster = parserService.parseMonster(templatedMonster, optionalFailures);
                 for (var template in monster.templates) {
