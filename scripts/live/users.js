@@ -8,6 +8,7 @@ var fs = require('fs');
 var async = require('async');
 var crypto = require('crypto');
 var MongoClient = require('mongodb').MongoClient;
+var ObjectID = require('mongodb').ObjectID;
 
 function randomPassword() {
     var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
@@ -101,8 +102,27 @@ command("show <username>", "show a user's info", function (userService, db, user
             console.log("error showing user : " + error.message);
         } else {
             printUser(user);
+            var collections = ['usertexts', 'userfeats', 'userspells', 'usernpcs', 'usermonsters', 'useritems', 'userillustrations', 'usermaps'];
+            async.eachSeries(collections, function(collection, callback){
+                var userContent = {$or: [
+                    {username: username},
+                    {Username: username},
+                    {userId: user._id}
+                ]};
+                db.collection(collection).find(userContent).toArray(function (error, values) {
+                    if (error) {
+                        return callback(error);
+                    }
+                    console.log(collection + ":" + JSON.stringify(values, null, 4));
+                    callback(null);
+                });
+            }, function(error){
+                if (error) {
+                    console.log("error showing user data: " + error.message);
+                }
+                db.close();
+            });
         }
-        db.close();
     });
 });
 
