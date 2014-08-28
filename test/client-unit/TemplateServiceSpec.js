@@ -133,6 +133,14 @@ describe("templateService", function () {
             expect(service.createTemplatedMonster(baseMonster).CR).to.equal(24);
         });
 
+        it("should  add 1 to the CR for advanced template even when CR is a string", function () {
+            baseMonster.templates = {
+                advanced: true
+            };
+            baseMonster.CR = "23";
+            expect(service.createTemplatedMonster(baseMonster).CR).to.equal(24);
+        });
+
         it("should  adjust the xp according to the new  CR", function () {
             baseMonster.templates = {
                 advanced: true
