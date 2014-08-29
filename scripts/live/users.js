@@ -94,8 +94,8 @@ command("list", "list all users", function (userService, db) {
     });
 });
 
-command("listChronicles <username>", "list all chronicles for a username", function (userService, db,username) {
-    userService.listChronicles(username,function (error, chroniclesArray) {
+command("listChronicles <username>", "list all chronicles for a username", function (userService, db, username) {
+    userService.listChronicles(username, function (error, chroniclesArray) {
         if (error) {
             console.log("error listing chronicles : " + error.message);
         } else {
@@ -107,7 +107,19 @@ command("listChronicles <username>", "list all chronicles for a username", funct
         db.close();
     });
 });
-
+command("exportChronicle <chronicleUsername>", "export a chronicle", function (userService, db, chronicleUsername) {
+    var params = chronicleUsername.split(",");
+    console.log(chronicleUsername);
+    console.log(params);
+    userService.exportChronicle(params[0], params[1], function (error, chronicle) {
+        if (error) {
+            console.log("error listing chronicles : " + error.message);
+        } else {
+            fs.writeFileSync('./chronicles/' + chronicle.name + '.json', JSON.stringify(chronicle, null, 4));
+        }
+        db.close();
+    });
+});
 
 command("show <username>", "show a user's info", function (userService, db, username) {
     userService.get(username, function (error, user) {
@@ -128,6 +140,29 @@ command("auth <username>", "test the authentication of a user", function (userSe
                 console.log("error authenticating user : " + error.message);
             } else {
                 console.log("authentication successful");
+            }
+            db.close();
+        });
+    });
+});
+
+command("importChronicle", "import a chronicle to a user", function (userService, db) {
+    async.series([
+        read.bind(null, { prompt: 'chronicle path: ' }),
+        read.bind(null, { prompt: 'User (): ' }),
+    ], function (error, results) {
+        if (error) {
+            console.log("aborted");
+            return db.close();
+        }
+        var username = results[1][0];
+        var jsonPath = results[0][0];
+
+        var chronicle = JSON.parse(fs.readFileSync(jsonPath));
+        userService.importChronicle(username,chronicle, function (error) {
+            if (error) {
+                console.log("error importing chronicle : " + error.message);
+                return db.close();
             }
             db.close();
         });
@@ -243,7 +278,7 @@ command("validate <username>", "validate a user's email address", function (user
 });
 
 command("validateAll", "validate all users email address", function (userService, db) {
-    db.collection('users').update({}, {$set: {emailValidated: true}},{multi:true}, function (error) {
+    db.collection('users').update({}, {$set: {emailValidated: true}}, {multi: true}, function (error) {
         if (error) {
             console.log("error updating users : " + error.message);
             return db.close();
@@ -254,7 +289,7 @@ command("validateAll", "validate all users email address", function (userService
 });
 program.parse(process.argv);
 
-var COMMANDS = ["list", "show", "update", "passwd", "auth", "register", "remove", "validate","validateAll","listChronicles"];
+var COMMANDS = ["list", "show", "update", "passwd", "auth", "register", "remove", "validate", "validateAll", "listChronicles", "exportChronicle","importChronicle"];
 
 if (program.args.length === 0 || COMMANDS.indexOf(program.rawArgs[2]) < 0) {
     program.help();
