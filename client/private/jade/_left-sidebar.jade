@@ -18,7 +18,11 @@ section#left-sidebar.sp-menu.sp-menu-vertical.sp-menu-left.no-print(slide-menu)
                             i.icon.fa.fa-book
                             // span.tab-name Databae
                 header.sp-menu-heading(ng-show="selectedTab === 'campaigns'")
-                    h2.t-title Library
+                    h2(ng-hide="filter").t-title Library
+                        i.is-pointer.icon.fa.fa-search.pull-right(ng-click="toggleFilterInput()")
+                    div(ng-show="filter")
+                        input( name="search" placeholder="Filter...")
+                        i#btnResetSearch.is-pointer.icon.pull-right(ng-click="toggleFilterInput()") x
                     .dropdown.create-dropdown-container.is-pointer
                         a#create-dropdown.create-dropdown.dropdown-toggle.col-xs-12(role='button', data-toggle='dropdown')
                             span.create-dropdown-name {{chronicleName}}
@@ -29,7 +33,7 @@ section#left-sidebar.sp-menu.sp-menu-vertical.sp-menu-left.no-print(slide-menu)
                                     strong {{chronicle.name}}
                             li
                                 a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createChronicle()')
-                                     strong Create new Chronicle
+                                    strong Create new Chronicle
                     span#console
                     .dropdown.create-dropdown-container.is-pointer
                         a#create-dropdown.create-dropdown.dropdown-toggle.col-xs-12(role='button', data-toggle='dropdown')

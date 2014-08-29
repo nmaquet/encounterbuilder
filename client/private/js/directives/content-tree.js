@@ -121,9 +121,12 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     console.log("init tree");
                     console.log(contentTreeService.contentTree());
                     element.fancytree({
-                        extensions: ["dnd", "add-to-encounter"],
+                        extensions: ["dnd", "add-to-encounter", "filter"],
                         source: contentTreeService.contentTree(),
-                        scrollParent:$('.sp-menu-content'),
+                        filter: {
+                            mode: "hide"
+                        },
+                        scrollParent: $('.sp-menu-content'),
                         click: onClick,
                         clickFolderMode: 4,
                         addToEncounter: {
@@ -165,6 +168,28 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     tree = element.fancytree("getTree");
                     contentTreeService.setTree(tree);
                     tree.visit(addExtraClasses);
+
+                    $("input[name=search]").keyup(function (e) {
+                        var n,
+                            leavesOnly = $("#leavesOnly").is(":checked"),
+                            match = $(this).val();
+
+                        if (e && e.which === $.ui.keyCode.ESCAPE || $.trim(match) === "") {
+                            $("i#btnResetSearch").click();
+                            return;
+                        }
+                        // Pass a string to perform case insensitive matching
+                        n = tree.filterNodes(match, leavesOnly);
+                        $("button#btnResetSearch").attr("disabled", false);
+                        $("span#matches").text("(" + n + " matches)");
+                    }).focus();
+
+                    $("i#btnResetSearch").click(function (e) {
+                        $("input[name=search]").val("");
+                        $("span#matches").text("");
+                        tree.clearFilter();
+                    }).attr("disabled", true);
+
                 }
 
                 if (contentTreeService.contentTree()) {

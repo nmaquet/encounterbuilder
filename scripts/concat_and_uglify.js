@@ -21,6 +21,7 @@ var jsFiles = [
     "client/private/bower_components/async/lib/async.js",
     "client/private/bower_components/nouislider/jquery.nouislider.js",
     "client/private/bower_components/fancytree/dist/jquery.fancytree-all.js",
+    "client/private/bower_components/fancytree/dist/jquery.fancytree.filter.js",
     "client/private/bower_components/tinymce/tinymce.min.js",
     "client/private/bower_components/tinymce/themes/modern/theme.min.js",
     "client/private/bower_components/tinymce/plugins/autoresize/plugin.min.js",
