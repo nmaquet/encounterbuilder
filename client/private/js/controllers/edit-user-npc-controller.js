@@ -66,11 +66,14 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserNpcController',
 
             function updateUserNpc() {
                 if ($scope.userNpc) {
-                    var classesObject = parseClass($scope.classesString);
-                    $scope.userNpc.Classes = classesObject.Classes;
-                    $scope.userNpc.Heroic = classesObject.Heroic;
-                    $scope.userNpc.Level = classesObject.Level;
-                    $scope.classesString = $filter("classesToString")($scope.userNpc.Classes);
+                    if ($scope.classesString) {
+                        var classesObject = parseClass($scope.classesString);
+                        $scope.userNpc.Classes = classesObject.Classes;
+                        $scope.userNpc.Heroic = classesObject.Heroic;
+                        $scope.userNpc.Level = classesObject.Level;
+                        $scope.classesString = $filter("classesToString")($scope.userNpc.Classes);
+                    }
+
                     userNpcService.update($scope.userNpc, function (error) {
                         if (error) {
                             console.log(error);
@@ -101,7 +104,9 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserNpcController',
                 }
 
                 $scope.userNpc = userNpc;
-                $scope.classesString = $filter("classesToString")($scope.userNpc.Classes);
+                if ($scope.userNpc.Classes) {
+                    $scope.classesString = $filter("classesToString")($scope.userNpc.Classes);
+                }
                 if ($routeParams.userNpcId) {
                     $rootScope.globalTitle = "Chronicle Forge - " + $scope.userNpc.Name;
                 }
