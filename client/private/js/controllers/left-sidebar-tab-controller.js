@@ -17,6 +17,12 @@ DEMONSQUID.encounterBuilderControllers.controller('LeftSidebarTabController',
             $scope.filter = false;
             $scope.toggleFilterInput = function () {
                 $scope.filter = !$scope.filter;
+                if ($scope.filter) {
+                    $timeout(function () {
+                        $("input#filter-chronicle").focus();
+                        /*FIXME DOM manipulation in controller is bad*/
+                    }, 0);
+                }
             };
 
 

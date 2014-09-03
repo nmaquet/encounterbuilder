@@ -169,9 +169,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     contentTreeService.setTree(tree);
                     tree.visit(addExtraClasses);
 
-                    $("input[name=search]").keyup(function (e) {
+                    $("input#filter-chronicle").keyup(function (e) {
                         var n,
-                            leavesOnly = $("#leavesOnly").is(":checked"),
                             match = $(this).val();
 
                         if (e && e.which === $.ui.keyCode.ESCAPE || $.trim(match) === "") {
@@ -179,14 +178,12 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                             return;
                         }
                         // Pass a string to perform case insensitive matching
-                        n = tree.filterNodes(match, leavesOnly);
+                        n = tree.filterNodes(match, false);
                         $("button#btnResetSearch").attr("disabled", false);
-                        $("span#matches").text("(" + n + " matches)");
                     }).focus();
 
                     $("i#btnResetSearch").click(function (e) {
-                        $("input[name=search]").val("");
-                        $("span#matches").text("");
+                        $("input#filter-chronicle").val("");
                         tree.clearFilter();
                     }).attr("disabled", true);
 
