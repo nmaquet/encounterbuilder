@@ -7,8 +7,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
         function ($timeout, $routeParams, contentTreeService, userMonsterService, userNpcService, encounterEditorService) {
 
             function link(scope, element) {
-
-
                 function activateNodeBasedOnRouteParams() {
                     if (!tree) {
                         return;
@@ -120,6 +118,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
                 function initTree() {
 
+                    console.log("init tree");
+                    console.log(contentTreeService.contentTree());
                     element.fancytree({
                         extensions: ["dnd", "add-to-encounter"],
                         source: contentTreeService.contentTree(),

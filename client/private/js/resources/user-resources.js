@@ -31,6 +31,17 @@
 
     }
 
+    function makeChronicleResource($resource) {
+        var resource = $resource("/api/chronicle/:id", {id: '@_id'}, {
+            'get': {method: 'GET'},
+            'save': {method: 'POST'},
+            'query': {method: 'GET', isArray: true},
+            'delete': {method: 'DELETE'}
+        });
+        return resource
+
+    }
+
     DEMONSQUID.encounterBuilderServices.factory('UserFeatResource', ['$resource', function ($resource) {
         return makeUserResource("user-feat", $resource);
     }]);
@@ -49,6 +60,10 @@
 
     DEMONSQUID.encounterBuilderServices.factory('UserMapResource', ['$resource', function ($resource) {
         return makeUserResource("user-map", $resource);
+    }]);
+
+    DEMONSQUID.encounterBuilderServices.factory('ChronicleResource', ['$resource', function ($resource) {
+        return makeChronicleResource($resource);
     }]);
 
 })();

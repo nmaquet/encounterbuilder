@@ -22,7 +22,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
 
             function updateUserResource(userResource) {
                 userResourceService[resourceType].save(userResource);
-                contentTreeService.userResourceUpdated(userResource);
+                contentTreeService.userResourceUpdated(userResource,resourceType);
             }
 
             $scope.updateUserResource = updateUserResource;

@@ -56,7 +56,7 @@ DEMONSQUID.encounterBuilderServices.factory('locationService',
                     }
                 },
                 getResourceType: function () {
-                    var match = /\/(?:edit-)?(user-)?(npc|monster|feat|spell|item|illustration|map)\//.exec($location.path());
+                    var match = /\/(?:edit-)?(user-)?(npc|monster|feat|spell|item|illustration|map|chronicle)\//.exec($location.path());
                     return match && ((match[1] || "") + match[2]);
                 }
             };

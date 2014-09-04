@@ -3,13 +3,56 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EditUserNpcController',
-    ['$rootScope', '$scope', '$timeout', '$routeParams', '$location', '$sce', 'userNpcService', 'contentTreeService', 'locationService',
-        function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, userNpcService, contentTreeService, locationService) {
+    ['$rootScope', '$scope', '$timeout', '$routeParams', '$location', '$sce', '$filter', 'userNpcService', 'contentTreeService', 'locationService',
+        function ($rootScope, $scope, $timeout, $routeParams, $location, $sce, $filter, userNpcService, contentTreeService, locationService) {
             $scope.tinymceOptions = {
                 resize: false,
                 menubar: false,
                 toolbar: "bold italic underline strikethrough alignleft aligncenter alignright alignjustify bullist numlist outdent indent blockquote formatselect undo redo removeformat subscript superscript"
             };
+
+
+            function parseClass(Class) {
+                var basicClasses = ['commoner', 'aristocrat', 'expert', 'warrior', 'adept'];
+
+                function parseSingleClass(singleClass) {
+                    var words = singleClass.split(" ");
+                    var readClass = '';
+                    var classLevel = 0;
+                    for (var i in words) {
+                        if (isNaN(Number(words[i]))) {
+                            if (i > 0) {
+                                readClass += " ";
+                            }
+                            readClass += words[i]
+                        }
+                        else {
+                            classLevel = Number(words[i]);
+                        }
+                    }
+                    return {Class: readClass.trim(), Level: classLevel};
+                }
+
+                if (Class.indexOf('/') === -1) {
+                    var singleClass = parseSingleClass(Class);
+                    var heroic = basicClasses.indexOf(singleClass.class) === -1;
+                    return {'Heroic': heroic, 'Level': singleClass.Level, 'Classes': [singleClass]};
+                }
+                else {
+                    var classes = Class.split('/');
+                    var multipleClasses = [];
+                    var heroic = false;
+                    var level = 0;
+                    for (var j in classes) {
+                        multipleClasses[j] = parseSingleClass(classes[j]);
+                        level += multipleClasses[j].Level;
+                        if (!heroic) {
+                            heroic = basicClasses.indexOf(multipleClasses[j].class) === -1;
+                        }
+                    }
+                    return {'Heroic': heroic, 'Level': level, 'Classes': multipleClasses};
+                }
+            }
 
             $scope.viewUserNpc = function () {
                 if ($scope.userNpc) {
@@ -23,6 +66,14 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserNpcController',
 
             function updateUserNpc() {
                 if ($scope.userNpc) {
+                    if ($scope.classesString) {
+                        var classesObject = parseClass($scope.classesString);
+                        $scope.userNpc.Classes = classesObject.Classes;
+                        $scope.userNpc.Heroic = classesObject.Heroic;
+                        $scope.userNpc.Level = classesObject.Level;
+                        $scope.classesString = $filter("classesToString")($scope.userNpc.Classes);
+                    }
+
                     userNpcService.update($scope.userNpc, function (error) {
                         if (error) {
                             console.log(error);
@@ -53,6 +104,9 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserNpcController',
                 }
 
                 $scope.userNpc = userNpc;
+                if ($scope.userNpc.Classes) {
+                    $scope.classesString = $filter("classesToString")($scope.userNpc.Classes);
+                }
                 if ($routeParams.userNpcId) {
                     $rootScope.globalTitle = "Chronicle Forge - " + $scope.userNpc.Name;
                 }

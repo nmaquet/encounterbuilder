@@ -130,6 +130,7 @@ function main(db) {
     var userItemRoute = require('./userResourceRoute')(collections.userItems, collections.magicitems, ObjectID);
     var userIllustrationRoute = require('./userImageResourceRoute')(collections.userIllustrations, ObjectID);
     var userMapRoute = require('./userImageResourceRoute')(collections.userMaps, ObjectID);
+    var chronicleRoute = require('./userResourceRoute')(collections.chronicles,null,ObjectID);
 
     app.get('/api/search-monsters', metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', metrics.logSearchNpc, searchNpcsRoute);
@@ -161,6 +162,7 @@ function main(db) {
     app.post("/api/change-user-data", enableCORS, changeUserDataRoute);
     app.post("/api/save-content-tree", contentTreeRoute.updateContentTree);
     app.post("/api/save-favourites", favouritesRoute.update);
+
 
     app.post("/api/create-user-monster", /* TODO METRICS */ userMonsterRoute.create);
     app.post("/api/copy-monster", /* TODO METRICS */ userMonsterRoute.copy);
@@ -207,6 +209,12 @@ function main(db) {
     app.post("/api/user-map/:id", userMapRoute.updateResource);
     app.delete("/api/user-map/:id", userMapRoute.deleteResource);
 
+    /*Chronicles*/
+    app.get("/api/chronicle", disableCaching, chronicleRoute.query);
+    app.get("/api/chronicle/:id", enableCaching, chronicleRoute.getResource);
+    app.post("/api/chronicle/:id", chronicleRoute.updateResource);
+    app.post("/api/chronicle", chronicleRoute.createResource);
+
     var APP_JADE_FILES = [
         'feedback-popover',
         'login',
@@ -232,7 +240,8 @@ function main(db) {
         'spell',
         'feat',
         'printable-encounter',
-        'user-image-resource'
+        'user-image-resource',
+        'chronicle'
     ];
 
     for (var i in APP_JADE_FILES) {

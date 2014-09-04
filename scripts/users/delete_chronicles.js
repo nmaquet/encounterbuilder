@@ -27,7 +27,7 @@ MongoClient.connect(MONGODB_URL, function (error, db) {
 function main(db) {
     var jobs = [];
     var sources = [];
-    db.collection("contenttrees").remove({}, function (error, count) {
+    db.collection("chronicles").remove({}, function (error, count) {
         console.log(error);
         console.log(count + " removed");
         db.close();

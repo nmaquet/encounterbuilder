@@ -24,8 +24,8 @@
                 span
                     strong XP
                     | &nbsp;{{userNpc.XP}}
-            li(ng-if="userNpc.Gender||userNpc.Race||userNpc.ClassesString")
-                span {{userNpc.Gender}} {{userNpc.Race}} {{userNpc.ClassesString}}
+            li(ng-if="userNpc.Gender||userNpc.Race||userNpc.Classes")
+                span {{userNpc.Gender}} {{userNpc.Race}} {{userNpc.Classes|classesToString}}
             li
                 span
                     strong {{userNpc.Alignment}}

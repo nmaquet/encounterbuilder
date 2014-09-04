@@ -12,6 +12,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             var contentTree = null;
             var fancyTree = null;
             var nodeKey = null;
+            var chronicleId = null;
 
             //FIXME removeExtraClasses and addExtraClasses are both here and in content-tree.js
             function removeExtraClasses(dict) {
@@ -19,6 +20,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     delete dict.extraClasses;
                 }
             }
+
 
             function addExtraClasses(newNode) {
                 if (newNode.userMonsterId) {
@@ -99,18 +101,41 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 }
             }
 
-            $http.post('/api/user-data')
-                .success(function (userData) {
-                    if (userData.contentTree) {
-                        contentTree = userData.contentTree;
-                    }
-                    $rootScope.$emit(LOAD_SUCCESS);
-                })
-                .error(function (error) {
-                    console.log(error);
-                    $window.location.href = '/';
-                });
+            //FIXME store current chronicle in a user params object somewhere in database or cookie
+            var chronicleResource = userResourceService["chronicle"];
+            var currentChronicle = null;
 
+            function loadChronicle(chronicleId) {
+                chronicleResource.get({id: chronicleId}, function (chronicle) {
+                    console.log(chronicle);
+                    contentTree = chronicle.contentTree;
+                    currentChronicle = chronicle;
+                    $rootScope.$emit(LOAD_SUCCESS);
+                });
+            }
+
+            function reLoadChronicle(id) {
+                console.log("reLoadChronicle");
+                chronicleId = id;
+                chronicleResource.get({id: chronicleId}, function (chronicle) {
+                    contentTree = chronicle.contentTree;
+                    currentChronicle = chronicle;
+                    fancyTree.reload(contentTree);
+                });
+            }
+
+            chronicleResource.query(function (chronicles) {
+                chronicleId = (chronicles[0]._id);
+                loadChronicle(chronicleId);
+            });
+
+            service.chronicleName = function () {
+                if (currentChronicle) {
+                    return currentChronicle.name;
+                }
+            };
+
+            service.reloadChronicleTree = reLoadChronicle;
             service.goToNode = function (node) {
                 if (node.data.encounterId) {
                     locationService.go("/encounter/" + node.data.encounterId);
@@ -353,7 +378,11 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
-            service.userResourceUpdated = function (userResource) {
+            service.userResourceUpdated = function (userResource,resourceType) {
+                if (resourceType && resourceType==="chronicle"){
+                    currentChronicle = userResource;
+                    return;
+                }
                 fancyTree.visit(function (node) {
                     if (node.data.userResourceId && node.data.userResourceId === userResource._id) {
                         var name = userResource.name || userResource.Name;
@@ -427,16 +456,13 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
 
             service.treeChanged = function (tree) {
                 contentTree = tree;
+
                 if (contentTree && fancyTree) {
                     if (fancyTree.count() === 0) {
                         contentTree = [];
                     }
-                    $http.post('/api/save-content-tree', { contentTree: contentTree })
-                        .success(function (data) {
-                        })
-                        .error(function (error) {
-                            console.log(error);
-                        });
+                    currentChronicle.contentTree = contentTree;
+                    currentChronicle.$save();
                 }
             };
 

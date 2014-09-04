@@ -64,6 +64,16 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
                 }
             });
         },
+        query: function (request, response) {
+            userCollection.find({userId: ObjectID(request.user._id)}, {fields: {name: 1, _id: 1}}).toArray(function (error, data) {
+                if (error) {
+                    response.send(404);
+                }
+                else {
+                    response.json(data);
+                }
+            });
+        },
         updateResource: function (request, response) {
             var sessionUserId = request.user._id;
             var paramsResourceId = request.params.id;
