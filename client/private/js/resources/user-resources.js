@@ -66,5 +66,8 @@
         return makeChronicleResource($resource);
     }]);
 
+    DEMONSQUID.encounterBuilderServices.factory('UserMonsterResource', ['$resource', function ($resource) {
+        return makeUserResource("user-monster", $resource);
+    }]);
 })();
 

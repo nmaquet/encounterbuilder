@@ -27,14 +27,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                             }
                         });
                     }
-                    else if ($routeParams.userMonsterId) {
-                        tree.visit(function (node) {
-                            if (node.data.userMonsterId && node.data.userMonsterId === $routeParams.userMonsterId) {
-                                node.setActive(true);
-                                return false;
-                            }
-                        });
-                    }
                     else if ($routeParams.userNpcId) {
                         tree.visit(function (node) {
                             if (node.data.userNpcId && node.data.userNpcId === $routeParams.userNpcId) {
@@ -179,6 +171,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         }
                         // Pass a string to perform case insensitive matching
                         n = tree.filterNodes(match, false);
+                        console.log("filterNodes");
                         $("button#btnResetSearch").attr("disabled", false);
                     }).focus();
 
