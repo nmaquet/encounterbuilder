@@ -3,8 +3,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
-    ['$rootScope', '$timeout', '$http', 'encounterService', 'userMonsterService', 'userNpcService', 'userTextService', 'locationService', 'userResourceService',
-        function ($rootScope, $timeout, $http, encounterService, userMonsterService, userNpcService, userTextService, locationService, userResourceService) {
+    ['$rootScope', '$timeout', '$http', 'encounterService',  'userNpcService', 'userTextService', 'locationService', 'userResourceService',
+        function ($rootScope, $timeout, $http, encounterService,  userNpcService, userTextService, locationService, userResourceService) {
 
             var LOAD_SUCCESS = "contentTreeLoaded";
 
@@ -471,9 +471,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     });
                 });
                 tasks.push(function (taskCallback) {
-                    userMonsterService.getMultiple(userMonsterIds, function (error, monsters) {
-                        taskCallback(error, monsters);
-                    });
+                    userResourceService["user-monster"].getMultiple(userMonsterIds,taskCallback);
                 });
                 tasks.push(function (taskCallback) {
                     userNpcService.getMultiple(userNpcsIds, function (error, npcs) {

@@ -3,8 +3,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
-    ['$timeout', '$routeParams', 'contentTreeService', 'userMonsterService', 'userNpcService', 'encounterEditorService',
-        function ($timeout, $routeParams, contentTreeService, userMonsterService, userNpcService, encounterEditorService) {
+    ['$timeout', '$routeParams', 'contentTreeService',  'userNpcService', 'encounterEditorService',
+        function ($timeout, $routeParams, contentTreeService,  userNpcService, encounterEditorService) {
 
             function link(scope, element) {
                 function activateNodeBasedOnRouteParams() {
