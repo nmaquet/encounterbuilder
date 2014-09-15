@@ -9,7 +9,7 @@ var levenshtein = require("fast-levenshtein");
 var fakeMongoose = {model: function () {
 }};
 
-var srd_monsters = require("../data/contrib/monsters_partial.json");
+var srd_monsters = require("../data/contrib/monster_bestiary_partial_20140823.json");
 var kyle_monsters = require("../data/contrib/monsters_kyle.json");
 var MONSTER_ATTRIBUTES = require('./monsterModel')(fakeMongoose).MONSTER_ATTRIBUTES;
 
@@ -371,7 +371,10 @@ function cleanupSRDMonster(srdMonster, $) {
         var attributeFilter = ATTRIBUTE_FILTERS[attribute];
         if (attributeFilter) {
             monster[attribute] = attributeFilter(srdMonster, $);
-        } else {
+        } else if (typeof srdMonster[attribute] === "number"){
+            monster[attribute] = srdMonster[attribute];
+        }
+        else{
             monster[attribute] = srdMonster[attribute].trim();
         }
         if (monster[attribute] === '') {

@@ -23,7 +23,7 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
             .when('/tutorial', { templateUrl: 'tutorial.html' })
             .when('/encounter/:encounterId/:type/:detailsId', { templateUrl: 'encounter.html' })
             .when('/encounter/:encounterId', { templateUrl: 'encounter.html' })
-            .when('/user-monster/:userMonsterId', { templateUrl: 'user-monster.html' })
+            .when('/user-monster/:userResourceId', { templateUrl: 'user-monster.html' })
             .when('/user-npc/:userNpcId', { templateUrl: 'user-npc.html' })
             .when('/user-text/:userTextId', { templateUrl: 'user-text.html' })
 
@@ -44,10 +44,10 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
             /* user-map */
             .when('/user-map/:userResourceId', { templateUrl: 'user-image-resource.html' })
 
-            .when('/edit-user-monster/:userMonsterId/:type/:detailsId', { templateUrl: 'edit-user-monster.html' })
+            .when('/edit-user-monster/:userResourceId/:type/:detailsId', { templateUrl: 'edit-user-monster.html' })
             .when('/edit-user-npc/:userNpcId/:type/:detailsId', { templateUrl: 'edit-user-npc.html' })
             .when('/edit-user-text/:userTextId/:type/:detailsId', { templateUrl: 'edit-user-text.html' })
-            .when('/edit-user-monster/:userMonsterId', { templateUrl: 'edit-user-monster.html' })
+            .when('/edit-user-monster/:userResourceId', { templateUrl: 'edit-user-monster.html' })
             .when('/edit-user-npc/:userNpcId', { templateUrl: 'edit-user-npc.html' })
             .when('/edit-user-text/:userTextId', { templateUrl: 'edit-user-text.html' })
             .when('/print-encounter/:encounterId', { templateUrl: 'printable-encounter.html' })

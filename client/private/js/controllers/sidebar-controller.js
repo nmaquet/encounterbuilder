@@ -19,7 +19,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SidebarController',
             };
 
             $scope.createUserMonster = function () {
-                contentTreeService.createUserMonster();
+                contentTreeService.createUserResource("user-monster");
             };
             $scope.createUserNpc = function () {
                 contentTreeService.createUserNpc();
