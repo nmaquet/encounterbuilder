@@ -14,7 +14,9 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
                 response.json(500);
             }
             else {
-                response.json(newResourceArray[0]);
+                var newResource = newResourceArray[0];
+                response.setHeader("Location", request.path + "/" + newResource._id);
+                response.status(201).json(newResource);
             }
         });
     }
@@ -40,12 +42,14 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
                 return response.send(404);
             }
             baseResource.userId = ObjectID(sessionUserId);
-            userCollection.insert(baseResource, function (error, userResources) {
+            userCollection.insert(baseResource, function (error, newResourceArray) {
                 if (error) {
                     response.send(500);
                 }
                 else {
-                    response.json(userResources[0]);
+                    var newResource = newResourceArray[0];
+                    response.setHeader("Location", request.path + "/" + newResource._id);
+                    response.status(201).json(newResource);
                 }
             });
         });

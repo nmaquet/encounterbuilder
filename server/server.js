@@ -60,7 +60,6 @@ function main(db) {
         app.use(express.urlencoded());
         app.use(express.methodOverride());
         app.use(express.cookieParser());
-        app.disable("etag");
     });
 
     function disableCaching(request, response, next) {
@@ -137,11 +136,11 @@ function main(db) {
     app.get('/api/search-spells', metrics.logSearchSpell, searchSpellsRoute);
     app.get('/api/search-feats', metrics.logSearchFeat, searchFeatsRoute);
     app.get('/api/search-magic-items', metrics.logSearchItem, searchMagicItemsRoute);
-    app.get('/api/monster/:id', metrics.logSelectMonster, monsterRoute);
-    app.get('/api/magic-item/:id', metrics.logSelectItem, magicItemRoute);
-    app.get('/api/npc/:id', metrics.logSelectNpc, npcRoute);
-    app.get('/api/spell/:id', metrics.logSelectSpell, spellRoute);
-    app.get('/api/feat/:id', metrics.logSelectFeat, featRoute);
+    app.get('/api/monster/:id', enableCaching, metrics.logSelectMonster, monsterRoute);
+    app.get('/api/magic-item/:id', enableCaching, metrics.logSelectItem, magicItemRoute);
+    app.get('/api/npc/:id', enableCaching, metrics.logSelectNpc, npcRoute);
+    app.get('/api/spell/:id', enableCaching, metrics.logSelectSpell, spellRoute);
+    app.get('/api/feat/:id', enableCaching, metrics.logSelectFeat, featRoute);
     app.get('/api/encounter/:id', metrics.logSelectEncounter, encounterRoute.findOne);
 
 //    app.get('/api/user-monster/:id', disableCaching, /* TODO METRICS */ userMonsterRoute.findOne);

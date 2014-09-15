@@ -25,7 +25,7 @@ DEMONSQUID.encounterBuilderServices.factory('monsterService', ['$http', function
                 });
         },
         get: function (id, callback) {
-            $http.get('/api/monster/' + id, {cache: true})
+            $http.get('/api/monster/' + id)
                 .success(function (data) {
                     callback(data.error, data.monster);
                 })
@@ -36,7 +36,7 @@ DEMONSQUID.encounterBuilderServices.factory('monsterService', ['$http', function
         getMultiple: function (ids, callback) {
             function pushTask(id) {
                 tasks.push(function (taskCallback) {
-                        $http.get('/api/monster/' + id, {cache: true})
+                        $http.get('/api/monster/' + id)
                             .success(function (data) {
                                 taskCallback(null, data.monster);
                             })

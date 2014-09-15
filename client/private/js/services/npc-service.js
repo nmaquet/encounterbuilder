@@ -29,7 +29,7 @@ DEMONSQUID.encounterBuilderServices.factory('npcService', ['$http', function ($h
                 });
         },
         get: function (id, callback) {
-            $http.get('/api/npc/' + id, {cache: true})
+            $http.get('/api/npc/' + id)
                 .success(function (data) {
                     callback(data.error, data.npc);
                 })
@@ -40,7 +40,7 @@ DEMONSQUID.encounterBuilderServices.factory('npcService', ['$http', function ($h
         getMultiple: function (ids, callback) {
             function pushTask(id) {
                 tasks.push(function (taskCallback) {
-                        $http.get('/api/npc/' + id, {cache: true})
+                        $http.get('/api/npc/' + id)
                             .success(function (data) {
                                 taskCallback(null, data.npc);
                             })
