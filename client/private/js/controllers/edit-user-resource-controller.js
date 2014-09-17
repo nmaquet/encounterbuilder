@@ -22,18 +22,41 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
             };
 
             function updateUserResource(userResource) {
-                userResourceService[resourceType].save(userResource);
-                contentTreeService.userResourceUpdated(userResource,resourceType);
+                userResourceService[resourceType].save(userResource,
+                    function success(newUserResource) {
+                        userResource.uuid = newUserResource.uuid;
+                    },
+                    function error(error) {
+                        if (error.status === 409) {
+                            /* if save conflict detected, replace client resource with resource from the server */
+                            getUserResource();
+                        }
+                    });
+                contentTreeService.userResourceUpdated(userResource, resourceType);
             }
 
-            $scope.updateUserResource = updateUserResource;
+            $scope.nouuid = function (userResource) {
+                                var result = angular.copy(userResource);
+                                delete result.uuid;
+                                return result;
+                            };
 
-            $scope.userResource = userResourceService[resourceType].get({id: $routeParams.userResourceId}, function () {
-                var throttledSave = throttle(updateUserResource, 1000);
-                $scope.$watch('userResource', function (userResource) {
-                    throttledSave(userResource);
-                }, true /* deep equality */);
-            });
+            $scope.updateUserResource = updateUserResource;
+            var cancelWatch = function() {};
+            function getUserResource() {
+                cancelWatch();
+                console.log(userResourceService, null, 4);
+                console.log(resourceType, null, 4);
+                console.log(JSON.stringify(userResourceService[resourceType], null, 4));
+                $scope.userResource = userResourceService[resourceType].getNoCache({id: $routeParams.userResourceId}, function () {
+                    var throttledSave = throttle(updateUserResource, 1000);
+                    cancelWatch = $scope.$watch('nouuid(userResource)', function () {
+                        throttledSave($scope.userResource);
+                    }, true /* deep equality */);
+                });
+            }
+
+            getUserResource();
 
             $scope.$on('$locationChangeStart', function () {
                 contentTreeService.userResourceUpdated($scope.userResource);

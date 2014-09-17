@@ -35,7 +35,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
             $scope.pending = true;
 
             function updateUserResource(userResource) {
-                userResourceService[resourceType].save(userResource);
+                userResource.$save();
                 contentTreeService.userResourceUpdated(userResource,resourceType);
             }
 

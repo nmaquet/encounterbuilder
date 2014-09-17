@@ -6,6 +6,7 @@
 
     function makeUserResource(resourceSlug, $resource) {
         var resource = $resource("/api/" + resourceSlug + "/:id", {id: '@_id'}, {
+            'getNoCache' : {method: 'GET', headers: {"Cache-Control": "no-cache"}},
             'get': {method: 'GET'},
             'save': {method: 'POST'},
             'delete': {method: 'DELETE'}
@@ -68,6 +69,9 @@
 
     DEMONSQUID.encounterBuilderServices.factory('UserMonsterResource', ['$resource', function ($resource) {
         return makeUserResource("user-monster", $resource);
+    }]);
+    DEMONSQUID.encounterBuilderServices.factory('UserNpcResource', ['$resource', function ($resource) {
+        return makeUserResource("user-npc", $resource);
     }]);
 })();
 
