@@ -42,9 +42,6 @@ DEMONSQUID.encounterBuilderServices.factory('encounterEditorService',
 
             function addResourceToEncounter(resource, id, encounterListName, templated) {
                 resource.get({id: id}, function (toAdd) {
-                    if (error) {
-                        return console.log(error);
-                    }
                     if (templated) {
                         toAdd = templateService.createTemplatedMonster(toAdd);
                     }
@@ -83,7 +80,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterEditorService',
                         addResourceToEncounter(userResourceService["user-monster"],id, "Monsters", true);
                     }
                     else {
-                        addResourceToEncounter(userResourceService["user-npc"],id, "Npcs", true);
+                        addResourceToEncounter(userResourceService["user-npc"],id, "Npcs", false);
                     }
                 }
             }

@@ -2,8 +2,8 @@
 
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', '$rootScope', '$cacheFactory', 'crService', 'userResourceService', 'userNpcService', 'templateService',
-    function ($timeout, $http, $rootScope, $cacheFactory, crService, userResourceService, userNpcService, templateService) {
+DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', '$rootScope', '$cacheFactory', 'crService', 'userResourceService', 'templateService',
+    function ($timeout, $http, $rootScope, $cacheFactory, crService, userResourceService,  templateService) {
 
         function calculateXp(encounter) {
             var xp = 0;
@@ -159,7 +159,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                     continue;
                 }
                 (function (monster, monsterId) {
-                    userResourceService["user-monster"].get(monsterId, function (newMonster) {
+                    userResourceService["user-monster"].get({id:monsterId}, function (newMonster) {
                         newMonster = templateService.createTemplatedMonster(newMonster);
                         if (newMonster) {
                             monster.Name = newMonster.Name;
@@ -187,7 +187,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                     continue;
                 }
                 (function (npc, npcId) {
-                    userNpcService.get(npcId, function (error, newNpc) {
+                    userResourceService["user-npc"].get({id:npcId}, function (newNpc) {
                         if (newNpc) {
                             npc.Name = newNpc.Name;
                             npc.XP = newNpc.XP;

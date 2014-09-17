@@ -22,6 +22,13 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
             };
 
             function updateUserResource(userResource) {
+                if ($scope.classesString) {
+                    var classesObject = parseClass($scope.classesString);
+                    $scope.userResource.Classes = classesObject.Classes;
+                    $scope.userResource.Heroic = classesObject.Heroic;
+                    $scope.userResource.Level = classesObject.Level;
+                    $scope.classesString = $filter("classesToString")($scope.userResource.Classes);
+                }
                 userResourceService[resourceType].save(userResource,
                     function success(newUserResource) {
                         userResource.uuid = newUserResource.uuid;
@@ -43,16 +50,17 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
 
             $scope.updateUserResource = updateUserResource;
             var cancelWatch = function() {};
+
             function getUserResource() {
                 cancelWatch();
-                console.log(userResourceService, null, 4);
-                console.log(resourceType, null, 4);
-                console.log(JSON.stringify(userResourceService[resourceType], null, 4));
                 $scope.userResource = userResourceService[resourceType].getNoCache({id: $routeParams.userResourceId}, function () {
                     var throttledSave = throttle(updateUserResource, 1000);
                     cancelWatch = $scope.$watch('nouuid(userResource)', function () {
                         throttledSave($scope.userResource);
                     }, true /* deep equality */);
+                    if ($scope.userResource.Classes) {
+                        $scope.classesString = $filter("classesToString")($scope.userResource.Classes);
+                    }
                 });
             }
 

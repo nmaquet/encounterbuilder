@@ -3,8 +3,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
-    ['$rootScope', '$timeout', '$http', 'encounterService',  'userNpcService', 'userTextService', 'locationService', 'userResourceService',
-        function ($rootScope, $timeout, $http, encounterService,  userNpcService, userTextService, locationService, userResourceService) {
+    ['$rootScope', '$timeout', '$http', 'encounterService',   'userTextService', 'locationService', 'userResourceService',
+        function ($rootScope, $timeout, $http, encounterService,   userTextService, locationService, userResourceService) {
 
             var LOAD_SUCCESS = "contentTreeLoaded";
 

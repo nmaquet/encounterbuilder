@@ -3,8 +3,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
-    ['$timeout', '$routeParams', 'contentTreeService',  'userNpcService', 'encounterEditorService',
-        function ($timeout, $routeParams, contentTreeService,  userNpcService, encounterEditorService) {
+    ['$timeout', '$routeParams', 'contentTreeService', 'encounterEditorService',
+        function ($timeout, $routeParams, contentTreeService, encounterEditorService) {
 
             function link(scope, element) {
                 function activateNodeBasedOnRouteParams() {
@@ -68,16 +68,16 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
                 function onPlusButtonClick(node) {
                     var type = null;
-                    if (node.data.userMonsterId) {
+                    if (node.data.resourceType === "user-monster") {
                         type = "monster"
                     }
-                    else if (node.data.userNpcId) {
+                    else if (node.data.resourceType === "user-npc") {
                         type = "npc"
                     }
                     else {
                         type = "item";
                     }
-                    var id = node.data.userMonsterId || node.data.userNpcId || node.data.userResourceId;
+                    var id = node.data.userResourceId;
                     if (type === "item") {
                         encounterEditorService.addUserItem(id);
                     } else {
