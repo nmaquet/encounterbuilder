@@ -6,6 +6,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
     ['$scope', '$routeParams', 'userResourceService', 'contentTreeService', 'locationService', 'throttle',
         function ($scope, $routeParams, userResourceService, contentTreeService, locationService, throttle) {
 
+
             $scope.tinymceOptions = {
                 resize: false,
                 menubar: false,
@@ -40,6 +41,48 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
             });
 
             // FIXME: change title !
+
+            function parseClass(Class) {
+                var basicClasses = ['commoner', 'aristocrat', 'expert', 'warrior', 'adept'];
+
+                function parseSingleClass(singleClass) {
+                    var words = singleClass.split(" ");
+                    var readClass = '';
+                    var classLevel = 0;
+                    for (var i in words) {
+                        if (isNaN(Number(words[i]))) {
+                            if (i > 0) {
+                                readClass += " ";
+                            }
+                            readClass += words[i]
+                        }
+                        else {
+                            classLevel = Number(words[i]);
+                        }
+                    }
+                    return {Class: readClass.trim(), Level: classLevel};
+                }
+
+                if (Class.indexOf('/') === -1) {
+                    var singleClass = parseSingleClass(Class);
+                    var heroic = basicClasses.indexOf(singleClass.class) === -1;
+                    return {'Heroic': heroic, 'Level': singleClass.Level, 'Classes': [singleClass]};
+                }
+                else {
+                    var classes = Class.split('/');
+                    var multipleClasses = [];
+                    var heroic = false;
+                    var level = 0;
+                    for (var j in classes) {
+                        multipleClasses[j] = parseSingleClass(classes[j]);
+                        level += multipleClasses[j].Level;
+                        if (!heroic) {
+                            heroic = basicClasses.indexOf(multipleClasses[j].class) === -1;
+                        }
+                    }
+                    return {'Heroic': heroic, 'Level': level, 'Classes': multipleClasses};
+                }
+            }
         }
     ])
 ;

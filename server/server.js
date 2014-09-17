@@ -108,7 +108,7 @@ function main(db) {
     var searchSpellsRoute = require('./searchSpellsRoute')(collections.spells, FIND_LIMIT);
     var searchFeatsRoute = require('./searchFeatsRoute')(collections.feats, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(collections.monsters);
-    var userNpcRoute = require('./userNpcRoute')(collections.userNpcs, collections.npcs, ObjectID);
+    var userNpcRoute = require('./userResourceRoute')(collections.userNpcs, collections.npcs, ObjectID);
     var userTextRoute = require('./userTextRoute')(collections.userTexts, ObjectID);
     var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
     var npcRoute = require('./npcRoute')(collections.npcs);
@@ -144,7 +144,7 @@ function main(db) {
     app.get('/api/encounter/:id', metrics.logSelectEncounter, encounterRoute.findOne);
 
 //    app.get('/api/user-monster/:id', disableCaching, /* TODO METRICS */ userMonsterRoute.findOne);
-    app.get('/api/user-npc/:id', disableCaching, /* TODO METRICS */ userNpcRoute.findOne);
+
     app.get('/api/user-text/:id', disableCaching, /* TODO METRICS */ userTextRoute.findOne);
     app.get("/api/favourites", disableCaching, favouritesRoute.fetch);
 
@@ -168,21 +168,27 @@ function main(db) {
 //    app.post("/api/update-user-monster", /* TODO METRICS */ userMonsterRoute.update);
 //    app.post("/api/delete-user-monster", /* TODO METRICS */ userMonsterRoute.delete);
 
-    app.post("/api/create-user-npc", /* TODO METRICS */ userNpcRoute.create);
-    app.post("/api/copy-npc", /* TODO METRICS */ userNpcRoute.copy);
-    app.post("/api/update-user-npc", /* TODO METRICS */ userNpcRoute.update);
-    app.post("/api/delete-user-npc", /* TODO METRICS */ userNpcRoute.delete);
+//    app.post("/api/create-user-npc", /* TODO METRICS */ userNpcRoute.create);
+//    app.post("/api/copy-npc", /* TODO METRICS */ userNpcRoute.copy);
+//    app.post("/api/update-user-npc", /* TODO METRICS */ userNpcRoute.update);
+//    app.post("/api/delete-user-npc", /* TODO METRICS */ userNpcRoute.delete);
 
     app.post("/api/create-user-text", /* TODO METRICS */ userTextRoute.create);
     app.post("/api/copy-text", /* TODO METRICS */ userTextRoute.copy);
     app.post("/api/update-user-text", /* TODO METRICS */ userTextRoute.update);
     app.post("/api/delete-user-text", /* TODO METRICS */ userTextRoute.delete);
 
-    /* User Resource */
+    /* User Monster */
     app.get("/api/user-monster/:id", enableCaching, userMonsterRoute.getResource);
     app.post("/api/user-monster", userMonsterRoute.createResource);
     app.post("/api/user-monster/:id", userMonsterRoute.updateResource);
     app.delete("/api/user-monster/:id", userMonsterRoute.deleteResource);
+
+    /* User Npc */
+    app.get("/api/user-npc/:id", enableCaching, userNpcRoute.getResource);
+    app.post("/api/user-npc", userNpcRoute.createResource);
+    app.post("/api/user-npc/:id", userNpcRoute.updateResource);
+    app.delete("/api/user-npc/:id", userNpcRoute.deleteResource);
 
     /* User Item */
     app.get("/api/user-feat/:id", enableCaching, userFeatRoute.getResource);

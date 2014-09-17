@@ -3,8 +3,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('encounterEditorService',
-    ['$routeParams', 'monsterService', 'npcService', 'userNpcService', 'encounterService', 'templateService', 'userResourceService', 'itemService',
-        function ($routeParams, monsterService, npcService, userNpcService, encounterService, templateService, userResourceService, itemService) {
+    ['$routeParams', 'monsterService', 'npcService',  'encounterService', 'templateService', 'userResourceService', 'itemService',
+        function ($routeParams, monsterService, npcService, encounterService, templateService, userResourceService, itemService) {
             function addToEncounter(dbService, id, encounterListName, templated) {
                 dbService.get(id, function (error, toAdd) {
                     if (error) {
@@ -83,7 +83,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterEditorService',
                         addResourceToEncounter(userResourceService["user-monster"],id, "Monsters", true);
                     }
                     else {
-                        addToEncounter(userNpcService, id, "Npcs", false);
+                        addResourceToEncounter(userResourceService["user-npc"],id, "Npcs", true);
                     }
                 }
             }
