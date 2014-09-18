@@ -120,7 +120,8 @@ function main(db) {
     var registerRoute = require('./registerRoute')(userService);
     var validateEmailRoute = require('./validateEmailRoute')(userService);
     var userDataRoute = require('./userDataRoute')(collections.contentTrees, userService);
-    var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
+    var encounterRoute = require('./userResourceRoute')(collections.encounters, null, ObjectID);
+    var generateLootRoute = require('./generateLootRoute')(lootService);
     var contentTreeRoute = require('./contentTreeRoute')(collections.contentTrees);
     var favouritesRoute = require('./favouritesRoute')(collections.favourites);
     var userFeatRoute = require('./userResourceRoute')(collections.userFeats, collections.feats, ObjectID);
@@ -141,7 +142,7 @@ function main(db) {
     app.get('/api/npc/:id', enableCaching, metrics.logSelectNpc, npcRoute);
     app.get('/api/spell/:id', enableCaching, metrics.logSelectSpell, spellRoute);
     app.get('/api/feat/:id', enableCaching, metrics.logSelectFeat, featRoute);
-    app.get('/api/encounter/:id', metrics.logSelectEncounter, encounterRoute.findOne);
+//    app.get('/api/encounter/:id', metrics.logSelectEncounter, encounterRoute.findOne);
 
 //    app.get('/api/user-monster/:id', disableCaching, /* TODO METRICS */ userMonsterRoute.findOne);
 
@@ -153,10 +154,10 @@ function main(db) {
     app.post("/login", metrics.logLogin, enableCORS, loginRoute.post);
     app.post("/register", /* TODO METRICS */ enableCORS, registerRoute);
     app.get("/validate-email", disableCaching, /* TODO METRICS */ validateEmailRoute);
-    app.post("/api/update-encounter", metrics.logUpdateEncounter, encounterRoute.update);
-    app.post("/api/create-encounter", metrics.logCreateEncounter, encounterRoute.create);
-    app.post("/api/remove-encounter", metrics.logRemoveEncounter, encounterRoute.delete);
-    app.post("/api/generate-encounter-loot", metrics.logGenerateEncounterLoot, encounterRoute.generateLoot);
+//    app.post("/api/update-encounter", metrics.logUpdateEncounter, encounterRoute.update);
+//    app.post("/api/create-encounter", metrics.logCreateEncounter, encounterRoute.create);
+//    app.post("/api/remove-encounter", metrics.logRemoveEncounter, encounterRoute.delete);
+    app.post("/api/generate-encounter-loot", metrics.logGenerateEncounterLoot, generateLootRoute.generateLoot);
     app.post("/api/change-password", enableCORS, changePasswordRoute);
     app.post("/api/change-user-data", enableCORS, changeUserDataRoute);
     app.post("/api/save-content-tree", contentTreeRoute.updateContentTree);
@@ -231,6 +232,12 @@ function main(db) {
     app.get("/api/chronicle/:id", enableCaching, chronicleRoute.getResource);
     app.post("/api/chronicle/:id", chronicleRoute.updateResource);
     app.post("/api/chronicle", chronicleRoute.createResource);
+
+    /*Encounters*/
+    app.get("/api/encounter", disableCaching, encounterRoute.query);
+    app.get("/api/encounter/:id", enableCaching, encounterRoute.getResource);
+    app.post("/api/encounter/:id", encounterRoute.updateResource);
+    app.post("/api/encounter", encounterRoute.createResource);
 
     var APP_JADE_FILES = [
         'feedback-popover',

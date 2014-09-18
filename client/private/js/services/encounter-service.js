@@ -2,8 +2,8 @@
 
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', '$rootScope', '$cacheFactory', 'crService', 'userResourceService', 'templateService',
-    function ($timeout, $http, $rootScope, $cacheFactory, crService, userResourceService,  templateService) {
+DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', 'crService', 'userResourceService', 'templateService', 'EncounterResource',
+    function ($timeout, crService, userResourceService, templateService, EncounterResource) {
 
         function calculateXp(encounter) {
             var xp = 0;
@@ -81,17 +81,11 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
         };
 
         service.createEncounter = function (onSuccess) {
-            $http.post('/api/create-encounter')
-                .success(function (response) {
-                    if (response.error) {
-                        console.log(error);
-                    }
-                    onSuccess(response.encounter);
-
-                })
-                .error(function (response) {
-                    console.log("post of encounter failed !");
-                });
+            var encounterResource = new EncounterResource();
+            encounterResource.Name = "new Encounter";
+            encounterResource.$save(function () {
+                onSuccess(encounterResource);
+            });
         };
 
         /* FIXME: don't we need a user callback ? */
@@ -101,6 +95,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
             encounter.lootValue = calculateLootValue(encounter);
             encounter.CR = crService.calculateCR(encounter);
             removeItemsWithZeroAmount(encounter);
+
             $cacheFactory.get('$http').put('/api/encounter/' + encounter._id, {encounter: encounter});
             $http.post('/api/update-encounter', { encounter: encounter })
                 .success(function (response) {
@@ -159,7 +154,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                     continue;
                 }
                 (function (monster, monsterId) {
-                    userResourceService["user-monster"].get({id:monsterId}, function (newMonster) {
+                    userResourceService["user-monster"].get({id: monsterId}, function (newMonster) {
                         newMonster = templateService.createTemplatedMonster(newMonster);
                         if (newMonster) {
                             monster.Name = newMonster.Name;
@@ -187,7 +182,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                     continue;
                 }
                 (function (npc, npcId) {
-                    userResourceService["user-npc"].get({id:npcId}, function (newNpc) {
+                    userResourceService["user-npc"].get({id: npcId}, function (newNpc) {
                         if (newNpc) {
                             npc.Name = newNpc.Name;
                             npc.XP = newNpc.XP;
