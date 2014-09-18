@@ -232,12 +232,14 @@ function main(db) {
     app.get("/api/chronicle/:id", enableCaching, chronicleRoute.getResource);
     app.post("/api/chronicle/:id", chronicleRoute.updateResource);
     app.post("/api/chronicle", chronicleRoute.createResource);
+    app.delete("/api/chronicle/:id", chronicleRoute.deleteResource);
 
     /*Encounters*/
     app.get("/api/encounter", disableCaching, encounterRoute.query);
     app.get("/api/encounter/:id", enableCaching, encounterRoute.getResource);
     app.post("/api/encounter/:id", encounterRoute.updateResource);
     app.post("/api/encounter", encounterRoute.createResource);
+    app.delete("/api/encounter/:id", encounterRoute.deleteResource);
 
     var APP_JADE_FILES = [
         'feedback-popover',
