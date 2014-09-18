@@ -54,7 +54,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
             function getUserResource() {
                 cancelWatch();
                 $scope.userResource = userResourceService[resourceType].getNoCache({id: $routeParams.userResourceId}, function () {
-                    var throttledSave = throttle(updateUserResource, 1000);
+                    var throttledSave = throttle(updateUserResource, 5000);
                     cancelWatch = $scope.$watch('nouuid(userResource)', function () {
                         throttledSave($scope.userResource);
                     }, true /* deep equality */);

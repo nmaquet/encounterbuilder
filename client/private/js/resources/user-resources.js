@@ -8,6 +8,7 @@
         var resource = $resource("/api/" + resourceSlug + "/:id", {id: '@_id'}, {
             'getNoCache' : {method: 'GET', headers: {"Cache-Control": "no-cache"}},
             'get': {method: 'GET'},
+            'query': {method: 'GET', isArray: true},
             'save': {method: 'POST'},
             'delete': {method: 'DELETE'}
         });
@@ -28,20 +29,10 @@
             }
             window.async.parallel(tasks, callback);
         };
-        return resource
+        return resource;
 
     }
 
-    function makeChronicleResource($resource) {
-        var resource = $resource("/api/chronicle/:id", {id: '@_id'}, {
-            'get': {method: 'GET'},
-            'save': {method: 'POST'},
-            'query': {method: 'GET', isArray: true},
-            'delete': {method: 'DELETE'}
-        });
-        return resource
-
-    }
 
     DEMONSQUID.encounterBuilderServices.factory('UserFeatResource', ['$resource', function ($resource) {
         return makeUserResource("user-feat", $resource);
@@ -64,7 +55,7 @@
     }]);
 
     DEMONSQUID.encounterBuilderServices.factory('ChronicleResource', ['$resource', function ($resource) {
-        return makeChronicleResource($resource);
+        return makeUserResource("chronicle",$resource);
     }]);
 
     DEMONSQUID.encounterBuilderServices.factory('UserMonsterResource', ['$resource', function ($resource) {
