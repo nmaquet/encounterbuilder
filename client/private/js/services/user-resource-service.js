@@ -3,7 +3,7 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('userResourceService',
-    [ 'UserFeatResource', 'UserSpellResource', 'UserItemResource', 'UserIllustrationResource', 'UserMapResource', 'ChronicleResource', 'UserMonsterResource', 'UserNpcResource', function () {
+    [ 'UserFeatResource', 'UserSpellResource', 'UserItemResource', 'UserIllustrationResource', 'UserMapResource', 'ChronicleResource', 'UserMonsterResource', 'UserNpcResource','UserTextResource','EncounterResource', function () {
         return {
             "user-feat": arguments[0],
             "user-spell": arguments[1],
@@ -12,7 +12,9 @@ DEMONSQUID.encounterBuilderServices.factory('userResourceService',
             "user-map": arguments[4],
             "chronicle": arguments[5],
             "user-monster": arguments[6],
-            "user-npc": arguments[7]
+            "user-npc": arguments[7],
+            "user-text": arguments[8],
+            "encounter": arguments[9]
         }
     }]
 );

@@ -109,7 +109,7 @@ function main(db) {
     var searchFeatsRoute = require('./searchFeatsRoute')(collections.feats, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(collections.monsters);
     var userNpcRoute = require('./userResourceRoute')(collections.userNpcs, collections.npcs, ObjectID);
-    var userTextRoute = require('./userTextRoute')(collections.userTexts, ObjectID);
+    var userTextRoute = require('./userResourceRoute')(collections.userTexts,collections.userTexts, ObjectID);
     var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
     var npcRoute = require('./npcRoute')(collections.npcs);
     var spellRoute = require('./spellRoute')(collections.spells);
@@ -145,7 +145,7 @@ function main(db) {
 
 //    app.get('/api/user-monster/:id', disableCaching, /* TODO METRICS */ userMonsterRoute.findOne);
 
-    app.get('/api/user-text/:id', disableCaching, /* TODO METRICS */ userTextRoute.findOne);
+//    app.get('/api/user-text/:id', disableCaching, /* TODO METRICS */ userTextRoute.findOne);
     app.get("/api/favourites", disableCaching, favouritesRoute.fetch);
 
     app.post('/api/user-data', userDataRoute);
@@ -173,10 +173,16 @@ function main(db) {
 //    app.post("/api/update-user-npc", /* TODO METRICS */ userNpcRoute.update);
 //    app.post("/api/delete-user-npc", /* TODO METRICS */ userNpcRoute.delete);
 
-    app.post("/api/create-user-text", /* TODO METRICS */ userTextRoute.create);
-    app.post("/api/copy-text", /* TODO METRICS */ userTextRoute.copy);
-    app.post("/api/update-user-text", /* TODO METRICS */ userTextRoute.update);
-    app.post("/api/delete-user-text", /* TODO METRICS */ userTextRoute.delete);
+//    app.post("/api/create-user-text", /* TODO METRICS */ userTextRoute.create);
+//    app.post("/api/copy-text", /* TODO METRICS */ userTextRoute.copy);
+//    app.post("/api/update-user-text", /* TODO METRICS */ userTextRoute.update);
+//    app.post("/api/delete-user-text", /* TODO METRICS */ userTextRoute.delete);
+
+    /* User Text */
+    app.get("/api/user-text/:id", enableCaching, userTextRoute.getResource);
+    app.post("/api/user-text", userTextRoute.createResource);
+    app.post("/api/user-text/:id", userTextRoute.updateResource);
+    app.delete("/api/user-text/:id", userTextRoute.deleteResource);
 
     /* User Monster */
     app.get("/api/user-monster/:id", enableCaching, userMonsterRoute.getResource);

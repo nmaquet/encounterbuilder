@@ -73,5 +73,11 @@
     DEMONSQUID.encounterBuilderServices.factory('UserNpcResource', ['$resource', function ($resource) {
         return makeUserResource("user-npc", $resource);
     }]);
+    DEMONSQUID.encounterBuilderServices.factory('UserTextResource', ['$resource', function ($resource) {
+        return makeUserResource("user-text", $resource);
+    }]);
+    DEMONSQUID.encounterBuilderServices.factory('EncounterResource', ['$resource', function ($resource) {
+        return makeUserResource("encounter", $resource);
+    }]);
 })();
 
