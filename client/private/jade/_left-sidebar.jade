@@ -28,12 +28,13 @@ section#left-sidebar.sp-menu.sp-menu-vertical.sp-menu-left.no-print(slide-menu)
                             span.create-dropdown-name {{chronicleName}}
                             i.icon.fa.fa-angle-down.square.white.pull-right
                         ul.dropdown-menu(role='menu')
-                            li(ng-repeat="chronicle in chronicles")
-                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='selectChronicle(chronicle._id)')
-                                    strong {{chronicle.name}}
                             li
                                 a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createChronicle()')
                                     strong Create new Chronicle
+                            li.divider
+                            li(ng-repeat="chronicle in chronicles")
+                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='selectChronicle(chronicle._id)')
+                                    strong {{chronicle.name}}
                     span#console
                     .dropdown.create-dropdown-container.is-pointer
                         a#create-dropdown.create-dropdown.dropdown-toggle.col-xs-12(role='button', data-toggle='dropdown')

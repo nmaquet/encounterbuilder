@@ -103,6 +103,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', 'cr
         };
 
         service.getMultiple = function (ids, callback) {
+            console.log(ids);
             EncounterResource.getMultiple(ids,callback);
         };
 
