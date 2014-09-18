@@ -142,11 +142,6 @@ function main(db) {
     app.get('/api/npc/:id', enableCaching, metrics.logSelectNpc, npcRoute);
     app.get('/api/spell/:id', enableCaching, metrics.logSelectSpell, spellRoute);
     app.get('/api/feat/:id', enableCaching, metrics.logSelectFeat, featRoute);
-//    app.get('/api/encounter/:id', metrics.logSelectEncounter, encounterRoute.findOne);
-
-//    app.get('/api/user-monster/:id', disableCaching, /* TODO METRICS */ userMonsterRoute.findOne);
-
-//    app.get('/api/user-text/:id', disableCaching, /* TODO METRICS */ userTextRoute.findOne);
     app.get("/api/favourites", disableCaching, favouritesRoute.fetch);
 
     app.post('/api/user-data', userDataRoute);
@@ -154,9 +149,6 @@ function main(db) {
     app.post("/login", metrics.logLogin, enableCORS, loginRoute.post);
     app.post("/register", /* TODO METRICS */ enableCORS, registerRoute);
     app.get("/validate-email", disableCaching, /* TODO METRICS */ validateEmailRoute);
-//    app.post("/api/update-encounter", metrics.logUpdateEncounter, encounterRoute.update);
-//    app.post("/api/create-encounter", metrics.logCreateEncounter, encounterRoute.create);
-//    app.post("/api/remove-encounter", metrics.logRemoveEncounter, encounterRoute.delete);
     app.post("/api/generate-encounter-loot", metrics.logGenerateEncounterLoot, generateLootRoute.generateLoot);
     app.post("/api/change-password", enableCORS, changePasswordRoute);
     app.post("/api/change-user-data", enableCORS, changeUserDataRoute);
@@ -164,20 +156,6 @@ function main(db) {
     app.post("/api/save-favourites", favouritesRoute.update);
 
 
-//    app.post("/api/create-user-monster", /* TODO METRICS */ userMonsterRoute.create);
-//    app.post("/api/copy-monster", /* TODO METRICS */ userMonsterRoute.copy);
-//    app.post("/api/update-user-monster", /* TODO METRICS */ userMonsterRoute.update);
-//    app.post("/api/delete-user-monster", /* TODO METRICS */ userMonsterRoute.delete);
-
-//    app.post("/api/create-user-npc", /* TODO METRICS */ userNpcRoute.create);
-//    app.post("/api/copy-npc", /* TODO METRICS */ userNpcRoute.copy);
-//    app.post("/api/update-user-npc", /* TODO METRICS */ userNpcRoute.update);
-//    app.post("/api/delete-user-npc", /* TODO METRICS */ userNpcRoute.delete);
-
-//    app.post("/api/create-user-text", /* TODO METRICS */ userTextRoute.create);
-//    app.post("/api/copy-text", /* TODO METRICS */ userTextRoute.copy);
-//    app.post("/api/update-user-text", /* TODO METRICS */ userTextRoute.update);
-//    app.post("/api/delete-user-text", /* TODO METRICS */ userTextRoute.delete);
 
     /* User Text */
     app.get("/api/user-text/:id", enableCaching, userTextRoute.getResource);

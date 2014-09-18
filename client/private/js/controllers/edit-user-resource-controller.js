@@ -18,7 +18,11 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
             var resourceType = locationService.getResourceType();
 
             $scope.view = function () {
-                locationService.go("/" + resourceType + "/" + $routeParams.userResourceId);
+                contentTreeService.userResourceUpdated($scope.userResource);
+                $scope.userResource.$save(function () {
+                    locationService.go("/" + resourceType + "/" + $routeParams.userResourceId);
+                });
+
             };
 
             function updateUserResource(userResource) {
@@ -32,43 +36,25 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
                 userResourceService[resourceType].save(userResource,
                     function success(newUserResource) {
                         userResource.uuid = newUserResource.uuid;
-                    },
-                    function error(error) {
-                        if (error.status === 409) {
-                            /* if save conflict detected, replace client resource with resource from the server */
-                            getUserResource();
-                        }
                     });
                 contentTreeService.userResourceUpdated(userResource, resourceType);
             }
 
             $scope.nouuid = function (userResource) {
-                                var result = angular.copy(userResource);
-                                delete result.uuid;
-                                return result;
-                            };
+                var result = angular.copy(userResource);
+                delete result.uuid;
+                return result;
+            };
 
             $scope.updateUserResource = updateUserResource;
-            var cancelWatch = function() {};
-
-            function getUserResource() {
-                cancelWatch();
-                $scope.userResource = userResourceService[resourceType].getNoCache({id: $routeParams.userResourceId}, function () {
-                    var throttledSave = throttle(updateUserResource, 5000);
-                    cancelWatch = $scope.$watch('nouuid(userResource)', function () {
-                        throttledSave($scope.userResource);
-                    }, true /* deep equality */);
-                    if ($scope.userResource.Classes) {
-                        $scope.classesString = $filter("classesToString")($scope.userResource.Classes);
-                    }
-                });
-            }
-
-            getUserResource();
-
-            $scope.$on('$locationChangeStart', function () {
-                contentTreeService.userResourceUpdated($scope.userResource);
-                $scope.userResource.$save();
+            $scope.userResource = userResourceService[resourceType].getNoCache({id: $routeParams.userResourceId}, function () {
+                var throttledSave = throttle(updateUserResource, 5000);
+                $scope.$watch('nouuid(userResource)', function () {
+                    throttledSave($scope.userResource);
+                }, true /* deep equality */);
+                if ($scope.userResource.Classes) {
+                    $scope.classesString = $filter("classesToString")($scope.userResource.Classes);
+                }
             });
 
             // FIXME: change title !
