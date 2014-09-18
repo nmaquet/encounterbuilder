@@ -255,7 +255,7 @@ function importChronicle(username, chronicle, callback) {
 
     function insertChronicle() {
         var newChronicle = {};
-        newChronicle.name = chronicle.name + " 2";
+        newChronicle.name = chronicle.name;
         newChronicle.userId = user._id;
         newChronicle.contentTree = chronicle.contentTree;
         chroniclesCollection.insert(newChronicle, function (error) {
