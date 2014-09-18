@@ -112,13 +112,11 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', 'cr
         };
 
         service.get = function (id, callback) {
-            $http.get('/api/encounter/' + id, {cache: true})
-                .success(function (data) {
-                    callback(data.error, data.encounter);
-                })
-                .error(function (error) {
-                    callback(error, null);
-                });
+            EncounterResource.get({id: id}, function (encounter) {
+                callback(null, encounter);
+            }, function (error) {
+                callback(error, null);
+            });
         };
 
         service.getMultiple = function (ids, callback) {
