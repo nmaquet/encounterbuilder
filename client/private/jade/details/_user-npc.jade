@@ -2,47 +2,47 @@
 
 .row.heading.result-heading
     .col-xxs-8.col-xs-8.col-lg-9.name-container
-        h2.t-title.t-title-result {{userNpc.Name}}
-        small Source: {{userNpc.Source}}
+        h2.t-title.t-title-result {{userResource.Name}}
+        small Source: {{userResource.Source}}
     .col-xxs-4.col-xs-4.col-lg-3.cr-container
         h3.t-title CR
-            | &nbsp;{{userNpc.CR | numberToFractionString}}
+            | &nbsp;{{userResource.CR | numberToFractionString}}
         strong XP
-        | &nbsp;{{userNpc.XP}}
+        | &nbsp;{{userResource.XP}}
         .row.btn-container
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copyNpc()')
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copy()')
                 i.icon.fa.fa-copy
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit', ng-click="editUserNpc()")
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit', ng-click="edit()")
                 i.icon.fa.fa-edit
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete', on-confirm="deleteUserNpc()", confirm-click="Are you sure ?", confirm-title="Delete npc")
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete', on-confirm="delete()", confirm-click="Are you sure ?", confirm-title="Delete npc")
                 i.icon.fa.fa-trash-o
 .row.l-section.result-content
     .col-xs-12.cat
-        p.intro.underlined {{userNpc.Description_Visual}}
+        p.intro.underlined {{userResource.Description_Visual}}
         ul.list-inline
             li
                 span
                     strong XP
-                    | &nbsp;{{userNpc.XP}}
-            li(ng-if="userNpc.Gender||userNpc.Race||userNpc.ClassesString")
-                span {{userNpc.Gender}} {{userNpc.Race}} {{userNpc.ClassesString}}
+                    | &nbsp;{{userResource.XP}}
+            li(ng-if="userResource.Gender||userResource.Race||userResource.Classes")
+                span {{userResource.Gender}} {{userResource.Race}} {{userResource.Classes|classesToString}}
             li
                 span
-                    strong {{userNpc.Alignment}}
-                    | &nbsp;{{userNpc.Size}} {{userNpc.Type}} {{userNpc.SubType}}
+                    strong {{userResource.Alignment}}
+                    | &nbsp;{{userResource.Size}} {{userResource.Type}} {{userResource.SubType}}
             li
                 span
                     strong Init
-                    | &nbsp;{{userNpc.Init}}
+                    | &nbsp;{{userResource.Init}}
             li
                 span
                     strong Senses
-                    | &nbsp;{{userNpc.Senses}}
-        ul.list-inline(ng-if="userNpc.Aura")
+                    | &nbsp;{{userResource.Senses}}
+        ul.list-inline(ng-if="userResource.Aura")
             li
                 span
                     strong Aura
-                    | &nbsp;{{userNpc.Aura}}
+                    | &nbsp;{{userResource.Aura}}
     .col-xs-12
         .row
             .col-xs-12.cat.decor
@@ -52,77 +52,77 @@
                         span
                             strong
                                 abbr(title='Armor Class') AC
-                            | &nbsp;{{userNpc.AC}}; {{userNpc.AC_Mods}}
+                            | &nbsp;{{userResource.AC}}; {{userResource.AC_Mods}}
                     li
                         span
                             strong HP
-                            | &nbsp;{{userNpc.HP}} {{userNpc.HD}}
+                            | &nbsp;{{userResource.HP}} {{userResource.HD}}
                     li
                         span
                             strong Fort
-                            | &nbsp;{{userNpc.Fort}},
+                            | &nbsp;{{userResource.Fort}},
                         span
                             strong Ref
-                            | &nbsp;{{userNpc.Ref}},
+                            | &nbsp;{{userResource.Ref}},
                         span
                             strong Will
-                            | &nbsp;{{userNpc.Will}}
-                    li(ng-if='userNpc.DR')
+                            | &nbsp;{{userResource.Will}}
+                    li(ng-if='userResource.DR')
                         span
                             strong DR
-                            | &nbsp;{{userNpc.DR}};
-                    li(ng-if='userNpc.Immune')
+                            | &nbsp;{{userResource.DR}};
+                    li(ng-if='userResource.Immune')
                         span
                             strong Immune
-                            | &nbsp;{{userNpc.Immune}};
-                    li(ng-if='userNpc.Resist')
+                            | &nbsp;{{userResource.Immune}};
+                    li(ng-if='userResource.Resist')
                         span
                             strong Resist
-                            | &nbsp;{{userNpc.Resist}};
-                    li(ng-if='userNpc.Weaknesses')
+                            | &nbsp;{{userResource.Resist}};
+                    li(ng-if='userResource.Weaknesses')
                         span
                             strong Weaknesses
-                            | &nbsp;{{userNpc.Weaknesses}};
-                    li(ng-if='userNpc.SR')
+                            | &nbsp;{{userResource.Weaknesses}};
+                    li(ng-if='userResource.SR')
                         span
                             strong SR
-                            | &nbsp;{{userNpc.SR}}
+                            | &nbsp;{{userResource.SR}}
             .col-xs-12.cat.decor
                 legend.t-legend.t-title Offense
                 ul.list-unstyled
                     li
                         span
                             strong SPD
-                            | &nbsp;{{userNpc.Speed}}
+                            | &nbsp;{{userResource.Speed}}
                     li
                         span
                             strong Melee
-                            | &nbsp;{{userNpc.Melee}}
-                    li(ng-if="userNpc.Ranged")
+                            | &nbsp;{{userResource.Melee}}
+                    li(ng-if="userResource.Ranged")
                         span
                             strong Ranged
-                            | &nbsp;{{userNpc.Ranged}}
+                            | &nbsp;{{userResource.Ranged}}
                     li
                         span
                             strong Space
-                            | &nbsp;{{userNpc.Space}}
+                            | &nbsp;{{userResource.Space}}
                             | &nbsp;
                         span
                             strong Reach
-                            | &nbsp;{{userNpc.Reach}}
-                    li(ng-if='userNpc.SpecialAttacks')
+                            | &nbsp;{{userResource.Reach}}
+                    li(ng-if='userResource.SpecialAttacks')
                         span
                             strong Special Attacks
-                            | &nbsp;{{userNpc.SpecialAttacks}};
-                    li(ng-if='userNpc.SpellsKnown')
-                        spell-list(spell-string="{{userNpc.SpellsKnown}}")
-                    li(ng-if='userNpc.Bloodline')
+                            | &nbsp;{{userResource.SpecialAttacks}};
+                    li(ng-if='userResource.SpellsKnown')
+                        spell-list(spell-string="{{userResource.SpellsKnown}}")
+                    li(ng-if='userResource.Bloodline')
                         span
                             strong Bloodline
-                            | &nbsp;{{userNpc.Bloodline}}
-                    li(ng-if='userNpc.SpellsPrepared')
-                        spell-list(spell-string="{{userNpc.SpellsPrepared}}" )
-                    li(ng-bind-html='userNpc.SLASafe' ,linkify='userNpc.SLASafe',linkify-type="spell", mythic="userNpc.Mythic")
+                            | &nbsp;{{userResource.Bloodline}}
+                    li(ng-if='userResource.SpellsPrepared')
+                        spell-list(spell-string="{{userResource.SpellsPrepared}}" )
+                    li(ng-bind-html='userResource.SpellLikeAbilities | toTrustedHtml' ,linkify='userResource.SpellLikeAbilities',linkify-type="spell", mythic="userResource.Mythic")
             .col-xs-12
         .row
             .col-lg-6.cat.decor
@@ -131,71 +131,71 @@
                     li
                         span
                             strong Str
-                            | &nbsp;{{userNpc.Str}},
+                            | &nbsp;{{userResource.Str}},
                         span
                             strong Dex
-                            | &nbsp;{{userNpc.Dex}},
+                            | &nbsp;{{userResource.Dex}},
                         span
                             strong Con
-                            | &nbsp;{{userNpc.Con}},
+                            | &nbsp;{{userResource.Con}},
                         span
                             strong Int
-                            | &nbsp;{{userNpc.Int}},
+                            | &nbsp;{{userResource.Int}},
                         span
                             strong Wis
-                            | &nbsp;{{userNpc.Wis}},
+                            | &nbsp;{{userResource.Wis}},
                         span
                             strong Cha
-                            | &nbsp;{{userNpc.Cha}}
+                            | &nbsp;{{userResource.Cha}}
                     li
                         span
                             strong Base Atk
-                            | &nbsp;{{userNpc.BaseAtk}};
+                            | &nbsp;{{userResource.BaseAtk}};
                         span
                             strong CMB
-                            | &nbsp;{{userNpc.CMB}};
+                            | &nbsp;{{userResource.CMB}};
                         span
                             strong CMD
-                            | &nbsp;{{userNpc.CMD}}
-                    li(ng-if='userNpc.Feats')
+                            | &nbsp;{{userResource.CMD}}
+                    li(ng-if='userResource.Feats')
                         span
                             strong Feats&nbsp;
-                            span(linkify="userNpc.Feats",linkify-type="feat", mythic="userNpc.Mythic")
-                    li(ng-if='userNpc.Skills || userNpc.RacialMods')
-                        span(ng-if='userNpc.Skills')
+                            span(linkify="userResource.Feats",linkify-type="feat", mythic="userResource.Mythic")
+                    li(ng-if='userResource.Skills || userResource.RacialMods')
+                        span(ng-if='userResource.Skills')
                             strong Skills
-                            | &nbsp;{{userNpc.Skills}}
-                        span(ng-if='userNpc.RacialMods')
+                            | &nbsp;{{userResource.Skills}}
+                        span(ng-if='userResource.RacialMods')
                             strong Racial Modifiers
-                            | &nbsp;{{userNpc.RacialMods}}
-                    li(ng-if='userNpc.Languages')
+                            | &nbsp;{{userResource.RacialMods}}
+                    li(ng-if='userResource.Languages')
                         span
                             strong Languages
-                            | &nbsp;{{userNpc.Languages}}
-                    li(ng-if='userNpc.SQ')
+                            | &nbsp;{{userResource.Languages}}
+                    li(ng-if='userResource.SQ')
                         span
                             strong SQ
-                            | &nbsp;{{userNpc.SQ}}
-            .col-lg-6.cat.decor(ng-if='userNpc.Environment || userNpc.Organization || userNpc.Treasure')
+                            | &nbsp;{{userResource.SQ}}
+            .col-lg-6.cat.decor(ng-if='userResource.Environment || userResource.Organization || userResource.Treasure')
                 div
                     legend.t-legend.t-title Ecology
                 div
                     ul.list-unstyled
-                        li(ng-if='userNpc.Environment')
+                        li(ng-if='userResource.Environment')
                             span
                                 strong Environment
-                                | &nbsp;{{userNpc.Environment}}
-                        li(ng-if='userNpc.Organization')
+                                | &nbsp;{{userResource.Environment}}
+                        li(ng-if='userResource.Organization')
                             span
                                 strong Organization
-                                | &nbsp;{{userNpc.Organization}}
-                        li(ng-if='userNpc.Treasure')
+                                | &nbsp;{{userResource.Organization}}
+                        li(ng-if='userResource.Treasure')
                             span
                                 strong Treasure
-                                | &nbsp;{{userNpc.Treasure}}
-    .col-xs-12.cat.decor(ng-if='userNpc.SpecialAbilities')
+                                | &nbsp;{{userResource.Treasure}}
+    .col-xs-12.cat.decor(ng-if='userResource.SpecialAbilities')
         legend.cat-heading.t-legend.t-title Special Abilities
-        span.cat-content(ng-bind-html='userNpc.SpecialAbilitiesHTML')
-    .col-xs-12.cat.decor(ng-if='userNpc.Description')
+        span.cat-content(ng-bind-html='userResource.SpecialAbilities | toTrustedHtml')
+    .col-xs-12.cat.decor(ng-if='userResource.Description')
         legend.cat-heading.t-legend.t-title Description
-        span.cat-content(ng-bind-html='userNpc.DescriptionHTML')
+        span.cat-content(ng-bind-html='userResource.Description | toTrustedHtml')

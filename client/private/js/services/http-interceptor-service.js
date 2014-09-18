@@ -17,6 +17,10 @@ DEMONSQUID.encounterBuilderServices.factory('httpInterceptorService', ['$q', '$w
                 if (rejection.status === 401) {
                     $window.location.href = "/?promptLogin=true";
                 }
+                if (rejection.status === 409) {
+                    $window.location.reload(true);
+                }
+
                 return $q.reject(rejection);
             }
         };

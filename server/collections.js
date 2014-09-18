@@ -20,7 +20,8 @@ module.exports = function (db) {
         contentTrees: db.collection('contenttrees'),
         favourites: db.collection('favourites'),
         userIllustrations: db.collection('userillustrations'),
-        userMaps: db.collection('usermaps')
+        userMaps: db.collection('usermaps'),
+        chronicles: db.collection('chronicles')
     }
 };
 

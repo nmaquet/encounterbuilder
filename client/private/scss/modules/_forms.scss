@@ -1,7 +1,9 @@
 label {
   font-weight: normal;
 }
+#btnResetSearch {
 
+}
 #click-to-edit-viewer,
 #click-to-edit-editor {
   overflow: hidden;
@@ -83,4 +85,15 @@ input.ng-pristine + .password-do-not-match {
 }
 form.ng-invalid .btn-primary[disabled], form.ng-valid .btn {
   display: inline-block;
+}
+
+.search-icon {
+  font-size: 20px;
+  position: absolute;
+  padding: 10px 15px;
+  top: 0;
+  right: 0;
+}
+.input-icon {
+  color: $red;
 }

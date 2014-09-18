@@ -3,12 +3,10 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
-    ['$timeout', '$routeParams', 'contentTreeService', 'userMonsterService', 'userNpcService', 'encounterEditorService',
-        function ($timeout, $routeParams, contentTreeService, userMonsterService, userNpcService, encounterEditorService) {
+    ['$timeout', '$routeParams', 'contentTreeService', 'encounterEditorService',
+        function ($timeout, $routeParams, contentTreeService, encounterEditorService) {
 
             function link(scope, element) {
-
-
                 function activateNodeBasedOnRouteParams() {
                     if (!tree) {
                         return;
@@ -24,14 +22,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     else if ($routeParams.binderId) {
                         tree.visit(function (node) {
                             if (node.folder && node.key === $routeParams.binderId) {
-                                node.setActive(true);
-                                return false;
-                            }
-                        });
-                    }
-                    else if ($routeParams.userMonsterId) {
-                        tree.visit(function (node) {
-                            if (node.data.userMonsterId && node.data.userMonsterId === $routeParams.userMonsterId) {
                                 node.setActive(true);
                                 return false;
                             }
@@ -78,16 +68,16 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
                 function onPlusButtonClick(node) {
                     var type = null;
-                    if (node.data.userMonsterId) {
+                    if (node.data.resourceType === "user-monster") {
                         type = "monster"
                     }
-                    else if (node.data.userNpcId) {
+                    else if (node.data.resourceType === "user-npc") {
                         type = "npc"
                     }
                     else {
                         type = "item";
                     }
-                    var id = node.data.userMonsterId || node.data.userNpcId || node.data.userResourceId;
+                    var id = node.data.userResourceId;
                     if (type === "item") {
                         encounterEditorService.addUserItem(id);
                     } else {
@@ -120,10 +110,15 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
                 function initTree() {
 
+                    console.log("init tree");
+                    console.log(contentTreeService.contentTree());
                     element.fancytree({
-                        extensions: ["dnd", "add-to-encounter"],
+                        extensions: ["dnd", "add-to-encounter", "filter"],
                         source: contentTreeService.contentTree(),
-                        scrollParent:$('.sp-menu-content'),
+                        filter: {
+                            mode: "hide"
+                        },
+                        scrollParent: $('.sp-menu-content'),
                         click: onClick,
                         clickFolderMode: 4,
                         addToEncounter: {
@@ -165,6 +160,26 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     tree = element.fancytree("getTree");
                     contentTreeService.setTree(tree);
                     tree.visit(addExtraClasses);
+
+                    $("input#filter-chronicle").keyup(function (e) {
+                        var n,
+                            match = $(this).val();
+
+                        if (e && e.which === $.ui.keyCode.ESCAPE || $.trim(match) === "") {
+                            $("i#btnResetSearch").click();
+                            return;
+                        }
+                        // Pass a string to perform case insensitive matching
+                        n = tree.filterNodes(match, false);
+                        console.log("filterNodes");
+                        $("button#btnResetSearch").attr("disabled", false);
+                    }).focus();
+
+                    $("i#btnResetSearch").click(function (e) {
+                        $("input#filter-chronicle").val("");
+                        tree.clearFilter();
+                    }).attr("disabled", true);
+
                 }
 
                 if (contentTreeService.contentTree()) {

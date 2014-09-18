@@ -50,7 +50,7 @@ DEMONSQUID.encounterBuilderServices.factory('spellService', ['$http', function (
                 });
         },
         get: function (id, callback) {
-            $http.get('/api/spell/' + id, {cache: true})
+            $http.get('/api/spell/' + id)
                 .success(function (data) {
                     callback(data.error, data.spell);
                 })

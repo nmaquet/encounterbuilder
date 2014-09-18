@@ -3,8 +3,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
-    ['$rootScope', '$timeout', '$http', 'encounterService', 'userMonsterService', 'userNpcService', 'userTextService', 'locationService', 'userResourceService',
-        function ($rootScope, $timeout, $http, encounterService, userMonsterService, userNpcService, userTextService, locationService, userResourceService) {
+    ['$rootScope', '$timeout', '$http', 'encounterService', 'locationService', 'userResourceService',
+        function ($rootScope, $timeout, $http, encounterService, locationService, userResourceService) {
 
             var LOAD_SUCCESS = "contentTreeLoaded";
 
@@ -12,6 +12,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             var contentTree = null;
             var fancyTree = null;
             var nodeKey = null;
+            var chronicleId = null;
 
             //FIXME removeExtraClasses and addExtraClasses are both here and in content-tree.js
             function removeExtraClasses(dict) {
@@ -20,17 +21,19 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 }
             }
 
+
             function addExtraClasses(newNode) {
-                if (newNode.userMonsterId) {
-                    newNode.extraClasses = "fancytree-monster";
-                } else if (newNode.encounterId) {
+                if (newNode.encounterId) {
                     newNode.extraClasses = "fancytree-encounter";
                 }
-                else if (newNode.userNpcId) {
+                else if (newNode.userResourceId && newNode.resourceType === "user-npc") {
                     newNode.extraClasses = "fancytree-npc";
                 }
-                else if (newNode.userTextId) {
+                else if (newNode.userResourceId && newNode.resourceType === "user-text") {
                     newNode.extraClasses = "fancytree-text";
+                }
+                else if (newNode.userResourceId && newNode.resourceType === "user-monster") {
+                    newNode.extraClasses = "fancytree-monster";
                 }
                 else if (newNode.userResourceId && newNode.resourceType === "user-feat") {
                     newNode.extraClasses = "fancytree-feat";
@@ -99,27 +102,43 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 }
             }
 
-            $http.post('/api/user-data')
-                .success(function (userData) {
-                    if (userData.contentTree) {
-                        contentTree = userData.contentTree;
-                    }
-                    $rootScope.$emit(LOAD_SUCCESS);
-                })
-                .error(function (error) {
-                    console.log(error);
-                    $window.location.href = '/';
-                });
+            //FIXME store current chronicle in a user params object somewhere in database or cookie
+            var chronicleResource = userResourceService["chronicle"];
+            var currentChronicle = null;
 
+            function loadChronicle(chronicleId) {
+                chronicleResource.get({id: chronicleId}, function (chronicle) {
+                    console.log(chronicle._id);
+                    contentTree = chronicle.contentTree;
+                    currentChronicle = chronicle;
+                    $rootScope.$emit(LOAD_SUCCESS);
+                });
+            }
+
+            function reLoadChronicle(id) {
+                chronicleId = id;
+                chronicleResource.get({id: chronicleId}, function (chronicle) {
+                    contentTree = chronicle.contentTree;
+                    currentChronicle = chronicle;
+                    fancyTree.reload(contentTree);
+                });
+            }
+
+            chronicleResource.query(function (chronicles) {
+                chronicleId = (chronicles[0]._id);
+                loadChronicle(chronicleId);
+            });
+
+            service.chronicleName = function () {
+                if (currentChronicle) {
+                    return currentChronicle.name;
+                }
+            };
+
+            service.reloadChronicleTree = reLoadChronicle;
             service.goToNode = function (node) {
                 if (node.data.encounterId) {
                     locationService.go("/encounter/" + node.data.encounterId);
-                }
-                else if (node.data.userMonsterId) {
-                    locationService.go("/user-monster/" + node.data.userMonsterId);
-                }
-                else if (node.data.userNpcId) {
-                    locationService.go("/user-npc/" + node.data.userNpcId);
                 }
                 else if (node.data.userTextId) {
                     locationService.go("/user-text/" + node.data.userTextId);
@@ -194,87 +213,27 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
 
             service.createEncounter = function () {
                 encounterService.createEncounter(function (encounter) {
-                    addNode({title: encounter.Name, encounterId: encounter._id, key: getNextNodeKey()});
+                    addNode({title: encounter.Name, userResourceId: encounter._id, resourceType: "encounter", key: getNextNodeKey()});
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 });
             };
 
-            service.createUserMonster = function () {
-                userMonsterService.create(function (error, userMonster) {
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        addNode({title: userMonster.Name, userMonsterId: userMonster._id, key: getNextNodeKey()});
-                        service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                    }
-                });
-            };
 
-            service.createUserNpc = function () {
-                userNpcService.create(function (error, userNpc) {
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        addNode({title: userNpc.Name, userNpcId: userNpc._id, key: getNextNodeKey()});
-                        service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                    }
-                });
-            };
-
-            service.createUserText = function () {
-                userTextService.create(function (error, userText) {
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        addNode({title: userText.title, userTextId: userText._id, key: getNextNodeKey()});
-                        service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                    }
-                });
-            };
-            var resourceNewName = {"user-item": "new Item", "user-spell": "new Spell", "user-feat": "new Feat", "user-illustration": "new Illustration", "user-map": "new Map"};
+            var resourceNewName = {"user-item": "new Item", "user-spell": "new Spell", "user-feat": "new Feat", "user-illustration": "new Illustration", "user-map": "new Map", "user-monster": "new Monster", "user-npc": "new NPC", "user-text": "new Text"};
             service.createUserResource = function (resourceType) {
                 var userResource = new userResourceService[resourceType]();
-                if (resourceType === "user-item") {
+                if (resourceType === "user-item" || resourceType === "user-monster" || resourceType === "user-npc") {
                     userResource.Name = resourceNewName[resourceType];
                 } else {
                     userResource.name = resourceNewName[resourceType];
                 }
+                if (resourceType === "user-monster" || resourceType === "user-npc") {
+                    userResource.XP = 0;
+                    userResource.CR = 0;
+                }
                 userResource.$save(function () {
                     addNode({title: userResource.name || userResource.Name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey()});
                     service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                });
-            };
-
-            service.copyUserMonster = function (monsterId, userCreated) {
-                userMonsterService.copy(monsterId, userCreated, function (error, userMonster) {
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        addNode({title: userMonster.Name, userMonsterId: userMonster._id, key: getNextNodeKey()});
-                        service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                    }
-                });
-            };
-
-            service.copyUserText = function (userTextId) {
-                userTextService.copy(userTextId, function (error, userText) {
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        addNode({title: userText.title, userTextId: userText._id, key: getNextNodeKey()});
-                        service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                    }
-                });
-            };
-
-            service.copyUserNpc = function (npcId, userCreated) {
-                userNpcService.copy(npcId, userCreated, function (error, userNpc) {
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        addNode({title: userNpc.Name, userNpcId: userNpc._id, key: getNextNodeKey()});
-                        service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                    }
                 });
             };
 
@@ -320,40 +279,11 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
-            service.userMonsterUpdated = function (userMonster) {
-                fancyTree.visit(function (node) {
-                    if (node.data.userMonsterId && node.data.userMonsterId === userMonster._id) {
-                        if (node.title !== userMonster.Name) {
-                            node.setTitle(userMonster.Name);
-                            service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                        }
-                    }
-                });
-            };
-
-            service.userNpcUpdated = function (userNpc) {
-                fancyTree.visit(function (node) {
-                    if (node.data.userNpcId && node.data.userNpcId === userNpc._id) {
-                        if (node.title !== userNpc.Name) {
-                            node.setTitle(userNpc.Name);
-                            service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                        }
-                    }
-                });
-            };
-
-            service.userTextUpdated = function (userText) {
-                fancyTree.visit(function (node) {
-                    if (node.data.userTextId && node.data.userTextId === userText._id) {
-                        if (node.title !== userText.title) {
-                            node.setTitle(userText.title);
-                            service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                        }
-                    }
-                });
-            };
-
-            service.userResourceUpdated = function (userResource) {
+            service.userResourceUpdated = function (userResource, resourceType) {
+                if (resourceType && resourceType === "chronicle") {
+                    currentChronicle = userResource;
+                    return;
+                }
                 fancyTree.visit(function (node) {
                     if (node.data.userResourceId && node.data.userResourceId === userResource._id) {
                         var name = userResource.name || userResource.Name;
@@ -365,20 +295,6 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
-            service.userMonsterDeleted = function (userMonster) {
-                var toRemove;
-                fancyTree.visit(function (node) {
-                    if (node.data.userMonsterId && node.data.userMonsterId === userMonster._id) {
-                        toRemove = node;
-                    }
-                });
-                if (toRemove) {
-                    removeNode(toRemove);
-                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                } else {
-                    console.log("could not remove content tree userMonster");
-                }
-            };
 
             service.userResourceDeleted = function (userResource) {
                 var toRemove;
@@ -395,48 +311,16 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 }
             };
 
-            service.userNpcDeleted = function (userNpc) {
-                var toRemove;
-                fancyTree.visit(function (node) {
-                    if (node.data.userNpcId && node.data.userNpcId === userNpc._id) {
-                        toRemove = node;
-                    }
-                });
-                if (toRemove) {
-                    removeNode(toRemove);
-                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                } else {
-                    console.log("could not remove content tree userNpc");
-                }
-            };
-
-            service.userTextDeleted = function (userText) {
-                var toRemove;
-                fancyTree.visit(function (node) {
-                    if (node.data.userTextId && node.data.userTextId === userText._id) {
-                        toRemove = node;
-                    }
-                });
-                if (toRemove) {
-                    removeNode(toRemove);
-                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                } else {
-                    console.log("could not remove content tree userText");
-                }
-            };
 
             service.treeChanged = function (tree) {
                 contentTree = tree;
+
                 if (contentTree && fancyTree) {
                     if (fancyTree.count() === 0) {
                         contentTree = [];
                     }
-                    $http.post('/api/save-content-tree', { contentTree: contentTree })
-                        .success(function (data) {
-                        })
-                        .error(function (error) {
-                            console.log(error);
-                        });
+                    currentChronicle.contentTree = contentTree;
+                    currentChronicle.$save();
                 }
             };
 
@@ -452,16 +336,16 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 var userIllustrationIds = [];
                 var userMapIds = [];
                 for (var i in children) {
-                    if (children[i].data.encounterId) {
-                        encounterIds.push(children[i].data.encounterId);
-                    } else if (children[i].data.userTextId) {
-                        userTextIds.push(children[i].data.userTextId);
+                    if (children[i].data.resourceType === "encounter") {
+                        encounterIds.push(children[i].data.userResourceId);
+                    } else if (children[i].data.resourceType === "user-text") {
+                        userTextIds.push(children[i].data.userResourceId);
                     }
-                    else if (children[i].data.userMonsterId) {
-                        userMonsterIds.push(children[i].data.userMonsterId);
+                    else if (children[i].data.resourceType === "user-monster") {
+                        userMonsterIds.push(children[i].data.userResourceId);
                     }
-                    else if (children[i].data.userNpcId) {
-                        userNpcsIds.push(children[i].data.userNpcId);
+                    else if (children[i].data.resourceType === "user-npc") {
+                        userNpcsIds.push(children[i].data.userResourceId);
                     }
                     else if (children[i].data.resourceType === "user-spell") {
                         userSpellIds.push(children[i].data.userResourceId);
@@ -486,19 +370,13 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     });
                 });
                 tasks.push(function (taskCallback) {
-                    userTextService.getMultiple(userTextIds, function (error, userTexts) {
-                        taskCallback(error, userTexts);
-                    });
+                    userResourceService["user-text"].getMultiple(userTextIds, taskCallback);
                 });
                 tasks.push(function (taskCallback) {
-                    userMonsterService.getMultiple(userMonsterIds, function (error, monsters) {
-                        taskCallback(error, monsters);
-                    });
+                    userResourceService["user-monster"].getMultiple(userMonsterIds, taskCallback);
                 });
                 tasks.push(function (taskCallback) {
-                    userNpcService.getMultiple(userNpcsIds, function (error, npcs) {
-                        taskCallback(error, npcs);
-                    });
+                    userResourceService["user-npc"].getMultiple(userNpcsIds, taskCallback);
                 });
                 tasks.push(function (taskCallback) {
                     userResourceService["user-item"].getMultiple(userItemIds, taskCallback);
@@ -535,36 +413,36 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                             if (children[j].folder) {
                                 enrichedLeaves.push({Name: children[j].title, nodeKey: children[j].key, descendantCount: children[j].countChildren(true), $type: "binder"})
                             }
-                            else if (children[j].data.encounterId) {
+                            else if (children[j].data.resourceType === "encounter") {
                                 for (var k in encounters) {
-                                    if (encounters[k]._id === children[j].data.encounterId) {
+                                    if (encounters[k]._id === children[j].data.userResourceId) {
                                         encounters[k].$type = "encounter";
                                         enrichedLeaves.push(encounters[k]);
                                         break;
                                     }
                                 }
                             }
-                            else if (children[j].data.userTextId) {
+                            else if (children[j].data.resourceType === "user-text") {
                                 for (var l in userTexts) {
-                                    if (userTexts[l]._id === children[j].data.userTextId) {
-                                        userTexts[l].$type = "userText";
+                                    if (userTexts[l]._id === children[j].data.userResourceId) {
+                                        userTexts[l].$type = "user-text";
                                         enrichedLeaves.push(userTexts[l]);
                                         break;
                                     }
                                 }
                             }
-                            else if (children[j].data.userMonsterId) {
+                            else if (children[j].data.resourceType === "user-monster") {
                                 for (var m in monsters) {
-                                    if (monsters[m]._id === children[j].data.userMonsterId) {
+                                    if (monsters[m]._id === children[j].data.userResourceId) {
                                         monsters[m].$type = "monster";
                                         enrichedLeaves.push(monsters[m]);
                                         break;
                                     }
                                 }
                             }
-                            else if (children[j].data.userNpcId) {
+                            else if (children[j].data.resourceType === "user-npc") {
                                 for (var n in npcs) {
-                                    if (npcs[n]._id === children[j].data.userNpcId) {
+                                    if (npcs[n]._id === children[j].data.userResourceId) {
                                         npcs[n].$type = "npc";
                                         enrichedLeaves.push(npcs[n]);
                                         break;

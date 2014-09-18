@@ -92,7 +92,7 @@ DEMONSQUID.encounterBuilderServices.factory('featService', ['$http', function ($
                 });
         },
         get: function (id, callback) {
-            $http.get('/api/feat/' + id, {cache: true})
+            $http.get('/api/feat/' + id)
                 .success(function (data) {
                     callback(data.error, data.feat);
                 })

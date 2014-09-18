@@ -6,7 +6,9 @@
 
     function makeUserResource(resourceSlug, $resource) {
         var resource = $resource("/api/" + resourceSlug + "/:id", {id: '@_id'}, {
+            'getNoCache' : {method: 'GET', headers: {"Cache-Control": "no-cache"}},
             'get': {method: 'GET'},
+            'query': {method: 'GET', isArray: true},
             'save': {method: 'POST'},
             'delete': {method: 'DELETE'}
         });
@@ -27,9 +29,10 @@
             }
             window.async.parallel(tasks, callback);
         };
-        return resource
+        return resource;
 
     }
+
 
     DEMONSQUID.encounterBuilderServices.factory('UserFeatResource', ['$resource', function ($resource) {
         return makeUserResource("user-feat", $resource);
@@ -51,5 +54,21 @@
         return makeUserResource("user-map", $resource);
     }]);
 
+    DEMONSQUID.encounterBuilderServices.factory('ChronicleResource', ['$resource', function ($resource) {
+        return makeUserResource("chronicle",$resource);
+    }]);
+
+    DEMONSQUID.encounterBuilderServices.factory('UserMonsterResource', ['$resource', function ($resource) {
+        return makeUserResource("user-monster", $resource);
+    }]);
+    DEMONSQUID.encounterBuilderServices.factory('UserNpcResource', ['$resource', function ($resource) {
+        return makeUserResource("user-npc", $resource);
+    }]);
+    DEMONSQUID.encounterBuilderServices.factory('UserTextResource', ['$resource', function ($resource) {
+        return makeUserResource("user-text", $resource);
+    }]);
+    DEMONSQUID.encounterBuilderServices.factory('EncounterResource', ['$resource', function ($resource) {
+        return makeUserResource("encounter", $resource);
+    }]);
 })();
 

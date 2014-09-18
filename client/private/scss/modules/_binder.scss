@@ -29,6 +29,7 @@
   padding-bottom: ($grid-gutter-width/2);
   margin-bottom: ($grid-gutter-width/2);
   background-color: $red;
+  overflow: hidden;
   a { color: white; }
   .icon-edit {
     color: inherit;

@@ -134,14 +134,5 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                     lootService.encounterId = null;
                 }
             });
-
-//            $scope.randomizeLoot = function (encounter) {
-//                lootService.generateEncounterLoot(encounter, 'medium', function (coins, items) {
-//                    encounter.coins = coins;
-//                    encounter.items = items;
-//                    /* FIXME: this works, but makes a wasteful upsert */
-//                    encounterService.encounterChanged(encounter);
-//                });
-//            }
         }
     ]);

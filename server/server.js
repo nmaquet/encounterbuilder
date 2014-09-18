@@ -60,7 +60,6 @@ function main(db) {
         app.use(express.urlencoded());
         app.use(express.methodOverride());
         app.use(express.cookieParser());
-        app.disable("etag");
     });
 
     function disableCaching(request, response, next) {
@@ -109,9 +108,8 @@ function main(db) {
     var searchSpellsRoute = require('./searchSpellsRoute')(collections.spells, FIND_LIMIT);
     var searchFeatsRoute = require('./searchFeatsRoute')(collections.feats, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(collections.monsters);
-    var userMonsterRoute = require('./userMonsterRoute')(collections.userMonsters, collections.monsters, ObjectID);
-    var userNpcRoute = require('./userNpcRoute')(collections.userNpcs, collections.npcs, ObjectID);
-    var userTextRoute = require('./userTextRoute')(collections.userTexts, ObjectID);
+    var userNpcRoute = require('./userResourceRoute')(collections.userNpcs, collections.npcs, ObjectID);
+    var userTextRoute = require('./userResourceRoute')(collections.userTexts,collections.userTexts, ObjectID);
     var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
     var npcRoute = require('./npcRoute')(collections.npcs);
     var spellRoute = require('./spellRoute')(collections.spells);
@@ -122,30 +120,28 @@ function main(db) {
     var registerRoute = require('./registerRoute')(userService);
     var validateEmailRoute = require('./validateEmailRoute')(userService);
     var userDataRoute = require('./userDataRoute')(collections.contentTrees, userService);
-    var encounterRoute = require('./encounterRoutes')(collections.encounters, ObjectID, lootService);
+    var encounterRoute = require('./userResourceRoute')(collections.encounters, null, ObjectID);
+    var generateLootRoute = require('./generateLootRoute')(lootService);
     var contentTreeRoute = require('./contentTreeRoute')(collections.contentTrees);
     var favouritesRoute = require('./favouritesRoute')(collections.favourites);
     var userFeatRoute = require('./userResourceRoute')(collections.userFeats, collections.feats, ObjectID);
     var userSpellRoute = require('./userResourceRoute')(collections.userSpells, collections.spells, ObjectID);
     var userItemRoute = require('./userResourceRoute')(collections.userItems, collections.magicitems, ObjectID);
     var userIllustrationRoute = require('./userImageResourceRoute')(collections.userIllustrations, ObjectID);
+    var userMonsterRoute = require('./userResourceRoute')(collections.userMonsters, collections.monsters, ObjectID);
     var userMapRoute = require('./userImageResourceRoute')(collections.userMaps, ObjectID);
+    var chronicleRoute = require('./userResourceRoute')(collections.chronicles,null,ObjectID);
 
     app.get('/api/search-monsters', metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', metrics.logSearchNpc, searchNpcsRoute);
     app.get('/api/search-spells', metrics.logSearchSpell, searchSpellsRoute);
     app.get('/api/search-feats', metrics.logSearchFeat, searchFeatsRoute);
     app.get('/api/search-magic-items', metrics.logSearchItem, searchMagicItemsRoute);
-    app.get('/api/monster/:id', metrics.logSelectMonster, monsterRoute);
-    app.get('/api/magic-item/:id', metrics.logSelectItem, magicItemRoute);
-    app.get('/api/npc/:id', metrics.logSelectNpc, npcRoute);
-    app.get('/api/spell/:id', metrics.logSelectSpell, spellRoute);
-    app.get('/api/feat/:id', metrics.logSelectFeat, featRoute);
-    app.get('/api/encounter/:id', metrics.logSelectEncounter, encounterRoute.findOne);
-
-    app.get('/api/user-monster/:id', disableCaching, /* TODO METRICS */ userMonsterRoute.findOne);
-    app.get('/api/user-npc/:id', disableCaching, /* TODO METRICS */ userNpcRoute.findOne);
-    app.get('/api/user-text/:id', disableCaching, /* TODO METRICS */ userTextRoute.findOne);
+    app.get('/api/monster/:id', enableCaching, metrics.logSelectMonster, monsterRoute);
+    app.get('/api/magic-item/:id', enableCaching, metrics.logSelectItem, magicItemRoute);
+    app.get('/api/npc/:id', enableCaching, metrics.logSelectNpc, npcRoute);
+    app.get('/api/spell/:id', enableCaching, metrics.logSelectSpell, spellRoute);
+    app.get('/api/feat/:id', enableCaching, metrics.logSelectFeat, featRoute);
     app.get("/api/favourites", disableCaching, favouritesRoute.fetch);
 
     app.post('/api/user-data', userDataRoute);
@@ -153,29 +149,31 @@ function main(db) {
     app.post("/login", metrics.logLogin, enableCORS, loginRoute.post);
     app.post("/register", /* TODO METRICS */ enableCORS, registerRoute);
     app.get("/validate-email", disableCaching, /* TODO METRICS */ validateEmailRoute);
-    app.post("/api/update-encounter", metrics.logUpdateEncounter, encounterRoute.update);
-    app.post("/api/create-encounter", metrics.logCreateEncounter, encounterRoute.create);
-    app.post("/api/remove-encounter", metrics.logRemoveEncounter, encounterRoute.delete);
-    app.post("/api/generate-encounter-loot", metrics.logGenerateEncounterLoot, encounterRoute.generateLoot);
+    app.post("/api/generate-encounter-loot", metrics.logGenerateEncounterLoot, generateLootRoute.generateLoot);
     app.post("/api/change-password", enableCORS, changePasswordRoute);
     app.post("/api/change-user-data", enableCORS, changeUserDataRoute);
     app.post("/api/save-content-tree", contentTreeRoute.updateContentTree);
     app.post("/api/save-favourites", favouritesRoute.update);
 
-    app.post("/api/create-user-monster", /* TODO METRICS */ userMonsterRoute.create);
-    app.post("/api/copy-monster", /* TODO METRICS */ userMonsterRoute.copy);
-    app.post("/api/update-user-monster", /* TODO METRICS */ userMonsterRoute.update);
-    app.post("/api/delete-user-monster", /* TODO METRICS */ userMonsterRoute.delete);
 
-    app.post("/api/create-user-npc", /* TODO METRICS */ userNpcRoute.create);
-    app.post("/api/copy-npc", /* TODO METRICS */ userNpcRoute.copy);
-    app.post("/api/update-user-npc", /* TODO METRICS */ userNpcRoute.update);
-    app.post("/api/delete-user-npc", /* TODO METRICS */ userNpcRoute.delete);
 
-    app.post("/api/create-user-text", /* TODO METRICS */ userTextRoute.create);
-    app.post("/api/copy-text", /* TODO METRICS */ userTextRoute.copy);
-    app.post("/api/update-user-text", /* TODO METRICS */ userTextRoute.update);
-    app.post("/api/delete-user-text", /* TODO METRICS */ userTextRoute.delete);
+    /* User Text */
+    app.get("/api/user-text/:id", enableCaching, userTextRoute.getResource);
+    app.post("/api/user-text", userTextRoute.createResource);
+    app.post("/api/user-text/:id", userTextRoute.updateResource);
+    app.delete("/api/user-text/:id", userTextRoute.deleteResource);
+
+    /* User Monster */
+    app.get("/api/user-monster/:id", enableCaching, userMonsterRoute.getResource);
+    app.post("/api/user-monster", userMonsterRoute.createResource);
+    app.post("/api/user-monster/:id", userMonsterRoute.updateResource);
+    app.delete("/api/user-monster/:id", userMonsterRoute.deleteResource);
+
+    /* User Npc */
+    app.get("/api/user-npc/:id", enableCaching, userNpcRoute.getResource);
+    app.post("/api/user-npc", userNpcRoute.createResource);
+    app.post("/api/user-npc/:id", userNpcRoute.updateResource);
+    app.delete("/api/user-npc/:id", userNpcRoute.deleteResource);
 
     /* User Item */
     app.get("/api/user-feat/:id", enableCaching, userFeatRoute.getResource);
@@ -207,6 +205,20 @@ function main(db) {
     app.post("/api/user-map/:id", userMapRoute.updateResource);
     app.delete("/api/user-map/:id", userMapRoute.deleteResource);
 
+    /*Chronicles*/
+    app.get("/api/chronicle", disableCaching, chronicleRoute.query);
+    app.get("/api/chronicle/:id", enableCaching, chronicleRoute.getResource);
+    app.post("/api/chronicle/:id", chronicleRoute.updateResource);
+    app.post("/api/chronicle", chronicleRoute.createResource);
+    app.delete("/api/chronicle/:id", chronicleRoute.deleteResource);
+
+    /*Encounters*/
+    app.get("/api/encounter", disableCaching, encounterRoute.query);
+    app.get("/api/encounter/:id", enableCaching, encounterRoute.getResource);
+    app.post("/api/encounter/:id", encounterRoute.updateResource);
+    app.post("/api/encounter", encounterRoute.createResource);
+    app.delete("/api/encounter/:id", encounterRoute.deleteResource);
+
     var APP_JADE_FILES = [
         'feedback-popover',
         'login',
@@ -232,7 +244,8 @@ function main(db) {
         'spell',
         'feat',
         'printable-encounter',
-        'user-image-resource'
+        'user-image-resource',
+        'chronicle'
     ];
 
     for (var i in APP_JADE_FILES) {

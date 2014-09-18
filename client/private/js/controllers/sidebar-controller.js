@@ -10,22 +10,18 @@ DEMONSQUID.encounterBuilderControllers.controller('SidebarController',
                 contentTreeService.createEncounter();
             };
 
-            $scope.selectEncounter = function (encounter) {
-                $scope.go("/encounter/" + encounter._id);
-            };
-
             $scope.createBinder = function () {
                 contentTreeService.createBinder();
             };
 
             $scope.createUserMonster = function () {
-                contentTreeService.createUserMonster();
+                contentTreeService.createUserResource("user-monster");
             };
             $scope.createUserNpc = function () {
-                contentTreeService.createUserNpc();
+                contentTreeService.createUserResource("user-npc");
             };
             $scope.createUserText = function () {
-                contentTreeService.createUserText();
+                contentTreeService.createUserResource("user-text");
             };
             $scope.createUserFeat = function () {
                 contentTreeService.createUserResource("user-feat");

@@ -24,7 +24,7 @@ DEMONSQUID.encounterBuilderServices.factory('itemService', ['$http', function ($
                 });
         },
         get: function (id, callback) {
-            $http.get('/api/magic-item/' + id, {cache: true})
+            $http.get('/api/magic-item/' + id)
                 .success(function (data) {
                     callback(null, data.magicItem);
                 })

@@ -40,6 +40,7 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
   &.sp-menu-open { @include box-shadow(0,6px,24px,$sp-menu-shadow); }
 
   h1, h2, h3, .t-title {
+    position: relative;
     color: $sp-menu-title;
     font-size: 1.25em;
     padding: ($grid-gutter-width/3) ($grid-gutter-width/2);
@@ -238,4 +239,23 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
 // Exception for the filters
 .l-filters {
   > .t-title { padding-bottom: 0; }
+}
+
+.sp-section {
+  position: relative;
+  color: $sp-menu-title;
+  font-size: 1.25em;
+  margin: 0;
+  background: $sp-menu-text-bg $img-texture-1 repeat left top;
+
+}
+.sp-section {
+  &, input {
+    min-height: 42px; //same height as '.title'
+  }
+  input {
+    border-width: 0;
+    //background: transparent;
+    @include border-radius(0);
+  }
 }
