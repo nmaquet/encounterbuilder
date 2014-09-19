@@ -1,7 +1,7 @@
 // Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
 
 "use strict";
-var uuid = require('node-uuid');
+
 module.exports = function (userCollection, baseCollection, ObjectID) {
 
     function createEmptyResource(request, response) {
@@ -9,8 +9,7 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
         var resource = request.body || {};
         delete resource._id;
         resource.userId = ObjectID(sessionUserId);
-        resource.uuid = uuid.v4();
-        console.log(">>>> created resource with uuid=" + resource.uuid);
+        resource.lastModified = new Date().toISOString();
         userCollection.insert(resource, function (error, newResourceArray) {
             if (error) {
                 response.json(500);
@@ -44,8 +43,7 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
                 return response.send(404);
             }
             baseResource.userId = ObjectID(sessionUserId);
-            baseResource.uuid = uuid.v4();
-            console.log(">>>> created resource with uuid=" + baseResource.uuid);
+            baseResource.lastModified = new Date().toISOString();
             userCollection.insert(baseResource, function (error, newResourceArray) {
                 if (error) {
                     response.send(500);
@@ -90,25 +88,20 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
             clientResource.userId = ObjectID(sessionUserId);
             var selector = {_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)};
             // FIXME: two requests is expensive!
-            console.log(">>>> UPDATE " + request.path);
-            console.log(">>>> (1) CLIENT uuid=" + clientResource.uuid);
             userCollection.findOne({_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)}, function (error, dbResource) {
                 if (dbResource === null) {
                     return response.send(404)
                 }
-                console.log(">>>> (2)     DB uuid=" + dbResource.uuid);
-                if (dbResource.uuid !== clientResource.uuid) {
-                    console.log(">>>> (3) 409 conflict !");
+                var timeDelta = Math.abs(new Date(dbResource.lastModified) - new Date(clientResource.lastModified));
+                if (timeDelta > 10 * 1000 /* 10 s */) {
                     return response.status(409).json(dbResource);
                 }
-                clientResource.uuid = uuid.v4();
-                console.log(">>>> (3)    NEW uuid=" + clientResource.uuid);
+                clientResource.lastModified = new Date().toISOString();
                 userCollection.findAndModify(selector, [], clientResource, {new:true}, function (error, modifiedResource) {
                     if (error) {
                         response.send(500);
                     }
                     else {
-                        console.log(">>>> (4) update successful\n");
                         response.json(modifiedResource);
                     }
                 });
