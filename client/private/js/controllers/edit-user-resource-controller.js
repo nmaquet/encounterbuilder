@@ -35,21 +35,21 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
                 }
                 userResourceService[resourceType].save(userResource,
                     function success(newUserResource) {
-                        userResource.uuid = newUserResource.uuid;
+                        userResource.lastModified = newUserResource.lastModified;
                     });
                 contentTreeService.userResourceUpdated(userResource, resourceType);
             }
 
-            $scope.nouuid = function (userResource) {
+            $scope.exceptLastModified = function (userResource) {
                 var result = angular.copy(userResource);
-                delete result.uuid;
+                delete result.lastModified;
                 return result;
             };
 
             $scope.updateUserResource = updateUserResource;
             $scope.userResource = userResourceService[resourceType].getNoCache({id: $routeParams.userResourceId}, function () {
                 var throttledSave = throttle(updateUserResource, 5000);
-                $scope.$watch('nouuid(userResource)', function () {
+                $scope.$watch('exceptLastModified(userResource)', function () {
                     throttledSave($scope.userResource);
                 }, true /* deep equality */);
                 if ($scope.userResource.Classes) {
