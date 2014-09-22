@@ -1,0 +1,269 @@
+{
+    "name": "test",
+    "contentTree": {
+        "expanded": true,
+        "key": "root_2",
+        "title": "root",
+        "children": [
+            {
+                "expanded": true,
+                "folder": true,
+                "key": "1",
+                "title": "new Binder",
+                "children": [
+                    {
+                        "extraClasses": "fancytree-encounter",
+                        "key": "2",
+                        "title": "new Encounter",
+                        "data": {
+                            "resourceType": "encounter",
+                            "encounter": {
+                                "Name": "new Encounter",
+                                "CR": 0.5,
+                                "Monsters": {
+                                    "aasimar": {
+                                        "amount": 1,
+                                        "Name": "Aasimar",
+                                        "XP": "200",
+                                        "CR": 0.5,
+                                        "Type": "outsider",
+                                        "TreasureBudget": "npc gear",
+                                        "Heroic": true,
+                                        "Level": 1
+                                    }
+                                },
+                                "coins": {
+                                    "pp": 0,
+                                    "gp": 0,
+                                    "sp": 0,
+                                    "cp": 0
+                                },
+                                "xp": 200,
+                                "lootValue": 0
+                            }
+                        }
+                    },
+                    {
+                        "extraClasses": "fancytree-monster",
+                        "key": "5",
+                        "title": "Aboleth",
+                        "data": {
+                            "resourceType": "user-monster",
+                            "userMonster": {
+                                "Name": "Aboleth",
+                                "CR": 7,
+                                "XP": "3200",
+                                "Alignment": "LE",
+                                "Size": "Huge",
+                                "Type": "aberration",
+                                "SubType": "(aquatic)",
+                                "AC": "20, touch 9, flat-footed 19",
+                                "HP": "84",
+                                "HD": "(8d8+48)",
+                                "Saves": "Fort +8, Ref +5, Will +11",
+                                "Fort": "8",
+                                "Ref": "5",
+                                "Will": "11",
+                                "Speed": "10 ft., swim 60 ft.",
+                                "Melee": "4 tentacles +10 (1d6+5 plus slime)",
+                                "Space": "15 ft.",
+                                "Reach": "15 ft.",
+                                "AbilityScores": "Str 20, Dex 12, Con 22, Int 15, Wis 17, Cha 17",
+                                "Feats": "Improved Initiative, Iron Will, Lightning Reflexes, Weapon Focus (tentacle)",
+                                "Skills": "Bluff +11, Intimidate +14, Knowledge (any one) +13, Perception +14, Spellcraft +13, Swim +24",
+                                "Languages": "Aboleth, Aklo, Aquan, Undercommon",
+                                "Environment": "any aquatic",
+                                "Organization": "solitary, pair, brood (3-6), or shoal (7-19)",
+                                "Treasure": "double",
+                                "Source": "originally from PFRPG Bestiary and modified by Chris",
+                                "IsTemplate": "0",
+                                "CharacterFlag": "0",
+                                "CompanionFlag": "0",
+                                "Fly": "0",
+                                "Climb": "0",
+                                "Burrow": "0",
+                                "Swim": "1",
+                                "Land": "1",
+                                "AgeCategory": "adult",
+                                "DontUseRacialHD": "0",
+                                "CompanionFamiliarLink": "NULL",
+                                "UniqueMonster": "0",
+                                "MR": "0",
+                                "Mythic": false,
+                                "MT": "0",
+                                "Description": "<p>As befits their hideous primeval appearance, the hermaphroditic aboleths are among the world's oldest forms of life. Ancient even when the gods first turned their eyes to the Material Plane, the aboleths have always existed apart from other mortal life, alien and cold and endlessly plotting. They once ruled the world with vast empires, and today view most other forms of life as either food or slaves-and sometimes both. They disdain the gods and see themselves as the true masters of creation.</p><p>An aboleth is 25 feet long and weighs 6,500 pounds.</p><p>In the darkest reaches of the sea, aboleths still dwell in grotesque cities built in nauseating and cyclopean styles.</p><p>There they are served by countless slaves culled from every nation, air-breathing and aquatic alike, although the air-breathing slaves are doubly bound by magic and the need to constantly replenish their water-breathing ability via the excretions of their aboleth masters. Lone aboleths are often advance scouts for these hidden cities, seeking out new slaves.</p>",
+                                "Description_Visual": "Four long tentacles writhe from this three-eyed fish-like creature's f lanks, and its green body glistens with thick, clear slime.",
+                                "Init": "+5",
+                                "Senses": "darkvision 60 ft.; Perception +14",
+                                "SpellLikeAbilities": "<b>Spell-Like Abilities</b> (CL 16th)<br>At will&mdash;<i>hypnotic pattern</i> (DC 15), <i>illusory wall</i> (DC 17), <i>mirage arcana</i> (DC 18), <i>persistent image</i> (DC 18), <i>programmed image</i> (DC 19), <i>project image</i> (DC 20), <i>veil</i> (DC 19)<br>3/day&mdash;<i>dominate monster</i> (DC 22)",
+                                "Str": "20",
+                                "Dex": "12",
+                                "Con": "22",
+                                "Int": "15",
+                                "Wis": "17",
+                                "Cha": "17",
+                                "BaseAtk": "+6",
+                                "CMB": "+13",
+                                "CMD": "24 (can't be tripped)",
+                                "SpecialAbilities": "<h5><b>Mucus Cloud (Ex)</b> While underwater, an aboleth exudes a cloud of transparent slime. All creatures adjacent to an aboleth must succeed on a DC 20 Fortitude save each round or lose the ability to breathe air (but gain the ability to breathe water) for 3 hours. Renewed contact with an aboleth's mucus cloud and failing another save extends the effect for another 3 hours. The save DC is Constitution-based.</h5><h5><b> Slime (Ex)</b> A creature hit by an aboleth's tentacle must succeed on a DC 20 Fortitude save or his skin and flesh transform into a clear, slimy membrane over the course of 1d4 rounds. The creature's new \"flesh\" is soft and tender, reducing its Constitution score by 4 as long as it persists. If the creature's flesh isn't kept moist, it dries quickly and the victim takes 1d12 points of damage every 10 minutes. Remove disease and similar effects can restore an afflicted creature to normal, but immunity to disease offers no protection from this attack. The save DC is Constitution-based.</h5>",
+                                "TreasureBudget": "double",
+                                "Heroic": false,
+                                "AC_Mods": "(+1 Dex, +11 natural, -2 size)",
+                                "Aura": "mucus cloud (5 feet)",
+                                "templates": {}
+                            }
+                        }
+                    },
+                    {
+                        "extraClasses": "fancytree-map",
+                        "key": "3",
+                        "title": "new Map",
+                        "data": {
+                            "resourceType": "user-map",
+                            "userResource": {
+                                "name": "new Map"
+                            }
+                        }
+                    },
+                    {
+                        "extraClasses": "fancytree-text",
+                        "key": "12",
+                        "title": "new Text",
+                        "data": {
+                            "resourceType": "user-text",
+                            "userText": {
+                                "title": "new Text",
+                                "content": "<p>Azeajmazlec sqldfhq mkjmghre gd</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<p>sdqflgh qdmkfjgh&nbsp;</p>\n<p>smdqlfgh qmdg</p>",
+                                "synopsis": "timyyy s=dlgjks lkdfg"
+                            }
+                        }
+                    },
+                    {
+                        "extraClasses": "fancytree-image",
+                        "key": "8",
+                        "title": "new Illustration",
+                        "data": {
+                            "resourceType": "user-illustration",
+                            "userResource": {
+                                "name": "new Illustration"
+                            }
+                        }
+                    },
+                    {
+                        "extraClasses": "fancytree-item",
+                        "key": "9",
+                        "title": "new Item",
+                        "data": {
+                            "resourceType": "user-item",
+                            "userResource": {
+                                "Name": "new Item"
+                            }
+                        }
+                    },
+                    {
+                        "extraClasses": "fancytree-spell",
+                        "key": "10",
+                        "title": "new Spell",
+                        "data": {
+                            "resourceType": "user-spell",
+                            "userResource": {
+                                "name": "new Spell"
+                            }
+                        }
+                    },
+                    {
+                        "extraClasses": "fancytree-feat",
+                        "key": "11",
+                        "title": "new Feat",
+                        "data": {
+                            "resourceType": "user-feat",
+                            "userResource": {
+                                "name": "new Feat"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "extraClasses": "fancytree-monster",
+                "key": "4",
+                "title": "new Monster",
+                "data": {
+                    "resourceType": "user-monster",
+                    "userMonster": {
+                        "Name": "new Monster",
+                        "CR": 0,
+                        "XP": 0,
+                        "templates": {}
+                    }
+                }
+            },
+            {
+                "extraClasses": "fancytree-npc",
+                "key": "6",
+                "title": "Achaierai",
+                "data": {
+                    "resourceType": "user-npc",
+                    "userNpc": {
+                        "Name": "Achaierai",
+                        "CR": 5,
+                        "XP": "1600",
+                        "Alignment": "LE",
+                        "Size": "Large",
+                        "Type": "outsider",
+                        "SubType": "(evil, extraplanar, lawful)",
+                        "Init": "1",
+                        "Senses": "darkvision 60 ft.; Perception +12",
+                        "AC": "20, touch 11, flat-footed",
+                        "AC_Mods": "18 (+1 Dex, +1 dodge, +9 natural, -1 size)",
+                        "HP": "52",
+                        "HD": "(7d10+14)",
+                        "Saves": "Fort +7, Ref +6, Will +4",
+                        "Fort": "7",
+                        "Ref": "6",
+                        "Will": "4",
+                        "SR": "20",
+                        "Speed": "50 ft.",
+                        "Melee": "2 claws +10 (1d6+4), bite +10 (2d6+4)",
+                        "Space": "10 ft.",
+                        "Reach": "10 ft.",
+                        "SpecialAttacks": "black cloud",
+                        "BaseAtk": 7,
+                        "CMB": "12",
+                        "CMD": "24",
+                        "Feats": "Dodge, Mobility, Spring Attack, Vital Strike",
+                        "Skills": "Acrobatics +11, Climb +14, Perception +12, Sense Motive +12, Stealth +7, Swim +14",
+                        "Languages": "Infernal",
+                        "Source": "originally from AP 28 and modified by Chris",
+                        "SpecialAbilities": "Black Cloud (Su) An achaierai can exhale a cloud of choking, toxic smoke three times per day. Any non-achaierai within 10 feet of the achaierai immediately takes 2d6 points of damage as its tissues burn and melt and rot away. The cloud erodes sanity as well as flesh, and anyone who takes damage from the black cloud must also make a DC 15 Fortitude save or become confused. Every round, the victim may attempt another DC 15 Fortitude save to recover from the confusion; otherwise it persists, lasting indefinitely until the condition is removed or the victim eventually makes his saving throw. The confusion element of a black cloud is a mind-affecting effect. The save DC is Constitution-based.",
+                        "DuringCombat": "The achaierais open combat with their black clouds, then close to engage the PCs in melee. They are smart enough to try to pin down foes within the confines of the razor sharp thorns when they can.",
+                        "Morale": "The achaierais fight to the death.",
+                        "CharacterFlag": "0",
+                        "CompanionFlag": "0",
+                        "Fly": "0",
+                        "Climb": "0",
+                        "Burrow": "0",
+                        "Swim": "0",
+                        "Land": "0",
+                        "AgeCategory": "adult",
+                        "CompanionFamiliarLink": "NULL",
+                        "LinkText": "http://www.d20pfsrd.com/bestiary/monster-listings/outsiders/achaierai",
+                        "UniqueMonster": "0",
+                        "Variant": "0",
+                        "MR": 0,
+                        "Mythic": false,
+                        "MT": 0,
+                        "Description": null,
+                        "Str": "19",
+                        "Dex": "13",
+                        "Con": "14",
+                        "Int": "11",
+                        "Wis": "14",
+                        "Cha": "16",
+                        "Heroic": false
+                    }
+                }
+            }
+        ]
+    }
+}

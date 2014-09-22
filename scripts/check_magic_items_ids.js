@@ -16,6 +16,7 @@ function getDistance(object1, object2) {
 }
 
 var items = {
+	belt3:"sdfg",
     belt : require('../data/items/belts.json'),
     body : require('../data/items/body.json'),
     chest : require('../data/items/chests.json'),
