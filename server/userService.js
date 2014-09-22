@@ -9,6 +9,7 @@ var async = require("async");
 var crypto = require('crypto');
 var uuid = require('node-uuid');
 var ObjectID = require('mongodb').ObjectID;
+var fs = require('fs');
 
 var userCollection = null;
 var contentTreeCollection = null;
@@ -111,11 +112,16 @@ function register(fields, callback) {
                     continue;
                 user[property] = fields[property];
             }
+            //FIXME use real demo chronicle
+            var chronicle = require('../scripts/live/chronicles/Example Chronicle.json');
             userCollection.insert(user, function (error, result) {
                 if (error) {
                     return callback(error);
                 }
-                contentTreeCollection.insert({ username: user.username, contentTree: [] }, function (error) {
+                importChronicle(user.username, chronicle, function (error) {
+                    console.log(error)
+                });
+                chroniclesCollection.insert({ userId: result[0]._id, name: "new Chronicle", contentTree: [] }, function (error) {
                     if (error) {
                         return callback(error);
                     }
@@ -225,7 +231,11 @@ function importChronicle(username, chronicle, callback) {
         "user-illustration": userIllustrationCollection,
         "user-map": userMapCollection,
         "user-spell": userSpellCollection,
-        "user-item": userItemCollection
+        "user-item": userItemCollection,
+        "user-monster": userMonsterCollection,
+        "user-npc": userNpcCollection,
+        "user-text": userTextCollection,
+        "encounter": encounterCollection
     };
 
     function insertChronicle() {
@@ -279,7 +289,7 @@ function importChronicle(username, chronicle, callback) {
         });
 }
 
-function exportChronicle(chronicleId, username, callback) {
+function exportChronicle(chronicleId, callback) {
     var requestPending = 0;
     var chronicle = null;
     var userResourceCollections = {
