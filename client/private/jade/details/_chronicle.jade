@@ -7,10 +7,11 @@
         .row.btn-container
             //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy', ng-click='copy()')
                 //i.icon.fa.fa-copy
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete', on-confirm="delete()", confirm-click="Are you sure ?", confirm-title="Delete Illustration")
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete', tabindex='-1',data-target='#delete-chronicle-modal', role='button', data-toggle='modal')
                 i.icon.fa.fa-trash-o
 .row.l-section.result-content
     .form-group
         label.col-xs-2.control-label  Synopsis
         .col-xs-10
             textarea.form-control(type='text', rows=rows, name="Synopsis", placeholder="chronicle synopsis", ng-model="chronicle.synopsis")
+include _confirm-delete-chronicle

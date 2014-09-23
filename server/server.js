@@ -131,6 +131,7 @@ function main(db) {
     var userMonsterRoute = require('./userResourceRoute')(collections.userMonsters, collections.monsters, ObjectID);
     var userMapRoute = require('./userImageResourceRoute')(collections.userMaps, ObjectID);
     var chronicleRoute = require('./userResourceRoute')(collections.chronicles,null,ObjectID);
+    var deleteChronicleRoute = require('./deleteChronicleRoute')(collections,ObjectID);
 
     app.get('/api/search-monsters', metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', metrics.logSearchNpc, searchNpcsRoute);
@@ -210,7 +211,7 @@ function main(db) {
     app.get("/api/chronicle/:id", enableCaching, chronicleRoute.getResource);
     app.post("/api/chronicle/:id", chronicleRoute.updateResource);
     app.post("/api/chronicle", chronicleRoute.createResource);
-    app.delete("/api/chronicle/:id", chronicleRoute.deleteResource);
+    app.delete("/api/chronicle/:id", deleteChronicleRoute.deleteResource);
 
     /*Encounters*/
     app.get("/api/encounter", disableCaching, encounterRoute.query);
