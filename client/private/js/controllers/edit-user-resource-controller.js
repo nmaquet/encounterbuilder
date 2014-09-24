@@ -26,6 +26,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
             };
 
             function updateUserResource(userResource) {
+                console.log(userResource);
                 if ($scope.classesString) {
                     var classesObject = parseClass($scope.classesString);
                     $scope.userResource.Classes = classesObject.Classes;
@@ -33,7 +34,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
                     $scope.userResource.Level = classesObject.Level;
                     $scope.classesString = $filter("classesToString")($scope.userResource.Classes);
                 }
-                userResourceService[resourceType].save(userResource,
+                $scope.userResource.$save(userResource,
                     function success(newUserResource) {
                         userResource.lastModified = newUserResource.lastModified;
                     });
@@ -47,7 +48,8 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
             };
 
             $scope.updateUserResource = updateUserResource;
-            $scope.userResource = userResourceService[resourceType].getNoCache({id: $routeParams.userResourceId}, function () {
+            userResourceService[resourceType].getNoCache({id: $routeParams.userResourceId}, function (resource) {
+                $scope.userResource = resource;
                 var throttledSave = throttle(updateUserResource, 5000);
                 $scope.$watch('exceptLastModified(userResource)', function () {
                     throttledSave($scope.userResource);

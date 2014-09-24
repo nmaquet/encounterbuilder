@@ -33,7 +33,7 @@ module.exports = function (collections, ObjectID) {
                 }
                 else {
                     traverse(chronicle.contentTree).forEach(function (node) {
-                        if (node.resourceType) {
+                        if (node && node.resourceType) {
                             console.log(node);
                             tasks.push(function (taskCallback) {
                                 console.log("task executing");
