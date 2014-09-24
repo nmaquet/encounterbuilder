@@ -64,7 +64,7 @@ describe("userService", function() {
             if (error) {
                 return done(error);
             }
-            db.collection("contenttrees").remove({}, function(error){
+            db.collection("chronicles").remove({}, function(error){
                 if (error) {
                     return done(error);
                 }
