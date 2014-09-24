@@ -58,6 +58,7 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
             .when('/spell/:spellId', { templateUrl: 'spell.html'})
             .when('/feat/:featId', { templateUrl: 'feat.html'})
             .when('/chronicle/:userResourceId', { templateUrl: 'chronicle.html'})
+            .when('/chronicle-full/:userResourceId', { templateUrl: 'chronicle-full.html'})
             .otherwise({
                 redirectTo: '/'
             });

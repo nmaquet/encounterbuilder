@@ -34,9 +34,11 @@ module.exports = function (collections, ObjectID) {
                 else {
                     traverse(chronicle.contentTree).forEach(function (node) {
                         if (node && node.resourceType) {
-                            console.log(node);
                             tasks.push(function (taskCallback) {
-                                userResourceCollections[node.resourceType].findOne({_id: ObjectID(node.userResourceId), userId: ObjectID(sessionUserId)}, taskCallback);
+                                userResourceCollections[node.resourceType].findOne({_id: ObjectID(node.userResourceId), userId: ObjectID(sessionUserId)}, function (error, result) {
+                                    result.resourceType = node.resourceType;
+                                    taskCallback(error, result);
+                                });
                             })
                         }
                         if (node && node.binder) {
