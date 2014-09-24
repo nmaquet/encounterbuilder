@@ -9,6 +9,7 @@ var async = require("async");
 var crypto = require('crypto');
 var uuid = require('node-uuid');
 var ObjectID = require('mongodb').ObjectID;
+var fs = require('fs');
 
 var userCollection = null;
 var contentTreeCollection = null;
@@ -111,11 +112,16 @@ function register(fields, callback) {
                     continue;
                 user[property] = fields[property];
             }
+            //FIXME use real demo chronicle
+            var chronicle = require('../scripts/live/chronicles/Example Chronicle.json');
             userCollection.insert(user, function (error, result) {
                 if (error) {
                     return callback(error);
                 }
-                contentTreeCollection.insert({ username: user.username, contentTree: [] }, function (error) {
+                importChronicle(user.username, chronicle, function (error) {
+                    console.log(error)
+                });
+                chroniclesCollection.insert({ userId: result[0]._id, name: "new Chronicle", contentTree: [] }, function (error) {
                     if (error) {
                         return callback(error);
                     }
@@ -181,33 +187,8 @@ function update(username, fields, callback) {
             if (!fields.username) {
                 return callback(null);
             }
-            contentTreeCollection.update({username: username}, {$set: {username: fields.username} }, function (error) {
-                if (error) {
-                    return callback(error);
-                }
-                favouritesCollection.update({username: username}, {$set: {username: fields.username} }, function (error) {
-                    if (error) {
-                        return callback(error);
-                    }
-                    encounterCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi: true}, function (error) {
-                        if (error) {
-                            return callback(error);
-                        }
-                        userTextCollection.update({username: username}, {$set: {username: fields.username} }, {multi: true}, function (error) {
-                            if (error) {
-                                return callback(error);
-                            }
-                            userMonsterCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi: true}, function (error) {
-                                if (error) {
-                                    return callback(error);
-                                }
-                                userNpcCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi: true}, function (error) {
-                                    return callback(error, modifiedUser);
-                                })
-                            })
-                        })
-                    });
-                });
+            favouritesCollection.update({username: username}, {$set: {username: fields.username} }, function (error) {
+                return callback(error, modifiedUser);
             });
         });
     });
@@ -250,7 +231,11 @@ function importChronicle(username, chronicle, callback) {
         "user-illustration": userIllustrationCollection,
         "user-map": userMapCollection,
         "user-spell": userSpellCollection,
-        "user-item": userItemCollection
+        "user-item": userItemCollection,
+        "user-monster": userMonsterCollection,
+        "user-npc": userNpcCollection,
+        "user-text": userTextCollection,
+        "encounter": encounterCollection
     };
 
     function insertChronicle() {
@@ -259,78 +244,10 @@ function importChronicle(username, chronicle, callback) {
         newChronicle.userId = user._id;
         newChronicle.contentTree = chronicle.contentTree;
         chroniclesCollection.insert(newChronicle, function (error) {
-        callback(error);
+            callback(error);
         });
 
 
-    }
-
-    function insertMonster(x) {
-        requestPending++;
-        x.userMonster.Username = username;
-        userMonsterCollection.insert(x.userMonster, function (error, newUserMonster) {
-            if (error) {
-                callback(error);
-            }
-            x.userMonsterId = newUserMonster[0]._id;
-            delete x.userMonster;
-            requestPending--;
-            if (requestPending === 0) {
-                insertChronicle();
-            }
-        });
-    }
-
-    function insertNpc(x) {
-        requestPending++;
-        x.userNpc.Username = username;
-        userNpcCollection.insert(x.userNpc, function (error, newUserNpc) {
-            if (error) {
-                callback(error);
-            }
-            x.userNpcId = newUserNpc[0]._id;
-            delete x.userNpc;
-            requestPending--;
-            if (requestPending === 0) {
-                insertChronicle();
-            }
-
-        });
-    }
-
-    function insertText(x) {
-        requestPending++;
-
-        x.userText.username = username;
-        userTextCollection.insert(x.userText, function (error, newUserText) {
-            if (error) {
-                callback(error);
-            }
-            x.userTextId = newUserText[0]._id;
-            delete x.userText;
-            requestPending--;
-            if (requestPending === 0) {
-                insertChronicle();
-            }
-
-        });
-    }
-
-    function insertEncounter(x) {
-        requestPending++;
-
-        x.encounter.Username = username;
-        userTextCollection.insert(x.encounter, function (error, newEncounter) {
-            if (error) {
-                callback(error);
-            }
-            x.encounterId = newEncounter[0]._id;
-            delete x.encounter;
-            requestPending--;
-            if (requestPending === 0) {
-                insertChronicle();
-            }
-        });
     }
 
     function insertUserResource(x) {
@@ -364,19 +281,7 @@ function importChronicle(username, chronicle, callback) {
                     return;
                 }
                 if (!x.folder) {
-                    if (x.resourceType === "user-monster") {
-                        insertMonster(x);
-                    }
-                    else if (x.resourceType === "user-npc") {
-                        insertNpc(x);
-                    }
-                    else if (x.resourceType === "user-text") {
-                        insertText(x);
-                    }
-                    else if (x.resourceType === "encounter") {
-                        insertEncounter(x);
-                    }
-                    else if (x.resourceType) {
+                    if (x.resourceType) {
                         insertUserResource(x);
                     }
                 }
@@ -384,7 +289,7 @@ function importChronicle(username, chronicle, callback) {
         });
 }
 
-function exportChronicle(chronicleId, username, callback) {
+function exportChronicle(chronicleId, callback) {
     var requestPending = 0;
     var chronicle = null;
     var userResourceCollections = {
@@ -392,90 +297,16 @@ function exportChronicle(chronicleId, username, callback) {
         "user-illustration": userIllustrationCollection,
         "user-map": userMapCollection,
         "user-spell": userSpellCollection,
-        "user-item": userItemCollection
+        "user-item": userItemCollection,
+        "user-monster": userMonsterCollection,
+        "user-npc": userNpcCollection,
+        "user-text": userTextCollection,
+        "encounter": encounterCollection
     };
 
-    function fetchAndAddMonster(x) {
-        requestPending++;
-        userMonsterCollection.findOne({_id: ObjectID(x.userMonsterId), Username: username}, function (error, monster) {
-            if (error) {
-                callback(error);
-            }
-            x.resourceType = "user-monster";
-            delete x.userMonsterId;
-            delete monster._id;
-            delete monster.Username;
-            x.userMonster = monster;
-            requestPending--;
-            if (requestPending === 0) {
-                callback(null, chronicle);
-            }
-        });
-    }
-
-    function fetchAndAddNpc(x) {
-        requestPending++;
-        userNpcCollection.findOne({_id: ObjectID(x.userNpcId), Username: username}, function (error, npc) {
-            if (error) {
-                callback(error);
-            }
-            x.resourceType = "user-npc";
-            delete x.userNpcId;
-            delete npc._id;
-            delete npc.Username;
-            x.userNpc = npc;
-            requestPending--;
-            if (requestPending === 0) {
-                callback(null, chronicle);
-            }
-        });
-    }
-
-    function fetchAndAddText(x) {
-        requestPending++;
-        userTextCollection.findOne({_id: ObjectID(x.userTextId), username: username}, function (error, text) {
-            if (error) {
-                callback(error);
-            }
-            x.resourceType = "user-text";
-            delete x.userTextId;
-            delete text._id;
-            delete text.username;
-            x.userText = text;
-            console.log(x);
-            requestPending--;
-            if (requestPending === 0) {
-                callback(null, chronicle);
-            }
-        });
-    }
-
-    function fetchAndAddEncounter(x) {
-        console.log(x);
-        console.log("-----");
-        requestPending++;
-        encounterCollection.findOne({_id: ObjectID(x.encounterId), Username: username}, function (error, encounter) {
-            if (error) {
-                callback(error);
-            }
-            console.log(encounter);
-            x.resourceType = "encounter";
-            delete x.encounterId;
-            delete encounter._id;
-            delete encounter.Username;
-            x.encounter = encounter;
-            console.log(x);
-            requestPending--;
-            if (requestPending === 0) {
-                callback(null, chronicle);
-            }
-        });
-    }
 
     function fetchAndAddUserResource(x) {
         requestPending++;
-
-
         userResourceCollections[x.resourceType].findOne({_id: ObjectID(x.userResourceId)}, function (error, userResource) {
             console.log("-----");
             if (error) {
@@ -501,19 +332,7 @@ function exportChronicle(chronicleId, username, callback) {
         var traverse = require('traverse');
         traverse(chronicle.contentTree).forEach(function (x) {
             if (!x.folder) {
-                if (x.userMonsterId) {
-                    fetchAndAddMonster(x);
-                }
-                else if (x.userNpcId) {
-                    fetchAndAddNpc(x);
-                }
-                else if (x.userTextId) {
-                    fetchAndAddText(x);
-                }
-                else if (x.encounterId) {
-                    fetchAndAddEncounter(x);
-                }
-                else if (x.userResourceId) {
+                if (x.userResourceId) {
                     fetchAndAddUserResource(x);
                 }
             }

@@ -108,17 +108,24 @@ command("listChronicles <username>", "list all chronicles for a username", funct
         db.close();
     });
 });
-command("exportChronicle <chronicleUsername>", "export a chronicle", function (userService, db, chronicleUsername) {
-    var params = chronicleUsername.split(",");
-    console.log(chronicleUsername);
-    console.log(params);
-    userService.exportChronicle(params[0], params[1], function (error, chronicle) {
+command("exportChronicle", "export a chronicle", function (userService, db, chronicleUsername) {
+    async.series([
+        read.bind(null, { prompt: 'chronicle id: ' })
+    ], function (error, results) {
         if (error) {
-            console.log("error listing chronicles : " + error.message);
-        } else {
-            fs.writeFileSync('./chronicles/' + chronicle.name + '.json', JSON.stringify(chronicle, null, 4));
+            console.log("aborted");
+            return db.close();
         }
-        db.close();
+        var chronicleId = results[0][0];
+
+        userService.exportChronicle(chronicleId, function (error, chronicle) {
+            if (error) {
+                console.log("error listing chronicles : " + error.message);
+            } else {
+                fs.writeFileSync('./chronicles/' + chronicle.name + '.json', JSON.stringify(chronicle, null, 4));
+            }
+            db.close();
+        });
     });
 });
 
@@ -129,7 +136,7 @@ command("show <username>", "show a user's info", function (userService, db, user
         } else {
             printUser(user);
             var collections = ['usertexts', 'userfeats', 'userspells', 'usernpcs', 'usermonsters', 'useritems', 'userillustrations', 'usermaps'];
-            async.eachSeries(collections, function(collection, callback){
+            async.eachSeries(collections, function (collection, callback) {
                 var userContent = {$or: [
                     {username: username},
                     {Username: username},
@@ -142,7 +149,7 @@ command("show <username>", "show a user's info", function (userService, db, user
                     console.log(collection + ":" + JSON.stringify(values, null, 4));
                     callback(null);
                 });
-            }, function(error){
+            }, function (error) {
                 if (error) {
                     console.log("error showing user data: " + error.message);
                 }
@@ -169,7 +176,7 @@ command("auth <username>", "test the authentication of a user", function (userSe
 command("importChronicle", "import a chronicle to a user", function (userService, db) {
     async.series([
         read.bind(null, { prompt: 'chronicle path: ' }),
-        read.bind(null, { prompt: 'User (): ' }),
+        read.bind(null, { prompt: 'User (): ' })
     ], function (error, results) {
         if (error) {
             console.log("aborted");
@@ -179,7 +186,7 @@ command("importChronicle", "import a chronicle to a user", function (userService
         var jsonPath = results[0][0];
 
         var chronicle = JSON.parse(fs.readFileSync(jsonPath));
-        userService.importChronicle(username,chronicle, function (error) {
+        userService.importChronicle(username, chronicle, function (error) {
             if (error) {
                 console.log("error importing chronicle : " + error.message);
                 return db.close();
@@ -309,7 +316,7 @@ command("validateAll", "validate all users email address", function (userService
 });
 program.parse(process.argv);
 
-var COMMANDS = ["list", "show", "update", "passwd", "auth", "register", "remove", "validate", "validateAll", "listChronicles", "exportChronicle","importChronicle"];
+var COMMANDS = ["list", "show", "update", "passwd", "auth", "register", "remove", "validate", "validateAll", "listChronicles", "exportChronicle", "importChronicle"];
 
 if (program.args.length === 0 || COMMANDS.indexOf(program.rawArgs[2]) < 0) {
     program.help();
