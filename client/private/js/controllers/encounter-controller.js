@@ -6,10 +6,10 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
     ['$rootScope', '$scope', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService', 'contentTreeService', 'locationService',
         function ($rootScope, $scope, $timeout, $routeParams, encounterService, lootService, encounterEditorService, contentTreeService, locationService) {
 
-            $scope.encounterChanged = function () {
-                if ($scope.encounter) {
-                    encounterService.encounterChanged($scope.encounter);
-                    contentTreeService.changeEncounter($scope.encounter);
+            $scope.userResourceChanged = function () {
+                if ($scope.userResource) {
+                    encounterService.encounterChanged($scope.userResource);
+                    contentTreeService.changeEncounter($scope.userResource);
                 }
             };
 
@@ -20,9 +20,9 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                     console.log(error);
                 }
                 else {
-                    $scope.encounter = encounterEditorService.encounter = encounter;
-                    encounterService.updateUserContent($scope.encounter);
-                    $rootScope.globalTitle = "Chronicle Forge - " + $scope.encounter.Name;
+                    $scope.userResource = encounterEditorService.encounter = encounter;
+                    encounterService.updateUserContent($scope.userResource);
+                    $rootScope.globalTitle = "Chronicle Forge - " + $scope.userResource.Name;
                 }
             });
 
@@ -54,64 +54,64 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
 
             $scope.removeEncounter = function () {
                 $scope.startFade = function () {
-                    var index = encounterService.encounters.indexOf($scope.encounter);
+                    var index = encounterService.encounters.indexOf($scope.userResource);
                     encounterService.encounters.splice(index, 1);
-                    encounterService.remove($scope.encounter);
-                    contentTreeService.removeEncounter($scope.encounter);
+                    encounterService.remove($scope.userResource);
+                    contentTreeService.removeEncounter($scope.userResource);
                     $scope.go("/"); // FIXME: should go to the parent binder ?
                 };
             };
 
             $scope.atLeastOneMonster = function () {
-                return ($scope.encounter !== undefined) && ($scope.encounter.Monsters !== undefined) && (Object.keys($scope.encounter.Monsters).length > 0);
+                return ($scope.userResource !== undefined) && ($scope.userResource.Monsters !== undefined) && (Object.keys($scope.userResource.Monsters).length > 0);
             };
 
             $scope.atLeastOneNpc = function () {
-                return ($scope.encounter !== undefined) && ($scope.encounter.Npcs !== undefined) && (Object.keys($scope.encounter.Npcs).length > 0);
+                return ($scope.userResource !== undefined) && ($scope.userResource.Npcs !== undefined) && (Object.keys($scope.userResource.Npcs).length > 0);
             };
 
 
             $scope.incrementMonster = function (monster) {
                 monster.amount++;
-                $scope.encounterChanged();
+                $scope.userResourceChanged();
             };
 
             $scope.decrementMonster = function (monster) {
                 if (monster.amount > 1) {
                     monster.amount--;
-                    $scope.encounterChanged();
+                    $scope.userResourceChanged();
                 }
             };
 
             $scope.removeMonsterById = function (monsterId) {
-                delete $scope.encounter.Monsters[monsterId];
-                $scope.encounterChanged();
+                delete $scope.userResource.Monsters[monsterId];
+                $scope.userResourceChanged();
             };
 
             $scope.removeNpcById = function (monsterId) {
-                delete $scope.encounter.Npcs[monsterId];
-                $scope.encounterChanged();
+                delete $scope.userResource.Npcs[monsterId];
+                $scope.userResourceChanged();
             };
 
             $scope.incrementItem = function (item) {
                 item.amount++;
-                $scope.encounterChanged();
+                $scope.userResourceChanged();
             };
 
             $scope.decrementItem = function (item) {
                 if (item.amount > 1) {
                     item.amount--;
-                    $scope.encounterChanged();
+                    $scope.userResourceChanged();
                 }
             };
 
             $scope.removeItemById = function (itemId) {
-                delete $scope.encounter.items[itemId];
-                $scope.encounterChanged();
+                delete $scope.userResource.items[itemId];
+                $scope.userResourceChanged();
             };
 
             $scope.printSelectedEncounter = function () {
-                $scope.go('/print-encounter/' + $scope.encounter._id);
+                $scope.go('/print-encounter/' + $scope.userResource._id);
             };
 
             $scope.createFirstEncounter = function () {
@@ -124,10 +124,10 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             $scope.$watch(function () {
                 return lootService.generatedLoot;
             }, function () {
-                if ($scope.encounter && $scope.encounter._id === lootService.encounterId && lootService.generatedLoot) {
-                    $scope.encounter.coins = lootService.generatedLoot.coins;
-                    $scope.encounter.items = lootService.generatedLoot.items;
-                    encounterService.encounterChanged($scope.encounter);
+                if ($scope.userResource && $scope.userResource._id === lootService.encounterId && lootService.generatedLoot) {
+                    $scope.userResource.coins = lootService.generatedLoot.coins;
+                    $scope.userResource.items = lootService.generatedLoot.items;
+                    encounterService.encounterChanged($scope.userResource);
                 }
                 else {
                     lootService.generatedLoot = null;

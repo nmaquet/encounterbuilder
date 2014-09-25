@@ -1,24 +1,36 @@
 // Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
 
-.container(ng-repeat="userResource in chronicle")
-    .row(ng-switch="userResource.resourceType")
-        .col-md-12(ng-switch-when="encounter")
-            include ../edit/_encounter
-        .col-md-12(ng-switch-when="user-monster")
-            include _user-monster
-        .col-md-12(ng-switch-when="user-npc")
-            include _user-npc
-        .col-md-12(ng-switch-when="user-text")
-            include _user-text
-        .col-md-12(ng-switch-when="user-illustration")
-            include _user-image-resource
-        .col-md-12(ng-switch-when="user-map")
-            include _user-image-resource
-        .col-md-12(ng-switch-when="user-spell")
-            include _user-spell
-        .col-md-12(ng-switch-when="user-feat")
-            include _user-feat
-        .col-md-12(ng-switch-when="user-item")
-            include _user-item
-        h3(ng-switch-when="binder")
-            | {{userResource.title}}
+.list-full(ng-repeat="userResource in chronicle")
+    .binder-full(ng-switch="userResource.resourceType")
+        .row(ng-switch-when="encounter")
+            .col-md-12
+                include ../edit/_encounter
+        .row(ng-switch-when="user-monster")
+            .col-md-12
+                include _user-monster
+        .row(ng-switch-when="user-npc")
+            .col-md-12
+                include _user-npc
+        .row(ng-switch-when="user-text")
+            .col-md-12
+                include _user-text
+        .row(ng-switch-when="user-illustration")
+            .col-md-12
+                include _user-image-resource
+        .row(ng-switch-when="user-map")
+            .col-md-12
+                include _user-image-resource
+        .row(ng-switch-when="user-spell")
+            .col-md-12
+                include _user-spell
+        .row(ng-switch-when="user-feat")
+            .col-md-12
+                include _user-feat
+        .row(ng-switch-when="user-item")
+            .col-md-12
+                include _user-item
+        header.row.binder-heading(ng-switch-when="binder")
+            .col-md-12
+                h1.t-title.t-binder-title
+                    span.binder-name
+                        | {{userResource.title}}
