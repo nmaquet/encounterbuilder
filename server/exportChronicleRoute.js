@@ -36,14 +36,20 @@ module.exports = function (collections, ObjectID) {
                         if (node && node.resourceType) {
                             tasks.push(function (taskCallback) {
                                 userResourceCollections[node.resourceType].findOne({_id: ObjectID(node.userResourceId), userId: ObjectID(sessionUserId)}, function (error, result) {
-                                    result.resourceType = node.resourceType;
+                                    if (result) {
+                                        result.resourceType = node.resourceType;
+                                    }
+                                    else {
+                                        console.log("no result found for node");
+                                        console.log(node);
+                                    }
                                     taskCallback(error, result);
                                 });
                             })
                         }
-                        if (node && node.binder) {
+                        if (node && node.folder) {
                             tasks.push(function (taskCallback) {
-                                taskCallback(null, node);
+                                taskCallback(null, {resourceType: "binder", title: node.title});
                             })
                         }
                     });
