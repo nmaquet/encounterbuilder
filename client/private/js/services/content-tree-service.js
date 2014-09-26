@@ -23,7 +23,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
 
 
             function addExtraClasses(newNode) {
-                if (newNode.encounterId) {
+                if (newNode.userResourceId && newNode.resourceType === "encounter") {
                     newNode.extraClasses = "fancytree-encounter";
                 }
                 else if (newNode.userResourceId && newNode.resourceType === "user-npc") {
@@ -268,7 +268,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
 
             service.changeEncounter = function (encounter) {
                 fancyTree.visit(function (node) {
-                    if (node.data.encounterId && node.data.encounterId === encounter._id) {
+                    if (node.data.userResourceId && node.data.userResourceId === encounter._id) {
                         if (node.title !== encounter.Name) {
                             node.setTitle(encounter.Name);
                             return false;
