@@ -16,7 +16,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EditChronicleController', ['$
 //                    $window.location.reload(true);
                 });
             }
-        }
+        };
         $scope.view = function () {
             locationService.go('/chronicle-full/' + $scope.userResource._id);
         }
