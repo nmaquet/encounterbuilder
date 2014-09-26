@@ -2,32 +2,26 @@
 .row.heading.result-heading
     .col-xxs-8.col-xs-8.col-lg-9.name-container
         h2.t-title.t-title-result
-            span.encounter-name.is-pointer(click-to-edit='userResource.Name', on-save="encounterChanged()")
+            span.encounter-name.is-pointer(ng-show="editable" ,click-to-edit='userResource.Name', on-save="encounterChanged()")
+            span.encounter-name(ng-hide="editable") {{userResource.Name}}
     .col-xxs-4.col-xs-4.col-lg-3.cr-container
         h3.t-title CR
             | &nbsp;{{userResource.CR | numberToFractionString}}
         strong XP
         | &nbsp;{{userResource.xp | number}}
-        .row.btn-container
+        .row.btn-container(ng-show="showButtons")
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(tabindex='-1',data-target='#loot-generator-modal', role='button', data-toggle='modal',title='Randomize')
                 i.icon.fa.fa-random
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(ng-click="printSelectedEncounter()")
                 i.icon.fa.fa-print
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(on-confirm="removeEncounter(encounter)", confirm-click="Are you sure ?", confirm-title="Delete encounter")
                 i.icon.fa.fa-trash-o
-            //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy', ng-click='copyEncounter()')
-                i.icon.fa.fa-copy
-            //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Settings')
-                i.icon.fa.fa-cogs
-            //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Favourite',ng-click='toggleFavourite()')
-                i(ng-show="favourite").icon.fa.fa-heart
-                i(ng-hide="favourite").icon.fa.fa-heart-o
 .row.l-section.result-content
     .content.content-monsters(ng-if="!atLeastOneMonster()&&!atLeastOneNpc()")
         .col-xs-12.cat
             span
                 em You can add a monster, NPC or item from the search results or directly from your Library or Favourites.
-    .content.content-monsters(ng-if="atLeastOneMonster()")
+    .content.content-monsters(ng-if="atLeastOneMonster()|| !editable")
         .col-xs-12.cat
             legend.cat-heading.t-legend.t-title
                 span Monsters
@@ -36,21 +30,25 @@
                 tbody
                     tr.encounter-row.encounter-monster-row(ng-repeat='(id,monster) in userResource.Monsters')
                         td.badge-container.is-pointer
-                            span(click-to-edit='monster.amount', on-save="encounterChanged()", display-class="badge grey pointer monster-amount", edit-class="badge grey pointer monster-amount badge-editing click-to-edit-dark-theme", icon-class="hide", numeric="true")
+                            span(ng-show="editable", click-to-edit='monster.amount', on-save="encounterChanged()", display-class="badge grey pointer monster-amount", edit-class="badge grey pointer monster-amount badge-editing click-to-edit-dark-theme", icon-class="hide", numeric="true")
+                            span.badge.grey.monster-amount(ng-hide="editable")
+                                | {{monster.amount}}
                         td.name-container
-                            span.monster-name
+                            span.monster-name(ng-show="editable")
                                 a.is-pointer(ng-click='selectMonsterById(id,monster.userCreated)') {{monster.Name}}
+                            span.monster-name(ng-hide="editable")
+                                span {{monster.Name}}
                         td.encounter-cr-container
                             span.monster-cr
                                 strong
                                     small CR&nbsp;
                                     | {{monster.CR | numberToFractionString}}
-                        td.encounter-btn-container
+                        td.encounter-btn-container(ng-show="showButtons")
                             span.is-pointer.pull-right
                                 button.rmv-item-btn.remove-monster-btn(ng-click='removeMonsterById(id)')
                                     i.icon.icon-remove
                                         | ×
-    .content.content-npcs(ng-if="atLeastOneNpc()")
+    .content.content-npcs(ng-if="atLeastOneNpc()|| !editable")
         .col-xs-12.cat
             legend.cat-heading.t-legend.t-title
                 span NPCs
@@ -59,16 +57,20 @@
                 tbody
                     tr.encounter-row.encounter-npc-row(ng-repeat='(id,npc) in userResource.Npcs')
                         td.badge-container.is-pointer
-                            span(click-to-edit='npc.amount', on-save="encounterChanged()", display-class="badge grey pointer npc-amount", edit-class="badge grey pointer npc-amount badge-editing click-to-edit-dark-theme", icon-class="hide", numeric="true")
+                            span(ng-show="editable",click-to-edit='npc.amount', on-save="encounterChanged()", display-class="badge grey pointer npc-amount", edit-class="badge grey pointer npc-amount badge-editing click-to-edit-dark-theme", icon-class="hide", numeric="true")
+                            span.badge.grey.npc-amount(ng-hide="editable")
+                                | {{npc.amount}}
                         td.name-container
-                            span.npc-name
+                            span.npc-name(ng-show="editable")
                                 a.is-pointer(ng-click='selectNpcById(id,npc.userCreated)') {{npc.Name}}
+                            span.npc-name(ng-hide="editable")
+                                span {{npc.Name}}
                         td.encounter-cr-container
                             span.npc-cr
                                 strong
                                     small CR&nbsp;
                                     | {{npc.CR | numberToFractionString}}
-                        td.encounter-btn-container
+                        td.encounter-btn-container(ng-show="showButtons")
                             span.is-pointer.pull-right
                                 button.rmv-item-btn.remove-npc-btn(ng-click='removeNpcById(id)')
                                     i.icon.icon-remove
@@ -82,60 +84,42 @@
                 tbody
                     tr.encounter-row.encounter-item-row(ng-repeat='(id,item) in userResource.items')
                         td.badge-container.is-pointer
-                            span(click-to-edit='item.amount', on-save="encounterChanged()", display-class="badge grey pointer item-amount", edit-class="badge grey pointer item-amount badge-editing click-to-edit-dark-theme", icon-class="hide", numeric="true")
+                            span(ng-show="editable", click-to-edit='item.amount', on-save="encounterChanged()", display-class="badge grey pointer item-amount", edit-class="badge grey pointer item-amount badge-editing click-to-edit-dark-theme", icon-class="hide", numeric="true")
+                            span.badge.grey.item-amount(ng-hide="editable")
+                                | {{item.amount}}
                         td.name-container
-                            span.item-name
+                            span.item-name(ng-show="editable")
                                 a.is-pointer(ng-click='selectItemById(id,item.userCreated)') {{item.Name}}
+                            span.item-name(ng-hide="editable")
+                                span {{item.Name}}
                         td.price-container
                             span.item-price
                                 | {{item.Price}}&nbsp;{{item.PriceUnit}}
-                        td.btn-container
+                        td.btn-container(ng-show="showButtons")
                             span.is-pointer.pull-right
-                                //button.rmv-item-btn.light-grey.decrement-item-btn(ng-class="{disabled: item.amount<=1}", ng-disabled="item.amount<=1", ng-click='decrementItem(item)')
-                                    i.icon.fa.fa-minus
-                                //button.rmv-item-btn.light-grey.increment-item-btn(ng-click='incrementItem(item)')
-                                    i.icon.fa.fa-plus
                                 button.rmv-item-btn.rmv-item-btn(ng-click='removeItemById(id)')
                                     i.icon.icon-remove
                                         | ×
-                tfoot
-                    tr.encounter-row
-                        ul.list-unstyled.list-inline
-                            li
-                                strong Coins: {{userResource.coins.pp * 10 + userResource.coins.gp + userResource.coins.sp / 10 + userResource.coins.cp / 100 | number}} gp
-                        ul.list-unstyled.list-inline.coin-list
-                            li
-                                span.coins.encounter-coins-pp.is-pointer(click-to-edit='userResource.coins.pp', display="{{userResource.coins.pp | number}} pp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden", edit-class="t-underline-dotted click-to-edit-light-theme")
-                                i.icon.icon-coin.fa.fa-bullseye.platinum(title='Platinum Pieces')
-                            li
-                                span.coins.encounter-coins-gp.is-pointer(click-to-edit='userResource.coins.gp', display="{{userResource.coins.gp | number}} gp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden", edit-class="t-underline-dotted click-to-edit-light-theme")
-                                i.icon.icon-coin.fa.fa-bullseye.gold(title='Gold Pieces')
-                            li
-                                span.coins.encounter-coins-sp.is-pointer(click-to-edit='userResource.coins.sp', display="{{userResource.coins.sp | number}} sp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden", edit-class="t-underline-dotted click-to-edit-light-theme")
-                                i.icon.icon-coin.fa.fa-bullseye.silver(title='Silver Pieces')
-                            li
-                                span.coins.encounter-coins-cp.is-pointer(click-to-edit='userResource.coins.cp', display="{{userResource.coins.cp | number}} cp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden", edit-class="t-underline-dotted click-to-edit-light-theme")
-                                i.icon.icon-coin.fa.fa-bullseye.copper(title='Copper Pieces')
-                            //.row
-                                .col-xxs-8.col-xs-8.text-right
-                                    strong Coins
-                                .col-xs-12
-                                    ul.list-unstyled.text-right.list-inline
-                                        li.coin-list
-                                            span.coins.encounter-coins-pp.is-pointer.t-underline-dotted(click-to-edit='userResource.coins.pp', display="{{userResource.coins.pp | number}}", on-save="encounterChanged()", numeric="true")
-                                            i.icon.fa.fa-bullseye.platinum(title='Platinum Pieces')
-                                        li.coin-list
-                                            span.coins.encounter-coins-gp.is-pointer.t-underline-dotted(click-to-edit='userResource.coins.gp', display="{{userResource.coins.gp | number}}", on-save="encounterChanged()", numeric="true")
-                                            i.icon.fa.fa-bullseye.gold(title='Gold Pieces')
-                                        li.coin-list
-                                            span.coins.encounter-coins-sp.is-pointer.t-underline-dotted(click-to-edit='userResource.coins.sp', display="{{userResource.coins.sp | number}}", on-save="encounterChanged()", numeric="true")
-                                            i.icon.fa.fa-bullseye.silver(title='Silver Pieces')
-                                        li.coin-list
-                                            span.coins.encounter-coins-cp.is-pointer.t-underline-dotted(click-to-edit='userResource.coins.cp', display="{{userResource.coins.cp | number}}", on-save="encounterChanged()", numeric="true")
-                                            i.icon.fa.fa-bullseye.copper(title='Copper Pieces')
-                                .col-xxs-8.col-xs-8.text-right
-                                    strong Value
-                                .col-xxs-4.col-xs-4
-                                    .text-right
-                                    span#encounter-loot-value {{userResource.lootValue | number}}
+            tfoot
+                tr.encounter-row
+                    ul.list-unstyled.list-inline
+                        li
+                            strong Coins: {{userResource.coins.pp * 10 + userResource.coins.gp + userResource.coins.sp / 10 + userResource.coins.cp / 100 | number}} gp
+                    ul.list-unstyled.list-inline.coin-list
+                        li
+                            span.coins.encounter-coins-pp.is-pointer(ng-show="editable", click-to-edit='userResource.coins.pp', display="{{userResource.coins.pp | number}} pp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden", edit-class="t-underline-dotted click-to-edit-light-theme")
+                            span.coins.encounter-coins-pp(ng-hide="editable") {{userResource.coins.pp}}
+                            i.icon.icon-coin.fa.fa-bullseye.platinum(title='Platinum Pieces')
+                        li
+                            span.coins.encounter-coins-gp.is-pointer(ng-show="editable", click-to-edit='userResource.coins.gp', display="{{userResource.coins.gp | number}} gp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden", edit-class="t-underline-dotted click-to-edit-light-theme")
+                            span.coins.encounter-coins-gp(ng-hide="editable") {{userResource.coins.gp}}
+                            i.icon.icon-coin.fa.fa-bullseye.gold(title='Gold Pieces')
+                        li
+                            span.coins.encounter-coins-sp.is-pointer(ng-show="editable", click-to-edit='userResource.coins.sp', display="{{userResource.coins.sp | number}} sp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden", edit-class="t-underline-dotted click-to-edit-light-theme")
+                            span.coins.encounter-coins-sp(ng-hide="editable") {{userResource.coins.sp}}
+                            i.icon.icon-coin.fa.fa-bullseye.silver(title='Silver Pieces')
+                        li
+                            span.coins.encounter-coins-cp.is-pointer(ng-show="editable", click-to-edit='userResource.coins.cp', display="{{userResource.coins.cp | number}} cp", on-save="encounterChanged()", numeric="true", size="5", icon-class="hidden", edit-class="t-underline-dotted click-to-edit-light-theme")
+                            span.coins.encounter-coins-cp(ng-hide="editable") {{userResource.coins.cp}}
+                            i.icon.icon-coin.fa.fa-bullseye.copper(title='Copper Pieces')
 include ../_loot-generation-modal
