@@ -32,7 +32,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController',
                 }
             });
             $scope.copyMonster = function () {
-                contentTreeService.copyUserResource($scope.monster.id, "user-monster");
+                contentTreeService.copyResource($scope.monster.id, "user-monster");
             }
         }
     ]);
