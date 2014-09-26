@@ -1,7 +1,6 @@
 // Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
 
-//(ng-controller="TutorialController")
-#chronicles
+#chronicles(ng-controller="ChroniclesController")
     .row
         .col-xs-12.max-width-720.l-section.l-shadow.search-result
-            p(style="color:white;") Hello World
+            p(style="color:white;" ng-repeat="chronicle in chronicles") {{chronicle.name}}
