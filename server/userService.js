@@ -138,6 +138,7 @@ function register(fields, callback) {
                             });
                         } else {
                             console.log("WARNING: not sending a confirmation email.");
+                            callback(error, result[0]);
                         }
                     });
                 });
