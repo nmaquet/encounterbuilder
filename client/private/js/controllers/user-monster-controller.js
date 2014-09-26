@@ -11,13 +11,13 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
             $scope.templateControlsCollapsed = true;
 
             $scope.delete = function () {
-                if ($scope.userResource) {
+                if ($scope.userMonster) {
                     $scope.startFade = function () {
-                        contentTreeService.userResourceDeleted($scope.userResource);
+                        contentTreeService.userResourceDeleted($scope.userMonster);
                         if ($routeParams.detailsId) {
                             locationService.closeDetails();
                         }
-                        $scope.userResource.$delete();
+                        $scope.userMonster.$delete();
                     }
                 }
             };
