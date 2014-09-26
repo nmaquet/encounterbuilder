@@ -53,21 +53,20 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
             uploader.filters.push(function (fileOrInputElement) {
                 var type = uploader.isHTML5 ? fileOrInputElement.type : '/' + fileOrInputElement.value.slice(fileOrInputElement.value.lastIndexOf('.') + 1);
                 type = '|' + type.toLowerCase().slice(type.lastIndexOf('/') + 1) + '|';
-                var filtered = '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
-                if (!filtered) {
+                var accepted = '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+                if (!accepted) {
                     errorMessage = "Invalid file type: " + type + " only 'jpg', 'png', 'jpeg', 'bmp', 'gif' extensions are accepted";
                 }
                 else {
-                    console.log(fileOrInputElement.size);
                     var size = fileOrInputElement.size;
                     if (size) {
-                        if (size > 3 * 1024) {
+                        if (size > (3 * 1024 * 1024)) {
                             errorMessage = "File is too large; you can only upload files up to 3 MB";
-                            filtered = true;
+                            accepted = false;
                         }
                     }
                 }
-                return filtered;
+                return accepted;
             });
 
             uploader.bind('afteraddingfile', function (event, item) {
