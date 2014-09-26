@@ -57,6 +57,16 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                 if (!filtered) {
                     errorMessage = "Invalid file type: " + type + " only 'jpg', 'png', 'jpeg', 'bmp', 'gif' extensions are accepted";
                 }
+                else {
+                    console.log(fileOrInputElement.size);
+                    var size = fileOrInputElement.size;
+                    if (size) {
+                        if (size > 3 * 1024) {
+                            errorMessage = "File is too large; you can only upload files up to 3 MB";
+                            filtered = true;
+                        }
+                    }
+                }
                 return filtered;
             });
 
@@ -66,7 +76,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                 $scope.userResource.fileName = item.file.name;
                 delete $scope.userResource.s3Credentials;
                 delete $scope.userResource.url;
-                $scope.userResource.$save(function() {
+                $scope.userResource.$save(function () {
                     var credentials = $scope.userResource.s3Credentials;
                     var item = uploader.getNotUploadedItems()[0];
                     var s3FormData = {};
