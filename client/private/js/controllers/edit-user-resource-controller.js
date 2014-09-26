@@ -26,7 +26,6 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
             };
 
             function updateUserResource(userResource) {
-                console.log(userResource);
                 if ($scope.classesString) {
                     var classesObject = parseClass($scope.classesString);
                     $scope.userResource.Classes = classesObject.Classes;
