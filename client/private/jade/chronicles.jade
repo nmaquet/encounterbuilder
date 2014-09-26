@@ -3,4 +3,5 @@
 #chronicles(ng-controller="ChroniclesController")
     .row
         .col-xs-12.max-width-720.l-section.l-shadow.search-result
-            p(style="color:white;" ng-repeat="chronicle in chronicles") {{chronicle.name}}
+            p(style="color:white;" ng-repeat="chronicle in chronicles")
+                a(ng-href="#/chronicle/{{chronicle._id}}") {{chronicle.name}}

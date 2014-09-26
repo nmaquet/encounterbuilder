@@ -2,12 +2,8 @@
 
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('ChroniclesController', ['$scope',
-    function ($scope) {
-        $scope.chronicles = [
-            {name: "hello"},
-            {name: "world"},
-            {name: "this works"},
-        ]
+DEMONSQUID.encounterBuilderControllers.controller('ChroniclesController', ['$scope', 'ChronicleResource',
+    function ($scope, ChronicleResource) {
+        $scope.chronicles = ChronicleResource.query();
     }
 ]);
