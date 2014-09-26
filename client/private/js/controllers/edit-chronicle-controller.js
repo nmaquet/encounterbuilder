@@ -12,7 +12,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EditChronicleController', ['$
             $scope.$apply(function (){
                 if (justDeletedAChronicle) {
                     justDeletedAChronicle = false;
-                    locationService.go('/');
+                    locationService.go('/chronicles');
                 }
             });
         });
