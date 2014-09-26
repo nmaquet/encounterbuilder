@@ -4,16 +4,26 @@
 
 DEMONSQUID.encounterBuilderControllers.controller('EditChronicleController', ['$scope', '$controller', '$window', '$location', 'locationService',
     function ($scope, $controller, $window, $location, locationService) {
+
+        var justDeletedAChronicle = false;
+        var deleteChronicleModal = $('#delete-chronicle-modal');
+
+        deleteChronicleModal.on('hidden.bs.modal', function () {
+            $scope.$apply(function (){
+                if (justDeletedAChronicle) {
+                    justDeletedAChronicle = false;
+                    locationService.go('/');
+                }
+            });
+        });
+
         angular.extend(this, $controller('EditUserResourceController', {$scope: $scope}));
         $scope.delete = function () {
             if ($scope.userResource.name === $scope.confirmName) {
-                console.log("delete chronicle");
                 $scope.userResource.$delete(function () {
                     $scope.confirmName = "";
-                    $('#delete-chronicle-modal').modal('hide');
-                    $scope.$apply();
-                    locationService.go('/');
-//                    $window.location.reload(true);
+                    deleteChronicleModal.modal('hide');
+                    justDeletedAChronicle = true;
                 });
             }
         }
