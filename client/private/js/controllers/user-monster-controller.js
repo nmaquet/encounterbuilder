@@ -9,6 +9,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
             var baseMonster = null;
             var resourceType = locationService.getResourceType();
             $scope.templateControlsCollapsed = true;
+            $scope.showButtons = true;
 
             $scope.delete = function () {
                 if ($scope.userResource) {
@@ -36,7 +37,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
 
             function updateUserResource(userResource) {
                 userResource.$save();
-                contentTreeService.userResourceUpdated(userResource,resourceType);
+                contentTreeService.userResourceUpdated(userResource, resourceType);
             }
 
             function loadMonster() {

@@ -7,7 +7,8 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
         function ($rootScope, $scope, $routeParams, $fileUploader, userResourceService, contentTreeService, locationService, $http) {
 
             var resourceType = locationService.getResourceType();
-
+            $scope.showButtons = true;
+            $scope.editable = true;
             function updateUserResource(userResource) {
                 userResource.$save();
                 contentTreeService.userResourceUpdated(userResource);

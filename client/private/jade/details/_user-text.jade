@@ -4,7 +4,7 @@
     .col-xxs-8.col-xs-8.col-lg-9.name-container
         h2.t-title.t-title-result {{userResource.name}}
     .col-xxs-4.col-xs-4.col-lg-3.cr-container
-        .row.btn-container
+        .row.btn-container(ng-show="showButtons")
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copy()')
                 i.icon.fa.fa-copy
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit',ng-click='edit()')

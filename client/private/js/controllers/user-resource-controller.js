@@ -7,7 +7,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserResourceController',
         function ($rootScope, $scope, $routeParams, userResourceService, contentTreeService, locationService) {
 
             var resourceType = locationService.getResourceType();
-
+            $scope.showButtons = true;
             $scope.delete = function () {
                 if ($scope.userResource) {
                     $scope.startFade = function () {
