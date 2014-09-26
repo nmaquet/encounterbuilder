@@ -24,6 +24,8 @@
                     i.icon.icon-lg.fa.fa-bars
                 ul.dropdown-menu(role='menu')
                     li
+                        a.is-pointer(href="#/chronicles") Chronicles
+                    li
                         a.is-pointer(href="#/tutorial") Need some help?
                     li
                         a.is-pointer(href="http://forums.chronicleforge.com") Chronicle Forge Forums
@@ -69,6 +71,9 @@
                             | Log out
 
         ul.nav.nav-pills.l-nav-social.hidden-xs.pull-right(ng-hide='viewport.xs && anySidebarIsOpened()')
+            li
+                a(href="#/chronicles", title="Chronicles") Chronicles
+                    i.icon.square.fa.fa-book
             li
                 a(href="#/tutorial", title="Need some help?") Help
                     i.icon.square.fa.fa-question
