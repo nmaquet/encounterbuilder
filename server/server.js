@@ -246,7 +246,8 @@ function main(db) {
         'feat',
         'printable-encounter',
         'user-image-resource',
-        'chronicle'
+        'chronicle',
+        'chronicles'
     ];
 
     for (var i in APP_JADE_FILES) {
