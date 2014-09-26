@@ -119,27 +119,29 @@ function register(fields, callback) {
                     return callback(error);
                 }
                 importChronicle(user.username, chronicle, function (error) {
-                    console.log(error)
-                });
-                chroniclesCollection.insert({ userId: result[0]._id, name: "new Chronicle", contentTree: [] }, function (error) {
                     if (error) {
                         return callback(error);
                     }
-                    favouritesCollection.insert({ username: user.username, favourites: [] }, function (error) {
+                    chroniclesCollection.insert({ userId: result[0]._id, name: "new Chronicle", contentTree: [] }, function (error) {
                         if (error) {
                             return callback(error);
                         }
-                        if (sesService) {
-                            sesService.sendConfirmationEmail(user, function (error) {
-                                if (error) {
-                                    return callback(new Error('SENDING_EMAIL_FAILED'));
-                                }
+                        favouritesCollection.insert({ username: user.username, favourites: [] }, function (error) {
+                            if (error) {
+                                return callback(error);
+                            }
+                            if (sesService) {
+                                sesService.sendConfirmationEmail(user, function (error) {
+                                    if (error) {
+                                        return callback(new Error('SENDING_EMAIL_FAILED'));
+                                    }
+                                    callback(error, result[0]);
+                                });
+                            } else {
+                                console.log("WARNING: not sending a confirmation email.");
                                 callback(error, result[0]);
-                            });
-                        } else {
-                            console.log("WARNING: not sending a confirmation email.");
-                            callback(error, result[0]);
-                        }
+                            }
+                        });
                     });
                 });
             });
@@ -228,6 +230,7 @@ function listChronicles(username, callback) {
             chroniclesCollection.find({userId: user._id}, {fields: {_id: 1, name: 1}}).toArray(callback);
         });
 }
+
 function importChronicle(username, chronicle, callback) {
     var user = null;
     var requestPending = 0;
@@ -251,15 +254,11 @@ function importChronicle(username, chronicle, callback) {
         chroniclesCollection.insert(newChronicle, function (error) {
             callback(error);
         });
-
-
     }
 
     function insertUserResource(x) {
         requestPending++;
-
         x.userResource.userId = user._id;
-
         userResourceCollections[x.resourceType].insert(x.userResource, function (error, newResource) {
             if (error) {
                 callback(error);
