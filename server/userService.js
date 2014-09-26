@@ -129,12 +129,16 @@ function register(fields, callback) {
                         if (error) {
                             return callback(error);
                         }
-                        sesService.sendConfirmationEmail(user, function (error) {
-                            if (error) {
-                                return callback(new Error('SENDING_EMAIL_FAILED'));
-                            }
-                            callback(error, result[0]);
-                        });
+                        if (sesService) {
+                            sesService.sendConfirmationEmail(user, function (error) {
+                                if (error) {
+                                    return callback(new Error('SENDING_EMAIL_FAILED'));
+                                }
+                                callback(error, result[0]);
+                            });
+                        } else {
+                            console.log("WARNING: not sending a confirmation email.");
+                        }
                     });
                 });
             });
