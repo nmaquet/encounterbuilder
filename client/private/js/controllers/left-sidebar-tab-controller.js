@@ -25,12 +25,6 @@ DEMONSQUID.encounterBuilderControllers.controller('LeftSidebarTabController',
                 }
             };
 
-
-            $scope.selectChronicle = function (chronicleId) {
-                contentTreeService.reloadChronicleTree(chronicleId);
-                locationService.go("/chronicle/" + chronicleId);
-            };
-
             $scope.$watch(contentTreeService.chronicleName, function () {
                 if ($scope.chronicleName !== contentTreeService.chronicleName()) {
                     $scope.chronicleName = contentTreeService.chronicleName();

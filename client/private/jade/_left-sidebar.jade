@@ -23,18 +23,6 @@ section#left-sidebar.sp-menu.sp-menu-vertical.sp-menu-left.no-print(slide-menu)
                     .sp-section.is-pointer(ng-show="filter")
                         input#filter-chronicle.form-control.sp-menu-input( type="search" name="search" placeholder="Filter...")
                         i#btnResetSearch.search-icon.input-icon.icon.fa.fa-times.pull-right(ng-click="toggleFilterInput()")
-                    .dropdown.create-dropdown-container.is-pointer
-                        a#create-dropdown.create-dropdown.dropdown-toggle.col-xs-12(role='button', data-toggle='dropdown')
-                            span.create-dropdown-name {{chronicleName}}
-                            i.icon.fa.fa-angle-down.square.white.pull-right
-                        ul.dropdown-menu(role='menu')
-                            li
-                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createChronicle()')
-                                    strong Create new Chronicle
-                            li.divider
-                            li(ng-repeat="chronicle in chronicles")
-                                a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='selectChronicle(chronicle._id)')
-                                    strong {{chronicle.name}}
                     span#console
                     .dropdown.create-dropdown-container.is-pointer
                         a#create-dropdown.create-dropdown.dropdown-toggle.col-xs-12(role='button', data-toggle='dropdown')
