@@ -360,6 +360,22 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 contentTreeService.removeEncounter = function (encounter) {
                     contentTreeService.userResourceDeleted(encounter);
                 };
+
+                contentTreeService.hasFirstNode = function () {
+                    return fancyTree.getFirstChild();
+                };
+
+                contentTreeService.goToFirstNode = function () {
+                    if (fancyTree.getFirstChild()) {
+                        goToNode(fancyTree.getFirstChild());
+                    }
+                };
+
+                contentTreeService.getBinderByKey = function (key) {
+                    var node = fancyTree.getNodeByKey(key);
+                    return {Name: node.title, nodeKey: node.key, descendantCount: node.countChildren(true)};
+                };
+
             }
 
             return {

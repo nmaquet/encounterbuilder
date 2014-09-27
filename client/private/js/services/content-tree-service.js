@@ -38,23 +38,12 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             };
 
             service.hasFirstNode = function () {
-                return fancyTree.getFirstChild();
             };
 
             service.goToFirstNode = function () {
-                if (fancyTree && fancyTree.getFirstChild()) {
-                    service.goToNode(fancyTree.getFirstChild());
-                }
             };
 
-            service.setTree = function (tree) {
-                fancyTree = tree;
-                nodeKey = fancyTree.count();
-            };
-
-            service.getBinderByKey = function (key) {
-                var node = fancyTree.getNodeByKey(key);
-                return {Name: node.title, nodeKey: node.key, descendantCount: node.countChildren(true)};
+            service.getBinderByKey = function () {
             };
 
             service.createBinder = function () {
