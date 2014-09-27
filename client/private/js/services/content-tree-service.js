@@ -175,10 +175,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 return {Name: node.title, nodeKey: node.key, descendantCount: node.countChildren(true)};
             };
 
-            service.createBinder = function () {
-                addNode({title: "new Binder", folder: true, key: getNextNodeKey()})
-                service.treeChanged(fancyTree.toDict(removeExtraClasses));
-            };
+            service.createBinder = function () {};
 
             service.onLoadSuccess = function (callback) {
                 $rootScope.$on(LOAD_SUCCESS, callback);

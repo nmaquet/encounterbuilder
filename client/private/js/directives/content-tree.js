@@ -3,20 +3,14 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
-    ['$timeout', '$routeParams', 'encounterEditorService', 'ChronicleResource', 'locationService',
-        function ($timeout, $routeParams, encounterEditorService, ChronicleResource, locationService) {
-
-            function removeExtraClasses(node) {
-                if (node.extraClasses) {
-                    delete node.extraClasses;
-                }
-            }
+    ['$timeout', '$routeParams', 'encounterEditorService', 'ChronicleResource', 'locationService', 'contentTreeService',
+        function ($timeout, $routeParams, encounterEditorService, ChronicleResource, locationService, contentTreeService) {
 
             function saveChronicle(fancyTree) {
                 if (fancyTree.count() === 0) {
                      fancyTree.chronicle.contentTree = [];
                 } else {
-                     fancyTree.chronicle.contentTree = fancyTree.toDict(removeExtraClasses);
+                     fancyTree.chronicle.contentTree = fancyTree.toDict();
                 }
                 fancyTree.chronicle.$save();
             }
@@ -53,6 +47,70 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     $("input#filter-chronicle").val("");
                     fancyTree.clearFilter();
                 }).attr("disabled", true);
+            }
+
+           function addExtraClasses(newNode) {
+                if (newNode.userResourceId && newNode.resourceType === "encounter") {
+                    newNode.extraClasses = "fancytree-encounter";
+                }
+                else if (newNode.userResourceId && newNode.resourceType === "user-npc") {
+                    newNode.extraClasses = "fancytree-npc";
+                }
+                else if (newNode.userResourceId && newNode.resourceType === "user-text") {
+                    newNode.extraClasses = "fancytree-text";
+                }
+                else if (newNode.userResourceId && newNode.resourceType === "user-monster") {
+                    newNode.extraClasses = "fancytree-monster";
+                }
+                else if (newNode.userResourceId && newNode.resourceType === "user-feat") {
+                    newNode.extraClasses = "fancytree-feat";
+                }
+                else if (newNode.userResourceId && newNode.resourceType === "user-spell") {
+                    newNode.extraClasses = "fancytree-spell";
+                }
+                else if (newNode.userResourceId && newNode.resourceType === "user-item") {
+                    newNode.extraClasses = "fancytree-item";
+                }
+                else if (newNode.userResourceId && newNode.resourceType === "user-illustration") {
+                    newNode.extraClasses = "fancytree-image";
+                }
+                else if (newNode.userResourceId && newNode.resourceType === "user-map") {
+                    newNode.extraClasses = "fancytree-map";
+                }
+            }
+
+            function addNode(fancyTree, node) {
+                addExtraClasses(node);
+                var activeNode = fancyTree.getActiveNode();
+                if (activeNode === null) {
+                    activeNode = fancyTree.rootNode;
+                    var newNode = activeNode.addNode(node);
+                    newNode.setActive(true);
+                }
+                else if (activeNode.folder === true) {
+                    var newNode = activeNode.addNode(node);
+                    newNode.setActive(true);
+                }
+                else {
+                    var newNode = activeNode.appendSibling(node);
+                    newNode.setActive(true);
+                }
+                return newNode;
+            }
+
+            function addNodeSaveChronicleAndGotoNode(fancyTree, nodeBrief) {
+                var newNode = addNode(fancyTree, nodeBrief);
+                saveChronicle(fancyTree, function () {
+                    goToNode(newNode);
+                });
+            }
+
+            function getNextNodeKey(fancyTree) {
+                var nodeKey = 0;
+                while(fancyTree.getNodeByKey(String(nodeKey)) !== null) {
+                    nodeKey += 1;
+                }
+                return String(nodeKey);
             }
 
             function link(scope, element) {
@@ -146,21 +204,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     }
                 }
 
-                function addExtraClasses(node) {
-                    if (node.data.userMonsterId) {
-                        node.extraClasses = "fancytree-monster";
-                    } else if (node.data.encounterId) {
-                        node.extraClasses = "fancytree-encounter";
-                    } else if (node.data.userNpcId) {
-                        node.extraClasses = "fancytree-npc";
-                    } else if (node.data.userTextId) {
-                        node.extraClasses = "fancytree-text";
-                    } else if (node.data.userFeatId) {
-                        node.extraClasses = "fancytree-feat";
-                    }
-                    node.render();
-                }
-
                 element.fancytree({
                     extensions: ["dnd", "add-to-encounter", "filter"],
                     source: [],
@@ -209,6 +252,11 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 fancyTree = element.fancytree("getTree");
                 fancyTree.visit(addExtraClasses);
                 initializeChronicleFilter(fancyTree);
+
+                contentTreeService.createBinder = function() {
+                    var nodeBrief = {title: "new Binder", folder: true, key: getNextNodeKey(fancyTree)};
+                    addNodeSaveChronicleAndGotoNode(fancyTree, nodeBrief);
+                }
             }
 
             return {
