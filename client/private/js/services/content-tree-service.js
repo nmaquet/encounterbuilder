@@ -6,50 +6,21 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', function () {
 
     var service = {};
 
-    service.hasFirstNode = function () {
-    };
-
-    service.goToFirstNode = function () {
-    };
-
-    service.getBinderByKey = function () {
-    };
-
-    service.createBinder = function () {
-    };
-
-    service.binderChanged = function () {
-    };
-
-    service.removeBinder = function () {
-    };
-
-    service.createEncounter = function () {
-    };
-
-    service.createUserResource = function () {
-    };
-
-    service.copyResource = function () {
-    };
-
-    service.copyUserResource = function () {
-    };
-
-    service.removeEncounter = function () {
-    };
-
-    service.changeEncounter = function () {
-    };
-
-    service.userResourceUpdated = function () {
-    };
-
-    service.userResourceDeleted = function () {
-    };
-
-    service.getBinderChildrenByKey = function () {
-    };
+    service.hasFirstNode = angular.noop;
+    service.goToFirstNode = angular.noop;
+    service.getBinderByKey = angular.noop;
+    service.createBinder = angular.noop;
+    service.binderChanged = angular.noop;
+    service.removeBinder = angular.noop;
+    service.createEncounter = angular.noop;
+    service.createUserResource = angular.noop;
+    service.copyResource = angular.noop;
+    service.copyUserResource = angular.noop;
+    service.removeEncounter = angular.noop;
+    service.changeEncounter = angular.noop;
+    service.userResourceUpdated = angular.noop;
+    service.userResourceDeleted = angular.noop;
+    service.getBinderChildrenByKey = angular.noop;
 
     return service;
 });
