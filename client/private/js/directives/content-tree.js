@@ -3,8 +3,24 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
-    ['$timeout', '$routeParams', 'encounterEditorService', 'ChronicleResource',
-        function ($timeout, $routeParams, encounterEditorService, ChronicleResource) {
+    ['$timeout', '$routeParams', 'encounterEditorService', 'ChronicleResource', 'locationService',
+        function ($timeout, $routeParams, encounterEditorService, ChronicleResource, locationService) {
+
+            function goToNode(node) {
+                if (node.data.encounterId) {
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/encounter/" + node.data.encounterId);
+                }
+                else if (node.data.userTextId) {
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/user-text/" + node.data.userTextId);
+                }
+                else if (node.data.userResourceId) {
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/" + node.data.resourceType + "/" + node.data.userResourceId);
+                }
+                else if (node.folder) {
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/binder/" + node.key);
+                }
+                node.makeVisible();
+            }
 
             function initializeChronicleFilter(fancyTree) {
                 $("input#filter-chronicle").keyup(function (e) {
@@ -90,7 +106,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 });
 
                 function onClick(event, data) {
-                    /* todo goto data.node */
+                    $timeout(function () {
+                        goToNode(data.node);
+                    });
                 }
 
                 function onPlusButtonClick(node) {
