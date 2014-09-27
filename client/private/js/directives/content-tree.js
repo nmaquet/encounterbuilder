@@ -17,13 +17,13 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 "user-text": "new Text"
             };
 
-            function saveChronicle(fancyTree) {
+            function saveChronicle(fancyTree, callback) {
                 if (fancyTree.count() === 0) {
                     fancyTree.chronicle.contentTree = [];
                 } else {
                     fancyTree.chronicle.contentTree = fancyTree.toDict();
                 }
-                fancyTree.chronicle.$save();
+                fancyTree.chronicle.$save(callback);
             }
 
             function goToNode(node) {
@@ -92,18 +92,19 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
             function addNode(fancyTree, node) {
                 addExtraClasses(node);
+                var newNode;
                 var activeNode = fancyTree.getActiveNode();
                 if (activeNode === null) {
                     activeNode = fancyTree.rootNode;
-                    var newNode = activeNode.addNode(node);
+                    newNode = activeNode.addNode(node);
                     newNode.setActive(true);
                 }
                 else if (activeNode.folder === true) {
-                    var newNode = activeNode.addNode(node);
+                    newNode = activeNode.addNode(node);
                     newNode.setActive(true);
                 }
                 else {
-                    var newNode = activeNode.appendSibling(node);
+                    newNode = activeNode.appendSibling(node);
                     newNode.setActive(true);
                 }
                 return newNode;
