@@ -6,6 +6,21 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
     ['$timeout', '$routeParams', 'encounterEditorService', 'ChronicleResource', 'locationService',
         function ($timeout, $routeParams, encounterEditorService, ChronicleResource, locationService) {
 
+            function removeExtraClasses(node) {
+                if (node.extraClasses) {
+                    delete node.extraClasses;
+                }
+            }
+
+            function saveChronicle(fancyTree) {
+                if (fancyTree.count() === 0) {
+                     fancyTree.chronicle.contentTree = [];
+                } else {
+                     fancyTree.chronicle.contentTree = fancyTree.toDict(removeExtraClasses);
+                }
+                fancyTree.chronicle.$save();
+            }
+
             function goToNode(node) {
                 if (node.data.encounterId) {
                     locationService.go("/chronicle/" + $routeParams.chronicleId + "/encounter/" + node.data.encounterId);
@@ -98,6 +113,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         ChronicleResource.get({id: $routeParams.chronicleId}, function (chronicle) {
                             var contentTree = (chronicle && chronicle.contentTree) || [];
                             fancyTree.reload(contentTree);
+                            fancyTree.chronicle = chronicle;
                             activateNodeBasedOnRouteParams();
                         })
                     } else {
@@ -127,12 +143,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         encounterEditorService.addUserItem(id);
                     } else {
                         encounterEditorService.addUserNpcOrMonster(type, id);
-                    }
-                }
-
-                function removeExtraClasses(dict) {
-                    if (dict.extraClasses) {
-                        delete dict.extraClasses;
                     }
                 }
 
@@ -187,7 +197,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                             // hitMode is 'before', 'after', or 'over'.
                             // We could for example move the source to the new target:
                             data.otherNode.moveTo(node, data.hitMode);
-                            /* TODO: save fancyTree */
+                            saveChronicle(fancyTree);
                         },
                         draggable: {
                             zIndex: 1000,
