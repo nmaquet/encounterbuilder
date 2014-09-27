@@ -81,8 +81,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     if ($routeParams.chronicleId) {
                         ChronicleResource.get({id: $routeParams.chronicleId}, function (chronicle) {
                             var contentTree = (chronicle && chronicle.contentTree) || [];
-                            console.log("RELOADING");
-                            console.log(JSON.stringify(contentTree, null, 4));
                             fancyTree.reload(contentTree);
                             activateNodeBasedOnRouteParams();
                         })
