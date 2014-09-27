@@ -387,6 +387,18 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     }
                 };
 
+                contentTreeService.removeBinder = function (binder) {
+                    var toRemove;
+                    fancyTree.visit(function (node) {
+                        if (node.folder && node.key === binder.nodeKey) {
+                            toRemove = node;
+                        }
+                    });
+                    if (toRemove) {
+                        removeNodeSaveChronicleAndGotoNextBestNode(fancyTree, toRemove);
+                    }
+                };
+
                 contentTreeService.getBinderChildrenByKey = function (key, callback) {
                     if (!fancyTree.getNodeByKey(key)) return; /* TODO / FIXME: what id the chronicle is not loaded ? */
                     var children = fancyTree.getNodeByKey(key).getChildren();

@@ -24,19 +24,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', function () {
     service.binderChanged = function () {
     };
 
-    service.removeBinder = function (binder) {
-        var toRemove;
-        fancyTree.visit(function (node) {
-            if (node.folder && node.key === binder.nodeKey) {
-                toRemove = node;
-            }
-        });
-        if (toRemove) {
-//                    removeNode(toRemove);
-//                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
-        } else {
-            console.log("could not remove content tree binder");
-        }
+    service.removeBinder = function () {
     };
 
     service.createEncounter = function () {
