@@ -110,8 +110,6 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
                 function initTree() {
 
-                    console.log("init tree");
-                    console.log(contentTreeService.contentTree());
                     element.fancytree({
                         extensions: ["dnd", "add-to-encounter", "filter"],
                         source: contentTreeService.contentTree(),

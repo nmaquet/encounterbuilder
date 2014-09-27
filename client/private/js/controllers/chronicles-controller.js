@@ -8,15 +8,19 @@ DEMONSQUID.encounterBuilderControllers.controller('ChroniclesController',
 
             $scope.chronicles = ChronicleResource.query();
 
-            $scope.createChronicle = function () {
+            $scope.createChronicle = function() {
                 var newChronicle = new ChronicleResource();
                 newChronicle.name = "new Chronicle";
                 newChronicle.contentTree = [];
                 newChronicle.$save(function (newChronicle) {
-                    contentTreeService.reloadChronicleTree(newChronicle._id);
-                    locationService.go("/chronicle/" + newChronicle._id);
+                    $scope.selectChronicle(newChronicle);
                 });
             };
 
+            $scope.selectChronicle = function(chronicle) {
+                contentTreeService.reloadChronicleTree(chronicle._id);
+                locationService.go("/chronicle/" + chronicle._id);
+            };
+            
         }
     ]);

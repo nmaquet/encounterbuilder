@@ -108,7 +108,6 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
 
             function loadChronicle(chronicleId) {
                 chronicleResource.get({id: chronicleId}, function (chronicle) {
-                    console.log(chronicle._id);
                     contentTree = chronicle.contentTree;
                     currentChronicle = chronicle;
                     $rootScope.$emit(LOAD_SUCCESS);
