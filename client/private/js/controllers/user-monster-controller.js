@@ -24,7 +24,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
 
             $scope.editUserMonster = function () {
                 if ($scope.userMonster) {
-                    locationService.go("/edit-" + resourceType + "/" + ($routeParams.userResourceId || $routeParams.detailsId));
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/edit-" + resourceType + "/" + ($routeParams.userResourceId || $routeParams.detailsId));
                 }
             };
 

@@ -137,16 +137,16 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             service.reloadChronicleTree = reLoadChronicle;
             service.goToNode = function (node) {
                 if (node.data.encounterId) {
-                    locationService.go("/encounter/" + node.data.encounterId);
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/encounter/" + node.data.encounterId);
                 }
                 else if (node.data.userTextId) {
-                    locationService.go("/user-text/" + node.data.userTextId);
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/user-text/" + node.data.userTextId);
                 }
                 else if (node.data.userResourceId) {
-                    locationService.go("/" + node.data.resourceType + "/" + node.data.userResourceId);
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/" + node.data.resourceType + "/" + node.data.userResourceId);
                 }
                 else if (node.folder) {
-                    locationService.go("/binder/" + node.key);
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/binder/" + node.key);
                 }
                 node.makeVisible();
             };

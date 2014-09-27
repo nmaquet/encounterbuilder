@@ -22,7 +22,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserResourceController',
 
             $scope.edit = function () {
                 if ($scope.userResource) {
-                    locationService.go("/edit-" + resourceType + "/" + ($routeParams.userResourceId || $routeParams.detailsId));
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/edit-" + resourceType + "/" + ($routeParams.userResourceId || $routeParams.detailsId));
                 }
             };
 

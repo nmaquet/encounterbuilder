@@ -111,7 +111,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             };
 
             $scope.printSelectedEncounter = function () {
-                $scope.go('/print-encounter/' + $scope.encounter._id);
+                $scope.go("/chronicle/" + $routeParams.chronicleId + '/print-encounter/' + $scope.encounter._id);
             };
 
             $scope.createFirstEncounter = function () {

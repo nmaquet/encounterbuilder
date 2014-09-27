@@ -32,31 +32,31 @@ DEMONSQUID.encounterBuilderServices.factory('locationService',
                 goToDetails: function (type, id) {
                     var typePrefix = '/' + type + '/';
                     if ($route.current.templateUrl === 'encounter.html') {
-                        this.go('/encounter/' + $routeParams.encounterId + typePrefix + id);
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/encounter/' + $routeParams.encounterId + typePrefix + id);
                     } else if ($route.current.templateUrl === 'edit-user-monster.html') {
-                        this.go('/edit-user-monster/' + $routeParams.userMonsterId + typePrefix + id);
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/edit-user-monster/' + $routeParams.userMonsterId + typePrefix + id);
                     } else if ($route.current.templateUrl === 'edit-user-npc.html') {
-                        this.go('/edit-user-npc/' + $routeParams.userNpcId + typePrefix + id);
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/edit-user-npc/' + $routeParams.userNpcId + typePrefix + id);
                     } else if ($route.current.templateUrl === 'edit-user-text.html') {
-                        this.go('/edit-user-text/' + $routeParams.userTextId + typePrefix + id);
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/edit-user-text/' + $routeParams.userTextId + typePrefix + id);
                     }
                     else {
-                        this.go(typePrefix + id);
+                        this.go("/chronicle/" + $routeParams.chronicleId + typePrefix + id);
                     }
                 },
                 closeDetails: function () {
                     if ($routeParams.encounterId) {
-                        this.go('/encounter/' + $routeParams.encounterId);
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/encounter/' + $routeParams.encounterId);
                     }
                     else if ($routeParams.userMonsterId) {
-                        this.go('/edit-user-monster/' + $routeParams.userMonsterId);
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/edit-user-monster/' + $routeParams.userMonsterId);
                     }
                     else {
                         this.go('/');
                     }
                 },
                 getResourceType: function () {
-                    var match = /\/(?:edit-)?(user-)?(npc|monster|feat|spell|item|illustration|map|chronicle|text)\//.exec($location.path());
+                    var match = /\/chronicle\/.*\/(?:edit-)?(user-)?(npc|monster|feat|spell|item|illustration|map|chronicle|text)\//.exec($location.path());
                     return match && ((match[1] || "") + match[2]);
                 }
             };

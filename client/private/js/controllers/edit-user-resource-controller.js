@@ -20,7 +20,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
             $scope.view = function () {
                 contentTreeService.userResourceUpdated($scope.userResource);
                 $scope.userResource.$save(function () {
-                    locationService.go("/" + resourceType + "/" + $routeParams.userResourceId);
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/" + resourceType + "/" + $routeParams.userResourceId);
                 });
 
             };
