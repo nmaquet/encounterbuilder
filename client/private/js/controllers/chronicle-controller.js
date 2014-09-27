@@ -28,6 +28,10 @@ DEMONSQUID.encounterBuilderControllers.controller('ChronicleController',
                 }
             };
 
+            $scope.chronicleRenamed = function () {
+                $scope.chronicle.$save();
+            };
+
             $scope.chronicle = ChronicleResource.get({id: $routeParams.chronicleId});
         }
     ]);
