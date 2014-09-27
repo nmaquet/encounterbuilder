@@ -41,7 +41,7 @@ DEMONSQUID.encounterBuilderServices.factory('locationService',
                         this.go("/chronicle/" + $routeParams.chronicleId + '/edit-user-text/' + $routeParams.userTextId + typePrefix + id);
                     }
                     else {
-                        this.go("/chronicle/" + $routeParams.chronicleId + typePrefix + id);
+                        this.go(($routeParams.chronicleId ? "/chronicle/" + $routeParams.chronicleId : "") + typePrefix + id);
                     }
                 },
                 closeDetails: function () {

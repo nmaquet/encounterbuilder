@@ -18,6 +18,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
             };
 
             function saveChronicle(fancyTree, callback) {
+                if (!fancyTree.chronicle) return;
                 if (fancyTree.count() === 0) {
                     fancyTree.chronicle.contentTree = [];
                 } else {
@@ -91,6 +92,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
             }
 
             function addNode(fancyTree, node) {
+                if (!fancyTree.chronicle) return;
                 addExtraClasses(node);
                 var newNode;
                 var activeNode = fancyTree.getActiveNode();
@@ -111,6 +113,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
             }
 
             function addNodeSaveChronicleAndGotoNode(fancyTree, nodeBrief) {
+                if (!fancyTree.chronicle) return;
                 var newNode = addNode(fancyTree, nodeBrief);
                 saveChronicle(fancyTree, function () {
                     goToNode(newNode);
@@ -188,6 +191,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         })
                     } else {
                         fancyTree.reload([]);
+                        fancyTree.chronicle = null;
                     }
                 });
 

@@ -54,11 +54,19 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
             .when('/chronicle/:chronicleId/edit-user-text/:userResourceId', { templateUrl: 'edit-user-text.html' })
             .when('/chronicle/:chronicleId/print-encounter/:encounterId', { templateUrl: 'printable-encounter.html' })
             .when('/chronicle/:chronicleId/binder/:binderId', { templateUrl: 'binder.html' })
+
             .when('/chronicle/:chronicleId/monster/:monsterId', { templateUrl: 'monster.html'})
             .when('/chronicle/:chronicleId/npc/:npcId', { templateUrl: 'npc.html'})
             .when('/chronicle/:chronicleId/item/:itemId', { templateUrl: 'item.html'})
             .when('/chronicle/:chronicleId/spell/:spellId', { templateUrl: 'spell.html'})
             .when('/chronicle/:chronicleId/feat/:featId', { templateUrl: 'feat.html'})
+
+            .when('/monster/:monsterId', { templateUrl: 'monster.html'})
+            .when('/npc/:npcId', { templateUrl: 'npc.html'})
+            .when('/item/:itemId', { templateUrl: 'item.html'})
+            .when('/spell/:spellId', { templateUrl: 'spell.html'})
+            .when('/feat/:featId', { templateUrl: 'feat.html'})
+
             .otherwise({
                 redirectTo: '/'
             });
