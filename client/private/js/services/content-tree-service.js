@@ -23,15 +23,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             service.createBinder = function () {
             };
 
-            service.binderChanged = function (binder) {
-                if (binder) {
-                    fancyTree.visit(function (node) {
-                        if (node.key === binder.nodeKey) {
-                            node.setTitle(binder.Name);
-                        }
-                    });
-//                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                }
+            service.binderChanged = function () {
             };
 
             service.removeBinder = function (binder) {

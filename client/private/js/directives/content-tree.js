@@ -376,6 +376,17 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     return {Name: node.title, nodeKey: node.key, descendantCount: node.countChildren(true)};
                 };
 
+                contentTreeService.binderChanged = function (binder) {
+                    if (binder) {
+                        fancyTree.visit(function (node) {
+                            if (node.key === binder.nodeKey) {
+                                node.setTitle(binder.Name);
+                            }
+                        });
+                        saveChronicle(fancyTree);
+                    }
+                };
+
             }
 
             return {
