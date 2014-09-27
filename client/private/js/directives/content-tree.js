@@ -401,6 +401,21 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     }
                 };
 
+                contentTreeService.userResourceUpdated = function (userResource) {
+                    if (userResource) {
+                        fancyTree.visit(function (node) {
+                            if (node.data.userResourceId && node.data.userResourceId === userResource._id) {
+                                var name = userResource.name || userResource.Name;
+                                if (node.title !== name) {
+                                    node.setTitle(name);
+                                    return false;
+                                }
+                            }
+                        });
+                        saveChronicle(fancyTree);
+                    }
+                };
+
                 contentTreeService.removeBinder = function (binder) {
                     var toRemove;
                     fancyTree.visit(function (node) {

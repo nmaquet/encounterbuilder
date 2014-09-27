@@ -45,20 +45,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', function () {
     service.changeEncounter = function () {
     };
 
-    service.userResourceUpdated = function (userResource, resourceType) {
-        if (resourceType && resourceType === "chronicle") {
-            currentChronicle = userResource;
-            return;
-        }
-        fancyTree.visit(function (node) {
-            if (node.data.userResourceId && node.data.userResourceId === userResource._id) {
-                var name = userResource.name || userResource.Name;
-                if (node.title !== name) {
-                    node.setTitle(name);
-//                            service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                }
-            }
-        });
+    service.userResourceUpdated = function () {
     };
 
     service.userResourceDeleted = function () {
