@@ -5,9 +5,6 @@
 DEMONSQUID.encounterBuilderServices.factory('contentTreeService', function () {
 
     var service = {};
-    var fancyTree = null;
-
-    var currentChronicle = null;
 
     service.hasFirstNode = function () {
     };
