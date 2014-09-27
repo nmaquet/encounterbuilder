@@ -224,19 +224,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             service.copyUserResource = function () {
             };
 
-            service.removeEncounter = function (encounter) {
-                var toRemove;
-                fancyTree.visit(function (node) {
-                    if (node.data.encounterId && node.data.encounterId === encounter._id) {
-                        toRemove = node;
-                    }
-                });
-                if (toRemove) {
-                    removeNode(toRemove);
-                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                } else {
-                    console.log("could not remove content tree encounter");
-                }
+            service.removeEncounter = function () {
             };
 
             service.changeEncounter = function (encounter) {
@@ -268,22 +256,8 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             };
 
-
-            service.userResourceDeleted = function (userResource) {
-                var toRemove;
-                fancyTree.visit(function (node) {
-                    if (node.data.userResourceId && node.data.userResourceId === userResource._id) {
-                        toRemove = node;
-                    }
-                });
-                if (toRemove) {
-                    removeNode(toRemove);
-                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                } else {
-                    console.log("could not remove content tree userResource");
-                }
+            service.userResourceDeleted = function () {
             };
-
 
             service.treeChanged = function (tree) {
                 contentTree = tree;

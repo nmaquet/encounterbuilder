@@ -58,7 +58,6 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                     encounterService.encounters.splice(index, 1);
                     encounterService.remove($scope.encounter);
                     contentTreeService.removeEncounter($scope.encounter);
-                    $scope.go("/"); // FIXME: should go to the parent binder ?
                 };
             };
 

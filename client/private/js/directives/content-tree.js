@@ -112,6 +112,39 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 return newNode;
             }
 
+            function removeNodeAndReturnNextBestNode(node) {
+                var parent = node.getParent();
+                var nextSibling = node.getNextSibling();
+                var prevSibling = node.getPrevSibling();
+                node.remove();
+                if (parent && !parent.isRoot()) { /* a child of the root node is effectively parentless */
+                    parent.setActive(true);
+                    return parent;
+                }
+                else if (nextSibling) {
+                    nextSibling.setActive(true);
+                    return nextSibling;
+                }
+                else if (prevSibling) {
+                    prevSibling.setActive(true);
+                    return prevSibling;
+                } else {
+                    return null;
+                    /* no node is active -> go to home */
+                }
+            }
+
+            function removeNodeSaveChronicleAndGotoNextBestNode(fancyTree, node) {
+                var nextBestNode = removeNodeAndReturnNextBestNode(node);
+                saveChronicle(fancyTree, function () {
+                    if (nextBestNode) {
+                        goToNode(nextBestNode);
+                    } else {
+                        locationService.go("/chronicles");
+                    }
+                });
+            }
+
             function addNodeSaveChronicleAndGotoNode(fancyTree, nodeBrief) {
                 if (!fancyTree.chronicle) return;
                 var newNode = addNode(fancyTree, nodeBrief);
@@ -310,6 +343,22 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         var nodeBrief = {title: userResource.name || userResource.Name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey(fancyTree)};
                         addNodeSaveChronicleAndGotoNode(fancyTree, nodeBrief);
                     });
+                };
+
+                contentTreeService.userResourceDeleted = function (userResource) {
+                    var toRemove;
+                    fancyTree.visit(function (node) {
+                        if (node.data.userResourceId && node.data.userResourceId === userResource._id) {
+                            toRemove = node;
+                        }
+                    });
+                    if (toRemove) {
+                        removeNodeSaveChronicleAndGotoNextBestNode(fancyTree, toRemove);
+                    }
+                };
+
+                contentTreeService.removeEncounter = function (encounter) {
+                    contentTreeService.userResourceDeleted(encounter);
                 };
             }
 
