@@ -3,8 +3,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
-    ['$timeout', '$routeParams', 'encounterEditorService', 'ChronicleResource', 'locationService', 'contentTreeService', 'userResourceService', 'encounterService',
-        function ($timeout, $routeParams, encounterEditorService, ChronicleResource, locationService, contentTreeService, userResourceService, encounterService) {
+    ['$timeout', '$routeParams', 'encounterEditorService', 'ChronicleResource', 'locationService', 'contentTreeService', 'userResourceService', 'encounterService', 'throttle',
+        function ($timeout, $routeParams, encounterEditorService, ChronicleResource, locationService, contentTreeService, userResourceService, encounterService, throttle) {
 
             var NEW_RESOURCE_NAMES = {
                 "user-item": "new Item",
@@ -17,15 +17,15 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 "user-text": "new Text"
             };
 
-            function saveChronicle(fancyTree, callback) {
+            var saveChronicle = throttle(function(fancyTree, callbackNotGuaranteedToBeCalledBecauseOfThrottling) {
                 if (!fancyTree.chronicle) return;
                 if (fancyTree.count() === 0) {
                     fancyTree.chronicle.contentTree = [];
                 } else {
                     fancyTree.chronicle.contentTree = fancyTree.toDict();
                 }
-                fancyTree.chronicle.$save(callback);
-            }
+                fancyTree.chronicle.$save(callbackNotGuaranteedToBeCalledBecauseOfThrottling);
+            }, 500);
 
             function goToNode(node) {
                 if (node.data.encounterId) {
