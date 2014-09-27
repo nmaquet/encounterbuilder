@@ -33,9 +33,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
                     $scope.userResource.Level = classesObject.Level;
                     $scope.classesString = $filter("classesToString")($scope.userResource.Classes);
                 }
-                $scope.userResource.$save(function (newUserResource) {
-                    userResource.lastModified = newUserResource.lastModified;
-                });
+                $scope.userResource.$save();
                 contentTreeService.userResourceUpdated(userResource, resourceType);
             }
 
