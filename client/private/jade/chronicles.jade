@@ -6,3 +6,4 @@
             .result-content
                 p(style="color:white;" ng-repeat="chronicle in chronicles")
                     a(ng-href="#/chronicle/{{chronicle._id}}") {{chronicle.name}}
+            button(ng-click="createChronicle()") New Chronicle

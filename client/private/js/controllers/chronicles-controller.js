@@ -2,8 +2,21 @@
 
 "use strict";
 
-DEMONSQUID.encounterBuilderControllers.controller('ChroniclesController', ['$scope', 'ChronicleResource',
-    function ($scope, ChronicleResource) {
-        $scope.chronicles = ChronicleResource.query();
-    }
-]);
+DEMONSQUID.encounterBuilderControllers.controller('ChroniclesController',
+    ['$scope', 'ChronicleResource', 'contentTreeService', 'locationService',
+        function ($scope, ChronicleResource, contentTreeService, locationService) {
+
+            $scope.chronicles = ChronicleResource.query();
+
+            $scope.createChronicle = function () {
+                var newChronicle = new ChronicleResource();
+                newChronicle.name = "new Chronicle";
+                newChronicle.contentTree = [];
+                newChronicle.$save(function (newChronicle) {
+                    contentTreeService.reloadChronicleTree(newChronicle._id);
+                    locationService.go("/chronicle/" + newChronicle._id);
+                });
+            };
+
+        }
+    ]);

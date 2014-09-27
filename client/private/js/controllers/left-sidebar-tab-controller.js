@@ -30,17 +30,6 @@ DEMONSQUID.encounterBuilderControllers.controller('LeftSidebarTabController',
                 contentTreeService.reloadChronicleTree(chronicleId);
                 locationService.go("/chronicle/" + chronicleId);
             };
-            $scope.createChronicle = function () {
-                console.log("create chronicle");
-                var newChronicle = new userResourceService["chronicle"]();
-                newChronicle.name = "new Chronicle";
-                newChronicle.contentTree = [];
-                newChronicle.$save(function (newChronicle) {
-                    contentTreeService.reloadChronicleTree(newChronicle._id);
-                    $scope.chronicles = userResourceService["chronicle"].query();
-                    locationService.go("/chronicle/" + newChronicle._id);
-                });
-            };
 
             $scope.$watch(contentTreeService.chronicleName, function () {
                 if ($scope.chronicleName !== contentTreeService.chronicleName()) {
