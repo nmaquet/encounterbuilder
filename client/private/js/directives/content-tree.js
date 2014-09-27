@@ -3,14 +3,25 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
-    ['$timeout', '$routeParams', 'encounterEditorService', 'ChronicleResource', 'locationService', 'contentTreeService',
-        function ($timeout, $routeParams, encounterEditorService, ChronicleResource, locationService, contentTreeService) {
+    ['$timeout', '$routeParams', 'encounterEditorService', 'ChronicleResource', 'locationService', 'contentTreeService', 'userResourceService', 'encounterService',
+        function ($timeout, $routeParams, encounterEditorService, ChronicleResource, locationService, contentTreeService, userResourceService, encounterService) {
+
+            var NEW_RESOURCE_NAMES = {
+                "user-item": "new Item",
+                "user-spell": "new Spell",
+                "user-feat": "new Feat",
+                "user-illustration": "new Illustration",
+                "user-map": "new Map",
+                "user-monster": "new Monster",
+                "user-npc": "new NPC",
+                "user-text": "new Text"
+            };
 
             function saveChronicle(fancyTree) {
                 if (fancyTree.count() === 0) {
-                     fancyTree.chronicle.contentTree = [];
+                    fancyTree.chronicle.contentTree = [];
                 } else {
-                     fancyTree.chronicle.contentTree = fancyTree.toDict();
+                    fancyTree.chronicle.contentTree = fancyTree.toDict();
                 }
                 fancyTree.chronicle.$save();
             }
@@ -49,7 +60,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 }).attr("disabled", true);
             }
 
-           function addExtraClasses(newNode) {
+            function addExtraClasses(newNode) {
                 if (newNode.userResourceId && newNode.resourceType === "encounter") {
                     newNode.extraClasses = "fancytree-encounter";
                 }
@@ -107,7 +118,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
             function getNextNodeKey(fancyTree) {
                 var nodeKey = 0;
-                while(fancyTree.getNodeByKey(String(nodeKey)) !== null) {
+                while (fancyTree.getNodeByKey(String(nodeKey)) !== null) {
                     nodeKey += 1;
                 }
                 return String(nodeKey);
@@ -166,7 +177,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     }
                 }
 
-                scope.$on("$routeChangeSuccess", function() {
+                scope.$on("$routeChangeSuccess", function () {
                     if ($routeParams.chronicleId) {
                         ChronicleResource.get({id: $routeParams.chronicleId}, function (chronicle) {
                             var contentTree = (chronicle && chronicle.contentTree) || [];
@@ -253,10 +264,34 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 fancyTree.visit(addExtraClasses);
                 initializeChronicleFilter(fancyTree);
 
-                contentTreeService.createBinder = function() {
+                contentTreeService.createBinder = function () {
                     var nodeBrief = {title: "new Binder", folder: true, key: getNextNodeKey(fancyTree)};
                     addNodeSaveChronicleAndGotoNode(fancyTree, nodeBrief);
-                }
+                };
+
+                contentTreeService.createEncounter = function () {
+                    encounterService.createEncounter(function (encounter) {
+                        var nodeBrief = {title: encounter.Name, userResourceId: encounter._id, resourceType: "encounter", key: getNextNodeKey(fancyTree)};
+                        addNodeSaveChronicleAndGotoNode(fancyTree, nodeBrief);
+                    });
+                };
+
+                contentTreeService.createUserResource = function (resourceType) {
+                    var userResource = new userResourceService[resourceType]();
+                    if (resourceType === "user-item" || resourceType === "user-monster" || resourceType === "user-npc") {
+                        userResource.Name = NEW_RESOURCE_NAMES[resourceType];
+                    } else {
+                        userResource.name = NEW_RESOURCE_NAMES[resourceType];
+                    }
+                    if (resourceType === "user-monster" || resourceType === "user-npc") {
+                        userResource.XP = 0;
+                        userResource.CR = 0;
+                    }
+                    userResource.$save(function () {
+                        var nodeBrief = {title: userResource.name || userResource.Name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey(fancyTree)};
+                        addNodeSaveChronicleAndGotoNode(fancyTree, nodeBrief);
+                    });
+                };
             }
 
             return {

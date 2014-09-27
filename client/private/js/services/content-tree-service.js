@@ -175,7 +175,8 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 return {Name: node.title, nodeKey: node.key, descendantCount: node.countChildren(true)};
             };
 
-            service.createBinder = function () {};
+            service.createBinder = function () {
+            };
 
             service.onLoadSuccess = function (callback) {
                 $rootScope.$on(LOAD_SUCCESS, callback);
@@ -212,29 +213,9 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             };
 
             service.createEncounter = function () {
-                encounterService.createEncounter(function (encounter) {
-                    addNode({title: encounter.Name, userResourceId: encounter._id, resourceType: "encounter", key: getNextNodeKey()});
-                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                });
             };
 
-
-            var resourceNewName = {"user-item": "new Item", "user-spell": "new Spell", "user-feat": "new Feat", "user-illustration": "new Illustration", "user-map": "new Map", "user-monster": "new Monster", "user-npc": "new NPC", "user-text": "new Text"};
-            service.createUserResource = function (resourceType) {
-                var userResource = new userResourceService[resourceType]();
-                if (resourceType === "user-item" || resourceType === "user-monster" || resourceType === "user-npc") {
-                    userResource.Name = resourceNewName[resourceType];
-                } else {
-                    userResource.name = resourceNewName[resourceType];
-                }
-                if (resourceType === "user-monster" || resourceType === "user-npc") {
-                    userResource.XP = 0;
-                    userResource.CR = 0;
-                }
-                userResource.$save(function () {
-                    addNode({title: userResource.name || userResource.Name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey()});
-                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                });
+            service.createUserResource = function () {
             };
 
             service.copyResource = function (resourceId, resourceType) {
