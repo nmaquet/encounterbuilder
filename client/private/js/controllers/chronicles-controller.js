@@ -18,7 +18,6 @@ DEMONSQUID.encounterBuilderControllers.controller('ChroniclesController',
             };
 
             $scope.selectChronicle = function(chronicle) {
-                contentTreeService.reloadChronicleTree(chronicle._id);
                 locationService.go("/chronicle/" + chronicle._id);
             };
             

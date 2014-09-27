@@ -104,33 +104,33 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             var chronicleResource = userResourceService["chronicle"];
             var currentChronicle = null;
 
-            function loadChronicle(chronicleId) {
-                chronicleResource.get({id: chronicleId}, function (chronicle) {
-                    contentTree = chronicle.contentTree;
-                    currentChronicle = chronicle;
-                    $rootScope.$emit(LOAD_SUCCESS);
-                });
-            }
-
-            function reLoadChronicle(chronicleId) {
-                chronicleResource.get({id: chronicleId}, function (chronicle) {
-                    contentTree = chronicle.contentTree;
-                    currentChronicle = chronicle;
-                    fancyTree.reload(contentTree);
-                });
-            }
-
-            $rootScope.$on("$routeChangeSuccess", function(){
-                if (!currentChronicle && $routeParams.chronicleId) {
-                    loadChronicle($routeParams.chronicleId);
-                }
-                else if ($routeParams.chronicleId) {
-                    reLoadChronicle($routeParams.chronicleId)
-                } else {
-                    currentChronicle = null;
-                    fancyTree.reload([]);
-                }
-            });
+//            function loadChronicle(chronicleId) {
+//                chronicleResource.get({id: chronicleId}, function (chronicle) {
+//                    contentTree = chronicle.contentTree;
+//                    currentChronicle = chronicle;
+//                    $rootScope.$emit(LOAD_SUCCESS);
+//                });
+//            }
+//
+//            function reLoadChronicle(chronicleId) {
+//                chronicleResource.get({id: chronicleId}, function (chronicle) {
+//                    contentTree = chronicle.contentTree;
+//                    currentChronicle = chronicle;
+//                    fancyTree.reload(contentTree);
+//                });
+//            }
+//
+//            $rootScope.$on("$routeChangeSuccess", function(){
+//                if (!currentChronicle && $routeParams.chronicleId) {
+//                    loadChronicle($routeParams.chronicleId);
+//                }
+//                else if ($routeParams.chronicleId) {
+//                    reLoadChronicle($routeParams.chronicleId)
+//                } else {
+//                    currentChronicle = null;
+//                    fancyTree.reload([]);
+//                }
+//            });
 
             service.chronicleName = function () {
                 if (currentChronicle) {
@@ -138,7 +138,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 }
             };
 
-            service.reloadChronicleTree = reLoadChronicle;
+//            service.reloadChronicleTree = reLoadChronicle;
             service.goToNode = function (node) {
                 if (node.data.encounterId) {
                     locationService.go("/chronicle/" + $routeParams.chronicleId + "/encounter/" + node.data.encounterId);
