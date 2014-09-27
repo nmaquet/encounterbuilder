@@ -293,6 +293,13 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         addNodeSaveChronicleAndGotoNode(fancyTree, nodeBrief);
                     });
                 };
+
+                contentTreeService.copyResource = function (resourceId, resourceType) {
+                    userResourceService[resourceType].save({baseResourceId: resourceId}, function (userResource) {
+                        var nodeBrief = {title: userResource.name || userResource.Name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey(fancyTree)};
+                        addNodeSaveChronicleAndGotoNode(fancyTree, nodeBrief);
+                    });
+                };
             }
 
             return {
