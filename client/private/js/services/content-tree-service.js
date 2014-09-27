@@ -13,124 +13,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             var fancyTree = null;
             var nodeKey = null;
 
-            //FIXME removeExtraClasses and addExtraClasses are both here and in content-tree.js
-            function removeExtraClasses(dict) {
-                if (dict.extraClasses) {
-                    delete dict.extraClasses;
-                }
-            }
-
-            function addExtraClasses(newNode) {
-                if (newNode.userResourceId && newNode.resourceType === "encounter") {
-                    newNode.extraClasses = "fancytree-encounter";
-                }
-                else if (newNode.userResourceId && newNode.resourceType === "user-npc") {
-                    newNode.extraClasses = "fancytree-npc";
-                }
-                else if (newNode.userResourceId && newNode.resourceType === "user-text") {
-                    newNode.extraClasses = "fancytree-text";
-                }
-                else if (newNode.userResourceId && newNode.resourceType === "user-monster") {
-                    newNode.extraClasses = "fancytree-monster";
-                }
-                else if (newNode.userResourceId && newNode.resourceType === "user-feat") {
-                    newNode.extraClasses = "fancytree-feat";
-                }
-                else if (newNode.userResourceId && newNode.resourceType === "user-spell") {
-                    newNode.extraClasses = "fancytree-spell";
-                }
-                else if (newNode.userResourceId && newNode.resourceType === "user-item") {
-                    newNode.extraClasses = "fancytree-item";
-                }
-                else if (newNode.userResourceId && newNode.resourceType === "user-illustration") {
-                    newNode.extraClasses = "fancytree-image";
-                }
-                else if (newNode.userResourceId && newNode.resourceType === "user-map") {
-                    newNode.extraClasses = "fancytree-map";
-                }
-            }
-
-            function getNextNodeKey() {
-                while (fancyTree.getNodeByKey("" + ++nodeKey) !== null) {
-                }
-                return "" + nodeKey;
-            }
-
-            function addNode(node) {
-                addExtraClasses(node);
-                var activeNode = fancyTree.getActiveNode();
-                if (activeNode === null) {
-                    activeNode = fancyTree.rootNode;
-                    var newNode = activeNode.addNode(node);
-                    newNode.setActive(true);
-                    service.goToNode(newNode);
-                }
-                else if (activeNode.folder === true) {
-                    var newNode = activeNode.addNode(node);
-                    newNode.setActive(true);
-                    service.goToNode(newNode);
-                }
-                else {
-                    var newNode = activeNode.appendSibling(node);
-                    newNode.setActive(true);
-                    service.goToNode(newNode);
-                }
-            }
-
-            function removeNode(node) {
-                var parent = node.getParent();
-                var nextSibling = node.getNextSibling();
-                var prevSibling = node.getPrevSibling();
-                var active = node.isActive();
-                node.remove();
-                if (active) {
-                    if (parent && !parent.isRoot()) { /* a child of the root node is effectively parentless */
-                        parent.setActive(true);
-                        service.goToNode(parent);
-                    } else if (nextSibling) {
-                        nextSibling.setActive(true);
-                        service.goToNode(nextSibling);
-                    } else if (prevSibling) {
-                        prevSibling.setActive(true);
-                        service.goToNode(prevSibling);
-                    } else {
-                        $rootScope.go("/");
-                        /* no node is active -> go to home */
-                    }
-                }
-            }
-
-            //FIXME store current chronicle in a user params object somewhere in database or cookie
-            var chronicleResource = userResourceService["chronicle"];
             var currentChronicle = null;
-
-//            function loadChronicle(chronicleId) {
-//                chronicleResource.get({id: chronicleId}, function (chronicle) {
-//                    contentTree = chronicle.contentTree;
-//                    currentChronicle = chronicle;
-//                    $rootScope.$emit(LOAD_SUCCESS);
-//                });
-//            }
-//
-//            function reLoadChronicle(chronicleId) {
-//                chronicleResource.get({id: chronicleId}, function (chronicle) {
-//                    contentTree = chronicle.contentTree;
-//                    currentChronicle = chronicle;
-//                    fancyTree.reload(contentTree);
-//                });
-//            }
-//
-//            $rootScope.$on("$routeChangeSuccess", function(){
-//                if (!currentChronicle && $routeParams.chronicleId) {
-//                    loadChronicle($routeParams.chronicleId);
-//                }
-//                else if ($routeParams.chronicleId) {
-//                    reLoadChronicle($routeParams.chronicleId)
-//                } else {
-//                    currentChronicle = null;
-//                    fancyTree.reload([]);
-//                }
-//            });
 
             service.chronicleName = function () {
                 if (currentChronicle) {
@@ -138,7 +21,6 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 }
             };
 
-//            service.reloadChronicleTree = reLoadChronicle;
             service.goToNode = function (node) {
                 if (node.data.encounterId) {
                     locationService.go("/chronicle/" + $routeParams.chronicleId + "/encounter/" + node.data.encounterId);
@@ -205,7 +87,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     }
                 });
                 if (toRemove) {
-                    removeNode(toRemove);
+//                    removeNode(toRemove);
 //                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 } else {
                     console.log("could not remove content tree binder");
