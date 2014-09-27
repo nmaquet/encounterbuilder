@@ -221,11 +221,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             service.copyResource = function () {
             };
 
-            service.copyUserResource = function (resourceId, resourceType) {
-                userResourceService[resourceType].save({userResourceId: resourceId}, function (userResource) {
-                    addNode({title: userResource.name || userResource.Name, userResourceId: userResource._id, resourceType: resourceType, key: getNextNodeKey()});
-                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
-                });
+            service.copyUserResource = function () {
             };
 
             service.removeEncounter = function (encounter) {
