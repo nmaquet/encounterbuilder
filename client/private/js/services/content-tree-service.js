@@ -193,7 +193,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                             node.setTitle(binder.Name);
                         }
                     });
-                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
+//                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 }
             };
 
@@ -206,7 +206,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
                 if (toRemove) {
                     removeNode(toRemove);
-                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
+//                    service.treeChanged(fancyTree.toDict(removeExtraClasses));
                 } else {
                     console.log("could not remove content tree binder");
                 }
@@ -235,7 +235,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                             return false;
                         }
                         //FIXME this saves every ecounter change to the fancyTree (including monsters and stuffs)
-                        service.treeChanged(fancyTree.toDict(removeExtraClasses));
+//                        service.treeChanged(fancyTree.toDict(removeExtraClasses));
                     }
                 });
             };
@@ -250,25 +250,13 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                         var name = userResource.name || userResource.Name;
                         if (node.title !== name) {
                             node.setTitle(name);
-                            service.treeChanged(fancyTree.toDict(removeExtraClasses));
+//                            service.treeChanged(fancyTree.toDict(removeExtraClasses));
                         }
                     }
                 });
             };
 
             service.userResourceDeleted = function () {
-            };
-
-            service.treeChanged = function (tree) {
-                contentTree = tree;
-
-                if (contentTree && fancyTree) {
-                    if (fancyTree.count() === 0) {
-                        contentTree = [];
-                    }
-                    currentChronicle.contentTree = contentTree;
-                    currentChronicle.$save();
-                }
             };
 
             service.getBinderChildrenByKey = function (key, callback) {
