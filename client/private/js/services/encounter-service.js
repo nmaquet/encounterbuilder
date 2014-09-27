@@ -66,14 +66,6 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', 'cr
 
         var service = {};
 
-        service.encounters = [];
-
-        /* FIXME: don't we need a user callback ? */
-        /* FIXME: The client of this function has no way to know whether this succeeds or not. */
-        service.remove = function (encounter) {
-            encounter.$delete();
-        };
-
         service.createEncounter = function (onSuccess) {
             var encounterResource = new EncounterResource();
             encounterResource.Name = "new Encounter";

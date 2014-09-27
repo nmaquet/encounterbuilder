@@ -3,15 +3,15 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
-    ['$rootScope', '$scope', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService', 'contentTreeService', 'locationService',
-        function ($rootScope, $scope, $timeout, $routeParams, encounterService, lootService, encounterEditorService, contentTreeService, locationService) {
+    ['$rootScope', '$scope', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService', 'contentTreeService', 'locationService', 'throttle',
+        function ($rootScope, $scope, $timeout, $routeParams, encounterService, lootService, encounterEditorService, contentTreeService, locationService, throttle) {
 
-            $scope.encounterChanged = function () {
+            $scope.encounterChanged = throttle(function () {
                 if ($scope.encounter) {
                     encounterService.encounterChanged($scope.encounter);
                     contentTreeService.changeEncounter($scope.encounter);
                 }
-            };
+            }, 500);
 
             $scope.pending = true;
             encounterService.get($routeParams.encounterId, function (error, encounter) {
@@ -54,9 +54,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
 
             $scope.removeEncounter = function () {
                 $scope.startFade = function () {
-                    var index = encounterService.encounters.indexOf($scope.encounter);
-                    encounterService.encounters.splice(index, 1);
-                    encounterService.remove($scope.encounter);
+                    $scope.encounter.$delete();
                     contentTreeService.removeEncounter($scope.encounter);
                 };
             };
@@ -116,7 +114,6 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
             $scope.createFirstEncounter = function () {
                 /* FIXME: this is duplicated with encounter-list-controller */
                 var encounter = { Name: "Untitled #0", CR: "0", Monsters: {}, coins: {pp: 0, gp: 0, sp: 0, cp: 0}};
-                encounterService.encounters.unshift(encounter);
                 encounterService.encounterChanged(encounter);
             };
 

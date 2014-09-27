@@ -51,14 +51,6 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
                 }
             };
 
-            $scope.removeEncounter = function (encounter) {
-                $scope.startFade = function () {
-                    var index = $scope.leaves.indexOf(encounter);
-                    $scope.leaves.splice(index, 1);
-                    encounterService.remove(encounter);
-                };
-            };
-
             $scope.binderChanged = function (optBinder) {
                 contentTreeService.binderChanged((optBinder === undefined) ? $scope.binder : optBinder);
             };
