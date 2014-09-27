@@ -13,14 +13,6 @@ DEMONSQUID.encounterBuilderControllers.controller('HomeController',
             }
         }
 
-        if (contentTreeService.contentTree()) {
-            redirect();
-        }
-        else {
-            console.log("expecting to redirect later");
-            contentTreeService.onLoadSuccess(function () {
-                redirect();
-            });
-        }
+        redirect(); /* TODO: check if chronicle has loaded first */
     }]
 );

@@ -25,16 +25,6 @@ DEMONSQUID.encounterBuilderControllers.controller('LeftSidebarTabController',
                 }
             };
 
-            $scope.$watch(contentTreeService.chronicleName, function () {
-                if ($scope.chronicleName !== contentTreeService.chronicleName()) {
-                    $scope.chronicleName = contentTreeService.chronicleName();
-                    $timeout(function () {
-                        $scope.chronicles = userResourceService["chronicle"].query();
-                    }, 250);
-
-                }
-            });
-
             $scope.$watch(function () {
                 return model.selectedTab
             }, function () {

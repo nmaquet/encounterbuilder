@@ -6,36 +6,10 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
     ['$rootScope', '$timeout', '$http', '$routeParams', 'encounterService', 'locationService', 'userResourceService',
         function ($rootScope, $timeout, $http, $routeParams, encounterService, locationService, userResourceService) {
 
-            var LOAD_SUCCESS = "contentTreeLoaded";
-
             var service = {};
-            var contentTree = null;
             var fancyTree = null;
-            var nodeKey = null;
 
             var currentChronicle = null;
-
-            service.chronicleName = function () {
-                if (currentChronicle) {
-                    return currentChronicle.name;
-                }
-            };
-
-            service.goToNode = function (node) {
-                if (node.data.encounterId) {
-                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/encounter/" + node.data.encounterId);
-                }
-                else if (node.data.userTextId) {
-                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/user-text/" + node.data.userTextId);
-                }
-                else if (node.data.userResourceId) {
-                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/" + node.data.resourceType + "/" + node.data.userResourceId);
-                }
-                else if (node.folder) {
-                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/binder/" + node.key);
-                }
-                node.makeVisible();
-            };
 
             service.hasFirstNode = function () {
             };
@@ -47,14 +21,6 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             };
 
             service.createBinder = function () {
-            };
-
-            service.onLoadSuccess = function (callback) {
-                $rootScope.$on(LOAD_SUCCESS, callback);
-            };
-
-            service.contentTree = function () {
-                return contentTree;
             };
 
             service.binderChanged = function (binder) {
