@@ -42,17 +42,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', function () {
     service.removeEncounter = function () {
     };
 
-    service.changeEncounter = function (encounter) {
-        fancyTree.visit(function (node) {
-            if (node.data.userResourceId && node.data.userResourceId === encounter._id) {
-                if (node.title !== encounter.Name) {
-                    node.setTitle(encounter.Name);
-                    return false;
-                }
-                //FIXME this saves every ecounter change to the fancyTree (including monsters and stuffs)
-//                        service.treeChanged(fancyTree.toDict(removeExtraClasses));
-            }
-        });
+    service.changeEncounter = function () {
     };
 
     service.userResourceUpdated = function (userResource, resourceType) {

@@ -382,6 +382,19 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         fancyTree.visit(function (node) {
                             if (node.key === binder.nodeKey) {
                                 node.setTitle(binder.Name);
+                                return false;
+                            }
+                        });
+                        saveChronicle(fancyTree);
+                    }
+                };
+
+                contentTreeService.changeEncounter = function (encounter) {
+                    if (encounter) {
+                        fancyTree.visit(function (node) {
+                            if (node.data.userResourceId && node.data.userResourceId === encounter._id && node.title !== encounter.Name) {
+                                node.setTitle(encounter.Name);
+                                return false;
                             }
                         });
                         saveChronicle(fancyTree);
@@ -401,7 +414,8 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 };
 
                 contentTreeService.getBinderChildrenByKey = function (key, callback) {
-                    if (!fancyTree.getNodeByKey(key)) return; /* TODO / FIXME: what id the chronicle is not loaded ? */
+                    if (!fancyTree.getNodeByKey(key)) return;
+                    /* TODO / FIXME: what id the chronicle is not loaded ? */
                     var children = fancyTree.getNodeByKey(key).getChildren();
                     var encounterIds = [];
                     var userMonsterIds = [];
