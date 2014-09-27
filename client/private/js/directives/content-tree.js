@@ -217,9 +217,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 scope.$on("$routeChangeSuccess", function () {
                     if ($routeParams.chronicleId) {
                         ChronicleResource.get({id: $routeParams.chronicleId}, function (chronicle) {
-                            var contentTree = (chronicle && chronicle.contentTree) || [];
-                            fancyTree.reload(contentTree);
-                            fancyTree.chronicle = chronicle;
+                            if (!angular.equals(chronicle, fancyTree.chronicle)) {
+                                fancyTree.reload((chronicle && chronicle.contentTree) || []);
+                                fancyTree.chronicle = chronicle;
+                            }
                             activateNodeBasedOnRouteParams();
                         })
                     } else {
