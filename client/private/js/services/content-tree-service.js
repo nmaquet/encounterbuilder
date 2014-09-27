@@ -12,7 +12,6 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
             var contentTree = null;
             var fancyTree = null;
             var nodeKey = null;
-            var chronicleId = null;
 
             //FIXME removeExtraClasses and addExtraClasses are both here and in content-tree.js
             function removeExtraClasses(dict) {
@@ -20,7 +19,6 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                     delete dict.extraClasses;
                 }
             }
-
 
             function addExtraClasses(newNode) {
                 if (newNode.userResourceId && newNode.resourceType === "encounter") {
@@ -114,8 +112,7 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             }
 
-            function reLoadChronicle(id) {
-                chronicleId = id;
+            function reLoadChronicle(chronicleId) {
                 chronicleResource.get({id: chronicleId}, function (chronicle) {
                     contentTree = chronicle.contentTree;
                     currentChronicle = chronicle;
@@ -123,9 +120,16 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService',
                 });
             }
 
-            chronicleResource.query(function (chronicles) {
-                chronicleId = (chronicles[0]._id);
-                loadChronicle(chronicleId);
+            $rootScope.$on("$routeChangeSuccess", function(){
+                if (!currentChronicle && $routeParams.chronicleId) {
+                    loadChronicle($routeParams.chronicleId);
+                }
+                else if ($routeParams.chronicleId) {
+                    reLoadChronicle($routeParams.chronicleId)
+                } else {
+                    currentChronicle = null;
+                    fancyTree.reload([]);
+                }
             });
 
             service.chronicleName = function () {
