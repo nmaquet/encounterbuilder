@@ -17,5 +17,5 @@
                                 label.control-label(for='confirm-name') Please enter the chronicle's name below to continue.
                                 input.form-control.input-md(type='text', ng-model="confirmName", name='confirm-name',required='')
                             .form-group
-                                button.btn.btn-primary.pull-left(type="submit", ng-click="delete()", ng-disabled="confirmName!==userResource.name") Delete
+                                button.btn.btn-primary.pull-left(type="submit", ng-click="delete()", ng-disabled="confirmName!==chronicle.name") Delete
                                 button.btn(href='#', data-dismiss='modal', aria-hidden='true') Cancel

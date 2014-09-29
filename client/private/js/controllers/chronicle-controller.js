@@ -19,8 +19,8 @@ DEMONSQUID.encounterBuilderControllers.controller('ChronicleController',
             });
 
             $scope.delete = function () {
-                if ($scope.userResource.name === $scope.confirmName) {
-                    $scope.userResource.$delete(function () {
+                if ($scope.chronicle.name === $scope.confirmName) {
+                    $scope.chronicle.$delete(function () {
                         $scope.confirmName = "";
                         deleteChronicleModal.modal('hide');
                         justDeletedAChronicle = true;
