@@ -22,7 +22,12 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
                 });
             }
 
-            loadBinderChildren();
+            if (contentTreeService.hasLoaded()) {
+                loadBinderChildren();
+            }
+            else {
+                contentTreeService.onLoadSuccess(loadBinderChildren);
+            }
 
             $scope.encounterChanged = function (encounter) {
                 if (encounter) {

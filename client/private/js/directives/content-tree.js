@@ -17,7 +17,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 "user-text": "new Text"
             };
 
-            var saveChronicle = throttle(function(fancyTree, callbackNotGuaranteedToBeCalledBecauseOfThrottling) {
+            var saveChronicle = throttle(function (fancyTree, callbackNotGuaranteedToBeCalledBecauseOfThrottling) {
                 if (!fancyTree.chronicle) return;
                 if (fancyTree.count() === 0) {
                     fancyTree.chronicle.contentTree = [];
@@ -163,7 +163,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
             function link(scope, element) {
 
-                var fancyTree;
+                var fancyTree, onLoadSuccessCallbacks = [];
 
                 function activateNodeBasedOnRouteParams() {
                     if (!fancyTree) {
@@ -216,13 +216,19 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
                 scope.$on("$routeChangeSuccess", function () {
                     if ($routeParams.chronicleId) {
-                        ChronicleResource.get({id: $routeParams.chronicleId}, function (chronicle) {
-                            if (!angular.equals(chronicle, fancyTree.chronicle)) {
+                        if (fancyTree.chronicle && fancyTree.chronicle._id === $routeParams.chronicleId) {
+                            activateNodeBasedOnRouteParams();
+                        } else {
+                            ChronicleResource.get({id: $routeParams.chronicleId}, function (chronicle) {
                                 fancyTree.reload((chronicle && chronicle.contentTree) || []);
                                 fancyTree.chronicle = chronicle;
-                            }
-                            activateNodeBasedOnRouteParams();
-                        })
+                                while (onLoadSuccessCallbacks.length > 0) {
+                                    var callback = onLoadSuccessCallbacks.pop();
+                                    callback();
+                                }
+                                activateNodeBasedOnRouteParams();
+                            });
+                        }
                     } else {
                         fancyTree.reload([]);
                         fancyTree.chronicle = null;
@@ -302,6 +308,14 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                 fancyTree = element.fancytree("getTree");
                 fancyTree.visit(addExtraClasses);
                 initializeChronicleFilter(fancyTree);
+
+                contentTreeService.hasLoaded = function () {
+                    return fancyTree && fancyTree.chronicle;
+                };
+
+                contentTreeService.onLoadSuccess = function (callback) {
+                    onLoadSuccessCallbacks.push(callback);
+                };
 
                 contentTreeService.createBinder = function () {
                     var nodeBrief = {title: "new Binder", folder: true, key: getNextNodeKey(fancyTree)};
