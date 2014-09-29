@@ -163,7 +163,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
             function link(scope, element) {
 
-                var fancyTree, onLoadSuccessCallbacks = [];
+                var fancyTree = [];
 
                 function activateNodeBasedOnRouteParams() {
                     if (!fancyTree) {
@@ -222,10 +222,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                             ChronicleResource.get({id: $routeParams.chronicleId}, function (chronicle) {
                                 fancyTree.reload((chronicle && chronicle.contentTree) || []);
                                 fancyTree.chronicle = chronicle;
-                                while (onLoadSuccessCallbacks.length > 0) {
-                                    var callback = onLoadSuccessCallbacks.pop();
-                                    callback();
-                                }
+                                contentTreeService.treeLoaded();
                                 activateNodeBasedOnRouteParams();
                             });
                         }
@@ -313,8 +310,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     return fancyTree && fancyTree.chronicle;
                 };
 
-                contentTreeService.onLoadSuccess = function (callback) {
-                    onLoadSuccessCallbacks.push(callback);
+                contentTreeService.getChronicleName = function () {
+                    if (fancyTree && fancyTree.chronicle) {
+                        return fancyTree.chronicle.name;
+                    }
                 };
 
                 contentTreeService.createBinder = function () {

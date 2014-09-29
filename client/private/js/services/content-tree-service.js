@@ -21,6 +21,21 @@ DEMONSQUID.encounterBuilderServices.factory('contentTreeService', function () {
     service.userResourceUpdated = angular.noop;
     service.userResourceDeleted = angular.noop;
     service.getBinderChildrenByKey = angular.noop;
+    service.getChronicleName = angular.noop;
+    service.hasLoaded = angular.noop;
+
+    var onLoadSuccessCallbacks = [];
+
+    service.onLoadSuccess = function (callback) {
+        onLoadSuccessCallbacks.push(callback);
+    };
+
+    service.treeLoaded = function (){
+        while (onLoadSuccessCallbacks.length > 0) {
+            var callback = onLoadSuccessCallbacks.pop();
+            callback();
+        }
+    };
 
     return service;
 });

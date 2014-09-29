@@ -3,8 +3,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('MainController',
-    ['$scope', '$rootScope', '$window', '$location', 'sidebarService', 'viewportService', 'locationService',    /* FIXME */
-        function ($scope, $rootScope, $window, $location, sidebarService, viewportService, locationService) {
+    ['$scope', '$rootScope', '$window', '$location', 'sidebarService', 'viewportService', 'locationService', '$routeParams', 'contentTreeService', /* FIXME */
+        function ($scope, $rootScope, $window, $location, sidebarService, viewportService, locationService, $routeParams, contentTreeService) {
 
             var viewport = $rootScope.viewport = viewportService.viewport;
 
@@ -12,6 +12,27 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController',
 
             $rootScope.go = locationService.go;
 
+            if (contentTreeService.hasLoaded()) {
+                $scope.chronicleName = contentTreeService.getChronicleName();
+                $scope.$watch(contentTreeService.getChronicleName, function () {
+                    $scope.chronicleName = contentTreeService.getChronicleName();
+                });
+            }
+            else {
+                contentTreeService.onLoadSuccess(function () {
+                    $scope.chronicleName = contentTreeService.getChronicleName();
+                    $scope.$watch(contentTreeService.getChronicleName, function () {
+                        $scope.chronicleName = contentTreeService.getChronicleName();
+                    });
+                })
+            }
+
+            $scope.goToChronicle = function () {
+                locationService.go("/chronicle/" + $routeParams.chronicleId);
+            };
+            $scope.goToChronicles = function () {
+                locationService.go("/chronicles");
+            };
             $scope.toggleLeftSidebar = function () {
                 sidebarService.leftSidebarOpened.toggle();
             };

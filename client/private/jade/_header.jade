@@ -5,9 +5,11 @@ section#top.top(name='top')
     include _navbar
 .nav-top-wrapper.hidden-xs
     .l-nav-top.col-xs-12
-        a.navbar-brand
-            span#main-title.t-title(href='/', title='Go to home page')
-                | Chronicle Forge
+        .navbar-brand
+            span#main-title.t-title
+                span.is-pointer(ng-bind="user.username", ng-click="goToChronicles()")
+                span(ng-show="chronicleName") &nbsp;/&nbsp;
+                span.is-pointer(ng-bind="chronicleName", ng-click="goToChronicle()")
 
 //.navbar-wrapper
     .container.l-xs-nopadding
