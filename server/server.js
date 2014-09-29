@@ -132,6 +132,7 @@ function main(db) {
     var userMapRoute = require('./userImageResourceRoute')(collections.userMaps, ObjectID);
     var chronicleRoute = require('./userResourceRoute')(collections.chronicles,null,ObjectID);
     var deleteChronicleRoute = require('./deleteChronicleRoute')(collections,ObjectID);
+    var exportChronicleRoute = require('./exportChronicleRoute')(collections, ObjectID);
 
     app.get('/api/search-monsters', metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', metrics.logSearchNpc, searchNpcsRoute);
@@ -155,7 +156,6 @@ function main(db) {
     app.post("/api/change-user-data", enableCORS, changeUserDataRoute);
     app.post("/api/save-content-tree", contentTreeRoute.updateContentTree);
     app.post("/api/save-favourites", favouritesRoute.update);
-
 
 
     /* User Text */
@@ -212,6 +212,7 @@ function main(db) {
     app.post("/api/chronicle/:id", chronicleRoute.updateResource);
     app.post("/api/chronicle", chronicleRoute.createResource);
     app.delete("/api/chronicle/:id", deleteChronicleRoute.deleteResource);
+    app.get("/api/chronicle-full/:id", disableCaching, exportChronicleRoute.getResource);
 
     /*Encounters*/
     app.get("/api/encounter", disableCaching, encounterRoute.query);
@@ -247,7 +248,8 @@ function main(db) {
         'printable-encounter',
         'user-image-resource',
         'chronicle',
-        'chronicles'
+        'chronicle-full',
+		'chronicles'
     ];
 
     for (var i in APP_JADE_FILES) {
