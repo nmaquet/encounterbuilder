@@ -7,7 +7,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
         function ($rootScope, $scope, $timeout, $routeParams, encounterService, lootService, encounterEditorService, contentTreeService, locationService, throttle) {
             $scope.showButtons = true;
             $scope.editable = true;
-            $scope.userResourceChanged = throttle(function () {
+            $scope.encounterChanged = throttle(function () {
                 if ($scope.userResource) {
                     encounterService.encounterChanged($scope.userResource);
                     contentTreeService.changeEncounter($scope.userResource);
