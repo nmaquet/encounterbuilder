@@ -163,39 +163,16 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
             function link(scope, element) {
 
-                var fancyTree = [];
+                var fancyTree = null;
 
                 function activateNodeBasedOnRouteParams() {
                     if (!fancyTree) {
                         return;
                     }
-                    if ($routeParams.encounterId) {
-                        fancyTree.visit(function (node) {
-                            if (node.data.encounterId && node.data.encounterId === $routeParams.encounterId) {
-                                node.setActive(true);
-                                return false;
-                            }
-                        });
-                    }
-                    else if ($routeParams.binderId) {
+
+                    if ($routeParams.binderId) {
                         fancyTree.visit(function (node) {
                             if (node.folder && node.key === $routeParams.binderId) {
-                                node.setActive(true);
-                                return false;
-                            }
-                        });
-                    }
-                    else if ($routeParams.userNpcId) {
-                        fancyTree.visit(function (node) {
-                            if (node.data.userNpcId && node.data.userNpcId === $routeParams.userNpcId) {
-                                node.setActive(true);
-                                return false;
-                            }
-                        });
-                    }
-                    else if ($routeParams.userTextId) {
-                        fancyTree.visit(function (node) {
-                            if (node.data.userTextId && node.data.userTextId === $routeParams.userTextId) {
                                 node.setActive(true);
                                 return false;
                             }
@@ -214,7 +191,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     }
                 }
 
-                scope.$on("$routeChangeSuccess", function () {
+                function loadChronicle() {
                     if ($routeParams.chronicleId) {
                         if (fancyTree.chronicle && fancyTree.chronicle._id === $routeParams.chronicleId) {
                             activateNodeBasedOnRouteParams();
@@ -230,6 +207,11 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                         fancyTree.reload([]);
                         fancyTree.chronicle = null;
                     }
+                }
+
+
+                scope.$on("$routeChangeSuccess", function () {
+                    loadChronicle();
                 });
 
                 function onClick(event, data) {
@@ -304,6 +286,7 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
 
                 fancyTree = element.fancytree("getTree");
                 fancyTree.visit(addExtraClasses);
+                loadChronicle();
                 initializeChronicleFilter(fancyTree);
 
                 contentTreeService.hasLoaded = function () {
