@@ -54,7 +54,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
                     var update = throttle(updateUserResource, 1000);
                     var userMonsterUpdated = throttle(contentTreeService.userResourceUpdated, 1000);
 
-                    $scope.$watch("userMonster.templates", function (value) {
+                    $scope.$watch("userResource.templates", function (value) {
                         $scope.userResource = templateService.createTemplatedMonster(baseMonster);
                         baseMonster.templates = $scope.userResource.templates;
                         update(baseMonster);
