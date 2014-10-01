@@ -3,8 +3,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('ChronicleController',
-    ['$scope', '$location', '$routeParams', 'locationService', 'ChronicleResource',
-        function ($scope, $location, $routeParams, locationService, ChronicleResource) {
+    ['$scope', '$location', '$routeParams', 'locationService', 'ChronicleResource','throttle',
+        function ($scope, $location, $routeParams, locationService, ChronicleResource,throttle) {
 
             var justDeletedAChronicle = false;
             var deleteChronicleModal = $('#delete-chronicle-modal');
@@ -32,6 +32,14 @@ DEMONSQUID.encounterBuilderControllers.controller('ChronicleController',
                 $scope.chronicle.$save();
             };
 
-            $scope.chronicle = ChronicleResource.get({id: $routeParams.chronicleId});
+
+            $scope.chronicle = ChronicleResource.get({id: $routeParams.chronicleId},function(){
+                var throttledSave = throttle(function () {
+                    $scope.chronicle.$save();
+                }, 500);
+                $scope.$watch('chronicle.synopsis', function () {
+                    throttledSave();
+                });
+            });
         }
     ]);

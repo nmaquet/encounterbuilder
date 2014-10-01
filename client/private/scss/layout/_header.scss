@@ -14,7 +14,12 @@
 //    padding-right: 0;
 //  }
 //}
-
+.title-username {
+  font-size: 1.2em;
+  font-family: $font-family-sans-serif;
+}
+.title-chroniclename {
+}
 .l-nav-top {
   min-height: 140px;
   .l-nav-social {
@@ -31,9 +36,11 @@
     @include font-size(30);
     padding-top: 80px;
     color: white;
-    @include transition(all 0.3s ease-in-out);
-    @include opacity(1);
-    &:hover { @include opacity(0.6); }
+    .is-pointer {
+      @include transition(all 0.3s ease-in-out);
+      @include opacity(1);
+      &:hover { @include opacity(0.6); }
+    }
   }
 
   @media (max-width: $screen-xxs-max) {

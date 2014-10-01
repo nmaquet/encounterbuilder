@@ -71,7 +71,8 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
             });
         },
         query: function (request, response) {
-            userCollection.find({userId: ObjectID(request.user._id)}, {fields: {name: 1, _id: 1}}).toArray(function (error, data) {
+            var options = {fields: {name: 1, _id: 1, synopsis: 1, lastModified: 1}};
+            userCollection.find({userId: ObjectID(request.user._id)}, options).toArray(function (error, data) {
                 if (error) {
                     response.send(404);
                 }
@@ -97,7 +98,7 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
                     return response.status(409).json(dbResource);
                 }
                 clientResource.lastModified = new Date().toISOString();
-                userCollection.findAndModify(selector, [], clientResource, {new:true}, function (error, modifiedResource) {
+                userCollection.findAndModify(selector, [], clientResource, {new: true}, function (error, modifiedResource) {
                     if (error) {
                         response.send(500);
                     }

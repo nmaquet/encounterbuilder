@@ -1,9 +1,17 @@
 // Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
 
 #chronicles(ng-controller="ChroniclesController")
-    .row
-        .col-xs-12.max-width-720.l-section.l-shadow.search-result
-            .result-content
-                p(style="color:white;" ng-repeat="chronicle in chronicles")
-                    a.is-pointer(ng-click="selectChronicle(chronicle)") {{chronicle.name}}
-            button(ng-click="createChronicle()") New Chronicle
+    .row.max-width-720
+        .panel.panel-default(ng-repeat="chronicle in chronicles")
+            .panel-body
+                a.is-pointer(ng-click="selectChronicle(chronicle)") {{chronicle.name}}
+                .btn-group.pull-right
+                    button.btn.btn-default(ng-click="selectChronicle(chronicle)") Edit
+                    button.btn.btn-danger(ng-click="selectChronicle(chronicle)", title="Delete Chronicle")
+                        i.icon.fa.fa-trash-o
+            .panel-footer
+                | {{chronicle.synopsis}}
+
+        button.btn.btn-primary(ng-click="createChronicle()")
+            i.icon.fa.fa-plus &nbsp;&nbsp;
+            | New Chronicle
