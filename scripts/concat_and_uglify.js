@@ -84,6 +84,7 @@ var jsFiles = [
     "client/private/js/filters/number-to-fraction-string.js",
     "client/private/js/filters/classes-to-string.js",
     "client/private/js/filters/to-trusted-html.js",
+    "client/private/js/filters/timestamp-to-howlongago.js",
     "client/private/js/services/content-tree-service.js",
     "client/private/js/services/monster-service.js",
     "client/private/js/services/npc-service.js",

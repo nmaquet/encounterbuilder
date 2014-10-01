@@ -4,11 +4,12 @@
     .row.max-width-720
         .panel.panel-default(ng-repeat="chronicle in chronicles")
             .panel-body
-                a.is-pointer(ng-click="selectChronicle(chronicle)") {{chronicle.name}}
+                a.row.is-pointer(ng-click="selectChronicle(chronicle)") {{chronicle.name}}
                 .btn-group.pull-right
                     button.btn.btn-default(ng-click="selectChronicle(chronicle)") Edit
                     button.btn.btn-danger(ng-click="selectChronicle(chronicle)", title="Delete Chronicle")
                         i.icon.fa.fa-trash-o
+                span.row {{chronicle.lastModified | timestampToHowlongago}}
             .panel-footer
                 | {{chronicle.synopsis}}
 

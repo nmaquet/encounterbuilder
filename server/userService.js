@@ -316,12 +316,22 @@ function exportChronicle(chronicleId, callback) {
             if (error) {
                 callback(error);
             }
+            if(!userResource){
+
+                console.log("couldn't find user resource for x: ");
+                console.log(x);
+                requestPending--;
+                if (requestPending === 0) {
+                    callback(null, chronicle);
+                }
+                return;
+            }
             x.resourceType = x.resourceType;
             delete x.userResourceId;
             delete userResource._id;
             delete userResource.userId;
             x.userResource = userResource;
-            console.log(x);
+//            console.log(x);
             requestPending--;
             if (requestPending === 0) {
                 callback(null, chronicle);

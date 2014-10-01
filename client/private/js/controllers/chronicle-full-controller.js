@@ -5,7 +5,7 @@
 DEMONSQUID.encounterBuilderControllers.controller('ChronicleFullController', ['$scope', '$http', '$routeParams',
     function ($scope, $http, $routeParams) {
         $scope.templateControlsCollapsed = true;
-        $http.get("api/chronicle-full/" + $routeParams.userResourceId).success(function (result) {
+        $http.get("api/chronicle-full/" + $routeParams.chronicleId).success(function (result) {
             $scope.chronicle = result;
         }).error(function (error) {
             console.log(error);
