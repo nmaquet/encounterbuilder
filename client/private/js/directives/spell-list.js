@@ -35,7 +35,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('spellList', [ '$sce',
                     return string.replace(/\r?\n|\r/g, ' ').replace(/\s+/g, ' ');
                 }
 
-                scope.$watch("spellString", function () {
+                scope.$watch("spellString", function (newValue, oldValue) {
+                    if (angular.equals(newValue, oldValue)) {
+                        return;
+                    }
                     var cleanedString = cleanString(scope.spellString);
                     var titleAndCLEnd = cleanedString.indexOf(")") + 1;
                     var titleAndCL = cleanedString.slice(0, titleAndCLEnd);

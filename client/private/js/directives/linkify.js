@@ -48,7 +48,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify',
                             }
                         });
                     };
-                    scope.$watch(scope.watchedExpression, function (value) {
+                    scope.$watch(scope.watchedExpression, function (value,oldValue) {
+                        if (angular.equals(value, oldValue)) {
+                            return;
+                        }
                         var typesArray = scope.type.split(",");
                         for (var i in typesArray) {
                             if (!types[typesArray[i]]) {

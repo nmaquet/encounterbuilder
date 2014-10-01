@@ -3,8 +3,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
-    ['$scope', '$rootScope', '$timeout', '$routeParams', 'spellService','locationService',
-        function ($scope, $rootScope, $timeout, $routeParams, spellService,locationService) {
+    ['$scope', '$rootScope', '$timeout', '$routeParams', 'spellService', 'locationService',
+        function ($scope, $rootScope, $timeout, $routeParams, spellService, locationService) {
 
             var lastSearchParam = spellService.lastSearchParam();
 
@@ -51,12 +51,19 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
                 });
             }
 
-            $scope.$watchCollection("[sortBy,class]", function () {
+            refreshSpells();
+            $scope.$watchCollection("[sortBy,class]", function (newValue, oldValue) {
+                if (angular.equals(newValue, oldValue)) {
+                    return;
+                }
                 $scope.currentPage = 1;
                 refreshSpells();
             });
 
-            $scope.$watch("currentPage", function () {
+            $scope.$watch("currentPage", function (newValue, oldValue) {
+                if (angular.equals(newValue, oldValue)) {
+                    return;
+                }
                 if ($scope.currentPage < 9) {
                     $scope.maxSize = 5;
                 }
@@ -74,7 +81,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
 
             };
 
-            $scope.$watch('spellNameSubstring', function (spellNameSubstring) {
+            $scope.$watch('spellNameSubstring', function (spellNameSubstring, oldValue) {
+                if (angular.equals(spellNameSubstring, oldValue)) {
+                    return;
+                }
                 $timeout(function () {
                     if (spellNameSubstring === $scope.spellNameSubstring) {
                         $scope.currentPage = 1;
@@ -83,7 +93,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchSpellController',
                 }, 300);
             });
 
-            $scope.$watchCollection("[minLevel, maxLevel]", function (levelRange) {
+            $scope.$watchCollection("[minLevel, maxLevel]", function (levelRange, oldValue) {
+                if (angular.equals(levelRange, oldValue)) {
+                    return;
+                }
                 $timeout(function () {
                     if (levelRange[0] === $scope.minLevel && levelRange[1] === $scope.maxLevel) {
                         $scope.currentPage = 1;

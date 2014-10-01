@@ -3,7 +3,7 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
-    ['$rootScope', '$scope', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService', 'contentTreeService', 'locationService','throttle',
+    ['$rootScope', '$scope', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService', 'contentTreeService', 'locationService', 'throttle',
         function ($rootScope, $scope, $timeout, $routeParams, encounterService, lootService, encounterEditorService, contentTreeService, locationService, throttle) {
             $scope.showButtons = true;
             $scope.editable = true;
@@ -120,7 +120,10 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
 
             $scope.$watch(function () {
                 return lootService.generatedLoot;
-            }, function () {
+            }, function (newValue, oldValue) {
+                if (angular.equals(newValue, oldValue)) {
+                    return;
+                }
                 function itemArrayToItemsObject(items) {
                     var result = {};
                     for (var i in items) {
@@ -128,6 +131,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                     }
                     return result;
                 }
+
                 if ($scope.userResource && $scope.userResource._id === lootService.encounterId && lootService.generatedLoot) {
                     $scope.userResource.coins = lootService.generatedLoot.coins;
                     $scope.userResource.items = itemArrayToItemsObject(lootService.generatedLoot.items);

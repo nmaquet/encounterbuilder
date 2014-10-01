@@ -47,7 +47,10 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
             userResourceService[resourceType].getNoCache({id: $routeParams.userResourceId}, function (resource) {
                 $scope.userResource = resource;
                 var throttledSave = throttle(updateUserResource, 500);
-                $scope.$watch('exceptLastModified(userResource)', function () {
+                $scope.$watch('exceptLastModified(userResource)', function (newValue, oldValue) {
+                    if (angular.equals(newValue, oldValue)) {
+                        return;
+                    }
                     throttledSave($scope.userResource);
                 }, true /* deep equality */);
                 if ($scope.userResource.Classes) {
