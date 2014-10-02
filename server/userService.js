@@ -28,6 +28,8 @@ var sesService = null;
 
 var escapeRegExp = require('./utils')().escapeRegExp;
 
+var traverse = require('traverse');
+
 function caseInsensitive(string) {
     return new RegExp("^" + escapeRegExp(string) + "$", "i");
 }
@@ -263,7 +265,7 @@ function importChronicle(username, chronicle, callback) {
             if (error) {
                 callback(error);
             }
-            x.userResourceId = newResource[0]._id;
+            x.userResourceId = newResource[0]._id.toString();
             delete x.userResource;
             requestPending--;
             if (requestPending === 0) {
@@ -312,11 +314,10 @@ function exportChronicle(chronicleId, callback) {
     function fetchAndAddUserResource(x) {
         requestPending++;
         userResourceCollections[x.resourceType].findOne({_id: ObjectID(x.userResourceId)}, function (error, userResource) {
-            console.log("-----");
             if (error) {
                 callback(error);
             }
-            if(!userResource){
+            if (!userResource) {
 
                 console.log("couldn't find user resource for x: ");
                 console.log(x);
@@ -331,7 +332,6 @@ function exportChronicle(chronicleId, callback) {
             delete userResource._id;
             delete userResource.userId;
             x.userResource = userResource;
-//            console.log(x);
             requestPending--;
             if (requestPending === 0) {
                 callback(null, chronicle);
@@ -340,10 +340,15 @@ function exportChronicle(chronicleId, callback) {
     }
 
     chroniclesCollection.findOne({_id: ObjectID(chronicleId)}, function (error, data) {
+        if (error) {
+            return callback(error, null);
+        }
         chronicle = data;
         delete chronicle.userId;
         delete chronicle._id;
-        var traverse = require('traverse');
+        if (chronicle.contentTree.length === 0) {
+            callback(null, chronicle);
+        }
         traverse(chronicle.contentTree).forEach(function (x) {
             if (!x.folder) {
                 if (x.userResourceId) {

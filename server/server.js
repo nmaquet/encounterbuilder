@@ -130,7 +130,7 @@ function main(db) {
     var userIllustrationRoute = require('./userImageResourceRoute')(collections.userIllustrations, ObjectID);
     var userMonsterRoute = require('./userResourceRoute')(collections.userMonsters, collections.monsters, ObjectID);
     var userMapRoute = require('./userImageResourceRoute')(collections.userMaps, ObjectID);
-    var chronicleRoute = require('./chronicleRoute')(collections, ObjectID);
+    var chronicleRoute = require('./chronicleRoute')(db, collections, ObjectID);
 
     app.get('/api/search-monsters', metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', metrics.logSearchNpc, searchNpcsRoute);
@@ -209,8 +209,8 @@ function main(db) {
     app.get("/api/chronicle/:id", enableCaching, chronicleRoute.getResource);
     app.post("/api/chronicle/:id", chronicleRoute.updateResource);
     app.post("/api/chronicle", chronicleRoute.createResource);
-    app.delete("/api/chronicle/:id", chronicleRoute.deleteResource);
     app.get("/api/chronicle-full/:id", disableCaching, chronicleRoute.exportResource);
+    app.delete("/api/chronicle/:id", chronicleRoute.deleteResource);
 
     /*Encounters*/
     app.get("/api/encounter", disableCaching, encounterRoute.query);

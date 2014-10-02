@@ -8,6 +8,8 @@ DEMONSQUID.encounterBuilderControllers.controller('ChroniclesController',
 
             $scope.chronicles = ChronicleResource.query();
 
+            $scope.copyPending = false;
+
             var justDeletedAChronicle = false;
             var deleteChronicleModal = $('#delete-chronicle-modal');
 
@@ -35,7 +37,9 @@ DEMONSQUID.encounterBuilderControllers.controller('ChroniclesController',
             };
 
             $scope.copy = function (chronicle) {
+                $scope.copyPending = true;
                 ChronicleResource.save({baseChronicleId: chronicle._id}, function (newChronicle) {
+                    $scope.copyPending = false;
                     locationService.go("/chronicle/" + newChronicle._id);
                 });
             };

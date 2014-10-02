@@ -8,8 +8,10 @@
                 .btn-group.pull-right
                     button.btn.btn-default(title='Read the complete chronicle on one page', ng-click="view(chronicle)")
                         i.icon.fa.fa-book
-                    button.btn.btn-default(title='Copy Chronicle', ng-click="copy(chronicle)")
+                    button.btn.btn-default(title='Copy Chronicle', ng-click="copy(chronicle)", ng-disabled="copyPending", ng-hide="copyPending")
                         i.icon.fa.fa-copy
+                    button.btn.btn-default(title='Copy Chronicle', ng-show="copyPending")
+                        i.icon.fa.fa-spinner.fa-spin
                     button.btn.btn-danger(title='Delete Chronicle', tabindex='-1',data-target='#delete-chronicle-modal', role='button', data-toggle='modal',ng-click="toDelete(chronicle)")
                         i.icon.fa.fa-trash-o
                 span.row {{chronicle.lastModified | timestampToHowlongago}}

@@ -2,7 +2,7 @@
 
 "use strict";
 
-module.exports = function (collections, ObjectID) {
+module.exports = function (db, collections, ObjectID) {
     var traverse = require("traverse");
     var async = require("async");
 
@@ -19,16 +19,78 @@ module.exports = function (collections, ObjectID) {
     };
 
     var route = require('./userResourceRoute')(collections.chronicles, null, ObjectID);
-
+    var userService = require('./userService')(db, null);
     var originalCreate = route.createResource;
 
     function createOrCopyChronicle(request, response) {
         var baseChronicleId = request.body.baseChronicleId;
+        var sessionUserId = request.user._id;
         if (!baseChronicleId) {
             originalCreate(request, response);
         }
         else {
-            console.log("should copy chronicle");
+            var requestPending = 0;
+            userService.exportChronicle(baseChronicleId, function (error, chronicle) {
+                if (error) {
+                    console.log(error);
+                    return response.send(500);
+                }
+                if (!chronicle) {
+                    return response.send(404);
+                }
+                if (chronicle.contentTree.length === 0) {
+                    insertChronicle(chronicle, sessionUserId);
+                }
+                traverse(chronicle.contentTree).forEach(function (x) {
+                    if (!x) {
+                        return;
+                    }
+                    if (!x.folder) {
+                        if (x.resourceType) {
+                            insertUserResource(x, chronicle);
+                        }
+                    }
+                });
+            });
+
+        }
+        function insertChronicle(sourceChronicle) {
+            var newChronicle = {};
+            newChronicle.name = sourceChronicle.name;
+            newChronicle.userId = ObjectID(sessionUserId);
+            newChronicle.contentTree = sourceChronicle.contentTree;
+            newChronicle.lastModified = new Date().toISOString();
+            collections.chronicles.insert(newChronicle, function (error, newResourceArray) {
+                if (error) {
+                    console.log(error);
+                    response.send(500);
+                }
+                else {
+                    var newResource = newResourceArray[0];
+                    response.setHeader("Location", request.path + "/" + newResource._id);
+                    response.status(201).json(newResource);
+                }
+            });
+        }
+
+        function insertUserResource(x, chronicle) {
+            if (!x.userResource) {
+                return;
+            }
+            requestPending++;
+            x.userResource.userId = ObjectID(sessionUserId);
+            userResourceCollections[x.resourceType].insert(x.userResource, function (error, newResource) {
+                if (error) {
+                    console.log(error);
+                    return response.send(500);
+                }
+                x.userResourceId = newResource[0]._id.toString();
+                delete x.userResource;
+                requestPending--;
+                if (requestPending === 0) {
+                    insertChronicle(chronicle);
+                }
+            });
         }
     }
 
@@ -51,8 +113,7 @@ module.exports = function (collections, ObjectID) {
                     if (node && node.resourceType) {
                         console.log(node);
                         tasks.push(function (taskCallback) {
-                            console.log("task executing");
-                            userResourceCollections[node.resourceType].remove({_id: ObjectID(node.userResourceId), userId: ObjectID(sessionUserId)}, taskCallback);
+                            userResourceCollections[node.resourceType].remove({_id: node.userResourceId, userId: ObjectID(sessionUserId)}, taskCallback);
                         })
                     }
                 });
@@ -79,18 +140,27 @@ module.exports = function (collections, ObjectID) {
             }
         });
     };
-
     route.exportResource = function (request, response) {
         var sessionUserId = request.user._id;
         var paramsResourceId = request.params.id;
         if (!paramsResourceId || !sessionUserId) {
             return response.send(400);
         }
-
-        var tasks = [];
-        collections.chronicles.findOne({_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)}, function (error, chronicle) {
+        fetchChronicleItems(paramsResourceId, sessionUserId, function (error, results) {
             if (error) {
+                console.log(error);
                 return response.send(500);
+            }
+            else {
+                return response.json(results);
+            }
+        });
+    };
+    function fetchChronicleItems(chronicleId, sessionUserId, callback) {
+        var tasks = [];
+        collections.chronicles.findOne({_id: ObjectID(chronicleId), userId: ObjectID(sessionUserId)}, function (error, chronicle) {
+            if (error) {
+                callback(error, null);
             }
             else {
                 traverse(chronicle.contentTree).forEach(function (node) {
@@ -116,18 +186,14 @@ module.exports = function (collections, ObjectID) {
                 });
 
                 async.parallel(tasks, function (error, results) {
-                    if (error) {
-                        console.log(error);
-                        return response.send(500);
-                    }
-                    else {
-                        return response.json(results);
-                    }
+                    callback(error, results, chronicle.name);
                 });
 
             }
+
+
         });
-    };
+    }
 
     return route;
 };
