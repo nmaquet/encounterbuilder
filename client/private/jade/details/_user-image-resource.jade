@@ -28,7 +28,7 @@
                     button.btn.btn-s(type="button" ng-click="uploader.cancelAll()")
                         span.glyphicon.glyphicon-ban-circle Cancel
         div(ng-if="userResource.url && !uploader.isUploading", style="padding-bottom:10px;")
-            a.is-pointer(ng-href="{{userResource.url}}")
+            a.is-pointer(ng-href="{{userResource.url}}", target="blank")
                 img(ng-src="{{userResource.url}}")
         ul.cat-content.list-unstyled
             li
