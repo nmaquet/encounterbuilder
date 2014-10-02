@@ -34,3 +34,5 @@
                 h1.t-title.t-binder-title
                     span.binder-name
                         | {{userResource.title}}
+.row.result-content.col-md-12(ng-show="chronicle.length === 0")
+    | This chronicle is empty. You can create content from the Library tab on the left sidebar or copy existing content from the Database tab.
