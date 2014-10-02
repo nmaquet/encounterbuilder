@@ -247,6 +247,7 @@ function main(db) {
         'feat',
         'printable-encounter',
         'user-image-resource',
+        'edit-user-image-resource',
         'chronicle',
         'chronicle-full',
 		'chronicles'

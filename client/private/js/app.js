@@ -43,8 +43,10 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
             .when('/chronicle/:chronicleId/edit-user-item/:userResourceId/:type/:detailsId', { templateUrl: 'edit-user-item.html' })
             /* user-illustration */
             .when('/chronicle/:chronicleId/user-illustration/:userResourceId', { templateUrl: 'user-image-resource.html' })
+            .when('/chronicle/:chronicleId/edit-user-illustration/:userResourceId', { templateUrl: 'edit-user-image-resource.html' })
             /* user-map */
             .when('/chronicle/:chronicleId/user-map/:userResourceId', { templateUrl: 'user-image-resource.html' })
+            .when('/chronicle/:chronicleId/edit-user-map/:userResourceId', { templateUrl: 'edit-user-image-resource.html' })
 
             .when('/chronicle/:chronicleId/edit-user-monster/:userResourceId/:type/:detailsId', { templateUrl: 'edit-user-monster.html' })
             .when('/chronicle/:chronicleId/edit-user-npc/:userResourceId/:type/:detailsId', { templateUrl: 'edit-user-npc.html' })
