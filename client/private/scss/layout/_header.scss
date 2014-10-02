@@ -45,19 +45,19 @@
 
   @media (max-width: $screen-xxs-max) {
     min-height: 80px;
-    .navbar-brand { padding-top: 45px;}
+    .navbar-brand { padding-top: 45px; @include font-size(16);}
   }
   @media (max-width: $screen-sm-max) {
     min-height: 80px;
-    .navbar-brand { padding-top: 45px;}
+    .navbar-brand { padding-top: 45px; @include font-size(16);}
   }
   @media (min-width: $screen-xs-min) {
     min-height: 80px;
-    .navbar-brand { padding-top: 45px;}
+    .navbar-brand { padding-top: 45px; @include font-size(16);}
   }
   @media (min-width: $screen-sm-min) {
     min-height: 100px;
-    .navbar-brand { padding-top: 58px;}
+    .navbar-brand { padding-top: 58px; @include font-size(20);}
   }
   @media (min-width: $screen-md-min) {
     min-height: 140px;
