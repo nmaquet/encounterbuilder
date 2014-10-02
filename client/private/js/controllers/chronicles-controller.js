@@ -34,6 +34,12 @@ DEMONSQUID.encounterBuilderControllers.controller('ChroniclesController',
                 $scope.chronicle = chronicle;
             };
 
+            $scope.copy = function (chronicle) {
+                ChronicleResource.save({baseChronicleId: chronicle._id}, function (newChronicle) {
+                    locationService.go("/chronicle/" + newChronicle._id);
+                });
+            };
+
             $scope.chronicleRenamed = function () {
                 $scope.chronicle.$save();
             };
