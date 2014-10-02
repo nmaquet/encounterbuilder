@@ -124,8 +124,6 @@ module.exports = function (db, collections, ObjectID) {
                         return response.send(500);
                     }
                     else {
-                        console.log("deleting chronicle");
-                        console.log(numberOfDocumentDeleted);
                         collections.chronicles.remove({_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)}, function (error) {
                             if (error) {
                                 response.send(500)
