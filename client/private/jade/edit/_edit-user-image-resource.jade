@@ -1,0 +1,19 @@
+// Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
+mixin labeledInput(type, name, model, placeholder)
+    .form-group
+        label.col-xs-2.control-label= name + ':'
+        .col-xs-10
+            input.form-control(type=type, name=name, placeholder=placeholder, ng-model=model)
+
+.row.l-section.result-content
+    .col-xs-12
+        button.btn.btn-danger.pull-right(type="submit" ng-click="view()" ng-class="{'btn-small' : viewport.xs}") Done
+    .col-xs-12
+        .row
+            .col-xs-12.cat.decor(ng-hide="expanded")
+                legend.t-legend.t-title Image Credits
+                form.form-horizontal(role="form")
+                    +labeledInput("text", 'Artist', 'userResource.artist', 'e.g. Wayne Renolds')
+                    +labeledInput("text", 'Copyright', 'userResource.copyright', 'e.g. Copyright 2012, Paizo Ltd.')
+                    +labeledInput("url", 'URL', 'userResource.externalURL','e.g. http://www.waynereynolds.com/gallery_index/gallery_index.html')
