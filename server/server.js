@@ -130,7 +130,7 @@ function main(db) {
     var userIllustrationRoute = require('./userImageResourceRoute')(collections.userIllustrations, ObjectID);
     var userMonsterRoute = require('./userResourceRoute')(collections.userMonsters, collections.monsters, ObjectID);
     var userMapRoute = require('./userImageResourceRoute')(collections.userMaps, ObjectID);
-    var chronicleRoute = require('./chronicleRoute')(collections.chronicles, null, ObjectID);
+    var chronicleRoute = require('./chronicleRoute')(collections, ObjectID);
 
     app.get('/api/search-monsters', metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', metrics.logSearchNpc, searchNpcsRoute);
