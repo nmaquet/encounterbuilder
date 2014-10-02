@@ -109,7 +109,7 @@ function main(db) {
     var searchFeatsRoute = require('./searchFeatsRoute')(collections.feats, FIND_LIMIT);
     var monsterRoute = require('./monsterRoute')(collections.monsters);
     var userNpcRoute = require('./userResourceRoute')(collections.userNpcs, collections.npcs, ObjectID);
-    var userTextRoute = require('./userResourceRoute')(collections.userTexts,collections.userTexts, ObjectID);
+    var userTextRoute = require('./userResourceRoute')(collections.userTexts, collections.userTexts, ObjectID);
     var magicItemRoute = require('./magicItemRoute')(collections.magicitems);
     var npcRoute = require('./npcRoute')(collections.npcs);
     var spellRoute = require('./spellRoute')(collections.spells);
@@ -130,9 +130,7 @@ function main(db) {
     var userIllustrationRoute = require('./userImageResourceRoute')(collections.userIllustrations, ObjectID);
     var userMonsterRoute = require('./userResourceRoute')(collections.userMonsters, collections.monsters, ObjectID);
     var userMapRoute = require('./userImageResourceRoute')(collections.userMaps, ObjectID);
-    var chronicleRoute = require('./userResourceRoute')(collections.chronicles,null,ObjectID);
-    var deleteChronicleRoute = require('./deleteChronicleRoute')(collections,ObjectID);
-    var exportChronicleRoute = require('./exportChronicleRoute')(collections, ObjectID);
+    var chronicleRoute = require('./chronicleRoute')(collections.chronicles, null, ObjectID);
 
     app.get('/api/search-monsters', metrics.logSearchMonster, searchMonstersRoute);
     app.get('/api/search-npcs', metrics.logSearchNpc, searchNpcsRoute);
@@ -211,8 +209,8 @@ function main(db) {
     app.get("/api/chronicle/:id", enableCaching, chronicleRoute.getResource);
     app.post("/api/chronicle/:id", chronicleRoute.updateResource);
     app.post("/api/chronicle", chronicleRoute.createResource);
-    app.delete("/api/chronicle/:id", deleteChronicleRoute.deleteResource);
-    app.get("/api/chronicle-full/:id", disableCaching, exportChronicleRoute.getResource);
+    app.delete("/api/chronicle/:id", chronicleRoute.deleteResource);
+    app.get("/api/chronicle-full/:id", disableCaching, chronicleRoute.exportResource);
 
     /*Encounters*/
     app.get("/api/encounter", disableCaching, encounterRoute.query);
@@ -249,7 +247,7 @@ function main(db) {
         'user-image-resource',
         'chronicle',
         'chronicle-full',
-		'chronicles'
+        'chronicles'
     ];
 
     for (var i in APP_JADE_FILES) {
