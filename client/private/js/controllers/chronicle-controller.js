@@ -42,9 +42,10 @@ DEMONSQUID.encounterBuilderControllers.controller('ChronicleController',
                     $scope.chronicle.$save();
                 }, 500);
                 $scope.$watch('chronicle.synopsis', function (newValue, oldValue) {
-                    if (newValue !== oldValue) {
-                        throttledSave();
+                    if (angular.equals(newValue, oldValue)) {
+                        return;
                     }
+                    throttledSave();
                 });
             });
         }
