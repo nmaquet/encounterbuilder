@@ -2,12 +2,13 @@
 
 #chronicles(ng-controller="ChroniclesController")
     .row.max-width-720
-        .panel.panel-default(ng-repeat="chronicle in chronicles")
+        .panel.panel-default(ng-repeat="chronicle in chronicles|orderBy:'lastModified':true")
             .panel-body
                 a.row.is-pointer(ng-click="selectChronicle(chronicle)") {{chronicle.name}}
                 .btn-group.pull-right
-                    button.btn.btn-default(ng-click="selectChronicle(chronicle)") Edit
-                    button.btn.btn-danger(ng-click="selectChronicle(chronicle)", title="Delete Chronicle")
+                    button.btn.btn-default(ng-click="view(chronicle)")
+                        i.icon.fa.fa-book
+                    button.btn.btn-danger(title='Delete Chronicle', tabindex='-1',data-target='#delete-chronicle-modal', role='button', data-toggle='modal',ng-click="toDelete(chronicle)")
                         i.icon.fa.fa-trash-o
                 span.row {{chronicle.lastModified | timestampToHowlongago}}
             .panel-footer
@@ -16,3 +17,4 @@
         button.btn.btn-primary(ng-click="createChronicle()")
             i.icon.fa.fa-plus &nbsp;&nbsp;
             | New Chronicle
+    include details/_confirm-delete-chronicle

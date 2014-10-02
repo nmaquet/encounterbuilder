@@ -15,6 +15,7 @@ DEMONSQUID.encounterBuilderServices.factory('locationService',
                 },
                 go: function (url) {
                     $location.url(url);
+                    $.cookie('lastUrl', url, {expires: 7});
                     if (viewport.xs) {
                         sidebarService.closeSidebars();
                     }

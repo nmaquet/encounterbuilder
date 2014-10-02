@@ -32,6 +32,10 @@ DEMONSQUID.encounterBuilderControllers.controller('ChronicleController',
                 $scope.chronicle.$save();
             };
 
+            $scope.view = function () {
+                locationService.go("/chronicle-full/" + $routeParams.chronicleId);
+            };
+
 
             $scope.chronicle = ChronicleResource.get({id: $routeParams.chronicleId}, function () {
                 var throttledSave = throttle(function () {

@@ -12,6 +12,9 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController',
 
             $rootScope.go = locationService.go;
 
+            if ($location.path() === "/" && $.cookie('lastUrl')) {
+                locationService.go($.cookie('lastUrl'));
+            }
             if (contentTreeService.hasLoaded()) {
                 $scope.chronicleName = contentTreeService.getChronicleName();
                 $scope.$watch(contentTreeService.getChronicleName, function () {
