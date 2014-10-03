@@ -38,7 +38,7 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
   position: fixed;
   @include box-shadow(0,0,0,$sp-menu-shadow);
   &.sp-menu-open { @include box-shadow(0,6px,24px,$sp-menu-shadow); }
-
+  &.no-chronicle{background-color: rgba(196,195,192,0.3);}
   h1, h2, h3, .t-title {
     position: relative;
     color: $sp-menu-title;
