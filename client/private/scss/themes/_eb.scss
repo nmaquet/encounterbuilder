@@ -1,3 +1,9 @@
+// TEAL variables
+$brand-teal:                  $teal !default;
+$btn-teal-color:              #fff !default;
+$btn-teal-bg:                 $brand-teal !default;
+$btn-teal-border:             darken($btn-teal-bg, 5%) !default;
+
 //DEFAULT THEME
 @include selection(white, $teal-transparent);
 
@@ -5,6 +11,10 @@
 body.teal {
   //select
   @include selection(white, $teal-transparent);
+
+  .btn-primary {
+    @include button-variant($btn-teal-color, $brand-teal, $btn-teal-border);
+  }
 
   //bg
   background: $teal-dark-2 url('../img/bg/bg_forest_teal.png') no-repeat center center fixed;

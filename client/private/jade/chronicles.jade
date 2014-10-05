@@ -2,22 +2,35 @@
 
 #chronicles(ng-controller="ChroniclesController")
     .row.max-width-720
-        .panel.panel-default(ng-repeat="chronicle in chronicles|orderBy:'lastModified':true")
-            .panel-body
-                a.row.is-pointer(ng-click="selectChronicle(chronicle)") {{chronicle.name}}
-                .btn-group.pull-right
-                    button.btn.btn-default(title='Read the complete chronicle on one page', ng-click="view(chronicle)")
+        button.btn.btn-primary(ng-click="createChronicle()")
+            i.icon.fa.fa-plus &nbsp;&nbsp;
+            | New Chronicle
+        br
+        br
+        article.panel.panel-default(ng-repeat="chronicle in chronicles|orderBy:'lastModified':true")
+            header.panel-heading.panel-btn-container
+                h3.panel-title.t-title
+                    a.is-pointer(ng-click="selectChronicle(chronicle)") {{chronicle.name}}
+                small.panel-date {{chronicle.lastModified | timestampToHowlongago}}
+                .panel-btn.btn-group
+                    button.btn.btn-default(data-toggle="tooltip", data-placement="bottom", title='Read the complete chronicle on one page', ng-click="view(chronicle)")
                         i.icon.fa.fa-book
-                    button.btn.btn-default(title='Copy Chronicle', ng-click="copy(chronicle)", ng-disabled="copyPending", ng-hide="copyPending")
+                    button.btn.btn-default(data-toggle="tooltip", data-placement="bottom", title='Copy Chronicle', ng-click="copy(chronicle)", ng-disabled="copyPending", ng-hide="copyPending")
                         i.icon.fa.fa-copy
                     button.btn.btn-default(title='Copy Chronicle', ng-show="copyPending")
                         i.icon.fa.fa-spinner.fa-spin
                     button.btn.btn-danger(title='Delete Chronicle', tabindex='-1',data-target='#delete-chronicle-modal', role='button', data-toggle='modal',ng-click="toDelete(chronicle)")
                         i.icon.fa.fa-trash-o
-                span.row {{chronicle.lastModified | timestampToHowlongago}}
-            .panel-footer
-                | {{chronicle.synopsis}}
 
+                //.btn-container
+                    a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer
+                        i.icon.fa.fa-random
+                    a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer
+                        i.icon.fa.fa-print
+                    a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer
+                        i.icon.fa.fa-trash-o
+            .panel-body
+                | {{chronicle.synopsis}}
         button.btn.btn-primary(ng-click="createChronicle()")
             i.icon.fa.fa-plus &nbsp;&nbsp;
             | New Chronicle

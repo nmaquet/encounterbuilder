@@ -4,13 +4,13 @@ section#top.top(name='top')
 .navbar-wrapper
     include _navbar
 .nav-top-wrapper
-    .l-nav-top.col-xs-12
+    .l-nav-top
         .navbar-brand
             span#main-title
                 span.title-username.is-pointer(ng-bind="user.username", ng-click="goToChronicles()")
                 span(ng-show="chronicleName") &nbsp;/&nbsp;
                 span.t-title.title-chroniclename.is-pointer(ng-bind="chronicleName", ng-click="goToChronicle()")
-
+        //.col-xs-12
 //.navbar-wrapper
     .container.l-xs-nopadding
         include _navbar
