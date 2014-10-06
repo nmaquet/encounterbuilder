@@ -20,7 +20,7 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
     function ($routeProvider, $httpProvider) {
         $routeProvider
             .when('/', { templateUrl: 'home.html' })
-            .when('/tutorial', { templateUrl: 'tutorial.html' })
+//            .when('/tutorial', { templateUrl: 'tutorial.html' })
             .when('/chronicles', { templateUrl: 'chronicles.html' })
             .when('/chronicle/:chronicleId', { templateUrl: 'chronicle.html'})
             .when('/chronicle/:chronicleId/encounter/:encounterId/:type/:detailsId', { templateUrl: 'encounter.html' })

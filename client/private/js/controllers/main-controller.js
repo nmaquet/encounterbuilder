@@ -17,6 +17,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController',
             }
             if (contentTreeService.hasLoaded()) {
                 $scope.chronicleName = contentTreeService.getChronicleName();
+                $scope.schronicles = "'s chronicles";
                 $scope.$watch(contentTreeService.getChronicleName, function () {
                     $scope.chronicleName = contentTreeService.getChronicleName();
                 });
@@ -24,6 +25,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController',
             else {
                 contentTreeService.onLoadSuccess(function () {
                     $scope.chronicleName = contentTreeService.getChronicleName();
+                    $scope.schronicles = "'s chronicles";
                     $scope.$watch(contentTreeService.getChronicleName, function () {
                         $scope.chronicleName = contentTreeService.getChronicleName();
                     });
