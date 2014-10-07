@@ -11,23 +11,27 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController',
             $rootScope.back = locationService.back;
 
             $rootScope.go = locationService.go;
-
+            $scope.schronicles = "'s chronicles";
             if ($location.path() === "/" && $.cookie('lastUrl')) {
                 locationService.go($.cookie('lastUrl'));
             }
+            function getChronicleName() {
+                if (contentTreeService.getChronicle()) {
+                    return contentTreeService.getChronicle().name;
+                }
+            }
+
             if (contentTreeService.hasLoaded()) {
-                $scope.chronicleName = contentTreeService.getChronicleName();
-                $scope.schronicles = "'s chronicles";
-                $scope.$watch(contentTreeService.getChronicleName, function () {
-                    $scope.chronicleName = contentTreeService.getChronicleName();
+                $scope.chronicleName = getChronicleName();
+                $scope.$watch(getChronicleName, function () {
+                    $scope.chronicleName = getChronicleName();
                 });
             }
             else {
                 contentTreeService.onLoadSuccess(function () {
-                    $scope.chronicleName = contentTreeService.getChronicleName();
-                    $scope.schronicles = "'s chronicles";
-                    $scope.$watch(contentTreeService.getChronicleName, function () {
-                        $scope.chronicleName = contentTreeService.getChronicleName();
+                    $scope.chronicleName = getChronicleName();
+                    $scope.$watch(getChronicleName, function () {
+                        $scope.chronicleName = getChronicleName();
                     });
                 })
             }

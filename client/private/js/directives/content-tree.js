@@ -293,9 +293,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     return fancyTree && fancyTree.chronicle;
                 };
 
-                contentTreeService.getChronicleName = function () {
+                contentTreeService.getChronicle = function () {
                     if (fancyTree && fancyTree.chronicle) {
-                        return fancyTree.chronicle.name;
+                        return fancyTree.chronicle;
                     }
                 };
 
