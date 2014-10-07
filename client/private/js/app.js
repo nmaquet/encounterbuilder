@@ -19,8 +19,9 @@ DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
 DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
     function ($routeProvider, $httpProvider) {
         $routeProvider
-            .when('/', { templateUrl: 'home.html' })
-//            .when('/tutorial', { templateUrl: 'tutorial.html' })
+            .when('/', {
+                redirectTo: '/chronicles'
+            })
             .when('/chronicles', { templateUrl: 'chronicles.html' })
             .when('/chronicle/:chronicleId', { templateUrl: 'chronicle.html'})
             .when('/chronicle/:chronicleId/encounter/:encounterId/:type/:detailsId', { templateUrl: 'encounter.html' })
@@ -77,7 +78,7 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
         $httpProvider.defaults.useXDomain = true; // Enable cross domain calls
     }]);
 
-DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$window','spellService','featService',
+DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$window', 'spellService', 'featService',
     function ($rootScope, $http, $window) {
         $rootScope.globalTitle = "Chronicle Forge - Home";
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
