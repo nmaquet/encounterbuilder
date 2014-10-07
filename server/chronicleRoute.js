@@ -5,6 +5,7 @@
 module.exports = function (db, collections, ObjectID) {
     var traverse = require("traverse");
     var async = require("async");
+    var s3Service = require('./s3Service')();
 
     var userResourceCollections = {
         "user-feat": collections.userFeats,
@@ -84,7 +85,18 @@ module.exports = function (db, collections, ObjectID) {
                     console.log(error);
                     return response.send(500);
                 }
+
                 x.userResourceId = newResource[0]._id.toString();
+                if (newResource[0].url) {
+                    var originalS3Id = newResource[0].url.substring(s3Service.urlPrefix.length, newResource[0].url.indexOf('?'));
+                    s3Service.copyInS3(originalS3Id, x.userResourceId);
+                    userResourceCollections[x.resourceType].update({_id: newResource._id}, {$set: {url: s3Service.getResourceURL(newResource._id)}}, function (error) {
+                        if (error) {
+                            console.log(error);
+                        }
+                    });
+                }
+
                 delete x.userResource;
                 requestPending--;
                 if (requestPending === 0) {
@@ -186,10 +198,7 @@ module.exports = function (db, collections, ObjectID) {
                 async.parallel(tasks, function (error, results) {
                     callback(error, results, chronicle.name);
                 });
-
             }
-
-
         });
     }
 

@@ -22,7 +22,6 @@ function removeFromS3(id, callback) {
 }
 function copyInS3(sourceId, destinationId) {
     var params = {Bucket: bucketName, Key: destinationId, CopySource: bucketName + "/" + sourceId, ACL: "public-read"};
-    console.log(params);
     s3.copyObject(params, function (error) {
         if (error) {
             console.log(error);
@@ -64,6 +63,7 @@ function createS3Credentials(key, contentType) {
 
 module.exports = function () {
     return {
+        urlPrefix: urlPrefix,
         removeFromS3: removeFromS3,
         copyInS3: copyInS3,
         createS3Credentials: createS3Credentials,
