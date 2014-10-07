@@ -9,6 +9,47 @@ module.exports = function (collection, ObjectID) {
 
     var route = require('./userResourceRoute')(collection, null, ObjectID);
 
+    var originalCreate = route.createResource;
+
+    function createImageResouce(request, response) {
+        var userResourceId = request.body.userResourceId;
+        if (!userResourceId) {
+            return originalCreate(request, response);
+        }
+        else {
+            var sessionUserId = request.user._id;
+            var query = {_id: ObjectID(userResourceId), userId: ObjectID(sessionUserId)};
+            collection.findOne(query, {id: 0, _id: 0}, function (error, baseResource) {
+                if (error) {
+                    return response.send(500);
+                }
+                if (!baseResource) {
+                    return response.send(404);
+                }
+                baseResource.userId = ObjectID(sessionUserId);
+                baseResource.lastModified = new Date().toISOString();
+                collection.insert(baseResource, function (error, newResourceArray) {
+                    if (error) {
+                        response.send(500);
+                    }
+                    else {
+                        var newResource = newResourceArray[0];
+                        s3Service.copyInS3(userResourceId, newResource._id.toString());
+                        collection.update({_id: newResource._id}, {$set: {url: s3Service.getResourceURL(newResource._id)}}, function (error) {
+                            if (error) {
+                                console.log(error);
+                            }
+                            response.setHeader("Location", request.path + "/" + newResource._id);
+                            response.status(201).json(newResource);
+                        });
+
+                    }
+                });
+            });
+        }
+    }
+
+    route.createResource = createImageResouce;
     route.deleteResource = function (request, response) {
         var sessionUserId = request.user._id;
         var paramsResourceId = request.params.id;
