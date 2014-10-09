@@ -36,6 +36,9 @@ DEMONSQUID.encounterBuilderControllers.controller('MainController',
                 })
             }
 
+            $scope.goToChronicleFull = function () {
+                locationService.go("/chronicle-full/" + $routeParams.chronicleId);
+            };
             $scope.goToChronicle = function () {
                 locationService.go("/chronicle/" + $routeParams.chronicleId);
             };
