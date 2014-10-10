@@ -11,6 +11,7 @@ DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
     'encounterBuilderFilters',
     'encounterBuilderServices',
     'encounterBuilderDirectives',
+    'ui.bootstrap',
     'ui.tinymce',
     'angularFileUpload'
 ]);

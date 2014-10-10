@@ -27,6 +27,8 @@ var jsFiles = [
     "client/private/bower_components/tinymce/plugins/autoresize/plugin.min.js",
     "client/private/bower_components/angular-ui-tinymce/src/tinymce.js",
     "client/private/bower_components/angular-file-upload/angular-file-upload.js",
+    "client/private/angular-ui/ui-bootstrap-0.10.0.js",
+    "client/private/angular-ui/ui-bootstrap-tpls-0.10.0.js",
     // App files
     "client/private/js/app.js", /* app.js MUST be the first app file ! */
     "client/private/js/services/exception-handling-service.js", /* leave this one second */
@@ -78,7 +80,6 @@ var jsFiles = [
     "client/private/js/directives/fade-out.js",
     "client/private/js/directives/slide-menu.js",
     "client/private/js/directives/thumbnail.js",
-    "client/private/js/directives/sticky.js",
     "client/private/js/filters/abbreviate-source.js",
     "client/private/js/filters/number-to-fraction-string.js",
     "client/private/js/filters/classes-to-string.js",

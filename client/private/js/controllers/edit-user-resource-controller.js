@@ -16,6 +16,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
             };
 
             var resourceType = locationService.getResourceType();
+            console.log(resourceType);
 
             $scope.view = function () {
                 contentTreeService.userResourceUpdated($scope.userResource);
