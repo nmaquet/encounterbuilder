@@ -25,14 +25,6 @@
                                     "lastModified": "2014-10-02T09:51:35.731Z",
                                     "fileType": "image/jpeg",
                                     "fileName": "troll.jpg",
-                                    "s3Credentials": {
-                                        "policy": "eyJleHBpcmF0aW9uIjoiMjAxNC0xMC0wMlQwOTo0OTozOC42MzFaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0IjoiZHNjZi10ZXN0In0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCI1NDJkMWU3OTQ3ZDUzMzgwMjVkNThhNTciXSx7ImFjbCI6InB1YmxpYy1yZWFkIn0sWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsMCwzMTQ1NzI4XSxbImVxIiwiJENvbnRlbnQtVHlwZSIsImltYWdlL2pwZWciXV19",
-                                        "signature": "3CaurPU/s2LXC1vco9M5BoCQ6Z4=",
-                                        "AWSAccessKeyId": "AKIAJFFVXEJ6XFYP6EXA",
-                                        "url": "http://s3.amazonaws.com/dscf-test/",
-                                        "Content-Type": "image/jpeg",
-                                        "resourceURL": "http://s3.amazonaws.com/dscf-test/542d1e7947d5338025d58a57?1412243078631"
-                                    },
                                     "url": "http://s3.amazonaws.com/dscf-test/542d1e7947d5338025d58a57?1412243078631",
                                     "artist": "Aleksey Kovalenko",
                                     "externalURL": "http://skiorh.deviantart.com/",
@@ -290,14 +282,6 @@
                             "lastModified": "2014-10-02T09:38:00.270Z",
                             "fileType": "image/jpeg",
                             "fileName": "Jacod.jpg",
-                            "s3Credentials": {
-                                "policy": "eyJleHBpcmF0aW9uIjoiMjAxNC0wOS0yNVQwNjoyODowNy44ODJaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0IjoiZHNjZi1zdGFnaW5nIn0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCI1NDIzYjQ0ZTUyNTMxYzBiMDBjZGU5MzAiXSx7ImFjbCI6InB1YmxpYy1yZWFkIn0sWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsMCwzMTQ1NzI4XSxbImVxIiwiJENvbnRlbnQtVHlwZSIsImltYWdlL2pwZWciXV19",
-                                "signature": "SA7oUD1A3iI13eaSxCxro8Sv4FA=",
-                                "AWSAccessKeyId": "AKIAIKK6KQQ4GBE24LLA",
-                                "url": "http://s3.amazonaws.com/dscf-staging/",
-                                "Content-Type": "image/jpeg",
-                                "resourceURL": "http://s3.amazonaws.com/dscf-staging/5423b44e52531c0b00cde930?1411626187882"
-                            },
                             "url": "http://s3.amazonaws.com/dscf-staging/5423b44e52531c0b00cde930?1411626187882",
                             "artist": "Eldanaro",
                             "externalURL": "http://eldanaro.deviantart.com/art/Pale-455261644",
@@ -718,14 +702,6 @@
                                     "lastModified": "2014-10-02T09:42:21.139Z",
                                     "fileType": "image/jpeg",
                                     "fileName": "maps-2-colored-small-labeled.jpg",
-                                    "s3Credentials": {
-                                        "policy": "eyJleHBpcmF0aW9uIjoiMjAxNC0wOS0yNVQwNjo0Nzo0My42ODhaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0IjoiZHNjZi1zdGFnaW5nIn0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCI1NDIzYjkzYTUyNTMxYzBiMDBjZGU5NDYiXSx7ImFjbCI6InB1YmxpYy1yZWFkIn0sWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsMCwzMTQ1NzI4XSxbImVxIiwiJENvbnRlbnQtVHlwZSIsImltYWdlL2pwZWciXV19",
-                                        "signature": "VXbRc6HMZ4pCjV4v9HXYjBkSf6c=",
-                                        "AWSAccessKeyId": "AKIAIKK6KQQ4GBE24LLA",
-                                        "url": "http://s3.amazonaws.com/dscf-staging/",
-                                        "Content-Type": "image/jpeg",
-                                        "resourceURL": "http://s3.amazonaws.com/dscf-staging/5423b93a52531c0b00cde946?1411627363688"
-                                    },
                                     "url": "http://s3.amazonaws.com/dscf-staging/5423b93a52531c0b00cde946?1411627363688",
                                     "artist": "Nicolas Maquet",
                                     "copyright": "© 2014 DemonSquid, Inc."
@@ -816,14 +792,6 @@
                                     "lastModified": "2014-10-02T09:42:42.040Z",
                                     "fileType": "image/jpeg",
                                     "fileName": "maps-3-colored-small-labeled.jpg",
-                                    "s3Credentials": {
-                                        "policy": "eyJleHBpcmF0aW9uIjoiMjAxNC0wOS0yNVQwNjo0OTowMi4zMjBaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0IjoiZHNjZi1zdGFnaW5nIn0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCI1NDIzYjlhMzUyNTMxYzBiMDBjZGU5NGMiXSx7ImFjbCI6InB1YmxpYy1yZWFkIn0sWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsMCwzMTQ1NzI4XSxbImVxIiwiJENvbnRlbnQtVHlwZSIsImltYWdlL2pwZWciXV19",
-                                        "signature": "e/f0I3Srm9RGwHaKjBR55Xb9deU=",
-                                        "AWSAccessKeyId": "AKIAIKK6KQQ4GBE24LLA",
-                                        "url": "http://s3.amazonaws.com/dscf-staging/",
-                                        "Content-Type": "image/jpeg",
-                                        "resourceURL": "http://s3.amazonaws.com/dscf-staging/5423b9a352531c0b00cde94c?1411627442320"
-                                    },
                                     "url": "http://s3.amazonaws.com/dscf-staging/5423b9a352531c0b00cde94c?1411627442320",
                                     "artist": "Nicolas Maquet",
                                     "copyright": "© 2014 DemonSquid, Inc."
@@ -1158,14 +1126,6 @@
                             "lastModified": "2014-10-06T08:39:00.172Z",
                             "fileType": "image/jpeg",
                             "fileName": "maps-1-colored-small-labeled.jpg",
-                            "s3Credentials": {
-                                "policy": "eyJleHBpcmF0aW9uIjoiMjAxNC0wOS0yNVQwNjo0OTozMS44NDRaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0IjoiZHNjZi1zdGFnaW5nIn0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCI1NDIzYjljMDUyNTMxYzBiMDBjZGU5NGQiXSx7ImFjbCI6InB1YmxpYy1yZWFkIn0sWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsMCwzMTQ1NzI4XSxbImVxIiwiJENvbnRlbnQtVHlwZSIsImltYWdlL2pwZWciXV19",
-                                "signature": "Yroa+rDgKmKsnkVyTU/eY2EHVQQ=",
-                                "AWSAccessKeyId": "AKIAIKK6KQQ4GBE24LLA",
-                                "url": "http://s3.amazonaws.com/dscf-staging/",
-                                "Content-Type": "image/jpeg",
-                                "resourceURL": "http://s3.amazonaws.com/dscf-staging/5423b9c052531c0b00cde94d?1411627471844"
-                            },
                             "url": "http://s3.amazonaws.com/dscf-staging/5423b9c052531c0b00cde94d?1411627471844",
                             "artist": "Nicolas Maquet",
                             "copyright": "© 2014 DemonSquid, Inc."
