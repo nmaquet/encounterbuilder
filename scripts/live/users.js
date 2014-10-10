@@ -196,7 +196,7 @@ command("importChronicle", "import a chronicle to a user", function (userService
     });
 });
 
-command("importChronicle", "import a chronicle to all users", function (userService, db) {
+command("importChronicleAll", "import a chronicle to all users", function (userService, db) {
     async.series([
         read.bind(null, { prompt: 'chronicle path: ' })
     ], function (error, results) {

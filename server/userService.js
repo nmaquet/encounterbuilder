@@ -10,6 +10,7 @@ var crypto = require('crypto');
 var uuid = require('node-uuid');
 var ObjectID = require('mongodb').ObjectID;
 var fs = require('fs');
+var _ = require('lodash');
 
 var userCollection = null;
 var contentTreeCollection = null;
@@ -233,18 +234,23 @@ function listChronicles(username, callback) {
         });
 }
 function importChronicleAll(chronicle, callback) {
-    userCollection.find({username: username}).toArray(function (error, userArray) {
-        var pending = 0;
+    userCollection.find({}).toArray(function (error, userArray) {
+        var tasks = [];
         for (var i in userArray) {
-            pending++;
-            importChronicle(userArray.username, chronicle, function (error) {
-                console.log(error);
-                pending--;
-                if (pending === 0) {
-                    callback(null);
-                }
-            });
+            (function (username) {
+                tasks.push(function (next) {
+                    console.log(username);
+                    importChronicle(username, _.cloneDeep(chronicle), function (error) {
+                        if (error) {
+                            console.log(error);
+                        }
+                        console.log("import chronicle finished for user: " + username);
+                        next();
+                    });
+                })
+            })(userArray[i].username)
         }
+        async.series(tasks, callback);
     });
 }
 function importChronicle(username, chronicle, callback) {
@@ -264,6 +270,7 @@ function importChronicle(username, chronicle, callback) {
 
     function insertChronicle() {
         var newChronicle = {};
+        newChronicle.lastModified = new Date().toISOString();
         newChronicle.name = chronicle.name;
         newChronicle.userId = user._id;
         newChronicle.contentTree = chronicle.contentTree;
