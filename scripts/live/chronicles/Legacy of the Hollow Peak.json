@@ -25,7 +25,7 @@
                                     "lastModified": "2014-10-02T09:51:35.731Z",
                                     "fileType": "image/jpeg",
                                     "fileName": "troll.jpg",
-                                    "url": "http://s3.amazonaws.com/dscf-test/542d1e7947d5338025d58a57?1412243078631",
+                                    "url": "http://s3.amazonaws.com/dscf-live-ro/troll.jpg",
                                     "artist": "Aleksey Kovalenko",
                                     "externalURL": "http://skiorh.deviantart.com/",
                                     "copyright": "© 2014 Aleksey Kovalenko"
@@ -282,7 +282,7 @@
                             "lastModified": "2014-10-02T09:38:00.270Z",
                             "fileType": "image/jpeg",
                             "fileName": "Jacod.jpg",
-                            "url": "http://s3.amazonaws.com/dscf-staging/5423b44e52531c0b00cde930?1411626187882",
+                            "url": "http://s3.amazonaws.com/dscf-live-ro/jacod.jpg",
                             "artist": "Eldanaro",
                             "externalURL": "http://eldanaro.deviantart.com/art/Pale-455261644",
                             "copyright": "© 2014 Eldanaro"
@@ -702,7 +702,7 @@
                                     "lastModified": "2014-10-02T09:42:21.139Z",
                                     "fileType": "image/jpeg",
                                     "fileName": "maps-2-colored-small-labeled.jpg",
-                                    "url": "http://s3.amazonaws.com/dscf-staging/5423b93a52531c0b00cde946?1411627363688",
+                                    "url": "https://s3.amazonaws.com/dscf-live-ro/maps-2-colored-small-labeled.jpg",
                                     "artist": "Nicolas Maquet",
                                     "copyright": "© 2014 DemonSquid, Inc."
                                 }
@@ -792,7 +792,7 @@
                                     "lastModified": "2014-10-02T09:42:42.040Z",
                                     "fileType": "image/jpeg",
                                     "fileName": "maps-3-colored-small-labeled.jpg",
-                                    "url": "http://s3.amazonaws.com/dscf-staging/5423b9a352531c0b00cde94c?1411627442320",
+                                    "url": "http://s3.amazonaws.com/dscf-live-ro/maps-3-colored-small-labeled.jpg",
                                     "artist": "Nicolas Maquet",
                                     "copyright": "© 2014 DemonSquid, Inc."
                                 }
@@ -1126,7 +1126,7 @@
                             "lastModified": "2014-10-06T08:39:00.172Z",
                             "fileType": "image/jpeg",
                             "fileName": "maps-1-colored-small-labeled.jpg",
-                            "url": "http://s3.amazonaws.com/dscf-staging/5423b9c052531c0b00cde94d?1411627471844",
+                            "url": "http://s3.amazonaws.com/dscf-live-ro/maps-1-colored-small-labeled.jpg",
                             "artist": "Nicolas Maquet",
                             "copyright": "© 2014 DemonSquid, Inc."
                         }
