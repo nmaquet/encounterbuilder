@@ -29,6 +29,9 @@
                                 h3.lf-name
                                     i.icon.fa.fa-pencil
                                     | {{leaf.name}}
+                        div
+                            a.is-pointer(ng-href="{{leaf.url}}", target="blank")
+                                img(ng-src="{{leaf.url}}")
                     .lf-content
                         p.t-italic {{leaf.synopsis}}
                         div(ng-bind-html="leaf.content | toTrustedHtml")
@@ -40,6 +43,8 @@
                                     i.icon.fa.fa-picture-o
                                     | {{leaf.name}}
                     .lf-content
+                        a.is-pointer(ng-href="{{leaf.url}}", target="blank")
+                            img(ng-src="{{leaf.url}}")
                 .l-shadow.user-text(ng-switch-when="user-map")
                     header.lf-heading
                         a.t-title.lf-title.is-pointer(ng-click="selectLeaf(leaf)")
