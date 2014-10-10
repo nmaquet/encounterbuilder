@@ -235,21 +235,18 @@ function listChronicles(username, callback) {
 }
 function importChronicleAll(chronicle, callback) {
     userCollection.find({}).toArray(function (error, userArray) {
-        var tasks = [];
-        for (var i in userArray) {
-            (function (username) {
-                tasks.push(function (next) {
-                    console.log(username);
-                    importChronicle(username, _.cloneDeep(chronicle), function (error) {
-                        if (error) {
-                            console.log(error);
-                        }
-                        console.log("import chronicle finished for user: " + username);
-                        next();
-                    });
-                })
-            })(userArray[i].username)
-        }
+        var tasks = _.map(userArray, function (user) {
+            return function (next) {
+                console.log(user.username);
+                importChronicle(user.username, _.cloneDeep(chronicle), function (error) {
+                    if (error) {
+                        console.log(error);
+                    }
+                    console.log("import chronicle finished for user: " + user.username);
+                    next();
+                });
+            }
+        });
         async.series(tasks, callback);
     });
 }
