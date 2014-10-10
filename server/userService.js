@@ -115,7 +115,7 @@ function register(fields, callback) {
                 user[property] = fields[property];
             }
             //FIXME use real demo chronicle
-            var chronicle = require('../scripts/live/chronicles/Example Chronicle.json');
+            var chronicle = require('../scripts/live/chronicles/Legacy of the Hollow Peak.json');
             userCollection.insert(user, function (error, result) {
                 if (error) {
                     return callback(error);
@@ -232,7 +232,21 @@ function listChronicles(username, callback) {
             chroniclesCollection.find({userId: user._id}, {fields: {_id: 1, name: 1}}).toArray(callback);
         });
 }
-
+function importChronicleAll(chronicle, callback) {
+    userCollection.find({username: username}).toArray(function (error, userArray) {
+        var pending = 0;
+        for (var i in userArray) {
+            pending++;
+            importChronicle(userArray.username, chronicle, function (error) {
+                console.log(error);
+                pending--;
+                if (pending === 0) {
+                    callback(null);
+                }
+            });
+        }
+    });
+}
 function importChronicle(username, chronicle, callback) {
     var user = null;
     var requestPending = 0;
@@ -400,6 +414,7 @@ module.exports = function (database, sesService_) {
         remove: remove,
         listChronicles: listChronicles,
         exportChronicle: exportChronicle,
-        importChronicle: importChronicle
+        importChronicle: importChronicle,
+        importChronicleAll: importChronicleAll
     }
 };
