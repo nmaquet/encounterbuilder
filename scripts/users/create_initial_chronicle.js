@@ -59,16 +59,16 @@ function main(db) {
                                 x.resourceType = "encounter";
                             }
                         });
-
-                        var chronicle = {userId: user._id, contentTree: docs[0].contentTree, name: "new Chronicle"};
+                        var synopsis = "This chronicle contains the content you already created using the previous version of Chronicle Forge";
+                        var chronicle = {userId: user._id, contentTree: docs[0].contentTree, name: "new Chronicle", synopsis: synopsis, lastModified: new Date().toISOString()};
 
                         db.collection("chronicles").insert(chronicle, function (error, newChronicle) {
                             if (error) {
                                 console.log(error);
                             }
                             else {
-                                console.log("new chronicle inserted");
-                                console.log(JSON.stringify(newChronicle, null, 4));
+                                console.log("new chronicle inserted for user: " + user.username);
+                                //console.log(JSON.stringify(newChronicle, null, 4));
                             }
                             next();
                         });
