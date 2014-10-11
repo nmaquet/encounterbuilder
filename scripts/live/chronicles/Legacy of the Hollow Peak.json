@@ -1,6 +1,6 @@
 {
     "name": "Legacy of the Hollow Peak",
-    "synopsis": "A wilderness and dungeon adventure for characters level 3-5.",
+    "synopsis": "A wilderness and dungeon adventure for characters level 3-5. Feel free to use it, copy it, or modify it all you like but please do not share it outside of Chronicle Forge.",
     "contentTree": [
         {
             "expanded": true,
@@ -1931,6 +1931,5 @@
             ]
         }
     ],
-    "lastModified": "2014-10-10T08:38:54.155Z",
-    "synopsis": ""
+    "lastModified": "2014-10-10T08:38:54.155Z"
 }

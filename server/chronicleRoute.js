@@ -61,6 +61,7 @@ module.exports = function (db, collections, ObjectID) {
             newChronicle.userId = ObjectID(sessionUserId);
             newChronicle.contentTree = sourceChronicle.contentTree;
             newChronicle.lastModified = new Date().toISOString();
+            newChronicle.synopsis = sourceChronicle.synopsis;
             collections.chronicles.insert(newChronicle, function (error, newResourceArray) {
                 if (error) {
                     console.log(error);
