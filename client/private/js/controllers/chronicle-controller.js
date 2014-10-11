@@ -52,7 +52,7 @@ DEMONSQUID.encounterBuilderControllers.controller('ChronicleController',
                     if (angular.equals(newValue, oldValue)) {
                         return;
                     }
-                    contentTreeService.getChronicle().$save();
+                    contentTreeService.saveChronicle();
                 }, 500));
             }
             else {
@@ -62,7 +62,7 @@ DEMONSQUID.encounterBuilderControllers.controller('ChronicleController',
                         if (angular.equals(newValue, oldValue)) {
                             return;
                         }
-                        contentTreeService.getChronicle().$save();
+                        contentTreeService.saveChronicle();
                     }, 500));
                 })
             }
