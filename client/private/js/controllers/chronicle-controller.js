@@ -48,10 +48,16 @@ DEMONSQUID.encounterBuilderControllers.controller('ChronicleController',
 
             if (contentTreeService.hasLoaded()) {
                 $scope.chronicle = contentTreeService.getChronicle();
+                $scope.$watch("chronicle.synopsis", throttle(function () {
+                    $scope.chronicle.$save();
+                }, 500));
             }
             else {
                 contentTreeService.onLoadSuccess(function () {
                     $scope.chronicle = contentTreeService.getChronicle();
+                    $scope.$watch("chronicle.synopsis", throttle(function () {
+                        $scope.chronicle.$save();
+                    }, 500));
                 })
             }
         }
