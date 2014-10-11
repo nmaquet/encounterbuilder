@@ -8,22 +8,33 @@ DEMONSQUID.encounterBuilderServices.factory('LeftSidebarTabModel', function () {
     }
 });
 
-DEMONSQUID.encounterBuilderControllers.controller('LeftSidebarTabController', ['$scope', 'LeftSidebarTabModel',
-    function ($scope, model) {
+DEMONSQUID.encounterBuilderControllers.controller('LeftSidebarTabController',
+    ['$scope', '$http', '$timeout', 'LeftSidebarTabModel', 'userResourceService', 'contentTreeService', 'locationService',
+        function ($scope, $http, $timeout, model, userResourceService, contentTreeService, locationService) {
 
-        $scope.selectedTab = model.selectedTab;
-
-        $scope.$watch(function () {
-            return model.selectedTab
-        }, function () {
             $scope.selectedTab = model.selectedTab;
-        });
+            $scope.filter = false;
+            $scope.toggleFilterInput = function () {
+                $scope.filter = !$scope.filter;
+                if ($scope.filter) {
+                    $timeout(function () {
+                        $("input#filter-chronicle").focus();
+                        /*FIXME DOM manipulation in controller is bad*/
+                    }, 0);
+                }
+            };
 
-        $('#' + $scope.selectedTab + 'Tab').tab('show');
+            $scope.$watch(function () {
+                return model.selectedTab
+            }, function () {
+                $scope.selectedTab = model.selectedTab;
+            });
 
-        $scope.selectTab = function (tab) {
-            $scope.selectedTab = model.selectedTab = tab;
-        };
+            $('#' + $scope.selectedTab + 'Tab').tab('show');
 
-    }
-]);
+            $scope.selectTab = function (tab) {
+                $scope.selectedTab = model.selectedTab = tab;
+            };
+
+        }
+    ]);

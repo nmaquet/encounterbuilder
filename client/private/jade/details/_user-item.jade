@@ -10,7 +10,7 @@
         strong {{userResource.Price}}&nbsp;{{userResource.PriceUnit}}
         strong(ng-if="userResource.Group === 'Gem'")
             em &nbsp;(average)
-        .row.btn-container
+        .row.btn-container(ng-show="showButtons")
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copy()')
                 i.icon.fa.fa-copy
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit',ng-click='edit()')

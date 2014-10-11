@@ -3,8 +3,8 @@
 'use strict';
 
 DEMONSQUID.encounterBuilderServices.factory('encounterEditorService',
-    ['$routeParams', 'monsterService', 'npcService', 'userMonsterService', 'userNpcService', 'encounterService', 'templateService', 'userResourceService', 'itemService',
-        function ($routeParams, monsterService, npcService, userMonsterService, userNpcService, encounterService, templateService, userResourceService, itemService) {
+    ['$routeParams', 'monsterService', 'npcService',  'encounterService', 'templateService', 'userResourceService', 'itemService',
+        function ($routeParams, monsterService, npcService, encounterService, templateService, userResourceService, itemService) {
             function addToEncounter(dbService, id, encounterListName, templated) {
                 dbService.get(id, function (error, toAdd) {
                     if (error) {
@@ -40,13 +40,47 @@ DEMONSQUID.encounterBuilderServices.factory('encounterEditorService',
                 });
             }
 
+            function addResourceToEncounter(resource, id, encounterListName, templated) {
+                resource.get({id: id}, function (toAdd) {
+                    if (templated) {
+                        toAdd = templateService.createTemplatedMonster(toAdd);
+                    }
+                    var encounter = service.encounter;
+                    if (!encounter[encounterListName]) {
+                        encounter[encounterListName] = {};
+                    }
+                    var id = toAdd.id || toAdd._id;
+                    if (!encounter[encounterListName][id]) {
+                        encounter[encounterListName][id] = {
+                            amount: 1,
+                            Name: toAdd.Name,
+                            XP: toAdd.XP,
+                            CR: toAdd.CR,
+                            Type: toAdd.Type,
+                            TreasureBudget: toAdd.TreasureBudget,
+                            Heroic: toAdd.Heroic,
+                            Level: toAdd.Level
+                        };
+                        if (toAdd.id === undefined) {
+                            encounter[encounterListName][id].userCreated = true;
+                        }
+                    }
+                    else {
+                        encounter[encounterListName][id].amount += 1;
+                    }
+                    encounterService.encounterChanged(encounter);
+                }, function (error) {
+                    console.log(error);
+                });
+            }
+
             function addUserNpcOrMonster(type, id) {
                 if ($routeParams.encounterId) {
                     if (type === "monster") {
-                        addToEncounter(userMonsterService, id, "Monsters", true);
+                        addResourceToEncounter(userResourceService["user-monster"],id, "Monsters", true);
                     }
                     else {
-                        addToEncounter(userNpcService, id, "Npcs", false);
+                        addResourceToEncounter(userResourceService["user-npc"],id, "Npcs", false);
                     }
                 }
             }

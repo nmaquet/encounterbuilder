@@ -15,6 +15,7 @@ DEMONSQUID.encounterBuilderServices.factory('locationService',
                 },
                 go: function (url) {
                     $location.url(url);
+                    $.cookie('lastUrl', url, {expires: 7});
                     if (viewport.xs) {
                         sidebarService.closeSidebars();
                     }
@@ -32,32 +33,56 @@ DEMONSQUID.encounterBuilderServices.factory('locationService',
                 goToDetails: function (type, id) {
                     var typePrefix = '/' + type + '/';
                     if ($route.current.templateUrl === 'encounter.html') {
-                        this.go('/encounter/' + $routeParams.encounterId + typePrefix + id);
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/encounter/' + $routeParams.userResourceId + typePrefix + id);
                     } else if ($route.current.templateUrl === 'edit-user-monster.html') {
-                        this.go('/edit-user-monster/' + $routeParams.userMonsterId + typePrefix + id);
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/edit-user-monster/' + $routeParams.userResourceId + typePrefix + id);
                     } else if ($route.current.templateUrl === 'edit-user-npc.html') {
-                        this.go('/edit-user-npc/' + $routeParams.userNpcId + typePrefix + id);
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/edit-user-npc/' + $routeParams.userResourceId + typePrefix + id);
                     } else if ($route.current.templateUrl === 'edit-user-text.html') {
-                        this.go('/edit-user-text/' + $routeParams.userTextId + typePrefix + id);
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/edit-user-text/' + $routeParams.userResourceId + typePrefix + id);
+                    } else if ($route.current.templateUrl === 'edit-user-feat.html') {
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/edit-user-feat/' + $routeParams.userResourceId + typePrefix + id);
+                    } else if ($route.current.templateUrl === 'edit-user-spell.html') {
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/edit-user-spell/' + $routeParams.userResourceId + typePrefix + id);
+                    } else if ($route.current.templateUrl === 'edit-user-item.html') {
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/edit-user-item/' + $routeParams.userResourceId + typePrefix + id);
                     }
                     else {
-                        this.go(typePrefix + id);
+                        this.go(($routeParams.chronicleId ? "/chronicle/" + $routeParams.chronicleId : "") + typePrefix + id);
                     }
                 },
                 closeDetails: function () {
                     if ($routeParams.encounterId) {
-                        this.go('/encounter/' + $routeParams.encounterId);
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/encounter/' + $routeParams.encounterId);
                     }
                     else if ($routeParams.userMonsterId) {
-                        this.go('/edit-user-monster/' + $routeParams.userMonsterId);
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/edit-user-monster/' + $routeParams.userMonsterId);
                     }
                     else {
                         this.go('/');
                     }
                 },
                 getResourceType: function () {
-                    var match = /\/(?:edit-)?(user-)?(npc|monster|feat|spell|item|illustration|map)\//.exec($location.path());
-                    return match && ((match[1] || "") + match[2]);
+                    if ($route.current.templateUrl === 'encounter.html') {
+                        return "encounter";
+                    } else if ($route.current.templateUrl === 'edit-user-monster.html' || $route.current.templateUrl === 'user-monster.html') {
+                        return "user-monster";
+                    } else if ($route.current.templateUrl === 'edit-user-npc.html' || $route.current.templateUrl === 'user-npc.html') {
+                        return "user-npc";
+                    } else if ($route.current.templateUrl === 'edit-user-text.html' || $route.current.templateUrl === 'user-text.html') {
+                        return "user-text";
+                    } else if ($route.current.templateUrl === 'edit-user-feat.html' || $route.current.templateUrl === 'user-feat.html') {
+                        return "user-feat";
+                    } else if ($route.current.templateUrl === 'edit-user-spell.html' || $route.current.templateUrl === 'user-spell.html') {
+                        return "user-spell";
+                    } else if ($route.current.templateUrl === 'edit-user-item.html' || $route.current.templateUrl === 'user-item.html') {
+                        return "user-item";
+                    } else if ($route.current.templateUrl === 'edit-user-image-resource.html' || $route.current.templateUrl === 'user-image-resource.html') {
+                        return $location.path().indexOf("map") !== -1 ? "user-map" : "user-illustration";
+                    }
+
+//                    var match = /\/chronicle\/.*\/(?:edit-)?(user-)?(npc|monster|feat|spell|item|illustration|map|chronicle|text)\//.exec($location.path());
+//                    return match && ((match[1] || "") + match[2]);
                 }
             };
         }]);

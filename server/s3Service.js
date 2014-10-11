@@ -20,9 +20,16 @@ function removeFromS3(id, callback) {
         callback(error);
     });
 }
-
+function copyInS3(sourceId, destinationId) {
+    var params = {Bucket: bucketName, Key: destinationId, CopySource: bucketName + "/" + sourceId, ACL: "public-read"};
+    s3.copyObject(params, function (error) {
+        if (error) {
+            console.log(error);
+        }
+    });
+}
 function getResourceURL(id) {
-    return urlPrefix + id;
+    return urlPrefix + id + "?" + new Date().getTime();
 }
 
 function createS3Credentials(key, contentType) {
@@ -35,7 +42,7 @@ function createS3Credentials(key, contentType) {
             { "bucket": bucketName },
             ["starts-with", "$key", key],
             { "acl": "public-read" },
-            ["content-length-range", 0, 3*1024*1024],
+            ["content-length-range", 0, 3 * 1024 * 1024],
             ["eq", "$Content-Type", contentType]
         ]
     };
@@ -48,7 +55,7 @@ function createS3Credentials(key, contentType) {
         AWSAccessKeyId: AWS.config.accessKeyId,
         url: urlPrefix,
         "Content-Type": contentType,
-        resourceURL: urlPrefix + key + "?" + new Date().getTime()
+        resourceURL: getResourceURL(key)
     };
 
     return s3Credentials;
@@ -56,7 +63,9 @@ function createS3Credentials(key, contentType) {
 
 module.exports = function () {
     return {
+        urlPrefix: urlPrefix,
         removeFromS3: removeFromS3,
+        copyInS3: copyInS3,
         createS3Credentials: createS3Credentials,
         getResourceURL: getResourceURL
     }

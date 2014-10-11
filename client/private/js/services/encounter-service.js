@@ -2,8 +2,8 @@
 
 'use strict';
 
-DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$http', '$rootScope', '$cacheFactory', 'crService', 'userMonsterService', 'userNpcService', 'templateService',
-    function ($timeout, $http, $rootScope, $cacheFactory, crService, userMonsterService, userNpcService, templateService) {
+DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', 'crService', 'userResourceService', 'templateService', 'EncounterResource',
+    function ($timeout, crService, userResourceService, templateService, EncounterResource) {
 
         function calculateXp(encounter) {
             var xp = 0;
@@ -49,6 +49,9 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                 "pp": 1000
             };
             var lootValue = 0;
+            if (!encounter.coins){
+                encounter.coins = {cp:0,sp:0,gp:0,pp:0};
+            }
             lootValue += Number(encounter.coins.cp);
             lootValue += Number(encounter.coins.sp) * 10;
             lootValue += Number(encounter.coins.gp) * 100;
@@ -63,90 +66,36 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
 
         var service = {};
 
-        service.encounters = [];
-
-        /* FIXME: don't we need a user callback ? */
-        /* FIXME: The client of this function has no way to know whether this succeeds or not. */
-        service.remove = function (encounter) {
-            $cacheFactory.get('$http').remove('/api/encounter/' + encounter._id);
-            $http.post('/api/remove-encounter', { encounter: encounter })
-                .success(function (response) {
-                    if (response.error) {
-                        console.log(response.error);
-                    }
-                })
-                .error(function (response) {
-                    console.log("remove of encounter failed !");
-                });
-        };
-
         service.createEncounter = function (onSuccess) {
-            $http.post('/api/create-encounter')
-                .success(function (response) {
-                    if (response.error) {
-                        console.log(error);
-                    }
-                    onSuccess(response.encounter);
-
-                })
-                .error(function (response) {
-                    console.log("post of encounter failed !");
-                });
+            var encounterResource = new EncounterResource();
+            encounterResource.Name = "new Encounter";
+            encounterResource.coins = {cp:0,sp:0,gp:0,pp:0};
+            encounterResource.$save(function () {
+                onSuccess(encounterResource);
+            });
         };
 
         /* FIXME: don't we need a user callback ? */
         /* FIXME: The client of this function has no way to know whether this succeeds or not. */
+        /* FIXME: FOR REAL THIS ONE!!! Add a callback to get server encounter in case of 409*/
         service.encounterChanged = function (encounter) {
             encounter.xp = calculateXp(encounter);
             encounter.lootValue = calculateLootValue(encounter);
             encounter.CR = crService.calculateCR(encounter);
             removeItemsWithZeroAmount(encounter);
-            $cacheFactory.get('$http').put('/api/encounter/' + encounter._id, {encounter: encounter});
-            $http.post('/api/update-encounter', { encounter: encounter })
-                .success(function (response) {
-                    if (response._id) {
-                        encounter._id = response._id;
-                    }
-                    if (response.error) {
-                        console.log(error);
-                    }
-                })
-                .error(function (response) {
-                    console.log("post of encounter failed !");
-                });
+            encounter.$save();
         };
 
         service.get = function (id, callback) {
-            $http.get('/api/encounter/' + id, {cache: true})
-                .success(function (data) {
-                    callback(data.error, data.encounter);
-                })
-                .error(function (error) {
-                    callback(error, null);
-                });
+            EncounterResource.get({id: id}, function (encounter) {
+                callback(null, encounter);
+            }, function (error) {
+                callback(error, null);
+            });
         };
 
         service.getMultiple = function (ids, callback) {
-            function pushTask(id) {
-                tasks.push(function (taskCallback) {
-                        $http.get('/api/encounter/' + id, {cache: true})
-                            .success(function (data) {
-                                taskCallback(null, data.encounter);
-                            })
-                            .error(function (error) {
-                                taskCallback(error, null);
-                            });
-                    }
-                );
-            }
-
-            var tasks = [];
-            for (var i in ids) {
-                pushTask(ids[i]);
-            }
-            window.async.parallel(tasks, function (error, results) {
-                callback(error, results);
-            });
+            EncounterResource.getMultiple(ids,callback);
         };
 
         service.updateUserContent = function (encounter) {
@@ -159,7 +108,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                     continue;
                 }
                 (function (monster, monsterId) {
-                    userMonsterService.get(monsterId, function (error, newMonster) {
+                    userResourceService["user-monster"].get({id: monsterId}, function (newMonster) {
                         newMonster = templateService.createTemplatedMonster(newMonster);
                         if (newMonster) {
                             monster.Name = newMonster.Name;
@@ -187,7 +136,7 @@ DEMONSQUID.encounterBuilderServices.factory('encounterService', ['$timeout', '$h
                     continue;
                 }
                 (function (npc, npcId) {
-                    userNpcService.get(npcId, function (error, newNpc) {
+                    userResourceService["user-npc"].get({id: npcId}, function (newNpc) {
                         if (newNpc) {
                             npc.Name = newNpc.Name;
                             npc.XP = newNpc.XP;

@@ -2,21 +2,21 @@
 
 .row.heading.result-heading
     .col-xxs-8.col-xs-8.col-lg-9.name-container
-        h2.t-title.t-title-result {{userMonster.Name}}
-        small Source: {{userMonster.Source}}
+        h2.t-title.t-title-result {{userResource.Name}}
+        small Source: {{userResource.Source}}
     .col-xxs-4.col-xs-4.col-lg-3.cr-container
         h3.t-title CR
-            | &nbsp;{{userMonster.CR | numberToFractionString}}
+            | &nbsp;{{userResource.CR | numberToFractionString}}
         strong XP
-        | &nbsp;{{userMonster.XP}}
-        .row.btn-container
+        | &nbsp;{{userResource.XP}}
+        .row.btn-container(ng-show="showButtons")
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy',ng-click='copyMonster()')
                 i.icon.fa.fa-copy
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Advance', ng-click='templateControlsCollapsed = !templateControlsCollapsed')
                 i.icon.fa.fa-flash
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Edit', ng-click="editUserMonster()")
                 i.icon.fa.fa-edit
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete', on-confirm="deleteUserMonster()", confirm-click="Are you sure ?", confirm-title="Delete monster")
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete', on-confirm="delete()", confirm-click="Are you sure ?", confirm-title="Delete monster")
                 i.icon.fa.fa-trash-o
 .row.template-controls(collapse="templateControlsCollapsed")
     .col-xs-12.col-sm-6
@@ -25,16 +25,16 @@
                 div(class="control-group")
                     div(class="controls")
                         label.is-pointer(class="checkbox")
-                            input(type="checkbox", ng-model="userMonster.templates.advanced")
+                            input(type="checkbox", ng-model="userResource.templates.advanced")
                             | Advanced (CR +1)
-                        label.is-pointer(class="checkbox", ng-class='{"t-disabled": userMonster.templates.giant}')
-                            input(type="checkbox", ng-model="userMonster.templates.young", ng-disabled="userMonster.templates.giant")
+                        label.is-pointer(class="checkbox", ng-class='{"t-disabled": userResource.templates.giant}')
+                            input(type="checkbox", ng-model="userResource.templates.young", ng-disabled="userResource.templates.giant")
                             | Young (CR -1)
-                        label.is-pointer(class="checkbox", ng-class='{"t-disabled": userMonster.templates.young}')
-                            input(type="checkbox", ng-model="userMonster.templates.giant", ng-disabled="userMonster.templates.young")
+                        label.is-pointer(class="checkbox", ng-class='{"t-disabled": userResource.templates.young}')
+                            input(type="checkbox", ng-model="userResource.templates.giant", ng-disabled="userResource.templates.young")
                             | Giant (CR +1)
                         label.is-pointer(class="checkbox")
-                            input(type="checkbox", ng-model="userMonster.templates.augmented")
+                            input(type="checkbox", ng-model="userResource.templates.augmented")
                             | Augmented
     .col-xs-12.col-sm-6
         .pull-right
@@ -44,45 +44,45 @@
             fieldset
                 div(class="control-group")
                     div(class="controls")
-                        label.is-pointer(class="checkbox", ng-class='{"t-disabled": userMonster.templates.fiendish||userMonster.templates.entropic||userMonster.templates.resolute}')
-                            input(type="checkbox" ng-model="userMonster.templates.celestial" ng-disabled="userMonster.templates.fiendish||userMonster.templates.entropic||userMonster.templates.resolute")
+                        label.is-pointer(class="checkbox", ng-class='{"t-disabled": userResource.templates.fiendish||userResource.templates.entropic||userResource.templates.resolute}')
+                            input(type="checkbox" ng-model="userResource.templates.celestial" ng-disabled="userResource.templates.fiendish||userResource.templates.entropic||userResource.templates.resolute")
                             | Celestial (CR +0 +1)
-                        label.is-pointer(class="checkbox", ng-class='{"t-disabled": userMonster.templates.celestial||userMonster.templates.entropic||userMonster.templates.resolute}')
-                            input(type="checkbox" ng-model="userMonster.templates.fiendish" ng-disabled="userMonster.templates.celestial||userMonster.templates.entropic||userMonster.templates.resolute")
+                        label.is-pointer(class="checkbox", ng-class='{"t-disabled": userResource.templates.celestial||userResource.templates.entropic||userResource.templates.resolute}')
+                            input(type="checkbox" ng-model="userResource.templates.fiendish" ng-disabled="userResource.templates.celestial||userResource.templates.entropic||userResource.templates.resolute")
                             | Fiendish (CR +0 or +1)
-                        label.is-pointer(class="checkbox", ng-class='{"t-disabled": userMonster.templates.fiendish||userMonster.templates.celestial||userMonster.templates.resolute}')
-                            input(type="checkbox" ng-model="userMonster.templates.entropic" ng-disabled="userMonster.templates.fiendish||userMonster.templates.celestial||userMonster.templates.resolute")
+                        label.is-pointer(class="checkbox", ng-class='{"t-disabled": userResource.templates.fiendish||userResource.templates.celestial||userResource.templates.resolute}')
+                            input(type="checkbox" ng-model="userResource.templates.entropic" ng-disabled="userResource.templates.fiendish||userResource.templates.celestial||userResource.templates.resolute")
                             | Entropic (CR +0 +1)
-                        label.is-pointer(class="checkbox", ng-class='{"t-disabled": userMonster.templates.fiendish||userMonster.templates.entropic||userMonster.templates.celestial}')
-                            input(type="checkbox" ng-model="userMonster.templates.resolute" ng-disabled="userMonster.templates.fiendish||userMonster.templates.entropic||userMonster.templates.celestial")
+                        label.is-pointer(class="checkbox", ng-class='{"t-disabled": userResource.templates.fiendish||userResource.templates.entropic||userResource.templates.celestial}')
+                            input(type="checkbox" ng-model="userResource.templates.resolute" ng-disabled="userResource.templates.fiendish||userResource.templates.entropic||userResource.templates.celestial")
                             | Resolute (CR +0 or +1)
 .row.l-section.result-content
     .col-xs-12.cat
-        p.intro.underlined {{userMonster.Description_Visual}}
+        p.intro.underlined {{userResource.Description_Visual}}
         ul.list-inline
             li
                 span
                     strong XP
-                    | &nbsp;{{userMonster.XP}}
-            li(ng-if="userMonster.Gender||userMonster.Race||userMonster.ClassesString")
-                span {{userMonster.Gender}} {{userMonster.Race}} {{userMonster.ClassesString}}
+                    | &nbsp;{{userResource.XP}}
+            li(ng-if="userResource.Gender||userResource.Race||userResource.ClassesString")
+                span {{userResource.Gender}} {{userResource.Race}} {{userResource.ClassesString}}
             li
                 span
-                    strong {{userMonster.Alignment}}
-                    | &nbsp;{{userMonster.Size}} {{userMonster.Type}} {{userMonster.SubType}}
+                    strong {{userResource.Alignment}}
+                    | &nbsp;{{userResource.Size}} {{userResource.Type}} {{userResource.SubType}}
             li
                 span
                     strong Init
-                    | &nbsp;{{userMonster.Init}}
+                    | &nbsp;{{userResource.Init}}
             li
                 span
                     strong Senses
-                    | &nbsp;{{userMonster.Senses}}
-        ul.list-inline(ng-if="userMonster.Aura")
+                    | &nbsp;{{userResource.Senses}}
+        ul.list-inline(ng-if="userResource.Aura")
             li
                 span
                     strong Aura
-                    | &nbsp;{{userMonster.Aura}}
+                    | &nbsp;{{userResource.Aura}}
     .col-xs-12
         .row
             .col-lg-6.cat.decor
@@ -91,36 +91,36 @@
                     li
                         span
                             strong SPD
-                            | &nbsp;{{userMonster.Speed}}
-                    li(ng-if="userMonster.Melee")
+                            | &nbsp;{{userResource.Speed}}
+                    li(ng-if="userResource.Melee")
                         span
                             strong Melee
-                            | &nbsp;{{userMonster.Melee}}
-                    li(ng-if="userMonster.Ranged")
+                            | &nbsp;{{userResource.Melee}}
+                    li(ng-if="userResource.Ranged")
                         span
                             strong Ranged
-                            | &nbsp;{{userMonster.Ranged}}
+                            | &nbsp;{{userResource.Ranged}}
                     li
                         span
                             strong Space
-                            | &nbsp;{{userMonster.Space}}
+                            | &nbsp;{{userResource.Space}}
                             | &nbsp;
                         span
                             strong Reach
-                            | &nbsp;{{userMonster.Reach}}
-                    li(ng-if='userMonster.SpecialAttacks')
+                            | &nbsp;{{userResource.Reach}}
+                    li(ng-if='userResource.SpecialAttacks')
                         span
                             strong Special Attacks
-                            | &nbsp;{{userMonster.SpecialAttacks}};
-                    li(ng-if='userMonster.SpellsKnown')
-                        spell-list(spell-string="{{userMonster.SpellsKnown}}")
-                    li(ng-if='userMonster.Bloodline')
+                            | &nbsp;{{userResource.SpecialAttacks}};
+                    li(ng-if='userResource.SpellsKnown')
+                        spell-list(spell-string="{{userResource.SpellsKnown}}")
+                    li(ng-if='userResource.Bloodline')
                         span
                             strong Bloodline
-                            | &nbsp;{{userMonster.Bloodline}}
-                    li(ng-if='userMonster.SpellsPrepared')
-                        spell-list(spell-string="{{userMonster.SpellsPrepared}}" )
-                    li(ng-bind-html='userMonster.SpellLikeAbilities|toTrustedHtml' ,linkify='userMonster.SpellLikeAbilities',linkify-type="spell", mythic="userMonster.Mythic")
+                            | &nbsp;{{userResource.Bloodline}}
+                    li(ng-if='userResource.SpellsPrepared')
+                        spell-list(spell-string="{{userResource.SpellsPrepared}}" )
+                    li(ng-bind-html='userResource.SpellLikeAbilities|toTrustedHtml' ,linkify='userResource.SpellLikeAbilities',linkify-type="spell", mythic="userResource.Mythic")
             .col-lg-6.cat.decor
                 legend.t-legend.t-title Defense
                 ul.list-unstyled
@@ -128,41 +128,41 @@
                         span
                             strong
                                 abbr(title='Armor Class') AC
-                            | &nbsp;{{userMonster.AC}}; {{userMonster.AC_Mods}}
+                            | &nbsp;{{userResource.AC}}; {{userResource.AC_Mods}}
                     li
                         span
                             strong HP
-                            | &nbsp;{{userMonster.HP}} {{userMonster.HD}}
+                            | &nbsp;{{userResource.HP}} {{userResource.HD}}
                     li
                         span
                             strong Fort
-                            | &nbsp;{{userMonster.Fort}},
+                            | &nbsp;{{userResource.Fort}},
                         span
                             strong Ref
-                            | &nbsp;{{userMonster.Ref}},
+                            | &nbsp;{{userResource.Ref}},
                         span
                             strong Will
-                            | &nbsp;{{userMonster.Will}}
-                    li(ng-if='userMonster.DR')
+                            | &nbsp;{{userResource.Will}}
+                    li(ng-if='userResource.DR')
                         span
                             strong DR
-                            | &nbsp;{{userMonster.DR}};
-                    li(ng-if='userMonster.Immune')
+                            | &nbsp;{{userResource.DR}};
+                    li(ng-if='userResource.Immune')
                         span
                             strong Immune
-                            | &nbsp;{{userMonster.Immune}};
-                    li(ng-if='userMonster.Resist')
+                            | &nbsp;{{userResource.Immune}};
+                    li(ng-if='userResource.Resist')
                         span
                             strong Resist
-                            | &nbsp;{{userMonster.Resist}};
-                    li(ng-if='userMonster.Weaknesses')
+                            | &nbsp;{{userResource.Resist}};
+                    li(ng-if='userResource.Weaknesses')
                         span
                             strong Weaknesses
-                            | &nbsp;{{userMonster.Weaknesses}};
-                    li(ng-if='userMonster.SR')
+                            | &nbsp;{{userResource.Weaknesses}};
+                    li(ng-if='userResource.SR')
                         span
                             strong SR
-                            | &nbsp;{{userMonster.SR}}
+                            | &nbsp;{{userResource.SR}}
             .col-xs-12
         .row
             .col-lg-6.cat.decor
@@ -171,71 +171,71 @@
                     li
                         span
                             strong Str
-                            | &nbsp;{{userMonster.Str}},
+                            | &nbsp;{{userResource.Str}},
                         span
                             strong Dex
-                            | &nbsp;{{userMonster.Dex}},
+                            | &nbsp;{{userResource.Dex}},
                         span
                             strong Con
-                            | &nbsp;{{userMonster.Con}},
+                            | &nbsp;{{userResource.Con}},
                         span
                             strong Int
-                            | &nbsp;{{userMonster.Int}},
+                            | &nbsp;{{userResource.Int}},
                         span
                             strong Wis
-                            | &nbsp;{{userMonster.Wis}},
+                            | &nbsp;{{userResource.Wis}},
                         span
                             strong Cha
-                            | &nbsp;{{userMonster.Cha}}
+                            | &nbsp;{{userResource.Cha}}
                     li
                         span
                             strong Base Atk
-                            | &nbsp;{{userMonster.BaseAtk}};
+                            | &nbsp;{{userResource.BaseAtk}};
                         span
                             strong CMB
-                            | &nbsp;{{userMonster.CMB}};
+                            | &nbsp;{{userResource.CMB}};
                         span
                             strong CMD
-                            | &nbsp;{{userMonster.CMD}}
-                    li(ng-if='userMonster.Feats')
+                            | &nbsp;{{userResource.CMD}}
+                    li(ng-if='userResource.Feats')
                         span
                             strong Feats&nbsp;
-                            span(linkify="userMonster.Feats",linkify-type="feat", mythic="userMonster.Mythic")
-                    li(ng-if='userMonster.Skills || userMonster.RacialMods')
-                        span(ng-if='userMonster.Skills')
+                            span(linkify="userResource.Feats",linkify-type="feat", mythic="userResource.Mythic")
+                    li(ng-if='userResource.Skills || userResource.RacialMods')
+                        span(ng-if='userResource.Skills')
                             strong Skills
-                            | &nbsp;{{userMonster.Skills}}
-                        span(ng-if='userMonster.RacialMods')
+                            | &nbsp;{{userResource.Skills}}
+                        span(ng-if='userResource.RacialMods')
                             strong Racial Modifiers
-                            | &nbsp;{{userMonster.RacialMods}}
-                    li(ng-if='userMonster.Languages')
+                            | &nbsp;{{userResource.RacialMods}}
+                    li(ng-if='userResource.Languages')
                         span
                             strong Languages
-                            | &nbsp;{{userMonster.Languages}}
-                    li(ng-if='userMonster.SQ')
+                            | &nbsp;{{userResource.Languages}}
+                    li(ng-if='userResource.SQ')
                         span
                             strong SQ
-                            | &nbsp;{{userMonster.SQ}}
-            .col-lg-6.cat.decor(ng-if='userMonster.Environment || userMonster.Organization || userMonster.Treasure')
+                            | &nbsp;{{userResource.SQ}}
+            .col-lg-6.cat.decor(ng-if='userResource.Environment || userResource.Organization || userResource.Treasure')
                 div
                     legend.t-legend.t-title Ecology
                 div
                     ul.list-unstyled
-                        li(ng-if='userMonster.Environment')
+                        li(ng-if='userResource.Environment')
                             span
                                 strong Environment
-                                | &nbsp;{{userMonster.Environment}}
-                        li(ng-if='userMonster.Organization')
+                                | &nbsp;{{userResource.Environment}}
+                        li(ng-if='userResource.Organization')
                             span
                                 strong Organization
-                                | &nbsp;{{userMonster.Organization}}
-                        li(ng-if='userMonster.Treasure')
+                                | &nbsp;{{userResource.Organization}}
+                        li(ng-if='userResource.Treasure')
                             span
                                 strong Treasure
-                                | &nbsp;{{userMonster.Treasure}}
-    .col-xs-12.cat.decor(ng-if='userMonster.SpecialAbilities')
+                                | &nbsp;{{userResource.Treasure}}
+    .col-xs-12.cat.decor(ng-if='userResource.SpecialAbilities')
         legend.cat-heading.t-legend.t-title Special Abilities
-        span.cat-content(ng-bind-html='userMonster.SpecialAbilities | toTrustedHtml')
-    .col-xs-12.cat.decor(ng-if='userMonster.Description')
+        span.cat-content(ng-bind-html='userResource.SpecialAbilities | toTrustedHtml')
+    .col-xs-12.cat.decor(ng-if='userResource.Description')
         legend.cat-heading.t-legend.t-title Description
-        span.cat-content(ng-bind-html='userMonster.Description | toTrustedHtml')
+        span.cat-content(ng-bind-html='userResource.Description | toTrustedHtml')

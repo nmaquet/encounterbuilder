@@ -9,17 +9,27 @@ var async = require("async");
 var crypto = require('crypto');
 var uuid = require('node-uuid');
 var ObjectID = require('mongodb').ObjectID;
+var fs = require('fs');
+var _ = require('lodash');
 
 var userCollection = null;
 var contentTreeCollection = null;
 var encounterCollection = null;
 var favouritesCollection = null;
 var userTextCollection = null;
+var userFeatCollection = null;
+var userSpellCollection = null;
 var userMonsterCollection = null;
 var userNpcCollection = null;
+var userIllustrationCollection = null;
+var userItemCollection = null;
+var userMapCollection = null;
+var chroniclesCollection = null;
 var sesService = null;
 
 var escapeRegExp = require('./utils')().escapeRegExp;
+
+var traverse = require('traverse');
 
 function caseInsensitive(string) {
     return new RegExp("^" + escapeRegExp(string) + "$", "i");
@@ -105,23 +115,35 @@ function register(fields, callback) {
                     continue;
                 user[property] = fields[property];
             }
+            //FIXME use real demo chronicle
+            var chronicle = require('../scripts/live/chronicles/Legacy of the Hollow Peak.json');
             userCollection.insert(user, function (error, result) {
                 if (error) {
                     return callback(error);
                 }
-                contentTreeCollection.insert({ username: user.username, contentTree: [] }, function (error) {
+                importChronicle(user.username, chronicle, function (error) {
                     if (error) {
                         return callback(error);
                     }
-                    favouritesCollection.insert({ username: user.username, favourites: [] }, function (error) {
+                    chroniclesCollection.insert({ userId: result[0]._id, name: "new Chronicle", contentTree: [] }, function (error) {
                         if (error) {
                             return callback(error);
                         }
-                        sesService.sendConfirmationEmail(user, function (error) {
+                        favouritesCollection.insert({ username: user.username, favourites: [] }, function (error) {
                             if (error) {
-                                return callback(new Error('SENDING_EMAIL_FAILED'));
+                                return callback(error);
                             }
-                            callback(error, result[0]);
+                            if (sesService) {
+                                sesService.sendConfirmationEmail(user, function (error) {
+                                    if (error) {
+                                        return callback(new Error('SENDING_EMAIL_FAILED'));
+                                    }
+                                    callback(error, result[0]);
+                                });
+                            } else {
+                                console.log("WARNING: not sending a confirmation email.");
+                                callback(error, result[0]);
+                            }
                         });
                     });
                 });
@@ -175,33 +197,8 @@ function update(username, fields, callback) {
             if (!fields.username) {
                 return callback(null);
             }
-            contentTreeCollection.update({username: username}, {$set: {username: fields.username} }, function (error) {
-                if (error) {
-                    return callback(error);
-                }
-                favouritesCollection.update({username: username}, {$set: {username: fields.username} }, function (error) {
-                    if (error) {
-                        return callback(error);
-                    }
-                    encounterCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi: true}, function (error) {
-                        if (error) {
-                            return callback(error);
-                        }
-                        userTextCollection.update({username: username}, {$set: {username: fields.username} }, {multi: true}, function (error) {
-                            if (error) {
-                                return callback(error);
-                            }
-                            userMonsterCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi: true}, function (error) {
-                                if (error) {
-                                    return callback(error);
-                                }
-                                userNpcCollection.update({Username: username}, {$set: {Username: fields.username} }, {multi: true}, function (error) {
-                                    return callback(error, modifiedUser);
-                                })
-                            })
-                        })
-                    });
-                });
+            favouritesCollection.update({username: username}, {$set: {username: fields.username} }, function (error) {
+                return callback(error, modifiedUser);
             });
         });
     });
@@ -226,6 +223,161 @@ function updatePassword(username, password, callback) {
     });
 }
 
+
+function listChronicles(username, callback) {
+    userCollection.findOne({username: username},
+        function (error, user) {
+            if (error) {
+                return callback(new Error("UNKNOWN_USER"));
+            }
+            chroniclesCollection.find({userId: user._id}, {fields: {_id: 1, name: 1}}).toArray(callback);
+        });
+}
+function importChronicleAll(chronicle, callback) {
+    userCollection.find({}).toArray(function (error, userArray) {
+        var tasks = _.map(userArray, function (user) {
+            return function (next) {
+                console.log(user.username);
+                importChronicle(user.username, _.cloneDeep(chronicle), function (error) {
+                    if (error) {
+                        console.log(error);
+                    }
+                    console.log("import chronicle finished for user: " + user.username);
+                    next();
+                });
+            }
+        });
+        async.series(tasks, callback);
+    });
+}
+function importChronicle(username, chronicle, callback) {
+    var user = null;
+    var requestPending = 0;
+    var userResourceCollections = {
+        "user-feat": userFeatCollection,
+        "user-illustration": userIllustrationCollection,
+        "user-map": userMapCollection,
+        "user-spell": userSpellCollection,
+        "user-item": userItemCollection,
+        "user-monster": userMonsterCollection,
+        "user-npc": userNpcCollection,
+        "user-text": userTextCollection,
+        "encounter": encounterCollection
+    };
+
+    function insertChronicle() {
+        var newChronicle = {};
+        newChronicle.lastModified = new Date().toISOString();
+        newChronicle.name = chronicle.name;
+        newChronicle.userId = user._id;
+        newChronicle.contentTree = chronicle.contentTree;
+        newChronicle.synopsis = chronicle.synopsis;
+        chroniclesCollection.insert(newChronicle, function (error) {
+            callback(error);
+        });
+    }
+
+    function insertUserResource(x) {
+        requestPending++;
+        x.userResource.userId = user._id;
+        userResourceCollections[x.resourceType].insert(x.userResource, function (error, newResource) {
+            if (error) {
+                callback(error);
+            }
+            x.userResourceId = newResource[0]._id.toString();
+            delete x.userResource;
+            requestPending--;
+            if (requestPending === 0) {
+                insertChronicle();
+            }
+        });
+    }
+
+    userCollection.findOne({username: username},
+        function (error, data) {
+            if (error) {
+                console.log(error);
+                return callback(new Error("UNKNOWN_USER"));
+            }
+            user = data;
+            var traverse = require('traverse');
+            traverse(chronicle.contentTree).forEach(function (x) {
+                if (!x) {
+                    return;
+                }
+                if (!x.folder) {
+                    if (x.resourceType) {
+                        insertUserResource(x);
+                    }
+                }
+            });
+        });
+}
+
+function exportChronicle(chronicleId, callback) {
+    var requestPending = 0;
+    var chronicle = null;
+    var userResourceCollections = {
+        "user-feat": userFeatCollection,
+        "user-illustration": userIllustrationCollection,
+        "user-map": userMapCollection,
+        "user-spell": userSpellCollection,
+        "user-item": userItemCollection,
+        "user-monster": userMonsterCollection,
+        "user-npc": userNpcCollection,
+        "user-text": userTextCollection,
+        "encounter": encounterCollection
+    };
+
+
+    function fetchAndAddUserResource(x) {
+        requestPending++;
+        userResourceCollections[x.resourceType].findOne({_id: ObjectID(x.userResourceId)}, function (error, userResource) {
+            if (error) {
+                callback(error);
+            }
+            if (!userResource) {
+
+                console.log("couldn't find user resource for x: ");
+                console.log(x);
+                requestPending--;
+                if (requestPending === 0) {
+                    callback(null, chronicle);
+                }
+                return;
+            }
+            x.resourceType = x.resourceType;
+            delete x.userResourceId;
+            delete userResource._id;
+            delete userResource.userId;
+            x.userResource = userResource;
+            requestPending--;
+            if (requestPending === 0) {
+                callback(null, chronicle);
+            }
+        });
+    }
+
+    chroniclesCollection.findOne({_id: ObjectID(chronicleId)}, function (error, data) {
+        if (error) {
+            return callback(error, null);
+        }
+        chronicle = data;
+        delete chronicle.userId;
+        delete chronicle._id;
+        if (chronicle.contentTree.length === 0) {
+            callback(null, chronicle);
+        }
+        traverse(chronicle.contentTree).forEach(function (x) {
+            if (!x.folder) {
+                if (x.userResourceId) {
+                    fetchAndAddUserResource(x);
+                }
+            }
+        });
+    });
+}
+
 function remove(username, callback) {
     async.series([
         userCollection.remove.bind(userCollection, {username: username}),
@@ -247,7 +399,12 @@ module.exports = function (database, sesService_) {
     userMonsterCollection = database.collection("usermonsters");
     userTextCollection = database.collection("usertexts");
     userNpcCollection = database.collection("usernpcs");
-
+    userFeatCollection = database.collection("userfeats");
+    userSpellCollection = database.collection("userspells");
+    userIllustrationCollection = database.collection("userillustrations");
+    userMapCollection = database.collection("usermaps");
+    userItemCollection = database.collection("useritems");
+    chroniclesCollection = database.collection("chronicles");
     sesService = sesService_;
 
     return {
@@ -259,6 +416,10 @@ module.exports = function (database, sesService_) {
         authenticate: authenticate,
         toArray: toArray,
         updatePassword: updatePassword,
-        remove: remove
+        remove: remove,
+        listChronicles: listChronicles,
+        exportChronicle: exportChronicle,
+        importChronicle: importChronicle,
+        importChronicleAll: importChronicleAll
     }
 };

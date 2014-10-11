@@ -82,9 +82,9 @@ function resetMonster(callback) {
                 callback(error, null);
             }
             monsters = JSON.parse(monsters);
-            if (process.env.USE_TEST_DB) {
-                monsters = monsters.splice(0, 300);
-            }
+//            if (process.env.USE_TEST_DB) {
+//                monsters = monsters.splice(0, 300);
+//            }
             for (var monster in monsters) {
 
                 monsters[monster].CR = Number(eval(monsters[monster].CR));
@@ -114,9 +114,9 @@ function resetNpcs(callback) {
                 callback(error, null);
             }
             npcs = JSON.parse(npcs);
-            if (process.env.USE_TEST_DB) {
-                npcs = npcs.splice(0, 300);
-            }
+//            if (process.env.USE_TEST_DB) {
+//                npcs = npcs.splice(0, 300);
+//            }
             for (var npc in npcs) {
                 npcs[npc].CR = Number(eval(npcs[npc].CR));
                 npcs[npc].id = generateId(npcs[npc].Name, npc_ids);
@@ -144,9 +144,9 @@ function resetSpells(callback) {
                 callback(error, null);
             }
             spells = JSON.parse(spells);
-            if (process.env.USE_TEST_DB) {
-                spells = spells.splice(0, 300);
-            }
+//            if (process.env.USE_TEST_DB) {
+//                spells = spells.splice(0, 300);
+//            }
             for (var spell in spells) {
                 spells[spell].id = generateId(spells[spell].name, spell_ids);
             }
@@ -173,9 +173,9 @@ function resetFeats(callback) {
                 callback(error, null);
             }
             feats = JSON.parse(feats);
-            if (process.env.USE_TEST_DB) {
-                feats = feats.splice(0, 300);
-            }
+//            if (process.env.USE_TEST_DB) {
+//                feats = feats.splice(0, 300);
+//            }
             for (var feat in feats) {
                 feats[feat].id = generateId(idifyFeat(feats[feat]), feat_ids);
             }
@@ -206,9 +206,9 @@ function resetMagicItems(callback) {
         for (var i in filenames) {
             var items = fs.readFileSync(filenames[i], 'utf8');
             items = JSON.parse(items);
-            if (process.env.USE_TEST_DB) {
-                items = items.splice(0, 300);
-            }
+//            if (process.env.USE_TEST_DB) {
+//                items = items.splice(0, 300);
+//            }
             for (var item in items) {
                 items[item].id = items[item].id || generateId(items[item].Name, magic_item_ids);
                 items[item].Enchanted = items[item].Enchanted || false;

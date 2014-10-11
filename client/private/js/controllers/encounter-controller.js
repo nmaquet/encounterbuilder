@@ -3,15 +3,16 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
-    ['$rootScope', '$scope', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService', 'contentTreeService', 'locationService',
-        function ($rootScope, $scope, $timeout, $routeParams, encounterService, lootService, encounterEditorService, contentTreeService, locationService) {
-
-            $scope.encounterChanged = function () {
-                if ($scope.encounter) {
-                    encounterService.encounterChanged($scope.encounter);
-                    contentTreeService.changeEncounter($scope.encounter);
+    ['$rootScope', '$scope', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService', 'contentTreeService', 'locationService', 'throttle',
+        function ($rootScope, $scope, $timeout, $routeParams, encounterService, lootService, encounterEditorService, contentTreeService, locationService, throttle) {
+            $scope.showButtons = true;
+            $scope.editable = true;
+            $scope.encounterChanged = throttle(function () {
+                if ($scope.userResource) {
+                    encounterService.encounterChanged($scope.userResource);
+                    contentTreeService.changeEncounter($scope.userResource);
                 }
-            };
+            }, 500);
 
             $scope.pending = true;
             encounterService.get($routeParams.encounterId, function (error, encounter) {
@@ -20,9 +21,9 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
                     console.log(error);
                 }
                 else {
-                    $scope.encounter = encounterEditorService.encounter = encounter;
-                    encounterService.updateUserContent($scope.encounter);
-                    $rootScope.globalTitle = "Chronicle Forge - " + $scope.encounter.Name;
+                    $scope.userResource = encounterEditorService.encounter = encounter;
+                    encounterService.updateUserContent($scope.userResource);
+                    $rootScope.globalTitle = "Chronicle Forge - " + $scope.userResource.Name;
                 }
             });
 
@@ -54,94 +55,92 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
 
             $scope.removeEncounter = function () {
                 $scope.startFade = function () {
-                    var index = encounterService.encounters.indexOf($scope.encounter);
-                    encounterService.encounters.splice(index, 1);
-                    encounterService.remove($scope.encounter);
-                    contentTreeService.removeEncounter($scope.encounter);
-                    $scope.go("/"); // FIXME: should go to the parent binder ?
+                    $scope.userResource.$delete();
+                    contentTreeService.removeEncounter($scope.userResource);
                 };
             };
 
             $scope.atLeastOneMonster = function () {
-                return ($scope.encounter !== undefined) && ($scope.encounter.Monsters !== undefined) && (Object.keys($scope.encounter.Monsters).length > 0);
+                return ($scope.userResource !== undefined) && ($scope.userResource.Monsters !== undefined) && (Object.keys($scope.userResource.Monsters).length > 0);
             };
 
             $scope.atLeastOneNpc = function () {
-                return ($scope.encounter !== undefined) && ($scope.encounter.Npcs !== undefined) && (Object.keys($scope.encounter.Npcs).length > 0);
+                return ($scope.userResource !== undefined) && ($scope.userResource.Npcs !== undefined) && (Object.keys($scope.userResource.Npcs).length > 0);
             };
 
 
             $scope.incrementMonster = function (monster) {
                 monster.amount++;
-                $scope.encounterChanged();
+                $scope.userResourceChanged();
             };
 
             $scope.decrementMonster = function (monster) {
                 if (monster.amount > 1) {
                     monster.amount--;
-                    $scope.encounterChanged();
+                    $scope.userResourceChanged();
                 }
             };
 
             $scope.removeMonsterById = function (monsterId) {
-                delete $scope.encounter.Monsters[monsterId];
-                $scope.encounterChanged();
+                delete $scope.userResource.Monsters[monsterId];
+                $scope.userResourceChanged();
             };
 
             $scope.removeNpcById = function (monsterId) {
-                delete $scope.encounter.Npcs[monsterId];
-                $scope.encounterChanged();
+                delete $scope.userResource.Npcs[monsterId];
+                $scope.userResourceChanged();
             };
 
             $scope.incrementItem = function (item) {
                 item.amount++;
-                $scope.encounterChanged();
+                $scope.userResourceChanged();
             };
 
             $scope.decrementItem = function (item) {
                 if (item.amount > 1) {
                     item.amount--;
-                    $scope.encounterChanged();
+                    $scope.userResourceChanged();
                 }
             };
 
             $scope.removeItemById = function (itemId) {
-                delete $scope.encounter.items[itemId];
-                $scope.encounterChanged();
+                delete $scope.userResource.items[itemId];
+                $scope.userResourceChanged();
             };
 
             $scope.printSelectedEncounter = function () {
-                $scope.go('/print-encounter/' + $scope.encounter._id);
+                $scope.go("/chronicle/" + $routeParams.chronicleId + '/print-encounter/' + $scope.userResource._id);
             };
 
             $scope.createFirstEncounter = function () {
                 /* FIXME: this is duplicated with encounter-list-controller */
                 var encounter = { Name: "Untitled #0", CR: "0", Monsters: {}, coins: {pp: 0, gp: 0, sp: 0, cp: 0}};
-                encounterService.encounters.unshift(encounter);
                 encounterService.encounterChanged(encounter);
             };
 
             $scope.$watch(function () {
                 return lootService.generatedLoot;
-            }, function () {
-                if ($scope.encounter && $scope.encounter._id === lootService.encounterId && lootService.generatedLoot) {
-                    $scope.encounter.coins = lootService.generatedLoot.coins;
-                    $scope.encounter.items = lootService.generatedLoot.items;
-                    encounterService.encounterChanged($scope.encounter);
+            }, function (newValue, oldValue) {
+                if (angular.equals(newValue, oldValue)) {
+                    return;
+                }
+                function itemArrayToItemsObject(items) {
+                    var result = {};
+                    for (var i in items) {
+                        result[items[i].id] = items[i];
+                    }
+                    return result;
+                }
+
+                if ($scope.userResource && $scope.userResource._id === lootService.encounterId && lootService.generatedLoot) {
+                    $scope.userResource.coins = lootService.generatedLoot.coins;
+                    $scope.userResource.items = itemArrayToItemsObject(lootService.generatedLoot.items);
+                    encounterService.encounterChanged($scope.userResource);
                 }
                 else {
                     lootService.generatedLoot = null;
                     lootService.encounterId = null;
                 }
             });
-
-//            $scope.randomizeLoot = function (encounter) {
-//                lootService.generateEncounterLoot(encounter, 'medium', function (coins, items) {
-//                    encounter.coins = coins;
-//                    encounter.items = items;
-//                    /* FIXME: this works, but makes a wasteful upsert */
-//                    encounterService.encounterChanged(encounter);
-//                });
-//            }
         }
     ]);

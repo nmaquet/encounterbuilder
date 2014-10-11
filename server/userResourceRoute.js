@@ -4,17 +4,20 @@
 
 module.exports = function (userCollection, baseCollection, ObjectID) {
 
-    function createEmptyResource (request, response) {
+    function createEmptyResource(request, response) {
         var sessionUserId = request.user._id;
         var resource = request.body || {};
         delete resource._id;
         resource.userId = ObjectID(sessionUserId);
+        resource.lastModified = new Date().toISOString();
         userCollection.insert(resource, function (error, newResourceArray) {
             if (error) {
                 response.json(500);
             }
             else {
-                response.json(newResourceArray[0]);
+                var newResource = newResourceArray[0];
+                response.setHeader("Location", request.path + "/" + newResource._id);
+                response.status(201).json(newResource);
             }
         });
     }
@@ -26,11 +29,11 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
         var sourceCollection, query;
         if (baseResourceId) {
             sourceCollection = baseCollection;
-            query =  {id: baseResourceId};
+            query = {id: baseResourceId};
         }
         else {
             sourceCollection = userCollection;
-            query =  {_id: ObjectID(userResourceId), userId: ObjectID(sessionUserId)};
+            query = {_id: ObjectID(userResourceId), userId: ObjectID(sessionUserId)};
         }
         sourceCollection.findOne(query, {id: 0, _id: 0}, function (error, baseResource) {
             if (error) {
@@ -40,12 +43,15 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
                 return response.send(404);
             }
             baseResource.userId = ObjectID(sessionUserId);
-            userCollection.insert(baseResource, function (error, userResources) {
+            baseResource.lastModified = new Date().toISOString();
+            userCollection.insert(baseResource, function (error, newResourceArray) {
                 if (error) {
                     response.send(500);
                 }
                 else {
-                    response.json(userResources[0]);
+                    var newResource = newResourceArray[0];
+                    response.setHeader("Location", request.path + "/" + newResource._id);
+                    response.status(201).json(newResource);
                 }
             });
         });
@@ -64,23 +70,45 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
                 }
             });
         },
-        updateResource: function (request, response) {
-            var sessionUserId = request.user._id;
-            var paramsResourceId = request.params.id;
-            var resource = request.body;
-            delete resource._id;
-            resource.userId = ObjectID(sessionUserId);
-            var selector = {_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)};
-            userCollection.findAndModify(selector, [], resource, {new:true}, function (error, modifiedResource) {
+        query: function (request, response) {
+            var options = {fields: {name: 1, _id: 1, synopsis: 1, lastModified: 1}};
+            userCollection.find({userId: ObjectID(request.user._id)}, options).toArray(function (error, data) {
                 if (error) {
-                    response.send(500);
+                    response.send(404);
                 }
                 else {
-                    response.json(modifiedResource);
+                    response.json(data);
                 }
             });
         },
-        createResource: function(request, response) {
+        updateResource: function (request, response) {
+            var sessionUserId = request.user._id;
+            var paramsResourceId = request.params.id;
+            var clientResource = request.body;
+            delete clientResource._id;
+            clientResource.userId = ObjectID(sessionUserId);
+            var selector = {_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)};
+            // FIXME: two requests is expensive!
+            userCollection.findOne({_id: ObjectID(paramsResourceId), userId: ObjectID(sessionUserId)}, function (error, dbResource) {
+                if (dbResource === null) {
+                    return response.send(404)
+                }
+                var timeDelta = Math.abs(new Date(dbResource.lastModified) - new Date(clientResource.lastModified));
+                if (timeDelta > 10 * 1000 /* 10 s */) {
+                    return response.status(409).json(dbResource);
+                }
+                clientResource.lastModified = new Date().toISOString();
+                userCollection.findAndModify(selector, [], clientResource, {new: true}, function (error, modifiedResource) {
+                    if (error) {
+                        response.send(500);
+                    }
+                    else {
+                        response.json(modifiedResource);
+                    }
+                });
+            });
+        },
+        createResource: function (request, response) {
             var baseResourceId = request.body.baseResourceId;
             var userResourceId = request.body.userResourceId;
             if (!baseResourceId && !userResourceId) {

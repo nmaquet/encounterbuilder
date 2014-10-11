@@ -3,8 +3,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
-    ['$scope', '$rootScope', '$http', '$timeout', '$routeParams', 'itemService', 'encounterService', 'encounterEditorService','locationService',
-        function ($scope, $rootScope, $http, $timeout, $routeParams, itemService, encounterService, encounterEditorService,locationService) {
+    ['$scope', '$rootScope', '$http', '$timeout', '$routeParams', 'itemService', 'encounterService', 'encounterEditorService', 'locationService',
+        function ($scope, $rootScope, $http, $timeout, $routeParams, itemService, encounterService, encounterEditorService, locationService) {
 
             var lastSearchParam = itemService.lastSearchParam();
 
@@ -56,7 +56,12 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
                 });
             }
 
-            $scope.$watch("currentPage", function () {
+            refreshItems();
+
+            $scope.$watch("currentPage", function (newValue, oldValue) {
+                if (angular.equals(newValue, oldValue)) {
+                    return;
+                }
                 if ($scope.currentPage < 9) {
                     $scope.maxSize = 5;
                 }
@@ -69,12 +74,18 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
                 refreshItems();
             });
 
-            $scope.$watchCollection("[sortOrder, group, slot, includeEnchanted]", function () {
+            $scope.$watchCollection("[sortOrder, group, slot, includeEnchanted]", function (newValue, oldValue) {
+                if (angular.equals(newValue, oldValue)) {
+                    return;
+                }
                 $scope.currentPage = 1;
                 refreshItems();
             });
 
-            $scope.$watch('itemNameSubstring', function (itemNameSubstring) {
+            $scope.$watch('itemNameSubstring', function (itemNameSubstring, oldValue) {
+                if (angular.equals(itemNameSubstring, oldValue)) {
+                    return;
+                }
                 $timeout(function () {
                     if (itemNameSubstring === $scope.itemNameSubstring) {
                         $scope.currentPage = 1;
@@ -83,7 +94,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchItemController',
                 }, 300);
             });
 
-            $scope.$watchCollection("[minCL, maxCL]", function (clRange) {
+            $scope.$watchCollection("[minCL, maxCL]", function (clRange, oldValue) {
+                if (angular.equals(clRange, oldValue)) {
+                    return;
+                }
                 $timeout(function () {
                     if (clRange[0] === $scope.minCL && clRange[1] === $scope.maxCL) {
                         $scope.currentPage = 1;

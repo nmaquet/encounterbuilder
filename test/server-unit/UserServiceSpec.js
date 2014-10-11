@@ -64,7 +64,7 @@ describe("userService", function() {
             if (error) {
                 return done(error);
             }
-            db.collection("contenttrees").remove({}, function(error){
+            db.collection("chronicles").remove({}, function(error){
                 if (error) {
                     return done(error);
                 }
@@ -441,34 +441,6 @@ describe("userService", function() {
             expect(error).to.equal(null);
             expect(results[1].username).to.equal("Bob");
             expect(results[1].favourites).to.deep.equal([]);
-            done();
-        });
-    });
-
-    it("should update the contenttree username if the username changes", function (done) {
-        async.series([
-            registerBob,
-            userService.update.bind(null, "Bob", {username: "William"}),
-            getContentTree.bind(null, db, "William")
-        ], function (error, results) {
-            expect(error).to.equal(null);
-            expect(results[2].username).to.equal("William");
-            done();
-        });
-    });
-
-    it("should update the encounters username if the username changes", function (done) {
-        async.series([
-            registerBob,
-            createEncounter.bind(null, db, "Bob"),
-            createEncounter.bind(null, db, "Bob"),
-            userService.update.bind(null, "Bob", {username: "William"}),
-            getEncounters.bind(null, db, "William")
-        ], function (error, results) {
-            expect(error).to.equal(null);
-            expect(results[4].length).to.equal(2);
-            expect(results[4][0].Username).to.equal("William");
-            expect(results[4][1].Username).to.equal("William");
             done();
         });
     });

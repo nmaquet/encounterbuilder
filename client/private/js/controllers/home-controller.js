@@ -13,14 +13,11 @@ DEMONSQUID.encounterBuilderControllers.controller('HomeController',
             }
         }
 
-        if (contentTreeService.contentTree()) {
+        if (contentTreeService.hasLoaded()) {
             redirect();
         }
         else {
-            console.log("expecting to redirect later");
-            contentTreeService.onLoadSuccess(function () {
-                redirect();
-            });
+            contentTreeService.onLoadSuccess(redirect);
         }
     }]
 );

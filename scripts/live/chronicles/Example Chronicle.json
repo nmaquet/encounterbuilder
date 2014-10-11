@@ -1,0 +1,96 @@
+{
+    "name": "Example Chronicle",
+    "contentTree": {
+        "expanded": true,
+        "key": "root_2",
+        "title": "root",
+        "children": [
+            {
+                "expanded": true,
+                "folder": true,
+                "key": "1",
+                "title": "new Binder",
+                "children": [
+                    {
+                        "key": "2",
+                        "title": "new Encounter",
+                        "data": {
+                            "resourceType": "encounter",
+                            "userResource": {
+                                "Name": "Test",
+                                "coins": {
+                                    "cp": 0,
+                                    "sp": 0,
+                                    "gp": 0,
+                                    "pp": 0
+                                },
+                                "uuid": "33e25d46-b0d6-4ed8-b709-e759a55e6e08",
+                                "xp": 0,
+                                "lootValue": 0,
+                                "CR": 0,
+                                "lastModified": "2014-09-19T09:37:11.818Z"
+                            }
+                        }
+                    },
+                    {
+                        "extraClasses": "fancytree-image",
+                        "key": "3",
+                        "title": "new Illustration",
+                        "data": {
+                            "resourceType": "user-illustration",
+                            "userResource": {
+                                "name": "new Illustration",
+                                "lastModified": "2014-09-19T09:37:03.436Z"
+                            }
+                        }
+                    },
+                    {
+                        "extraClasses": "fancytree-npc",
+                        "key": "4",
+                        "title": "new NPC",
+                        "data": {
+                            "resourceType": "user-npc",
+                            "userResource": {
+                                "Name": "new NPC",
+                                "XP": 0,
+                                "CR": 0,
+                                "lastModified": "2014-09-19T09:37:04.548Z"
+                            }
+                        }
+                    },
+                    {
+                        "extraClasses": "fancytree-spell",
+                        "key": "5",
+                        "title": "new Spell",
+                        "data": {
+                            "resourceType": "user-spell",
+                            "userResource": {
+                                "name": "new Spell",
+                                "lastModified": "2014-09-19T09:37:05.701Z"
+                            }
+                        }
+                    },
+                    {
+                        "extraClasses": "fancytree-monster",
+                        "key": "6",
+                        "title": "Test Monster",
+                        "data": {
+                            "resourceType": "user-monster",
+                            "userResource": {
+                                "Name": "Test Monster",
+                                "XP": 0,
+                                "CR": 0,
+                                "lastModified": "2014-09-19T09:37:23.248Z",
+                                "templates": {},
+                                "SpecialAbilities": "",
+                                "Description": ""
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "uuid": "ea94f008-8381-443a-a7a6-c31a1a1d8c3a",
+    "lastModified": "2014-09-19T09:37:27.950Z"
+}

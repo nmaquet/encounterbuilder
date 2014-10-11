@@ -3,8 +3,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('NpcDetailController',
-    ['$rootScope','$scope', '$sce', '$routeParams', 'npcService', 'favouriteService','contentTreeService',
-        function ($rootScope,$scope, $sce, $routeParams, npcService, favouriteService,contentTreeService) {
+    ['$rootScope', '$scope', '$sce', '$routeParams', 'npcService', 'favouriteService', 'contentTreeService',
+        function ($rootScope, $scope, $sce, $routeParams, npcService, favouriteService, contentTreeService) {
             $scope.pending = true;
             $scope.toggleFavourite = function () {
                 if ($scope.favourite) {
@@ -15,7 +15,7 @@ DEMONSQUID.encounterBuilderControllers.controller('NpcDetailController',
                 $scope.favourite = !$scope.favourite;
             };
             $scope.copyNpc = function () {
-                contentTreeService.copyUserNpc($scope.npc.id);
+                contentTreeService.copyResource($scope.npc.id, "user-npc");
             };
 
             npcService.get($routeParams.npcId || $routeParams.detailsId, function (error, npc) {

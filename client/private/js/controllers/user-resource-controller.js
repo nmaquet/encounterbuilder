@@ -7,7 +7,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserResourceController',
         function ($rootScope, $scope, $routeParams, userResourceService, contentTreeService, locationService) {
 
             var resourceType = locationService.getResourceType();
-
+            $scope.showButtons = false;
             $scope.delete = function () {
                 if ($scope.userResource) {
                     $scope.startFade = function () {
@@ -22,7 +22,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserResourceController',
 
             $scope.edit = function () {
                 if ($scope.userResource) {
-                    locationService.go("/edit-" + resourceType + "/" + ($routeParams.userResourceId || $routeParams.detailsId));
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/edit-" + resourceType + "/" + ($routeParams.userResourceId || $routeParams.detailsId));
                 }
             };
 
@@ -30,7 +30,9 @@ DEMONSQUID.encounterBuilderControllers.controller('UserResourceController',
                 contentTreeService.copyUserResource($scope.userResource._id, resourceType);
             };
 
-            $scope.userResource = userResourceService[resourceType].get({id: $routeParams.userResourceId || $routeParams.detailsId});
+            $scope.userResource = userResourceService[resourceType].get({id: $routeParams.userResourceId || $routeParams.detailsId}, function () {
+                $scope.showButtons = true;
+            });
 
             // FIXME: change title !
         }

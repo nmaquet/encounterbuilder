@@ -22,7 +22,7 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
                 });
             }
 
-            if (contentTreeService.contentTree()) {
+            if (contentTreeService.hasLoaded()) {
                 loadBinderChildren();
             }
             else {
@@ -37,31 +37,23 @@ DEMONSQUID.encounterBuilderControllers.controller('BinderController',
 
             $scope.selectLeaf = function (leaf) {
                 if (leaf.$type === 'binder') {
-                    $scope.go("/binder/" + leaf.nodeKey);
+                    $scope.go("/chronicle/" + $routeParams.chronicleId + "/binder/" + leaf.nodeKey);
                 }
                 else if (leaf.$type === 'encounter') {
-                    $scope.go("/encounter/" + leaf._id);
+                    $scope.go("/chronicle/" + $routeParams.chronicleId + "/encounter/" + leaf._id);
                 }
                 else if (leaf.$type === 'userText') {
-                    $scope.go("/user-text/" + leaf._id);
+                    $scope.go("/chronicle/" + $routeParams.chronicleId + "/user-text/" + leaf._id);
                 }
                 else if (leaf.$type === 'monster') {
-                    $scope.go("/user-monster/" + leaf._id);
+                    $scope.go("/chronicle/" + $routeParams.chronicleId + "/user-monster/" + leaf._id);
                 }
                 else if (leaf.$type === 'npc') {
-                    $scope.go("/user-npc/" + leaf._id);
+                    $scope.go("/chronicle/" + $routeParams.chronicleId + "/user-npc/" + leaf._id);
                 }
                 else {
-                    $scope.go("/" + leaf.$type + "/" + leaf._id);
+                    $scope.go("/chronicle/" + $routeParams.chronicleId + "/" + leaf.$type + "/" + leaf._id);
                 }
-            };
-
-            $scope.removeEncounter = function (encounter) {
-                $scope.startFade = function () {
-                    var index = $scope.leaves.indexOf(encounter);
-                    $scope.leaves.splice(index, 1);
-                    encounterService.remove(encounter);
-                };
             };
 
             $scope.binderChanged = function (optBinder) {

@@ -3,8 +3,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController',
-    ['$rootScope','$scope', '$sce', '$routeParams', 'monsterService', 'contentTreeService', 'favouriteService',
-        function ($rootScope,$scope, $sce, $routeParams, monsterService, contentTreeService,favouriteService) {
+    ['$rootScope', '$scope', '$sce', '$routeParams', 'monsterService', 'contentTreeService', 'favouriteService',
+        function ($rootScope, $scope, $sce, $routeParams, monsterService, contentTreeService, favouriteService) {
             $scope.pending = true;
             $scope.toggleFavourite = function () {
                 if ($scope.favourite) {
@@ -21,7 +21,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController',
                 } else {
                     $scope.monster = monster;
                     if ($routeParams.monsterId) {
-                        $rootScope.globalTitle = "Chronicle Forge - " + $scope.monster.Name;
+                        $rootScope.globalTitle = $scope.monster.Name + " - Chronicle Forge";
                     }
                     $scope.favourite = favouriteService.isFavourite(monster.id);
                     if ($scope.monster) {
@@ -32,7 +32,7 @@ DEMONSQUID.encounterBuilderControllers.controller('MonsterDetailController',
                 }
             });
             $scope.copyMonster = function () {
-                contentTreeService.copyUserMonster($scope.monster.id);
+                contentTreeService.copyResource($scope.monster.id, "user-monster");
             }
         }
     ]);

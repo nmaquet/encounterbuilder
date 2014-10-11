@@ -1,7 +1,7 @@
 // Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
 
 .row(ng-controller='ContentController')
-    .l-section.l-shadow.search-result.user-monster(ng-controller="EditUserTextController", ng-class="{'col-lg-6': !expanded,'col-lg-12':expanded}",fade-out="startFade", ng-hide="contentType && !viewport.lg")
+    .l-section.l-shadow.search-result.user-monster(ng-controller="EditUserResourceController", ng-class="{'col-lg-6': !expanded,'col-lg-12':expanded}",fade-out="startFade", ng-hide="contentType && !viewport.lg")
         include edit/_edit-user-text
     .col-lg-6
         include details/_right-details-pane
