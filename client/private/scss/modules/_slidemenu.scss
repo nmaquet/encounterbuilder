@@ -100,9 +100,6 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
   top: 0;
   //top: 60px;
   z-index: $zindex-slide-menu;
-  .sp-menu-content {
-    overflow-y: auto;
-  }
   .sp-menu-list {
     a {
       border-bottom: 1px solid $sp-menu-text-bg;
@@ -113,6 +110,9 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
 
 .sp-menu-vertical.sp-menu-right {
   width: $sp-menu-width;
+//  .sp-menu-content {
+//    overflow-y: auto;
+//  }
 }
 
 .sp-menu-horizontal {

@@ -1,29 +1,39 @@
 // Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
 
 section#left-sidebar.sp-menu.sp-menu-vertical.sp-menu-left.no-print(slide-menu,ng-controller='SidebarController')
-    div(ng-controller='LeftSidebarTabController')
-        .sp-menu-content
-            ul.nav.nav-tabs.text-center#search-tabs.search-tabs.icon-tabs.hidden-xs
-                li.col-third.tab-1
-                    a#campaignsTab.is-pointer(ng-click="selectTab('campaigns')", data-toggle="tab")
-                        i.icon.fa.fa-folder
-                        // span.tab-name Campaigns
-                li.col-third.tab-2
-                    a#favouritesTab.is-pointer(ng-click="selectTab('favourites')", data-toggle="tab")
-                        i.icon.fa.fa-heart
-                        // span.tab-name NPCs
-                li.col-third.tab-3
-                    a#databaseTab.is-pointer(ng-click="selectTab('database')", data-toggle="tab")
-                        i.icon.fa.fa-book
-                        // span.tab-name Databae
-            header.sp-menu-heading(ng-show="selectedTab === 'campaigns'")
+    .sp-menu-content(ng-controller='LeftSidebarTabController')
+        ul.nav.nav-tabs.text-center#search-tabs.search-tabs.icon-tabs.hidden-xs
+            li.col-third.tab-1
+                a#campaignsTab.is-pointer(ng-click="selectTab('campaigns')", data-toggle="tab")
+                    i.icon.fa.fa-folder
+                    // span.tab-name Campaigns
+            li.col-third.tab-2
+                a#favouritesTab.is-pointer(ng-click="selectTab('favourites')", data-toggle="tab")
+                    i.icon.fa.fa-heart
+                    // span.tab-name NPCs
+            li.col-third.tab-3
+                a#databaseTab.is-pointer(ng-click="selectTab('database')", data-toggle="tab")
+                    i.icon.fa.fa-book
+                    // span.tab-name Databae
+        // Heading
+        header.sp-menu-heading(ng-switch="selectedTab")
+            .favourites(ng-show="selectedTab==='favourites'")
+                h2.t-title Favourites
+            .creations(ng-switch-when="creations")
+                h2.t-title Creations
+            .database(ng-switch-when="database")
+                h2.t-title Database
+            .campaigns(ng-show="selectedTab === 'campaigns'")
                 h2(ng-hide="filter").t-title.is-pointer Library
                     i.search-icon.icon.fa.fa-search.pull-right(ng-click="toggleFilterInput()",ng-show="chronicleLoaded")
                 .sp-section.is-pointer(ng-show="filter")
                     input#filter-chronicle.form-control.sp-menu-input( type="search" name="search" placeholder="Filter...")
                     i#btnResetSearch.search-icon.input-icon.icon.fa.fa-times.pull-right(ng-click="toggleFilterInput()")
                 span#console
-                .dropdown.create-dropdown-container.is-pointer(ng-show="chronicleLoaded")
+        // Content
+        .sp-menu-result(ng-switch="selectedTab")
+            .campaigns.sticky-container(ng-show="selectedTab === 'campaigns'",sticky)
+                .dropdown.create-dropdown-container.sticky-header.is-pointer(ng-show="chronicleLoaded")
                     a#create-dropdown.create-dropdown.dropdown-toggle.col-xs-12(role='button', data-toggle='dropdown')
                         span.create-dropdown-name Create
                         i.icon.fa.fa-angle-down.square.white.pull-right
@@ -68,16 +78,13 @@ section#left-sidebar.sp-menu.sp-menu-vertical.sp-menu-left.no-print(slide-menu,n
                             a.create-dropdown-create.is-pointer(tabindex='-1', ng-click='createUserFeat()')
                                 i.icon.fa.fa-star
                                 strong &nbsp;Create new feat
-            .sp-menu-result(ng-switch="selectedTab")
-                .database(ng-switch-when="campaigns")
-                    .clearfix
+                .campaigns-content.scroll-content.sticky-scroll
                     content-tree
-                div(ng-show="selectedTab==='favourites'")
-                    h2.t-title Favourites
-                    .clearfix
-                    favourite-tree
-                div(ng-switch-when="creations")
-                    h2.t-title Creations
-                .database(ng-switch-when="database")
-                    h2.t-title Database
-                    include database/_database
+            .favourites(ng-show="selectedTab==='favourites'")
+                //h2.t-title Favourites
+                favourite-tree
+            .creations(ng-switch-when="creations")
+                //h2.t-title Creations
+            .database(ng-switch-when="database")
+                //h2.t-title Database
+                include database/_database

@@ -79,6 +79,7 @@ var jsFiles = [
     "client/private/js/directives/fade-in-fade-out.js",
     "client/private/js/directives/fade-out.js",
     "client/private/js/directives/slide-menu.js",
+    "client/private/js/directives/sticky.js",
     "client/private/js/directives/thumbnail.js",
     "client/private/js/filters/abbreviate-source.js",
     "client/private/js/filters/number-to-fraction-string.js",
