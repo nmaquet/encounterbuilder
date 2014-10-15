@@ -10,6 +10,7 @@ var crypto = require('crypto');
 var uuid = require('node-uuid');
 var ObjectID = require('mongodb').ObjectID;
 var fs = require('fs');
+var _ = require('lodash');
 
 var userCollection = null;
 var contentTreeCollection = null;
@@ -27,6 +28,8 @@ var chroniclesCollection = null;
 var sesService = null;
 
 var escapeRegExp = require('./utils')().escapeRegExp;
+
+var traverse = require('traverse');
 
 function caseInsensitive(string) {
     return new RegExp("^" + escapeRegExp(string) + "$", "i");
@@ -113,27 +116,34 @@ function register(fields, callback) {
                 user[property] = fields[property];
             }
             //FIXME use real demo chronicle
-            var chronicle = require('../scripts/live/chronicles/Example Chronicle.json');
+            var chronicle = require('../scripts/live/chronicles/Legacy of the Hollow Peak.json');
             userCollection.insert(user, function (error, result) {
                 if (error) {
                     return callback(error);
                 }
                 importChronicle(user.username, chronicle, function (error) {
-                    console.log(error)
-                });
-                chroniclesCollection.insert({ userId: result[0]._id, name: "new Chronicle", contentTree: [] }, function (error) {
                     if (error) {
                         return callback(error);
                     }
-                    favouritesCollection.insert({ username: user.username, favourites: [] }, function (error) {
+                    chroniclesCollection.insert({ userId: result[0]._id, name: "new Chronicle", contentTree: [] }, function (error) {
                         if (error) {
                             return callback(error);
                         }
-                        sesService.sendConfirmationEmail(user, function (error) {
+                        favouritesCollection.insert({ username: user.username, favourites: [] }, function (error) {
                             if (error) {
-                                return callback(new Error('SENDING_EMAIL_FAILED'));
+                                return callback(error);
                             }
-                            callback(error, result[0]);
+                            if (sesService) {
+                                sesService.sendConfirmationEmail(user, function (error) {
+                                    if (error) {
+                                        return callback(new Error('SENDING_EMAIL_FAILED'));
+                                    }
+                                    callback(error, result[0]);
+                                });
+                            } else {
+                                console.log("WARNING: not sending a confirmation email.");
+                                callback(error, result[0]);
+                            }
                         });
                     });
                 });
@@ -223,6 +233,23 @@ function listChronicles(username, callback) {
             chroniclesCollection.find({userId: user._id}, {fields: {_id: 1, name: 1}}).toArray(callback);
         });
 }
+function importChronicleAll(chronicle, callback) {
+    userCollection.find({}).toArray(function (error, userArray) {
+        var tasks = _.map(userArray, function (user) {
+            return function (next) {
+                console.log(user.username);
+                importChronicle(user.username, _.cloneDeep(chronicle), function (error) {
+                    if (error) {
+                        console.log(error);
+                    }
+                    console.log("import chronicle finished for user: " + user.username);
+                    next();
+                });
+            }
+        });
+        async.series(tasks, callback);
+    });
+}
 function importChronicle(username, chronicle, callback) {
     var user = null;
     var requestPending = 0;
@@ -240,26 +267,24 @@ function importChronicle(username, chronicle, callback) {
 
     function insertChronicle() {
         var newChronicle = {};
+        newChronicle.lastModified = new Date().toISOString();
         newChronicle.name = chronicle.name;
         newChronicle.userId = user._id;
         newChronicle.contentTree = chronicle.contentTree;
+        newChronicle.synopsis = chronicle.synopsis;
         chroniclesCollection.insert(newChronicle, function (error) {
             callback(error);
         });
-
-
     }
 
     function insertUserResource(x) {
         requestPending++;
-
         x.userResource.userId = user._id;
-
         userResourceCollections[x.resourceType].insert(x.userResource, function (error, newResource) {
             if (error) {
                 callback(error);
             }
-            x.userResourceId = newResource[0]._id;
+            x.userResourceId = newResource[0]._id.toString();
             delete x.userResource;
             requestPending--;
             if (requestPending === 0) {
@@ -308,16 +333,24 @@ function exportChronicle(chronicleId, callback) {
     function fetchAndAddUserResource(x) {
         requestPending++;
         userResourceCollections[x.resourceType].findOne({_id: ObjectID(x.userResourceId)}, function (error, userResource) {
-            console.log("-----");
             if (error) {
                 callback(error);
+            }
+            if (!userResource) {
+
+                console.log("couldn't find user resource for x: ");
+                console.log(x);
+                requestPending--;
+                if (requestPending === 0) {
+                    callback(null, chronicle);
+                }
+                return;
             }
             x.resourceType = x.resourceType;
             delete x.userResourceId;
             delete userResource._id;
             delete userResource.userId;
             x.userResource = userResource;
-            console.log(x);
             requestPending--;
             if (requestPending === 0) {
                 callback(null, chronicle);
@@ -326,10 +359,15 @@ function exportChronicle(chronicleId, callback) {
     }
 
     chroniclesCollection.findOne({_id: ObjectID(chronicleId)}, function (error, data) {
+        if (error) {
+            return callback(error, null);
+        }
         chronicle = data;
         delete chronicle.userId;
         delete chronicle._id;
-        var traverse = require('traverse');
+        if (chronicle.contentTree.length === 0) {
+            callback(null, chronicle);
+        }
         traverse(chronicle.contentTree).forEach(function (x) {
             if (!x.folder) {
                 if (x.userResourceId) {
@@ -381,6 +419,7 @@ module.exports = function (database, sesService_) {
         remove: remove,
         listChronicles: listChronicles,
         exportChronicle: exportChronicle,
-        importChronicle: importChronicle
+        importChronicle: importChronicle,
+        importChronicleAll: importChronicleAll
     }
 };

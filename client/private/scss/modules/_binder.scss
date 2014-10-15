@@ -20,6 +20,9 @@
 .t-binder-title {
   margin: 0;
 }
+.binder-full {
+  margin-bottom: ($grid-gutter-width/1.5);
+}
 .binder-content {
   padding-top: ($grid-gutter-width/4);
   padding-bottom: ($grid-gutter-width/4);
@@ -29,6 +32,7 @@
   padding-bottom: ($grid-gutter-width/2);
   margin-bottom: ($grid-gutter-width/2);
   background-color: $red;
+  color: white;
   overflow: hidden;
   a { color: white; }
   .icon-edit {
@@ -54,6 +58,7 @@
   max-width: 480px;
   margin-left: auto;
   margin-right: auto;
+  > .row { margin: 0 -8px; }
   @media (min-width: $screen-sm) {
     //min-height: 310px;
     max-width: 100%;
@@ -146,6 +151,7 @@
   }
 
   text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+  * { max-width: 100%; }
   *, strong, b { color: $brown-dark; }
   hr, .t-legend { border-color: $brown-transparent; }
 

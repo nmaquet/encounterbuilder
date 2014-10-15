@@ -3,11 +3,12 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
-    ['$rootScope', '$scope', '$routeParams', '$fileUploader', 'userResourceService', 'contentTreeService', 'locationService', '$http',
-        function ($rootScope, $scope, $routeParams, $fileUploader, userResourceService, contentTreeService, locationService, $http) {
+    ['$rootScope', '$scope', '$routeParams', '$fileUploader', 'userResourceService', 'contentTreeService', 'locationService',
+        function ($rootScope, $scope, $routeParams, $fileUploader, userResourceService, contentTreeService, locationService) {
 
             var resourceType = locationService.getResourceType();
-
+            $scope.showButtons = true;
+            $scope.editable = true;
             function updateUserResource(userResource) {
                 userResource.$save();
                 contentTreeService.userResourceUpdated(userResource);
@@ -29,7 +30,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
 
             $scope.edit = function () {
                 if ($scope.userResource) {
-                    locationService.go("/edit-" + resourceType + "/" + ($routeParams.userResourceId || $routeParams.detailsId));
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/edit-" + resourceType + "/" + ($routeParams.userResourceId || $routeParams.detailsId));
                 }
             };
 
@@ -53,11 +54,20 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
             uploader.filters.push(function (fileOrInputElement) {
                 var type = uploader.isHTML5 ? fileOrInputElement.type : '/' + fileOrInputElement.value.slice(fileOrInputElement.value.lastIndexOf('.') + 1);
                 type = '|' + type.toLowerCase().slice(type.lastIndexOf('/') + 1) + '|';
-                var filtered = '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
-                if (!filtered) {
+                var accepted = '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+                if (!accepted) {
                     errorMessage = "Invalid file type: " + type + " only 'jpg', 'png', 'jpeg', 'bmp', 'gif' extensions are accepted";
                 }
-                return filtered;
+                else {
+                    var size = fileOrInputElement.size;
+                    if (size) {
+                        if (size > (3 * 1024 * 1024)) {
+                            errorMessage = "File is too large; you can only upload files up to 3 MB";
+                            accepted = false;
+                        }
+                    }
+                }
+                return accepted;
             });
 
             uploader.bind('afteraddingfile', function (event, item) {
@@ -66,7 +76,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
                 $scope.userResource.fileName = item.file.name;
                 delete $scope.userResource.s3Credentials;
                 delete $scope.userResource.url;
-                $scope.userResource.$save(function() {
+                $scope.userResource.$save(function () {
                     var credentials = $scope.userResource.s3Credentials;
                     var item = uploader.getNotUploadedItems()[0];
                     var s3FormData = {};

@@ -2,15 +2,20 @@
 
 .row.heading.result-heading
     .col-xxs-8.col-xs-8.col-lg-9.name-container
-        h2.t-title.t-title-result.is-pointer(click-to-edit='userResource.name', on-save="updateUserResource(userResource)")
-    //.col-xxs-4.col-xs-4.col-lg-3.cr-container
+        h2.t-title.t-title-result.is-pointer(click-to-edit='chronicle.name', on-save="chronicleRenamed()")
+    .col-xxs-4.col-xs-4.col-lg-3.cr-container
         .row.btn-container
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy', ng-click='copy()')
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Read the complete chronicle on one page', ng-click='view()')
+                i.icon.fa.fa-book
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1.is-pointer(title='Copy Chronicle', ng-click='copy()', ng-disabled="copyPending", ng-hide="copyPending")
                 i.icon.fa.fa-copy
-            //a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete', on-confirm="delete()", confirm-click="Are you sure ?", confirm-title="Delete Illustration")
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-1(title='Copy Chronicle', ng-show="copyPending")
+                i.icon.fa.fa-spinner.fa-spin
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete Chronicle', tabindex='-1',data-target='#delete-chronicle-modal', role='button', data-toggle='modal')
                 i.icon.fa.fa-trash-o
 .row.l-section.result-content
     .form-group
         label.col-xs-2.control-label  Synopsis
         .col-xs-10
             textarea.form-control(type='text', rows=rows, name="Synopsis", placeholder="chronicle synopsis", ng-model="chronicle.synopsis")
+include _confirm-delete-chronicle

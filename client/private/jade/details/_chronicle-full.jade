@@ -1,0 +1,38 @@
+// Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
+.list-full(ng-repeat="userResource in chronicle")
+    .binder-full(ng-switch="userResource.resourceType")
+        .row(ng-switch-when="encounter")
+            .col-md-12
+                include ../edit/_encounter
+        .row(ng-switch-when="user-monster")
+            .col-md-12
+                include _user-monster
+        .row(ng-switch-when="user-npc")
+            .col-md-12
+                include _user-npc
+        .row(ng-switch-when="user-text")
+            .col-md-12
+                include _user-text
+        .row(ng-switch-when="user-illustration")
+            .col-md-12
+                include _user-image-resource
+        .row(ng-switch-when="user-map")
+            .col-md-12
+                include _user-image-resource
+        .row(ng-switch-when="user-spell")
+            .col-md-12
+                include _user-spell
+        .row(ng-switch-when="user-feat")
+            .col-md-12
+                include _user-feat
+        .row(ng-switch-when="user-item")
+            .col-md-12
+                include _user-item
+        header.row.binder-heading(ng-switch-when="binder")
+            .col-md-12
+                h1.t-title.t-binder-title
+                    span.binder-name
+                        | {{userResource.title}}
+.row.result-content.col-md-12(ng-show="chronicle.length === 0")
+    | This chronicle is empty. You can create content from the Library tab on the left sidebar or copy existing content from the Database tab.

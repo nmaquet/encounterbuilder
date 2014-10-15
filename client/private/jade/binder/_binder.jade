@@ -10,54 +10,58 @@
     .encounter-dropdown-container
         .leaves
             .col-sm-6.col-lg-4.leaf(ng-repeat='leaf in leaves',ng-switch="leaf.$type")
-                .col-sm-12.l-shadow(ng-switch-when="encounter")
-                    include _encounter-ro
-                .col-sm-12.l-shadow.binder(ng-switch-when="binder")
-                    header.lf-heading.row
+                .encounter(ng-switch-when="encounter")
+                    .l-shadow.col-sm-12
+                        include _encounter-ro
+                .l-shadow.binder(ng-switch-when="binder")
+                    header.lf-heading
                         a.t-title.lf-title.is-pointer(ng-click="selectLeaf(leaf)")
                             .lf-name-container
                                 h3.lf-name
                                     i.icon.fa.fa-folder
                                     | {{leaf.Name}}
-                    .lf-content.row
+                    .lf-content
                         .col-sm-12
-                .col-sm-12.l-shadow.user-text(ng-switch-when="user-text")
-                    header.lf-heading.row
+                .l-shadow.user-text(ng-switch-when="user-text")
+                    header.lf-heading
                         a.t-title.lf-title.is-pointer(ng-click="selectLeaf(leaf)")
                             .lf-name-container
                                 h3.lf-name
                                     i.icon.fa.fa-pencil
                                     | {{leaf.name}}
-                    .lf-content.row
-                        .col-sm-12
-                            p.t-italic {{leaf.synopsis}}
-                        .col-sm-12
-                            div(ng-bind-html="leaf.content | toTrustedHtml")
-                .col-sm-12.l-shadow.user-text(ng-switch-when="user-illustration")
-                    header.lf-heading.row
+                    .lf-content
+                        p.t-italic {{leaf.synopsis}}
+                        div(ng-bind-html="leaf.content | toTrustedHtml")
+                .l-shadow.user-text(ng-switch-when="user-illustration")
+                    header.lf-heading
                         a.t-title.lf-title.is-pointer(ng-click="selectLeaf(leaf)")
                             .lf-name-container
                                 h3.lf-name
                                     i.icon.fa.fa-picture-o
                                     | {{leaf.name}}
-                    .lf-content.row
-                        .col-sm-12
-                .col-sm-12.l-shadow.user-text(ng-switch-when="user-map")
-                    header.lf-heading.row
+                    .lf-content
+                        a.is-pointer(ng-href="{{leaf.url}}", target="blank")
+                            img(ng-src="{{leaf.url}}")
+                .l-shadow.user-text(ng-switch-when="user-map")
+                    header.lf-heading
                         a.t-title.lf-title.is-pointer(ng-click="selectLeaf(leaf)")
                             .lf-name-container
                                 h3.lf-name
                                     i.icon.fa.fa-map-marker
                                     | {{leaf.name}}
-                    .lf-content.row
-                        .col-sm-12
-                .col-sm-12.l-shadow.monster(ng-switch-when="monster")
-                    include _abbr-monster
-                .col-sm-12.l-shadow.npc(ng-switch-when="npc")
-                    include _abbr-npc
-                .col-sm-12.l-shadow.user-spell(ng-switch-when="user-spell")
-                    include _abbr-spell
-                .col-sm-12.l-shadow.user-feat(ng-switch-when="user-feat")
-                    include _abbr-feat
-                .col-sm-12.l-shadow.user-item(ng-switch-when="user-item")
-                    include _abbr-item
+                    .lf-content
+                .monster(ng-switch-when="monster")
+                    .l-shadow.col-sm-12
+                        include _abbr-monster
+                .npc(ng-switch-when="npc")
+                    .l-shadow.col-sm-12
+                        include _abbr-npc
+                .l-shadow.user-spell(ng-switch-when="user-spell")
+                    .col-sm-12
+                        include _abbr-spell
+                .l-shadow.user-feat(ng-switch-when="user-feat")
+                    .col-sm-12
+                        include _abbr-feat
+                .l-shadow.user-item(ng-switch-when="user-item")
+                    .col-sm-12
+                        include _abbr-item

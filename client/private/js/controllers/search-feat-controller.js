@@ -45,12 +45,20 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
                 });
             }
 
-            $scope.$watch("type", function () {
+            refreshFeats();
+
+            $scope.$watch("type", function (newValue, oldValue) {
+                if (angular.equals(newValue, oldValue)) {
+                    return;
+                }
                 $scope.currentPage = 1;
                 refreshFeats();
             });
 
-            $scope.$watch("currentPage", function () {
+            $scope.$watch("currentPage", function (newValue, oldValue) {
+                if (angular.equals(newValue, oldValue)) {
+                    return;
+                }
                 if ($scope.currentPage < 9) {
                     $scope.maxSize = 5;
                 }
@@ -67,7 +75,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchFeatController',
                 locationService.goToDetails('feat', id);
             };
 
-            $scope.$watch('featNameSubstring', function (featNameSubstring) {
+            $scope.$watch('featNameSubstring', function (featNameSubstring, oldValue) {
+                if (angular.equals(featNameSubstring, oldValue)) {
+                    return;
+                }
                 $timeout(function () {
                     if (featNameSubstring === $scope.featNameSubstring) {
                         $scope.currentPage = 1;

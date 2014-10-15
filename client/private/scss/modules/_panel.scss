@@ -1,0 +1,40 @@
+// =======================
+// Modules/Panels
+// =======================
+
+// remove border-radius
+.panel, .panel-heading, .panel-footer {
+  @include border-radius(0);
+}
+// COLORS
+.panel-default > .panel-heading {
+  background: white;
+}
+.panel-body {
+  background: $sp-menu-grey-light $img-texture-1 repeat left top;
+}
+.panel-title {
+  color: $teal-dark;
+  margin: 0 auto;
+}
+.panel-date {
+  @include opacity(0.4);
+}
+
+.panel-btn {
+  width: 100%;
+  margin-top: 6px;
+}
+@media (min-width: $screen-xs-min) {
+  .panel-btn-container {
+    padding-right: 145px !important;
+    position: relative;
+  }
+  .panel-btn {
+    width: auto;
+    margin-top: 0;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+  }
+}

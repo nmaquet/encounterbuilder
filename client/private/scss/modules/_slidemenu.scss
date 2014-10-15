@@ -23,6 +23,7 @@ $sp-menu-grey-dark : $grey-dark;
 
 $sp-menu-text-color : white;
 $sp-menu-bg : $grey-2;
+$sp-menu-bg-nothing : $grey-transparent;
 $sp-menu-bg-dark : $sp-menu-coal;
 $sp-menu-title : white;
 $sp-menu-text-bg : $sp-menu-red;
@@ -38,7 +39,7 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
   position: fixed;
   @include box-shadow(0,0,0,$sp-menu-shadow);
   &.sp-menu-open { @include box-shadow(0,6px,24px,$sp-menu-shadow); }
-
+  &.no-chronicle{background-color: $sp-menu-bg-nothing;}
   h1, h2, h3, .t-title {
     position: relative;
     color: $sp-menu-title;
@@ -99,9 +100,6 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
   top: 0;
   //top: 60px;
   z-index: $zindex-slide-menu;
-  .sp-menu-content {
-    overflow-y: auto;
-  }
   .sp-menu-list {
     a {
       border-bottom: 1px solid $sp-menu-text-bg;
@@ -112,6 +110,9 @@ $sp-menu-shadow : rgba(0,0,0,0.175);
 
 .sp-menu-vertical.sp-menu-right {
   width: $sp-menu-width;
+//  .sp-menu-content {
+//    overflow-y: auto;
+//  }
 }
 
 .sp-menu-horizontal {

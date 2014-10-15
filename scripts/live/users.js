@@ -196,6 +196,27 @@ command("importChronicle", "import a chronicle to a user", function (userService
     });
 });
 
+command("importChronicleAll", "import a chronicle to all users", function (userService, db) {
+    async.series([
+        read.bind(null, { prompt: 'chronicle path: ' })
+    ], function (error, results) {
+        if (error) {
+            console.log("aborted");
+            return db.close();
+        }
+        var jsonPath = results[0][0];
+
+        var chronicle = JSON.parse(fs.readFileSync(jsonPath));
+        userService.importChronicleAll(chronicle, function (error) {
+            if (error) {
+                console.log("error importing chronicle : " + error.message);
+                return db.close();
+            }
+            db.close();
+        });
+    });
+});
+
 command("register", "register a new user", function (userService, db) {
     async.series([
         read.bind(null, { prompt: 'Username: ' }),
@@ -316,7 +337,7 @@ command("validateAll", "validate all users email address", function (userService
 });
 program.parse(process.argv);
 
-var COMMANDS = ["list", "show", "update", "passwd", "auth", "register", "remove", "validate", "validateAll", "listChronicles", "exportChronicle", "importChronicle"];
+var COMMANDS = ["list", "show", "update", "passwd", "auth", "register", "remove", "validate", "validateAll", "listChronicles", "exportChronicle", "importChronicle","importChronicleAll"];
 
 if (program.args.length === 0 || COMMANDS.indexOf(program.rawArgs[2]) < 0) {
     program.help();

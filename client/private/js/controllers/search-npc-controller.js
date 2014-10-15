@@ -24,15 +24,21 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
             $scope.userCreated = false;
 
             $scope.$on('$routeChangeSuccess', function () {
-                $scope.selectedNpcId = $routeParams.npcId|| $routeParams.userNpcId || $routeParams.detailsId;
+                $scope.selectedNpcId = $routeParams.npcId || $routeParams.userNpcId || $routeParams.detailsId;
             });
 
-            $scope.$watchCollection("[sortBy, class]", function () {
+            $scope.$watchCollection("[sortBy, class]", function (newValue, oldValue) {
+                if (angular.equals(newValue, oldValue)) {
+                    return;
+                }
                 $scope.currentPage = 1;
                 $scope.refreshNpcs();
             });
 
-            $scope.$watch("currentPage", function () {
+            $scope.$watch("currentPage", function (newValue, oldValue) {
+                if (angular.equals(newValue, oldValue)) {
+                    return;
+                }
                 if ($scope.currentPage < 9) {
                     $scope.maxSize = 5;
                 }
@@ -45,7 +51,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 $scope.refreshNpcs();
             });
 
-            $scope.$watch('userCreated', function (value) {
+            $scope.$watch('userCreated', function (value, oldValue) {
+                if (angular.equals(value, oldValue)) {
+                    return;
+                }
                 $timeout(function () {
                     if (value === $scope.userCreated) {
                         $scope.currentPage = 1;
@@ -54,7 +63,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 }, 300);
             });
 
-            $scope.$watch('nameSubstring', function (search_string) {
+            $scope.$watch('nameSubstring', function (search_string, oldValue) {
+                if (angular.equals(search_string, oldValue)) {
+                    return;
+                }
                 $timeout(function () {
                     if (search_string === $scope.nameSubstring) {
                         $scope.currentPage = 1;
@@ -63,7 +75,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                 }, 300);
             });
 
-            $scope.$watchCollection("[minCR, maxCR]", function (crRange) {
+            $scope.$watchCollection("[minCR, maxCR]", function (crRange, oldValue) {
+                if (angular.equals(crRange, oldValue)) {
+                    return;
+                }
                 $timeout(function () {
                     if (crRange[0] === $scope.minCR && crRange[1] === $scope.maxCR) {
                         $scope.currentPage = 1;
@@ -98,7 +113,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchNpcController',
                     $scope.refreshingNpcs = false;
                 });
             };
-
+            $scope.refreshNpcs();
             $scope.selectNpc = function (id) {
                 if ($scope.userCreated) {
                     locationService.goToDetails('user-npc', id);

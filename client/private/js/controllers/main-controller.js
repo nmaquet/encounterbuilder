@@ -3,15 +3,48 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('MainController',
-    ['$scope', '$rootScope', '$window', '$location', 'sidebarService', 'viewportService', 'locationService',    /* FIXME */
-        function ($scope, $rootScope, $window, $location, sidebarService, viewportService, locationService) {
+    ['$scope', '$rootScope', '$window', '$location', 'sidebarService', 'viewportService', 'locationService', '$routeParams', 'contentTreeService', /* FIXME */
+        function ($scope, $rootScope, $window, $location, sidebarService, viewportService, locationService, $routeParams, contentTreeService) {
 
             var viewport = $rootScope.viewport = viewportService.viewport;
 
             $rootScope.back = locationService.back;
 
             $rootScope.go = locationService.go;
+            $scope.schronicles = "'s chronicles";
+            if ($location.path() === "/" && $.cookie('lastUrl')) {
+                locationService.go($.cookie('lastUrl'));
+            }
+            function getChronicleName() {
+                if (contentTreeService.getChronicle()) {
+                    return contentTreeService.getChronicle().name;
+                }
+            }
 
+            if (contentTreeService.hasLoaded()) {
+                $scope.chronicleName = getChronicleName();
+                $scope.$watch(getChronicleName, function () {
+                    $scope.chronicleName = getChronicleName();
+                });
+            }
+            else {
+                contentTreeService.onLoadSuccess(function () {
+                    $scope.chronicleName = getChronicleName();
+                    $scope.$watch(getChronicleName, function () {
+                        $scope.chronicleName = getChronicleName();
+                    });
+                })
+            }
+
+            $scope.goToChronicleFull = function () {
+                locationService.go("/chronicle-full/" + $routeParams.chronicleId);
+            };
+            $scope.goToChronicle = function () {
+                locationService.go("/chronicle/" + $routeParams.chronicleId);
+            };
+            $scope.goToChronicles = function () {
+                locationService.go("/chronicles");
+            };
             $scope.toggleLeftSidebar = function () {
                 sidebarService.leftSidebarOpened.toggle();
             };

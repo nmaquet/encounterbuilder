@@ -1,0 +1,23 @@
+// =======================
+// States/Sticky
+// =======================
+
+.sticky-container {
+  position: relative;
+  overflow: hidden;
+}
+.sticky-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+.scroll-content {
+  max-height: 100%;
+  overflow-y: auto;
+}
+.sticky-scroll { margin-top: 50px; }
+
+.is-sticky {
+  @include box-shadow(0, 0, 14px, $coal-transparent);
+}

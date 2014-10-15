@@ -1,7 +1,7 @@
 // Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
 
-.sp-menu-light.l-tabs-container(ng-controller='TabController')
-    ul#database-tabs.nav.nav-tabs.text-center.search-tabs.tabs-light.icon-tabs
+.sp-menu-light.l-tabs-container.sticky-container(ng-controller='TabController',sticky)
+    ul#database-tabs.nav.nav-tabs.text-center.search-tabs.tabs-light.icon-tabs.sticky-header
         li.col-fifth.tab-1
             a#monstersTab.is-pointer(ng-click="showTab('monsters')", data-toggle="tab")
                 i.icon.fa.fa-bug
@@ -22,7 +22,7 @@
             a#featsTab.is-pointer(ng-click="showTab('feats')", data-toggle="tab")
                 i.icon.fa.fa-star
                 // span.tab-name Feats
-    .database(ng-switch="selectedTab")
+    .database(ng-switch="selectedTab").scroll-content.sticky-scroll
         .l-tab-content.l-tab-monsters(ng-switch-when='monsters')
             .l-filters.l-filters-monsters(ng-controller='SearchMonsterController')
                 h2.t-title Monsters

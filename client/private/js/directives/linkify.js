@@ -33,18 +33,18 @@ DEMONSQUID.encounterBuilderDirectives.directive('linkify',
                     scope.selectSpell = function (id) {
                         $timeout(function () {
                             if ($routeParams.encounterId) {
-                                $rootScope.go('/encounter/' + $routeParams.encounterId + '/spell/' + id);
+                                $rootScope.go("/chronicle/" + $routeParams.chronicleId + '/encounter/' + $routeParams.encounterId + '/spell/' + id);
                             } else {
-                                $rootScope.go('/spell/' + id);
+                                $rootScope.go("/chronicle/" + $routeParams.chronicleId + '/spell/' + id);
                             }
                         });
                     };
                     scope.selectFeat = function (id) {
                         $timeout(function () {
                             if ($routeParams.encounterId) {
-                                $rootScope.go('/encounter/' + $routeParams.encounterId + '/feat/' + id);
+                                $rootScope.go("/chronicle/" + $routeParams.chronicleId + '/encounter/' + $routeParams.encounterId + '/feat/' + id);
                             } else {
-                                $rootScope.go('/feat/' + id);
+                                $rootScope.go("/chronicle/" + $routeParams.chronicleId + '/feat/' + id);
                             }
                         });
                     };

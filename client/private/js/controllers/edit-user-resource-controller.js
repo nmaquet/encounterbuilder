@@ -16,11 +16,12 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
             };
 
             var resourceType = locationService.getResourceType();
+            console.log(resourceType);
 
             $scope.view = function () {
                 contentTreeService.userResourceUpdated($scope.userResource);
                 $scope.userResource.$save(function () {
-                    locationService.go("/" + resourceType + "/" + $routeParams.userResourceId);
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/" + resourceType + "/" + $routeParams.userResourceId);
                 });
 
             };
@@ -33,10 +34,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
                     $scope.userResource.Level = classesObject.Level;
                     $scope.classesString = $filter("classesToString")($scope.userResource.Classes);
                 }
-                userResourceService[resourceType].save(userResource,
-                    function success(newUserResource) {
-                        userResource.lastModified = newUserResource.lastModified;
-                    });
+                $scope.userResource.$save();
                 contentTreeService.userResourceUpdated(userResource, resourceType);
             }
 
@@ -47,9 +45,13 @@ DEMONSQUID.encounterBuilderControllers.controller('EditUserResourceController',
             };
 
             $scope.updateUserResource = updateUserResource;
-            $scope.userResource = userResourceService[resourceType].getNoCache({id: $routeParams.userResourceId}, function () {
-                var throttledSave = throttle(updateUserResource, 5000);
-                $scope.$watch('exceptLastModified(userResource)', function () {
+            userResourceService[resourceType].getNoCache({id: $routeParams.userResourceId}, function (resource) {
+                $scope.userResource = resource;
+                var throttledSave = throttle(updateUserResource, 500);
+                $scope.$watch('exceptLastModified(userResource)', function (newValue, oldValue) {
+                    if (angular.equals(newValue, oldValue)) {
+                        return;
+                    }
                     throttledSave($scope.userResource);
                 }, true /* deep equality */);
                 if ($scope.userResource.Classes) {

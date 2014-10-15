@@ -9,6 +9,7 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
             var baseMonster = null;
             var resourceType = locationService.getResourceType();
             $scope.templateControlsCollapsed = true;
+            $scope.showButtons = true;
 
             $scope.delete = function () {
                 if ($scope.userResource) {
@@ -23,41 +24,44 @@ DEMONSQUID.encounterBuilderControllers.controller('UserMonsterController',
             };
 
             $scope.editUserMonster = function () {
-                if ($scope.userMonster) {
-                    locationService.go("/edit-" + resourceType + "/" + ($routeParams.userResourceId || $routeParams.detailsId));
+                if ($scope.userResource) {
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/edit-" + resourceType + "/" + ($routeParams.userResourceId || $routeParams.detailsId));
                 }
             };
 
             $scope.copyMonster = function () {
-                contentTreeService.copyUserResource($scope.userMonster._id, resourceType);
+                contentTreeService.copyUserResource($scope.userResource._id, resourceType);
             };
 
             $scope.pending = true;
 
             function updateUserResource(userResource) {
                 userResource.$save();
-                contentTreeService.userResourceUpdated(userResource,resourceType);
+                contentTreeService.userResourceUpdated(userResource, resourceType);
             }
 
             function loadMonster() {
                 userResourceService[resourceType].get({id: $routeParams.userResourceId || $routeParams.detailsId}, function (userMonster) {
                     userMonster.templates = userMonster.templates || {};
                     baseMonster = userMonster;
-                    $scope.userMonster = templateService.createTemplatedMonster(userMonster);
+                    $scope.userResource = templateService.createTemplatedMonster(userMonster);
 
                     if ($routeParams.userMonsterId) {
-                        $rootScope.globalTitle = "Chronicle Forge - " + $scope.userMonster.Name;
+                        $rootScope.globalTitle = "Chronicle Forge - " + $scope.userResource.Name;
                     }
                     $scope.pending = false;
 
                     var update = throttle(updateUserResource, 1000);
                     var userMonsterUpdated = throttle(contentTreeService.userResourceUpdated, 1000);
 
-                    $scope.$watch("userMonster.templates", function (value) {
-                        $scope.userMonster = templateService.createTemplatedMonster(baseMonster);
-                        baseMonster.templates = $scope.userMonster.templates;
+                    $scope.$watch("userResource.templates", function (newValue, oldValue) {
+                        if (angular.equals(newValue, oldValue)) {
+                            return;
+                        }
+                        $scope.userResource = templateService.createTemplatedMonster(baseMonster);
+                        baseMonster.templates = $scope.userResource.templates;
                         update(baseMonster);
-                        userMonsterUpdated($scope.userMonster);
+                        userMonsterUpdated($scope.userResource);
                     }, true /* deep equality */);
                 }, function (error) {
                     return console.log(error);

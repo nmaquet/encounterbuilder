@@ -44,6 +44,9 @@
     @include btn($color2);
 }*/
 
+.btn {
+  @include border-radius($radius : 0px);
+}
 .item-btn, .btn, .icon, .badge {
   text-shadow: none;
   &.white {
