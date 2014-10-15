@@ -10,7 +10,7 @@ var keen = keenIO.configure({
 });
 
 function logUsage(request, response, next) {
-    var params = { username: request.user.username, query: request.query };
+    var params = { username: request.user ? request.user.username : null, query: request.query };
     request.route.keys.forEach(function (key) {
         params[key.name] = request.params[key.name];
     });
