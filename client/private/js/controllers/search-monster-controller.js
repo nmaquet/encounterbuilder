@@ -31,12 +31,18 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                 $scope.selectedMonsterId = $routeParams.monsterId || $routeParams.userMonsterId || $routeParams.detailsId;
             });
 
-            $scope.$watchCollection("[orderProp, type, climate, terrain]", function () {
+            $scope.$watchCollection("[orderProp, type, climate, terrain]", function (newValue, oldValue) {
+                if (angular.equals(newValue, oldValue)) {
+                    return;
+                }
                 $scope.currentPage = 1;
                 $scope.refreshMonsters();
             });
 
-            $scope.$watch("currentPage", function () {
+            $scope.$watch("currentPage", function (newValue, oldValue) {
+                if (angular.equals(newValue, oldValue)) {
+                    return;
+                }
                 if ($scope.currentPage < 9) {
                     $scope.maxSize = 5;
                 }
@@ -49,7 +55,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                 $scope.refreshMonsters();
             });
 
-            $scope.$watch('nameSubstring', function (search_string) {
+            $scope.$watch('nameSubstring', function (search_string, oldValue) {
+                if (angular.equals(search_string, oldValue)) {
+                    return;
+                }
                 $timeout(function () {
                     if (search_string === $scope.nameSubstring) {
                         $scope.currentPage = 1;
@@ -57,7 +66,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     }
                 }, 300);
             });
-            $scope.$watch('userCreated', function (value) {
+            $scope.$watch('userCreated', function (value, oldValue) {
+                if (angular.equals(value, oldValue)) {
+                    return;
+                }
                 $timeout(function () {
                     if (value === $scope.userCreated) {
                         $scope.currentPage = 1;
@@ -66,7 +78,10 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                 }, 300);
             });
 
-            $scope.$watchCollection("[minCR, maxCR]", function (crRange) {
+            $scope.$watchCollection("[minCR, maxCR]", function (crRange, oldValue) {
+                if (angular.equals(crRange, oldValue)) {
+                    return;
+                }
                 $timeout(function () {
                     if (crRange[0] === $scope.minCR && crRange[1] === $scope.maxCR) {
                         $scope.currentPage = 1;
@@ -80,8 +95,8 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     nameSubstring: $scope.nameSubstring,
                     order: $scope.orderProp,
                     type: $scope.type,
-                    climate:$scope.climate,
-                    terrain:$scope.terrain,
+                    climate: $scope.climate,
+                    terrain: $scope.terrain,
                     skip: ($scope.currentPage - 1) * $scope.itemsPerPage,
                     currentPage: $scope.currentPage,
                     findLimit: $scope.itemsPerPage,
@@ -103,7 +118,7 @@ DEMONSQUID.encounterBuilderControllers.controller('SearchMonsterController',
                     $scope.refreshingMonsters = false;
                 });
             };
-
+            $scope.refreshMonsters();
             $scope.selectMonster = function (id) {
                 if ($scope.userCreated) {
                     locationService.goToDetails('user-monster', id);

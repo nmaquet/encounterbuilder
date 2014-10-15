@@ -14,9 +14,14 @@
 //    padding-right: 0;
 //  }
 //}
-
+.title-username {
+  font-size: 1.2em;
+  font-family: $font-family-sans-serif;
+}
+.title-chroniclename {
+}
 .l-nav-top {
-  min-height: 140px;
+  /*min-height: 140px;*/
   .l-nav-social {
     margin-top: 12px;
     color: $red;
@@ -31,33 +36,35 @@
     @include font-size(30);
     padding-top: 80px;
     color: white;
-    @include transition(all 0.3s ease-in-out);
-    @include opacity(1);
-    &:hover { @include opacity(0.6); }
+    .is-pointer {
+      @include transition(all 0.3s ease-in-out);
+      @include opacity(1);
+      &:hover { @include opacity(0.6); }
+    }
   }
 
   @media (max-width: $screen-xxs-max) {
     min-height: 80px;
-    .navbar-brand { padding-top: 45px;}
+    .navbar-brand { padding-top: 45px; @include font-size(16);}
   }
   @media (max-width: $screen-sm-max) {
     min-height: 80px;
-    .navbar-brand { padding-top: 45px;}
+    .navbar-brand { padding-top: 45px; @include font-size(16);}
   }
   @media (min-width: $screen-xs-min) {
     min-height: 80px;
-    .navbar-brand { padding-top: 45px;}
+    .navbar-brand { padding-top: 45px; @include font-size(16);}
   }
   @media (min-width: $screen-sm-min) {
     min-height: 100px;
-    .navbar-brand { padding-top: 58px;}
+    .navbar-brand { padding-top: 58px; @include font-size(20);}
   }
-  @media (min-width: $screen-md-min) {
+  /*@media (min-width: $screen-md-min) {
     min-height: 140px;
     .navbar-brand { padding-top: 80px;}
   }
   @media (min-width: $screen-lg-min) {
     min-height: 160px;
     .navbar-brand { padding-top: 94px;}
-  }
+  }*/
 }

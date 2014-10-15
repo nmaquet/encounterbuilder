@@ -13,7 +13,6 @@ DEMONSQUID.encounterBuilderControllers.controller('LeftSidebarTabController',
         function ($scope, $http, $timeout, model, userResourceService, contentTreeService, locationService) {
 
             $scope.selectedTab = model.selectedTab;
-            $scope.chronicles = userResourceService["chronicle"].query();
             $scope.filter = false;
             $scope.toggleFilterInput = function () {
                 $scope.filter = !$scope.filter;

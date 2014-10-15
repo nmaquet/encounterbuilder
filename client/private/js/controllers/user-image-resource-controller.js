@@ -3,8 +3,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('UserImageResourceController',
-    ['$rootScope', '$scope', '$routeParams', '$fileUploader', 'userResourceService', 'contentTreeService', 'locationService', '$http',
-        function ($rootScope, $scope, $routeParams, $fileUploader, userResourceService, contentTreeService, locationService, $http) {
+    ['$rootScope', '$scope', '$routeParams', '$fileUploader', 'userResourceService', 'contentTreeService', 'locationService',
+        function ($rootScope, $scope, $routeParams, $fileUploader, userResourceService, contentTreeService, locationService) {
 
             var resourceType = locationService.getResourceType();
             $scope.showButtons = true;

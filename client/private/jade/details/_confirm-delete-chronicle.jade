@@ -1,7 +1,7 @@
 // Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
 
 #delete-chronicle-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='profile_modal-label',aria-hidden='true')
-    .modal-dialog.modal-lg
+    .modal-dialog
         .modal-content
             .modal-header
                 button#close-delete-chronicle.close(type='button', data-dismiss='modal', aria-hidden='true') ×
@@ -17,5 +17,6 @@
                                 label.control-label(for='confirm-name') Please enter the chronicle's name below to continue.
                                 input.form-control.input-md(type='text', ng-model="confirmName", name='confirm-name',required='')
                             .form-group
-                                button.btn.btn-primary.pull-left(type="submit", ng-click="delete()", ng-disabled="confirmName!==chronicle.name") Delete
+                                button.btn.btn-primary(type="submit", ng-click="delete()", ng-disabled="confirmName!==chronicle.name") Delete
+                                | &nbsp;
                                 button.btn(href='#', data-dismiss='modal', aria-hidden='true') Cancel

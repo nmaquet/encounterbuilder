@@ -11,7 +11,9 @@
                 i.icon.fa.fa-copy
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-2.is-pointer(title='Upload', onclick='$("#hidden-file-select").click();')
                 i.icon.fa.fa-upload
-            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete', on-confirm="delete()", confirm-click="Are you sure ?", confirm-title="Delete Illustration")
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Edit',ng-click='edit()')
+                i.icon.fa.fa-edit
+            a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-4.is-pointer(title='Delete', on-confirm="delete()", confirm-click="Are you sure ?", confirm-title="Delete Illustration")
                 i.icon.fa.fa-trash-o
 .row.l-section.result-content
     .col-xs-12.cat
@@ -25,7 +27,21 @@
                 .col-xs-2
                     button.btn.btn-s(type="button" ng-click="uploader.cancelAll()")
                         span.glyphicon.glyphicon-ban-circle Cancel
-        div(ng-if="userResource.url && !uploader.isUploading")
-            a.is-pointer(ng-href="{{userResource.url}}")
+        div(ng-if="userResource.url && !uploader.isUploading", style="padding-bottom:10px;")
+            a.is-pointer(ng-href="{{userResource.url}}", target="blank")
                 img(ng-src="{{userResource.url}}")
+        ul.cat-content.list-unstyled
+            li
+                span
+                    strong Artist
+                    | &nbsp;{{userResource.artist || "Unknown"}}
+            li
+                span
+                    strong Copyright
+                    | &nbsp;{{userResource.copyright || "Unknown"}}
+            li(ng-if="userResource.externalURL")
+                span
+                    strong URL
+                    | &nbsp;
+                    a(ng-href="{{userResource.externalURL}}", target="blank") {{userResource.externalURL}}
         input#hidden-file-select.hidden(ng-file-select='ng-file-select', type='file')

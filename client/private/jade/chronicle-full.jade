@@ -1,5 +1,6 @@
 // Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
 
 .row(ng-controller='ChronicleFullController', fade-out="startFade")
+    .col-xs-12.min-height-300.max-width-720.l-section.l-shadow(ng-show="pending",pending="pending")
     .col-xs-12.max-width-720.l-section.l-shadow.search-result
         include details/_chronicle-full

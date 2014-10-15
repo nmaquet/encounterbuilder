@@ -10,8 +10,9 @@
     .encounter-dropdown-container
         .leaves
             .col-sm-6.col-lg-4.leaf(ng-repeat='leaf in leaves',ng-switch="leaf.$type")
-                .l-shadow(ng-switch-when="encounter")
-                    include _encounter-ro
+                .encounter(ng-switch-when="encounter")
+                    .l-shadow.col-sm-12
+                        include _encounter-ro
                 .l-shadow.binder(ng-switch-when="binder")
                     header.lf-heading
                         a.t-title.lf-title.is-pointer(ng-click="selectLeaf(leaf)")
@@ -39,6 +40,8 @@
                                     i.icon.fa.fa-picture-o
                                     | {{leaf.name}}
                     .lf-content
+                        a.is-pointer(ng-href="{{leaf.url}}", target="blank")
+                            img(ng-src="{{leaf.url}}")
                 .l-shadow.user-text(ng-switch-when="user-map")
                     header.lf-heading
                         a.t-title.lf-title.is-pointer(ng-click="selectLeaf(leaf)")
@@ -47,10 +50,9 @@
                                     i.icon.fa.fa-map-marker
                                     | {{leaf.name}}
                     .lf-content
-                .l-shadow.monster(ng-switch-when="monster")
-                    .row
-                        .col-sm-12
-                            include _abbr-monster
+                .monster(ng-switch-when="monster")
+                    .l-shadow.col-sm-12
+                        include _abbr-monster
                 .npc(ng-switch-when="npc")
                     .l-shadow.col-sm-12
                         include _abbr-npc

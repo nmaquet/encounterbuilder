@@ -25,7 +25,8 @@
         "express-jwt": "~0.3",
         "jsonwebtoken": "~0.4",
         "node-uuid": "1.4.1",
-        "traverse": "0.6.6"
+        "traverse": "0.6.6",
+        "lodash":"2.4.1"
     },
     "devDependencies": {
         "bson": "*",

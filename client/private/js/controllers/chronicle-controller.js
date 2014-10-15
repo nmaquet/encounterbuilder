@@ -3,8 +3,8 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('ChronicleController',
-    ['$scope', '$location', '$routeParams', 'locationService', 'ChronicleResource',
-        function ($scope, $location, $routeParams, locationService, ChronicleResource) {
+    ['$scope', '$location', '$routeParams', 'locationService', 'ChronicleResource', 'throttle', 'contentTreeService',
+        function ($scope, $location, $routeParams, locationService, ChronicleResource, throttle, contentTreeService) {
 
             var justDeletedAChronicle = false;
             var deleteChronicleModal = $('#delete-chronicle-modal');
@@ -32,6 +32,39 @@ DEMONSQUID.encounterBuilderControllers.controller('ChronicleController',
                 $scope.chronicle.$save();
             };
 
-            $scope.chronicle = ChronicleResource.get({id: $routeParams.chronicleId});
+            $scope.copyPending = false;
+            $scope.copy = function () {
+                $scope.copyPending = true;
+                ChronicleResource.save({baseChronicleId: $scope.chronicle._id}, function (newChronicle) {
+                    $scope.copyPending = false;
+                    locationService.go("/chronicle/" + newChronicle._id);
+                });
+            };
+
+            $scope.view = function () {
+                locationService.go("/chronicle-full/" + $routeParams.chronicleId);
+            };
+
+
+            if (contentTreeService.hasLoaded()) {
+                $scope.chronicle = contentTreeService.getChronicle();
+                $scope.$watch("chronicle.synopsis", throttle(function (newValue, oldValue) {
+                    if (angular.equals(newValue, oldValue)) {
+                        return;
+                    }
+                    contentTreeService.saveChronicle();
+                }, 500));
+            }
+            else {
+                contentTreeService.onLoadSuccess(function () {
+                    $scope.chronicle = contentTreeService.getChronicle();
+                    $scope.$watch("chronicle.synopsis", throttle(function (newValue, oldValue) {
+                        if (angular.equals(newValue, oldValue)) {
+                            return;
+                        }
+                        contentTreeService.saveChronicle();
+                    }, 500));
+                })
+            }
         }
     ]);

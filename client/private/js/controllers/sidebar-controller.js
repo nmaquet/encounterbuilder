@@ -6,14 +6,18 @@ DEMONSQUID.encounterBuilderControllers.controller('SidebarController',
     ['$scope', 'encounterService', 'encounterEditorService', 'contentTreeService',
         function ($scope, encounterService, encounterEditorService, contentTreeService) {
 
+            $scope.$watch(function () {
+                return contentTreeService.hasLoaded();
+            }, function (loaded) {
+                $scope.chronicleLoaded = loaded;
+            });
+
             $scope.createEncounter = function () {
                 contentTreeService.createEncounter();
             };
-
             $scope.createBinder = function () {
                 contentTreeService.createBinder();
             };
-
             $scope.createUserMonster = function () {
                 contentTreeService.createUserResource("user-monster");
             };

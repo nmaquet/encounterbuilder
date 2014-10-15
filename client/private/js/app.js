@@ -19,8 +19,9 @@ DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
 DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
     function ($routeProvider, $httpProvider) {
         $routeProvider
-            .when('/', { templateUrl: 'home.html' })
-            .when('/tutorial', { templateUrl: 'tutorial.html' })
+            .when('/', {
+                redirectTo: '/chronicles'
+            })
             .when('/chronicles', { templateUrl: 'chronicles.html' })
             .when('/chronicle/:chronicleId', { templateUrl: 'chronicle.html'})
             .when('/chronicle/:chronicleId/encounter/:encounterId/:type/:detailsId', { templateUrl: 'encounter.html' })
@@ -43,8 +44,10 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
             .when('/chronicle/:chronicleId/edit-user-item/:userResourceId/:type/:detailsId', { templateUrl: 'edit-user-item.html' })
             /* user-illustration */
             .when('/chronicle/:chronicleId/user-illustration/:userResourceId', { templateUrl: 'user-image-resource.html' })
+            .when('/chronicle/:chronicleId/edit-user-illustration/:userResourceId', { templateUrl: 'edit-user-image-resource.html' })
             /* user-map */
             .when('/chronicle/:chronicleId/user-map/:userResourceId', { templateUrl: 'user-image-resource.html' })
+            .when('/chronicle/:chronicleId/edit-user-map/:userResourceId', { templateUrl: 'edit-user-image-resource.html' })
 
             .when('/chronicle/:chronicleId/edit-user-monster/:userResourceId/:type/:detailsId', { templateUrl: 'edit-user-monster.html' })
             .when('/chronicle/:chronicleId/edit-user-npc/:userResourceId/:type/:detailsId', { templateUrl: 'edit-user-npc.html' })
@@ -66,8 +69,8 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
             .when('/item/:itemId', { templateUrl: 'item.html'})
             .when('/spell/:spellId', { templateUrl: 'spell.html'})
             .when('/feat/:featId', { templateUrl: 'feat.html'})
-            .when('/chronicle/:userResourceId', { templateUrl: 'chronicle.html'})
-            .when('/chronicle-full/:userResourceId', { templateUrl: 'chronicle-full.html'})
+            .when('/chronicle/:chronicleId', { templateUrl: 'chronicle.html'})
+            .when('/chronicle-full/:chronicleId', { templateUrl: 'chronicle-full.html'})
             .otherwise({
                 redirectTo: '/'
             });
@@ -75,7 +78,7 @@ DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',
         $httpProvider.defaults.useXDomain = true; // Enable cross domain calls
     }]);
 
-DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$window','spellService','featService',
+DEMONSQUID.encounterBuilderApp.run(['$rootScope', '$http', '$window', 'spellService', 'featService',
     function ($rootScope, $http, $window) {
         $rootScope.globalTitle = "Chronicle Forge - Home";
         $rootScope.$on('$routeChangeStart', function (event, next, current) {

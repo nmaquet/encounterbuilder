@@ -3,11 +3,11 @@
 "use strict";
 
 DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
-    ['$rootScope', '$scope', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService', 'contentTreeService', 'locationService',
+    ['$rootScope', '$scope', '$timeout', '$routeParams', 'encounterService', 'lootService', 'encounterEditorService', 'contentTreeService', 'locationService', 'throttle',
         function ($rootScope, $scope, $timeout, $routeParams, encounterService, lootService, encounterEditorService, contentTreeService, locationService, throttle) {
             $scope.showButtons = true;
             $scope.editable = true;
-            $scope.userResourceChanged = throttle(function () {
+            $scope.encounterChanged = throttle(function () {
                 if ($scope.userResource) {
                     encounterService.encounterChanged($scope.userResource);
                     contentTreeService.changeEncounter($scope.userResource);
@@ -120,10 +120,21 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
 
             $scope.$watch(function () {
                 return lootService.generatedLoot;
-            }, function () {
+            }, function (newValue, oldValue) {
+                if (angular.equals(newValue, oldValue)) {
+                    return;
+                }
+                function itemArrayToItemsObject(items) {
+                    var result = {};
+                    for (var i in items) {
+                        result[items[i].id] = items[i];
+                    }
+                    return result;
+                }
+
                 if ($scope.userResource && $scope.userResource._id === lootService.encounterId && lootService.generatedLoot) {
                     $scope.userResource.coins = lootService.generatedLoot.coins;
-                    $scope.userResource.items = lootService.generatedLoot.items;
+                    $scope.userResource.items = itemArrayToItemsObject(lootService.generatedLoot.items);
                     encounterService.encounterChanged($scope.userResource);
                 }
                 else {

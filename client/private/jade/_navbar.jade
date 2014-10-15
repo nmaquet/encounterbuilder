@@ -44,7 +44,7 @@
                             i.icon.fa.fa-google-plus
                             | &nbsp;
                             span Join us on Google+
-        ul.nav.nav-pills.sp-menu-toggle-container.pull-right(ng-hide='!viewport.lg && leftSidebarIsOpened()')
+        ul.nav.nav-pills.sp-menu-toggle-container.pull-right.hidden-xs(ng-hide='!viewport.lg && leftSidebarIsOpened()')
             li
                 a.t-title.is-pointer.sp-menu-toggle(ng-click='toggleRightSidebar()')
                     i.fa.fa-angle-right
@@ -71,10 +71,7 @@
                             | Log out
 
         ul.nav.nav-pills.l-nav-social.hidden-xs.pull-right(ng-hide='viewport.xs && anySidebarIsOpened()')
-            li
-                a(href="#/chronicles", title="Chronicles") Chronicles
-                    i.icon.square.fa.fa-book
-            li
+            //li
                 a(href="#/tutorial", title="Need some help?") Help
                     i.icon.square.fa.fa-question
             li
