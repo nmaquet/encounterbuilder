@@ -60,7 +60,7 @@ function main(db) {
                             }
                         });
                         var synopsis = "This chronicle contains the content you already created using the previous version of Chronicle Forge";
-                        var chronicle = {userId: user._id, contentTree: docs[0].contentTree, name: "new Chronicle", synopsis: synopsis, lastModified: new Date().toISOString()};
+                        var chronicle = {userId: user._id, contentTree: docs[0].contentTree.children, name: "new Chronicle", synopsis: synopsis, lastModified: new Date().toISOString()};
 
                         db.collection("chronicles").insert(chronicle, function (error, newChronicle) {
                             if (error) {

@@ -299,6 +299,10 @@ DEMONSQUID.encounterBuilderDirectives.directive('contentTree',
                     }
                 };
 
+                contentTreeService.saveChronicle = function () {
+                    saveChronicle(fancyTree);
+                };
+
                 contentTreeService.createBinder = function () {
                     var nodeBrief = {title: "new Binder", folder: true, key: getNextNodeKey(fancyTree)};
                     addNodeSaveChronicleAndGotoNode(fancyTree, nodeBrief);
