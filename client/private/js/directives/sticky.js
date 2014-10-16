@@ -43,9 +43,15 @@ DEMONSQUID.encounterBuilderDirectives.directive('sticky', ['contentTreeService',
                     });
                 }
 
-                $(window).resize(function () {
+                function resize() {
                     $stickyScroll.each(stickyHeight);
+                }
+
+                $(window).resize(function () {
+                    resize();
                 });
+
+                setTimeout(resize, 0);
             }
         };
     }]);
