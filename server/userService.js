@@ -251,6 +251,7 @@ function importChronicleAll(chronicle, callback) {
     });
 }
 function importChronicle(username, chronicle, callback) {
+    var newId = {};
     var user = null;
     var requestPending = 0;
     var userResourceCollections = {
@@ -277,20 +278,42 @@ function importChronicle(username, chronicle, callback) {
         });
     }
 
-    function insertUserResource(x) {
-        requestPending++;
-        x.userResource.userId = user._id;
-        userResourceCollections[x.resourceType].insert(x.userResource, function (error, newResource) {
-            if (error) {
-                callback(error);
+    function insertUserResource(node, onlyEncounters, callback) {
+        if ((!onlyEncounters && node.resourceType === "encounter" ) ||
+            (onlyEncounters && node.resourceType !== "encounter")) {
+            return;
+        }
+        else {
+            requestPending++;
+            if (node.resourceType === "encounter") {
+                _.forEach(["Monsters", "Npcs", "items"], function (type) {
+                    node.userResource[type] = _.transform(node.userResource[type], function (resources, resource, id) {
+                        if (resource.userCreated && newId[id]) {
+                            resources[newId[id]] = resource;
+                        } else if (!resource.userCreated) {
+                            resources[id] = resource;
+                        }
+                        else {
+                            console.log("warning couldn't find new  id for: " + resource.Name + " id:" + id);
+                        }
+                    });
+                });
             }
-            x.userResourceId = newResource[0]._id.toString();
-            delete x.userResource;
-            requestPending--;
-            if (requestPending === 0) {
-                insertChronicle();
-            }
-        });
+
+            node.userResource.userId = user._id;
+            userResourceCollections[node.resourceType].insert(node.userResource, function (error, newResource) {
+                if (error) {
+                    callback(error);
+                }
+                newId[node.userResourceId] = newResource[0]._id.toString();
+                node.userResourceId = newResource[0]._id.toString();
+                delete node.userResource;
+                requestPending--;
+                if (requestPending === 0) {
+                    callback();
+                }
+            });
+        }
     }
 
     userCollection.findOne({username: username},
@@ -301,16 +324,24 @@ function importChronicle(username, chronicle, callback) {
             }
             user = data;
             var traverse = require('traverse');
-            traverse(chronicle.contentTree).forEach(function (x) {
-                if (!x) {
-                    return;
-                }
-                if (!x.folder) {
-                    if (x.resourceType) {
-                        insertUserResource(x);
-                    }
-                }
+
+            traverseChronicle(false, function () {
+                traverseChronicle(true, insertChronicle);
             });
+
+
+            function traverseChronicle(onlyEncounters, callback) {
+                traverse(chronicle.contentTree).forEach(function (x) {
+                    if (!x) {
+                        return;
+                    }
+                    if (!x.folder) {
+                        if (x.resourceType) {
+                            insertUserResource(x, onlyEncounters, callback);
+                        }
+                    }
+                });
+            }
         });
 }
 
@@ -330,27 +361,26 @@ function exportChronicle(chronicleId, callback) {
     };
 
 
-    function fetchAndAddUserResource(x) {
+    function fetchAndAddUserResource(node) {
         requestPending++;
-        userResourceCollections[x.resourceType].findOne({_id: ObjectID(x.userResourceId)}, function (error, userResource) {
+        userResourceCollections[node.resourceType].findOne({_id: ObjectID(node.userResourceId)}, function (error, userResource) {
             if (error) {
                 callback(error);
             }
             if (!userResource) {
 
                 console.log("couldn't find user resource for x: ");
-                console.log(x);
+                console.log(node);
                 requestPending--;
                 if (requestPending === 0) {
                     callback(null, chronicle);
                 }
                 return;
             }
-            x.resourceType = x.resourceType;
-            delete x.userResourceId;
+            node.resourceType = node.resourceType;
             delete userResource._id;
             delete userResource.userId;
-            x.userResource = userResource;
+            node.userResource = userResource;
             requestPending--;
             if (requestPending === 0) {
                 callback(null, chronicle);

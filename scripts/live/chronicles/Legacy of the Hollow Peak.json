@@ -1,6 +1,5 @@
 {
     "name": "Legacy of the Hollow Peak",
-    "synopsis": "A wilderness and dungeon adventure for characters level 3-5. Feel free to use it, copy it, or modify it all you like but please do not share it outside of Chronicle Forge.",
     "contentTree": [
         {
             "expanded": true,
@@ -19,13 +18,22 @@
                             "key": "79",
                             "title": "Cover Art",
                             "data": {
+                                "userResourceId": "542d1e7947d5338025d58a57",
                                 "resourceType": "user-illustration",
                                 "userResource": {
                                     "name": "Cover Art",
                                     "lastModified": "2014-10-02T09:51:35.731Z",
                                     "fileType": "image/jpeg",
                                     "fileName": "troll.jpg",
-                                    "url": "http://s3.amazonaws.com/dscf-live-ro/troll.jpg",
+                                    "s3Credentials": {
+                                        "policy": "eyJleHBpcmF0aW9uIjoiMjAxNC0xMC0wMlQwOTo0OTozOC42MzFaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0IjoiZHNjZi10ZXN0In0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCI1NDJkMWU3OTQ3ZDUzMzgwMjVkNThhNTciXSx7ImFjbCI6InB1YmxpYy1yZWFkIn0sWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsMCwzMTQ1NzI4XSxbImVxIiwiJENvbnRlbnQtVHlwZSIsImltYWdlL2pwZWciXV19",
+                                        "signature": "3CaurPU/s2LXC1vco9M5BoCQ6Z4=",
+                                        "AWSAccessKeyId": "AKIAJFFVXEJ6XFYP6EXA",
+                                        "url": "http://s3.amazonaws.com/dscf-test/",
+                                        "Content-Type": "image/jpeg",
+                                        "resourceURL": "http://s3.amazonaws.com/dscf-test/542d1e7947d5338025d58a57?1412243078631"
+                                    },
+                                    "url": "http://s3.amazonaws.com/dscf-test/542d1e7947d5338025d58a57?1412243078631",
                                     "artist": "Aleksey Kovalenko",
                                     "externalURL": "http://skiorh.deviantart.com/",
                                     "copyright": "© 2014 Aleksey Kovalenko"
@@ -37,6 +45,7 @@
                             "key": "2",
                             "title": "Kuyunedir",
                             "data": {
+                                "userResourceId": "5423b10752531c0b00cde926",
                                 "resourceType": "user-text",
                                 "userResource": {
                                     "name": "Kuyunedir",
@@ -50,6 +59,7 @@
                             "key": "4",
                             "title": "Horntop",
                             "data": {
+                                "userResourceId": "5423b1a452531c0b00cde927",
                                 "resourceType": "user-text",
                                 "userResource": {
                                     "name": "Horntop",
@@ -63,6 +73,7 @@
                             "key": "5",
                             "title": "Recent events",
                             "data": {
+                                "userResourceId": "5423b1c452531c0b00cde928",
                                 "resourceType": "user-text",
                                 "userResource": {
                                     "name": "Recent events",
@@ -78,6 +89,7 @@
                     "key": "6",
                     "title": "Adventure Summary",
                     "data": {
+                        "userResourceId": "5423b1f352531c0b00cde929",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "Adventure Summary",
@@ -91,6 +103,7 @@
                     "key": "7",
                     "title": "Getting started",
                     "data": {
+                        "userResourceId": "5423b21c52531c0b00cde92a",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "Getting started",
@@ -112,6 +125,7 @@
                     "key": "10",
                     "title": "On the way to Horntop",
                     "data": {
+                        "userResourceId": "5423b30752531c0b00cde92b",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "On the way to Horntop",
@@ -125,6 +139,7 @@
                     "key": "0",
                     "title": "Wounded Yak",
                     "data": {
+                        "userResourceId": "542a60bf470d850b009b2521",
                         "resourceType": "encounter",
                         "userResource": {
                             "Name": "Wounded Yak",
@@ -158,6 +173,7 @@
                     "key": "11",
                     "title": "Yak",
                     "data": {
+                        "userResourceId": "542a63d53243cf0b00a804b6",
                         "resourceType": "user-monster",
                         "userResource": {
                             "Name": "Yak",
@@ -237,6 +253,7 @@
                     "key": "13",
                     "title": "The funeral",
                     "data": {
+                        "userResourceId": "5423b3f552531c0b00cde92d",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "The funeral",
@@ -250,6 +267,7 @@
                     "key": "14",
                     "title": "Meeting Mayor Flynn",
                     "data": {
+                        "userResourceId": "5423b42252531c0b00cde92e",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "Meeting Mayor Flynn",
@@ -263,6 +281,7 @@
                     "key": "15",
                     "title": "Meeting Jacod Farkas",
                     "data": {
+                        "userResourceId": "5423b43b52531c0b00cde92f",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "Meeting Jacod Farkas",
@@ -276,13 +295,22 @@
                     "key": "16",
                     "title": "Jacod Farkas",
                     "data": {
+                        "userResourceId": "5423b44e52531c0b00cde930",
                         "resourceType": "user-illustration",
                         "userResource": {
                             "name": "Jacod Farkas",
                             "lastModified": "2014-10-02T09:38:00.270Z",
                             "fileType": "image/jpeg",
                             "fileName": "Jacod.jpg",
-                            "url": "http://s3.amazonaws.com/dscf-live-ro/jacod.jpg",
+                            "s3Credentials": {
+                                "policy": "eyJleHBpcmF0aW9uIjoiMjAxNC0wOS0yNVQwNjoyODowNy44ODJaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0IjoiZHNjZi1zdGFnaW5nIn0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCI1NDIzYjQ0ZTUyNTMxYzBiMDBjZGU5MzAiXSx7ImFjbCI6InB1YmxpYy1yZWFkIn0sWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsMCwzMTQ1NzI4XSxbImVxIiwiJENvbnRlbnQtVHlwZSIsImltYWdlL2pwZWciXV19",
+                                "signature": "SA7oUD1A3iI13eaSxCxro8Sv4FA=",
+                                "AWSAccessKeyId": "AKIAIKK6KQQ4GBE24LLA",
+                                "url": "http://s3.amazonaws.com/dscf-staging/",
+                                "Content-Type": "image/jpeg",
+                                "resourceURL": "http://s3.amazonaws.com/dscf-staging/5423b44e52531c0b00cde930?1411626187882"
+                            },
+                            "url": "http://s3.amazonaws.com/dscf-staging/5423b44e52531c0b00cde930?1411626187882",
                             "artist": "Eldanaro",
                             "externalURL": "http://eldanaro.deviantart.com/art/Pale-455261644",
                             "copyright": "© 2014 Eldanaro"
@@ -294,6 +322,7 @@
                     "key": "17",
                     "title": "Meeting the boy’s mother",
                     "data": {
+                        "userResourceId": "5423b45152531c0b00cde931",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "Meeting the boy’s mother",
@@ -315,6 +344,7 @@
                     "key": "20",
                     "title": "Battling Ice Trolls",
                     "data": {
+                        "userResourceId": "542a644b3243cf0b00a804b8",
                         "resourceType": "encounter",
                         "userResource": {
                             "Name": "Battling Ice Trolls",
@@ -390,6 +420,7 @@
                     "key": "24",
                     "title": "Krakoth",
                     "data": {
+                        "userResourceId": "542a64653243cf0b00a804bc",
                         "resourceType": "user-monster",
                         "userResource": {
                             "Name": "Krakoth",
@@ -465,6 +496,7 @@
                     "key": "68",
                     "title": "Krakoth Jr. (Young)",
                     "data": {
+                        "userResourceId": "542a661662b18e0b00f9a888",
                         "resourceType": "user-monster",
                         "userResource": {
                             "Name": "Krakoth Jr.",
@@ -550,6 +582,7 @@
                     "key": "22",
                     "title": "On the way to the Mines",
                     "data": {
+                        "userResourceId": "5423b62552531c0b00cde934",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "On the way to the Mines",
@@ -563,6 +596,7 @@
                     "key": "23",
                     "title": "Glacial Pit",
                     "data": {
+                        "userResourceId": "542a679462b18e0b00f9a8a9",
                         "resourceType": "encounter",
                         "userResource": {
                             "Name": "Glacial Pit",
@@ -596,6 +630,7 @@
                     "key": "19",
                     "title": "Camping & chasing trolls",
                     "data": {
+                        "userResourceId": "5423b51b52531c0b00cde932",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "Camping & chasing trolls",
@@ -609,6 +644,7 @@
                     "key": "69",
                     "title": "Glacial Haunt",
                     "data": {
+                        "userResourceId": "542a67a662b18e0b00f9a8ac",
                         "resourceType": "user-monster",
                         "userResource": {
                             "Name": "Glacial Haunt",
@@ -696,13 +732,22 @@
                             "key": "35",
                             "title": "Map of Zone A",
                             "data": {
+                                "userResourceId": "5423b93a52531c0b00cde946",
                                 "resourceType": "user-illustration",
                                 "userResource": {
                                     "name": "Map of Zone A",
                                     "lastModified": "2014-10-02T09:42:21.139Z",
                                     "fileType": "image/jpeg",
                                     "fileName": "maps-2-colored-small-labeled.jpg",
-                                    "url": "https://s3.amazonaws.com/dscf-live-ro/maps-2-colored-small-labeled.jpg",
+                                    "s3Credentials": {
+                                        "policy": "eyJleHBpcmF0aW9uIjoiMjAxNC0wOS0yNVQwNjo0Nzo0My42ODhaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0IjoiZHNjZi1zdGFnaW5nIn0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCI1NDIzYjkzYTUyNTMxYzBiMDBjZGU5NDYiXSx7ImFjbCI6InB1YmxpYy1yZWFkIn0sWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsMCwzMTQ1NzI4XSxbImVxIiwiJENvbnRlbnQtVHlwZSIsImltYWdlL2pwZWciXV19",
+                                        "signature": "VXbRc6HMZ4pCjV4v9HXYjBkSf6c=",
+                                        "AWSAccessKeyId": "AKIAIKK6KQQ4GBE24LLA",
+                                        "url": "http://s3.amazonaws.com/dscf-staging/",
+                                        "Content-Type": "image/jpeg",
+                                        "resourceURL": "http://s3.amazonaws.com/dscf-staging/5423b93a52531c0b00cde946?1411627363688"
+                                    },
+                                    "url": "http://s3.amazonaws.com/dscf-staging/5423b93a52531c0b00cde946?1411627363688",
                                     "artist": "Nicolas Maquet",
                                     "copyright": "© 2014 DemonSquid, Inc."
                                 }
@@ -713,6 +758,7 @@
                             "key": "27",
                             "title": "A.1 Entrance of the Howling Well",
                             "data": {
+                                "userResourceId": "5423b7f852531c0b00cde93f",
                                 "resourceType": "user-text",
                                 "userResource": {
                                     "name": "A.1 Entrance of the Howling Well",
@@ -726,6 +772,7 @@
                             "key": "29",
                             "title": "A.2 Miner Depot",
                             "data": {
+                                "userResourceId": "5423b87a52531c0b00cde941",
                                 "resourceType": "user-text",
                                 "userResource": {
                                     "name": "A.2 Miner Depot",
@@ -739,6 +786,7 @@
                             "key": "30",
                             "title": "A.3 Sample Gallery",
                             "data": {
+                                "userResourceId": "5423b87f52531c0b00cde942",
                                 "resourceType": "user-text",
                                 "userResource": {
                                     "name": "A.3 Sample Gallery",
@@ -752,6 +800,7 @@
                             "key": "31",
                             "title": "A.4 Rotunda",
                             "data": {
+                                "userResourceId": "5423b88052531c0b00cde943",
                                 "resourceType": "user-text",
                                 "userResource": {
                                     "name": "A.4 Rotunda",
@@ -765,6 +814,7 @@
                             "key": "32",
                             "title": "A.5 Broken Elevator Made Whole",
                             "data": {
+                                "userResourceId": "5423b88152531c0b00cde944",
                                 "resourceType": "user-text",
                                 "userResource": {
                                     "name": "A.5 Broken Elevator Made Whole",
@@ -786,13 +836,22 @@
                             "key": "42",
                             "title": "Map of Zone B",
                             "data": {
+                                "userResourceId": "5423b9a352531c0b00cde94c",
                                 "resourceType": "user-illustration",
                                 "userResource": {
                                     "name": "Map of Zone B",
                                     "lastModified": "2014-10-02T09:42:42.040Z",
                                     "fileType": "image/jpeg",
                                     "fileName": "maps-3-colored-small-labeled.jpg",
-                                    "url": "http://s3.amazonaws.com/dscf-live-ro/maps-3-colored-small-labeled.jpg",
+                                    "s3Credentials": {
+                                        "policy": "eyJleHBpcmF0aW9uIjoiMjAxNC0wOS0yNVQwNjo0OTowMi4zMjBaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0IjoiZHNjZi1zdGFnaW5nIn0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCI1NDIzYjlhMzUyNTMxYzBiMDBjZGU5NGMiXSx7ImFjbCI6InB1YmxpYy1yZWFkIn0sWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsMCwzMTQ1NzI4XSxbImVxIiwiJENvbnRlbnQtVHlwZSIsImltYWdlL2pwZWciXV19",
+                                        "signature": "e/f0I3Srm9RGwHaKjBR55Xb9deU=",
+                                        "AWSAccessKeyId": "AKIAIKK6KQQ4GBE24LLA",
+                                        "url": "http://s3.amazonaws.com/dscf-staging/",
+                                        "Content-Type": "image/jpeg",
+                                        "resourceURL": "http://s3.amazonaws.com/dscf-staging/5423b9a352531c0b00cde94c?1411627442320"
+                                    },
+                                    "url": "http://s3.amazonaws.com/dscf-staging/5423b9a352531c0b00cde94c?1411627442320",
                                     "artist": "Nicolas Maquet",
                                     "copyright": "© 2014 DemonSquid, Inc."
                                 }
@@ -803,6 +862,7 @@
                             "key": "37",
                             "title": "B2. Outpost",
                             "data": {
+                                "userResourceId": "5423b98752531c0b00cde947",
                                 "resourceType": "user-text",
                                 "userResource": {
                                     "name": "B2. Outpost",
@@ -816,6 +876,7 @@
                             "key": "38",
                             "title": "B3. Northern Galleries",
                             "data": {
+                                "userResourceId": "5423b98852531c0b00cde948",
                                 "resourceType": "user-text",
                                 "userResource": {
                                     "name": "B3. Northern Galleries",
@@ -829,6 +890,7 @@
                             "key": "39",
                             "title": "B4. Ooze Cave (CR 5)",
                             "data": {
+                                "userResourceId": "5423b98a52531c0b00cde949",
                                 "resourceType": "user-text",
                                 "userResource": {
                                     "name": "B4. Ooze Cave (CR 5)",
@@ -842,6 +904,7 @@
                             "key": "71",
                             "title": "Gray Ooze (Advanced)",
                             "data": {
+                                "userResourceId": "542a685062b18e0b00f9a8b7",
                                 "resourceType": "user-monster",
                                 "userResource": {
                                     "Name": "Gray Ooze",
@@ -913,6 +976,7 @@
                             "key": "28",
                             "title": "B1. Well’s End",
                             "data": {
+                                "userResourceId": "5423b84252531c0b00cde940",
                                 "resourceType": "user-text",
                                 "userResource": {
                                     "name": "B1. Well’s End",
@@ -926,6 +990,7 @@
                             "key": "70",
                             "title": "Ooze Battle",
                             "data": {
+                                "userResourceId": "542a682c62b18e0b00f9a8b3",
                                 "resourceType": "encounter",
                                 "userResource": {
                                     "Name": "Ooze Battle",
@@ -967,6 +1032,7 @@
                             "key": "40",
                             "title": "B5. Southern Galleries (CR 5)",
                             "data": {
+                                "userResourceId": "5423b98b52531c0b00cde94a",
                                 "resourceType": "user-text",
                                 "userResource": {
                                     "name": "B5. Southern Galleries (CR 5)",
@@ -980,6 +1046,7 @@
                             "key": "73",
                             "title": "Undead Miner",
                             "data": {
+                                "userResourceId": "542a693262b18e0b00f9a8c3",
                                 "resourceType": "user-monster",
                                 "userResource": {
                                     "Name": "Undead Miner",
@@ -1051,6 +1118,7 @@
                             "key": "72",
                             "title": "Undead Miners",
                             "data": {
+                                "userResourceId": "542a690b62b18e0b00f9a8be",
                                 "resourceType": "encounter",
                                 "userResource": {
                                     "Name": "Undead Miners",
@@ -1084,6 +1152,7 @@
                             "key": "41",
                             "title": "B6. Sealing Stone",
                             "data": {
+                                "userResourceId": "5423b98c52531c0b00cde94b",
                                 "resourceType": "user-text",
                                 "userResource": {
                                     "name": "B6. Sealing Stone",
@@ -1107,6 +1176,7 @@
                     "key": "45",
                     "title": "Entering Kuyunedir",
                     "data": {
+                        "userResourceId": "5423babb52531c0b00cde94e",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "Entering Kuyunedir",
@@ -1120,13 +1190,22 @@
                     "key": "80",
                     "title": "Map of Zone C",
                     "data": {
+                        "userResourceId": "54325524a0f0f7ff1002ce9a",
                         "resourceType": "user-illustration",
                         "userResource": {
                             "name": "Map of Zone C",
                             "lastModified": "2014-10-06T08:39:00.172Z",
                             "fileType": "image/jpeg",
                             "fileName": "maps-1-colored-small-labeled.jpg",
-                            "url": "http://s3.amazonaws.com/dscf-live-ro/maps-1-colored-small-labeled.jpg",
+                            "s3Credentials": {
+                                "policy": "eyJleHBpcmF0aW9uIjoiMjAxNC0wOS0yNVQwNjo0OTozMS44NDRaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0IjoiZHNjZi1zdGFnaW5nIn0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCI1NDIzYjljMDUyNTMxYzBiMDBjZGU5NGQiXSx7ImFjbCI6InB1YmxpYy1yZWFkIn0sWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsMCwzMTQ1NzI4XSxbImVxIiwiJENvbnRlbnQtVHlwZSIsImltYWdlL2pwZWciXV19",
+                                "signature": "Yroa+rDgKmKsnkVyTU/eY2EHVQQ=",
+                                "AWSAccessKeyId": "AKIAIKK6KQQ4GBE24LLA",
+                                "url": "http://s3.amazonaws.com/dscf-staging/",
+                                "Content-Type": "image/jpeg",
+                                "resourceURL": "http://s3.amazonaws.com/dscf-staging/5423b9c052531c0b00cde94d?1411627471844"
+                            },
+                            "url": "http://s3.amazonaws.com/dscf-staging/5423b9c052531c0b00cde94d?1411627471844",
                             "artist": "Nicolas Maquet",
                             "copyright": "© 2014 DemonSquid, Inc."
                         }
@@ -1137,6 +1216,7 @@
                     "key": "46",
                     "title": "C1. Parlor",
                     "data": {
+                        "userResourceId": "5423badb52531c0b00cde94f",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C1. Parlor",
@@ -1150,6 +1230,7 @@
                     "key": "47",
                     "title": "C2. Gate to surface (collapsed)",
                     "data": {
+                        "userResourceId": "5423bb1052531c0b00cde950",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C2. Gate to surface (collapsed)",
@@ -1163,6 +1244,7 @@
                     "key": "48",
                     "title": "C3. Trapped stairway (CR3)",
                     "data": {
+                        "userResourceId": "5423bb1152531c0b00cde951",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C3. Trapped stairway (CR3)",
@@ -1176,6 +1258,7 @@
                     "key": "49",
                     "title": "C4. Guardroom",
                     "data": {
+                        "userResourceId": "5423bb1352531c0b00cde952",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C4. Guardroom",
@@ -1189,6 +1272,7 @@
                     "key": "8",
                     "title": "C5. Prison Cells",
                     "data": {
+                        "userResourceId": "5423c1d552531c0b00cde95d",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C5. Prison Cells",
@@ -1202,6 +1286,7 @@
                     "key": "26",
                     "title": "C6. Armory (CR 6)",
                     "data": {
+                        "userResourceId": "5423c1d752531c0b00cde95e",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C6. Armory (CR 6)",
@@ -1215,6 +1300,7 @@
                     "key": "65",
                     "title": "Armory",
                     "data": {
+                        "userResourceId": "542a6af562b18e0b00f9a8da",
                         "resourceType": "encounter",
                         "userResource": {
                             "Name": "Armory",
@@ -1247,6 +1333,7 @@
                     "key": "51",
                     "title": "C7. Ventilation",
                     "data": {
+                        "userResourceId": "5423c29c52531c0b00cde961",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C7. Ventilation",
@@ -1260,6 +1347,7 @@
                     "key": "34",
                     "title": "C8. Market",
                     "data": {
+                        "userResourceId": "5423c1d952531c0b00cde95f",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C8. Market",
@@ -1273,6 +1361,7 @@
                     "key": "58",
                     "title": "C9. Gate to the underground road",
                     "data": {
+                        "userResourceId": "5423c2d652531c0b00cde965",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C9. Gate to the underground road",
@@ -1286,6 +1375,7 @@
                     "key": "52",
                     "title": "C10. Forge",
                     "data": {
+                        "userResourceId": "5423c2c552531c0b00cde962",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C10. Forge",
@@ -1299,6 +1389,7 @@
                     "key": "50",
                     "title": "C11. Storage room (CR4)",
                     "data": {
+                        "userResourceId": "5423c1db52531c0b00cde960",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C11. Storage room (CR4)",
@@ -1312,6 +1403,7 @@
                     "key": "66",
                     "title": "Storage Room",
                     "data": {
+                        "userResourceId": "542a6b3462b18e0b00f9a8dd",
                         "resourceType": "encounter",
                         "userResource": {
                             "Name": "Storage Room",
@@ -1344,6 +1436,7 @@
                     "key": "59",
                     "title": "C12. Highborn quarters",
                     "data": {
+                        "userResourceId": "5423c38352531c0b00cde966",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C12. Highborn quarters",
@@ -1357,6 +1450,7 @@
                     "key": "60",
                     "title": "C13. Ventilation Chamber",
                     "data": {
+                        "userResourceId": "5423c3af52531c0b00cde967",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C13. Ventilation Chamber",
@@ -1370,6 +1464,7 @@
                     "key": "61",
                     "title": "C14. Temple (CR 8)",
                     "data": {
+                        "userResourceId": "5423c3b152531c0b00cde968",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C14. Temple (CR 8)",
@@ -1383,6 +1478,7 @@
                     "key": "67",
                     "title": "Temple",
                     "data": {
+                        "userResourceId": "542a6c8762b18e0b00f9a8fe",
                         "resourceType": "encounter",
                         "userResource": {
                             "Name": "Temple",
@@ -1468,6 +1564,7 @@
                     "key": "78",
                     "title": "Web (Ex)",
                     "data": {
+                        "userResourceId": "542b455a67775f0b00cb95e2",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "Web (Ex)",
@@ -1481,6 +1578,7 @@
                     "key": "62",
                     "title": "C15. Ventilation Chamber",
                     "data": {
+                        "userResourceId": "5423c3b252531c0b00cde969",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C15. Ventilation Chamber",
@@ -1494,6 +1592,7 @@
                     "key": "63",
                     "title": "C16. Mines",
                     "data": {
+                        "userResourceId": "5423c3b352531c0b00cde96a",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C16. Mines",
@@ -1507,6 +1606,7 @@
                     "key": "74",
                     "title": "Dark Creeper",
                     "data": {
+                        "userResourceId": "542a738a5f6be50b00164892",
                         "resourceType": "user-monster",
                         "userResource": {
                             "Name": "Dark Creeper",
@@ -1582,6 +1682,7 @@
                     "key": "56",
                     "title": "C17. Living quarters",
                     "data": {
+                        "userResourceId": "5423c46052531c0b00cde972",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C17. Living quarters",
@@ -1595,6 +1696,7 @@
                     "key": "57",
                     "title": "C18. Great Hall (CR 4)",
                     "data": {
+                        "userResourceId": "5423c46452531c0b00cde973",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C18. Great Hall (CR 4)",
@@ -1608,6 +1710,7 @@
                     "key": "75",
                     "title": "Rompuk",
                     "data": {
+                        "userResourceId": "542a73a35f6be50b00164896",
                         "resourceType": "user-monster",
                         "userResource": {
                             "Name": "Rompuk",
@@ -1685,6 +1788,7 @@
                     "key": "64",
                     "title": "C19. Unfinished excavation",
                     "data": {
+                        "userResourceId": "5423c46652531c0b00cde974",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "C19. Unfinished excavation",
@@ -1698,6 +1802,7 @@
                     "key": "76",
                     "title": "Jacod Farkas",
                     "data": {
+                        "userResourceId": "542a73da5f6be50b0016489e",
                         "resourceType": "user-npc",
                         "userResource": {
                             "Name": "Jacod Farkas",
@@ -1776,6 +1881,7 @@
                     "key": "77",
                     "title": "Final Battle",
                     "data": {
+                        "userResourceId": "542a74a35f6be50b001648be",
                         "resourceType": "encounter",
                         "userResource": {
                             "Name": "Final Battle",
@@ -1907,6 +2013,7 @@
                     "key": "54",
                     "title": "After defeating Jacod",
                     "data": {
+                        "userResourceId": "5423bbe752531c0b00cde956",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "After defeating Jacod",
@@ -1920,6 +2027,7 @@
                     "key": "55",
                     "title": "Continuing the adventure",
                     "data": {
+                        "userResourceId": "5423bc0752531c0b00cde957",
                         "resourceType": "user-text",
                         "userResource": {
                             "name": "Continuing the adventure",
@@ -1931,5 +2039,6 @@
             ]
         }
     ],
-    "lastModified": "2014-10-10T08:38:54.155Z"
+    "lastModified": "2014-10-10T08:38:54.155Z",
+    "synopsis": ""
 }
