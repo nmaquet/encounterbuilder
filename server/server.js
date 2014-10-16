@@ -95,7 +95,7 @@ function main(db) {
         response.send(200);
     });
 
-    var metrics = require('./usageMetrics')(collections.metrics);
+    var metrics = require('./usageMetrics')();
     var diceService = require('./diceService')();
     var knapsackService = require('./knapsackService')();
     var lootService = require('./loot/lootService')(diceService, knapsackService);
@@ -132,92 +132,91 @@ function main(db) {
     var userMapRoute = require('./userImageResourceRoute')(collections.userMaps, ObjectID);
     var chronicleRoute = require('./chronicleRoute')(db, collections, ObjectID);
 
-    app.get('/api/search-monsters', metrics.logSearchMonster, searchMonstersRoute);
-    app.get('/api/search-npcs', metrics.logSearchNpc, searchNpcsRoute);
-    app.get('/api/search-spells', metrics.logSearchSpell, searchSpellsRoute);
-    app.get('/api/search-feats', metrics.logSearchFeat, searchFeatsRoute);
-    app.get('/api/search-magic-items', metrics.logSearchItem, searchMagicItemsRoute);
-    app.get('/api/monster/:id', enableCaching, metrics.logSelectMonster, monsterRoute);
-    app.get('/api/magic-item/:id', enableCaching, metrics.logSelectItem, magicItemRoute);
-    app.get('/api/npc/:id', enableCaching, metrics.logSelectNpc, npcRoute);
-    app.get('/api/spell/:id', enableCaching, metrics.logSelectSpell, spellRoute);
-    app.get('/api/feat/:id', enableCaching, metrics.logSelectFeat, featRoute);
-    app.get("/api/favourites", disableCaching, favouritesRoute.fetch);
+    app.get('/api/search-monsters', metrics.logUsage, searchMonstersRoute);
+    app.get('/api/search-npcs', metrics.logUsage, searchNpcsRoute);
+    app.get('/api/search-spells', metrics.logUsage, searchSpellsRoute);
+    app.get('/api/search-feats', metrics.logUsage, searchFeatsRoute);
+    app.get('/api/search-magic-items', metrics.logUsage, searchMagicItemsRoute);
+    app.get('/api/monster/:id', enableCaching, metrics.logUsage, monsterRoute);
+    app.get('/api/magic-item/:id', enableCaching, metrics.logUsage, magicItemRoute);
+    app.get('/api/npc/:id', enableCaching, metrics.logUsage, npcRoute);
+    app.get('/api/spell/:id', enableCaching, metrics.logUsage, spellRoute);
+    app.get('/api/feat/:id', enableCaching, metrics.logUsage, featRoute);
+    app.get("/api/favourites", disableCaching, metrics.logUsage, favouritesRoute.fetch);
 
     app.post('/api/user-data', userDataRoute);
     /* FIXME: should be a GET with no caching ! */
-    app.post("/login", metrics.logLogin, enableCORS, loginRoute.post);
-    app.post("/register", /* TODO METRICS */ enableCORS, registerRoute);
-    app.get("/validate-email", disableCaching, /* TODO METRICS */ validateEmailRoute);
-    app.post("/api/generate-encounter-loot", metrics.logGenerateEncounterLoot, generateLootRoute.generateLoot);
-    app.post("/api/change-password", enableCORS, changePasswordRoute);
-    app.post("/api/change-user-data", enableCORS, changeUserDataRoute);
-    app.post("/api/save-content-tree", contentTreeRoute.updateContentTree);
-    app.post("/api/save-favourites", favouritesRoute.update);
-
+    app.post("/login", metrics.logUsage, enableCORS, loginRoute.post);
+    app.post("/register", metrics.logUsage, enableCORS, registerRoute);
+    app.get("/validate-email", disableCaching, metrics.logUsage, validateEmailRoute);
+    app.post("/api/generate-encounter-loot", metrics.logUsage, generateLootRoute.generateLoot);
+    app.post("/api/change-password", enableCORS, metrics.logUsage, changePasswordRoute);
+    app.post("/api/change-user-data", enableCORS, metrics.logUsage, changeUserDataRoute);
+    app.post("/api/save-content-tree", metrics.logUsage, contentTreeRoute.updateContentTree);
+    app.post("/api/save-favourites", metrics.logUsage, favouritesRoute.update);
 
     /* User Text */
-    app.get("/api/user-text/:id", enableCaching, userTextRoute.getResource);
-    app.post("/api/user-text", userTextRoute.createResource);
-    app.post("/api/user-text/:id", userTextRoute.updateResource);
-    app.delete("/api/user-text/:id", userTextRoute.deleteResource);
+    app.get("/api/user-text/:id", enableCaching, metrics.logUsage, userTextRoute.getResource);
+    app.post("/api/user-text", metrics.logUsage, userTextRoute.createResource);
+    app.post("/api/user-text/:id", metrics.logUsage, userTextRoute.updateResource);
+    app.delete("/api/user-text/:id", metrics.logUsage, userTextRoute.deleteResource);
 
     /* User Monster */
-    app.get("/api/user-monster/:id", enableCaching, userMonsterRoute.getResource);
-    app.post("/api/user-monster", userMonsterRoute.createResource);
-    app.post("/api/user-monster/:id", userMonsterRoute.updateResource);
-    app.delete("/api/user-monster/:id", userMonsterRoute.deleteResource);
+    app.get("/api/user-monster/:id", enableCaching, metrics.logUsage, userMonsterRoute.getResource);
+    app.post("/api/user-monster", metrics.logUsage, userMonsterRoute.createResource);
+    app.post("/api/user-monster/:id", metrics.logUsage, userMonsterRoute.updateResource);
+    app.delete("/api/user-monster/:id", metrics.logUsage, userMonsterRoute.deleteResource);
 
     /* User Npc */
-    app.get("/api/user-npc/:id", enableCaching, userNpcRoute.getResource);
-    app.post("/api/user-npc", userNpcRoute.createResource);
-    app.post("/api/user-npc/:id", userNpcRoute.updateResource);
-    app.delete("/api/user-npc/:id", userNpcRoute.deleteResource);
+    app.get("/api/user-npc/:id", enableCaching, metrics.logUsage, userNpcRoute.getResource);
+    app.post("/api/user-npc", metrics.logUsage, userNpcRoute.createResource);
+    app.post("/api/user-npc/:id", metrics.logUsage, userNpcRoute.updateResource);
+    app.delete("/api/user-npc/:id", metrics.logUsage, userNpcRoute.deleteResource);
 
     /* User Item */
-    app.get("/api/user-feat/:id", enableCaching, userFeatRoute.getResource);
-    app.post("/api/user-feat", userFeatRoute.createResource);
-    app.post("/api/user-feat/:id", userFeatRoute.updateResource);
-    app.delete("/api/user-feat/:id", userFeatRoute.deleteResource);
+    app.get("/api/user-feat/:id", enableCaching, metrics.logUsage, userFeatRoute.getResource);
+    app.post("/api/user-feat", metrics.logUsage, userFeatRoute.createResource);
+    app.post("/api/user-feat/:id", metrics.logUsage, userFeatRoute.updateResource);
+    app.delete("/api/user-feat/:id", metrics.logUsage, userFeatRoute.deleteResource);
 
     /* User Spell */
-    app.get("/api/user-spell/:id", enableCaching, userSpellRoute.getResource);
-    app.post("/api/user-spell", userSpellRoute.createResource);
-    app.post("/api/user-spell/:id", userSpellRoute.updateResource);
-    app.delete("/api/user-spell/:id", userSpellRoute.deleteResource);
+    app.get("/api/user-spell/:id", enableCaching, metrics.logUsage, userSpellRoute.getResource);
+    app.post("/api/user-spell", metrics.logUsage, userSpellRoute.createResource);
+    app.post("/api/user-spell/:id", metrics.logUsage, userSpellRoute.updateResource);
+    app.delete("/api/user-spell/:id", metrics.logUsage, userSpellRoute.deleteResource);
 
     /* User Item */
-    app.get("/api/user-item/:id", enableCaching, userItemRoute.getResource);
-    app.post("/api/user-item", userItemRoute.createResource);
-    app.post("/api/user-item/:id", userItemRoute.updateResource);
-    app.delete("/api/user-item/:id", userItemRoute.deleteResource);
+    app.get("/api/user-item/:id", enableCaching, metrics.logUsage, userItemRoute.getResource);
+    app.post("/api/user-item", metrics.logUsage, userItemRoute.createResource);
+    app.post("/api/user-item/:id", metrics.logUsage, userItemRoute.updateResource);
+    app.delete("/api/user-item/:id", metrics.logUsage, userItemRoute.deleteResource);
 
     /* User illustration */
-    app.get("/api/user-illustration/:id", enableCaching, userIllustrationRoute.getResource);
-    app.post("/api/user-illustration", userIllustrationRoute.createResource);
-    app.post("/api/user-illustration/:id", userIllustrationRoute.updateResource);
-    app.delete("/api/user-illustration/:id", userIllustrationRoute.deleteResource);
+    app.get("/api/user-illustration/:id", enableCaching, metrics.logUsage, userIllustrationRoute.getResource);
+    app.post("/api/user-illustration", metrics.logUsage, userIllustrationRoute.createResource);
+    app.post("/api/user-illustration/:id", metrics.logUsage, userIllustrationRoute.updateResource);
+    app.delete("/api/user-illustration/:id", metrics.logUsage, userIllustrationRoute.deleteResource);
 
     /* User map */
-    app.get("/api/user-map/:id", enableCaching, userMapRoute.getResource);
-    app.post("/api/user-map", userMapRoute.createResource);
-    app.post("/api/user-map/:id", userMapRoute.updateResource);
-    app.delete("/api/user-map/:id", userMapRoute.deleteResource);
+    app.get("/api/user-map/:id", enableCaching, metrics.logUsage, userMapRoute.getResource);
+    app.post("/api/user-map", metrics.logUsage, userMapRoute.createResource);
+    app.post("/api/user-map/:id", metrics.logUsage, userMapRoute.updateResource);
+    app.delete("/api/user-map/:id", metrics.logUsage, userMapRoute.deleteResource);
 
     /*Chronicles*/
-    app.get("/api/chronicle", disableCaching, chronicleRoute.query);
-    app.get("/api/chronicle/:id", enableCaching, chronicleRoute.getResource);
-    app.post("/api/chronicle/:id", chronicleRoute.updateResource);
-    app.post("/api/chronicle", chronicleRoute.createResource);
-    app.get("/api/chronicle-full/:id", disableCaching, chronicleRoute.exportResource);
-    app.delete("/api/chronicle/:id", chronicleRoute.deleteResource);
+    app.get("/api/chronicle", disableCaching, metrics.logUsage, chronicleRoute.query);
+    app.get("/api/chronicle/:id", enableCaching, metrics.logUsage, chronicleRoute.getResource);
+    app.post("/api/chronicle/:id", metrics.logUsage, chronicleRoute.updateResource);
+    app.post("/api/chronicle", metrics.logUsage, chronicleRoute.createResource);
+    app.get("/api/chronicle-full/:id", disableCaching, metrics.logUsage, chronicleRoute.exportResource);
+    app.delete("/api/chronicle/:id", metrics.logUsage, chronicleRoute.deleteResource);
 
     /*Encounters*/
-    app.get("/api/encounter", disableCaching, encounterRoute.query);
-    app.get("/api/encounter/:id", enableCaching, encounterRoute.getResource);
-    app.post("/api/encounter/:id", encounterRoute.updateResource);
-    app.post("/api/encounter", encounterRoute.createResource);
-    app.delete("/api/encounter/:id", encounterRoute.deleteResource);
+    app.get("/api/encounter", disableCaching, metrics.logUsage, encounterRoute.query);
+    app.get("/api/encounter/:id", enableCaching, metrics.logUsage, encounterRoute.getResource);
+    app.post("/api/encounter/:id", metrics.logUsage, encounterRoute.updateResource);
+    app.post("/api/encounter", metrics.logUsage, encounterRoute.createResource);
+    app.delete("/api/encounter/:id", metrics.logUsage, encounterRoute.deleteResource);
 
     var APP_JADE_FILES = [
         'feedback-popover',
