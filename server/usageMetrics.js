@@ -10,11 +10,17 @@ var keen = keenIO.configure({
 });
 
 function logUsage(request, response, next) {
-    var params = { username: request.user ? request.user.username : null, query: request.query };
+    var requestString = request.method.toUpperCase() + " " + request.route.path;
+    var params = {
+        username: request.user ? request.user.username : null,
+        query: request.query,
+        request: requestString
+    };
     request.route.keys.forEach(function (key) {
         params[key.name] = request.params[key.name];
     });
-    keen.addEvent(encodeURIComponent(request.method.toUpperCase() + " " + request.route.path), params);
+    keen.addEvent(encodeURIComponent(requestString), params);
+    keen.addEvent("all", params);
     next();
 }
 
