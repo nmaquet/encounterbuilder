@@ -6,6 +6,7 @@ module.exports = function (db, collections, ObjectID) {
     var traverse = require("traverse");
     var async = require("async");
     var s3Service = require('./s3Service')();
+    var _ = require('lodash');
 
     var userResourceCollections = {
         "user-feat": collections.userFeats,
