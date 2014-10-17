@@ -86,8 +86,8 @@ module.exports = function (db, collections, ObjectID) {
         }
 
         function insertUserResource(x, chronicle, onlyEncounters, callback) {
-            if ((!onlyEncounters && node.resourceType === "encounter" ) ||
-                (onlyEncounters && node.resourceType !== "encounter")) {
+            if ((!onlyEncounters && x.resourceType === "encounter" ) ||
+                (onlyEncounters && x.resourceType !== "encounter")) {
                 return;
             }
             else {
