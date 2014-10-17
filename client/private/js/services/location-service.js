@@ -33,7 +33,7 @@ DEMONSQUID.encounterBuilderServices.factory('locationService',
                 goToDetails: function (type, id) {
                     var typePrefix = '/' + type + '/';
                     if ($route.current.templateUrl === 'encounter.html') {
-                        this.go("/chronicle/" + $routeParams.chronicleId + '/encounter/' + $routeParams.userResourceId + typePrefix + id);
+                        this.go("/chronicle/" + $routeParams.chronicleId + '/encounter/' + $routeParams.encounterId + typePrefix + id);
                     } else if ($route.current.templateUrl === 'edit-user-monster.html') {
                         this.go("/chronicle/" + $routeParams.chronicleId + '/edit-user-monster/' + $routeParams.userResourceId + typePrefix + id);
                     } else if ($route.current.templateUrl === 'edit-user-npc.html') {

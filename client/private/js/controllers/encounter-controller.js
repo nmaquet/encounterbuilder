@@ -29,7 +29,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
 
             $scope.selectMonsterById = function (id, userCreated) {
                 if (userCreated) {
-                    locationService.goToDetails('user-monster', id);
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/" + 'user-monster' + "/" +id);
                 } else {
                     locationService.goToDetails('monster', id);
                 }
@@ -38,7 +38,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
 
             $scope.selectNpcById = function (id, userCreated) {
                 if (userCreated) {
-                    locationService.goToDetails('user-npc', id);
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/" + 'user-npc' + "/" +id);
                 } else {
                     locationService.goToDetails('npc', id);
                 }
@@ -46,7 +46,7 @@ DEMONSQUID.encounterBuilderControllers.controller('EncounterController',
 
             $scope.selectItemById = function (id, userCreated) {
                 if (userCreated) {
-                    locationService.goToDetails('user-item', id);
+                    locationService.go("/chronicle/" + $routeParams.chronicleId + "/" + 'user-item' + "/" +id);
                 }
                 else {
                     locationService.goToDetails('item', id);
