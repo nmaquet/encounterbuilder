@@ -30,6 +30,7 @@ module.exports = function (db, collections, ObjectID) {
             originalCreate(request, response);
         }
         else {
+            var newId = {};
             var requestPending = 0;
             userService.exportChronicle(baseChronicleId, function (error, chronicle) {
                 if (error) {
@@ -42,16 +43,25 @@ module.exports = function (db, collections, ObjectID) {
                 if (chronicle.contentTree.length === 0) {
                     insertChronicle(chronicle, sessionUserId);
                 }
-                traverse(chronicle.contentTree).forEach(function (x) {
-                    if (!x) {
-                        return;
-                    }
-                    if (!x.folder) {
-                        if (x.resourceType) {
-                            insertUserResource(x, chronicle);
-                        }
-                    }
+
+                traverseContentTree(false, function () {
+                    traverseContentTree(true, insertChronicle);
                 });
+
+                function traverseContentTree(onlyEncounters, callback) {
+                    traverse(chronicle.contentTree).forEach(function (x) {
+                        if (!x) {
+                            return;
+                        }
+                        if (!x.folder) {
+                            if (x.resourceType) {
+                                insertUserResource(x, chronicle, onlyEncounters, callback);
+                            }
+                        }
+                    });
+                }
+
+
             });
 
         }
@@ -75,35 +85,55 @@ module.exports = function (db, collections, ObjectID) {
             });
         }
 
-        function insertUserResource(x, chronicle) {
-            if (!x.userResource) {
+        function insertUserResource(x, chronicle, onlyEncounters, callback) {
+            if ((!onlyEncounters && node.resourceType === "encounter" ) ||
+                (onlyEncounters && node.resourceType !== "encounter")) {
                 return;
             }
-            requestPending++;
-            x.userResource.userId = ObjectID(sessionUserId);
-            userResourceCollections[x.resourceType].insert(x.userResource, function (error, newResource) {
-                if (error) {
-                    console.log(error);
-                    return response.send(500);
+            else {
+                if (!x.userResource) {
+                    return;
                 }
-
-                x.userResourceId = newResource[0]._id.toString();
-                if (newResource[0].url) {
-                    var originalS3Id = newResource[0].url.substring(s3Service.urlPrefix.length, newResource[0].url.indexOf('?'));
-                    s3Service.copyInS3(originalS3Id, x.userResourceId);
-                    userResourceCollections[x.resourceType].update({_id: newResource._id}, {$set: {url: s3Service.getResourceURL(newResource._id)}}, function (error) {
-                        if (error) {
-                            console.log(error);
-                        }
+                requestPending++;
+                if (x.resourceType === "encounter") {
+                    _.forEach(["Monsters", "Npcs", "items"], function (type) {
+                        x.userResource[type] = _.transform(x.userResource[type], function (resources, resource, id) {
+                            if (resource.userCreated && newId[id]) {
+                                resources[newId[id]] = resource;
+                            } else if (!resource.userCreated) {
+                                resources[id] = resource;
+                            }
+                            else {
+                                console.log("warning couldn't find new  id for: " + resource.Name + " id:" + id);
+                            }
+                        });
                     });
                 }
+                x.userResource.userId = ObjectID(sessionUserId);
+                userResourceCollections[x.resourceType].insert(x.userResource, function (error, newResource) {
+                    if (error) {
+                        console.log(error);
+                        return response.send(500);
+                    }
+                    newId[x.userResourceId] = newResource[0]._id.toString();
+                    x.userResourceId = newResource[0]._id.toString();
+                    if (newResource[0].url) {
+                        var originalS3Id = newResource[0].url.substring(s3Service.urlPrefix.length, newResource[0].url.indexOf('?'));
+                        s3Service.copyInS3(originalS3Id, x.userResourceId);
+                        userResourceCollections[x.resourceType].update({_id: newResource._id}, {$set: {url: s3Service.getResourceURL(newResource._id)}}, function (error) {
+                            if (error) {
+                                console.log(error);
+                            }
+                        });
+                    }
 
-                delete x.userResource;
-                requestPending--;
-                if (requestPending === 0) {
-                    insertChronicle(chronicle);
-                }
-            });
+                    delete x.userResource;
+                    requestPending--;
+                    if (requestPending === 0) {
+                        callback(chronicle);
+                    }
+                });
+            }
         }
     }
 

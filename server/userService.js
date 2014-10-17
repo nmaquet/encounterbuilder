@@ -115,7 +115,6 @@ function register(fields, callback) {
                     continue;
                 user[property] = fields[property];
             }
-            //FIXME use real demo chronicle
             var chronicle = require('../scripts/live/chronicles/Legacy of the Hollow Peak.json');
             userCollection.insert(user, function (error, result) {
                 if (error) {
