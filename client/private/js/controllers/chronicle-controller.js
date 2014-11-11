@@ -45,26 +45,32 @@ DEMONSQUID.encounterBuilderControllers.controller('ChronicleController',
                 locationService.go("/chronicle-full/" + $routeParams.chronicleId);
             };
 
+            $scope.exceptLastModified = function (userResource) {
+                var result = angular.copy(userResource);
+                delete result.lastModified;
+                return result;
+            };
 
-            if (contentTreeService.hasLoaded()) {
+            function getChronicleAndWatchChanges() {
                 $scope.chronicle = contentTreeService.getChronicle();
-                $scope.$watch("chronicle.synopsis", throttle(function (newValue, oldValue) {
+                $scope.chronicle.minLevel = $scope.chronicle.minLevel || 1;
+                $scope.chronicle.maxLevel = $scope.chronicle.maxLevel || 20;
+                var throttledSaveChronicle = throttle(contentTreeService.saveChronicle, 500);
+                $scope.$watch("exceptLastModified(chronicle)", function (newValue, oldValue) {
                     if (angular.equals(newValue, oldValue)) {
                         return;
                     }
-                    contentTreeService.saveChronicle();
-                }, 500));
+                    throttledSaveChronicle()
+                }, true /* deep equality */);
+            }
+
+            if (contentTreeService.hasLoaded()) {
+                getChronicleAndWatchChanges();
             }
             else {
                 contentTreeService.onLoadSuccess(function () {
-                    $scope.chronicle = contentTreeService.getChronicle();
-                    $scope.$watch("chronicle.synopsis", throttle(function (newValue, oldValue) {
-                        if (angular.equals(newValue, oldValue)) {
-                            return;
-                        }
-                        contentTreeService.saveChronicle();
-                    }, 500));
-                })
+                    getChronicleAndWatchChanges();
+                });
             }
         }
     ]);
