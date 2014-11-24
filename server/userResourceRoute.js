@@ -104,6 +104,8 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
                     }
                     else {
                         response.json(modifiedResource);
+                        clientResource._id = request.params.id;
+                        request.io.route('updateUserResource');
                     }
                 });
             });

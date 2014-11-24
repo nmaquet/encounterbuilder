@@ -2,9 +2,33 @@
 
 "use strict";
 
+io = io.connect();
+
 DEMONSQUID.encounterBuilderControllers.controller('UserResourceController',
-    ['$rootScope', '$scope', '$routeParams', 'userResourceService', 'contentTreeService', 'locationService',
-        function ($rootScope, $scope, $routeParams, userResourceService, contentTreeService, locationService) {
+    ['$rootScope', '$scope', '$routeParams', 'userResourceService', 'contentTreeService', 'locationService', 'socketService',
+        function ($rootScope, $scope, $routeParams, userResourceService, contentTreeService, locationService, socketService) {
+
+//            console.log("setting up listener");
+//            socketService.on("updateUserResource", function (data) {
+//                console.log("received data", data);
+//            });
+//            console.log("setting up listener done");
+
+            console.log("setting up listener");
+            console.log("emitting ready...");
+            io.emit('ready');
+            io.on('updateUserResource', function (data) {
+                $scope.$apply(function () {
+                    console.log("received data with id", data._id);
+                    if ($scope.userResource._id === data._id) {
+                        console.log("updating data!");
+                        $scope.userResource.name = data.name;
+                    } else {
+                        console.log("NOT updating data");
+                    }
+                });
+            });
+            console.log("setting up listener done");
 
             var resourceType = locationService.getResourceType();
             $scope.showButtons = false;

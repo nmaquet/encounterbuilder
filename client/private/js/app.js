@@ -13,7 +13,8 @@ DEMONSQUID.encounterBuilderApp = angular.module('encounterBuilderApp', [
     'encounterBuilderDirectives',
     'ui.bootstrap',
     'ui.tinymce',
-    'angularFileUpload'
+    'angularFileUpload',
+    'btford.socket-io'
 ]);
 
 DEMONSQUID.encounterBuilderApp.config(['$routeProvider', '$httpProvider',

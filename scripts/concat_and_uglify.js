@@ -27,6 +27,7 @@ var jsFiles = [
     "client/private/bower_components/tinymce/plugins/autoresize/plugin.min.js",
     "client/private/bower_components/angular-ui-tinymce/src/tinymce.js",
     "client/private/bower_components/angular-file-upload/angular-file-upload.js",
+    "client/private/bower_components/angular-socket-io/socket.js",
     "client/private/angular-ui/ui-bootstrap-0.10.0.js",
     "client/private/angular-ui/ui-bootstrap-tpls-0.10.0.js",
     // App files
@@ -105,6 +106,7 @@ var jsFiles = [
     "client/private/js/services/parser-service.js",
     "client/private/js/services/formatter-service.js",
     "client/private/js/services/user-resource-service.js",
+    "client/private/js/services/socket-service.js",
     "client/private/js/resources/user-resources.js"
 ];
 

@@ -7,10 +7,9 @@ require('../scripts/concat_and_uglify');
 var FIND_LIMIT = 50;
 
 var fs = require('fs');
-var express = require('express');
+var express = require('express.io');
 var app = express();
 var MongoClient = require('mongodb').MongoClient;
-var MongoStore = require('connect-mongo')(express);
 var ObjectID = require('mongodb').ObjectID;
 var expressJwt = require('express-jwt');
 var jwt = require('jsonwebtoken');
@@ -40,6 +39,7 @@ MongoClient.connect(MONGODB_URL, MONGO_CONNECT_OPTIONS, function (error, db) {
 });
 
 function main(db) {
+    app.http().io();
     var collections = require('./collections')(db);
     app.configure(function () {
         //app.use(express.compress());
@@ -285,5 +285,14 @@ function main(db) {
     process.on('SIGINT', function () {
         console.log('Exiting...');
         process.exit(0);
+    });
+
+    app.io.route('updateUserResource', function(request){
+       console.log("broadcasting request.body");
+       request.io.broadcast("updateUserResource", request.body);
+    });
+
+    app.io.route('ready', function(request) {
+        console.log("received ready event");
     });
 }
