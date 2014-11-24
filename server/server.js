@@ -78,7 +78,7 @@ function main(db) {
 
     function enableCORS(request, response, next) {
         var HOST_TO_ALLOWED_ORIGIN = {
-            "192.168.0.5:3000": "http://168.168.0.5:3000",
+            "192.168.0.7:3000": "http://168.168.0.7:3000",
             "localhost:3000": "http://localhost:3000",
             "localhost.encounterbuilder.com": "http://localhost.encounterbuilder.com",
             "encounterbuilder-staging.herokuapp.com": "http://staging.chronicleforge.com",

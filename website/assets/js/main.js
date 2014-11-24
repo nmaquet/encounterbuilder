@@ -7,7 +7,7 @@ $('.carousel').carousel({
 });
 
 var HOST_URL = {
-    "192.168.0.5:3000": "http://192.168.0.5:3000/",
+    "192.168.0.7:3000": "http://192.168.0.7:3000/",
     "localhost:3000": "http://localhost:3000/",
     "localhost.encounterbuilder.com": "http://localhost.encounterbuilder.com/",
     "staging.chronicleforge.com": "https://encounterbuilder-staging.herokuapp.com/",
