@@ -1,0 +1,126 @@
+<template name="monsterStatBlock">
+    <div class="row heading result-heading">
+        <div class="col-xxs-8 col-xs-8 col-lg-9 name-container"><h2 class="t-title t-title-result">{{Name}}</h2>
+            <small>Source: {{Source}}</small>
+        </div>
+        <div class="col-xxs-4 col-xs-4 col-lg-3 cr-container"><h3 class="t-title">CR
+            &nbsp;{{CR}}</h3><strong>XP</strong>&nbsp;{{XP}}
+            <div class="row btn-container"><a title="Copy" ng-click="copyMonster()"
+                                              class="col-xxs-3 col-xs-3 no-padding action-btn btn-1 is-pointer"><i
+                    class="icon fa fa-copy"></i></a>
+                <a title="Favourite" ng-click="toggleFavourite()"
+                   class="col-xxs-3 col-xs-3 no-padding action-btn btn-4 is-pointer"><i ng-show="favourite"
+                                                                                        class="icon fa fa-heart"></i><i
+                        ng-hide="favourite" class="icon fa fa-heart-o"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="row l-section result-content">
+        <div class="col-xs-12 cat"><p class="intro underlined">{{Description_Visual}}</p>
+            <ul class="list-inline">
+                <li><span><strong>XP</strong>&nbsp;{{XP}}</span></li>
+                <li ng-if="Gender||Race||Classes"><span>{{Gender}} {{Race}} {{Classes}}</span>
+                </li>
+                <li><span><strong>{{Alignment}}</strong>&nbsp;{{Size}} {{Type}} {{SubType}}</span>
+                </li>
+                <li><span><strong>Init</strong>&nbsp;{{Init}}</span></li>
+                <li><span><strong>Senses</strong>&nbsp;{{Senses}}</span></li>
+            </ul>
+            <ul ng-if="Aura" class="list-inline">
+                <li><span><strong>Aura</strong>&nbsp;{{Aura}}</span></li>
+            </ul>
+        </div>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-lg-6 cat decor">
+                    <legend class="cat-heading t-legend t-title">Offense</legend>
+                    <ul class="cat-content list-unstyled">
+                        <li><span><strong>SPD</strong>&nbsp;{{Speed}}</span></li>
+                        <li ng-if="Melee"><span><strong>Melee</strong>&nbsp;{{Melee}}</span></li>
+                        <li ng-if="Ranged"><span><strong>Ranged</strong>&nbsp;{{Ranged}}</span></li>
+                        <li><span><strong>Space</strong>&nbsp;{{Space}}&nbsp;</span><span><strong>Reach</strong>&nbsp;{{Reach}}</span>
+                        </li>
+                        <li ng-if="SpecialAttacks"><span><strong>Special
+                            Attacks</strong>&nbsp;{{SpecialAttacks}};</span>
+                        </li>
+                        <li ng-if="SpellsKnown">
+                            <spell-list spell-string="{{SpellsKnown}}"></spell-list>
+                        </li>
+                        <li ng-if="Bloodline"><span><strong>Bloodline</strong>&nbsp;{{Bloodline}}</span>
+                        </li>
+                        <li ng-if="SpellsPrepared">
+                            <spell-list spell-string="{{SpellsPrepared}}"></spell-list>
+                        </li>
+                        <li ng-bind-html="SLASafe" linkify="SLASafe" linkify-type="spell"
+                            mythic="Mythic"></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 cat decor">
+                    <legend class="cat-heading t-legend t-title">Defense</legend>
+                    <ul class="cat-content list-unstyled">
+                        <li><span><strong><abbr title="Armor Class">AC</abbr></strong>&nbsp;{{AC}}; {{AC_Mods}}</span>
+                        </li>
+                        <li><span><strong>HP</strong>&nbsp;{{HP}} {{HD}}</span></li>
+                        <li>
+                            <span><strong>Fort</strong>&nbsp;{{Fort}},</span><span><strong>Ref</strong>&nbsp;{{Ref}},</span><span><strong>Will</strong>&nbsp;{{Will}}</span>
+                        </li>
+                        <li ng-if="DR"><span><strong>DR</strong>&nbsp;{{DR}};</span></li>
+                        <li ng-if="Immune"><span><strong>Immune</strong>&nbsp;{{Immune}};</span></li>
+                        <li ng-if="Resist"><span><strong>Resist</strong>&nbsp;{{Resist}};</span></li>
+                        <li ng-if="Weaknesses"><span><strong>Weaknesses</strong>&nbsp;{{Weaknesses}};</span>
+                        </li>
+                        <li ng-if="SR"><span><strong>SR</strong>&nbsp;{{SR}}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-lg-6 cat decor">
+                    <legend class="cat-heading t-legend t-title">Statistics</legend>
+                    <ul class="cat-content list-unstyled">
+                        <li>
+                            <span><strong>Str</strong>&nbsp;{{Str}},</span><span><strong>Dex</strong>&nbsp;{{Dex}},</span><span><strong>Con</strong>&nbsp;{{Con}},</span><span><strong>Int</strong>&nbsp;{{Int}},</span><span><strong>Wis</strong>&nbsp;{{Wis}},</span><span><strong>Cha</strong>&nbsp;{{Cha}}</span>
+                        </li>
+                        <li><span><strong>Base Atk</strong>&nbsp;{{BaseAtk}};</span><span><strong>CMB</strong>&nbsp;{{CMB}};</span><span><strong>CMD</strong>&nbsp;{{CMD}}</span>
+                        </li>
+                        <li ng-if="Feats"><span><strong>Feats&nbsp;</strong><span linkify="Feats"
+                                                                                  linkify-type="feat"
+                                                                                  mythic="Mythic"></span></span>
+                        </li>
+                        <li ng-if="Skills || RacialMods"><span
+                                ng-if="Skills"><strong>Skills</strong>&nbsp;{{Skills}}</span><span
+                                ng-if="RacialMods"><strong>Racial
+                            Modifiers</strong>&nbsp;{{RacialMods}}</span></li>
+                        <li ng-if="Languages"><span><strong>Languages</strong>&nbsp;{{Languages}}</span>
+                        </li>
+                        <li ng-if="SQ"><span><strong>SQ</strong>&nbsp;{{SQ}}</span></li>
+                    </ul>
+                </div>
+                <div ng-if="Environment || Organization || Treasure" class="col-lg-6 cat decor">
+                    <div>
+                        <legend class="cat-heading t-legend t-title">Ecology</legend>
+                    </div>
+                    <div>
+                        <ul class="cat-content list-unstyled">
+                            <li ng-if="Environment"><span><strong>Environment</strong>&nbsp;{{Environment}}</span>
+                            </li>
+                            <li ng-if="Organization"><span><strong>Organization</strong>&nbsp;{{Organization}}</span>
+                            </li>
+                            <li ng-if="Treasure"><span><strong>Treasure</strong>&nbsp;{{Treasure}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="SpecialAbilitiesSafe" class="col-xs-12 cat decor"><span><legend
+                class="cat-heading t-legend t-title">Special Abilities
+        </legend><!-- FIXME Use jQuery to change the <h5> tags into <p> or <div>--><div
+                ng-bind-html="SpecialAbilitiesSafe" class="cat-content"></div></span></div>
+        <div ng-if="Description" class="col-xs-12 cat decor">
+            <legend class="cat-heading t-legend t-title">Description</legend>
+            <div ng-bind-html="DescriptionSafe" class="cat-content"></div>
+        </div>
+    </div>
+</template>

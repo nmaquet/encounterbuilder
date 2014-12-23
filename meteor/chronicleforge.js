@@ -18,11 +18,18 @@ if (Meteor.isClient) {
 
     Router.route('/search/:_query', function () {
         var query = this.params._query;
-        var results = Monsters.find({Name: new RegExp(DEMONSQUID.utils.escapeRegexp(query), 'i')}, {Name: 1});
+        var results = Monsters.find({Name: new RegExp(DEMONSQUID.utils.escapeRegexp(query), 'i')}, {Name: 1, id: 1});
         this.render('search', {
             data: {results: results}
         });
     });
+
+    Router.route('/monster/:_id', function () {
+        this.render('monster', {
+            data: Monsters.findOne({id: this.params._id})
+        });
+    });
+
 
     Router.route('/search', function () {
         this.render('search');

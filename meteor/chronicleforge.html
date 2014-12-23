@@ -30,8 +30,13 @@
 
 <template name="searchResults">
     {{#each results}}
-    <li>{{Name}}</li>
+    <li><a href="/monster/{{id}}">{{Name}}</a></li>
     {{else}}
     <li class="placeholder">No results :(</li>
     {{/each}}
+</template>
+
+<template name="monster">
+    <h1>Monster</h1>
+    {{> monsterStatBlock }}
 </template>
