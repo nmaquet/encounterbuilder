@@ -10,15 +10,15 @@
 
 <template name="home">
     <a href="/chronicles">Chronicles</a>
-    <h1>Home</h1>
     {{> searchForm}}
+    <h1>Home</h1>
 </template>
 
 <template name="search">
     <a href="/">Home</a>
     <a href="/chronicles">Chronicles</a>
-    <h1>Search Results</h1>
     {{> searchForm}}
+    <h1>Search Results</h1>
     {{> searchResults}}
 </template>
 
@@ -44,6 +44,7 @@
 
 <template name="chronicles">
     <a href="/">Home</a>
+    {{> searchForm}}
     <h1>Chronicles of {{email}}</h1>
     {{> createChronicle }}
     <ul>
