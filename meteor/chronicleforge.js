@@ -47,7 +47,11 @@ if (Meteor.isClient) {
     });
 
     Template.chronicles.helpers({
-        user: Meteor.user(),
+        email: function(){
+            if (Meteor.user()) {
+                return Meteor.user().emails[0].address
+            }
+        },
         chronicles: Chronicles.find({})
     });
 
