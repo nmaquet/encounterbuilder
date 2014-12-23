@@ -1,11 +1,11 @@
 <head>
-  <title>chronicleforge</title>
+    <title>chronicleforge</title>
 </head>
 
 <body>
-    <div>
-        {{> loginButtons}}
-    </div>
+<div>
+    {{> loginButtons}}
+</div>
 </body>
 
 <template name="home">
@@ -15,13 +15,23 @@
 
 <template name="search">
     <a href="/">Home</a>
+
     <h1>Search Results</h1>
     {{> searchForm}}
+    {{> searchResults}}
 </template>
 
 <template name="searchForm">
-  <form id="search-form">
-      <input type="text" name="query" id="search-form-input"/>
-      <input type="submit" value="search"/>
-  </form>
+    <form id="search-form">
+        <input type="text" name="query" id="search-form-input"/>
+        <input type="submit" value="search"/>
+    </form>
+</template>
+
+<template name="searchResults">
+    {{#each results}}
+    <li>{{Name}}</li>
+    {{else}}
+    <li class="placeholder">No results :(</li>
+    {{/each}}
 </template>
