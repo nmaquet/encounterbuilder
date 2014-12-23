@@ -1,0 +1,27 @@
+<head>
+  <title>chronicleforge</title>
+</head>
+
+<body>
+    <div>
+        {{> loginButtons}}
+    </div>
+</body>
+
+<template name="home">
+    <h1>Home</h1>
+    {{> searchForm}}
+</template>
+
+<template name="search">
+    <a href="/">Home</a>
+    <h1>Search Results</h1>
+    {{> searchForm}}
+</template>
+
+<template name="searchForm">
+  <form id="search-form">
+      <input type="text" name="query" id="search-form-input"/>
+      <input type="submit" value="search"/>
+  </form>
+</template>
