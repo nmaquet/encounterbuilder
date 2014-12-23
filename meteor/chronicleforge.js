@@ -1,4 +1,5 @@
 Monsters = new Meteor.Collection("monsters");
+Chronicles = new Meteor.Collection("chronicles");
 
 DEMONSQUID = {
     utils: {
@@ -30,15 +31,37 @@ if (Meteor.isClient) {
         });
     });
 
-
     Router.route('/search', function () {
         this.render('search');
+    });
+
+    Router.route('/chronicles', function () {
+        this.render('chronicles');
     });
 
     Template.searchForm.events({
         'submit form': function (e) {
             e.preventDefault();
             Router.go('/search/' + event.target.query.value);
+        }
+    });
+
+    Template.chronicles.helpers({
+        user: Meteor.user(),
+        chronicles: Chronicles.find({})
+    });
+
+    Template.chronicles.events({
+       "click .delete-chronicle-button": function() {
+           Chronicles.remove({_id: this._id});
+       }
+    });
+
+    Template.createChronicle.events({
+        "submit form": function(event) {
+            event.preventDefault();
+            Chronicles.insert({name: event.target.name.value});
+            event.target.name.value = ""
         }
     });
 
