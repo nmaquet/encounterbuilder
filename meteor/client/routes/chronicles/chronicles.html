@@ -1,0 +1,22 @@
+<!--Copyright (c) 2014 DemonSquid, Inc. All rights reserved.-->
+
+<template name="chronicles">
+    <a href="/">Home</a>
+    {{> searchForm}}
+    <h1>Chronicles of {{email}}</h1>
+    {{> createChronicle }}
+    <ul>
+        {{#each chronicles}}
+        <li>{{name}} <button class="delete-chronicle-button">delete</button></li>
+        {{else}}
+        <li>You have no chronicles :(</li>
+        {{/each}}
+    </ul>
+</template>
+
+<template name="createChronicle">
+    <form id="create-chronicle-form">
+        <input type="text" name="name" id="create-chronicle-form-input"/>
+        <input type="submit" value="create"/>
+    </form>
+</template>
