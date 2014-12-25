@@ -3,3 +3,11 @@
 Router.route('/', function () {
     this.render('home');
 });
+
+Template.home.helpers({
+   'hiddenClassIfNotLoggedIn' : function() {
+       if (!Meteor.user()) {
+           return "hidden"
+       }
+   }
+});

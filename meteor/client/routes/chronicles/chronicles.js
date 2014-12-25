@@ -1,7 +1,11 @@
 // Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
 
 Router.route('/chronicles', function () {
-    this.render('chronicles');
+    if (!Meteor.user()) {
+        Router.go('/')
+    } else {
+        this.render('chronicles');
+    }
 });
 
 Template.chronicles.helpers({
