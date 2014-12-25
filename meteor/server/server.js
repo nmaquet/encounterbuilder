@@ -1,7 +1,5 @@
 Chronicles.allow({
     insert: function (userId, doc) {
-        console.log(userId);
-        console.log(doc);
         return (userId && doc.ownerId === userId);
     },
     update: function (userId, doc) {
@@ -19,9 +17,7 @@ Chronicles.deny({
 });
 
 Meteor.publish("chronicles", function (userId) {
-    var cursor = Chronicles.find({ownerId: userId});
-    console.log("publishing", cursor.count(), "chronicles");
-    return  cursor;
+    return  Chronicles.find({ownerId: userId});
 });
 
 Meteor.publish("monsters");
