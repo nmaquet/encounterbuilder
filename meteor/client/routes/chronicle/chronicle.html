@@ -4,4 +4,20 @@
     <a href="/">Home</a>
     {{> searchForm}}
     <h1>Single Chronicle: {{name}}</h1>
+    {{> addUserContentForm}}
+    <ul>
+        {{#each content}}
+            <li><h2>{{content.title}}</h2>{{content.body}}<button class="delete-user-content-button">delete</button></li>
+        {{/each}}
+    </ul>
+</template>
+
+<template name="addUserContentForm">
+    <form id="add-user-content">
+        <select id="add-user-content-select">
+            <option value="text">Text</option>
+            <option value="monster">Monster</option>
+        </select>
+        <input type="submit" value="add" />
+    </form>
 </template>
