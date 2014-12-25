@@ -17,7 +17,9 @@ Chronicles.deny({
 });
 
 Meteor.publish("chronicles", function (userId) {
-    return  Chronicles.find({ownerId: userId});
+    return Chronicles.find({ownerId: userId});
 });
 
-Meteor.publish("monsters");
+Meteor.publish("monsters", function(){
+    return Monsters.find({});
+});
