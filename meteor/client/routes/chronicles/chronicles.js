@@ -5,6 +5,7 @@ Router.route('/chronicles', function () {
         Router.go('/')
     } else {
         this.render('chronicles');
+        Meteor.subscribe("chronicles", Meteor.userId())
     }
 });
 
@@ -26,7 +27,7 @@ Template.chronicles.events({
 Template.createChronicle.events({
     "submit form": function(event) {
         event.preventDefault();
-        Chronicles.insert({name: event.target.name.value});
+        Chronicles.insert({name: event.target.name.value, ownerId: Meteor.userId()});
         event.target.name.value = ""
     }
 });
