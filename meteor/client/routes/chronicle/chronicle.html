@@ -7,7 +7,17 @@
     {{> addUserContentForm}}
     <ul>
         {{#each content}}
-            <li><h2>{{content.title}}</h2>{{content.body}}<button class="delete-user-content-button">delete</button></li>
+            <li>
+                <div>
+                    <input class="content-title-input" value="{{content.title}}" />
+                </div>
+                <div>
+                    <textarea rows="4" cols="50" class="content-body-textarea">{{content.body}}</textarea>
+                </div>
+                <div>
+                    <button class="delete-user-content-button">delete</button>
+                </div>
+            </li>
         {{/each}}
     </ul>
 </template>

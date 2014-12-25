@@ -12,8 +12,16 @@ Router.route('/chronicle/:_id', function () {
 });
 
 Template.chronicle.events({
-    'click .delete-user-content-button': function () {
-        Chronicles.update({_id: Router.current().params._id}, {$pull: {content: { lastUpdated: this.lastUpdated }}});
+    'click .delete-user-content-button': function (event, template) {
+        var position = template.data.content.indexOf(this);
+        var query = {_id: Router.current().params._id};
+        Chronicles.update(query, {$unset: _.object([["content." + position, 1]])});
+        Chronicles.update(query, {$pull: {"content" : null}});
+    },
+    'keyup .content-body-textarea': function(event, template) {
+        var position = template.data.content.indexOf(this);
+        var query = {_id: Router.current().params._id};
+        Chronicles.update(query, { $set: _.object([["content." + position + ".content.body", event.target.value]])});
     }
 });
 
