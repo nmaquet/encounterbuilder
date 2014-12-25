@@ -22,6 +22,11 @@ Template.chronicle.events({
         var position = template.data.content.indexOf(this);
         var query = {_id: Router.current().params._id};
         Chronicles.update(query, { $set: _.object([["content." + position + ".content.body", event.target.value]])});
+    },
+    'keyup .content-title-input': function(event, template) {
+        var position = template.data.content.indexOf(this);
+        var query = {_id: Router.current().params._id};
+        Chronicles.update(query, { $set: _.object([["content." + position + ".content.title", event.target.value]])});
     }
 });
 
