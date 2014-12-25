@@ -7,7 +7,7 @@
     {{> createChronicle }}
     <ul>
         {{#each chronicles}}
-        <li>{{name}} <button class="delete-chronicle-button">delete</button></li>
+        <li><a href="/chronicle/{{_id}}">{{name}}</a> <button class="delete-chronicle-button">delete</button></li>
         {{else}}
         <li>You have no chronicles :(</li>
         {{/each}}
