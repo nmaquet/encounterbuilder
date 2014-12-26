@@ -8,3 +8,4 @@ meteor-platform
 accounts-password
 accounts-ui
 iron:router
+mizzao:autocomplete

@@ -1,24 +1,11 @@
 <!--Copyright (c) 2014 DemonSquid, Inc. All rights reserved.-->
 
-<template name="search">
-    <a href="/">Home</a>
-    <a href="/chronicles">Chronicles</a>
-    {{> searchForm}}
-    <h1>Search Results</h1>
-    {{> searchResults}}
-</template>
-
 <template name="searchForm">
-    <form id="search-form">
-        <input type="text" name="query" id="search-form-input"/>
-        <input type="submit" value="search"/>
+    <form>
+        {{> inputAutocomplete id="search-form-input" name="query" settings=autocompleteSettings }}
     </form>
 </template>
 
-<template name="searchResults">
-    {{#each results}}
-    <li><a href="/monster/{{id}}">{{Name}}</a></li>
-    {{else}}
-    <li class="placeholder">No results :(</li>
-    {{/each}}
+<template name="autocompleteItem">
+    {{Name}}
 </template>

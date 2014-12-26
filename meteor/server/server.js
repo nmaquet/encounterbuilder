@@ -23,3 +23,9 @@ Meteor.publish("chronicles", function (userId) {
 Meteor.publish("monsters", function(){
     return Monsters.find({});
 });
+
+Meteor.publish('monster-names', function (selector, options, collName) {
+    options.limit = Math.min(50, Math.abs(options.limit || 5));
+    Autocomplete.publishCursor(Monsters.find(selector, options), this);
+    this.ready();
+});
