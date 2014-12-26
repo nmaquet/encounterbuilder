@@ -1,6 +1,6 @@
 <!--Copyright (c) 2014 DemonSquid, Inc. All rights reserved.-->
 
-<template name="chronicles">
+<template name="chronicleList">
     <div class="container">
         <h1>Chronicles of {{email}}</h1>
         {{> createChronicle }}
@@ -15,6 +15,12 @@
             <li>You have no chronicles :(</li>
             {{/each}}
         </div>
+    </div>
+</template>
+
+<template name="chronicleListNotLoggedIn">
+    <div class="container">
+        <h2>Please login to view chronicles</h2>
     </div>
 </template>
 

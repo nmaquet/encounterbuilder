@@ -2,14 +2,14 @@
 
 Router.route('/chronicles', function () {
     if (!Meteor.user()) {
-        Router.go('/')
+        this.render('chronicleListNotLoggedIn');
     } else {
-        this.render('chronicles');
+        this.render('chronicleList');
         Meteor.subscribe("chronicles", Meteor.userId())
     }
 });
 
-Template.chronicles.helpers({
+Template.chronicleList.helpers({
     email: function(){
         if (Meteor.user()) {
             return Meteor.user().emails[0].address
@@ -18,7 +18,7 @@ Template.chronicles.helpers({
     chronicles: Chronicles.find({})
 });
 
-Template.chronicles.events({
+Template.chronicleList.events({
     "click .delete-chronicle-button": function() {
         Meteor.call("removeChronicle", this._id);
     }
