@@ -68,8 +68,8 @@ function batchInsert(collection, array, batchSize, callback, array_length) {
 
 function resetMonster(callback) {
     Monster.remove({}, function (error, count) {
-
         if (error) {
+            console.log(error);
             callback(error, null);
         }
 
@@ -228,7 +228,7 @@ function resetMagicItems(callback) {
         });
     });
 }
-async.parallel([resetMonster, resetMagicItems, resetNpcs, resetSpells, resetFeats], function (error, results) {
+async.parallel([resetMonster /*, resetMagicItems, resetNpcs, resetSpells, resetFeats*/], function (error, results) {
     console.log("Error : " + error);
     console.log(results);
     db.disconnect();

@@ -1,34 +1,35 @@
 <!--Copyright (c) 2014 DemonSquid, Inc. All rights reserved.-->
 
-<template name = "chronicle">
-    <a href="/">Home</a>
-    {{> searchForm}}
-    <h1>Single Chronicle: {{name}}</h1>
-    {{> addUserContentForm}}
-    <div id="chronicle-items">
-        {{#each content}}
-            <div class="chronicle-item">
-                <span>{{rank}}</span>
+<template name="chronicle">
+    <div class="container">
+        <h1>Single Chronicle: {{chronicle.name}}</h1>
+        {{> addChronicleItemForm}}
+        <div id="chronicle-item-list">
+            {{#each chronicleItems}}
+            <div class="well chronicle-item">
                 <div>
-                    <input class="content-title-input" value="{{content.title}}" />
+                    <input class="form-control content-title-input" value="{{content.title}}"/>
                 </div>
                 <div>
-                    <textarea rows="4" cols="50" class="content-body-textarea">{{content.body}}</textarea>
+                    <textarea rows="4" cols="50" class="form-control content-body-textarea">{{content.body}}</textarea>
                 </div>
                 <div>
-                    <button class="delete-user-content-button">delete</button>
+                    <button type="button" class="btn btn-danger delete-user-content-button">delete</button>
                 </div>
             </div>
-        {{/each}}
+            {{/each}}
+        </div>
     </div>
 </template>
 
-<template name="addUserContentForm">
-    <form id="add-user-content">
-        <select id="add-user-content-select">
-            <option value="text">Text</option>
-            <option value="monster">Monster</option>
-        </select>
-        <input type="submit" value="add" />
+<template name="addChronicleItemForm">
+    <form class="form-inline">
+        <div class="form-group">
+            <select id="add-chronicle-item-select" class="form-control">
+                <option value="text">Text</option>
+                <option value="monster">Monster</option>
+            </select>
+        </div>
+        <input class="form-control btn btn-primary" type="submit" value="add"/>
     </form>
 </template>

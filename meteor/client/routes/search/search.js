@@ -13,7 +13,8 @@ Template.searchForm.helpers({
                     field: 'Name',
                     template: Template.autocompleteItem,
                     callback: function(monster) {
-                        Router.go('/monster/' + monster.id);
+                        $("#search-form-input").val("");
+                        Router.go('/monsters/' + monster.id);
                     }
                 }
             ]

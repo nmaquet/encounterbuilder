@@ -1,11 +1,31 @@
 <!--Copyright (c) 2014 DemonSquid, Inc. All rights reserved.-->
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chronicle Forge</title>
 </head>
 
 <body>
-<div>
-    {{> loginButtons}}
+<div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">Chronicle Forge</a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/chronicles">Chronicles</a></li>
+        </ul>
+        {{> searchForm}}
+        <ul class="nav navbar-nav navbar-right">
+            {{> loginButtons }}
+        </ul>
+    </div>
 </div>
 </body>

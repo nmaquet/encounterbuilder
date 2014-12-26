@@ -1,14 +1,16 @@
 // Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
 
-Router.route('/chronicle/:_id', function () {
+Router.route('/chronicles/:_id', function () {
     if (!Meteor.user()) {
         Router.go('/')
     } else {
+        var chronicleId = this.params._id;
         Meteor.subscribe("chronicles", Meteor.userId());
-        Meteor.subscribe("chronicle-items", this.params._id);
+        Meteor.subscribe("chronicle-items", chronicleId);
         this.render('chronicle', {
             data: {
-                content: ChronicleItems.find({chronicleId: this.params._id}, {sort: {rank: 1}})
+                chronicle: Chronicles.findOne({_id: chronicleId}),
+                chronicleItems: ChronicleItems.find({chronicleId: chronicleId}, {sort: {rank: 1}})
             }
         });
     }
@@ -27,7 +29,7 @@ Template.chronicle.events({
 });
 
 Template.chronicle.rendered = function () {
-    this.$('#chronicle-items').sortable({
+    this.$('#chronicle-item-list').sortable({
         stop: function (e, ui) {
             var element = ui.item.get(0);
             var prevElement = ui.item.prev().get(0);
@@ -44,10 +46,10 @@ Template.chronicle.rendered = function () {
     })
 };
 
-Template.addUserContentForm.events({
+Template.addChronicleItemForm.events({
     "submit form": function (event) {
         event.preventDefault();
-        var userContentType = $("#add-user-content-select").val();
+        var userContentType = $("#add-chronicle-item-select").val();
         if (userContentType === "monster") {
             return alert("cannot yet add monsters");
         }

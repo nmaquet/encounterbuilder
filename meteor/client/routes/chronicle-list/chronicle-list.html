@@ -1,0 +1,27 @@
+<!--Copyright (c) 2014 DemonSquid, Inc. All rights reserved.-->
+
+<template name="chronicles">
+    <div class="container">
+        <h1>Chronicles of {{email}}</h1>
+        {{> createChronicle }}
+        <div class="chronicle-list">
+            {{#each chronicles}}
+            <div class="row chronicle-list-item">
+                <div class="col-xs-12">
+                    <a href="/chronicles/{{_id}}">{{name}}</a> <button class="btn btn-danger delete-chronicle-button">delete</button>
+                </div>
+            </div>
+            {{else}}
+            <li>You have no chronicles :(</li>
+            {{/each}}
+        </div>
+    </div>
+</template>
+
+<template name="createChronicle">
+    <form class="form-inline">
+        <input type="text" class="form-control" placeholder="Chronicle name..." name="name"/>
+        <input type="submit" class="btn btn-primary" value="create"/>
+    </form>
+</template>
+
