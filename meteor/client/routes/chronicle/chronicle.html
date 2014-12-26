@@ -4,21 +4,33 @@
     <div class="container">
         <h1>Single Chronicle: {{chronicle.name}}</h1>
         {{> addChronicleItemForm}}
-        <div id="chronicle-item-list">
-            {{#each chronicleItems}}
-            <div class="well chronicle-item">
-                <div>
-                    <input class="form-control content-title-input" value="{{content.title}}"/>
-                </div>
-                <div>
-                    <textarea rows="4" cols="50" class="form-control content-body-textarea">{{content.body}}</textarea>
-                </div>
-                <div>
-                    <button type="button" class="btn btn-danger delete-user-content-button">delete</button>
-                </div>
+        {{> chronicleItemList}}
+    </div>
+    {{> addMonsterModal}}
+</template>
+
+<template name="chronicleItemList">
+    <div id="chronicle-item-list">
+        {{#each chronicleItems}}
+        <div class="well chronicle-item">
+        {{#if isText}}
+            <div>
+                <input class="form-control content-title-input" value="{{content.title}}"/>
             </div>
-            {{/each}}
+            <div>
+                <textarea rows="4" cols="50" class="form-control content-body-textarea">{{content.body}}</textarea>
+            </div>
+        {{/if}}
+        {{#if isMonster}}
+            {{#with content}}
+                {{> monsterStatBlock}}
+            {{/with}}
+        {{/if}}
+        <div>
+            <button type="button" class="btn btn-danger delete-user-content-button">delete</button>
         </div>
+        </div>
+        {{/each}}
     </div>
 </template>
 
@@ -32,4 +44,25 @@
         </div>
         <input class="form-control btn btn-primary" type="submit" value="add"/>
     </form>
+</template>
+
+<template name="addMonsterModal">
+    <div class="modal fade" id="add-monster-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add Monster</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        {{> inputAutocomplete class="form-control" id="add-monster-search-input" name="query" placeholder="Search..." settings=autocompleteSettings }}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>

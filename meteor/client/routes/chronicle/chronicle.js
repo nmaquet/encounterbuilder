@@ -1,5 +1,18 @@
 // Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
 
+function insertChronicleItem(itemType, content) {
+    var chronicleId = Router.current().params._id;
+    var highestRanking = ChronicleItems.findOne({chronicleId: chronicleId}, {sort: {rank: -1}});
+    var item = {
+        ownerId: Meteor.userId(),
+        chronicleId: chronicleId,
+        type: itemType,
+        content: content,
+        rank: (highestRanking && highestRanking.rank + 1) || 1
+    };
+    ChronicleItems.insert(item);
+}
+
 Router.route('/chronicles/:_id', function () {
     if (!Meteor.user()) {
         Router.go('/')
@@ -16,7 +29,7 @@ Router.route('/chronicles/:_id', function () {
     }
 });
 
-Template.chronicle.events({
+Template.chronicleItemList.events({
     'click .delete-user-content-button': function () {
         ChronicleItems.remove({_id: this._id});
     },
@@ -25,6 +38,15 @@ Template.chronicle.events({
     },
     'keyup .content-body-textarea': function (event) {
         ChronicleItems.update({_id: this._id}, {$set: {"content.body": event.target.value}});
+    }
+});
+
+Template.chronicleItemList.helpers({
+   'isText': function () {
+        return this.type === "text";
+   },
+   'isMonster': function () {
+        return this.type === "monster";
     }
 });
 
@@ -51,22 +73,36 @@ Template.addChronicleItemForm.events({
         event.preventDefault();
         var userContentType = $("#add-chronicle-item-select").val();
         if (userContentType === "monster") {
-            return alert("cannot yet add monsters");
+            return $('#add-monster-modal').modal('show');
         }
         if (userContentType === "text") {
-            var chronicleId = Router.current().params._id;
-            var highestRanking = ChronicleItems.findOne({chronicleId: chronicleId}, {sort: {rank: -1}});
-            var text = {
-                ownerId: Meteor.userId(),
-                chronicleId: chronicleId,
-                type: "text",
-                content: {
-                    title: "Foo title",
-                    body: "Bar body"
-                },
-                rank: (highestRanking && highestRanking.rank + 1) || 1
-            };
-            ChronicleItems.insert(text);
+            insertChronicleItem("text", {
+                title: "Foo title",
+                body: "Bar body"
+            });
+        }
+    }
+});
+
+Template.addMonsterModal.helpers({
+    "autocompleteSettings": function () {
+        return {
+            position: "bottom",
+            limit: 5,
+            rules: [
+                {
+                    subscription: 'monster-names',
+                    collection: 'Monsters',
+                    token: '',
+                    field: 'Name',
+                    template: Template.autocompleteItem,
+                    callback: function(monster) {
+                        $("#add-monster-search-input").val("");
+                        $('#add-monster-modal').modal('hide');
+                        insertChronicleItem("monster", monster);
+                    }
+                }
+            ]
         }
     }
 });
