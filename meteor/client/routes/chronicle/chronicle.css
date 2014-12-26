@@ -1,0 +1,9 @@
+.content-item {
+    display: block;
+    padding: 5px;
+    margin: 5px;
+    background-color: #ccc;
+    border: 1px solid #aaa;
+    width: 500px;
+    cursor: move;
+}

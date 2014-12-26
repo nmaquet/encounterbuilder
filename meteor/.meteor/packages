@@ -9,3 +9,4 @@ accounts-password
 accounts-ui
 iron:router
 mizzao:autocomplete
+mrt:jquery-ui

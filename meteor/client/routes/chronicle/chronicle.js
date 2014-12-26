@@ -5,48 +5,45 @@ Router.route('/chronicle/:_id', function () {
         Router.go('/')
     } else {
         Meteor.subscribe("chronicles", Meteor.userId());
+        Meteor.subscribe("chronicle-items", this.params._id);
         this.render('chronicle', {
-            data: Chronicles.findOne({_id: this.params._id})
+            data: {
+                content: ChronicleItems.find({chronicleId: this.params._id})
+            }
         });
     }
 });
 
 Template.chronicle.events({
-    'click .delete-user-content-button': function (event, template) {
-        var position = template.data.content.indexOf(this);
-        var query = {_id: Router.current().params._id};
-        Chronicles.update(query, {$unset: _.object([["content." + position, 1]])});
-        Chronicles.update(query, {$pull: {"content" : null}});
+    'click .delete-user-content-button': function () {
+        ChronicleItems.remove({_id: this._id});
     },
-    'keyup .content-body-textarea': function(event, template) {
-        var position = template.data.content.indexOf(this);
-        var query = {_id: Router.current().params._id};
-        Chronicles.update(query, { $set: _.object([["content." + position + ".content.body", event.target.value]])});
+    'keyup .content-title-input': function (event) {
+        ChronicleItems.update({_id: this._id}, {$set: {"content.title": event.target.value}});
     },
-    'keyup .content-title-input': function(event, template) {
-        var position = template.data.content.indexOf(this);
-        var query = {_id: Router.current().params._id};
-        Chronicles.update(query, { $set: _.object([["content." + position + ".content.title", event.target.value]])});
+    'keyup .content-body-textarea': function (event) {
+        ChronicleItems.update({_id: this._id}, {$set: {"content.body": event.target.value}});
     }
 });
 
 Template.addUserContentForm.events({
     "submit form": function (event) {
         event.preventDefault();
-        userContentType = $("#add-user-content-select").val();
+        var userContentType = $("#add-user-content-select").val();
         if (userContentType === "monster") {
             return alert("cannot yet add monsters");
         }
         if (userContentType === "text") {
             var text = {
+                ownerId: Meteor.userId(),
+                chronicleId: Router.current().params._id,
                 type: "text",
                 content: {
                     title: "Foo title",
                     body: "Bar body"
-                },
-                lastUpdated: new Date().toISOString()
+                }
             };
-            Chronicles.update({_id: Router.current().params._id}, {$push: {content: text}});
+            ChronicleItems.insert(text);
         }
     }
 });

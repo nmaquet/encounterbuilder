@@ -20,7 +20,7 @@ Template.chronicles.helpers({
 
 Template.chronicles.events({
     "click .delete-chronicle-button": function() {
-        Chronicles.remove({_id: this._id});
+        Meteor.call("removeChronicle", this._id);
     }
 });
 

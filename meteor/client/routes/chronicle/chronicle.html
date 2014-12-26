@@ -5,9 +5,9 @@
     {{> searchForm}}
     <h1>Single Chronicle: {{name}}</h1>
     {{> addUserContentForm}}
-    <ul>
+    <div id="content-items">
         {{#each content}}
-            <li>
+            <div class="content-item">
                 <div>
                     <input class="content-title-input" value="{{content.title}}" />
                 </div>
@@ -17,9 +17,9 @@
                 <div>
                     <button class="delete-user-content-button">delete</button>
                 </div>
-            </li>
+            </div>
         {{/each}}
-    </ul>
+    </div>
 </template>
 
 <template name="addUserContentForm">

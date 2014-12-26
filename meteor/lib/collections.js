@@ -2,3 +2,4 @@
 
 Monsters = new Meteor.Collection("monsters");
 Chronicles = new Meteor.Collection("chronicles");
+ChronicleItems = new Meteor.Collection("chronicle-items");
