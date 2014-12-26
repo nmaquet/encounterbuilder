@@ -5,9 +5,10 @@
     {{> searchForm}}
     <h1>Single Chronicle: {{name}}</h1>
     {{> addUserContentForm}}
-    <div id="content-items">
+    <div id="chronicle-items">
         {{#each content}}
-            <div class="content-item">
+            <div class="chronicle-item">
+                <span>{{rank}}</span>
                 <div>
                     <input class="content-title-input" value="{{content.title}}" />
                 </div>

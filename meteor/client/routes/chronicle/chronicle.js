@@ -8,7 +8,7 @@ Router.route('/chronicle/:_id', function () {
         Meteor.subscribe("chronicle-items", this.params._id);
         this.render('chronicle', {
             data: {
-                content: ChronicleItems.find({chronicleId: this.params._id})
+                content: ChronicleItems.find({chronicleId: this.params._id}, {sort: {rank: 1}})
             }
         });
     }
@@ -26,6 +26,24 @@ Template.chronicle.events({
     }
 });
 
+Template.chronicle.rendered = function () {
+    this.$('#chronicle-items').sortable({
+        stop: function (e, ui) {
+            var element = ui.item.get(0);
+            var prevElement = ui.item.prev().get(0);
+            var nextElement = ui.item.next().get(0);
+            if (!prevElement) {
+                var newRank = Blaze.getData(nextElement).rank - 1
+            } else if (!nextElement) {
+                var newRank = Blaze.getData(prevElement).rank + 1
+            } else {
+                var newRank = (Blaze.getData(nextElement).rank + Blaze.getData(prevElement).rank) / 2
+            }
+            ChronicleItems.update({_id: Blaze.getData(element)._id}, {$set: {rank: newRank}})
+        }
+    })
+};
+
 Template.addUserContentForm.events({
     "submit form": function (event) {
         event.preventDefault();
@@ -34,14 +52,17 @@ Template.addUserContentForm.events({
             return alert("cannot yet add monsters");
         }
         if (userContentType === "text") {
+            var chronicleId = Router.current().params._id;
+            var highestRanking = ChronicleItems.findOne({chronicleId: chronicleId}, {sort: {rank: -1}});
             var text = {
                 ownerId: Meteor.userId(),
-                chronicleId: Router.current().params._id,
+                chronicleId: chronicleId,
                 type: "text",
                 content: {
                     title: "Foo title",
                     body: "Bar body"
-                }
+                },
+                rank: (highestRanking && highestRanking.rank + 1) || 1
             };
             ChronicleItems.insert(text);
         }
