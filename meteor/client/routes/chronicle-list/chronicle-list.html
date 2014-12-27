@@ -7,8 +7,11 @@
         <div class="chronicle-list">
             {{#each chronicles}}
             <div class="row chronicle-list-item">
-                <div class="col-xs-12">
-                    <a href="/chronicles/{{_id}}">{{name}}</a> <button class="btn btn-danger delete-chronicle-button">delete</button>
+                <div class="col-xs-6">
+                    <a href="/chronicles/{{_id}}">{{name}}</a>
+                </div>
+                <div class="col-xs-6">
+                    <button class="btn btn-danger delete-chronicle-button">delete</button>
                 </div>
             </div>
             {{else}}
