@@ -2,6 +2,70 @@
 
 <template name="search">
     <div class="container">
-        <h1>Search</h1>
+        <h1>Search Monster</h1>
+        <div class="form-group col-xs-12">
+            <input id="monster-search-input" type="text" name="search" placeholder="Type something…" class="form-control"/>
+        </div>
+        <div class="form-group col-xs-12">
+            <select id="monster-type-select" class="form-control">
+                <option value="any">Any type</option>
+                <option value="aberration">Aberration</option>
+                <option value="animal">Animal</option>
+                <option value="construct">Construct</option>
+                <option value="dragon">Dragon</option>
+                <option value="fey">Fey</option>
+                <option value="humanoid">Humanoid</option>
+                <option value="magical beast">Magical Beast</option>
+                <option value="monstrous humanoid">Monstrous Humanoid</option>
+                <option value="ooze">Ooze</option>
+                <option value="outsider">Outsider</option>
+                <option value="plant">Plant</option>
+                <option value="undead">Undead</option>
+                <option value="vermin">Vermin</option>
+            </select>
+        </div>
+        <div class="form-group col-xs-12">
+            <select id="monster-climate-select" class="form-control">
+                <option value="any">Any climate</option>
+                <option value="cold">Cold</option>
+                <option value="temperate">Temperate</option>
+                <option value="warm">Warm</option>
+            </select>
+        </div>
+        <div class="form-group col-xs-12">
+            <select id="monster-terrain-select" class="form-control">
+                <option value="any">Any terrain</option>
+                <optgroup label="Standard">
+                    <option value="aquatic">Aquatic</option>
+                    <option value="coastline">Coastline</option>
+                    <option value="desert">Desert</option>
+                    <option value="forest">Forest</option>
+                    <option value="hills">Hills</option>
+                    <option value="jungle">Jungle</option>
+                    <option value="mountains">Mountains</option>
+                    <option value="ocean">Ocean</option>
+                    <option value="plains">Plains</option>
+                    <option value="river">River</option>
+                    <option value="lake">Lakes</option>
+                    <option value="swam">Swamp</option>
+                    <option value="marshes">Marsh</option>
+                </optgroup>
+                <optgroup label="Planar">
+                    <option value="abaddon">Abaddon [NE]</option>
+                    <option value="abyss">Abyss [CE]</option>
+                    <option value="elysium">Elysium [CG]</option>
+                    <option value="heaven">Heaven [LG]</option>
+                    <option value="hell">Hell [LE]</option>
+                    <option value="plane of air">Plane of Air</option>
+                    <option value="plane of earth">Plane of Earth</option>
+                    <option value="plane of fire">Plane of Fire</option>
+                    <option value="plane of water">Plane of Water</option>
+                </optgroup>
+                <optgroup label="Special">
+                    <option value="urban">Urban</option>
+                    <option value="underground">Underground</option>
+                </optgroup>
+            </select>
+        </div>
     </div>
 </template>
