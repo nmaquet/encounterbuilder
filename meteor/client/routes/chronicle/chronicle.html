@@ -1,68 +1,30 @@
-<!--Copyright (c) 2014 DemonSquid, Inc. All rights reserved.-->
+<!-- Copyright (c) 2014 DemonSquid, Inc. All rights reserved. -->
 
 <template name="chronicle">
     <div class="container">
-        <h1>Single Chronicle: {{chronicle.name}}</h1>
-        {{> addChronicleItemForm}}
+        <h1>Single Chronicle: {{chronicle.name}} <button type="button" id="edit-button" class="btn btn-primary">edit</button></h1>
         {{> chronicleItemList}}
     </div>
-    {{> addMonsterModal}}
 </template>
 
 <template name="chronicleItemList">
     <div id="chronicle-item-list">
         {{#each chronicleItems}}
         <div class="well chronicle-item">
-        {{#if isText}}
+            {{#if isText}}
             <div>
-                <input class="form-control content-title-input" value="{{content.title}}"/>
+                <span>{{content.title}}</span>
             </div>
             <div>
-                <textarea rows="4" cols="50" class="form-control content-body-textarea">{{content.body}}</textarea>
+                <p>{{content.body}}</p>
             </div>
-        {{/if}}
-        {{#if isMonster}}
-            {{#with content}}
+            {{/if}}
+            {{#if isMonster}}
+                {{#with content}}
                 {{> monsterStatBlock}}
-            {{/with}}
-        {{/if}}
-        <div>
-            <button type="button" class="btn btn-danger delete-user-content-button">delete</button>
-        </div>
+                {{/with}}
+            {{/if}}
         </div>
         {{/each}}
-    </div>
-</template>
-
-<template name="addChronicleItemForm">
-    <form class="form-inline">
-        <div class="form-group">
-            <select id="add-chronicle-item-select" class="form-control">
-                <option value="text">Text</option>
-                <option value="monster">Monster</option>
-            </select>
-        </div>
-        <input class="form-control btn btn-primary" type="submit" value="add"/>
-    </form>
-</template>
-
-<template name="addMonsterModal">
-    <div class="modal fade" id="add-monster-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Add Monster</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        {{> inputAutocomplete class="form-control" id="add-monster-search-input" name="query" placeholder="Search..." settings=autocompleteSettings }}
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-        </div>
     </div>
 </template>
