@@ -48,9 +48,23 @@
 </template>
 
 <template name="encounterEditor">
+    {{> addEncounterItemForm}}
     <div>
         <input class="form-control content-name-input" value="{{content.name}}"/>
     </div>
+</template>
+
+<template name="addEncounterItemForm">
+    <form class="form-inline">
+        <div class="form-group">
+            <select id="add-encounter-item-select" class="form-control">
+                <option value="monster">Monster</option>
+                <option value="npc">NPC</option>
+                <option value="item">Item</option>
+            </select>
+        </div>
+        <input class="form-control btn btn-primary" type="submit" value="add"/>
+    </form>
 </template>
 
 <template name="addChronicleItemForm">

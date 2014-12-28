@@ -84,23 +84,35 @@ Template.editChronicle.rendered = function () {
 Template.addChronicleItemForm.events({
     "submit form": function (event) {
         event.preventDefault();
-        var userContentType = $("#add-chronicle-item-select").val();
-        if (userContentType === "monster") {
+        var itemType = $("#add-chronicle-item-select").val();
+        if (itemType === "monster") {
             return $('#add-monster-modal').modal('show');
         }
-        if (userContentType === "text") {
+        if (itemType === "text") {
             return insertChronicleItem("text", {
                 title: "Foo title",
                 body: "Bar body"
             });
         }
-        if (userContentType === "encounter") {
+        if (itemType === "encounter") {
             return insertChronicleItem("encounter", {
                 name: "Unnamed Encounter",
                 monsters: [],
                 npcs: [],
                 items: []
             });
+        }
+    }
+});
+
+Template.addEncounterItemForm.events({
+    "submit form": function (event) {
+        event.preventDefault();
+        var itemType = $("#add-encounter-item-select").val();
+        if (itemType === "monster") {
+            return $('#add-monster-modal').modal('show');
+        } else {
+            return alert('Not implemented!');
         }
     }
 });
