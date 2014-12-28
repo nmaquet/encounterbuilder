@@ -1,3 +1,5 @@
+// Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
+
 Chronicles.allow({
     insert: function (userId, doc) {
         return (userId && doc.ownerId === userId);
@@ -52,7 +54,6 @@ Meteor.publish("monsters", function (id) {
 Meteor.publish('monster-name-autocomplete', function (selector, options, collectionName) {
     options = options || {};
     options.limit = Math.min(50, Math.abs(options.limit || 5));
-    console.log(selector, options);
     Autocomplete.publishCursor(Monsters.find(selector, options), this);
     this.ready();
 });
