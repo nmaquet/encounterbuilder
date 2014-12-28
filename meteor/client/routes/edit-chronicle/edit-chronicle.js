@@ -30,7 +30,7 @@ Router.route('/chronicles/:_id/edit', function () {
 });
 
 Template.editChronicle.events({
-    'click #done-button': function() {
+    'click #done-button': function () {
         var chronicleId = Router.current().params._id;
         Router.go('/chronicles/' + chronicleId);
     }
@@ -52,10 +52,10 @@ Template.textEditor.events({
 });
 
 Template.editChronicleItemList.helpers({
-   'isText': function () {
+    'isText': function () {
         return this.type === "text";
-   },
-   'isMonster': function () {
+    },
+    'isMonster': function () {
         return this.type === "monster";
     },
     'isEncounter': function () {
@@ -82,28 +82,24 @@ Template.editChronicle.rendered = function () {
 };
 
 Template.addChronicleItemForm.events({
-    "submit form": function (event) {
-        event.preventDefault();
-        var itemType = $("#add-chronicle-item-select").val();
-        if (itemType === "monster") {
-            askUserForMonster(function(monster) {
-                insertChronicleItem("monster", monster);
-            });
-        }
-        if (itemType === "text") {
-            return insertChronicleItem("text", {
-                title: "Foo title",
-                body: "Bar body"
-            });
-        }
-        if (itemType === "encounter") {
-            return insertChronicleItem("encounter", {
-                name: "Unnamed Encounter",
-                monsters: [],
-                npcs: [],
-                items: []
-            });
-        }
+    "click #add-text-dropdown-item": function () {
+        insertChronicleItem("text", {
+            title: "Foo title",
+            body: "Bar body"
+        });
+    },
+    "click #add-monster-dropdown-item": function () {
+        askUserForMonster(function (monster) {
+            insertChronicleItem("monster", monster);
+        });
+    },
+    "click #add-encounter-dropdown-item": function () {
+        return insertChronicleItem("encounter", {
+            name: "Unnamed Encounter",
+            monsters: [],
+            npcs: [],
+            items: []
+        });
     }
 });
 
@@ -136,7 +132,7 @@ Template.addMonsterModal.helpers({
                     token: '',
                     field: 'Name',
                     template: Template.autocompleteItem,
-                    callback: function(monster) {
+                    callback: function (monster) {
                         $("#add-monster-search-input").val("");
                         $('#add-monster-modal').modal('hide');
                         askUserForMonster.callback(monster);

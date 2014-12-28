@@ -1,3 +1,20 @@
 .hidden {
     visibility: hidden;
 }
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-image:none !important;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: #337ab7;
+    color: #ffffff;
+}
+
+.dropdown > a {
+    cursor: pointer;
+}
+
+.dropdown-menu > li > a {
+    cursor: pointer;
+}
