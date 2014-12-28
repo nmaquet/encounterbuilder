@@ -12,20 +12,20 @@
         {{#each chronicleItems}}
         <div class="well chronicle-item">
             {{#if isText}}
-                {{> text}}
+                {{> chronicleText}}
             {{/if}}
             {{#if isMonster}}
-                {{> monster}}
+                {{> chronicleMonster}}
             {{/if}}
             {{#if isEncounter}}
-                {{> encounter}}
+                {{> chronicleEncounter}}
             {{/if}}
         </div>
         {{/each}}
     </div>
 </template>
 
-<template name="text">
+<template name="chronicleText">
     <div>
         <span>{{content.title}}</span>
     </div>
@@ -34,13 +34,13 @@
     </div>
 </template>
 
-<template name="monster">
+<template name="chronicleMonster">
     {{#with content}}
         {{> monsterStatBlock}}
     {{/with}}
 </template>
 
-<template name="encounter">
+<template name="chronicleEncounter">
     <div>
         <span>{{content.name}}</span>
     </div>
