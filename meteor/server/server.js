@@ -49,10 +49,18 @@ Meteor.publish("monsters", function (id) {
     return Monsters.find({id: id});
 });
 
-Meteor.publish('monster-names', function (selector, options, collectionName) {
+Meteor.publish('monster-name-autocomplete', function (selector, options, collectionName) {
+    options = options || {};
     options.limit = Math.min(50, Math.abs(options.limit || 5));
+    console.log(selector, options);
     Autocomplete.publishCursor(Monsters.find(selector, options), this);
     this.ready();
+});
+
+Meteor.publish('search-monsters', function (selector, options) {
+    options = options || {};
+    options.limit = Math.min(50, Math.abs(options.limit || 5));
+    return Monsters.find(selector, options);
 });
 
 Meteor.methods({
