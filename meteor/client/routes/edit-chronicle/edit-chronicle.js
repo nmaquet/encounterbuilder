@@ -98,7 +98,7 @@ Template.addMonsterModal.helpers({
             limit: 5,
             rules: [
                 {
-                    subscription: 'monster-names',
+                    subscription: 'monster-name-autocomplete',
                     collection: 'Monsters',
                     token: '',
                     field: 'Name',
