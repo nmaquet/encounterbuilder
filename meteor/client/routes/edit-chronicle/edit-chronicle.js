@@ -39,7 +39,10 @@ Template.editChronicle.events({
 Template.editChronicleItemList.events({
     'click .delete-user-content-button': function () {
         ChronicleItems.remove({_id: this._id});
-    },
+    }
+});
+
+Template.textEditor.events({
     'keyup .content-title-input': function (event) {
         ChronicleItems.update({_id: this._id}, {$set: {"content.title": event.target.value}});
     },
