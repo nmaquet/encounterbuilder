@@ -12,19 +12,36 @@
         {{#each chronicleItems}}
         <div class="well chronicle-item">
             {{#if isText}}
-            <div>
-                <span>{{content.title}}</span>
-            </div>
-            <div>
-                <p>{{content.body}}</p>
-            </div>
+                {{> text}}
             {{/if}}
             {{#if isMonster}}
-                {{#with content}}
-                {{> monsterStatBlock}}
-                {{/with}}
+                {{> monster}}
+            {{/if}}
+            {{#if isEncounter}}
+                {{> encounter}}
             {{/if}}
         </div>
         {{/each}}
+    </div>
+</template>
+
+<template name="text">
+    <div>
+        <span>{{content.title}}</span>
+    </div>
+    <div>
+        <p>{{content.body}}</p>
+    </div>
+</template>
+
+<template name="monster">
+    {{#with content}}
+        {{> monsterStatBlock}}
+    {{/with}}
+</template>
+
+<template name="encounter">
+    <div>
+        <span>{{content.name}}</span>
     </div>
 </template>

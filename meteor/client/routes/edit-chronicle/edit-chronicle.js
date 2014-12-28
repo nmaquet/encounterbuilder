@@ -57,6 +57,9 @@ Template.editChronicleItemList.helpers({
    },
    'isMonster': function () {
         return this.type === "monster";
+    },
+    'isEncounter': function () {
+        return this.type === "encounter";
     }
 });
 
@@ -86,9 +89,17 @@ Template.addChronicleItemForm.events({
             return $('#add-monster-modal').modal('show');
         }
         if (userContentType === "text") {
-            insertChronicleItem("text", {
+            return insertChronicleItem("text", {
                 title: "Foo title",
                 body: "Bar body"
+            });
+        }
+        if (userContentType === "encounter") {
+            return insertChronicleItem("encounter", {
+                name: "Unnamed Encounter",
+                monsters: [],
+                npcs: [],
+                items: []
             });
         }
     }

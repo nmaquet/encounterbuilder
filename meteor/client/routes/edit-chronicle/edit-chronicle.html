@@ -21,6 +21,9 @@
                 {{#if isMonster}}
                     {{> monsterEditor}}
                 {{/if}}
+                {{#if isEncounter}}
+                    {{> encounterEditor}}
+                {{/if}}
                 <div>
                     <button type="button" class="btn btn-danger delete-user-content-button">delete</button>
                 </div>
@@ -44,12 +47,19 @@
     {{/with}}
 </template>
 
+<template name="encounterEditor">
+    <div>
+        <input class="form-control content-name-input" value="{{content.name}}"/>
+    </div>
+</template>
+
 <template name="addChronicleItemForm">
     <form class="form-inline">
         <div class="form-group">
             <select id="add-chronicle-item-select" class="form-control">
                 <option value="text">Text</option>
                 <option value="monster">Monster</option>
+                <option value="encounter">Encounter</option>
             </select>
         </div>
         <input class="form-control btn btn-primary" type="submit" value="add"/>

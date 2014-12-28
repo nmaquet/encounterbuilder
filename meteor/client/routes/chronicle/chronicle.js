@@ -22,6 +22,9 @@ Template.chronicleItemList.helpers({
     },
     'isMonster': function () {
         return this.type === "monster";
+    },
+    'isEncounter': function () {
+        return this.type === "encounter";
     }
 });
 
