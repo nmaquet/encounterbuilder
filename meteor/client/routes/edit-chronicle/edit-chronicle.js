@@ -86,7 +86,9 @@ Template.addChronicleItemForm.events({
         event.preventDefault();
         var itemType = $("#add-chronicle-item-select").val();
         if (itemType === "monster") {
-            return $('#add-monster-modal').modal('show');
+            askUserForMonster(function(monster) {
+                insertChronicleItem("monster", monster);
+            });
         }
         if (itemType === "text") {
             return insertChronicleItem("text", {
@@ -117,6 +119,11 @@ Template.addEncounterItemForm.events({
     }
 });
 
+function askUserForMonster(callback) {
+    askUserForMonster.callback = callback;
+    $('#add-monster-modal').modal('show');
+}
+
 Template.addMonsterModal.helpers({
     "autocompleteSettings": function () {
         return {
@@ -132,7 +139,8 @@ Template.addMonsterModal.helpers({
                     callback: function(monster) {
                         $("#add-monster-search-input").val("");
                         $('#add-monster-modal').modal('hide');
-                        insertChronicleItem("monster", monster);
+                        askUserForMonster.callback(monster);
+                        askUserForMonster.callback = null;
                     }
                 }
             ]
