@@ -22,7 +22,7 @@ Template.quickSearchForm.helpers({
                     collection: 'Monsters',
                     token: '',
                     field: 'Name',
-                    template: Template.autocompleteItem,
+                    template: Template.autocompleteElement,
                     callback: function(monster) {
                         $("#quick-search-form-input").val("");
                         Router.go('/monsters/' + monster.id);

@@ -1,16 +1,16 @@
 // Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
 
-function insertChronicleItem(itemType, content) {
+function insertChronicleElement(elementType, content) {
     var chronicleId = Router.current().params._id;
-    var highestRanking = ChronicleItems.findOne({chronicleId: chronicleId}, {sort: {rank: -1}});
-    var item = {
+    var highestRanking = ChronicleElements.findOne({chronicleId: chronicleId}, {sort: {rank: -1}});
+    var element = {
         ownerId: Meteor.userId(),
         chronicleId: chronicleId,
-        type: itemType,
+        type: elementType,
         content: content,
         rank: (highestRanking && highestRanking.rank + 1) || 1
     };
-    ChronicleItems.insert(item);
+    ChronicleElements.insert(element);
 }
 
 Router.route('/chronicles/:_id/edit', function () {
@@ -19,12 +19,12 @@ Router.route('/chronicles/:_id/edit', function () {
     } else {
         var chronicleId = this.params._id;
         Meteor.subscribe("chronicles", Meteor.userId());
-        Meteor.subscribe("chronicle-items", chronicleId);
+        Meteor.subscribe("chronicle-elements", chronicleId);
         Meteor.subscribe("chronicle-encounter-monsters", chronicleId);
         this.render('editChronicle', {
             data: {
                 chronicle: Chronicles.findOne({_id: chronicleId}),
-                chronicleItems: ChronicleItems.find({chronicleId: chronicleId}, {sort: {rank: 1}})
+                chronicleElements: ChronicleElements.find({chronicleId: chronicleId}, {sort: {rank: 1}})
             }
         });
     }
@@ -37,22 +37,22 @@ Template.editChronicle.events({
     }
 });
 
-Template.editChronicleItemList.events({
+Template.editChronicleElementList.events({
     'click .delete-user-content-button': function () {
-        ChronicleItems.remove({_id: this._id});
+        ChronicleElements.remove({_id: this._id});
     }
 });
 
 Template.textEditor.events({
     'keyup .content-title-input': function (event) {
-        ChronicleItems.update({_id: this._id}, {$set: {"content.title": event.target.value}});
+        ChronicleElements.update({_id: this._id}, {$set: {"content.title": event.target.value}});
     },
     'keyup .content-body-textarea': function (event) {
-        ChronicleItems.update({_id: this._id}, {$set: {"content.body": event.target.value}});
+        ChronicleElements.update({_id: this._id}, {$set: {"content.body": event.target.value}});
     }
 });
 
-Template.editChronicleItemList.helpers({
+Template.editChronicleElementList.helpers({
     'isText': function () {
         return this.type === "text";
     },
@@ -65,7 +65,7 @@ Template.editChronicleItemList.helpers({
 });
 
 Template.editChronicle.rendered = function () {
-    this.$('#edit-chronicle-item-list').sortable({
+    this.$('#edit-chronicle-element-list').sortable({
         stop: function (e, ui) {
             var element = ui.item.get(0);
             var prevElement = ui.item.prev().get(0);
@@ -77,44 +77,45 @@ Template.editChronicle.rendered = function () {
             } else {
                 var newRank = (Blaze.getData(nextElement).rank + Blaze.getData(prevElement).rank) / 2
             }
-            ChronicleItems.update({_id: Blaze.getData(element)._id}, {$set: {rank: newRank}})
+            ChronicleElements.update({_id: Blaze.getData(element)._id}, {$set: {rank: newRank}})
         }
     })
 };
 
-Template.addChronicleItemForm.events({
-    "click #add-text-dropdown-item": function () {
-        insertChronicleItem("text", {
+Template.addChronicleElementForm.events({
+    "click #add-text-dropdown-element": function () {
+        insertChronicleElement("text", {
             title: "Foo title",
             body: "Bar body"
         });
     },
-    "click #add-monster-dropdown-item": function () {
+    "click #add-monster-dropdown-element": function () {
         askUserForMonster(function (monster) {
-            insertChronicleItem("monster", monster);
+            insertChronicleElement("monster", monster);
         });
     },
-    "click #add-encounter-dropdown-item": function () {
-        return insertChronicleItem("encounter", {
+    "click #add-encounter-dropdown-element": function () {
+        return insertChronicleElement("encounter", {
             name: "Unnamed Encounter",
             monsters: []
         });
     }
 });
 
-Template.addEncounterItemForm.events({
-    "click #add-monster-dropdown-item": function () {
+Template.addEncounterElementForm.events({
+    "click #add-monster-dropdown-element": function () {
         var encounter = this;
         askUserForMonster(function (monster) {
             /* FIXME: inc count */
-            ChronicleItems.update({_id: encounter._id}, {$push: {'content.monsters': {_id: monster._id, count: 1}}});
+            ChronicleElements.update({_id: encounter._id}, {$push: {'content.monsters': {_id: monster._id, count: 1}}});
+            Meteor.subscribe("chronicle-encounter-monsters", chronicleId);
         });
     }
 });
 
 Template.encounterEditor.helpers({
     'monsters': function () {
-        var encounter = ChronicleItems.findOne({_id: this._id});
+        var encounter = ChronicleElements.findOne({_id: this._id});
         return _.map(encounter.content.monsters, function (monster) {
             return {
                 monster: Monsters.findOne({_id: monster._id}),
@@ -140,7 +141,7 @@ Template.addMonsterModal.helpers({
                     collection: 'Monsters',
                     token: '',
                     field: 'Name',
-                    template: Template.autocompleteItem,
+                    template: Template.autocompleteElement,
                     callback: function (monster) {
                         $("#add-monster-search-input").val("");
                         $('#add-monster-modal').modal('hide');

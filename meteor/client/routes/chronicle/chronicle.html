@@ -3,14 +3,14 @@
 <template name="chronicle">
     <div class="container">
         <h1>Single Chronicle: {{chronicle.name}} <button type="button" id="edit-button" class="btn btn-primary">edit</button></h1>
-        {{> chronicleItemList}}
+        {{> chronicleElementList}}
     </div>
 </template>
 
-<template name="chronicleItemList">
-    <div id="chronicle-item-list">
-        {{#each chronicleItems}}
-        <div class="well chronicle-item">
+<template name="chronicleElementList">
+    <div id="chronicle-element-list">
+        {{#each chronicleElements}}
+        <div class="well chronicle-element">
             {{#if isText}}
                 {{> chronicleText}}
             {{/if}}

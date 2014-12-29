@@ -1,10 +1,10 @@
 /* Copyright (c) 2014 DemonSquid, Inc. All rights reserved. */
 
-#edit-chronicle-item-list {
+#edit-chronicle-element-list {
     margin-top: 20px;
 }
 
-.edit-chronicle-item {
+.edit-chronicle-element {
     background-color: #ccc;
     cursor: move;
 }

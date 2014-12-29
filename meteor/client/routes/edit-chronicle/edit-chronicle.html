@@ -5,16 +5,16 @@
         <h1>Single Chronicle: {{chronicle.name}}
             <button type="button" id="done-button" class="btn btn-primary">done</button>
         </h1>
-        {{> addChronicleItemForm}}
-        {{> editChronicleItemList}}
+        {{> addChronicleElementForm}}
+        {{> editChronicleElementList}}
     </div>
     {{> addMonsterModal}}
 </template>
 
-<template name="editChronicleItemList">
-    <div id="edit-chronicle-item-list">
-        {{#each chronicleItems}}
-            <div class="well edit-chronicle-item">
+<template name="editChronicleElementList">
+    <div id="edit-chronicle-element-list">
+        {{#each chronicleElements}}
+            <div class="well edit-chronicle-element">
                 {{#if isText}}
                     {{> textEditor}}
                 {{/if}}
@@ -48,7 +48,7 @@
 </template>
 
 <template name="encounterEditor">
-    {{> addEncounterItemForm}}
+    {{> addEncounterElementForm}}
     <div>
         <input class="form-control content-name-input" value="{{content.name}}"/>
     </div>
@@ -59,24 +59,24 @@
     </ul>
 </template>
 
-<template name="addEncounterItemForm">
+<template name="addEncounterElementForm">
     <div class="dropdown">
         <button type="button" class="btn btn-primary" data-target="#" data-toggle="dropdown">Add</button>
         <ul class="dropdown-menu">
-            <li><a id="add-monster-dropdown-item">Monster</a></li>
-            <li><a id="add-npc-dropdown-item">NPC</a></li>
-            <li><a id="add-item-dropdown-item">Monster</a></li>
+            <li><a id="add-monster-dropdown-element">Monster</a></li>
+            <li><a id="add-npc-dropdown-element">NPC</a></li>
+            <li><a id="add-item-dropdown-element">Monster</a></li>
         </ul>
     </div>
 </template>
 
-<template name="addChronicleItemForm">
+<template name="addChronicleElementForm">
     <div class="dropdown">
         <button type="button" class="btn btn-primary" data-target="#" data-toggle="dropdown">Add</button>
         <ul class="dropdown-menu">
-            <li><a id="add-text-dropdown-item">Text</a></li>
-            <li><a id="add-monster-dropdown-item">Monster</a></li>
-            <li><a id="add-encounter-dropdown-item">Encounter</a></li>
+            <li><a id="add-text-dropdown-element">Text</a></li>
+            <li><a id="add-monster-dropdown-element">Monster</a></li>
+            <li><a id="add-encounter-dropdown-element">Encounter</a></li>
         </ul>
     </div>
 </template>

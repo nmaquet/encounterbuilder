@@ -1,9 +1,9 @@
 /* Copyright (c) 2014 DemonSquid, Inc. All rights reserved. */
 
-#chronicle-item-list {
+#chronicle-element-list {
     margin-top: 20px;
 }
 
-.chronicle-item {
+.chronicle-element {
     background-color: #ccc;
 }
