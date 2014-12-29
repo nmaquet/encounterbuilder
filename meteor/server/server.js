@@ -83,10 +83,6 @@ Meteor.publish("monsters", function (id) {
     return Monsters.find({id: id});
 });
 
-Meteor.publish("monsters-array", function (monsterIds) {
-    return Monsters.find({_id: {$in: monsterIds}});
-});
-
 Meteor.publish('monster-name-autocomplete', function (selector, options, collectionName) {
     options = options || {};
     options.limit = Math.min(50, Math.abs(options.limit || 5));

@@ -30,18 +30,6 @@ Router.route('/chronicles/:_id/edit', function () {
     }
 });
 
-Template.editChronicle.created = function () {
-    this.autorun(function () {
-        var encounterIds = ChronicleElements.find({type: "encounter"}).map(function (encounter) {
-            return encounter._id;
-        });
-        var monsterIds = EncounterElements.find({type: "monster", encounterId: {$in: encounterIds}}).map(function(monster){
-            return monster.monsterId;
-        });
-        Meteor.subscribe("monsters-array", monsterIds);
-    });
-};
-
 Template.editChronicle.events({
     'click #done-button': function () {
         var chronicleId = Router.current().params._id;
@@ -51,7 +39,11 @@ Template.editChronicle.events({
 
 Template.editChronicleElementList.events({
     'click .delete-user-content-button': function () {
-        ChronicleElements.remove({_id: this._id});
+        if (this.type === "encounter") {
+            Meteor.call("removeEncounter", this._id);
+        } else {
+            ChronicleElements.remove({_id: this._id});
+        }
     }
 });
 
@@ -123,7 +115,7 @@ Template.addEncounterElementForm.events({
                 chronicleId: encounter.chronicleId,
                 encounterId: encounter._id,
                 type: "monster",
-                monsterId: monster._id,
+                monster: monster,
                 count: 1
             });
         });
@@ -133,12 +125,6 @@ Template.addEncounterElementForm.events({
 Template.encounterEditor.helpers({
     'elements': function () {
         return EncounterElements.find({encounterId: this._id});
-    }
-});
-
-Template.encounterElementEditor.helpers({
-    'monster': function () {
-        return Monsters.findOne({_id: this.monsterId});
     }
 });
 

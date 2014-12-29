@@ -7,7 +7,7 @@ Router.route('/chronicles/:_id', function () {
         var chronicleId = this.params._id;
         Meteor.subscribe("chronicles");
         Meteor.subscribe("chronicle-elements", chronicleId);
-        Meteor.subscribe("chronicle-encounter-monsters", chronicleId);
+        Meteor.subscribe("encounter-elements", chronicleId);
         this.render('chronicle', {
             data: {
                 chronicle: Chronicles.findOne({_id: chronicleId}),
@@ -37,13 +37,7 @@ Template.chronicle.events({
 });
 
 Template.chronicleEncounter.helpers({
-    'monsters': function () {
-        var encounter = ChronicleElements.findOne({_id: this._id});
-        return _.map(encounter.content.monsters, function (monster) {
-            return {
-                monster: Monsters.findOne({_id: monster._id}),
-                count: monster.count
-            }
-        });
+    'elements': function () {
+        return EncounterElements.find({encounterId: this._id});
     }
 });
