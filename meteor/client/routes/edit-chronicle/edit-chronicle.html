@@ -55,16 +55,14 @@
 </template>
 
 <template name="addEncounterItemForm">
-    <form class="form-inline">
-        <div class="form-group">
-            <select id="add-encounter-item-select" class="form-control">
-                <option value="monster">Monster</option>
-                <option value="npc">NPC</option>
-                <option value="item">Item</option>
-            </select>
-        </div>
-        <input class="form-control btn btn-primary" type="submit" value="add"/>
-    </form>
+    <div class="dropdown">
+        <button type="button" class="btn btn-primary" data-target="#" data-toggle="dropdown">Add</button>
+        <ul class="dropdown-menu">
+            <li><a id="add-monster-dropdown-item">Monster</a></li>
+            <li><a id="add-npc-dropdown-item">NPC</a></li>
+            <li><a id="add-item-dropdown-item">Monster</a></li>
+        </ul>
+    </div>
 </template>
 
 <template name="addChronicleItemForm">

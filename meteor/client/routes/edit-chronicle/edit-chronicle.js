@@ -96,22 +96,16 @@ Template.addChronicleItemForm.events({
     "click #add-encounter-dropdown-item": function () {
         return insertChronicleItem("encounter", {
             name: "Unnamed Encounter",
-            monsters: [],
-            npcs: [],
-            items: []
+            monsters: {} // mongo id -> count
         });
     }
 });
 
 Template.addEncounterItemForm.events({
-    "submit form": function (event) {
-        event.preventDefault();
-        var itemType = $("#add-encounter-item-select").val();
-        if (itemType === "monster") {
-            return $('#add-monster-modal').modal('show');
-        } else {
-            return alert('Not implemented!');
-        }
+    "click #add-monster-dropdown-item": function () {
+        askUserForMonster(function (monster) {
+            insertChronicleItem("monster", monster);
+        });
     }
 });
 
