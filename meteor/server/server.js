@@ -61,15 +61,17 @@ Meteor.publish("monsters", function (id) {
 });
 
 Meteor.publish("chronicle-encounter-monsters", function(chronicleId) {
-    var encounters = ChronicleItems.find({chronicleId: chronicleId, type: "encounter"}).fetch();
-    var monsterIds = _.chain(encounters)
+    var encounters = ChronicleItems.find({chronicleId: chronicleId, type: "encounter"});
+    var monsterIds = _.chain(encounters.fetch())
         .map(function(encounter){
-           return _.pluck(encounter.content.monsters, '_id');
+            return _.pluck(encounter.content.monsters, '_id');
         })
         .flatten()
         .unique()
         .value();
-    return Monsters.find({_id : {$in: monsterIds}});
+    var monsters = Monsters.find({_id : {$in: monsterIds}});
+    console.log('monsters:', _.pluck(monsters.fetch(), 'id'));
+    return [monsters, encounters];
 });
 
 Meteor.publish('monster-name-autocomplete', function (selector, options, collectionName) {
