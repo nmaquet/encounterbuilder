@@ -114,7 +114,8 @@ Template.addEncounterItemForm.events({
 
 Template.encounterEditor.helpers({
     'monsters': function () {
-        return _.map(this.content.monsters, function (monster) {
+        var encounter = ChronicleItems.findOne({_id: this._id});
+        return _.map(encounter.content.monsters, function (monster) {
             return {
                 monster: Monsters.findOne({_id: monster._id}),
                 count: monster.count
