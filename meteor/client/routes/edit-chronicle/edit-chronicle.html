@@ -52,6 +52,11 @@
     <div>
         <input class="form-control content-name-input" value="{{content.name}}"/>
     </div>
+    <ul>
+        {{#each monsters}}
+            <li>{{Name}}</li>
+        {{/each}}
+    </ul>
 </template>
 
 <template name="addEncounterItemForm">

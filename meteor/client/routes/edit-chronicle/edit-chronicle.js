@@ -20,6 +20,7 @@ Router.route('/chronicles/:_id/edit', function () {
         var chronicleId = this.params._id;
         Meteor.subscribe("chronicles", Meteor.userId());
         Meteor.subscribe("chronicle-items", chronicleId);
+        Meteor.subscribe("chronicle-encounter-monsters", chronicleId);
         this.render('editChronicle', {
             data: {
                 chronicle: Chronicles.findOne({_id: chronicleId}),
@@ -102,8 +103,18 @@ Template.addChronicleItemForm.events({
 
 Template.addEncounterItemForm.events({
     "click #add-monster-dropdown-item": function () {
+        var encounter = this;
         askUserForMonster(function (monster) {
+            console.log("update", {_id: encounter._id}, JSON.stringify({$set: _.object([['monsters.' + monster._id, 1]])}));
+            ChronicleItems.update({_id: encounter._id}, {$set: _.object([['monsters.' + monster._id, 1]])});
         });
+    }
+});
+
+Template.encounterEditor.helpers({
+    'monsters': function() {
+        var monsterIds = _.keys(this.content.monsters);
+        return Monsters.find({_id : {$in: monsterIds}});
     }
 });
 

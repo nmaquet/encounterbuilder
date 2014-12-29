@@ -60,6 +60,21 @@ Meteor.publish("monsters", function (id) {
     return Monsters.find({id: id});
 });
 
+Meteor.publish("chronicle-encounter-monsters", function(chronicleId) {
+    var encounters = ChronicleItems.find({chronicleId: chronicleId, type: "encounter"}).fetch();
+    var monsterIds = _.chain(encounters)
+        .map(function(encounter){
+           return _.keys(encounter.monsters)
+        })
+        .flatten()
+        .unique()
+        .value();
+    console.log("monsterIds", JSON.stringify(monsterIds));
+    var monsters = Monsters.find({_id : {$in: monsterIds}});
+    console.log("monsters", JSON.stringify(monsters.fetch()));
+    return monsters;
+});
+
 Meteor.publish('monster-name-autocomplete', function (selector, options, collectionName) {
     options = options || {};
     options.limit = Math.min(50, Math.abs(options.limit || 5));
