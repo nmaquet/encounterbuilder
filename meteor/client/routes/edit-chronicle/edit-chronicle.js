@@ -15,7 +15,7 @@ function insertChronicleItem(itemType, content) {
 
 Router.route('/chronicles/:_id/edit', function () {
     if (!Meteor.user()) {
-        Router.go('/')
+        this.render('pleaseLogIn');
     } else {
         var chronicleId = this.params._id;
         Meteor.subscribe("chronicles", Meteor.userId());

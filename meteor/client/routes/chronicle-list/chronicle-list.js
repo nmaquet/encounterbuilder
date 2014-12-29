@@ -2,7 +2,7 @@
 
 Router.route('/chronicles', function () {
     if (!Meteor.user()) {
-        this.render('chronicleListNotLoggedIn');
+        this.render('pleaseLogIn');
     } else {
         this.render('chronicleList');
         Meteor.subscribe("chronicles", Meteor.userId())
