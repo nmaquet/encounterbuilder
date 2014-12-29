@@ -47,6 +47,13 @@ Meteor.publish("chronicle-items", function (chronicleId) {
     return ChronicleItems.find({chronicleId: chronicleId});
 });
 
+Meteor.publish("chronicle-monsters", function (chronicleId) {
+    _.chain(ChronicleItems.find({chronicleId: chronicleId, type: "encounter"}).fetch())
+        .map(function(item) {
+            // TODO
+        })
+});
+
 Meteor.publish("monsters", function (id) {
     return Monsters.find({id: id});
 });
