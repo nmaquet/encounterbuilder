@@ -95,8 +95,7 @@ Template.addChronicleItemForm.events({
     },
     "click #add-encounter-dropdown-item": function () {
         return insertChronicleItem("encounter", {
-            name: "Unnamed Encounter",
-            monsters: {} // mongo id -> count
+            name: "Unnamed Encounter"
         });
     }
 });
@@ -104,7 +103,6 @@ Template.addChronicleItemForm.events({
 Template.addEncounterItemForm.events({
     "click #add-monster-dropdown-item": function () {
         askUserForMonster(function (monster) {
-            insertChronicleItem("monster", monster);
         });
     }
 });

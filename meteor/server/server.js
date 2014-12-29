@@ -48,10 +48,12 @@ Meteor.publish("chronicle-items", function (chronicleId) {
 });
 
 Meteor.publish("chronicle-monsters", function (chronicleId) {
-    _.chain(ChronicleItems.find({chronicleId: chronicleId, type: "encounter"}).fetch())
-        .map(function(item) {
-            // TODO
-        })
+    var encounterMonsters = EncounterItems.find({chronicleId: chronicleId, type: "monster"}).fetch();
+    var monsterIds = _.map(encounterMonsters, function (monster) {
+        return monster.monsterId;
+    });
+    console.log("monsterIds", monsterIds);
+    return Monster.find({_id: {$in: monsterIds}});
 });
 
 Meteor.publish("monsters", function (id) {
