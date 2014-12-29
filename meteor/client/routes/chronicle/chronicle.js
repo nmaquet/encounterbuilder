@@ -5,7 +5,7 @@ Router.route('/chronicles/:_id', function () {
         this.render('pleaseLogIn');
     } else {
         var chronicleId = this.params._id;
-        Meteor.subscribe("chronicles", Meteor.userId());
+        Meteor.subscribe("chronicles");
         Meteor.subscribe("chronicle-elements", chronicleId);
         Meteor.subscribe("chronicle-encounter-monsters", chronicleId);
         this.render('chronicle', {

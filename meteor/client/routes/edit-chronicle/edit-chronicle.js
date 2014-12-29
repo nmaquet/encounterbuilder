@@ -18,9 +18,9 @@ Router.route('/chronicles/:_id/edit', function () {
         this.render('pleaseLogIn');
     } else {
         var chronicleId = this.params._id;
-        Meteor.subscribe("chronicles", Meteor.userId());
+        Meteor.subscribe("chronicles");
         Meteor.subscribe("chronicle-elements", chronicleId);
-        Meteor.subscribe("chronicle-encounter-monsters", chronicleId);
+        Meteor.subscribe("encounter-elements", chronicleId);
         this.render('editChronicle', {
             data: {
                 chronicle: Chronicles.findOne({_id: chronicleId}),
@@ -29,6 +29,18 @@ Router.route('/chronicles/:_id/edit', function () {
         });
     }
 });
+
+Template.editChronicle.created = function () {
+    this.autorun(function () {
+        var encounterIds = ChronicleElements.find({type: "encounter"}).map(function (encounter) {
+            return encounter._id;
+        });
+        var monsterIds = EncounterElements.find({type: "monster", encounterId: {$in: encounterIds}}).map(function(monster){
+            return monster.monsterId;
+        });
+        Meteor.subscribe("monsters-array", monsterIds);
+    });
+};
 
 Template.editChronicle.events({
     'click #done-button': function () {
@@ -96,8 +108,7 @@ Template.addChronicleElementForm.events({
     },
     "click #add-encounter-dropdown-element": function () {
         return insertChronicleElement("encounter", {
-            name: "Unnamed Encounter",
-            monsters: []
+            name: "Unnamed Encounter"
         });
     }
 });
@@ -106,22 +117,28 @@ Template.addEncounterElementForm.events({
     "click #add-monster-dropdown-element": function () {
         var encounter = this;
         askUserForMonster(function (monster) {
-            /* FIXME: inc count */
-            ChronicleElements.update({_id: encounter._id}, {$push: {'content.monsters': {_id: monster._id, count: 1}}});
-            Meteor.subscribe("chronicle-encounter-monsters", chronicleId);
+            /* FIXME: inc count if already present */
+            EncounterElements.insert({
+                ownerId: Meteor.userId(),
+                chronicleId: encounter.chronicleId,
+                encounterId: encounter._id,
+                type: "monster",
+                monsterId: monster._id,
+                count: 1
+            });
         });
     }
 });
 
 Template.encounterEditor.helpers({
-    'monsters': function () {
-        var encounter = ChronicleElements.findOne({_id: this._id});
-        return _.map(encounter.content.monsters, function (monster) {
-            return {
-                monster: Monsters.findOne({_id: monster._id}),
-                count: monster.count
-            }
-        });
+    'elements': function () {
+        return EncounterElements.find({encounterId: this._id});
+    }
+});
+
+Template.encounterElementEditor.helpers({
+    'monster': function () {
+        return Monsters.findOne({_id: this.monsterId});
     }
 });
 

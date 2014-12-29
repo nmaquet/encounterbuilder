@@ -5,7 +5,7 @@ Router.route('/chronicles', function () {
         this.render('pleaseLogIn');
     } else {
         this.render('chronicleList');
-        Meteor.subscribe("chronicles", Meteor.userId())
+        Meteor.subscribe("chronicles");
     }
 });
 

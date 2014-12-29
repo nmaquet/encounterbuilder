@@ -3,3 +3,4 @@
 Monsters = new Meteor.Collection("monsters");
 Chronicles = new Meteor.Collection("chronicles");
 ChronicleElements = new Meteor.Collection("chronicle-elements");
+EncounterElements = new Meteor.Collection("encounter-elements");

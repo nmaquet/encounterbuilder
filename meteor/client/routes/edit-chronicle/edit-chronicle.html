@@ -53,10 +53,19 @@
         <input class="form-control content-name-input" value="{{content.name}}"/>
     </div>
     <ul>
-        {{#each monsters}}
-            <li>{{count}} {{monster.Name}}</li>
+        {{#each elements}}
+            <li>
+                {{> encounterElementEditor}}
+            </li>
         {{/each}}
     </ul>
+</template>
+
+<template name="encounterElementEditor">
+    <span>{{count}}</span>
+    {{#with monster}}
+        <span>{{Name}}</span>
+    {{/with}}
 </template>
 
 <template name="addEncounterElementForm">

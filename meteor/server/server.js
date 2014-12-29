@@ -16,7 +16,7 @@ Chronicles.deny({
     update: function (userId, doc, fields) {
         return _.contains(fields, 'ownerId');
     },
-    remove: function (userId, doc, fields) {
+    remove: function (userId, doc) {
         return ChronicleElements.findOne({chronicleId: doc._id});
     }
 });
@@ -34,76 +34,58 @@ ChronicleElements.allow({
 });
 
 ChronicleElements.deny({
-    update: function (userId, docs, fields) {
-        return _.contains(fields, 'ownerId') || _.contains(fields, 'chronicleId');
+    update: function (userId, doc, fields) {
+        return _.containsAny(fields, ['ownerId', 'chronicleId']);
+    },
+    remove: function (userId, doc) {
+        if (doc.type === "encounter") {
+            return EncounterElements.findOne({encounterId: doc._id});
+        }
     }
 });
 
-Meteor.publish("chronicles", function (userId) {
-    return Chronicles.find({ownerId: userId});
+EncounterElements.allow({
+    insert: function (userId, doc) {
+        var encounter = {
+            _id: doc.encounterId,
+            chronicleId: doc.chronicleId,
+            type: "encounter"
+        };
+        return (userId && doc.ownerId === userId && ChronicleElements.findOne(encounter));
+    },
+    update: function (userId, doc) {
+        return doc.ownerId === userId;
+    },
+    remove: function (userId, doc) {
+        return doc.ownerId === userId;
+    }
+});
+
+EncounterElements.deny({
+    update: function (userId, docs, fields) {
+        return _.containsAny(fields, ['ownerId', 'chronicleId', 'encounterId']);
+    }
+});
+
+Meteor.publish("chronicles", function () {
+    return Chronicles.find({ownerId: this.userId});
 });
 
 Meteor.publish("chronicle-elements", function (chronicleId) {
     return ChronicleElements.find({chronicleId: chronicleId});
 });
 
-Meteor.publish("chronicle-monsters", function (chronicleId) {
-    var encounterMonsters = EncounterElements.find({chronicleId: chronicleId, type: "monster"}).fetch();
-    var monsterIds = _.map(encounterMonsters, function (monster) {
-        return monster.monsterId;
-    });
-    return Monster.find({_id: {$in: monsterIds}});
+Meteor.publish("encounter-elements", function (chronicleId) {
+    return EncounterElements.find({chronicleId: chronicleId});
 });
 
 Meteor.publish("monsters", function (id) {
     return Monsters.find({id: id});
 });
 
-Meteor.publish("chronicle-encounter-monsters_FUBAR", function(chronicleId) {
-    var encounters = ChronicleElements.find({chronicleId: chronicleId, type: "encounter"});
-    var monsterIds = _.chain(encounters.fetch())
-        .map(function(encounter){
-            return _.pluck(encounter.content.monsters, '_id');
-        })
-        .flatten()
-        .unique()
-        .value();
-    var monsters = Monsters.find({_id : {$in: monsterIds}});
-    console.log('monsters:', _.pluck(monsters.fetch(), 'id'));
-    return [monsters, encounters];
+Meteor.publish("monsters-array", function (monsterIds) {
+    return Monsters.find({_id: {$in: monsterIds}});
 });
-
-//Meteor.publish("chronicle-encounter-monsters", function (chronicleId) {
-//    var self = this;
-//    var count = 0;
-//
-//    var handle = ChronicleElements.find({chronicleId: chronicleId, type: "encounter"}).observeChanges({
-//        added: function (id) {
-//            count++;
-//            if (!initializing)
-//                self.changed("counts", roomId, {count: count});
-//        },
-//        removed: function (id) {
-//            count--;
-//            self.changed("counts", roomId, {count: count});
-//        }
-//        // don't care about changed
-//    });
-//
-//    // Instead, we'll send one `self.added()` message right after
-//    // observeChanges has returned, and mark the subscription as
-//    // ready.
-//    initializing = false;
-//    self.added("counts", roomId, {count: count});
-//    self.ready();
-//
-//    // Stop observing the cursor when client unsubs.
-//    // Stopping a subscription automatically takes
-//    // care of sending the client any removed messages.
-//    self.onStop(function () {
-//        handle.stop();
-//    });
-//});
 
 Meteor.publish('monster-name-autocomplete', function (selector, options, collectionName) {
     options = options || {};
@@ -122,5 +104,12 @@ Meteor.methods({
     "removeChronicle": function (_id) {
         ChronicleElements.remove({ownerId: this.userId, chronicleId: _id});
         Chronicles.remove({ownerId: this.userId, _id: _id});
+    }
+});
+
+Meteor.methods({
+    "removeEncounter": function (_id) {
+        EncounterElements.remove({ownerId: this.userId, encounterId: _id});
+        ChronicleElements.remove({ownerId: this.userId, type: "encounter", _id: _id});
     }
 });
