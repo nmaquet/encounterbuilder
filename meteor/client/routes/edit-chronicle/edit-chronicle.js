@@ -96,7 +96,8 @@ Template.addChronicleItemForm.events({
     },
     "click #add-encounter-dropdown-item": function () {
         return insertChronicleItem("encounter", {
-            name: "Unnamed Encounter"
+            name: "Unnamed Encounter",
+            monsters: []
         });
     }
 });
@@ -105,16 +106,20 @@ Template.addEncounterItemForm.events({
     "click #add-monster-dropdown-item": function () {
         var encounter = this;
         askUserForMonster(function (monster) {
-            console.log("update", {_id: encounter._id}, JSON.stringify({$set: _.object([['monsters.' + monster._id, 1]])}));
-            ChronicleItems.update({_id: encounter._id}, {$set: _.object([['monsters.' + monster._id, 1]])});
+            /* FIXME: inc count */
+            ChronicleItems.update({_id: encounter._id}, {$push: {'content.monsters': {_id: monster._id, count: 1}}});
         });
     }
 });
 
 Template.encounterEditor.helpers({
-    'monsters': function() {
-        var monsterIds = _.keys(this.content.monsters);
-        return Monsters.find({_id : {$in: monsterIds}});
+    'monsters': function () {
+        return _.map(this.content.monsters, function (monster) {
+            return {
+                monster: Monsters.findOne({_id: monster._id}),
+                count: monster.count
+            }
+        });
     }
 });
 

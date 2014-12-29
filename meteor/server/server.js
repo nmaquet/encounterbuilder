@@ -64,15 +64,12 @@ Meteor.publish("chronicle-encounter-monsters", function(chronicleId) {
     var encounters = ChronicleItems.find({chronicleId: chronicleId, type: "encounter"}).fetch();
     var monsterIds = _.chain(encounters)
         .map(function(encounter){
-           return _.keys(encounter.monsters)
+           return _.pluck(encounter.content.monsters, '_id');
         })
         .flatten()
         .unique()
         .value();
-    console.log("monsterIds", JSON.stringify(monsterIds));
-    var monsters = Monsters.find({_id : {$in: monsterIds}});
-    console.log("monsters", JSON.stringify(monsters.fetch()));
-    return monsters;
+    return Monsters.find({_id : {$in: monsterIds}});
 });
 
 Meteor.publish('monster-name-autocomplete', function (selector, options, collectionName) {
