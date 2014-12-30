@@ -142,15 +142,19 @@ Template.editChronicle_editEncounter.events({
     "click .add-monster-button": function () {
         var encounter = this;
         askUserForMonster(function (monster) {
-            /* FIXME: inc count if already present */
-            EncounterElements.insert({
-                ownerId: Meteor.userId(),
-                chronicleId: encounter.chronicleId,
-                encounterId: encounter._id,
-                type: "monster",
-                monster: monster,
-                count: 1
-            });
+            var element = EncounterElements.findOne({encounterId: encounter._id, type: "monster", 'monster._id': monster._id});
+            if (element) {
+                EncounterElements.update({_id: element._id}, {$inc: {count: 1}});
+            } else {
+                EncounterElements.insert({
+                    ownerId: Meteor.userId(),
+                    chronicleId: encounter.chronicleId,
+                    encounterId: encounter._id,
+                    type: "monster",
+                    monster: monster,
+                    count: 1
+                });
+            }
         });
     }
 });
