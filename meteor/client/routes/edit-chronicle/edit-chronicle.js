@@ -10,7 +10,6 @@ function insertChronicleElement(position, elementType, content) {
         var lowestRanking = ChronicleElements.findOne({chronicleId: chronicleId}, {sort: {rank: 1}});
         rank = (lowestRanking && lowestRanking.rank - 1) || 0;
     }
-    console.log("rank", rank);
     var element = {
         ownerId: Meteor.userId(),
         chronicleId: chronicleId,
@@ -64,6 +63,12 @@ Template.editChronicle.events({
     'click #done-button': function () {
         var chronicleId = Router.current().params._id;
         Router.go('/chronicles/' + chronicleId);
+    }
+});
+
+Template.editChronicle.helpers({
+    'isEmpty': function() {
+        return ChronicleElements.find({chronicleId: this.chronicle._id}).count() === 0;
     }
 });
 

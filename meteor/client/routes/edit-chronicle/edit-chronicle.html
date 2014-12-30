@@ -16,11 +16,13 @@
                 {{/each}}
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-2 col-xs-offset-5">
-                {{> editChronicle_addButton position="bottom"}}
+        {{#unless isEmpty}}
+            <div class="row">
+                <div class="col-xs-2 col-xs-offset-5">
+                    {{> editChronicle_addButton position="bottom"}}
+                </div>
             </div>
-        </div>
+        {{/unless}}
     </div>
     {{> editChronicle_addMonsterModal}}
 </template>
