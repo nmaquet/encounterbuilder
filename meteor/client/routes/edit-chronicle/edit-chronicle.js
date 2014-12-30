@@ -136,6 +136,9 @@ Template.editChronicle_editText.events({
 });
 
 Template.editChronicle_editEncounter.events({
+    "keyup .content-name-input": function (event){
+        ChronicleElements.update({_id: this._id}, {$set: {'content.name': event.target.value}});
+    },
     "click .add-monster-button": function () {
         var encounter = this;
         askUserForMonster(function (monster) {
