@@ -27,7 +27,7 @@
 
 <template name="chronicleText">
     <div>
-        <span>{{content.title}}</span>
+        <h3>{{content.title}}</h3>
     </div>
     <div>
         <p>{{content.body}}</p>
@@ -42,9 +42,14 @@
 
 <template name="chronicleEncounter">
     <div>
-        <span>{{content.name}}</span>
+        <h3>{{content.name}}</h3>
     </div>
-    {{#each elements}}
-        <li>{{count}} {{monster.Name}}</li>
-    {{/each}}
+    <h4>Monsters</h4>
+    <ul>
+        {{#each elements}}
+            <li>{{count}} {{monster.Name}}</li>
+        {{/each}}
+    </ul>
+    <h4>NPCs</h4>
+    <h4>Items</h4>
 </template>
