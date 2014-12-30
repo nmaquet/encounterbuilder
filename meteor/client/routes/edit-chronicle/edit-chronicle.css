@@ -8,3 +8,13 @@
     background-color: #ccc;
     cursor: move;
 }
+
+.add-button {
+    padding: 0 10px;
+    font-size: 25px;
+}
+
+.add-monster-button, .add-item-button, .add-npc-button {
+    padding: 0 7px;
+    font-size: 18px;
+}

@@ -81,23 +81,21 @@
 </template>
 
 <template name="editChronicle_editMonster">
-    {{#with content}}
-        {{> monsterStatBlock}}
-    {{/with}}
+    <div>
+        {{#with content}}
+            {{> monsterStatBlock}}
+        {{/with}}
+    </div>
 </template>
 
 <template name="editChronicle_editEncounter">
-    <div class="dropdown">
-        <button type="button" class="btn btn-primary" data-target="#" data-toggle="dropdown">Add</button>
-        <ul class="dropdown-menu">
-            <li><a id="add-monster-dropdown-element">Monster</a></li>
-            <li><a id="add-npc-dropdown-element">NPC</a></li>
-            <li><a id="add-item-dropdown-element">Monster</a></li>
-        </ul>
-    </div>
     <div>
         <input class="form-control content-name-input" value="{{content.name}}"/>
     </div>
+    <h3>
+        <button type="button" class="btn btn-default add-monster-button">+</button>
+        Monsters
+    </h3>
     <ul>
         {{#each elements}}
             <li>
@@ -106,6 +104,14 @@
             </li>
         {{/each}}
     </ul>
+    <h3>
+        <button type="button" class="btn btn-default add-npc-button">+</button>
+        NPCs
+    </h3>
+    <h3>
+        <button type="button" class="btn btn-default add-item-button">+</button>
+        Items
+    </h3>
 </template>
 
 <template name="editChronicle_text">
@@ -118,9 +124,11 @@
 </template>
 
 <template name="editChronicle_monster">
-    {{#with content}}
-        {{> monsterStatBlock}}
-    {{/with}}
+    <div>
+        {{#with content}}
+            {{> monsterStatBlock}}
+        {{/with}}
+    </div>
 </template>
 
 <template name="editChronicle_encounter">

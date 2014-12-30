@@ -85,6 +85,7 @@ Template.editChronicle_addButton.events({
         askUserForMonster(function (monster) {
             insertChronicleElement(self.position, "monster", monster);
         });
+        Session.set("editedChronicleElementId", null);
     },
     "click #add-encounter-dropdown-element": function () {
         var elementId = insertChronicleElement(this.position, "encounter", {
@@ -135,7 +136,7 @@ Template.editChronicle_editText.events({
 });
 
 Template.editChronicle_editEncounter.events({
-    "click #add-monster-dropdown-element": function () {
+    "click .add-monster-button": function () {
         var encounter = this;
         askUserForMonster(function (monster) {
             /* FIXME: inc count if already present */
@@ -152,6 +153,12 @@ Template.editChronicle_editEncounter.events({
 });
 
 Template.editChronicle_editEncounter.helpers({
+    'elements': function () {
+        return EncounterElements.find({encounterId: this._id});
+    }
+});
+
+Template.editChronicle_encounter.helpers({
     'elements': function () {
         return EncounterElements.find({encounterId: this._id});
     }
