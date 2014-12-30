@@ -29,3 +29,8 @@
     float: none;
     margin: 0 auto;
 }
+
+.add-button {
+    padding: 0 10px;
+    font-size: 25px;
+}
