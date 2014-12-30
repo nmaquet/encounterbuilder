@@ -24,3 +24,8 @@
 .float-right {
     float: right;
 }
+
+.centering {
+    float: none;
+    margin: 0 auto;
+}
