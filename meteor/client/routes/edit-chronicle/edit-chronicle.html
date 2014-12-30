@@ -2,10 +2,9 @@
 
 <template name="editChronicle">
     <div class="container">
-        <h1>Single Chronicle: {{chronicle.name}}
-            <button type="button" id="done-button" class="btn btn-primary">done</button>
-        </h1>
+        <h1>Single Chronicle: {{chronicle.name}}</h1>
         <div class="row">
+            <button type="button" id="done-button" class="btn btn-primary float-right">done</button>
             <div class="col-xs-2 col-xs-offset-5">
                 {{> editChronicle_addButton position="top"}}
             </div>
