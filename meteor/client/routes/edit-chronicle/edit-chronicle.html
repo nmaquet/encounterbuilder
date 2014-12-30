@@ -5,34 +5,59 @@
         <h1>Single Chronicle: {{chronicle.name}}
             <button type="button" id="done-button" class="btn btn-primary">done</button>
         </h1>
-        {{> addChronicleElementForm}}
-        {{> editChronicleElementList}}
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary" data-target="#" data-toggle="dropdown">Add</button>
+            <ul class="dropdown-menu">
+                <li><a id="add-text-dropdown-element">Text</a></li>
+                <li><a id="add-monster-dropdown-element">Monster</a></li>
+                <li><a id="add-encounter-dropdown-element">Encounter</a></li>
+            </ul>
+        </div>
+        <div id="edit-chronicle-element-list">
+            {{#each elements}}
+                {{> editChronicle_element}}
+            {{/each}}
+        </div>
     </div>
-    {{> addMonsterModal}}
+    {{> editChronicle_addMonsterModal}}
 </template>
 
-<template name="editChronicleElementList">
-    <div id="edit-chronicle-element-list">
-        {{#each chronicleElements}}
-            <div class="well edit-chronicle-element">
-                {{#if isText}}
-                    {{> textEditor}}
-                {{/if}}
-                {{#if isMonster}}
-                    {{> monsterEditor}}
-                {{/if}}
-                {{#if isEncounter}}
-                    {{> encounterEditor}}
-                {{/if}}
-                <div>
-                    <button type="button" class="btn btn-danger delete-user-content-button">delete</button>
-                </div>
+<template name="editChronicle_element">
+    <div class="well edit-chronicle-element">
+        {{#if isEdited}}
+            <div>
+                <button type="button" class="btn btn-primary done-button">done</button>
             </div>
-        {{/each}}
+            {{#if isText}}
+                {{> editChronicle_editText}}
+            {{/if}}
+            {{#if isMonster}}
+                {{> editChronicle_editMonster}}
+            {{/if}}
+            {{#if isEncounter}}
+                {{> editChronicle_editEncounter}}
+            {{/if}}
+        {{else}}
+            <div>
+                <button type="button" class="btn btn-primary edit-button">edit</button>
+            </div>
+            {{#if isText}}
+                {{> editChronicle_text}}
+            {{/if}}
+            {{#if isMonster}}
+                {{> editChronicle_monster}}
+            {{/if}}
+            {{#if isEncounter}}
+                {{> editChronicle_encounter}}
+            {{/if}}
+            <div>
+                <button type="button" class="btn btn-danger delete-button">delete</button>
+            </div>
+        {{/if}}
     </div>
 </template>
 
-<template name="textEditor">
+<template name="editChronicle_editText">
     <div>
         <input class="form-control content-title-input" value="{{content.title}}"/>
     </div>
@@ -41,32 +66,13 @@
     </div>
 </template>
 
-<template name="monsterEditor">
+<template name="editChronicle_editMonster">
     {{#with content}}
         {{> monsterStatBlock}}
     {{/with}}
 </template>
 
-<template name="encounterEditor">
-    {{> addEncounterElementForm}}
-    <div>
-        <input class="form-control content-name-input" value="{{content.name}}"/>
-    </div>
-    <ul>
-        {{#each elements}}
-            <li>
-                {{> encounterElementEditor}}
-            </li>
-        {{/each}}
-    </ul>
-</template>
-
-<template name="encounterElementEditor">
-    <span>{{count}}</span>
-    <span>{{monster.Name}}</span>
-</template>
-
-<template name="addEncounterElementForm">
+<template name="editChronicle_editEncounter">
     <div class="dropdown">
         <button type="button" class="btn btn-primary" data-target="#" data-toggle="dropdown">Add</button>
         <ul class="dropdown-menu">
@@ -75,20 +81,49 @@
             <li><a id="add-item-dropdown-element">Monster</a></li>
         </ul>
     </div>
+    <div>
+        <input class="form-control content-name-input" value="{{content.name}}"/>
+    </div>
+    <ul>
+        {{#each elements}}
+            <li>
+                <span>{{count}}</span>
+                <span>{{monster.Name}}</span>
+            </li>
+        {{/each}}
+    </ul>
 </template>
 
-<template name="addChronicleElementForm">
-    <div class="dropdown">
-        <button type="button" class="btn btn-primary" data-target="#" data-toggle="dropdown">Add</button>
-        <ul class="dropdown-menu">
-            <li><a id="add-text-dropdown-element">Text</a></li>
-            <li><a id="add-monster-dropdown-element">Monster</a></li>
-            <li><a id="add-encounter-dropdown-element">Encounter</a></li>
-        </ul>
+<template name="editChronicle_text">
+    <div>
+        <span>{{content.title}}</span>
+    </div>
+    <div>
+        <p>{{content.body}}</p>
     </div>
 </template>
 
-<template name="addMonsterModal">
+<template name="editChronicle_monster">
+    {{#with content}}
+        {{> monsterStatBlock}}
+    {{/with}}
+</template>
+
+<template name="editChronicle_encounter">
+    <div>
+        <span>content.name</span>
+    </div>
+    <ul>
+        {{#each elements}}
+            <li>
+                <span>{{count}}</span>
+                <span>{{monster.Name}}</span>
+            </li>
+        {{/each}}
+    </ul>
+</template>
+
+<template name="editChronicle_addMonsterModal">
     <div class="modal fade" id="add-monster-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

@@ -24,49 +24,15 @@ Router.route('/chronicles/:_id/edit', function () {
         this.render('editChronicle', {
             data: {
                 chronicle: Chronicles.findOne({_id: chronicleId}),
-                chronicleElements: ChronicleElements.find({chronicleId: chronicleId}, {sort: {rank: 1}})
+                elements: ChronicleElements.find({chronicleId: chronicleId}, {sort: {rank: 1}})
             }
         });
     }
 });
 
-Template.editChronicle.events({
-    'click #done-button': function () {
-        var chronicleId = Router.current().params._id;
-        Router.go('/chronicles/' + chronicleId);
-    }
-});
-
-Template.editChronicleElementList.events({
-    'click .delete-user-content-button': function () {
-        if (this.type === "encounter") {
-            Meteor.call("removeEncounter", this._id);
-        } else {
-            ChronicleElements.remove({_id: this._id});
-        }
-    }
-});
-
-Template.textEditor.events({
-    'keyup .content-title-input': function (event) {
-        ChronicleElements.update({_id: this._id}, {$set: {"content.title": event.target.value}});
-    },
-    'keyup .content-body-textarea': function (event) {
-        ChronicleElements.update({_id: this._id}, {$set: {"content.body": event.target.value}});
-    }
-});
-
-Template.editChronicleElementList.helpers({
-    'isText': function () {
-        return this.type === "text";
-    },
-    'isMonster': function () {
-        return this.type === "monster";
-    },
-    'isEncounter': function () {
-        return this.type === "encounter";
-    }
-});
+Template.editChronicle.created = function() {
+    Session.set("editedChronicleElementId", null);
+};
 
 Template.editChronicle.rendered = function () {
     this.$('#edit-chronicle-element-list').sortable({
@@ -86,7 +52,11 @@ Template.editChronicle.rendered = function () {
     })
 };
 
-Template.addChronicleElementForm.events({
+Template.editChronicle.events({
+    'click #done-button': function () {
+        var chronicleId = Router.current().params._id;
+        Router.go('/chronicles/' + chronicleId);
+    },
     "click #add-text-dropdown-element": function () {
         insertChronicleElement("text", {
             title: "Foo title",
@@ -105,7 +75,47 @@ Template.addChronicleElementForm.events({
     }
 });
 
-Template.addEncounterElementForm.events({
+Template.editChronicle_element.events({
+    'click .delete-button': function () {
+        if (this.type === "encounter") {
+            Meteor.call("removeEncounter", this._id);
+        } else {
+            ChronicleElements.remove({_id: this._id});
+        }
+    },
+    'click .edit-button': function () {
+        Session.set("editedChronicleElementId", this._id);
+    },
+    'click .done-button': function () {
+        Session.set("editedChronicleElementId", null);
+    }
+});
+
+Template.editChronicle_element.helpers({
+    'isText': function () {
+        return this.type === "text";
+    },
+    'isMonster': function () {
+        return this.type === "monster";
+    },
+    'isEncounter': function () {
+        return this.type === "encounter";
+    },
+    'isEdited': function() {
+        return Session.equals("editedChronicleElementId", this._id);
+    }
+});
+
+Template.editChronicle_editText.events({
+    'keyup .content-title-input': function (event) {
+        ChronicleElements.update({_id: this._id}, {$set: {"content.title": event.target.value}});
+    },
+    'keyup .content-body-textarea': function (event) {
+        ChronicleElements.update({_id: this._id}, {$set: {"content.body": event.target.value}});
+    }
+});
+
+Template.editChronicle_editEncounter.events({
     "click #add-monster-dropdown-element": function () {
         var encounter = this;
         askUserForMonster(function (monster) {
@@ -122,7 +132,7 @@ Template.addEncounterElementForm.events({
     }
 });
 
-Template.encounterEditor.helpers({
+Template.editChronicle_editEncounter.helpers({
     'elements': function () {
         return EncounterElements.find({encounterId: this._id});
     }
@@ -133,7 +143,7 @@ function askUserForMonster(callback) {
     $('#add-monster-modal').modal('show');
 }
 
-Template.addMonsterModal.helpers({
+Template.editChronicle_addMonsterModal.helpers({
     "autocompleteSettings": function () {
         return {
             position: "bottom",

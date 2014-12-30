@@ -75,6 +75,10 @@ Meteor.publish("chronicle-elements", function (chronicleId) {
     return ChronicleElements.find({chronicleId: chronicleId});
 });
 
+Meteor.publish("chronicle-element", function (_id) {
+    return ChronicleElements.find({_id: _id});
+});
+
 Meteor.publish("encounter-elements", function (chronicleId) {
     return EncounterElements.find({chronicleId: chronicleId});
 });
