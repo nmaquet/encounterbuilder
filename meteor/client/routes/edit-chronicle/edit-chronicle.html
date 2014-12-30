@@ -7,14 +7,7 @@
         </h1>
         <div class="row">
             <div class="col-xs-2 col-xs-offset-5">
-                <div class="dropdown pull-middle">
-                    <button type="button" class="btn btn-default add-button" data-target="#" data-toggle="dropdown">+</button>
-                    <ul class="dropdown-menu">
-                        <li><a id="add-text-dropdown-element">Text</a></li>
-                        <li><a id="add-monster-dropdown-element">Monster</a></li>
-                        <li><a id="add-encounter-dropdown-element">Encounter</a></li>
-                    </ul>
-                </div>
+                {{> editChronicle_addButton position="top"}}
             </div>
         </div>
         <div class="row">
@@ -24,8 +17,24 @@
                 {{/each}}
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-2 col-xs-offset-5">
+                {{> editChronicle_addButton position="bottom"}}
+            </div>
+        </div>
     </div>
     {{> editChronicle_addMonsterModal}}
+</template>
+
+<template name="editChronicle_addButton">
+    <div class="dropdown pull-middle">
+        <button type="button" class="btn btn-default add-button" data-target="#" data-toggle="dropdown">+</button>
+        <ul class="dropdown-menu">
+            <li><a id="add-text-dropdown-element">Text</a></li>
+            <li><a id="add-monster-dropdown-element">Monster</a></li>
+            <li><a id="add-encounter-dropdown-element">Encounter</a></li>
+        </ul>
+    </div>
 </template>
 
 <template name="editChronicle_element">

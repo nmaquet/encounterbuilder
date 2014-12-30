@@ -1,16 +1,24 @@
 // Copyright (c) 2014 DemonSquid, Inc. All rights reserved.
 
-function insertChronicleElement(elementType, content) {
+function insertChronicleElement(position, elementType, content) {
     var chronicleId = Router.current().params._id;
-    var highestRanking = ChronicleElements.findOne({chronicleId: chronicleId}, {sort: {rank: -1}});
+    var rank;
+    if (position === "bottom") {
+        var highestRanking = ChronicleElements.findOne({chronicleId: chronicleId}, {sort: {rank: -1}});
+        rank = (highestRanking && highestRanking.rank + 1) || 1;
+    } else {
+        var lowestRanking = ChronicleElements.findOne({chronicleId: chronicleId}, {sort: {rank: 1}});
+        rank = (lowestRanking && lowestRanking.rank - 1) || 0;
+    }
+    console.log("rank", rank);
     var element = {
         ownerId: Meteor.userId(),
         chronicleId: chronicleId,
         type: elementType,
         content: content,
-        rank: (highestRanking && highestRanking.rank + 1) || 1
+        rank: rank
     };
-    ChronicleElements.insert(element);
+    return ChronicleElements.insert(element);
 }
 
 Router.route('/chronicles/:_id/edit', function () {
@@ -56,22 +64,28 @@ Template.editChronicle.events({
     'click #done-button': function () {
         var chronicleId = Router.current().params._id;
         Router.go('/chronicles/' + chronicleId);
-    },
+    }
+});
+
+Template.editChronicle_addButton.events({
     "click #add-text-dropdown-element": function () {
-        insertChronicleElement("text", {
+        var elementId = insertChronicleElement(this.position, "text", {
             title: "Foo title",
             body: "Bar body"
         });
+        Session.set("editedChronicleElementId", elementId);
     },
     "click #add-monster-dropdown-element": function () {
+        var self = this;
         askUserForMonster(function (monster) {
-            insertChronicleElement("monster", monster);
+            insertChronicleElement(self.position, "monster", monster);
         });
     },
     "click #add-encounter-dropdown-element": function () {
-        return insertChronicleElement("encounter", {
+        var elementId = insertChronicleElement(this.position, "encounter", {
             name: "Unnamed Encounter"
         });
+        Session.set("editedChronicleElementId", elementId);
     }
 });
 
