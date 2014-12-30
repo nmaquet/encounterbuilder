@@ -1,3 +1,5 @@
+/* Copyright (c) 2014 DemonSquid, Inc. All rights reserved. */
+
 .hidden {
     visibility: hidden;
 }
@@ -17,4 +19,8 @@
 
 .dropdown-menu > li > a {
     cursor: pointer;
+}
+
+.float-right {
+    float: right;
 }

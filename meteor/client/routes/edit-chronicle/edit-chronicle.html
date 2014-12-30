@@ -25,7 +25,7 @@
 <template name="editChronicle_element">
     <div class="well edit-chronicle-element">
         {{#if isEdited}}
-            <div>
+            <div class="float-right">
                 <button type="button" class="btn btn-primary done-button">done</button>
             </div>
             {{#if isText}}
@@ -38,8 +38,9 @@
                 {{> editChronicle_editEncounter}}
             {{/if}}
         {{else}}
-            <div>
+            <div class="float-right">
                 <button type="button" class="btn btn-primary edit-button">edit</button>
+                <button type="button" class="btn btn-danger delete-button">delete</button>
             </div>
             {{#if isText}}
                 {{> editChronicle_text}}
@@ -50,9 +51,6 @@
             {{#if isEncounter}}
                 {{> editChronicle_encounter}}
             {{/if}}
-            <div>
-                <button type="button" class="btn btn-danger delete-button">delete</button>
-            </div>
         {{/if}}
     </div>
 </template>
