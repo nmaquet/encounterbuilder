@@ -33,3 +33,9 @@
 .container {
     margin-bottom: 200px;
 }
+
+body {
+    /* hack so that modals don't shift the body to the left */
+    margin-left: 15px;
+    margin-right: 15px;
+}
