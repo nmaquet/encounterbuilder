@@ -25,6 +25,18 @@ Template.home.helpers({
        var upvotes = (chronicle.upvotes && chronicle.upvotes.length) || 0;
        var downvotes = (chronicle.downvotes && chronicle.downvotes.length) || 0;
        return upvotes - downvotes;
+   },
+    'votedArrowClass': function (voteType) {
+        if (!Meteor.userId()) {
+            return;
+        }
+       var chronicle = Chronicles.findOne({_id: this._id});
+       if (voteType === "upvote" && _.contains(chronicle.upvotes, Meteor.userId())) {
+           return "voted-arrow";
+       }
+       if (voteType === "downvote" && _.contains(chronicle.downvotes, Meteor.userId())) {
+           return "voted-arrow";
+       }
    }
 });
 

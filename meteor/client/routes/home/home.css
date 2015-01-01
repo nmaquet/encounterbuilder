@@ -19,3 +19,7 @@
 .vote-count {
     cursor: default;
 }
+
+.voted-arrow {
+    color: red;
+}
