@@ -7,8 +7,8 @@
 meteor-platform
 accounts-password
 iron:router
-mizzao:autocomplete
 mrt:jquery-ui
 ian:accounts-ui-bootstrap-3
 ian:bootstrap-3
 reactive-dict
+tinsik:autocomplete

@@ -20,6 +20,7 @@ Template.quickSearchForm.helpers({
         return {
             position: "bottom",
             limit: 5,
+            autoSelect: false,
             rules: [
                 {
                     subscription: 'monster-name-autocomplete',
