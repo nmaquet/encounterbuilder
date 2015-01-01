@@ -25,6 +25,7 @@ Router.route('/chronicles/:_id/edit', function () {
         this.render('pleaseLogIn');
     } else {
         var chronicleId = this.params._id;
+        Meteor.subscribe("usernames");
         Meteor.subscribe("chronicles");
         Meteor.subscribe("chronicle-elements", chronicleId);
         Meteor.subscribe("encounter-elements", chronicleId);
@@ -84,6 +85,10 @@ Template.editChronicle.helpers({
     },
     'isPublic': function() {
         return this.chronicle && this.chronicle.privacy === "public";
+    },
+    'usernameFor': function(userId) {
+        var user = Meteor.users.findOne({_id: userId});
+        return user && user.username;
     }
 });
 

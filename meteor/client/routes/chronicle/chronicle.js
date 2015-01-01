@@ -2,6 +2,7 @@
 
 Router.route('/chronicles/:_id', function () {
     var chronicleId = this.params._id;
+    Meteor.subscribe("usernames");
     Meteor.subscribe("chronicle", chronicleId);
     Meteor.subscribe("chronicle-elements", chronicleId);
     Meteor.subscribe("encounter-elements", chronicleId);
@@ -35,6 +36,10 @@ Template.chronicle.events({
 Template.chronicle.helpers({
     'allowedToEdit': function() {
         return Meteor.userId() && this.chronicle && Meteor.userId() === this.chronicle.ownerId;
+    },
+    'usernameFor': function(userId) {
+        var user = Meteor.users.findOne({_id: userId});
+        return user && user.username;
     }
 });
 

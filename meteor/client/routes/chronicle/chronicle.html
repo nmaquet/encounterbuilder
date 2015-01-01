@@ -6,6 +6,7 @@
             <div class="panel-heading">
                 <h1>
                     <span>{{chronicle.name}}</span>
+                    <span class="badge">by {{usernameFor chronicle.ownerId}}</span>
                     <span class="badge">{{chronicle.privacy}}</span>
                     {{#if allowedToEdit}}
                         <button type="button" id="edit-button" class="btn btn-default float-right">edit</button>
