@@ -26,18 +26,24 @@ Template.home.helpers({
        var downvotes = (chronicle.downvotes && chronicle.downvotes.length) || 0;
        return upvotes - downvotes;
    },
-    'votedArrowClass': function (voteType) {
+    'upvotedArrowClass': function () {
         if (!Meteor.userId()) {
             return;
         }
-       var chronicle = Chronicles.findOne({_id: this._id});
-       if (voteType === "upvote" && _.contains(chronicle.upvotes, Meteor.userId())) {
-           return "voted-arrow";
-       }
-       if (voteType === "downvote" && _.contains(chronicle.downvotes, Meteor.userId())) {
-           return "voted-arrow";
-       }
-   }
+        var chronicle = Chronicles.findOne({_id: this._id});
+        if (_.contains(chronicle.upvotes, Meteor.userId())) {
+            return "upvoted-arrow";
+        }
+   },
+    'downvotedArrowClass': function () {
+        if (!Meteor.userId()) {
+            return;
+        }
+        var chronicle = Chronicles.findOne({_id: this._id});
+        if (_.contains(chronicle.downvotes, Meteor.userId())) {
+            return "downvoted-arrow";
+        }
+    }
 });
 
 Template.home.events({

@@ -20,6 +20,10 @@
     cursor: default;
 }
 
-.voted-arrow {
+.upvoted-arrow {
     color: rgb(142, 234, 26);
+}
+
+.downvoted-arrow {
+    color: rgb(224, 15, 15);
 }
