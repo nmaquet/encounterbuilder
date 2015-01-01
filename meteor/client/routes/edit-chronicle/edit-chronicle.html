@@ -2,19 +2,26 @@
 
 <template name="editChronicle">
     <div class="container">
-        <h1>Single Chronicle: {{chronicle.name}}</h1>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1>
+                    <span>{{chronicle.name}}</span>
+                    <button type="button" id="done-button" class="btn btn-default float-right">done</button>
+                </h1>
+            </div>
+            <!--<div class="panel-body">-->
+                <!--TODO-->
+            <!--</div>-->
+        </div>
         <div class="row">
-            <button type="button" id="done-button" class="btn btn-primary float-right">done</button>
             <div class="col-xs-2 col-xs-offset-5">
                 {{> editChronicle_addButton position="top"}}
             </div>
         </div>
-        <div class="row">
-            <div id="edit-chronicle-element-list">
-                {{#each elements}}
-                    {{> editChronicle_element}}
-                {{/each}}
-            </div>
+        <div id="edit-chronicle-element-list">
+            {{#each elements}}
+                {{> editChronicle_element}}
+            {{/each}}
         </div>
         {{#unless isEmpty}}
             <div class="row">
@@ -39,11 +46,8 @@
 </template>
 
 <template name="editChronicle_element">
-    <div class="well edit-chronicle-element">
+    <div class="panel panel-default cursor-move">
         {{#if isEdited}}
-            <div class="float-right">
-                <button type="button" class="btn btn-primary done-button">done</button>
-            </div>
             {{#if isText}}
                 {{> editChronicle_editText}}
             {{/if}}
@@ -54,10 +58,6 @@
                 {{> editChronicle_editEncounter}}
             {{/if}}
         {{else}}
-            <div class="float-right">
-                <button type="button" class="btn btn-primary edit-button">edit</button>
-                <button type="button" class="btn btn-danger delete-button">delete</button>
-            </div>
             {{#if isText}}
                 {{> editChronicle_text}}
             {{/if}}
@@ -72,16 +72,27 @@
 </template>
 
 <template name="editChronicle_editText">
-    <div>
-        <input class="form-control content-title-input" value="{{content.title}}"/>
+    <div class="panel-heading">
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <input class="form-control content-title-input" name="title" value="{{content.title}}"/>
+            </div>
+            <button type="button" class="btn btn-primary done-button">done</button>
+        </form>
     </div>
-    <div>
+    <div class="panel-body">
         <textarea rows="4" cols="50" class="form-control content-body-textarea">{{content.body}}</textarea>
     </div>
 </template>
 
 <template name="editChronicle_editMonster">
-    <div>
+    <div class="panel-heading">
+        <h2>
+            <span>{{content.Name}}</span>
+            <button type="button" class="btn btn-primary done-button">done</button>
+        </h2>
+    </div>
+    <div class="panel-body">
         {{#with content}}
             {{> monsterStatBlock}}
         {{/with}}
@@ -89,42 +100,64 @@
 </template>
 
 <template name="editChronicle_editEncounter">
-    <div>
-        <input class="form-control content-name-input" value="{{content.name}}"/>
+    <div class="panel-heading">
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <input class="form-control content-name-input" value="{{content.name}}"/>
+            </div>
+            <button type="button" class="btn btn-primary done-button">done</button>
+        </form>
     </div>
-    <h4>
-        <button type="button" class="btn btn-default add-monster-button">+</button>
-        Monsters
-    </h4>
-    <ul>
-        {{#each elements}}
-            <li>
-                <span>{{count}}</span>
-                <span>{{monster.Name}}</span>
-            </li>
-        {{/each}}
-    </ul>
-    <h4>
-        <button type="button" class="btn btn-default add-npc-button">+</button>
-        NPCs
-    </h4>
-    <h4>
-        <button type="button" class="btn btn-default add-item-button">+</button>
-        Items
-    </h4>
+    <div class="panel-body">
+        <h4>
+            <button type="button" class="btn btn-default add-monster-button">+</button>
+            Monsters
+        </h4>
+        <ul>
+            {{#each elements}}
+                <li>
+                    <span>{{count}}</span>
+                    <span>{{monster.Name}}</span>
+                </li>
+            {{/each}}
+        </ul>
+        <h4>
+            <button type="button" class="btn btn-default add-npc-button">+</button>
+            NPCs
+        </h4>
+        <h4>
+            <button type="button" class="btn btn-default add-item-button">+</button>
+            Items
+        </h4>
+    </div>
 </template>
 
 <template name="editChronicle_text">
-    <div>
-        <h3>{{content.title}}</h3>
+    <div class="panel-heading">
+        <h2>
+            <span>{{content.title}}</span>
+            <div class="float-right btn-group">
+                <button type="button" class="btn btn-default edit-button">edit</button>
+                <button type="button" class="btn btn-danger delete-button">delete</button>
+            </div>
+        </h2>
     </div>
-    <div>
+    <div class="panel-body">
         <p>{{content.body}}</p>
     </div>
 </template>
 
 <template name="editChronicle_monster">
-    <div>
+    <div class="panel-heading">
+        <h2>
+            <span>{{content.Name}}</span>
+            <div class="float-right btn-group">
+                <button type="button" class="btn btn-default edit-button">edit</button>
+                <button type="button" class="btn btn-danger delete-button">delete</button>
+            </div>
+        </h2>
+    </div>
+    <div class="panel-body">
         {{#with content}}
             {{> monsterStatBlock}}
         {{/with}}
@@ -132,20 +165,25 @@
 </template>
 
 <template name="editChronicle_encounter">
-    <div>
-        <h3>{{content.name}}</h3>
+    <div class="panel-heading">
+        <h2>
+            <span>{{content.name}}</span>
+            <div class="float-right btn-group">
+                <button type="button" class="btn btn-default edit-button">edit</button>
+                <button type="button" class="btn btn-danger delete-button">delete</button>
+            </div>
+        </h2>
     </div>
-    <h4>Monsters</h4>
-    <ul>
-        {{#each elements}}
-            <li>
-                <span>{{count}}</span>
-                <span>{{monster.Name}}</span>
-            </li>
-        {{/each}}
-    </ul>
-    <h4>NPCs</h4>
-    <h4>Items</h4>
+    <div class="panel-body">
+        <h3>Monsters</h3>
+        <ul>
+            {{#each elements}}
+                <li>{{count}} {{monster.Name}}</li>
+            {{/each}}
+        </ul>
+        <h3>NPCs</h3>
+        <h3>Items</h3>
+    </div>
 </template>
 
 <template name="editChronicle_addMonsterModal">

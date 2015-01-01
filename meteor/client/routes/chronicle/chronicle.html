@@ -56,15 +56,17 @@
 </template>
 
 <template name="chronicleEncounter">
-    <div>
-        <h3>{{content.name}}</h3>
+    <div class="panel-heading">
+        <h2>{{content.name}}</h2>
     </div>
-    <h4>Monsters</h4>
-    <ul>
-        {{#each elements}}
-            <li>{{count}} {{monster.Name}}</li>
-        {{/each}}
-    </ul>
-    <h4>NPCs</h4>
-    <h4>Items</h4>
+    <div class="panel-body">
+        <h3>Monsters</h3>
+        <ul>
+            {{#each elements}}
+                <li>{{count}} {{monster.Name}}</li>
+            {{/each}}
+        </ul>
+        <h3>NPCs</h3>
+        <h3>Items</h3>
+    </div>
 </template>
