@@ -43,6 +43,11 @@ Template.home.helpers({
         if (_.contains(chronicle.downvotes, Meteor.userId())) {
             return "downvoted-arrow";
         }
+    },
+    'disabledArrowClass': function () {
+        if (!Meteor.userId()) {
+            return 'disabled-arrow';
+        }
     }
 });
 

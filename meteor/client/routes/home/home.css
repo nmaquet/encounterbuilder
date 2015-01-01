@@ -27,3 +27,8 @@
 .downvoted-arrow {
     color: rgb(224, 15, 15);
 }
+
+.disabled-arrow {
+    color: #A8A8A8;
+    cursor: default;
+}
