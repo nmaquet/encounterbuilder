@@ -27,7 +27,7 @@ Template.chronicleList.events({
 Template.createChronicle.events({
     "submit form": function(event) {
         event.preventDefault();
-        Chronicles.insert({name: event.target.name.value, ownerId: Meteor.userId()});
+        Chronicles.insert({name: event.target.name.value, ownerId: Meteor.userId(), privacy: 'private', creativeCommons: false});
         event.target.name.value = ""
     }
 });
