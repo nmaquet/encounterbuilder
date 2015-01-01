@@ -130,5 +130,31 @@ Meteor.methods({
     "removeEncounter": function (_id) {
         EncounterElements.remove({ownerId: this.userId, encounterId: _id});
         ChronicleElements.remove({ownerId: this.userId, type: "encounter", _id: _id});
+    },
+    "upvoteChronicle": function (_id) {
+        if (!this.userId) {
+            return;
+        }
+        Chronicles.update({_id: _id}, {
+            $addToSet: {
+                upvotes: this.userId
+            },
+            $pull : {
+                downvotes: this.userId
+            }
+        });
+    },
+    "downvoteChronicle": function (_id) {
+        if (!this.userId) {
+            return;
+        }
+        Chronicles.update({_id: _id}, {
+            $addToSet: {
+                downvotes: this.userId
+            },
+            $pull : {
+                upvotes: this.userId
+            }
+        });
     }
 });
