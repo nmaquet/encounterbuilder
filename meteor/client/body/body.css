@@ -45,3 +45,12 @@ body {
     background-color: lightgrey;
     border-color: lightgrey;
 }
+
+.panel-heading a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.no-text-decoration {
+    text-decoration: none
+}

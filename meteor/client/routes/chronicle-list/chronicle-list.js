@@ -6,6 +6,7 @@ Router.route('/chronicles', function () {
     } else {
         this.render('chronicleList');
         Meteor.subscribe("chronicles");
+        Meteor.subscribe("usernames");
     }
 });
 
@@ -15,7 +16,11 @@ Template.chronicleList.helpers({
             return Meteor.user().emails[0].address
         }
     },
-    chronicles: Chronicles.find({})
+    chronicles: Chronicles.find({}),
+    'usernameFor': function(userId) {
+        var user = Meteor.users.findOne({_id: userId});
+        return user && user.username;
+    }
 });
 
 Template.chronicleList.events({

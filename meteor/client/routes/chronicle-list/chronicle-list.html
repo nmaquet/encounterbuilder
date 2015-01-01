@@ -6,16 +6,25 @@
         {{> createChronicle }}
         <div class="chronicle-list">
             {{#each chronicles}}
-            <div class="row chronicle-list-element">
-                <div class="col-xs-6">
-                    <a href="/chronicles/{{_id}}">{{name}}</a>
+                <div class="panel panel-primary">
+                    <div class="panel-heading no-text-decoration">
+                        <form class="form form-inline">
+                            <div class="form-group">
+                                <a href="/chronicles/{{_id}}">
+                                    <h2>
+                                        <span>{{name}}</span>
+                                        <span class="badge">by {{usernameFor ownerId}}</span>
+                                    </h2>
+                                </a>
+                            </div>
+                            <div class="form-group pull-right">
+                                <button class="btn btn-danger delete-chronicle-button">delete</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="col-xs-6">
-                    <button class="btn btn-danger delete-chronicle-button">delete</button>
-                </div>
-            </div>
             {{else}}
-            <li>You have no chronicles :(</li>
+            You have no chronicles :(
             {{/each}}
         </div>
     </div>

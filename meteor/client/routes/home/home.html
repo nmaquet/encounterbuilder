@@ -3,14 +3,19 @@
 <template name="home">
     <div class="container">
         <h1>Public Chronicles</h1>
-        <ul>
-            {{#each chronicles}}
-                <li>
-                    <a href="/chronicles/{{_id}}">{{name}}</a> <em>by {{usernameFor ownerId}}</em>
-                </li>
-            {{else}}
-                <li>There are no public chronicles :(</li>
-            {{/each}}
-        </ul>
+        {{#each chronicles}}
+            <div class="panel panel-primary">
+                <div class="panel-heading no-text-decoration">
+                    <a href="/chronicles/{{_id}}">
+                        <h2>
+                            <span>{{name}}</span>
+                            <span class="badge">by {{usernameFor ownerId}}</span>
+                        </h2>
+                    </a>
+                </div>
+            </div>
+        {{else}}
+            <li>There are no public chronicles :(</li>
+        {{/each}}
     </div>
 </template>
