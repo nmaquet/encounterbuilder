@@ -77,13 +77,13 @@ Template.editChronicle.events({
 
 Template.editChronicle.helpers({
     'isEmpty': function() {
-        return ChronicleElements.find({chronicleId: this.chronicle._id}).count() === 0;
+        return ChronicleElements.find({chronicleId: this.chronicle && this.chronicle._id}).count() === 0;
     },
     'isPrivate': function() {
-        return this.chronicle.privacy === "private";
+        return this.chronicle && this.chronicle.privacy === "private";
     },
     'isPublic': function() {
-        return this.chronicle.privacy === "public";
+        return this.chronicle && this.chronicle.privacy === "public";
     }
 });
 
