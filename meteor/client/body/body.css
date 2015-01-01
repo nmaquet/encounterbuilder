@@ -63,3 +63,7 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
+
+li.-autocomplete-item {
+    cursor: pointer;
+}
