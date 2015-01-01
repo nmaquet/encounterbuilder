@@ -11,3 +11,11 @@
 .vote-arrow, .vote-count {
     display: block;
 }
+
+.vote-arrow {
+    cursor: pointer;
+}
+
+.vote-count {
+    cursor: default;
+}

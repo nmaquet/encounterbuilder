@@ -21,3 +21,12 @@ Template.home.helpers({
        return user && user.username;
    }
 });
+
+Template.home.events({
+   'click .upvote-arrow': function () {
+        console.log("upvote this.name:" + this.name);
+   },
+   'click .downvote-arrow': function () {
+        console.log("downvote this.name:" + this.name);
+   }
+});
