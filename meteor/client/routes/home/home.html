@@ -6,12 +6,17 @@
         {{#each chronicles}}
             <div class="panel panel-primary">
                 <div class="panel-heading no-text-decoration">
-                    <a href="/chronicles/{{_id}}">
-                        <h2>
+                    <h2>
+                        <div class="pull-left vote-arrow-container">
+                            <i class="vote-arrow glyphicon glyphicon-chevron-up"></i>
+                            <span class="badge vote-count">300</span>
+                            <i class="vote-arrow glyphicon glyphicon-chevron-down"></i>
+                        </div>
+                        <a href="/chronicles/{{_id}}">
                             <span>{{name}}</span>
-                            <span class="badge">by {{usernameFor ownerId}}</span>
-                        </h2>
-                    </a>
+                        </a>
+                        <span class="badge">by {{usernameFor ownerId}}</span>
+                    </h2>
                 </div>
             </div>
         {{else}}

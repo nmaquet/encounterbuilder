@@ -1,0 +1,13 @@
+/* Copyright (c) 2014 DemonSquid, Inc. All rights reserved. */
+
+.glyphicon-chevron-up {
+    margin: 0 2px;
+}
+
+.vote-arrow-container {
+    margin: -26px 10px 0 0;
+}
+
+.vote-arrow, .vote-count {
+    display: block;
+}
