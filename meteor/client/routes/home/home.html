@@ -5,7 +5,9 @@
         <h1>Public Chronicles</h1>
         <ul>
             {{#each chronicles}}
-                <a href="/chronicles/{{_id}}">{{name}}</a>
+                <li>
+                    <a href="/chronicles/{{_id}}">{{name}}</a> <em>by {{usernameFor ownerId}}</em>
+                </li>
             {{else}}
                 <li>There are no public chronicles :(</li>
             {{/each}}

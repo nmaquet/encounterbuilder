@@ -102,6 +102,10 @@ Meteor.publish("monsters", function (id) {
     return Monsters.find({id: id});
 });
 
+Meteor.publish("usernames", function() {
+    return Meteor.users.find({}, {fields: {username: 1, _id: 1}});
+});
+
 Meteor.publish('monster-name-autocomplete', function (selector, options, collectionName) {
     options = options || {};
     options.limit = Math.min(50, Math.abs(options.limit || 5));
