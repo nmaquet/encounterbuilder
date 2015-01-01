@@ -2,6 +2,13 @@
 
 <template name="home">
     <div class="container">
-        <h1>Home</h1>
+        <h1>Public Chronicles</h1>
+        <ul>
+            {{#each chronicles}}
+                <a href="/chronicles/{{_id}}">{{name}}</a>
+            {{else}}
+                <li>There are no public chronicles :(</li>
+            {{/each}}
+        </ul>
     </div>
 </template>

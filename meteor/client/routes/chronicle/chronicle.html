@@ -7,7 +7,9 @@
                 <h1>
                     <span>{{chronicle.name}}</span>
                     <span class="badge">{{chronicle.privacy}}</span>
-                    <button type="button" id="edit-button" class="btn btn-default float-right">edit</button>
+                    {{#if allowedToEdit}}
+                        <button type="button" id="edit-button" class="btn btn-default float-right">edit</button>
+                    {{/if}}
                 </h1>
             </div>
             <!--<div class="panel-body">-->

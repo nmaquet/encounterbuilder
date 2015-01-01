@@ -23,7 +23,7 @@ Chronicles.deny({
 
 ChronicleElements.allow({
     insert: function (userId, doc) {
-        return (userId && doc.ownerId === userId && Chronicles.findOne({_id: doc.chronicleId}));
+        return (userId && doc.ownerId === userId && Chronicles.findOne({_id: doc.chronicleId, ownerId: userId}));
     },
     update: function (userId, doc) {
         return doc.ownerId === userId;
@@ -49,7 +49,8 @@ EncounterElements.allow({
         var encounter = {
             _id: doc.encounterId,
             chronicleId: doc.chronicleId,
-            type: "encounter"
+            type: "encounter",
+            ownerId: userId
         };
         return (userId && doc.ownerId === userId && ChronicleElements.findOne(encounter));
     },
@@ -69,6 +70,20 @@ EncounterElements.deny({
 
 Meteor.publish("chronicles", function () {
     return Chronicles.find({ownerId: this.userId});
+});
+
+Meteor.publish("chronicle", function (chronicleId) {
+    return Chronicles.find({
+        _id: chronicleId,
+        $or: [
+            {ownerId: this.userId},
+            {privacy: 'public'}
+        ]
+    });
+});
+
+Meteor.publish("public-chronicles", function () {
+    return Chronicles.find({privacy: 'public'});
 });
 
 Meteor.publish("chronicle-elements", function (chronicleId) {
