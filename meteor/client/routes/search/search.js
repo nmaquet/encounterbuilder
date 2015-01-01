@@ -13,21 +13,33 @@ Router.route('/search', function () {
 });
 
 Template.search.created = function () {
-    this.state = new ReactiveDict();
-    this.state.set("searchQuery", {});
-    this.state.set("searchOptions", {limit: 20, sort: {Name: 1}});
+    var template = this;
+    template.state = new ReactiveDict();
+    template.state.set("searchQuery", {});
+    template.state.set("searchOptions", {limit: 20, sort: {Name: 1}});
     Meteor.subscribe("search-monsters", this.state.get('searchQuery'), this.state.get('searchOptions'));
-};
-
-Template.search.events({
-    "keyup #monster-search-input": function (event, template) {
+    template.autorun(function () {
+        console.log("location change");
+        Iron.Location.get();
         updateSearchQuery(template, function (searchQuery) {
             searchQuery.Name = {
-                '$regex': '^' + DEMONSQUID.utils.escapeRegexp(event.target.value),
+                '$regex': DEMONSQUID.utils.escapeRegexp(Router.current().params.query.query || ""),
                 '$options': 'i'
             };
         });
-    },
+    });
+};
+
+Template.search.events({
+    "keyup #monster-search-input": _.debounce(function (event, template) {
+        updateSearchQuery(template, function (searchQuery) {
+            searchQuery.Name = {
+                '$regex': DEMONSQUID.utils.escapeRegexp(event.target.value),
+                '$options': 'i'
+            };
+            Router.go("/search?query=" + event.target.value);
+        });
+    }, 500),
     "change #monster-type-select": function (event, template) {
         updateSearchQuery(template, function (searchQuery) {
             if (event.target.value === 'any') {
@@ -43,5 +55,8 @@ Template.search.helpers({
     'searchResults': function () {
         var state = Template.instance().state;
         return Monsters.find(state.get("searchQuery"), state.get("searchOptions"));
+    },
+    'query': function () {
+        return Router.current().params.query.query;
     }
 });
