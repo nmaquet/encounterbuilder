@@ -2,7 +2,17 @@
 
 <template name="chronicle">
     <div class="container">
-        <h1>Single Chronicle: {{chronicle.name}} <button type="button" id="edit-button" class="btn btn-primary float-right">edit</button></h1>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1>
+                    <span>{{chronicle.name}}</span>
+                    <button type="button" id="edit-button" class="btn btn-default float-right">edit</button>
+                </h1>
+            </div>
+            <!--<div class="panel-body">-->
+                <!--TODO-->
+            <!--</div>-->
+        </div>
         {{> chronicleElementList}}
     </div>
 </template>
@@ -10,7 +20,7 @@
 <template name="chronicleElementList">
     <div id="chronicle-element-list">
         {{#each chronicleElements}}
-        <div class="well chronicle-element">
+        <div class="panel panel-default">
             {{#if isText}}
                 {{> chronicleText}}
             {{/if}}
@@ -26,18 +36,23 @@
 </template>
 
 <template name="chronicleText">
-    <div>
-        <h3>{{content.title}}</h3>
+    <div class="panel-heading">
+        <h2>{{content.title}}</h2>
     </div>
-    <div>
+    <div class="panel-body">
         <p>{{content.body}}</p>
     </div>
 </template>
 
 <template name="chronicleMonster">
-    {{#with content}}
-        {{> monsterStatBlock}}
-    {{/with}}
+    <div class="panel-heading">
+        <h2>{{content.Name}}</h2>
+    </div>
+    <div class="panel-body">
+        {{#with content}}
+            {{> monsterStatBlock}}
+        {{/with}}
+    </div>
 </template>
 
 <template name="chronicleEncounter">
