@@ -5,13 +5,36 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h1>
-                    <span>{{chronicle.name}}</span>
-                    <button type="button" id="done-button" class="btn btn-default float-right">done</button>
+                    <form class="form form-inline">
+                        <span>{{chronicle.name}}</span>
+                        <span class="badge">{{chronicle.privacy}}</span>
+                        <button type="button" id="done-button" class="btn btn-default float-right">done</button>
+                    </form>
                 </h1>
             </div>
-            <!--<div class="panel-body">-->
-                <!--TODO-->
-            <!--</div>-->
+            <div class="panel-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="chronicle-name-input">Name:</label>
+                        <input type="text" class="form-control" id="chronicle-name-input" value="{{chronicle.name}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Privacy:</label>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" checked="{{isPrivate}}" name="chronicle-privacy" id="chronicle-privacy-radio-private">
+                                <strong>Private</strong> Nobody else but me can see this chronicle
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" checked="{{isPublic}}" name="chronicle-privacy" id="chronicle-privacy-radio-public">
+                                <strong>Public</strong> Everyone on the internet can see this chronicle
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="row">
             <div class="col-xs-2 col-xs-offset-5">

@@ -63,12 +63,27 @@ Template.editChronicle.events({
     'click #done-button': function () {
         var chronicleId = Router.current().params._id;
         Router.go('/chronicles/' + chronicleId);
+    },
+    'keyup #chronicle-name-input': function(event) {
+        Chronicles.update({_id: this.chronicle._id}, {$set: {name: event.target.value}});
+    },
+    'click #chronicle-privacy-radio-private': function() {
+        Chronicles.update({_id: this.chronicle._id}, {$set: {privacy: 'private'}});
+    },
+    'click #chronicle-privacy-radio-public': function() {
+        Chronicles.update({_id: this.chronicle._id}, {$set: {privacy: 'public'}});
     }
 });
 
 Template.editChronicle.helpers({
     'isEmpty': function() {
         return ChronicleElements.find({chronicleId: this.chronicle._id}).count() === 0;
+    },
+    'isPrivate': function() {
+        return this.chronicle.privacy === "private";
+    },
+    'isPublic': function() {
+        return this.chronicle.privacy === "public";
     }
 });
 
