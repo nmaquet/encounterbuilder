@@ -42,9 +42,25 @@ Template.home.helpers({
 
 Template.home.events({
    'click .upvote-arrow': function () {
-        Meteor.call("upvoteChronicle", this._id);
+        if (!Meteor.userId()) {
+            return;
+        }
+        var chronicle = Chronicles.findOne({_id: this._id});
+        if (_.contains(chronicle.upvotes, Meteor.userId())) {
+            Meteor.call("removeVoteFromChronicle", this._id);
+        } else {
+            Meteor.call("upvoteChronicle", this._id);
+        }
    },
    'click .downvote-arrow': function () {
-        Meteor.call("downvoteChronicle", this._id);
+       if (!Meteor.userId()) {
+           return;
+       }
+       var chronicle = Chronicles.findOne({_id: this._id});
+       if (_.contains(chronicle.downvotes, Meteor.userId())) {
+           Meteor.call("removeVoteFromChronicle", this._id);
+       } else {
+           Meteor.call("downvoteChronicle", this._id);
+       }
    }
 });

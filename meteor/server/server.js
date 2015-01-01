@@ -156,5 +156,16 @@ Meteor.methods({
                 upvotes: this.userId
             }
         });
+    },
+    "removeVoteFromChronicle": function (_id) {
+        if (!this.userId) {
+            return;
+        }
+        Chronicles.update({_id: _id}, {
+            $pull : {
+                upvotes: this.userId,
+                downvotes: this.userId
+            }
+        });
     }
 });
