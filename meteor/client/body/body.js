@@ -37,3 +37,13 @@ Template.quickSearchForm.helpers({
         }
     }
 });
+
+Template.quickSearchForm.events({
+    "submit": function (event) {
+        event.preventDefault();
+        var input = $("#quick-search-form-input");
+        var query = input.val();
+        input.val("");
+        Router.go('/search?query=' + query);
+    }
+});
