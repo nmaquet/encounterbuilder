@@ -19,7 +19,6 @@ Template.search.created = function () {
     template.state.set("searchOptions", {limit: 20, sort: {Name: 1}});
     Meteor.subscribe("search-monsters", this.state.get('searchQuery'), this.state.get('searchOptions'));
     template.autorun(function () {
-        console.log("location change");
         Iron.Location.get();
         updateSearchQuery(template, function (searchQuery) {
             searchQuery.Name = {
