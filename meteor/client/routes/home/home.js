@@ -5,7 +5,7 @@ Router.route('/', function () {
     Meteor.subscribe('usernames');
     this.render('home', {
         data: {
-            chronicles: Chronicles.find()
+            chronicles: Chronicles.find({}, {sort: {nonAtomicScore: -1}})
         }
     });
 });

@@ -83,7 +83,7 @@ Meteor.publish("chronicle", function (chronicleId) {
 });
 
 Meteor.publish("public-chronicles", function () {
-    return Chronicles.find({privacy: 'public'});
+    return Chronicles.find({privacy: 'public'}, {sort: {nonAtomicScore: -1}});
 });
 
 Meteor.publish("chronicle-elements", function (chronicleId) {
@@ -132,8 +132,17 @@ Meteor.methods({
         ChronicleElements.remove({ownerId: this.userId, type: "encounter", _id: _id});
     },
     "upvoteChronicle": function (_id) {
-        if (!this.userId) {
+        var chronicle = Chronicles.findOne({_id: _id});
+        if (!this.userId || !chronicle) {
             return;
+        }
+        var upvotes = chronicle.upvotes || [];
+        var downvotes = chronicle.downvotes || [];
+        var nonAtomicScore = upvotes.length - downvotes.length;
+        if (_.contains(downvotes, this.userId)) {
+            nonAtomicScore += 2;
+        } else if (!_.contains(upvotes, this.userId)) {
+            nonAtomicScore += 1;
         }
         Chronicles.update({_id: _id}, {
             $addToSet: {
@@ -141,12 +150,24 @@ Meteor.methods({
             },
             $pull : {
                 downvotes: this.userId
+            },
+            $set: {
+                nonAtomicScore: nonAtomicScore
             }
         });
     },
     "downvoteChronicle": function (_id) {
-        if (!this.userId) {
+        var chronicle = Chronicles.findOne({_id: _id});
+        if (!this.userId || !chronicle) {
             return;
+        }
+        var upvotes = chronicle.upvotes || [];
+        var downvotes = chronicle.downvotes || [];
+        var nonAtomicScore = upvotes.length - downvotes.length;
+        if (_.contains(upvotes, this.userId)) {
+            nonAtomicScore -= 2;
+        } else if (!_.contains(downvotes, this.userId)) {
+            nonAtomicScore -= 1;
         }
         Chronicles.update({_id: _id}, {
             $addToSet: {
@@ -154,17 +175,32 @@ Meteor.methods({
             },
             $pull : {
                 upvotes: this.userId
+            },
+            $set: {
+                nonAtomicScore: nonAtomicScore
             }
         });
     },
     "removeVoteFromChronicle": function (_id) {
-        if (!this.userId) {
+        var chronicle = Chronicles.find({_id: _id});
+        if (!this.userId || !chronicle) {
             return;
+        }
+        var upvotes = chronicle.upvotes || [];
+        var downvotes = chronicle.downvotes || [];
+        var nonAtomicScore = upvotes.length - downvotes.length;
+        if (_.contains(upvotes, this.userId)) {
+            nonAtomicScore -= 1;
+        } else if (!_.contains(downvotes, this.userId)) {
+            nonAtomicScore += 1;
         }
         Chronicles.update({_id: _id}, {
             $pull : {
                 upvotes: this.userId,
                 downvotes: this.userId
+            },
+            $set: {
+                nonAtomicScore: nonAtomicScore
             }
         });
     }
