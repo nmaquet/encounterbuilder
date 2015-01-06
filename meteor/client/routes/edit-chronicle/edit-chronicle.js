@@ -62,8 +62,7 @@ Template.editChronicle.rendered = function () {
 
 Template.editChronicle.events({
     'click #done-button': function () {
-        var chronicleId = Router.current().params._id;
-        Router.go('/chronicles/' + chronicleId);
+        Router.go('/chronicles/' + Router.current().params._id);
     },
     'keyup #chronicle-name-input': function(event) {
         Chronicles.update({_id: this.chronicle._id}, {$set: {name: event.target.value}});
@@ -73,6 +72,12 @@ Template.editChronicle.events({
     },
     'click #chronicle-privacy-radio-public': function() {
         Chronicles.update({_id: this.chronicle._id}, {$set: {privacy: 'public'}});
+    },
+    'click #collapse-button': function() {
+        Router.go('/chronicles/' + Router.current().params._id + '/edit/?collapsed=true');
+    },
+    'click #expand-button': function() {
+        Router.go('/chronicles/' + Router.current().params._id + '/edit/?collapsed=false');
     }
 });
 
@@ -89,6 +94,16 @@ Template.editChronicle.helpers({
     'usernameFor': function(userId) {
         var user = Meteor.users.findOne({_id: userId});
         return user && user.username;
+    },
+    'activeClassIfCollapsed': function() {
+        if (Router.current().params.query.collapsed === "true") {
+            return "active";
+        }
+    },
+    'activeClassIfExpanded': function() {
+        if (Router.current().params.query.collapsed !== "true") {
+            return "active";
+        }
     }
 });
 
@@ -188,6 +203,21 @@ Template.editChronicle_editEncounter.helpers({
 Template.editChronicle_encounter.helpers({
     'elements': function () {
         return EncounterElements.find({encounterId: this._id});
+    },
+    'expanded': function() {
+        return Router.current().params.query.collapsed !== "true";
+    }
+});
+
+Template.editChronicle_text.helpers({
+    'expanded': function() {
+        return Router.current().params.query.collapsed !== "true";
+    }
+});
+
+Template.editChronicle_monster.helpers({
+    'expanded': function() {
+        return Router.current().params.query.collapsed !== "true";
     }
 });
 

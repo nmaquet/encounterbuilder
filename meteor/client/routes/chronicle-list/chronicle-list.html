@@ -8,22 +8,20 @@
             {{#each chronicles}}
                 <div class="panel panel-primary">
                     <div class="panel-heading no-text-decoration">
-                        <form class="form form-inline">
-                            <div class="form-group">
-                                <a href="/chronicles/{{_id}}">
-                                    <h2>
-                                        <span>{{name}}</span>
-                                        <span class="badge">by {{usernameFor ownerId}}</span>
-                                    </h2>
-                                </a>
+                        <h1>
+                            <a href="/chronicles/{{_id}}">
+                                <span>{{name}}</span>
+                                <span class="badge">by {{usernameFor ownerId}}</span>
+                            </a>
+                            <div class="btn-group pull-right">
+                                <button class="btn btn-default edit-chronicle-button">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                </button>
+                                <button class="btn btn-danger delete-chronicle-button">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                </button>
                             </div>
-                            <div class="form-group pull-right">
-                                <div class="btn-group">
-                                    <button class="btn btn-default edit-chronicle-button">edit</button>
-                                    <button class="btn btn-danger delete-chronicle-button">delete</button>
-                                </div>
-                            </div>
-                        </form>
+                        </h1>
                     </div>
                 </div>
             {{else}}

@@ -2,39 +2,53 @@
 
 <template name="editChronicle">
     <div class="container">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h1>
-                    <form class="form form-inline">
-                        <span>{{chronicle.name}}</span>
-                        <span class="badge">by {{usernameFor chronicle.ownerId}}</span>
-                        <span class="badge">{{chronicle.privacy}}</span>
-                        <button type="button" id="done-button" class="btn btn-default float-right">done</button>
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1>
+                        <form class="form form-inline">
+                            <span>{{chronicle.name}}</span>
+                            <span class="badge">by {{usernameFor chronicle.ownerId}}</span>
+                            <span class="badge">{{chronicle.privacy}}</span>
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button id="collapse-button" type="button" class="btn btn-default {{activeClassIfCollapsed}}" data-toggle="button">
+                                        <i class="glyphicon glyphicon-list"></i>
+                                    </button>
+                                    <button id="expand-button" type="button" class="btn btn-default {{activeClassIfExpanded}}" data-toggle="button">
+                                        <i class="glyphicon glyphicon-th-large"></i>
+                                    </button>
+                                    <button type="button" id="done-button" class="btn btn-success">
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </h1>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="chronicle-name-input">Name:</label>
+                            <input type="text" class="form-control" id="chronicle-name-input" value="{{chronicle.name}}">
+                        </div>
+                        <div class="form-group">
+                            <label>Privacy:</label>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" checked="{{isPrivate}}" name="chronicle-privacy" id="chronicle-privacy-radio-private">
+                                    <strong>Private</strong> Nobody else but me can see this chronicle
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" checked="{{isPublic}}" name="chronicle-privacy" id="chronicle-privacy-radio-public">
+                                    <strong>Public</strong> Everyone on the internet can see this chronicle
+                                </label>
+                            </div>
+                        </div>
                     </form>
-                </h1>
-            </div>
-            <div class="panel-body">
-                <form role="form">
-                    <div class="form-group">
-                        <label for="chronicle-name-input">Name:</label>
-                        <input type="text" class="form-control" id="chronicle-name-input" value="{{chronicle.name}}">
-                    </div>
-                    <div class="form-group">
-                        <label>Privacy:</label>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" checked="{{isPrivate}}" name="chronicle-privacy" id="chronicle-privacy-radio-private">
-                                <strong>Private</strong> Nobody else but me can see this chronicle
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" checked="{{isPublic}}" name="chronicle-privacy" id="chronicle-privacy-radio-public">
-                                <strong>Public</strong> Everyone on the internet can see this chronicle
-                            </label>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -42,10 +56,12 @@
                 {{> editChronicle_addButton position="top"}}
             </div>
         </div>
-        <div id="edit-chronicle-element-list">
-            {{#each elements}}
-                {{> editChronicle_element}}
-            {{/each}}
+        <div class="row">
+            <div id="edit-chronicle-element-list">
+                {{#each elements}}
+                    {{> editChronicle_element}}
+                {{/each}}
+            </div>
         </div>
         {{#unless isEmpty}}
             <div class="row">
@@ -101,7 +117,7 @@
             <div class="form-group">
                 <input class="form-control content-title-input" name="title" value="{{content.title}}"/>
             </div>
-            <button type="button" class="btn btn-primary done-button">done</button>
+            <button type="button" class="btn btn-success done-button pull-right"><i class="glyphicon glyphicon-ok"></i></button>
         </form>
     </div>
     <div class="panel-body">
@@ -113,7 +129,7 @@
     <div class="panel-heading">
         <h2>
             <span>{{content.Name}}</span>
-            <button type="button" class="btn btn-primary done-button">done</button>
+            <button type="button" class="btn btn-success done-button pull-right"><i class="glyphicon glyphicon-ok"></i></button>
         </h2>
     </div>
     <div class="panel-body">
@@ -129,7 +145,7 @@
             <div class="form-group">
                 <input class="form-control content-name-input" value="{{content.name}}"/>
             </div>
-            <button type="button" class="btn btn-primary done-button">done</button>
+            <button type="button" class="btn btn-success done-button pull-right"><i class="glyphicon glyphicon-ok"></i></button>
         </form>
     </div>
     <div class="panel-body">
@@ -157,57 +173,95 @@
 </template>
 
 <template name="editChronicle_text">
-    <div class="panel-heading">
-        <h2>
-            <span>{{content.title}}</span>
-            <div class="float-right btn-group">
-                <button type="button" class="btn btn-default edit-button">edit</button>
-                <button type="button" class="btn btn-danger delete-button">delete</button>
-            </div>
-        </h2>
-    </div>
-    <div class="panel-body">
-        <p>{{content.body}}</p>
-    </div>
+    {{#if expanded}}
+        <div class="panel-heading">
+            <h2>
+                <i class="glyphicon glyphicon-pencil" style="margin-right:10px;"></i>
+                <span>{{content.title}}</span>
+                <div class="float-right btn-group">
+                    <button type="button" class="btn btn-default edit-button"><i class="glyphicon glyphicon-edit"></i></button>
+                    <button type="button" class="btn btn-danger delete-button"><i class="glyphicon glyphicon-remove"></i></button>
+                </div>
+            </h2>
+        </div>
+        <div class="panel-body">
+            <p>{{content.body}}</p>
+        </div>
+    {{else}}
+        <div class="panel-heading">
+            <h4>
+                <i class="glyphicon glyphicon-pencil" style="margin-right:10px;"></i>
+                <span>{{content.title}}</span>
+                <div class="float-right btn-group">
+                    <button type="button" class="btn btn-default edit-button"><i class="glyphicon glyphicon-edit"></i></button>
+                    <button type="button" class="btn btn-danger delete-button"><i class="glyphicon glyphicon-remove"></i></button>
+                </div>
+            </h4>
+        </div>
+    {{/if}}
 </template>
 
 <template name="editChronicle_monster">
-    <div class="panel-heading">
-        <h2>
-            <span>{{content.Name}}</span>
-            <div class="float-right btn-group">
-                <button type="button" class="btn btn-default edit-button">edit</button>
-                <button type="button" class="btn btn-danger delete-button">delete</button>
-            </div>
-        </h2>
-    </div>
-    <div class="panel-body">
-        {{#with content}}
-            {{> monsterStatBlock}}
-        {{/with}}
-    </div>
+    {{#if expanded}}
+        <div class="panel-heading">
+            <h2>
+                <span>{{content.Name}}</span>
+                <div class="float-right btn-group">
+                    <button type="button" class="btn btn-default edit-button"><i class="glyphicon glyphicon-edit"></i></button>
+                    <button type="button" class="btn btn-danger delete-button"><i class="glyphicon glyphicon-remove"></i></button>
+                </div>
+            </h2>
+        </div>
+        <div class="panel-body">
+            {{#with content}}
+                {{> monsterStatBlock}}
+            {{/with}}
+        </div>
+    {{else}}
+        <div class="panel-heading">
+            <h4>
+                <span>{{content.Name}}</span>
+                <div class="float-right btn-group">
+                    <button type="button" class="btn btn-default edit-button"><i class="glyphicon glyphicon-edit"></i></button>
+                    <button type="button" class="btn btn-danger delete-button"><i class="glyphicon glyphicon-remove"></i></button>
+                </div>
+            </h4>
+        </div>
+    {{/if}}
 </template>
 
 <template name="editChronicle_encounter">
-    <div class="panel-heading">
-        <h2>
-            <span>{{content.name}}</span>
-            <div class="float-right btn-group">
-                <button type="button" class="btn btn-default edit-button">edit</button>
-                <button type="button" class="btn btn-danger delete-button">delete</button>
-            </div>
-        </h2>
-    </div>
-    <div class="panel-body">
-        <h3>Monsters</h3>
-        <ul>
-            {{#each elements}}
-                <li>{{count}} {{monster.Name}}</li>
-            {{/each}}
-        </ul>
-        <h3>NPCs</h3>
-        <h3>Items</h3>
-    </div>
+    {{#if expanded}}
+        <div class="panel-heading">
+            <h2>
+                <span>{{content.name}}</span>
+                <div class="float-right btn-group">
+                    <button type="button" class="btn btn-default edit-button"><i class="glyphicon glyphicon-edit"></i></button>
+                    <button type="button" class="btn btn-danger delete-button"><i class="glyphicon glyphicon-remove"></i></button>
+                </div>
+            </h2>
+        </div>
+        <div class="panel-body">
+            <h3>Monsters</h3>
+            <ul>
+                {{#each elements}}
+                    <li>{{count}} {{monster.Name}}</li>
+                {{/each}}
+            </ul>
+            <h3>NPCs</h3>
+            <h3>Items</h3>
+        </div>
+    {{else}}
+        <div class="panel-heading">
+            <h4>
+                <span>{{content.name}}</span>
+                <div class="float-right btn-group">
+                    <button type="button" class="btn btn-default edit-button"><i class="glyphicon glyphicon-edit"></i></button>
+                    <button type="button" class="btn btn-danger delete-button"><i class="glyphicon glyphicon-remove"></i></button>
+                </div>
+            </h4>
+        </div>
+    {{/if}}
 </template>
 
 <template name="editChronicle_addMonsterModal">

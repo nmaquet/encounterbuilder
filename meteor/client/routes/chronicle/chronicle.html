@@ -8,12 +8,22 @@
                     <span>{{chronicle.name}}</span>
                     <span class="badge">by {{usernameFor chronicle.ownerId}}</span>
                     <span class="badge">{{chronicle.privacy}}</span>
-                    {{#if allowedToEdit}}
-                        <div class="btn-group pull-right">
-                            <button type="button" id="edit-button" class="btn btn-default">edit</button>
-                            <button type="button" id="delete-button" class="btn btn-danger">delete</button>
-                        </div>
-                    {{/if}}
+                    <div class="btn-group pull-right">
+                        <button id="collapse-button" type="button" class="btn btn-default {{activeClassIfCollapsed}}" data-toggle="button">
+                            <i class="glyphicon glyphicon-list"></i>
+                        </button>
+                        <button id="expand-button" type="button" class="btn btn-default {{activeClassIfExpanded}}" data-toggle="button">
+                            <i class="glyphicon glyphicon-th-large"></i>
+                        </button>
+                        {{#if allowedToEdit}}
+                            <button type="button" id="edit-button" class="btn btn-default">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </button>
+                            <button type="button" id="delete-button" class="btn btn-danger">
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </button>
+                        {{/if}}
+                    </div>
                 </h1>
             </div>
             <!--<div class="panel-body">-->
