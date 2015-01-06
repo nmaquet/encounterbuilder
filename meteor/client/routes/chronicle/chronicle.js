@@ -28,9 +28,12 @@ Template.chronicleElementList.helpers({
 
 Template.chronicle.events({
    'click #edit-button': function() {
-       var chronicleId = Router.current().params._id;
-       Router.go('/chronicles/' + chronicleId + '/edit');
-   }
+       Router.go('/chronicles/' + Router.current().params._id + '/edit');
+   },
+    'click #delete-button': function() {
+        Meteor.call("removeChronicle", Router.current().params._id);
+        Router.go('/chronicles/');
+    }
 });
 
 Template.chronicle.helpers({

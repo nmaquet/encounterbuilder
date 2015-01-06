@@ -24,8 +24,13 @@ Template.chronicleList.helpers({
 });
 
 Template.chronicleList.events({
-    "click .delete-chronicle-button": function() {
+    "click .delete-chronicle-button": function(event) {
+        event.preventDefault();
         Meteor.call("removeChronicle", this._id);
+    },
+    "click .edit-chronicle-button": function(event) {
+        event.preventDefault();
+        Router.go("/chronicles/" + this._id + "/edit");
     }
 });
 
