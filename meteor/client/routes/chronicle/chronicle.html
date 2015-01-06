@@ -55,14 +55,20 @@
 <template name="chronicleText">
     {{#if expanded}}
         <div class="panel-heading">
-            <h2>{{content.title}}</h2>
+            <h2>
+                <i class="glyphicon glyphicon-pencil" style="margin-right:10px;"></i>
+                {{content.title}}
+            </h2>
         </div>
         <div class="panel-body">
             <p>{{content.body}}</p>
         </div>
     {{else}}
         <div class="panel-heading">
-            <h4>{{content.title}}</h4>
+            <h4>
+                <i class="glyphicon glyphicon-pencil" style="margin-right:10px;"></i>
+                {{content.title}}
+            </h4>
         </div>
     {{/if}}
 </template>
@@ -70,7 +76,10 @@
 <template name="chronicleMonster">
     {{#if expanded}}
         <div class="panel-heading">
-            <h2>{{content.Name}}</h2>
+            <h2>
+                <i class="glyphicon glyphicon-eye-open" style="margin-right:10px;"></i>
+                {{content.Name}}
+            </h2>
         </div>
         <div class="panel-body">
             {{#with content}}
@@ -79,7 +88,10 @@
         </div>
     {{else}}
         <div class="panel-heading">
-            <h4>{{content.Name}}</h4>
+            <h4>
+                <i class="glyphicon glyphicon-eye-open" style="margin-right:10px;"></i>
+                {{content.Name}}
+            </h4>
         </div>
     {{/if}}
 </template>
@@ -87,7 +99,10 @@
 <template name="chronicleEncounter">
     {{#if expanded}}
         <div class="panel-heading">
-            <h2>{{content.name}}</h2>
+            <h2>
+                <i class="glyphicon glyphicon-fire" style="margin-right:10px;"></i>
+                {{content.name}}
+            </h2>
         </div>
         <div class="panel-body">
             <h3>Monsters</h3>
@@ -101,7 +116,10 @@
         </div>
     {{else}}
         <div class="panel-heading">
-            <h4>{{content.name}}</h4>
+            <h4>
+                <i class="glyphicon glyphicon-fire" style="margin-right:10px;"></i>
+                {{content.name}}
+            </h4>
         </div>
     {{/if}}
 </template>
