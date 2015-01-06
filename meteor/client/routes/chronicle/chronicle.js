@@ -27,12 +27,18 @@ Template.chronicleElementList.helpers({
 });
 
 Template.chronicle.events({
-   'click #edit-button': function() {
-       Router.go('/chronicles/' + Router.current().params._id + '/edit');
-   },
-    'click #delete-button': function() {
+    'click #edit-button': function () {
+        Router.go('/chronicles/' + Router.current().params._id + '/edit');
+    },
+    'click #delete-button': function () {
         Meteor.call("removeChronicle", Router.current().params._id);
         Router.go('/chronicles/');
+    },
+    'click #collapse-button': function () {
+        Router.go('/chronicles/' + Router.current().params._id + '?collapsed=true');
+    },
+    'click #expand-button': function () {
+        Router.go('/chronicles/' + Router.current().params._id + '?collapsed=false');
     }
 });
 
@@ -43,11 +49,36 @@ Template.chronicle.helpers({
     'usernameFor': function(userId) {
         var user = Meteor.users.findOne({_id: userId});
         return user && user.username;
+    },
+    'activeClassIfCollapsed': function() {
+        if (Router.current().params.query.collapsed === "true") {
+            return "active";
+        }
+    },
+    'activeClassIfExpanded': function() {
+        if (Router.current().params.query.collapsed !== "true") {
+            return "active";
+        }
     }
 });
 
 Template.chronicleEncounter.helpers({
     'elements': function () {
         return EncounterElements.find({encounterId: this._id});
+    },
+    'expanded': function() {
+        return Router.current().params.query.collapsed !== "true";
+    }
+});
+
+Template.chronicleText.helpers({
+    'expanded': function() {
+        return Router.current().params.query.collapsed !== "true";
+    }
+});
+
+Template.chronicleMonster.helpers({
+    'expanded': function() {
+        return Router.current().params.query.collapsed !== "true";
     }
 });

@@ -53,37 +53,55 @@
 </template>
 
 <template name="chronicleText">
-    <div class="panel-heading">
-        <h2>{{content.title}}</h2>
-    </div>
-    <div class="panel-body">
-        <p>{{content.body}}</p>
-    </div>
+    {{#if expanded}}
+        <div class="panel-heading">
+            <h2>{{content.title}}</h2>
+        </div>
+        <div class="panel-body">
+            <p>{{content.body}}</p>
+        </div>
+    {{else}}
+        <div class="panel-heading">
+            <h4>{{content.title}}</h4>
+        </div>
+    {{/if}}
 </template>
 
 <template name="chronicleMonster">
-    <div class="panel-heading">
-        <h2>{{content.Name}}</h2>
-    </div>
-    <div class="panel-body">
-        {{#with content}}
-            {{> monsterStatBlock}}
-        {{/with}}
-    </div>
+    {{#if expanded}}
+        <div class="panel-heading">
+            <h2>{{content.Name}}</h2>
+        </div>
+        <div class="panel-body">
+            {{#with content}}
+                {{> monsterStatBlock}}
+            {{/with}}
+        </div>
+    {{else}}
+        <div class="panel-heading">
+            <h4>{{content.Name}}</h4>
+        </div>
+    {{/if}}
 </template>
 
 <template name="chronicleEncounter">
-    <div class="panel-heading">
-        <h2>{{content.name}}</h2>
-    </div>
-    <div class="panel-body">
-        <h3>Monsters</h3>
-        <ul>
-            {{#each elements}}
-                <li>{{count}} {{monster.Name}}</li>
-            {{/each}}
-        </ul>
-        <h3>NPCs</h3>
-        <h3>Items</h3>
-    </div>
+    {{#if expanded}}
+        <div class="panel-heading">
+            <h2>{{content.name}}</h2>
+        </div>
+        <div class="panel-body">
+            <h3>Monsters</h3>
+            <ul>
+                {{#each elements}}
+                    <li>{{count}} {{monster.Name}}</li>
+                {{/each}}
+            </ul>
+            <h3>NPCs</h3>
+            <h3>Items</h3>
+        </div>
+    {{else}}
+        <div class="panel-heading">
+            <h4>{{content.name}}</h4>
+        </div>
+    {{/if}}
 </template>
