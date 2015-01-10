@@ -87,7 +87,7 @@
 </template>
 
 <template name="editChronicle_element">
-    <div class="panel panel-default cursor-move">
+    <div class="panel panel-default cursor-move {{chronicleElementLevelClass}}">
         {{#if isEdited}}
             {{#if isText}}
                 {{> editChronicle_editText}}

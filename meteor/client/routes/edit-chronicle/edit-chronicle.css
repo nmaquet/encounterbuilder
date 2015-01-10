@@ -17,3 +17,27 @@
     padding: 0 7px;
     font-size: 18px;
 }
+
+.chronicle-element-level-1 {
+    margin-left: 0;
+}
+
+.chronicle-element-level-2 {
+    margin-left: 40px;
+}
+
+.chronicle-element-level-3 {
+    margin-left: 80px;
+}
+
+.chronicle-element-level-4 {
+    margin-left: 120px;
+}
+
+.chronicle-element-level-5 {
+    margin-left: 160px;
+}
+
+.chronicle-element-level-6 {
+    margin-left: 200px;
+}

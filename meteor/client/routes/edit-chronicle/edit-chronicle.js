@@ -168,6 +168,28 @@ Template.editChronicle_element.helpers({
     },
     'isEdited': function() {
         return Session.equals("editedChronicleElementId", this._id);
+    },
+    'chronicleElementLevelClass': function () {
+        var self = this;
+        var chronicleId = Router.current().params._id;
+        var chronicleElements = ChronicleElements.find({chronicleId: chronicleId}, {sort: {rank: 1}}).fetch();
+        var thisElementLevel = 1;
+        var nextElementLevel = 1;
+        var result = "";
+        _.forEach(chronicleElements, function (element) {
+            if (element.type === "heading" && element.content.level > thisElementLevel) {
+                nextElementLevel = Math.min(nextElementLevel + 1, 6);
+            } if (element.type === "heading" && element.content.level <= thisElementLevel) {
+                thisElementLevel = element.content.level;
+                nextElementLevel = Math.min(thisElementLevel + 1, 6);
+            }
+            if (self._id === element._id) {
+                result = "chronicle-element-level-" + thisElementLevel;
+            }
+            thisElementLevel = nextElementLevel;
+        });
+        console.log(result);
+        return result;
     }
 });
 
@@ -189,7 +211,6 @@ Template.editChronicle_editHeading.events({
         ChronicleElements.update({_id: this._id}, {$set: {"content.level": level}});
     }
 });
-
 
 Template.editChronicle_editEncounter.events({
     "keyup .content-name-input": function (event){
