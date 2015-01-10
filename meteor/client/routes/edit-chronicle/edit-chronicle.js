@@ -188,7 +188,6 @@ Template.editChronicle_element.helpers({
             }
             thisElementLevel = nextElementLevel;
         });
-        console.log(result);
         return result;
     }
 });
@@ -205,11 +204,7 @@ Template.editChronicle_editText.events({
 Template.editChronicle_editHeading.events({
     'keyup .title-input': _.debounce(function (event) {
         ChronicleElements.update({_id: this._id}, {$set: {"content.title": event.target.value}});
-    }, 500),
-    'click .heading-select': function(event) {
-        var level = Number(event.target.dataset.level) || 1;
-        ChronicleElements.update({_id: this._id}, {$set: {"content.level": level}});
-    }
+    }, 500)
 });
 
 Template.editChronicle_editEncounter.events({
@@ -266,6 +261,15 @@ Template.editChronicle_monster.helpers({
 Template.editChronicle_heading.helpers({
     'expanded': function() {
         return Router.current().params.query.collapsed !== "true";
+    }
+});
+
+Template.editChronicle_heading.events({
+    'click .decrease-level-button': function () {
+        ChronicleElements.update({_id: this._id}, {$set: {'content.level': Math.max(1, this.content.level - 1)}});
+    },
+    'click .increase-level-button': function () {
+        ChronicleElements.update({_id: this._id}, {$set: {'content.level': Math.min(6, this.content.level + 1)}});
     }
 });
 
