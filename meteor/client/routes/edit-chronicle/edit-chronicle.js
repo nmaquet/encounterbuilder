@@ -127,6 +127,13 @@ Template.editChronicle_addButton.events({
             name: "Unnamed Encounter"
         });
         Session.set("editedChronicleElementId", elementId);
+    },
+    "click #add-heading-dropdown-element": function () {
+        var elementId = insertChronicleElement(this.position, "heading", {
+            title: "Unnamed Heading",
+            level: 1
+        });
+        Session.set("editedChronicleElementId", elementId);
     }
 });
 
@@ -156,6 +163,9 @@ Template.editChronicle_element.helpers({
     'isEncounter': function () {
         return this.type === "encounter";
     },
+    'isHeading': function () {
+        return this.type === "heading";
+    },
     'isEdited': function() {
         return Session.equals("editedChronicleElementId", this._id);
     }
@@ -169,6 +179,17 @@ Template.editChronicle_editText.events({
         ChronicleElements.update({_id: this._id}, {$set: {"content.body": event.target.value}});
     }
 });
+
+Template.editChronicle_editHeading.events({
+    'keyup .title-input': _.debounce(function (event) {
+        ChronicleElements.update({_id: this._id}, {$set: {"content.title": event.target.value}});
+    }, 500),
+    'click .heading-select': function(event) {
+        var level = Number(event.target.dataset.level) || 1;
+        ChronicleElements.update({_id: this._id}, {$set: {"content.level": level}});
+    }
+});
+
 
 Template.editChronicle_editEncounter.events({
     "keyup .content-name-input": function (event){
@@ -216,6 +237,12 @@ Template.editChronicle_text.helpers({
 });
 
 Template.editChronicle_monster.helpers({
+    'expanded': function() {
+        return Router.current().params.query.collapsed !== "true";
+    }
+});
+
+Template.editChronicle_heading.helpers({
     'expanded': function() {
         return Router.current().params.query.collapsed !== "true";
     }

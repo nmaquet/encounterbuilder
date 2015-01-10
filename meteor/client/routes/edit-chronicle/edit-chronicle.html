@@ -78,6 +78,7 @@
     <div class="dropdown pull-middle">
         <button type="button" class="btn btn-default add-button" data-target="#" data-toggle="dropdown">+</button>
         <ul class="dropdown-menu">
+            <li><a id="add-heading-dropdown-element">Heading</a></li>
             <li><a id="add-text-dropdown-element">Text</a></li>
             <li><a id="add-monster-dropdown-element">Monster</a></li>
             <li><a id="add-encounter-dropdown-element">Encounter</a></li>
@@ -97,6 +98,9 @@
             {{#if isEncounter}}
                 {{> editChronicle_editEncounter}}
             {{/if}}
+            {{#if isHeading}}
+                {{> editChronicle_editHeading}}
+            {{/if}}
         {{else}}
             {{#if isText}}
                 {{> editChronicle_text}}
@@ -106,6 +110,9 @@
             {{/if}}
             {{#if isEncounter}}
                 {{> editChronicle_encounter}}
+            {{/if}}
+            {{#if isHeading}}
+                {{> editChronicle_heading}}
             {{/if}}
         {{/if}}
     </div>
@@ -122,6 +129,41 @@
     </div>
     <div class="panel-body">
         <textarea rows="4" cols="50" class="form-control content-body-textarea">{{content.body}}</textarea>
+    </div>
+</template>
+
+<template name="editChronicle_editHeading">
+    <div class="panel-heading">
+        <h1>
+            <i class="glyphicon glyphicon-folder-open" style="margin-right:10px;"></i>
+            <span>{{content.title}}</span>
+            <span>(Level {{content.level}})</span>
+            <button type="button" class="btn btn-success done-button pull-right"><i class="glyphicon glyphicon-ok"></i></button>
+        </h1>
+    </div>
+    <div class="panel-body">
+        <form role="form">
+            <div class="form-group">
+                <label for="chronicle-name-input">Title:</label>
+                <input type="text" class="form-control title-input" value="{{content.title}}">
+            </div>
+            <div class="form-group">
+                <label>Level:</label>
+                <div class="dropdown pull-middle">
+                    <button type="button" class="btn btn-default" data-target="#" data-toggle="dropdown">
+                        Level {{content.level}} <b class="caret"></b>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="heading-select" data-level="1">Level 1</a></li>
+                        <li><a class="heading-select" data-level="2">Level 2</a></li>
+                        <li><a class="heading-select" data-level="3">Level 3</a></li>
+                        <li><a class="heading-select" data-level="4">Level 4</a></li>
+                        <li><a class="heading-select" data-level="5">Level 5</a></li>
+                        <li><a class="heading-select" data-level="6">Level 6</a></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
     </div>
 </template>
 
@@ -192,6 +234,34 @@
             <h4>
                 <i class="glyphicon glyphicon-pencil" style="margin-right:10px;"></i>
                 <span>{{content.title}}</span>
+                <div class="float-right btn-group">
+                    <button type="button" class="btn btn-default edit-button"><i class="glyphicon glyphicon-edit"></i></button>
+                    <button type="button" class="btn btn-danger delete-button"><i class="glyphicon glyphicon-remove"></i></button>
+                </div>
+            </h4>
+        </div>
+    {{/if}}
+</template>
+
+<template name="editChronicle_heading">
+    {{#if expanded}}
+        <div class="panel-heading">
+            <h2>
+                <i class="glyphicon glyphicon-folder-open" style="margin-right:10px;"></i>
+                <span>{{content.title}}</span>
+                <span>(Level {{content.level}})</span>
+                <div class="float-right btn-group">
+                    <button type="button" class="btn btn-default edit-button"><i class="glyphicon glyphicon-edit"></i></button>
+                    <button type="button" class="btn btn-danger delete-button"><i class="glyphicon glyphicon-remove"></i></button>
+                </div>
+            </h2>
+        </div>
+    {{else}}
+        <div class="panel-heading">
+            <h4>
+                <i class="glyphicon glyphicon-folder-open" style="margin-right:10px;"></i>
+                <span>{{content.title}}</span>
+                <span>(Level {{content.level}})</span>
                 <div class="float-right btn-group">
                     <button type="button" class="btn btn-default edit-button"><i class="glyphicon glyphicon-edit"></i></button>
                     <button type="button" class="btn btn-danger delete-button"><i class="glyphicon glyphicon-remove"></i></button>

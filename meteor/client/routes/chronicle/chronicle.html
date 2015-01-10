@@ -47,6 +47,9 @@
             {{#if isEncounter}}
                 {{> chronicleEncounter}}
             {{/if}}
+            {{#if isHeading}}
+                {{> chronicleHeading}}
+            {{/if}}
         </div>
         {{/each}}
     </div>
@@ -68,6 +71,26 @@
             <h4>
                 <i class="glyphicon glyphicon-pencil" style="margin-right:10px;"></i>
                 {{content.title}}
+            </h4>
+        </div>
+    {{/if}}
+</template>
+
+<template name="chronicleHeading">
+    {{#if expanded}}
+        <div class="panel-heading">
+            <h2>
+                <i class="glyphicon glyphicon-folder-open" style="margin-right:10px;"></i>
+                <span>{{content.title}}</span>
+                <span>(Level {{content.level}})</span>
+            </h2>
+        </div>
+    {{else}}
+        <div class="panel-heading">
+            <h4>
+                <i class="glyphicon glyphicon-folder-open" style="margin-right:10px;"></i>
+                <span>{{content.title}}</span>
+                <span>(Level {{content.level}})</span>
             </h4>
         </div>
     {{/if}}

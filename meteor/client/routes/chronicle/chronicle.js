@@ -23,6 +23,9 @@ Template.chronicleElementList.helpers({
     },
     'isEncounter': function () {
         return this.type === "encounter";
+    },
+    'isHeading': function () {
+        return this.type === "heading";
     }
 });
 
@@ -72,6 +75,12 @@ Template.chronicleEncounter.helpers({
 });
 
 Template.chronicleText.helpers({
+    'expanded': function() {
+        return Router.current().params.query.collapsed !== "true";
+    }
+});
+
+Template.chronicleHeading.helpers({
     'expanded': function() {
         return Router.current().params.query.collapsed !== "true";
     }
