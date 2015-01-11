@@ -134,12 +134,11 @@
 
 <template name="editChronicle_editHeading">
     <div class="panel-heading">
-        <h1>
+        <h2>
             <i class="glyphicon glyphicon-folder-open" style="margin-right:10px;"></i>
             <span>{{content.title}}</span>
-            <span>(Level {{content.level}})</span>
             <button type="button" class="btn btn-success done-button pull-right"><i class="glyphicon glyphicon-ok"></i></button>
-        </h1>
+        </h2>
     </div>
     <div class="panel-body">
         <form role="form">
@@ -233,10 +232,17 @@
             <h2>
                 <i class="glyphicon glyphicon-folder-open" style="margin-right:10px;"></i>
                 <span>{{content.title}}</span>
-                <span>(Level {{content.level}})</span>
                 <div class="float-right btn-group">
-                    <button type="button" class="btn btn-default decrease-level-button"><i class="glyphicon glyphicon-arrow-left"></i></button>
-                    <button type="button" class="btn btn-default increase-level-button"><i class="glyphicon glyphicon-arrow-right"></i></button>
+                    {{#if decreaseButtonDisabled}}
+                        <button type="button" class="btn btn-default" disabled><i class="glyphicon glyphicon-arrow-left"></i></button>
+                    {{else}}
+                        <button type="button" class="btn btn-default decrease-level-button"><i class="glyphicon glyphicon-arrow-left"></i></button>
+                    {{/if}}
+                    {{#if increaseButtonDisabled}}
+                        <button type="button" class="btn btn-default" disabled><i class="glyphicon glyphicon-arrow-right"></i></button>
+                    {{else}}
+                        <button type="button" class="btn btn-default increase-level-button"><i class="glyphicon glyphicon-arrow-right"></i></button>
+                    {{/if}}
                     <button type="button" class="btn btn-default edit-button"><i class="glyphicon glyphicon-edit"></i></button>
                     <button type="button" class="btn btn-danger delete-button"><i class="glyphicon glyphicon-remove"></i></button>
                 </div>
@@ -247,10 +253,17 @@
             <h4>
                 <i class="glyphicon glyphicon-folder-open" style="margin-right:10px;"></i>
                 <span>{{content.title}}</span>
-                <span>(Level {{content.level}})</span>
                 <div class="float-right btn-group">
-                    <button type="button" class="btn btn-default decrease-level-button"><i class="glyphicon glyphicon-arrow-left"></i></button>
-                    <button type="button" class="btn btn-default increase-level-button"><i class="glyphicon glyphicon-arrow-right"></i></button>
+                    {{#if decreaseButtonDisabled}}
+                        <button type="button" class="btn btn-default" disabled><i class="glyphicon glyphicon-arrow-left"></i></button>
+                    {{else}}
+                        <button type="button" class="btn btn-default decrease-level-button"><i class="glyphicon glyphicon-arrow-left"></i></button>
+                    {{/if}}
+                    {{#if increaseButtonDisabled}}
+                        <button type="button" class="btn btn-default" disabled><i class="glyphicon glyphicon-arrow-right"></i></button>
+                    {{else}}
+                        <button type="button" class="btn btn-default increase-level-button"><i class="glyphicon glyphicon-arrow-right"></i></button>
+                    {{/if}}
                     <button type="button" class="btn btn-default edit-button"><i class="glyphicon glyphicon-edit"></i></button>
                     <button type="button" class="btn btn-danger delete-button"><i class="glyphicon glyphicon-remove"></i></button>
                 </div>

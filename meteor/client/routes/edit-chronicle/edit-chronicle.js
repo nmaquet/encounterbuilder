@@ -55,9 +55,14 @@ Template.editChronicle.rendered = function () {
             } else {
                 var newRank = (Blaze.getData(nextElement).rank + Blaze.getData(prevElement).rank) / 2
             }
-            ChronicleElements.update({_id: Blaze.getData(element)._id}, {$set: {rank: newRank}})
+            var chronicleElement = Blaze.getData(element);
+            ChronicleElements.update({_id: chronicleElement._id}, {$set: {rank: newRank}});
+            if (chronicleElement.type === "heading") {
+                var level = computeChronicleElementLevel(chronicleElement);
+                ChronicleElements.update({_id: chronicleElement._id}, {$set: {'content.level': level}})
+            }
         }
-    })
+    });
 };
 
 Template.editChronicle.events({
@@ -153,6 +158,29 @@ Template.editChronicle_element.events({
     }
 });
 
+function computeChronicleElementLevel(self) {
+    /* FIXME: this is really inefficient */
+    var chronicleId = Router.current().params._id;
+    var chronicleElements = ChronicleElements.find({chronicleId: chronicleId}, {sort: {rank: 1}}).fetch();
+    var thisElementLevel = 1;
+    var nextElementLevel = 1;
+    var resultLevel = 1;
+    _.forEach(chronicleElements, function (element) {
+        if (element.type === "heading" && element.content.level > thisElementLevel) {
+            nextElementLevel = Math.min(nextElementLevel + 1, 6);
+        }
+        if (element.type === "heading" && element.content.level <= thisElementLevel) {
+            thisElementLevel = element.content.level;
+            nextElementLevel = Math.min(thisElementLevel + 1, 6);
+        }
+        if (self._id === element._id) {
+            resultLevel = thisElementLevel;
+        }
+        thisElementLevel = nextElementLevel;
+    });
+    return resultLevel;
+}
+
 Template.editChronicle_element.helpers({
     'isText': function () {
         return this.type === "text";
@@ -170,25 +198,7 @@ Template.editChronicle_element.helpers({
         return Session.equals("editedChronicleElementId", this._id);
     },
     'chronicleElementLevelClass': function () {
-        var self = this;
-        var chronicleId = Router.current().params._id;
-        var chronicleElements = ChronicleElements.find({chronicleId: chronicleId}, {sort: {rank: 1}}).fetch();
-        var thisElementLevel = 1;
-        var nextElementLevel = 1;
-        var result = "";
-        _.forEach(chronicleElements, function (element) {
-            if (element.type === "heading" && element.content.level > thisElementLevel) {
-                nextElementLevel = Math.min(nextElementLevel + 1, 6);
-            } if (element.type === "heading" && element.content.level <= thisElementLevel) {
-                thisElementLevel = element.content.level;
-                nextElementLevel = Math.min(thisElementLevel + 1, 6);
-            }
-            if (self._id === element._id) {
-                result = "chronicle-element-level-" + thisElementLevel;
-            }
-            thisElementLevel = nextElementLevel;
-        });
-        return result;
+        return "chronicle-element-level-" + computeChronicleElementLevel(this);
     }
 });
 
@@ -261,6 +271,17 @@ Template.editChronicle_monster.helpers({
 Template.editChronicle_heading.helpers({
     'expanded': function() {
         return Router.current().params.query.collapsed !== "true";
+    },
+    'decreaseButtonDisabled': function() {
+        return computeChronicleElementLevel(this) === 1;
+    },
+    'increaseButtonDisabled': function() {
+        return !ChronicleElements.findOne({
+            chronicleId: Router.current().params._id,
+            rank: { $lt : this.rank },
+            type: "heading",
+            'content.level': this.content.level
+        });
     }
 });
 
