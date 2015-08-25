@@ -10,8 +10,8 @@ var HOST_URL = {
     "192.168.0.5:3000": "http://192.168.0.5:3000/",
     "localhost:3000": "http://localhost:3000/",
     "localhost.encounterbuilder.com": "http://localhost.encounterbuilder.com/",
-    "staging.chronicleforge.com": "https://162.243.57.120/",
-    "www.chronicleforge.com": "https://162.243.57.120/"
+    "staging.chronicleforge.com": "http://162.243.57.120/",
+    "www.chronicleforge.com": "http://162.243.57.120/"
 };
 
 $("#login-form").submit(function () {
