@@ -106,7 +106,7 @@ function register(fields, callback) {
                 email: "" + fields.email,
                 hash: "" + hash,
                 salt: "" + salt,
-                emailValidated: false,
+                emailValidated: true,
                 validationUuid: uuid.v4()
             };
             delete fields.password;
