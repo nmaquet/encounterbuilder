@@ -71,7 +71,7 @@ module.exports = function (userCollection, baseCollection, ObjectID) {
             });
         },
         query: function (request, response) {
-            var options = {fields: {name: 1, _id: 1, synopsis: 1, lastModified: 1}};
+            var options = {fields: {name: 1, _id: 1, synopsis: 1, minLevel: 1, maxLevel: 1, lastModified: 1}};
             userCollection.find({userId: ObjectID(request.user._id)}, options).toArray(function (error, data) {
                 if (error) {
                     response.send(404);

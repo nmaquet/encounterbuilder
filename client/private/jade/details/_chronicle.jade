@@ -14,8 +14,13 @@
             a.col-xxs-3.col-xs-3.no-padding.action-btn.btn-3.is-pointer(title='Delete Chronicle', tabindex='-1',data-target='#delete-chronicle-modal', role='button', data-toggle='modal')
                 i.icon.fa.fa-trash-o
 .row.l-section.result-content
-    .form-group
+    .form-group.col-xs-12
         label.col-xs-2.control-label  Synopsis
         .col-xs-10
             textarea.form-control(type='text', rows=rows, name="Synopsis", placeholder="chronicle synopsis", ng-model="chronicle.synopsis")
+    .form-group.col-xs-12
+        label.col-xs-2.control-label  Levels {{chronicle.minLevel | number}}-{{chronicle.maxLevel | number}}
+        .col-xs-10(style="padding-left:30px;padding-right:30px;")
+            nouislider(min="chronicle.minLevel", max="chronicle.maxLevel",range-min="1",range-max="20")
+
 include _confirm-delete-chronicle

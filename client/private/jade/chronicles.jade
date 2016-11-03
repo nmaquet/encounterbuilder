@@ -11,6 +11,8 @@
             header.panel-heading.panel-btn-container
                 h3.panel-title.t-title
                     a.is-pointer(ng-click="selectChronicle(chronicle)") {{chronicle.name}}
+                    span &nbsp;
+                    span(style="color:grey", ng-if="chronicle.minLevel != 1 || chronicle.maxLevel != 20") (Levels {{chronicle.minLevel | number}}-{{chronicle.maxLevel | number}})
                 small.panel-date {{chronicle.lastModified | timestampToHowlongago}}
                 .panel-btn.btn-group
                     button.btn.btn-default(data-toggle="tooltip", data-placement="bottom", title='Read the complete chronicle on one page', ng-click="view(chronicle)")

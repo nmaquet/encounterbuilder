@@ -28,6 +28,9 @@ DEMONSQUID.encounterBuilderDirectives.directive('nouislider', function () {
                 scope.max = element.val()[1];
                 scope.$apply();
             });
+            scope.$watchCollection('[min, max]', function() {
+                element.val([scope.min, scope.max]);
+            });
         }
     };
 });
